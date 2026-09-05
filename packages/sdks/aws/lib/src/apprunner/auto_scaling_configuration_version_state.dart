@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AutoScalingConfigurationVersion resources.
 class AutoScalingConfigurationVersionState {
   /// ARN of this auto scaling configuration version.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the auto scaling configuration.
-  final pulumi.Input<String>? autoScalingConfigurationName;
+  final pulumi.Input<String?>? autoScalingConfigurationName;
   /// Revision of this auto scaling configuration.
-  final pulumi.Input<int>? autoScalingConfigurationRevision;
+  final pulumi.Input<int?>? autoScalingConfigurationRevision;
   /// Whether there is an App Runner service associated with this auto scaling configuration.
-  final pulumi.Input<bool>? hasAssociatedService;
+  final pulumi.Input<bool?>? hasAssociatedService;
   /// Whether the auto scaling configuration is the default for the AWS account and Region.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// Whether the auto scaling configuration has the highest `autoScalingConfigurationRevision` among all configurations that share the same `autoScalingConfigurationName`.
-  final pulumi.Input<bool>? latest;
+  final pulumi.Input<bool?>? latest;
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
-  final pulumi.Input<int>? maxConcurrency;
+  final pulumi.Input<int?>? maxConcurrency;
   /// Maximal number of instances that App Runner provisions for your service.
-  final pulumi.Input<int>? maxSize;
+  final pulumi.Input<int?>? maxSize;
   /// Minimal number of instances that App Runner provisions for your service.
-  final pulumi.Input<int>? minSize;
+  final pulumi.Input<int?>? minSize;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AutoScalingConfigurationVersionState].
   /// [arn] ARN of this auto scaling configuration version.
@@ -83,13 +83,13 @@ class AutoScalingConfigurationVersionState {
     return AutoScalingConfigurationVersionState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoScalingConfigurationName: (() { final guardedValue = map['autoScalingConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      autoScalingConfigurationRevision: (() { final guardedValue = map['autoScalingConfigurationRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autoScalingConfigurationRevision: (() { final guardedValue = map['autoScalingConfigurationRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       hasAssociatedService: (() { final guardedValue = map['hasAssociatedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       latest: (() { final guardedValue = map['latest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxConcurrency: (() { final guardedValue = map['maxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrency: (() { final guardedValue = map['maxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

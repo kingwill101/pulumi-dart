@@ -148,3 +148,14 @@ Future<GetWorkspaceTableResult> getWorkspaceTable(
   );
   return GetWorkspaceTableResult.fromMap(result);
 }
+
+pulumi.Output<GetWorkspaceTableResult> getWorkspaceTableOutput(
+  GetWorkspaceTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:loganalytics/getWorkspaceTable:getWorkspaceTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceTableResult.fromMap);
+}

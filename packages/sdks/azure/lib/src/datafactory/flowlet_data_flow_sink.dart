@@ -9,19 +9,19 @@ import 'flowlet_data_flow_sink_schema_linked_service.dart';
 
 class FlowletDataFlowSink {
   /// A `dataset` block as defined below.
-  final pulumi.Input<FlowletDataFlowSinkDataset>? dataset;
+  final pulumi.Input<FlowletDataFlowSinkDataset?>? dataset;
   /// The description for the Data Flow Source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `flowlet` block as defined below.
-  final pulumi.Input<FlowletDataFlowSinkFlowlet>? flowlet;
+  final pulumi.Input<FlowletDataFlowSinkFlowlet?>? flowlet;
   /// A `linkedService` block as defined below.
-  final pulumi.Input<FlowletDataFlowSinkLinkedService>? linkedService;
+  final pulumi.Input<FlowletDataFlowSinkLinkedService?>? linkedService;
   /// The name for the Data Flow Source.
   final pulumi.Input<String> name;
   /// A `rejectedLinkedService` block as defined below.
-  final pulumi.Input<FlowletDataFlowSinkRejectedLinkedService>? rejectedLinkedService;
+  final pulumi.Input<FlowletDataFlowSinkRejectedLinkedService?>? rejectedLinkedService;
   /// A `schemaLinkedService` block as defined below.
-  final pulumi.Input<FlowletDataFlowSinkSchemaLinkedService>? schemaLinkedService;
+  final pulumi.Input<FlowletDataFlowSinkSchemaLinkedService?>? schemaLinkedService;
 
   /// Creates a new [FlowletDataFlowSink].
   /// [dataset] A `dataset` block as defined below.

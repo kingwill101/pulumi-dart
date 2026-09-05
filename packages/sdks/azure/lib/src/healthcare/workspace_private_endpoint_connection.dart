@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspacePrivateEndpointConnection {
   /// The ID of the Healthcare Workspace.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [WorkspacePrivateEndpointConnection].
   /// [id] The ID of the Healthcare Workspace.

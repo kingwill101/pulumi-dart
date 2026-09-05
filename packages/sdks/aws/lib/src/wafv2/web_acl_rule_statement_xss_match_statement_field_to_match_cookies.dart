@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_xss_match_statement_field_to_match_cookies_match_
 
 class WebAclRuleStatementXssMatchStatementFieldToMatchCookies {
   /// Cookies to inspect. See Cookies Match Pattern below.
-  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern>>? matchPatterns;
+  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern>?>? matchPatterns;
   /// Parts of the cookies to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with cookies larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.

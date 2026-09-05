@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cluster_args.dart';
 import 'serverless_cluster_client_authentication.dart';
 import 'serverless_cluster_state.dart';
+import 'serverless_cluster_vpc_config.dart';
 
 /// Manages an Amazon MSK Serverless cluster.
 ///
@@ -15,11 +16,6 @@ import 'serverless_cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.msk.ServerlessCluster("example", {
-///     clusterName: "Example",
-///     vpcConfigs: [{
-///         subnetIds: exampleAwsSubnet.map(__item => __item.id),
-///         securityGroupIds: [exampleAwsSecurityGroup.id],
-///     }],
 ///     clientAuthentication: {
 ///         sasl: {
 ///             iam: {
@@ -27,6 +23,11 @@ import 'serverless_cluster_state.dart';
 ///             },
 ///         },
 ///     },
+///     vpcConfigs: [{
+///         subnetIds: exampleAwsSubnet.map(__item => __item.id),
+///         securityGroupIds: [exampleAwsSecurityGroup.id],
+///     }],
+///     clusterName: "Example",
 /// });
 /// ```
 /// ```python
@@ -34,18 +35,18 @@ import 'serverless_cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.msk.ServerlessCluster("example",
-///     cluster_name="Example",
-///     vpc_configs=[{
-///         "subnet_ids": [__item["id"] for __item in example_aws_subnet],
-///         "security_group_ids": [example_aws_security_group["id"]],
-///     }],
 ///     client_authentication={
 ///         "sasl": {
 ///             "iam": {
 ///                 "enabled": True,
 ///             },
 ///         },
-///     })
+///     },
+///     vpc_configs=[{
+///         "subnet_ids": [__item["id"] for __item in example_aws_subnet],
+///         "security_group_ids": [example_aws_security_group["id"]],
+///     }],
+///     cluster_name="Example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,7 +58,16 @@ import 'serverless_cluster_state.dart';
 /// {
 ///     var example = new Aws.Msk.ServerlessCluster("example", new()
 ///     {
-///         ClusterName = "Example",
+///         ClientAuthentication = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationArgs
+///         {
+///             Sasl = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationSaslArgs
+///             {
+///                 Iam = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationSaslIamArgs
+///                 {
+///                     Enabled = true,
+///                 },
+///             },
+///         },
 ///         VpcConfigs = new[]
 ///         {
 ///             new Aws.Msk.Inputs.ServerlessClusterVpcConfigArgs
@@ -69,16 +79,7 @@ import 'serverless_cluster_state.dart';
 ///                 },
 ///             },
 ///         },
-///         ClientAuthentication = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationArgs
-///         {
-///             Sasl = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationSaslArgs
-///             {
-///                 Iam = new Aws.Msk.Inputs.ServerlessClusterClientAuthenticationSaslIamArgs
-///                 {
-///                     Enabled = true,
-///                 },
-///             },
-///         },
+///         ClusterName = "Example",
 ///     });
 ///
 /// });
@@ -93,15 +94,6 @@ import 'serverless_cluster_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := msk.NewServerlessCluster(ctx, "example", &msk.ServerlessClusterArgs{
-/// ClusterName: pulumi.String("Example"),
-/// VpcConfigs: msk.ServerlessClusterVpcConfigArray{
-/// &msk.ServerlessClusterVpcConfigArgs{
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
-/// SecurityGroupIds: pulumi.StringArray{
-/// exampleAwsSecurityGroup.Id,
-/// },
-/// },
-/// },
 /// ClientAuthentication: &msk.ServerlessClusterClientAuthenticationArgs{
 /// Sasl: &msk.ServerlessClusterClientAuthenticationSaslArgs{
 /// Iam: &msk.ServerlessClusterClientAuthenticationSaslIamArgs{
@@ -109,6 +101,15 @@ import 'serverless_cluster_state.dart';
 /// },
 /// },
 /// },
+/// VpcConfigs: msk.ServerlessClusterVpcConfigArray{
+/// &msk.ServerlessClusterVpcConfigArgs{
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,24-46)),
+/// SecurityGroupIds: pulumi.StringArray{
+/// exampleAwsSecurityGroup.Id,
+/// },
+/// },
+/// },
+/// ClusterName: pulumi.String("Example"),
 /// })
 /// if err != nil {
 /// return err
@@ -127,11 +128,6 @@ import 'serverless_cluster_state.dart';
 /// }
 ///
 /// resource "aws_msk_serverlesscluster" "example" {
-///   cluster_name = "Example"
-///   vpc_configs {
-///     subnet_ids         = exampleAwsSubnet[*].id
-///     security_group_ids = [exampleAwsSecurityGroup.id]
-///   }
 ///   client_authentication = {
 ///     sasl = {
 ///       iam = {
@@ -139,6 +135,11 @@ import 'serverless_cluster_state.dart';
 ///       }
 ///     }
 ///   }
+///   vpc_configs {
+///     subnet_ids         = exampleAwsSubnet[*].id
+///     security_group_ids = [exampleAwsSecurityGroup.id]
+///   }
+///   cluster_name = "Example"
 /// }
 /// ```
 /// ```java
@@ -149,10 +150,10 @@ import 'serverless_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.msk.ServerlessCluster;
 /// import com.pulumi.aws.msk.ServerlessClusterArgs;
-/// import com.pulumi.aws.msk.inputs.ServerlessClusterVpcConfigArgs;
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationArgs;
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationSaslArgs;
 /// import com.pulumi.aws.msk.inputs.ServerlessClusterClientAuthenticationSaslIamArgs;
+/// import com.pulumi.aws.msk.inputs.ServerlessClusterVpcConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -167,11 +168,6 @@ import 'serverless_cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessCluster("example", ServerlessClusterArgs.builder()
-///             .clusterName("Example")
-///             .vpcConfigs(ServerlessClusterVpcConfigArgs.builder()
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.id())
-///                 .build())
 ///             .clientAuthentication(ServerlessClusterClientAuthenticationArgs.builder()
 ///                 .sasl(ServerlessClusterClientAuthenticationSaslArgs.builder()
 ///                     .iam(ServerlessClusterClientAuthenticationSaslIamArgs.builder()
@@ -179,6 +175,11 @@ import 'serverless_cluster_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .vpcConfigs(ServerlessClusterVpcConfigArgs.builder()
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.id())
+///                 .build())
+///             .clusterName("Example")
 ///             .build());
 ///
 ///     }
@@ -192,7 +193,7 @@ import 'serverless_cluster_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the MSK serverless cluster.
+/// - `arn` (String) ARN of the MSK serverless cluster.
 ///
 ///
 /// Using `pulumi import`, import MSK serverless cluster using the cluster ARN. For example:
@@ -218,7 +219,7 @@ class ServerlessCluster extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// VPC configuration information. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcConfigs;
+  late final pulumi.Output<List<ServerlessClusterVpcConfig>> vpcConfigs;
 
   /// Creates a new [ServerlessCluster].
   /// [name] The Pulumi resource name.
@@ -232,7 +233,7 @@ class ServerlessCluster extends pulumi.CustomResource {
           'aws:msk/serverlessCluster:ServerlessCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
@@ -240,9 +241,9 @@ class ServerlessCluster extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfigs = registerOutput<List<Map<String, dynamic>>>('vpcConfigs');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessClusterVpcConfig>(guardedValue, (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ServerlessCluster] resource's state with the given [name] and [id].
@@ -250,11 +251,12 @@ class ServerlessCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,8 +276,28 @@ class ServerlessCluster extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfigs = registerOutput<List<Map<String, dynamic>>>('vpcConfigs');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessClusterVpcConfig>(guardedValue, (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ServerlessCluster] resource.
+  ServerlessCluster.reference(String urn)
+    : super(
+        'aws:msk/serverlessCluster:ServerlessCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    clientAuthentication = registerOutput<ServerlessClusterClientAuthentication>('clientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessClusterVpcConfig>(guardedValue, (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -10,7 +10,7 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
   /// The password for the SYS, SYSTEM, and PDB Admin users. The password must be at least 12 characters long, and contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (`"`) or the username "admin", regardless of casing. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> adminPassword;
   /// Defines the network access type for the Autonomous Database. If the property is explicitly set to an empty list, it allows secure public access to the database from any IP address. If specific ACL (Access Control List) values are provided, access will be restricted to only the specified IP addresses. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<List<String>>? allowedIpAddresses;
+  final pulumi.Input<List<String>?>? allowedIpAddresses;
   /// Indicates if auto scaling is enabled for the Autonomous Database CPU core count. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<bool> autoScalingEnabled;
   /// Indicates if auto scaling is enabled for the Autonomous Database storage. Changing this forces a new Autonomous Database Clone to be created.
@@ -28,7 +28,7 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
   /// &gt; **Note:** `ECPU` compute model is the recommended model and `OCPU` compute model is legacy.
   final pulumi.Input<String> computeModel;
   /// Specifies a list of customer contacts as email addresses. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<List<String>>? customerContacts;
+  final pulumi.Input<List<String>?>? customerContacts;
   /// The maximum storage that can be allocated for the database, in terabytes. Possible values range between `1` and `384`. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<int> dataStorageSizeInTb;
   /// A valid Oracle Database version for Autonomous Database. Changing this forces a new Autonomous Database Clone to be created.
@@ -46,25 +46,25 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
   /// The Oracle license model that applies to the Oracle Autonomous Database. Possible values are `LicenseIncluded` and `BringYourOwnLicense`. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> licenseModel;
   /// The Azure Region where the Autonomous Database should exist. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies if the Autonomous Database requires mTLS connections. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<bool> mtlsConnectionRequired;
   /// The name which should be used for this autonomous database clone from database. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The national character set for the autonomous database. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> nationalCharacterSet;
   /// The refreshable model for the clone. Possible values are `Automatic` and `Manual`. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<String>? refreshableModel;
+  final pulumi.Input<String?>? refreshableModel;
   /// The name of the Resource Group where the autonomous database clone from database should exist. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the source Autonomous Database to clone from. Changing this forces a new Autonomous Database Clone to be created.
   final pulumi.Input<String> sourceAutonomousDatabaseId;
   /// The ID of the subnet the resource is associated with. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A mapping of tags to assign to the Autonomous Database Clone. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Network this Autonomous Database Clone should be created in. Changing this forces a new Autonomous Database Clone to be created.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [AutonomousDatabaseCloneFromDatabaseArgs].
   /// [adminPassword] The password for the SYS, SYSTEM, and PDB Admin users. The password must be at least 12 characters long, and contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (`"`) or the username "admin", regardless of casing. Changing this forces a new Autonomous Database Clone to be created.
@@ -156,13 +156,13 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
       allowedIpAddresses: (() { final guardedValue = map['allowedIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       autoScalingEnabled: pulumi.Input.fromValue(map['autoScalingEnabled'] as bool),
       autoScalingForStorageEnabled: pulumi.Input.fromValue(map['autoScalingForStorageEnabled'] as bool),
-      backupRetentionPeriodInDays: pulumi.Input.fromValue(map['backupRetentionPeriodInDays'] as int),
+      backupRetentionPeriodInDays: pulumi.Input.fromValue((map['backupRetentionPeriodInDays'] as num).toInt()),
       characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
       cloneType: pulumi.Input.fromValue(map['cloneType'] as String),
-      computeCount: pulumi.Input.fromValue(map['computeCount'] as double),
+      computeCount: pulumi.Input.fromValue((map['computeCount'] as num).toDouble()),
       computeModel: pulumi.Input.fromValue(map['computeModel'] as String),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      dataStorageSizeInTb: pulumi.Input.fromValue(map['dataStorageSizeInTb'] as int),
+      dataStorageSizeInTb: pulumi.Input.fromValue((map['dataStorageSizeInTb'] as num).toInt()),
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
       databaseWorkload: pulumi.Input.fromValue(map['databaseWorkload'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),

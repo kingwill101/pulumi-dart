@@ -4,33 +4,33 @@
 /// Result data returned by getNetworkSecurityPerimeterProfile.
 class GetNetworkSecurityPerimeterProfileResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String networkSecurityPerimeterId;
+  final String? id;
+  final String? name;
+  final String? networkSecurityPerimeterId;
 
   /// Creates a new [GetNetworkSecurityPerimeterProfileResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [networkSecurityPerimeterId] Required.
+  /// [name] Optional.
+  /// [networkSecurityPerimeterId] Optional.
   const GetNetworkSecurityPerimeterProfileResult({
-    required this.id,
-    required this.name,
-    required this.networkSecurityPerimeterId,
+    this.id,
+    this.name,
+    this.networkSecurityPerimeterId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'networkSecurityPerimeterId': networkSecurityPerimeterId,
+      'id': ?id,
+      'name': ?name,
+      'networkSecurityPerimeterId': ?networkSecurityPerimeterId,
     };
   }
 
   factory GetNetworkSecurityPerimeterProfileResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterProfileResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      networkSecurityPerimeterId: map['networkSecurityPerimeterId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkSecurityPerimeterId: (() { final guardedValue = map['networkSecurityPerimeterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

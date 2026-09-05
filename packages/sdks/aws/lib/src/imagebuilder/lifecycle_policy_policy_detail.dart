@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetail {
   /// Configuration details for the policy action.
   final pulumi.Input<LifecyclePolicyPolicyDetailAction> action;
   /// Additional rules to specify resources that should be exempt from policy actions.
-  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRules>? exclusionRules;
+  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRules?>? exclusionRules;
   /// Specifies the resources that the lifecycle policy applies to.
   ///
   /// The following arguments are optional:

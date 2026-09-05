@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration {
   /// Specifies whether to enable parsing of multimodal data, including both text and images. Valid value: `MULTIMODAL`.
-  final pulumi.Input<String>? parsingModality;
+  final pulumi.Input<String?>? parsingModality;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration].
   /// [parsingModality] Specifies whether to enable parsing of multimodal data, including both text and images. Valid value: `MULTIMODAL`.

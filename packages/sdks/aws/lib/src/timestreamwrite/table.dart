@@ -127,12 +127,12 @@ import 'table_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.timestreamwrite.Table("example", {
-///     databaseName: exampleAwsTimestreamwriteDatabase.databaseName,
-///     tableName: "example",
 ///     retentionProperties: {
 ///         magneticStoreRetentionPeriodInDays: 30,
 ///         memoryStoreRetentionPeriodInHours: 8,
 ///     },
+///     databaseName: exampleAwsTimestreamwriteDatabase.databaseName,
+///     tableName: "example",
 ///     tags: {
 ///         Name: "example-timestream-table",
 ///     },
@@ -143,12 +143,12 @@ import 'table_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.timestreamwrite.Table("example",
-///     database_name=example_aws_timestreamwrite_database["databaseName"],
-///     table_name="example",
 ///     retention_properties={
 ///         "magnetic_store_retention_period_in_days": 30,
 ///         "memory_store_retention_period_in_hours": 8,
 ///     },
+///     database_name=example_aws_timestreamwrite_database["databaseName"],
+///     table_name="example",
 ///     tags={
 ///         "Name": "example-timestream-table",
 ///     })
@@ -163,13 +163,13 @@ import 'table_state.dart';
 /// {
 ///     var example = new Aws.TimestreamWrite.Table("example", new()
 ///     {
-///         DatabaseName = exampleAwsTimestreamwriteDatabase.DatabaseName,
-///         TableName = "example",
 ///         RetentionProperties = new Aws.TimestreamWrite.Inputs.TableRetentionPropertiesArgs
 ///         {
 ///             MagneticStoreRetentionPeriodInDays = 30,
 ///             MemoryStoreRetentionPeriodInHours = 8,
 ///         },
+///         DatabaseName = exampleAwsTimestreamwriteDatabase.DatabaseName,
+///         TableName = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "example-timestream-table" },
@@ -189,12 +189,12 @@ import 'table_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := timestreamwrite.NewTable(ctx, "example", &timestreamwrite.TableArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsTimestreamwriteDatabase.DatabaseName),
-/// 			TableName:    pulumi.String("example"),
 /// 			RetentionProperties: &timestreamwrite.TableRetentionPropertiesArgs{
 /// 				MagneticStoreRetentionPeriodInDays: pulumi.Int(30),
 /// 				MemoryStoreRetentionPeriodInHours:  pulumi.Int(8),
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsTimestreamwriteDatabase.DatabaseName),
+/// 			TableName:    pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-timestream-table"),
 /// 			},
@@ -216,12 +216,12 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_table" "example" {
-///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
-///   table_name    = "example"
 ///   retention_properties = {
 ///     magnetic_store_retention_period_in_days = 30
 ///     memory_store_retention_period_in_hours  = 8
 ///   }
+///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
+///   table_name    = "example"
 ///   tags = {
 ///     "Name" = "example-timestream-table"
 ///   }
@@ -250,12 +250,12 @@ import 'table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
-///             .tableName("example")
 ///             .retentionProperties(TableRetentionPropertiesArgs.builder()
 ///                 .magneticStoreRetentionPeriodInDays(30)
 ///                 .memoryStoreRetentionPeriodInHours(8)
 ///                 .build())
+///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
+///             .tableName("example")
 ///             .tags(Map.of("Name", "example-timestream-table"))
 ///             .build());
 ///
@@ -267,11 +267,11 @@ import 'table_state.dart';
 ///   example:
 ///     type: aws:timestreamwrite:Table
 ///     properties:
-///       databaseName: ${exampleAwsTimestreamwriteDatabase.databaseName}
-///       tableName: example
 ///       retentionProperties:
 ///         magneticStoreRetentionPeriodInDays: 30
 ///         memoryStoreRetentionPeriodInHours: 8
+///       databaseName: ${exampleAwsTimestreamwriteDatabase.databaseName}
+///       tableName: example
 ///       tags:
 ///         Name: example-timestream-table
 /// ```
@@ -285,8 +285,6 @@ import 'table_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.timestreamwrite.Table("example", {
-///     databaseName: exampleAwsTimestreamwriteDatabase.databaseName,
-///     tableName: "example",
 ///     schema: {
 ///         compositePartitionKey: {
 ///             enforcementInRecord: "REQUIRED",
@@ -294,6 +292,8 @@ import 'table_state.dart';
 ///             type: "DIMENSION",
 ///         },
 ///     },
+///     databaseName: exampleAwsTimestreamwriteDatabase.databaseName,
+///     tableName: "example",
 /// });
 /// ```
 /// ```python
@@ -301,15 +301,15 @@ import 'table_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.timestreamwrite.Table("example",
-///     database_name=example_aws_timestreamwrite_database["databaseName"],
-///     table_name="example",
 ///     schema={
 ///         "composite_partition_key": {
 ///             "enforcement_in_record": "REQUIRED",
 ///             "name": "attr1",
 ///             "type": "DIMENSION",
 ///         },
-///     })
+///     },
+///     database_name=example_aws_timestreamwrite_database["databaseName"],
+///     table_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -321,8 +321,6 @@ import 'table_state.dart';
 /// {
 ///     var example = new Aws.TimestreamWrite.Table("example", new()
 ///     {
-///         DatabaseName = exampleAwsTimestreamwriteDatabase.DatabaseName,
-///         TableName = "example",
 ///         Schema = new Aws.TimestreamWrite.Inputs.TableSchemaArgs
 ///         {
 ///             CompositePartitionKey = new Aws.TimestreamWrite.Inputs.TableSchemaCompositePartitionKeyArgs
@@ -332,6 +330,8 @@ import 'table_state.dart';
 ///                 Type = "DIMENSION",
 ///             },
 ///         },
+///         DatabaseName = exampleAwsTimestreamwriteDatabase.DatabaseName,
+///         TableName = "example",
 ///     });
 ///
 /// });
@@ -347,8 +347,6 @@ import 'table_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := timestreamwrite.NewTable(ctx, "example", &timestreamwrite.TableArgs{
-/// 			DatabaseName: pulumi.Any(exampleAwsTimestreamwriteDatabase.DatabaseName),
-/// 			TableName:    pulumi.String("example"),
 /// 			Schema: &timestreamwrite.TableSchemaArgs{
 /// 				CompositePartitionKey: &timestreamwrite.TableSchemaCompositePartitionKeyArgs{
 /// 					EnforcementInRecord: pulumi.String("REQUIRED"),
@@ -356,6 +354,8 @@ import 'table_state.dart';
 /// 					Type:                pulumi.String("DIMENSION"),
 /// 				},
 /// 			},
+/// 			DatabaseName: pulumi.Any(exampleAwsTimestreamwriteDatabase.DatabaseName),
+/// 			TableName:    pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -374,8 +374,6 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_timestreamwrite_table" "example" {
-///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
-///   table_name    = "example"
 ///   schema = {
 ///     composite_partition_key = {
 ///       enforcement_in_record = "REQUIRED"
@@ -383,6 +381,8 @@ import 'table_state.dart';
 ///       type                  = "DIMENSION"
 ///     }
 ///   }
+///   database_name = exampleAwsTimestreamwriteDatabase.databaseName
+///   table_name    = "example"
 /// }
 /// ```
 /// ```java
@@ -409,8 +409,6 @@ import 'table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
-///             .tableName("example")
 ///             .schema(TableSchemaArgs.builder()
 ///                 .compositePartitionKey(TableSchemaCompositePartitionKeyArgs.builder()
 ///                     .enforcementInRecord("REQUIRED")
@@ -418,6 +416,8 @@ import 'table_state.dart';
 ///                     .type("DIMENSION")
 ///                     .build())
 ///                 .build())
+///             .databaseName(exampleAwsTimestreamwriteDatabase.databaseName())
+///             .tableName("example")
 ///             .build());
 ///
 ///     }
@@ -428,13 +428,13 @@ import 'table_state.dart';
 ///   example:
 ///     type: aws:timestreamwrite:Table
 ///     properties:
-///       databaseName: ${exampleAwsTimestreamwriteDatabase.databaseName}
-///       tableName: example
 ///       schema:
 ///         compositePartitionKey:
 ///           enforcementInRecord: REQUIRED
 ///           name: attr1
 ///           type: DIMENSION
+///       databaseName: ${exampleAwsTimestreamwriteDatabase.databaseName}
+///       tableName: example
 /// ```
 ///
 ///
@@ -477,7 +477,7 @@ class Table extends pulumi.CustomResource {
           'aws:timestreamwrite/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');
@@ -486,8 +486,8 @@ class Table extends pulumi.CustomResource {
     retentionProperties = registerOutput<TableRetentionProperties>('retentionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableRetentionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schema = registerOutput<TableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
@@ -495,11 +495,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -520,7 +521,27 @@ class Table extends pulumi.CustomResource {
     retentionProperties = registerOutput<TableRetentionProperties>('retentionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableRetentionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schema = registerOutput<TableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'aws:timestreamwrite/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    databaseName = registerOutput<String>('databaseName');
+    magneticStoreWriteProperties = registerOutput<TableMagneticStoreWriteProperties>('magneticStoreWriteProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableMagneticStoreWriteProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    retentionProperties = registerOutput<TableRetentionProperties>('retentionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableRetentionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schema = registerOutput<TableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String>('tableName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

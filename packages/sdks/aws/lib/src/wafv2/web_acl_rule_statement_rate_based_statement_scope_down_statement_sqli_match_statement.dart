@@ -5,10 +5,10 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_ma
 import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement {
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch?>? fieldToMatch;
   /// Sensitivity level for detecting SQL injection attacks. Valid values: `HIGH`, `LOW`.
-  final pulumi.Input<String>? sensitivityLevel;
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<String?>? sensitivityLevel;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement].
   /// [fieldToMatch] Optional.

@@ -6,13 +6,13 @@ import 'application_network_rule_set_ip_rule.dart';
 /// Input properties used for looking up and filtering ApplicationNetworkRuleSet resources.
 class ApplicationNetworkRuleSetState {
   /// Whether these IP Rules apply for device connectivity to IoT Hub and Device Provisioning Service associated with this IoT Central Application. Possible values are `true`, `false`. Defaults to `true`
-  final pulumi.Input<bool>? applyToDevice;
+  final pulumi.Input<bool?>? applyToDevice;
   /// Specifies the default action for the IoT Central Application Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// The ID of the IoT Central Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iotcentralApplicationId;
+  final pulumi.Input<String?>? iotcentralApplicationId;
   /// One or more `ipRule` blocks as defined below.
-  final pulumi.Input<List<ApplicationNetworkRuleSetIpRule>>? ipRules;
+  final pulumi.Input<List<ApplicationNetworkRuleSetIpRule>?>? ipRules;
 
   /// Creates a new [ApplicationNetworkRuleSetState].
   /// [applyToDevice] Whether these IP Rules apply for device connectivity to IoT Hub and Device Provisioning Service associated with this IoT Central Application. Possible values are `true`, `false`. Defaults to `true`

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lb_certificate_args.dart';
+import 'lb_certificate_domain_validation_record.dart';
 import 'lb_certificate_state.dart';
 
 /// Manages a Lightsail Load Balancer Certificate.
@@ -201,7 +202,7 @@ class LbCertificate extends pulumi.CustomResource {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
   late final pulumi.Output<String> domainName;
   /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> domainValidationRecords;
+  late final pulumi.Output<List<LbCertificateDomainValidationRecord>> domainValidationRecords;
   /// Load balancer name where you want to create the SSL/TLS certificate.
   late final pulumi.Output<String> lbName;
   /// SSL/TLS certificate name.
@@ -227,16 +228,16 @@ class LbCertificate extends pulumi.CustomResource {
           'aws:lightsail/lbCertificate:LbCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationRecords = registerOutput<List<Map<String, dynamic>>>('domainValidationRecords');
+    domainValidationRecords = registerOutput<List<LbCertificateDomainValidationRecord>>('domainValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(guardedValue, (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     lbName = registerOutput<String>('lbName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     supportCode = registerOutput<String>('supportCode');
   }
 
@@ -245,11 +246,12 @@ class LbCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LbCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,11 +268,31 @@ class LbCertificate extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     domainName = registerOutput<String>('domainName');
-    domainValidationRecords = registerOutput<List<Map<String, dynamic>>>('domainValidationRecords');
+    domainValidationRecords = registerOutput<List<LbCertificateDomainValidationRecord>>('domainValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(guardedValue, (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     lbName = registerOutput<String>('lbName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportCode = registerOutput<String>('supportCode');
+  }
+
+  /// Creates a typed reference to an existing [LbCertificate] resource.
+  LbCertificate.reference(String urn)
+    : super(
+        'aws:lightsail/lbCertificate:LbCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    domainName = registerOutput<String>('domainName');
+    domainValidationRecords = registerOutput<List<LbCertificateDomainValidationRecord>>('domainValidationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LbCertificateDomainValidationRecord>(guardedValue, (value) => LbCertificateDomainValidationRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    lbName = registerOutput<String>('lbName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     supportCode = registerOutput<String>('supportCode');
   }
 }

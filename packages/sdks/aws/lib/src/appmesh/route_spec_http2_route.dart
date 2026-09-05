@@ -12,9 +12,9 @@ class RouteSpecHttp2Route {
   /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
   final pulumi.Input<RouteSpecHttp2RouteMatch> match;
   /// Retry policy. See `spec.http_route.retry_policy` Block for details.
-  final pulumi.Input<RouteSpecHttp2RouteRetryPolicy>? retryPolicy;
+  final pulumi.Input<RouteSpecHttp2RouteRetryPolicy?>? retryPolicy;
   /// Types of timeouts. See `spec.tcp_route.timeout` Block for details.
-  final pulumi.Input<RouteSpecHttp2RouteTimeout>? timeout;
+  final pulumi.Input<RouteSpecHttp2RouteTimeout?>? timeout;
 
   /// Creates a new [RouteSpecHttp2Route].
   /// [action] Action to take if a match is determined. See `spec.tcp_route.action` Block for details.

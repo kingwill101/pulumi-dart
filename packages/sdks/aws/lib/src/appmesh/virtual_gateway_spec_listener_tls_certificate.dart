@@ -7,10 +7,10 @@ import 'virtual_gateway_spec_listener_tls_certificate_sds.dart';
 
 class VirtualGatewaySpecListenerTlsCertificate {
   /// AWS Certificate Manager (ACM) certificate.
-  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateAcm>? acm;
-  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateFile>? file;
+  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateAcm?>? acm;
+  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateFile?>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateSds>? sds;
+  final pulumi.Input<VirtualGatewaySpecListenerTlsCertificateSds?>? sds;
 
   /// Creates a new [VirtualGatewaySpecListenerTlsCertificate].
   /// [acm] AWS Certificate Manager (ACM) certificate.

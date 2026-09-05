@@ -12,11 +12,11 @@ class IdentityPoolProviderPrincipalTagArgs {
   /// The name of the identity provider.
   final pulumi.Input<String> identityProviderName;
   /// String to string map of variables.
-  final pulumi.Input<Map<String, String>>? principalTags;
+  final pulumi.Input<Map<String, String>?>? principalTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// use default (username and clientID) attribute mappings.
-  final pulumi.Input<bool>? useDefaults;
+  final pulumi.Input<bool?>? useDefaults;
 
   /// Creates a new [IdentityPoolProviderPrincipalTagArgs].
   /// [identityPoolId] An identity pool ID.

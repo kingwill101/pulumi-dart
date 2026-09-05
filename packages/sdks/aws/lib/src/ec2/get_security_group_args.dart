@@ -9,22 +9,22 @@ import 'get_security_group_filter.dart';
 /// {@macro pulumi_ec2_get_security_group_get_security_group_args_doc}
 class GetSecurityGroupArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetSecurityGroupFilter>>? filters;
+  final pulumi.Input<List<GetSecurityGroupFilter>?>? filters;
   /// Id of the specific security group to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the field to filter by, as defined by
   /// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired security group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Id of the VPC that the desired security group belongs to.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetSecurityGroupArgs].
   /// [filters] Custom filter block as described below.

@@ -14,33 +14,33 @@ import 'rule_group_rule_statement_size_constraint_statement_field_to_match_uri_f
 
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatch {
   /// Inspect all query arguments.
-  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>?>? allQueryArguments;
   /// Inspect the request body, which immediately follows the request headers.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody>? body;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody?>? body;
   /// Inspect the cookies in the web request. See Cookies below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookies?>? cookies;
   /// Inspect the request headers. See Header Order below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder>?>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeader>?>? headers;
   /// Inspect the JA3 fingerprint. See `ja3Fingerprint` below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint?>? ja3Fingerprint;
   /// Inspect the JA4 fingerprint. See `ja4Fingerprint` below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa4Fingerprint?>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBody?>? jsonBody;
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
-  final pulumi.Input<Map<String, dynamic>>? method;
+  final pulumi.Input<Map<String, dynamic>?>? method;
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
-  final pulumi.Input<Map<String, dynamic>>? queryString;
+  final pulumi.Input<Map<String, dynamic>?>? queryString;
   /// Inspect a single header. See Single Header below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleHeader?>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgument?>? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment?>? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
-  final pulumi.Input<Map<String, dynamic>>? uriPath;
+  final pulumi.Input<Map<String, dynamic>?>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.

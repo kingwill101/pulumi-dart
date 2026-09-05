@@ -25,8 +25,8 @@ class GetServerlessCacheCacheUsageLimitsEcpuPerSecond {
 
   factory GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimitsEcpuPerSecond(
-      maximum: pulumi.Input.fromValue(map['maximum'] as int),
-      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      maximum: pulumi.Input.fromValue((map['maximum'] as num).toInt()),
+      minimum: pulumi.Input.fromValue((map['minimum'] as num).toInt()),
     );
   }
 }

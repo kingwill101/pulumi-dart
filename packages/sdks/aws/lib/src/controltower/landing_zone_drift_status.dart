@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LandingZoneDriftStatus {
   /// The drift status of the landing zone.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [LandingZoneDriftStatus].
   /// [status] The drift status of the landing zone.

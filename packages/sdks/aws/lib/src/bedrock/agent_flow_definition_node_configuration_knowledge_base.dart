@@ -6,14 +6,14 @@ import 'agent_flow_definition_node_configuration_knowledge_base_inference_config
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
   /// Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration>? guardrailConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration?>? guardrailConfiguration;
   /// Configures model inference for knowledge base query and response generation. See Inference Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration>? inferenceConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration?>? inferenceConfiguration;
   /// The unique identifier of the knowledge base to query.
   final pulumi.Input<String> knowledgeBaseId;
   /// The unique identifier of the model or inference profile to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.
   final pulumi.Input<String> modelId;
-  final pulumi.Input<int>? numberOfResults;
+  final pulumi.Input<int?>? numberOfResults;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBase].
   /// [guardrailConfiguration] Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
@@ -45,7 +45,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
       inferenceConfiguration: (() { final guardedValue = map['inferenceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       knowledgeBaseId: pulumi.Input.fromValue(map['knowledgeBaseId'] as String),
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

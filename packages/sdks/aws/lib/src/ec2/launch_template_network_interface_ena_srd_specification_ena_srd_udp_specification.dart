@@ -6,7 +6,7 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
   /// Whether to enable UDP traffic optimization through ENA Express. Requires `enaSrdEnabled` to be `true`.
   ///
   /// NOTE: ENA Express requires [specific instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena-express.html#ena-express-requirements) and minimum bandwidth of 25 Gbps.
-  final pulumi.Input<bool>? enaSrdUdpEnabled;
+  final pulumi.Input<bool?>? enaSrdUdpEnabled;
 
   /// Creates a new [LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification].
   /// [enaSrdUdpEnabled] Whether to enable UDP traffic optimization through ENA Express. Requires `enaSrdEnabled` to be `true`.

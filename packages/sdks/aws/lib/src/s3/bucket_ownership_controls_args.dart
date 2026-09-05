@@ -11,7 +11,7 @@ class BucketOwnershipControlsArgs {
   /// Name of the bucket that you want to associate this access point with.
   final pulumi.Input<String> bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block(s) with Ownership Controls rules. Detailed below.
   final pulumi.Input<BucketOwnershipControlsRule> rule;
 

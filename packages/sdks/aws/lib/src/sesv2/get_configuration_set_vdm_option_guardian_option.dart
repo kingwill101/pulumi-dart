@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetVdmOptionGuardianOption {
-  /// Specifies the status of your VDM optimized shared delivery.
+  /// Status of your VDM optimized shared delivery.
   final pulumi.Input<String> optimizedSharedDelivery;
 
   /// Creates a new [GetConfigurationSetVdmOptionGuardianOption].
-  /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery.
+  /// [optimizedSharedDelivery] Status of your VDM optimized shared delivery.
   const GetConfigurationSetVdmOptionGuardianOption({
     required this.optimizedSharedDelivery,
   });

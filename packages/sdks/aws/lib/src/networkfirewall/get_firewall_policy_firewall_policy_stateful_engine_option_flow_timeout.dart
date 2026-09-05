@@ -19,7 +19,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
 
   factory GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout(
-      tcpIdleTimeoutSeconds: pulumi.Input.fromValue(map['tcpIdleTimeoutSeconds'] as int),
+      tcpIdleTimeoutSeconds: pulumi.Input.fromValue((map['tcpIdleTimeoutSeconds'] as num).toInt()),
     );
   }
 }

@@ -36,8 +36,8 @@ class GetFleetScalingConfiguration {
 
   factory GetFleetScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFleetScalingConfiguration(
-      desiredCapacity: pulumi.Input.fromValue(map['desiredCapacity'] as int),
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
+      desiredCapacity: pulumi.Input.fromValue((map['desiredCapacity'] as num).toInt()),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toInt()),
       scalingType: pulumi.Input.fromValue(map['scalingType'] as String),
       targetTrackingScalingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFleetScalingConfigurationTargetTrackingScalingConfig>(map['targetTrackingScalingConfigs']!, (value) => GetFleetScalingConfigurationTargetTrackingScalingConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );

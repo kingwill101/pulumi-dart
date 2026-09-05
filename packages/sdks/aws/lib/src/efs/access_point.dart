@@ -144,7 +144,7 @@ class AccessPoint extends pulumi.CustomResource {
           'aws:efs/accessPoint:AccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemArn = registerOutput<String>('fileSystemArn');
@@ -153,8 +153,8 @@ class AccessPoint extends pulumi.CustomResource {
     posixUser = registerOutput<AccessPointPosixUser?>('posixUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPosixUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     rootDirectory = registerOutput<AccessPointRootDirectory>('rootDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointRootDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccessPoint] resource's state with the given [name] and [id].
@@ -162,11 +162,12 @@ class AccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,7 +188,27 @@ class AccessPoint extends pulumi.CustomResource {
     posixUser = registerOutput<AccessPointPosixUser?>('posixUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPosixUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     rootDirectory = registerOutput<AccessPointRootDirectory>('rootDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointRootDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccessPoint] resource.
+  AccessPoint.reference(String urn)
+    : super(
+        'aws:efs/accessPoint:AccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    fileSystemArn = registerOutput<String>('fileSystemArn');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    ownerId = registerOutput<String>('ownerId');
+    posixUser = registerOutput<AccessPointPosixUser?>('posixUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointPosixUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    rootDirectory = registerOutput<AccessPointRootDirectory>('rootDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPointRootDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

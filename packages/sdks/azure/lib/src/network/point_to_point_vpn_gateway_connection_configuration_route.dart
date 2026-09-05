@@ -7,11 +7,11 @@ class PointToPointVpnGatewayConnectionConfigurationRoute {
   /// The Virtual Hub Route Table resource id associated with this Routing Configuration.
   final pulumi.Input<String> associatedRouteTableId;
   /// The resource ID of the Route Map associated with this Routing Configuration for inbound learned routes.
-  final pulumi.Input<String>? inboundRouteMapId;
+  final pulumi.Input<String?>? inboundRouteMapId;
   /// The resource ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
-  final pulumi.Input<String>? outboundRouteMapId;
+  final pulumi.Input<String?>? outboundRouteMapId;
   /// A `propagatedRouteTable` block as defined below.
-  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable>? propagatedRouteTable;
+  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable?>? propagatedRouteTable;
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfigurationRoute].
   /// [associatedRouteTableId] The Virtual Hub Route Table resource id associated with this Routing Configuration.

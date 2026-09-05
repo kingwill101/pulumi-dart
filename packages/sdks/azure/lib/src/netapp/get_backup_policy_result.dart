@@ -4,23 +4,23 @@
 /// Result data returned by getBackupPolicy.
 class GetBackupPolicyResult {
   /// The name of the NetApp account in which the NetApp Policy exists.
-  final String accountName;
+  final String? accountName;
   /// The number of daily backups to keep.
-  final int dailyBackupsToKeep;
+  final int? dailyBackupsToKeep;
   /// Whether the Backup Policy is enabled.
-  final bool enabled;
+  final bool? enabled;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// NetApp Backup Policy location.
-  final String location;
+  final String? location;
   /// The number of monthly backups to keep.
-  final int monthlyBackupsToKeep;
-  final String name;
-  final String resourceGroupName;
+  final int? monthlyBackupsToKeep;
+  final String? name;
+  final String? resourceGroupName;
   /// List of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The number of weekly backups to keep.
-  final int weeklyBackupsToKeep;
+  final int? weeklyBackupsToKeep;
 
   /// Creates a new [GetBackupPolicyResult].
   /// [accountName] The name of the NetApp account in which the NetApp Policy exists.
@@ -29,50 +29,50 @@ class GetBackupPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] NetApp Backup Policy location.
   /// [monthlyBackupsToKeep] The number of monthly backups to keep.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [tags] List of tags assigned to the resource.
   /// [weeklyBackupsToKeep] The number of weekly backups to keep.
   const GetBackupPolicyResult({
-    required this.accountName,
-    required this.dailyBackupsToKeep,
-    required this.enabled,
-    required this.id,
-    required this.location,
-    required this.monthlyBackupsToKeep,
-    required this.name,
-    required this.resourceGroupName,
-    required this.tags,
-    required this.weeklyBackupsToKeep,
+    this.accountName,
+    this.dailyBackupsToKeep,
+    this.enabled,
+    this.id,
+    this.location,
+    this.monthlyBackupsToKeep,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+    this.weeklyBackupsToKeep,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'dailyBackupsToKeep': dailyBackupsToKeep,
-      'enabled': enabled,
-      'id': id,
-      'location': location,
-      'monthlyBackupsToKeep': monthlyBackupsToKeep,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
-      'weeklyBackupsToKeep': weeklyBackupsToKeep,
+      'accountName': ?accountName,
+      'dailyBackupsToKeep': ?dailyBackupsToKeep,
+      'enabled': ?enabled,
+      'id': ?id,
+      'location': ?location,
+      'monthlyBackupsToKeep': ?monthlyBackupsToKeep,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+      'weeklyBackupsToKeep': ?weeklyBackupsToKeep,
     };
   }
 
   factory GetBackupPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPolicyResult(
-      accountName: map['accountName'] as String,
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] as int,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] as int,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] as int,
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dailyBackupsToKeep: (() { final guardedValue = map['dailyBackupsToKeep']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monthlyBackupsToKeep: (() { final guardedValue = map['monthlyBackupsToKeep']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      weeklyBackupsToKeep: (() { final guardedValue = map['weeklyBackupsToKeep']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
     );
   }
 }

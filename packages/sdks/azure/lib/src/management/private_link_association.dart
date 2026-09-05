@@ -139,7 +139,7 @@ import 'private_link_association_state.dart';
 /// 		_, err = management.NewPrivateLinkAssociation(ctx, "example", &management.PrivateLinkAssociationArgs{
 /// 			Name:                            exampleUuid.Result,
 /// 			ManagementGroupId:               pulumi.Any(exampleAzurermManagementGroup.Id),
-/// 			ResourceManagementPrivateLinkId: examplePrivateLink.ID(),
+/// 			ResourceManagementPrivateLinkId: examplePrivateLink.ID().ToIDOutput().ToStringOutput(),
 /// 			PublicNetworkAccessEnabled:      pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -322,7 +322,7 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
           'azure:management/privateLinkAssociation:PrivateLinkAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
@@ -336,11 +336,12 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateLinkAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateLinkAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,6 +355,22 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    managementGroupId = registerOutput<String>('managementGroupId');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
+    resourceManagementPrivateLinkId = registerOutput<String>('resourceManagementPrivateLinkId');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [PrivateLinkAssociation] resource.
+  PrivateLinkAssociation.reference(String urn)
+    : super(
+        'azure:management/privateLinkAssociation:PrivateLinkAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');

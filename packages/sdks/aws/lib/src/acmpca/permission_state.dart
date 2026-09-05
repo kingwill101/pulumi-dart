@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Permission resources.
 class PermissionState {
   /// Actions that the specified AWS service principal can use. These include `IssueCertificate`, `GetCertificate`, and `ListPermissions`. Note that in order for ACM to automatically rotate certificates issued by a PCA, it must be granted permission on all 3 actions, as per the example above.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// ARN of the CA that grants the permissions.
-  final pulumi.Input<String>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateAuthorityArn;
   /// IAM policy that is associated with the permission.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// AWS service or identity that receives the permission. At this time, the only valid principal is `acm.amazonaws.com`.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the calling account
-  final pulumi.Input<String>? sourceAccount;
+  final pulumi.Input<String?>? sourceAccount;
 
   /// Creates a new [PermissionState].
   /// [actions] Actions that the specified AWS service principal can use. These include `IssueCertificate`, `GetCertificate`, and `ListPermissions`. Note that in order for ACM to automatically rotate certificates issued by a PCA, it must be granted permission on all 3 actions, as per the example above.

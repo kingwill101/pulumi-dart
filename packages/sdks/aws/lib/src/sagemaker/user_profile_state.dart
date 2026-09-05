@@ -5,29 +5,29 @@ import 'user_profile_user_settings.dart';
 
 /// Input properties used for looking up and filtering UserProfile resources.
 class UserProfileState {
-  /// The user profile Amazon Resource Name (ARN).
-  final pulumi.Input<String>? arn;
+  /// User profile ARN.
+  final pulumi.Input<String?>? arn;
   /// The ID of the associated Domain.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// The ID of the user's profile in the Amazon Elastic File System (EFS) volume.
-  final pulumi.Input<String>? homeEfsFileSystemUid;
+  final pulumi.Input<String?>? homeEfsFileSystemUid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A specifier for the type of value specified in `singleSignOnUserValue`. Currently, the only supported value is `UserName`. If the Domain's AuthMode is SSO, this field is required. If the Domain's AuthMode is not SSO, this field cannot be specified.
-  final pulumi.Input<String>? singleSignOnUserIdentifier;
+  final pulumi.Input<String?>? singleSignOnUserIdentifier;
   /// The username of the associated AWS Single Sign-On User for this User Profile. If the Domain's AuthMode is SSO, this field is required, and must match a valid username of a user in your directory. If the Domain's AuthMode is not SSO, this field cannot be specified.
-  final pulumi.Input<String>? singleSignOnUserValue;
+  final pulumi.Input<String?>? singleSignOnUserValue;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The name for the User Profile.
-  final pulumi.Input<String>? userProfileName;
+  final pulumi.Input<String?>? userProfileName;
   /// The user settings. See User Settings below.
-  final pulumi.Input<UserProfileUserSettings>? userSettings;
+  final pulumi.Input<UserProfileUserSettings?>? userSettings;
 
   /// Creates a new [UserProfileState].
-  /// [arn] The user profile Amazon Resource Name (ARN).
+  /// [arn] User profile ARN.
   /// [domainId] The ID of the associated Domain.
   /// [homeEfsFileSystemUid] The ID of the user's profile in the Amazon Elastic File System (EFS) volume.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

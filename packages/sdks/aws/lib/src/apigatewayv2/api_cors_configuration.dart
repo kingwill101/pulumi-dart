@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiCorsConfiguration {
   /// Whether credentials are included in the CORS request.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Set of allowed HTTP headers.
-  final pulumi.Input<List<String>>? allowHeaders;
+  final pulumi.Input<List<String>?>? allowHeaders;
   /// Set of allowed HTTP methods.
-  final pulumi.Input<List<String>>? allowMethods;
+  final pulumi.Input<List<String>?>? allowMethods;
   /// Set of allowed origins.
-  final pulumi.Input<List<String>>? allowOrigins;
+  final pulumi.Input<List<String>?>? allowOrigins;
   /// Set of exposed HTTP headers.
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Number of seconds that the browser should cache preflight request results.
-  final pulumi.Input<int>? maxAge;
+  final pulumi.Input<int?>? maxAge;
 
   /// Creates a new [ApiCorsConfiguration].
   /// [allowCredentials] Whether credentials are included in the CORS request.
@@ -50,7 +50,7 @@ class ApiCorsConfiguration {
       allowMethods: (() { final guardedValue = map['allowMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       allowOrigins: (() { final guardedValue = map['allowOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exposeHeaders: (() { final guardedValue = map['exposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

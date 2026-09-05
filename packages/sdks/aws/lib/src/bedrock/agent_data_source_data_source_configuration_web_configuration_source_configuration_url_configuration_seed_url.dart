@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl {
   /// Seed or starting point URL. Must match the pattern `^https?://[A-Za-z0-9][^\s]*$`.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl].
   /// [url] Seed or starting point URL. Must match the pattern `^https?://[A-Za-z0-9][^\s]*$`.

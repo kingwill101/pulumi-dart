@@ -57,7 +57,7 @@ class GetLaunchTemplatePlacement {
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       hostId: pulumi.Input.fromValue(map['hostId'] as String),
       hostResourceGroupArn: pulumi.Input.fromValue(map['hostResourceGroupArn'] as String),
-      partitionNumber: pulumi.Input.fromValue(map['partitionNumber'] as int),
+      partitionNumber: pulumi.Input.fromValue((map['partitionNumber'] as num).toInt()),
       spreadDomain: pulumi.Input.fromValue(map['spreadDomain'] as String),
       tenancy: pulumi.Input.fromValue(map['tenancy'] as String),
     );

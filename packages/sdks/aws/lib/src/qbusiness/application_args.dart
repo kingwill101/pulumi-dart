@@ -13,11 +13,11 @@ class ApplicationArgs {
   /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
   final pulumi.Input<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
   /// Description of the Amazon Q application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the Amazon Q application.
   final pulumi.Input<String> displayName;
   /// Information about encryption configuration. See `encryptionConfiguration` below.
-  final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<ApplicationEncryptionConfiguration?>? encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
   final pulumi.Input<String> iamServiceRoleArn;
   /// ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
@@ -25,9 +25,9 @@ class ApplicationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> identityCenterInstanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ApplicationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationArgs].
   /// [attachmentsConfiguration] Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.

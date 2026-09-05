@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering V2System resources.
 class V2SystemState {
   /// ARN of the system.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the system.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS key ARN.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the system. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AWS Organizations identifier for the system.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// Organizational unit (OU) identifier for the system.
-  final pulumi.Input<String>? ouId;
+  final pulumi.Input<String?>? ouId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether cross-account sharing is enabled for this system.
-  final pulumi.Input<bool>? sharingEnabled;
+  final pulumi.Input<bool?>? sharingEnabled;
   /// System ID for cross-account use without exposing account structure.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [V2SystemState].
   /// [arn] ARN of the system.

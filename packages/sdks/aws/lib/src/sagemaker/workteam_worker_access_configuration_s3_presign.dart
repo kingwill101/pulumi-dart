@@ -5,7 +5,7 @@ import 'workteam_worker_access_configuration_s3_presign_iam_policy_constraints.d
 
 class WorkteamWorkerAccessConfigurationS3Presign {
   /// Use this parameter to specify the allowed request source. Possible sources are either SourceIp or VpcSourceIp. see IAM Policy Constraints details below.
-  final pulumi.Input<WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints>? iamPolicyConstraints;
+  final pulumi.Input<WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints?>? iamPolicyConstraints;
 
   /// Creates a new [WorkteamWorkerAccessConfigurationS3Presign].
   /// [iamPolicyConstraints] Use this parameter to specify the allowed request source. Possible sources are either SourceIp or VpcSourceIp. see IAM Policy Constraints details below.

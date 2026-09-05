@@ -10,13 +10,13 @@ import 'configuration_protected_file.dart';
 /// {@macro pulumi_nginx_configuration_configuration_args_doc}
 class ConfigurationArgs {
   /// One or more `configFile` blocks as defined below.
-  final pulumi.Input<List<ConfigurationConfigFile>>? configFiles;
+  final pulumi.Input<List<ConfigurationConfigFile>?>? configFiles;
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
   final pulumi.Input<String> nginxDeploymentId;
   /// Specifies the package data for this configuration.
-  final pulumi.Input<String>? packageData;
+  final pulumi.Input<String?>? packageData;
   /// One or more `protectedFile` blocks with sensitive information as defined below. If specified `configFile` must also be specified.
-  final pulumi.Input<List<ConfigurationProtectedFile>>? protectedFiles;
+  final pulumi.Input<List<ConfigurationProtectedFile>?>? protectedFiles;
   /// Specifies the root file path of this Nginx Configuration.
   final pulumi.Input<String> rootFile;
 

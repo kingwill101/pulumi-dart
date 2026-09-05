@@ -3,12 +3,17 @@ import 'spot_instance_request_args.dart';
 import 'spot_instance_request_capacity_reservation_specification.dart';
 import 'spot_instance_request_cpu_options.dart';
 import 'spot_instance_request_credit_specification.dart';
+import 'spot_instance_request_ebs_block_device.dart';
 import 'spot_instance_request_enclave_options.dart';
+import 'spot_instance_request_ephemeral_block_device.dart';
 import 'spot_instance_request_launch_template.dart';
 import 'spot_instance_request_maintenance_options.dart';
 import 'spot_instance_request_metadata_options.dart';
+import 'spot_instance_request_network_interface.dart';
+import 'spot_instance_request_primary_network_interface.dart';
 import 'spot_instance_request_private_dns_name_options.dart';
 import 'spot_instance_request_root_block_device.dart';
+import 'spot_instance_request_secondary_network_interface.dart';
 import 'spot_instance_request_state.dart';
 
 /// Provides an EC2 Spot Instance Request resource. This allows instances to be
@@ -198,7 +203,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   /// If true, enables [EC2 Instance Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination).
   late final pulumi.Output<bool> disableApiTermination;
   /// One or more configuration blocks with additional EBS block devices to attach to the instance. Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection. When accessing this as an attribute reference, it is a set of objects.
-  late final pulumi.Output<List<Map<String, dynamic>>> ebsBlockDevices;
+  late final pulumi.Output<List<SpotInstanceRequestEbsBlockDevice>> ebsBlockDevices;
   /// If true, the launched EC2 instance will be EBS-optimized. Note that if this is not set on an instance type that is optimized by default then this will show as disabled but if the instance type is optimized by default then there is no need to set this and there is no effect to disabling it. See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
   late final pulumi.Output<bool> ebsOptimized;
   /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling `enablePrimaryIpv6` after it has been enabled forces recreation of the instance.
@@ -206,7 +211,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
   late final pulumi.Output<SpotInstanceRequestEnclaveOptions> enclaveOptions;
   /// One or more configuration blocks to customize Ephemeral (also known as "Instance Store") volumes on the instance. See Block Devices below for details. When accessing this as an attribute reference, it is a set of objects.
-  late final pulumi.Output<List<Map<String, dynamic>>> ephemeralBlockDevices;
+  late final pulumi.Output<List<SpotInstanceRequestEphemeralBlockDevice>> ephemeralBlockDevices;
   /// Destroys instance even if `disableApiTermination` or `disableApiStop` is set to `true`. Defaults to `false`. Once this parameter is set to `true`, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool?> forceDestroy;
   /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
@@ -244,7 +249,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
   late final pulumi.Output<bool> monitoring;
   /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<SpotInstanceRequestNetworkInterface>> networkInterfaces;
   late final pulumi.Output<String> outpostArn;
   late final pulumi.Output<String> passwordData;
   /// Placement Group to start the instance in. Conflicts with `placementGroupId`.
@@ -255,7 +260,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   late final pulumi.Output<int> placementPartitionNumber;
   late final pulumi.Output<String> primaryNetworkInterfaceId;
   /// The primary network interface. See Primary Network Interface below.
-  late final pulumi.Output<List<Map<String, dynamic>>> primaryNetworkInterfaces;
+  late final pulumi.Output<List<SpotInstanceRequestPrimaryNetworkInterface>> primaryNetworkInterfaces;
   /// The private DNS name assigned to the instance. Can only be
   /// used inside the Amazon EC2, and only available if you've enabled DNS hostnames
   /// for your VPC
@@ -274,7 +279,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
   /// Configuration block to customize details about the root block device of the instance. See Block Devices below for details. When accessing this as an attribute reference, it is a list containing one object.
   late final pulumi.Output<SpotInstanceRequestRootBlockDevice> rootBlockDevice;
   /// One or more secondary network interfaces to attach to the instance at launch time. See Secondary Network Interface below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryNetworkInterfaces;
+  late final pulumi.Output<List<SpotInstanceRequestSecondaryNetworkInterface>> secondaryNetworkInterfaces;
   /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a `networkInterface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
   late final pulumi.Output<List<String>> secondaryPrivateIps;
   /// List of security group names to associate with.
@@ -340,7 +345,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
           'aws:ec2/spotInstanceRequest:SpotInstanceRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');
@@ -351,11 +356,11 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     creditSpecification = registerOutput<SpotInstanceRequestCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<SpotInstanceRequestEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEbsBlockDevice>(guardedValue, (value) => SpotInstanceRequestEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<SpotInstanceRequestEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<SpotInstanceRequestEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEphemeralBlockDevice>(guardedValue, (value) => SpotInstanceRequestEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     getPasswordData = registerOutput<bool?>('getPasswordData');
     hibernation = registerOutput<bool?>('hibernation');
@@ -367,21 +372,21 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyName = registerOutput<String>('keyName');
     launchGroup = registerOutput<String?>('launchGroup');
     launchTemplate = registerOutput<SpotInstanceRequestLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceOptions = registerOutput<SpotInstanceRequestMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<SpotInstanceRequestMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<bool>('monitoring');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<SpotInstanceRequestNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestNetworkInterface>(guardedValue, (value) => SpotInstanceRequestNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     outpostArn = registerOutput<String>('outpostArn');
     passwordData = registerOutput<String>('passwordData');
     placementGroup = registerOutput<String>('placementGroup');
     placementGroupId = registerOutput<String>('placementGroupId');
     placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
     primaryNetworkInterfaceId = registerOutput<String>('primaryNetworkInterfaceId');
-    primaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('primaryNetworkInterfaces');
+    primaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestPrimaryNetworkInterface>>('primaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestPrimaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestPrimaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     privateDns = registerOutput<String>('privateDns');
     privateDnsNameOptions = registerOutput<SpotInstanceRequestPrivateDnsNameOptions>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestPrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateIp = registerOutput<String>('privateIp');
@@ -389,9 +394,9 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<SpotInstanceRequestRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('secondaryNetworkInterfaces');
-    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    secondaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestSecondaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     spotBidStatus = registerOutput<String>('spotBidStatus');
     spotInstanceId = registerOutput<String>('spotInstanceId');
@@ -399,16 +404,16 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     spotRequestState = registerOutput<String>('spotRequestState');
     spotType = registerOutput<String?>('spotType');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String>('userDataBase64');
     userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
     validFrom = registerOutput<String>('validFrom');
     validUntil = registerOutput<String>('validUntil');
-    volumeTags = registerOutput<Map<String, String>?>('volumeTags');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
   }
 
@@ -417,11 +422,12 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpotInstanceRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpotInstanceRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -444,11 +450,11 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     creditSpecification = registerOutput<SpotInstanceRequestCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<SpotInstanceRequestEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEbsBlockDevice>(guardedValue, (value) => SpotInstanceRequestEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<SpotInstanceRequestEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<SpotInstanceRequestEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEphemeralBlockDevice>(guardedValue, (value) => SpotInstanceRequestEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     getPasswordData = registerOutput<bool?>('getPasswordData');
     hibernation = registerOutput<bool?>('hibernation');
@@ -460,21 +466,21 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyName = registerOutput<String>('keyName');
     launchGroup = registerOutput<String?>('launchGroup');
     launchTemplate = registerOutput<SpotInstanceRequestLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceOptions = registerOutput<SpotInstanceRequestMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<SpotInstanceRequestMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<bool>('monitoring');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<SpotInstanceRequestNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestNetworkInterface>(guardedValue, (value) => SpotInstanceRequestNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     outpostArn = registerOutput<String>('outpostArn');
     passwordData = registerOutput<String>('passwordData');
     placementGroup = registerOutput<String>('placementGroup');
     placementGroupId = registerOutput<String>('placementGroupId');
     placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
     primaryNetworkInterfaceId = registerOutput<String>('primaryNetworkInterfaceId');
-    primaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('primaryNetworkInterfaces');
+    primaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestPrimaryNetworkInterface>>('primaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestPrimaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestPrimaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     privateDns = registerOutput<String>('privateDns');
     privateDnsNameOptions = registerOutput<SpotInstanceRequestPrivateDnsNameOptions>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestPrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateIp = registerOutput<String>('privateIp');
@@ -482,9 +488,9 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<SpotInstanceRequestRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('secondaryNetworkInterfaces');
-    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    secondaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestSecondaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     spotBidStatus = registerOutput<String>('spotBidStatus');
     spotInstanceId = registerOutput<String>('spotInstanceId');
@@ -492,16 +498,95 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     spotRequestState = registerOutput<String>('spotRequestState');
     spotType = registerOutput<String?>('spotType');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String>('userDataBase64');
     userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
     validFrom = registerOutput<String>('validFrom');
     validUntil = registerOutput<String>('validUntil');
-    volumeTags = registerOutput<Map<String, String>?>('volumeTags');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
+  }
+
+  /// Creates a typed reference to an existing [SpotInstanceRequest] resource.
+  SpotInstanceRequest.reference(String urn)
+    : super(
+        'aws:ec2/spotInstanceRequest:SpotInstanceRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ami = registerOutput<String>('ami');
+    arn = registerOutput<String>('arn');
+    associatePublicIpAddress = registerOutput<bool>('associatePublicIpAddress');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    capacityReservationSpecification = registerOutput<SpotInstanceRequestCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpuOptions = registerOutput<SpotInstanceRequestCpuOptions>('cpuOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creditSpecification = registerOutput<SpotInstanceRequestCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableApiStop = registerOutput<bool>('disableApiStop');
+    disableApiTermination = registerOutput<bool>('disableApiTermination');
+    ebsBlockDevices = registerOutput<List<SpotInstanceRequestEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEbsBlockDevice>(guardedValue, (value) => SpotInstanceRequestEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    ebsOptimized = registerOutput<bool>('ebsOptimized');
+    enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    enclaveOptions = registerOutput<SpotInstanceRequestEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ephemeralBlockDevices = registerOutput<List<SpotInstanceRequestEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestEphemeralBlockDevice>(guardedValue, (value) => SpotInstanceRequestEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    getPasswordData = registerOutput<bool?>('getPasswordData');
+    hibernation = registerOutput<bool?>('hibernation');
+    hostId = registerOutput<String>('hostId');
+    hostResourceGroupArn = registerOutput<String>('hostResourceGroupArn');
+    iamInstanceProfile = registerOutput<String>('iamInstanceProfile');
+    instanceInitiatedShutdownBehavior = registerOutput<String>('instanceInitiatedShutdownBehavior');
+    instanceInterruptionBehavior = registerOutput<String?>('instanceInterruptionBehavior');
+    instanceState = registerOutput<String>('instanceState');
+    instanceType = registerOutput<String>('instanceType');
+    ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyName = registerOutput<String>('keyName');
+    launchGroup = registerOutput<String?>('launchGroup');
+    launchTemplate = registerOutput<SpotInstanceRequestLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceOptions = registerOutput<SpotInstanceRequestMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataOptions = registerOutput<SpotInstanceRequestMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoring = registerOutput<bool>('monitoring');
+    networkInterfaces = registerOutput<List<SpotInstanceRequestNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestNetworkInterface>(guardedValue, (value) => SpotInstanceRequestNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    outpostArn = registerOutput<String>('outpostArn');
+    passwordData = registerOutput<String>('passwordData');
+    placementGroup = registerOutput<String>('placementGroup');
+    placementGroupId = registerOutput<String>('placementGroupId');
+    placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
+    primaryNetworkInterfaceId = registerOutput<String>('primaryNetworkInterfaceId');
+    primaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestPrimaryNetworkInterface>>('primaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestPrimaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestPrimaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDns = registerOutput<String>('privateDns');
+    privateDnsNameOptions = registerOutput<SpotInstanceRequestPrivateDnsNameOptions>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestPrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateIp = registerOutput<String>('privateIp');
+    publicDns = registerOutput<String>('publicDns');
+    publicIp = registerOutput<String>('publicIp');
+    region = registerOutput<String>('region');
+    rootBlockDevice = registerOutput<SpotInstanceRequestRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotInstanceRequestRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryNetworkInterfaces = registerOutput<List<SpotInstanceRequestSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotInstanceRequestSecondaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    spotBidStatus = registerOutput<String>('spotBidStatus');
+    spotInstanceId = registerOutput<String>('spotInstanceId');
+    spotPrice = registerOutput<String>('spotPrice');
+    spotRequestState = registerOutput<String>('spotRequestState');
+    spotType = registerOutput<String?>('spotType');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancy = registerOutput<String>('tenancy');
+    userData = registerOutput<String?>('userData');
+    userDataBase64 = registerOutput<String>('userDataBase64');
+    userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
+    validFrom = registerOutput<String>('validFrom');
+    validUntil = registerOutput<String>('validUntil');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
   }
 }

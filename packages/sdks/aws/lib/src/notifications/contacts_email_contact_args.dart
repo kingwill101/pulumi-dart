@@ -14,11 +14,11 @@ class ContactsEmailContactArgs {
   /// characters, underscores, tildes, periods, and hyphens.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of tags to assign to the resource. If configured with a provider
   /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ContactsEmailContactArgs].
   /// [emailAddress] Email address for the contact. Must be between 6 and 254 characters and match an email

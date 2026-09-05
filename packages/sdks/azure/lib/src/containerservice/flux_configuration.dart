@@ -3,6 +3,7 @@ import 'flux_configuration_args.dart';
 import 'flux_configuration_blob_storage.dart';
 import 'flux_configuration_bucket.dart';
 import 'flux_configuration_git_repository.dart';
+import 'flux_configuration_kustomization.dart';
 import 'flux_configuration_state.dart';
 
 /// Manages a Kubernetes Flux Configuration.
@@ -490,7 +491,7 @@ class FluxConfiguration extends pulumi.CustomResource {
   /// A `gitRepository` block as defined below.
   late final pulumi.Output<FluxConfigurationGitRepository?> gitRepository;
   /// A `kustomizations` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> kustomizations;
+  late final pulumi.Output<List<FluxConfigurationKustomization>> kustomizations;
   /// Specifies the name which should be used for this Kubernetes Flux Configuration. Changing this forces a new Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String> name;
   /// Specifies the namespace to which this configuration is installed to. Changing this forces a new Kubernetes Flux Configuration to be created.
@@ -510,14 +511,14 @@ class FluxConfiguration extends pulumi.CustomResource {
           'azure:containerservice/fluxConfiguration:FluxConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<FluxConfigurationBucket?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBucket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
     gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    kustomizations = registerOutput<List<Map<String, dynamic>>>('kustomizations');
+    kustomizations = registerOutput<List<FluxConfigurationKustomization>>('kustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FluxConfigurationKustomization>(guardedValue, (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     scope = registerOutput<String?>('scope');
@@ -528,11 +529,12 @@ class FluxConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FluxConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FluxConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -551,7 +553,27 @@ class FluxConfiguration extends pulumi.CustomResource {
     clusterId = registerOutput<String>('clusterId');
     continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
     gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    kustomizations = registerOutput<List<Map<String, dynamic>>>('kustomizations');
+    kustomizations = registerOutput<List<FluxConfigurationKustomization>>('kustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FluxConfigurationKustomization>(guardedValue, (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    scope = registerOutput<String?>('scope');
+  }
+
+  /// Creates a typed reference to an existing [FluxConfiguration] resource.
+  FluxConfiguration.reference(String urn)
+    : super(
+        'azure:containerservice/fluxConfiguration:FluxConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<FluxConfigurationBucket?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBucket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
+    gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kustomizations = registerOutput<List<FluxConfigurationKustomization>>('kustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FluxConfigurationKustomization>(guardedValue, (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     scope = registerOutput<String?>('scope');

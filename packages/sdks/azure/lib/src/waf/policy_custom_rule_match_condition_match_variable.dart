@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyCustomRuleMatchConditionMatchVariable {
   /// Describes field of the matchVariable collection
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// The name of the Match Variable. Possible values are `RemoteAddr`, `RequestMethod`, `QueryString`, `PostArgs`, `RequestUri`, `RequestHeaders`, `RequestBody` and `RequestCookies`.
   final pulumi.Input<String> variableName;
 

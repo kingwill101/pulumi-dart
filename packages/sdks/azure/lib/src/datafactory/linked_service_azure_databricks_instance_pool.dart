@@ -8,9 +8,9 @@ class LinkedServiceAzureDatabricksInstancePool {
   /// Identifier of the instance pool within the linked ADB instance.
   final pulumi.Input<String> instancePoolId;
   /// The max number of worker nodes. Set this value if you want to enable autoscaling between the `minNumberOfWorkers` and this value. Omit this value to use a fixed number of workers defined in the `minNumberOfWorkers` property.
-  final pulumi.Input<int>? maxNumberOfWorkers;
+  final pulumi.Input<int?>? maxNumberOfWorkers;
   /// The minimum number of worker nodes. Defaults to `1`.
-  final pulumi.Input<int>? minNumberOfWorkers;
+  final pulumi.Input<int?>? minNumberOfWorkers;
 
   /// Creates a new [LinkedServiceAzureDatabricksInstancePool].
   /// [clusterVersion] Spark version of a the cluster.
@@ -37,8 +37,8 @@ class LinkedServiceAzureDatabricksInstancePool {
     return LinkedServiceAzureDatabricksInstancePool(
       clusterVersion: pulumi.Input.fromValue(map['clusterVersion'] as String),
       instancePoolId: pulumi.Input.fromValue(map['instancePoolId'] as String),
-      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

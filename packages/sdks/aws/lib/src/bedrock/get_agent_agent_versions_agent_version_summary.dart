@@ -15,7 +15,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
   /// Description of the version of the agent.
   /// * `GuardrailConfiguration` - Details aout the guardrail associated with the agent. See Guardrail Configuration
   final pulumi.Input<String> description;
-  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>>? guardrailConfigurations;
+  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>?>? guardrailConfigurations;
   /// Time at which the version was last updated.
   final pulumi.Input<String> updatedAt;
 

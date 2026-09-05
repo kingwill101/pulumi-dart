@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationTypographyFontFamily {
   /// Font family name.
-  final pulumi.Input<String>? fontFamily;
+  final pulumi.Input<String?>? fontFamily;
 
   /// Creates a new [ThemeConfigurationTypographyFontFamily].
   /// [fontFamily] Font family name.

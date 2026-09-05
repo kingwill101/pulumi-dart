@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_blob_storage_args.dart';
+import 'backup_policy_blob_storage_retention_rule.dart';
 import 'backup_policy_blob_storage_state.dart';
 
 /// Manages a Backup Policy Blob Storage.
@@ -241,7 +242,7 @@ import 'backup_policy_blob_storage_state.dart';
 /// 		}
 /// 		_, err = dataprotection.NewBackupPolicyBlobStorage(ctx, "example", &dataprotection.BackupPolicyBlobStorageArgs{
 /// 			Name:                                pulumi.String("example-backup-policy"),
-/// 			VaultId:                             exampleBackupVault.ID(),
+/// 			VaultId:                             exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			OperationalDefaultRetentionDuration: pulumi.String("P30D"),
 /// 			VaultDefaultRetentionDuration:       pulumi.String("P7D"),
 /// 			RetentionRules: dataprotection.BackupPolicyBlobStorageRetentionRuleArray{
@@ -521,7 +522,7 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
   /// &gt; **Note:** Setting `retentionRule` also requires setting `vaultDefaultRetentionDuration`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
+  late final pulumi.Output<List<BackupPolicyBlobStorageRetentionRule>?> retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String?> timeZone;
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
@@ -543,12 +544,12 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals');
+    backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     operationalDefaultRetentionDuration = registerOutput<String?>('operationalDefaultRetentionDuration');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
+    retentionRules = registerOutput<List<BackupPolicyBlobStorageRetentionRule>?>('retentionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(guardedValue, (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>())); });
     timeZone = registerOutput<String?>('timeZone');
     vaultDefaultRetentionDuration = registerOutput<String?>('vaultDefaultRetentionDuration');
     vaultId = registerOutput<String>('vaultId');
@@ -559,11 +560,12 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPolicyBlobStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPolicyBlobStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -577,10 +579,28 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals');
+    backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     operationalDefaultRetentionDuration = registerOutput<String?>('operationalDefaultRetentionDuration');
-    retentionRules = registerOutput<List<Map<String, dynamic>>?>('retentionRules');
+    retentionRules = registerOutput<List<BackupPolicyBlobStorageRetentionRule>?>('retentionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(guardedValue, (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>())); });
+    timeZone = registerOutput<String?>('timeZone');
+    vaultDefaultRetentionDuration = registerOutput<String?>('vaultDefaultRetentionDuration');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupPolicyBlobStorage] resource.
+  BackupPolicyBlobStorage.reference(String urn)
+    : super(
+        'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    operationalDefaultRetentionDuration = registerOutput<String?>('operationalDefaultRetentionDuration');
+    retentionRules = registerOutput<List<BackupPolicyBlobStorageRetentionRule>?>('retentionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPolicyBlobStorageRetentionRule>(guardedValue, (value) => BackupPolicyBlobStorageRetentionRule.fromMap((value as Map).cast<String, dynamic>())); });
     timeZone = registerOutput<String?>('timeZone');
     vaultDefaultRetentionDuration = registerOutput<String?>('vaultDefaultRetentionDuration');
     vaultId = registerOutput<String>('vaultId');

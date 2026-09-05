@@ -300,7 +300,7 @@ class Schedule extends pulumi.CustomResource {
           'aws:autoscaling/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
@@ -320,11 +320,12 @@ class Schedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,6 +339,28 @@ class Schedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    desiredCapacity = registerOutput<int>('desiredCapacity');
+    endTime = registerOutput<String>('endTime');
+    maxSize = registerOutput<int>('maxSize');
+    minSize = registerOutput<int>('minSize');
+    recurrence = registerOutput<String>('recurrence');
+    region = registerOutput<String>('region');
+    scheduledActionName = registerOutput<String>('scheduledActionName');
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'aws:autoscaling/schedule:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     desiredCapacity = registerOutput<int>('desiredCapacity');

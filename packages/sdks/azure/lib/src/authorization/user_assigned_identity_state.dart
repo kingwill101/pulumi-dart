@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UserAssignedIdentity resources.
 class UserAssignedIdentityState {
   /// The ID of the app associated with the Identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The isolation scope for the User Assigned Identity. The only possible value is `Regional`.
-  final pulumi.Input<String>? isolationScope;
+  final pulumi.Input<String?>? isolationScope;
   /// The Azure Region where the User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this User Assigned Identity. Changing this forces a new User Assigned Identity to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Service Principal object associated with the created Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Specifies the name of the Resource Group within which this User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the User Assigned Identity.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Tenant which the Identity belongs to.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [UserAssignedIdentityState].
   /// [clientId] The ID of the app associated with the Identity.

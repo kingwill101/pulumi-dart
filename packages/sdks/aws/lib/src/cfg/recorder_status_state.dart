@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RecorderStatus resources.
 class RecorderStatusState {
   /// Whether the configuration recorder should be enabled or disabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// The name of the configuration recorder.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RecorderStatusState].
   /// [isEnabled] Whether the configuration recorder should be enabled or disabled.

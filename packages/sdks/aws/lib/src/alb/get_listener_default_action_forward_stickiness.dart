@@ -23,7 +23,7 @@ class GetListenerDefaultActionForwardStickiness {
 
   factory GetListenerDefaultActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForwardStickiness(
-      duration: pulumi.Input.fromValue(map['duration'] as int),
+      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

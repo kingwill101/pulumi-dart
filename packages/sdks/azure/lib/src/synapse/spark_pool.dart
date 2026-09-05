@@ -244,7 +244,7 @@ import 'spark_pool_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -253,7 +253,7 @@ import 'spark_pool_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -265,7 +265,7 @@ import 'spark_pool_state.dart';
 /// 		}
 /// 		_, err = synapse.NewSparkPool(ctx, "example", &synapse.SparkPoolArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			NodeSizeFamily:     pulumi.String("MemoryOptimized"),
 /// 			NodeSize:           pulumi.String("Small"),
 /// 			CacheSize:          pulumi.Int(100),
@@ -574,7 +574,7 @@ class SparkPool extends pulumi.CustomResource {
           'azure:synapse/sparkPool:SparkPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoPause = registerOutput<SparkPoolAutoPause?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoScale = registerOutput<SparkPoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -594,7 +594,7 @@ class SparkPool extends pulumi.CustomResource {
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SparkPool] resource's state with the given [name] and [id].
@@ -602,11 +602,12 @@ class SparkPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SparkPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SparkPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -638,6 +639,36 @@ class SparkPool extends pulumi.CustomResource {
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SparkPool] resource.
+  SparkPool.reference(String urn)
+    : super(
+        'azure:synapse/sparkPool:SparkPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoPause = registerOutput<SparkPoolAutoPause?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScale = registerOutput<SparkPoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cacheSize = registerOutput<int?>('cacheSize');
+    computeIsolationEnabled = registerOutput<bool?>('computeIsolationEnabled');
+    dynamicExecutorAllocationEnabled = registerOutput<bool?>('dynamicExecutorAllocationEnabled');
+    libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>('libraryRequirement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolLibraryRequirement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxExecutors = registerOutput<int?>('maxExecutors');
+    minExecutors = registerOutput<int?>('minExecutors');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeSize = registerOutput<String>('nodeSize');
+    nodeSizeFamily = registerOutput<String>('nodeSizeFamily');
+    sessionLevelPackagesEnabled = registerOutput<bool?>('sessionLevelPackagesEnabled');
+    sparkConfig = registerOutput<SparkPoolSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
+    sparkLogFolder = registerOutput<String?>('sparkLogFolder');
+    sparkVersion = registerOutput<String>('sparkVersion');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

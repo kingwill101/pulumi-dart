@@ -6,11 +6,11 @@ class DiskEncryptionSetIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this Disk Encryption Set.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The (Client) ID of the Service Principal.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The ID of the Tenant the Service Principal is assigned in.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of Managed Service Identity that is configured on this Disk Encryption Set. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
   final pulumi.Input<String> type;
 

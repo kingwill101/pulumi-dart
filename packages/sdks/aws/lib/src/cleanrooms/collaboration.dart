@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collaboration_args.dart';
 import 'collaboration_data_encryption_metadata.dart';
+import 'collaboration_member.dart';
 import 'collaboration_state.dart';
 
 /// Provides a AWS Clean Rooms collaboration.
@@ -14,15 +15,6 @@ import 'collaboration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testCollaboration = new aws.cleanrooms.Collaboration("test_collaboration", {
-///     name: "pulumi-example-collaboration",
-///     creatorMemberAbilities: [
-///         "CAN_QUERY",
-///         "CAN_RECEIVE_RESULTS",
-///     ],
-///     creatorDisplayName: "Creator ",
-///     description: "I made this collaboration with Pulumi!",
-///     queryLogStatus: "DISABLED",
-///     analyticsEngine: "SPARK",
 ///     dataEncryptionMetadata: {
 ///         allowClearText: true,
 ///         allowDuplicates: true,
@@ -34,6 +26,15 @@ import 'collaboration_state.dart';
 ///         displayName: "Other member",
 ///         memberAbilities: [],
 ///     }],
+///     name: "pulumi-example-collaboration",
+///     creatorMemberAbilities: [
+///         "CAN_QUERY",
+///         "CAN_RECEIVE_RESULTS",
+///     ],
+///     creatorDisplayName: "Creator ",
+///     description: "I made this collaboration with Pulumi!",
+///     queryLogStatus: "DISABLED",
+///     analyticsEngine: "SPARK",
 ///     tags: {
 ///         Project: "Pulumi",
 ///     },
@@ -44,15 +45,6 @@ import 'collaboration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_collaboration = aws.cleanrooms.Collaboration("test_collaboration",
-///     name="pulumi-example-collaboration",
-///     creator_member_abilities=[
-///         "CAN_QUERY",
-///         "CAN_RECEIVE_RESULTS",
-///     ],
-///     creator_display_name="Creator ",
-///     description="I made this collaboration with Pulumi!",
-///     query_log_status="DISABLED",
-///     analytics_engine="SPARK",
 ///     data_encryption_metadata={
 ///         "allow_clear_text": True,
 ///         "allow_duplicates": True,
@@ -64,6 +56,15 @@ import 'collaboration_state.dart';
 ///         "display_name": "Other member",
 ///         "member_abilities": [],
 ///     }],
+///     name="pulumi-example-collaboration",
+///     creator_member_abilities=[
+///         "CAN_QUERY",
+///         "CAN_RECEIVE_RESULTS",
+///     ],
+///     creator_display_name="Creator ",
+///     description="I made this collaboration with Pulumi!",
+///     query_log_status="DISABLED",
+///     analytics_engine="SPARK",
 ///     tags={
 ///         "Project": "Pulumi",
 ///     })
@@ -78,16 +79,6 @@ import 'collaboration_state.dart';
 /// {
 ///     var testCollaboration = new Aws.CleanRooms.Collaboration("test_collaboration", new()
 ///     {
-///         Name = "pulumi-example-collaboration",
-///         CreatorMemberAbilities = new[]
-///         {
-///             "CAN_QUERY",
-///             "CAN_RECEIVE_RESULTS",
-///         },
-///         CreatorDisplayName = "Creator ",
-///         Description = "I made this collaboration with Pulumi!",
-///         QueryLogStatus = "DISABLED",
-///         AnalyticsEngine = "SPARK",
 ///         DataEncryptionMetadata = new Aws.CleanRooms.Inputs.CollaborationDataEncryptionMetadataArgs
 ///         {
 ///             AllowClearText = true,
@@ -104,6 +95,16 @@ import 'collaboration_state.dart';
 ///                 MemberAbilities = new() { },
 ///             },
 ///         },
+///         Name = "pulumi-example-collaboration",
+///         CreatorMemberAbilities = new[]
+///         {
+///             "CAN_QUERY",
+///             "CAN_RECEIVE_RESULTS",
+///         },
+///         CreatorDisplayName = "Creator ",
+///         Description = "I made this collaboration with Pulumi!",
+///         QueryLogStatus = "DISABLED",
+///         AnalyticsEngine = "SPARK",
 ///         Tags =
 ///         {
 ///             { "Project", "Pulumi" },
@@ -123,15 +124,6 @@ import 'collaboration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cleanrooms.NewCollaboration(ctx, "test_collaboration", &cleanrooms.CollaborationArgs{
-/// 			Name: pulumi.String("pulumi-example-collaboration"),
-/// 			CreatorMemberAbilities: pulumi.StringArray{
-/// 				pulumi.String("CAN_QUERY"),
-/// 				pulumi.String("CAN_RECEIVE_RESULTS"),
-/// 			},
-/// 			CreatorDisplayName: pulumi.String("Creator "),
-/// 			Description:        pulumi.String("I made this collaboration with Pulumi!"),
-/// 			QueryLogStatus:     pulumi.String("DISABLED"),
-/// 			AnalyticsEngine:    pulumi.String("SPARK"),
 /// 			DataEncryptionMetadata: &cleanrooms.CollaborationDataEncryptionMetadataArgs{
 /// 				AllowClearText:                        pulumi.Bool(true),
 /// 				AllowDuplicates:                       pulumi.Bool(true),
@@ -145,6 +137,15 @@ import 'collaboration_state.dart';
 /// 					MemberAbilities: pulumi.StringArray{},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("pulumi-example-collaboration"),
+/// 			CreatorMemberAbilities: pulumi.StringArray{
+/// 				pulumi.String("CAN_QUERY"),
+/// 				pulumi.String("CAN_RECEIVE_RESULTS"),
+/// 			},
+/// 			CreatorDisplayName: pulumi.String("Creator "),
+/// 			Description:        pulumi.String("I made this collaboration with Pulumi!"),
+/// 			QueryLogStatus:     pulumi.String("DISABLED"),
+/// 			AnalyticsEngine:    pulumi.String("SPARK"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Project": pulumi.String("Pulumi"),
 /// 			},
@@ -166,12 +167,6 @@ import 'collaboration_state.dart';
 /// }
 ///
 /// resource "aws_cleanrooms_collaboration" "test_collaboration" {
-///   name                     = "pulumi-example-collaboration"
-///   creator_member_abilities = ["CAN_QUERY", "CAN_RECEIVE_RESULTS"]
-///   creator_display_name     = "Creator "
-///   description              = "I made this collaboration with Pulumi!"
-///   query_log_status         = "DISABLED"
-///   analytics_engine         = "SPARK"
 ///   data_encryption_metadata = {
 ///     allow_clear_text                            = true
 ///     allow_duplicates                            = true
@@ -183,6 +178,12 @@ import 'collaboration_state.dart';
 ///     display_name     = "Other member"
 ///     member_abilities = []
 ///   }
+///   name                     = "pulumi-example-collaboration"
+///   creator_member_abilities = ["CAN_QUERY", "CAN_RECEIVE_RESULTS"]
+///   creator_display_name     = "Creator "
+///   description              = "I made this collaboration with Pulumi!"
+///   query_log_status         = "DISABLED"
+///   analytics_engine         = "SPARK"
 ///   tags = {
 ///     "Project" = "Pulumi"
 ///   }
@@ -212,14 +213,6 @@ import 'collaboration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testCollaboration = new Collaboration("testCollaboration", CollaborationArgs.builder()
-///             .name("pulumi-example-collaboration")
-///             .creatorMemberAbilities(
-///                 "CAN_QUERY",
-///                 "CAN_RECEIVE_RESULTS")
-///             .creatorDisplayName("Creator ")
-///             .description("I made this collaboration with Pulumi!")
-///             .queryLogStatus("DISABLED")
-///             .analyticsEngine("SPARK")
 ///             .dataEncryptionMetadata(CollaborationDataEncryptionMetadataArgs.builder()
 ///                 .allowClearText(true)
 ///                 .allowDuplicates(true)
@@ -231,6 +224,14 @@ import 'collaboration_state.dart';
 ///                 .displayName("Other member")
 ///                 .memberAbilities()
 ///                 .build())
+///             .name("pulumi-example-collaboration")
+///             .creatorMemberAbilities(
+///                 "CAN_QUERY",
+///                 "CAN_RECEIVE_RESULTS")
+///             .creatorDisplayName("Creator ")
+///             .description("I made this collaboration with Pulumi!")
+///             .queryLogStatus("DISABLED")
+///             .analyticsEngine("SPARK")
 ///             .tags(Map.of("Project", "Pulumi"))
 ///             .build());
 ///
@@ -243,14 +244,6 @@ import 'collaboration_state.dart';
 ///     type: aws:cleanrooms:Collaboration
 ///     name: test_collaboration
 ///     properties:
-///       name: pulumi-example-collaboration
-///       creatorMemberAbilities:
-///         - CAN_QUERY
-///         - CAN_RECEIVE_RESULTS
-///       creatorDisplayName: 'Creator '
-///       description: I made this collaboration with Pulumi!
-///       queryLogStatus: DISABLED
-///       analyticsEngine: SPARK
 ///       dataEncryptionMetadata:
 ///         allowClearText: true
 ///         allowDuplicates: true
@@ -260,6 +253,14 @@ import 'collaboration_state.dart';
 ///         - accountId: 1.23456789012e+11
 ///           displayName: Other member
 ///           memberAbilities: []
+///       name: pulumi-example-collaboration
+///       creatorMemberAbilities:
+///         - CAN_QUERY
+///         - CAN_RECEIVE_RESULTS
+///       creatorDisplayName: 'Creator '
+///       description: I made this collaboration with Pulumi!
+///       queryLogStatus: DISABLED
+///       analyticsEngine: SPARK
 ///       tags:
 ///         Project: Pulumi
 /// ```
@@ -300,7 +301,7 @@ class Collaboration extends pulumi.CustomResource {
   /// Description for a collaboration.
   late final pulumi.Output<String> description;
   /// Additional members of the collaboration which will be invited to join the collaboration. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> members;
+  late final pulumi.Output<List<CollaborationMember>?> members;
   /// Name of the collaboration.  Collaboration names do not need to be unique.
   late final pulumi.Output<String> name;
   /// Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
@@ -327,21 +328,21 @@ class Collaboration extends pulumi.CustomResource {
           'aws:cleanrooms/collaboration:Collaboration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     analyticsEngine = registerOutput<String?>('analyticsEngine');
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     creatorDisplayName = registerOutput<String>('creatorDisplayName');
-    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities');
+    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataEncryptionMetadata = registerOutput<CollaborationDataEncryptionMetadata?>('dataEncryptionMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollaborationDataEncryptionMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
-    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    members = registerOutput<List<CollaborationMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollaborationMember>(guardedValue, (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -350,11 +351,12 @@ class Collaboration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CollaborationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Collaboration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,15 +374,40 @@ class Collaboration extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
     creatorDisplayName = registerOutput<String>('creatorDisplayName');
-    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities');
+    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataEncryptionMetadata = registerOutput<CollaborationDataEncryptionMetadata?>('dataEncryptionMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollaborationDataEncryptionMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
-    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    members = registerOutput<List<CollaborationMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollaborationMember>(guardedValue, (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Collaboration] resource.
+  Collaboration.reference(String urn)
+    : super(
+        'aws:cleanrooms/collaboration:Collaboration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyticsEngine = registerOutput<String?>('analyticsEngine');
+    arn = registerOutput<String>('arn');
+    createTime = registerOutput<String>('createTime');
+    creatorDisplayName = registerOutput<String>('creatorDisplayName');
+    creatorMemberAbilities = registerOutput<List<String>>('creatorMemberAbilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataEncryptionMetadata = registerOutput<CollaborationDataEncryptionMetadata?>('dataEncryptionMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollaborationDataEncryptionMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    members = registerOutput<List<CollaborationMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollaborationMember>(guardedValue, (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    queryLogStatus = registerOutput<String>('queryLogStatus');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

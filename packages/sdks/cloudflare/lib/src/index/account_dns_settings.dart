@@ -292,7 +292,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
   late final pulumi.Output<bool?> enforceDnsOnly;
-  late final pulumi.Output<AccountDnsSettingsZoneDefaults?> zoneDefaults;
+  late final pulumi.Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
 
   /// Creates a new [AccountDnsSettings].
   /// [name] The Pulumi resource name.
@@ -306,11 +306,11 @@ class AccountDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/accountDnsSettings:AccountDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     enforceDnsOnly = registerOutput<bool?>('enforceDnsOnly');
-    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults?>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AccountDnsSettings] resource's state with the given [name] and [id].
@@ -339,7 +339,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     enforceDnsOnly = registerOutput<bool?>('enforceDnsOnly');
-    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults?>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AccountDnsSettings] resource.
@@ -353,6 +353,6 @@ class AccountDnsSettings extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     enforceDnsOnly = registerOutput<bool?>('enforceDnsOnly');
-    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults?>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneDefaults = registerOutput<AccountDnsSettingsZoneDefaults>('zoneDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountDnsSettingsZoneDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

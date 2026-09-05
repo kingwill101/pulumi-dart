@@ -6,13 +6,13 @@ import 'workgroup_configuration_result_configuration_encryption_configuration.da
 
 class WorkgroupConfigurationResultConfiguration {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
-  final pulumi.Input<WorkgroupConfigurationResultConfigurationAclConfiguration>? aclConfiguration;
+  final pulumi.Input<WorkgroupConfigurationResultConfigurationAclConfiguration?>? aclConfiguration;
   /// Configuration block with encryption settings. See Encryption Configuration below.
-  final pulumi.Input<WorkgroupConfigurationResultConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<WorkgroupConfigurationResultConfigurationEncryptionConfiguration?>? encryptionConfiguration;
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Location in Amazon S3 where your query results are stored, such as `s3://path/to/query/bucket/`. For more information, see [Queries and Query Result Files](https://docs.aws.amazon.com/athena/latest/ug/querying.html).
-  final pulumi.Input<String>? outputLocation;
+  final pulumi.Input<String?>? outputLocation;
 
   /// Creates a new [WorkgroupConfigurationResultConfiguration].
   /// [aclConfiguration] That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.

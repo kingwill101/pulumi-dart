@@ -6,16 +6,16 @@ import 'user_profile_user_settings_jupyter_server_app_settings_default_resource_
 
 class UserProfileUserSettingsJupyterServerAppSettings {
   /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
-  final pulumi.Input<List<UserProfileUserSettingsJupyterServerAppSettingsCodeRepository>>? codeRepositories;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec>? defaultResourceSpec;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<List<UserProfileUserSettingsJupyterServerAppSettingsCodeRepository>?>? codeRepositories;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsJupyterServerAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [UserProfileUserSettingsJupyterServerAppSettings].
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const UserProfileUserSettingsJupyterServerAppSettings({
     this.codeRepositories,
     this.defaultResourceSpec,

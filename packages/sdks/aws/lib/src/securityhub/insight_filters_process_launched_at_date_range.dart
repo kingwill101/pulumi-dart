@@ -26,7 +26,7 @@ class InsightFiltersProcessLaunchedAtDateRange {
   factory InsightFiltersProcessLaunchedAtDateRange.fromMap(Map<String, dynamic> map) {
     return InsightFiltersProcessLaunchedAtDateRange(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

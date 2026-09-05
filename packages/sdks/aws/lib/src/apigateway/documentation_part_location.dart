@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentationPartLocation {
   /// HTTP verb of a method. The default value is `*` for any method.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Name of the targeted API entity.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// URL path of the target. The default value is `/` for the root resource.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// HTTP status code of a response. The default value is `*` for any status code.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// Type of API entity to which the documentation content appliesE.g., `API`, `METHOD` or `REQUEST_BODY`
   final pulumi.Input<String> type;
 

@@ -5,11 +5,11 @@ import 'training_job_debug_hook_config_collection_configuration.dart';
 
 class TrainingJobDebugHookConfig {
   /// List of tensor collections to configure for the debug hook. Maximum of 20. See `collectionConfigurations` below.
-  final pulumi.Input<List<TrainingJobDebugHookConfigCollectionConfiguration>>? collectionConfigurations;
+  final pulumi.Input<List<TrainingJobDebugHookConfigCollectionConfiguration>?>? collectionConfigurations;
   /// Map of parameters for the debug hook. Maximum of 20 entries.
-  final pulumi.Input<Map<String, String>>? hookParameters;
+  final pulumi.Input<Map<String, String>?>? hookParameters;
   /// Local path where debug output is written.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// S3 URI where debug output is stored.
   final pulumi.Input<String> s3OutputPath;
 

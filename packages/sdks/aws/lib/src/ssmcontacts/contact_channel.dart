@@ -17,10 +17,10 @@ import 'contact_channel_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssmcontacts.ContactChannel("example", {
-///     contactId: "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     deliveryAddress: {
 ///         simpleAddress: "email@example.com",
 ///     },
+///     contactId: "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     name: "Example contact channel",
 ///     type: "EMAIL",
 /// });
@@ -30,10 +30,10 @@ import 'contact_channel_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssmcontacts.ContactChannel("example",
-///     contact_id="arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     delivery_address={
 ///         "simple_address": "email@example.com",
 ///     },
+///     contact_id="arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///     name="Example contact channel",
 ///     type="EMAIL")
 /// ```
@@ -47,11 +47,11 @@ import 'contact_channel_state.dart';
 /// {
 ///     var example = new Aws.SsmContacts.ContactChannel("example", new()
 ///     {
-///         ContactId = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///         DeliveryAddress = new Aws.SsmContacts.Inputs.ContactChannelDeliveryAddressArgs
 ///         {
 ///             SimpleAddress = "email@example.com",
 ///         },
+///         ContactId = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias",
 ///         Name = "Example contact channel",
 ///         Type = "EMAIL",
 ///     });
@@ -69,12 +69,12 @@ import 'contact_channel_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssmcontacts.NewContactChannel(ctx, "example", &ssmcontacts.ContactChannelArgs{
-/// 			ContactId: pulumi.String("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"),
 /// 			DeliveryAddress: &ssmcontacts.ContactChannelDeliveryAddressArgs{
 /// 				SimpleAddress: pulumi.String("email@example.com"),
 /// 			},
-/// 			Name: pulumi.String("Example contact channel"),
-/// 			Type: pulumi.String("EMAIL"),
+/// 			ContactId: pulumi.String("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"),
+/// 			Name:      pulumi.String("Example contact channel"),
+/// 			Type:      pulumi.String("EMAIL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,12 +93,12 @@ import 'contact_channel_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_contactchannel" "example" {
-///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
 ///   delivery_address = {
 ///     simple_address = "email@example.com"
 ///   }
-///   name = "Example contact channel"
-///   type = "EMAIL"
+///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
+///   name       = "Example contact channel"
+///   type       = "EMAIL"
 /// }
 /// ```
 /// ```java
@@ -124,10 +124,10 @@ import 'contact_channel_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContactChannel("example", ContactChannelArgs.builder()
-///             .contactId("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias")
 ///             .deliveryAddress(ContactChannelDeliveryAddressArgs.builder()
 ///                 .simpleAddress("email@example.com")
 ///                 .build())
+///             .contactId("arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias")
 ///             .name("Example contact channel")
 ///             .type("EMAIL")
 ///             .build());
@@ -140,9 +140,9 @@ import 'contact_channel_state.dart';
 ///   example:
 ///     type: aws:ssmcontacts:ContactChannel
 ///     properties:
-///       contactId: arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias
 ///       deliveryAddress:
 ///         simpleAddress: email@example.com
+///       contactId: arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias
 ///       name: Example contact channel
 ///       type: EMAIL
 /// ```
@@ -160,10 +160,10 @@ import 'contact_channel_state.dart';
 ///     type: "PERSONAL",
 /// });
 /// const example = new aws.ssmcontacts.ContactChannel("example", {
-///     contactId: exampleContact.arn,
 ///     deliveryAddress: {
 ///         simpleAddress: "email@example.com",
 ///     },
+///     contactId: exampleContact.arn,
 ///     name: "Example contact channel",
 ///     type: "EMAIL",
 /// });
@@ -176,10 +176,10 @@ import 'contact_channel_state.dart';
 ///     alias="example_contact",
 ///     type="PERSONAL")
 /// example = aws.ssmcontacts.ContactChannel("example",
-///     contact_id=example_contact.arn,
 ///     delivery_address={
 ///         "simple_address": "email@example.com",
 ///     },
+///     contact_id=example_contact.arn,
 ///     name="Example contact channel",
 ///     type="EMAIL")
 /// ```
@@ -199,11 +199,11 @@ import 'contact_channel_state.dart';
 ///
 ///     var example = new Aws.SsmContacts.ContactChannel("example", new()
 ///     {
-///         ContactId = exampleContact.Arn,
 ///         DeliveryAddress = new Aws.SsmContacts.Inputs.ContactChannelDeliveryAddressArgs
 ///         {
 ///             SimpleAddress = "email@example.com",
 ///         },
+///         ContactId = exampleContact.Arn,
 ///         Name = "Example contact channel",
 ///         Type = "EMAIL",
 ///     });
@@ -228,12 +228,12 @@ import 'contact_channel_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssmcontacts.NewContactChannel(ctx, "example", &ssmcontacts.ContactChannelArgs{
-/// 			ContactId: exampleContact.Arn,
 /// 			DeliveryAddress: &ssmcontacts.ContactChannelDeliveryAddressArgs{
 /// 				SimpleAddress: pulumi.String("email@example.com"),
 /// 			},
-/// 			Name: pulumi.String("Example contact channel"),
-/// 			Type: pulumi.String("EMAIL"),
+/// 			ContactId: exampleContact.Arn,
+/// 			Name:      pulumi.String("Example contact channel"),
+/// 			Type:      pulumi.String("EMAIL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -256,12 +256,12 @@ import 'contact_channel_state.dart';
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_contactchannel" "example" {
-///   contact_id = aws_ssmcontacts_contact.example_contact.arn
 ///   delivery_address = {
 ///     simple_address = "email@example.com"
 ///   }
-///   name = "Example contact channel"
-///   type = "EMAIL"
+///   contact_id = aws_ssmcontacts_contact.example_contact.arn
+///   name       = "Example contact channel"
+///   type       = "EMAIL"
 /// }
 /// ```
 /// ```java
@@ -294,10 +294,10 @@ import 'contact_channel_state.dart';
 ///             .build());
 ///
 ///         var example = new ContactChannel("example", ContactChannelArgs.builder()
-///             .contactId(exampleContact.arn())
 ///             .deliveryAddress(ContactChannelDeliveryAddressArgs.builder()
 ///                 .simpleAddress("email@example.com")
 ///                 .build())
+///             .contactId(exampleContact.arn())
 ///             .name("Example contact channel")
 ///             .type("EMAIL")
 ///             .build());
@@ -316,9 +316,9 @@ import 'contact_channel_state.dart';
 ///   example:
 ///     type: aws:ssmcontacts:ContactChannel
 ///     properties:
-///       contactId: ${exampleContact.arn}
 ///       deliveryAddress:
 ///         simpleAddress: email@example.com
+///       contactId: ${exampleContact.arn}
 ///       name: Example contact channel
 ///       type: EMAIL
 /// ```
@@ -330,7 +330,7 @@ import 'contact_channel_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the contact channel.
+/// - `arn` (String) ARN of the contact channel.
 ///
 ///
 /// Using `pulumi import`, import SSM Contact Channel using the `arn`. For example:
@@ -341,9 +341,9 @@ import 'contact_channel_state.dart';
 class ContactChannel extends pulumi.CustomResource {
   /// Whether the contact channel is activated. The contact channel must be activated to use it to engage the contact. One of `ACTIVATED` or `NOT_ACTIVATED`.
   late final pulumi.Output<String> activationStatus;
-  /// Amazon Resource Name (ARN) of the contact channel.
+  /// ARN of the contact channel.
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
+  /// ARN of the AWS SSM Contact that the contact channel belongs to.
   late final pulumi.Output<String> contactId;
   /// Block that contains contact engagement details. See details below.
   late final pulumi.Output<ContactChannelDeliveryAddress> deliveryAddress;
@@ -366,7 +366,7 @@ class ContactChannel extends pulumi.CustomResource {
           'aws:ssmcontacts/contactChannel:ContactChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activationStatus = registerOutput<String>('activationStatus');
     arn = registerOutput<String>('arn');
@@ -382,11 +382,12 @@ class ContactChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContactChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,6 +401,24 @@ class ContactChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    activationStatus = registerOutput<String>('activationStatus');
+    arn = registerOutput<String>('arn');
+    contactId = registerOutput<String>('contactId');
+    deliveryAddress = registerOutput<ContactChannelDeliveryAddress>('deliveryAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactChannelDeliveryAddress.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ContactChannel] resource.
+  ContactChannel.reference(String urn)
+    : super(
+        'aws:ssmcontacts/contactChannel:ContactChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationStatus = registerOutput<String>('activationStatus');
     arn = registerOutput<String>('arn');
     contactId = registerOutput<String>('contactId');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_args.dart';
+import 'agentcore_memory_indexed_key.dart';
 import 'agentcore_memory_state.dart';
 import 'agentcore_memory_stream_delivery_resources.dart';
 import 'agentcore_memory_timeouts.dart';
@@ -17,12 +18,12 @@ import 'agentcore_memory_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
@@ -43,12 +44,12 @@ import 'agentcore_memory_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
 ///     name="bedrock-agentcore-memory-role",
@@ -74,11 +75,6 @@ import 'agentcore_memory_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -89,6 +85,11 @@ import 'agentcore_memory_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -128,10 +129,6 @@ import 'agentcore_memory_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -139,6 +136,10 @@ import 'agentcore_memory_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -182,12 +183,12 @@ import 'agentcore_memory_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -235,12 +236,12 @@ import 'agentcore_memory_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -287,13 +288,13 @@ import 'agentcore_memory_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -465,10 +466,22 @@ import 'agentcore_memory_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock AgentCore Memory using the memory ID. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Memory ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import memories using `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrock/agentcoreMemory:AgentcoreMemory example MEMORY1234567890
+/// $ pulumi import aws:bedrock/agentcoreMemory:AgentcoreMemory example example_memory-5xKsqQHSWW
 /// ```
 class AgentcoreMemory extends pulumi.CustomResource {
   /// ARN of the Memory.
@@ -479,8 +492,8 @@ class AgentcoreMemory extends pulumi.CustomResource {
   late final pulumi.Output<String?> encryptionKeyArn;
   /// Number of days after which memory events expire. Must be a positive integer in the range of 7 to 365.
   late final pulumi.Output<int> eventExpiryDuration;
-  /// Metadata keys to index for filtering. Up to 10 entries. Changing this forces a new resource to be created. See `indexedKey` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> indexedKeys;
+  /// Metadata keys to index for filtering. Up to 10 entries. Additional keys can be added in place; removing or changing an existing key forces a new resource to be created, because previously indexed keys cannot be removed. See `indexedKey` Block below.
+  late final pulumi.Output<List<AgentcoreMemoryIndexedKey>?> indexedKeys;
   /// ARN of the IAM role that the memory service assumes to perform operations. Required when using custom memory strategies with model processing.
   late final pulumi.Output<String?> memoryExecutionRoleArn;
   /// Name of the memory.
@@ -489,11 +502,11 @@ class AgentcoreMemory extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration for streaming memory record data to external resources. See `streamDeliveryResources` below.
+  /// Configuration for streaming memory record data to external resources. See `streamDeliveryResources` Block below.
   late final pulumi.Output<AgentcoreMemoryStreamDeliveryResources?> streamDeliveryResources;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreMemoryTimeouts?> timeouts;
 
@@ -509,19 +522,19 @@ class AgentcoreMemory extends pulumi.CustomResource {
           'aws:bedrock/agentcoreMemory:AgentcoreMemory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
     eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
-    indexedKeys = registerOutput<List<Map<String, dynamic>>?>('indexedKeys');
+    indexedKeys = registerOutput<List<AgentcoreMemoryIndexedKey>?>('indexedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreMemoryIndexedKey>(guardedValue, (value) => AgentcoreMemoryIndexedKey.fromMap((value as Map).cast<String, dynamic>())); });
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     streamDeliveryResources = registerOutput<AgentcoreMemoryStreamDeliveryResources?>('streamDeliveryResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStreamDeliveryResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -530,11 +543,12 @@ class AgentcoreMemory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreMemoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreMemory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -552,13 +566,36 @@ class AgentcoreMemory extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
     eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
-    indexedKeys = registerOutput<List<Map<String, dynamic>>?>('indexedKeys');
+    indexedKeys = registerOutput<List<AgentcoreMemoryIndexedKey>?>('indexedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreMemoryIndexedKey>(guardedValue, (value) => AgentcoreMemoryIndexedKey.fromMap((value as Map).cast<String, dynamic>())); });
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     streamDeliveryResources = registerOutput<AgentcoreMemoryStreamDeliveryResources?>('streamDeliveryResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStreamDeliveryResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreMemory] resource.
+  AgentcoreMemory.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreMemory:AgentcoreMemory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    indexedKeys = registerOutput<List<AgentcoreMemoryIndexedKey>?>('indexedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreMemoryIndexedKey>(guardedValue, (value) => AgentcoreMemoryIndexedKey.fromMap((value as Map).cast<String, dynamic>())); });
+    memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    streamDeliveryResources = registerOutput<AgentcoreMemoryStreamDeliveryResources?>('streamDeliveryResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStreamDeliveryResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

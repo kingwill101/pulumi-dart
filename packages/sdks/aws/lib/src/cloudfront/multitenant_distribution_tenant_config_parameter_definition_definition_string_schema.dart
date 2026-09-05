@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema {
   /// Comment describing the parameter.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Default value for the parameter.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Whether the parameter is required.
   final pulumi.Input<bool> required;
 

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetSendingOption {
-  /// Specifies whether email sending is enabled.
+  /// Whether email sending is enabled.
   final pulumi.Input<bool> sendingEnabled;
 
   /// Creates a new [GetConfigurationSetSendingOption].
-  /// [sendingEnabled] Specifies whether email sending is enabled.
+  /// [sendingEnabled] Whether email sending is enabled.
   const GetConfigurationSetSendingOption({
     required this.sendingEnabled,
   });

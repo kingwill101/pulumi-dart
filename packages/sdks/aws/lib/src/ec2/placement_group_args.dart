@@ -8,20 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_placement_group_placement_group_args_doc}
 class PlacementGroupArgs {
   /// The name of the placement group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of partitions to create in the
   /// placement group.  Can only be specified when the `strategy` is set to
   /// `partition`.  Must be at least `1`. (default is `2`).
-  final pulumi.Input<int>? partitionCount;
+  final pulumi.Input<int?>? partitionCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Determines how placement groups spread instances. Can only be used
   /// when the `strategy` is set to `spread`. Can be `host` or `rack`. `host` can only be used for Outpost placement groups. Defaults to `rack`.
-  final pulumi.Input<String>? spreadLevel;
+  final pulumi.Input<String?>? spreadLevel;
   /// The placement strategy. Can be `cluster`, `partition` or `spread`.
-  final pulumi.Input<String> strategy;
+  final pulumi.Input<dynamic> strategy;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PlacementGroupArgs].
   /// [name] The name of the placement group.
@@ -53,10 +53,10 @@ class PlacementGroupArgs {
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionCount: (() { final guardedValue = map['partitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partitionCount: (() { final guardedValue = map['partitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spreadLevel: (() { final guardedValue = map['spreadLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      strategy: pulumi.Input.fromValue(map['strategy'] as String),
+      strategy: pulumi.Input.fromValue(map['strategy']),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

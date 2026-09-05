@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionVolumeHost {
   /// Path on the host container instance that is presented to the container. If not set, ECS will create a non-persistent data volume that starts empty and is deleted after the task has finished.
-  final pulumi.Input<String>? sourcePath;
+  final pulumi.Input<String?>? sourcePath;
 
   /// Creates a new [DaemonTaskDefinitionVolumeHost].
   /// [sourcePath] Path on the host container instance that is presented to the container. If not set, ECS will create a non-persistent data volume that starts empty and is deleted after the task has finished.

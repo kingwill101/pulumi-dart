@@ -152,16 +152,16 @@ import 'restore_testing_selection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.RestoreTestingSelection("example", {
-///     name: "ec2_selection",
-///     restoreTestingPlanName: exampleAwsBackupRestoreTestingPlan.name,
-///     protectedResourceType: "EC2",
-///     iamRoleArn: exampleAwsIamRole.arn,
 ///     protectedResourceConditions: {
 ///         stringEquals: [{
 ///             key: "aws:ResourceTag/backup",
 ///             value: "true",
 ///         }],
 ///     },
+///     name: "ec2_selection",
+///     restoreTestingPlanName: exampleAwsBackupRestoreTestingPlan.name,
+///     protectedResourceType: "EC2",
+///     iamRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -169,16 +169,16 @@ import 'restore_testing_selection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.RestoreTestingSelection("example",
-///     name="ec2_selection",
-///     restore_testing_plan_name=example_aws_backup_restore_testing_plan["name"],
-///     protected_resource_type="EC2",
-///     iam_role_arn=example_aws_iam_role["arn"],
 ///     protected_resource_conditions={
 ///         "string_equals": [{
 ///             "key": "aws:ResourceTag/backup",
 ///             "value": "true",
 ///         }],
-///     })
+///     },
+///     name="ec2_selection",
+///     restore_testing_plan_name=example_aws_backup_restore_testing_plan["name"],
+///     protected_resource_type="EC2",
+///     iam_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -190,10 +190,6 @@ import 'restore_testing_selection_state.dart';
 /// {
 ///     var example = new Aws.Backup.RestoreTestingSelection("example", new()
 ///     {
-///         Name = "ec2_selection",
-///         RestoreTestingPlanName = exampleAwsBackupRestoreTestingPlan.Name,
-///         ProtectedResourceType = "EC2",
-///         IamRoleArn = exampleAwsIamRole.Arn,
 ///         ProtectedResourceConditions = new Aws.Backup.Inputs.RestoreTestingSelectionProtectedResourceConditionsArgs
 ///         {
 ///             StringEquals = new[]
@@ -205,6 +201,10 @@ import 'restore_testing_selection_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "ec2_selection",
+///         RestoreTestingPlanName = exampleAwsBackupRestoreTestingPlan.Name,
+///         ProtectedResourceType = "EC2",
+///         IamRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -220,10 +220,6 @@ import 'restore_testing_selection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewRestoreTestingSelection(ctx, "example", &backup.RestoreTestingSelectionArgs{
-/// 			Name:                   pulumi.String("ec2_selection"),
-/// 			RestoreTestingPlanName: pulumi.Any(exampleAwsBackupRestoreTestingPlan.Name),
-/// 			ProtectedResourceType:  pulumi.String("EC2"),
-/// 			IamRoleArn:             pulumi.Any(exampleAwsIamRole.Arn),
 /// 			ProtectedResourceConditions: &backup.RestoreTestingSelectionProtectedResourceConditionsArgs{
 /// 				StringEquals: backup.RestoreTestingSelectionProtectedResourceConditionsStringEqualArray{
 /// 					&backup.RestoreTestingSelectionProtectedResourceConditionsStringEqualArgs{
@@ -232,6 +228,10 @@ import 'restore_testing_selection_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:                   pulumi.String("ec2_selection"),
+/// 			RestoreTestingPlanName: pulumi.Any(exampleAwsBackupRestoreTestingPlan.Name),
+/// 			ProtectedResourceType:  pulumi.String("EC2"),
+/// 			IamRoleArn:             pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -250,16 +250,16 @@ import 'restore_testing_selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_restoretestingselection" "example" {
-///   name                      = "ec2_selection"
-///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
-///   protected_resource_type   = "EC2"
-///   iam_role_arn              = exampleAwsIamRole.arn
 ///   protected_resource_conditions = {
 ///     string_equals = [{
 ///       "key"   = "aws:ResourceTag/backup"
 ///       "value" = true
 ///     }]
 ///   }
+///   name                      = "ec2_selection"
+///   restore_testing_plan_name = exampleAwsBackupRestoreTestingPlan.name
+///   protected_resource_type   = "EC2"
+///   iam_role_arn              = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -286,16 +286,16 @@ import 'restore_testing_selection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RestoreTestingSelection("example", RestoreTestingSelectionArgs.builder()
-///             .name("ec2_selection")
-///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.name())
-///             .protectedResourceType("EC2")
-///             .iamRoleArn(exampleAwsIamRole.arn())
 ///             .protectedResourceConditions(RestoreTestingSelectionProtectedResourceConditionsArgs.builder()
 ///                 .stringEquals(RestoreTestingSelectionProtectedResourceConditionsStringEqualArgs.builder()
 ///                     .key("aws:ResourceTag/backup")
 ///                     .value("true")
 ///                     .build())
 ///                 .build())
+///             .name("ec2_selection")
+///             .restoreTestingPlanName(exampleAwsBackupRestoreTestingPlan.name())
+///             .protectedResourceType("EC2")
+///             .iamRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -306,14 +306,14 @@ import 'restore_testing_selection_state.dart';
 ///   example:
 ///     type: aws:backup:RestoreTestingSelection
 ///     properties:
-///       name: ec2_selection
-///       restoreTestingPlanName: ${exampleAwsBackupRestoreTestingPlan.name}
-///       protectedResourceType: EC2
-///       iamRoleArn: ${exampleAwsIamRole.arn}
 ///       protectedResourceConditions:
 ///         stringEquals:
 ///           - key: aws:ResourceTag/backup
 ///             value: true
+///       name: ec2_selection
+///       restoreTestingPlanName: ${exampleAwsBackupRestoreTestingPlan.name}
+///       protectedResourceType: EC2
+///       iamRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -356,15 +356,15 @@ class RestoreTestingSelection extends pulumi.CustomResource {
           'aws:backup/restoreTestingSelection:RestoreTestingSelection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    protectedResourceArns = registerOutput<List<String>>('protectedResourceArns');
+    protectedResourceArns = registerOutput<List<String>>('protectedResourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protectedResourceConditions = registerOutput<RestoreTestingSelectionProtectedResourceConditions?>('protectedResourceConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreTestingSelectionProtectedResourceConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protectedResourceType = registerOutput<String>('protectedResourceType');
     region = registerOutput<String>('region');
-    restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides');
+    restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     restoreTestingPlanName = registerOutput<String>('restoreTestingPlanName');
     validationWindowHours = registerOutput<int>('validationWindowHours');
   }
@@ -374,11 +374,12 @@ class RestoreTestingSelection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestoreTestingSelectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestoreTestingSelection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -394,11 +395,31 @@ class RestoreTestingSelection extends pulumi.CustomResource {
         ) {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    protectedResourceArns = registerOutput<List<String>>('protectedResourceArns');
+    protectedResourceArns = registerOutput<List<String>>('protectedResourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     protectedResourceConditions = registerOutput<RestoreTestingSelectionProtectedResourceConditions?>('protectedResourceConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreTestingSelectionProtectedResourceConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     protectedResourceType = registerOutput<String>('protectedResourceType');
     region = registerOutput<String>('region');
-    restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides');
+    restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    restoreTestingPlanName = registerOutput<String>('restoreTestingPlanName');
+    validationWindowHours = registerOutput<int>('validationWindowHours');
+  }
+
+  /// Creates a typed reference to an existing [RestoreTestingSelection] resource.
+  RestoreTestingSelection.reference(String urn)
+    : super(
+        'aws:backup/restoreTestingSelection:RestoreTestingSelection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    protectedResourceArns = registerOutput<List<String>>('protectedResourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    protectedResourceConditions = registerOutput<RestoreTestingSelectionProtectedResourceConditions?>('protectedResourceConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreTestingSelectionProtectedResourceConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protectedResourceType = registerOutput<String>('protectedResourceType');
+    region = registerOutput<String>('region');
+    restoreMetadataOverrides = registerOutput<Map<String, String>>('restoreMetadataOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     restoreTestingPlanName = registerOutput<String>('restoreTestingPlanName');
     validationWindowHours = registerOutput<int>('validationWindowHours');
   }

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
 import 'domain_identity.dart';
+import 'domain_inbound_ip_rule.dart';
 import 'domain_input_mapping_default_values.dart';
 import 'domain_input_mapping_fields.dart';
 import 'domain_state.dart';
@@ -205,7 +206,7 @@ class Domain extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<DomainIdentity?> identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<DomainInboundIpRule>?> inboundIpRules;
   /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<DomainInputMappingDefaultValues?> inputMappingDefaultValues;
   /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
@@ -241,24 +242,25 @@ class Domain extends pulumi.CustomResource {
           'azure:eventhub/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     autoCreateTopicWithFirstSubscription = registerOutput<bool?>('autoCreateTopicWithFirstSubscription');
     autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<DomainIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<DomainInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainInboundIpRule>(guardedValue, (value) => DomainInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<DomainInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<DomainInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -266,11 +268,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,17 +291,45 @@ class Domain extends pulumi.CustomResource {
     autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<DomainIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<DomainInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainInboundIpRule>(guardedValue, (value) => DomainInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<DomainInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<DomainInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'azure:eventhub/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    autoCreateTopicWithFirstSubscription = registerOutput<bool?>('autoCreateTopicWithFirstSubscription');
+    autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<DomainIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<DomainInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainInboundIpRule>(guardedValue, (value) => DomainInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    inputMappingDefaultValues = registerOutput<DomainInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputMappingFields = registerOutput<DomainInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hadoop_cluster_args.dart';
 import 'hadoop_cluster_component_version.dart';
 import 'hadoop_cluster_compute_isolation.dart';
+import 'hadoop_cluster_disk_encryption.dart';
 import 'hadoop_cluster_extension.dart';
 import 'hadoop_cluster_gateway.dart';
 import 'hadoop_cluster_metastores.dart';
@@ -11,6 +12,7 @@ import 'hadoop_cluster_private_link_configuration.dart';
 import 'hadoop_cluster_roles.dart';
 import 'hadoop_cluster_security_profile.dart';
 import 'hadoop_cluster_state.dart';
+import 'hadoop_cluster_storage_account.dart';
 import 'hadoop_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight Hadoop Cluster.
@@ -263,7 +265,7 @@ import 'hadoop_cluster_storage_account_gen2.dart';
 /// 			},
 /// 			StorageAccounts: hdinsight.HadoopClusterStorageAccountArray{
 /// 				&hdinsight.HadoopClusterStorageAccountArgs{
-/// 					StorageContainerId: exampleContainer.ID(),
+/// 					StorageContainerId: exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 					StorageAccountKey:  exampleAccount.PrimaryAccessKey,
 /// 					IsDefault:          pulumi.Bool(true),
 /// 				},
@@ -531,7 +533,7 @@ class HadoopCluster extends pulumi.CustomResource {
   /// A `computeIsolation` block as defined below.
   late final pulumi.Output<HadoopClusterComputeIsolation?> computeIsolation;
   /// One or more `diskEncryption` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+  late final pulumi.Output<List<HadoopClusterDiskEncryption>?> diskEncryptions;
   /// An `extension` block as defined below.
   late final pulumi.Output<HadoopClusterExtension?> extension;
   /// A `gateway` block as defined below.
@@ -561,7 +563,7 @@ class HadoopCluster extends pulumi.CustomResource {
   /// A `storageAccountGen2` block as defined below.
   late final pulumi.Output<HadoopClusterStorageAccountGen2?> storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+  late final pulumi.Output<List<HadoopClusterStorageAccount>?> storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Hadoop Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the Tier which should be used for this HDInsight Hadoop Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
@@ -583,12 +585,12 @@ class HadoopCluster extends pulumi.CustomResource {
           'azure:hdinsight/hadoopCluster:HadoopCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<HadoopClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeIsolation = registerOutput<HadoopClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    diskEncryptions = registerOutput<List<HadoopClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterDiskEncryption>(guardedValue, (value) => HadoopClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     extension = registerOutput<HadoopClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gateway = registerOutput<HadoopClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
@@ -603,8 +605,8 @@ class HadoopCluster extends pulumi.CustomResource {
     securityProfile = registerOutput<HadoopClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<HadoopClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterStorageAccount>(guardedValue, (value) => HadoopClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
@@ -614,11 +616,12 @@ class HadoopCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HadoopClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HadoopCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,7 +638,7 @@ class HadoopCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<HadoopClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeIsolation = registerOutput<HadoopClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    diskEncryptions = registerOutput<List<HadoopClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterDiskEncryption>(guardedValue, (value) => HadoopClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     extension = registerOutput<HadoopClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gateway = registerOutput<HadoopClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
@@ -650,8 +653,41 @@ class HadoopCluster extends pulumi.CustomResource {
     securityProfile = registerOutput<HadoopClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<HadoopClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterStorageAccount>(guardedValue, (value) => HadoopClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+  }
+
+  /// Creates a typed reference to an existing [HadoopCluster] resource.
+  HadoopCluster.reference(String urn)
+    : super(
+        'azure:hdinsight/hadoopCluster:HadoopCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<HadoopClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<HadoopClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<HadoopClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterDiskEncryption>(guardedValue, (value) => HadoopClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
+    extension = registerOutput<HadoopClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<HadoopClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<HadoopClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<HadoopClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<HadoopClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<HadoopClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<HadoopClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<HadoopClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<HadoopClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<HadoopClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HadoopClusterStorageAccount>(guardedValue, (value) => HadoopClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }

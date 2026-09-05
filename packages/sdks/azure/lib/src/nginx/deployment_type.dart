@@ -1,7 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
+import 'deployment_auto_scale_profile.dart';
+import 'deployment_frontend_private.dart';
 import 'deployment_frontend_public.dart';
 import 'deployment_identity.dart';
+import 'deployment_logging_storage_account.dart';
+import 'deployment_network_interface.dart';
 import 'deployment_state.dart';
 import 'deployment_web_application_firewall.dart';
 
@@ -275,12 +279,12 @@ import 'deployment_web_application_firewall.dart';
 /// 			AutomaticUpgradeChannel: pulumi.String("stable"),
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: nginx.DeploymentNetworkInterfaceArray{
 /// 				&nginx.DeploymentNetworkInterfaceArgs{
-/// 					SubnetId: exampleSubnet.ID(),
+/// 					SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Capacity: pulumi.Int(20),
@@ -515,7 +519,7 @@ import 'deployment_web_application_firewall.dart';
 /// ```
 class DeploymentType extends pulumi.CustomResource {
   /// An `autoScaleProfile` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> autoScaleProfiles;
+  late final pulumi.Output<List<DeploymentAutoScaleProfile>?> autoScaleProfiles;
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   late final pulumi.Output<String?> automaticUpgradeChannel;
   /// Specify the number of NGINX capacity units for this NGINX deployment.
@@ -528,7 +532,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// Specify the preferred support contact email address for receiving alerts and notifications.
   late final pulumi.Output<String?> email;
   /// One or more `frontendPrivate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> frontendPrivates;
+  late final pulumi.Output<List<DeploymentFrontendPrivate>?> frontendPrivates;
   /// A `frontendPublic` block as defined below.
   late final pulumi.Output<DeploymentFrontendPublic?> frontendPublic;
   /// An `identity` block as defined below.
@@ -537,12 +541,12 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> ipAddress;
   /// The Azure Region where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> location;
-  late final pulumi.Output<List<Map<String, dynamic>>?> loggingStorageAccounts;
+  late final pulumi.Output<List<DeploymentLoggingStorageAccount>?> loggingStorageAccounts;
   late final pulumi.Output<String> managedResourceGroup;
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> name;
   /// One or more `networkInterface` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+  late final pulumi.Output<List<DeploymentNetworkInterface>?> networkInterfaces;
   /// The version of the NGINX Deployment.
   late final pulumi.Output<String> nginxVersion;
   /// The name of the Resource Group where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
@@ -570,27 +574,27 @@ class DeploymentType extends pulumi.CustomResource {
           'azure:nginx/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    autoScaleProfiles = registerOutput<List<Map<String, dynamic>>?>('autoScaleProfiles');
+    autoScaleProfiles = registerOutput<List<DeploymentAutoScaleProfile>?>('autoScaleProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentAutoScaleProfile>(guardedValue, (value) => DeploymentAutoScaleProfile.fromMap((value as Map).cast<String, dynamic>())); });
     automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
     capacity = registerOutput<int?>('capacity');
     dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
     diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
     email = registerOutput<String?>('email');
-    frontendPrivates = registerOutput<List<Map<String, dynamic>>?>('frontendPrivates');
+    frontendPrivates = registerOutput<List<DeploymentFrontendPrivate>?>('frontendPrivates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentFrontendPrivate>(guardedValue, (value) => DeploymentFrontendPrivate.fromMap((value as Map).cast<String, dynamic>())); });
     frontendPublic = registerOutput<DeploymentFrontendPublic?>('frontendPublic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentFrontendPublic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<DeploymentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
-    loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>('loggingStorageAccounts');
+    loggingStorageAccounts = registerOutput<List<DeploymentLoggingStorageAccount>?>('loggingStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLoggingStorageAccount>(guardedValue, (value) => DeploymentLoggingStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     managedResourceGroup = registerOutput<String>('managedResourceGroup');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<DeploymentNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentNetworkInterface>(guardedValue, (value) => DeploymentNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     nginxVersion = registerOutput<String>('nginxVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>('webApplicationFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWebApplicationFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -599,11 +603,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -617,25 +622,56 @@ class DeploymentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    autoScaleProfiles = registerOutput<List<Map<String, dynamic>>?>('autoScaleProfiles');
+    autoScaleProfiles = registerOutput<List<DeploymentAutoScaleProfile>?>('autoScaleProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentAutoScaleProfile>(guardedValue, (value) => DeploymentAutoScaleProfile.fromMap((value as Map).cast<String, dynamic>())); });
     automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
     capacity = registerOutput<int?>('capacity');
     dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
     diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
     email = registerOutput<String?>('email');
-    frontendPrivates = registerOutput<List<Map<String, dynamic>>?>('frontendPrivates');
+    frontendPrivates = registerOutput<List<DeploymentFrontendPrivate>?>('frontendPrivates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentFrontendPrivate>(guardedValue, (value) => DeploymentFrontendPrivate.fromMap((value as Map).cast<String, dynamic>())); });
     frontendPublic = registerOutput<DeploymentFrontendPublic?>('frontendPublic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentFrontendPublic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<DeploymentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
-    loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>('loggingStorageAccounts');
+    loggingStorageAccounts = registerOutput<List<DeploymentLoggingStorageAccount>?>('loggingStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLoggingStorageAccount>(guardedValue, (value) => DeploymentLoggingStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     managedResourceGroup = registerOutput<String>('managedResourceGroup');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<DeploymentNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentNetworkInterface>(guardedValue, (value) => DeploymentNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     nginxVersion = registerOutput<String>('nginxVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>('webApplicationFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWebApplicationFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'azure:nginx/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoScaleProfiles = registerOutput<List<DeploymentAutoScaleProfile>?>('autoScaleProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentAutoScaleProfile>(guardedValue, (value) => DeploymentAutoScaleProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
+    capacity = registerOutput<int?>('capacity');
+    dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
+    diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
+    email = registerOutput<String?>('email');
+    frontendPrivates = registerOutput<List<DeploymentFrontendPrivate>?>('frontendPrivates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentFrontendPrivate>(guardedValue, (value) => DeploymentFrontendPrivate.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendPublic = registerOutput<DeploymentFrontendPublic?>('frontendPublic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentFrontendPublic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<DeploymentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddress = registerOutput<String>('ipAddress');
+    location = registerOutput<String>('location');
+    loggingStorageAccounts = registerOutput<List<DeploymentLoggingStorageAccount>?>('loggingStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLoggingStorageAccount>(guardedValue, (value) => DeploymentLoggingStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    managedResourceGroup = registerOutput<String>('managedResourceGroup');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<DeploymentNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentNetworkInterface>(guardedValue, (value) => DeploymentNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    nginxVersion = registerOutput<String>('nginxVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>('webApplicationFirewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWebApplicationFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

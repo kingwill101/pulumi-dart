@@ -9,19 +9,19 @@ import 'device_pool_rule.dart';
 /// {@macro pulumi_devicefarm_device_pool_device_pool_args_doc}
 class DevicePoolArgs {
   /// The device pool's description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The number of devices that Device Farm can add to your device pool.
-  final pulumi.Input<int>? maxDevices;
+  final pulumi.Input<int?>? maxDevices;
   /// The name of the Device Pool
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ARN of the project for the device pool.
   final pulumi.Input<String> projectArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The device pool's rules. See Rule.
   final pulumi.Input<List<DevicePoolRule>> rules;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DevicePoolArgs].
   /// [description] The device pool's description.
@@ -56,7 +56,7 @@ class DevicePoolArgs {
   factory DevicePoolArgs.fromMap(Map<String, dynamic> map) {
     return DevicePoolArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDevices: (() { final guardedValue = map['maxDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDevices: (() { final guardedValue = map['maxDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectArn: pulumi.Input.fromValue(map['projectArn'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

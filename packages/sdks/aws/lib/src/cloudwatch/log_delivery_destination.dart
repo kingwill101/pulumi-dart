@@ -15,10 +15,10 @@ import 'log_delivery_destination_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.LogDeliveryDestination("example", {
-///     name: "example",
 ///     deliveryDestinationConfiguration: {
 ///         destinationResourceArn: exampleAwsCloudwatchLogGroup.arn,
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'log_delivery_destination_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.LogDeliveryDestination("example",
-///     name="example",
 ///     delivery_destination_configuration={
 ///         "destination_resource_arn": example_aws_cloudwatch_log_group["arn"],
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'log_delivery_destination_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.LogDeliveryDestination("example", new()
 ///     {
-///         Name = "example",
 ///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
 ///         {
 ///             DestinationResourceArn = exampleAwsCloudwatchLogGroup.Arn,
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'log_delivery_destination_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewLogDeliveryDestination(ctx, "example", &cloudwatch.LogDeliveryDestinationArgs{
-/// 			Name: pulumi.String("example"),
 /// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
 /// 				DestinationResourceArn: pulumi.Any(exampleAwsCloudwatchLogGroup.Arn),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'log_delivery_destination_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   name = "example"
 ///   delivery_destination_configuration = {
 ///     destination_resource_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -112,10 +112,10 @@ import 'log_delivery_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LogDeliveryDestination("example", LogDeliveryDestinationArgs.builder()
-///             .name("example")
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
 ///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.arn())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -126,9 +126,9 @@ import 'log_delivery_destination_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:LogDeliveryDestination
 ///     properties:
-///       name: example
 ///       deliveryDestinationConfiguration:
 ///         destinationResourceArn: ${exampleAwsCloudwatchLogGroup.arn}
+///       name: example
 /// ```
 ///
 ///
@@ -262,7 +262,7 @@ import 'log_delivery_destination_state.dart';
 /// $ pulumi import aws:cloudwatch/logDeliveryDestination:LogDeliveryDestination example example
 /// ```
 class LogDeliveryDestination extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the delivery destination.
+  /// ARN of the delivery destination.
   late final pulumi.Output<String> arn;
   /// The AWS resource that will receive the logs. Required for CloudWatch Logs, Amazon S3, and Firehose destinations. Not required for X-Ray trace delivery destinations.
   late final pulumi.Output<LogDeliveryDestinationDeliveryDestinationConfiguration?> deliveryDestinationConfiguration;
@@ -291,7 +291,7 @@ class LogDeliveryDestination extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliveryDestination:LogDeliveryDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryDestinationConfiguration = registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>('deliveryDestinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -299,8 +299,8 @@ class LogDeliveryDestination extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputFormat = registerOutput<String?>('outputFormat');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LogDeliveryDestination] resource's state with the given [name] and [id].
@@ -308,11 +308,12 @@ class LogDeliveryDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDeliveryDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDeliveryDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,7 +333,26 @@ class LogDeliveryDestination extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputFormat = registerOutput<String?>('outputFormat');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LogDeliveryDestination] resource.
+  LogDeliveryDestination.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDeliveryDestination:LogDeliveryDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deliveryDestinationConfiguration = registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>('deliveryDestinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryDestinationType = registerOutput<String>('deliveryDestinationType');
+    this.name = registerOutput<String>('name');
+    outputFormat = registerOutput<String?>('outputFormat');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -121,3 +121,14 @@ Future<GetBudgetResult> getBudget(
   );
   return GetBudgetResult.fromMap(result);
 }
+
+pulumi.Output<GetBudgetResult> getBudgetOutput(
+  GetBudgetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:budgets/getBudget:getBudget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetResult.fromMap);
+}

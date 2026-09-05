@@ -6,11 +6,11 @@ import 'agentcore_harness_memory_managed_memory_configuration.dart';
 
 class AgentcoreHarnessMemory {
   /// AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.
-  final pulumi.Input<AgentcoreHarnessMemoryAgentcoreMemoryConfiguration>? agentcoreMemoryConfiguration;
+  final pulumi.Input<AgentcoreHarnessMemoryAgentcoreMemoryConfiguration?>? agentcoreMemoryConfiguration;
   /// Explicitly disable memory for this harness. See `disabled` Block below.
-  final pulumi.Input<Map<String, dynamic>>? disabled;
+  final pulumi.Input<Map<String, dynamic>?>? disabled;
   /// Managed memory configuration. Creates and manages a memory resource automatically. See `managedMemoryConfiguration` Block below.
-  final pulumi.Input<AgentcoreHarnessMemoryManagedMemoryConfiguration>? managedMemoryConfiguration;
+  final pulumi.Input<AgentcoreHarnessMemoryManagedMemoryConfiguration?>? managedMemoryConfiguration;
 
   /// Creates a new [AgentcoreHarnessMemory].
   /// [agentcoreMemoryConfiguration] AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.

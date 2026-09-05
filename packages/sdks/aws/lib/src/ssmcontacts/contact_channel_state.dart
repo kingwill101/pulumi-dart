@@ -6,24 +6,24 @@ import 'contact_channel_delivery_address.dart';
 /// Input properties used for looking up and filtering ContactChannel resources.
 class ContactChannelState {
   /// Whether the contact channel is activated. The contact channel must be activated to use it to engage the contact. One of `ACTIVATED` or `NOT_ACTIVATED`.
-  final pulumi.Input<String>? activationStatus;
-  /// Amazon Resource Name (ARN) of the contact channel.
-  final pulumi.Input<String>? arn;
-  /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
-  final pulumi.Input<String>? contactId;
+  final pulumi.Input<String?>? activationStatus;
+  /// ARN of the contact channel.
+  final pulumi.Input<String?>? arn;
+  /// ARN of the AWS SSM Contact that the contact channel belongs to.
+  final pulumi.Input<String?>? contactId;
   /// Block that contains contact engagement details. See details below.
-  final pulumi.Input<ContactChannelDeliveryAddress>? deliveryAddress;
+  final pulumi.Input<ContactChannelDeliveryAddress?>? deliveryAddress;
   /// Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ContactChannelState].
   /// [activationStatus] Whether the contact channel is activated. The contact channel must be activated to use it to engage the contact. One of `ACTIVATED` or `NOT_ACTIVATED`.
-  /// [arn] Amazon Resource Name (ARN) of the contact channel.
-  /// [contactId] Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
+  /// [arn] ARN of the contact channel.
+  /// [contactId] ARN of the AWS SSM Contact that the contact channel belongs to.
   /// [deliveryAddress] Block that contains contact engagement details. See details below.
   /// [name] Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

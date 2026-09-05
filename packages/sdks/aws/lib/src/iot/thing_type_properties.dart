@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThingTypeProperties {
   /// The description of the thing type.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of searchable thing attribute names.
-  final pulumi.Input<List<String>>? searchableAttributes;
+  final pulumi.Input<List<String>?>? searchableAttributes;
 
   /// Creates a new [ThingTypeProperties].
   /// [description] The description of the thing type.

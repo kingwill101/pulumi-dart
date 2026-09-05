@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'option_group_args.dart';
+import 'option_group_option.dart';
 import 'option_group_state.dart';
 
 /// Provides an RDS DB option group resource. Documentation of the available options for various RDS engines can be found at:
@@ -17,29 +18,29 @@ import 'option_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.rds.OptionGroup("example", {
-///     name: "option-group-test",
-///     optionGroupDescription: "Option Group",
-///     engineName: "sqlserver-ee",
-///     majorEngineVersion: "11.00",
 ///     options: [
 ///         {
-///             optionName: "Timezone",
 ///             optionSettings: [{
 ///                 name: "TIME_ZONE",
 ///                 value: "UTC",
 ///             }],
+///             optionName: "Timezone",
 ///         },
 ///         {
-///             optionName: "SQLSERVER_BACKUP_RESTORE",
 ///             optionSettings: [{
 ///                 name: "IAM_ROLE_ARN",
 ///                 value: exampleAwsIamRole.arn,
 ///             }],
+///             optionName: "SQLSERVER_BACKUP_RESTORE",
 ///         },
 ///         {
 ///             optionName: "TDE",
 ///         },
 ///     ],
+///     name: "option-group-test",
+///     optionGroupDescription: "Option Group",
+///     engineName: "sqlserver-ee",
+///     majorEngineVersion: "11.00",
 /// });
 /// ```
 /// ```python
@@ -47,29 +48,29 @@ import 'option_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.rds.OptionGroup("example",
-///     name="option-group-test",
-///     option_group_description="Option Group",
-///     engine_name="sqlserver-ee",
-///     major_engine_version="11.00",
 ///     options=[
 ///         {
-///             "option_name": "Timezone",
 ///             "option_settings": [{
 ///                 "name": "TIME_ZONE",
 ///                 "value": "UTC",
 ///             }],
+///             "option_name": "Timezone",
 ///         },
 ///         {
-///             "option_name": "SQLSERVER_BACKUP_RESTORE",
 ///             "option_settings": [{
 ///                 "name": "IAM_ROLE_ARN",
 ///                 "value": example_aws_iam_role["arn"],
 ///             }],
+///             "option_name": "SQLSERVER_BACKUP_RESTORE",
 ///         },
 ///         {
 ///             "option_name": "TDE",
 ///         },
-///     ])
+///     ],
+///     name="option-group-test",
+///     option_group_description="Option Group",
+///     engine_name="sqlserver-ee",
+///     major_engine_version="11.00")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -81,15 +82,10 @@ import 'option_group_state.dart';
 /// {
 ///     var example = new Aws.Rds.OptionGroup("example", new()
 ///     {
-///         Name = "option-group-test",
-///         OptionGroupDescription = "Option Group",
-///         EngineName = "sqlserver-ee",
-///         MajorEngineVersion = "11.00",
 ///         Options = new[]
 ///         {
 ///             new Aws.Rds.Inputs.OptionGroupOptionArgs
 ///             {
-///                 OptionName = "Timezone",
 ///                 OptionSettings = new[]
 ///                 {
 ///                     new Aws.Rds.Inputs.OptionGroupOptionOptionSettingArgs
@@ -98,10 +94,10 @@ import 'option_group_state.dart';
 ///                         Value = "UTC",
 ///                     },
 ///                 },
+///                 OptionName = "Timezone",
 ///             },
 ///             new Aws.Rds.Inputs.OptionGroupOptionArgs
 ///             {
-///                 OptionName = "SQLSERVER_BACKUP_RESTORE",
 ///                 OptionSettings = new[]
 ///                 {
 ///                     new Aws.Rds.Inputs.OptionGroupOptionOptionSettingArgs
@@ -110,12 +106,17 @@ import 'option_group_state.dart';
 ///                         Value = exampleAwsIamRole.Arn,
 ///                     },
 ///                 },
+///                 OptionName = "SQLSERVER_BACKUP_RESTORE",
 ///             },
 ///             new Aws.Rds.Inputs.OptionGroupOptionArgs
 ///             {
 ///                 OptionName = "TDE",
 ///             },
 ///         },
+///         Name = "option-group-test",
+///         OptionGroupDescription = "Option Group",
+///         EngineName = "sqlserver-ee",
+///         MajorEngineVersion = "11.00",
 ///     });
 ///
 /// });
@@ -131,33 +132,33 @@ import 'option_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
-/// 			Name:                   pulumi.String("option-group-test"),
-/// 			OptionGroupDescription: pulumi.String("Option Group"),
-/// 			EngineName:             pulumi.String("sqlserver-ee"),
-/// 			MajorEngineVersion:     pulumi.String("11.00"),
 /// 			Options: rds.OptionGroupOptionArray{
 /// 				&rds.OptionGroupOptionArgs{
-/// 					OptionName: pulumi.String("Timezone"),
 /// 					OptionSettings: rds.OptionGroupOptionOptionSettingArray{
 /// 						&rds.OptionGroupOptionOptionSettingArgs{
 /// 							Name:  pulumi.String("TIME_ZONE"),
 /// 							Value: pulumi.String("UTC"),
 /// 						},
 /// 					},
+/// 					OptionName: pulumi.String("Timezone"),
 /// 				},
 /// 				&rds.OptionGroupOptionArgs{
-/// 					OptionName: pulumi.String("SQLSERVER_BACKUP_RESTORE"),
 /// 					OptionSettings: rds.OptionGroupOptionOptionSettingArray{
 /// 						&rds.OptionGroupOptionOptionSettingArgs{
 /// 							Name:  pulumi.String("IAM_ROLE_ARN"),
 /// 							Value: pulumi.Any(exampleAwsIamRole.Arn),
 /// 						},
 /// 					},
+/// 					OptionName: pulumi.String("SQLSERVER_BACKUP_RESTORE"),
 /// 				},
 /// 				&rds.OptionGroupOptionArgs{
 /// 					OptionName: pulumi.String("TDE"),
 /// 				},
 /// 			},
+/// 			Name:                   pulumi.String("option-group-test"),
+/// 			OptionGroupDescription: pulumi.String("Option Group"),
+/// 			EngineName:             pulumi.String("sqlserver-ee"),
+/// 			MajorEngineVersion:     pulumi.String("11.00"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -176,27 +177,27 @@ import 'option_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_optiongroup" "example" {
-///   name                     = "option-group-test"
-///   option_group_description = "Option Group"
-///   engine_name              = "sqlserver-ee"
-///   major_engine_version     = "11.00"
 ///   options {
-///     option_name = "Timezone"
 ///     option_settings {
 ///       name  = "TIME_ZONE"
 ///       value = "UTC"
 ///     }
+///     option_name = "Timezone"
 ///   }
 ///   options {
-///     option_name = "SQLSERVER_BACKUP_RESTORE"
 ///     option_settings {
 ///       name  = "IAM_ROLE_ARN"
 ///       value = exampleAwsIamRole.arn
 ///     }
+///     option_name = "SQLSERVER_BACKUP_RESTORE"
 ///   }
 ///   options {
 ///     option_name = "TDE"
 ///   }
+///   name                     = "option-group-test"
+///   option_group_description = "Option Group"
+///   engine_name              = "sqlserver-ee"
+///   major_engine_version     = "11.00"
 /// }
 /// ```
 /// ```java
@@ -223,28 +224,28 @@ import 'option_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new OptionGroup("example", OptionGroupArgs.builder()
-///             .name("option-group-test")
-///             .optionGroupDescription("Option Group")
-///             .engineName("sqlserver-ee")
-///             .majorEngineVersion("11.00")
 ///             .options(
 ///                 OptionGroupOptionArgs.builder()
-///                     .optionName("Timezone")
 ///                     .optionSettings(OptionGroupOptionOptionSettingArgs.builder()
 ///                         .name("TIME_ZONE")
 ///                         .value("UTC")
 ///                         .build())
+///                     .optionName("Timezone")
 ///                     .build(),
 ///                 OptionGroupOptionArgs.builder()
-///                     .optionName("SQLSERVER_BACKUP_RESTORE")
 ///                     .optionSettings(OptionGroupOptionOptionSettingArgs.builder()
 ///                         .name("IAM_ROLE_ARN")
 ///                         .value(exampleAwsIamRole.arn())
 ///                         .build())
+///                     .optionName("SQLSERVER_BACKUP_RESTORE")
 ///                     .build(),
 ///                 OptionGroupOptionArgs.builder()
 ///                     .optionName("TDE")
 ///                     .build())
+///             .name("option-group-test")
+///             .optionGroupDescription("Option Group")
+///             .engineName("sqlserver-ee")
+///             .majorEngineVersion("11.00")
 ///             .build());
 ///
 ///     }
@@ -255,20 +256,20 @@ import 'option_group_state.dart';
 ///   example:
 ///     type: aws:rds:OptionGroup
 ///     properties:
+///       options:
+///         - optionSettings:
+///             - name: TIME_ZONE
+///               value: UTC
+///           optionName: Timezone
+///         - optionSettings:
+///             - name: IAM_ROLE_ARN
+///               value: ${exampleAwsIamRole.arn}
+///           optionName: SQLSERVER_BACKUP_RESTORE
+///         - optionName: TDE
 ///       name: option-group-test
 ///       optionGroupDescription: Option Group
 ///       engineName: sqlserver-ee
 ///       majorEngineVersion: '11.00'
-///       options:
-///         - optionName: Timezone
-///           optionSettings:
-///             - name: TIME_ZONE
-///               value: UTC
-///         - optionName: SQLSERVER_BACKUP_RESTORE
-///           optionSettings:
-///             - name: IAM_ROLE_ARN
-///               value: ${exampleAwsIamRole.arn}
-///         - optionName: TDE
 /// ```
 ///
 ///
@@ -303,7 +304,7 @@ class OptionGroup extends pulumi.CustomResource {
   /// Description of the option group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> optionGroupDescription;
   /// The options to apply. See `option` Block below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> options;
+  late final pulumi.Output<List<OptionGroupOption>?> options;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
@@ -325,7 +326,7 @@ class OptionGroup extends pulumi.CustomResource {
           'aws:rds/optionGroup:OptionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     engineName = registerOutput<String>('engineName');
@@ -333,11 +334,11 @@ class OptionGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     optionGroupDescription = registerOutput<String>('optionGroupDescription');
-    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    this.options = registerOutput<List<OptionGroupOption>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OptionGroupOption>(guardedValue, (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [OptionGroup] resource's state with the given [name] and [id].
@@ -345,11 +346,12 @@ class OptionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OptionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OptionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,10 +371,32 @@ class OptionGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     optionGroupDescription = registerOutput<String>('optionGroupDescription');
-    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    this.options = registerOutput<List<OptionGroupOption>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OptionGroupOption>(guardedValue, (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [OptionGroup] resource.
+  OptionGroup.reference(String urn)
+    : super(
+        'aws:rds/optionGroup:OptionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    engineName = registerOutput<String>('engineName');
+    majorEngineVersion = registerOutput<String>('majorEngineVersion');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    optionGroupDescription = registerOutput<String>('optionGroupDescription');
+    this.options = registerOutput<List<OptionGroupOption>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OptionGroupOption>(guardedValue, (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

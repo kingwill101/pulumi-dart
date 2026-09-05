@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_account_get_account_args_doc}
 class GetAccountArgs {
   /// The minimum supported TLS version for this storage account.
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<String?>? minTlsVersion;
   /// Specifies the name of the Storage Account
   final pulumi.Input<String> name;
   /// Specifies the name of the resource group the Storage Account is located in.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [minTlsVersion] The minimum supported TLS version for this storage account.

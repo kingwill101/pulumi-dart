@@ -3,6 +3,7 @@ import 'open_zfs_volume_args.dart';
 import 'open_zfs_volume_nfs_exports.dart';
 import 'open_zfs_volume_origin_snapshot.dart';
 import 'open_zfs_volume_state.dart';
+import 'open_zfs_volume_user_and_group_quota.dart';
 
 /// Manages an Amazon FSx for OpenZFS volume.
 /// See the [FSx OpenZFS User Guide](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/what-is-fsx.html) for more information.
@@ -125,7 +126,7 @@ import 'open_zfs_volume_state.dart';
 /// $ pulumi import aws:fsx/openZfsVolume:OpenZfsVolume example fsvol-543ab12b1ca672f33
 /// ```
 class OpenZfsVolume extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// Whether tags for the file system should be copied to snapshots. Default is false.
   late final pulumi.Output<bool?> copyTagsToSnapshots;
@@ -156,7 +157,7 @@ class OpenZfsVolume extends pulumi.CustomResource {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Specify how much storage users or groups can use on the volume. Maximum number of items defined by [FSx for OpenZFS Resource quota](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limits.html#limits-openzfs-resources-file-system). See `userAndGroupQuotas` Block Below.
-  late final pulumi.Output<List<Map<String, dynamic>>> userAndGroupQuotas;
+  late final pulumi.Output<List<OpenZfsVolumeUserAndGroupQuota>> userAndGroupQuotas;
   /// Volume type. Default is `OPENZFS`.
   late final pulumi.Output<String?> volumeType;
 
@@ -172,7 +173,7 @@ class OpenZfsVolume extends pulumi.CustomResource {
           'aws:fsx/openZfsVolume:OpenZfsVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToSnapshots = registerOutput<bool?>('copyTagsToSnapshots');
@@ -187,9 +188,9 @@ class OpenZfsVolume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     storageCapacityQuotaGib = registerOutput<int>('storageCapacityQuotaGib');
     storageCapacityReservationGib = registerOutput<int>('storageCapacityReservationGib');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userAndGroupQuotas = registerOutput<List<Map<String, dynamic>>>('userAndGroupQuotas');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userAndGroupQuotas = registerOutput<List<OpenZfsVolumeUserAndGroupQuota>>('userAndGroupQuotas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(guardedValue, (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>())); });
     volumeType = registerOutput<String?>('volumeType');
   }
 
@@ -198,11 +199,12 @@ class OpenZfsVolume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OpenZfsVolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OpenZfsVolume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,9 +231,37 @@ class OpenZfsVolume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     storageCapacityQuotaGib = registerOutput<int>('storageCapacityQuotaGib');
     storageCapacityReservationGib = registerOutput<int>('storageCapacityReservationGib');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userAndGroupQuotas = registerOutput<List<Map<String, dynamic>>>('userAndGroupQuotas');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userAndGroupQuotas = registerOutput<List<OpenZfsVolumeUserAndGroupQuota>>('userAndGroupQuotas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(guardedValue, (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>())); });
+    volumeType = registerOutput<String?>('volumeType');
+  }
+
+  /// Creates a typed reference to an existing [OpenZfsVolume] resource.
+  OpenZfsVolume.reference(String urn)
+    : super(
+        'aws:fsx/openZfsVolume:OpenZfsVolume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    copyTagsToSnapshots = registerOutput<bool?>('copyTagsToSnapshots');
+    dataCompressionType = registerOutput<String?>('dataCompressionType');
+    deleteVolumeOptions = registerOutput<String?>('deleteVolumeOptions');
+    this.name = registerOutput<String>('name');
+    nfsExports = registerOutput<OpenZfsVolumeNfsExports?>('nfsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsVolumeNfsExports.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    originSnapshot = registerOutput<OpenZfsVolumeOriginSnapshot?>('originSnapshot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsVolumeOriginSnapshot.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentVolumeId = registerOutput<String>('parentVolumeId');
+    readOnly = registerOutput<bool>('readOnly');
+    recordSizeKib = registerOutput<int?>('recordSizeKib');
+    region = registerOutput<String>('region');
+    storageCapacityQuotaGib = registerOutput<int>('storageCapacityQuotaGib');
+    storageCapacityReservationGib = registerOutput<int>('storageCapacityReservationGib');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userAndGroupQuotas = registerOutput<List<OpenZfsVolumeUserAndGroupQuota>>('userAndGroupQuotas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(guardedValue, (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>())); });
     volumeType = registerOutput<String?>('volumeType');
   }
 }

@@ -8,24 +8,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_directconnect_macsec_key_association_macsec_key_association_args_doc}
 class MacsecKeyAssociationArgs {
   /// The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `ckn`.
-  final pulumi.Input<String>? cak;
+  final pulumi.Input<String?>? cak;
   /// The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `cak`.
-  final pulumi.Input<String>? ckn;
+  final pulumi.Input<String?>? ckn;
   /// The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
   final pulumi.Input<String> connectionId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
+  final pulumi.Input<String?>? region;
+  /// ARN of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   ///
   /// &gt; **Note:** `ckn` and `cak` are mutually exclusive with `secretArn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secretArn`. If you use the `secretArn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [MacsecKeyAssociationArgs].
   /// [cak] The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `ckn`.
   /// [ckn] The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `cak`.
   /// [connectionId] The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [secretArn] The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
+  /// [secretArn] ARN of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   const MacsecKeyAssociationArgs({
     this.cak,
     this.ckn,

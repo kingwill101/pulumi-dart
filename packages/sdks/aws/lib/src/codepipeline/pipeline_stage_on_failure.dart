@@ -6,11 +6,11 @@ import 'pipeline_stage_on_failure_retry_configuration.dart';
 
 class PipelineStageOnFailure {
   /// The conditions that are failure conditions. Defined as a `condition` block below.
-  final pulumi.Input<PipelineStageOnFailureCondition>? condition;
+  final pulumi.Input<PipelineStageOnFailureCondition?>? condition;
   /// The conditions that are configured as failure conditions. Possible values are `ROLLBACK`,  `FAIL`, `RETRY` and `SKIP`.
-  final pulumi.Input<String>? result;
+  final pulumi.Input<String?>? result;
   /// The retry configuration specifies automatic retry for a failed stage, along with the configured retry mode. Defined as a `retryConfiguration` block below.
-  final pulumi.Input<PipelineStageOnFailureRetryConfiguration>? retryConfiguration;
+  final pulumi.Input<PipelineStageOnFailureRetryConfiguration?>? retryConfiguration;
 
   /// Creates a new [PipelineStageOnFailure].
   /// [condition] The conditions that are failure conditions. Defined as a `condition` block below.

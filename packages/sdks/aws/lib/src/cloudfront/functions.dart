@@ -276,6 +276,17 @@ Future<GetCachePolicyResult> getCachePolicy(
   return GetCachePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetCachePolicyResult> getCachePolicyOutput(
+  GetCachePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getCachePolicy:getCachePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCachePolicyResult.fromMap);
+}
+
 /// Use this data source to retrieve information about a CloudFront connection group.
 ///
 /// ## Example Usage
@@ -392,6 +403,17 @@ Future<GetConnectionGroupResult> getConnectionGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionGroupResult> getConnectionGroupOutput(
+  GetConnectionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getConnectionGroup:getConnectionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionGroupResult.fromMap);
 }
 
 /// Use this data source to retrieve information about a CloudFront distribution.
@@ -512,6 +534,17 @@ Future<GetDistributionResult> getDistribution(
   return GetDistributionResult.fromMap(result);
 }
 
+pulumi.Output<GetDistributionResult> getDistributionOutput(
+  GetDistributionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getDistribution:getDistribution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDistributionResult.fromMap);
+}
+
 /// Use this data source to retrieve information about a CloudFront distribution tenant.
 ///
 /// ## Example Usage
@@ -628,6 +661,17 @@ Future<GetDistributionTenantResult> getDistributionTenant(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDistributionTenantResult.fromMap(result);
+}
+
+pulumi.Output<GetDistributionTenantResult> getDistributionTenantOutput(
+  GetDistributionTenantArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getDistributionTenant:getDistributionTenant',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDistributionTenantResult.fromMap);
 }
 
 /// Provides information about a CloudFront Function.
@@ -773,6 +817,17 @@ Future<GetFunctionResult> getFunction(
   return GetFunctionResult.fromMap(result);
 }
 
+pulumi.Output<GetFunctionResult> getFunctionOutput(
+  GetFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getFunction:getFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionResult.fromMap);
+}
+
 /// The CloudFront Log Delivery Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html) of the AWS `awslogsdelivery` account for CloudFront bucket logging.
 /// See the [Amazon CloudFront Developer Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) for more information.
 ///
@@ -787,14 +842,16 @@ Future<GetFunctionResult> getFunction(
 /// const example = aws.cloudfront.getLogDeliveryCanonicalUserId({});
 /// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example"});
 /// const exampleBucketOwnershipControls = new aws.s3.BucketOwnershipControls("example", {
-///     bucket: exampleBucket.id,
 ///     rule: {
 ///         objectOwnership: "BucketOwnerPreferred",
 ///     },
+///     bucket: exampleBucket.id,
 /// });
 /// const exampleBucketAcl = new aws.s3.BucketAcl("example", {
-///     bucket: exampleBucket.id,
 ///     accessControlPolicy: {
+///         owner: {
+///             id: current.then(current => current.id),
+///         },
 ///         grants: [{
 ///             grantee: {
 ///                 id: example.then(example => example.id),
@@ -802,10 +859,8 @@ Future<GetFunctionResult> getFunction(
 ///             },
 ///             permission: "FULL_CONTROL",
 ///         }],
-///         owner: {
-///             id: current.then(current => current.id),
-///         },
 ///     },
+///     bucket: exampleBucket.id,
 /// }, {
 ///     dependsOn: [exampleBucketOwnershipControls],
 /// });
@@ -818,13 +873,15 @@ Future<GetFunctionResult> getFunction(
 /// example = aws.cloudfront.get_log_delivery_canonical_user_id()
 /// example_bucket = aws.s3.Bucket("example", bucket="example")
 /// example_bucket_ownership_controls = aws.s3.BucketOwnershipControls("example",
-///     bucket=example_bucket.id,
 ///     rule={
 ///         "object_ownership": "BucketOwnerPreferred",
-///     })
+///     },
+///     bucket=example_bucket.id)
 /// example_bucket_acl = aws.s3.BucketAcl("example",
-///     bucket=example_bucket.id,
 ///     access_control_policy={
+///         "owner": {
+///             "id": current.id,
+///         },
 ///         "grants": [{
 ///             "grantee": {
 ///                 "id": example.id,
@@ -832,10 +889,8 @@ Future<GetFunctionResult> getFunction(
 ///             },
 ///             "permission": "FULL_CONTROL",
 ///         }],
-///         "owner": {
-///             "id": current.id,
-///         },
 ///     },
+///     bucket=example_bucket.id,
 ///     opts = pulumi.ResourceOptions(depends_on=[example_bucket_ownership_controls]))
 /// ```
 /// ```csharp
@@ -857,18 +912,21 @@ Future<GetFunctionResult> getFunction(
 ///
 ///     var exampleBucketOwnershipControls = new Aws.S3.BucketOwnershipControls("example", new()
 ///     {
-///         Bucket = exampleBucket.Id,
 ///         Rule = new Aws.S3.Inputs.BucketOwnershipControlsRuleArgs
 ///         {
 ///             ObjectOwnership = "BucketOwnerPreferred",
 ///         },
+///         Bucket = exampleBucket.Id,
 ///     });
 ///
 ///     var exampleBucketAcl = new Aws.S3.BucketAcl("example", new()
 ///     {
-///         Bucket = exampleBucket.Id,
 ///         AccessControlPolicy = new Aws.S3.Inputs.BucketAclAccessControlPolicyArgs
 ///         {
+///             Owner = new Aws.S3.Inputs.BucketAclAccessControlPolicyOwnerArgs
+///             {
+///                 Id = current.Apply(getCanonicalUserIdResult => getCanonicalUserIdResult.Id),
+///             },
 ///             Grants = new[]
 ///             {
 ///                 new Aws.S3.Inputs.BucketAclAccessControlPolicyGrantArgs
@@ -881,11 +939,8 @@ Future<GetFunctionResult> getFunction(
 ///                     Permission = "FULL_CONTROL",
 ///                 },
 ///             },
-///             Owner = new Aws.S3.Inputs.BucketAclAccessControlPolicyOwnerArgs
-///             {
-///                 Id = current.Apply(getCanonicalUserIdResult => getCanonicalUserIdResult.Id),
-///             },
 ///         },
+///         Bucket = exampleBucket.Id,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -922,17 +977,19 @@ Future<GetFunctionResult> getFunction(
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessControlPolicy: &s3.BucketAclAccessControlPolicyArgs{
+/// 				Owner: &s3.BucketAclAccessControlPolicyOwnerArgs{
+/// 					Id: pulumi.String(current.Id),
+/// 				},
 /// 				Grants: s3.BucketAclAccessControlPolicyGrantArray{
 /// 					&s3.BucketAclAccessControlPolicyGrantArgs{
 /// 						Grantee: &s3.BucketAclAccessControlPolicyGrantGranteeArgs{
@@ -942,10 +999,8 @@ Future<GetFunctionResult> getFunction(
 /// 						Permission: pulumi.String("FULL_CONTROL"),
 /// 					},
 /// 				},
-/// 				Owner: &s3.BucketAclAccessControlPolicyOwnerArgs{
-/// 					Id: pulumi.String(current.Id),
-/// 				},
 /// 			},
+/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
 /// 		}))
@@ -974,15 +1029,17 @@ Future<GetFunctionResult> getFunction(
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_bucketownershipcontrols" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketacl" "example" {
 ///   depends_on = [aws_s3_bucketownershipcontrols.example]
-///   bucket     = aws_s3_bucket.example.id
 ///   access_control_policy = {
+///     owner = {
+///       id = data.aws_s3_getcanonicaluserid.current.id
+///     }
 ///     grants = [{
 ///       "grantee" = {
 ///         "id"   = data.aws_cloudfront_getlogdeliverycanonicaluserid.example.id
@@ -990,10 +1047,8 @@ Future<GetFunctionResult> getFunction(
 ///       }
 ///       "permission" = "FULL_CONTROL"
 ///     }]
-///     owner = {
-///       id = data.aws_s3_getcanonicaluserid.current.id
-///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -1013,9 +1068,9 @@ Future<GetFunctionResult> getFunction(
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantGranteeArgs;
-/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1040,15 +1095,17 @@ Future<GetFunctionResult> getFunction(
 ///             .build());
 ///
 ///         var exampleBucketOwnershipControls = new BucketOwnershipControls("exampleBucketOwnershipControls", BucketOwnershipControlsArgs.builder()
-///             .bucket(exampleBucket.id())
 ///             .rule(BucketOwnershipControlsRuleArgs.builder()
 ///                 .objectOwnership("BucketOwnerPreferred")
 ///                 .build())
+///             .bucket(exampleBucket.id())
 ///             .build());
 ///
 ///         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
-///             .bucket(exampleBucket.id())
 ///             .accessControlPolicy(BucketAclAccessControlPolicyArgs.builder()
+///                 .owner(BucketAclAccessControlPolicyOwnerArgs.builder()
+///                     .id(current.id())
+///                     .build())
 ///                 .grants(BucketAclAccessControlPolicyGrantArgs.builder()
 ///                     .grantee(BucketAclAccessControlPolicyGrantGranteeArgs.builder()
 ///                         .id(example.id())
@@ -1056,10 +1113,8 @@ Future<GetFunctionResult> getFunction(
 ///                         .build())
 ///                     .permission("FULL_CONTROL")
 ///                     .build())
-///                 .owner(BucketAclAccessControlPolicyOwnerArgs.builder()
-///                     .id(current.id())
-///                     .build())
 ///                 .build())
+///             .bucket(exampleBucket.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleBucketOwnershipControls)
 ///                 .build());
@@ -1078,22 +1133,22 @@ Future<GetFunctionResult> getFunction(
 ///     type: aws:s3:BucketOwnershipControls
 ///     name: example
 ///     properties:
-///       bucket: ${exampleBucket.id}
 ///       rule:
 ///         objectOwnership: BucketOwnerPreferred
+///       bucket: ${exampleBucket.id}
 ///   exampleBucketAcl:
 ///     type: aws:s3:BucketAcl
 ///     name: example
 ///     properties:
-///       bucket: ${exampleBucket.id}
 ///       accessControlPolicy:
+///         owner:
+///           id: ${current.id}
 ///         grants:
 ///           - grantee:
 ///               id: ${example.id}
 ///               type: CanonicalUser
 ///             permission: FULL_CONTROL
-///         owner:
-///           id: ${current.id}
+///       bucket: ${exampleBucket.id}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleBucketOwnershipControls}
@@ -1120,6 +1175,17 @@ Future<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogDeliveryCanonicalUserIdResult.fromMap(result);
+}
+
+pulumi.Output<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserIdOutput(
+  GetLogDeliveryCanonicalUserIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getLogDeliveryCanonicalUserId:getLogDeliveryCanonicalUserId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogDeliveryCanonicalUserIdResult.fromMap);
 }
 
 /// Use this data source to retrieve information for an Amazon CloudFront origin access control config.
@@ -1240,6 +1306,17 @@ Future<GetOriginAccessControlResult> getOriginAccessControl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginAccessControlResult.fromMap(result);
+}
+
+pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
+  GetOriginAccessControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getOriginAccessControl:getOriginAccessControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginAccessControlResult.fromMap);
 }
 
 /// Use this data source to get ARNs, ids and S3 canonical user IDs of Amazon CloudFront origin access identities.
@@ -1474,6 +1551,17 @@ Future<GetOriginAccessIdentitiesResult> getOriginAccessIdentities(
   return GetOriginAccessIdentitiesResult.fromMap(result);
 }
 
+pulumi.Output<GetOriginAccessIdentitiesResult> getOriginAccessIdentitiesOutput(
+  GetOriginAccessIdentitiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getOriginAccessIdentities:getOriginAccessIdentities',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginAccessIdentitiesResult.fromMap);
+}
+
 /// Use this data source to retrieve information for an Amazon CloudFront origin access identity.
 ///
 /// ## Example Usage
@@ -1592,6 +1680,17 @@ Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginAccessIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetOriginAccessIdentityResult> getOriginAccessIdentityOutput(
+  GetOriginAccessIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getOriginAccessIdentity:getOriginAccessIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginAccessIdentityResult.fromMap);
 }
 
 /// ## Example Usage
@@ -1817,6 +1916,17 @@ Future<GetOriginRequestPolicyResult> getOriginRequestPolicy(
   return GetOriginRequestPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetOriginRequestPolicyResult> getOriginRequestPolicyOutput(
+  GetOriginRequestPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getOriginRequestPolicy:getOriginRequestPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginRequestPolicyResult.fromMap);
+}
+
 /// Provides a CloudFront real-time log configuration resource.
 ///
 /// ## Example Usage
@@ -1933,6 +2043,17 @@ Future<GetRealtimeLogConfigResult> getRealtimeLogConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRealtimeLogConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetRealtimeLogConfigResult> getRealtimeLogConfigOutput(
+  GetRealtimeLogConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getRealtimeLogConfig:getRealtimeLogConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRealtimeLogConfigResult.fromMap);
 }
 
 /// Use this data source to retrieve information about a CloudFront cache policy.
@@ -2158,4 +2279,15 @@ Future<GetResponseHeadersPolicyResult> getResponseHeadersPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResponseHeadersPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetResponseHeadersPolicyResult> getResponseHeadersPolicyOutput(
+  GetResponseHeadersPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudfront/getResponseHeadersPolicy:getResponseHeadersPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResponseHeadersPolicyResult.fromMap);
 }

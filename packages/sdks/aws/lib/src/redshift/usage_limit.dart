@@ -138,7 +138,7 @@ import 'usage_limit_state.dart';
 class UsageLimit extends pulumi.CustomResource {
   /// The limit amount. If time-based, this amount is in minutes. If data-based, this amount is in terabytes (TB). The value must be a positive number.
   late final pulumi.Output<int> amount;
-  /// Amazon Resource Name (ARN) of the Redshift Usage Limit.
+  /// ARN of the Redshift Usage Limit.
   late final pulumi.Output<String> arn;
   /// The action that Amazon Redshift takes when the limit is reached. The default is `log`. Valid values are `log`, `emit-metric`, and `disable`.
   late final pulumi.Output<String?> breachAction;
@@ -169,7 +169,7 @@ class UsageLimit extends pulumi.CustomResource {
           'aws:redshift/usageLimit:UsageLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amount = registerOutput<int>('amount');
     arn = registerOutput<String>('arn');
@@ -179,8 +179,8 @@ class UsageLimit extends pulumi.CustomResource {
     limitType = registerOutput<String>('limitType');
     period = registerOutput<String?>('period');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [UsageLimit] resource's state with the given [name] and [id].
@@ -188,11 +188,12 @@ class UsageLimit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UsageLimitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UsageLimit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,7 +215,28 @@ class UsageLimit extends pulumi.CustomResource {
     limitType = registerOutput<String>('limitType');
     period = registerOutput<String?>('period');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UsageLimit] resource.
+  UsageLimit.reference(String urn)
+    : super(
+        'aws:redshift/usageLimit:UsageLimit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amount = registerOutput<int>('amount');
+    arn = registerOutput<String>('arn');
+    breachAction = registerOutput<String?>('breachAction');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    featureType = registerOutput<String>('featureType');
+    limitType = registerOutput<String>('limitType');
+    period = registerOutput<String?>('period');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

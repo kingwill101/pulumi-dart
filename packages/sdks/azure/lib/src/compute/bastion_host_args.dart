@@ -9,53 +9,53 @@ import 'bastion_host_ip_configuration.dart';
 /// {@macro pulumi_compute_bastion_host_bastion_host_args_doc}
 class BastionHostArgs {
   /// Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
-  final pulumi.Input<bool>? copyPasteEnabled;
+  final pulumi.Input<bool?>? copyPasteEnabled;
   /// Is File Copy feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `fileCopyEnabled` is only supported when `sku` is `Standard` or `Premium`.
-  final pulumi.Input<bool>? fileCopyEnabled;
+  final pulumi.Input<bool?>? fileCopyEnabled;
   /// A `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BastionHostIpConfiguration>? ipConfiguration;
+  final pulumi.Input<BastionHostIpConfiguration?>? ipConfiguration;
   /// Is IP Connect feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `ipConnectEnabled` is only supported when `sku` is `Standard` or `Premium`.
-  final pulumi.Input<bool>? ipConnectEnabled;
+  final pulumi.Input<bool?>? ipConnectEnabled;
   /// Is Kerberos authentication feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `kerberosEnabled` is only supported when `sku` is `Standard` or `Premium`.
-  final pulumi.Input<bool>? kerberosEnabled;
+  final pulumi.Input<bool?>? kerberosEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Review [Azure Bastion Host FAQ](https://docs.microsoft.com/azure/bastion/bastion-faq) for supported locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Bastion Host. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Bastion Host. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The number of scale units with which to provision the Bastion Host. Possible values are between `2` and `50`. Defaults to `2`.
   ///
   /// &gt; **Note:** `scaleUnits` only can be changed when `sku` is `Standard` or `Premium`. `scaleUnits` is always `2` when `sku` is `Basic`.
-  final pulumi.Input<int>? scaleUnits;
+  final pulumi.Input<int?>? scaleUnits;
   /// Is Session Recording feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `sessionRecordingEnabled` is only supported when `sku` is `Premium`.
-  final pulumi.Input<bool>? sessionRecordingEnabled;
+  final pulumi.Input<bool?>? sessionRecordingEnabled;
   /// Is Shareable Link feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `shareableLinkEnabled` is only supported when `sku` is `Standard` or `Premium`.
-  final pulumi.Input<bool>? shareableLinkEnabled;
+  final pulumi.Input<bool?>? shareableLinkEnabled;
   /// The SKU of the Bastion Host. Accepted values are `Developer`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   ///
   /// &gt; **Note:** Downgrading the SKU will force a new resource to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   ///
   /// &gt; **Note:** `tunnelingEnabled` is only supported when `sku` is `Standard` or `Premium`.
-  final pulumi.Input<bool>? tunnelingEnabled;
+  final pulumi.Input<bool?>? tunnelingEnabled;
   /// The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
   /// Specifies a list of Availability Zones in which this Public Bastion Host should be located. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [BastionHostArgs].
   /// [copyPasteEnabled] Is Copy/Paste feature enabled for the Bastion Host. Defaults to `true`.
@@ -124,7 +124,7 @@ class BastionHostArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sessionRecordingEnabled: (() { final guardedValue = map['sessionRecordingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       shareableLinkEnabled: (() { final guardedValue = map['shareableLinkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

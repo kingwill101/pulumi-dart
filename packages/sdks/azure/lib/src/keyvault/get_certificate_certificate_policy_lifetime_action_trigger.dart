@@ -25,8 +25,8 @@ class GetCertificateCertificatePolicyLifetimeActionTrigger {
 
   factory GetCertificateCertificatePolicyLifetimeActionTrigger.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyLifetimeActionTrigger(
-      daysBeforeExpiry: pulumi.Input.fromValue(map['daysBeforeExpiry'] as int),
-      lifetimePercentage: pulumi.Input.fromValue(map['lifetimePercentage'] as int),
+      daysBeforeExpiry: pulumi.Input.fromValue((map['daysBeforeExpiry'] as num).toInt()),
+      lifetimePercentage: pulumi.Input.fromValue((map['lifetimePercentage'] as num).toInt()),
     );
   }
 }

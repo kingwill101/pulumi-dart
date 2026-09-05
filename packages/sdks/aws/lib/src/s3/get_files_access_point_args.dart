@@ -14,11 +14,11 @@ class GetFilesAccessPointArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> id;
   /// POSIX user configuration. See `posixUser` below.
-  final pulumi.Input<List<GetFilesAccessPointPosixUser>>? posixUsers;
+  final pulumi.Input<List<GetFilesAccessPointPosixUser>?>? posixUsers;
   /// Region where this resource is [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Root directory configuration. See `rootDirectory` below.
-  final pulumi.Input<List<GetFilesAccessPointRootDirectory>>? rootDirectories;
+  final pulumi.Input<List<GetFilesAccessPointRootDirectory>?>? rootDirectories;
 
   /// Creates a new [GetFilesAccessPointArgs].
   /// [id] Access point ID.

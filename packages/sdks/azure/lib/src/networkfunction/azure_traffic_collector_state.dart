@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AzureTrafficCollector resources.
 class AzureTrafficCollectorState {
   /// The list of Resource IDs of collector policies.
-  final pulumi.Input<List<String>>? collectorPolicyIds;
+  final pulumi.Input<List<String>?>? collectorPolicyIds;
   /// Specifies the Azure Region where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Network Function Azure Traffic Collector. Changing this forces a new Network Function Azure Traffic Collector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Resource ID of virtual hub.
-  final pulumi.Input<List<String>>? virtualHubIds;
+  final pulumi.Input<List<String>?>? virtualHubIds;
 
   /// Creates a new [AzureTrafficCollectorState].
   /// [collectorPolicyIds] The list of Resource IDs of collector policies.

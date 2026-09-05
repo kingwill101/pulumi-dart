@@ -20,7 +20,8 @@ class GetMoqRelaysInvokeResult {
   final String? createdBefore;
   /// Max items to fetch, default: 1000
   final int? maxItems;
-  /// Maximum number of relays to return per page.
+  /// Maximum number of relays to return per page. Values above the maximum are
+  /// clamped to it rather than rejected.
   final int? perPage;
   /// The items returned by the data source
   final List<GetMoqRelaysResult>? results;
@@ -31,7 +32,7 @@ class GetMoqRelaysInvokeResult {
   /// [createdAfter] Cursor for pagination. Returns relays created strictly after this
   /// [createdBefore] Cursor for pagination. Returns relays created strictly before this
   /// [maxItems] Max items to fetch, default: 1000
-  /// [perPage] Maximum number of relays to return per page.
+  /// [perPage] Maximum number of relays to return per page. Values above the maximum are
   /// [results] The items returned by the data source
   const GetMoqRelaysInvokeResult({
     this.accountId,

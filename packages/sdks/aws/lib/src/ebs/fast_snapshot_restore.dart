@@ -119,7 +119,7 @@ import 'fast_snapshot_restore_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) EBS Fast Snapshot Restore using the `availabilityZone` and `snapshotId` separated by `,`. For example:
+/// Using `pulumi import`, import EC2 EBS Fast Snapshot Restore using the `availabilityZone` and `snapshotId` separated by `,`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ebs/fastSnapshotRestore:FastSnapshotRestore example us-west-2a,snap-abcdef123456
@@ -147,7 +147,7 @@ class FastSnapshotRestore extends pulumi.CustomResource {
           'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     region = registerOutput<String>('region');
@@ -161,11 +161,12 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FastSnapshotRestoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FastSnapshotRestore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -183,6 +184,22 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String>('snapshotId');
     this.state = registerOutput<String>('state');
+    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastSnapshotRestoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FastSnapshotRestore] resource.
+  FastSnapshotRestore.reference(String urn)
+    : super(
+        'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityZone = registerOutput<String>('availabilityZone');
+    region = registerOutput<String>('region');
+    snapshotId = registerOutput<String>('snapshotId');
+    state = registerOutput<String>('state');
     timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FastSnapshotRestoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

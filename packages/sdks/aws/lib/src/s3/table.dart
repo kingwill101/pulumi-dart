@@ -210,10 +210,6 @@ import 'table_state.dart';
 ///     tableBucketArn: exampleTableBucket.arn,
 /// });
 /// const example = new aws.s3tables.Table("example", {
-///     name: "example_table",
-///     namespace: exampleNamespace.namespace,
-///     tableBucketArn: exampleNamespace.tableBucketArn,
-///     format: "ICEBERG",
 ///     metadata: {
 ///         iceberg: {
 ///             schema: {
@@ -242,6 +238,10 @@ import 'table_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example_table",
+///     namespace: exampleNamespace.namespace,
+///     tableBucketArn: exampleNamespace.tableBucketArn,
+///     format: "ICEBERG",
 /// });
 /// ```
 /// ```python
@@ -253,10 +253,6 @@ import 'table_state.dart';
 ///     namespace="example_namespace",
 ///     table_bucket_arn=example_table_bucket.arn)
 /// example = aws.s3tables.Table("example",
-///     name="example_table",
-///     namespace=example_namespace.namespace,
-///     table_bucket_arn=example_namespace.table_bucket_arn,
-///     format="ICEBERG",
 ///     metadata={
 ///         "iceberg": {
 ///             "schema": {
@@ -284,7 +280,11 @@ import 'table_state.dart';
 ///                 ],
 ///             },
 ///         },
-///     })
+///     },
+///     name="example_table",
+///     namespace=example_namespace.namespace,
+///     table_bucket_arn=example_namespace.table_bucket_arn,
+///     format="ICEBERG")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -307,10 +307,6 @@ import 'table_state.dart';
 ///
 ///     var example = new Aws.S3Tables.Table("example", new()
 ///     {
-///         Name = "example_table",
-///         Namespace = exampleNamespace.NameSpace,
-///         TableBucketArn = exampleNamespace.TableBucketArn,
-///         Format = "ICEBERG",
 ///         Metadata = new Aws.S3Tables.Inputs.TableMetadataArgs
 ///         {
 ///             Iceberg = new Aws.S3Tables.Inputs.TableMetadataIcebergArgs
@@ -347,6 +343,10 @@ import 'table_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example_table",
+///         Namespace = exampleNamespace.NameSpace,
+///         TableBucketArn = exampleNamespace.TableBucketArn,
+///         Format = "ICEBERG",
 ///     });
 ///
 /// });
@@ -375,10 +375,6 @@ import 'table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3tables.NewTable(ctx, "example", &s3tables.TableArgs{
-/// 			Name:           pulumi.String("example_table"),
-/// 			Namespace:      exampleNamespace.Namespace,
-/// 			TableBucketArn: exampleNamespace.TableBucketArn,
-/// 			Format:         pulumi.String("ICEBERG"),
 /// 			Metadata: &s3tables.TableMetadataArgs{
 /// 				Iceberg: &s3tables.TableMetadataIcebergArgs{
 /// 					Schema: &s3tables.TableMetadataIcebergSchemaArgs{
@@ -407,6 +403,10 @@ import 'table_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example_table"),
+/// 			Namespace:      exampleNamespace.Namespace,
+/// 			TableBucketArn: exampleNamespace.TableBucketArn,
+/// 			Format:         pulumi.String("ICEBERG"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -425,10 +425,6 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_s3tables_table" "example" {
-///   name             = "example_table"
-///   namespace        = aws_s3tables_namespace.example.namespace
-///   table_bucket_arn = aws_s3tables_namespace.example.table_bucket_arn
-///   format           = "ICEBERG"
 ///   metadata = {
 ///     iceberg = {
 ///       schema = {
@@ -452,6 +448,10 @@ import 'table_state.dart';
 ///       }
 ///     }
 ///   }
+///   name             = "example_table"
+///   namespace        = aws_s3tables_namespace.example.namespace
+///   table_bucket_arn = aws_s3tables_namespace.example.table_bucket_arn
+///   format           = "ICEBERG"
 /// }
 /// resource "aws_s3tables_namespace" "example" {
 ///   namespace        = "example_namespace"
@@ -500,10 +500,6 @@ import 'table_state.dart';
 ///             .build());
 ///
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("example_table")
-///             .namespace(exampleNamespace.namespace())
-///             .tableBucketArn(exampleNamespace.tableBucketArn())
-///             .format("ICEBERG")
 ///             .metadata(TableMetadataArgs.builder()
 ///                 .iceberg(TableMetadataIcebergArgs.builder()
 ///                     .schema(TableMetadataIcebergSchemaArgs.builder()
@@ -531,6 +527,10 @@ import 'table_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example_table")
+///             .namespace(exampleNamespace.namespace())
+///             .tableBucketArn(exampleNamespace.tableBucketArn())
+///             .format("ICEBERG")
 ///             .build());
 ///
 ///     }
@@ -541,10 +541,6 @@ import 'table_state.dart';
 ///   example:
 ///     type: aws:s3tables:Table
 ///     properties:
-///       name: example_table
-///       namespace: ${exampleNamespace.namespace}
-///       tableBucketArn: ${exampleNamespace.tableBucketArn}
-///       format: ICEBERG
 ///       metadata:
 ///         iceberg:
 ///           schema:
@@ -561,6 +557,10 @@ import 'table_state.dart';
 ///               - name: price
 ///                 type: decimal(10,2)
 ///                 required: false
+///       name: example_table
+///       namespace: ${exampleNamespace.namespace}
+///       tableBucketArn: ${exampleNamespace.tableBucketArn}
+///       format: ICEBERG
 ///   exampleNamespace:
 ///     type: aws:s3tables:Namespace
 ///     name: example
@@ -638,7 +638,7 @@ class Table extends pulumi.CustomResource {
           'aws:s3tables/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -655,8 +655,8 @@ class Table extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
     tableBucketArn = registerOutput<String>('tableBucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     versionToken = registerOutput<String>('versionToken');
     warehouseLocation = registerOutput<String>('warehouseLocation');
@@ -667,11 +667,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -700,8 +701,39 @@ class Table extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
     tableBucketArn = registerOutput<String>('tableBucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    versionToken = registerOutput<String>('versionToken');
+    warehouseLocation = registerOutput<String>('warehouseLocation');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'aws:s3tables/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    encryptionConfiguration = registerOutput<TableEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    format = registerOutput<String>('format');
+    maintenanceConfiguration = registerOutput<TableMaintenanceConfiguration>('maintenanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableMaintenanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<TableMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataLocation = registerOutput<String>('metadataLocation');
+    modifiedAt = registerOutput<String>('modifiedAt');
+    modifiedBy = registerOutput<String>('modifiedBy');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     versionToken = registerOutput<String>('versionToken');
     warehouseLocation = registerOutput<String>('warehouseLocation');

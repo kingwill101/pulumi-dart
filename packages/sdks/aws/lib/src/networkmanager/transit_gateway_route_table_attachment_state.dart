@@ -5,37 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TransitGatewayRouteTableAttachment resources.
 class TransitGatewayRouteTableAttachmentState {
   /// Attachment ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Policy rule number associated with the attachment.
-  final pulumi.Input<int>? attachmentPolicyRuleNumber;
+  final pulumi.Input<int?>? attachmentPolicyRuleNumber;
   /// Type of attachment.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// ARN of the core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of the core network.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Edge location for the peer.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// ID of the attachment account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// ID of the peer for the attachment.
-  final pulumi.Input<String>? peeringId;
+  final pulumi.Input<String?>? peeringId;
   /// Attachment resource ARN.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// The routing policy label to apply to the Transit Gateway route table attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Name of the segment attachment.
-  final pulumi.Input<String>? segmentName;
+  final pulumi.Input<String?>? segmentName;
   /// State of the attachment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the transit gateway route table for the attachment.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayRouteTableArn;
+  final pulumi.Input<String?>? transitGatewayRouteTableArn;
 
   /// Creates a new [TransitGatewayRouteTableAttachmentState].
   /// [arn] Attachment ARN.
@@ -94,7 +94,7 @@ class TransitGatewayRouteTableAttachmentState {
   factory TransitGatewayRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRouteTableAttachmentState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       attachmentType: (() { final guardedValue = map['attachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

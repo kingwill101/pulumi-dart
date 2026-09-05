@@ -8,17 +8,17 @@ class BackendAddressPoolAddressState {
   /// The ip config ID of the regional load balancer that's added to the global load balancer's backend address pool.
   ///
   /// &gt; **Note:** For cross-region load balancer, please append the name of the load balancers, virtual machines, and other resources in each region with a -R1 and -R2.
-  final pulumi.Input<String>? backendAddressIpConfigurationId;
+  final pulumi.Input<String?>? backendAddressIpConfigurationId;
   /// The ID of the Backend Address Pool. Changing this forces a new Backend Address Pool Address to be created.
-  final pulumi.Input<String>? backendAddressPoolId;
+  final pulumi.Input<String?>? backendAddressPoolId;
   /// A list of `inboundNatRulePortMapping` block as defined below.
-  final pulumi.Input<List<BackendAddressPoolAddressInboundNatRulePortMapping>>? inboundNatRulePortMappings;
+  final pulumi.Input<List<BackendAddressPoolAddressInboundNatRulePortMapping>?>? inboundNatRulePortMappings;
   /// The Static IP Address which should be allocated to this Backend Address Pool.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name which should be used for this Backend Address Pool Address. Changing this forces a new Backend Address Pool Address to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [BackendAddressPoolAddressState].
   /// [backendAddressIpConfigurationId] The ip config ID of the regional load balancer that's added to the global load balancer's backend address pool.

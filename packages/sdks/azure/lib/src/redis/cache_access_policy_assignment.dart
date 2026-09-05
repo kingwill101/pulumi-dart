@@ -151,7 +151,7 @@ import 'cache_access_policy_assignment_state.dart';
 /// 		}
 /// 		_, err = redis.NewCacheAccessPolicyAssignment(ctx, "example", &redis.CacheAccessPolicyAssignmentArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			RedisCacheId:     exampleCache.ID(),
+/// 			RedisCacheId:     exampleCache.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessPolicyName: pulumi.String("Data Contributor"),
 /// 			ObjectId:         pulumi.String(test.ObjectId),
 /// 			ObjectIdAlias:    pulumi.String("ServicePrincipal"),
@@ -338,7 +338,7 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
           'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     this.name = registerOutput<String>('name');
@@ -352,11 +352,12 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheAccessPolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CacheAccessPolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -370,6 +371,22 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyName = registerOutput<String>('accessPolicyName');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    objectIdAlias = registerOutput<String>('objectIdAlias');
+    redisCacheId = registerOutput<String>('redisCacheId');
+  }
+
+  /// Creates a typed reference to an existing [CacheAccessPolicyAssignment] resource.
+  CacheAccessPolicyAssignment.reference(String urn)
+    : super(
+        'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceRestoreToPointInTime {
   /// The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `useLatestRestorableTime`.
-  final pulumi.Input<String>? restoreTime;
+  final pulumi.Input<String?>? restoreTime;
   /// The ARN of the automated backup from which to restore. Required if `sourceDbInstanceIdentifier` or `sourceDbiResourceId` is not specified.
-  final pulumi.Input<String>? sourceDbInstanceAutomatedBackupsArn;
+  final pulumi.Input<String?>? sourceDbInstanceAutomatedBackupsArn;
   /// The identifier of the source DB instance from which to restore. Must match the identifier of an existing DB instance. Required if `sourceDbInstanceAutomatedBackupsArn` or `sourceDbiResourceId` is not specified.
-  final pulumi.Input<String>? sourceDbInstanceIdentifier;
+  final pulumi.Input<String?>? sourceDbInstanceIdentifier;
   /// The resource ID of the source DB instance from which to restore. Required if `sourceDbInstanceIdentifier` or `sourceDbInstanceAutomatedBackupsArn` is not specified.
-  final pulumi.Input<String>? sourceDbiResourceId;
+  final pulumi.Input<String?>? sourceDbiResourceId;
   /// A boolean value that indicates whether the DB instance is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restoreTime`.
-  final pulumi.Input<bool>? useLatestRestorableTime;
+  final pulumi.Input<bool?>? useLatestRestorableTime;
 
   /// Creates a new [InstanceRestoreToPointInTime].
   /// [restoreTime] The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `useLatestRestorableTime`.

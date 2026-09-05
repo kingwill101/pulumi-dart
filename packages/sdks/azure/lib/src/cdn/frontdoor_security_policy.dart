@@ -64,7 +64,7 @@ import 'frontdoor_security_policy_state.dart';
 ///             "contoso",
 ///             exampleZone.name,
 ///         ],
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     tls: {
 ///         certificateType: "ManagedCertificate",
 ///         minimumTlsVersion: "TLS12",
@@ -136,7 +136,7 @@ import 'frontdoor_security_policy_state.dart';
 ///         input=[
 ///             "contoso",
 ///             example_zone.name,
-///         ]).apply(lambda invoke: invoke.result),
+///         ]).result,
 ///     tls={
 ///         "certificate_type": "ManagedCertificate",
 ///         "minimum_tls_version": "TLS12",
@@ -342,18 +342,15 @@ import 'frontdoor_security_policy_state.dart';
 /// 		}
 /// 		exampleFrontdoorCustomDomain, err := cdn.NewFrontdoorCustomDomain(ctx, "example", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("example-customDomain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
-/// 			DnsZoneId:             exampleZone.ID(),
-/// 			HostName: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			HostName: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
 /// 					pulumi.String("contoso"),
 /// 					exampleZone.Name,
 /// 				},
-/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
 /// 				MinimumTlsVersion: pulumi.String("TLS12"),
@@ -364,14 +361,14 @@ import 'frontdoor_security_policy_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorSecurityPolicy(ctx, "example", &cdn.FrontdoorSecurityPolicyArgs{
 /// 			Name:                  pulumi.String("Example-Security-Policy"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			SecurityPolicies: &cdn.FrontdoorSecurityPolicySecurityPoliciesArgs{
 /// 				Firewall: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallArgs{
-/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID(),
+/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 					Association: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationArgs{
 /// 						Domains: cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArray{
 /// 							&cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArgs{
-/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID(),
+/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 						PatternsToMatch: pulumi.String("/*"),
@@ -668,7 +665,7 @@ import 'frontdoor_security_policy_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 ///
 /// ## Import
 ///
@@ -697,7 +694,7 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
           'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
@@ -709,11 +706,12 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorSecurityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorSecurityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -727,6 +725,20 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    this.name = registerOutput<String>('name');
+    securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>('securityPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorSecurityPolicySecurityPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorSecurityPolicy] resource.
+  FrontdoorSecurityPolicy.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
     securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>('securityPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorSecurityPolicySecurityPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRuleConditionsIsDeviceCondition {
   /// Which device should this rule match on? Possible values `Mobile` or `Desktop`.
-  final pulumi.Input<String>? matchValues;
+  final pulumi.Input<String?>? matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Possible value `Equal`. Defaults to `Equal`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [FrontdoorRuleConditionsIsDeviceCondition].
   /// [matchValues] Which device should this rule match on? Possible values `Mobile` or `Desktop`.

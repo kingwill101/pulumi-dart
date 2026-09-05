@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_logging_configuration_args.dart';
+import 'query_logging_configuration_destination.dart';
 import 'query_logging_configuration_state.dart';
 import 'query_logging_configuration_timeouts.dart';
 
@@ -15,7 +16,6 @@ import 'query_logging_configuration_timeouts.dart';
 /// const example = new aws.amp.Workspace("example", {alias: "example"});
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "/aws/prometheus/query-logs/example"});
 /// const exampleQueryLoggingConfiguration = new aws.amp.QueryLoggingConfiguration("example", {
-///     workspaceId: example.id,
 ///     destinations: [{
 ///         cloudwatchLogs: {
 ///             logGroupArn: pulumi.interpolate`${exampleLogGroup.arn}:*`,
@@ -24,6 +24,7 @@ import 'query_logging_configuration_timeouts.dart';
 ///             qspThreshold: 1000,
 ///         },
 ///     }],
+///     workspaceId: example.id,
 /// });
 /// ```
 /// ```python
@@ -33,7 +34,6 @@ import 'query_logging_configuration_timeouts.dart';
 /// example = aws.amp.Workspace("example", alias="example")
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="/aws/prometheus/query-logs/example")
 /// example_query_logging_configuration = aws.amp.QueryLoggingConfiguration("example",
-///     workspace_id=example.id,
 ///     destinations=[{
 ///         "cloudwatch_logs": {
 ///             "log_group_arn": example_log_group.arn.apply(lambda arn: f"{arn}:*"),
@@ -41,7 +41,8 @@ import 'query_logging_configuration_timeouts.dart';
 ///         "filters": {
 ///             "qsp_threshold": 1000,
 ///         },
-///     }])
+///     }],
+///     workspace_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -63,7 +64,6 @@ import 'query_logging_configuration_timeouts.dart';
 ///
 ///     var exampleQueryLoggingConfiguration = new Aws.Amp.QueryLoggingConfiguration("example", new()
 ///     {
-///         WorkspaceId = example.Id,
 ///         Destinations = new[]
 ///         {
 ///             new Aws.Amp.Inputs.QueryLoggingConfigurationDestinationArgs
@@ -78,6 +78,7 @@ import 'query_logging_configuration_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         WorkspaceId = example.Id,
 ///     });
 ///
 /// });
@@ -108,7 +109,6 @@ import 'query_logging_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewQueryLoggingConfiguration(ctx, "example", &amp.QueryLoggingConfigurationArgs{
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destinations: amp.QueryLoggingConfigurationDestinationArray{
 /// 				&amp.QueryLoggingConfigurationDestinationArgs{
 /// 					CloudwatchLogs: &amp.QueryLoggingConfigurationDestinationCloudwatchLogsArgs{
@@ -121,6 +121,7 @@ import 'query_logging_configuration_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,7 +146,6 @@ import 'query_logging_configuration_timeouts.dart';
 ///   name = "/aws/prometheus/query-logs/example"
 /// }
 /// resource "aws_amp_queryloggingconfiguration" "example" {
-///   workspace_id = aws_amp_workspace.example.id
 ///   destinations {
 ///     cloudwatch_logs = {
 ///       log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
@@ -154,6 +154,7 @@ import 'query_logging_configuration_timeouts.dart';
 ///       qsp_threshold = 1000
 ///     }
 ///   }
+///   workspace_id = aws_amp_workspace.example.id
 /// }
 /// ```
 /// ```java
@@ -193,7 +194,6 @@ import 'query_logging_configuration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleQueryLoggingConfiguration = new QueryLoggingConfiguration("exampleQueryLoggingConfiguration", QueryLoggingConfigurationArgs.builder()
-///             .workspaceId(example.id())
 ///             .destinations(QueryLoggingConfigurationDestinationArgs.builder()
 ///                 .cloudwatchLogs(QueryLoggingConfigurationDestinationCloudwatchLogsArgs.builder()
 ///                     .logGroupArn(exampleLogGroup.arn().applyValue(_arn -> String.format("%s:*", _arn)))
@@ -202,6 +202,7 @@ import 'query_logging_configuration_timeouts.dart';
 ///                     .qspThreshold(1000)
 ///                     .build())
 ///                 .build())
+///             .workspaceId(example.id())
 ///             .build());
 ///
 ///     }
@@ -222,16 +223,16 @@ import 'query_logging_configuration_timeouts.dart';
 ///     type: aws:amp:QueryLoggingConfiguration
 ///     name: example
 ///     properties:
-///       workspaceId: ${example.id}
 ///       destinations:
 ///         - cloudwatchLogs:
 ///             logGroupArn: ${exampleLogGroup.arn}:*
 ///           filters:
 ///             qspThreshold: 1000
+///       workspaceId: ${example.id}
 /// ```
 class QueryLoggingConfiguration extends pulumi.CustomResource {
   /// Configuration block for the logging destinations. See `destinations`.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+  late final pulumi.Output<List<QueryLoggingConfigurationDestination>> destinations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<QueryLoggingConfigurationTimeouts?> timeouts;
@@ -252,9 +253,9 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
           'aws:amp/queryLoggingConfiguration:QueryLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(guardedValue, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String>('workspaceId');
@@ -265,11 +266,12 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueryLoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueryLoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,7 +285,22 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(guardedValue, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [QueryLoggingConfiguration] resource.
+  QueryLoggingConfiguration.reference(String urn)
+    : super(
+        'aws:amp/queryLoggingConfiguration:QueryLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(guardedValue, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryLoggingConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String>('workspaceId');

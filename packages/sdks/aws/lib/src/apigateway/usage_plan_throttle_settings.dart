@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UsagePlanThrottleSettings {
   /// API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
-  final pulumi.Input<int>? burstLimit;
+  final pulumi.Input<int?>? burstLimit;
   /// API request steady-state rate limit.
-  final pulumi.Input<double>? rateLimit;
+  final pulumi.Input<double?>? rateLimit;
 
   /// Creates a new [UsagePlanThrottleSettings].
   /// [burstLimit] API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
@@ -25,8 +25,8 @@ class UsagePlanThrottleSettings {
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanThrottleSettings(
-      burstLimit: (() { final guardedValue = map['burstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      burstLimit: (() { final guardedValue = map['burstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

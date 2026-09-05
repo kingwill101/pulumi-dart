@@ -6,9 +6,9 @@ import 'evaluation_job_inference_config_rag_config_knowledge_base_config_retriev
 
 class EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfig {
   /// Configuration for retrieval with response generation. See `retrieveAndGenerateConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerateConfig>? retrieveAndGenerateConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveAndGenerateConfig?>? retrieveAndGenerateConfig;
   /// Configuration for retrieval only. See `retrieveConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfig>? retrieveConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfigRetrieveConfig?>? retrieveConfig;
 
   /// Creates a new [EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfig].
   /// [retrieveAndGenerateConfig] Configuration for retrieval with response generation. See `retrieveAndGenerateConfig` Block below.

@@ -9,9 +9,9 @@ class V2modelsIntentConfirmationSettingCodeHook {
   /// Whether a Lambda function should be invoked for the dialog.
   final pulumi.Input<bool> enableCodeHookInvocation;
   /// Label that indicates the dialog step from which the dialog code hook is happening.
-  final pulumi.Input<String>? invocationLabel;
+  final pulumi.Input<String?>? invocationLabel;
   /// Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See `postCodeHookSpecification`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification>? postCodeHookSpecification;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification?>? postCodeHookSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHook].
   /// [active] Whether a dialog code hook is used when the intent is activated.

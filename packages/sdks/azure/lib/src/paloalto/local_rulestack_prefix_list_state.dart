@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LocalRulestackPrefixList resources.
 class LocalRulestackPrefixListState {
   /// The comment for Audit purposes.
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// The description for the Prefix List.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Palo Alto Local Rulestack Prefix List.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a list of Prefixes.
-  final pulumi.Input<List<String>>? prefixLists;
+  final pulumi.Input<List<String>?>? prefixLists;
   /// The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.
-  final pulumi.Input<String>? rulestackId;
+  final pulumi.Input<String?>? rulestackId;
 
   /// Creates a new [LocalRulestackPrefixListState].
   /// [auditComment] The comment for Audit purposes.

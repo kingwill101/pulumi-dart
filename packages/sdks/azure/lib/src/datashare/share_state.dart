@@ -6,17 +6,17 @@ import 'share_snapshot_schedule.dart';
 /// Input properties used for looking up and filtering Share resources.
 class ShareState {
   /// The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The Data Share's description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The kind of the Data Share. Possible values are `CopyBased` and `InPlace`. Changing this forces a new Data Share to be created.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `snapshotSchedule` block as defined below.
-  final pulumi.Input<ShareSnapshotSchedule>? snapshotSchedule;
+  final pulumi.Input<ShareSnapshotSchedule?>? snapshotSchedule;
   /// The terms of the Data Share.
-  final pulumi.Input<String>? terms;
+  final pulumi.Input<String?>? terms;
 
   /// Creates a new [ShareState].
   /// [accountId] The ID of the Data Share account in which the Data Share is created. Changing this forces a new Data Share to be created.

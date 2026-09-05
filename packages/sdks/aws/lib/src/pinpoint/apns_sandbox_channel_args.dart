@@ -10,23 +10,23 @@ class ApnsSandboxChannelArgs {
   /// Application ID.
   final pulumi.Input<String> applicationId;
   /// ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app. Required if using Key credentials.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Pem encoded TLS Certificate from Apple. Required if using Certificate credentials.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Default authentication method used for APNs Sandbox. __NOTE__: AWS End User Messaging uses this default for every APNs push notification that you send using the console. You can override the default when you send a message programmatically using the AWS End User Messaging API, the AWS CLI, or an AWS SDK. If your default authentication type fails, AWS End User Messaging doesn't attempt to use the other authentication type.
-  final pulumi.Input<String>? defaultAuthenticationMethod;
+  final pulumi.Input<String?>? defaultAuthenticationMethod;
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Certificate Private Key file (ie. `.key` file). Required if using Certificate credentials.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID assigned to your Apple developer account team. This value is provided on the Membership page. Required if using Key credentials.
-  final pulumi.Input<String>? teamId;
+  final pulumi.Input<String?>? teamId;
   /// `.p8` file that you download from your Apple developer account when you create an authentication key. Required if using Key credentials.
-  final pulumi.Input<String>? tokenKey;
+  final pulumi.Input<String?>? tokenKey;
   /// ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section. Required if using Key credentials.
-  final pulumi.Input<String>? tokenKeyId;
+  final pulumi.Input<String?>? tokenKeyId;
 
   /// Creates a new [ApnsSandboxChannelArgs].
   /// [applicationId] Application ID.

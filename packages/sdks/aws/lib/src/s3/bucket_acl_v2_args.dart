@@ -9,15 +9,15 @@ import 'bucket_acl_v2_access_control_policy.dart';
 /// {@macro pulumi_s3_bucket_acl_v2_bucket_acl_v2_args_doc}
 class BucketAclV2Args {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
-  final pulumi.Input<BucketAclV2AccessControlPolicy>? accessControlPolicy;
+  final pulumi.Input<BucketAclV2AccessControlPolicy?>? accessControlPolicy;
   /// Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
-  final pulumi.Input<String>? acl;
+  final pulumi.Input<String?>? acl;
   /// Bucket to which to apply the ACL.
   final pulumi.Input<String> bucket;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketAclV2Args].
   /// [accessControlPolicy] Configuration block that sets the ACL permissions for an object per grantee. See below.

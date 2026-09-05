@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
 import 'environment_identity.dart';
 import 'environment_state.dart';
+import 'environment_workload_profile.dart';
 
 /// Manages a Container App Environment.
 ///
@@ -119,7 +120,7 @@ import 'environment_state.dart';
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
 /// 			LogsDestination:         pulumi.String("log-analytics"),
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -299,7 +300,7 @@ class Environment extends pulumi.CustomResource {
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// One or more `workloadProfile` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> workloadProfiles;
+  late final pulumi.Output<List<EnvironmentWorkloadProfile>?> workloadProfiles;
   /// Should the Container App Environment be created with Zone Redundancy enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** can only be set to `true` if `infrastructureSubnetId` is specified.
@@ -317,10 +318,11 @@ class Environment extends pulumi.CustomResource {
           'azure:containerapp/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['daprApplicationInsightsConnectionString'],
         ) {
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    daprApplicationInsightsConnectionString = registerOutput<String?>('daprApplicationInsightsConnectionString');
+    daprApplicationInsightsConnectionString = registerOutput<String?>('daprApplicationInsightsConnectionString', isSecret: true);
     defaultDomain = registerOutput<String>('defaultDomain');
     dockerBridgeCidr = registerOutput<String>('dockerBridgeCidr');
     identity = registerOutput<EnvironmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -337,8 +339,8 @@ class Environment extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     staticIpAddress = registerOutput<String>('staticIpAddress');
-    tags = registerOutput<Map<String, String>?>('tags');
-    workloadProfiles = registerOutput<List<Map<String, dynamic>>?>('workloadProfiles');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workloadProfiles = registerOutput<List<EnvironmentWorkloadProfile>?>('workloadProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentWorkloadProfile>(guardedValue, (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>())); });
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
 
@@ -347,11 +349,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -366,7 +369,7 @@ class Environment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    daprApplicationInsightsConnectionString = registerOutput<String?>('daprApplicationInsightsConnectionString');
+    daprApplicationInsightsConnectionString = registerOutput<String?>('daprApplicationInsightsConnectionString', isSecret: true);
     defaultDomain = registerOutput<String>('defaultDomain');
     dockerBridgeCidr = registerOutput<String>('dockerBridgeCidr');
     identity = registerOutput<EnvironmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -383,8 +386,41 @@ class Environment extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     staticIpAddress = registerOutput<String>('staticIpAddress');
-    tags = registerOutput<Map<String, String>?>('tags');
-    workloadProfiles = registerOutput<List<Map<String, dynamic>>?>('workloadProfiles');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workloadProfiles = registerOutput<List<EnvironmentWorkloadProfile>?>('workloadProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentWorkloadProfile>(guardedValue, (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'azure:containerapp/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['daprApplicationInsightsConnectionString'],
+        isResourceReference: true,
+      ) {
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    daprApplicationInsightsConnectionString = registerOutput<String?>('daprApplicationInsightsConnectionString', isSecret: true);
+    defaultDomain = registerOutput<String>('defaultDomain');
+    dockerBridgeCidr = registerOutput<String>('dockerBridgeCidr');
+    identity = registerOutput<EnvironmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureResourceGroupName = registerOutput<String?>('infrastructureResourceGroupName');
+    infrastructureSubnetId = registerOutput<String?>('infrastructureSubnetId');
+    internalLoadBalancerEnabled = registerOutput<bool?>('internalLoadBalancerEnabled');
+    location = registerOutput<String>('location');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+    logsDestination = registerOutput<String>('logsDestination');
+    mutualTlsEnabled = registerOutput<bool?>('mutualTlsEnabled');
+    this.name = registerOutput<String>('name');
+    platformReservedCidr = registerOutput<String>('platformReservedCidr');
+    platformReservedDnsIpAddress = registerOutput<String>('platformReservedDnsIpAddress');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    staticIpAddress = registerOutput<String>('staticIpAddress');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workloadProfiles = registerOutput<List<EnvironmentWorkloadProfile>?>('workloadProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentWorkloadProfile>(guardedValue, (value) => EnvironmentWorkloadProfile.fromMap((value as Map).cast<String, dynamic>())); });
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
 }

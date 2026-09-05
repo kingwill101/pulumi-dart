@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableGlobalTableWitness {
   /// Name of the AWS Region that serves as a witness for the MRSC global table.
-  final pulumi.Input<String>? regionName;
+  final pulumi.Input<String?>? regionName;
 
   /// Creates a new [TableGlobalTableWitness].
   /// [regionName] Name of the AWS Region that serves as a witness for the MRSC global table.

@@ -11,13 +11,13 @@ class SlackChannelConfigurationArgs {
   /// Name of the Slack channel configuration.
   final pulumi.Input<String> configurationName;
   /// List of IAM policy ARNs that are applied as channel guardrails. The AWS managed `AdministratorAccess` policy is applied by default if this is not set.
-  final pulumi.Input<List<String>>? guardrailPolicyArns;
+  final pulumi.Input<List<String>?>? guardrailPolicyArns;
   /// User-defined role that AWS Chatbot assumes. This is not the service-linked role.
   final pulumi.Input<String> iamRoleArn;
   /// Logging levels include `ERROR`, `INFO`, or `NONE`.
-  final pulumi.Input<String>? loggingLevel;
+  final pulumi.Input<String?>? loggingLevel;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the Slack channel. For example, `C07EZ1ABC23`.
   final pulumi.Input<String> slackChannelId;
   /// ID of the Slack workspace authorized with AWS Chatbot. For example, `T07EA123LEP`.
@@ -25,12 +25,12 @@ class SlackChannelConfigurationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> slackTeamId;
   /// ARNs of the SNS topics that deliver notifications to AWS Chatbot.
-  final pulumi.Input<List<String>>? snsTopicArns;
+  final pulumi.Input<List<String>?>? snsTopicArns;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<SlackChannelConfigurationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<SlackChannelConfigurationTimeouts?>? timeouts;
   /// Enables use of a user role requirement in your chat configuration.
-  final pulumi.Input<bool>? userAuthorizationRequired;
+  final pulumi.Input<bool?>? userAuthorizationRequired;
 
   /// Creates a new [SlackChannelConfigurationArgs].
   /// [configurationName] Name of the Slack channel configuration.

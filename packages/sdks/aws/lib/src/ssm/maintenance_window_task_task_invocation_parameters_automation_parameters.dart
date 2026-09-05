@@ -5,9 +5,9 @@ import 'maintenance_window_task_task_invocation_parameters_automation_parameters
 
 class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
   /// The version of an Automation document to use during task execution.
-  final pulumi.Input<String>? documentVersion;
+  final pulumi.Input<String?>? documentVersion;
   /// The parameters for the RUN_COMMAND task execution. Documented below.
-  final pulumi.Input<List<MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter>>? parameters;
+  final pulumi.Input<List<MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter>?>? parameters;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersAutomationParameters].
   /// [documentVersion] The version of an Automation document to use during task execution.

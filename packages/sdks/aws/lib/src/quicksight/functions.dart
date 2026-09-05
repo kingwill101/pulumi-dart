@@ -130,6 +130,17 @@ Future<GetDataSetResult> getDataSet(
   return GetDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSetResult> getDataSetOutput(
+  GetDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:quicksight/getDataSet:getDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSetResult.fromMap);
+}
+
 /// Data source for managing an AWS QuickSight Analysis.
 ///
 /// ## Example Usage
@@ -248,6 +259,17 @@ Future<GetQuicksightAnalysisResult> getQuicksightAnalysis(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQuicksightAnalysisResult.fromMap(result);
+}
+
+pulumi.Output<GetQuicksightAnalysisResult> getQuicksightAnalysisOutput(
+  GetQuicksightAnalysisArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:quicksight/getQuicksightAnalysis:getQuicksightAnalysis',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQuicksightAnalysisResult.fromMap);
 }
 
 /// This data source can be used to fetch information about a specific
@@ -372,6 +394,17 @@ Future<GetQuicksightGroupResult> getQuicksightGroup(
   return GetQuicksightGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetQuicksightGroupResult> getQuicksightGroupOutput(
+  GetQuicksightGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:quicksight/getQuicksightGroup:getQuicksightGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQuicksightGroupResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// QuickSight user. By using this data source, you can reference QuickSight user
 /// properties without having to hard code ARNs or unique IDs as input.
@@ -494,6 +527,17 @@ Future<GetQuicksightUserResult> getQuicksightUser(
   return GetQuicksightUserResult.fromMap(result);
 }
 
+pulumi.Output<GetQuicksightUserResult> getQuicksightUserOutput(
+  GetQuicksightUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:quicksight/getQuicksightUser:getQuicksightUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQuicksightUserResult.fromMap);
+}
+
 /// Data source for managing an AWS QuickSight Theme.
 ///
 /// ## Example Usage
@@ -612,4 +656,15 @@ Future<GetThemeResult> getTheme(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetThemeResult.fromMap(result);
+}
+
+pulumi.Output<GetThemeResult> getThemeOutput(
+  GetThemeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:quicksight/getTheme:getTheme',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetThemeResult.fromMap);
 }

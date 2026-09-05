@@ -8,48 +8,48 @@ import 'microvms_image_timeouts.dart';
 /// Input properties used for looking up and filtering MicrovmsImage resources.
 class MicrovmsImageState {
   /// List of additional OS capabilities granted to the MicroVM runtime environment. Valid values: `ALL`.
-  final pulumi.Input<List<String>>? additionalOsCapabilities;
+  final pulumi.Input<List<String>?>? additionalOsCapabilities;
   /// ARN of the Image.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the base MicroVM image. AWS-managed base images use ARNs of the form `arn:aws:lambda:&lt;region&gt;:aws:microvm-image:al2023-1`.
-  final pulumi.Input<String>? baseImageArn;
+  final pulumi.Input<String?>? baseImageArn;
   /// Major version number of the base MicroVM image to use (e.g., `1`). If omitted, the service selects a version.
-  final pulumi.Input<String>? baseImageVersion;
+  final pulumi.Input<String?>? baseImageVersion;
   /// ARN of the IAM role used to build the image. The role must be assumable by `lambda.amazonaws.com` and have access to the code artifact.
-  final pulumi.Input<String>? buildRoleArn;
+  final pulumi.Input<String?>? buildRoleArn;
   /// Code artifact containing the application code and metadata for the image. See below.
-  final pulumi.Input<MicrovmsImageCodeArtifact>? codeArtifact;
+  final pulumi.Input<MicrovmsImageCodeArtifact?>? codeArtifact;
   /// CPU configuration for the MicroVM. See `cpuConfiguration` Block below.
-  final pulumi.Input<List<MicrovmsImageCpuConfiguration>>? cpuConfigurations;
+  final pulumi.Input<List<MicrovmsImageCpuConfiguration>?>? cpuConfigurations;
   /// RFC3339 timestamp when the image was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the MicroVM image.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of egress network connectors available to the MicroVM at runtime. Defaults to `["INTERNET_EGRESS"]`.
-  final pulumi.Input<List<String>>? egressNetworkConnectors;
+  final pulumi.Input<List<String>?>? egressNetworkConnectors;
   /// Map of environment variables set in the MicroVM runtime environment.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Current version of the image.
-  final pulumi.Input<String>? imageVersion;
+  final pulumi.Input<String?>? imageVersion;
   /// Latest active version of the image.
-  final pulumi.Input<String>? latestActiveImageVersion;
+  final pulumi.Input<String?>? latestActiveImageVersion;
   /// Latest failed version of the image, if any.
-  final pulumi.Input<String>? latestFailedImageVersion;
+  final pulumi.Input<String?>? latestFailedImageVersion;
   /// Name of the MicroVM image. Changing this value creates a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current state of the image (e.g., `CREATED`).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<MicrovmsImageTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<MicrovmsImageTimeouts?>? timeouts;
   /// RFC3339 timestamp when the image was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [MicrovmsImageState].
   /// [additionalOsCapabilities] List of additional OS capabilities granted to the MicroVM runtime environment. Valid values: `ALL`.

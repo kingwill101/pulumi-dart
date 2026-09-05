@@ -9,15 +9,15 @@ import 'managed_hardware_security_module_role_definition_permission.dart';
 /// {@macro pulumi_keyvault_managed_hardware_security_module_role_definition_managed_hardware_security_module_role_definition_args_doc}
 class ManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// Specifies a text description about this Key Vault Managed Hardware Security Module Role Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the Key Vault Managed Hardware Security Module. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
   final pulumi.Input<String> managedHsmId;
   /// The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `permission` blocks as defined below.
-  final pulumi.Input<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>? permissions;
+  final pulumi.Input<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?>? permissions;
   /// Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
 
   /// Creates a new [ManagedHardwareSecurityModuleRoleDefinitionArgs].
   /// [description] Specifies a text description about this Key Vault Managed Hardware Security Module Role Definition.

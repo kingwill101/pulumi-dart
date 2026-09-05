@@ -9,10 +9,10 @@ import 'route_server_vpc_association_timeouts.dart';
 /// {@macro pulumi_vpc_route_server_vpc_association_route_server_vpc_association_args_doc}
 class RouteServerVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifier for the route server to be associated.
   final pulumi.Input<String> routeServerId;
-  final pulumi.Input<RouteServerVpcAssociationTimeouts>? timeouts;
+  final pulumi.Input<RouteServerVpcAssociationTimeouts?>? timeouts;
   /// The ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:

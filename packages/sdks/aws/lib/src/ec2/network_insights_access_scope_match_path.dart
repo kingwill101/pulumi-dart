@@ -7,10 +7,10 @@ import 'network_insights_access_scope_match_path_source.dart';
 class NetworkInsightsAccessScopeMatchPath {
   /// Path statement for the destination.
   /// See `source` and `destination` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestination>? destination;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathDestination?>? destination;
   /// Path statement for the source.
   /// See `source` and `destination` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSource>? source;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSource?>? source;
 
   /// Creates a new [NetworkInsightsAccessScopeMatchPath].
   /// [destination] Path statement for the destination.

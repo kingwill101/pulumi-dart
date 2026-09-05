@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySetDefinitionPolicyDefinitionGroup {
   /// The ID of a resource that contains additional metadata for this Policy Definition Group.
-  final pulumi.Input<String>? additionalMetadataResourceId;
+  final pulumi.Input<String?>? additionalMetadataResourceId;
   /// The category of this Policy Definition Group.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The description of this Policy Definition Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of this Policy Definition Group.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name which should be used for this Policy Definition Group.
   final pulumi.Input<String> name;
 

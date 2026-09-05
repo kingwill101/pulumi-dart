@@ -14,15 +14,15 @@ class PolicyVMWorkloadProtectionPolicy {
   /// The type of the VM Workload Backup Policy. Possible values are `Differential`, `Full`, `Incremental` and `Log`.
   final pulumi.Input<String> policyType;
   /// A `retentionDaily` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionDaily>? retentionDaily;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionDaily?>? retentionDaily;
   /// A `retentionMonthly` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionMonthly>? retentionMonthly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionMonthly?>? retentionMonthly;
   /// A `retentionWeekly` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionWeekly>? retentionWeekly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionWeekly?>? retentionWeekly;
   /// A `retentionYearly` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionYearly>? retentionYearly;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicyRetentionYearly?>? retentionYearly;
   /// A `simpleRetention` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadProtectionPolicySimpleRetention>? simpleRetention;
+  final pulumi.Input<PolicyVMWorkloadProtectionPolicySimpleRetention?>? simpleRetention;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicy].
   /// [backup] A `backup` block as defined below.

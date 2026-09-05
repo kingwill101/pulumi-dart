@@ -132,7 +132,7 @@ import 'cluster_iam_roles_state.dart';
 class ClusterIamRoles extends pulumi.CustomResource {
   /// The name of the Redshift Cluster IAM Roles.
   late final pulumi.Output<String> clusterIdentifier;
-  /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
+  /// ARN for the IAM role that was set as default for the cluster when the cluster was created.
   late final pulumi.Output<String> defaultIamRoleArn;
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   late final pulumi.Output<List<String>> iamRoleArns;
@@ -151,11 +151,11 @@ class ClusterIamRoles extends pulumi.CustomResource {
           'aws:redshift/clusterIamRoles:ClusterIamRoles',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
-    iamRoleArns = registerOutput<List<String>>('iamRoleArns');
+    iamRoleArns = registerOutput<List<String>>('iamRoleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
   }
 
@@ -164,11 +164,12 @@ class ClusterIamRoles extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterIamRolesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterIamRoles._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,7 +185,22 @@ class ClusterIamRoles extends pulumi.CustomResource {
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
-    iamRoleArns = registerOutput<List<String>>('iamRoleArns');
+    iamRoleArns = registerOutput<List<String>>('iamRoleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ClusterIamRoles] resource.
+  ClusterIamRoles.reference(String urn)
+    : super(
+        'aws:redshift/clusterIamRoles:ClusterIamRoles',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
+    iamRoleArns = registerOutput<List<String>>('iamRoleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
   }
 }

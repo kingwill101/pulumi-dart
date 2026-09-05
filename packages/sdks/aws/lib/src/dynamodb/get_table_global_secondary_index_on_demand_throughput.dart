@@ -23,8 +23,8 @@ class GetTableGlobalSecondaryIndexOnDemandThroughput {
 
   factory GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: pulumi.Input.fromValue(map['maxReadRequestUnits'] as int),
-      maxWriteRequestUnits: pulumi.Input.fromValue(map['maxWriteRequestUnits'] as int),
+      maxReadRequestUnits: pulumi.Input.fromValue((map['maxReadRequestUnits'] as num).toInt()),
+      maxWriteRequestUnits: pulumi.Input.fromValue((map['maxWriteRequestUnits'] as num).toInt()),
     );
   }
 }

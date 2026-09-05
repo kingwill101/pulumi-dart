@@ -211,7 +211,7 @@ import 'volume_copy_timeouts.dart';
 /// $ pulumi import aws:ebs/volumeCopy:VolumeCopy example vol-049df61146c4d7901
 /// ```
 class VolumeCopy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the copied EBS volume.
+  /// ARN of the copied EBS volume.
   late final pulumi.Output<String> arn;
   /// Availability Zone for the copied volume.
   late final pulumi.Output<String> availabilityZone;
@@ -247,7 +247,7 @@ class VolumeCopy extends pulumi.CustomResource {
           'aws:ebs/volumeCopy:VolumeCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -255,8 +255,8 @@ class VolumeCopy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     sourceVolumeId = registerOutput<String>('sourceVolumeId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughput = registerOutput<int>('throughput');
     timeouts = registerOutput<VolumeCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     volumeType = registerOutput<String>('volumeType');
@@ -267,11 +267,12 @@ class VolumeCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,8 +292,30 @@ class VolumeCopy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     sourceVolumeId = registerOutput<String>('sourceVolumeId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughput = registerOutput<int>('throughput');
+    timeouts = registerOutput<VolumeCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    volumeType = registerOutput<String>('volumeType');
+  }
+
+  /// Creates a typed reference to an existing [VolumeCopy] resource.
+  VolumeCopy.reference(String urn)
+    : super(
+        'aws:ebs/volumeCopy:VolumeCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    iops = registerOutput<int>('iops');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    sourceVolumeId = registerOutput<String>('sourceVolumeId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughput = registerOutput<int>('throughput');
     timeouts = registerOutput<VolumeCopyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCopyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     volumeType = registerOutput<String>('volumeType');

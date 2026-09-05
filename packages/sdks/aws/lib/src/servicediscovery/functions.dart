@@ -131,6 +131,17 @@ Future<GetDnsNamespaceResult> getDnsNamespace(
   return GetDnsNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetDnsNamespaceResult> getDnsNamespaceOutput(
+  GetDnsNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicediscovery/getDnsNamespace:getDnsNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnsNamespaceResult.fromMap);
+}
+
 /// ## Example Usage
 ///
 ///
@@ -245,6 +256,17 @@ Future<GetHttpNamespaceResult> getHttpNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHttpNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetHttpNamespaceResult> getHttpNamespaceOutput(
+  GetHttpNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicediscovery/getHttpNamespace:getHttpNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpNamespaceResult.fromMap);
 }
 
 /// Retrieves information about a Service Discovery Service.
@@ -370,4 +392,15 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicediscovery/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }

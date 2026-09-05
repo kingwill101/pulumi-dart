@@ -5,7 +5,7 @@ import 'agentcore_agent_runtime_authorizer_configuration_custom_jwt_authorizer.d
 
 class AgentcoreAgentRuntimeAuthorizerConfiguration {
   /// JWT-based authorization configuration block. See `customJwtAuthorizer` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer?>? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `customJwtAuthorizer` below.

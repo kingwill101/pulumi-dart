@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv {
   /// Indicates if the CSV data has a header.
-  final pulumi.Input<bool>? header;
+  final pulumi.Input<bool?>? header;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv].
   /// [header] Indicates if the CSV data has a header.

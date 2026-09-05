@@ -6,7 +6,7 @@ class ContactProfileLinkChannelEndPoint {
   /// Name of an end point.
   final pulumi.Input<String> endPointName;
   /// IP address of an end point.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// TCP port to listen on to receive data.
   final pulumi.Input<String> port;
   /// Protocol of an end point. Possible values are `TCP` and `UDP`.

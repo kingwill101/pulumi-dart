@@ -24,6 +24,7 @@ import 'project_state.dart';
 ///     name: "examplekv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -75,6 +76,7 @@ import 'project_state.dart';
 ///     name="examplekv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -130,6 +132,7 @@ import 'project_state.dart';
 ///         Name = "examplekv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -206,18 +209,19 @@ import 'project_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("examplekv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("examplekv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -245,8 +249,8 @@ import 'project_state.dart';
 /// 			Name:              pulumi.String("exampleaihub"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			StorageAccountId:  exampleAccount.ID(),
-/// 			KeyVaultId:        exampleKeyVault.ID(),
+/// 			StorageAccountId:  exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:        exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &aifoundry.HubIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -257,7 +261,7 @@ import 'project_state.dart';
 /// 		_, err = aifoundry.NewProject(ctx, "example", &aifoundry.ProjectArgs{
 /// 			Name:            pulumi.String("example"),
 /// 			Location:        exampleHub.Location,
-/// 			AiServicesHubId: exampleHub.ID(),
+/// 			AiServicesHubId: exampleHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -283,12 +287,13 @@ import 'project_state.dart';
 ///   location = "westeurope"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "examplekv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "examplekv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "example" {
 ///   key_vault_id    = azure_keyvault_keyvault.example.id
@@ -363,6 +368,7 @@ import 'project_state.dart';
 ///             .name("examplekv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -422,6 +428,7 @@ import 'project_state.dart';
 ///       name: examplekv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -521,7 +528,7 @@ class Project extends pulumi.CustomResource {
           'azure:aifoundry/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     aiServicesHubId = registerOutput<String>('aiServicesHubId');
     description = registerOutput<String?>('description');
@@ -532,7 +539,7 @@ class Project extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
     projectId = registerOutput<String>('projectId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -540,11 +547,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -567,6 +575,27 @@ class Project extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
     projectId = registerOutput<String>('projectId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'azure:aifoundry/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aiServicesHubId = registerOutput<String>('aiServicesHubId');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
+    identity = registerOutput<ProjectIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    projectId = registerOutput<String>('projectId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

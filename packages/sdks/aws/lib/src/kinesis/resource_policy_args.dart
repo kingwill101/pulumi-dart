@@ -10,14 +10,14 @@ class ResourcePolicyArgs {
   /// The policy document.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the data stream or consumer.
+  final pulumi.Input<String?>? region;
+  /// ARN of the data stream or consumer.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ResourcePolicyArgs].
   /// [policy] The policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The Amazon Resource Name (ARN) of the data stream or consumer.
+  /// [resourceArn] ARN of the data stream or consumer.
   const ResourcePolicyArgs({
     required this.policy,
     this.region,

@@ -187,6 +187,17 @@ Future<GetDefinitionResult> getDefinition(
   return GetDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetDefinitionResult> getDefinitionOutput(
+  GetDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:blueprint/getDefinition:getDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefinitionResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Blueprint Published Version
 ///
 /// &gt; **Note:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
@@ -347,4 +358,15 @@ Future<GetPublishedVersionResult> getPublishedVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublishedVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetPublishedVersionResult> getPublishedVersionOutput(
+  GetPublishedVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:blueprint/getPublishedVersion:getPublishedVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublishedVersionResult.fromMap);
 }

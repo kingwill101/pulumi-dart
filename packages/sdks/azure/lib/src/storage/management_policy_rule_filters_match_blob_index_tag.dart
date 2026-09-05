@@ -6,7 +6,7 @@ class ManagementPolicyRuleFiltersMatchBlobIndexTag {
   /// The filter tag name used for tag based filtering for blob objects.
   final pulumi.Input<String> name;
   /// The comparison operator which is used for object comparison and filtering. Possible value is `==`. Defaults to `==`.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// The filter tag value used for tag based filtering for blob objects.
   final pulumi.Input<String> value;
 

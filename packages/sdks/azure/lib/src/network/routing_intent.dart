@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_intent_args.dart';
+import 'routing_intent_routing_policy.dart';
 import 'routing_intent_state.dart';
 
 /// Manages a Virtual Hub Routing Intent.
@@ -178,7 +179,7 @@ import 'routing_intent_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -191,7 +192,7 @@ import 'routing_intent_state.dart';
 /// 			SkuName:           pulumi.String("AZFW_Hub"),
 /// 			SkuTier:           pulumi.String("Standard"),
 /// 			VirtualHub: &network.FirewallVirtualHubArgs{
-/// 				VirtualHubId:  exampleVirtualHub.ID(),
+/// 				VirtualHubId:  exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 				PublicIpCount: pulumi.Int(1),
 /// 			},
 /// 		})
@@ -200,14 +201,14 @@ import 'routing_intent_state.dart';
 /// 		}
 /// 		_, err = network.NewRoutingIntent(ctx, "example", &network.RoutingIntentArgs{
 /// 			Name:         pulumi.String("example-routingintent"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			RoutingPolicies: network.RoutingIntentRoutingPolicyArray{
 /// 				&network.RoutingIntentRoutingPolicyArgs{
 /// 					Name: pulumi.String("InternetTrafficPolicy"),
 /// 					Destinations: pulumi.StringArray{
 /// 						pulumi.String("Internet"),
 /// 					},
-/// 					NextHop: exampleFirewall.ID(),
+/// 					NextHop: exampleFirewall.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -406,7 +407,7 @@ class RoutingIntent extends pulumi.CustomResource {
   /// The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `routingPolicy` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingPolicies;
+  late final pulumi.Output<List<RoutingIntentRoutingPolicy>> routingPolicies;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -422,10 +423,10 @@ class RoutingIntent extends pulumi.CustomResource {
           'azure:network/routingIntent:RoutingIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
-    routingPolicies = registerOutput<List<Map<String, dynamic>>>('routingPolicies');
+    routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(guardedValue, (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -434,11 +435,12 @@ class RoutingIntent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutingIntentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoutingIntent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -453,7 +455,21 @@ class RoutingIntent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
-    routingPolicies = registerOutput<List<Map<String, dynamic>>>('routingPolicies');
+    routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(guardedValue, (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [RoutingIntent] resource.
+  RoutingIntent.reference(String urn)
+    : super(
+        'azure:network/routingIntent:RoutingIntent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(guardedValue, (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

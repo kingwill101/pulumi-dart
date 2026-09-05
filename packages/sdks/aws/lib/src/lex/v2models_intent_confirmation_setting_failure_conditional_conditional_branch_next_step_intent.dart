@@ -5,9 +5,9 @@ import 'v2models_intent_confirmation_setting_failure_conditional_conditional_bra
 
 class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntent].
   /// [name] Name of the intent.

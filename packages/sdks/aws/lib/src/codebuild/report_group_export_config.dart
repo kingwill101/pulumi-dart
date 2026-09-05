@@ -5,7 +5,7 @@ import 'report_group_export_config_s3_destination.dart';
 
 class ReportGroupExportConfig {
   /// contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
-  final pulumi.Input<ReportGroupExportConfigS3Destination>? s3Destination;
+  final pulumi.Input<ReportGroupExportConfigS3Destination?>? s3Destination;
   /// The export configuration type. Valid values are `S3` and `NO_EXPORT`.
   final pulumi.Input<String> type;
 

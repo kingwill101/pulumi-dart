@@ -10,9 +10,9 @@ class GetDevicesArgs {
   /// ID of the Global Network of the devices to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// ID of the site of the devices to retrieve.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// Restricts the list to the devices with these tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDevicesArgs].
   /// [globalNetworkId] ID of the Global Network of the devices to retrieve.

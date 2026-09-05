@@ -6,25 +6,25 @@ import 'default_route_table_route.dart';
 /// Input properties used for looking up and filtering DefaultRouteTable resources.
 class DefaultRouteTableState {
   /// The ARN of the route table.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the default route table.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? defaultRouteTableId;
+  final pulumi.Input<String?>? defaultRouteTableId;
   /// ID of the AWS account that owns the route table.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// List of virtual gateways for propagation.
-  final pulumi.Input<List<String>>? propagatingVgws;
+  final pulumi.Input<List<String>?>? propagatingVgws;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of objects. Detailed below
-  final pulumi.Input<List<DefaultRouteTableRoute>>? routes;
+  final pulumi.Input<List<DefaultRouteTableRoute>?>? routes;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the VPC.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [DefaultRouteTableState].
   /// [arn] The ARN of the route table.

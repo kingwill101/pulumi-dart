@@ -116,7 +116,7 @@ import 'group_policy_exemption_state.dart';
 /// 		}
 /// 		exampleGroupPolicyAssignment, err := management.NewGroupPolicyAssignment(ctx, "example", &management.GroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("assignment1"),
-/// 			ManagementGroupId:  exampleGroup.ID(),
+/// 			ManagementGroupId:  exampleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Location:           pulumi.String("westus"),
 /// 			Identity: &management.GroupPolicyAssignmentIdentityArgs{
@@ -128,8 +128,8 @@ import 'group_policy_exemption_state.dart';
 /// 		}
 /// 		_, err = management.NewGroupPolicyExemption(ctx, "example", &management.GroupPolicyExemptionArgs{
 /// 			Name:               pulumi.String("exemption1"),
-/// 			ManagementGroupId:  exampleGroup.ID(),
-/// 			PolicyAssignmentId: exampleGroupPolicyAssignment.ID(),
+/// 			ManagementGroupId:  exampleGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyAssignmentId: exampleGroupPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -300,7 +300,7 @@ class GroupPolicyExemption extends pulumi.CustomResource {
           'azure:management/groupPolicyExemption:GroupPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -310,7 +310,7 @@ class GroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [GroupPolicyExemption] resource's state with the given [name] and [id].
@@ -318,11 +318,12 @@ class GroupPolicyExemption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPolicyExemptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPolicyExemption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -344,6 +345,26 @@ class GroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GroupPolicyExemption] resource.
+  GroupPolicyExemption.reference(String urn)
+    : super(
+        'azure:management/groupPolicyExemption:GroupPolicyExemption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    exemptionCategory = registerOutput<String>('exemptionCategory');
+    expiresOn = registerOutput<String?>('expiresOn');
+    managementGroupId = registerOutput<String>('managementGroupId');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

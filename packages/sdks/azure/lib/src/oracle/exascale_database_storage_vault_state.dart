@@ -6,25 +6,25 @@ import 'exascale_database_storage_vault_high_capacity_database_storage.dart';
 /// Input properties used for looking up and filtering ExascaleDatabaseStorageVault resources.
 class ExascaleDatabaseStorageVaultState {
   /// The size of additional Flash Cache in percentage of High Capacity database storage. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<int>? additionalFlashCachePercentage;
+  final pulumi.Input<int?>? additionalFlashCachePercentage;
   /// Exadata Database Storage Vault description. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A `highCapacityDatabaseStorage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>? highCapacityDatabaseStorage;
+  final pulumi.Input<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage?>? highCapacityDatabaseStorage;
   /// The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Exadata Database Storage Vault.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The time zone that you want to use for the Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created. For details, see [Time Zones](https://docs.oracle.com/en/cloud/paas/base-database/time-zone/).
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Exadata Database Storage Vault zones. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ExascaleDatabaseStorageVaultState].
   /// [additionalFlashCachePercentage] The size of additional Flash Cache in percentage of High Capacity database storage. Changing this forces a new Exadata Database Storage Vault to be created.
@@ -67,7 +67,7 @@ class ExascaleDatabaseStorageVaultState {
 
   factory ExascaleDatabaseStorageVaultState.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultState(
-      additionalFlashCachePercentage: (() { final guardedValue = map['additionalFlashCachePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalFlashCachePercentage: (() { final guardedValue = map['additionalFlashCachePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       highCapacityDatabaseStorage: (() { final guardedValue = map['highCapacityDatabaseStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

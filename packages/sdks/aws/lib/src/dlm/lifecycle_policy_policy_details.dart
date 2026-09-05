@@ -9,35 +9,35 @@ import 'lifecycle_policy_policy_details_schedule.dart';
 
 class LifecyclePolicyPolicyDetails {
   /// The actions to be performed when the event-based policy is triggered. You can specify only one action per policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `action` configuration block.
-  final pulumi.Input<LifecyclePolicyPolicyDetailsAction>? action;
-  final pulumi.Input<bool>? copyTags;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsAction?>? action;
+  final pulumi.Input<bool?>? copyTags;
   /// How often the policy should run and create snapshots or AMIs. valid values range from `1` to `7`. Default value is `1`.
-  final pulumi.Input<int>? createInterval;
+  final pulumi.Input<int?>? createInterval;
   /// The event that triggers the event-based policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `eventSource` configuration block.
-  final pulumi.Input<LifecyclePolicyPolicyDetailsEventSource>? eventSource;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsEventSource?>? eventSource;
   /// Specifies exclusion parameters for volumes or instances for which you do not want to create snapshots or AMIs.  See the `exclusions` configuration block.
-  final pulumi.Input<LifecyclePolicyPolicyDetailsExclusions>? exclusions;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsExclusions?>? exclusions;
   /// snapshot or AMI retention behavior for the policy if the source volume or instance is deleted, or if the policy enters the error, disabled, or deleted state. Default value is `false`.
-  final pulumi.Input<bool>? extendDeletion;
-  final pulumi.Input<LifecyclePolicyPolicyDetailsParameters>? parameters;
+  final pulumi.Input<bool?>? extendDeletion;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsParameters?>? parameters;
   /// Type of policy to create. `SIMPLIFIED` To create a default policy. `STANDARD` To create a custom policy.
-  final pulumi.Input<String>? policyLanguage;
+  final pulumi.Input<String?>? policyLanguage;
   /// The valid target resource types and actions a policy can manage. Specify `EBS_SNAPSHOT_MANAGEMENT` to create a lifecycle policy that manages the lifecycle of Amazon EBS snapshots. Specify `IMAGE_MANAGEMENT` to create a lifecycle policy that manages the lifecycle of EBS-backed AMIs. Specify `EVENT_BASED_POLICY` to create an event-based policy that performs specific actions when a defined event occurs in your AWS account. Default value is `EBS_SNAPSHOT_MANAGEMENT`.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<String?>? policyType;
   /// The location of the resources to backup. If the source resources are located in an AWS Region, specify `CLOUD`. If the source resources are located on an Outpost in your account, specify `OUTPOST`. If the source resources are located in a Local Zone, specify `LOCAL_ZONE`. Valid values are `CLOUD`, `LOCAL_ZONE`, and `OUTPOST`.
-  final pulumi.Input<String>? resourceLocations;
+  final pulumi.Input<String?>? resourceLocations;
   /// Type of default policy to create. Valid values are `VOLUME` and `INSTANCE`.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// A list of resource types that should be targeted by the lifecycle policy. Valid values are `VOLUME` and `INSTANCE`.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// Specifies how long the policy should retain snapshots or AMIs before deleting them. valid values range from `2` to `14`. Default value is `7`.
-  final pulumi.Input<int>? retainInterval;
+  final pulumi.Input<int?>? retainInterval;
   /// See the `schedule` configuration block.
-  final pulumi.Input<List<LifecyclePolicyPolicyDetailsSchedule>>? schedules;
+  final pulumi.Input<List<LifecyclePolicyPolicyDetailsSchedule>?>? schedules;
   /// A map of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted. Required when `policyType` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policyType` is `EVENT_BASED_POLICY`.
   ///
   /// &gt; Note: You cannot have overlapping lifecycle policies that share the same `targetTags`. Pulumi is unable to detect this at plan time but it will fail during apply.
-  final pulumi.Input<Map<String, String>>? targetTags;
+  final pulumi.Input<Map<String, String>?>? targetTags;
 
   /// Creates a new [LifecyclePolicyPolicyDetails].
   /// [action] The actions to be performed when the event-based policy is triggered. You can specify only one action per policy. This parameter is required for event-based policies only. If you are creating a snapshot or AMI policy, omit this parameter. See the `action` configuration block.
@@ -97,7 +97,7 @@ class LifecyclePolicyPolicyDetails {
     return LifecyclePolicyPolicyDetails(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       copyTags: (() { final guardedValue = map['copyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      createInterval: (() { final guardedValue = map['createInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      createInterval: (() { final guardedValue = map['createInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       eventSource: (() { final guardedValue = map['eventSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsEventSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsExclusions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendDeletion: (() { final guardedValue = map['extendDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -107,7 +107,7 @@ class LifecyclePolicyPolicyDetails {
       resourceLocations: (() { final guardedValue = map['resourceLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      retainInterval: (() { final guardedValue = map['retainInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retainInterval: (() { final guardedValue = map['retainInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       schedules: (() { final guardedValue = map['schedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(guardedValue, (value) => LifecyclePolicyPolicyDetailsSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetTags: (() { final guardedValue = map['targetTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

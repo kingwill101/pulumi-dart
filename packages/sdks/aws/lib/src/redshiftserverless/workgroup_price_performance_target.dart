@@ -6,7 +6,7 @@ class WorkgroupPricePerformanceTarget {
   /// Whether to enable price-performance scaling.
   final pulumi.Input<bool> enabled;
   /// The price-performance scaling level. Valid values are `1` (LOW_COST), `25` (ECONOMICAL), `50` (BALANCED), `75` (RESOURCEFUL), and `100` (HIGH_PERFORMANCE).
-  final pulumi.Input<int>? level;
+  final pulumi.Input<int?>? level;
 
   /// Creates a new [WorkgroupPricePerformanceTarget].
   /// [enabled] Whether to enable price-performance scaling.
@@ -26,7 +26,7 @@ class WorkgroupPricePerformanceTarget {
   factory WorkgroupPricePerformanceTarget.fromMap(Map<String, dynamic> map) {
     return WorkgroupPricePerformanceTarget(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

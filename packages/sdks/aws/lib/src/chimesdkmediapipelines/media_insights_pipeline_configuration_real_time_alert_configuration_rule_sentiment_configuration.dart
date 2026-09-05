@@ -32,7 +32,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration(
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       sentimentType: pulumi.Input.fromValue(map['sentimentType'] as String),
-      timePeriod: pulumi.Input.fromValue(map['timePeriod'] as int),
+      timePeriod: pulumi.Input.fromValue((map['timePeriod'] as num).toInt()),
     );
   }
 }

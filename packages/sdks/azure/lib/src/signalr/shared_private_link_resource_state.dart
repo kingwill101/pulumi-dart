@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SharedPrivateLinkResource resources.
 class SharedPrivateLinkResourceState {
   /// The name of the Signalr Shared Private Link Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The request message for requesting approval of the Shared Private Link Enabled Remote Resource.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The id of the Signalr Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? signalrServiceId;
+  final pulumi.Input<String?>? signalrServiceId;
   /// The status of a private endpoint connection. Possible values are `Pending`, `Approved`, `Rejected` or `Disconnected`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The sub resource name which the Signalr Private Endpoint can connect to. Possible values are `sites`, `vault`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subResourceName;
+  final pulumi.Input<String?>? subResourceName;
   /// The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `subResourceName` should match with the type of the `targetResourceId` that's being specified.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [SharedPrivateLinkResourceState].
   /// [name] The name of the Signalr Shared Private Link Resource. Changing this forces a new resource to be created.

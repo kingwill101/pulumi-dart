@@ -14,22 +14,22 @@ import 'file_system_policy_state.dart';
 /// const fs = new aws.efs.FileSystem("fs", {creationToken: "my-product"});
 /// const policy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: "ExampleStatement01",
-///         effect: "Allow",
-///         principals: [{
-///             type: "AWS",
-///             identifiers: ["*"],
-///         }],
-///         actions: [
-///             "elasticfilesystem:ClientMount",
-///             "elasticfilesystem:ClientWrite",
-///         ],
-///         resources: [fs.arn],
 ///         conditions: [{
 ///             test: "Bool",
 ///             variable: "aws:SecureTransport",
 ///             values: ["true"],
 ///         }],
+///         principals: [{
+///             type: "AWS",
+///             identifiers: ["*"],
+///         }],
+///         sid: "ExampleStatement01",
+///         effect: "Allow",
+///         actions: [
+///             "elasticfilesystem:ClientMount",
+///             "elasticfilesystem:ClientWrite",
+///         ],
+///         resources: [fs.arn],
 ///     }],
 /// });
 /// const policyFileSystemPolicy = new aws.efs.FileSystemPolicy("policy", {
@@ -43,22 +43,22 @@ import 'file_system_policy_state.dart';
 ///
 /// fs = aws.efs.FileSystem("fs", creation_token="my-product")
 /// policy = aws.iam.get_policy_document_output(statements=[{
-///     "sid": "ExampleStatement01",
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "AWS",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": [
-///         "elasticfilesystem:ClientMount",
-///         "elasticfilesystem:ClientWrite",
-///     ],
-///     "resources": [fs.arn],
 ///     "conditions": [{
 ///         "test": "Bool",
 ///         "variable": "aws:SecureTransport",
 ///         "values": ["true"],
 ///     }],
+///     "principals": [{
+///         "type": "AWS",
+///         "identifiers": ["*"],
+///     }],
+///     "sid": "ExampleStatement01",
+///     "effect": "Allow",
+///     "actions": [
+///         "elasticfilesystem:ClientMount",
+///         "elasticfilesystem:ClientWrite",
+///     ],
+///     "resources": [fs.arn],
 /// }])
 /// policy_file_system_policy = aws.efs.FileSystemPolicy("policy",
 ///     file_system_id=fs.id,
@@ -83,28 +83,6 @@ import 'file_system_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "ExampleStatement01",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "elasticfilesystem:ClientMount",
-///                     "elasticfilesystem:ClientWrite",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     fs.Arn,
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -116,6 +94,28 @@ import 'file_system_policy_state.dart';
 ///                             "true",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Sid = "ExampleStatement01",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "elasticfilesystem:ClientMount",
+///                     "elasticfilesystem:ClientWrite",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     fs.Arn,
 ///                 },
 ///             },
 ///         },
@@ -149,23 +149,6 @@ import 'file_system_policy_state.dart';
 /// 		policy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("ExampleStatement01"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("AWS"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("elasticfilesystem:ClientMount"),
-/// 						pulumi.String("elasticfilesystem:ClientWrite"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						fs.Arn,
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("Bool"),
@@ -174,6 +157,23 @@ import 'file_system_policy_state.dart';
 /// 								pulumi.String("true"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.String("ExampleStatement01"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("elasticfilesystem:ClientMount"),
+/// 						pulumi.String("elasticfilesystem:ClientWrite"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						fs.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -200,19 +200,19 @@ import 'file_system_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "policy" {
 ///   statements {
-///     sid    = "ExampleStatement01"
-///     effect = "Allow"
-///     principals {
-///       type        = "AWS"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite"]
-///     resources = [aws_efs_filesystem.fs.arn]
 ///     conditions {
 ///       test     = "Bool"
 ///       variable = "aws:SecureTransport"
 ///       values   = ["true"]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     sid       = "ExampleStatement01"
+///     effect    = "Allow"
+///     actions   = ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite"]
+///     resources = [aws_efs_filesystem.fs.arn]
 ///   }
 /// }
 ///
@@ -235,8 +235,8 @@ import 'file_system_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.efs.FileSystemPolicy;
 /// import com.pulumi.aws.efs.FileSystemPolicyArgs;
 /// import java.util.ArrayList;
@@ -258,21 +258,21 @@ import 'file_system_policy_state.dart';
 ///
 ///         final var policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("ExampleStatement01")
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("AWS")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions(
-///                     "elasticfilesystem:ClientMount",
-///                     "elasticfilesystem:ClientWrite")
-///                 .resources(fs.arn())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("Bool")
 ///                     .variable("aws:SecureTransport")
 ///                     .values("true")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("AWS")
+///                     .identifiers("*")
+///                     .build())
+///                 .sid("ExampleStatement01")
+///                 .effect("Allow")
+///                 .actions(
+///                     "elasticfilesystem:ClientMount",
+///                     "elasticfilesystem:ClientWrite")
+///                 .resources(fs.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -302,22 +302,22 @@ import 'file_system_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: ExampleStatement01
-///             effect: Allow
+///           - conditions:
+///               - test: Bool
+///                 variable: aws:SecureTransport
+///                 values:
+///                   - 'true'
 ///             principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '*'
+///             sid: ExampleStatement01
+///             effect: Allow
 ///             actions:
 ///               - elasticfilesystem:ClientMount
 ///               - elasticfilesystem:ClientWrite
 ///             resources:
 ///               - ${fs.arn}
-///             conditions:
-///               - test: Bool
-///                 variable: aws:SecureTransport
-///                 values:
-///                   - 'true'
 /// ```
 ///
 ///
@@ -352,7 +352,7 @@ class FileSystemPolicy extends pulumi.CustomResource {
           'aws:efs/fileSystemPolicy:FileSystemPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -365,11 +365,12 @@ class FileSystemPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileSystemPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileSystemPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -383,6 +384,21 @@ class FileSystemPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FileSystemPolicy] resource.
+  FileSystemPolicy.reference(String urn)
+    : super(
+        'aws:efs/fileSystemPolicy:FileSystemPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     fileSystemId = registerOutput<String>('fileSystemId');
     policy = registerOutput<String>('policy');

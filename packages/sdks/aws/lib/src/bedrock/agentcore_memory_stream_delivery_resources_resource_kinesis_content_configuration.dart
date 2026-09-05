@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreMemoryStreamDeliveryResourcesResourceKinesisContentConfiguration {
   /// Level of detail for streamed content. Valid values are `METADATA_ONLY` and `FULL_CONTENT`. Defaults to `METADATA_ONLY`.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// Type of content to stream. Valid value is `MEMORY_RECORDS`.
   final pulumi.Input<String> type;
 

@@ -6,9 +6,9 @@ class MultiRegionAccessPointDetailsRegion {
   /// Name of the associated bucket for the Region.
   final pulumi.Input<String> bucket;
   /// AWS account ID that owns the Amazon S3 bucket that's associated with this Multi-Region Access Point.
-  final pulumi.Input<String>? bucketAccountId;
+  final pulumi.Input<String?>? bucketAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MultiRegionAccessPointDetailsRegion].
   /// [bucket] Name of the associated bucket for the Region.

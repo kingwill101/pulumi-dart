@@ -353,7 +353,7 @@ import 'arecord_state.dart';
 /// 			ZoneName:          exampleZone.Name,
 /// 			ResourceGroupName: example.Name,
 /// 			Ttl:               pulumi.Int(300),
-/// 			TargetResourceId:  examplePublicIp.ID(),
+/// 			TargetResourceId:  examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -532,13 +532,13 @@ class ARecord extends pulumi.CustomResource {
           'azure:dns/aRecord:ARecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>?>('records');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String?>('targetResourceId');
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
@@ -549,11 +549,12 @@ class ARecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ARecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ARecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -569,9 +570,28 @@ class ARecord extends pulumi.CustomResource {
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>?>('records');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [ARecord] resource.
+  ARecord.reference(String urn)
+    : super(
+        'azure:dns/aRecord:ARecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<String>?>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String?>('targetResourceId');
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');

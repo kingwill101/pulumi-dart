@@ -266,7 +266,7 @@ class ApiSchema extends pulumi.CustomResource {
           'azure:apimanagement/apiSchema:ApiSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
@@ -283,11 +283,12 @@ class ApiSchema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiSchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiSchema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -301,6 +302,25 @@ class ApiSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    components = registerOutput<String?>('components');
+    contentType = registerOutput<String>('contentType');
+    definitions = registerOutput<String?>('definitions');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    schemaId = registerOutput<String>('schemaId');
+    value = registerOutput<String?>('value');
+  }
+
+  /// Creates a typed reference to an existing [ApiSchema] resource.
+  ApiSchema.reference(String urn)
+    : super(
+        'azure:apimanagement/apiSchema:ApiSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     components = registerOutput<String?>('components');

@@ -6,19 +6,19 @@ import 'scale_set_standby_pool_elasticity_profile.dart';
 /// Input properties used for looking up and filtering ScaleSetStandbyPool resources.
 class ScaleSetStandbyPoolState {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
-  final pulumi.Input<String>? attachedVirtualMachineScaleSetId;
+  final pulumi.Input<String?>? attachedVirtualMachineScaleSetId;
   /// An `elasticityProfile` block as defined below.
-  final pulumi.Input<ScaleSetStandbyPoolElasticityProfile>? elasticityProfile;
+  final pulumi.Input<ScaleSetStandbyPoolElasticityProfile?>? elasticityProfile;
   /// Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Standby Pool. Changing this forces a new Standby Pool to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Standby Pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the desired state of virtual machines in the pool. Possible values are `Deallocated`, `Hibernated` and `Running`.
-  final pulumi.Input<String>? virtualMachineState;
+  final pulumi.Input<String?>? virtualMachineState;
 
   /// Creates a new [ScaleSetStandbyPoolState].
   /// [attachedVirtualMachineScaleSetId] Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2CorsRule {
   /// List of headers allowed.
-  final pulumi.Input<List<String>>? allowedHeaders;
+  final pulumi.Input<List<String>?>? allowedHeaders;
   /// One or more HTTP methods that you allow the origin to execute. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
   final pulumi.Input<List<String>> allowedMethods;
   /// One or more origins you want customers to be able to access the bucket from.
   final pulumi.Input<List<String>> allowedOrigins;
   /// One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Time in seconds that browser can cache the response for a preflight request.
-  final pulumi.Input<int>? maxAgeSeconds;
+  final pulumi.Input<int?>? maxAgeSeconds;
 
   /// Creates a new [BucketV2CorsRule].
   /// [allowedHeaders] List of headers allowed.
@@ -44,7 +44,7 @@ class BucketV2CorsRule {
       allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposeHeaders: (() { final guardedValue = map['exposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

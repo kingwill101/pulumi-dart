@@ -108,7 +108,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example-Tag"),
 /// 		})
 /// 		if err != nil {
@@ -251,7 +251,7 @@ class Tag extends pulumi.CustomResource {
           'azure:apimanagement/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     displayName = registerOutput<String>('displayName');
@@ -263,11 +263,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,6 +282,20 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'azure:apimanagement/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

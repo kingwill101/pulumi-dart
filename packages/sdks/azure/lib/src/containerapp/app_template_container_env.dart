@@ -6,11 +6,11 @@ class AppTemplateContainerEnv {
   /// The name of the environment variable for the container.
   final pulumi.Input<String> name;
   /// The name of the secret that contains the value for this environment variable.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The value for this environment variable.
   ///
   /// &gt; **Note:** This value is ignored if `secretName` is used
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AppTemplateContainerEnv].
   /// [name] The name of the environment variable for the container.

@@ -10,11 +10,11 @@ class GetServiceArgs {
   /// ARN of the ECS Cluster
   final pulumi.Input<String> clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the ECS Service
   final pulumi.Input<String> serviceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceArgs].
   /// [clusterArn] ARN of the ECS Cluster

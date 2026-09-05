@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GroupPoliciesExclusive resources.
 class GroupPoliciesExclusiveState {
   /// IAM group name.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// A list of inline policy names to be assigned to the group. Policies attached to this group but not configured in this argument will be removed.
-  final pulumi.Input<List<String>>? policyNames;
+  final pulumi.Input<List<String>?>? policyNames;
 
   /// Creates a new [GroupPoliciesExclusiveState].
   /// [groupName] IAM group name.

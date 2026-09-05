@@ -5,9 +5,9 @@ import 'rule_set_rule_unless_verdict_expression_evaluate_analysis.dart';
 
 class RuleSetRuleUnlessVerdictExpressionEvaluate {
   /// Add On result to evaluate. See `analysis` Block.
-  final pulumi.Input<RuleSetRuleUnlessVerdictExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<RuleSetRuleUnlessVerdictExpressionEvaluateAnalysis?>? analysis;
   /// Email authentication attribute to evaluate. Valid values are `SPF` and `DKIM`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [RuleSetRuleUnlessVerdictExpressionEvaluate].
   /// [analysis] Add On result to evaluate. See `analysis` Block.

@@ -68,7 +68,7 @@ import 'script_state.dart';
 ///     name: "example",
 ///     databaseId: exampleDatabase.id,
 ///     url: exampleBlob.id,
-///     sasToken: example.apply(example => example.sas),
+///     sasToken: example.sas,
 ///     continueOnErrorsEnabled: true,
 ///     forceAnUpdateWhenValueChanged: "first",
 ///     scriptLevel: "Database",
@@ -309,12 +309,10 @@ import 'script_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = kusto.NewScript(ctx, "example", &kusto.ScriptArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			DatabaseId: exampleDatabase.ID(),
-/// 			Url:        exampleBlob.ID(),
-/// 			SasToken: pulumi.String(example.ApplyT(func(example storage.GetAccountBlobContainerSASResult) (*string, error) {
-/// 				return example.Sas, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                          pulumi.String("example"),
+/// 			DatabaseId:                    exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			Url:                           exampleBlob.ID().ToIDOutput().ToStringOutput(),
+/// 			SasToken:                      example.Sas(),
 /// 			ContinueOnErrorsEnabled:       pulumi.Bool(true),
 /// 			ForceAnUpdateWhenValueChanged: pulumi.String("first"),
 /// 			ScriptLevel:                   pulumi.String("Database"),
@@ -641,15 +639,16 @@ class Script extends pulumi.CustomResource {
           'azure:kusto/script:Script',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sasToken', 'scriptContent'],
         ) {
     continueOnErrorsEnabled = registerOutput<bool?>('continueOnErrorsEnabled');
     databaseId = registerOutput<String>('databaseId');
     forceAnUpdateWhenValueChanged = registerOutput<String>('forceAnUpdateWhenValueChanged');
     this.name = registerOutput<String>('name');
     principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
-    sasToken = registerOutput<String?>('sasToken');
-    scriptContent = registerOutput<String?>('scriptContent');
+    sasToken = registerOutput<String?>('sasToken', isSecret: true);
+    scriptContent = registerOutput<String?>('scriptContent', isSecret: true);
     scriptLevel = registerOutput<String?>('scriptLevel');
     url = registerOutput<String?>('url');
   }
@@ -659,11 +658,12 @@ class Script extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScriptState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Script._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -682,8 +682,29 @@ class Script extends pulumi.CustomResource {
     forceAnUpdateWhenValueChanged = registerOutput<String>('forceAnUpdateWhenValueChanged');
     this.name = registerOutput<String>('name');
     principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
-    sasToken = registerOutput<String?>('sasToken');
-    scriptContent = registerOutput<String?>('scriptContent');
+    sasToken = registerOutput<String?>('sasToken', isSecret: true);
+    scriptContent = registerOutput<String?>('scriptContent', isSecret: true);
+    scriptLevel = registerOutput<String?>('scriptLevel');
+    url = registerOutput<String?>('url');
+  }
+
+  /// Creates a typed reference to an existing [Script] resource.
+  Script.reference(String urn)
+    : super(
+        'azure:kusto/script:Script',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sasToken', 'scriptContent'],
+        isResourceReference: true,
+      ) {
+    continueOnErrorsEnabled = registerOutput<bool?>('continueOnErrorsEnabled');
+    databaseId = registerOutput<String>('databaseId');
+    forceAnUpdateWhenValueChanged = registerOutput<String>('forceAnUpdateWhenValueChanged');
+    this.name = registerOutput<String>('name');
+    principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
+    sasToken = registerOutput<String?>('sasToken', isSecret: true);
+    scriptContent = registerOutput<String?>('scriptContent', isSecret: true);
     scriptLevel = registerOutput<String?>('scriptLevel');
     url = registerOutput<String?>('url');
   }

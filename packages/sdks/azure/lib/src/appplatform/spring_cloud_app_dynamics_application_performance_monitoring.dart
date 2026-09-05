@@ -135,7 +135,7 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudAppDynamicsApplicationPerformanceMonitoring(ctx, "example", &appplatform.SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs{
 /// 			Name:                  pulumi.String("example"),
-/// 			SpringCloudServiceId:  exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId:  exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			AgentAccountName:      pulumi.String("example-agent-account-name"),
 /// 			AgentAccountAccessKey: pulumi.String("example-agent-account-access-key"),
 /// 			ControllerHostName:    pulumi.String("example-controller-host-name"),
@@ -329,10 +329,11 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
           'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['agentAccountAccessKey', 'agentAccountName'],
         ) {
-    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
-    agentAccountName = registerOutput<String>('agentAccountName');
+    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey', isSecret: true);
+    agentAccountName = registerOutput<String>('agentAccountName', isSecret: true);
     agentApplicationName = registerOutput<String?>('agentApplicationName');
     agentNodeName = registerOutput<String?>('agentNodeName');
     agentTierName = registerOutput<String?>('agentTierName');
@@ -350,11 +351,12 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
     String name,
     pulumi.Input<String> id, {
     SpringCloudAppDynamicsApplicationPerformanceMonitoringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudAppDynamicsApplicationPerformanceMonitoring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,8 +370,32 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey');
-    agentAccountName = registerOutput<String>('agentAccountName');
+    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey', isSecret: true);
+    agentAccountName = registerOutput<String>('agentAccountName', isSecret: true);
+    agentApplicationName = registerOutput<String?>('agentApplicationName');
+    agentNodeName = registerOutput<String?>('agentNodeName');
+    agentTierName = registerOutput<String?>('agentTierName');
+    agentUniqueHostId = registerOutput<String?>('agentUniqueHostId');
+    controllerHostName = registerOutput<String>('controllerHostName');
+    controllerPort = registerOutput<int?>('controllerPort');
+    controllerSslEnabled = registerOutput<bool?>('controllerSslEnabled');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
+    this.name = registerOutput<String>('name');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudAppDynamicsApplicationPerformanceMonitoring] resource.
+  SpringCloudAppDynamicsApplicationPerformanceMonitoring.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['agentAccountAccessKey', 'agentAccountName'],
+        isResourceReference: true,
+      ) {
+    agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey', isSecret: true);
+    agentAccountName = registerOutput<String>('agentAccountName', isSecret: true);
     agentApplicationName = registerOutput<String?>('agentApplicationName');
     agentNodeName = registerOutput<String?>('agentNodeName');
     agentTierName = registerOutput<String?>('agentTierName');

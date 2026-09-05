@@ -36,7 +36,7 @@ class GetScheduledQueryRulesAlertTriggerMetricTrigger {
       metricColumn: pulumi.Input.fromValue(map['metricColumn'] as String),
       metricTriggerType: pulumi.Input.fromValue(map['metricTriggerType'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
     );
   }
 }

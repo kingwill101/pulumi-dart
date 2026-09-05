@@ -122,6 +122,17 @@ Future<GetEngineVersionResult> getEngineVersion(
   return GetEngineVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
+  GetEngineVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:docdb/getEngineVersion:getEngineVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEngineVersionResult.fromMap);
+}
+
 /// Information about DocumentDB orderable DB instances.
 ///
 /// ## Example Usage
@@ -282,4 +293,15 @@ Future<GetOrderableDbInstanceResult> getOrderableDbInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrderableDbInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetOrderableDbInstanceResult> getOrderableDbInstanceOutput(
+  GetOrderableDbInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:docdb/getOrderableDbInstance:getOrderableDbInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrderableDbInstanceResult.fromMap);
 }

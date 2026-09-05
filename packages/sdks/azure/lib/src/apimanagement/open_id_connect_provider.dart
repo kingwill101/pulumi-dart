@@ -296,11 +296,12 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
           'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientId', 'clientSecret'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     metadataEndpoint = registerOutput<String>('metadataEndpoint');
@@ -313,11 +314,12 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OpenIdConnectProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OpenIdConnectProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,8 +334,28 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    metadataEndpoint = registerOutput<String>('metadataEndpoint');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [OpenIdConnectProvider] resource.
+  OpenIdConnectProvider.reference(String urn)
+    : super(
+        'azure:apimanagement/openIdConnectProvider:OpenIdConnectProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientId', 'clientSecret'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     metadataEndpoint = registerOutput<String>('metadataEndpoint');

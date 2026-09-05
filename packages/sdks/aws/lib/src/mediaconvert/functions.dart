@@ -119,3 +119,14 @@ Future<GetQueueResult> getQueue(
   );
   return GetQueueResult.fromMap(result);
 }
+
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mediaconvert/getQueue:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
+}

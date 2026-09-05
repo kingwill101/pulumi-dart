@@ -6,7 +6,7 @@ class BucketWebsiteConfigurationV2RedirectAllRequestsTo {
   /// Name of the host where requests are redirected.
   final pulumi.Input<String> hostName;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [BucketWebsiteConfigurationV2RedirectAllRequestsTo].
   /// [hostName] Name of the host where requests are redirected.

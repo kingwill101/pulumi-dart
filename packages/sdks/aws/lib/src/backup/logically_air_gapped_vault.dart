@@ -162,7 +162,7 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
           'aws:backup/logicallyAirGappedVault:LogicallyAirGappedVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     encryptionKeyArn = registerOutput<String>('encryptionKeyArn');
@@ -170,8 +170,8 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
     minRetentionDays = registerOutput<int>('minRetentionDays');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicallyAirGappedVaultTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -180,11 +180,12 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogicallyAirGappedVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogicallyAirGappedVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,8 +205,28 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
     minRetentionDays = registerOutput<int>('minRetentionDays');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicallyAirGappedVaultTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [LogicallyAirGappedVault] resource.
+  LogicallyAirGappedVault.reference(String urn)
+    : super(
+        'aws:backup/logicallyAirGappedVault:LogicallyAirGappedVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    encryptionKeyArn = registerOutput<String>('encryptionKeyArn');
+    maxRetentionDays = registerOutput<int>('maxRetentionDays');
+    minRetentionDays = registerOutput<int>('minRetentionDays');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicallyAirGappedVaultTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

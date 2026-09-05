@@ -315,11 +315,11 @@ import 'user_pool_client_token_validity_units.dart';
 /// const testApp = new aws.pinpoint.App("test", {name: "pinpoint"});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["cognito-idp.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -328,14 +328,14 @@ import 'user_pool_client_token_validity_units.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const testUserPoolClient = new aws.cognito.UserPoolClient("test", {
-///     name: "pool_client",
-///     userPoolId: testUserPool.id,
 ///     analyticsConfiguration: {
 ///         applicationId: testApp.applicationId,
 ///         externalId: "some_id",
 ///         roleArn: testRole.arn,
 ///         userDataShared: true,
 ///     },
+///     name: "pool_client",
+///     userPoolId: testUserPool.id,
 /// });
 /// const current = aws.getCallerIdentity({});
 /// const test = aws.iam.getPolicyDocumentOutput({
@@ -361,25 +361,25 @@ import 'user_pool_client_token_validity_units.dart';
 /// test_user_pool = aws.cognito.UserPool("test", name="pool")
 /// test_app = aws.pinpoint.App("test", name="pinpoint")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["cognito-idp.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// test_role = aws.iam.Role("test",
 ///     name="role",
 ///     assume_role_policy=assume_role.json)
 /// test_user_pool_client = aws.cognito.UserPoolClient("test",
-///     name="pool_client",
-///     user_pool_id=test_user_pool.id,
 ///     analytics_configuration={
 ///         "application_id": test_app.application_id,
 ///         "external_id": "some_id",
 ///         "role_arn": test_role.arn,
 ///         "user_data_shared": True,
-///     })
+///     },
+///     name="pool_client",
+///     user_pool_id=test_user_pool.id)
 /// current = aws.get_caller_identity()
 /// test = aws.iam.get_policy_document_output(statements=[{
 ///     "effect": "Allow",
@@ -418,7 +418,6 @@ import 'user_pool_client_token_validity_units.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -430,6 +429,7 @@ import 'user_pool_client_token_validity_units.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -446,8 +446,6 @@ import 'user_pool_client_token_validity_units.dart';
 ///
 ///     var testUserPoolClient = new Aws.Cognito.UserPoolClient("test", new()
 ///     {
-///         Name = "pool_client",
-///         UserPoolId = testUserPool.Id,
 ///         AnalyticsConfiguration = new Aws.Cognito.Inputs.UserPoolClientAnalyticsConfigurationArgs
 ///         {
 ///             ApplicationId = testApp.ApplicationId,
@@ -455,6 +453,8 @@ import 'user_pool_client_token_validity_units.dart';
 ///             RoleArn = testRole.Arn,
 ///             UserDataShared = true,
 ///         },
+///         Name = "pool_client",
+///         UserPoolId = testUserPool.Id,
 ///     });
 ///
 ///     var current = Aws.GetCallerIdentity.Invoke();
@@ -518,7 +518,6 @@ import 'user_pool_client_token_validity_units.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -527,6 +526,7 @@ import 'user_pool_client_token_validity_units.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -544,14 +544,14 @@ import 'user_pool_client_token_validity_units.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "test", &cognito.UserPoolClientArgs{
-/// 			Name:       pulumi.String("pool_client"),
-/// 			UserPoolId: testUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 			AnalyticsConfiguration: &cognito.UserPoolClientAnalyticsConfigurationArgs{
 /// 				ApplicationId:  testApp.ApplicationId,
 /// 				ExternalId:     pulumi.String("some_id"),
 /// 				RoleArn:        testRole.Arn,
 /// 				UserDataShared: pulumi.Bool(true),
 /// 			},
+/// 			Name:       pulumi.String("pool_client"),
+/// 			UserPoolId: testUserPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -601,11 +601,11 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["cognito-idp.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -618,14 +618,14 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 ///
 /// resource "aws_cognito_userpoolclient" "test" {
-///   name         = "pool_client"
-///   user_pool_id = aws_cognito_userpool.test.id
 ///   analytics_configuration = {
 ///     application_id   = aws_pinpoint_app.test.application_id
 ///     external_id      = "some_id"
 ///     role_arn         = aws_iam_role.test.arn
 ///     user_data_shared = true
 ///   }
+///   name         = "pool_client"
+///   user_pool_id = aws_cognito_userpool.test.id
 /// }
 /// resource "aws_cognito_userpool" "test" {
 ///   name = "pool"
@@ -689,11 +689,11 @@ import 'user_pool_client_token_validity_units.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("cognito-idp.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -704,14 +704,14 @@ import 'user_pool_client_token_validity_units.dart';
 ///             .build());
 ///
 ///         var testUserPoolClient = new UserPoolClient("testUserPoolClient", UserPoolClientArgs.builder()
-///             .name("pool_client")
-///             .userPoolId(testUserPool.id())
 ///             .analyticsConfiguration(UserPoolClientAnalyticsConfigurationArgs.builder()
 ///                 .applicationId(testApp.applicationId())
 ///                 .externalId("some_id")
 ///                 .roleArn(testRole.arn())
 ///                 .userDataShared(true)
 ///                 .build())
+///             .name("pool_client")
+///             .userPoolId(testUserPool.id())
 ///             .build());
 ///
 ///         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
@@ -742,13 +742,13 @@ import 'user_pool_client_token_validity_units.dart';
 ///     type: aws:cognito:UserPoolClient
 ///     name: test
 ///     properties:
-///       name: pool_client
-///       userPoolId: ${testUserPool.id}
 ///       analyticsConfiguration:
 ///         applicationId: ${testApp.applicationId}
 ///         externalId: some_id
 ///         roleArn: ${testRole.arn}
 ///         userDataShared: true
+///       name: pool_client
+///       userPoolId: ${testUserPool.id}
 ///   testUserPool:
 ///     type: aws:cognito:UserPool
 ///     name: test
@@ -782,11 +782,11 @@ import 'user_pool_client_token_validity_units.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - cognito-idp.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   test:
@@ -1030,13 +1030,13 @@ import 'user_pool_client_token_validity_units.dart';
 ///
 /// const pool = new aws.cognito.UserPool("pool", {name: "pool"});
 /// const userpoolClient = new aws.cognito.UserPoolClient("userpool_client", {
-///     name: "client",
-///     userPoolId: pool.id,
-///     explicitAuthFlows: ["ADMIN_NO_SRP_AUTH"],
 ///     refreshTokenRotation: {
 ///         feature: "ENABLED",
 ///         retryGracePeriodSeconds: 10,
 ///     },
+///     name: "client",
+///     userPoolId: pool.id,
+///     explicitAuthFlows: ["ADMIN_NO_SRP_AUTH"],
 /// });
 /// ```
 /// ```python
@@ -1045,13 +1045,13 @@ import 'user_pool_client_token_validity_units.dart';
 ///
 /// pool = aws.cognito.UserPool("pool", name="pool")
 /// userpool_client = aws.cognito.UserPoolClient("userpool_client",
-///     name="client",
-///     user_pool_id=pool.id,
-///     explicit_auth_flows=["ADMIN_NO_SRP_AUTH"],
 ///     refresh_token_rotation={
 ///         "feature": "ENABLED",
 ///         "retry_grace_period_seconds": 10,
-///     })
+///     },
+///     name="client",
+///     user_pool_id=pool.id,
+///     explicit_auth_flows=["ADMIN_NO_SRP_AUTH"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1068,16 +1068,16 @@ import 'user_pool_client_token_validity_units.dart';
 ///
 ///     var userpoolClient = new Aws.Cognito.UserPoolClient("userpool_client", new()
 ///     {
+///         RefreshTokenRotation = new Aws.Cognito.Inputs.UserPoolClientRefreshTokenRotationArgs
+///         {
+///             Feature = "ENABLED",
+///             RetryGracePeriodSeconds = 10,
+///         },
 ///         Name = "client",
 ///         UserPoolId = pool.Id,
 ///         ExplicitAuthFlows = new[]
 ///         {
 ///             "ADMIN_NO_SRP_AUTH",
-///         },
-///         RefreshTokenRotation = new Aws.Cognito.Inputs.UserPoolClientRefreshTokenRotationArgs
-///         {
-///             Feature = "ENABLED",
-///             RetryGracePeriodSeconds = 10,
 ///         },
 ///     });
 ///
@@ -1100,14 +1100,14 @@ import 'user_pool_client_token_validity_units.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserPoolClient(ctx, "userpool_client", &cognito.UserPoolClientArgs{
+/// 			RefreshTokenRotation: &cognito.UserPoolClientRefreshTokenRotationArgs{
+/// 				Feature:                 pulumi.String("ENABLED"),
+/// 				RetryGracePeriodSeconds: pulumi.Int(10),
+/// 			},
 /// 			Name:       pulumi.String("client"),
 /// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 			ExplicitAuthFlows: pulumi.StringArray{
 /// 				pulumi.String("ADMIN_NO_SRP_AUTH"),
-/// 			},
-/// 			RefreshTokenRotation: &cognito.UserPoolClientRefreshTokenRotationArgs{
-/// 				Feature:                 pulumi.String("ENABLED"),
-/// 				RetryGracePeriodSeconds: pulumi.Int(10),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1127,13 +1127,13 @@ import 'user_pool_client_token_validity_units.dart';
 /// }
 ///
 /// resource "aws_cognito_userpoolclient" "userpool_client" {
-///   name                = "client"
-///   user_pool_id        = aws_cognito_userpool.pool.id
-///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 ///   refresh_token_rotation = {
 ///     feature                    = "ENABLED"
 ///     retry_grace_period_seconds = 10
 ///   }
+///   name                = "client"
+///   user_pool_id        = aws_cognito_userpool.pool.id
+///   explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 /// }
 /// resource "aws_cognito_userpool" "pool" {
 ///   name = "pool"
@@ -1168,13 +1168,13 @@ import 'user_pool_client_token_validity_units.dart';
 ///             .build());
 ///
 ///         var userpoolClient = new UserPoolClient("userpoolClient", UserPoolClientArgs.builder()
-///             .name("client")
-///             .userPoolId(pool.id())
-///             .explicitAuthFlows("ADMIN_NO_SRP_AUTH")
 ///             .refreshTokenRotation(UserPoolClientRefreshTokenRotationArgs.builder()
 ///                 .feature("ENABLED")
 ///                 .retryGracePeriodSeconds(10)
 ///                 .build())
+///             .name("client")
+///             .userPoolId(pool.id())
+///             .explicitAuthFlows("ADMIN_NO_SRP_AUTH")
 ///             .build());
 ///
 ///     }
@@ -1186,13 +1186,13 @@ import 'user_pool_client_token_validity_units.dart';
 ///     type: aws:cognito:UserPoolClient
 ///     name: userpool_client
 ///     properties:
+///       refreshTokenRotation:
+///         feature: ENABLED
+///         retryGracePeriodSeconds: 10
 ///       name: client
 ///       userPoolId: ${pool.id}
 ///       explicitAuthFlows:
 ///         - ADMIN_NO_SRP_AUTH
-///       refreshTokenRotation:
-///         feature: ENABLED
-///         retryGracePeriodSeconds: 10
 ///   pool:
 ///     type: aws:cognito:UserPool
 ///     properties:
@@ -1273,33 +1273,34 @@ class UserPoolClient extends pulumi.CustomResource {
           'aws:cognito/userPoolClient:UserPoolClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
-    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
-    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analyticsConfiguration = registerOutput<UserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
-    callbackUrls = registerOutput<List<String>>('callbackUrls');
-    clientSecret = registerOutput<String>('clientSecret');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
     enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
-    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     generateSecret = registerOutput<bool?>('generateSecret');
     idTokenValidity = registerOutput<int>('idTokenValidity');
-    logoutUrls = registerOutput<List<String>>('logoutUrls');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
-    readAttributes = registerOutput<List<String>>('readAttributes');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
-    writeAttributes = registerOutput<List<String>>('writeAttributes');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [UserPoolClient] resource's state with the given [name] and [id].
@@ -1307,11 +1308,12 @@ class UserPoolClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPoolClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPoolClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1326,29 +1328,66 @@ class UserPoolClient extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
-    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
-    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analyticsConfiguration = registerOutput<UserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
-    callbackUrls = registerOutput<List<String>>('callbackUrls');
-    clientSecret = registerOutput<String>('clientSecret');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
     enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
-    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     generateSecret = registerOutput<bool?>('generateSecret');
     idTokenValidity = registerOutput<int>('idTokenValidity');
-    logoutUrls = registerOutput<List<String>>('logoutUrls');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
-    readAttributes = registerOutput<List<String>>('readAttributes');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
-    writeAttributes = registerOutput<List<String>>('writeAttributes');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UserPoolClient] resource.
+  UserPoolClient.reference(String urn)
+    : super(
+        'aws:cognito/userPoolClient:UserPoolClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    accessTokenValidity = registerOutput<int>('accessTokenValidity');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    analyticsConfiguration = registerOutput<UserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSessionValidity = registerOutput<int>('authSessionValidity');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
+    enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
+    enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    generateSecret = registerOutput<bool?>('generateSecret');
+    idTokenValidity = registerOutput<int>('idTokenValidity');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    refreshTokenRotation = registerOutput<UserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
+    region = registerOutput<String>('region');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tokenValidityUnits = registerOutput<UserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userPoolId = registerOutput<String>('userPoolId');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

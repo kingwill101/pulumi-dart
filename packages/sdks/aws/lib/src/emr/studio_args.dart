@@ -12,28 +12,28 @@ class StudioArgs {
   /// The Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook files.
   final pulumi.Input<String> defaultS3Location;
   /// A detailed description of the Amazon EMR Studio.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The AWS KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
-  final pulumi.Input<String>? encryptionKeyArn;
+  final pulumi.Input<String?>? encryptionKeyArn;
   /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by `vpcId`.
   final pulumi.Input<String> engineSecurityGroupId;
   /// The authentication endpoint of your identity provider (IdP). Specify this value when you use IAM authentication and want to let federated users log in to a Studio with the Studio URL and credentials from your IdP. Amazon EMR Studio redirects users to this endpoint to enter credentials.
-  final pulumi.Input<String>? idpAuthUrl;
+  final pulumi.Input<String?>? idpAuthUrl;
   /// The name that your identity provider (IdP) uses for its RelayState parameter. For example, RelayState or TargetSource. Specify this value when you use IAM authentication and want to let federated users log in to a Studio using the Studio URL. The RelayState parameter differs by IdP.
-  final pulumi.Input<String>? idpRelayStateParameterName;
+  final pulumi.Input<String?>? idpRelayStateParameterName;
   /// A descriptive name for the Amazon EMR Studio.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IAM role that the Amazon EMR Studio assumes. The service role provides a way for Amazon EMR Studio to interoperate with other Amazon Web Services services.
   final pulumi.Input<String> serviceRole;
   /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpcId`. Studio users can create a Workspace in any of the specified subnets.
   final pulumi.Input<List<String>> subnetIds;
   /// list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The IAM user role that users and groups assume when logged in to an Amazon EMR Studio. Only specify a User Role when you use Amazon Web Services SSO authentication. The permissions attached to the User Role can be scoped down for each user or group using session policies.
-  final pulumi.Input<String>? userRole;
-  /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
+  final pulumi.Input<String?>? userRole;
+  /// ID of the VPC to associate with the Studio.
   final pulumi.Input<String> vpcId;
   /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpcId`.
   ///
@@ -54,7 +54,7 @@ class StudioArgs {
   /// [subnetIds] A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpcId`. Studio users can create a Workspace in any of the specified subnets.
   /// [tags] list of tags to apply to the EMR Cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userRole] The IAM user role that users and groups assume when logged in to an Amazon EMR Studio. Only specify a User Role when you use Amazon Web Services SSO authentication. The permissions attached to the User Role can be scoped down for each user or group using session policies.
-  /// [vpcId] The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
+  /// [vpcId] ID of the VPC to associate with the Studio.
   /// [workspaceSecurityGroupId] The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpcId`.
   const StudioArgs({
     required this.authMode,

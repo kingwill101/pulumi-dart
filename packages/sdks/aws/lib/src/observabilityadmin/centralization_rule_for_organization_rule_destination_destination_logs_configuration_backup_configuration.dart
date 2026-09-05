@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration {
   /// ARN of the KMS key to use for backup encryption.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// AWS region for backup storage.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration].
   /// [kmsKeyArn] ARN of the KMS key to use for backup encryption.

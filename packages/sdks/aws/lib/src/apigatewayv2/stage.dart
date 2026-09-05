@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stage_access_log_settings.dart';
 import 'stage_args.dart';
 import 'stage_default_route_settings.dart';
+import 'stage_route_setting.dart';
 import 'stage_state.dart';
 
 /// Manages an Amazon API Gateway Version 2 stage.
@@ -156,7 +157,7 @@ class Stage extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Route settings for the stage.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routeSettings;
+  late final pulumi.Output<List<StageRouteSetting>?> routeSettings;
   /// Map that defines the stage variables for the stage.
   late final pulumi.Output<Map<String, String>?> stageVariables;
   /// Map of tags to assign to the stage. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -176,7 +177,7 @@ class Stage extends pulumi.CustomResource {
           'aws:apigatewayv2/stage:Stage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     apiId = registerOutput<String>('apiId');
@@ -190,10 +191,10 @@ class Stage extends pulumi.CustomResource {
     invokeUrl = registerOutput<String>('invokeUrl');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routeSettings = registerOutput<List<Map<String, dynamic>>?>('routeSettings');
-    stageVariables = registerOutput<Map<String, String>?>('stageVariables');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routeSettings = registerOutput<List<StageRouteSetting>?>('routeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StageRouteSetting>(guardedValue, (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    stageVariables = registerOutput<Map<String, String>?>('stageVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Stage] resource's state with the given [name] and [id].
@@ -201,11 +202,12 @@ class Stage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,9 +233,36 @@ class Stage extends pulumi.CustomResource {
     invokeUrl = registerOutput<String>('invokeUrl');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routeSettings = registerOutput<List<Map<String, dynamic>>?>('routeSettings');
-    stageVariables = registerOutput<Map<String, String>?>('stageVariables');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routeSettings = registerOutput<List<StageRouteSetting>?>('routeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StageRouteSetting>(guardedValue, (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    stageVariables = registerOutput<Map<String, String>?>('stageVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Stage] resource.
+  Stage.reference(String urn)
+    : super(
+        'aws:apigatewayv2/stage:Stage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    autoDeploy = registerOutput<bool?>('autoDeploy');
+    clientCertificateId = registerOutput<String?>('clientCertificateId');
+    defaultRouteSettings = registerOutput<StageDefaultRouteSettings?>('defaultRouteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageDefaultRouteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentId = registerOutput<String>('deploymentId');
+    description = registerOutput<String?>('description');
+    executionArn = registerOutput<String>('executionArn');
+    invokeUrl = registerOutput<String>('invokeUrl');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    routeSettings = registerOutput<List<StageRouteSetting>?>('routeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StageRouteSetting>(guardedValue, (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    stageVariables = registerOutput<Map<String, String>?>('stageVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

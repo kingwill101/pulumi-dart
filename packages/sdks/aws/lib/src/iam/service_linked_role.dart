@@ -110,7 +110,7 @@ import 'service_linked_role_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the IAM service-linked role.
+/// - `arn` (String) ARN of the IAM service-linked role.
 ///
 ///
 /// Using `pulumi import`, import IAM service-linked roles using role ARN. For example:
@@ -119,7 +119,7 @@ import 'service_linked_role_state.dart';
 /// $ pulumi import aws:iam/serviceLinkedRole:ServiceLinkedRole elasticbeanstalk arn:aws:iam::123456789012:role/aws-service-role/elasticbeanstalk.amazonaws.com/AWSServiceRoleForElasticBeanstalk
 /// ```
 class ServiceLinkedRole extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the role.
+  /// ARN specifying the role.
   late final pulumi.Output<String> arn;
   /// The AWS service to which this role is attached. You use a string similar to a URL but without the `http://` in front. For example: `elasticbeanstalk.amazonaws.com`. To find the full list of services that support service-linked roles, check [the docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html).
   late final pulumi.Output<String> awsServiceName;
@@ -152,7 +152,7 @@ class ServiceLinkedRole extends pulumi.CustomResource {
           'aws:iam/serviceLinkedRole:ServiceLinkedRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsServiceName = registerOutput<String>('awsServiceName');
@@ -161,8 +161,8 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueId = registerOutput<String>('uniqueId');
   }
 
@@ -171,11 +171,12 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceLinkedRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceLinkedRole._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -196,8 +197,29 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueId = registerOutput<String>('uniqueId');
+  }
+
+  /// Creates a typed reference to an existing [ServiceLinkedRole] resource.
+  ServiceLinkedRole.reference(String urn)
+    : super(
+        'aws:iam/serviceLinkedRole:ServiceLinkedRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsServiceName = registerOutput<String>('awsServiceName');
+    createDate = registerOutput<String>('createDate');
+    customSuffix = registerOutput<String?>('customSuffix');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueId = registerOutput<String>('uniqueId');
   }
 }

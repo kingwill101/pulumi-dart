@@ -147,7 +147,7 @@ import 'vpc_connection_state.dart';
 /// $ pulumi import aws:msk/vpcConnection:VpcConnection example arn:aws:kafka:eu-west-2:123456789012:vpc-connection/123456789012/example/38173259-79cd-4ee8-87f3-682ea6023f48-2
 /// ```
 class VpcConnection extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the VPC connection.
+  /// ARN of the VPC connection.
   late final pulumi.Output<String> arn;
   /// The authentication type for the client VPC connection. Specify one of these auth type strings: SASL_IAM, SASL_SCRAM, or TLS.
   late final pulumi.Output<String> authentication;
@@ -161,7 +161,7 @@ class VpcConnection extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) of the cluster.
+  /// ARN of the cluster.
   late final pulumi.Output<String> targetClusterArn;
   /// The VPC ID of the remote client.
   late final pulumi.Output<String> vpcId;
@@ -178,15 +178,15 @@ class VpcConnection extends pulumi.CustomResource {
           'aws:msk/vpcConnection:VpcConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<String>('authentication');
-    clientSubnets = registerOutput<List<String>>('clientSubnets');
+    clientSubnets = registerOutput<List<String>>('clientSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetClusterArn = registerOutput<String>('targetClusterArn');
     vpcId = registerOutput<String>('vpcId');
   }
@@ -196,11 +196,12 @@ class VpcConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,11 +217,31 @@ class VpcConnection extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<String>('authentication');
-    clientSubnets = registerOutput<List<String>>('clientSubnets');
+    clientSubnets = registerOutput<List<String>>('clientSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetClusterArn = registerOutput<String>('targetClusterArn');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcConnection] resource.
+  VpcConnection.reference(String urn)
+    : super(
+        'aws:msk/vpcConnection:VpcConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authentication = registerOutput<String>('authentication');
+    clientSubnets = registerOutput<List<String>>('clientSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetClusterArn = registerOutput<String>('targetClusterArn');
     vpcId = registerOutput<String>('vpcId');
   }

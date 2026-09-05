@@ -7,27 +7,27 @@ import 'configuration_window.dart';
 /// Input properties used for looking up and filtering Configuration resources.
 class ConfigurationState {
   /// The in guest user patch mode. Possible values are `Platform` or `User`. Must be specified when `scope` is `InGuestPatch`.
-  final pulumi.Input<String>? inGuestUserPatchMode;
+  final pulumi.Input<String?>? inGuestUserPatchMode;
   /// An `installPatches` block as defined below.
   ///
   /// &gt; **Note:** `installPatches` must be specified when `scope` is `InGuestPatch`.
-  final pulumi.Input<ConfigurationInstallPatches>? installPatches;
+  final pulumi.Input<ConfigurationInstallPatches?>? installPatches;
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Maintenance Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of properties to assign to the resource.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The name of the Resource Group where the Maintenance Configuration should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The scope of the Maintenance Configuration. Possible values are `Extension`, `Host`, `InGuestPatch`, `OSImage`, `SQLDB` or `SQLManagedInstance`.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// A mapping of tags to assign to the resource. The key could not contain upper case letter.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The visibility of the Maintenance Configuration. The only allowable value is `Custom`. Defaults to `Custom`.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
   /// A `window` block as defined below.
-  final pulumi.Input<ConfigurationWindow>? window;
+  final pulumi.Input<ConfigurationWindow?>? window;
 
   /// Creates a new [ConfigurationState].
   /// [inGuestUserPatchMode] The in guest user patch mode. Possible values are `Platform` or `User`. Must be specified when `scope` is `InGuestPatch`.

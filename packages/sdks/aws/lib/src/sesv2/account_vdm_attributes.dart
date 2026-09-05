@@ -16,13 +16,13 @@ import 'account_vdm_attributes_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sesv2.AccountVdmAttributes("example", {
-///     vdmEnabled: "ENABLED",
 ///     dashboardAttributes: {
 ///         engagementMetrics: "ENABLED",
 ///     },
 ///     guardianAttributes: {
 ///         optimizedSharedDelivery: "ENABLED",
 ///     },
+///     vdmEnabled: "ENABLED",
 /// });
 /// ```
 /// ```python
@@ -30,13 +30,13 @@ import 'account_vdm_attributes_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sesv2.AccountVdmAttributes("example",
-///     vdm_enabled="ENABLED",
 ///     dashboard_attributes={
 ///         "engagement_metrics": "ENABLED",
 ///     },
 ///     guardian_attributes={
 ///         "optimized_shared_delivery": "ENABLED",
-///     })
+///     },
+///     vdm_enabled="ENABLED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,7 +48,6 @@ import 'account_vdm_attributes_state.dart';
 /// {
 ///     var example = new Aws.SesV2.AccountVdmAttributes("example", new()
 ///     {
-///         VdmEnabled = "ENABLED",
 ///         DashboardAttributes = new Aws.SesV2.Inputs.AccountVdmAttributesDashboardAttributesArgs
 ///         {
 ///             EngagementMetrics = "ENABLED",
@@ -57,6 +56,7 @@ import 'account_vdm_attributes_state.dart';
 ///         {
 ///             OptimizedSharedDelivery = "ENABLED",
 ///         },
+///         VdmEnabled = "ENABLED",
 ///     });
 ///
 /// });
@@ -72,13 +72,13 @@ import 'account_vdm_attributes_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sesv2.NewAccountVdmAttributes(ctx, "example", &sesv2.AccountVdmAttributesArgs{
-/// 			VdmEnabled: pulumi.String("ENABLED"),
 /// 			DashboardAttributes: &sesv2.AccountVdmAttributesDashboardAttributesArgs{
 /// 				EngagementMetrics: pulumi.String("ENABLED"),
 /// 			},
 /// 			GuardianAttributes: &sesv2.AccountVdmAttributesGuardianAttributesArgs{
 /// 				OptimizedSharedDelivery: pulumi.String("ENABLED"),
 /// 			},
+/// 			VdmEnabled: pulumi.String("ENABLED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,13 +97,13 @@ import 'account_vdm_attributes_state.dart';
 /// }
 ///
 /// resource "aws_sesv2_accountvdmattributes" "example" {
-///   vdm_enabled = "ENABLED"
 ///   dashboard_attributes = {
 ///     engagement_metrics = "ENABLED"
 ///   }
 ///   guardian_attributes = {
 ///     optimized_shared_delivery = "ENABLED"
 ///   }
+///   vdm_enabled = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -130,13 +130,13 @@ import 'account_vdm_attributes_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AccountVdmAttributes("example", AccountVdmAttributesArgs.builder()
-///             .vdmEnabled("ENABLED")
 ///             .dashboardAttributes(AccountVdmAttributesDashboardAttributesArgs.builder()
 ///                 .engagementMetrics("ENABLED")
 ///                 .build())
 ///             .guardianAttributes(AccountVdmAttributesGuardianAttributesArgs.builder()
 ///                 .optimizedSharedDelivery("ENABLED")
 ///                 .build())
+///             .vdmEnabled("ENABLED")
 ///             .build());
 ///
 ///     }
@@ -147,11 +147,11 @@ import 'account_vdm_attributes_state.dart';
 ///   example:
 ///     type: aws:sesv2:AccountVdmAttributes
 ///     properties:
-///       vdmEnabled: ENABLED
 ///       dashboardAttributes:
 ///         engagementMetrics: ENABLED
 ///       guardianAttributes:
 ///         optimizedSharedDelivery: ENABLED
+///       vdmEnabled: ENABLED
 /// ```
 ///
 ///
@@ -163,13 +163,13 @@ import 'account_vdm_attributes_state.dart';
 /// $ pulumi import aws:sesv2/accountVdmAttributes:AccountVdmAttributes example ses-account-vdm-attributes
 /// ```
 class AccountVdmAttributes extends pulumi.CustomResource {
-  /// Specifies additional settings for your VDM configuration as applicable to the Dashboard.
+  /// Additional settings for your VDM configuration as applicable to the Dashboard.
   late final pulumi.Output<AccountVdmAttributesDashboardAttributes> dashboardAttributes;
-  /// Specifies additional settings for your VDM configuration as applicable to the Guardian.
+  /// Additional settings for your VDM configuration as applicable to the Guardian.
   late final pulumi.Output<AccountVdmAttributesGuardianAttributes> guardianAttributes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies the status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
+  /// Status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vdmEnabled;
@@ -186,7 +186,7 @@ class AccountVdmAttributes extends pulumi.CustomResource {
           'aws:sesv2/accountVdmAttributes:AccountVdmAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dashboardAttributes = registerOutput<AccountVdmAttributesDashboardAttributes>('dashboardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesDashboardAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>('guardianAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesGuardianAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -199,11 +199,12 @@ class AccountVdmAttributes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountVdmAttributesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountVdmAttributes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,6 +218,21 @@ class AccountVdmAttributes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dashboardAttributes = registerOutput<AccountVdmAttributesDashboardAttributes>('dashboardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesDashboardAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>('guardianAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesGuardianAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    vdmEnabled = registerOutput<String>('vdmEnabled');
+  }
+
+  /// Creates a typed reference to an existing [AccountVdmAttributes] resource.
+  AccountVdmAttributes.reference(String urn)
+    : super(
+        'aws:sesv2/accountVdmAttributes:AccountVdmAttributes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dashboardAttributes = registerOutput<AccountVdmAttributesDashboardAttributes>('dashboardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesDashboardAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>('guardianAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesGuardianAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

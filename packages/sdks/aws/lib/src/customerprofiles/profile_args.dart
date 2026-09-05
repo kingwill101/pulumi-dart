@@ -12,53 +12,53 @@ import 'profile_shipping_address.dart';
 /// {@macro pulumi_customerprofiles_profile_profile_args_doc}
 class ProfileArgs {
   /// A unique account number that you have given to the customer.
-  final pulumi.Input<String>? accountNumber;
+  final pulumi.Input<String?>? accountNumber;
   /// Any additional information relevant to the customer’s profile.
-  final pulumi.Input<String>? additionalInformation;
+  final pulumi.Input<String?>? additionalInformation;
   /// A block that specifies a generic address associated with the customer that is not mailing, shipping, or billing. Documented below.
-  final pulumi.Input<ProfileAddress>? address;
+  final pulumi.Input<ProfileAddress?>? address;
   /// A key value pair of attributes of a customer profile.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// A block that specifies the customer’s billing address. Documented below.
-  final pulumi.Input<ProfileBillingAddress>? billingAddress;
+  final pulumi.Input<ProfileBillingAddress?>? billingAddress;
   /// The customer’s birth date.
-  final pulumi.Input<String>? birthDate;
+  final pulumi.Input<String?>? birthDate;
   /// The customer’s business email address.
-  final pulumi.Input<String>? businessEmailAddress;
+  final pulumi.Input<String?>? businessEmailAddress;
   /// The name of the customer’s business.
-  final pulumi.Input<String>? businessName;
+  final pulumi.Input<String?>? businessName;
   /// The customer’s business phone number.
-  final pulumi.Input<String>? businessPhoneNumber;
+  final pulumi.Input<String?>? businessPhoneNumber;
   /// The name of your Customer Profile domain. It must be unique for your AWS account.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> domainName;
   /// The customer’s email address, which has not been specified as a personal or business address.
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// The customer’s first name.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// The gender with which the customer identifies.
-  final pulumi.Input<String>? genderString;
+  final pulumi.Input<String?>? genderString;
   /// The customer’s home phone number.
-  final pulumi.Input<String>? homePhoneNumber;
+  final pulumi.Input<String?>? homePhoneNumber;
   /// The customer’s last name.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// A block that specifies the customer’s mailing address. Documented below.
-  final pulumi.Input<ProfileMailingAddress>? mailingAddress;
+  final pulumi.Input<ProfileMailingAddress?>? mailingAddress;
   /// The customer’s middle name.
-  final pulumi.Input<String>? middleName;
+  final pulumi.Input<String?>? middleName;
   /// The customer’s mobile phone number.
-  final pulumi.Input<String>? mobilePhoneNumber;
+  final pulumi.Input<String?>? mobilePhoneNumber;
   /// The type of profile used to describe the customer.
-  final pulumi.Input<String>? partyTypeString;
+  final pulumi.Input<String?>? partyTypeString;
   /// The customer’s personal email address.
-  final pulumi.Input<String>? personalEmailAddress;
+  final pulumi.Input<String?>? personalEmailAddress;
   /// The customer’s phone number, which has not been specified as a mobile, home, or business number.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A block that specifies the customer’s shipping address. Documented below.
-  final pulumi.Input<ProfileShippingAddress>? shippingAddress;
+  final pulumi.Input<ProfileShippingAddress?>? shippingAddress;
 
   /// Creates a new [ProfileArgs].
   /// [accountNumber] A unique account number that you have given to the customer.

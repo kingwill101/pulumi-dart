@@ -182,7 +182,7 @@ import 'sync_cloud_endpoint_state.dart';
 /// 		}
 /// 		exampleSyncGroup, err := storage.NewSyncGroup(ctx, "example", &storage.SyncGroupArgs{
 /// 			Name:          pulumi.String("example-ss-group"),
-/// 			StorageSyncId: exampleSync.ID(),
+/// 			StorageSyncId: exampleSync.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,9 +217,9 @@ import 'sync_cloud_endpoint_state.dart';
 /// 		}
 /// 		_, err = storage.NewSyncCloudEndpoint(ctx, "example", &storage.SyncCloudEndpointArgs{
 /// 			Name:               pulumi.String("example-ss-ce"),
-/// 			StorageSyncGroupId: exampleSyncGroup.ID(),
+/// 			StorageSyncGroupId: exampleSyncGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			FileShareName:      exampleShare.Name,
-/// 			StorageAccountId:   exampleAccount.ID(),
+/// 			StorageAccountId:   exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -443,7 +443,7 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
           'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fileShareName = registerOutput<String>('fileShareName');
     this.name = registerOutput<String>('name');
@@ -457,11 +457,12 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SyncCloudEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SyncCloudEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -475,6 +476,22 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fileShareName = registerOutput<String>('fileShareName');
+    this.name = registerOutput<String>('name');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountTenantId = registerOutput<String>('storageAccountTenantId');
+    storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
+  }
+
+  /// Creates a typed reference to an existing [SyncCloudEndpoint] resource.
+  SyncCloudEndpoint.reference(String urn)
+    : super(
+        'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fileShareName = registerOutput<String>('fileShareName');
     this.name = registerOutput<String>('name');
     storageAccountId = registerOutput<String>('storageAccountId');

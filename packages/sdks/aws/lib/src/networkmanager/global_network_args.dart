@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkmanager_global_network_global_network_args_doc}
 class GlobalNetworkArgs {
   /// Description of the Global Network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key-value tags for the Global Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GlobalNetworkArgs].
   /// [description] Description of the Global Network.

@@ -60,7 +60,7 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 /// const exampleEndpointCustomDomain = new azure.cdn.EndpointCustomDomain("example", {
 ///     name: "example-domain",
 ///     cdnEndpointId: exampleEndpoint.id,
-///     hostName: Promise.all([exampleCNameRecord.name, example]).then(([name, example]) => `${name}.${example.name}`),
+///     hostName: pulumi.all([exampleCNameRecord.name, example]).apply(([name, example]) => `${name}.${example.name}`),
 /// });
 /// ```
 /// ```python
@@ -247,14 +247,14 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 /// 			ZoneName:          pulumi.String(example.Name),
 /// 			ResourceGroupName: pulumi.String(example.ResourceGroupName),
 /// 			Ttl:               pulumi.Int(3600),
-/// 			TargetResourceId:  exampleEndpoint.ID(),
+/// 			TargetResourceId:  exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cdn.NewEndpointCustomDomain(ctx, "example", &cdn.EndpointCustomDomainArgs{
 /// 			Name:          pulumi.String("example-domain"),
-/// 			CdnEndpointId: exampleEndpoint.ID(),
+/// 			CdnEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			HostName: exampleCNameRecord.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("%v.%v", name, example.Name), nil
 /// 			}).(pulumi.StringOutput),
@@ -502,7 +502,7 @@ class EndpointCustomDomain extends pulumi.CustomResource {
           'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
     cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -516,11 +516,12 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointCustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointCustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -534,6 +535,22 @@ class EndpointCustomDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cdnEndpointId = registerOutput<String>('cdnEndpointId');
+    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostName = registerOutput<String>('hostName');
+    this.name = registerOutput<String>('name');
+    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>('userManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainUserManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointCustomDomain] resource.
+  EndpointCustomDomain.reference(String urn)
+    : super(
+        'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
     cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostName = registerOutput<String>('hostName');

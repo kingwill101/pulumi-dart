@@ -10,7 +10,7 @@ class GetDbSystemShapesArgs {
   /// The Azure Region to query for the system shapes in.
   final pulumi.Input<String> location;
   /// The Cloud Exadata Infrastructure Azure zone, used to filter out the available DB System Shapes in the specific zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetDbSystemShapesArgs].
   /// [location] The Azure Region to query for the system shapes in.

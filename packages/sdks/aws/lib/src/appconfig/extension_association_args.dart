@@ -10,9 +10,9 @@ class ExtensionAssociationArgs {
   /// ARN of the extension defined in the association.
   final pulumi.Input<String> extensionArn;
   /// Parameter names and values defined for the association.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the application, configuration profile, or environment to associate with the extension.
   final pulumi.Input<String> resourceArn;
 

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
   /// The URI of the Trusted Signing Account which is used during signing files.
-  final pulumi.Input<String>? accountUri;
+  final pulumi.Input<String?>? accountUri;
   /// The Azure Region where the Trusted Signing Account should exist. Changing this forces a new Trusted Signing Account to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Trusted Signing Account. Changing this forces a new Trusted Signing Account to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Trusted Signing Account should exist. Changing this forces a new Trusted Signing Account to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The sku name of this Trusted Signing Account. Possible values are `Basic` and `Premium`.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the Trusted Signing Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountState].
   /// [accountUri] The URI of the Trusted Signing Account which is used during signing files.

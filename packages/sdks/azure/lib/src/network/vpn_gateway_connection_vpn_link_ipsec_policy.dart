@@ -61,8 +61,8 @@ class VpnGatewayConnectionVpnLinkIpsecPolicy {
       ikeIntegrityAlgorithm: pulumi.Input.fromValue(map['ikeIntegrityAlgorithm'] as String),
       integrityAlgorithm: pulumi.Input.fromValue(map['integrityAlgorithm'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKb: pulumi.Input.fromValue(map['saDataSizeKb'] as int),
-      saLifetimeSec: pulumi.Input.fromValue(map['saLifetimeSec'] as int),
+      saDataSizeKb: pulumi.Input.fromValue((map['saDataSizeKb'] as num).toInt()),
+      saLifetimeSec: pulumi.Input.fromValue((map['saLifetimeSec'] as num).toInt()),
     );
   }
 }

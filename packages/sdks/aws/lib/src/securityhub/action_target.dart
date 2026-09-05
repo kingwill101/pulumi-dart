@@ -170,7 +170,7 @@ import 'action_target_state.dart';
 /// $ pulumi import aws:securityhub/actionTarget:ActionTarget example arn:aws:securityhub:eu-west-1:123456789012:action/custom/a
 /// ```
 class ActionTarget extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Security Hub custom action target.
+  /// ARN of the Security Hub custom action target.
   late final pulumi.Output<String> arn;
   /// The name of the custom action target.
   late final pulumi.Output<String> description;
@@ -193,7 +193,7 @@ class ActionTarget extends pulumi.CustomResource {
           'aws:securityhub/actionTarget:ActionTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
@@ -207,11 +207,12 @@ class ActionTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActionTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActionTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,22 @@ class ActionTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    identifier = registerOutput<String>('identifier');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ActionTarget] resource.
+  ActionTarget.reference(String urn)
+    : super(
+        'aws:securityhub/actionTarget:ActionTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     identifier = registerOutput<String>('identifier');

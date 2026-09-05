@@ -187,7 +187,7 @@ class BuildxBuilder extends pulumi.CustomResource {
           'docker:index/buildxBuilder:BuildxBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     append = registerOutput<bool?>('append');
     bootstrap = registerOutput<bool?>('bootstrap');
@@ -195,12 +195,12 @@ class BuildxBuilder extends pulumi.CustomResource {
     buildkitFlags = registerOutput<String?>('buildkitFlags');
     dockerContainer = registerOutput<BuildxBuilderDockerContainer?>('dockerContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderDockerContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String?>('driver');
-    driverOptions = registerOutput<Map<String, String>?>('driverOptions');
+    driverOptions = registerOutput<Map<String, String>?>('driverOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String?>('endpoint');
     kubernetes = registerOutput<BuildxBuilderKubernetes?>('kubernetes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderKubernetes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     node = registerOutput<String?>('node');
-    platforms = registerOutput<List<String>?>('platforms');
+    platforms = registerOutput<List<String>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remote = registerOutput<BuildxBuilderRemote?>('remote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderRemote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     use = registerOutput<bool?>('use');
   }
@@ -210,11 +210,12 @@ class BuildxBuilder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BuildxBuilderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BuildxBuilder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,12 +235,37 @@ class BuildxBuilder extends pulumi.CustomResource {
     buildkitFlags = registerOutput<String?>('buildkitFlags');
     dockerContainer = registerOutput<BuildxBuilderDockerContainer?>('dockerContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderDockerContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     driver = registerOutput<String?>('driver');
-    driverOptions = registerOutput<Map<String, String>?>('driverOptions');
+    driverOptions = registerOutput<Map<String, String>?>('driverOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String?>('endpoint');
     kubernetes = registerOutput<BuildxBuilderKubernetes?>('kubernetes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderKubernetes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     node = registerOutput<String?>('node');
-    platforms = registerOutput<List<String>?>('platforms');
+    platforms = registerOutput<List<String>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remote = registerOutput<BuildxBuilderRemote?>('remote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderRemote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    use = registerOutput<bool?>('use');
+  }
+
+  /// Creates a typed reference to an existing [BuildxBuilder] resource.
+  BuildxBuilder.reference(String urn)
+    : super(
+        'docker:index/buildxBuilder:BuildxBuilder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    append = registerOutput<bool?>('append');
+    bootstrap = registerOutput<bool?>('bootstrap');
+    buildkitConfig = registerOutput<String?>('buildkitConfig');
+    buildkitFlags = registerOutput<String?>('buildkitFlags');
+    dockerContainer = registerOutput<BuildxBuilderDockerContainer?>('dockerContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderDockerContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    driver = registerOutput<String?>('driver');
+    driverOptions = registerOutput<Map<String, String>?>('driverOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    endpoint = registerOutput<String?>('endpoint');
+    kubernetes = registerOutput<BuildxBuilderKubernetes?>('kubernetes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderKubernetes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    node = registerOutput<String?>('node');
+    platforms = registerOutput<List<String>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remote = registerOutput<BuildxBuilderRemote?>('remote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildxBuilderRemote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     use = registerOutput<bool?>('use');
   }

@@ -223,9 +223,9 @@ import 'domain_identity_verification_state.dart';
 ///         - ${exampleAmazonsesVerificationRecord}
 /// ```
 class DomainIdentityVerification extends pulumi.CustomResource {
-  /// The ARN of the domain identity.
+  /// ARN of the domain identity.
   late final pulumi.Output<String> arn;
-  /// The domain name of the SES domain identity to verify.
+  /// Domain name of the SES domain identity to verify.
   late final pulumi.Output<String> domain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -242,7 +242,7 @@ class DomainIdentityVerification extends pulumi.CustomResource {
           'aws:ses/domainIdentityVerification:DomainIdentityVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
@@ -254,11 +254,12 @@ class DomainIdentityVerification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainIdentityVerificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainIdentityVerification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,6 +273,20 @@ class DomainIdentityVerification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    domain = registerOutput<String>('domain');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DomainIdentityVerification] resource.
+  DomainIdentityVerification.reference(String urn)
+    : super(
+        'aws:ses/domainIdentityVerification:DomainIdentityVerification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
     region = registerOutput<String>('region');

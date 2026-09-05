@@ -12,13 +12,13 @@ class EnvironmentManagedCertificateArgs {
   /// The domain control validation type for the managed certificate. Possible values are `CNAME` and `HTTP`. Defaults to `HTTP`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The supported validation methods depend on the domain. Azure will validate domain ownership based on the specified method. `HTTP` validation requires an HTTP endpoint at the domain, `CNAME` validation requires DNS CNAME record configuration.
-  final pulumi.Input<String>? domainControlValidation;
+  final pulumi.Input<String?>? domainControlValidation;
   /// The name of the Container Apps Environment Managed Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Subject Name of the Certificate. Must be a valid domain name. Changing this forces a new resource to be created.
   final pulumi.Input<String> subjectName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentManagedCertificateArgs].
   /// [containerAppEnvironmentId] The Container App Managed Environment ID to configure this Managed Certificate on. Changing this forces a new resource to be created.

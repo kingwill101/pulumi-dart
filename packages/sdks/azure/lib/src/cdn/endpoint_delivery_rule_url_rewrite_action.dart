@@ -6,7 +6,7 @@ class EndpointDeliveryRuleUrlRewriteAction {
   /// This value must start with a `/` and can't be longer than 260 characters.
   final pulumi.Input<String> destination;
   /// Whether preserve an unmatched path. Defaults to `true`.
-  final pulumi.Input<bool>? preserveUnmatchedPath;
+  final pulumi.Input<bool?>? preserveUnmatchedPath;
   /// This value must start with a `/` and can't be longer than 260 characters.
   final pulumi.Input<String> sourcePattern;
 

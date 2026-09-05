@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_virtual_mfa_device_virtual_mfa_device_args_doc}
 class VirtualMfaDeviceArgs {
   /// Path for the virtual MFA device.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   final pulumi.Input<String> virtualMfaDeviceName;
 

@@ -9,27 +9,27 @@ import 'get_subnet_filter.dart';
 /// {@macro pulumi_ec2_get_subnet_get_subnet_args_doc}
 class GetSubnetArgs {
   /// Availability zone where the subnet must reside.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availabilityZone` instead.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// CIDR block of the desired subnet.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// Whether the desired subnet must be the default subnet for its associated availability zone.
-  final pulumi.Input<bool>? defaultForAz;
+  final pulumi.Input<bool?>? defaultForAz;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<GetSubnetFilter>>? filters;
+  final pulumi.Input<List<GetSubnetFilter>?>? filters;
   /// ID of the specific subnet to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IPv6 CIDR block of the desired subnet.
-  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlock;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State that the desired subnet must have.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags, each pair of which must exactly match a pair on the desired subnet.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the VPC that the desired subnet belongs to.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetSubnetArgs].
   /// [availabilityZone] Availability zone where the subnet must reside.

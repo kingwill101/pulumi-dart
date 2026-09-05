@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionArchive {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// Identifier of the archive.
   final pulumi.Input<String> targetArchive;
 

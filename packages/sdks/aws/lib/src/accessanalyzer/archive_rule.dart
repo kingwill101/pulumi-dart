@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'archive_rule_args.dart';
+import 'archive_rule_filter.dart';
 import 'archive_rule_state.dart';
 
 /// Resource for managing an AWS AccessAnalyzer Archive Rule.
@@ -14,8 +15,6 @@ import 'archive_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.accessanalyzer.ArchiveRule("example", {
-///     analyzerName: "example-analyzer",
-///     ruleName: "example-rule",
 ///     filters: [
 ///         {
 ///             criteria: "condition.aws:UserId",
@@ -30,6 +29,8 @@ import 'archive_rule_state.dart';
 ///             eqs: ["false"],
 ///         },
 ///     ],
+///     analyzerName: "example-analyzer",
+///     ruleName: "example-rule",
 /// });
 /// ```
 /// ```python
@@ -37,8 +38,6 @@ import 'archive_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.accessanalyzer.ArchiveRule("example",
-///     analyzer_name="example-analyzer",
-///     rule_name="example-rule",
 ///     filters=[
 ///         {
 ///             "criteria": "condition.aws:UserId",
@@ -52,7 +51,9 @@ import 'archive_rule_state.dart';
 ///             "criteria": "isPublic",
 ///             "eqs": ["false"],
 ///         },
-///     ])
+///     ],
+///     analyzer_name="example-analyzer",
+///     rule_name="example-rule")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -64,8 +65,6 @@ import 'archive_rule_state.dart';
 /// {
 ///     var example = new Aws.AccessAnalyzer.ArchiveRule("example", new()
 ///     {
-///         AnalyzerName = "example-analyzer",
-///         RuleName = "example-rule",
 ///         Filters = new[]
 ///         {
 ///             new Aws.AccessAnalyzer.Inputs.ArchiveRuleFilterArgs
@@ -90,6 +89,8 @@ import 'archive_rule_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AnalyzerName = "example-analyzer",
+///         RuleName = "example-rule",
 ///     });
 ///
 /// });
@@ -105,8 +106,6 @@ import 'archive_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := accessanalyzer.NewArchiveRule(ctx, "example", &accessanalyzer.ArchiveRuleArgs{
-/// 			AnalyzerName: pulumi.String("example-analyzer"),
-/// 			RuleName:     pulumi.String("example-rule"),
 /// 			Filters: accessanalyzer.ArchiveRuleFilterArray{
 /// 				&accessanalyzer.ArchiveRuleFilterArgs{
 /// 					Criteria: pulumi.String("condition.aws:UserId"),
@@ -125,6 +124,8 @@ import 'archive_rule_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AnalyzerName: pulumi.String("example-analyzer"),
+/// 			RuleName:     pulumi.String("example-rule"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,8 +144,6 @@ import 'archive_rule_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_archiverule" "example" {
-///   analyzer_name = "example-analyzer"
-///   rule_name     = "example-rule"
 ///   filters {
 ///     criteria = "condition.aws:UserId"
 ///     eqs      = ["userid"]
@@ -157,6 +156,8 @@ import 'archive_rule_state.dart';
 ///     criteria = "isPublic"
 ///     eqs      = ["false"]
 ///   }
+///   analyzer_name = "example-analyzer"
+///   rule_name     = "example-rule"
 /// }
 /// ```
 /// ```java
@@ -182,8 +183,6 @@ import 'archive_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ArchiveRule("example", ArchiveRuleArgs.builder()
-///             .analyzerName("example-analyzer")
-///             .ruleName("example-rule")
 ///             .filters(
 ///                 ArchiveRuleFilterArgs.builder()
 ///                     .criteria("condition.aws:UserId")
@@ -197,6 +196,8 @@ import 'archive_rule_state.dart';
 ///                     .criteria("isPublic")
 ///                     .eqs("false")
 ///                     .build())
+///             .analyzerName("example-analyzer")
+///             .ruleName("example-rule")
 ///             .build());
 ///
 ///     }
@@ -207,8 +208,6 @@ import 'archive_rule_state.dart';
 ///   example:
 ///     type: aws:accessanalyzer:ArchiveRule
 ///     properties:
-///       analyzerName: example-analyzer
-///       ruleName: example-rule
 ///       filters:
 ///         - criteria: condition.aws:UserId
 ///           eqs:
@@ -218,6 +217,8 @@ import 'archive_rule_state.dart';
 ///         - criteria: isPublic
 ///           eqs:
 ///             - 'false'
+///       analyzerName: example-analyzer
+///       ruleName: example-rule
 /// ```
 ///
 ///
@@ -232,7 +233,7 @@ class ArchiveRule extends pulumi.CustomResource {
   /// Analyzer name.
   late final pulumi.Output<String> analyzerName;
   /// Filter criteria for the archive rule. See Filter for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> filters;
+  late final pulumi.Output<List<ArchiveRuleFilter>> filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Rule name.
@@ -250,10 +251,10 @@ class ArchiveRule extends pulumi.CustomResource {
           'aws:accessanalyzer/archiveRule:ArchiveRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
-    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    filters = registerOutput<List<ArchiveRuleFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArchiveRuleFilter>(guardedValue, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     ruleName = registerOutput<String>('ruleName');
   }
@@ -263,11 +264,12 @@ class ArchiveRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ArchiveRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ArchiveRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +284,22 @@ class ArchiveRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
-    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    filters = registerOutput<List<ArchiveRuleFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArchiveRuleFilter>(guardedValue, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String>('ruleName');
+  }
+
+  /// Creates a typed reference to an existing [ArchiveRule] resource.
+  ArchiveRule.reference(String urn)
+    : super(
+        'aws:accessanalyzer/archiveRule:ArchiveRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    filters = registerOutput<List<ArchiveRuleFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArchiveRuleFilter>(guardedValue, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     ruleName = registerOutput<String>('ruleName');
   }

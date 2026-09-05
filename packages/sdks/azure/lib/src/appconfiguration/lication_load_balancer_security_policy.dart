@@ -176,9 +176,9 @@ import 'lication_load_balancer_security_policy_state.dart';
 /// 		}
 /// 		_, err = appconfiguration.NewLicationLoadBalancerSecurityPolicy(ctx, "example", &appconfiguration.LicationLoadBalancerSecurityPolicyArgs{
 /// 			Name:                           pulumi.String("example-albsp"),
-/// 			ApplicationLoadBalancerId:      exampleLicationLoadBalancer.ID(),
+/// 			ApplicationLoadBalancerId:      exampleLicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:                       example.Location,
-/// 			WebApplicationFirewallPolicyId: examplePolicy.ID(),
+/// 			WebApplicationFirewallPolicyId: examplePolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -371,12 +371,12 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webApplicationFirewallPolicyId = registerOutput<String>('webApplicationFirewallPolicyId');
   }
 
@@ -385,11 +385,12 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicationLoadBalancerSecurityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicationLoadBalancerSecurityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -406,7 +407,23 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    webApplicationFirewallPolicyId = registerOutput<String>('webApplicationFirewallPolicyId');
+  }
+
+  /// Creates a typed reference to an existing [LicationLoadBalancerSecurityPolicy] resource.
+  LicationLoadBalancerSecurityPolicy.reference(String urn)
+    : super(
+        'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webApplicationFirewallPolicyId = registerOutput<String>('webApplicationFirewallPolicyId');
   }
 }

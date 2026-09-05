@@ -3,11 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMoqRelayConfigUpstreamsUpstream {
-  /// Upstream MOQT server publisher URL.
+  /// Upstream MOQT server publisher URL. Must be an absolute URL with a
+  /// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+  /// (WebTransport). Validated on update (PUT); rejected with 21013.
   final pulumi.Input<String> url;
 
   /// Creates a new [GetMoqRelayConfigUpstreamsUpstream].
-  /// [url] Upstream MOQT server publisher URL.
+  /// [url] Upstream MOQT server publisher URL. Must be an absolute URL with a
   const GetMoqRelayConfigUpstreamsUpstream({
     required this.url,
   });

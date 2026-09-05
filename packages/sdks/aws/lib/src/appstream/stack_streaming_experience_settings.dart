@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackStreamingExperienceSettings {
   /// Preferred protocol that you want to use while streaming your application. Valid values are `TCP` and `UDP`.
-  final pulumi.Input<String>? preferredProtocol;
+  final pulumi.Input<String?>? preferredProtocol;
 
   /// Creates a new [StackStreamingExperienceSettings].
   /// [preferredProtocol] Preferred protocol that you want to use while streaming your application. Valid values are `TCP` and `UDP`.

@@ -4,33 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DefaultVpc resources.
 class DefaultVpcState {
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<bool>? assignGeneratedIpv6CidrBlock;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<bool?>? assignGeneratedIpv6CidrBlock;
   /// The primary IPv4 CIDR block for the VPC
-  final pulumi.Input<String>? cidrBlock;
-  final pulumi.Input<String>? defaultNetworkAclId;
-  final pulumi.Input<String>? defaultRouteTableId;
-  final pulumi.Input<String>? defaultSecurityGroupId;
-  final pulumi.Input<String>? dhcpOptionsId;
-  final pulumi.Input<bool>? enableDnsHostnames;
-  final pulumi.Input<bool>? enableDnsSupport;
-  final pulumi.Input<bool>? enableNetworkAddressUsageMetrics;
-  final pulumi.Input<bool>? existingDefaultVpc;
+  final pulumi.Input<String?>? cidrBlock;
+  final pulumi.Input<String?>? defaultNetworkAclId;
+  final pulumi.Input<String?>? defaultRouteTableId;
+  final pulumi.Input<String?>? defaultSecurityGroupId;
+  final pulumi.Input<String?>? dhcpOptionsId;
+  final pulumi.Input<bool?>? enableDnsHostnames;
+  final pulumi.Input<bool?>? enableDnsSupport;
+  final pulumi.Input<bool?>? enableNetworkAddressUsageMetrics;
+  final pulumi.Input<bool?>? existingDefaultVpc;
   /// Whether destroying the resource deletes the default VPC. Default: `false`
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The allowed tenancy of instances launched into the VPC
-  final pulumi.Input<String>? instanceTenancy;
-  final pulumi.Input<String>? ipv6AssociationId;
-  final pulumi.Input<String>? ipv6CidrBlock;
-  final pulumi.Input<String>? ipv6CidrBlockNetworkBorderGroup;
-  final pulumi.Input<String>? ipv6IpamPoolId;
-  final pulumi.Input<int>? ipv6NetmaskLength;
-  final pulumi.Input<String>? mainRouteTableId;
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? instanceTenancy;
+  final pulumi.Input<String?>? ipv6AssociationId;
+  final pulumi.Input<String?>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlockNetworkBorderGroup;
+  final pulumi.Input<String?>? ipv6IpamPoolId;
+  final pulumi.Input<int?>? ipv6NetmaskLength;
+  final pulumi.Input<String?>? mainRouteTableId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DefaultVpcState].
   /// [arn] Optional.
@@ -129,7 +129,7 @@ class DefaultVpcState {
       ipv6CidrBlock: (() { final guardedValue = map['ipv6CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6CidrBlockNetworkBorderGroup: (() { final guardedValue = map['ipv6CidrBlockNetworkBorderGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6IpamPoolId: (() { final guardedValue = map['ipv6IpamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipv6NetmaskLength: (() { final guardedValue = map['ipv6NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipv6NetmaskLength: (() { final guardedValue = map['ipv6NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mainRouteTableId: (() { final guardedValue = map['mainRouteTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,23 +9,23 @@ import 'data_integration_schedule_config.dart';
 /// {@macro pulumi_appintegrations_data_integration_data_integration_args_doc}
 class DataIntegrationArgs {
   /// Description of the Data Integration.
-  final pulumi.Input<String>? description;
-  /// KMS key Amazon Resource Name (ARN) for the Data Integration.
+  final pulumi.Input<String?>? description;
+  /// KMS key ARN for the Data Integration.
   final pulumi.Input<String> kmsKey;
   /// Name of the Data Integration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block that defines the name of the data and how often it should be pulled from the source. See `scheduleConfig` Block for details.
   final pulumi.Input<DataIntegrationScheduleConfig> scheduleConfig;
   /// URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   final pulumi.Input<String> sourceUri;
   /// Tags to apply to the Data Integration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataIntegrationArgs].
   /// [description] Description of the Data Integration.
-  /// [kmsKey] KMS key Amazon Resource Name (ARN) for the Data Integration.
+  /// [kmsKey] KMS key ARN for the Data Integration.
   /// [name] Name of the Data Integration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduleConfig] Configuration block that defines the name of the data and how often it should be pulled from the source. See `scheduleConfig` Block for details.

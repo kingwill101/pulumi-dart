@@ -226,7 +226,7 @@ class AccountSubscription extends pulumi.CustomResource {
           'cloudflare:index/accountSubscription:AccountSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     currency = registerOutput<String>('currency');

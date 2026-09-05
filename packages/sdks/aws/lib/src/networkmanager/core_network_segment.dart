@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CoreNetworkSegment {
   /// Regions where the edges are located.
-  final pulumi.Input<List<String>>? edgeLocations;
+  final pulumi.Input<List<String>?>? edgeLocations;
   /// Name of a core network segment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Shared segments of a core network.
-  final pulumi.Input<List<String>>? sharedSegments;
+  final pulumi.Input<List<String>?>? sharedSegments;
 
   /// Creates a new [CoreNetworkSegment].
   /// [edgeLocations] Regions where the edges are located.

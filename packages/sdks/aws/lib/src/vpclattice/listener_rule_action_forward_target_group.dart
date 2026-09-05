@@ -6,7 +6,7 @@ class ListenerRuleActionForwardTargetGroup {
   /// ID or ARN of the target group.
   final pulumi.Input<String> targetGroupIdentifier;
   /// Weight assigned to the target group, controlling the prioritization and selection of each target group so that requests are distributed based on their weights. Default is `100`.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [ListenerRuleActionForwardTargetGroup].
   /// [targetGroupIdentifier] ID or ARN of the target group.
@@ -26,7 +26,7 @@ class ListenerRuleActionForwardTargetGroup {
   factory ListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardTargetGroup(
       targetGroupIdentifier: pulumi.Input.fromValue(map['targetGroupIdentifier'] as String),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

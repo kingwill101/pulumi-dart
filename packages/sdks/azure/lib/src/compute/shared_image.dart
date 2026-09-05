@@ -378,7 +378,7 @@ class SharedImage extends pulumi.CustomResource {
           'azure:compute/sharedImage:SharedImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     acceleratedNetworkSupportEnabled = registerOutput<bool?>('acceleratedNetworkSupportEnabled');
     architecture = registerOutput<String?>('architecture');
@@ -386,7 +386,7 @@ class SharedImage extends pulumi.CustomResource {
     confidentialVmSupported = registerOutput<bool?>('confidentialVmSupported');
     description = registerOutput<String?>('description');
     diskControllerTypeNvmeEnabled = registerOutput<bool?>('diskControllerTypeNvmeEnabled');
-    diskTypesNotAlloweds = registerOutput<List<String>?>('diskTypesNotAlloweds');
+    diskTypesNotAlloweds = registerOutput<List<String>?>('diskTypesNotAlloweds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
     galleryName = registerOutput<String>('galleryName');
@@ -405,7 +405,7 @@ class SharedImage extends pulumi.CustomResource {
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     specialized = registerOutput<bool?>('specialized');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
     trustedLaunchSupported = registerOutput<bool?>('trustedLaunchSupported');
   }
@@ -415,11 +415,12 @@ class SharedImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,7 +440,7 @@ class SharedImage extends pulumi.CustomResource {
     confidentialVmSupported = registerOutput<bool?>('confidentialVmSupported');
     description = registerOutput<String?>('description');
     diskControllerTypeNvmeEnabled = registerOutput<bool?>('diskControllerTypeNvmeEnabled');
-    diskTypesNotAlloweds = registerOutput<List<String>?>('diskTypesNotAlloweds');
+    diskTypesNotAlloweds = registerOutput<List<String>?>('diskTypesNotAlloweds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
     galleryName = registerOutput<String>('galleryName');
@@ -458,7 +459,46 @@ class SharedImage extends pulumi.CustomResource {
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     specialized = registerOutput<bool?>('specialized');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
+    trustedLaunchSupported = registerOutput<bool?>('trustedLaunchSupported');
+  }
+
+  /// Creates a typed reference to an existing [SharedImage] resource.
+  SharedImage.reference(String urn)
+    : super(
+        'azure:compute/sharedImage:SharedImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratedNetworkSupportEnabled = registerOutput<bool?>('acceleratedNetworkSupportEnabled');
+    architecture = registerOutput<String?>('architecture');
+    confidentialVmEnabled = registerOutput<bool?>('confidentialVmEnabled');
+    confidentialVmSupported = registerOutput<bool?>('confidentialVmSupported');
+    description = registerOutput<String?>('description');
+    diskControllerTypeNvmeEnabled = registerOutput<bool?>('diskControllerTypeNvmeEnabled');
+    diskTypesNotAlloweds = registerOutput<List<String>?>('diskTypesNotAlloweds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    galleryName = registerOutput<String>('galleryName');
+    hibernationEnabled = registerOutput<bool?>('hibernationEnabled');
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    identifier = registerOutput<SharedImageIdentifier>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maxRecommendedMemoryInGb = registerOutput<int?>('maxRecommendedMemoryInGb');
+    maxRecommendedVcpuCount = registerOutput<int?>('maxRecommendedVcpuCount');
+    minRecommendedMemoryInGb = registerOutput<int?>('minRecommendedMemoryInGb');
+    minRecommendedVcpuCount = registerOutput<int?>('minRecommendedVcpuCount');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String>('osType');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    purchasePlan = registerOutput<SharedImagePurchasePlan?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImagePurchasePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    specialized = registerOutput<bool?>('specialized');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
     trustedLaunchSupported = registerOutput<bool?>('trustedLaunchSupported');
   }

@@ -176,23 +176,23 @@ import 'network_manager_admin_rule_collection_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-network-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
 /// 			Name:             pulumi.String("example-admin-conf"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
 /// 			Name:                         pulumi.String("example-admin-rule-collection"),
-/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkGroupIds: pulumi.StringArray{
-/// 				exampleNetworkManagerNetworkGroup.ID(),
+/// 				exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -399,11 +399,11 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
           'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    networkGroupIds = registerOutput<List<String>>('networkGroupIds');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityAdminConfigurationId = registerOutput<String>('securityAdminConfigurationId');
   }
 
@@ -412,11 +412,12 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerAdminRuleCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerAdminRuleCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,7 +433,22 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    networkGroupIds = registerOutput<List<String>>('networkGroupIds');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityAdminConfigurationId = registerOutput<String>('securityAdminConfigurationId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerAdminRuleCollection] resource.
+  NetworkManagerAdminRuleCollection.reference(String urn)
+    : super(
+        'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityAdminConfigurationId = registerOutput<String>('securityAdminConfigurationId');
   }
 }

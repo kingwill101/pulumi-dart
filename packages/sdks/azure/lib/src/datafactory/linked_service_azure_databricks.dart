@@ -240,12 +240,12 @@ import 'linked_service_azure_databricks_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureDatabricks(ctx, "msi_linked", &datafactory.LinkedServiceAzureDatabricksArgs{
 /// 			Name:          pulumi.String("ADBLinkedServiceViaMSI"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:   pulumi.String("ADB Linked Service via MSI"),
 /// 			AdbDomain: exampleWorkspace.WorkspaceUrl.ApplyT(func(workspaceUrl string) (string, error) {
 /// 				return fmt.Sprintf("https://%v", workspaceUrl), nil
 /// 			}).(pulumi.StringOutput),
-/// 			MsiWorkspaceId: exampleWorkspace.ID(),
+/// 			MsiWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			NewClusterConfig: &datafactory.LinkedServiceAzureDatabricksNewClusterConfigArgs{
 /// 				NodeType:           pulumi.String("Standard_NC12"),
 /// 				ClusterVersion:     pulumi.String("5.5.x-gpu-scala2.11"),
@@ -624,7 +624,7 @@ import 'linked_service_azure_databricks_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureDatabricks(ctx, "at_linked", &datafactory.LinkedServiceAzureDatabricksArgs{
 /// 			Name:              pulumi.String("ADBLinkedServiceViaAccessToken"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:       pulumi.String("ADB Linked Service via Access Token"),
 /// 			ExistingClusterId: pulumi.String("0308-201146-sly615"),
 /// 			AccessToken:       pulumi.String("SomeDatabricksAccessToken"),
@@ -820,12 +820,13 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['accessToken'],
         ) {
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     adbDomain = registerOutput<String>('adbDomain');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     existingClusterId = registerOutput<String?>('existingClusterId');
@@ -836,7 +837,7 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
     this.name = registerOutput<String>('name');
     newClusterConfig = registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>('newClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureDatabricksNewClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LinkedServiceAzureDatabricks] resource's state with the given [name] and [id].
@@ -844,11 +845,12 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureDatabricksState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureDatabricks._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -862,10 +864,10 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     adbDomain = registerOutput<String>('adbDomain');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     existingClusterId = registerOutput<String?>('existingClusterId');
@@ -876,6 +878,33 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
     this.name = registerOutput<String>('name');
     newClusterConfig = registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>('newClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureDatabricksNewClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureDatabricks] resource.
+  LinkedServiceAzureDatabricks.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accessToken'],
+        isResourceReference: true,
+      ) {
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
+    adbDomain = registerOutput<String>('adbDomain');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    existingClusterId = registerOutput<String?>('existingClusterId');
+    instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>('instancePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureDatabricksInstancePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword = registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureDatabricksKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
+    msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
+    this.name = registerOutput<String>('name');
+    newClusterConfig = registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>('newClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureDatabricksNewClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

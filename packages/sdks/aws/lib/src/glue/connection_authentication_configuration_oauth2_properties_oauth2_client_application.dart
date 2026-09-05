@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthenticationConfigurationOauth2PropertiesOauth2ClientApplication {
   /// Reference to an AWS-managed client application.
-  final pulumi.Input<String>? awsManagedClientApplicationReference;
+  final pulumi.Input<String?>? awsManagedClientApplicationReference;
   /// Client ID for a user-managed client application.
-  final pulumi.Input<String>? userManagedClientApplicationClientId;
+  final pulumi.Input<String?>? userManagedClientApplicationClientId;
 
   /// Creates a new [ConnectionAuthenticationConfigurationOauth2PropertiesOauth2ClientApplication].
   /// [awsManagedClientApplicationReference] Reference to an AWS-managed client application.

@@ -22,10 +22,6 @@ import 'automation_rule_v2_state.dart';
 ///     dependsOn: [example],
 /// });
 /// const exampleAutomationRuleV2 = new aws.securityhub.AutomationRuleV2("example", {
-///     ruleName: "suppress-guardduty-low",
-///     description: "Suppress low severity GuardDuty findings",
-///     ruleOrder: 100,
-///     ruleStatus: "ENABLED",
 ///     criteria: {
 ///         ocsfFindingCriteriaJson: JSON.stringify({
 ///             CompositeFilters: [{
@@ -41,13 +37,17 @@ import 'automation_rule_v2_state.dart';
 ///         }),
 ///     },
 ///     action: {
-///         type: "FINDING_FIELDS_UPDATE",
 ///         findingFieldsUpdate: {
 ///             severityId: 99,
 ///             statusId: 3,
 ///             comment: "Low severity GuardDuty finding suppressed",
 ///         },
+///         type: "FINDING_FIELDS_UPDATE",
 ///     },
+///     ruleName: "suppress-guardduty-low",
+///     description: "Suppress low severity GuardDuty findings",
+///     ruleOrder: 100,
+///     ruleStatus: "ENABLED",
 /// }, {
 ///     dependsOn: [exampleAggregatorV2],
 /// });
@@ -61,10 +61,6 @@ import 'automation_rule_v2_state.dart';
 /// example_aggregator_v2 = aws.securityhub.AggregatorV2("example", region_linking_mode="ALL_REGIONS",
 /// opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_automation_rule_v2 = aws.securityhub.AutomationRuleV2("example",
-///     rule_name="suppress-guardduty-low",
-///     description="Suppress low severity GuardDuty findings",
-///     rule_order=float(100),
-///     rule_status="ENABLED",
 ///     criteria={
 ///         "ocsf_finding_criteria_json": json.dumps({
 ///             "CompositeFilters": [{
@@ -80,13 +76,17 @@ import 'automation_rule_v2_state.dart';
 ///         }),
 ///     },
 ///     action={
-///         "type": "FINDING_FIELDS_UPDATE",
 ///         "finding_fields_update": {
 ///             "severity_id": 99,
 ///             "status_id": 3,
 ///             "comment": "Low severity GuardDuty finding suppressed",
 ///         },
+///         "type": "FINDING_FIELDS_UPDATE",
 ///     },
+///     rule_name="suppress-guardduty-low",
+///     description="Suppress low severity GuardDuty findings",
+///     rule_order=float(100),
+///     rule_status="ENABLED",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aggregator_v2]))
 /// ```
 /// ```csharp
@@ -113,10 +113,6 @@ import 'automation_rule_v2_state.dart';
 ///
 ///     var exampleAutomationRuleV2 = new Aws.SecurityHub.AutomationRuleV2("example", new()
 ///     {
-///         RuleName = "suppress-guardduty-low",
-///         Description = "Suppress low severity GuardDuty findings",
-///         RuleOrder = 100,
-///         RuleStatus = "ENABLED",
 ///         Criteria = new Aws.SecurityHub.Inputs.AutomationRuleV2CriteriaArgs
 ///         {
 ///             OcsfFindingCriteriaJson = JsonSerializer.Serialize(new Dictionary<string, object?>
@@ -144,14 +140,18 @@ import 'automation_rule_v2_state.dart';
 ///         },
 ///         Action = new Aws.SecurityHub.Inputs.AutomationRuleV2ActionArgs
 ///         {
-///             Type = "FINDING_FIELDS_UPDATE",
 ///             FindingFieldsUpdate = new Aws.SecurityHub.Inputs.AutomationRuleV2ActionFindingFieldsUpdateArgs
 ///             {
 ///                 SeverityId = 99,
 ///                 StatusId = 3,
 ///                 Comment = "Low severity GuardDuty finding suppressed",
 ///             },
+///             Type = "FINDING_FIELDS_UPDATE",
 ///         },
+///         RuleName = "suppress-guardduty-low",
+///         Description = "Suppress low severity GuardDuty findings",
+///         RuleOrder = 100,
+///         RuleStatus = "ENABLED",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -207,21 +207,21 @@ import 'automation_rule_v2_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = securityhub.NewAutomationRuleV2(ctx, "example", &securityhub.AutomationRuleV2Args{
-/// 			RuleName:    pulumi.String("suppress-guardduty-low"),
-/// 			Description: pulumi.String("Suppress low severity GuardDuty findings"),
-/// 			RuleOrder:   pulumi.Float64(100),
-/// 			RuleStatus:  pulumi.String("ENABLED"),
 /// 			Criteria: &securityhub.AutomationRuleV2CriteriaArgs{
 /// 				OcsfFindingCriteriaJson: pulumi.String(json0),
 /// 			},
 /// 			Action: &securityhub.AutomationRuleV2ActionArgs{
-/// 				Type: pulumi.String("FINDING_FIELDS_UPDATE"),
 /// 				FindingFieldsUpdate: &securityhub.AutomationRuleV2ActionFindingFieldsUpdateArgs{
 /// 					SeverityId: pulumi.Int(99),
 /// 					StatusId:   pulumi.Int(3),
 /// 					Comment:    pulumi.String("Low severity GuardDuty finding suppressed"),
 /// 				},
+/// 				Type: pulumi.String("FINDING_FIELDS_UPDATE"),
 /// 			},
+/// 			RuleName:    pulumi.String("suppress-guardduty-low"),
+/// 			Description: pulumi.String("Suppress low severity GuardDuty findings"),
+/// 			RuleOrder:   pulumi.Float64(100),
+/// 			RuleStatus:  pulumi.String("ENABLED"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAggregatorV2,
 /// 		}))
@@ -248,11 +248,7 @@ import 'automation_rule_v2_state.dart';
 ///   region_linking_mode = "ALL_REGIONS"
 /// }
 /// resource "aws_securityhub_automationrulev2" "example" {
-///   depends_on  = [aws_securityhub_aggregatorv2.example]
-///   rule_name   = "suppress-guardduty-low"
-///   description = "Suppress low severity GuardDuty findings"
-///   rule_order  = 100
-///   rule_status = "ENABLED"
+///   depends_on = [aws_securityhub_aggregatorv2.example]
 ///   criteria = {
 ///     ocsf_finding_criteria_json = jsonencode({
 ///       "CompositeFilters" = [{
@@ -268,13 +264,17 @@ import 'automation_rule_v2_state.dart';
 ///     })
 ///   }
 ///   action = {
-///     type = "FINDING_FIELDS_UPDATE"
 ///     finding_fields_update = {
 ///       severity_id = 99
 ///       status_id   = 3
 ///       comment     = "Low severity GuardDuty finding suppressed"
 ///     }
+///     type = "FINDING_FIELDS_UPDATE"
 ///   }
+///   rule_name   = "suppress-guardduty-low"
+///   description = "Suppress low severity GuardDuty findings"
+///   rule_order  = 100
+///   rule_status = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -315,10 +315,6 @@ import 'automation_rule_v2_state.dart';
 ///                 .build());
 ///
 ///         var exampleAutomationRuleV2 = new AutomationRuleV2("exampleAutomationRuleV2", AutomationRuleV2Args.builder()
-///             .ruleName("suppress-guardduty-low")
-///             .description("Suppress low severity GuardDuty findings")
-///             .ruleOrder(100.0)
-///             .ruleStatus("ENABLED")
 ///             .criteria(AutomationRuleV2CriteriaArgs.builder()
 ///                 .ocsfFindingCriteriaJson(serializeJson(
 ///                     jsonObject(
@@ -335,13 +331,17 @@ import 'automation_rule_v2_state.dart';
 ///                     )))
 ///                 .build())
 ///             .action(AutomationRuleV2ActionArgs.builder()
-///                 .type("FINDING_FIELDS_UPDATE")
 ///                 .findingFieldsUpdate(AutomationRuleV2ActionFindingFieldsUpdateArgs.builder()
 ///                     .severityId(99)
 ///                     .statusId(3)
 ///                     .comment("Low severity GuardDuty finding suppressed")
 ///                     .build())
+///                 .type("FINDING_FIELDS_UPDATE")
 ///                 .build())
+///             .ruleName("suppress-guardduty-low")
+///             .description("Suppress low severity GuardDuty findings")
+///             .ruleOrder(100.0)
+///             .ruleStatus("ENABLED")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAggregatorV2)
 ///                 .build());
@@ -365,10 +365,6 @@ import 'automation_rule_v2_state.dart';
 ///     type: aws:securityhub:AutomationRuleV2
 ///     name: example
 ///     properties:
-///       ruleName: suppress-guardduty-low
-///       description: Suppress low severity GuardDuty findings
-///       ruleOrder: 100
-///       ruleStatus: ENABLED
 ///       criteria:
 ///         ocsfFindingCriteriaJson:
 ///           fn::toJSON:
@@ -380,11 +376,15 @@ import 'automation_rule_v2_state.dart';
 ///                       Value: GuardDuty
 ///             CompositeOperator: AND
 ///       action:
-///         type: FINDING_FIELDS_UPDATE
 ///         findingFieldsUpdate:
 ///           severityId: 99
 ///           statusId: 3
 ///           comment: Low severity GuardDuty finding suppressed
+///         type: FINDING_FIELDS_UPDATE
+///       ruleName: suppress-guardduty-low
+///       description: Suppress low severity GuardDuty findings
+///       ruleOrder: 100
+///       ruleStatus: ENABLED
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAggregatorV2}
@@ -397,7 +397,7 @@ import 'automation_rule_v2_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Security Hub V2 automation rule.
+/// - `arn` (String) ARN of the Security Hub V2 automation rule.
 ///
 ///
 /// Using `pulumi import`, import Security Hub V2 automation rules using `arn`. For example:
@@ -440,7 +440,7 @@ class AutomationRuleV2 extends pulumi.CustomResource {
           'aws:securityhub/automationRuleV2:AutomationRuleV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<AutomationRuleV2Action>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -451,8 +451,8 @@ class AutomationRuleV2 extends pulumi.CustomResource {
     ruleName = registerOutput<String>('ruleName');
     ruleOrder = registerOutput<double>('ruleOrder');
     ruleStatus = registerOutput<String>('ruleStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AutomationRuleV2] resource's state with the given [name] and [id].
@@ -460,11 +460,12 @@ class AutomationRuleV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomationRuleV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutomationRuleV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -487,7 +488,29 @@ class AutomationRuleV2 extends pulumi.CustomResource {
     ruleName = registerOutput<String>('ruleName');
     ruleOrder = registerOutput<double>('ruleOrder');
     ruleStatus = registerOutput<String>('ruleStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AutomationRuleV2] resource.
+  AutomationRuleV2.reference(String urn)
+    : super(
+        'aws:securityhub/automationRuleV2:AutomationRuleV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<AutomationRuleV2Action>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    criteria = registerOutput<AutomationRuleV2Criteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleV2Criteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    region = registerOutput<String>('region');
+    ruleId = registerOutput<String>('ruleId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleOrder = registerOutput<double>('ruleOrder');
+    ruleStatus = registerOutput<String>('ruleStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

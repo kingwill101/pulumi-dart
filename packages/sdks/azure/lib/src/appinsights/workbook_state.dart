@@ -6,29 +6,29 @@ import 'workbook_identity.dart';
 /// Input properties used for looking up and filtering Workbook resources.
 class WorkbookState {
   /// Workbook category, as defined by the user at creation time. There may be additional category types beyond the following: `workbook`, `sentinel`. Defaults to `workbook`.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON.
-  final pulumi.Input<String>? dataJson;
+  final pulumi.Input<String?>? dataJson;
   /// Specifies the description of the workbook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the user-defined name (display name) of the workbook.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `identity` block as defined below. Changing this forces a new Workbook to be created.
-  final pulumi.Input<WorkbookIdentity>? identity;
+  final pulumi.Input<WorkbookIdentity?>? identity;
   /// Specifies the Azure Region where the Workbook should exist. Changing this forces a new Workbook to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Workbook as a UUID/GUID. It should not contain any uppercase letters. Changing this forces a new Workbook to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Workbook should exist. Changing this forces a new Workbook to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Resource ID for a source resource. It should not contain any uppercase letters. Defaults to `azure monitor`.
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
   /// Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   ///
   /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resourceManagerId`.
-  final pulumi.Input<String>? storageContainerId;
+  final pulumi.Input<String?>? storageContainerId;
   /// A mapping of tags which should be assigned to the Workbook.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WorkbookState].
   /// [category] Workbook category, as defined by the user at creation time. There may be additional category types beyond the following: `workbook`, `sentinel`. Defaults to `workbook`.

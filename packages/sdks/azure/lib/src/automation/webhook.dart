@@ -397,17 +397,18 @@ class Webhook extends pulumi.CustomResource {
           'azure:automation/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['uri'],
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     enabled = registerOutput<bool?>('enabled');
     expiryTime = registerOutput<String>('expiryTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
     runbookName = registerOutput<String>('runbookName');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
   }
 
   /// Gets an existing [Webhook] resource's state with the given [name] and [id].
@@ -415,11 +416,12 @@ class Webhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Webhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -437,10 +439,31 @@ class Webhook extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     expiryTime = registerOutput<String>('expiryTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
     runbookName = registerOutput<String>('runbookName');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'azure:automation/webhook:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['uri'],
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    enabled = registerOutput<bool?>('enabled');
+    expiryTime = registerOutput<String>('expiryTime');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
+    runbookName = registerOutput<String>('runbookName');
+    uri = registerOutput<String>('uri', isSecret: true);
   }
 }

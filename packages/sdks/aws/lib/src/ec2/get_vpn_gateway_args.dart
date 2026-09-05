@@ -12,22 +12,22 @@ class GetVpnGatewayArgs {
   ///
   /// The arguments of this data source act as filters for querying the available VPN gateways.
   /// The given filters must match exactly one VPN gateway whose data will be exported as attributes.
-  final pulumi.Input<String>? amazonSideAsn;
+  final pulumi.Input<String?>? amazonSideAsn;
   /// ID of a VPC attached to the specific VPN Gateway to retrieve.
-  final pulumi.Input<String>? attachedVpcId;
+  final pulumi.Input<String?>? attachedVpcId;
   /// Availability Zone of the specific VPN Gateway to retrieve.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpnGatewayFilter>>? filters;
+  final pulumi.Input<List<GetVpnGatewayFilter>?>? filters;
   /// ID of the specific VPN Gateway to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the specific VPN Gateway to retrieve.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired VPN Gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpnGatewayArgs].
   /// [amazonSideAsn] Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.

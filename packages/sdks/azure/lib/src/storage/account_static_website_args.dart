@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_account_static_website_account_static_website_args_doc}
 class AccountStaticWebsiteArgs {
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-  final pulumi.Input<String>? error404Document;
+  final pulumi.Input<String?>? error404Document;
   /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html.
-  final pulumi.Input<String>? indexDocument;
+  final pulumi.Input<String?>? indexDocument;
   /// The ID of the Storage Account to set Static Website on. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
 

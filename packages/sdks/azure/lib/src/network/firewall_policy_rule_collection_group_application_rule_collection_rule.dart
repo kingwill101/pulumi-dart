@@ -5,24 +5,24 @@ import 'firewall_policy_rule_collection_group_application_rule_collection_rule_h
 import 'firewall_policy_rule_collection_group_application_rule_collection_rule_protocol.dart';
 
 class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// Specifies a list of destination FQDN tags.
-  final pulumi.Input<List<String>>? destinationFqdnTags;
-  final pulumi.Input<List<String>>? destinationFqdns;
+  final pulumi.Input<List<String>?>? destinationFqdnTags;
+  final pulumi.Input<List<String>?>? destinationFqdns;
   /// Specifies a list of destination URLs for which policy should hold. Needs Premium SKU for Firewall Policy. Conflicts with `destinationFqdns`.
-  final pulumi.Input<List<String>>? destinationUrls;
+  final pulumi.Input<List<String>?>? destinationUrls;
   /// Specifies a list of HTTP/HTTPS headers to insert. One or more `httpHeaders` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader>>? httpHeaders;
+  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleHttpHeader>?>? httpHeaders;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> name;
-  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol>>? protocols;
-  final pulumi.Input<List<String>>? sourceAddresses;
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol>?>? protocols;
+  final pulumi.Input<List<String>?>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destinationUrls`. Needs Premium SKU for Firewall Policy.
-  final pulumi.Input<bool>? terminateTls;
+  final pulumi.Input<bool?>? terminateTls;
   /// Specifies a list of web categories to which access is denied or allowed depending on the value of `action` above. Needs Premium SKU for Firewall Policy.
-  final pulumi.Input<List<String>>? webCategories;
+  final pulumi.Input<List<String>?>? webCategories;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule].
   /// [description] Optional.

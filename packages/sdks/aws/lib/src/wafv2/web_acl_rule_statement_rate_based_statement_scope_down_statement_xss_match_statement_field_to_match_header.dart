@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_xss_mat
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeader {
   /// Headers to inspect. See Headers Match Pattern below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeaderMatchPattern>? matchPattern;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchHeaderMatchPattern?>? matchPattern;
   /// Parts of the headers to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.

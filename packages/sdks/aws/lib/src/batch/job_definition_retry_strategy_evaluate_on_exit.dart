@@ -6,11 +6,11 @@ class JobDefinitionRetryStrategyEvaluateOnExit {
   /// Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `retry`, `exit`.
   final pulumi.Input<String> action;
   /// Glob pattern to match against the decimal representation of the exit code returned for a job.
-  final pulumi.Input<String>? onExitCode;
+  final pulumi.Input<String?>? onExitCode;
   /// Glob pattern to match against the reason returned for a job.
-  final pulumi.Input<String>? onReason;
+  final pulumi.Input<String?>? onReason;
   /// Glob pattern to match against the status reason returned for a job.
-  final pulumi.Input<String>? onStatusReason;
+  final pulumi.Input<String?>? onStatusReason;
 
   /// Creates a new [JobDefinitionRetryStrategyEvaluateOnExit].
   /// [action] Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `retry`, `exit`.

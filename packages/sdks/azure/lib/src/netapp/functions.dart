@@ -173,6 +173,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing NetApp Account Encryption Resource.
 ///
 /// ## Example Usage
@@ -311,6 +322,17 @@ Future<GetAccountEncryptionResult> getAccountEncryption(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountEncryptionResult.fromMap(result);
+}
+
+pulumi.Output<GetAccountEncryptionResult> getAccountEncryptionOutput(
+  GetAccountEncryptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getAccountEncryption:getAccountEncryption',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountEncryptionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing NetApp Backup Vault.
@@ -467,6 +489,17 @@ Future<GetBackupPolicyResult> getBackupPolicy(
   return GetBackupPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupPolicyResult> getBackupPolicyOutput(
+  GetBackupPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getBackupPolicy:getBackupPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPolicyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing NetApp Backup Vault.
 ///
 /// ## NetApp Backup Vault Usage
@@ -621,6 +654,17 @@ Future<GetBackupVaultResult> getBackupVault(
   return GetBackupVaultResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
+  GetBackupVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getBackupVault:getBackupVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupVaultResult.fromMap);
+}
+
 /// Uses this data source to access information about an existing NetApp Pool.
 ///
 /// ## NetApp Pool Usage
@@ -773,6 +817,17 @@ Future<GetPoolResult> getPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getPool:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
 }
 
 /// Uses this data source to access information about an existing NetApp Snapshot.
@@ -941,6 +996,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Uses this data source to access information about an existing NetApp Snapshot Policy.
@@ -1151,6 +1217,17 @@ Future<GetSnapshotPolicyResult> getSnapshotPolicy(
   return GetSnapshotPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotPolicyResult> getSnapshotPolicyOutput(
+  GetSnapshotPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getSnapshotPolicy:getSnapshotPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotPolicyResult.fromMap);
+}
+
 /// Uses this data source to access information about an existing NetApp Volume.
 ///
 /// ## NetApp Volume Usage
@@ -1312,6 +1389,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolume:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Use this data source to access information about an existing NetApp Files Volume Bucket.
 ///
 /// ## Example Usage
@@ -1466,6 +1554,17 @@ Future<GetVolumeBucketResult> getVolumeBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeBucketResult> getVolumeBucketOutput(
+  GetVolumeBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolumeBucket:getVolumeBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeBucketResult.fromMap);
 }
 
 /// Use this data source to access information about an existing NetApp Files Volume Bucket, including its bucket server configuration.
@@ -1624,6 +1723,17 @@ Future<GetVolumeBucketWithServerResult> getVolumeBucketWithServer(
   return GetVolumeBucketWithServerResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeBucketWithServerResult> getVolumeBucketWithServerOutput(
+  GetVolumeBucketWithServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolumeBucketWithServer:getVolumeBucketWithServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeBucketWithServerResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Application Volume Group for Oracle application.
 ///
 /// ## Example Usage
@@ -1776,6 +1886,17 @@ Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeGroupOracleResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeGroupOracleResult> getVolumeGroupOracleOutput(
+  GetVolumeGroupOracleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolumeGroupOracle:getVolumeGroupOracle',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeGroupOracleResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Application Volume Group for SAP HANA application.
@@ -1932,6 +2053,17 @@ Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
   return GetVolumeGroupSapHanaResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeGroupSapHanaResult> getVolumeGroupSapHanaOutput(
+  GetVolumeGroupSapHanaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolumeGroupSapHana:getVolumeGroupSapHana',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeGroupSapHanaResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Volume Quota Rule.
 ///
 /// ## Example Usage
@@ -2077,4 +2209,15 @@ Future<GetVolumeQuotaRuleResult> getVolumeQuotaRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeQuotaRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeQuotaRuleResult> getVolumeQuotaRuleOutput(
+  GetVolumeQuotaRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:netapp/getVolumeQuotaRule:getVolumeQuotaRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeQuotaRuleResult.fromMap);
 }

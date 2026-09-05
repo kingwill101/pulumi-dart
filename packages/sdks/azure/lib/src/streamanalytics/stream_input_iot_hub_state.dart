@@ -6,23 +6,23 @@ import 'stream_input_iot_hub_serialization.dart';
 /// Input properties used for looking up and filtering StreamInputIotHub resources.
 class StreamInputIotHubState {
   /// The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub.
-  final pulumi.Input<String>? eventhubConsumerGroupName;
+  final pulumi.Input<String?>? eventhubConsumerGroupName;
   /// The name or the URI of the IoT Hub.
-  final pulumi.Input<String>? iothubNamespace;
+  final pulumi.Input<String?>? iothubNamespace;
   /// The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `serialization` block as defined below.
-  final pulumi.Input<StreamInputIotHubSerialization>? serialization;
+  final pulumi.Input<StreamInputIotHubSerialization?>? serialization;
   /// The shared access policy key for the specified shared access policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
 
   /// Creates a new [StreamInputIotHubState].
   /// [endpoint] The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).

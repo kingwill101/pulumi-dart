@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionActiveTrustedKeyGroupItem {
   /// ID of the key group that contains the public keys.
-  final pulumi.Input<String>? keyGroupId;
+  final pulumi.Input<String?>? keyGroupId;
   /// Set of active CloudFront key pairs associated with the signer that can be used to verify the signatures of signed URLs and signed cookies.
-  final pulumi.Input<List<String>>? keyPairIds;
+  final pulumi.Input<List<String>?>? keyPairIds;
 
   /// Creates a new [MultitenantDistributionActiveTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.

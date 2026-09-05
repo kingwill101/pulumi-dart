@@ -76,7 +76,7 @@ import 'lication_load_balancer_frontend_state.dart';
 /// 		}
 /// 		_, err = appconfiguration.NewLicationLoadBalancerFrontend(ctx, "example", &appconfiguration.LicationLoadBalancerFrontendArgs{
 /// 			Name:                      pulumi.String("example"),
-/// 			ApplicationLoadBalancerId: example.ID(),
+/// 			ApplicationLoadBalancerId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -194,12 +194,12 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LicationLoadBalancerFrontend] resource's state with the given [name] and [id].
@@ -207,11 +207,12 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicationLoadBalancerFrontendState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicationLoadBalancerFrontend._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,21 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LicationLoadBalancerFrontend] resource.
+  LicationLoadBalancerFrontend.reference(String urn)
+    : super(
+        'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

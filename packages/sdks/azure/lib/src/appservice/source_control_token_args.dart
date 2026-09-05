@@ -12,7 +12,7 @@ class SourceControlTokenArgs {
   /// The Access Token Secret.
   ///
   /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
-  final pulumi.Input<String>? tokenSecret;
+  final pulumi.Input<String?>? tokenSecret;
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   final pulumi.Input<String> type;
 

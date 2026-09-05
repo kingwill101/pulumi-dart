@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPolicyPostgresqlRetentionRuleCriteria {
   /// Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<String>? absoluteCriteria;
+  final pulumi.Input<String?>? absoluteCriteria;
   /// Possible values are `Monday`, `Tuesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<List<String>>? monthsOfYears;
+  final pulumi.Input<List<String>?>? monthsOfYears;
   /// Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<List<String>>? scheduledBackupTimes;
+  final pulumi.Input<List<String>?>? scheduledBackupTimes;
   /// Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new Backup Policy PostgreSQL to be created.
   ///
   /// &gt; **Note:** When not using `absoluteCriteria`, you must use exactly one of `daysOfMonth` or `daysOfWeek`. Regarding the remaining two properties, `weeksOfMonth` and `monthsOfYear`, you may use either, both, or neither. If you would like to set multiple intervals, you may do so by using multiple `retentionRule` blocks.
-  final pulumi.Input<List<String>>? weeksOfMonths;
+  final pulumi.Input<List<String>?>? weeksOfMonths;
 
   /// Creates a new [BackupPolicyPostgresqlRetentionRuleCriteria].
   /// [absoluteCriteria] Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new Backup Policy PostgreSQL to be created.

@@ -9,16 +9,16 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   /// Specifies whether the bot will wait for a user to respond.
   /// When this field is `false`, wait and continue responses for a slot aren't used.
   /// If the active field isn't specified, the default is `true`.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Response that Amazon Lex sends to indicate that the bot is ready to continue the conversation.
   /// See the `continueResponse` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse>>? continueResponses;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse>?>? continueResponses;
   /// Response that Amazon Lex sends periodically to the user to indicate that the bot is still waiting for input from the user.
   /// See the `stillWaitingResponse` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>>? stillWaitingResponses;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>?>? stillWaitingResponses;
   /// Response that Amazon Lex sends to indicate that the bot is waiting for the conversation to continue.
   /// See the `waitingResponse` argument reference below.
-  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>>? waitingResponses;
+  final pulumi.Input<List<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>?>? waitingResponses;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecification].
   /// [active] Specifies whether the bot will wait for a user to respond.

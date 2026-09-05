@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RegexPatternSet resources.
 class RegexPatternSetState {
-  /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  /// ARN
+  final pulumi.Input<String?>? arn;
   /// The name or description of the Regex Pattern Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  final pulumi.Input<List<String>>? regexPatternStrings;
+  final pulumi.Input<List<String>?>? regexPatternStrings;
 
   /// Creates a new [RegexPatternSetState].
-  /// [arn] Amazon Resource Name (ARN)
+  /// [arn] ARN
   /// [name] The name or description of the Regex Pattern Set.
   /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
   const RegexPatternSetState({

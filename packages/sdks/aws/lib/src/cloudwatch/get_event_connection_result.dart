@@ -3,58 +3,58 @@
 
 /// Result data returned by getEventConnection.
 class GetEventConnectionResult {
-  /// ARN (Amazon Resource Name) of the connection.
-  final String arn;
+  /// ARN of the connection.
+  final String? arn;
   /// Type of authorization specified for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
-  final String authorizationType;
+  final String? authorizationType;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// (Optional) Identifier of the AWS KMS customer managed key for EventBridge to use to encrypt the connection, if one has been specified.
-  final String kmsKeyIdentifier;
-  final String name;
-  final String region;
+  final String? kmsKeyIdentifier;
+  final String? name;
+  final String? region;
   /// ARN of the secret created from the authorization parameters specified for the connection.
-  final String secretArn;
+  final String? secretArn;
 
   /// Creates a new [GetEventConnectionResult].
-  /// [arn] ARN (Amazon Resource Name) of the connection.
+  /// [arn] ARN of the connection.
   /// [authorizationType] Type of authorization specified for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKeyIdentifier] (Optional) Identifier of the AWS KMS customer managed key for EventBridge to use to encrypt the connection, if one has been specified.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   /// [secretArn] ARN of the secret created from the authorization parameters specified for the connection.
   const GetEventConnectionResult({
-    required this.arn,
-    required this.authorizationType,
-    required this.id,
-    required this.kmsKeyIdentifier,
-    required this.name,
-    required this.region,
-    required this.secretArn,
+    this.arn,
+    this.authorizationType,
+    this.id,
+    this.kmsKeyIdentifier,
+    this.name,
+    this.region,
+    this.secretArn,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'authorizationType': authorizationType,
-      'id': id,
-      'kmsKeyIdentifier': kmsKeyIdentifier,
-      'name': name,
-      'region': region,
-      'secretArn': secretArn,
+      'arn': ?arn,
+      'authorizationType': ?authorizationType,
+      'id': ?id,
+      'kmsKeyIdentifier': ?kmsKeyIdentifier,
+      'name': ?name,
+      'region': ?region,
+      'secretArn': ?secretArn,
     };
   }
 
   factory GetEventConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetEventConnectionResult(
-      arn: map['arn'] as String,
-      authorizationType: map['authorizationType'] as String,
-      id: map['id'] as String,
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      secretArn: map['secretArn'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyIdentifier: (() { final guardedValue = map['kmsKeyIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretArn: (() { final guardedValue = map['secretArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -140,14 +140,14 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lex.V2modelsBotLocale("example", {
-///     botId: exampleAwsLexv2modelsBot.id,
-///     botVersion: "DRAFT",
-///     localeId: "en_US",
-///     nLuIntentConfidenceThreshold: 0.7,
 ///     voiceSettings: {
 ///         voiceId: "Kendra",
 ///         engine: "standard",
 ///     },
+///     botId: exampleAwsLexv2modelsBot.id,
+///     botVersion: "DRAFT",
+///     localeId: "en_US",
+///     nLuIntentConfidenceThreshold: 0.7,
 /// });
 /// ```
 /// ```python
@@ -155,14 +155,14 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lex.V2modelsBotLocale("example",
-///     bot_id=example_aws_lexv2models_bot["id"],
-///     bot_version="DRAFT",
-///     locale_id="en_US",
-///     n_lu_intent_confidence_threshold=0.7,
 ///     voice_settings={
 ///         "voice_id": "Kendra",
 ///         "engine": "standard",
-///     })
+///     },
+///     bot_id=example_aws_lexv2models_bot["id"],
+///     bot_version="DRAFT",
+///     locale_id="en_US",
+///     n_lu_intent_confidence_threshold=0.7)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,15 +174,15 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// {
 ///     var example = new Aws.Lex.V2modelsBotLocale("example", new()
 ///     {
-///         BotId = exampleAwsLexv2modelsBot.Id,
-///         BotVersion = "DRAFT",
-///         LocaleId = "en_US",
-///         NLuIntentConfidenceThreshold = 0.7,
 ///         VoiceSettings = new Aws.Lex.Inputs.V2modelsBotLocaleVoiceSettingsArgs
 ///         {
 ///             VoiceId = "Kendra",
 ///             Engine = "standard",
 ///         },
+///         BotId = exampleAwsLexv2modelsBot.Id,
+///         BotVersion = "DRAFT",
+///         LocaleId = "en_US",
+///         NLuIntentConfidenceThreshold = 0.7,
 ///     });
 ///
 /// });
@@ -198,14 +198,14 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lex.NewV2modelsBotLocale(ctx, "example", &lex.V2modelsBotLocaleArgs{
-/// 			BotId:                        pulumi.Any(exampleAwsLexv2modelsBot.Id),
-/// 			BotVersion:                   pulumi.String("DRAFT"),
-/// 			LocaleId:                     pulumi.String("en_US"),
-/// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
 /// 			VoiceSettings: &lex.V2modelsBotLocaleVoiceSettingsArgs{
 /// 				VoiceId: pulumi.String("Kendra"),
 /// 				Engine:  pulumi.String("standard"),
 /// 			},
+/// 			BotId:                        pulumi.Any(exampleAwsLexv2modelsBot.Id),
+/// 			BotVersion:                   pulumi.String("DRAFT"),
+/// 			LocaleId:                     pulumi.String("en_US"),
+/// 			NLuIntentConfidenceThreshold: pulumi.Float64(0.7),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -224,14 +224,14 @@ import 'v2models_bot_locale_voice_settings.dart';
 /// }
 ///
 /// resource "aws_lex_v2modelsbotlocale" "example" {
-///   bot_id                           = exampleAwsLexv2modelsBot.id
-///   bot_version                      = "DRAFT"
-///   locale_id                        = "en_US"
-///   n_lu_intent_confidence_threshold = 0.7
 ///   voice_settings = {
 ///     voice_id = "Kendra"
 ///     engine   = "standard"
 ///   }
+///   bot_id                           = exampleAwsLexv2modelsBot.id
+///   bot_version                      = "DRAFT"
+///   locale_id                        = "en_US"
+///   n_lu_intent_confidence_threshold = 0.7
 /// }
 /// ```
 /// ```java
@@ -257,14 +257,14 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2modelsBotLocale("example", V2modelsBotLocaleArgs.builder()
-///             .botId(exampleAwsLexv2modelsBot.id())
-///             .botVersion("DRAFT")
-///             .localeId("en_US")
-///             .nLuIntentConfidenceThreshold(0.7)
 ///             .voiceSettings(V2modelsBotLocaleVoiceSettingsArgs.builder()
 ///                 .voiceId("Kendra")
 ///                 .engine("standard")
 ///                 .build())
+///             .botId(exampleAwsLexv2modelsBot.id())
+///             .botVersion("DRAFT")
+///             .localeId("en_US")
+///             .nLuIntentConfidenceThreshold(0.7)
 ///             .build());
 ///
 ///     }
@@ -275,13 +275,13 @@ import 'v2models_bot_locale_voice_settings.dart';
 ///   example:
 ///     type: aws:lex:V2modelsBotLocale
 ///     properties:
+///       voiceSettings:
+///         voiceId: Kendra
+///         engine: standard
 ///       botId: ${exampleAwsLexv2modelsBot.id}
 ///       botVersion: DRAFT
 ///       localeId: en_US
 ///       nLuIntentConfidenceThreshold: 0.7
-///       voiceSettings:
-///         voiceId: Kendra
-///         engine: standard
 /// ```
 ///
 ///
@@ -325,7 +325,7 @@ class V2modelsBotLocale extends pulumi.CustomResource {
           'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
@@ -343,11 +343,12 @@ class V2modelsBotLocale extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2modelsBotLocaleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2modelsBotLocale._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +362,26 @@ class V2modelsBotLocale extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    description = registerOutput<String?>('description');
+    localeId = registerOutput<String>('localeId');
+    nLuIntentConfidenceThreshold = registerOutput<double>('nLuIntentConfidenceThreshold');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotLocaleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>('voiceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotLocaleVoiceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [V2modelsBotLocale] resource.
+  V2modelsBotLocale.reference(String urn)
+    : super(
+        'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
     description = registerOutput<String?>('description');

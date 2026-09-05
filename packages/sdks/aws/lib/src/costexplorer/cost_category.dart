@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cost_category_args.dart';
+import 'cost_category_rule.dart';
+import 'cost_category_split_charge_rule.dart';
 import 'cost_category_state.dart';
 
 /// Provides a CE Cost Category.
@@ -12,11 +14,8 @@ import 'cost_category_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.costexplorer.CostCategory("test", {
-///     name: "NAME",
-///     ruleVersion: "CostCategoryExpression.v1",
 ///     rules: [
 ///         {
-///             value: "production",
 ///             rule: {
 ///                 dimension: {
 ///                     key: "LINKED_ACCOUNT_NAME",
@@ -24,9 +23,9 @@ import 'cost_category_state.dart';
 ///                     matchOptions: ["ENDS_WITH"],
 ///                 },
 ///             },
+///             value: "production",
 ///         },
 ///         {
-///             value: "staging",
 ///             rule: {
 ///                 dimension: {
 ///                     key: "LINKED_ACCOUNT_NAME",
@@ -34,9 +33,9 @@ import 'cost_category_state.dart';
 ///                     matchOptions: ["ENDS_WITH"],
 ///                 },
 ///             },
+///             value: "staging",
 ///         },
 ///         {
-///             value: "testing",
 ///             rule: {
 ///                 dimension: {
 ///                     key: "LINKED_ACCOUNT_NAME",
@@ -44,8 +43,11 @@ import 'cost_category_state.dart';
 ///                     matchOptions: ["ENDS_WITH"],
 ///                 },
 ///             },
+///             value: "testing",
 ///         },
 ///     ],
+///     name: "NAME",
+///     ruleVersion: "CostCategoryExpression.v1",
 /// });
 /// ```
 /// ```python
@@ -53,11 +55,8 @@ import 'cost_category_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.costexplorer.CostCategory("test",
-///     name="NAME",
-///     rule_version="CostCategoryExpression.v1",
 ///     rules=[
 ///         {
-///             "value": "production",
 ///             "rule": {
 ///                 "dimension": {
 ///                     "key": "LINKED_ACCOUNT_NAME",
@@ -65,9 +64,9 @@ import 'cost_category_state.dart';
 ///                     "match_options": ["ENDS_WITH"],
 ///                 },
 ///             },
+///             "value": "production",
 ///         },
 ///         {
-///             "value": "staging",
 ///             "rule": {
 ///                 "dimension": {
 ///                     "key": "LINKED_ACCOUNT_NAME",
@@ -75,9 +74,9 @@ import 'cost_category_state.dart';
 ///                     "match_options": ["ENDS_WITH"],
 ///                 },
 ///             },
+///             "value": "staging",
 ///         },
 ///         {
-///             "value": "testing",
 ///             "rule": {
 ///                 "dimension": {
 ///                     "key": "LINKED_ACCOUNT_NAME",
@@ -85,8 +84,11 @@ import 'cost_category_state.dart';
 ///                     "match_options": ["ENDS_WITH"],
 ///                 },
 ///             },
+///             "value": "testing",
 ///         },
-///     ])
+///     ],
+///     name="NAME",
+///     rule_version="CostCategoryExpression.v1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -98,13 +100,10 @@ import 'cost_category_state.dart';
 /// {
 ///     var test = new Aws.CostExplorer.CostCategory("test", new()
 ///     {
-///         Name = "NAME",
-///         RuleVersion = "CostCategoryExpression.v1",
 ///         Rules = new[]
 ///         {
 ///             new Aws.CostExplorer.Inputs.CostCategoryRuleArgs
 ///             {
-///                 Value = "production",
 ///                 Rule = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleArgs
 ///                 {
 ///                     Dimension = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleDimensionArgs
@@ -120,10 +119,10 @@ import 'cost_category_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Value = "production",
 ///             },
 ///             new Aws.CostExplorer.Inputs.CostCategoryRuleArgs
 ///             {
-///                 Value = "staging",
 ///                 Rule = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleArgs
 ///                 {
 ///                     Dimension = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleDimensionArgs
@@ -139,10 +138,10 @@ import 'cost_category_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Value = "staging",
 ///             },
 ///             new Aws.CostExplorer.Inputs.CostCategoryRuleArgs
 ///             {
-///                 Value = "testing",
 ///                 Rule = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleArgs
 ///                 {
 ///                     Dimension = new Aws.CostExplorer.Inputs.CostCategoryRuleRuleDimensionArgs
@@ -158,8 +157,11 @@ import 'cost_category_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Value = "testing",
 ///             },
 ///         },
+///         Name = "NAME",
+///         RuleVersion = "CostCategoryExpression.v1",
 ///     });
 ///
 /// });
@@ -175,11 +177,8 @@ import 'cost_category_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := costexplorer.NewCostCategory(ctx, "test", &costexplorer.CostCategoryArgs{
-/// 			Name:        pulumi.String("NAME"),
-/// 			RuleVersion: pulumi.String("CostCategoryExpression.v1"),
 /// 			Rules: costexplorer.CostCategoryRuleArray{
 /// 				&costexplorer.CostCategoryRuleArgs{
-/// 					Value: pulumi.String("production"),
 /// 					Rule: &costexplorer.CostCategoryRuleRuleArgs{
 /// 						Dimension: &costexplorer.CostCategoryRuleRuleDimensionArgs{
 /// 							Key: pulumi.String("LINKED_ACCOUNT_NAME"),
@@ -191,9 +190,9 @@ import 'cost_category_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Value: pulumi.String("production"),
 /// 				},
 /// 				&costexplorer.CostCategoryRuleArgs{
-/// 					Value: pulumi.String("staging"),
 /// 					Rule: &costexplorer.CostCategoryRuleRuleArgs{
 /// 						Dimension: &costexplorer.CostCategoryRuleRuleDimensionArgs{
 /// 							Key: pulumi.String("LINKED_ACCOUNT_NAME"),
@@ -205,9 +204,9 @@ import 'cost_category_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Value: pulumi.String("staging"),
 /// 				},
 /// 				&costexplorer.CostCategoryRuleArgs{
-/// 					Value: pulumi.String("testing"),
 /// 					Rule: &costexplorer.CostCategoryRuleRuleArgs{
 /// 						Dimension: &costexplorer.CostCategoryRuleRuleDimensionArgs{
 /// 							Key: pulumi.String("LINKED_ACCOUNT_NAME"),
@@ -219,8 +218,11 @@ import 'cost_category_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Value: pulumi.String("testing"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("NAME"),
+/// 			RuleVersion: pulumi.String("CostCategoryExpression.v1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -239,10 +241,7 @@ import 'cost_category_state.dart';
 /// }
 ///
 /// resource "aws_costexplorer_costcategory" "test" {
-///   name         = "NAME"
-///   rule_version = "CostCategoryExpression.v1"
 ///   rules {
-///     value = "production"
 ///     rule = {
 ///       dimension = {
 ///         key           = "LINKED_ACCOUNT_NAME"
@@ -250,9 +249,9 @@ import 'cost_category_state.dart';
 ///         match_options = ["ENDS_WITH"]
 ///       }
 ///     }
+///     value = "production"
 ///   }
 ///   rules {
-///     value = "staging"
 ///     rule = {
 ///       dimension = {
 ///         key           = "LINKED_ACCOUNT_NAME"
@@ -260,9 +259,9 @@ import 'cost_category_state.dart';
 ///         match_options = ["ENDS_WITH"]
 ///       }
 ///     }
+///     value = "staging"
 ///   }
 ///   rules {
-///     value = "testing"
 ///     rule = {
 ///       dimension = {
 ///         key           = "LINKED_ACCOUNT_NAME"
@@ -270,7 +269,10 @@ import 'cost_category_state.dart';
 ///         match_options = ["ENDS_WITH"]
 ///       }
 ///     }
+///     value = "testing"
 ///   }
+///   name         = "NAME"
+///   rule_version = "CostCategoryExpression.v1"
 /// }
 /// ```
 /// ```java
@@ -298,11 +300,8 @@ import 'cost_category_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new CostCategory("test", CostCategoryArgs.builder()
-///             .name("NAME")
-///             .ruleVersion("CostCategoryExpression.v1")
 ///             .rules(
 ///                 CostCategoryRuleArgs.builder()
-///                     .value("production")
 ///                     .rule(CostCategoryRuleRuleArgs.builder()
 ///                         .dimension(CostCategoryRuleRuleDimensionArgs.builder()
 ///                             .key("LINKED_ACCOUNT_NAME")
@@ -310,9 +309,9 @@ import 'cost_category_state.dart';
 ///                             .matchOptions("ENDS_WITH")
 ///                             .build())
 ///                         .build())
+///                     .value("production")
 ///                     .build(),
 ///                 CostCategoryRuleArgs.builder()
-///                     .value("staging")
 ///                     .rule(CostCategoryRuleRuleArgs.builder()
 ///                         .dimension(CostCategoryRuleRuleDimensionArgs.builder()
 ///                             .key("LINKED_ACCOUNT_NAME")
@@ -320,9 +319,9 @@ import 'cost_category_state.dart';
 ///                             .matchOptions("ENDS_WITH")
 ///                             .build())
 ///                         .build())
+///                     .value("staging")
 ///                     .build(),
 ///                 CostCategoryRuleArgs.builder()
-///                     .value("testing")
 ///                     .rule(CostCategoryRuleRuleArgs.builder()
 ///                         .dimension(CostCategoryRuleRuleDimensionArgs.builder()
 ///                             .key("LINKED_ACCOUNT_NAME")
@@ -330,7 +329,10 @@ import 'cost_category_state.dart';
 ///                             .matchOptions("ENDS_WITH")
 ///                             .build())
 ///                         .build())
+///                     .value("testing")
 ///                     .build())
+///             .name("NAME")
+///             .ruleVersion("CostCategoryExpression.v1")
 ///             .build());
 ///
 ///     }
@@ -341,33 +343,33 @@ import 'cost_category_state.dart';
 ///   test:
 ///     type: aws:costexplorer:CostCategory
 ///     properties:
-///       name: NAME
-///       ruleVersion: CostCategoryExpression.v1
 ///       rules:
-///         - value: production
-///           rule:
+///         - rule:
 ///             dimension:
 ///               key: LINKED_ACCOUNT_NAME
 ///               values:
 ///                 - -prod
 ///               matchOptions:
 ///                 - ENDS_WITH
-///         - value: staging
-///           rule:
+///           value: production
+///         - rule:
 ///             dimension:
 ///               key: LINKED_ACCOUNT_NAME
 ///               values:
 ///                 - -stg
 ///               matchOptions:
 ///                 - ENDS_WITH
-///         - value: testing
-///           rule:
+///           value: staging
+///         - rule:
 ///             dimension:
 ///               key: LINKED_ACCOUNT_NAME
 ///               values:
 ///                 - -dev
 ///               matchOptions:
 ///                 - ENDS_WITH
+///           value: testing
+///       name: NAME
+///       ruleVersion: CostCategoryExpression.v1
 /// ```
 ///
 ///
@@ -377,7 +379,7 @@ import 'cost_category_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Cost Explorer cost category.
+/// - `arn` (String) ARN of the Cost Explorer cost category.
 ///
 ///
 /// Using `pulumi import`, import `aws.costexplorer.CostCategory` using the id. For example:
@@ -401,9 +403,9 @@ class CostCategory extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> ruleVersion;
   /// Configuration block for the Cost Category rules used to categorize costs. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<CostCategoryRule>> rules;
   /// Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> splitChargeRules;
+  late final pulumi.Output<List<CostCategorySplitChargeRule>?> splitChargeRules;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -421,7 +423,7 @@ class CostCategory extends pulumi.CustomResource {
           'aws:costexplorer/costCategory:CostCategory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultValue = registerOutput<String?>('defaultValue');
@@ -429,10 +431,10 @@ class CostCategory extends pulumi.CustomResource {
     effectiveStart = registerOutput<String>('effectiveStart');
     this.name = registerOutput<String>('name');
     ruleVersion = registerOutput<String>('ruleVersion');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    splitChargeRules = registerOutput<List<Map<String, dynamic>>?>('splitChargeRules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<CostCategoryRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategoryRule>(guardedValue, (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>())); });
+    splitChargeRules = registerOutput<List<CostCategorySplitChargeRule>?>('splitChargeRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategorySplitChargeRule>(guardedValue, (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CostCategory] resource's state with the given [name] and [id].
@@ -440,11 +442,12 @@ class CostCategory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CostCategoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CostCategory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -464,9 +467,30 @@ class CostCategory extends pulumi.CustomResource {
     effectiveStart = registerOutput<String>('effectiveStart');
     this.name = registerOutput<String>('name');
     ruleVersion = registerOutput<String>('ruleVersion');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    splitChargeRules = registerOutput<List<Map<String, dynamic>>?>('splitChargeRules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<CostCategoryRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategoryRule>(guardedValue, (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>())); });
+    splitChargeRules = registerOutput<List<CostCategorySplitChargeRule>?>('splitChargeRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategorySplitChargeRule>(guardedValue, (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CostCategory] resource.
+  CostCategory.reference(String urn)
+    : super(
+        'aws:costexplorer/costCategory:CostCategory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultValue = registerOutput<String?>('defaultValue');
+    effectiveEnd = registerOutput<String>('effectiveEnd');
+    effectiveStart = registerOutput<String>('effectiveStart');
+    this.name = registerOutput<String>('name');
+    ruleVersion = registerOutput<String>('ruleVersion');
+    rules = registerOutput<List<CostCategoryRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategoryRule>(guardedValue, (value) => CostCategoryRule.fromMap((value as Map).cast<String, dynamic>())); });
+    splitChargeRules = registerOutput<List<CostCategorySplitChargeRule>?>('splitChargeRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostCategorySplitChargeRule>(guardedValue, (value) => CostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

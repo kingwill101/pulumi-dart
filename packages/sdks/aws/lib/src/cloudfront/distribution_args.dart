@@ -19,55 +19,55 @@ import 'distribution_viewer_mtls_config.dart';
 /// {@macro pulumi_cloudfront_distribution_distribution_args_doc}
 class DistributionArgs {
   /// Extra CNAMEs (alternate domain names), if any, for this distribution.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// ID of the Anycast static IP list that is associated with the distribution.
-  final pulumi.Input<String>? anycastIpListId;
+  final pulumi.Input<String?>? anycastIpListId;
   /// Cache tag configuration block for cache tag extraction from origin responses (maximum one). See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-by-tags.html) for more information about cache tags.
-  final pulumi.Input<DistributionCacheTagConfig>? cacheTagConfig;
+  final pulumi.Input<DistributionCacheTagConfig?>? cacheTagConfig;
   /// Any comments you want to include about the distribution.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// A connection function association configuration block (maximum one).
-  final pulumi.Input<DistributionConnectionFunctionAssociation>? connectionFunctionAssociation;
+  final pulumi.Input<DistributionConnectionFunctionAssociation?>? connectionFunctionAssociation;
   /// Identifier of a continuous deployment policy. This argument should only be set on a production distribution. See the `aws.cloudfront.ContinuousDeploymentPolicy` resource for additional details.
-  final pulumi.Input<String>? continuousDeploymentPolicyId;
+  final pulumi.Input<String?>? continuousDeploymentPolicyId;
   /// One or more custom error response elements (multiples allowed).
-  final pulumi.Input<List<DistributionCustomErrorResponse>>? customErrorResponses;
+  final pulumi.Input<List<DistributionCustomErrorResponse>?>? customErrorResponses;
   /// Default cache behavior for this distribution (maximum one). Requires either `cachePolicyId` (preferred) or `forwardedValues` (deprecated) be set.
   final pulumi.Input<DistributionDefaultCacheBehavior> defaultCacheBehavior;
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-  final pulumi.Input<String>? defaultRootObject;
+  final pulumi.Input<String?>? defaultRootObject;
   /// Whether the distribution is enabled to accept end user requests for content.
   final pulumi.Input<bool> enabled;
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3` and `http3`. The default is `http2`.
-  final pulumi.Input<String>? httpVersion;
+  final pulumi.Input<String?>? httpVersion;
   /// Whether the IPv6 is enabled for the distribution.
-  final pulumi.Input<bool>? isIpv6Enabled;
+  final pulumi.Input<bool?>? isIpv6Enabled;
   /// The logging configuration that controls how logs are written to your distribution (maximum one). AWS provides two versions of access logs for CloudFront: Legacy and v2. This argument configures legacy version standard logs.
-  final pulumi.Input<DistributionLoggingConfig>? loggingConfig;
+  final pulumi.Input<DistributionLoggingConfig?>? loggingConfig;
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
-  final pulumi.Input<List<DistributionOrderedCacheBehavior>>? orderedCacheBehaviors;
+  final pulumi.Input<List<DistributionOrderedCacheBehavior>?>? orderedCacheBehaviors;
   /// One or more originGroup for this distribution (multiples allowed).
-  final pulumi.Input<List<DistributionOriginGroup>>? originGroups;
+  final pulumi.Input<List<DistributionOriginGroup>?>? originGroups;
   /// One or more origins for this distribution (multiples allowed).
   final pulumi.Input<List<DistributionOrigin>> origins;
   /// Price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100`.
-  final pulumi.Input<String>? priceClass;
+  final pulumi.Input<String?>? priceClass;
   /// The restriction configuration for this distribution (maximum one).
   final pulumi.Input<DistributionRestrictions> restrictions;
   /// Disables the distribution instead of deleting it when destroying the resource through the provider. If this is set, the distribution needs to be deleted manually afterwards. Default: `false`.
-  final pulumi.Input<bool>? retainOnDelete;
+  final pulumi.Input<bool?>? retainOnDelete;
   /// A Boolean that indicates whether this is a staging distribution. Defaults to `false`.
-  final pulumi.Input<bool>? staging;
+  final pulumi.Input<bool?>? staging;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The SSL configuration for this distribution (maximum one).
   final pulumi.Input<DistributionViewerCertificate> viewerCertificate;
   /// The viewer mTLS configuration for this distribution (maximum one).
-  final pulumi.Input<DistributionViewerMtlsConfig>? viewerMtlsConfig;
+  final pulumi.Input<DistributionViewerMtlsConfig?>? viewerMtlsConfig;
   /// If enabled, the resource will wait for the distribution status to change from `InProgress` to `Deployed`. Setting this to`false` will skip the process. Default: `true`.
-  final pulumi.Input<bool>? waitForDeployment;
+  final pulumi.Input<bool?>? waitForDeployment;
   /// Unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution. To specify a web ACL created using the latest version of AWS WAF (WAFv2), use the ACL ARN, for example `aws_wafv2_web_acl.example.arn`. To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `aws_waf_web_acl.example.id`. The WAF Web ACL must exist in the WAF Global (CloudFront) region and the credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
-  final pulumi.Input<String>? webAclId;
+  final pulumi.Input<String?>? webAclId;
 
   /// Creates a new [DistributionArgs].
   /// [aliases] Extra CNAMEs (alternate domain names), if any, for this distribution.

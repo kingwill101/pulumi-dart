@@ -151,7 +151,7 @@ import 'monitor_sso_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datadog.NewMonitorSsoConfiguration(ctx, "example", &datadog.MonitorSsoConfigurationArgs{
-/// 			DatadogMonitorId:        exampleMonitor.ID(),
+/// 			DatadogMonitorId:        exampleMonitor.ID().ToIDOutput().ToStringOutput(),
 /// 			SingleSignOn:            pulumi.String("Enable"),
 /// 			EnterpriseApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
 /// 		})
@@ -330,7 +330,7 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
           'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
@@ -345,11 +345,12 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorSsoConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MonitorSsoConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -363,6 +364,23 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    datadogMonitorId = registerOutput<String>('datadogMonitorId');
+    enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
+    loginUrl = registerOutput<String>('loginUrl');
+    this.name = registerOutput<String>('name');
+    singleSignOn = registerOutput<String>('singleSignOn');
+    singleSignOnEnabled = registerOutput<String>('singleSignOnEnabled');
+  }
+
+  /// Creates a typed reference to an existing [MonitorSsoConfiguration] resource.
+  MonitorSsoConfiguration.reference(String urn)
+    : super(
+        'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');
     loginUrl = registerOutput<String>('loginUrl');

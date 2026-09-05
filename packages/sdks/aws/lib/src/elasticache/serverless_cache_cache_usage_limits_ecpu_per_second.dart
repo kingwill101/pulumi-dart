@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessCacheCacheUsageLimitsEcpuPerSecond {
   /// The maximum number of ECPUs the cache can consume per second. Must be between 1,000 and 15,000,000.
-  final pulumi.Input<int>? maximum;
+  final pulumi.Input<int?>? maximum;
   /// The minimum number of ECPUs the cache can consume per second. Must be between 1,000 and 15,000,000.
-  final pulumi.Input<int>? minimum;
+  final pulumi.Input<int?>? minimum;
 
   /// Creates a new [ServerlessCacheCacheUsageLimitsEcpuPerSecond].
   /// [maximum] The maximum number of ECPUs the cache can consume per second. Must be between 1,000 and 15,000,000.
@@ -25,8 +25,8 @@ class ServerlessCacheCacheUsageLimitsEcpuPerSecond {
 
   factory ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimitsEcpuPerSecond(
-      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

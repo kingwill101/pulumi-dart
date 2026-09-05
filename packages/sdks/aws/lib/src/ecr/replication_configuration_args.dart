@@ -9,9 +9,9 @@ import 'replication_configuration_replication_configuration.dart';
 /// {@macro pulumi_ecr_replication_configuration_replication_configuration_args_doc}
 class ReplicationConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Replication configuration for a registry. See Replication Configuration.
-  final pulumi.Input<ReplicationConfigurationReplicationConfiguration>? replicationConfiguration;
+  final pulumi.Input<ReplicationConfigurationReplicationConfiguration?>? replicationConfiguration;
 
   /// Creates a new [ReplicationConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

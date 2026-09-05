@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ActionTarget resources.
 class ActionTargetState {
-  /// Amazon Resource Name (ARN) of the Security Hub custom action target.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Security Hub custom action target.
+  final pulumi.Input<String?>? arn;
   /// The name of the custom action target.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID for the custom action target.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// The description for the custom action target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ActionTargetState].
-  /// [arn] Amazon Resource Name (ARN) of the Security Hub custom action target.
+  /// [arn] ARN of the Security Hub custom action target.
   /// [description] The name of the custom action target.
   /// [identifier] The ID for the custom action target.
   /// [name] The description for the custom action target.

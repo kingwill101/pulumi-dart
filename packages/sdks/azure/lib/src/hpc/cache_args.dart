@@ -14,35 +14,35 @@ import 'cache_identity.dart';
 /// {@macro pulumi_hpc_cache_cache_args_doc}
 class CacheArgs {
   /// Specifies whether the HPC Cache automatically rotates Encryption Key to the latest version.
-  final pulumi.Input<bool>? automaticallyRotateKeyToLatestEnabled;
+  final pulumi.Input<bool?>? automaticallyRotateKeyToLatestEnabled;
   /// The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `21623`, `24576`, `43246`, `49152` and `86491`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `21623`, `43246` and `86491` sizes are restricted to read only resources.
   final pulumi.Input<int> cacheSizeInGb;
   /// A `defaultAccessPolicy` block as defined below.
-  final pulumi.Input<CacheDefaultAccessPolicy>? defaultAccessPolicy;
+  final pulumi.Input<CacheDefaultAccessPolicy?>? defaultAccessPolicy;
   /// A `directoryActiveDirectory` block as defined below.
-  final pulumi.Input<CacheDirectoryActiveDirectory>? directoryActiveDirectory;
+  final pulumi.Input<CacheDirectoryActiveDirectory?>? directoryActiveDirectory;
   /// A `directoryFlatFile` block as defined below.
-  final pulumi.Input<CacheDirectoryFlatFile>? directoryFlatFile;
+  final pulumi.Input<CacheDirectoryFlatFile?>? directoryFlatFile;
   /// A `directoryLdap` block as defined below.
   ///
   /// &gt; **Note:** Only one of `directoryActiveDirectory`, `directoryFlatFile` and `directoryLdap` can be set.
-  final pulumi.Input<CacheDirectoryLdap>? directoryLdap;
+  final pulumi.Input<CacheDirectoryLdap?>? directoryLdap;
   /// A `dns` block as defined below.
-  final pulumi.Input<CacheDns>? dns;
+  final pulumi.Input<CacheDns?>? dns;
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<CacheIdentity>? identity;
+  final pulumi.Input<CacheIdentity?>? identity;
   /// The ID of the Key Vault Key which should be used to encrypt the data in this HPC Cache.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// Specifies the supported Azure Region where the HPC Cache should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The IPv4 maximum transmission unit configured for the subnet of the HPC Cache. Possible values range from 576 - 1500. Defaults to `1500`.
-  final pulumi.Input<int>? mtu;
+  final pulumi.Input<int?>? mtu;
   /// The name of the HPC Cache. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NTP server IP Address or FQDN for the HPC Cache. Defaults to `time.windows.com`.
-  final pulumi.Input<String>? ntpServer;
+  final pulumi.Input<String?>? ntpServer;
   /// The name of the Resource Group in which to create the HPC Cache. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of HPC Cache to use. Possible values are (ReadWrite) - `Standard_2G`, `Standard_4G` `Standard_8G` or (ReadOnly) - `Standard_L4_5G`, `Standard_L9G`, and `Standard_L16G`. Changing this forces a new resource to be created.
@@ -52,7 +52,7 @@ class CacheArgs {
   /// The ID of the Subnet for the HPC Cache. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags to assign to the HPC Cache.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CacheArgs].
   /// [automaticallyRotateKeyToLatestEnabled] Specifies whether the HPC Cache automatically rotates Encryption Key to the latest version.
@@ -117,7 +117,7 @@ class CacheArgs {
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
       automaticallyRotateKeyToLatestEnabled: (() { final guardedValue = map['automaticallyRotateKeyToLatestEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      cacheSizeInGb: pulumi.Input.fromValue(map['cacheSizeInGb'] as int),
+      cacheSizeInGb: pulumi.Input.fromValue((map['cacheSizeInGb'] as num).toInt()),
       defaultAccessPolicy: (() { final guardedValue = map['defaultAccessPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDefaultAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       directoryActiveDirectory: (() { final guardedValue = map['directoryActiveDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDirectoryActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       directoryFlatFile: (() { final guardedValue = map['directoryFlatFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDirectoryFlatFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -126,7 +126,7 @@ class CacheArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ntpServer: (() { final guardedValue = map['ntpServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

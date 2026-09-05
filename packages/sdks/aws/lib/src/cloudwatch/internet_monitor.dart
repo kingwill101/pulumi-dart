@@ -128,7 +128,7 @@ class InternetMonitor extends pulumi.CustomResource {
   late final pulumi.Output<String> monitorName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The resources to include in a monitor, which you provide as a set of Amazon Resource Names (ARNs).
+  /// Resources to include in a monitor, which you provide as a set of ARNs.
   late final pulumi.Output<List<String>?> resources;
   /// The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
   late final pulumi.Output<String?> status;
@@ -151,7 +151,7 @@ class InternetMonitor extends pulumi.CustomResource {
           'aws:cloudwatch/internetMonitor:InternetMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -159,10 +159,10 @@ class InternetMonitor extends pulumi.CustomResource {
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>?>('resources');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficPercentageToMonitor = registerOutput<int?>('trafficPercentageToMonitor');
   }
 
@@ -171,11 +171,12 @@ class InternetMonitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InternetMonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InternetMonitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,10 +196,32 @@ class InternetMonitor extends pulumi.CustomResource {
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>?>('resources');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficPercentageToMonitor = registerOutput<int?>('trafficPercentageToMonitor');
+  }
+
+  /// Creates a typed reference to an existing [InternetMonitor] resource.
+  InternetMonitor.reference(String urn)
+    : super(
+        'aws:cloudwatch/internetMonitor:InternetMonitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetMeasurementsLogDelivery = registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>('internetMeasurementsLogDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorInternetMeasurementsLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
+    monitorName = registerOutput<String>('monitorName');
+    region = registerOutput<String>('region');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficPercentageToMonitor = registerOutput<int?>('trafficPercentageToMonitor');
   }
 }

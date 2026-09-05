@@ -5,9 +5,9 @@ import 'storage_lens_configuration_storage_lens_configuration_data_export_s3_buc
 
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption {
   /// SSE-KMS encryption. See `sseKms` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms>? sseKms;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms?>? sseKms;
   /// SSE-S3 encryption. An empty configuration block `{}` should be used.
-  final pulumi.Input<List<Map<String, dynamic>>>? sseS3s;
+  final pulumi.Input<List<Map<String, dynamic>>?>? sseS3s;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption].
   /// [sseKms] SSE-KMS encryption. See `sseKms` below for more details.

@@ -5,7 +5,7 @@ import 'multitenant_distribution_tenant_config_parameter_definition_definition_s
 
 class MultitenantDistributionTenantConfigParameterDefinitionDefinition {
   /// String schema configuration. See String Schema below.
-  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>>? stringSchemas;
+  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>?>? stringSchemas;
 
   /// Creates a new [MultitenantDistributionTenantConfigParameterDefinitionDefinition].
   /// [stringSchemas] String schema configuration. See String Schema below.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionStatic {
   /// The description of the static policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The statement of the static policy.
   final pulumi.Input<String> statement;
 

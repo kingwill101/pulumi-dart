@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceTableCustomLogColumn {
   /// The description of the column.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the column.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the name of the column.
   final pulumi.Input<String> name;
   /// The data type of the column. Possible values are `boolean`, `dateTime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.

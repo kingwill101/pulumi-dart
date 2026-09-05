@@ -132,8 +132,8 @@ import 'nat_gateway_public_ip_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNatGatewayPublicIpAssociation(ctx, "example", &network.NatGatewayPublicIpAssociationArgs{
-/// 			NatGatewayId:      exampleNatGateway.ID(),
-/// 			PublicIpAddressId: examplePublicIp.ID(),
+/// 			NatGatewayId:      exampleNatGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -394,8 +394,8 @@ import 'nat_gateway_public_ip_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNatGatewayPublicIpAssociation(ctx, "example", &network.NatGatewayPublicIpAssociationArgs{
-/// 			NatGatewayId:      exampleNatGateway.ID(),
-/// 			PublicIpAddressId: examplePublicIp.ID(),
+/// 			NatGatewayId:      exampleNatGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -564,7 +564,7 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
           'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
@@ -575,11 +575,12 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatGatewayPublicIpAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatGatewayPublicIpAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -593,6 +594,19 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+  }
+
+  /// Creates a typed reference to an existing [NatGatewayPublicIpAssociation] resource.
+  NatGatewayPublicIpAssociation.reference(String urn)
+    : super(
+        'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
   }

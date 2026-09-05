@@ -182,7 +182,7 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -195,11 +195,12 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketAccelerateConfigurationV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketAccelerateConfigurationV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,6 +214,21 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [BucketAccelerateConfigurationV2] resource.
+  BucketAccelerateConfigurationV2.reference(String urn)
+    : super(
+        'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');

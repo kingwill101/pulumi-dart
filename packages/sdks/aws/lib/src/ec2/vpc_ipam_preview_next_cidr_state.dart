@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcIpamPreviewNextCidr resources.
 class VpcIpamPreviewNextCidrState {
   /// The previewed CIDR from the pool.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// Exclude a particular CIDR range from being returned by the pool.
-  final pulumi.Input<List<String>>? disallowedCidrs;
+  final pulumi.Input<List<String>?>? disallowedCidrs;
   /// The ID of the pool to which you want to assign a CIDR.
-  final pulumi.Input<String>? ipamPoolId;
+  final pulumi.Input<String?>? ipamPoolId;
   /// The netmask length of the CIDR you would like to preview from the IPAM pool.
-  final pulumi.Input<int>? netmaskLength;
+  final pulumi.Input<int?>? netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [VpcIpamPreviewNextCidrState].
   /// [cidr] The previewed CIDR from the pool.
@@ -44,7 +44,7 @@ class VpcIpamPreviewNextCidrState {
       cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipamPoolId: (() { final guardedValue = map['ipamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

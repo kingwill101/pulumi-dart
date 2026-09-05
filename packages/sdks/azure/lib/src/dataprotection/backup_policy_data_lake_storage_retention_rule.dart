@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPolicyDataLakeStorageRetentionRule {
   /// Specifies the absolute criteria for the retention rule. Possible values include `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth`, and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? absoluteCriteria;
+  final pulumi.Input<String?>? absoluteCriteria;
   /// Specifies a list of days of the week on which the retention rule applies. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
   final pulumi.Input<String> duration;
   /// Specifies a list of months of the year on which the retention rule applies. Possible values include `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, and `December`. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? monthsOfYears;
+  final pulumi.Input<List<String>?>? monthsOfYears;
   /// Specifies the name of the retention rule. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of `absoluteCriteria` or `daysOfWeek` must be specified. `weeksOfMonth` and `monthsOfYear` are optional and can be supplied together. Multiple intervals may be set using multiple `retentionRule` blocks.
-  final pulumi.Input<List<String>>? scheduledBackupTimes;
+  final pulumi.Input<List<String>?>? scheduledBackupTimes;
   /// Specifies a list of weeks of the month on which the retention rule applies. Possible values include `First`, `Second`, `Third`, `Fourth`, and `Last`. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? weeksOfMonths;
+  final pulumi.Input<List<String>?>? weeksOfMonths;
 
   /// Creates a new [BackupPolicyDataLakeStorageRetentionRule].
   /// [absoluteCriteria] Specifies the absolute criteria for the retention rule. Possible values include `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth`, and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.

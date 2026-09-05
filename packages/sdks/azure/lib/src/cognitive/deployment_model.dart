@@ -10,7 +10,7 @@ class DeploymentModel {
   /// The name of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// The version of Cognitive Services Account Deployment model. If `version` is not specified, the default version of the model at the time will be assigned.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DeploymentModel].
   /// [format] The format of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.

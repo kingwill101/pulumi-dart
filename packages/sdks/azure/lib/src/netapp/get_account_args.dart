@@ -8,7 +8,7 @@ import 'get_account_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_netapp_get_account_get_account_args_doc}
 class GetAccountArgs {
-  final pulumi.Input<GetAccountIdentity>? identity;
+  final pulumi.Input<GetAccountIdentity?>? identity;
   /// The name of the NetApp Account.
   final pulumi.Input<String> name;
   /// The Name of the Resource Group where the NetApp Account exists.

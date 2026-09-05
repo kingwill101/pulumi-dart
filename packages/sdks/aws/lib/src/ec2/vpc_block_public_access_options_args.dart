@@ -11,8 +11,8 @@ class VpcBlockPublicAccessOptionsArgs {
   /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   final pulumi.Input<String> internetGatewayBlockMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<VpcBlockPublicAccessOptionsTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<VpcBlockPublicAccessOptionsTimeouts?>? timeouts;
 
   /// Creates a new [VpcBlockPublicAccessOptionsArgs].
   /// [internetGatewayBlockMode] Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.

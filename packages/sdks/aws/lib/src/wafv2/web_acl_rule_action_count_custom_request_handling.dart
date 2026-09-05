@@ -5,7 +5,7 @@ import 'web_acl_rule_action_count_custom_request_handling_insert_header.dart';
 
 class WebAclRuleActionCountCustomRequestHandling {
   /// Custom headers to insert into the request. See Insert Header below.
-  final pulumi.Input<List<WebAclRuleActionCountCustomRequestHandlingInsertHeader>>? insertHeaders;
+  final pulumi.Input<List<WebAclRuleActionCountCustomRequestHandlingInsertHeader>?>? insertHeaders;
 
   /// Creates a new [WebAclRuleActionCountCustomRequestHandling].
   /// [insertHeaders] Custom headers to insert into the request. See Insert Header below.

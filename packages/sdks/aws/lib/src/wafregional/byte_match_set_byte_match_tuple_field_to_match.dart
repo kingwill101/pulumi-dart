@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ByteMatchSetByteMatchTupleFieldToMatch {
   /// When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// The part of the web request that you want AWS WAF to search for a specified string.
   final pulumi.Input<String> type;
 

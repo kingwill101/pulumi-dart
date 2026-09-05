@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskDockerStep {
   /// Specifies a map of arguments to be used when executing this step.
-  final pulumi.Input<Map<String, String>>? arguments;
+  final pulumi.Input<Map<String, String>?>? arguments;
   /// Should the image cache be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? cacheEnabled;
+  final pulumi.Input<bool?>? cacheEnabled;
   /// The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
   final pulumi.Input<String> contextAccessToken;
   /// The URL (absolute or relative) of the source context for this step. If the context is an url you can reference a specific branch or folder via `#branch:folder`.
@@ -14,13 +14,13 @@ class RegistryTaskDockerStep {
   /// The Dockerfile path relative to the source context.
   final pulumi.Input<String> dockerfilePath;
   /// Specifies a list of fully qualified image names including the repository and tag.
-  final pulumi.Input<List<String>>? imageNames;
+  final pulumi.Input<List<String>?>? imageNames;
   /// Should the image built be pushed to the registry or not? Defaults to `true`.
-  final pulumi.Input<bool>? pushEnabled;
+  final pulumi.Input<bool?>? pushEnabled;
   /// Specifies a map of *secret* arguments to be used when executing this step.
-  final pulumi.Input<Map<String, String>>? secretArguments;
+  final pulumi.Input<Map<String, String>?>? secretArguments;
   /// The name of the target build stage for the docker build.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [RegistryTaskDockerStep].
   /// [arguments] Specifies a map of arguments to be used when executing this step.

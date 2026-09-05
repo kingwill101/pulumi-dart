@@ -6,9 +6,9 @@ class ServiceTaskSpecContainerSpecDnsConfig {
   /// The IP addresses of the name servers
   final pulumi.Input<List<String>> nameservers;
   /// A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.)
-  final pulumi.Input<List<String>>? options;
+  final pulumi.Input<List<String>?>? options;
   /// A search list for host-name lookup
-  final pulumi.Input<List<String>>? searches;
+  final pulumi.Input<List<String>?>? searches;
 
   /// Creates a new [ServiceTaskSpecContainerSpecDnsConfig].
   /// [nameservers] The IP addresses of the name servers

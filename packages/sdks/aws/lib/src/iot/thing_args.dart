@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iot_thing_thing_args_doc}
 class ThingArgs {
   /// Map of attributes of the thing.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// The name of the thing.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The thing type name.
-  final pulumi.Input<String>? thingTypeName;
+  final pulumi.Input<String?>? thingTypeName;
 
   /// Creates a new [ThingArgs].
   /// [attributes] Map of attributes of the thing.

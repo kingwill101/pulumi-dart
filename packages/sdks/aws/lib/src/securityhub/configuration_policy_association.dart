@@ -15,27 +15,27 @@ import 'configuration_policy_association_state.dart';
 ///
 /// const example = new aws.securityhub.FindingAggregator("example", {linkingMode: "ALL_REGIONS"});
 /// const exampleOrganizationConfiguration = new aws.securityhub.OrganizationConfiguration("example", {
-///     autoEnable: false,
-///     autoEnableStandards: "NONE",
 ///     organizationConfiguration: {
 ///         configurationType: "CENTRAL",
 ///     },
+///     autoEnable: false,
+///     autoEnableStandards: "NONE",
 /// }, {
 ///     dependsOn: [example],
 /// });
 /// const exampleConfigurationPolicy = new aws.securityhub.ConfigurationPolicy("example", {
-///     name: "Example",
-///     description: "This is an example configuration policy",
 ///     configurationPolicy: {
+///         securityControlsConfiguration: {
+///             disabledControlIdentifiers: [],
+///         },
 ///         serviceEnabled: true,
 ///         enabledStandardArns: [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         securityControlsConfiguration: {
-///             disabledControlIdentifiers: [],
-///         },
 ///     },
+///     name: "Example",
+///     description: "This is an example configuration policy",
 /// }, {
 ///     dependsOn: [exampleOrganizationConfiguration],
 /// });
@@ -62,25 +62,25 @@ import 'configuration_policy_association_state.dart';
 ///
 /// example = aws.securityhub.FindingAggregator("example", linking_mode="ALL_REGIONS")
 /// example_organization_configuration = aws.securityhub.OrganizationConfiguration("example",
-///     auto_enable=False,
-///     auto_enable_standards="NONE",
 ///     organization_configuration={
 ///         "configuration_type": "CENTRAL",
 ///     },
+///     auto_enable=False,
+///     auto_enable_standards="NONE",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_configuration_policy = aws.securityhub.ConfigurationPolicy("example",
-///     name="Example",
-///     description="This is an example configuration policy",
 ///     configuration_policy={
+///         "security_controls_configuration": {
+///             "disabled_control_identifiers": [],
+///         },
 ///         "service_enabled": True,
 ///         "enabled_standard_arns": [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         "security_controls_configuration": {
-///             "disabled_control_identifiers": [],
-///         },
 ///     },
+///     name="Example",
+///     description="This is an example configuration policy",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_organization_configuration]))
 /// account_example = aws.securityhub.ConfigurationPolicyAssociation("account_example",
 ///     target_id="123456789012",
@@ -110,12 +110,12 @@ import 'configuration_policy_association_state.dart';
 ///
 ///     var exampleOrganizationConfiguration = new Aws.SecurityHub.OrganizationConfiguration("example", new()
 ///     {
-///         AutoEnable = false,
-///         AutoEnableStandards = "NONE",
 ///         OrganizationConfigurationDetails = new Aws.SecurityHub.Inputs.OrganizationConfigurationOrganizationConfigurationArgs
 ///         {
 ///             ConfigurationType = "CENTRAL",
 ///         },
+///         AutoEnable = false,
+///         AutoEnableStandards = "NONE",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -126,21 +126,21 @@ import 'configuration_policy_association_state.dart';
 ///
 ///     var exampleConfigurationPolicy = new Aws.SecurityHub.ConfigurationPolicy("example", new()
 ///     {
-///         Name = "Example",
-///         Description = "This is an example configuration policy",
 ///         ConfigurationPolicyDetails = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicyArgs
 ///         {
+///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
+///             {
+///                 DisabledControlIdentifiers = new() { },
+///             },
 ///             ServiceEnabled = true,
 ///             EnabledStandardArns = new[]
 ///             {
 ///                 "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                 "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///             },
-///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
-///             {
-///                 DisabledControlIdentifiers = new() { },
-///             },
 ///         },
+///         Name = "Example",
+///         Description = "This is an example configuration policy",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -192,11 +192,11 @@ import 'configuration_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleOrganizationConfiguration, err := securityhub.NewOrganizationConfiguration(ctx, "example", &securityhub.OrganizationConfigurationArgs{
-/// 			AutoEnable:          pulumi.Bool(false),
-/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 			OrganizationConfiguration: &securityhub.OrganizationConfigurationOrganizationConfigurationArgs{
 /// 				ConfigurationType: pulumi.String("CENTRAL"),
 /// 			},
+/// 			AutoEnable:          pulumi.Bool(false),
+/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -204,18 +204,18 @@ import 'configuration_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleConfigurationPolicy, err := securityhub.NewConfigurationPolicy(ctx, "example", &securityhub.ConfigurationPolicyArgs{
-/// 			Name:        pulumi.String("Example"),
-/// 			Description: pulumi.String("This is an example configuration policy"),
 /// 			ConfigurationPolicy: &securityhub.ConfigurationPolicyConfigurationPolicyArgs{
+/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
+/// 					DisabledControlIdentifiers: pulumi.StringArray{},
+/// 				},
 /// 				ServiceEnabled: pulumi.Bool(true),
 /// 				EnabledStandardArns: pulumi.StringArray{
 /// 					pulumi.String("arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0"),
 /// 					pulumi.String("arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"),
 /// 				},
-/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
-/// 					DisabledControlIdentifiers: pulumi.StringArray{},
-/// 				},
 /// 			},
+/// 			Name:        pulumi.String("Example"),
+/// 			Description: pulumi.String("This is an example configuration policy"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleOrganizationConfiguration,
 /// 		}))
@@ -267,24 +267,24 @@ import 'configuration_policy_association_state.dart';
 ///   linking_mode = "ALL_REGIONS"
 /// }
 /// resource "aws_securityhub_organizationconfiguration" "example" {
-///   depends_on            = [aws_securityhub_findingaggregator.example]
-///   auto_enable           = false
-///   auto_enable_standards = "NONE"
+///   depends_on = [aws_securityhub_findingaggregator.example]
 ///   organization_configuration = {
 ///     configuration_type = "CENTRAL"
 ///   }
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
 /// }
 /// resource "aws_securityhub_configurationpolicy" "example" {
-///   depends_on  = [aws_securityhub_organizationconfiguration.example]
-///   name        = "Example"
-///   description = "This is an example configuration policy"
+///   depends_on = [aws_securityhub_organizationconfiguration.example]
 ///   configuration_policy = {
-///     service_enabled       = true
-///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///     security_controls_configuration = {
 ///       disabled_control_identifiers = []
 ///     }
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///   }
+///   name        = "Example"
+///   description = "This is an example configuration policy"
 /// }
 /// resource "aws_securityhub_configurationpolicyassociation" "account_example" {
 ///   target_id = "123456789012"
@@ -339,27 +339,27 @@ import 'configuration_policy_association_state.dart';
 ///             .build());
 ///
 ///         var exampleOrganizationConfiguration = new OrganizationConfiguration("exampleOrganizationConfiguration", OrganizationConfigurationArgs.builder()
-///             .autoEnable(false)
-///             .autoEnableStandards("NONE")
 ///             .organizationConfiguration(OrganizationConfigurationOrganizationConfigurationArgs.builder()
 ///                 .configurationType("CENTRAL")
 ///                 .build())
+///             .autoEnable(false)
+///             .autoEnableStandards("NONE")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
 ///
 ///         var exampleConfigurationPolicy = new ConfigurationPolicy("exampleConfigurationPolicy", ConfigurationPolicyArgs.builder()
-///             .name("Example")
-///             .description("This is an example configuration policy")
 ///             .configurationPolicy(ConfigurationPolicyConfigurationPolicyArgs.builder()
+///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
+///                     .disabledControlIdentifiers()
+///                     .build())
 ///                 .serviceEnabled(true)
 ///                 .enabledStandardArns(
 ///                     "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                     "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0")
-///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
-///                     .disabledControlIdentifiers()
-///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .description("This is an example configuration policy")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleOrganizationConfiguration)
 ///                 .build());
@@ -397,10 +397,10 @@ import 'configuration_policy_association_state.dart';
 ///     type: aws:securityhub:OrganizationConfiguration
 ///     name: example
 ///     properties:
-///       autoEnable: false
-///       autoEnableStandards: NONE
 ///       organizationConfiguration:
 ///         configurationType: CENTRAL
+///       autoEnable: false
+///       autoEnableStandards: NONE
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -408,15 +408,15 @@ import 'configuration_policy_association_state.dart';
 ///     type: aws:securityhub:ConfigurationPolicy
 ///     name: example
 ///     properties:
-///       name: Example
-///       description: This is an example configuration policy
 ///       configurationPolicy:
+///         securityControlsConfiguration:
+///           disabledControlIdentifiers: []
 ///         serviceEnabled: true
 ///         enabledStandardArns:
 ///           - arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0
 ///           - arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0
-///         securityControlsConfiguration:
-///           disabledControlIdentifiers: []
+///       name: Example
+///       description: This is an example configuration policy
 ///     options:
 ///       dependsOn:
 ///         - ${exampleOrganizationConfiguration}
@@ -486,7 +486,7 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
           'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyId = registerOutput<String>('policyId');
     region = registerOutput<String>('region');
@@ -498,11 +498,12 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,6 +517,20 @@ class ConfigurationPolicyAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyId = registerOutput<String>('policyId');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationPolicyAssociation] resource.
+  ConfigurationPolicyAssociation.reference(String urn)
+    : super(
+        'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyId = registerOutput<String>('policyId');
     region = registerOutput<String>('region');
     targetId = registerOutput<String>('targetId');

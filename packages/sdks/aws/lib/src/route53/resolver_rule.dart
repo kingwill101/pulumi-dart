@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolver_rule_args.dart';
 import 'resolver_rule_state.dart';
+import 'resolver_rule_target_ip.dart';
 
 /// Provides a Route53 Resolver rule.
 ///
@@ -124,13 +125,13 @@ import 'resolver_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const fwd = new aws.route53.ResolverRule("fwd", {
+///     targetIps: [{
+///         ip: "123.45.67.89",
+///     }],
 ///     domainName: "example.com",
 ///     name: "example",
 ///     ruleType: "FORWARD",
 ///     resolverEndpointId: foo.id,
-///     targetIps: [{
-///         ip: "123.45.67.89",
-///     }],
 ///     tags: {
 ///         Environment: "Prod",
 ///     },
@@ -141,13 +142,13 @@ import 'resolver_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// fwd = aws.route53.ResolverRule("fwd",
+///     target_ips=[{
+///         "ip": "123.45.67.89",
+///     }],
 ///     domain_name="example.com",
 ///     name="example",
 ///     rule_type="FORWARD",
 ///     resolver_endpoint_id=foo["id"],
-///     target_ips=[{
-///         "ip": "123.45.67.89",
-///     }],
 ///     tags={
 ///         "Environment": "Prod",
 ///     })
@@ -162,10 +163,6 @@ import 'resolver_rule_state.dart';
 /// {
 ///     var fwd = new Aws.Route53.ResolverRule("fwd", new()
 ///     {
-///         DomainName = "example.com",
-///         Name = "example",
-///         RuleType = "FORWARD",
-///         ResolverEndpointId = foo.Id,
 ///         TargetIps = new[]
 ///         {
 ///             new Aws.Route53.Inputs.ResolverRuleTargetIpArgs
@@ -173,6 +170,10 @@ import 'resolver_rule_state.dart';
 ///                 Ip = "123.45.67.89",
 ///             },
 ///         },
+///         DomainName = "example.com",
+///         Name = "example",
+///         RuleType = "FORWARD",
+///         ResolverEndpointId = foo.Id,
 ///         Tags =
 ///         {
 ///             { "Environment", "Prod" },
@@ -192,15 +193,15 @@ import 'resolver_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53.NewResolverRule(ctx, "fwd", &route53.ResolverRuleArgs{
-/// 			DomainName:         pulumi.String("example.com"),
-/// 			Name:               pulumi.String("example"),
-/// 			RuleType:           pulumi.String("FORWARD"),
-/// 			ResolverEndpointId: pulumi.Any(foo.Id),
 /// 			TargetIps: route53.ResolverRuleTargetIpArray{
 /// 				&route53.ResolverRuleTargetIpArgs{
 /// 					Ip: pulumi.String("123.45.67.89"),
 /// 				},
 /// 			},
+/// 			DomainName:         pulumi.String("example.com"),
+/// 			Name:               pulumi.String("example"),
+/// 			RuleType:           pulumi.String("FORWARD"),
+/// 			ResolverEndpointId: pulumi.Any(foo.Id),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Prod"),
 /// 			},
@@ -222,13 +223,13 @@ import 'resolver_rule_state.dart';
 /// }
 ///
 /// resource "aws_route53_resolverrule" "fwd" {
+///   target_ips {
+///     ip = "123.45.67.89"
+///   }
 ///   domain_name          = "example.com"
 ///   name                 = "example"
 ///   rule_type            = "FORWARD"
 ///   resolver_endpoint_id = foo.id
-///   target_ips {
-///     ip = "123.45.67.89"
-///   }
 ///   tags = {
 ///     "Environment" = "Prod"
 ///   }
@@ -257,13 +258,13 @@ import 'resolver_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var fwd = new ResolverRule("fwd", ResolverRuleArgs.builder()
+///             .targetIps(ResolverRuleTargetIpArgs.builder()
+///                 .ip("123.45.67.89")
+///                 .build())
 ///             .domainName("example.com")
 ///             .name("example")
 ///             .ruleType("FORWARD")
 ///             .resolverEndpointId(foo.id())
-///             .targetIps(ResolverRuleTargetIpArgs.builder()
-///                 .ip("123.45.67.89")
-///                 .build())
 ///             .tags(Map.of("Environment", "Prod"))
 ///             .build());
 ///
@@ -275,12 +276,12 @@ import 'resolver_rule_state.dart';
 ///   fwd:
 ///     type: aws:route53:ResolverRule
 ///     properties:
+///       targetIps:
+///         - ip: 123.45.67.89
 ///       domainName: example.com
 ///       name: example
 ///       ruleType: FORWARD
 ///       resolverEndpointId: ${foo.id}
-///       targetIps:
-///         - ip: 123.45.67.89
 ///       tags:
 ///         Environment: Prod
 /// ```
@@ -294,13 +295,13 @@ import 'resolver_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const fwd = new aws.route53.ResolverRule("fwd", {
+///     targetIps: [{
+///         ipv6: "2600:1f18:1686:2000:4e60:6e3e:258:da36",
+///     }],
 ///     domainName: "example.com",
 ///     name: "example",
 ///     ruleType: "FORWARD",
 ///     resolverEndpointId: foo.id,
-///     targetIps: [{
-///         ipv6: "2600:1f18:1686:2000:4e60:6e3e:258:da36",
-///     }],
 ///     tags: {
 ///         Environment: "Prod",
 ///     },
@@ -311,13 +312,13 @@ import 'resolver_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// fwd = aws.route53.ResolverRule("fwd",
+///     target_ips=[{
+///         "ipv6": "2600:1f18:1686:2000:4e60:6e3e:258:da36",
+///     }],
 ///     domain_name="example.com",
 ///     name="example",
 ///     rule_type="FORWARD",
 ///     resolver_endpoint_id=foo["id"],
-///     target_ips=[{
-///         "ipv6": "2600:1f18:1686:2000:4e60:6e3e:258:da36",
-///     }],
 ///     tags={
 ///         "Environment": "Prod",
 ///     })
@@ -332,10 +333,6 @@ import 'resolver_rule_state.dart';
 /// {
 ///     var fwd = new Aws.Route53.ResolverRule("fwd", new()
 ///     {
-///         DomainName = "example.com",
-///         Name = "example",
-///         RuleType = "FORWARD",
-///         ResolverEndpointId = foo.Id,
 ///         TargetIps = new[]
 ///         {
 ///             new Aws.Route53.Inputs.ResolverRuleTargetIpArgs
@@ -343,6 +340,10 @@ import 'resolver_rule_state.dart';
 ///                 Ipv6 = "2600:1f18:1686:2000:4e60:6e3e:258:da36",
 ///             },
 ///         },
+///         DomainName = "example.com",
+///         Name = "example",
+///         RuleType = "FORWARD",
+///         ResolverEndpointId = foo.Id,
 ///         Tags =
 ///         {
 ///             { "Environment", "Prod" },
@@ -362,15 +363,15 @@ import 'resolver_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53.NewResolverRule(ctx, "fwd", &route53.ResolverRuleArgs{
-/// 			DomainName:         pulumi.String("example.com"),
-/// 			Name:               pulumi.String("example"),
-/// 			RuleType:           pulumi.String("FORWARD"),
-/// 			ResolverEndpointId: pulumi.Any(foo.Id),
 /// 			TargetIps: route53.ResolverRuleTargetIpArray{
 /// 				&route53.ResolverRuleTargetIpArgs{
 /// 					Ipv6: pulumi.String("2600:1f18:1686:2000:4e60:6e3e:258:da36"),
 /// 				},
 /// 			},
+/// 			DomainName:         pulumi.String("example.com"),
+/// 			Name:               pulumi.String("example"),
+/// 			RuleType:           pulumi.String("FORWARD"),
+/// 			ResolverEndpointId: pulumi.Any(foo.Id),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Prod"),
 /// 			},
@@ -392,13 +393,13 @@ import 'resolver_rule_state.dart';
 /// }
 ///
 /// resource "aws_route53_resolverrule" "fwd" {
+///   target_ips {
+///     ipv6 = "2600:1f18:1686:2000:4e60:6e3e:258:da36"
+///   }
 ///   domain_name          = "example.com"
 ///   name                 = "example"
 ///   rule_type            = "FORWARD"
 ///   resolver_endpoint_id = foo.id
-///   target_ips {
-///     ipv6 = "2600:1f18:1686:2000:4e60:6e3e:258:da36"
-///   }
 ///   tags = {
 ///     "Environment" = "Prod"
 ///   }
@@ -427,13 +428,13 @@ import 'resolver_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var fwd = new ResolverRule("fwd", ResolverRuleArgs.builder()
+///             .targetIps(ResolverRuleTargetIpArgs.builder()
+///                 .ipv6("2600:1f18:1686:2000:4e60:6e3e:258:da36")
+///                 .build())
 ///             .domainName("example.com")
 ///             .name("example")
 ///             .ruleType("FORWARD")
 ///             .resolverEndpointId(foo.id())
-///             .targetIps(ResolverRuleTargetIpArgs.builder()
-///                 .ipv6("2600:1f18:1686:2000:4e60:6e3e:258:da36")
-///                 .build())
 ///             .tags(Map.of("Environment", "Prod"))
 ///             .build());
 ///
@@ -445,12 +446,12 @@ import 'resolver_rule_state.dart';
 ///   fwd:
 ///     type: aws:route53:ResolverRule
 ///     properties:
+///       targetIps:
+///         - ipv6: 2600:1f18:1686:2000:4e60:6e3e:258:da36
 ///       domainName: example.com
 ///       name: example
 ///       ruleType: FORWARD
 ///       resolverEndpointId: ${foo.id}
-///       targetIps:
-///         - ipv6: 2600:1f18:1686:2000:4e60:6e3e:258:da36
 ///       tags:
 ///         Environment: Prod
 /// ```
@@ -476,7 +477,7 @@ import 'resolver_rule_state.dart';
 /// $ pulumi import aws:route53/resolverRule:ResolverRule example rslvr-rr-0123456789abcdef0
 /// ```
 class ResolverRule extends pulumi.CustomResource {
-  /// ARN (Amazon Resource Name) for the resolver rule.
+  /// ARN for the resolver rule.
   late final pulumi.Output<String> arn;
   /// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
   late final pulumi.Output<String> domainName;
@@ -500,7 +501,7 @@ class ResolverRule extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
   /// This argument should only be specified for `FORWARD` type rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetIps;
+  late final pulumi.Output<List<ResolverRuleTargetIp>?> targetIps;
 
   /// Creates a new [ResolverRule].
   /// [name] The Pulumi resource name.
@@ -514,7 +515,7 @@ class ResolverRule extends pulumi.CustomResource {
           'aws:route53/resolverRule:ResolverRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
@@ -524,9 +525,9 @@ class ResolverRule extends pulumi.CustomResource {
     resolverEndpointId = registerOutput<String?>('resolverEndpointId');
     ruleType = registerOutput<String>('ruleType');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetIps = registerOutput<List<Map<String, dynamic>>?>('targetIps');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetIps = registerOutput<List<ResolverRuleTargetIp>?>('targetIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverRuleTargetIp>(guardedValue, (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ResolverRule] resource's state with the given [name] and [id].
@@ -534,11 +535,12 @@ class ResolverRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -560,8 +562,30 @@ class ResolverRule extends pulumi.CustomResource {
     resolverEndpointId = registerOutput<String?>('resolverEndpointId');
     ruleType = registerOutput<String>('ruleType');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetIps = registerOutput<List<Map<String, dynamic>>?>('targetIps');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetIps = registerOutput<List<ResolverRuleTargetIp>?>('targetIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverRuleTargetIp>(guardedValue, (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverRule] resource.
+  ResolverRule.reference(String urn)
+    : super(
+        'aws:route53/resolverRule:ResolverRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    resolverEndpointId = registerOutput<String?>('resolverEndpointId');
+    ruleType = registerOutput<String>('ruleType');
+    shareStatus = registerOutput<String>('shareStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetIps = registerOutput<List<ResolverRuleTargetIp>?>('targetIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolverRuleTargetIp>(guardedValue, (value) => ResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

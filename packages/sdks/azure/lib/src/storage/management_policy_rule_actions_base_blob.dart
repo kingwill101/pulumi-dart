@@ -6,43 +6,43 @@ class ManagementPolicyRuleActionsBaseBlob {
   /// Whether a blob should automatically be tiered from cool back to hot if it's accessed again after being tiered to cool. Defaults to `false`.
   ///
   /// &gt; **Note:** The `autoTierToHotFromCoolEnabled` must be used together with `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan`.
-  final pulumi.Input<bool>? autoTierToHotFromCoolEnabled;
+  final pulumi.Input<bool?>? autoTierToHotFromCoolEnabled;
   /// The age in days after creation to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// &gt; **Note:** The `deleteAfterDaysSinceModificationGreaterThan`, `deleteAfterDaysSinceLastAccessTimeGreaterThan` and `deleteAfterDaysSinceCreationGreaterThan` can not be set at the same time.
   ///
   /// &gt; **Note:** The `lastAccessTimeEnabled` must be set to `true` in the `azure.storage.Account` in order to use `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan`, `tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan` and `deleteAfterDaysSinceLastAccessTimeGreaterThan`.
-  final pulumi.Input<int>? deleteAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int?>? deleteAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? deleteAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int?>? deleteAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to delete the blob. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? deleteAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int?>? deleteAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// &gt; **Note:** The `tierToArchiveAfterDaysSinceModificationGreaterThan`, `tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan` and `tierToArchiveAfterDaysSinceCreationGreaterThan` can not be set at the same time.
-  final pulumi.Input<int>? tierToArchiveAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int?>? tierToArchiveAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int?>? tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last tier change to the blobs to skip to be archived. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToArchiveAfterDaysSinceLastTierChangeGreaterThan;
+  final pulumi.Input<int?>? tierToArchiveAfterDaysSinceLastTierChangeGreaterThan;
   /// The age in days after last modification to tier blobs to archive storage. Supports blob currently at Hot or Cool tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToArchiveAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int?>? tierToArchiveAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// &gt; **Note:** The `tierToCoolAfterDaysSinceModificationGreaterThan`, `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan` and `tierToCoolAfterDaysSinceCreationGreaterThan` can not be set at the same time.
-  final pulumi.Input<int>? tierToColdAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int?>? tierToColdAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToColdAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int?>? tierToColdAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to tier blobs to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToColdAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int?>? tierToColdAfterDaysSinceModificationGreaterThan;
   /// The age in days after creation to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   ///
   /// &gt; **Note:** The `tierToCoolAfterDaysSinceModificationGreaterThan`, `tierToCoolAfterDaysSinceLastAccessTimeGreaterThan` and `tierToCoolAfterDaysSinceCreationGreaterThan` can not be set at the same time.
-  final pulumi.Input<int>? tierToCoolAfterDaysSinceCreationGreaterThan;
+  final pulumi.Input<int?>? tierToCoolAfterDaysSinceCreationGreaterThan;
   /// The age in days after last access time to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToCoolAfterDaysSinceLastAccessTimeGreaterThan;
+  final pulumi.Input<int?>? tierToCoolAfterDaysSinceLastAccessTimeGreaterThan;
   /// The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  final pulumi.Input<int>? tierToCoolAfterDaysSinceModificationGreaterThan;
+  final pulumi.Input<int?>? tierToCoolAfterDaysSinceModificationGreaterThan;
 
   /// Creates a new [ManagementPolicyRuleActionsBaseBlob].
   /// [autoTierToHotFromCoolEnabled] Whether a blob should automatically be tiered from cool back to hot if it's accessed again after being tiered to cool. Defaults to `false`.
@@ -98,19 +98,19 @@ class ManagementPolicyRuleActionsBaseBlob {
   factory ManagementPolicyRuleActionsBaseBlob.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleActionsBaseBlob(
       autoTierToHotFromCoolEnabled: (() { final guardedValue = map['autoTierToHotFromCoolEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      deleteAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      deleteAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      deleteAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToArchiveAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToArchiveAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToColdAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToColdAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToCoolAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      tierToCoolAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deleteAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deleteAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deleteAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['deleteAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToArchiveAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToArchiveAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToArchiveAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToColdAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToColdAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToColdAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToCoolAfterDaysSinceCreationGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceCreationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierToCoolAfterDaysSinceModificationGreaterThan: (() { final guardedValue = map['tierToCoolAfterDaysSinceModificationGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

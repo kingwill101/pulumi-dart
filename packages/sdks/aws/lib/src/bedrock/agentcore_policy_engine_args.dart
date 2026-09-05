@@ -9,18 +9,18 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_policy_engine_agentcore_policy_engine_args_doc}
 class AgentcorePolicyEngineArgs {
   /// Description of the policy engine.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
-  final pulumi.Input<String>? encryptionKeyArn;
+  final pulumi.Input<String?>? encryptionKeyArn;
   /// Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcorePolicyEngineTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcorePolicyEngineTimeouts?>? timeouts;
 
   /// Creates a new [AgentcorePolicyEngineArgs].
   /// [description] Description of the policy engine.

@@ -6,9 +6,9 @@ import 'routing_rule_condition_match_headers.dart';
 
 class RoutingRuleCondition {
   /// Base path to be matched. See below.
-  final pulumi.Input<RoutingRuleConditionMatchBasePaths>? matchBasePaths;
+  final pulumi.Input<RoutingRuleConditionMatchBasePaths?>? matchBasePaths;
   /// Headers to be matched. See below.
-  final pulumi.Input<RoutingRuleConditionMatchHeaders>? matchHeaders;
+  final pulumi.Input<RoutingRuleConditionMatchHeaders?>? matchHeaders;
 
   /// Creates a new [RoutingRuleCondition].
   /// [matchBasePaths] Base path to be matched. See below.

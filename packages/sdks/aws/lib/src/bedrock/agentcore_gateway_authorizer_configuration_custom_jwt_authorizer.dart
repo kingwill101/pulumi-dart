@@ -8,21 +8,21 @@ import 'agentcore_gateway_authorizer_configuration_custom_jwt_authorizer_private
 
 class AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer {
   /// Set of allowed audience values for JWT token validation.
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// Set of allowed client IDs for JWT token validation.
-  final pulumi.Input<List<String>>? allowedClients;
+  final pulumi.Input<List<String>?>? allowedClients;
   /// Set of scopes that are allowed to access the token.
-  final pulumi.Input<List<String>>? allowedScopes;
+  final pulumi.Input<List<String>?>? allowedScopes;
   /// Configuration restricting which workloads may use this authorizer. See `allowedWorkloadConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration>? allowedWorkloadConfiguration;
+  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration?>? allowedWorkloadConfiguration;
   /// Repeatable block to define a custom claim validation name, value, and operation. See `customClaim` below.
-  final pulumi.Input<List<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerCustomClaim>>? customClaims;
+  final pulumi.Input<List<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerCustomClaim>?>? customClaims;
   /// URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
   final pulumi.Input<String> discoveryUrl;
   /// Private endpoint used to reach the authorization server. See `privateEndpoint` below.
-  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpoint?>? privateEndpoint;
   /// Overrides for the private endpoints used to reach the authorization server. See `privateEndpointOverrides` below.
-  final pulumi.Input<List<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride>>? privateEndpointOverrides;
+  final pulumi.Input<List<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride>?>? privateEndpointOverrides;
 
   /// Creates a new [AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer].
   /// [allowedAudiences] Set of allowed audience values for JWT token validation.

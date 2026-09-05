@@ -76,11 +76,11 @@ class GetSupportedInstanceTypesSupportedInstanceType {
       ebsStorageOnly: pulumi.Input.fromValue(map['ebsStorageOnly'] as bool),
       instanceFamilyId: pulumi.Input.fromValue(map['instanceFamilyId'] as String),
       is64BitsOnly: pulumi.Input.fromValue(map['is64BitsOnly'] as bool),
-      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
-      numberOfDisks: pulumi.Input.fromValue(map['numberOfDisks'] as int),
-      storageGb: pulumi.Input.fromValue(map['storageGb'] as int),
+      memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
+      numberOfDisks: pulumi.Input.fromValue((map['numberOfDisks'] as num).toInt()),
+      storageGb: pulumi.Input.fromValue((map['storageGb'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
-      vcpu: pulumi.Input.fromValue(map['vcpu'] as int),
+      vcpu: pulumi.Input.fromValue((map['vcpu'] as num).toInt()),
     );
   }
 }

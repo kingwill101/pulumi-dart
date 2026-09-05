@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableStorageDescriptorColumn {
   /// Free-form text comment.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Name of the Column.
   final pulumi.Input<String> name;
   /// Key-value pairs defining properties associated with the column.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Datatype of data in the Column.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CatalogTableStorageDescriptorColumn].
   /// [comment] Free-form text comment.

@@ -14,12 +14,12 @@ class MultiplexProgramArgs {
   /// MultiplexProgram settings. See Multiplex Program Settings for more details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<MultiplexProgramMultiplexProgramSettings>? multiplexProgramSettings;
+  final pulumi.Input<MultiplexProgramMultiplexProgramSettings?>? multiplexProgramSettings;
   /// Unique program name.
   final pulumi.Input<String> programName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<MultiplexProgramTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<MultiplexProgramTimeouts?>? timeouts;
 
   /// Creates a new [MultiplexProgramArgs].
   /// [multiplexId] Multiplex ID.

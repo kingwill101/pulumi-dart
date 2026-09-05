@@ -20,7 +20,7 @@ class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
 
   factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings(
-      ebsVolumeSizeInGb: pulumi.Input.fromValue(map['ebsVolumeSizeInGb'] as int),
+      ebsVolumeSizeInGb: pulumi.Input.fromValue((map['ebsVolumeSizeInGb'] as num).toInt()),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_group_cost_management_view_args.dart';
 import 'resource_group_cost_management_view_dataset.dart';
+import 'resource_group_cost_management_view_kpi.dart';
+import 'resource_group_cost_management_view_pivot.dart';
 import 'resource_group_cost_management_view_state.dart';
 
 /// Manages an Azure Cost Management View for a Resource Group.
@@ -163,7 +165,7 @@ import 'resource_group_cost_management_view_state.dart';
 /// 			DisplayName:     pulumi.String("Cost View per Month"),
 /// 			ChartType:       pulumi.String("StackedColumn"),
 /// 			Accumulated:     pulumi.Bool(false),
-/// 			ResourceGroupId: example.ID(),
+/// 			ResourceGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			ReportType:      pulumi.String("Usage"),
 /// 			Timeframe:       pulumi.String("MonthToDate"),
 /// 			Dataset: &core.ResourceGroupCostManagementViewDatasetArgs{
@@ -360,11 +362,11 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
   /// User visible input name of the Cost Management View.
   late final pulumi.Output<String> displayName;
   /// One or more `kpi` blocks as defined below, to show in Cost Analysis UI.
-  late final pulumi.Output<List<Map<String, dynamic>>?> kpis;
+  late final pulumi.Output<List<ResourceGroupCostManagementViewKpi>?> kpis;
   /// The name which should be used for this Cost Management View for a Resource Group. Changing this forces a new Cost Management View for a Resource Group to be created.
   late final pulumi.Output<String> name;
   /// One or more `pivot` blocks as defined below, containing the configuration of 3 sub-views in the Cost Analysis UI. Non table views should have three pivots.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pivots;
+  late final pulumi.Output<List<ResourceGroupCostManagementViewPivot>?> pivots;
   /// The type of the report. The only possible value is `Usage`.
   late final pulumi.Output<String> reportType;
   /// The ID of the Resource Group this View is scoped to. Changing this forces a new Cost Management View for a Resource Group to be created.
@@ -384,15 +386,15 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
           'azure:core/resourceGroupCostManagementView:ResourceGroupCostManagementView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');
     dataset = registerOutput<ResourceGroupCostManagementViewDataset>('dataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementViewDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
+    kpis = registerOutput<List<ResourceGroupCostManagementViewKpi>?>('kpis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewKpi>(guardedValue, (value) => ResourceGroupCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
+    pivots = registerOutput<List<ResourceGroupCostManagementViewPivot>?>('pivots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewPivot>(guardedValue, (value) => ResourceGroupCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>())); });
     reportType = registerOutput<String>('reportType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     timeframe = registerOutput<String>('timeframe');
@@ -403,11 +405,12 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceGroupCostManagementViewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceGroupCostManagementView._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -425,9 +428,30 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
     chartType = registerOutput<String>('chartType');
     dataset = registerOutput<ResourceGroupCostManagementViewDataset>('dataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementViewDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
+    kpis = registerOutput<List<ResourceGroupCostManagementViewKpi>?>('kpis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewKpi>(guardedValue, (value) => ResourceGroupCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
+    pivots = registerOutput<List<ResourceGroupCostManagementViewPivot>?>('pivots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewPivot>(guardedValue, (value) => ResourceGroupCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>())); });
+    reportType = registerOutput<String>('reportType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    timeframe = registerOutput<String>('timeframe');
+  }
+
+  /// Creates a typed reference to an existing [ResourceGroupCostManagementView] resource.
+  ResourceGroupCostManagementView.reference(String urn)
+    : super(
+        'azure:core/resourceGroupCostManagementView:ResourceGroupCostManagementView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accumulated = registerOutput<bool>('accumulated');
+    chartType = registerOutput<String>('chartType');
+    dataset = registerOutput<ResourceGroupCostManagementViewDataset>('dataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementViewDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    kpis = registerOutput<List<ResourceGroupCostManagementViewKpi>?>('kpis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewKpi>(guardedValue, (value) => ResourceGroupCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    pivots = registerOutput<List<ResourceGroupCostManagementViewPivot>?>('pivots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceGroupCostManagementViewPivot>(guardedValue, (value) => ResourceGroupCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>())); });
     reportType = registerOutput<String>('reportType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     timeframe = registerOutput<String>('timeframe');

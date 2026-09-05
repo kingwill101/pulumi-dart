@@ -193,13 +193,13 @@ import 'token_password_state.dart';
 /// 			Name:                  pulumi.String("exampletoken"),
 /// 			ContainerRegistryName: exampleRegistry.Name,
 /// 			ResourceGroupName:     example.Name,
-/// 			ScopeMapId:            exampleRegistryScopeMap.ID(),
+/// 			ScopeMapId:            exampleRegistryScopeMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewTokenPassword(ctx, "example", &containerservice.TokenPasswordArgs{
-/// 			ContainerRegistryTokenId: exampleRegistryToken.ID(),
+/// 			ContainerRegistryTokenId: exampleRegistryToken.ID().ToIDOutput().ToStringOutput(),
 /// 			Password1: &containerservice.TokenPasswordPassword1Args{
 /// 				Expiry: pulumi.String("2023-03-22T17:57:36+08:00"),
 /// 			},
@@ -404,7 +404,7 @@ class TokenPassword extends pulumi.CustomResource {
           'azure:containerservice/tokenPassword:TokenPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
     password1 = registerOutput<TokenPasswordPassword1>('password1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -416,11 +416,12 @@ class TokenPassword extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TokenPasswordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TokenPassword._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,6 +435,20 @@ class TokenPassword extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
+    password1 = registerOutput<TokenPasswordPassword1>('password1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    password2 = registerOutput<TokenPasswordPassword2?>('password2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TokenPassword] resource.
+  TokenPassword.reference(String urn)
+    : super(
+        'azure:containerservice/tokenPassword:TokenPassword',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
     password1 = registerOutput<TokenPasswordPassword1>('password1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     password2 = registerOutput<TokenPasswordPassword2?>('password2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword2.fromMap((guardedValue as Map).cast<String, dynamic>()); });

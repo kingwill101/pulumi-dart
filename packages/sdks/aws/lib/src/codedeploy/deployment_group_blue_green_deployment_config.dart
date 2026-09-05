@@ -7,13 +7,13 @@ import 'deployment_group_blue_green_deployment_config_terminate_blue_instances_o
 
 class DeploymentGroupBlueGreenDeploymentConfig {
   /// Information about the action to take when newly provisioned instances are ready to receive traffic in a blue/green deployment (documented below).
-  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption>? deploymentReadyOption;
+  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption?>? deploymentReadyOption;
   /// Information about how instances are provisioned for a replacement environment in a blue/green deployment (documented below).
-  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption>? greenFleetProvisioningOption;
+  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption?>? greenFleetProvisioningOption;
   /// Information about whether to terminate instances in the original fleet during a blue/green deployment (documented below).
   ///
   /// _Only one `blueGreenDeploymentConfig` is allowed_.
-  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess>? terminateBlueInstancesOnDeploymentSuccess;
+  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess?>? terminateBlueInstancesOnDeploymentSuccess;
 
   /// Creates a new [DeploymentGroupBlueGreenDeploymentConfig].
   /// [deploymentReadyOption] Information about the action to take when newly provisioned instances are ready to receive traffic in a blue/green deployment (documented below).

@@ -6,9 +6,9 @@ import 'certificate_contacts_contact.dart';
 /// Input properties used for looking up and filtering CertificateContacts resources.
 class CertificateContactsState {
   /// One or more `contact` blocks as defined below.
-  final pulumi.Input<List<CertificateContactsContact>>? contacts;
+  final pulumi.Input<List<CertificateContactsContact>?>? contacts;
   /// The ID of the Key Vault. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
 
   /// Creates a new [CertificateContactsState].
   /// [contacts] One or more `contact` blocks as defined below.

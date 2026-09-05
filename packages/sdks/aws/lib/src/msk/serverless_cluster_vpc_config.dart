@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessClusterVpcConfig {
   /// Specifies up to five security groups that control inbound and outbound traffic for the serverless cluster.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// A list of subnets in at least two different Availability Zones that host your client applications.
   final pulumi.Input<List<String>> subnetIds;
 

@@ -105,7 +105,7 @@ import 'spring_cloud_accelerator_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudAccelerator(ctx, "example", &appplatform.SpringCloudAcceleratorArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -232,7 +232,7 @@ class SpringCloudAccelerator extends pulumi.CustomResource {
           'azure:appplatform/springCloudAccelerator:SpringCloudAccelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
@@ -243,11 +243,12 @@ class SpringCloudAccelerator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudAcceleratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudAccelerator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,6 +262,19 @@ class SpringCloudAccelerator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudAccelerator] resource.
+  SpringCloudAccelerator.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudAccelerator:SpringCloudAccelerator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }

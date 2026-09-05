@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_cluster_args.dart';
+import 'global_cluster_global_cluster_member.dart';
 import 'global_cluster_state.dart';
 
 /// Manages an RDS Global Cluster, which is an Aurora global database spread across multiple regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
@@ -47,6 +48,7 @@ import 'global_cluster_state.dart';
 ///     dbSubnetGroupName: "default",
 /// }, {
 ///     dependsOn: [primaryClusterInstance],
+///     ignoreChanges: ["replicationSourceIdentifier"],
 /// });
 /// const secondaryClusterInstance = new aws.rds.ClusterInstance("secondary", {
 ///     engine: example.engine.apply((x) => aws.rds.EngineType[x]),
@@ -88,7 +90,8 @@ import 'global_cluster_state.dart';
 ///     cluster_identifier="test-secondary-cluster",
 ///     global_cluster_identifier=example.id,
 ///     db_subnet_group_name="default",
-///     opts = pulumi.ResourceOptions(depends_on=[primary_cluster_instance]))
+///     opts = pulumi.ResourceOptions(depends_on=[primary_cluster_instance],
+///         ignore_changes=["replicationSourceIdentifier"]))
 /// secondary_cluster_instance = aws.rds.ClusterInstance("secondary",
 ///     engine=example.engine.apply(lambda x: aws.rds.EngineType(x)),
 ///     engine_version=example.engine_version,
@@ -147,6 +150,10 @@ import 'global_cluster_state.dart';
 ///         DependsOn =
 ///         {
 ///             primaryClusterInstance,
+///         },
+///         IgnoreChanges =
+///         {
+///             "replicationSourceIdentifier",
 ///         },
 ///     });
 ///
@@ -213,6 +220,8 @@ import 'global_cluster_state.dart';
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			primaryClusterInstance,
+/// 		}), pulumi.IgnoreChanges([]string{
+/// 			"replicationSourceIdentifier",
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -266,6 +275,9 @@ import 'global_cluster_state.dart';
 ///   db_subnet_group_name = "default"
 /// }
 /// resource "aws_rds_cluster" "secondary" {
+///   lifecycle {
+///     ignore_changes = [replicationSourceIdentifier]
+///   }
 ///   depends_on                = [aws_rds_clusterinstance.primary]
 ///   engine                    = aws_rds_globalcluster.example.engine
 ///   engine_version            = aws_rds_globalcluster.example.engine_version
@@ -343,6 +355,7 @@ import 'global_cluster_state.dart';
 ///             .dbSubnetGroupName("default")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(primaryClusterInstance)
+///                 .ignoreChanges("replicationSourceIdentifier")
 ///                 .build());
 ///
 ///         var secondaryClusterInstance = new ClusterInstance("secondaryClusterInstance", ClusterInstanceArgs.builder()
@@ -398,6 +411,8 @@ import 'global_cluster_state.dart';
 ///     options:
 ///       dependsOn:
 ///         - ${primaryClusterInstance}
+///       ignoreChanges:
+///         - replicationSourceIdentifier
 ///   secondaryClusterInstance:
 ///     type: aws:rds:ClusterInstance
 ///     name: secondary
@@ -451,6 +466,7 @@ import 'global_cluster_state.dart';
 ///     dbSubnetGroupName: "default",
 /// }, {
 ///     dependsOn: [primaryClusterInstance],
+///     ignoreChanges: ["replicationSourceIdentifier"],
 /// });
 /// const secondaryClusterInstance = new aws.rds.ClusterInstance("secondary", {
 ///     engine: example.engine.apply((x) => aws.rds.EngineType[x]),
@@ -493,7 +509,8 @@ import 'global_cluster_state.dart';
 ///     global_cluster_identifier=example.id,
 ///     skip_final_snapshot=True,
 ///     db_subnet_group_name="default",
-///     opts = pulumi.ResourceOptions(depends_on=[primary_cluster_instance]))
+///     opts = pulumi.ResourceOptions(depends_on=[primary_cluster_instance],
+///         ignore_changes=["replicationSourceIdentifier"]))
 /// secondary_cluster_instance = aws.rds.ClusterInstance("secondary",
 ///     engine=example.engine.apply(lambda x: aws.rds.EngineType(x)),
 ///     engine_version=example.engine_version,
@@ -553,6 +570,10 @@ import 'global_cluster_state.dart';
 ///         DependsOn =
 ///         {
 ///             primaryClusterInstance,
+///         },
+///         IgnoreChanges =
+///         {
+///             "replicationSourceIdentifier",
 ///         },
 ///     });
 ///
@@ -620,6 +641,8 @@ import 'global_cluster_state.dart';
 /// 			DbSubnetGroupName:       pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			primaryClusterInstance,
+/// 		}), pulumi.IgnoreChanges([]string{
+/// 			"replicationSourceIdentifier",
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -673,6 +696,9 @@ import 'global_cluster_state.dart';
 ///   db_subnet_group_name = "default"
 /// }
 /// resource "aws_rds_cluster" "secondary" {
+///   lifecycle {
+///     ignore_changes = [replicationSourceIdentifier]
+///   }
 ///   depends_on                = [aws_rds_clusterinstance.primary]
 ///   engine                    = aws_rds_globalcluster.example.engine
 ///   engine_version            = aws_rds_globalcluster.example.engine_version
@@ -752,6 +778,7 @@ import 'global_cluster_state.dart';
 ///             .dbSubnetGroupName("default")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(primaryClusterInstance)
+///                 .ignoreChanges("replicationSourceIdentifier")
 ///                 .build());
 ///
 ///         var secondaryClusterInstance = new ClusterInstance("secondaryClusterInstance", ClusterInstanceArgs.builder()
@@ -808,6 +835,8 @@ import 'global_cluster_state.dart';
 ///     options:
 ///       dependsOn:
 ///         - ${primaryClusterInstance}
+///       ignoreChanges:
+///         - replicationSourceIdentifier
 ///   secondaryClusterInstance:
 ///     type: aws:rds:ClusterInstance
 ///     name: secondary
@@ -828,7 +857,9 @@ import 'global_cluster_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.rds.Cluster("example", {});
+/// const example = new aws.rds.Cluster("example", {}, {
+///     ignoreChanges: ["globalClusterIdentifier"],
+/// });
 /// const exampleGlobalCluster = new aws.rds.GlobalCluster("example", {
 ///     forceDestroy: true,
 ///     globalClusterIdentifier: "example",
@@ -839,7 +870,7 @@ import 'global_cluster_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.rds.Cluster("example")
+/// example = aws.rds.Cluster("example", opts = pulumi.ResourceOptions(ignore_changes=["globalClusterIdentifier"]))
 /// example_global_cluster = aws.rds.GlobalCluster("example",
 ///     force_destroy=True,
 ///     global_cluster_identifier="example",
@@ -853,7 +884,15 @@ import 'global_cluster_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Rds.Cluster("example");
+///     var example = new Aws.Rds.Cluster("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "globalClusterIdentifier",
+///         },
+///     });
 ///
 ///     var exampleGlobalCluster = new Aws.Rds.GlobalCluster("example", new()
 ///     {
@@ -874,7 +913,9 @@ import 'global_cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := rds.NewCluster(ctx, "example", nil)
+/// 		example, err := rds.NewCluster(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"globalClusterIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -900,6 +941,9 @@ import 'global_cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   lifecycle {
+///     ignore_changes = [globalClusterIdentifier]
+///   }
 /// }
 /// resource "aws_rds_globalcluster" "example" {
 ///   force_destroy                = true
@@ -914,8 +958,10 @@ import 'global_cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Cluster;
+/// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.GlobalCluster;
 /// import com.pulumi.aws.rds.GlobalClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -929,7 +975,9 @@ import 'global_cluster_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new Cluster("example");
+///         var example = new Cluster("example", ClusterArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("globalClusterIdentifier")
+///             .build());
 ///
 ///         var exampleGlobalCluster = new GlobalCluster("exampleGlobalCluster", GlobalClusterArgs.builder()
 ///             .forceDestroy(true)
@@ -944,6 +992,9 @@ import 'global_cluster_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:rds:Cluster
+///     options:
+///       ignoreChanges:
+///         - globalClusterIdentifier
 ///   exampleGlobalCluster:
 ///     type: aws:rds:GlobalCluster
 ///     name: example
@@ -979,6 +1030,8 @@ import 'global_cluster_state.dart';
 ///     masterPassword: "satsukimae",
 ///     masterUsername: "maesatsuki",
 ///     skipFinalSnapshot: true,
+/// }, {
+///     ignoreChanges: ["engineVersion"],
 /// });
 /// const primaryClusterInstance = new aws.rds.ClusterInstance("primary", {
 ///     applyImmediately: true,
@@ -1007,7 +1060,8 @@ import 'global_cluster_state.dart';
 ///     global_cluster_identifier=example.id,
 ///     master_password="satsukimae",
 ///     master_username="maesatsuki",
-///     skip_final_snapshot=True)
+///     skip_final_snapshot=True,
+///     opts = pulumi.ResourceOptions(ignore_changes=["engineVersion"]))
 /// primary_cluster_instance = aws.rds.ClusterInstance("primary",
 ///     apply_immediately=True,
 ///     cluster_identifier=primary.id,
@@ -1043,6 +1097,12 @@ import 'global_cluster_state.dart';
 ///         MasterPassword = "satsukimae",
 ///         MasterUsername = "maesatsuki",
 ///         SkipFinalSnapshot = true,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "engineVersion",
+///         },
 ///     });
 ///
 ///     var primaryClusterInstance = new Aws.Rds.ClusterInstance("primary", new()
@@ -1086,7 +1146,9 @@ import 'global_cluster_state.dart';
 /// 			MasterPassword:           pulumi.String("satsukimae"),
 /// 			MasterUsername:           pulumi.String("maesatsuki"),
 /// 			SkipFinalSnapshot:        pulumi.Bool(true),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"engineVersion",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -1120,6 +1182,9 @@ import 'global_cluster_state.dart';
 ///   engine_version            = "5.7.mysql_aurora.2.07.5"
 /// }
 /// resource "aws_rds_cluster" "primary" {
+///   lifecycle {
+///     ignore_changes = [engineVersion]
+///   }
 ///   allow_major_version_upgrade = true
 ///   apply_immediately           = true
 ///   cluster_identifier          = "odessadnipro"
@@ -1152,6 +1217,7 @@ import 'global_cluster_state.dart';
 /// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.ClusterInstance;
 /// import com.pulumi.aws.rds.ClusterInstanceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1182,7 +1248,9 @@ import 'global_cluster_state.dart';
 ///             .masterPassword("satsukimae")
 ///             .masterUsername("maesatsuki")
 ///             .skipFinalSnapshot(true)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("engineVersion")
+///                 .build());
 ///
 ///         var primaryClusterInstance = new ClusterInstance("primaryClusterInstance", ClusterInstanceArgs.builder()
 ///             .applyImmediately(true)
@@ -1217,6 +1285,9 @@ import 'global_cluster_state.dart';
 ///       masterPassword: satsukimae
 ///       masterUsername: maesatsuki
 ///       skipFinalSnapshot: true
+///     options:
+///       ignoreChanges:
+///         - engineVersion
 ///   primaryClusterInstance:
 ///     type: aws:rds:ClusterInstance
 ///     name: primary
@@ -1247,13 +1318,15 @@ import 'global_cluster_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.rds.GlobalCluster("example", {});
+/// const example = new aws.rds.GlobalCluster("example", {}, {
+///     ignoreChanges: ["sourceDbClusterIdentifier"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.rds.GlobalCluster("example")
+/// example = aws.rds.GlobalCluster("example", opts = pulumi.ResourceOptions(ignore_changes=["sourceDbClusterIdentifier"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1263,7 +1336,15 @@ import 'global_cluster_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Rds.GlobalCluster("example");
+///     var example = new Aws.Rds.GlobalCluster("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "sourceDbClusterIdentifier",
+///         },
+///     });
 ///
 /// });
 /// ```
@@ -1277,7 +1358,9 @@ import 'global_cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := rds.NewGlobalCluster(ctx, "example", nil)
+/// 		_, err := rds.NewGlobalCluster(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"sourceDbClusterIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -1295,6 +1378,9 @@ import 'global_cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_globalcluster" "example" {
+///   lifecycle {
+///     ignore_changes = [sourceDbClusterIdentifier]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1304,6 +1390,8 @@ import 'global_cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.GlobalCluster;
+/// import com.pulumi.aws.rds.GlobalClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1317,7 +1405,9 @@ import 'global_cluster_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new GlobalCluster("example");
+///         var example = new GlobalCluster("example", GlobalClusterArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("sourceDbClusterIdentifier")
+///             .build());
 ///
 ///     }
 /// }
@@ -1326,9 +1416,12 @@ import 'global_cluster_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:rds:GlobalCluster
+///     options:
+///       ignoreChanges:
+///         - sourceDbClusterIdentifier
 /// ```
 class GlobalCluster extends pulumi.CustomResource {
-  /// RDS Global Cluster Amazon Resource Name (ARN).
+  /// RDS Global Cluster ARN.
   late final pulumi.Output<String> arn;
   /// Name for an automatically created database on cluster creation. Pulumi will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> databaseName;
@@ -1350,12 +1443,12 @@ class GlobalCluster extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> globalClusterIdentifier;
   /// Set of objects containing Global Cluster members.
-  late final pulumi.Output<List<Map<String, dynamic>>> globalClusterMembers;
+  late final pulumi.Output<List<GlobalClusterGlobalClusterMember>> globalClusterMembers;
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
   late final pulumi.Output<String> globalClusterResourceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value. **NOTE:** After initial creation, this argument can be removed and replaced with `engine` and `engineVersion`. This allows upgrading the engine version of the Global Cluster.
+  /// ARN to use as the primary DB Cluster of the Global Cluster on creation. Pulumi cannot perform drift detection of this value. **NOTE:** After initial creation, this argument can be removed and replaced with `engine` and `engineVersion`. This allows upgrading the engine version of the Global Cluster.
   late final pulumi.Output<String> sourceDbClusterIdentifier;
   /// Specifies whether the DB cluster is encrypted. The default is `false` unless `sourceDbClusterIdentifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<bool> storageEncrypted;
@@ -1378,7 +1471,7 @@ class GlobalCluster extends pulumi.CustomResource {
           'aws:rds/globalCluster:GlobalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');
@@ -1390,13 +1483,13 @@ class GlobalCluster extends pulumi.CustomResource {
     engineVersionActual = registerOutput<String>('engineVersionActual');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
     sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [GlobalCluster] resource's state with the given [name] and [id].
@@ -1404,11 +1497,12 @@ class GlobalCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1432,12 +1526,40 @@ class GlobalCluster extends pulumi.CustomResource {
     engineVersionActual = registerOutput<String>('engineVersionActual');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
     sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GlobalCluster] resource.
+  GlobalCluster.reference(String urn)
+    : super(
+        'aws:rds/globalCluster:GlobalCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    databaseName = registerOutput<String>('databaseName');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String>('engine');
+    engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
+    globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
+    region = registerOutput<String>('region');
+    sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobSourceControlDetails {
   /// The type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.
-  final pulumi.Input<String>? authStrategy;
+  final pulumi.Input<String?>? authStrategy;
   /// The value of an authorization token.
-  final pulumi.Input<String>? authToken;
+  final pulumi.Input<String?>? authToken;
   /// A branch in the remote repository.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A folder in the remote repository.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The last commit ID for a commit in the remote repository.
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// The owner of the remote repository that contains the job artifacts.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
   /// The name of the remote repository that contains the job artifacts.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [JobSourceControlDetails].
   /// [authStrategy] The type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.

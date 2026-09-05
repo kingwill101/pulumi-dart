@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResponseHeadersPolicyCorsConfigAccessControlAllowMethods {
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [ResponseHeadersPolicyCorsConfigAccessControlAllowMethods].
   /// [items] Optional.

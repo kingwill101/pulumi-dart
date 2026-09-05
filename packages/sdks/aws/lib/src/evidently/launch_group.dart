@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchGroup {
   /// Specifies the description of the launch group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the feature that the launch is using.
   final pulumi.Input<String> feature;
   /// Specifies the name of the lahnch group.

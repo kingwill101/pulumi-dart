@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'voice_connector_termination_credentials_args.dart';
+import 'voice_connector_termination_credentials_credential.dart';
 import 'voice_connector_termination_credentials_state.dart';
 
 /// Adds termination SIP credentials for the specified Amazon Chime Voice Connector.
@@ -28,11 +29,11 @@ import 'voice_connector_termination_credentials_state.dart';
 ///     voiceConnectorId: _default.id,
 /// });
 /// const defaultVoiceConnectorTerminationCredentials = new aws.chime.VoiceConnectorTerminationCredentials("default", {
-///     voiceConnectorId: _default.id,
 ///     credentials: [{
 ///         username: "test",
 ///         password: "test!",
 ///     }],
+///     voiceConnectorId: _default.id,
 /// }, {
 ///     dependsOn: [defaultVoiceConnectorTermination],
 /// });
@@ -54,11 +55,11 @@ import 'voice_connector_termination_credentials_state.dart';
 ///     ],
 ///     voice_connector_id=default.id)
 /// default_voice_connector_termination_credentials = aws.chime.VoiceConnectorTerminationCredentials("default",
-///     voice_connector_id=default.id,
 ///     credentials=[{
 ///         "username": "test",
 ///         "password": "test!",
 ///     }],
+///     voice_connector_id=default.id,
 ///     opts = pulumi.ResourceOptions(depends_on=[default_voice_connector_termination]))
 /// ```
 /// ```csharp
@@ -93,7 +94,6 @@ import 'voice_connector_termination_credentials_state.dart';
 ///
 ///     var defaultVoiceConnectorTerminationCredentials = new Aws.Chime.VoiceConnectorTerminationCredentials("default", new()
 ///     {
-///         VoiceConnectorId = @default.Id,
 ///         Credentials = new[]
 ///         {
 ///             new Aws.Chime.Inputs.VoiceConnectorTerminationCredentialsCredentialArgs
@@ -102,6 +102,7 @@ import 'voice_connector_termination_credentials_state.dart';
 ///                 Password = "test!",
 ///             },
 ///         },
+///         VoiceConnectorId = @default.Id,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -145,13 +146,13 @@ import 'voice_connector_termination_credentials_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorTerminationCredentials(ctx, "default", &chime.VoiceConnectorTerminationCredentialsArgs{
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Credentials: chime.VoiceConnectorTerminationCredentialsCredentialArray{
 /// 				&chime.VoiceConnectorTerminationCredentialsCredentialArgs{
 /// 					Username: pulumi.String("test"),
 /// 					Password: pulumi.String("test!"),
 /// 				},
 /// 			},
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultVoiceConnectorTermination,
 /// 		}))
@@ -183,12 +184,12 @@ import 'voice_connector_termination_credentials_state.dart';
 ///   voice_connector_id = aws_chime_voiceconnector.default.id
 /// }
 /// resource "aws_chime_voiceconnectorterminationcredentials" "default" {
-///   depends_on         = [aws_chime_voiceconnectortermination.default]
-///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   depends_on = [aws_chime_voiceconnectortermination.default]
 ///   credentials {
 ///     username = "test"
 ///     password = "test!"
 ///   }
+///   voice_connector_id = aws_chime_voiceconnector.default.id
 /// }
 /// ```
 /// ```java
@@ -234,11 +235,11 @@ import 'voice_connector_termination_credentials_state.dart';
 ///             .build());
 ///
 ///         var defaultVoiceConnectorTerminationCredentials = new VoiceConnectorTerminationCredentials("defaultVoiceConnectorTerminationCredentials", VoiceConnectorTerminationCredentialsArgs.builder()
-///             .voiceConnectorId(default_.id())
 ///             .credentials(VoiceConnectorTerminationCredentialsCredentialArgs.builder()
 ///                 .username("test")
 ///                 .password("test!")
 ///                 .build())
+///             .voiceConnectorId(default_.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(defaultVoiceConnectorTermination)
 ///                 .build());
@@ -269,10 +270,10 @@ import 'voice_connector_termination_credentials_state.dart';
 ///     type: aws:chime:VoiceConnectorTerminationCredentials
 ///     name: default
 ///     properties:
-///       voiceConnectorId: ${default.id}
 ///       credentials:
 ///         - username: test
 ///           password: test!
+///       voiceConnectorId: ${default.id}
 ///     options:
 ///       dependsOn:
 ///         - ${defaultVoiceConnectorTermination}
@@ -288,7 +289,7 @@ import 'voice_connector_termination_credentials_state.dart';
 /// ```
 class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
   /// List of termination SIP credentials.
-  late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  late final pulumi.Output<List<VoiceConnectorTerminationCredentialsCredential>> credentials;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Amazon Chime Voice Connector ID.
@@ -306,9 +307,9 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
           'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(guardedValue, (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
@@ -318,11 +319,12 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorTerminationCredentialsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorTerminationCredentials._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,21 @@ class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(guardedValue, (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorTerminationCredentials] resource.
+  VoiceConnectorTerminationCredentials.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    credentials = registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(guardedValue, (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }

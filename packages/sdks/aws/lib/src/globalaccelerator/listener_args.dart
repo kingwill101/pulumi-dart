@@ -8,17 +8,17 @@ import 'listener_port_range.dart';
 /// {@endtemplate}
 /// {@macro pulumi_globalaccelerator_listener_listener_args_doc}
 class ListenerArgs {
-  /// The Amazon Resource Name (ARN) of your accelerator.
+  /// ARN of your accelerator.
   final pulumi.Input<String> acceleratorArn;
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-  final pulumi.Input<String>? clientAffinity;
+  final pulumi.Input<String?>? clientAffinity;
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   final pulumi.Input<List<ListenerPortRange>> portRanges;
   /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   final pulumi.Input<String> protocol;
 
   /// Creates a new [ListenerArgs].
-  /// [acceleratorArn] The Amazon Resource Name (ARN) of your accelerator.
+  /// [acceleratorArn] ARN of your accelerator.
   /// [clientAffinity] Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   /// [protocol] The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.

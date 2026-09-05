@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pinpoint_smsvoicev2_configuration_set_smsvoicev2_configuration_set_args_doc}
 class Smsvoicev2ConfigurationSetArgs {
   /// Default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL".
-  final pulumi.Input<String>? defaultMessageType;
+  final pulumi.Input<String?>? defaultMessageType;
   /// Default sender ID to use for this configuration set.
-  final pulumi.Input<String>? defaultSenderId;
+  final pulumi.Input<String?>? defaultSenderId;
   /// Name of the configuration set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Smsvoicev2ConfigurationSetArgs].
   /// [defaultMessageType] Default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL".

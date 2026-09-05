@@ -9,26 +9,26 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// {@macro pulumi_rds_cluster_snapshot_copy_cluster_snapshot_copy_args_doc}
 class ClusterSnapshotCopyArgs {
   /// Whether to copy existing tags. Defaults to `false`.
-  final pulumi.Input<bool>? copyTags;
+  final pulumi.Input<bool?>? copyTags;
   /// The Destination region to place snapshot copy.
-  final pulumi.Input<String>? destinationRegion;
+  final pulumi.Input<String?>? destinationRegion;
   /// KMS key ID.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// URL that contains a Signature Version 4 signed request.
-  final pulumi.Input<String>? presignedUrl;
+  final pulumi.Input<String?>? presignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  final pulumi.Input<List<String>>? sharedAccounts;
+  final pulumi.Input<List<String>?>? sharedAccounts;
   /// Identifier of the source snapshot.
   final pulumi.Input<String> sourceDbClusterSnapshotIdentifier;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier for the snapshot.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> targetDbClusterSnapshotIdentifier;
-  final pulumi.Input<ClusterSnapshotCopyTimeouts>? timeouts;
+  final pulumi.Input<ClusterSnapshotCopyTimeouts?>? timeouts;
 
   /// Creates a new [ClusterSnapshotCopyArgs].
   /// [copyTags] Whether to copy existing tags. Defaults to `false`.

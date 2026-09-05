@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_get_resolver_rule_get_resolver_rule_args_doc}
 class GetResolverRuleArgs {
   /// Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolverRuleId`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Friendly name of the desired resolver rule. Conflicts with `resolverRuleId`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
-  final pulumi.Input<String>? resolverEndpointId;
+  final pulumi.Input<String?>? resolverEndpointId;
   /// ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
-  final pulumi.Input<String>? resolverRuleId;
+  final pulumi.Input<String?>? resolverRuleId;
   /// Rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolverRuleId`.
-  final pulumi.Input<String>? ruleType;
+  final pulumi.Input<String?>? ruleType;
   /// Map of tags assigned to the resolver rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetResolverRuleArgs].
   /// [domainName] Domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolverRuleId`.

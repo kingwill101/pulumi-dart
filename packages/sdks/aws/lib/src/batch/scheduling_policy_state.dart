@@ -5,20 +5,20 @@ import 'scheduling_policy_fair_share_policy.dart';
 
 /// Input properties used for looking up and filtering SchedulingPolicy resources.
 class SchedulingPolicyState {
-  /// The Amazon Resource Name of the scheduling policy.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<SchedulingPolicyFairSharePolicy>? fairSharePolicy;
+  /// ARN of the scheduling policy.
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<SchedulingPolicyFairSharePolicy?>? fairSharePolicy;
   /// Specifies the name of the scheduling policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SchedulingPolicyState].
-  /// [arn] The Amazon Resource Name of the scheduling policy.
+  /// [arn] ARN of the scheduling policy.
   /// [fairSharePolicy] Optional.
   /// [name] Specifies the name of the scheduling policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

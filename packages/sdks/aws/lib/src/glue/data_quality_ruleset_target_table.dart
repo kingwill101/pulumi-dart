@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityRulesetTargetTable {
   /// The catalog id where the AWS Glue table exists.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the database where the AWS Glue table exists.
   final pulumi.Input<String> databaseName;
   /// Name of the AWS Glue table.

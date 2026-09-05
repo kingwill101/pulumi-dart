@@ -346,7 +346,7 @@ import 'cname_record_state.dart';
 /// 			ZoneName:          exampleZone.Name,
 /// 			ResourceGroupName: example.Name,
 /// 			Ttl:               pulumi.Int(300),
-/// 			TargetResourceId:  target.ID(),
+/// 			TargetResourceId:  target.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -520,13 +520,13 @@ class CNameRecord extends pulumi.CustomResource {
           'azure:dns/cNameRecord:CNameRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     record = registerOutput<String?>('record');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String?>('targetResourceId');
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
@@ -537,11 +537,12 @@ class CNameRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CNameRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CNameRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -559,7 +560,26 @@ class CNameRecord extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     record = registerOutput<String?>('record');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [CNameRecord] resource.
+  CNameRecord.reference(String urn)
+    : super(
+        'azure:dns/cNameRecord:CNameRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    record = registerOutput<String?>('record');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String?>('targetResourceId');
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');

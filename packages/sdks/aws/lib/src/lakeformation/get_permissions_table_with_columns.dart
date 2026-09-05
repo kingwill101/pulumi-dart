@@ -6,17 +6,17 @@ class GetPermissionsTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String> catalogId;
   /// Set of column names for the table. At least one of `columnNames` or `excludedColumnNames` is required.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final pulumi.Input<String> databaseName;
   /// Set of column names for the table to exclude. At least one of `columnNames` or `excludedColumnNames` is required.
-  final pulumi.Input<List<String>>? excludedColumnNames;
+  final pulumi.Input<List<String>?>? excludedColumnNames;
   /// Name of the table resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
   /// Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
-  final pulumi.Input<bool>? wildcard;
+  final pulumi.Input<bool?>? wildcard;
 
   /// Creates a new [GetPermissionsTableWithColumns].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.

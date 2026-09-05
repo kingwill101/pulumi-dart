@@ -6,7 +6,7 @@ import 'labeling_job_input_config_data_source.dart';
 
 class LabelingJobInputConfig {
   /// Attributes of the data. Fields are documented below.
-  final pulumi.Input<LabelingJobInputConfigDataAttributes>? dataAttributes;
+  final pulumi.Input<LabelingJobInputConfigDataAttributes?>? dataAttributes;
   /// Location of the input data.. Fields are documented below.
   final pulumi.Input<LabelingJobInputConfigDataSource> dataSource;
 

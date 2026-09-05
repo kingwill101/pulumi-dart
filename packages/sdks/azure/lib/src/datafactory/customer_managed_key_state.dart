@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CustomerManagedKey resources.
 class CustomerManagedKeyState {
   /// The ID the of the Customer Managed Key to associate with the Data Factory.
-  final pulumi.Input<String>? customerManagedKeyId;
+  final pulumi.Input<String?>? customerManagedKeyId;
   /// The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [CustomerManagedKeyState].
   /// [customerManagedKeyId] The ID the of the Customer Managed Key to associate with the Data Factory.

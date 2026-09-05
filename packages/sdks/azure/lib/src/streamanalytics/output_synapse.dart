@@ -45,8 +45,8 @@ import 'output_synapse_state.dart';
 /// });
 /// const exampleOutputSynapse = new azure.streamanalytics.OutputSynapse("example", {
 ///     name: "example-output-synapse",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     server: exampleWorkspace.connectivityEndpoints.sqlOnDemand,
 ///     user: exampleWorkspace.sqlAdministratorLogin,
 ///     password: exampleWorkspace.sqlAdministratorLoginPassword,
@@ -197,7 +197,7 @@ import 'output_synapse_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -206,7 +206,7 @@ import 'output_synapse_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               exampleResourceGroup.Name,
 /// 			Location:                        exampleResourceGroup.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -217,13 +217,9 @@ import 'output_synapse_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputSynapse(ctx, "example", &streamanalytics.OutputSynapseArgs{
-/// 			Name: pulumi.String("example-output-synapse"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                   pulumi.String("example-output-synapse"),
+/// 			StreamAnalyticsJobName: example.Name(),
+/// 			ResourceGroupName:      example.ResourceGroupName(),
 /// 			Server: exampleWorkspace.ConnectivityEndpoints.ApplyT(func(connectivityEndpoints map[string]string) (string, error) {
 /// 				return connectivityEndpoints["sqlOnDemand"], nil
 /// 			}).(pulumi.StringOutput),
@@ -478,11 +474,12 @@ class OutputSynapse extends pulumi.CustomResource {
           'azure:streamanalytics/outputSynapse:OutputSynapse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     server = registerOutput<String>('server');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
@@ -495,11 +492,12 @@ class OutputSynapse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputSynapseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputSynapse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -515,7 +513,27 @@ class OutputSynapse extends pulumi.CustomResource {
         ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [OutputSynapse] resource.
+  OutputSynapse.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputSynapse:OutputSynapse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     server = registerOutput<String>('server');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');

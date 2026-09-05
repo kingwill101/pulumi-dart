@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearning_workspace_network_outbound_rule_service_tag_workspace_network_outbound_rule_service_tag_args_doc}
 class WorkspaceNetworkOutboundRuleServiceTagArgs {
   /// Specifies the name of the Machine Learning Workspace Network Outbound Rule Service Tag. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies which ports traffic will be allowed by this rule. You can specify a single port (e.g. ` 80`) , a port range (e.g. `1024-655535`) or a comma-separated list of single ports and/or port ranges(e.g. `80,1024-655535`). `*` can be used to allow traffic on any port.
   final pulumi.Input<String> portRanges;
   /// Specifies the network protocol. Possible values are `*`, `TCP`, `UDP` and `ICMP`

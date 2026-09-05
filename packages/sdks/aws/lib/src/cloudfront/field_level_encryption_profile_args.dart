@@ -9,11 +9,11 @@ import 'field_level_encryption_profile_encryption_entities.dart';
 /// {@macro pulumi_cloudfront_field_level_encryption_profile_field_level_encryption_profile_args_doc}
 class FieldLevelEncryptionProfileArgs {
   /// An optional comment about the Field Level Encryption Profile.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
   final pulumi.Input<FieldLevelEncryptionProfileEncryptionEntities> encryptionEntities;
   /// The name of the Field Level Encryption Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FieldLevelEncryptionProfileArgs].
   /// [comment] An optional comment about the Field Level Encryption Profile.

@@ -13,10 +13,10 @@ class AnycastIpListArgs {
   /// Name of the Anycast IP list.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AnycastIpListTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AnycastIpListTimeouts?>? timeouts;
 
   /// Creates a new [AnycastIpListArgs].
   /// [ipCount] The number of static IP addresses that are allocated to the Anycast IP list. Valid values: `3`, `21`.
@@ -41,7 +41,7 @@ class AnycastIpListArgs {
 
   factory AnycastIpListArgs.fromMap(Map<String, dynamic> map) {
     return AnycastIpListArgs(
-      ipCount: pulumi.Input.fromValue(map['ipCount'] as int),
+      ipCount: pulumi.Input.fromValue((map['ipCount'] as num).toInt()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnycastIpListTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -233,7 +233,7 @@ import 'fallback_route_state.dart';
 /// 		}
 /// 		exampleEndpointStorageContainer, err := iot.NewEndpointStorageContainer(ctx, "example", &iot.EndpointStorageContainerArgs{
 /// 			ResourceGroupName:       example.Name,
-/// 			IothubId:                exampleIoTHub.ID(),
+/// 			IothubId:                exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                    pulumi.String("example"),
 /// 			ConnectionString:        exampleAccount.PrimaryBlobConnectionString,
 /// 			BatchFrequencyInSeconds: pulumi.Int(60),
@@ -495,7 +495,7 @@ class FallbackRoute extends pulumi.CustomResource {
           'azure:iot/fallbackRoute:FallbackRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     enabled = registerOutput<bool>('enabled');
@@ -510,11 +510,12 @@ class FallbackRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FallbackRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FallbackRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -528,6 +529,23 @@ class FallbackRoute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String?>('source');
+  }
+
+  /// Creates a typed reference to an existing [FallbackRoute] resource.
+  FallbackRoute.reference(String urn)
+    : super(
+        'azure:iot/fallbackRoute:FallbackRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<String?>('condition');
     enabled = registerOutput<bool>('enabled');
     endpointNames = registerOutput<String>('endpointNames');

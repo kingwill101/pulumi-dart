@@ -131,7 +131,7 @@ class EncryptionByDefault extends pulumi.CustomResource {
           'aws:ebs/encryptionByDefault:EncryptionByDefault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
@@ -142,11 +142,12 @@ class EncryptionByDefault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EncryptionByDefaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EncryptionByDefault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -160,6 +161,19 @@ class EncryptionByDefault extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool?>('enabled');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EncryptionByDefault] resource.
+  EncryptionByDefault.reference(String urn)
+    : super(
+        'aws:ebs/encryptionByDefault:EncryptionByDefault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
   }

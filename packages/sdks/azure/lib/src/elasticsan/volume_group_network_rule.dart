@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeGroupNetworkRule {
   /// The action to take when the Subnet attempts to access this Elastic SAN Volume Group. The only possible value is `Allow`. Defaults to `Allow`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The ID of the Subnet which should be allowed to access this Elastic SAN Volume Group.
   final pulumi.Input<String> subnetId;
 

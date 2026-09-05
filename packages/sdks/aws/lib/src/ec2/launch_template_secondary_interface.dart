@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateSecondaryInterface {
   /// Whether the secondary interface is deleted when the instance is terminated. The only supported value is `true`.
-  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<bool?>? deleteOnTermination;
   /// Device index for the secondary interface attachment.
-  final pulumi.Input<int>? deviceIndex;
+  final pulumi.Input<int?>? deviceIndex;
   /// Type of secondary interface. The only supported value is: `secondary`.
-  final pulumi.Input<String>? interfaceType;
+  final pulumi.Input<String?>? interfaceType;
   /// Index of the network card.
-  final pulumi.Input<int>? networkCardIndex;
+  final pulumi.Input<int?>? networkCardIndex;
   /// Number of private IPv4 addresses to assign to the secondary interface.
-  final pulumi.Input<int>? privateIpAddressCount;
+  final pulumi.Input<int?>? privateIpAddressCount;
   /// Private IPv4 addresses to assign to the secondary interface.
-  final pulumi.Input<List<String>>? privateIpAddresses;
+  final pulumi.Input<List<String>?>? privateIpAddresses;
   /// ID of the secondary subnet.
-  final pulumi.Input<String>? secondarySubnetId;
+  final pulumi.Input<String?>? secondarySubnetId;
 
   /// Creates a new [LaunchTemplateSecondaryInterface].
   /// [deleteOnTermination] Whether the secondary interface is deleted when the instance is terminated. The only supported value is `true`.
@@ -51,10 +51,10 @@ class LaunchTemplateSecondaryInterface {
   factory LaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSecondaryInterface(
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      deviceIndex: (() { final guardedValue = map['deviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deviceIndex: (() { final guardedValue = map['deviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       interfaceType: (() { final guardedValue = map['interfaceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      privateIpAddressCount: (() { final guardedValue = map['privateIpAddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      privateIpAddressCount: (() { final guardedValue = map['privateIpAddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       privateIpAddresses: (() { final guardedValue = map['privateIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       secondarySubnetId: (() { final guardedValue = map['secondarySubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

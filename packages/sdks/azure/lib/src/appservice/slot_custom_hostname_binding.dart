@@ -157,7 +157,7 @@ import 'slot_custom_hostname_binding_state.dart';
 /// 			Name:              pulumi.String("some-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,13 +167,13 @@ import 'slot_custom_hostname_binding_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			AppServiceName:    exampleAppService.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewSlotCustomHostnameBinding(ctx, "example", &appservice.SlotCustomHostnameBindingArgs{
-/// 			AppServiceSlotId: exampleSlot.ID(),
+/// 			AppServiceSlotId: exampleSlot.ID().ToIDOutput().ToStringOutput(),
 /// 			Hostname:         pulumi.String("www.mywebsite.com"),
 /// 		})
 /// 		if err != nil {
@@ -376,7 +376,7 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
           'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceSlotId = registerOutput<String>('appServiceSlotId');
     hostname = registerOutput<String>('hostname');
@@ -390,11 +390,12 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SlotCustomHostnameBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SlotCustomHostnameBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,6 +409,22 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceSlotId = registerOutput<String>('appServiceSlotId');
+    hostname = registerOutput<String>('hostname');
+    sslState = registerOutput<String>('sslState');
+    thumbprint = registerOutput<String>('thumbprint');
+    virtualIp = registerOutput<String>('virtualIp');
+  }
+
+  /// Creates a typed reference to an existing [SlotCustomHostnameBinding] resource.
+  SlotCustomHostnameBinding.reference(String urn)
+    : super(
+        'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceSlotId = registerOutput<String>('appServiceSlotId');
     hostname = registerOutput<String>('hostname');
     sslState = registerOutput<String>('sslState');

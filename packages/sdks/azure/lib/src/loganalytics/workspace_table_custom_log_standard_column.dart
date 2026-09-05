@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceTableCustomLogStandardColumn {
   /// The description of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the table.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the name of the Log Analytics Workspace Table Custom Log. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `name` must end with `_CL`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The data type of the standard column.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WorkspaceTableCustomLogStandardColumn].
   /// [description] The description of the table.

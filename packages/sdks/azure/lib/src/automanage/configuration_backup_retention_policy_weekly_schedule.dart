@@ -5,9 +5,9 @@ import 'configuration_backup_retention_policy_weekly_schedule_retention_duration
 
 class ConfigurationBackupRetentionPolicyWeeklySchedule {
   /// A `retentionDuration` block as defined below.
-  final pulumi.Input<ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration>? retentionDuration;
+  final pulumi.Input<ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration?>? retentionDuration;
   /// The retention times of the backup policy.
-  final pulumi.Input<List<String>>? retentionTimes;
+  final pulumi.Input<List<String>?>? retentionTimes;
 
   /// Creates a new [ConfigurationBackupRetentionPolicyWeeklySchedule].
   /// [retentionDuration] A `retentionDuration` block as defined below.

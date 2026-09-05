@@ -5,19 +5,19 @@ import 'target_group_config_health_check.dart';
 
 class TargetGroupConfig {
   /// Health check configuration. See `healthCheck` Block below.
-  final pulumi.Input<TargetGroupConfigHealthCheck>? healthCheck;
+  final pulumi.Input<TargetGroupConfigHealthCheck?>? healthCheck;
   /// Type of IP address used for the target group. Valid values: `IPV4` or `IPV6`.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// Version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid values are `V1` or `V2`.
-  final pulumi.Input<String>? lambdaEventStructureVersion;
+  final pulumi.Input<String?>? lambdaEventStructureVersion;
   /// Port on which the targets are listening.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol to use for routing traffic to the targets. Valid values are `HTTP` or `HTTPS`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Protocol version. Valid values are `HTTP1`, `HTTP2`, or `GRPC`. Default value is `HTTP1`.
-  final pulumi.Input<String>? protocolVersion;
+  final pulumi.Input<String?>? protocolVersion;
   /// ID of the VPC.
-  final pulumi.Input<String>? vpcIdentifier;
+  final pulumi.Input<String?>? vpcIdentifier;
 
   /// Creates a new [TargetGroupConfig].
   /// [healthCheck] Health check configuration. See `healthCheck` Block below.
@@ -54,7 +54,7 @@ class TargetGroupConfig {
       healthCheck: (() { final guardedValue = map['healthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TargetGroupConfigHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambdaEventStructureVersion: (() { final guardedValue = map['lambdaEventStructureVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolVersion: (() { final guardedValue = map['protocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcIdentifier: (() { final guardedValue = map['vpcIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

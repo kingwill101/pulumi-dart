@@ -164,11 +164,11 @@ import 'logging_configuration_state.dart';
 /// const exampleBucket = new aws.s3.Bucket("example", {bucketPrefix: "tf-ivschat-logging-bucket"});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["firehose.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -177,12 +177,12 @@ import 'logging_configuration_state.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const example = new aws.kinesis.FirehoseDeliveryStream("example", {
-///     name: "pulumi-kinesis-firehose-extended-s3-example-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
 ///         roleArn: exampleRole.arn,
 ///         bucketArn: exampleBucket.arn,
 ///     },
+///     name: "pulumi-kinesis-firehose-extended-s3-example-stream",
+///     destination: "extended_s3",
 ///     tags: {
 ///         LogDeliveryEnabled: "true",
 ///     },
@@ -203,23 +203,23 @@ import 'logging_configuration_state.dart';
 ///
 /// example_bucket = aws.s3.Bucket("example", bucket_prefix="tf-ivschat-logging-bucket")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["firehose.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="firehose_example_role",
 ///     assume_role_policy=assume_role.json)
 /// example = aws.kinesis.FirehoseDeliveryStream("example",
-///     name="pulumi-kinesis-firehose-extended-s3-example-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
 ///         "role_arn": example_role.arn,
 ///         "bucket_arn": example_bucket.arn,
 ///     },
+///     name="pulumi-kinesis-firehose-extended-s3-example-stream",
+///     destination="extended_s3",
 ///     tags={
 ///         "LogDeliveryEnabled": "true",
 ///     })
@@ -251,7 +251,6 @@ import 'logging_configuration_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -263,6 +262,7 @@ import 'logging_configuration_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -279,13 +279,13 @@ import 'logging_configuration_state.dart';
 ///
 ///     var example = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
 ///     {
-///         Name = "pulumi-kinesis-firehose-extended-s3-example-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
 ///             RoleArn = exampleRole.Arn,
 ///             BucketArn = exampleBucket.Arn,
 ///         },
+///         Name = "pulumi-kinesis-firehose-extended-s3-example-stream",
+///         Destination = "extended_s3",
 ///         Tags =
 ///         {
 ///             { "LogDeliveryEnabled", "true" },
@@ -333,7 +333,6 @@ import 'logging_configuration_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -342,6 +341,7 @@ import 'logging_configuration_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -359,12 +359,12 @@ import 'logging_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := kinesis.NewFirehoseDeliveryStream(ctx, "example", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("pulumi-kinesis-firehose-extended-s3-example-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
 /// 				RoleArn:   exampleRole.Arn,
 /// 				BucketArn: exampleBucket.Arn,
 /// 			},
+/// 			Name:        pulumi.String("pulumi-kinesis-firehose-extended-s3-example-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 			Tags: pulumi.StringMap{
 /// 				"LogDeliveryEnabled": pulumi.String("true"),
 /// 			},
@@ -404,22 +404,22 @@ import 'logging_configuration_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   name        = "pulumi-kinesis-firehose-extended-s3-example-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
 ///     role_arn   = aws_iam_role.example.arn
 ///     bucket_arn = aws_s3_bucket.example.arn
 ///   }
+///   name        = "pulumi-kinesis-firehose-extended-s3-example-stream"
+///   destination = "extended_s3"
 ///   tags = {
 ///     "LogDeliveryEnabled" = "true"
 ///   }
@@ -485,11 +485,11 @@ import 'logging_configuration_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("firehose.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -500,12 +500,12 @@ import 'logging_configuration_state.dart';
 ///             .build());
 ///
 ///         var example = new FirehoseDeliveryStream("example", FirehoseDeliveryStreamArgs.builder()
-///             .name("pulumi-kinesis-firehose-extended-s3-example-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
 ///                 .roleArn(exampleRole.arn())
 ///                 .bucketArn(exampleBucket.arn())
 ///                 .build())
+///             .name("pulumi-kinesis-firehose-extended-s3-example-stream")
+///             .destination("extended_s3")
 ///             .tags(Map.of("LogDeliveryEnabled", "true"))
 ///             .build());
 ///
@@ -530,11 +530,11 @@ import 'logging_configuration_state.dart';
 ///   example:
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     properties:
-///       name: pulumi-kinesis-firehose-extended-s3-example-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
 ///         roleArn: ${exampleRole.arn}
 ///         bucketArn: ${exampleBucket.arn}
+///       name: pulumi-kinesis-firehose-extended-s3-example-stream
+///       destination: extended_s3
 ///       tags:
 ///         LogDeliveryEnabled: 'true'
 ///   exampleBucket:
@@ -567,11 +567,11 @@ import 'logging_configuration_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - firehose.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -751,7 +751,7 @@ import 'logging_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the IVS Chat logging configuration.
+/// - `arn` (String) ARN of the IVS Chat logging configuration.
 ///
 ///
 /// Using `pulumi import`, import IVS (Interactive Video) Chat Logging Configuration using the ARN. For example:
@@ -787,15 +787,15 @@ class LoggingConfiguration extends pulumi.CustomResource {
           'aws:ivschat/loggingConfiguration:LoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LoggingConfiguration] resource's state with the given [name] and [id].
@@ -803,11 +803,12 @@ class LoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -826,7 +827,25 @@ class LoggingConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LoggingConfiguration] resource.
+  LoggingConfiguration.reference(String urn)
+    : super(
+        'aws:ivschat/loggingConfiguration:LoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

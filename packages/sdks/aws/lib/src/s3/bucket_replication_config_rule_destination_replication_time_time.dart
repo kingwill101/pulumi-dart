@@ -20,7 +20,7 @@ class BucketReplicationConfigRuleDestinationReplicationTimeTime {
 
   factory BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationReplicationTimeTime(
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
     );
   }
 }

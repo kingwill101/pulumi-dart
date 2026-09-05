@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
   /// Html Motion Graphics Settings.
-  final pulumi.Input<Map<String, dynamic>>? htmlMotionGraphicsSettings;
+  final pulumi.Input<Map<String, dynamic>?>? htmlMotionGraphicsSettings;
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings].
   /// [htmlMotionGraphicsSettings] Html Motion Graphics Settings.

@@ -6,19 +6,19 @@ import 'delivery_channel_snapshot_delivery_properties.dart';
 /// Input properties used for looking up and filtering DeliveryChannel resources.
 class DeliveryChannelState {
   /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the S3 bucket used to store the configuration history.
-  final pulumi.Input<String>? s3BucketName;
+  final pulumi.Input<String?>? s3BucketName;
   /// The prefix for the specified S3 bucket.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
   /// The ARN of the AWS KMS key used to encrypt objects delivered by AWS Config. Must belong to the same Region as the destination S3 bucket.
-  final pulumi.Input<String>? s3KmsKeyArn;
+  final pulumi.Input<String?>? s3KmsKeyArn;
   /// Options for how AWS Config delivers configuration snapshots. See below
-  final pulumi.Input<DeliveryChannelSnapshotDeliveryProperties>? snapshotDeliveryProperties;
+  final pulumi.Input<DeliveryChannelSnapshotDeliveryProperties?>? snapshotDeliveryProperties;
   /// The ARN of the SNS topic that AWS Config delivers notifications to.
-  final pulumi.Input<String>? snsTopicArn;
+  final pulumi.Input<String?>? snsTopicArn;
 
   /// Creates a new [DeliveryChannelState].
   /// [name] The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.

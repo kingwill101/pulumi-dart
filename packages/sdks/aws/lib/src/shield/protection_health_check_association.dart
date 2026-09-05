@@ -368,7 +368,7 @@ import 'protection_health_check_association_state.dart';
 /// $ pulumi import aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation example ff9592dc-22f3-4e88-afa1-7b29fde9669a+arn:aws:route53:::healthcheck/3742b175-edb9-46bc-9359-f53e3b794b1b
 /// ```
 class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
-  /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  /// ARN of the Route53 Health Check resource which will be associated to the protected resource.
   late final pulumi.Output<String> healthCheckArn;
   /// The ID of the protected resource.
   late final pulumi.Output<String> shieldProtectionId;
@@ -385,7 +385,7 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
           'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     healthCheckArn = registerOutput<String>('healthCheckArn');
     shieldProtectionId = registerOutput<String>('shieldProtectionId');
@@ -396,11 +396,12 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectionHealthCheckAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectionHealthCheckAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +415,19 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    healthCheckArn = registerOutput<String>('healthCheckArn');
+    shieldProtectionId = registerOutput<String>('shieldProtectionId');
+  }
+
+  /// Creates a typed reference to an existing [ProtectionHealthCheckAssociation] resource.
+  ProtectionHealthCheckAssociation.reference(String urn)
+    : super(
+        'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     healthCheckArn = registerOutput<String>('healthCheckArn');
     shieldProtectionId = registerOutput<String>('shieldProtectionId');
   }

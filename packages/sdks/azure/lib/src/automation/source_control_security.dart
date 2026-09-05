@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SourceControlSecurity {
   /// The refresh token of specified rpeo.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The access token of specified repo.
   final pulumi.Input<String> token;
   /// Specify the token type, possible values are `PersonalAccessToken` and `Oauth`.

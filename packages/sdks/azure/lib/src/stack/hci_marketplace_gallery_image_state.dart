@@ -6,25 +6,25 @@ import 'hci_marketplace_gallery_image_identifier.dart';
 /// Input properties used for looking up and filtering HciMarketplaceGalleryImage resources.
 class HciMarketplaceGalleryImageState {
   /// The ID of the Custom Location where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// The hypervisor generation of the Azure Stack HCI Marketplace Gallery Image. Possible values are `V1` and `V2`. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? hypervGeneration;
+  final pulumi.Input<String?>? hypervGeneration;
   /// An `identifier` block as defined below. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<HciMarketplaceGalleryImageIdentifier>? identifier;
+  final pulumi.Input<HciMarketplaceGalleryImageIdentifier?>? identifier;
   /// The Azure Region where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Operating System type of the Azure Stack HCI Marketplace Gallery Image. Possible values are `Windows` and `Linux`. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The name of the Resource Group where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Azure Stack HCI Storage Path used for this Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? storagePathId;
+  final pulumi.Input<String?>? storagePathId;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Marketplace Gallery Image.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The version of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [HciMarketplaceGalleryImageState].
   /// [customLocationId] The ID of the Custom Location where the Azure Stack HCI Marketplace Gallery Image should exist. Changing this forces a new resource to be created.

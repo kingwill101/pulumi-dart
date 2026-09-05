@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionParameter {
   /// Information about the parameter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Parameter name.
   final pulumi.Input<String> name;
   /// Whether a parameter value must be specified in the extension association.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [ExtensionParameter].
   /// [description] Information about the parameter.

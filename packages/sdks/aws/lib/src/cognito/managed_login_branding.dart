@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_login_branding_args.dart';
+import 'managed_login_branding_asset.dart';
 import 'managed_login_branding_state.dart';
 
 /// Manages branding settings for a user pool style and associates it with an app client.
@@ -132,8 +133,6 @@ import 'managed_login_branding_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const client = new aws.cognito.ManagedLoginBranding("client", {
-///     clientId: example.id,
-///     userPoolId: exampleAwsCognitoUserPool.id,
 ///     assets: [{
 ///         bytes: std.filebase64({
 ///             input: "login_branding_asset.svg",
@@ -142,6 +141,8 @@ import 'managed_login_branding_state.dart';
 ///         colorMode: "DARK",
 ///         extension: "SVG",
 ///     }],
+///     clientId: example.id,
+///     userPoolId: exampleAwsCognitoUserPool.id,
 ///     settings: JSON.stringify({}),
 /// });
 /// ```
@@ -152,14 +153,14 @@ import 'managed_login_branding_state.dart';
 /// import pulumi_std as std
 ///
 /// client = aws.cognito.ManagedLoginBranding("client",
-///     client_id=example["id"],
-///     user_pool_id=example_aws_cognito_user_pool["id"],
 ///     assets=[{
 ///         "bytes": std.filebase64(input="login_branding_asset.svg").result,
 ///         "category": "PAGE_HEADER_BACKGROUND",
 ///         "color_mode": "DARK",
 ///         "extension": "SVG",
 ///     }],
+///     client_id=example["id"],
+///     user_pool_id=example_aws_cognito_user_pool["id"],
 ///     settings=json.dumps({}))
 /// ```
 /// ```csharp
@@ -174,8 +175,6 @@ import 'managed_login_branding_state.dart';
 /// {
 ///     var client = new Aws.Cognito.ManagedLoginBranding("client", new()
 ///     {
-///         ClientId = example.Id,
-///         UserPoolId = exampleAwsCognitoUserPool.Id,
 ///         Assets = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.ManagedLoginBrandingAssetArgs
@@ -189,6 +188,8 @@ import 'managed_login_branding_state.dart';
 ///                 Extension = "SVG",
 ///             },
 ///         },
+///         ClientId = example.Id,
+///         UserPoolId = exampleAwsCognitoUserPool.Id,
 ///         Settings = JsonSerializer.Serialize(new Dictionary<string, object?>
 ///         {
 ///         }),
@@ -221,8 +222,6 @@ import 'managed_login_branding_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = cognito.NewManagedLoginBranding(ctx, "client", &cognito.ManagedLoginBrandingArgs{
-/// 			ClientId:   pulumi.Any(example.Id),
-/// 			UserPoolId: pulumi.Any(exampleAwsCognitoUserPool.Id),
 /// 			Assets: cognito.ManagedLoginBrandingAssetArray{
 /// 				&cognito.ManagedLoginBrandingAssetArgs{
 /// 					Bytes:     pulumi.String(invokeFilebase64.Result),
@@ -231,7 +230,9 @@ import 'managed_login_branding_state.dart';
 /// 					Extension: pulumi.String("SVG"),
 /// 				},
 /// 			},
-/// 			Settings: pulumi.String(json0),
+/// 			ClientId:   pulumi.Any(example.Id),
+/// 			UserPoolId: pulumi.Any(exampleAwsCognitoUserPool.Id),
+/// 			Settings:   pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -253,15 +254,15 @@ import 'managed_login_branding_state.dart';
 /// }
 ///
 /// resource "aws_cognito_managedloginbranding" "client" {
-///   client_id    = example.id
-///   user_pool_id = exampleAwsCognitoUserPool.id
 ///   assets {
 ///     bytes      = filebase64("login_branding_asset.svg")
 ///     category   = "PAGE_HEADER_BACKGROUND"
 ///     color_mode = "DARK"
 ///     extension  = "SVG"
 ///   }
-///   settings = jsonencode({})
+///   client_id    = example.id
+///   user_pool_id = exampleAwsCognitoUserPool.id
+///   settings     = jsonencode({})
 /// }
 /// ```
 /// ```java
@@ -290,8 +291,6 @@ import 'managed_login_branding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var client = new ManagedLoginBranding("client", ManagedLoginBrandingArgs.builder()
-///             .clientId(example.id())
-///             .userPoolId(exampleAwsCognitoUserPool.id())
 ///             .assets(ManagedLoginBrandingAssetArgs.builder()
 ///                 .bytes(StdFunctions.filebase64(Filebase64Args.builder()
 ///                     .input("login_branding_asset.svg")
@@ -300,6 +299,8 @@ import 'managed_login_branding_state.dart';
 ///                 .colorMode("DARK")
 ///                 .extension("SVG")
 ///                 .build())
+///             .clientId(example.id())
+///             .userPoolId(exampleAwsCognitoUserPool.id())
 ///             .settings(serializeJson(
 ///                 jsonObject(
 ///
@@ -314,8 +315,6 @@ import 'managed_login_branding_state.dart';
 ///   client:
 ///     type: aws:cognito:ManagedLoginBranding
 ///     properties:
-///       clientId: ${example.id}
-///       userPoolId: ${exampleAwsCognitoUserPool.id}
 ///       assets:
 ///         - bytes:
 ///             fn::invoke:
@@ -326,6 +325,8 @@ import 'managed_login_branding_state.dart';
 ///           category: PAGE_HEADER_BACKGROUND
 ///           colorMode: DARK
 ///           extension: SVG
+///       clientId: ${example.id}
+///       userPoolId: ${exampleAwsCognitoUserPool.id}
 ///       settings:
 ///         fn::toJSON: {}
 /// ```
@@ -340,7 +341,7 @@ import 'managed_login_branding_state.dart';
 /// ```
 class ManagedLoginBranding extends pulumi.CustomResource {
   /// Image files to apply to roles like backgrounds, logos, and icons. See details below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> assets;
+  late final pulumi.Output<List<ManagedLoginBrandingAsset>?> assets;
   /// App client that the branding style is for.
   late final pulumi.Output<String> clientId;
   /// ID of the managed login branding style.
@@ -370,9 +371,9 @@ class ManagedLoginBranding extends pulumi.CustomResource {
           'aws:cognito/managedLoginBranding:ManagedLoginBranding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    assets = registerOutput<List<Map<String, dynamic>>?>('assets');
+    assets = registerOutput<List<ManagedLoginBrandingAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedLoginBrandingAsset>(guardedValue, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>())); });
     clientId = registerOutput<String>('clientId');
     managedLoginBrandingId = registerOutput<String>('managedLoginBrandingId');
     region = registerOutput<String>('region');
@@ -387,11 +388,12 @@ class ManagedLoginBranding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedLoginBrandingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedLoginBranding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,7 +407,26 @@ class ManagedLoginBranding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assets = registerOutput<List<Map<String, dynamic>>?>('assets');
+    assets = registerOutput<List<ManagedLoginBrandingAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedLoginBrandingAsset>(guardedValue, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>())); });
+    clientId = registerOutput<String>('clientId');
+    managedLoginBrandingId = registerOutput<String>('managedLoginBrandingId');
+    region = registerOutput<String>('region');
+    settings = registerOutput<String?>('settings');
+    settingsAll = registerOutput<String>('settingsAll');
+    useCognitoProvidedValues = registerOutput<bool>('useCognitoProvidedValues');
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedLoginBranding] resource.
+  ManagedLoginBranding.reference(String urn)
+    : super(
+        'aws:cognito/managedLoginBranding:ManagedLoginBranding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assets = registerOutput<List<ManagedLoginBrandingAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedLoginBrandingAsset>(guardedValue, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>())); });
     clientId = registerOutput<String>('clientId');
     managedLoginBrandingId = registerOutput<String>('managedLoginBrandingId');
     region = registerOutput<String>('region');

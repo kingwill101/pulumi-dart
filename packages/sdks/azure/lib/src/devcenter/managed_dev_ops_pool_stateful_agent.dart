@@ -6,15 +6,15 @@ import 'managed_dev_ops_pool_stateful_agent_manual_resource_prediction.dart';
 
 class ManagedDevOpsPoolStatefulAgent {
   /// An `automaticResourcePrediction` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolStatefulAgentAutomaticResourcePrediction>? automaticResourcePrediction;
+  final pulumi.Input<ManagedDevOpsPoolStatefulAgentAutomaticResourcePrediction?>? automaticResourcePrediction;
   /// Configures the amount of time an agent in a `stateful` pool waits for new jobs before shutting down after all current and queued jobs are complete. The format for Grace Period is `dd.hh:mm:ss` or `hh:mm:ss`. Defaults to `00:00:00`.
-  final pulumi.Input<String>? gracePeriodTimeSpan;
+  final pulumi.Input<String?>? gracePeriodTimeSpan;
   /// A `manualResourcePrediction` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolStatefulAgentManualResourcePrediction>? manualResourcePrediction;
+  final pulumi.Input<ManagedDevOpsPoolStatefulAgentManualResourcePrediction?>? manualResourcePrediction;
   /// Configures the maximum duration an agent in a `stateful` pool can run before it is shut down and discarded. The format for Max time to live for standby agents is `dd.hh:mm:ss` or `hh:mm:ss`. Defaults to `7.00:00:00`.
   ///
   /// &gt; **Note:** Exactly one of `manualResourcePrediction` or `automaticResourcePrediction` may be specified.
-  final pulumi.Input<String>? maximumAgentLifetime;
+  final pulumi.Input<String?>? maximumAgentLifetime;
 
   /// Creates a new [ManagedDevOpsPoolStatefulAgent].
   /// [automaticResourcePrediction] An `automaticResourcePrediction` block as defined below.

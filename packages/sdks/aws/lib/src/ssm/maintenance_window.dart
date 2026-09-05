@@ -189,7 +189,7 @@ class MaintenanceWindow extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindow:MaintenanceWindow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowUnassociatedTargets = registerOutput<bool?>('allowUnassociatedTargets');
     cutoff = registerOutput<int>('cutoff');
@@ -203,8 +203,8 @@ class MaintenanceWindow extends pulumi.CustomResource {
     scheduleOffset = registerOutput<int?>('scheduleOffset');
     scheduleTimezone = registerOutput<String?>('scheduleTimezone');
     startDate = registerOutput<String?>('startDate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [MaintenanceWindow] resource's state with the given [name] and [id].
@@ -212,11 +212,12 @@ class MaintenanceWindow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MaintenanceWindowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MaintenanceWindow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,7 +243,32 @@ class MaintenanceWindow extends pulumi.CustomResource {
     scheduleOffset = registerOutput<int?>('scheduleOffset');
     scheduleTimezone = registerOutput<String?>('scheduleTimezone');
     startDate = registerOutput<String?>('startDate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceWindow] resource.
+  MaintenanceWindow.reference(String urn)
+    : super(
+        'aws:ssm/maintenanceWindow:MaintenanceWindow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowUnassociatedTargets = registerOutput<bool?>('allowUnassociatedTargets');
+    cutoff = registerOutput<int>('cutoff');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<int>('duration');
+    enabled = registerOutput<bool?>('enabled');
+    endDate = registerOutput<String?>('endDate');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    schedule = registerOutput<String>('schedule');
+    scheduleOffset = registerOutput<int?>('scheduleOffset');
+    scheduleTimezone = registerOutput<String?>('scheduleTimezone');
+    startDate = registerOutput<String?>('startDate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

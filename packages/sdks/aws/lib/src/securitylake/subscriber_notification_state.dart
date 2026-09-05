@@ -6,15 +6,15 @@ import 'subscriber_notification_configuration.dart';
 /// Input properties used for looking up and filtering SubscriberNotification resources.
 class SubscriberNotificationState {
   /// Specify the configuration using which you want to create the subscriber notification..
-  final pulumi.Input<SubscriberNotificationConfiguration>? configuration;
+  final pulumi.Input<SubscriberNotificationConfiguration?>? configuration;
   /// (**Deprecated**) The subscriber endpoint to which exception messages are posted.
-  final pulumi.Input<String>? endpointId;
+  final pulumi.Input<String?>? endpointId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The subscriber endpoint to which exception messages are posted.
-  final pulumi.Input<String>? subscriberEndpoint;
+  final pulumi.Input<String?>? subscriberEndpoint;
   /// The subscriber ID for the notification subscription.
-  final pulumi.Input<String>? subscriberId;
+  final pulumi.Input<String?>? subscriberId;
 
   /// Creates a new [SubscriberNotificationState].
   /// [configuration] Specify the configuration using which you want to create the subscriber notification..

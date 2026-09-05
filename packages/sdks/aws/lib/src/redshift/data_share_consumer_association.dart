@@ -238,17 +238,17 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
   late final pulumi.Output<bool?> allowWrites;
   /// Whether the datashare is associated with the entire account. Conflicts with `consumerArn` and `consumerRegion`.
   late final pulumi.Output<bool?> associateEntireAccount;
-  /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associateEntireAccount` and `consumerRegion`.
+  /// ARN of the consumer that is associated with the datashare. Conflicts with `associateEntireAccount` and `consumerRegion`.
   late final pulumi.Output<String?> consumerArn;
   /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associateEntireAccount` and `consumerArn`.
   late final pulumi.Output<String?> consumerRegion;
-  /// Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
+  /// ARN of the datashare that the consumer is to use with the account or the namespace.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> dataShareArn;
   /// Identifier of a datashare to show its managing entity.
   late final pulumi.Output<String> managedBy;
-  /// Amazon Resource Name (ARN) of the producer.
+  /// ARN of the producer.
   late final pulumi.Output<String> producerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -265,7 +265,7 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
           'aws:redshift/dataShareConsumerAssociation:DataShareConsumerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowWrites = registerOutput<bool?>('allowWrites');
     associateEntireAccount = registerOutput<bool?>('associateEntireAccount');
@@ -282,11 +282,12 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataShareConsumerAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataShareConsumerAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,25 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowWrites = registerOutput<bool?>('allowWrites');
+    associateEntireAccount = registerOutput<bool?>('associateEntireAccount');
+    consumerArn = registerOutput<String?>('consumerArn');
+    consumerRegion = registerOutput<String?>('consumerRegion');
+    dataShareArn = registerOutput<String>('dataShareArn');
+    managedBy = registerOutput<String>('managedBy');
+    producerArn = registerOutput<String>('producerArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DataShareConsumerAssociation] resource.
+  DataShareConsumerAssociation.reference(String urn)
+    : super(
+        'aws:redshift/dataShareConsumerAssociation:DataShareConsumerAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowWrites = registerOutput<bool?>('allowWrites');
     associateEntireAccount = registerOutput<bool?>('associateEntireAccount');
     consumerArn = registerOutput<String?>('consumerArn');

@@ -126,7 +126,7 @@ import 'spring_cloud_dynatrace_application_performance_monitoring_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudDynatraceApplicationPerformanceMonitoring(ctx, "example", &appplatform.SpringCloudDynatraceApplicationPerformanceMonitoringArgs{
 /// 			Name:                 pulumi.String("example"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			GloballyEnabled:      pulumi.Bool(true),
 /// 			ApiUrl:               pulumi.String("https://example-api-url.com"),
 /// 			ApiToken:             pulumi.String("dt0s01.AAAAAAAAAAAAAAAAAAAAAAAA.BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"),
@@ -302,17 +302,18 @@ class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.Custom
           'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiToken', 'tenant', 'tenantToken'],
         ) {
-    apiToken = registerOutput<String?>('apiToken');
+    apiToken = registerOutput<String?>('apiToken', isSecret: true);
     apiUrl = registerOutput<String?>('apiUrl');
     connectionPoint = registerOutput<String>('connectionPoint');
     environmentId = registerOutput<String?>('environmentId');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    tenant = registerOutput<String>('tenant');
-    tenantToken = registerOutput<String>('tenantToken');
+    tenant = registerOutput<String>('tenant', isSecret: true);
+    tenantToken = registerOutput<String>('tenantToken', isSecret: true);
   }
 
   /// Gets an existing [SpringCloudDynatraceApplicationPerformanceMonitoring] resource's state with the given [name] and [id].
@@ -320,11 +321,12 @@ class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.Custom
     String name,
     pulumi.Input<String> id, {
     SpringCloudDynatraceApplicationPerformanceMonitoringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudDynatraceApplicationPerformanceMonitoring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,14 +340,35 @@ class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.Custom
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiToken = registerOutput<String?>('apiToken');
+    apiToken = registerOutput<String?>('apiToken', isSecret: true);
     apiUrl = registerOutput<String?>('apiUrl');
     connectionPoint = registerOutput<String>('connectionPoint');
     environmentId = registerOutput<String?>('environmentId');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    tenant = registerOutput<String>('tenant');
-    tenantToken = registerOutput<String>('tenantToken');
+    tenant = registerOutput<String>('tenant', isSecret: true);
+    tenantToken = registerOutput<String>('tenantToken', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudDynatraceApplicationPerformanceMonitoring] resource.
+  SpringCloudDynatraceApplicationPerformanceMonitoring.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiToken', 'tenant', 'tenantToken'],
+        isResourceReference: true,
+      ) {
+    apiToken = registerOutput<String?>('apiToken', isSecret: true);
+    apiUrl = registerOutput<String?>('apiUrl');
+    connectionPoint = registerOutput<String>('connectionPoint');
+    environmentId = registerOutput<String?>('environmentId');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
+    this.name = registerOutput<String>('name');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    tenant = registerOutput<String>('tenant', isSecret: true);
+    tenantToken = registerOutput<String>('tenantToken', isSecret: true);
   }
 }

@@ -10,40 +10,40 @@ import 'input_vpc.dart';
 /// Input properties used for looking up and filtering Input resources.
 class InputState {
   /// ARN of the Input.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Channels attached to Input.
-  final pulumi.Input<List<String>>? attachedChannels;
+  final pulumi.Input<List<String>?>? attachedChannels;
   /// Destination settings for PUSH type inputs. See Destinations for more details.
-  final pulumi.Input<List<InputDestination>>? destinations;
+  final pulumi.Input<List<InputDestination>?>? destinations;
   /// The input class.
-  final pulumi.Input<String>? inputClass;
+  final pulumi.Input<String?>? inputClass;
   /// Settings for the devices. See Input Devices for more details.
-  final pulumi.Input<List<InputInputDevice>>? inputDevices;
+  final pulumi.Input<List<InputInputDevice>?>? inputDevices;
   /// A list of IDs for all Inputs which are partners of this one.
-  final pulumi.Input<List<String>>? inputPartnerIds;
+  final pulumi.Input<List<String>?>? inputPartnerIds;
   /// List of input security groups.
-  final pulumi.Input<List<String>>? inputSecurityGroups;
+  final pulumi.Input<List<String>?>? inputSecurityGroups;
   /// Source type of the input.
-  final pulumi.Input<String>? inputSourceType;
+  final pulumi.Input<String?>? inputSourceType;
   /// A list of the MediaConnect Flows. See Media Connect Flows for more details.
-  final pulumi.Input<List<InputMediaConnectFlow>>? mediaConnectFlows;
+  final pulumi.Input<List<InputMediaConnectFlow>?>? mediaConnectFlows;
   /// Name of the input.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the role this input assumes during and after creation.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The source URLs for a PULL-type input. See Sources for more details.
-  final pulumi.Input<List<InputSource>>? sources;
+  final pulumi.Input<List<InputSource>?>? sources;
   /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The different types of inputs that AWS Elemental MediaLive supports.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Settings for a private VPC Input. See VPC for more details.
-  final pulumi.Input<InputVpc>? vpc;
+  final pulumi.Input<InputVpc?>? vpc;
 
   /// Creates a new [InputState].
   /// [arn] ARN of the Input.

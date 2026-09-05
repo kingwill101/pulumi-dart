@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_security_group_args.dart';
+import 'default_security_group_egress.dart';
+import 'default_security_group_ingress.dart';
 import 'default_security_group_state.dart';
 
 /// Provides a resource to manage a default security group. This resource can manage the default security group of the default or a non-default VPC.
@@ -23,19 +25,19 @@ import 'default_security_group_state.dart';
 ///
 /// const mainvpc = new aws.ec2.Vpc("mainvpc", {cidrBlock: "10.1.0.0/16"});
 /// const _default = new aws.ec2.DefaultSecurityGroup("default", {
-///     vpcId: mainvpc.id,
-///     ingress: [{
-///         protocol: "-1",
-///         self: true,
-///         fromPort: 0,
-///         toPort: 0,
-///     }],
 ///     egress: [{
 ///         fromPort: 0,
 ///         toPort: 0,
 ///         protocol: "-1",
 ///         cidrBlocks: ["0.0.0.0/0"],
 ///     }],
+///     ingress: [{
+///         protocol: "-1",
+///         self: true,
+///         fromPort: 0,
+///         toPort: 0,
+///     }],
+///     vpcId: mainvpc.id,
 /// });
 /// ```
 /// ```python
@@ -44,19 +46,19 @@ import 'default_security_group_state.dart';
 ///
 /// mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
 /// default = aws.ec2.DefaultSecurityGroup("default",
-///     vpc_id=mainvpc.id,
+///     egress=[{
+///         "from_port": 0,
+///         "to_port": 0,
+///         "protocol": "-1",
+///         "cidr_blocks": ["0.0.0.0/0"],
+///     }],
 ///     ingress=[{
 ///         "protocol": "-1",
 ///         "self": True,
 ///         "from_port": 0,
 ///         "to_port": 0,
 ///     }],
-///     egress=[{
-///         "from_port": 0,
-///         "to_port": 0,
-///         "protocol": "-1",
-///         "cidr_blocks": ["0.0.0.0/0"],
-///     }])
+///     vpc_id=mainvpc.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,17 +75,6 @@ import 'default_security_group_state.dart';
 ///
 ///     var @default = new Aws.Ec2.DefaultSecurityGroup("default", new()
 ///     {
-///         VpcId = mainvpc.Id,
-///         Ingress = new[]
-///         {
-///             new Aws.Ec2.Inputs.DefaultSecurityGroupIngressArgs
-///             {
-///                 Protocol = "-1",
-///                 Self = true,
-///                 FromPort = 0,
-///                 ToPort = 0,
-///             },
-///         },
 ///         Egress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.DefaultSecurityGroupEgressArgs
@@ -97,6 +88,17 @@ import 'default_security_group_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Ingress = new[]
+///         {
+///             new Aws.Ec2.Inputs.DefaultSecurityGroupIngressArgs
+///             {
+///                 Protocol = "-1",
+///                 Self = true,
+///                 FromPort = 0,
+///                 ToPort = 0,
+///             },
+///         },
+///         VpcId = mainvpc.Id,
 ///     });
 ///
 /// });
@@ -118,15 +120,6 @@ import 'default_security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
-/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
-/// 			Ingress: ec2.DefaultSecurityGroupIngressArray{
-/// 				&ec2.DefaultSecurityGroupIngressArgs{
-/// 					Protocol: pulumi.String("-1"),
-/// 					Self:     pulumi.Bool(true),
-/// 					FromPort: pulumi.Int(0),
-/// 					ToPort:   pulumi.Int(0),
-/// 				},
-/// 			},
 /// 			Egress: ec2.DefaultSecurityGroupEgressArray{
 /// 				&ec2.DefaultSecurityGroupEgressArgs{
 /// 					FromPort: pulumi.Int(0),
@@ -137,6 +130,15 @@ import 'default_security_group_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Ingress: ec2.DefaultSecurityGroupIngressArray{
+/// 				&ec2.DefaultSecurityGroupIngressArgs{
+/// 					Protocol: pulumi.String("-1"),
+/// 					Self:     pulumi.Bool(true),
+/// 					FromPort: pulumi.Int(0),
+/// 					ToPort:   pulumi.Int(0),
+/// 				},
+/// 			},
+/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -158,19 +160,19 @@ import 'default_security_group_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_defaultsecuritygroup" "default" {
-///   vpc_id = aws_ec2_vpc.mainvpc.id
-///   ingress {
-///     protocol  = -1
-///     self      = true
-///     from_port = 0
-///     to_port   = 0
-///   }
 ///   egress {
 ///     from_port   = 0
 ///     to_port     = 0
 ///     protocol    = "-1"
 ///     cidr_blocks = ["0.0.0.0/0"]
 ///   }
+///   ingress {
+///     protocol  = -1
+///     self      = true
+///     from_port = 0
+///     to_port   = 0
+///   }
+///   vpc_id = aws_ec2_vpc.mainvpc.id
 /// }
 /// ```
 /// ```java
@@ -183,8 +185,8 @@ import 'default_security_group_state.dart';
 /// import com.pulumi.aws.ec2.VpcArgs;
 /// import com.pulumi.aws.ec2.DefaultSecurityGroup;
 /// import com.pulumi.aws.ec2.DefaultSecurityGroupArgs;
-/// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupIngressArgs;
 /// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupEgressArgs;
+/// import com.pulumi.aws.ec2.inputs.DefaultSecurityGroupIngressArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -203,19 +205,19 @@ import 'default_security_group_state.dart';
 ///             .build());
 ///
 ///         var default_ = new DefaultSecurityGroup("default", DefaultSecurityGroupArgs.builder()
-///             .vpcId(mainvpc.id())
-///             .ingress(DefaultSecurityGroupIngressArgs.builder()
-///                 .protocol("-1")
-///                 .self(true)
-///                 .fromPort(0)
-///                 .toPort(0)
-///                 .build())
 ///             .egress(DefaultSecurityGroupEgressArgs.builder()
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .protocol("-1")
 ///                 .cidrBlocks("0.0.0.0/0")
 ///                 .build())
+///             .ingress(DefaultSecurityGroupIngressArgs.builder()
+///                 .protocol("-1")
+///                 .self(true)
+///                 .fromPort(0)
+///                 .toPort(0)
+///                 .build())
+///             .vpcId(mainvpc.id())
 ///             .build());
 ///
 ///     }
@@ -230,18 +232,18 @@ import 'default_security_group_state.dart';
 ///   default:
 ///     type: aws:ec2:DefaultSecurityGroup
 ///     properties:
-///       vpcId: ${mainvpc.id}
-///       ingress:
-///         - protocol: -1
-///           self: true
-///           fromPort: 0
-///           toPort: 0
 ///       egress:
 ///         - fromPort: 0
 ///           toPort: 0
 ///           protocol: '-1'
 ///           cidrBlocks:
 ///             - 0.0.0.0/0
+///       ingress:
+///         - protocol: -1
+///           self: true
+///           fromPort: 0
+///           toPort: 0
+///       vpcId: ${mainvpc.id}
 /// ```
 ///
 ///
@@ -256,13 +258,13 @@ import 'default_security_group_state.dart';
 ///
 /// const mainvpc = new aws.ec2.Vpc("mainvpc", {cidrBlock: "10.1.0.0/16"});
 /// const _default = new aws.ec2.DefaultSecurityGroup("default", {
-///     vpcId: mainvpc.id,
 ///     ingress: [{
 ///         protocol: "-1",
 ///         self: true,
 ///         fromPort: 0,
 ///         toPort: 0,
 ///     }],
+///     vpcId: mainvpc.id,
 /// });
 /// ```
 /// ```python
@@ -271,13 +273,13 @@ import 'default_security_group_state.dart';
 ///
 /// mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
 /// default = aws.ec2.DefaultSecurityGroup("default",
-///     vpc_id=mainvpc.id,
 ///     ingress=[{
 ///         "protocol": "-1",
 ///         "self": True,
 ///         "from_port": 0,
 ///         "to_port": 0,
-///     }])
+///     }],
+///     vpc_id=mainvpc.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -294,7 +296,6 @@ import 'default_security_group_state.dart';
 ///
 ///     var @default = new Aws.Ec2.DefaultSecurityGroup("default", new()
 ///     {
-///         VpcId = mainvpc.Id,
 ///         Ingress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.DefaultSecurityGroupIngressArgs
@@ -305,6 +306,7 @@ import 'default_security_group_state.dart';
 ///                 ToPort = 0,
 ///             },
 ///         },
+///         VpcId = mainvpc.Id,
 ///     });
 ///
 /// });
@@ -326,7 +328,6 @@ import 'default_security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
-/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
 /// 			Ingress: ec2.DefaultSecurityGroupIngressArray{
 /// 				&ec2.DefaultSecurityGroupIngressArgs{
 /// 					Protocol: pulumi.String("-1"),
@@ -335,6 +336,7 @@ import 'default_security_group_state.dart';
 /// 					ToPort:   pulumi.Int(0),
 /// 				},
 /// 			},
+/// 			VpcId: mainvpc.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -356,13 +358,13 @@ import 'default_security_group_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_defaultsecuritygroup" "default" {
-///   vpc_id = aws_ec2_vpc.mainvpc.id
 ///   ingress {
 ///     protocol  = -1
 ///     self      = true
 ///     from_port = 0
 ///     to_port   = 0
 ///   }
+///   vpc_id = aws_ec2_vpc.mainvpc.id
 /// }
 /// ```
 /// ```java
@@ -394,13 +396,13 @@ import 'default_security_group_state.dart';
 ///             .build());
 ///
 ///         var default_ = new DefaultSecurityGroup("default", DefaultSecurityGroupArgs.builder()
-///             .vpcId(mainvpc.id())
 ///             .ingress(DefaultSecurityGroupIngressArgs.builder()
 ///                 .protocol("-1")
 ///                 .self(true)
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .build())
+///             .vpcId(mainvpc.id())
 ///             .build());
 ///
 ///     }
@@ -415,12 +417,12 @@ import 'default_security_group_state.dart';
 ///   default:
 ///     type: aws:ec2:DefaultSecurityGroup
 ///     properties:
-///       vpcId: ${mainvpc.id}
 ///       ingress:
 ///         - protocol: -1
 ///           self: true
 ///           fromPort: 0
 ///           toPort: 0
+///       vpcId: ${mainvpc.id}
 /// ```
 ///
 ///
@@ -441,9 +443,9 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
   /// Description of the security group.
   late final pulumi.Output<String> description;
   /// Configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> egress;
+  late final pulumi.Output<List<DefaultSecurityGroupEgress>> egress;
   /// Configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ingress;
+  late final pulumi.Output<List<DefaultSecurityGroupIngress>> ingress;
   /// Name of the security group.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> namePrefix;
@@ -471,19 +473,19 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
           'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<DefaultSecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupEgress>(guardedValue, (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultSecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupIngress>(guardedValue, (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -492,11 +494,12 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultSecurityGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultSecurityGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -512,15 +515,38 @@ class DefaultSecurityGroup extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    egress = registerOutput<List<Map<String, dynamic>>>('egress');
-    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
+    egress = registerOutput<List<DefaultSecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupEgress>(guardedValue, (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultSecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupIngress>(guardedValue, (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [DefaultSecurityGroup] resource.
+  DefaultSecurityGroup.reference(String urn)
+    : super(
+        'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    egress = registerOutput<List<DefaultSecurityGroupEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupEgress>(guardedValue, (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    ingress = registerOutput<List<DefaultSecurityGroupIngress>>('ingress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultSecurityGroupIngress>(guardedValue, (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

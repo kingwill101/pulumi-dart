@@ -13,7 +13,7 @@ class PolicyArgs {
   /// The Policy Store ID of the policy store.
   final pulumi.Input<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PolicyArgs].
   /// [definition] The definition of the policy. See Definition below.

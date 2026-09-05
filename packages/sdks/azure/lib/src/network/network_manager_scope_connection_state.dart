@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerScopeConnection resources.
 class NetworkManagerScopeConnectionState {
   /// The Connection state of the Network Manager Scope Connection.
-  final pulumi.Input<String>? connectionState;
+  final pulumi.Input<String?>? connectionState;
   /// A description of the Network Manager Scope Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
   /// Specifies the Resource ID of the target scope which the Network Manager is connected to. It should be either Subscription ID or Management Group ID.
-  final pulumi.Input<String>? targetScopeId;
+  final pulumi.Input<String?>? targetScopeId;
   /// Specifies the Tenant ID of the Resource which the Network Manager is connected to.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [NetworkManagerScopeConnectionState].
   /// [connectionState] The Connection state of the Network Manager Scope Connection.

@@ -335,7 +335,7 @@ import 'time_series_database_connection_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("exampleEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(7),
 /// 		})
@@ -373,20 +373,16 @@ import 'time_series_database_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		databaseContributor, err := authorization.NewAssignment(ctx, "database_contributor", &authorization.AssignmentArgs{
-/// 			Scope: exampleDatabase.ID(),
-/// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Scope:              exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			PrincipalId:        exampleInstance.Identity.PrincipalId(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		eventhubDataOwner, err := authorization.NewAssignment(ctx, "eventhub_data_owner", &authorization.AssignmentArgs{
-/// 			Scope: exampleEventHub.ID(),
-/// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Scope:              exampleEventHub.ID().ToIDOutput().ToStringOutput(),
+/// 			PrincipalId:        exampleInstance.Identity.PrincipalId(),
 /// 			RoleDefinitionName: pulumi.String("Azure Event Hubs Data Owner"),
 /// 		})
 /// 		if err != nil {
@@ -397,28 +393,24 @@ import 'time_series_database_connection_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			ClusterName:       exampleCluster.Name,
 /// 			DatabaseName:      exampleDatabase.Name,
-/// 			TenantId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PrincipalId: pulumi.String(exampleInstance.Identity.ApplyT(func(identity digitaltwins.InstanceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PrincipalType: pulumi.String("App"),
-/// 			Role:          pulumi.String("Admin"),
+/// 			TenantId:          exampleInstance.Identity.TenantId(),
+/// 			PrincipalId:       exampleInstance.Identity.PrincipalId(),
+/// 			PrincipalType:     pulumi.String("App"),
+/// 			Role:              pulumi.String("Admin"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = digitaltwins.NewTimeSeriesDatabaseConnection(ctx, "example", &digitaltwins.TimeSeriesDatabaseConnectionArgs{
 /// 			Name:                pulumi.String("example-connection"),
-/// 			DigitalTwinsId:      exampleInstance.ID(),
+/// 			DigitalTwinsId:      exampleInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			EventhubName:        exampleEventHub.Name,
-/// 			EventhubNamespaceId: exampleEventHubNamespace.ID(),
+/// 			EventhubNamespaceId: exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EventhubNamespaceEndpointUri: exampleEventHubNamespace.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("sb://%v.servicebus.windows.net", name), nil
 /// 			}).(pulumi.StringOutput),
 /// 			EventhubConsumerGroupName: exampleConsumerGroup.Name,
-/// 			KustoClusterId:            exampleCluster.ID(),
+/// 			KustoClusterId:            exampleCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			KustoClusterUri:           exampleCluster.Uri,
 /// 			KustoDatabaseName:         exampleDatabase.Name,
 /// 			KustoTableName:            pulumi.String("exampleTable"),
@@ -814,7 +806,7 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
           'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
@@ -833,11 +825,12 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TimeSeriesDatabaseConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TimeSeriesDatabaseConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -851,6 +844,27 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
+    eventhubName = registerOutput<String>('eventhubName');
+    eventhubNamespaceEndpointUri = registerOutput<String>('eventhubNamespaceEndpointUri');
+    eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
+    kustoClusterId = registerOutput<String>('kustoClusterId');
+    kustoClusterUri = registerOutput<String>('kustoClusterUri');
+    kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
+    kustoTableName = registerOutput<String?>('kustoTableName');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [TimeSeriesDatabaseConnection] resource.
+  TimeSeriesDatabaseConnection.reference(String urn)
+    : super(
+        'azure:digitaltwins/timeSeriesDatabaseConnection:TimeSeriesDatabaseConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
     eventhubName = registerOutput<String>('eventhubName');

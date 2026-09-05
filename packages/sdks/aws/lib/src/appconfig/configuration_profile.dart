@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_profile_args.dart';
 import 'configuration_profile_state.dart';
+import 'configuration_profile_validator.dart';
 
 /// Provides an AppConfig Configuration Profile resource.
 ///
@@ -12,14 +13,14 @@ import 'configuration_profile_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appconfig.ConfigurationProfile("example", {
-///     applicationId: exampleAwsAppconfigApplication.id,
-///     description: "Example Configuration Profile",
-///     name: "example-configuration-profile-tf",
-///     locationUri: "hosted",
 ///     validators: [{
 ///         content: exampleAwsLambdaFunction.arn,
 ///         type: "LAMBDA",
 ///     }],
+///     applicationId: exampleAwsAppconfigApplication.id,
+///     description: "Example Configuration Profile",
+///     name: "example-configuration-profile-tf",
+///     locationUri: "hosted",
 ///     tags: {
 ///         Type: "AppConfig Configuration Profile",
 ///     },
@@ -30,14 +31,14 @@ import 'configuration_profile_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appconfig.ConfigurationProfile("example",
-///     application_id=example_aws_appconfig_application["id"],
-///     description="Example Configuration Profile",
-///     name="example-configuration-profile-tf",
-///     location_uri="hosted",
 ///     validators=[{
 ///         "content": example_aws_lambda_function["arn"],
 ///         "type": "LAMBDA",
 ///     }],
+///     application_id=example_aws_appconfig_application["id"],
+///     description="Example Configuration Profile",
+///     name="example-configuration-profile-tf",
+///     location_uri="hosted",
 ///     tags={
 ///         "Type": "AppConfig Configuration Profile",
 ///     })
@@ -52,10 +53,6 @@ import 'configuration_profile_state.dart';
 /// {
 ///     var example = new Aws.AppConfig.ConfigurationProfile("example", new()
 ///     {
-///         ApplicationId = exampleAwsAppconfigApplication.Id,
-///         Description = "Example Configuration Profile",
-///         Name = "example-configuration-profile-tf",
-///         LocationUri = "hosted",
 ///         Validators = new[]
 ///         {
 ///             new Aws.AppConfig.Inputs.ConfigurationProfileValidatorArgs
@@ -64,6 +61,10 @@ import 'configuration_profile_state.dart';
 ///                 Type = "LAMBDA",
 ///             },
 ///         },
+///         ApplicationId = exampleAwsAppconfigApplication.Id,
+///         Description = "Example Configuration Profile",
+///         Name = "example-configuration-profile-tf",
+///         LocationUri = "hosted",
 ///         Tags =
 ///         {
 ///             { "Type", "AppConfig Configuration Profile" },
@@ -83,16 +84,16 @@ import 'configuration_profile_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appconfig.NewConfigurationProfile(ctx, "example", &appconfig.ConfigurationProfileArgs{
-/// 			ApplicationId: pulumi.Any(exampleAwsAppconfigApplication.Id),
-/// 			Description:   pulumi.String("Example Configuration Profile"),
-/// 			Name:          pulumi.String("example-configuration-profile-tf"),
-/// 			LocationUri:   pulumi.String("hosted"),
 /// 			Validators: appconfig.ConfigurationProfileValidatorArray{
 /// 				&appconfig.ConfigurationProfileValidatorArgs{
 /// 					Content: pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 					Type:    pulumi.String("LAMBDA"),
 /// 				},
 /// 			},
+/// 			ApplicationId: pulumi.Any(exampleAwsAppconfigApplication.Id),
+/// 			Description:   pulumi.String("Example Configuration Profile"),
+/// 			Name:          pulumi.String("example-configuration-profile-tf"),
+/// 			LocationUri:   pulumi.String("hosted"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Type": pulumi.String("AppConfig Configuration Profile"),
 /// 			},
@@ -114,14 +115,14 @@ import 'configuration_profile_state.dart';
 /// }
 ///
 /// resource "aws_appconfig_configurationprofile" "example" {
-///   application_id = exampleAwsAppconfigApplication.id
-///   description    = "Example Configuration Profile"
-///   name           = "example-configuration-profile-tf"
-///   location_uri   = "hosted"
 ///   validators {
 ///     content = exampleAwsLambdaFunction.arn
 ///     type    = "LAMBDA"
 ///   }
+///   application_id = exampleAwsAppconfigApplication.id
+///   description    = "Example Configuration Profile"
+///   name           = "example-configuration-profile-tf"
+///   location_uri   = "hosted"
 ///   tags = {
 ///     "Type" = "AppConfig Configuration Profile"
 ///   }
@@ -150,14 +151,14 @@ import 'configuration_profile_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConfigurationProfile("example", ConfigurationProfileArgs.builder()
-///             .applicationId(exampleAwsAppconfigApplication.id())
-///             .description("Example Configuration Profile")
-///             .name("example-configuration-profile-tf")
-///             .locationUri("hosted")
 ///             .validators(ConfigurationProfileValidatorArgs.builder()
 ///                 .content(exampleAwsLambdaFunction.arn())
 ///                 .type("LAMBDA")
 ///                 .build())
+///             .applicationId(exampleAwsAppconfigApplication.id())
+///             .description("Example Configuration Profile")
+///             .name("example-configuration-profile-tf")
+///             .locationUri("hosted")
 ///             .tags(Map.of("Type", "AppConfig Configuration Profile"))
 ///             .build());
 ///
@@ -169,13 +170,13 @@ import 'configuration_profile_state.dart';
 ///   example:
 ///     type: aws:appconfig:ConfigurationProfile
 ///     properties:
+///       validators:
+///         - content: ${exampleAwsLambdaFunction.arn}
+///           type: LAMBDA
 ///       applicationId: ${exampleAwsAppconfigApplication.id}
 ///       description: Example Configuration Profile
 ///       name: example-configuration-profile-tf
 ///       locationUri: hosted
-///       validators:
-///         - content: ${exampleAwsLambdaFunction.arn}
-///           type: LAMBDA
 ///       tags:
 ///         Type: AppConfig Configuration Profile
 /// ```
@@ -197,7 +198,7 @@ class ConfigurationProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> configurationProfileId;
   /// Description of the configuration profile. Can be at most 1024 characters.
   late final pulumi.Output<String?> description;
-  /// Identifier for an Key Management Service key to encrypt new configuration data versions in the AppConfig hosted configuration store. This attribute is only used for hosted configuration types. The identifier can be an KMS key ID, alias, or the Amazon Resource Name (ARN) of the key ID or alias.
+  /// Identifier for a KMS key to encrypt new configuration data versions in the AppConfig hosted configuration store. This attribute is only used for hosted configuration types. The identifier can be an KMS key ID, alias, or the ARN of the key ID or alias.
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// URI to locate the configuration. You can specify the AWS AppConfig hosted configuration store, Systems Manager (SSM) document, an SSM Parameter Store parameter, or an Amazon S3 object. For the hosted configuration store, specify `hosted`. For an SSM document, specify either the document name in the format `ssm-document://&lt;Document_name&gt;` or the ARN. For a parameter, specify either the parameter name in the format `ssm-parameter://&lt;Parameter_name&gt;` or the ARN. For an Amazon S3 object, specify the URI in the following format: `s3://&lt;bucket&gt;/&lt;objectKey&gt;`.
   late final pulumi.Output<String> locationUri;
@@ -214,7 +215,7 @@ class ConfigurationProfile extends pulumi.CustomResource {
   /// Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   late final pulumi.Output<String?> type;
   /// Set of methods for validating the configuration. Maximum of 2. See `validator` Block below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> validators;
+  late final pulumi.Output<List<ConfigurationProfileValidator>?> validators;
 
   /// Creates a new [ConfigurationProfile].
   /// [name] The Pulumi resource name.
@@ -228,7 +229,7 @@ class ConfigurationProfile extends pulumi.CustomResource {
           'aws:appconfig/configurationProfile:ConfigurationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
@@ -239,10 +240,10 @@ class ConfigurationProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
-    validators = registerOutput<List<Map<String, dynamic>>?>('validators');
+    validators = registerOutput<List<ConfigurationProfileValidator>?>('validators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProfileValidator>(guardedValue, (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ConfigurationProfile] resource's state with the given [name] and [id].
@@ -250,11 +251,12 @@ class ConfigurationProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,9 +279,33 @@ class ConfigurationProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
-    validators = registerOutput<List<Map<String, dynamic>>?>('validators');
+    validators = registerOutput<List<ConfigurationProfileValidator>?>('validators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProfileValidator>(guardedValue, (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationProfile] resource.
+  ConfigurationProfile.reference(String urn)
+    : super(
+        'aws:appconfig/configurationProfile:ConfigurationProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    description = registerOutput<String?>('description');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    locationUri = registerOutput<String>('locationUri');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    retrievalRoleArn = registerOutput<String?>('retrievalRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    validators = registerOutput<List<ConfigurationProfileValidator>?>('validators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProfileValidator>(guardedValue, (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

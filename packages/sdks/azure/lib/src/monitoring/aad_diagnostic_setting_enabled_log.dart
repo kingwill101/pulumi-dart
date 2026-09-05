@@ -6,7 +6,7 @@ import 'aad_diagnostic_setting_enabled_log_retention_policy.dart';
 class AadDiagnosticSettingEnabledLog {
   /// The log category for the Azure Active Directory Diagnostic.
   final pulumi.Input<String> category;
-  final pulumi.Input<AadDiagnosticSettingEnabledLogRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<AadDiagnosticSettingEnabledLogRetentionPolicy?>? retentionPolicy;
 
   /// Creates a new [AadDiagnosticSettingEnabledLog].
   /// [category] The log category for the Azure Active Directory Diagnostic.

@@ -11,17 +11,17 @@ class PlaceIndexArgs {
   /// Geospatial data provider for the new place index.
   final pulumi.Input<String> dataSource;
   /// Configuration block with the data storage option chosen for requesting Places. Detailed below.
-  final pulumi.Input<PlaceIndexDataSourceConfiguration>? dataSourceConfiguration;
+  final pulumi.Input<PlaceIndexDataSourceConfiguration?>? dataSourceConfiguration;
   /// Optional description for the place index resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the place index resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> indexName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PlaceIndexArgs].
   /// [dataSource] Geospatial data provider for the new place index.

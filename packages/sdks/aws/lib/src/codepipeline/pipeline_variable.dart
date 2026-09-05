@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineVariable {
   /// The default value of a pipeline-level variable.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// The description of a pipeline-level variable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of a pipeline-level variable.
   final pulumi.Input<String> name;
 

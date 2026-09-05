@@ -218,14 +218,14 @@ class AzureTrafficCollector extends pulumi.CustomResource {
           'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds');
+    collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualHubIds = registerOutput<List<String>>('virtualHubIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubIds = registerOutput<List<String>>('virtualHubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AzureTrafficCollector] resource's state with the given [name] and [id].
@@ -233,11 +233,12 @@ class AzureTrafficCollector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AzureTrafficCollectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AzureTrafficCollector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,11 +252,28 @@ class AzureTrafficCollector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds');
+    collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualHubIds = registerOutput<List<String>>('virtualHubIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubIds = registerOutput<List<String>>('virtualHubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AzureTrafficCollector] resource.
+  AzureTrafficCollector.reference(String urn)
+    : super(
+        'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubIds = registerOutput<List<String>>('virtualHubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

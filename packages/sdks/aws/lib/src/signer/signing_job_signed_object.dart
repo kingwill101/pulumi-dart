@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'signing_job_signed_object_s3.dart';
 
 class SigningJobSignedObject {
-  final pulumi.Input<List<SigningJobSignedObjectS3>>? s3s;
+  final pulumi.Input<List<SigningJobSignedObjectS3>?>? s3s;
 
   /// Creates a new [SigningJobSignedObject].
   /// [s3s] Optional.

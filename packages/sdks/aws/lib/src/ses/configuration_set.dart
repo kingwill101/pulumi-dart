@@ -116,10 +116,10 @@ import 'configuration_set_tracking_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ses.ConfigurationSet("test", {
-///     name: "some-configuration-set-test",
 ///     deliveryOptions: {
 ///         tlsPolicy: "Require",
 ///     },
+///     name: "some-configuration-set-test",
 /// });
 /// ```
 /// ```python
@@ -127,10 +127,10 @@ import 'configuration_set_tracking_options.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ses.ConfigurationSet("test",
-///     name="some-configuration-set-test",
 ///     delivery_options={
 ///         "tls_policy": "Require",
-///     })
+///     },
+///     name="some-configuration-set-test")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -142,11 +142,11 @@ import 'configuration_set_tracking_options.dart';
 /// {
 ///     var test = new Aws.Ses.ConfigurationSet("test", new()
 ///     {
-///         Name = "some-configuration-set-test",
 ///         DeliveryOptions = new Aws.Ses.Inputs.ConfigurationSetDeliveryOptionsArgs
 ///         {
 ///             TlsPolicy = "Require",
 ///         },
+///         Name = "some-configuration-set-test",
 ///     });
 ///
 /// });
@@ -162,10 +162,10 @@ import 'configuration_set_tracking_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewConfigurationSet(ctx, "test", &ses.ConfigurationSetArgs{
-/// 			Name: pulumi.String("some-configuration-set-test"),
 /// 			DeliveryOptions: &ses.ConfigurationSetDeliveryOptionsArgs{
 /// 				TlsPolicy: pulumi.String("Require"),
 /// 			},
+/// 			Name: pulumi.String("some-configuration-set-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -184,10 +184,10 @@ import 'configuration_set_tracking_options.dart';
 /// }
 ///
 /// resource "aws_ses_configurationset" "test" {
-///   name = "some-configuration-set-test"
 ///   delivery_options = {
 ///     tls_policy = "Require"
 ///   }
+///   name = "some-configuration-set-test"
 /// }
 /// ```
 /// ```java
@@ -213,10 +213,10 @@ import 'configuration_set_tracking_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ConfigurationSet("test", ConfigurationSetArgs.builder()
-///             .name("some-configuration-set-test")
 ///             .deliveryOptions(ConfigurationSetDeliveryOptionsArgs.builder()
 ///                 .tlsPolicy("Require")
 ///                 .build())
+///             .name("some-configuration-set-test")
 ///             .build());
 ///
 ///     }
@@ -227,9 +227,9 @@ import 'configuration_set_tracking_options.dart';
 ///   test:
 ///     type: aws:ses:ConfigurationSet
 ///     properties:
-///       name: some-configuration-set-test
 ///       deliveryOptions:
 ///         tlsPolicy: Require
+///       name: some-configuration-set-test
 /// ```
 ///
 ///
@@ -241,10 +241,10 @@ import 'configuration_set_tracking_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ses.ConfigurationSet("test", {
-///     name: "some-configuration-set-test",
 ///     trackingOptions: {
 ///         customRedirectDomain: "sub.example.com",
 ///     },
+///     name: "some-configuration-set-test",
 /// });
 /// ```
 /// ```python
@@ -252,10 +252,10 @@ import 'configuration_set_tracking_options.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ses.ConfigurationSet("test",
-///     name="some-configuration-set-test",
 ///     tracking_options={
 ///         "custom_redirect_domain": "sub.example.com",
-///     })
+///     },
+///     name="some-configuration-set-test")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -267,11 +267,11 @@ import 'configuration_set_tracking_options.dart';
 /// {
 ///     var test = new Aws.Ses.ConfigurationSet("test", new()
 ///     {
-///         Name = "some-configuration-set-test",
 ///         TrackingOptions = new Aws.Ses.Inputs.ConfigurationSetTrackingOptionsArgs
 ///         {
 ///             CustomRedirectDomain = "sub.example.com",
 ///         },
+///         Name = "some-configuration-set-test",
 ///     });
 ///
 /// });
@@ -287,10 +287,10 @@ import 'configuration_set_tracking_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewConfigurationSet(ctx, "test", &ses.ConfigurationSetArgs{
-/// 			Name: pulumi.String("some-configuration-set-test"),
 /// 			TrackingOptions: &ses.ConfigurationSetTrackingOptionsArgs{
 /// 				CustomRedirectDomain: pulumi.String("sub.example.com"),
 /// 			},
+/// 			Name: pulumi.String("some-configuration-set-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -309,10 +309,10 @@ import 'configuration_set_tracking_options.dart';
 /// }
 ///
 /// resource "aws_ses_configurationset" "test" {
-///   name = "some-configuration-set-test"
 ///   tracking_options = {
 ///     custom_redirect_domain = "sub.example.com"
 ///   }
+///   name = "some-configuration-set-test"
 /// }
 /// ```
 /// ```java
@@ -338,10 +338,10 @@ import 'configuration_set_tracking_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ConfigurationSet("test", ConfigurationSetArgs.builder()
-///             .name("some-configuration-set-test")
 ///             .trackingOptions(ConfigurationSetTrackingOptionsArgs.builder()
 ///                 .customRedirectDomain("sub.example.com")
 ///                 .build())
+///             .name("some-configuration-set-test")
 ///             .build());
 ///
 ///     }
@@ -352,9 +352,9 @@ import 'configuration_set_tracking_options.dart';
 ///   test:
 ///     type: aws:ses:ConfigurationSet
 ///     properties:
-///       name: some-configuration-set-test
 ///       trackingOptions:
 ///         customRedirectDomain: sub.example.com
+///       name: some-configuration-set-test
 /// ```
 ///
 ///
@@ -397,7 +397,7 @@ class ConfigurationSet extends pulumi.CustomResource {
           'aws:ses/configurationSet:ConfigurationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetDeliveryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -414,11 +414,12 @@ class ConfigurationSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,6 +433,25 @@ class ConfigurationSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetDeliveryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastFreshStart = registerOutput<String>('lastFreshStart');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    reputationMetricsEnabled = registerOutput<bool?>('reputationMetricsEnabled');
+    sendingEnabled = registerOutput<bool?>('sendingEnabled');
+    trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>('trackingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetTrackingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationSet] resource.
+  ConfigurationSet.reference(String urn)
+    : super(
+        'aws:ses/configurationSet:ConfigurationSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetDeliveryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastFreshStart = registerOutput<String>('lastFreshStart');

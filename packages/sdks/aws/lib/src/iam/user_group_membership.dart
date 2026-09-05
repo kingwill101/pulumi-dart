@@ -301,9 +301,9 @@ class UserGroupMembership extends pulumi.CustomResource {
           'aws:iam/userGroupMembership:UserGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    groups = registerOutput<List<String>>('groups');
+    groups = registerOutput<List<String>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     user = registerOutput<String>('user');
   }
 
@@ -312,11 +312,12 @@ class UserGroupMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserGroupMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserGroupMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,7 +331,20 @@ class UserGroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    groups = registerOutput<List<String>>('groups');
+    groups = registerOutput<List<String>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [UserGroupMembership] resource.
+  UserGroupMembership.reference(String urn)
+    : super(
+        'aws:iam/userGroupMembership:UserGroupMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    groups = registerOutput<List<String>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     user = registerOutput<String>('user');
   }
 }

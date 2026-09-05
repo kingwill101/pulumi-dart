@@ -18,35 +18,35 @@ class SlotArgs {
   /// The ID of the App Service Plan within which to create this App Service Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServicePlanId;
   /// A key-value pair of App Settings.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// A `authSettings` block as defined below.
-  final pulumi.Input<SlotAuthSettings>? authSettings;
+  final pulumi.Input<SlotAuthSettings?>? authSettings;
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
-  final pulumi.Input<bool>? clientAffinityEnabled;
+  final pulumi.Input<bool?>? clientAffinityEnabled;
   /// An `connectionString` block as defined below.
-  final pulumi.Input<List<SlotConnectionString>>? connectionStrings;
+  final pulumi.Input<List<SlotConnectionString>?>? connectionStrings;
   /// Is the App Service Slot Enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Can the App Service Slot only be accessed via HTTPS? Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<SlotIdentity>? identity;
+  final pulumi.Input<SlotIdentity?>? identity;
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. See [Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity) for more information.
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `logs` block as defined below.
-  final pulumi.Input<SlotLogs>? logs;
+  final pulumi.Input<SlotLogs?>? logs;
   /// Specifies the name of the App Service Slot component. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the App Service Slot component. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `siteConfig` object as defined below.
-  final pulumi.Input<SlotSiteConfig>? siteConfig;
+  final pulumi.Input<SlotSiteConfig?>? siteConfig;
   /// One or more `storageAccount` blocks as defined below.
-  final pulumi.Input<List<SlotStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<SlotStorageAccount>?>? storageAccounts;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SlotArgs].
   /// [appServiceName] The name of the App Service within which to create the App Service Slot. Changing this forces a new resource to be created.

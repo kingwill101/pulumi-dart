@@ -9,17 +9,17 @@ class FrontdoorFirewallPolicyCustomRule {
   /// &gt; **Note:** Setting the `action` field to `JSChallenge` or `CAPTCHA` is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   final pulumi.Input<String> action;
   /// Is the rule is enabled or disabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `matchCondition` block defined below. Can support up to `10` `matchCondition` blocks.
-  final pulumi.Input<List<FrontdoorFirewallPolicyCustomRuleMatchCondition>>? matchConditions;
+  final pulumi.Input<List<FrontdoorFirewallPolicyCustomRuleMatchCondition>?>? matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
   final pulumi.Input<String> name;
   /// The priority of the rule. Rules with a lower value will be evaluated before rules with a higher value. Defaults to `1`.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The rate limit duration in minutes. Defaults to `1`.
-  final pulumi.Input<int>? rateLimitDurationInMinutes;
+  final pulumi.Input<int?>? rateLimitDurationInMinutes;
   /// The rate limit threshold. Defaults to `10`.
-  final pulumi.Input<int>? rateLimitThreshold;
+  final pulumi.Input<int?>? rateLimitThreshold;
   /// The type of rule. Possible values are `MatchRule` or `RateLimitRule`.
   final pulumi.Input<String> type;
 
@@ -62,9 +62,9 @@ class FrontdoorFirewallPolicyCustomRule {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRuleMatchCondition>(guardedValue, (value) => FrontdoorFirewallPolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rateLimitDurationInMinutes: (() { final guardedValue = map['rateLimitDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rateLimitDurationInMinutes: (() { final guardedValue = map['rateLimitDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

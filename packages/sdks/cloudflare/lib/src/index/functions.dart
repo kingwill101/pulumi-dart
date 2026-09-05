@@ -141,6 +141,8 @@ import 'get_content_scanning_args.dart';
 import 'get_content_scanning_expressions_args.dart';
 import 'get_content_scanning_expressions_invoke_result.dart';
 import 'get_content_scanning_result.dart';
+import 'get_ct_alerting_args.dart';
+import 'get_ct_alerting_result.dart';
 import 'get_custom_csr_args.dart';
 import 'get_custom_csr_result.dart';
 import 'get_custom_csrs_args.dart';
@@ -251,6 +253,8 @@ import 'get_healthchecks_args.dart';
 import 'get_healthchecks_invoke_result.dart';
 import 'get_hostname_tls_setting_args.dart';
 import 'get_hostname_tls_setting_result.dart';
+import 'get_hostname_tls_settings_args.dart';
+import 'get_hostname_tls_settings_invoke_result.dart';
 import 'get_hyperdrive_config_args.dart';
 import 'get_hyperdrive_config_result.dart';
 import 'get_hyperdrive_configs_args.dart';
@@ -423,6 +427,8 @@ import 'get_pipeline_stream_args.dart';
 import 'get_pipeline_stream_result.dart';
 import 'get_pipeline_streams_args.dart';
 import 'get_pipeline_streams_invoke_result.dart';
+import 'get_precursor_args.dart';
+import 'get_precursor_result.dart';
 import 'get_queue_args.dart';
 import 'get_queue_consumer_args.dart';
 import 'get_queue_consumer_result.dart';
@@ -3078,13 +3084,15 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///
 /// const exampleAccountSubscription = cloudflare.getAccountSubscription({
 ///     accountId: "account_id",
+///     zoneId: "zone_id",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
+/// example_account_subscription = cloudflare.get_account_subscription(account_id="account_id",
+///     zone_id="zone_id")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -3097,6 +3105,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
 ///     {
 ///         AccountId = "account_id",
+///         ZoneId = "zone_id",
 ///     });
 ///
 /// });
@@ -3113,6 +3122,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetAccountSubscription(ctx, &cloudflare.LookupAccountSubscriptionArgs{
 /// 			AccountId: pulumi.StringRef("account_id"),
+/// 			ZoneId:    pulumi.StringRef("zone_id"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -3132,6 +3142,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///
 /// data "cloudflare_getaccountsubscription" "exampleAccountSubscription" {
 ///   account_id = "account_id"
+///   zone_id    = "zone_id"
 /// }
 /// ```
 /// ```java
@@ -3157,6 +3168,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
 ///             .accountId("account_id")
+///             .zoneId("zone_id")
 ///             .build());
 ///
 ///     }
@@ -3169,6 +3181,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///       function: cloudflare:getAccountSubscription
 ///       arguments:
 ///         accountId: account_id
+///         zoneId: zone_id
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_account_subscription_get_account_subscription_args_doc}
 /// [options] Invoke options controlling this call.
@@ -10344,6 +10357,138 @@ pulumi.Output<GetContentScanningExpressionsInvokeResult> getContentScanningExpre
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
   ).apply(GetContentScanningExpressionsInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `SSL and Certificates Read`
+/// - `SSL and Certificates Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleCtAlerting = cloudflare.getCtAlerting({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_ct_alerting = cloudflare.get_ct_alerting(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleCtAlerting = Cloudflare.GetCtAlerting.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetCtAlerting(ctx, &cloudflare.LookupCtAlertingArgs{
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_getctalerting" "exampleCtAlerting" {
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleCtAlerting:
+///     fn::invoke:
+///       function: cloudflare:getCtAlerting
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_ct_alerting_get_ct_alerting_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetCtAlertingResult> getCtAlerting(
+  GetCtAlertingArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getCtAlerting:getCtAlerting',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetCtAlertingResult.fromMap(result);
+}
+
+pulumi.Output<GetCtAlertingResult> getCtAlertingOutput(
+  GetCtAlertingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getCtAlerting:getCtAlerting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCtAlertingResult.fromMap);
 }
 
 /// Accepted Permissions
@@ -18169,11 +18314,6 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
   ).apply(GetHealthchecksInvokeResult.fromMap);
 }
 
-/// Accepted Permissions
-///
-/// - `SSL and Certificates Read`
-/// - `SSL and Certificates Write`
-///
 /// ## Example Usage
 ///
 ///
@@ -18184,6 +18324,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 /// const exampleHostnameTlsSetting = cloudflare.getHostnameTlsSetting({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     settingId: "ciphers",
+///     hostname: "app.example.com",
 /// });
 /// ```
 /// ```python
@@ -18191,7 +18332,8 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_hostname_tls_setting = cloudflare.get_hostname_tls_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     setting_id="ciphers")
+///     setting_id="ciphers",
+///     hostname="app.example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -18205,6 +18347,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         SettingId = "ciphers",
+///         Hostname = "app.example.com",
 ///     });
 ///
 /// });
@@ -18222,6 +18365,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 /// 		_, err := cloudflare.GetHostnameTlsSetting(ctx, &cloudflare.LookupHostnameTlsSettingArgs{
 /// 			ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			SettingId: "ciphers",
+/// 			Hostname:  "app.example.com",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -18242,6 +18386,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 /// data "cloudflare_gethostnametlssetting" "exampleHostnameTlsSetting" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ciphers"
+///   hostname   = "app.example.com"
 /// }
 /// ```
 /// ```java
@@ -18268,6 +18413,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 ///         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .settingId("ciphers")
+///             .hostname("app.example.com")
 ///             .build());
 ///
 ///     }
@@ -18281,6 +18427,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
 ///         settingId: ciphers
+///         hostname: app.example.com
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_hostname_tls_setting_get_hostname_tls_setting_args_doc}
 /// [options] Invoke options controlling this call.
@@ -18306,6 +18453,145 @@ pulumi.Output<GetHostnameTlsSettingResult> getHostnameTlsSettingOutput(
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
   ).apply(GetHostnameTlsSettingResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `SSL and Certificates Read`
+/// - `SSL and Certificates Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleHostnameTlsSettings = cloudflare.getHostnameTlsSettings({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     settingId: "ciphers",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_hostname_tls_settings = cloudflare.get_hostname_tls_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     setting_id="ciphers")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleHostnameTlsSettings = Cloudflare.GetHostnameTlsSettings.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         SettingId = "ciphers",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetHostnameTlsSettings(ctx, &cloudflare.LookupHostnameTlsSettingsArgs{
+/// 			ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			SettingId: "ciphers",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_gethostnametlssettings" "exampleHostnameTlsSettings" {
+///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
+///   setting_id = "ciphers"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .settingId("ciphers")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleHostnameTlsSettings:
+///     fn::invoke:
+///       function: cloudflare:getHostnameTlsSettings
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+///         settingId: ciphers
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_hostname_tls_settings_get_hostname_tls_settings_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettings(
+  GetHostnameTlsSettingsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetHostnameTlsSettingsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettingsOutput(
+  GetHostnameTlsSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostnameTlsSettingsInvokeResult.fromMap);
 }
 
 /// Accepted Permissions
@@ -20421,59 +20707,6 @@ pulumi.Output<GetListsInvokeResult> getListsOutput(
 /// ## Example Usage
 ///
 ///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as cloudflare from "@pulumi/cloudflare";
-///
-/// const exampleLoadBalancer = cloudflare.getLoadBalancer({
-///     loadBalancerId: "699d98642c564d2e855e9661899b7252",
-///     zoneId: "zone_id",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_cloudflare as cloudflare
-///
-/// example_load_balancer = cloudflare.get_load_balancer(load_balancer_id="699d98642c564d2e855e9661899b7252",
-///     zone_id="zone_id")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Cloudflare = Pulumi.Cloudflare;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var exampleLoadBalancer = Cloudflare.GetLoadBalancer.Invoke(new()
-///     {
-///         LoadBalancerId = "699d98642c564d2e855e9661899b7252",
-///         ZoneId = "zone_id",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.GetLoadBalancer(ctx, &cloudflare.LookupLoadBalancerArgs{
-/// 			LoadBalancerId: "699d98642c564d2e855e9661899b7252",
-/// 			ZoneId:         pulumi.StringRef("zone_id"),
-/// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
 /// ```hcl
 /// pulumi {
 ///   required_providers {
@@ -20485,36 +20718,8 @@ pulumi.Output<GetListsInvokeResult> getListsOutput(
 ///
 /// data "cloudflare_getloadbalancer" "exampleLoadBalancer" {
 ///   load_balancer_id = "699d98642c564d2e855e9661899b7252"
+///   account_id       = "account_id"
 ///   zone_id          = "zone_id"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.cloudflare.CloudflareFunctions;
-/// import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-///             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-///             .zoneId("zone_id")
-///             .build());
-///
-///     }
 /// }
 /// ```
 /// ```yaml
@@ -20524,6 +20729,7 @@ pulumi.Output<GetListsInvokeResult> getListsOutput(
 ///       function: cloudflare:getLoadBalancer
 ///       arguments:
 ///         loadBalancerId: 699d98642c564d2e855e9661899b7252
+///         accountId: account_id
 ///         zoneId: zone_id
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_load_balancer_get_load_balancer_args_doc}
@@ -21370,55 +21576,6 @@ pulumi.Output<GetLoadBalancerPoolsInvokeResult> getLoadBalancerPoolsOutput(
 /// ## Example Usage
 ///
 ///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as cloudflare from "@pulumi/cloudflare";
-///
-/// const exampleLoadBalancers = cloudflare.getLoadBalancers({
-///     zoneId: "zone_id",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_cloudflare as cloudflare
-///
-/// example_load_balancers = cloudflare.get_load_balancers(zone_id="zone_id")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Cloudflare = Pulumi.Cloudflare;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
-///     {
-///         ZoneId = "zone_id",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.GetLoadBalancers(ctx, &cloudflare.LookupLoadBalancersArgs{
-/// 			ZoneId: pulumi.StringRef("zone_id"),
-/// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
 /// ```hcl
 /// pulumi {
 ///   required_providers {
@@ -21429,35 +21586,8 @@ pulumi.Output<GetLoadBalancerPoolsInvokeResult> getLoadBalancerPoolsOutput(
 /// }
 ///
 /// data "cloudflare_getloadbalancers" "exampleLoadBalancers" {
-///   zone_id = "zone_id"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.cloudflare.CloudflareFunctions;
-/// import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-///             .zoneId("zone_id")
-///             .build());
-///
-///     }
+///   account_id = "account_id"
+///   zone_id    = "zone_id"
 /// }
 /// ```
 /// ```yaml
@@ -21466,6 +21596,7 @@ pulumi.Output<GetLoadBalancerPoolsInvokeResult> getLoadBalancerPoolsOutput(
 ///     fn::invoke:
 ///       function: cloudflare:getLoadBalancers
 ///       arguments:
+///         accountId: account_id
 ///         zoneId: zone_id
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_load_balancers_get_load_balancers_args_doc}
@@ -24919,6 +25050,121 @@ pulumi.Output<GetMoqRelayResult> getMoqRelayOutput(
   ).apply(GetMoqRelayResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleMoqRelays = cloudflare.getMoqRelays({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     createdAfter: "2026-03-27T15:00:00Z",
+///     createdBefore: "2026-03-27T15:00:00Z",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_moq_relays = cloudflare.get_moq_relays(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     created_after="2026-03-27T15:00:00Z",
+///     created_before="2026-03-27T15:00:00Z")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleMoqRelays = Cloudflare.GetMoqRelays.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CreatedAfter = "2026-03-27T15:00:00Z",
+///         CreatedBefore = "2026-03-27T15:00:00Z",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetMoqRelays(ctx, &cloudflare.LookupMoqRelaysArgs{
+/// 			AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			CreatedAfter:  pulumi.StringRef("2026-03-27T15:00:00Z"),
+/// 			CreatedBefore: pulumi.StringRef("2026-03-27T15:00:00Z"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_getmoqrelays" "exampleMoqRelays" {
+///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
+///   created_after  = "2026-03-27T15:00:00Z"
+///   created_before = "2026-03-27T15:00:00Z"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .createdAfter("2026-03-27T15:00:00Z")
+///             .createdBefore("2026-03-27T15:00:00Z")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleMoqRelays:
+///     fn::invoke:
+///       function: cloudflare:getMoqRelays
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         createdAfter: 2026-03-27T15:00:00Z
+///         createdBefore: 2026-03-27T15:00:00Z
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_moq_relays_get_moq_relays_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMoqRelaysInvokeResult> getMoqRelays(
@@ -30389,6 +30635,133 @@ pulumi.Output<GetPipelineStreamsInvokeResult> getPipelineStreamsOutput(
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
   ).apply(GetPipelineStreamsInvokeResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const examplePrecursor = cloudflare.getPrecursor({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_precursor = cloudflare.get_precursor(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var examplePrecursor = Cloudflare.GetPrecursor.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetPrecursor(ctx, &cloudflare.LookupPrecursorArgs{
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_getprecursor" "examplePrecursor" {
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   examplePrecursor:
+///     fn::invoke:
+///       function: cloudflare:getPrecursor
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_precursor_get_precursor_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetPrecursorResult> getPrecursor(
+  GetPrecursorArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getPrecursor:getPrecursor',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetPrecursorResult.fromMap(result);
+}
+
+pulumi.Output<GetPrecursorResult> getPrecursorOutput(
+  GetPrecursorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getPrecursor:getPrecursor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrecursorResult.fromMap);
 }
 
 /// Accepted Permissions
@@ -57909,7 +58282,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///
 /// const exampleZeroTrustResourceLibraryApplication = cloudflare.getZeroTrustResourceLibraryApplication({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+///     id: 498,
 /// });
 /// ```
 /// ```python
@@ -57917,7 +58290,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_zero_trust_resource_library_application = cloudflare.get_zero_trust_resource_library_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+///     id=498)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57930,7 +58303,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+///         Id = 498,
 ///     });
 ///
 /// });
@@ -57947,7 +58320,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.GetZeroTrustResourceLibraryApplicationArgs{
 /// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-/// 			Id:        "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+/// 			Id:        498,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -57967,7 +58340,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///
 /// data "cloudflare_getzerotrustresourcelibraryapplication" "exampleZeroTrustResourceLibraryApplication" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   id         = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0"
+///   id         = 498
 /// }
 /// ```
 /// ```java
@@ -57993,7 +58366,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+///             .id(498)
 ///             .build());
 ///
 ///     }
@@ -58006,7 +58379,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///       function: cloudflare:getZeroTrustResourceLibraryApplication
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         id: 0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0
+///         id: 498
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_resource_library_application_get_zero_trust_resource_library_application_args_doc}
 /// [options] Invoke options controlling this call.
@@ -58217,7 +58590,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///
 /// const exampleZeroTrustResourceLibraryCategory = cloudflare.getZeroTrustResourceLibraryCategory({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+///     id: 12,
 /// });
 /// ```
 /// ```python
@@ -58225,7 +58598,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_zero_trust_resource_library_category = cloudflare.get_zero_trust_resource_library_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+///     id=12)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58238,7 +58611,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///     var exampleZeroTrustResourceLibraryCategory = Cloudflare.GetZeroTrustResourceLibraryCategory.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+///         Id = 12,
 ///     });
 ///
 /// });
@@ -58255,7 +58628,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustResourceLibraryCategory(ctx, &cloudflare.GetZeroTrustResourceLibraryCategoryArgs{
 /// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-/// 			Id:        "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+/// 			Id:        12,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -58275,7 +58648,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///
 /// data "cloudflare_getzerotrustresourcelibrarycategory" "exampleZeroTrustResourceLibraryCategory" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   id         = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0"
+///   id         = 12
 /// }
 /// ```
 /// ```java
@@ -58301,7 +58674,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+///             .id(12)
 ///             .build());
 ///
 ///     }
@@ -58314,7 +58687,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///       function: cloudflare:getZeroTrustResourceLibraryCategory
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         id: 0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0
+///         id: 12
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_resource_library_category_get_zero_trust_resource_library_category_args_doc}
 /// [options] Invoke options controlling this call.
@@ -62038,6 +62411,8 @@ pulumi.Output<GetZoneLockdownsInvokeResult> getZoneLockdownsOutput(
 /// | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
 /// | `trueClientIpHeader` | `"on"` / `"off"` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
 /// | `waf` | `"on"` / `"off"` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+/// | `webmcpEnabled` | `"on"` / `"off"` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+/// | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
 /// | `webp` | `"on"` / `"off"` | When the client requesting the image supports the WebP image codec, and WebP ... |
 /// | `websockets` | `"on"` / `"off"` | WebSockets are open connections sustained between the client and the origin s... |
 ///

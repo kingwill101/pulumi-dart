@@ -13,15 +13,15 @@ class MongoDatabaseArgs {
   /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
-  final pulumi.Input<MongoDatabaseAutoscaleSettings>? autoscaleSettings;
+  final pulumi.Input<MongoDatabaseAutoscaleSettings?>? autoscaleSettings;
   /// Specifies the name of the Cosmos DB Mongo Database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Cosmos DB Mongo Database is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
   ///
   /// &gt; **Note:** throughput has a maximum value of `1000000` unless a higher limit is requested via Azure Support.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
 
   /// Creates a new [MongoDatabaseArgs].
   /// [accountName] The name of the Cosmos DB Mongo Database to create the table within. Changing this forces a new resource to be created.
@@ -53,7 +53,7 @@ class MongoDatabaseArgs {
       autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoDatabaseAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

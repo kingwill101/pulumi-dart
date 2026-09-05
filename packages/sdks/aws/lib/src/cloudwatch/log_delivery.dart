@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_delivery_args.dart';
+import 'log_delivery_s3_delivery_configuration.dart';
 import 'log_delivery_state.dart';
 
 /// Resource for managing an AWS CloudWatch Logs Delivery. A delivery is a connection between an `aws.cloudwatch.LogDeliverySource` and an `aws.cloudwatch.LogDeliveryDestination`.
@@ -162,11 +163,11 @@ import 'log_delivery_state.dart';
 ///     resourceArn: exampleAwsCloudfrontDistribution.arn,
 /// });
 /// const exampleLogDeliveryDestination = new aws.cloudwatch.LogDeliveryDestination("example", {
-///     name: "cloudfront-access-logs",
-///     outputFormat: "json",
 ///     deliveryDestinationConfiguration: {
 ///         destinationResourceArn: exampleAwsCloudwatchLogGroup.arn,
 ///     },
+///     name: "cloudfront-access-logs",
+///     outputFormat: "json",
 /// });
 /// const exampleLogDelivery = new aws.cloudwatch.LogDelivery("example", {
 ///     deliverySourceName: example.name,
@@ -190,11 +191,11 @@ import 'log_delivery_state.dart';
 ///     log_type="ACCESS_LOGS",
 ///     resource_arn=example_aws_cloudfront_distribution["arn"])
 /// example_log_delivery_destination = aws.cloudwatch.LogDeliveryDestination("example",
-///     name="cloudfront-access-logs",
-///     output_format="json",
 ///     delivery_destination_configuration={
 ///         "destination_resource_arn": example_aws_cloudwatch_log_group["arn"],
-///     })
+///     },
+///     name="cloudfront-access-logs",
+///     output_format="json")
 /// example_log_delivery = aws.cloudwatch.LogDelivery("example",
 ///     delivery_source_name=example.name,
 ///     delivery_destination_arn=example_log_delivery_destination.arn,
@@ -224,12 +225,12 @@ import 'log_delivery_state.dart';
 ///
 ///     var exampleLogDeliveryDestination = new Aws.CloudWatch.LogDeliveryDestination("example", new()
 ///     {
-///         Name = "cloudfront-access-logs",
-///         OutputFormat = "json",
 ///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
 ///         {
 ///             DestinationResourceArn = exampleAwsCloudwatchLogGroup.Arn,
 ///         },
+///         Name = "cloudfront-access-logs",
+///         OutputFormat = "json",
 ///     });
 ///
 ///     var exampleLogDelivery = new Aws.CloudWatch.LogDelivery("example", new()
@@ -268,11 +269,11 @@ import 'log_delivery_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogDeliveryDestination, err := cloudwatch.NewLogDeliveryDestination(ctx, "example", &cloudwatch.LogDeliveryDestinationArgs{
-/// 			Name:         pulumi.String("cloudfront-access-logs"),
-/// 			OutputFormat: pulumi.String("json"),
 /// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
 /// 				DestinationResourceArn: pulumi.Any(exampleAwsCloudwatchLogGroup.Arn),
 /// 			},
+/// 			Name:         pulumi.String("cloudfront-access-logs"),
+/// 			OutputFormat: pulumi.String("json"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -311,11 +312,11 @@ import 'log_delivery_state.dart';
 ///   resource_arn = exampleAwsCloudfrontDistribution.arn
 /// }
 /// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   name          = "cloudfront-access-logs"
-///   output_format = "json"
 ///   delivery_destination_configuration = {
 ///     destination_resource_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
+///   name          = "cloudfront-access-logs"
+///   output_format = "json"
 /// }
 /// resource "aws_cloudwatch_logdelivery" "example" {
 ///   delivery_source_name     = aws_cloudwatch_logdeliverysource.example.name
@@ -356,11 +357,11 @@ import 'log_delivery_state.dart';
 ///             .build());
 ///
 ///         var exampleLogDeliveryDestination = new LogDeliveryDestination("exampleLogDeliveryDestination", LogDeliveryDestinationArgs.builder()
-///             .name("cloudfront-access-logs")
-///             .outputFormat("json")
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
 ///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.arn())
 ///                 .build())
+///             .name("cloudfront-access-logs")
+///             .outputFormat("json")
 ///             .build());
 ///
 ///         var exampleLogDelivery = new LogDelivery("exampleLogDelivery", LogDeliveryArgs.builder()
@@ -390,10 +391,10 @@ import 'log_delivery_state.dart';
 ///     type: aws:cloudwatch:LogDeliveryDestination
 ///     name: example
 ///     properties:
-///       name: cloudfront-access-logs
-///       outputFormat: json
 ///       deliveryDestinationConfiguration:
 ///         destinationResourceArn: ${exampleAwsCloudwatchLogGroup.arn}
+///       name: cloudfront-access-logs
+///       outputFormat: json
 ///   exampleLogDelivery:
 ///     type: aws:cloudwatch:LogDelivery
 ///     name: example
@@ -430,7 +431,7 @@ import 'log_delivery_state.dart';
 /// $ pulumi import aws:cloudwatch/logDelivery:LogDelivery example jsoGVi4Zq8VlYp9n
 /// ```
 class LogDelivery extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the delivery.
+  /// ARN of the delivery.
   late final pulumi.Output<String> arn;
   /// The ARN of the delivery destination to use for this delivery.
   late final pulumi.Output<String> deliveryDestinationArn;
@@ -443,7 +444,7 @@ class LogDelivery extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
-  late final pulumi.Output<List<Map<String, dynamic>>> s3DeliveryConfigurations;
+  late final pulumi.Output<List<LogDeliveryS3DeliveryConfiguration>> s3DeliveryConfigurations;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -461,17 +462,17 @@ class LogDelivery extends pulumi.CustomResource {
           'aws:cloudwatch/logDelivery:LogDelivery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryDestinationArn = registerOutput<String>('deliveryDestinationArn');
     deliverySourceName = registerOutput<String>('deliverySourceName');
     fieldDelimiter = registerOutput<String>('fieldDelimiter');
-    recordFields = registerOutput<List<String>>('recordFields');
+    recordFields = registerOutput<List<String>>('recordFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    s3DeliveryConfigurations = registerOutput<List<Map<String, dynamic>>>('s3DeliveryConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    s3DeliveryConfigurations = registerOutput<List<LogDeliveryS3DeliveryConfiguration>>('s3DeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(guardedValue, (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LogDelivery] resource's state with the given [name] and [id].
@@ -479,11 +480,12 @@ class LogDelivery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDeliveryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDelivery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -501,10 +503,30 @@ class LogDelivery extends pulumi.CustomResource {
     deliveryDestinationArn = registerOutput<String>('deliveryDestinationArn');
     deliverySourceName = registerOutput<String>('deliverySourceName');
     fieldDelimiter = registerOutput<String>('fieldDelimiter');
-    recordFields = registerOutput<List<String>>('recordFields');
+    recordFields = registerOutput<List<String>>('recordFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    s3DeliveryConfigurations = registerOutput<List<Map<String, dynamic>>>('s3DeliveryConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    s3DeliveryConfigurations = registerOutput<List<LogDeliveryS3DeliveryConfiguration>>('s3DeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(guardedValue, (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LogDelivery] resource.
+  LogDelivery.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDelivery:LogDelivery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deliveryDestinationArn = registerOutput<String>('deliveryDestinationArn');
+    deliverySourceName = registerOutput<String>('deliverySourceName');
+    fieldDelimiter = registerOutput<String>('fieldDelimiter');
+    recordFields = registerOutput<List<String>>('recordFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    s3DeliveryConfigurations = registerOutput<List<LogDeliveryS3DeliveryConfiguration>>('s3DeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(guardedValue, (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

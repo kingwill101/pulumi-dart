@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SharedPrivateLinkService resources.
 class SharedPrivateLinkServiceState {
   /// Specify the name of the Azure Search Shared Private Link Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the request message for requesting approval of the Shared Private Link Enabled Remote Resource.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// Specify the id of the Azure Search Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? searchServiceId;
+  final pulumi.Input<String?>? searchServiceId;
   /// The status of a private endpoint connection. Possible values are Pending, Approved, Rejected or Disconnected.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
   /// Specify the ID of the Shared Private Link Enabled Remote Resource which this Azure Search Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The sub resource name should match with the type of the target resource id that's being specified.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [SharedPrivateLinkServiceState].
   /// [name] Specify the name of the Azure Search Shared Private Link Resource. Changing this forces a new resource to be created.

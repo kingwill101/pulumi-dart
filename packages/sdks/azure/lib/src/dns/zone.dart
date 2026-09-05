@@ -194,15 +194,15 @@ class Zone extends pulumi.CustomResource {
           'azure:dns/zone:Zone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Zone] resource's state with the given [name] and [id].
@@ -210,11 +210,12 @@ class Zone extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Zone._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,10 +231,28 @@ class Zone extends pulumi.CustomResource {
         ) {
     maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Zone] resource.
+  Zone.reference(String urn)
+    : super(
+        'azure:dns/zone:Zone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    maxNumberOfRecordSets = registerOutput<int>('maxNumberOfRecordSets');
+    this.name = registerOutput<String>('name');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

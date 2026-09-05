@@ -20,7 +20,7 @@ class AgentcoreOnlineEvaluationConfigRuleSessionConfig {
 
   factory AgentcoreOnlineEvaluationConfigRuleSessionConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOnlineEvaluationConfigRuleSessionConfig(
-      sessionTimeoutMinutes: pulumi.Input.fromValue(map['sessionTimeoutMinutes'] as int),
+      sessionTimeoutMinutes: pulumi.Input.fromValue((map['sessionTimeoutMinutes'] as num).toInt()),
     );
   }
 }

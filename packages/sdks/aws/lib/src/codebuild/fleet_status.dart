@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetStatus {
   /// Additional information about a compute fleet.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// Message associated with the status of a compute fleet.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Status code of the compute fleet.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [FleetStatus].
   /// [context] Additional information about a compute fleet.

@@ -7,11 +7,11 @@ import 'alert_processing_rule_action_group_schedule_recurrence_weekly.dart';
 
 class AlertProcessingRuleActionGroupScheduleRecurrence {
   /// One or more `daily` blocks as defined above.
-  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceDaily>>? dailies;
+  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceDaily>?>? dailies;
   /// One or more `monthly` blocks as defined above.
-  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceMonthly>>? monthlies;
+  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceMonthly>?>? monthlies;
   /// One or more `weekly` blocks as defined below.
-  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceWeekly>>? weeklies;
+  final pulumi.Input<List<AlertProcessingRuleActionGroupScheduleRecurrenceWeekly>?>? weeklies;
 
   /// Creates a new [AlertProcessingRuleActionGroupScheduleRecurrence].
   /// [dailies] One or more `daily` blocks as defined above.

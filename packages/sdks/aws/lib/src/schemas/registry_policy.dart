@@ -15,12 +15,12 @@ import 'registry_policy_state.dart';
 ///
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "example",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["109876543210"],
 ///         }],
+///         sid: "example",
+///         effect: "Allow",
 ///         actions: ["schemas:*"],
 ///         resources: [
 ///             "arn:aws:schemas:us-east-1:123456789012:registry/example",
@@ -38,12 +38,12 @@ import 'registry_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "example",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["109876543210"],
 ///     }],
+///     "sid": "example",
+///     "effect": "Allow",
 ///     "actions": ["schemas:*"],
 ///     "resources": [
 ///         "arn:aws:schemas:us-east-1:123456789012:registry/example",
@@ -68,8 +68,6 @@ import 'registry_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "example",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -81,6 +79,8 @@ import 'registry_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "example",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "schemas:*",
@@ -116,8 +116,6 @@ import 'registry_policy_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("example"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -126,6 +124,8 @@ import 'registry_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("example"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"schemas:*",
 /// 					},
@@ -161,12 +161,12 @@ import 'registry_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "example"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["109876543210"]
 ///     }
+///     sid       = "example"
+///     effect    = "Allow"
 ///     actions   = ["schemas:*"]
 ///     resources = ["arn:aws:schemas:us-east-1:123456789012:registry/example", "arn:aws:schemas:us-east-1:123456789012:schema/example*"]
 ///   }
@@ -204,12 +204,12 @@ import 'registry_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("example")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("109876543210")
 ///                     .build())
+///                 .sid("example")
+///                 .effect("Allow")
 ///                 .actions("schemas:*")
 ///                 .resources(
 ///                     "arn:aws:schemas:us-east-1:123456789012:registry/example",
@@ -239,12 +239,12 @@ import 'registry_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: example
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '109876543210'
+///             sid: example
+///             effect: Allow
 ///             actions:
 ///               - schemas:*
 ///             resources:
@@ -280,7 +280,7 @@ class RegistryPolicy extends pulumi.CustomResource {
           'aws:schemas/registryPolicy:RegistryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -292,11 +292,12 @@ class RegistryPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,20 @@ class RegistryPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    registryName = registerOutput<String>('registryName');
+  }
+
+  /// Creates a typed reference to an existing [RegistryPolicy] resource.
+  RegistryPolicy.reference(String urn)
+    : super(
+        'aws:schemas/registryPolicy:RegistryPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     registryName = registerOutput<String>('registryName');

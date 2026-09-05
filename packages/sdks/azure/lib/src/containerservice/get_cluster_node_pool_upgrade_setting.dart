@@ -40,10 +40,10 @@ class GetClusterNodePoolUpgradeSetting {
 
   factory GetClusterNodePoolUpgradeSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSetting(
-      drainTimeoutInMinutes: pulumi.Input.fromValue(map['drainTimeoutInMinutes'] as int),
+      drainTimeoutInMinutes: pulumi.Input.fromValue((map['drainTimeoutInMinutes'] as num).toInt()),
       maxSurge: pulumi.Input.fromValue(map['maxSurge'] as String),
       maxUnavailable: pulumi.Input.fromValue(map['maxUnavailable'] as String),
-      nodeSoakDurationInMinutes: pulumi.Input.fromValue(map['nodeSoakDurationInMinutes'] as int),
+      nodeSoakDurationInMinutes: pulumi.Input.fromValue((map['nodeSoakDurationInMinutes'] as num).toInt()),
       undrainableNodeBehavior: pulumi.Input.fromValue(map['undrainableNodeBehavior'] as String),
     );
   }

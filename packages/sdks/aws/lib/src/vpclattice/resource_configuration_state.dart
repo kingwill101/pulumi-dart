@@ -7,40 +7,40 @@ import 'resource_configuration_timeouts.dart';
 /// Input properties used for looking up and filtering ResourceConfiguration resources.
 class ResourceConfigurationState {
   /// Allow or Deny the association of this resource to a shareable service network.
-  final pulumi.Input<bool>? allowAssociationToShareableServiceNetwork;
+  final pulumi.Input<bool?>? allowAssociationToShareableServiceNetwork;
   /// ARN of the resource gateway.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Custom domain name for your resource configuration. Additionally, provide a `domainVerificationId` to prove your ownership of a domain.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// ARN of the domain verification.
-  final pulumi.Input<String>? domainVerificationArn;
+  final pulumi.Input<String?>? domainVerificationArn;
   /// Domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
-  final pulumi.Input<String>? domainVerificationId;
+  final pulumi.Input<String?>? domainVerificationId;
   /// Domain verification status.
-  final pulumi.Input<String>? domainVerificationStatus;
+  final pulumi.Input<String?>? domainVerificationStatus;
   /// Name for the Resource Configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
-  final pulumi.Input<List<String>>? portRanges;
+  final pulumi.Input<List<String>?>? portRanges;
   /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resourceConfigurationGroupId` is not.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Details of the Resource Configuration. See `resourceConfigurationDefinition` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinition>? resourceConfigurationDefinition;
+  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinition?>? resourceConfigurationDefinition;
   /// ID of Resource Configuration where `type` is `CHILD`.
-  final pulumi.Input<String>? resourceConfigurationGroupId;
+  final pulumi.Input<String?>? resourceConfigurationGroupId;
   /// ID of the Resource Gateway used to access the resource. MUST be specified if `resourceConfigurationGroupId` is not.
-  final pulumi.Input<String>? resourceGatewayIdentifier;
+  final pulumi.Input<String?>? resourceGatewayIdentifier;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ResourceConfigurationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ResourceConfigurationTimeouts?>? timeouts;
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceConfigurationState].
   /// [allowAssociationToShareableServiceNetwork] Allow or Deny the association of this resource to a shareable service network.

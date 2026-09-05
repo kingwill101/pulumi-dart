@@ -5,13 +5,13 @@ import 'next_generation_firewall_virtual_network_panorama_network_profile_vnet_c
 
 class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
   /// Specifies a list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
-  final pulumi.Input<List<String>>? egressNatIpAddressIds;
-  final pulumi.Input<List<String>>? egressNatIpAddresses;
+  final pulumi.Input<List<String>?>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>?>? egressNatIpAddresses;
   /// Specifies a list of Azure Public IP Address IDs.
   final pulumi.Input<List<String>> publicIpAddressIds;
-  final pulumi.Input<List<String>>? publicIpAddresses;
+  final pulumi.Input<List<String>?>? publicIpAddresses;
   /// Specifies a list of trusted ranges to use for the Network.
-  final pulumi.Input<List<String>>? trustedAddressRanges;
+  final pulumi.Input<List<String>?>? trustedAddressRanges;
   /// A `vnetConfiguration` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration> vnetConfiguration;
 

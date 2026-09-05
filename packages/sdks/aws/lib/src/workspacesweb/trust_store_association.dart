@@ -246,7 +246,7 @@ class TrustStoreAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
@@ -258,11 +258,12 @@ class TrustStoreAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustStoreAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustStoreAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,6 +277,20 @@ class TrustStoreAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    trustStoreArn = registerOutput<String>('trustStoreArn');
+  }
+
+  /// Creates a typed reference to an existing [TrustStoreAssociation] resource.
+  TrustStoreAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     trustStoreArn = registerOutput<String>('trustStoreArn');

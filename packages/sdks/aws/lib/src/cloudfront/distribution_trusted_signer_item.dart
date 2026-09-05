@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTrustedSignerItem {
   /// AWS account ID or `self`
-  final pulumi.Input<String>? awsAccountNumber;
+  final pulumi.Input<String?>? awsAccountNumber;
   /// Set of active CloudFront key pairs associated with the signer account
-  final pulumi.Input<List<String>>? keyPairIds;
+  final pulumi.Input<List<String>?>? keyPairIds;
 
   /// Creates a new [DistributionTrustedSignerItem].
   /// [awsAccountNumber] AWS account ID or `self`

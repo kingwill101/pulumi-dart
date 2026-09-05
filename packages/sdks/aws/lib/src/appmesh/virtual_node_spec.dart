@@ -9,15 +9,15 @@ import 'virtual_node_spec_service_discovery.dart';
 
 class VirtualNodeSpec {
   /// Defaults for backends. See `spec.backend_defaults` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendDefaults>? backendDefaults;
+  final pulumi.Input<VirtualNodeSpecBackendDefaults?>? backendDefaults;
   /// Backends to which the virtual node is expected to send outbound traffic. See `spec.backend` Block for details.
-  final pulumi.Input<List<VirtualNodeSpecBackend>>? backends;
+  final pulumi.Input<List<VirtualNodeSpecBackend>?>? backends;
   /// Listeners from which the virtual node is expected to receive inbound traffic. See `spec.listener` Block for details.
-  final pulumi.Input<List<VirtualNodeSpecListener>>? listeners;
+  final pulumi.Input<List<VirtualNodeSpecListener>?>? listeners;
   /// Inbound and outbound access logging information for the virtual node. See `spec.logging` Block for details.
-  final pulumi.Input<VirtualNodeSpecLogging>? logging;
+  final pulumi.Input<VirtualNodeSpecLogging?>? logging;
   /// Service discovery information for the virtual node. See `spec.service_discovery` Block for details.
-  final pulumi.Input<VirtualNodeSpecServiceDiscovery>? serviceDiscovery;
+  final pulumi.Input<VirtualNodeSpecServiceDiscovery?>? serviceDiscovery;
 
   /// Creates a new [VirtualNodeSpec].
   /// [backendDefaults] Defaults for backends. See `spec.backend_defaults` Block for details.

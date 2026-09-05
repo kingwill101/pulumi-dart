@@ -11,9 +11,9 @@ class LinkArgs {
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
   final pulumi.Input<String> labelTemplate;
   /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `linkConfiguration` Block for details.
-  final pulumi.Input<LinkLinkConfiguration>? linkConfiguration;
+  final pulumi.Input<LinkLinkConfiguration?>? linkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Types of data that the source account shares with the monitoring account.
   final pulumi.Input<List<String>> resourceTypes;
   /// Identifier of the sink to use to create this link.
@@ -21,7 +21,7 @@ class LinkArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> sinkIdentifier;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LinkArgs].
   /// [labelTemplate] Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.

@@ -249,7 +249,7 @@ import 'function_app_hybrid_connection_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.WindowsWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -259,7 +259,7 @@ import 'function_app_hybrid_connection_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			ServicePlanId:           exampleServicePlan.ID(),
+/// 			ServicePlanId:           exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig:              &appservice.WindowsFunctionAppSiteConfigArgs{},
@@ -268,8 +268,8 @@ import 'function_app_hybrid_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewFunctionAppHybridConnection(ctx, "example", &appservice.FunctionAppHybridConnectionArgs{
-/// 			FunctionAppId: exampleWindowsWebApp.ID(),
-/// 			RelayId:       exampleHybridConnection.ID(),
+/// 			FunctionAppId: exampleWindowsWebApp.ID().ToIDOutput().ToStringOutput(),
+/// 			RelayId:       exampleHybridConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			Hostname:      pulumi.String("myhostname.example"),
 /// 			Port:          pulumi.Int(8081),
 /// 		})
@@ -563,7 +563,8 @@ class FunctionAppHybridConnection extends pulumi.CustomResource {
           'azure:appservice/functionAppHybridConnection:FunctionAppHybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     functionAppId = registerOutput<String>('functionAppId');
     hostname = registerOutput<String>('hostname');
@@ -572,7 +573,7 @@ class FunctionAppHybridConnection extends pulumi.CustomResource {
     relayId = registerOutput<String>('relayId');
     relayName = registerOutput<String>('relayName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }
@@ -582,11 +583,12 @@ class FunctionAppHybridConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionAppHybridConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionAppHybridConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -607,7 +609,29 @@ class FunctionAppHybridConnection extends pulumi.CustomResource {
     relayId = registerOutput<String>('relayId');
     relayName = registerOutput<String>('relayName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+  }
+
+  /// Creates a typed reference to an existing [FunctionAppHybridConnection] resource.
+  FunctionAppHybridConnection.reference(String urn)
+    : super(
+        'azure:appservice/functionAppHybridConnection:FunctionAppHybridConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sendKeyValue'],
+        isResourceReference: true,
+      ) {
+    functionAppId = registerOutput<String>('functionAppId');
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }

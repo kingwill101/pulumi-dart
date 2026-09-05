@@ -22,159 +22,161 @@ import 'container_volume.dart';
 /// Input properties used for looking up and filtering Container resources.
 class ContainerState {
   /// If `true` attach to the container after its creation and waits the end of its execution. Defaults to `false`.
-  final pulumi.Input<bool>? attach;
+  final pulumi.Input<bool?>? attach;
   /// The network bridge of the container as read from its NetworkSettings.
-  final pulumi.Input<String>? bridge;
+  final pulumi.Input<String?>? bridge;
   /// Add or drop certain linux capabilities.
-  final pulumi.Input<ContainerCapabilities>? capabilities;
+  final pulumi.Input<ContainerCapabilities?>? capabilities;
   /// Optional parent cgroup for the container
-  final pulumi.Input<String>? cgroupParent;
+  final pulumi.Input<String?>? cgroupParent;
   /// Cgroup namespace mode to use for the container. Possible values are: `private`, `host`.
-  final pulumi.Input<String>? cgroupnsMode;
+  final pulumi.Input<String?>? cgroupnsMode;
   /// The command to use to start the container. For example, to run `/usr/bin/myprogram -f baz.conf` set the command to be `["/usr/bin/myprogram","-f","baz.conf"]`.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// The logs of the container if its execution is done (`attach` must be disabled).
-  final pulumi.Input<String>? containerLogs;
+  final pulumi.Input<String?>? containerLogs;
   /// The total number of milliseconds to wait for the container to reach status 'running'
-  final pulumi.Input<int>? containerReadRefreshTimeoutMilliseconds;
+  final pulumi.Input<int?>? containerReadRefreshTimeoutMilliseconds;
   /// Specify the CPU CFS scheduler period (in microseconds), which is used alongside `cpu-quota`. Is ignored if `cpus` is set.
-  final pulumi.Input<int>? cpuPeriod;
+  final pulumi.Input<int?>? cpuPeriod;
   /// Impose a CPU CFS quota on the container (in microseconds). The number of microseconds per `cpu-period` that the container is limited to before throttled. Is ignored if `cpus` is set.
-  final pulumi.Input<int>? cpuQuota;
+  final pulumi.Input<int?>? cpuQuota;
   /// A comma-separated list or hyphen-separated range of CPUs a container can use, e.g. `0-1`.
-  final pulumi.Input<String>? cpuSet;
+  final pulumi.Input<String?>? cpuSet;
   /// CPU shares (relative weight) for the container.
-  final pulumi.Input<int>? cpuShares;
+  final pulumi.Input<int?>? cpuShares;
   /// Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpuPeriod` and `cpuQuota`.
-  final pulumi.Input<String>? cpus;
+  final pulumi.Input<String?>? cpus;
   /// If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
-  final pulumi.Input<int>? destroyGraceSeconds;
+  final pulumi.Input<int?>? destroyGraceSeconds;
+  /// Cgroup rules to allow access to classes of devices without binding specific device nodes.
+  final pulumi.Input<List<String>?>? deviceCgroupRules;
   /// Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
-  final pulumi.Input<List<ContainerDeviceReadBp>>? deviceReadBps;
+  final pulumi.Input<List<ContainerDeviceReadBp>?>? deviceReadBps;
   /// Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
-  final pulumi.Input<List<ContainerDeviceReadIop>>? deviceReadIops;
+  final pulumi.Input<List<ContainerDeviceReadIop>?>? deviceReadIops;
   /// Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
-  final pulumi.Input<List<ContainerDeviceRequest>>? deviceRequests;
+  final pulumi.Input<List<ContainerDeviceRequest>?>? deviceRequests;
   /// Limit write rate (bytes per second) to a device. This is the equivalent to repeating `--device-write-bps` for `docker run`.
-  final pulumi.Input<List<ContainerDeviceWriteBp>>? deviceWriteBps;
+  final pulumi.Input<List<ContainerDeviceWriteBp>?>? deviceWriteBps;
   /// Limit write rate (IO per second) to a device. This is the equivalent to repeating `--device-write-iops` for `docker run`.
-  final pulumi.Input<List<ContainerDeviceWriteIop>>? deviceWriteIops;
+  final pulumi.Input<List<ContainerDeviceWriteIop>?>? deviceWriteIops;
   /// Bind traditional devices to the container (e.g., `/dev/nvidia0`). For CDI devices, use `deviceRequests` instead.
-  final pulumi.Input<List<ContainerDevice>>? devices;
+  final pulumi.Input<List<ContainerDevice>?>? devices;
   /// DNS servers to use.
-  final pulumi.Input<List<String>>? dns;
+  final pulumi.Input<List<String>?>? dns;
   /// DNS options used by the DNS provider(s), see `resolv.conf` documentation for valid list of options.
-  final pulumi.Input<List<String>>? dnsOpts;
+  final pulumi.Input<List<String>?>? dnsOpts;
   /// DNS search domains that are used when bare unqualified hostnames are used inside of the container.
-  final pulumi.Input<List<String>>? dnsSearches;
+  final pulumi.Input<List<String>?>? dnsSearches;
   /// Domain name of the container.
-  final pulumi.Input<String>? domainname;
+  final pulumi.Input<String?>? domainname;
   /// The command to use as the Entrypoint for the container. The Entrypoint allows you to configure a container to run as an executable. For example, to run `/usr/bin/myprogram` when starting a container, set the entrypoint to be `"/usr/bin/myprogram"]`.
-  final pulumi.Input<List<String>>? entrypoints;
+  final pulumi.Input<List<String>?>? entrypoints;
   /// Environment variables to set in the form of `KEY=VALUE`, e.g. `DEBUG=0`
-  final pulumi.Input<List<String>>? envs;
+  final pulumi.Input<List<String>?>? envs;
   /// The exit code of the container if its execution is done (`mustRun` must be disabled).
-  final pulumi.Input<int>? exitCode;
+  final pulumi.Input<int?>? exitCode;
   /// GPU devices to add to the container. Supported values are `all` or `device=&lt;id[,id...]&gt;`, for example `device=0,2` or `device=GPU-3a23c669-1f69-c64e-cf85-44e9b07e7a2a`.
-  final pulumi.Input<String>? gpus;
+  final pulumi.Input<String?>? gpus;
   /// Additional groups for the container user
-  final pulumi.Input<List<String>>? groupAdds;
+  final pulumi.Input<List<String>?>? groupAdds;
   /// A test to perform to check that the container is healthy
-  final pulumi.Input<ContainerHealthcheck>? healthcheck;
+  final pulumi.Input<ContainerHealthcheck?>? healthcheck;
   /// Hostname of the container.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Additional hosts to add to the container.
-  final pulumi.Input<List<ContainerHost>>? hosts;
+  final pulumi.Input<List<ContainerHost>?>? hosts;
   /// The ID of the image to back this container. The easiest way to get this value is to use the `imageId` attribute of the `docker.RemoteImage` resource as is shown in the example.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
-  final pulumi.Input<bool>? init;
+  final pulumi.Input<bool?>? init;
   /// IPC sharing mode for the container. Possible values are: `none`, `private`, `shareable`, `container:&lt;name|id&gt;` or `host`.
-  final pulumi.Input<String>? ipcMode;
+  final pulumi.Input<String?>? ipcMode;
   /// User-defined key/value metadata
-  final pulumi.Input<List<ContainerLabel>>? labels;
+  final pulumi.Input<List<ContainerLabel>?>? labels;
   /// The logging driver to use for the container.
-  final pulumi.Input<String>? logDriver;
+  final pulumi.Input<String?>? logDriver;
   /// Key/value pairs to use as options for the logging driver.
-  final pulumi.Input<Map<String, String>>? logOpts;
+  final pulumi.Input<Map<String, String>?>? logOpts;
   /// Save the container logs (`attach` must be enabled). Defaults to `false`.
-  final pulumi.Input<bool>? logs;
+  final pulumi.Input<bool?>? logs;
   /// The maximum amount of times to an attempt a restart when `restart` is set to 'on-failure'.
-  final pulumi.Input<int>? maxRetryCount;
+  final pulumi.Input<int?>? maxRetryCount;
   /// The memory limit for the container in MBs.
-  final pulumi.Input<int>? memory;
+  final pulumi.Input<int?>? memory;
   /// The memory-resveration for the container in MBs. Defaults to 0. Allows you to specify a soft limit smaller than `memory` which is activated when Docker detects contention or low memory on the host machine. If you use `memory-reservation`, it must be set lower than `memory` for it to take precedence. Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit.
-  final pulumi.Input<int>? memoryReservation;
+  final pulumi.Input<int?>? memoryReservation;
   /// The total memory limit (memory + swap) for the container in MBs. This setting may compute to `-1` after `pulumi up` if the target host doesn't support memory swap, when that is the case docker will use a soft limitation.
-  final pulumi.Input<int>? memorySwap;
+  final pulumi.Input<int?>? memorySwap;
   /// Specification for mounts to be added to containers created as part of the service.
-  final pulumi.Input<List<ContainerMount>>? mounts;
+  final pulumi.Input<List<ContainerMount>?>? mounts;
   /// If `true`, then the Docker container will be kept running. If `false`, Terraform leaves the container alone. This attribute is also used to trigger a restart of a stopped container. If your container is stopped, Terraform will set `mustRun` to `false` and this will trigger a change. Defaults to `true`.
-  final pulumi.Input<bool>? mustRun;
+  final pulumi.Input<bool?>? mustRun;
   /// The name of the container.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The data of the networks the container is connected to.
-  final pulumi.Input<List<ContainerNetworkData>>? networkDatas;
+  final pulumi.Input<List<ContainerNetworkData>?>? networkDatas;
   /// Network mode of the container. Defaults to `bridge`. If your host OS is any other OS, you need to set this value explicitly, e.g. `nat` when your container will be running on an Windows host. See https://docs.docker.com/engine/network/ for more information.
-  final pulumi.Input<String>? networkMode;
+  final pulumi.Input<String?>? networkMode;
   /// The networks the container is attached to. This is the equivalent to the `--network` option of `docker run`
-  final pulumi.Input<List<ContainerNetworksAdvanced>>? networksAdvanced;
+  final pulumi.Input<List<ContainerNetworksAdvanced>?>? networksAdvanced;
   /// The PID (Process) Namespace mode for the container. Either `container:&lt;name|id&gt;` or `host`.
-  final pulumi.Input<String>? pidMode;
+  final pulumi.Input<String?>? pidMode;
   /// Platform in the format `os[/arch[/variant]]` used for image lookup and container runtime, for example `linux/amd64`.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Publish a container's port(s) to the host.
-  final pulumi.Input<List<ContainerPort>>? ports;
+  final pulumi.Input<List<ContainerPort>?>? ports;
   /// If `true`, the container runs in privileged mode.
-  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool?>? privileged;
   /// Publish all ports of the container.
-  final pulumi.Input<bool>? publishAllPorts;
+  final pulumi.Input<bool?>? publishAllPorts;
   /// If `true`, the container will be started as readonly. Defaults to `false`.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// If `true`, it will remove anonymous volumes associated with the container. Defaults to `true`.
-  final pulumi.Input<bool>? removeVolumes;
+  final pulumi.Input<bool?>? removeVolumes;
   /// The restart policy for the container. Must be one of 'no', 'on-failure', 'always', 'unless-stopped'. Defaults to `no`.
-  final pulumi.Input<String>? restart;
+  final pulumi.Input<String?>? restart;
   /// If `true`, then the container will be automatically removed when it exits. Defaults to `false`.
-  final pulumi.Input<bool>? rm;
+  final pulumi.Input<bool?>? rm;
   /// Runtime to use for the container.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
   /// List of string values to customize labels for MLS systems, such as SELinux. See https://docs.docker.com/engine/reference/run/#security-configuration.
-  final pulumi.Input<List<String>>? securityOpts;
+  final pulumi.Input<List<String>?>? securityOpts;
   /// Size of `/dev/shm` in MBs.
-  final pulumi.Input<int>? shmSize;
+  final pulumi.Input<int?>? shmSize;
   /// If `true`, then the Docker container will be started after creation. If `false`, then the container is only created. Defaults to `true`.
-  final pulumi.Input<bool>? start;
+  final pulumi.Input<bool?>? start;
   /// If `true`, keep STDIN open even if not attached (`docker run -i`). Defaults to `false`.
-  final pulumi.Input<bool>? stdinOpen;
+  final pulumi.Input<bool?>? stdinOpen;
   /// Signal to stop a container (default `SIGTERM`).
-  final pulumi.Input<String>? stopSignal;
+  final pulumi.Input<String?>? stopSignal;
   /// Timeout (in seconds) to stop a container.
-  final pulumi.Input<int>? stopTimeout;
+  final pulumi.Input<int?>? stopTimeout;
   /// Key/value pairs for the storage driver options, e.g. `size`: `120G`
-  final pulumi.Input<Map<String, String>>? storageOpts;
+  final pulumi.Input<Map<String, String>?>? storageOpts;
   /// A map of kernel parameters (sysctls) to set in the container.
-  final pulumi.Input<Map<String, String>>? sysctls;
+  final pulumi.Input<Map<String, String>?>? sysctls;
   /// A map of container directories which should be replaced by `tmpfs mounts`, and their corresponding mount options.
-  final pulumi.Input<Map<String, String>>? tmpfs;
+  final pulumi.Input<Map<String, String>?>? tmpfs;
   /// If `true`, allocate a pseudo-tty (`docker run -t`). Defaults to `false`.
-  final pulumi.Input<bool>? tty;
+  final pulumi.Input<bool?>? tty;
   /// Ulimit options to add.
-  final pulumi.Input<List<ContainerUlimit>>? ulimits;
+  final pulumi.Input<List<ContainerUlimit>?>? ulimits;
   /// Specifies files to upload to the container before starting it. Only one of `content` or `contentBase64` can be set and at least one of them has to be set.
-  final pulumi.Input<List<ContainerUpload>>? uploads;
+  final pulumi.Input<List<ContainerUpload>?>? uploads;
   /// User used for run the first process. Format is `user` or `user:group` which user and group can be passed literally or by name.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
   /// Sets the usernamespace mode for the container when usernamespace remapping option is enabled.
-  final pulumi.Input<String>? usernsMode;
+  final pulumi.Input<String?>? usernsMode;
   /// Spec for mounting volumes in the container.
-  final pulumi.Input<List<ContainerVolume>>? volumes;
+  final pulumi.Input<List<ContainerVolume>?>? volumes;
   /// If `true`, then the Docker container is waited for being healthy state after creation. This requires your container to have a healthcheck, otherwise this provider will error. If `false`, then the container health state is not checked. Defaults to `false`.
-  final pulumi.Input<bool>? wait;
+  final pulumi.Input<bool?>? wait;
   /// The timeout in seconds to wait the container to be healthy after creation. Defaults to `60`.
-  final pulumi.Input<int>? waitTimeout;
+  final pulumi.Input<int?>? waitTimeout;
   /// The working directory for commands to run in.
-  final pulumi.Input<String>? workingDir;
+  final pulumi.Input<String?>? workingDir;
 
   /// Creates a new [ContainerState].
   /// [attach] If `true` attach to the container after its creation and waits the end of its execution. Defaults to `false`.
@@ -191,6 +193,7 @@ class ContainerState {
   /// [cpuShares] CPU shares (relative weight) for the container.
   /// [cpus] Specify how much of the available CPU resources a container can use. e.g a value of 1.5 means the container is guaranteed at most one and a half of the CPUs. Has precedence over `cpuPeriod` and `cpuQuota`.
   /// [destroyGraceSeconds] If defined will attempt to stop the container before destroying. Container will be destroyed after `n` seconds or on successful stop.
+  /// [deviceCgroupRules] Cgroup rules to allow access to classes of devices without binding specific device nodes.
   /// [deviceReadBps] Limit read rate (bytes per second) from a device. This is the equivalent to repeating `--device-read-bps` for `docker run`.
   /// [deviceReadIops] Limit read rate (IO per second) from a device. This is the equivalent to repeating `--device-read-iops` for `docker run`.
   /// [deviceRequests] Device requests for the container, such as CDI devices (e.g., `nvidia.com/gpu=all`) or GPU requests. This is the equivalent to using the `--device` flag for CDI devices in `docker run`.
@@ -269,6 +272,7 @@ class ContainerState {
     this.cpuShares,
     this.cpus,
     this.destroyGraceSeconds,
+    this.deviceCgroupRules,
     this.deviceReadBps,
     this.deviceReadIops,
     this.deviceRequests,
@@ -350,6 +354,7 @@ class ContainerState {
       'cpuShares': ?cpuShares,
       'cpus': ?cpus,
       'destroyGraceSeconds': ?destroyGraceSeconds,
+      'deviceCgroupRules': ?deviceCgroupRules,
       'deviceReadBps': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceReadBp>, List<Map<String, dynamic>>>(deviceReadBps, (value) => pulumi.Input.encodeList<ContainerDeviceReadBp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deviceReadIops': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceReadIop>, List<Map<String, dynamic>>>(deviceReadIops, (value) => pulumi.Input.encodeList<ContainerDeviceReadIop, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deviceRequests': ?pulumi.Input.mapOptionalInputValue<List<ContainerDeviceRequest>, List<Map<String, dynamic>>>(deviceRequests, (value) => pulumi.Input.encodeList<ContainerDeviceRequest, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -425,13 +430,14 @@ class ContainerState {
       cgroupnsMode: (() { final guardedValue = map['cgroupnsMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       command: (() { final guardedValue = map['command']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       containerLogs: (() { final guardedValue = map['containerLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      containerReadRefreshTimeoutMilliseconds: (() { final guardedValue = map['containerReadRefreshTimeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      cpuPeriod: (() { final guardedValue = map['cpuPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      cpuQuota: (() { final guardedValue = map['cpuQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerReadRefreshTimeoutMilliseconds: (() { final guardedValue = map['containerReadRefreshTimeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuPeriod: (() { final guardedValue = map['cpuPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuQuota: (() { final guardedValue = map['cpuQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cpuSet: (() { final guardedValue = map['cpuSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuShares: (() { final guardedValue = map['cpuShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpuShares: (() { final guardedValue = map['cpuShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cpus: (() { final guardedValue = map['cpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      destroyGraceSeconds: (() { final guardedValue = map['destroyGraceSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      destroyGraceSeconds: (() { final guardedValue = map['destroyGraceSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deviceCgroupRules: (() { final guardedValue = map['deviceCgroupRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deviceReadBps: (() { final guardedValue = map['deviceReadBps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceReadBp>(guardedValue, (value) => ContainerDeviceReadBp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deviceReadIops: (() { final guardedValue = map['deviceReadIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceReadIop>(guardedValue, (value) => ContainerDeviceReadIop.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deviceRequests: (() { final guardedValue = map['deviceRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerDeviceRequest>(guardedValue, (value) => ContainerDeviceRequest.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -444,7 +450,7 @@ class ContainerState {
       domainname: (() { final guardedValue = map['domainname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entrypoints: (() { final guardedValue = map['entrypoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       gpus: (() { final guardedValue = map['gpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupAdds: (() { final guardedValue = map['groupAdds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       healthcheck: (() { final guardedValue = map['healthcheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -457,10 +463,10 @@ class ContainerState {
       logDriver: (() { final guardedValue = map['logDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logOpts: (() { final guardedValue = map['logOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxRetryCount: (() { final guardedValue = map['maxRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memorySwap: (() { final guardedValue = map['memorySwap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetryCount: (() { final guardedValue = map['maxRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memorySwap: (() { final guardedValue = map['memorySwap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mounts: (() { final guardedValue = map['mounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerMount>(guardedValue, (value) => ContainerMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mustRun: (() { final guardedValue = map['mustRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -478,11 +484,11 @@ class ContainerState {
       rm: (() { final guardedValue = map['rm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityOpts: (() { final guardedValue = map['securityOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      shmSize: (() { final guardedValue = map['shmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shmSize: (() { final guardedValue = map['shmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stdinOpen: (() { final guardedValue = map['stdinOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stopSignal: (() { final guardedValue = map['stopSignal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageOpts: (() { final guardedValue = map['storageOpts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       sysctls: (() { final guardedValue = map['sysctls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tmpfs: (() { final guardedValue = map['tmpfs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -493,7 +499,7 @@ class ContainerState {
       usernsMode: (() { final guardedValue = map['usernsMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerVolume>(guardedValue, (value) => ContainerVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
       wait: (() { final guardedValue = map['wait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      waitTimeout: (() { final guardedValue = map['waitTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      waitTimeout: (() { final guardedValue = map['waitTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

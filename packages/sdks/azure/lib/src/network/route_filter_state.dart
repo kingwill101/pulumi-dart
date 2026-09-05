@@ -6,15 +6,15 @@ import 'route_filter_rule.dart';
 /// Input properties used for looking up and filtering RouteFilter resources.
 class RouteFilterState {
   /// The Azure Region where the Route Filter should exist. Changing this forces a new Route Filter to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Name which should be used for this Route Filter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Route Filter should exist. Changing this forces a new Route Filter to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `rule` block as defined below.
-  final pulumi.Input<RouteFilterRule>? rule;
+  final pulumi.Input<RouteFilterRule?>? rule;
   /// A mapping of tags which should be assigned to the Route Filter.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RouteFilterState].
   /// [location] The Azure Region where the Route Filter should exist. Changing this forces a new Route Filter to be created.

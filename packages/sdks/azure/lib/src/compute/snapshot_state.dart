@@ -8,37 +8,37 @@ class SnapshotState {
   /// Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`.
   ///
   /// &gt; **Note:** One of `sourceUri`, `sourceResourceId` or `storageAccountId` must be specified.
-  final pulumi.Input<String>? createOption;
+  final pulumi.Input<String?>? createOption;
   /// Specifies the ID of the Disk Access which should be used for this Snapshot. This is used in conjunction with setting `networkAccessPolicy` to `AllowPrivate`.
-  final pulumi.Input<String>? diskAccessId;
+  final pulumi.Input<String?>? diskAccessId;
   /// The size of the Snapshotted Disk in GB.
-  final pulumi.Input<int>? diskSizeGb;
+  final pulumi.Input<int?>? diskSizeGb;
   /// A `encryptionSettings` block as defined below.
   ///
   /// &gt; **Note:** Removing `encryptionSettings` forces a new resource to be created.
-  final pulumi.Input<SnapshotEncryptionSettings>? encryptionSettings;
+  final pulumi.Input<SnapshotEncryptionSettings?>? encryptionSettings;
   /// Specifies if the Snapshot is incremental. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? incrementalEnabled;
+  final pulumi.Input<bool?>? incrementalEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Snapshot resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Policy for accessing the disk via network. Possible values are `AllowAll`, `AllowPrivate`, or `DenyAll`. Defaults to `AllowAll`.
-  final pulumi.Input<String>? networkAccessPolicy;
+  final pulumi.Input<String?>? networkAccessPolicy;
   /// Policy for controlling export on the disk. Possible values are `true` or `false`. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group in which to create the Snapshot. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies a reference to an existing snapshot, when `createOption` is `Copy`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceUri;
+  final pulumi.Input<String?>? sourceUri;
   /// Specifies the ID of an storage account. Used with `sourceUri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether Trusted Launch is enabled for the Snapshot.
-  final pulumi.Input<bool>? trustedLaunchEnabled;
+  final pulumi.Input<bool?>? trustedLaunchEnabled;
 
   /// Creates a new [SnapshotState].
   /// [createOption] Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`.
@@ -98,7 +98,7 @@ class SnapshotState {
     return SnapshotState(
       createOption: (() { final guardedValue = map['createOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskAccessId: (() { final guardedValue = map['diskAccessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SnapshotEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       incrementalEnabled: (() { final guardedValue = map['incrementalEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

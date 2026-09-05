@@ -165,12 +165,12 @@ class Tenant extends pulumi.CustomResource {
           'aws:sesv2/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     sendingStatus = registerOutput<String>('sendingStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantArn = registerOutput<String>('tenantArn');
     tenantId = registerOutput<String>('tenantId');
     tenantName = registerOutput<String>('tenantName');
@@ -181,11 +181,12 @@ class Tenant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tenant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,8 +202,26 @@ class Tenant extends pulumi.CustomResource {
         ) {
     region = registerOutput<String>('region');
     sendingStatus = registerOutput<String>('sendingStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantArn = registerOutput<String>('tenantArn');
+    tenantId = registerOutput<String>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
+  }
+
+  /// Creates a typed reference to an existing [Tenant] resource.
+  Tenant.reference(String urn)
+    : super(
+        'aws:sesv2/tenant:Tenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    sendingStatus = registerOutput<String>('sendingStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantArn = registerOutput<String>('tenantArn');
     tenantId = registerOutput<String>('tenantId');
     tenantName = registerOutput<String>('tenantName');

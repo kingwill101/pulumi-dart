@@ -5,11 +5,11 @@ import 'resource_lf_tag_table_with_columns_column_wildcard.dart';
 
 class ResourceLfTagTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Set of column names for the table.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// Option to add column wildcard. See Column Wildcard for more details.
-  final pulumi.Input<ResourceLfTagTableWithColumnsColumnWildcard>? columnWildcard;
+  final pulumi.Input<ResourceLfTagTableWithColumnsColumnWildcard?>? columnWildcard;
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final pulumi.Input<String> databaseName;
   /// Name of the table resource.

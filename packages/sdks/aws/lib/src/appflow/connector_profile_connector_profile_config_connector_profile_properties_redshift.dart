@@ -6,15 +6,15 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
   /// Name of the Amazon S3 bucket associated with Snowflake.
   final pulumi.Input<String> bucketName;
   /// Bucket path that refers to the Amazon S3 bucket associated with Snowflake.
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Unique ID that's assigned to an Amazon Redshift cluster.
-  final pulumi.Input<String>? clusterIdentifier;
+  final pulumi.Input<String?>? clusterIdentifier;
   /// ARN of the IAM role that permits AppFlow to access the database through Data API.
-  final pulumi.Input<String>? dataApiRoleArn;
+  final pulumi.Input<String?>? dataApiRoleArn;
   /// Name of an Amazon Redshift database.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// JDBC URL of the Amazon Redshift cluster.
-  final pulumi.Input<String>? databaseUrl;
+  final pulumi.Input<String?>? databaseUrl;
   /// ARN of the IAM role.
   final pulumi.Input<String> roleArn;
 

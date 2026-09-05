@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_args.dart';
+import 'control_control_mapping_source.dart';
 import 'control_state.dart';
 
 /// Resource for managing an AWS Audit Manager Control.
@@ -14,12 +15,12 @@ import 'control_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.auditmanager.Control("example", {
-///     name: "example",
 ///     controlMappingSources: [{
 ///         sourceName: "example",
 ///         sourceSetUpOption: "Procedural_Controls_Mapping",
 ///         sourceType: "MANUAL",
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -27,12 +28,12 @@ import 'control_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.auditmanager.Control("example",
-///     name="example",
 ///     control_mapping_sources=[{
 ///         "source_name": "example",
 ///         "source_set_up_option": "Procedural_Controls_Mapping",
 ///         "source_type": "MANUAL",
-///     }])
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,7 +45,6 @@ import 'control_state.dart';
 /// {
 ///     var example = new Aws.Auditmanager.Control("example", new()
 ///     {
-///         Name = "example",
 ///         ControlMappingSources = new[]
 ///         {
 ///             new Aws.Auditmanager.Inputs.ControlControlMappingSourceArgs
@@ -54,6 +54,7 @@ import 'control_state.dart';
 ///                 SourceType = "MANUAL",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -69,7 +70,6 @@ import 'control_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := auditmanager.NewControl(ctx, "example", &auditmanager.ControlArgs{
-/// 			Name: pulumi.String("example"),
 /// 			ControlMappingSources: auditmanager.ControlControlMappingSourceArray{
 /// 				&auditmanager.ControlControlMappingSourceArgs{
 /// 					SourceName:        pulumi.String("example"),
@@ -77,6 +77,7 @@ import 'control_state.dart';
 /// 					SourceType:        pulumi.String("MANUAL"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,12 +96,12 @@ import 'control_state.dart';
 /// }
 ///
 /// resource "aws_auditmanager_control" "example" {
-///   name = "example"
 ///   control_mapping_sources {
 ///     source_name          = "example"
 ///     source_set_up_option = "Procedural_Controls_Mapping"
 ///     source_type          = "MANUAL"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -126,12 +127,12 @@ import 'control_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Control("example", ControlArgs.builder()
-///             .name("example")
 ///             .controlMappingSources(ControlControlMappingSourceArgs.builder()
 ///                 .sourceName("example")
 ///                 .sourceSetUpOption("Procedural_Controls_Mapping")
 ///                 .sourceType("MANUAL")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -142,11 +143,11 @@ import 'control_state.dart';
 ///   example:
 ///     type: aws:auditmanager:Control
 ///     properties:
-///       name: example
 ///       controlMappingSources:
 ///         - sourceName: example
 ///           sourceSetUpOption: Procedural_Controls_Mapping
 ///           sourceType: MANUAL
+///       name: example
 /// ```
 ///
 ///
@@ -174,10 +175,10 @@ class Control extends pulumi.CustomResource {
   late final pulumi.Output<String?> actionPlanInstructions;
   /// Title of the action plan for remediating the control.
   late final pulumi.Output<String?> actionPlanTitle;
-  /// Amazon Resource Name (ARN) of the control.
+  /// ARN of the control.
   late final pulumi.Output<String> arn;
   /// Data mapping sources. See `controlMappingSources` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> controlMappingSources;
+  late final pulumi.Output<List<ControlControlMappingSource>?> controlMappingSources;
   /// Description of the control.
   late final pulumi.Output<String?> description;
   /// Name of the control.
@@ -206,17 +207,17 @@ class Control extends pulumi.CustomResource {
           'aws:auditmanager/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     actionPlanInstructions = registerOutput<String?>('actionPlanInstructions');
     actionPlanTitle = registerOutput<String?>('actionPlanTitle');
     arn = registerOutput<String>('arn');
-    controlMappingSources = registerOutput<List<Map<String, dynamic>>?>('controlMappingSources');
+    controlMappingSources = registerOutput<List<ControlControlMappingSource>?>('controlMappingSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlControlMappingSource>(guardedValue, (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     testingInformation = registerOutput<String?>('testingInformation');
     type = registerOutput<String>('type');
   }
@@ -226,11 +227,12 @@ class Control extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Control._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -247,12 +249,34 @@ class Control extends pulumi.CustomResource {
     actionPlanInstructions = registerOutput<String?>('actionPlanInstructions');
     actionPlanTitle = registerOutput<String?>('actionPlanTitle');
     arn = registerOutput<String>('arn');
-    controlMappingSources = registerOutput<List<Map<String, dynamic>>?>('controlMappingSources');
+    controlMappingSources = registerOutput<List<ControlControlMappingSource>?>('controlMappingSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlControlMappingSource>(guardedValue, (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testingInformation = registerOutput<String?>('testingInformation');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Control] resource.
+  Control.reference(String urn)
+    : super(
+        'aws:auditmanager/control:Control',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionPlanInstructions = registerOutput<String?>('actionPlanInstructions');
+    actionPlanTitle = registerOutput<String?>('actionPlanTitle');
+    arn = registerOutput<String>('arn');
+    controlMappingSources = registerOutput<List<ControlControlMappingSource>?>('controlMappingSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlControlMappingSource>(guardedValue, (value) => ControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     testingInformation = registerOutput<String?>('testingInformation');
     type = registerOutput<String>('type');
   }

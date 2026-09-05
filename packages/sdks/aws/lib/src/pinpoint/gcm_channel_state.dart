@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GcmChannel resources.
 class GcmChannelState {
   /// Platform credential API key from Google. Conflicts with `serviceJson`.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Application ID.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Default authentication method used for GCM. Valid values: `KEY`, `TOKEN`. Defaults to `KEY`.
-  final pulumi.Input<String>? defaultAuthenticationMethod;
+  final pulumi.Input<String?>? defaultAuthenticationMethod;
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Service Account JSON from Google to use with the GCM API. Conflicts with `apiKey`.
-  final pulumi.Input<String>? serviceJson;
+  final pulumi.Input<String?>? serviceJson;
 
   /// Creates a new [GcmChannelState].
   /// [apiKey] Platform credential API key from Google. Conflicts with `serviceJson`.

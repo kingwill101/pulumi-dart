@@ -190,6 +190,17 @@ Future<GetAlertRuleResult> getAlertRule(
   return GetAlertRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetAlertRuleResult> getAlertRuleOutput(
+  GetAlertRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:sentinel/getAlertRule:getAlertRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertRuleResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Anomaly Alert Rule.
 ///
 /// ## Example Usage
@@ -217,7 +228,7 @@ Future<GetAlertRuleResult> getAlertRule(
 ///     logAnalyticsWorkspaceId: exampleLogAnalyticsWorkspaceOnboarding.workspaceId,
 ///     displayName: "Potential data staging",
 /// });
-/// export const id = example.apply(example => example.id);
+/// export const id = example.id;
 /// ```
 /// ```python
 /// import pulumi
@@ -307,7 +318,7 @@ Future<GetAlertRuleResult> getAlertRule(
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerManagedKeyEnabled: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -317,9 +328,7 @@ Future<GetAlertRuleResult> getAlertRule(
 /// 			LogAnalyticsWorkspaceId: exampleLogAnalyticsWorkspaceOnboarding.WorkspaceId,
 /// 			DisplayName:             pulumi.String("Potential data staging"),
 /// 		}, nil)
-/// 		ctx.Export("id", example.ApplyT(func(example sentinel.GetAlertRuleAnomalyResult) (*string, error) {
-/// 			return example.Id, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("id", example.Id())
 /// 		return nil
 /// 	})
 /// }
@@ -454,6 +463,17 @@ Future<GetAlertRuleAnomalyResult> getAlertRuleAnomaly(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAlertRuleAnomalyResult.fromMap(result);
+}
+
+pulumi.Output<GetAlertRuleAnomalyResult> getAlertRuleAnomalyOutput(
+  GetAlertRuleAnomalyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:sentinel/getAlertRuleAnomaly:getAlertRuleAnomaly',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertRuleAnomalyResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Sentinel Alert Rule Template.
@@ -593,4 +613,15 @@ Future<GetAlertRuleTemplateResult> getAlertRuleTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAlertRuleTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetAlertRuleTemplateResult> getAlertRuleTemplateOutput(
+  GetAlertRuleTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:sentinel/getAlertRuleTemplate:getAlertRuleTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertRuleTemplateResult.fromMap);
 }

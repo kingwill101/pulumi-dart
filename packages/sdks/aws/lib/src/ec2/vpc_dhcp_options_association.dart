@@ -12,8 +12,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const dnsResolver = new aws.ec2.VpcDhcpOptionsAssociation("dns_resolver", {
-///     vpcId: fooAwsVpc.id,
-///     dhcpOptionsId: foo.id,
+///     vpcId: foo.id,
+///     dhcpOptionsId: fooAwsVpcDhcpOptions.id,
 /// });
 /// ```
 /// ```python
@@ -21,8 +21,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// dns_resolver = aws.ec2.VpcDhcpOptionsAssociation("dns_resolver",
-///     vpc_id=foo_aws_vpc["id"],
-///     dhcp_options_id=foo["id"])
+///     vpc_id=foo["id"],
+///     dhcp_options_id=foo_aws_vpc_dhcp_options["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -34,8 +34,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// {
 ///     var dnsResolver = new Aws.Ec2.VpcDhcpOptionsAssociation("dns_resolver", new()
 ///     {
-///         VpcId = fooAwsVpc.Id,
-///         DhcpOptionsId = foo.Id,
+///         VpcId = foo.Id,
+///         DhcpOptionsId = fooAwsVpcDhcpOptions.Id,
 ///     });
 ///
 /// });
@@ -51,8 +51,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewVpcDhcpOptionsAssociation(ctx, "dns_resolver", &ec2.VpcDhcpOptionsAssociationArgs{
-/// 			VpcId:         pulumi.Any(fooAwsVpc.Id),
-/// 			DhcpOptionsId: pulumi.Any(foo.Id),
+/// 			VpcId:         pulumi.Any(foo.Id),
+/// 			DhcpOptionsId: pulumi.Any(fooAwsVpcDhcpOptions.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -71,8 +71,8 @@ import 'vpc_dhcp_options_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpcdhcpoptionsassociation" "dns_resolver" {
-///   vpc_id          = fooAwsVpc.id
-///   dhcp_options_id = foo.id
+///   vpc_id          = foo.id
+///   dhcp_options_id = fooAwsVpcDhcpOptions.id
 /// }
 /// ```
 /// ```java
@@ -97,8 +97,8 @@ import 'vpc_dhcp_options_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var dnsResolver = new VpcDhcpOptionsAssociation("dnsResolver", VpcDhcpOptionsAssociationArgs.builder()
-///             .vpcId(fooAwsVpc.id())
-///             .dhcpOptionsId(foo.id())
+///             .vpcId(foo.id())
+///             .dhcpOptionsId(fooAwsVpcDhcpOptions.id())
 ///             .build());
 ///
 ///     }
@@ -110,8 +110,8 @@ import 'vpc_dhcp_options_association_state.dart';
 ///     type: aws:ec2:VpcDhcpOptionsAssociation
 ///     name: dns_resolver
 ///     properties:
-///       vpcId: ${fooAwsVpc.id}
-///       dhcpOptionsId: ${foo.id}
+///       vpcId: ${foo.id}
+///       dhcpOptionsId: ${fooAwsVpcDhcpOptions.id}
 /// ```
 ///
 ///
@@ -144,7 +144,7 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');
@@ -156,11 +156,12 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcDhcpOptionsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcDhcpOptionsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -174,6 +175,20 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcDhcpOptionsAssociation] resource.
+  VpcDhcpOptionsAssociation.reference(String urn)
+    : super(
+        'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

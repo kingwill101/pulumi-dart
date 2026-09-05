@@ -9,11 +9,11 @@ import 'get_vpc_ipam_pool_cidrs_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_ipam_pool_cidrs_get_vpc_ipam_pool_cidrs_args_doc}
 class GetVpcIpamPoolCidrsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpcIpamPoolCidrsFilter>>? filters;
+  final pulumi.Input<List<GetVpcIpamPoolCidrsFilter>?>? filters;
   /// ID of the IPAM pool you would like the list of provisioned CIDRs.
   final pulumi.Input<String> ipamPoolId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetVpcIpamPoolCidrsArgs].
   /// [filters] Custom filter block as described below.

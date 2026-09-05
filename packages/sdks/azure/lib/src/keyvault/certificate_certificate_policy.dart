@@ -13,11 +13,11 @@ class CertificateCertificatePolicy {
   /// A `keyProperties` block as defined below.
   final pulumi.Input<CertificateCertificatePolicyKeyProperties> keyProperties;
   /// A `lifetimeAction` block as defined below.
-  final pulumi.Input<List<CertificateCertificatePolicyLifetimeAction>>? lifetimeActions;
+  final pulumi.Input<List<CertificateCertificatePolicyLifetimeAction>?>? lifetimeActions;
   /// A `secretProperties` block as defined below.
   final pulumi.Input<CertificateCertificatePolicySecretProperties> secretProperties;
   /// A `x509CertificateProperties` block as defined below. Required when `certificate` block is not specified.
-  final pulumi.Input<CertificateCertificatePolicyX509CertificateProperties>? x509CertificateProperties;
+  final pulumi.Input<CertificateCertificatePolicyX509CertificateProperties?>? x509CertificateProperties;
 
   /// Creates a new [CertificateCertificatePolicy].
   /// [issuerParameters] A `issuerParameters` block as defined below.

@@ -9,15 +9,15 @@ import 'agentcore_harness_tool_config_remote_mcp.dart';
 
 class AgentcoreHarnessToolConfig {
   /// AgentCore browser configuration. See `agentcoreBrowser` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreBrowser>? agentcoreBrowser;
+  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreBrowser?>? agentcoreBrowser;
   /// AgentCore code interpreter configuration. See `agentcoreCodeInterpreter` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreCodeInterpreter>? agentcoreCodeInterpreter;
+  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreCodeInterpreter?>? agentcoreCodeInterpreter;
   /// AgentCore gateway configuration. See `agentcoreGateway` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGateway>? agentcoreGateway;
+  final pulumi.Input<AgentcoreHarnessToolConfigAgentcoreGateway?>? agentcoreGateway;
   /// Inline function configuration. See `inlineFunction` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigInlineFunction>? inlineFunction;
+  final pulumi.Input<AgentcoreHarnessToolConfigInlineFunction?>? inlineFunction;
   /// Remote MCP server configuration. See `remoteMcp` Block below.
-  final pulumi.Input<AgentcoreHarnessToolConfigRemoteMcp>? remoteMcp;
+  final pulumi.Input<AgentcoreHarnessToolConfigRemoteMcp?>? remoteMcp;
 
   /// Creates a new [AgentcoreHarnessToolConfig].
   /// [agentcoreBrowser] AgentCore browser configuration. See `agentcoreBrowser` Block below.

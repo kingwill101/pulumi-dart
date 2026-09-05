@@ -6,9 +6,9 @@ import 'agent_flow_definition_connection_configuration_data.dart';
 
 class AgentFlowDefinitionConnectionConfiguration {
   /// The configuration of a connection originating from a Condition node. See Conditional Connection Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationConditional>? conditional;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationConditional?>? conditional;
   /// The configuration of a connection originating from a node that isn’t a Condition node. See Data Connection Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationData>? data;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationData?>? data;
 
   /// Creates a new [AgentFlowDefinitionConnectionConfiguration].
   /// [conditional] The configuration of a connection originating from a Condition node. See Conditional Connection Configuration for more information.

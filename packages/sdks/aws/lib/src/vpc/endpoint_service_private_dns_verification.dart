@@ -3,7 +3,7 @@ import 'endpoint_service_private_dns_verification_args.dart';
 import 'endpoint_service_private_dns_verification_state.dart';
 import 'endpoint_service_private_dns_verification_timeouts.dart';
 
-/// Resource for managing an AWS VPC (Virtual Private Cloud) Endpoint Service Private DNS Verification.
+/// Resource for managing an AWS VPC Endpoint Service Private DNS Verification.
 /// This resource begins the verification process by calling the [`StartVpcEndpointServicePrivateDnsVerification`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartVpcEndpointServicePrivateDnsVerification.html) API.
 /// The service provider should add a record to the DNS server _before_ creating this resource.
 ///
@@ -139,7 +139,7 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
           'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     serviceId = registerOutput<String>('serviceId');
@@ -152,11 +152,12 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointServicePrivateDnsVerificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointServicePrivateDnsVerification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -170,6 +171,21 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointServicePrivateDnsVerificationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    waitForVerification = registerOutput<bool?>('waitForVerification');
+  }
+
+  /// Creates a typed reference to an existing [EndpointServicePrivateDnsVerification] resource.
+  EndpointServicePrivateDnsVerification.reference(String urn)
+    : super(
+        'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     serviceId = registerOutput<String>('serviceId');
     timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointServicePrivateDnsVerificationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

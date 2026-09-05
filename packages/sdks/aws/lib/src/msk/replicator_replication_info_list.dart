@@ -7,12 +7,12 @@ import 'replicator_replication_info_list_topic_replication.dart';
 class ReplicatorReplicationInfoList {
   /// Configuration relating to consumer group replication.
   final pulumi.Input<List<ReplicatorReplicationInfoListConsumerGroupReplication>> consumerGroupReplications;
-  final pulumi.Input<String>? sourceKafkaClusterAlias;
+  final pulumi.Input<String?>? sourceKafkaClusterAlias;
   /// The ARN of the source Kafka cluster.
   final pulumi.Input<String> sourceKafkaClusterArn;
   /// The type of compression to use writing records to target Kafka cluster.
   final pulumi.Input<String> targetCompressionType;
-  final pulumi.Input<String>? targetKafkaClusterAlias;
+  final pulumi.Input<String?>? targetKafkaClusterAlias;
   /// The ARN of the target Kafka cluster.
   final pulumi.Input<String> targetKafkaClusterArn;
   /// Configuration relating to topic replication.

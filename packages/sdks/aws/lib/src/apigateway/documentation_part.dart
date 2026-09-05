@@ -209,7 +209,7 @@ class DocumentationPart extends pulumi.CustomResource {
           'aws:apigateway/documentationPart:DocumentationPart',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     documentationPartId = registerOutput<String>('documentationPartId');
     location = registerOutput<DocumentationPartLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationPartLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -223,11 +223,12 @@ class DocumentationPart extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentationPartState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentationPart._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,6 +242,22 @@ class DocumentationPart extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    documentationPartId = registerOutput<String>('documentationPartId');
+    location = registerOutput<DocumentationPartLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationPartLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<String>('properties');
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
+  }
+
+  /// Creates a typed reference to an existing [DocumentationPart] resource.
+  DocumentationPart.reference(String urn)
+    : super(
+        'aws:apigateway/documentationPart:DocumentationPart',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     documentationPartId = registerOutput<String>('documentationPartId');
     location = registerOutput<DocumentationPartLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationPartLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     properties = registerOutput<String>('properties');

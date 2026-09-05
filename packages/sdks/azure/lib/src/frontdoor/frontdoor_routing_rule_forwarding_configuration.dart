@@ -6,19 +6,19 @@ class FrontdoorRoutingRuleForwardingConfiguration {
   /// Specifies the name of the Backend Pool to forward the incoming traffic to.
   final pulumi.Input<String> backendPoolName;
   /// Specify the minimum caching duration (in ISO8601 notation e.g. `P1DT2H` for 1 day and 2 hours). Needs to be greater than 0 and smaller than 365 days. `cacheDuration` works only in combination with `cacheEnabled` set to `true`.
-  final pulumi.Input<String>? cacheDuration;
+  final pulumi.Input<String?>? cacheDuration;
   /// Specifies whether to Enable caching or not. Valid options are `true` or `false`. Defaults to `false`.
-  final pulumi.Input<bool>? cacheEnabled;
+  final pulumi.Input<bool?>? cacheEnabled;
   /// Defines cache behaviour in relation to query string parameters. Valid options are `StripAll`, `StripAllExcept`, `StripOnly` or `StripNone`. Defaults to `StripAll`.
-  final pulumi.Input<String>? cacheQueryParameterStripDirective;
+  final pulumi.Input<String?>? cacheQueryParameterStripDirective;
   /// Specify query parameters (array). Works only in combination with `cacheQueryParameterStripDirective` set to `StripAllExcept` or `StripOnly`.
-  final pulumi.Input<List<String>>? cacheQueryParameters;
+  final pulumi.Input<List<String>?>? cacheQueryParameters;
   /// Whether to use dynamic compression when caching. Valid options are `true` or `false`. Defaults to `false`.
-  final pulumi.Input<bool>? cacheUseDynamicCompression;
+  final pulumi.Input<bool?>? cacheUseDynamicCompression;
   /// Path to use when constructing the request to forward to the backend. This functions as a URL Rewrite. Default behaviour preserves the URL path.
-  final pulumi.Input<String>? customForwardingPath;
+  final pulumi.Input<String?>? customForwardingPath;
   /// Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`. Defaults to `HttpsOnly`.
-  final pulumi.Input<String>? forwardingProtocol;
+  final pulumi.Input<String?>? forwardingProtocol;
 
   /// Creates a new [FrontdoorRoutingRuleForwardingConfiguration].
   /// [backendPoolName] Specifies the name of the Backend Pool to forward the incoming traffic to.

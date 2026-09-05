@@ -345,12 +345,12 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:grafana/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    groupIds = registerOutput<List<String>?>('groupIds');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    userIds = registerOutput<List<String>?>('userIds');
+    userIds = registerOutput<List<String>?>('userIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -359,11 +359,12 @@ class RoleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -377,10 +378,26 @@ class RoleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    groupIds = registerOutput<List<String>?>('groupIds');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    userIds = registerOutput<List<String>?>('userIds');
+    userIds = registerOutput<List<String>?>('userIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [RoleAssociation] resource.
+  RoleAssociation.reference(String urn)
+    : super(
+        'aws:grafana/roleAssociation:RoleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    userIds = registerOutput<List<String>?>('userIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

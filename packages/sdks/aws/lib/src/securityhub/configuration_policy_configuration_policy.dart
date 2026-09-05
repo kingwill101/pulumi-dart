@@ -5,9 +5,9 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 
 class ConfigurationPolicyConfigurationPolicy {
   /// A list that defines which security standards are enabled in the configuration policy. It must be defined if `serviceEnabled` is set to true.
-  final pulumi.Input<List<String>>? enabledStandardArns;
+  final pulumi.Input<List<String>?>? enabledStandardArns;
   /// Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration>? securityControlsConfiguration;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration?>? securityControlsConfiguration;
   /// Indicates whether Security Hub is enabled in the policy.
   final pulumi.Input<bool> serviceEnabled;
 

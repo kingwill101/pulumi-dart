@@ -5,13 +5,13 @@ import 'kubernetes_cluster_key_vault_secrets_provider_secret_identity.dart';
 
 class KubernetesClusterKeyVaultSecretsProvider {
   /// An `secretIdentity` block is exported. The exported attributes are defined below.
-  final pulumi.Input<List<KubernetesClusterKeyVaultSecretsProviderSecretIdentity>>? secretIdentities;
+  final pulumi.Input<List<KubernetesClusterKeyVaultSecretsProviderSecretIdentity>?>? secretIdentities;
   /// Should the secret store CSI driver on the AKS cluster be enabled?
-  final pulumi.Input<bool>? secretRotationEnabled;
+  final pulumi.Input<bool?>? secretRotationEnabled;
   /// The interval to poll for secret rotation. This attribute is only set when `secretRotationEnabled` is true. Defaults to `2m`.
   ///
   /// &gt; **Note:** To enable`keyVaultSecretsProvider` either `secretRotationEnabled` or `secretRotationInterval` must be specified.
-  final pulumi.Input<String>? secretRotationInterval;
+  final pulumi.Input<String?>? secretRotationInterval;
 
   /// Creates a new [KubernetesClusterKeyVaultSecretsProvider].
   /// [secretIdentities] An `secretIdentity` block is exported. The exported attributes are defined below.

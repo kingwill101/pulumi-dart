@@ -6,13 +6,13 @@ import 'source_control_slot_github_action_configuration_container_configuration.
 
 class SourceControlSlotGithubActionConfiguration {
   /// A `codeConfiguration` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<SourceControlSlotGithubActionConfigurationCodeConfiguration>? codeConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationCodeConfiguration?>? codeConfiguration;
   /// A `containerConfiguration` block as detailed below.
-  final pulumi.Input<SourceControlSlotGithubActionConfigurationContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationContainerConfiguration?>? containerConfiguration;
   /// Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? generateWorkflowFile;
+  final pulumi.Input<bool?>? generateWorkflowFile;
   /// Denotes this action uses a Linux base image.
-  final pulumi.Input<bool>? linuxAction;
+  final pulumi.Input<bool?>? linuxAction;
 
   /// Creates a new [SourceControlSlotGithubActionConfiguration].
   /// [codeConfiguration] A `codeConfiguration` block as detailed below. Changing this forces a new resource to be created.

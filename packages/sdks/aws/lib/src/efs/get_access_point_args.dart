@@ -10,9 +10,9 @@ class GetAccessPointArgs {
   /// ID that identifies the file system.
   final pulumi.Input<String> accessPointId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetAccessPointArgs].
   /// [accessPointId] ID that identifies the file system.

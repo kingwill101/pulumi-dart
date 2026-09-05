@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redis_cache_access_policy_cache_access_policy_args_doc}
 class CacheAccessPolicyArgs {
   /// The name of the Redis Cache Access Policy. Changing this forces a new Redis Cache Access Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Permissions that are going to be assigned to this Redis Cache Access Policy.
   final pulumi.Input<String> permissions;
   /// The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy to be created.

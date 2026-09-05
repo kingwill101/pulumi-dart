@@ -342,7 +342,7 @@ class HubContentReference extends pulumi.CustomResource {
           'aws:sagemaker/hubContentReference:HubContentReference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     hubArn = registerOutput<String>('hubArn');
     hubContentArn = registerOutput<String>('hubContentArn');
@@ -353,8 +353,8 @@ class HubContentReference extends pulumi.CustomResource {
     minVersion = registerOutput<String?>('minVersion');
     region = registerOutput<String>('region');
     sagemakerPublicHubContentArn = registerOutput<String>('sagemakerPublicHubContentArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<HubContentReferenceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubContentReferenceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -363,11 +363,12 @@ class HubContentReference extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HubContentReferenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HubContentReference._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -390,8 +391,31 @@ class HubContentReference extends pulumi.CustomResource {
     minVersion = registerOutput<String?>('minVersion');
     region = registerOutput<String>('region');
     sagemakerPublicHubContentArn = registerOutput<String>('sagemakerPublicHubContentArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<HubContentReferenceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubContentReferenceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [HubContentReference] resource.
+  HubContentReference.reference(String urn)
+    : super(
+        'aws:sagemaker/hubContentReference:HubContentReference',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    hubArn = registerOutput<String>('hubArn');
+    hubContentArn = registerOutput<String>('hubContentArn');
+    hubContentName = registerOutput<String>('hubContentName');
+    hubContentStatus = registerOutput<String>('hubContentStatus');
+    hubContentVersion = registerOutput<String>('hubContentVersion');
+    hubName = registerOutput<String>('hubName');
+    minVersion = registerOutput<String?>('minVersion');
+    region = registerOutput<String>('region');
+    sagemakerPublicHubContentArn = registerOutput<String>('sagemakerPublicHubContentArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<HubContentReferenceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubContentReferenceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

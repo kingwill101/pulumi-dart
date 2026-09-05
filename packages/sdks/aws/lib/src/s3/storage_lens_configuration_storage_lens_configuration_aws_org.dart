@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAwsOrg {
-  /// Amazon Resource Name (ARN) of the Amazon Web Services organization.
+  /// ARN of the Amazon Web Services organization.
   final pulumi.Input<String> arn;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAwsOrg].
-  /// [arn] Amazon Resource Name (ARN) of the Amazon Web Services organization.
+  /// [arn] ARN of the Amazon Web Services organization.
   const StorageLensConfigurationStorageLensConfigurationAwsOrg({
     required this.arn,
   });

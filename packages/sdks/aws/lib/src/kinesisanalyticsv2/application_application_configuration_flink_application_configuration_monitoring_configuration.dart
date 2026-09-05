@@ -6,9 +6,9 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
   /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `logLevel` or `metricsLevel` attribute values to be effective.
   final pulumi.Input<String> configurationType;
   /// Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Describes the granularity of the CloudWatch Logs for an application. Valid values: `APPLICATION`, `OPERATOR`, `PARALLELISM`, `TASK`.
-  final pulumi.Input<String>? metricsLevel;
+  final pulumi.Input<String?>? metricsLevel;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration].
   /// [configurationType] Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `logLevel` or `metricsLevel` attribute values to be effective.

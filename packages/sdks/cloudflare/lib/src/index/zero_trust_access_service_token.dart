@@ -19,6 +19,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///     zoneId: "zone_id",
 ///     clientSecretVersion: 0,
 ///     duration: "60m",
+///     enabled: true,
 ///     previousClientSecretExpiresAt: "2014-01-01T05:20:00.12345Z",
 /// });
 /// ```
@@ -31,6 +32,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///     zone_id="zone_id",
 ///     client_secret_version=float(0),
 ///     duration="60m",
+///     enabled=True,
 ///     previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
 /// ```
 /// ```csharp
@@ -47,6 +49,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///         ZoneId = "zone_id",
 ///         ClientSecretVersion = 0,
 ///         Duration = "60m",
+///         Enabled = true,
 ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
 ///     });
 ///
@@ -67,6 +70,7 @@ import 'zero_trust_access_service_token_state.dart';
 /// 			ZoneId:                        pulumi.String("zone_id"),
 /// 			ClientSecretVersion:           pulumi.Float64(0),
 /// 			Duration:                      pulumi.String("60m"),
+/// 			Enabled:                       pulumi.Bool(true),
 /// 			PreviousClientSecretExpiresAt: pulumi.String("2014-01-01T05:20:00.12345Z"),
 /// 		})
 /// 		if err != nil {
@@ -90,6 +94,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///   zone_id                           = "zone_id"
 ///   client_secret_version             = 0
 ///   duration                          = "60m"
+///   enabled                           = true
 ///   previous_client_secret_expires_at = "2014-01-01T05:20:00.12345Z"
 /// }
 /// ```
@@ -119,6 +124,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///             .zoneId("zone_id")
 ///             .clientSecretVersion(0.0)
 ///             .duration("60m")
+///             .enabled(true)
 ///             .previousClientSecretExpiresAt("2014-01-01T05:20:00.12345Z")
 ///             .build());
 ///
@@ -135,6 +141,7 @@ import 'zero_trust_access_service_token_state.dart';
 ///       zoneId: zone_id
 ///       clientSecretVersion: 0
 ///       duration: 60m
+///       enabled: true
 ///       previousClientSecretExpiresAt: 2014-01-01T05:20:00.12345Z
 /// ```
 ///
@@ -155,6 +162,8 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
   late final pulumi.Output<double> clientSecretVersion;
   /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
   late final pulumi.Output<String> duration;
+  /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+  late final pulumi.Output<bool> enabled;
   late final pulumi.Output<String> expiresAt;
   /// The name of the service token.
   late final pulumi.Output<String> name;
@@ -175,7 +184,7 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accountId = registerOutput<String?>('accountId');
@@ -183,6 +192,7 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     clientSecretVersion = registerOutput<double>('clientSecretVersion');
     duration = registerOutput<String>('duration');
+    enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');
@@ -218,6 +228,7 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     clientSecretVersion = registerOutput<double>('clientSecretVersion');
     duration = registerOutput<String>('duration');
+    enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');
@@ -239,6 +250,7 @@ class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     clientSecretVersion = registerOutput<double>('clientSecretVersion');
     duration = registerOutput<String>('duration');
+    enabled = registerOutput<bool>('enabled');
     expiresAt = registerOutput<String>('expiresAt');
     this.name = registerOutput<String>('name');
     previousClientSecretExpiresAt = registerOutput<String?>('previousClientSecretExpiresAt');

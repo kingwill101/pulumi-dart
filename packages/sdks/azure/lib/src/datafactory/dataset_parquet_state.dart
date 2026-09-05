@@ -11,35 +11,35 @@ class DatasetParquetState {
   /// A map of additional properties to associate with the Data Factory Dataset.
   ///
   /// The following supported locations for a Parquet Dataset:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// A `azureBlobFsLocation` block as defined below.
-  final pulumi.Input<DatasetParquetAzureBlobFsLocation>? azureBlobFsLocation;
+  final pulumi.Input<DatasetParquetAzureBlobFsLocation?>? azureBlobFsLocation;
   /// A `azureBlobStorageLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Parquet Dataset:
-  final pulumi.Input<DatasetParquetAzureBlobStorageLocation>? azureBlobStorageLocation;
+  final pulumi.Input<DatasetParquetAzureBlobStorageLocation?>? azureBlobStorageLocation;
   /// The compression codec used to read/write text files. Valid values are `bzip2`, `gzip`, `deflate`, `ZipDeflate`, `TarGzip`, `Tar`, `snappy`, or `lz4`. Please note these values are case-sensitive.
-  final pulumi.Input<String>? compressionCodec;
+  final pulumi.Input<String?>? compressionCodec;
   /// Specifies the compression level. Possible values are `Optimal` and `Fastest`,
-  final pulumi.Input<String>? compressionLevel;
+  final pulumi.Input<String?>? compressionLevel;
   /// The Data Factory ID in which to associate the Dataset with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// A `httpServerLocation` block as defined below.
-  final pulumi.Input<DatasetParquetHttpServerLocation>? httpServerLocation;
+  final pulumi.Input<DatasetParquetHttpServerLocation?>? httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
-  final pulumi.Input<String>? linkedServiceName;
+  final pulumi.Input<String?>? linkedServiceName;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetParquetSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetParquetSchemaColumn>?>? schemaColumns;
 
   /// Creates a new [DatasetParquetState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.

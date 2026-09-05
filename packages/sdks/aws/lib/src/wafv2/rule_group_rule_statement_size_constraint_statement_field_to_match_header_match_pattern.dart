@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
-  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<Map<String, dynamic>?>? all;
   /// An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
-  final pulumi.Input<List<String>>? excludedHeaders;
+  final pulumi.Input<List<String>?>? excludedHeaders;
   /// An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
-  final pulumi.Input<List<String>>? includedHeaders;
+  final pulumi.Input<List<String>?>? includedHeaders;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.

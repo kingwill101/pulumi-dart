@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterExtensionAksAssignedIdentity {
   /// The principal ID of resource identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The tenant ID of resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [KubernetesClusterExtensionAksAssignedIdentity].
   /// [principalId] The principal ID of resource identity.

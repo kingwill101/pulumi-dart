@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_gateway_service_args.dart';
+import 'express_gateway_service_ingress_path.dart';
+import 'express_gateway_service_network_configuration.dart';
 import 'express_gateway_service_primary_container.dart';
+import 'express_gateway_service_scaling_target.dart';
 import 'express_gateway_service_state.dart';
 import 'express_gateway_service_timeouts.dart';
 
@@ -18,11 +21,11 @@ import 'express_gateway_service_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.ExpressGatewayService("example", {
-///     executionRoleArn: execution.arn,
-///     infrastructureRoleArn: infrastructure.arn,
 ///     primaryContainer: {
 ///         image: "nginx:latest",
 ///     },
+///     executionRoleArn: execution.arn,
+///     infrastructureRoleArn: infrastructure.arn,
 /// });
 /// ```
 /// ```python
@@ -30,11 +33,11 @@ import 'express_gateway_service_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.ExpressGatewayService("example",
-///     execution_role_arn=execution["arn"],
-///     infrastructure_role_arn=infrastructure["arn"],
 ///     primary_container={
 ///         "image": "nginx:latest",
-///     })
+///     },
+///     execution_role_arn=execution["arn"],
+///     infrastructure_role_arn=infrastructure["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,12 +49,12 @@ import 'express_gateway_service_timeouts.dart';
 /// {
 ///     var example = new Aws.Ecs.ExpressGatewayService("example", new()
 ///     {
-///         ExecutionRoleArn = execution.Arn,
-///         InfrastructureRoleArn = infrastructure.Arn,
 ///         PrimaryContainer = new Aws.Ecs.Inputs.ExpressGatewayServicePrimaryContainerArgs
 ///         {
 ///             Image = "nginx:latest",
 ///         },
+///         ExecutionRoleArn = execution.Arn,
+///         InfrastructureRoleArn = infrastructure.Arn,
 ///     });
 ///
 /// });
@@ -67,11 +70,11 @@ import 'express_gateway_service_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewExpressGatewayService(ctx, "example", &ecs.ExpressGatewayServiceArgs{
-/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
-/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
 /// 			PrimaryContainer: &ecs.ExpressGatewayServicePrimaryContainerArgs{
 /// 				Image: pulumi.String("nginx:latest"),
 /// 			},
+/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
+/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,11 +93,11 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_expressgatewayservice" "example" {
-///   execution_role_arn      = execution.arn
-///   infrastructure_role_arn = infrastructure.arn
 ///   primary_container = {
 ///     image = "nginx:latest"
 ///   }
+///   execution_role_arn      = execution.arn
+///   infrastructure_role_arn = infrastructure.arn
 /// }
 /// ```
 /// ```java
@@ -120,11 +123,11 @@ import 'express_gateway_service_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ExpressGatewayService("example", ExpressGatewayServiceArgs.builder()
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
 ///             .primaryContainer(ExpressGatewayServicePrimaryContainerArgs.builder()
 ///                 .image("nginx:latest")
 ///                 .build())
+///             .executionRoleArn(execution.arn())
+///             .infrastructureRoleArn(infrastructure.arn())
 ///             .build());
 ///
 ///     }
@@ -135,10 +138,10 @@ import 'express_gateway_service_timeouts.dart';
 ///   example:
 ///     type: aws:ecs:ExpressGatewayService
 ///     properties:
-///       executionRoleArn: ${execution.arn}
-///       infrastructureRoleArn: ${infrastructure.arn}
 ///       primaryContainer:
 ///         image: nginx:latest
+///       executionRoleArn: ${execution.arn}
+///       infrastructureRoleArn: ${infrastructure.arn}
 /// ```
 ///
 ///
@@ -150,13 +153,7 @@ import 'express_gateway_service_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.ExpressGatewayService("example", {
-///     executionRoleArn: execution.arn,
-///     infrastructureRoleArn: infrastructure.arn,
-///     healthCheckPath: "/health",
 ///     primaryContainer: {
-///         image: "my-app:latest",
-///         containerPort: 8080,
-///         commands: ["./start.sh"],
 ///         awsLogsConfigurations: [{
 ///             logGroup: app.name,
 ///         }],
@@ -174,7 +171,13 @@ import 'express_gateway_service_timeouts.dart';
 ///             name: "DB_PASSWORD",
 ///             valueFrom: dbPassword.arn,
 ///         }],
+///         image: "my-app:latest",
+///         containerPort: 8080,
+///         commands: ["./start.sh"],
 ///     },
+///     executionRoleArn: execution.arn,
+///     infrastructureRoleArn: infrastructure.arn,
+///     healthCheckPath: "/health",
 /// });
 /// ```
 /// ```python
@@ -182,13 +185,7 @@ import 'express_gateway_service_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.ExpressGatewayService("example",
-///     execution_role_arn=execution["arn"],
-///     infrastructure_role_arn=infrastructure["arn"],
-///     health_check_path="/health",
 ///     primary_container={
-///         "image": "my-app:latest",
-///         "container_port": 8080,
-///         "commands": ["./start.sh"],
 ///         "aws_logs_configurations": [{
 ///             "log_group": app["name"],
 ///         }],
@@ -206,7 +203,13 @@ import 'express_gateway_service_timeouts.dart';
 ///             "name": "DB_PASSWORD",
 ///             "value_from": db_password["arn"],
 ///         }],
-///     })
+///         "image": "my-app:latest",
+///         "container_port": 8080,
+///         "commands": ["./start.sh"],
+///     },
+///     execution_role_arn=execution["arn"],
+///     infrastructure_role_arn=infrastructure["arn"],
+///     health_check_path="/health")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -218,17 +221,8 @@ import 'express_gateway_service_timeouts.dart';
 /// {
 ///     var example = new Aws.Ecs.ExpressGatewayService("example", new()
 ///     {
-///         ExecutionRoleArn = execution.Arn,
-///         InfrastructureRoleArn = infrastructure.Arn,
-///         HealthCheckPath = "/health",
 ///         PrimaryContainer = new Aws.Ecs.Inputs.ExpressGatewayServicePrimaryContainerArgs
 ///         {
-///             Image = "my-app:latest",
-///             ContainerPort = 8080,
-///             Commands = new[]
-///             {
-///                 "./start.sh",
-///             },
 ///             AwsLogsConfigurations = new[]
 ///             {
 ///                 new Aws.Ecs.Inputs.ExpressGatewayServicePrimaryContainerAwsLogsConfigurationArgs
@@ -257,7 +251,16 @@ import 'express_gateway_service_timeouts.dart';
 ///                     ValueFrom = dbPassword.Arn,
 ///                 },
 ///             },
+///             Image = "my-app:latest",
+///             ContainerPort = 8080,
+///             Commands = new[]
+///             {
+///                 "./start.sh",
+///             },
 ///         },
+///         ExecutionRoleArn = execution.Arn,
+///         InfrastructureRoleArn = infrastructure.Arn,
+///         HealthCheckPath = "/health",
 ///     });
 ///
 /// });
@@ -273,15 +276,7 @@ import 'express_gateway_service_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewExpressGatewayService(ctx, "example", &ecs.ExpressGatewayServiceArgs{
-/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
-/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
-/// 			HealthCheckPath:       pulumi.String("/health"),
 /// 			PrimaryContainer: &ecs.ExpressGatewayServicePrimaryContainerArgs{
-/// 				Image:         pulumi.String("my-app:latest"),
-/// 				ContainerPort: pulumi.Int(8080),
-/// 				Commands: pulumi.StringArray{
-/// 					pulumi.String("./start.sh"),
-/// 				},
 /// 				AwsLogsConfigurations: ecs.ExpressGatewayServicePrimaryContainerAwsLogsConfigurationArray{
 /// 					&ecs.ExpressGatewayServicePrimaryContainerAwsLogsConfigurationArgs{
 /// 						LogGroup: pulumi.Any(app.Name),
@@ -303,7 +298,15 @@ import 'express_gateway_service_timeouts.dart';
 /// 						ValueFrom: pulumi.Any(dbPassword.Arn),
 /// 					},
 /// 				},
+/// 				Image:         pulumi.String("my-app:latest"),
+/// 				ContainerPort: pulumi.Int(8080),
+/// 				Commands: pulumi.StringArray{
+/// 					pulumi.String("./start.sh"),
+/// 				},
 /// 			},
+/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
+/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
+/// 			HealthCheckPath:       pulumi.String("/health"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -322,13 +325,7 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_expressgatewayservice" "example" {
-///   execution_role_arn      = execution.arn
-///   infrastructure_role_arn = infrastructure.arn
-///   health_check_path       = "/health"
 ///   primary_container = {
-///     image          = "my-app:latest"
-///     container_port = 8080
-///     commands       = ["./start.sh"]
 ///     aws_logs_configurations = [{
 ///       "logGroup" = app.name
 ///     }]
@@ -343,7 +340,13 @@ import 'express_gateway_service_timeouts.dart';
 ///       "name"      = "DB_PASSWORD"
 ///       "valueFrom" = dbPassword.arn
 ///     }]
+///     image          = "my-app:latest"
+///     container_port = 8080
+///     commands       = ["./start.sh"]
 ///   }
+///   execution_role_arn      = execution.arn
+///   infrastructure_role_arn = infrastructure.arn
+///   health_check_path       = "/health"
 /// }
 /// ```
 /// ```java
@@ -372,13 +375,7 @@ import 'express_gateway_service_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ExpressGatewayService("example", ExpressGatewayServiceArgs.builder()
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
-///             .healthCheckPath("/health")
 ///             .primaryContainer(ExpressGatewayServicePrimaryContainerArgs.builder()
-///                 .image("my-app:latest")
-///                 .containerPort(8080)
-///                 .commands("./start.sh")
 ///                 .awsLogsConfigurations(ExpressGatewayServicePrimaryContainerAwsLogsConfigurationArgs.builder()
 ///                     .logGroup(app.name())
 ///                     .build())
@@ -395,7 +392,13 @@ import 'express_gateway_service_timeouts.dart';
 ///                     .name("DB_PASSWORD")
 ///                     .valueFrom(dbPassword.arn())
 ///                     .build())
+///                 .image("my-app:latest")
+///                 .containerPort(8080)
+///                 .commands("./start.sh")
 ///                 .build())
+///             .executionRoleArn(execution.arn())
+///             .infrastructureRoleArn(infrastructure.arn())
+///             .healthCheckPath("/health")
 ///             .build());
 ///
 ///     }
@@ -406,14 +409,7 @@ import 'express_gateway_service_timeouts.dart';
 ///   example:
 ///     type: aws:ecs:ExpressGatewayService
 ///     properties:
-///       executionRoleArn: ${execution.arn}
-///       infrastructureRoleArn: ${infrastructure.arn}
-///       healthCheckPath: /health
 ///       primaryContainer:
-///         image: my-app:latest
-///         containerPort: 8080
-///         commands:
-///           - ./start.sh
 ///         awsLogsConfigurations:
 ///           - logGroup: ${app.name}
 ///         environments:
@@ -424,6 +420,13 @@ import 'express_gateway_service_timeouts.dart';
 ///         secrets:
 ///           - name: DB_PASSWORD
 ///             valueFrom: ${dbPassword.arn}
+///         image: my-app:latest
+///         containerPort: 8080
+///         commands:
+///           - ./start.sh
+///       executionRoleArn: ${execution.arn}
+///       infrastructureRoleArn: ${infrastructure.arn}
+///       healthCheckPath: /health
 /// ```
 ///
 ///
@@ -435,12 +438,6 @@ import 'express_gateway_service_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.ExpressGatewayService("example", {
-///     serviceName: "my-express-service",
-///     cluster: main.name,
-///     executionRoleArn: execution.arn,
-///     infrastructureRoleArn: infrastructure.arn,
-///     cpu: "256",
-///     memory: "512",
 ///     primaryContainer: {
 ///         image: "nginx:latest",
 ///         containerPort: 80,
@@ -452,6 +449,12 @@ import 'express_gateway_service_timeouts.dart';
 ///         ],
 ///         securityGroups: [app.id],
 ///     }],
+///     serviceName: "my-express-service",
+///     cluster: main.name,
+///     executionRoleArn: execution.arn,
+///     infrastructureRoleArn: infrastructure.arn,
+///     cpu: "256",
+///     memory: "512",
 /// });
 /// ```
 /// ```python
@@ -459,12 +462,6 @@ import 'express_gateway_service_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.ExpressGatewayService("example",
-///     service_name="my-express-service",
-///     cluster=main["name"],
-///     execution_role_arn=execution["arn"],
-///     infrastructure_role_arn=infrastructure["arn"],
-///     cpu="256",
-///     memory="512",
 ///     primary_container={
 ///         "image": "nginx:latest",
 ///         "container_port": 80,
@@ -475,7 +472,13 @@ import 'express_gateway_service_timeouts.dart';
 ///             private_b["id"],
 ///         ],
 ///         "security_groups": [app["id"]],
-///     }])
+///     }],
+///     service_name="my-express-service",
+///     cluster=main["name"],
+///     execution_role_arn=execution["arn"],
+///     infrastructure_role_arn=infrastructure["arn"],
+///     cpu="256",
+///     memory="512")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -487,12 +490,6 @@ import 'express_gateway_service_timeouts.dart';
 /// {
 ///     var example = new Aws.Ecs.ExpressGatewayService("example", new()
 ///     {
-///         ServiceName = "my-express-service",
-///         Cluster = main.Name,
-///         ExecutionRoleArn = execution.Arn,
-///         InfrastructureRoleArn = infrastructure.Arn,
-///         Cpu = "256",
-///         Memory = "512",
 ///         PrimaryContainer = new Aws.Ecs.Inputs.ExpressGatewayServicePrimaryContainerArgs
 ///         {
 ///             Image = "nginx:latest",
@@ -513,6 +510,12 @@ import 'express_gateway_service_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         ServiceName = "my-express-service",
+///         Cluster = main.Name,
+///         ExecutionRoleArn = execution.Arn,
+///         InfrastructureRoleArn = infrastructure.Arn,
+///         Cpu = "256",
+///         Memory = "512",
 ///     });
 ///
 /// });
@@ -528,12 +531,6 @@ import 'express_gateway_service_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewExpressGatewayService(ctx, "example", &ecs.ExpressGatewayServiceArgs{
-/// 			ServiceName:           pulumi.String("my-express-service"),
-/// 			Cluster:               pulumi.Any(main.Name),
-/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
-/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
-/// 			Cpu:                   pulumi.String("256"),
-/// 			Memory:                pulumi.String("512"),
 /// 			PrimaryContainer: &ecs.ExpressGatewayServicePrimaryContainerArgs{
 /// 				Image:         pulumi.String("nginx:latest"),
 /// 				ContainerPort: pulumi.Int(80),
@@ -549,6 +546,12 @@ import 'express_gateway_service_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ServiceName:           pulumi.String("my-express-service"),
+/// 			Cluster:               pulumi.Any(main.Name),
+/// 			ExecutionRoleArn:      pulumi.Any(execution.Arn),
+/// 			InfrastructureRoleArn: pulumi.Any(infrastructure.Arn),
+/// 			Cpu:                   pulumi.String("256"),
+/// 			Memory:                pulumi.String("512"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -567,12 +570,6 @@ import 'express_gateway_service_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_expressgatewayservice" "example" {
-///   service_name            = "my-express-service"
-///   cluster                 = main.name
-///   execution_role_arn      = execution.arn
-///   infrastructure_role_arn = infrastructure.arn
-///   cpu                     = "256"
-///   memory                  = "512"
 ///   primary_container = {
 ///     image          = "nginx:latest"
 ///     container_port = 80
@@ -581,6 +578,12 @@ import 'express_gateway_service_timeouts.dart';
 ///     subnets         = [privateA.id, privateB.id]
 ///     security_groups = [app.id]
 ///   }
+///   service_name            = "my-express-service"
+///   cluster                 = main.name
+///   execution_role_arn      = execution.arn
+///   infrastructure_role_arn = infrastructure.arn
+///   cpu                     = "256"
+///   memory                  = "512"
 /// }
 /// ```
 /// ```java
@@ -607,12 +610,6 @@ import 'express_gateway_service_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ExpressGatewayService("example", ExpressGatewayServiceArgs.builder()
-///             .serviceName("my-express-service")
-///             .cluster(main.name())
-///             .executionRoleArn(execution.arn())
-///             .infrastructureRoleArn(infrastructure.arn())
-///             .cpu("256")
-///             .memory("512")
 ///             .primaryContainer(ExpressGatewayServicePrimaryContainerArgs.builder()
 ///                 .image("nginx:latest")
 ///                 .containerPort(80)
@@ -623,6 +620,12 @@ import 'express_gateway_service_timeouts.dart';
 ///                     privateB.id())
 ///                 .securityGroups(app.id())
 ///                 .build())
+///             .serviceName("my-express-service")
+///             .cluster(main.name())
+///             .executionRoleArn(execution.arn())
+///             .infrastructureRoleArn(infrastructure.arn())
+///             .cpu("256")
+///             .memory("512")
 ///             .build());
 ///
 ///     }
@@ -633,12 +636,6 @@ import 'express_gateway_service_timeouts.dart';
 ///   example:
 ///     type: aws:ecs:ExpressGatewayService
 ///     properties:
-///       serviceName: my-express-service
-///       cluster: ${main.name}
-///       executionRoleArn: ${execution.arn}
-///       infrastructureRoleArn: ${infrastructure.arn}
-///       cpu: '256'
-///       memory: '512'
 ///       primaryContainer:
 ///         image: nginx:latest
 ///         containerPort: 80
@@ -648,6 +645,12 @@ import 'express_gateway_service_timeouts.dart';
 ///             - ${privateB.id}
 ///           securityGroups:
 ///             - ${app.id}
+///       serviceName: my-express-service
+///       cluster: ${main.name}
+///       executionRoleArn: ${execution.arn}
+///       infrastructureRoleArn: ${infrastructure.arn}
+///       cpu: '256'
+///       memory: '512'
 /// ```
 ///
 ///
@@ -684,16 +687,16 @@ class ExpressGatewayService extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> infrastructureRoleArn;
   /// List of ingress paths for the service. See `ingressPaths` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ingressPaths;
+  late final pulumi.Output<List<ExpressGatewayServiceIngressPath>> ingressPaths;
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192. Defaults to `2048`.
   late final pulumi.Output<String> memory;
   /// Network configuration for the service. See `networkConfiguration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkConfigurations;
+  late final pulumi.Output<List<ExpressGatewayServiceNetworkConfiguration>> networkConfigurations;
   late final pulumi.Output<ExpressGatewayServicePrimaryContainer> primaryContainer;
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
   late final pulumi.Output<String> region;
   /// Auto-scaling configuration for the service. See `scalingTarget` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> scalingTargets;
+  late final pulumi.Output<List<ExpressGatewayServiceScalingTarget>> scalingTargets;
   /// ARN of the Express Gateway Service.
   late final pulumi.Output<String> serviceArn;
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
@@ -722,7 +725,7 @@ class ExpressGatewayService extends pulumi.CustomResource {
           'aws:ecs/expressGatewayService:ExpressGatewayService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cluster = registerOutput<String>('cluster');
     cpu = registerOutput<String>('cpu');
@@ -730,17 +733,17 @@ class ExpressGatewayService extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     healthCheckPath = registerOutput<String>('healthCheckPath');
     infrastructureRoleArn = registerOutput<String>('infrastructureRoleArn');
-    ingressPaths = registerOutput<List<Map<String, dynamic>>>('ingressPaths');
+    ingressPaths = registerOutput<List<ExpressGatewayServiceIngressPath>>('ingressPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceIngressPath>(guardedValue, (value) => ExpressGatewayServiceIngressPath.fromMap((value as Map).cast<String, dynamic>())); });
     memory = registerOutput<String>('memory');
-    networkConfigurations = registerOutput<List<Map<String, dynamic>>>('networkConfigurations');
+    networkConfigurations = registerOutput<List<ExpressGatewayServiceNetworkConfiguration>>('networkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(guardedValue, (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServicePrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scalingTargets = registerOutput<List<Map<String, dynamic>>>('scalingTargets');
+    scalingTargets = registerOutput<List<ExpressGatewayServiceScalingTarget>>('scalingTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(guardedValue, (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>())); });
     serviceArn = registerOutput<String>('serviceArn');
     serviceName = registerOutput<String>('serviceName');
     serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
     timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServiceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');
@@ -751,11 +754,12 @@ class ExpressGatewayService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressGatewayServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressGatewayService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -775,17 +779,48 @@ class ExpressGatewayService extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     healthCheckPath = registerOutput<String>('healthCheckPath');
     infrastructureRoleArn = registerOutput<String>('infrastructureRoleArn');
-    ingressPaths = registerOutput<List<Map<String, dynamic>>>('ingressPaths');
+    ingressPaths = registerOutput<List<ExpressGatewayServiceIngressPath>>('ingressPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceIngressPath>(guardedValue, (value) => ExpressGatewayServiceIngressPath.fromMap((value as Map).cast<String, dynamic>())); });
     memory = registerOutput<String>('memory');
-    networkConfigurations = registerOutput<List<Map<String, dynamic>>>('networkConfigurations');
+    networkConfigurations = registerOutput<List<ExpressGatewayServiceNetworkConfiguration>>('networkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(guardedValue, (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServicePrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    scalingTargets = registerOutput<List<Map<String, dynamic>>>('scalingTargets');
+    scalingTargets = registerOutput<List<ExpressGatewayServiceScalingTarget>>('scalingTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(guardedValue, (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>())); });
     serviceArn = registerOutput<String>('serviceArn');
     serviceName = registerOutput<String>('serviceName');
     serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskRoleArn = registerOutput<String?>('taskRoleArn');
+    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServiceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    waitForSteadyState = registerOutput<bool>('waitForSteadyState');
+  }
+
+  /// Creates a typed reference to an existing [ExpressGatewayService] resource.
+  ExpressGatewayService.reference(String urn)
+    : super(
+        'aws:ecs/expressGatewayService:ExpressGatewayService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cluster = registerOutput<String>('cluster');
+    cpu = registerOutput<String>('cpu');
+    currentDeployment = registerOutput<String>('currentDeployment');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    healthCheckPath = registerOutput<String>('healthCheckPath');
+    infrastructureRoleArn = registerOutput<String>('infrastructureRoleArn');
+    ingressPaths = registerOutput<List<ExpressGatewayServiceIngressPath>>('ingressPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceIngressPath>(guardedValue, (value) => ExpressGatewayServiceIngressPath.fromMap((value as Map).cast<String, dynamic>())); });
+    memory = registerOutput<String>('memory');
+    networkConfigurations = registerOutput<List<ExpressGatewayServiceNetworkConfiguration>>('networkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceNetworkConfiguration>(guardedValue, (value) => ExpressGatewayServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServicePrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scalingTargets = registerOutput<List<ExpressGatewayServiceScalingTarget>>('scalingTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressGatewayServiceScalingTarget>(guardedValue, (value) => ExpressGatewayServiceScalingTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceArn = registerOutput<String>('serviceArn');
+    serviceName = registerOutput<String>('serviceName');
+    serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskRoleArn = registerOutput<String?>('taskRoleArn');
     timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressGatewayServiceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');

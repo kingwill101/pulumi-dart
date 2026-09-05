@@ -5,7 +5,7 @@ import 'data_source_http_config_authorization_config.dart';
 
 class DataSourceHttpConfig {
   /// Authorization configuration in case the HTTP endpoint requires authorization. See `authorizationConfig` Block for details.
-  final pulumi.Input<DataSourceHttpConfigAuthorizationConfig>? authorizationConfig;
+  final pulumi.Input<DataSourceHttpConfigAuthorizationConfig?>? authorizationConfig;
   /// HTTP URL.
   final pulumi.Input<String> endpoint;
 

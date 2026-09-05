@@ -15,12 +15,12 @@ import 'policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.verifiedpermissions.Policy("test", {
-///     policyStoreId: testAwsVerifiedpermissionsPolicyStore.id,
 ///     definition: {
 ///         static: {
 ///             statement: "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");",
 ///         },
 ///     },
+///     policyStoreId: testAwsVerifiedpermissionsPolicyStore.id,
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.verifiedpermissions.Policy("test",
-///     policy_store_id=test_aws_verifiedpermissions_policy_store["id"],
 ///     definition={
 ///         "static": {
 ///             "statement": "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");",
 ///         },
-///     })
+///     },
+///     policy_store_id=test_aws_verifiedpermissions_policy_store["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,7 +45,6 @@ import 'policy_state.dart';
 /// {
 ///     var test = new Aws.VerifiedPermissions.Policy("test", new()
 ///     {
-///         PolicyStoreId = testAwsVerifiedpermissionsPolicyStore.Id,
 ///         Definition = new Aws.VerifiedPermissions.Inputs.PolicyDefinitionArgs
 ///         {
 ///             Static = new Aws.VerifiedPermissions.Inputs.PolicyDefinitionStaticArgs
@@ -53,6 +52,7 @@ import 'policy_state.dart';
 ///                 Statement = "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");",
 ///             },
 ///         },
+///         PolicyStoreId = testAwsVerifiedpermissionsPolicyStore.Id,
 ///     });
 ///
 /// });
@@ -68,12 +68,12 @@ import 'policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := verifiedpermissions.NewPolicy(ctx, "test", &verifiedpermissions.PolicyArgs{
-/// 			PolicyStoreId: pulumi.Any(testAwsVerifiedpermissionsPolicyStore.Id),
 /// 			Definition: &verifiedpermissions.PolicyDefinitionArgs{
 /// 				Static: &verifiedpermissions.PolicyDefinitionStaticArgs{
 /// 					Statement: pulumi.String("permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");"),
 /// 				},
 /// 			},
+/// 			PolicyStoreId: pulumi.Any(testAwsVerifiedpermissionsPolicyStore.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -92,12 +92,12 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_verifiedpermissions_policy" "test" {
-///   policy_store_id = testAwsVerifiedpermissionsPolicyStore.id
 ///   definition = {
 ///     static = {
 ///       statement = "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");"
 ///     }
 ///   }
+///   policy_store_id = testAwsVerifiedpermissionsPolicyStore.id
 /// }
 /// ```
 /// ```java
@@ -124,12 +124,12 @@ import 'policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Policy("test", PolicyArgs.builder()
-///             .policyStoreId(testAwsVerifiedpermissionsPolicyStore.id())
 ///             .definition(PolicyDefinitionArgs.builder()
 ///                 .static_(PolicyDefinitionStaticArgs.builder()
 ///                     .statement("permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");")
 ///                     .build())
 ///                 .build())
+///             .policyStoreId(testAwsVerifiedpermissionsPolicyStore.id())
 ///             .build());
 ///
 ///     }
@@ -140,10 +140,10 @@ import 'policy_state.dart';
 ///   test:
 ///     type: aws:verifiedpermissions:Policy
 ///     properties:
-///       policyStoreId: ${testAwsVerifiedpermissionsPolicyStore.id}
 ///       definition:
 ///         static:
 ///           statement: 'permit (principal, action == Action::"view", resource in Album:: "test_album");'
+///       policyStoreId: ${testAwsVerifiedpermissionsPolicyStore.id}
 /// ```
 ///
 ///
@@ -178,7 +178,7 @@ class Policy extends pulumi.CustomResource {
           'aws:verifiedpermissions/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     definition = registerOutput<PolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -192,11 +192,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,6 +211,22 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdDate = registerOutput<String>('createdDate');
+    definition = registerOutput<PolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyId = registerOutput<String>('policyId');
+    policyStoreId = registerOutput<String>('policyStoreId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'aws:verifiedpermissions/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdDate = registerOutput<String>('createdDate');
     definition = registerOutput<PolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyId = registerOutput<String>('policyId');

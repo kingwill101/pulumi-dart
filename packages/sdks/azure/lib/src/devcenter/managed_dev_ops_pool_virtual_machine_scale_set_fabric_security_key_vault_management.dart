@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurityKeyVaultManagement {
   /// Specifies where to store certificates on the machine.
-  final pulumi.Input<String>? certificateStoreLocation;
+  final pulumi.Input<String?>? certificateStoreLocation;
   /// Name of the certificate store to use on the machine. Possible values are `My` and `Root`.
-  final pulumi.Input<String>? certificateStoreName;
+  final pulumi.Input<String?>? certificateStoreName;
   /// Defines if the key of the certificates should be exportable. Defaults to `false`.
-  final pulumi.Input<bool>? keyExportEnabled;
+  final pulumi.Input<bool?>? keyExportEnabled;
   /// A list of `versionlessId` from Azure Key vault certificates to install on all machines in the pool.
   final pulumi.Input<List<String>> keyVaultCertificateIds;
 

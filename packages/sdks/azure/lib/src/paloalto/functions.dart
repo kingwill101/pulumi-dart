@@ -148,3 +148,14 @@ Future<GetLocalRulestackResult> getLocalRulestack(
   );
   return GetLocalRulestackResult.fromMap(result);
 }
+
+pulumi.Output<GetLocalRulestackResult> getLocalRulestackOutput(
+  GetLocalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:paloalto/getLocalRulestack:getLocalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRulestackResult.fromMap);
+}

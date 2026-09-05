@@ -208,14 +208,14 @@ class DedicatedHostGroup extends pulumi.CustomResource {
           'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automaticPlacementEnabled = registerOutput<bool?>('automaticPlacementEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String?>('zone');
   }
 
@@ -224,11 +224,12 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedHostGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedHostGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -247,7 +248,25 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [DedicatedHostGroup] resource.
+  DedicatedHostGroup.reference(String urn)
+    : super(
+        'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automaticPlacementEnabled = registerOutput<bool?>('automaticPlacementEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String?>('zone');
   }
 }

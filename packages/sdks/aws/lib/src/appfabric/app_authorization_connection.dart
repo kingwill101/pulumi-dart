@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_authorization_connection_args.dart';
 import 'app_authorization_connection_auth_request.dart';
 import 'app_authorization_connection_state.dart';
+import 'app_authorization_connection_tenant.dart';
 import 'app_authorization_connection_timeouts.dart';
 
 /// Resource for managing an AWS AppFabric App Authorization Connection.
@@ -119,9 +120,9 @@ import 'app_authorization_connection_timeouts.dart';
 class AppAuthorizationConnection extends pulumi.CustomResource {
   /// Name of the application.
   late final pulumi.Output<String> app;
-  /// Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  /// ARN or Universal Unique Identifier (UUID) of the app authorization to use for the request.
   late final pulumi.Output<String> appAuthorizationArn;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> appBundleArn;
@@ -130,7 +131,7 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Information about an application tenant. See `tenant` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> tenants;
+  late final pulumi.Output<List<AppAuthorizationConnectionTenant>> tenants;
   late final pulumi.Output<AppAuthorizationConnectionTimeouts?> timeouts;
 
   /// Creates a new [AppAuthorizationConnection].
@@ -145,14 +146,14 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
           'aws:appfabric/appAuthorizationConnection:AppAuthorizationConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     appAuthorizationArn = registerOutput<String>('appAuthorizationArn');
     appBundleArn = registerOutput<String>('appBundleArn');
     authRequest = registerOutput<AppAuthorizationConnectionAuthRequest?>('authRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionAuthRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
+    tenants = registerOutput<List<AppAuthorizationConnectionTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(guardedValue, (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -161,11 +162,12 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppAuthorizationConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppAuthorizationConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,7 +186,25 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
     appBundleArn = registerOutput<String>('appBundleArn');
     authRequest = registerOutput<AppAuthorizationConnectionAuthRequest?>('authRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionAuthRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
+    tenants = registerOutput<List<AppAuthorizationConnectionTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(guardedValue, (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AppAuthorizationConnection] resource.
+  AppAuthorizationConnection.reference(String urn)
+    : super(
+        'aws:appfabric/appAuthorizationConnection:AppAuthorizationConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    appAuthorizationArn = registerOutput<String>('appAuthorizationArn');
+    appBundleArn = registerOutput<String>('appBundleArn');
+    authRequest = registerOutput<AppAuthorizationConnectionAuthRequest?>('authRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionAuthRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tenants = registerOutput<List<AppAuthorizationConnectionTenant>>('tenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppAuthorizationConnectionTenant>(guardedValue, (value) => AppAuthorizationConnectionTenant.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAuthorizationConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

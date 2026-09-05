@@ -9,15 +9,15 @@ import 'get_direct_connect_gateway_attachment_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_direct_connect_gateway_attachment_get_direct_connect_gateway_attachment_args_doc}
 class GetDirectConnectGatewayAttachmentArgs {
   /// Identifier of the Direct Connect Gateway.
-  final pulumi.Input<String>? dxGatewayId;
+  final pulumi.Input<String?>? dxGatewayId;
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetDirectConnectGatewayAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetDirectConnectGatewayAttachmentFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the EC2 Transit Gateway.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
 
   /// Creates a new [GetDirectConnectGatewayAttachmentArgs].
   /// [dxGatewayId] Identifier of the Direct Connect Gateway.

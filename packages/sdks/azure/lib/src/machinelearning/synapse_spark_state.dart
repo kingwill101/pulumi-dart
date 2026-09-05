@@ -6,21 +6,21 @@ import 'synapse_spark_identity.dart';
 /// Input properties used for looking up and filtering SynapseSpark resources.
 class SynapseSparkState {
   /// The description of the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `identity` block as defined below. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<SynapseSparkIdentity>? identity;
+  final pulumi.Input<SynapseSparkIdentity?>? identity;
   /// Whether local authentication methods is enabled. Defaults to `true`. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// The Azure Region where the Machine Learning Synapse Spark should exist. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<String>? machineLearningWorkspaceId;
+  final pulumi.Input<String?>? machineLearningWorkspaceId;
   /// The name which should be used for this Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the linked Synapse Spark Pool. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<String>? synapseSparkPoolId;
+  final pulumi.Input<String?>? synapseSparkPoolId;
   /// A mapping of tags which should be assigned to the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SynapseSparkState].
   /// [description] The description of the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.

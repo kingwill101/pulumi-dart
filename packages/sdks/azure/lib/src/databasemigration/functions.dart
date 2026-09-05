@@ -158,6 +158,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databasemigration/getProject:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Database Migration Service.
 ///
 /// ## Example Usage
@@ -303,4 +314,15 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databasemigration/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }

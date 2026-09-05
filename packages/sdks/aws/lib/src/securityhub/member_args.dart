@@ -10,11 +10,11 @@ class MemberArgs {
   /// The ID of the member AWS account.
   final pulumi.Input<String> accountId;
   /// The email of the member AWS account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-  final pulumi.Input<bool>? invite;
+  final pulumi.Input<bool?>? invite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MemberArgs].
   /// [accountId] The ID of the member AWS account.

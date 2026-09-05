@@ -16,11 +16,11 @@ class ThreatIntelSetArgs {
   /// The URI of the file that contains the ThreatIntelSet.
   final pulumi.Input<String> location;
   /// The friendly name to identify the ThreatIntelSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ThreatIntelSetArgs].
   /// [activate] Specifies whether GuardDuty is to start using the uploaded ThreatIntelSet.

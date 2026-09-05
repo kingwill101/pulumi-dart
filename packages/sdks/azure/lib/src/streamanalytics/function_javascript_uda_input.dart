@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionJavascriptUdaInput {
   /// Is this input parameter a configuration parameter? Defaults to `false`.
-  final pulumi.Input<bool>? configurationParameter;
+  final pulumi.Input<bool?>? configurationParameter;
   /// The input data type of this JavaScript Function. Possible values include `any`, `array`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
   final pulumi.Input<String> type;
 

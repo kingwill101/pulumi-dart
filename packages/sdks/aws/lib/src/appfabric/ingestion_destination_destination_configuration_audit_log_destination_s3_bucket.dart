@@ -6,7 +6,7 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket {
   /// Name of the Amazon S3 bucket.
   final pulumi.Input<String> bucketName;
   /// Object key to use.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket].
   /// [bucketName] Name of the Amazon S3 bucket.

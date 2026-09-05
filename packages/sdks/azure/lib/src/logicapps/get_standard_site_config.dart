@@ -138,11 +138,11 @@ class GetStandardSiteConfig {
   factory GetStandardSiteConfig.fromMap(Map<String, dynamic> map) {
     return GetStandardSiteConfig(
       alwaysOn: pulumi.Input.fromValue(map['alwaysOn'] as bool),
-      appScaleLimit: pulumi.Input.fromValue(map['appScaleLimit'] as int),
+      appScaleLimit: pulumi.Input.fromValue((map['appScaleLimit'] as num).toInt()),
       autoSwapSlotName: pulumi.Input.fromValue(map['autoSwapSlotName'] as String),
       cors: pulumi.Input.fromValue(GetStandardSiteConfigCors.fromMap((map['cors']! as Map).cast<String, dynamic>())),
       dotnetFrameworkVersion: pulumi.Input.fromValue(map['dotnetFrameworkVersion'] as String),
-      elasticInstanceMinimum: pulumi.Input.fromValue(map['elasticInstanceMinimum'] as int),
+      elasticInstanceMinimum: pulumi.Input.fromValue((map['elasticInstanceMinimum'] as num).toInt()),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
@@ -150,7 +150,7 @@ class GetStandardSiteConfig {
       ipRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetStandardSiteConfigIpRestriction>(map['ipRestrictions']!, (value) => GetStandardSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       linuxFxVersion: pulumi.Input.fromValue(map['linuxFxVersion'] as String),
       minTlsVersion: pulumi.Input.fromValue(map['minTlsVersion'] as String),
-      preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
+      preWarmedInstanceCount: pulumi.Input.fromValue((map['preWarmedInstanceCount'] as num).toInt()),
       publicNetworkAccessEnabled: pulumi.Input.fromValue(map['publicNetworkAccessEnabled'] as bool),
       runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
       scmIpRestrictionDefaultAction: pulumi.Input.fromValue(map['scmIpRestrictionDefaultAction'] as String),

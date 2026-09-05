@@ -153,7 +153,7 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -169,11 +169,12 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagOptionResourceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagOptionResourceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,6 +188,24 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
+    resourceDescription = registerOutput<String>('resourceDescription');
+    resourceId = registerOutput<String>('resourceId');
+    resourceName = registerOutput<String>('resourceName');
+    tagOptionId = registerOutput<String>('tagOptionId');
+  }
+
+  /// Creates a typed reference to an existing [TagOptionResourceAssociation] resource.
+  TagOptionResourceAssociation.reference(String urn)
+    : super(
+        'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     resourceCreatedTime = registerOutput<String>('resourceCreatedTime');

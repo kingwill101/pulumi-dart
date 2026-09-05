@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetVpcConfig {
   /// Identifiers of the security groups for the fleet or image builder.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Identifiers of the subnets to which a network interface is attached from the fleet instance or image builder instance.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [FleetVpcConfig].
   /// [securityGroupIds] Identifiers of the security groups for the fleet or image builder.

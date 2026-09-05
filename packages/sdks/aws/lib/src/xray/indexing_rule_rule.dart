@@ -5,7 +5,7 @@ import 'indexing_rule_rule_probabilistic.dart';
 
 class IndexingRuleRule {
   /// Indexing rule configuration used to probabilistically sample traceIds. See `probabilistic` Block below.
-  final pulumi.Input<IndexingRuleRuleProbabilistic>? probabilistic;
+  final pulumi.Input<IndexingRuleRuleProbabilistic?>? probabilistic;
 
   /// Creates a new [IndexingRuleRule].
   /// [probabilistic] Indexing rule configuration used to probabilistically sample traceIds. See `probabilistic` Block below.

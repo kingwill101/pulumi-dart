@@ -9,39 +9,39 @@ class GetEndpointResult {
   /// * `iot:Data`: `IDENTIFIER.iot.REGION.amazonaws.com`
   /// * `iot:Data-ATS`: `IDENTIFIER-ats.iot.REGION.amazonaws.com`
   /// * `iot:Jobs`: `IDENTIFIER.jobs.iot.REGION.amazonaws.com`
-  final String endpointAddress;
+  final String? endpointAddress;
   final String? endpointType;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetEndpointResult].
   /// [endpointAddress] Endpoint based on `endpointType`:
   /// [endpointType] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   const GetEndpointResult({
-    required this.endpointAddress,
+    this.endpointAddress,
     this.endpointType,
-    required this.id,
-    required this.region,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointAddress': endpointAddress,
+      'endpointAddress': ?endpointAddress,
       'endpointType': ?endpointType,
-      'id': id,
-      'region': region,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
-      endpointAddress: map['endpointAddress'] as String,
+      endpointAddress: (() { final guardedValue = map['endpointAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,26 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'directory_workspace_access_properties_access_endpoint_config.dart';
 
 class DirectoryWorkspaceAccessProperties {
+  /// Configuration for accessing WorkSpaces through VPC endpoints instead of the public internet. Defined below.
+  final pulumi.Input<DirectoryWorkspaceAccessPropertiesAccessEndpointConfig?>? accessEndpointConfig;
   /// Indicates whether users can use Android devices to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeAndroid;
+  final pulumi.Input<String?>? deviceTypeAndroid;
   /// Indicates whether users can use Chromebooks to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeChromeos;
+  final pulumi.Input<String?>? deviceTypeChromeos;
   /// Indicates whether users can use iOS devices to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeIos;
+  final pulumi.Input<String?>? deviceTypeIos;
   /// Indicates whether users can use Linux clients to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeLinux;
+  final pulumi.Input<String?>? deviceTypeLinux;
   /// Indicates whether users can use macOS clients to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeOsx;
+  final pulumi.Input<String?>? deviceTypeOsx;
   /// Indicates whether users can access their WorkSpaces through a web browser.
-  final pulumi.Input<String>? deviceTypeWeb;
+  final pulumi.Input<String?>? deviceTypeWeb;
   /// Indicates whether users can use Windows clients to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeWindows;
+  final pulumi.Input<String?>? deviceTypeWindows;
   /// Indicates whether users can use zero client devices to access their WorkSpaces.
-  final pulumi.Input<String>? deviceTypeZeroclient;
+  final pulumi.Input<String?>? deviceTypeZeroclient;
 
   /// Creates a new [DirectoryWorkspaceAccessProperties].
+  /// [accessEndpointConfig] Configuration for accessing WorkSpaces through VPC endpoints instead of the public internet. Defined below.
   /// [deviceTypeAndroid] Indicates whether users can use Android devices to access their WorkSpaces.
   /// [deviceTypeChromeos] Indicates whether users can use Chromebooks to access their WorkSpaces.
   /// [deviceTypeIos] Indicates whether users can use iOS devices to access their WorkSpaces.
@@ -30,6 +34,7 @@ class DirectoryWorkspaceAccessProperties {
   /// [deviceTypeWindows] Indicates whether users can use Windows clients to access their WorkSpaces.
   /// [deviceTypeZeroclient] Indicates whether users can use zero client devices to access their WorkSpaces.
   const DirectoryWorkspaceAccessProperties({
+    this.accessEndpointConfig,
     this.deviceTypeAndroid,
     this.deviceTypeChromeos,
     this.deviceTypeIos,
@@ -42,6 +47,7 @@ class DirectoryWorkspaceAccessProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'accessEndpointConfig': ?pulumi.Input.mapOptionalInputValue<DirectoryWorkspaceAccessPropertiesAccessEndpointConfig, Map<String, dynamic>>(accessEndpointConfig, (value) => value.toMap()),
       'deviceTypeAndroid': ?deviceTypeAndroid,
       'deviceTypeChromeos': ?deviceTypeChromeos,
       'deviceTypeIos': ?deviceTypeIos,
@@ -55,6 +61,7 @@ class DirectoryWorkspaceAccessProperties {
 
   factory DirectoryWorkspaceAccessProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryWorkspaceAccessProperties(
+      accessEndpointConfig: (() { final guardedValue = map['accessEndpointConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DirectoryWorkspaceAccessPropertiesAccessEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deviceTypeAndroid: (() { final guardedValue = map['deviceTypeAndroid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceTypeChromeos: (() { final guardedValue = map['deviceTypeChromeos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceTypeIos: (() { final guardedValue = map['deviceTypeIos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -13,7 +13,7 @@ class ModuleArgs {
   /// A `moduleLink` block as defined below.
   final pulumi.Input<ModuleModuleLink> moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

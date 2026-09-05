@@ -50,7 +50,7 @@ class FrontdoorSecret extends pulumi.CustomResource {
           'azure:cdn/frontdoorSecret:FrontdoorSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
@@ -63,11 +63,12 @@ class FrontdoorSecret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorSecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorSecret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -81,6 +82,21 @@ class FrontdoorSecret extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
+    this.name = registerOutput<String>('name');
+    secret = registerOutput<FrontdoorSecretSecret>('secret', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorSecretSecret.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorSecret] resource.
+  FrontdoorSecret.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorSecret:FrontdoorSecret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
     this.name = registerOutput<String>('name');

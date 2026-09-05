@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesSubscription {
-  final pulumi.Input<bool>? preventCancellationOnDestroy;
+  final pulumi.Input<bool?>? preventCancellationOnDestroy;
 
   /// Creates a new [ProviderFeaturesSubscription].
   /// [preventCancellationOnDestroy] Optional.

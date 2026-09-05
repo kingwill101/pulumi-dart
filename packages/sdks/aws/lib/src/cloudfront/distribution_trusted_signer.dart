@@ -5,9 +5,9 @@ import 'distribution_trusted_signer_item.dart';
 
 class DistributionTrustedSigner {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// List of nested attributes for each trusted signer
-  final pulumi.Input<List<DistributionTrustedSignerItem>>? items;
+  final pulumi.Input<List<DistributionTrustedSignerItem>?>? items;
 
   /// Creates a new [DistributionTrustedSigner].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.

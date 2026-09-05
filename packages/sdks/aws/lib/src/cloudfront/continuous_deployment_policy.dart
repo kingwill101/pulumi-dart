@@ -20,17 +20,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///     staging: true,
 /// });
 /// const example = new aws.cloudfront.ContinuousDeploymentPolicy("example", {
-///     enabled: true,
 ///     stagingDistributionDnsNames: {
 ///         items: [staging.domainName],
 ///         quantity: 1,
 ///     },
 ///     trafficConfig: {
-///         type: "SingleWeight",
 ///         singleWeightConfig: {
 ///             weight: 0.01,
 ///         },
+///         type: "SingleWeight",
 ///     },
+///     enabled: true,
 /// });
 /// const production = new aws.cloudfront.Distribution("production", {
 ///     enabled: true,
@@ -45,17 +45,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///     enabled=True,
 ///     staging=True)
 /// example = aws.cloudfront.ContinuousDeploymentPolicy("example",
-///     enabled=True,
 ///     staging_distribution_dns_names={
 ///         "items": [staging.domain_name],
 ///         "quantity": 1,
 ///     },
 ///     traffic_config={
-///         "type": "SingleWeight",
 ///         "single_weight_config": {
 ///             "weight": 0.01,
 ///         },
-///     })
+///         "type": "SingleWeight",
+///     },
+///     enabled=True)
 /// production = aws.cloudfront.Distribution("production",
 ///     enabled=True,
 ///     continuous_deployment_policy_id=example.id)
@@ -76,7 +76,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///
 ///     var example = new Aws.CloudFront.ContinuousDeploymentPolicy("example", new()
 ///     {
-///         Enabled = true,
 ///         StagingDistributionDnsNames = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs
 ///         {
 ///             Items = new[]
@@ -87,12 +86,13 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///         },
 ///         TrafficConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigArgs
 ///         {
-///             Type = "SingleWeight",
 ///             SingleWeightConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs
 ///             {
 ///                 Weight = 0.01,
 ///             },
+///             Type = "SingleWeight",
 ///         },
+///         Enabled = true,
 ///     });
 ///
 ///     var production = new Aws.CloudFront.Distribution("production", new()
@@ -121,7 +121,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 			return err
 /// 		}
 /// 		example, err := cloudfront.NewContinuousDeploymentPolicy(ctx, "example", &cloudfront.ContinuousDeploymentPolicyArgs{
-/// 			Enabled: pulumi.Bool(true),
 /// 			StagingDistributionDnsNames: &cloudfront.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs{
 /// 				Items: pulumi.StringArray{
 /// 					staging.DomainName,
@@ -129,11 +128,12 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 				Quantity: pulumi.Int(1),
 /// 			},
 /// 			TrafficConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigArgs{
-/// 				Type: pulumi.String("SingleWeight"),
 /// 				SingleWeightConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs{
 /// 					Weight: pulumi.Float64(0.01),
 /// 				},
+/// 				Type: pulumi.String("SingleWeight"),
 /// 			},
+/// 			Enabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -163,17 +163,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   staging = true
 /// }
 /// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   enabled = true
 ///   staging_distribution_dns_names = {
 ///     items    = [aws_cloudfront_distribution.staging.domain_name]
 ///     quantity = 1
 ///   }
 ///   traffic_config = {
-///     type = "SingleWeight"
 ///     single_weight_config = {
 ///       weight = "0.01"
 ///     }
+///     type = "SingleWeight"
 ///   }
+///   enabled = true
 /// }
 /// resource "aws_cloudfront_distribution" "production" {
 ///   enabled = true
@@ -214,17 +214,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///             .build());
 ///
 ///         var example = new ContinuousDeploymentPolicy("example", ContinuousDeploymentPolicyArgs.builder()
-///             .enabled(true)
 ///             .stagingDistributionDnsNames(ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs.builder()
 ///                 .items(staging.domainName())
 ///                 .quantity(1)
 ///                 .build())
 ///             .trafficConfig(ContinuousDeploymentPolicyTrafficConfigArgs.builder()
-///                 .type("SingleWeight")
 ///                 .singleWeightConfig(ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs.builder()
 ///                     .weight(0.01)
 ///                     .build())
+///                 .type("SingleWeight")
 ///                 .build())
+///             .enabled(true)
 ///             .build());
 ///
 ///         var production = new Distribution("production", DistributionArgs.builder()
@@ -245,15 +245,15 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   example:
 ///     type: aws:cloudfront:ContinuousDeploymentPolicy
 ///     properties:
-///       enabled: true
 ///       stagingDistributionDnsNames:
 ///         items:
 ///           - ${staging.domainName}
 ///         quantity: 1
 ///       trafficConfig:
-///         type: SingleWeight
 ///         singleWeightConfig:
 ///           weight: '0.01'
+///         type: SingleWeight
+///       enabled: true
 ///   production:
 ///     type: aws:cloudfront:Distribution
 ///     properties:
@@ -271,21 +271,21 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ContinuousDeploymentPolicy("example", {
-///     enabled: true,
 ///     stagingDistributionDnsNames: {
 ///         items: [staging.domainName],
 ///         quantity: 1,
 ///     },
 ///     trafficConfig: {
-///         type: "SingleWeight",
 ///         singleWeightConfig: {
-///             weight: 0.01,
 ///             sessionStickinessConfig: {
 ///                 idleTtl: 300,
 ///                 maximumTtl: 600,
 ///             },
+///             weight: 0.01,
 ///         },
+///         type: "SingleWeight",
 ///     },
+///     enabled: true,
 /// });
 /// ```
 /// ```python
@@ -293,21 +293,21 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ContinuousDeploymentPolicy("example",
-///     enabled=True,
 ///     staging_distribution_dns_names={
 ///         "items": [staging["domainName"]],
 ///         "quantity": 1,
 ///     },
 ///     traffic_config={
-///         "type": "SingleWeight",
 ///         "single_weight_config": {
-///             "weight": 0.01,
 ///             "session_stickiness_config": {
 ///                 "idle_ttl": 300,
 ///                 "maximum_ttl": 600,
 ///             },
+///             "weight": 0.01,
 ///         },
-///     })
+///         "type": "SingleWeight",
+///     },
+///     enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -319,7 +319,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// {
 ///     var example = new Aws.CloudFront.ContinuousDeploymentPolicy("example", new()
 ///     {
-///         Enabled = true,
 ///         StagingDistributionDnsNames = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs
 ///         {
 ///             Items = new[]
@@ -330,17 +329,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///         },
 ///         TrafficConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigArgs
 ///         {
-///             Type = "SingleWeight",
 ///             SingleWeightConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs
 ///             {
-///                 Weight = 0.01,
 ///                 SessionStickinessConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfigArgs
 ///                 {
 ///                     IdleTtl = 300,
 ///                     MaximumTtl = 600,
 ///                 },
+///                 Weight = 0.01,
 ///             },
+///             Type = "SingleWeight",
 ///         },
+///         Enabled = true,
 ///     });
 ///
 /// });
@@ -356,7 +356,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewContinuousDeploymentPolicy(ctx, "example", &cloudfront.ContinuousDeploymentPolicyArgs{
-/// 			Enabled: pulumi.Bool(true),
 /// 			StagingDistributionDnsNames: &cloudfront.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs{
 /// 				Items: pulumi.StringArray{
 /// 					staging.DomainName,
@@ -364,15 +363,16 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 				Quantity: pulumi.Int(1),
 /// 			},
 /// 			TrafficConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigArgs{
-/// 				Type: pulumi.String("SingleWeight"),
 /// 				SingleWeightConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs{
-/// 					Weight: pulumi.Float64(0.01),
 /// 					SessionStickinessConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfigArgs{
 /// 						IdleTtl:    pulumi.Int(300),
 /// 						MaximumTtl: pulumi.Int(600),
 /// 					},
+/// 					Weight: pulumi.Float64(0.01),
 /// 				},
+/// 				Type: pulumi.String("SingleWeight"),
 /// 			},
+/// 			Enabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -391,21 +391,21 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   enabled = true
 ///   staging_distribution_dns_names = {
 ///     items    = [staging.domainName]
 ///     quantity = 1
 ///   }
 ///   traffic_config = {
-///     type = "SingleWeight"
 ///     single_weight_config = {
-///       weight = "0.01"
 ///       session_stickiness_config = {
 ///         idle_ttl    = 300
 ///         maximum_ttl = 600
 ///       }
+///       weight = "0.01"
 ///     }
+///     type = "SingleWeight"
 ///   }
+///   enabled = true
 /// }
 /// ```
 /// ```java
@@ -434,21 +434,21 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContinuousDeploymentPolicy("example", ContinuousDeploymentPolicyArgs.builder()
-///             .enabled(true)
 ///             .stagingDistributionDnsNames(ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs.builder()
 ///                 .items(staging.domainName())
 ///                 .quantity(1)
 ///                 .build())
 ///             .trafficConfig(ContinuousDeploymentPolicyTrafficConfigArgs.builder()
-///                 .type("SingleWeight")
 ///                 .singleWeightConfig(ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigArgs.builder()
-///                     .weight(0.01)
 ///                     .sessionStickinessConfig(ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfigArgs.builder()
 ///                         .idleTtl(300)
 ///                         .maximumTtl(600)
 ///                         .build())
+///                     .weight(0.01)
 ///                     .build())
+///                 .type("SingleWeight")
 ///                 .build())
+///             .enabled(true)
 ///             .build());
 ///
 ///     }
@@ -459,18 +459,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   example:
 ///     type: aws:cloudfront:ContinuousDeploymentPolicy
 ///     properties:
-///       enabled: true
 ///       stagingDistributionDnsNames:
 ///         items:
 ///           - ${staging.domainName}
 ///         quantity: 1
 ///       trafficConfig:
-///         type: SingleWeight
 ///         singleWeightConfig:
-///           weight: '0.01'
 ///           sessionStickinessConfig:
 ///             idleTtl: 300
 ///             maximumTtl: 600
+///           weight: '0.01'
+///         type: SingleWeight
+///       enabled: true
 /// ```
 ///
 ///
@@ -482,18 +482,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ContinuousDeploymentPolicy("example", {
-///     enabled: true,
 ///     stagingDistributionDnsNames: {
 ///         items: [staging.domainName],
 ///         quantity: 1,
 ///     },
 ///     trafficConfig: {
-///         type: "SingleHeader",
 ///         singleHeaderConfig: {
 ///             header: "aws-cf-cd-example",
 ///             value: "example",
 ///         },
+///         type: "SingleHeader",
 ///     },
+///     enabled: true,
 /// });
 /// ```
 /// ```python
@@ -501,18 +501,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ContinuousDeploymentPolicy("example",
-///     enabled=True,
 ///     staging_distribution_dns_names={
 ///         "items": [staging["domainName"]],
 ///         "quantity": 1,
 ///     },
 ///     traffic_config={
-///         "type": "SingleHeader",
 ///         "single_header_config": {
 ///             "header": "aws-cf-cd-example",
 ///             "value": "example",
 ///         },
-///     })
+///         "type": "SingleHeader",
+///     },
+///     enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -524,7 +524,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// {
 ///     var example = new Aws.CloudFront.ContinuousDeploymentPolicy("example", new()
 ///     {
-///         Enabled = true,
 ///         StagingDistributionDnsNames = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs
 ///         {
 ///             Items = new[]
@@ -535,13 +534,14 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///         },
 ///         TrafficConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigArgs
 ///         {
-///             Type = "SingleHeader",
 ///             SingleHeaderConfig = new Aws.CloudFront.Inputs.ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfigArgs
 ///             {
 ///                 Header = "aws-cf-cd-example",
 ///                 Value = "example",
 ///             },
+///             Type = "SingleHeader",
 ///         },
+///         Enabled = true,
 ///     });
 ///
 /// });
@@ -557,7 +557,6 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewContinuousDeploymentPolicy(ctx, "example", &cloudfront.ContinuousDeploymentPolicyArgs{
-/// 			Enabled: pulumi.Bool(true),
 /// 			StagingDistributionDnsNames: &cloudfront.ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs{
 /// 				Items: pulumi.StringArray{
 /// 					staging.DomainName,
@@ -565,12 +564,13 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// 				Quantity: pulumi.Int(1),
 /// 			},
 /// 			TrafficConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigArgs{
-/// 				Type: pulumi.String("SingleHeader"),
 /// 				SingleHeaderConfig: &cloudfront.ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfigArgs{
 /// 					Header: pulumi.String("aws-cf-cd-example"),
 /// 					Value:  pulumi.String("example"),
 /// 				},
+/// 				Type: pulumi.String("SingleHeader"),
 /// 			},
+/// 			Enabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -589,18 +589,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// }
 ///
 /// resource "aws_cloudfront_continuousdeploymentpolicy" "example" {
-///   enabled = true
 ///   staging_distribution_dns_names = {
 ///     items    = [staging.domainName]
 ///     quantity = 1
 ///   }
 ///   traffic_config = {
-///     type = "SingleHeader"
 ///     single_header_config = {
 ///       header = "aws-cf-cd-example"
 ///       value  = "example"
 ///     }
+///     type = "SingleHeader"
 ///   }
+///   enabled = true
 /// }
 /// ```
 /// ```java
@@ -628,18 +628,18 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContinuousDeploymentPolicy("example", ContinuousDeploymentPolicyArgs.builder()
-///             .enabled(true)
 ///             .stagingDistributionDnsNames(ContinuousDeploymentPolicyStagingDistributionDnsNamesArgs.builder()
 ///                 .items(staging.domainName())
 ///                 .quantity(1)
 ///                 .build())
 ///             .trafficConfig(ContinuousDeploymentPolicyTrafficConfigArgs.builder()
-///                 .type("SingleHeader")
 ///                 .singleHeaderConfig(ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfigArgs.builder()
 ///                     .header("aws-cf-cd-example")
 ///                     .value("example")
 ///                     .build())
+///                 .type("SingleHeader")
 ///                 .build())
+///             .enabled(true)
 ///             .build());
 ///
 ///     }
@@ -650,16 +650,16 @@ import 'continuous_deployment_policy_traffic_config.dart';
 ///   example:
 ///     type: aws:cloudfront:ContinuousDeploymentPolicy
 ///     properties:
-///       enabled: true
 ///       stagingDistributionDnsNames:
 ///         items:
 ///           - ${staging.domainName}
 ///         quantity: 1
 ///       trafficConfig:
-///         type: SingleHeader
 ///         singleHeaderConfig:
 ///           header: aws-cf-cd-example
 ///           value: example
+///         type: SingleHeader
+///       enabled: true
 /// ```
 ///
 ///
@@ -696,7 +696,7 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
           'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
@@ -711,11 +711,12 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContinuousDeploymentPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContinuousDeploymentPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -729,6 +730,23 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    stagingDistributionDnsNames = registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>('stagingDistributionDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContinuousDeploymentPolicyTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ContinuousDeploymentPolicy] resource.
+  ContinuousDeploymentPolicy.reference(String urn)
+    : super(
+        'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');

@@ -5,23 +5,23 @@ import 'api_operation_response_representation_form_parameter_example.dart';
 
 class ApiOperationResponseRepresentationFormParameter {
   /// The default value for this Form Parameter.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description of this Form Parameter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more `example` blocks as defined above.
-  final pulumi.Input<List<ApiOperationResponseRepresentationFormParameterExample>>? examples;
+  final pulumi.Input<List<ApiOperationResponseRepresentationFormParameterExample>?>? examples;
   /// The Name of this Form Parameter.
   final pulumi.Input<String> name;
   /// Is this Form Parameter Required?
   final pulumi.Input<bool> required;
   /// The name of the Schema.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The Type of this Form Parameter, such as a `string`.
   final pulumi.Input<String> type;
   /// The type name defined by the Schema.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
   /// One or more acceptable values for this Form Parameter.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ApiOperationResponseRepresentationFormParameter].
   /// [defaultValue] The default value for this Form Parameter.

@@ -373,7 +373,7 @@ import 'source_credential_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeBuild source credential.
+/// - `arn` (String) ARN of the CodeBuild source credential.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Source Credential using the CodeBuild Source Credential arn. For example:
@@ -412,13 +412,14 @@ class SourceCredential extends pulumi.CustomResource {
           'aws:codebuild/sourceCredential:SourceCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');
     region = registerOutput<String>('region');
     serverType = registerOutput<String>('serverType');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
     userName = registerOutput<String?>('userName');
   }
 
@@ -427,11 +428,12 @@ class SourceCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -449,7 +451,25 @@ class SourceCredential extends pulumi.CustomResource {
     authType = registerOutput<String>('authType');
     region = registerOutput<String>('region');
     serverType = registerOutput<String>('serverType');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
+    userName = registerOutput<String?>('userName');
+  }
+
+  /// Creates a typed reference to an existing [SourceCredential] resource.
+  SourceCredential.reference(String urn)
+    : super(
+        'aws:codebuild/sourceCredential:SourceCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
+    region = registerOutput<String>('region');
+    serverType = registerOutput<String>('serverType');
+    token = registerOutput<String>('token', isSecret: true);
     userName = registerOutput<String?>('userName');
   }
 }

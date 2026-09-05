@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableImportTableInputFormatOptionsCsv {
   /// The delimiter used for separating items in the CSV file being imported.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// List of the headers used to specify a common header for all source CSV files being imported.
-  final pulumi.Input<List<String>>? headerLists;
+  final pulumi.Input<List<String>?>? headerLists;
 
   /// Creates a new [TableImportTableInputFormatOptionsCsv].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.

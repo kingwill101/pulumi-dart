@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperienceEndpoint {
   /// The endpoint of your Amazon Kendra experience.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The type of endpoint for your Amazon Kendra experience.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
 
   /// Creates a new [ExperienceEndpoint].
   /// [endpoint] The endpoint of your Amazon Kendra experience.

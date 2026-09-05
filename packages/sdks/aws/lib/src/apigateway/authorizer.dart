@@ -15,11 +15,11 @@ import 'authorizer_state.dart';
 /// const demoRestApi = new aws.apigateway.RestApi("demo", {name: "auth-demo"});
 /// const invocationAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["apigateway.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -30,12 +30,12 @@ import 'authorizer_state.dart';
 /// });
 /// const lambdaAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const lambda = new aws.iam.Role("lambda", {
@@ -77,11 +77,11 @@ import 'authorizer_state.dart';
 ///
 /// demo_rest_api = aws.apigateway.RestApi("demo", name="auth-demo")
 /// invocation_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["apigateway.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// invocation_role = aws.iam.Role("invocation_role",
@@ -89,12 +89,12 @@ import 'authorizer_state.dart';
 ///     path="/",
 ///     assume_role_policy=invocation_assume_role.json)
 /// lambda_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// lambda_ = aws.iam.Role("lambda",
 ///     name="demo-lambda",
@@ -140,7 +140,6 @@ import 'authorizer_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -152,6 +151,7 @@ import 'authorizer_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -173,11 +173,6 @@ import 'authorizer_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -188,6 +183,11 @@ import 'authorizer_state.dart';
 ///                             "lambda.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -269,7 +269,6 @@ import 'authorizer_state.dart';
 /// 		invocationAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -278,6 +277,7 @@ import 'authorizer_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -298,10 +298,6 @@ import 'authorizer_state.dart';
 /// 		lambdaAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -309,6 +305,10 @@ import 'authorizer_state.dart';
 /// 								"lambda.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -387,11 +387,11 @@ import 'authorizer_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "invocationAssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["apigateway.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -404,12 +404,12 @@ import 'authorizer_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -486,11 +486,11 @@ import 'authorizer_state.dart';
 ///
 ///         final var invocationAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("apigateway.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -503,12 +503,12 @@ import 'authorizer_state.dart';
 ///
 ///         final var lambdaAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -604,11 +604,11 @@ import 'authorizer_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - apigateway.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   invocationPolicy:
@@ -626,13 +626,13 @@ import 'authorizer_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -650,7 +650,7 @@ class Authorizer extends pulumi.CustomResource {
   late final pulumi.Output<String?> authorizerCredentials;
   /// TTL of cached authorizer results in seconds. Defaults to `300`.
   late final pulumi.Output<int?> authorizerResultTtlInSeconds;
-  /// Authorizer's Uniform Resource Identifier (URI). This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`, e.g., `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:012345678912:function:my-function/invocations`
+  /// Authorizer's URI. This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`, e.g., `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:012345678912:function:my-function/invocations`
   late final pulumi.Output<String?> authorizerUri;
   /// Source of the identity in an incoming request. Defaults to `method.request.header.Authorization`. For `REQUEST` type, this may be a comma-separated list of values, including headers, query string parameters and stage variables - e.g., `"method.request.header.SomeHeaderName,method.request.querystring.SomeQueryStringName,stageVariables.SomeStageVariableName"`
   late final pulumi.Output<String?> identitySource;
@@ -679,7 +679,7 @@ class Authorizer extends pulumi.CustomResource {
           'aws:apigateway/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authorizerCredentials = registerOutput<String?>('authorizerCredentials');
@@ -688,7 +688,7 @@ class Authorizer extends pulumi.CustomResource {
     identitySource = registerOutput<String?>('identitySource');
     identityValidationExpression = registerOutput<String?>('identityValidationExpression');
     this.name = registerOutput<String>('name');
-    providerArns = registerOutput<List<String>?>('providerArns');
+    providerArns = registerOutput<List<String>?>('providerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
     type = registerOutput<String?>('type');
@@ -699,11 +699,12 @@ class Authorizer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Authorizer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -724,7 +725,29 @@ class Authorizer extends pulumi.CustomResource {
     identitySource = registerOutput<String?>('identitySource');
     identityValidationExpression = registerOutput<String?>('identityValidationExpression');
     this.name = registerOutput<String>('name');
-    providerArns = registerOutput<List<String>?>('providerArns');
+    providerArns = registerOutput<List<String>?>('providerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Authorizer] resource.
+  Authorizer.reference(String urn)
+    : super(
+        'aws:apigateway/authorizer:Authorizer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authorizerCredentials = registerOutput<String?>('authorizerCredentials');
+    authorizerResultTtlInSeconds = registerOutput<int?>('authorizerResultTtlInSeconds');
+    authorizerUri = registerOutput<String?>('authorizerUri');
+    identitySource = registerOutput<String?>('identitySource');
+    identityValidationExpression = registerOutput<String?>('identityValidationExpression');
+    this.name = registerOutput<String>('name');
+    providerArns = registerOutput<List<String>?>('providerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
     type = registerOutput<String?>('type');

@@ -6,20 +6,20 @@ import 'storage_lens_configuration_storage_lens_configuration_expanded_prefixes_
 class StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestination {
   /// Account ID of the owner of the S3 Storage Lens metrics export bucket.
   final pulumi.Input<String> accountId;
-  /// Amazon Resource Name (ARN) of the bucket.
+  /// ARN of the bucket.
   final pulumi.Input<String> arn;
   /// Encryption of the metrics exports in this bucket. See `encryption` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryption>? encryption;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryption?>? encryption;
   /// Export format. Valid values: `CSV`, `Parquet`.
   final pulumi.Input<String> format;
   /// Schema version of the export file. Valid values: `V_1`.
   final pulumi.Input<String> outputSchemaVersion;
   /// Prefix of the destination bucket where the metrics export will be delivered.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestination].
   /// [accountId] Account ID of the owner of the S3 Storage Lens metrics export bucket.
-  /// [arn] Amazon Resource Name (ARN) of the bucket.
+  /// [arn] ARN of the bucket.
   /// [encryption] Encryption of the metrics exports in this bucket. See `encryption` below for more details.
   /// [format] Export format. Valid values: `CSV`, `Parquet`.
   /// [outputSchemaVersion] Schema version of the export file. Valid values: `V_1`.

@@ -5,13 +5,13 @@ import 'tag_rules_log_rule_filtering_tag.dart';
 
 class TagRulesLogRule {
   /// Filtering tag for the log rule. A `filteringTag` block as defined below.
-  final pulumi.Input<List<TagRulesLogRuleFilteringTag>>? filteringTags;
+  final pulumi.Input<List<TagRulesLogRuleFilteringTag>?>? filteringTags;
   /// Send Activity logs. The default value is `false`.
-  final pulumi.Input<bool>? sendActivityLogsEnabled;
+  final pulumi.Input<bool?>? sendActivityLogsEnabled;
   /// Send Azure Active Directory logs. The default value is `false`.
-  final pulumi.Input<bool>? sendAzureActiveDirectoryLogsEnabled;
+  final pulumi.Input<bool?>? sendAzureActiveDirectoryLogsEnabled;
   /// Send Subscription logs. The default value is `false`.
-  final pulumi.Input<bool>? sendSubscriptionLogsEnabled;
+  final pulumi.Input<bool?>? sendSubscriptionLogsEnabled;
 
   /// Creates a new [TagRulesLogRule].
   /// [filteringTags] Filtering tag for the log rule. A `filteringTag` block as defined below.

@@ -9,15 +9,15 @@ import 'rule_group_activated_rule.dart';
 /// {@macro pulumi_wafregional_rule_group_rule_group_args_doc}
 class RuleGroupArgs {
   /// A list of activated rules, see below
-  final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
+  final pulumi.Input<List<RuleGroupActivatedRule>?>? activatedRules;
   /// A friendly name for the metrics from the rule group
   final pulumi.Input<String> metricName;
   /// A friendly name of the rule group
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RuleGroupArgs].
   /// [activatedRules] A list of activated rules, see below

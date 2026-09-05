@@ -130,7 +130,7 @@ import 'express_route_authorization_state.dart';
 /// 		}
 /// 		_, err = avs.NewExpressRouteAuthorization(ctx, "example", &avs.ExpressRouteAuthorizationArgs{
 /// 			Name:           pulumi.String("example-authorization"),
-/// 			PrivateCloudId: examplePrivateCloud.ID(),
+/// 			PrivateCloudId: examplePrivateCloud.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -289,10 +289,11 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
           'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['expressRouteAuthorizationKey'],
         ) {
     expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
-    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey');
+    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey', isSecret: true);
     this.name = registerOutput<String>('name');
     privateCloudId = registerOutput<String>('privateCloudId');
   }
@@ -302,11 +303,12 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,7 +323,23 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
-    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey');
+    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey', isSecret: true);
+    this.name = registerOutput<String>('name');
+    privateCloudId = registerOutput<String>('privateCloudId');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteAuthorization] resource.
+  ExpressRouteAuthorization.reference(String urn)
+    : super(
+        'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['expressRouteAuthorizationKey'],
+        isResourceReference: true,
+      ) {
+    expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
+    expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey', isSecret: true);
     this.name = registerOutput<String>('name');
     privateCloudId = registerOutput<String>('privateCloudId');
   }

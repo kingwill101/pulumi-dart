@@ -35,7 +35,7 @@ class GetLaunchTemplateInstanceMarketOptionSpotOption {
 
   factory GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOptionSpotOption(
-      blockDurationMinutes: pulumi.Input.fromValue(map['blockDurationMinutes'] as int),
+      blockDurationMinutes: pulumi.Input.fromValue((map['blockDurationMinutes'] as num).toInt()),
       instanceInterruptionBehavior: pulumi.Input.fromValue(map['instanceInterruptionBehavior'] as String),
       maxPrice: pulumi.Input.fromValue(map['maxPrice'] as String),
       spotInstanceType: pulumi.Input.fromValue(map['spotInstanceType'] as String),

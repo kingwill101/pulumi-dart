@@ -9,19 +9,19 @@ import 'sql_pool_restore.dart';
 /// {@macro pulumi_synapse_sql_pool_sql_pool_args_doc}
 class SqlPoolArgs {
   /// The name of the collation to use with this pool, only applicable when `createMode` is set to `Default`. Azure default is `SQL_LATIN1_GENERAL_CP1_CI_AS`. Changing this forces a new Synapse SQL Pool to be created.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Specifies how to create the SQL Pool. Valid values are: `Default`, `Recovery` or `PointInTimeRestore`. Must be `Default` to create a new database. Defaults to `Default`. Changing this forces a new Synapse SQL Pool to be created.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// Is transparent data encryption enabled?
-  final pulumi.Input<bool>? dataEncrypted;
+  final pulumi.Input<bool?>? dataEncrypted;
   /// Is geo-backup policy enabled? Defaults to `true`.
-  final pulumi.Input<bool>? geoBackupPolicyEnabled;
+  final pulumi.Input<bool?>? geoBackupPolicyEnabled;
   /// The name which should be used for this Synapse SQL Pool. Changing this forces a new Synapse SQL Pool to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Synapse SQL Pool or SQL Database which is to back up, only applicable when `createMode` is set to `Recovery`. Changing this forces a new Synapse SQL Pool to be created.
-  final pulumi.Input<String>? recoveryDatabaseId;
+  final pulumi.Input<String?>? recoveryDatabaseId;
   /// A `restore` block as defined below. Only applicable when `createMode` is set to `PointInTimeRestore`. Changing this forces a new Synapse SQL Pool to be created.
-  final pulumi.Input<SqlPoolRestore>? restore;
+  final pulumi.Input<SqlPoolRestore?>? restore;
   /// Specifies the SKU Name for this Synapse SQL Pool. Possible values are `DW100c`, `DW200c`, `DW300c`, `DW400c`, `DW500c`, `DW1000c`, `DW1500c`, `DW2000c`, `DW2500c`, `DW3000c`, `DW5000c`, `DW6000c`, `DW7500c`, `DW10000c`, `DW15000c` or `DW30000c`.
   final pulumi.Input<String> skuName;
   /// The storage account type that will be used to store backups for this Synapse SQL Pool. Possible values are `LRS` or `GRS`. Changing this forces a new Synapse SQL Pool to be created.
@@ -29,7 +29,7 @@ class SqlPoolArgs {
   /// The ID of Synapse Workspace within which this SQL Pool should be created. Changing this forces a new Synapse SQL Pool to be created.
   final pulumi.Input<String> synapseWorkspaceId;
   /// A mapping of tags which should be assigned to the Synapse SQL Pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlPoolArgs].
   /// [collation] The name of the collation to use with this pool, only applicable when `createMode` is set to `Default`. Azure default is `SQL_LATIN1_GENERAL_CP1_CI_AS`. Changing this forces a new Synapse SQL Pool to be created.

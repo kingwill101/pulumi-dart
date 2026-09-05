@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of count to perform.
-enum LifecyclePolicyCountType {
+enum LifecyclePolicyCountType implements pulumi.PulumiEnum<String> {
   imageCountMoreThan("imageCountMoreThan"),
   sinceImagePushed("sinceImagePushed"),
   sinceImagePulled("sinceImagePulled"),
   sinceImageTransitioned("sinceImageTransitioned");
 
   const LifecyclePolicyCountType(this.wireValue);
+  @override
   final String wireValue;
 
   static LifecyclePolicyCountType fromValue(String value) {

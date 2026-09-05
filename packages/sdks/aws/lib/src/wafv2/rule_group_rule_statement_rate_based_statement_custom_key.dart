@@ -11,29 +11,29 @@ import 'rule_group_rule_statement_rate_based_statement_custom_key_query_string.d
 import 'rule_group_rule_statement_rate_based_statement_custom_key_uri_path.dart';
 
 class RuleGroupRuleStatementRateBasedStatementCustomKey {
-  final pulumi.Input<Map<String, dynamic>>? asn;
+  final pulumi.Input<Map<String, dynamic>?>? asn;
   /// (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyCookie>? cookie;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyCookie?>? cookie;
   /// (Optional) Use the first IP address in an HTTP header as an aggregate key. See `forwardedIp` below for details.
-  final pulumi.Input<Map<String, dynamic>>? forwardedIp;
+  final pulumi.Input<Map<String, dynamic>?>? forwardedIp;
   /// (Optional) Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyHeader>? header;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyHeader?>? header;
   /// (Optional) Use the request's HTTP method as an aggregate key. See RateLimit `httpMethod` below for details.
-  final pulumi.Input<Map<String, dynamic>>? httpMethod;
+  final pulumi.Input<Map<String, dynamic>?>? httpMethod;
   /// (Optional) Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
-  final pulumi.Input<Map<String, dynamic>>? ip;
+  final pulumi.Input<Map<String, dynamic>?>? ip;
   /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint?>? ja3Fingerprint;
   /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint?>? ja4Fingerprint;
   /// (Optional) Use the specified label namespace as an aggregate key. See RateLimit `labelNamespace` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace>? labelNamespace;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace?>? labelNamespace;
   /// (Optional) Use the specified query argument as an aggregate key. See RateLimit `queryArgument` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument>? queryArgument;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument?>? queryArgument;
   /// (Optional) Use the request's query string as an aggregate key. See RateLimit `queryString` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString>? queryString;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString?>? queryString;
   /// (Optional) Use the request's URI path as an aggregate key. See RateLimit `uriPath` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath>? uriPath;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath?>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKey].
   /// [asn] Optional.

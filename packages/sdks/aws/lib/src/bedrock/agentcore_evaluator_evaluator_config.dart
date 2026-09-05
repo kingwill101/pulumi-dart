@@ -6,9 +6,9 @@ import 'agentcore_evaluator_evaluator_config_llm_as_ajudge.dart';
 
 class AgentcoreEvaluatorEvaluatorConfig {
   /// Configuration that runs a Lambda function you provide to score the agent. See `codeBased` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigCodeBased>? codeBased;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigCodeBased?>? codeBased;
   /// Configuration that uses a Bedrock model to score the agent. See `llmAsAJudge` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudge>? llmAsAJudge;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudge?>? llmAsAJudge;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfig].
   /// [codeBased] Configuration that runs a Lambda function you provide to score the agent. See `codeBased` below.

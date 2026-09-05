@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerLogs {
   /// Whether to enable audit logging. Only possible for `engineType` of `ActiveMQ`. Logs user management actions via JMX or ActiveMQ Web Console. Defaults to `false`.
-  final pulumi.Input<bool>? audit;
+  final pulumi.Input<bool?>? audit;
   /// Whether to enable general logging via CloudWatch. Defaults to `false`.
-  final pulumi.Input<bool>? general;
+  final pulumi.Input<bool?>? general;
 
   /// Creates a new [BrokerLogs].
   /// [audit] Whether to enable audit logging. Only possible for `engineType` of `ActiveMQ`. Logs user management actions via JMX or ActiveMQ Web Console. Defaults to `false`.

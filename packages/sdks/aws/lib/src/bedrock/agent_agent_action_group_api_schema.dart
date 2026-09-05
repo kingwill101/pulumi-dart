@@ -6,10 +6,10 @@ import 'agent_agent_action_group_api_schema_s3.dart';
 class AgentAgentActionGroupApiSchema {
   /// JSON or YAML-formatted payload defining the OpenAPI schema for the action group.
   /// Only one of `payload` or `s3` can be specified.
-  final pulumi.Input<String>? payload;
+  final pulumi.Input<String?>? payload;
   /// Details about the S3 object containing the OpenAPI schema for the action group. See `s3` Block for details.
   /// Only one of `s3` or `payload` can be specified.
-  final pulumi.Input<AgentAgentActionGroupApiSchemaS3>? s3;
+  final pulumi.Input<AgentAgentActionGroupApiSchemaS3?>? s3;
 
   /// Creates a new [AgentAgentActionGroupApiSchema].
   /// [payload] JSON or YAML-formatted payload defining the OpenAPI schema for the action group.

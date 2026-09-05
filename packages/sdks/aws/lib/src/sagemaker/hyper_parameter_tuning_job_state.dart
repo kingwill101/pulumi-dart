@@ -10,32 +10,32 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// Input properties used for looking up and filtering HyperParameterTuningJob resources.
 class HyperParameterTuningJobState {
   /// ARN of the Hyper Parameter Tuning Job.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Autotune settings. See `autotune`.
-  final pulumi.Input<HyperParameterTuningJobAutotune>? autotune;
+  final pulumi.Input<HyperParameterTuningJobAutotune?>? autotune;
   /// Tuning job settings. See `config`.
-  final pulumi.Input<HyperParameterTuningJobConfig>? config;
+  final pulumi.Input<HyperParameterTuningJobConfig?>? config;
   /// Reason returned by SageMaker AI when a job fails.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// Name of the tuning job.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current tuning job status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to this resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<HyperParameterTuningJobTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<HyperParameterTuningJobTimeouts?>? timeouts;
   /// Single training job definition for tuning. See `trainingJobDefinition`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinition>? trainingJobDefinition;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinition?>? trainingJobDefinition;
   /// Multiple training job definitions for tuning. See `trainingJobDefinition`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinition>>? trainingJobDefinitions;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinition>?>? trainingJobDefinitions;
   /// Warm start settings. See `warmStartConfig`.
-  final pulumi.Input<HyperParameterTuningJobWarmStartConfig>? warmStartConfig;
+  final pulumi.Input<HyperParameterTuningJobWarmStartConfig?>? warmStartConfig;
 
   /// Creates a new [HyperParameterTuningJobState].
   /// [arn] ARN of the Hyper Parameter Tuning Job.

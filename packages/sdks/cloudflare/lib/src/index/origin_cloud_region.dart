@@ -157,7 +157,7 @@ class OriginCloudRegion extends pulumi.CustomResource {
           'cloudflare:index/originCloudRegion:OriginCloudRegion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     modifiedOn = registerOutput<String>('modifiedOn');
     originIp = registerOutput<String>('originIp');

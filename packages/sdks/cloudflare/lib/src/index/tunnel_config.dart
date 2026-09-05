@@ -520,7 +520,7 @@ class TunnelConfig extends pulumi.CustomResource {
           'cloudflare:index/tunnelConfig:TunnelConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<TunnelConfigConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TunnelConfigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

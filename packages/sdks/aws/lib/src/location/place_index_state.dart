@@ -6,34 +6,34 @@ import 'place_index_data_source_configuration.dart';
 /// Input properties used for looking up and filtering PlaceIndex resources.
 class PlaceIndexState {
   /// Timestamp for when the place index resource was created in ISO 8601 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Geospatial data provider for the new place index.
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Configuration block with the data storage option chosen for requesting Places. Detailed below.
-  final pulumi.Input<PlaceIndexDataSourceConfiguration>? dataSourceConfiguration;
+  final pulumi.Input<PlaceIndexDataSourceConfiguration?>? dataSourceConfiguration;
   /// Optional description for the place index resource.
-  final pulumi.Input<String>? description;
-  /// Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS.
-  final pulumi.Input<String>? indexArn;
+  final pulumi.Input<String?>? description;
+  /// ARN for the place index resource. Used to specify a resource across AWS.
+  final pulumi.Input<String?>? indexArn;
   /// Name of the place index resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? indexName;
+  final pulumi.Input<String?>? indexName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Timestamp for when the place index resource was last updated in ISO 8601 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PlaceIndexState].
   /// [createTime] Timestamp for when the place index resource was created in ISO 8601 format.
   /// [dataSource] Geospatial data provider for the new place index.
   /// [dataSourceConfiguration] Configuration block with the data storage option chosen for requesting Places. Detailed below.
   /// [description] Optional description for the place index resource.
-  /// [indexArn] Amazon Resource Name (ARN) for the place index resource. Used to specify a resource across AWS.
+  /// [indexArn] ARN for the place index resource. Used to specify a resource across AWS.
   /// [indexName] Name of the place index resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GatewayHostNameConfiguration resources.
 class GatewayHostNameConfigurationState {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementId;
+  final pulumi.Input<String?>? apiManagementId;
   /// The certificate ID to be used for TLS connection establishment.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? gatewayName;
+  final pulumi.Input<String?>? gatewayName;
   /// The host name to use for the API Management Gateway Host Name Configuration.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Whether HTTP/2.0 is supported. Defaults to `true`.
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// The name of the API Management Gateway Host Name Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the API Management Gateway requests a client certificate.
-  final pulumi.Input<bool>? requestClientCertificateEnabled;
+  final pulumi.Input<bool?>? requestClientCertificateEnabled;
   /// Whether TLS 1.0 is supported.
-  final pulumi.Input<bool>? tls10Enabled;
+  final pulumi.Input<bool?>? tls10Enabled;
   /// Whether TLS 1.1 is supported.
-  final pulumi.Input<bool>? tls11Enabled;
+  final pulumi.Input<bool?>? tls11Enabled;
 
   /// Creates a new [GatewayHostNameConfigurationState].
   /// [apiManagementId] The ID of the API Management Service. Changing this forces a new resource to be created.

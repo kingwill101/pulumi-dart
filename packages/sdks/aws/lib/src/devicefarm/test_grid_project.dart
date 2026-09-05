@@ -15,12 +15,12 @@ import 'test_grid_project_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devicefarm.TestGridProject("example", {
-///     name: "example",
 ///     vpcConfig: {
 ///         vpcId: exampleAwsVpc.id,
 ///         subnetIds: exampleAwsSubnet.map(__item => __item.id),
 ///         securityGroupIds: exampleAwsSecurityGroup.map(__item => __item.id),
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'test_grid_project_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devicefarm.TestGridProject("example",
-///     name="example",
 ///     vpc_config={
 ///         "vpc_id": example_aws_vpc["id"],
 ///         "subnet_ids": [__item["id"] for __item in example_aws_subnet],
 ///         "security_group_ids": [__item["id"] for __item in example_aws_security_group],
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,13 +45,13 @@ import 'test_grid_project_vpc_config.dart';
 /// {
 ///     var example = new Aws.DeviceFarm.TestGridProject("example", new()
 ///     {
-///         Name = "example",
 ///         VpcConfig = new Aws.DeviceFarm.Inputs.TestGridProjectVpcConfigArgs
 ///         {
 ///             VpcId = exampleAwsVpc.Id,
 ///             SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///             SecurityGroupIds = exampleAwsSecurityGroup.Select(__item => __item.Id).ToList(),
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -66,12 +66,12 @@ import 'test_grid_project_vpc_config.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := devicefarm.NewTestGridProject(ctx, "example", &devicefarm.TestGridProjectArgs{
-/// Name: pulumi.String("example"),
 /// VpcConfig: &devicefarm.TestGridProjectVpcConfigArgs{
 /// VpcId: pulumi.Any(exampleAwsVpc.Id),
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,24-46)),
-/// SecurityGroupIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,24-53)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,24-46)),
+/// SecurityGroupIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:4,24-53)),
 /// },
+/// Name: pulumi.String("example"),
 /// })
 /// if err != nil {
 /// return err
@@ -90,12 +90,12 @@ import 'test_grid_project_vpc_config.dart';
 /// }
 ///
 /// resource "aws_devicefarm_testgridproject" "example" {
-///   name = "example"
 ///   vpc_config = {
 ///     vpc_id             = exampleAwsVpc.id
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = exampleAwsSecurityGroup[*].id
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -121,12 +121,12 @@ import 'test_grid_project_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TestGridProject("example", TestGridProjectArgs.builder()
-///             .name("example")
 ///             .vpcConfig(TestGridProjectVpcConfigArgs.builder()
 ///                 .vpcId(exampleAwsVpc.id())
 ///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .securityGroupIds(exampleAwsSecurityGroup.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -140,7 +140,7 @@ import 'test_grid_project_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm test grid project.
+/// - `arn` (String) ARN of the Device Farm test grid project.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Test Grid Projects using their ARN. For example:
@@ -149,7 +149,7 @@ import 'test_grid_project_vpc_config.dart';
 /// $ pulumi import aws:devicefarm/testGridProject:TestGridProject example arn:aws:devicefarm:us-west-2:123456789012:testgrid-project:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class TestGridProject extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this Test Grid Project.
+  /// ARN of this Test Grid Project.
   late final pulumi.Output<String> arn;
   /// Human-readable description of the project.
   late final pulumi.Output<String?> description;
@@ -176,14 +176,14 @@ class TestGridProject extends pulumi.CustomResource {
           'aws:devicefarm/testGridProject:TestGridProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<TestGridProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestGridProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -192,11 +192,12 @@ class TestGridProject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TestGridProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TestGridProject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,8 +215,26 @@ class TestGridProject extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfig = registerOutput<TestGridProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestGridProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TestGridProject] resource.
+  TestGridProject.reference(String urn)
+    : super(
+        'aws:devicefarm/testGridProject:TestGridProject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<TestGridProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestGridProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

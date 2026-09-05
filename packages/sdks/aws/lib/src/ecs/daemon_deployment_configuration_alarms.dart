@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonDeploymentConfigurationAlarms {
   /// List of CloudWatch alarm names to monitor during deployment.
-  final pulumi.Input<List<String>>? alarmNames;
+  final pulumi.Input<List<String>?>? alarmNames;
   /// Whether to enable alarm monitoring for deployments. Defaults to `false`.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
 
   /// Creates a new [DaemonDeploymentConfigurationAlarms].
   /// [alarmNames] List of CloudWatch alarm names to monitor during deployment.

@@ -6,22 +6,22 @@ import 'agentcore_browser_profile_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreBrowserProfile resources.
 class AgentcoreBrowserProfileState {
   /// Description of the browser profile. Must be between 1 and 4096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the browser profile. Must start with a letter and can contain alphanumeric characters and underscores, up to 48 characters.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the Browser Profile.
-  final pulumi.Input<String>? profileArn;
+  final pulumi.Input<String?>? profileArn;
   /// Unique identifier of the Browser Profile.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreBrowserProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreBrowserProfileTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreBrowserProfileState].
   /// [description] Description of the browser profile. Must be between 1 and 4096 characters.

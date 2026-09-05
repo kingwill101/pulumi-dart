@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration {
   /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
-  final pulumi.Input<String>? assignPublicIp;
-  final pulumi.Input<List<String>>? securityGroups;
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<String?>? assignPublicIp;
+  final pulumi.Input<List<String>?>? securityGroups;
+  final pulumi.Input<List<String>?>? subnets;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration].
   /// [assignPublicIp] Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.

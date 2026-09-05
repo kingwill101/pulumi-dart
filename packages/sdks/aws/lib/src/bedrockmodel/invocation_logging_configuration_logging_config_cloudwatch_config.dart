@@ -5,7 +5,7 @@ import 'invocation_logging_configuration_logging_config_cloudwatch_config_large_
 
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
   /// S3 configuration for delivering a large amount of data. See `largeDataDeliveryS3Config` Block for details.
-  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config>? largeDataDeliveryS3Config;
+  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config?>? largeDataDeliveryS3Config;
   /// Log group name.
   final pulumi.Input<String> logGroupName;
   /// The role ARN.

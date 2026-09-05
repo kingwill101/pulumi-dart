@@ -14,33 +14,33 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_byte
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatch {
   /// Inspect all query arguments.
-  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>?>? allQueryArguments;
   /// Inspect the request body, which immediately follows the request headers.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody>? body;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody?>? body;
   /// Inspect the cookies in the web request. See Cookies below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookies?>? cookies;
   /// Inspect the request headers. See Header Order below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderOrder>?>? headerOrders;
   /// Inspect the request headers. See Headers below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeader>?>? headers;
   /// Inspect the JA3 fingerprint. See `ja3Fingerprint` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJa3Fingerprint?>? ja3Fingerprint;
   /// Inspect the JA4 fingerprint. See `ja4Fingerprint` below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJa4Fingerprint?>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBody?>? jsonBody;
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
-  final pulumi.Input<Map<String, dynamic>>? method;
+  final pulumi.Input<Map<String, dynamic>?>? method;
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
-  final pulumi.Input<Map<String, dynamic>>? queryString;
+  final pulumi.Input<Map<String, dynamic>?>? queryString;
   /// Inspect a single header. See Single Header below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader?>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleQueryArgument?>? singleQueryArgument;
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See URI Fragment below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment?>? uriFragment;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
-  final pulumi.Input<Map<String, dynamic>>? uriPath;
+  final pulumi.Input<Map<String, dynamic>?>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.

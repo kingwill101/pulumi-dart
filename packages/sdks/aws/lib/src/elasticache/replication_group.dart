@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_group_args.dart';
+import 'replication_group_log_delivery_configuration.dart';
+import 'replication_group_node_group_configuration.dart';
 import 'replication_group_state.dart';
 
 /// Provides an ElastiCache Replication Group resource.
@@ -218,6 +220,8 @@ import 'replication_group_state.dart';
 ///     numCacheClusters: 2,
 ///     parameterGroupName: "default.redis3.2",
 ///     port: 6379,
+/// }, {
+///     ignoreChanges: ["numCacheClusters"],
 /// });
 /// const replica: aws.elasticache.Cluster[] = [];
 /// for (let range = 0; range < 1; range++) {
@@ -243,7 +247,8 @@ import 'replication_group_state.dart';
 ///     node_type="cache.m4.large",
 ///     num_cache_clusters=2,
 ///     parameter_group_name="default.redis3.2",
-///     port=6379)
+///     port=6379,
+///     opts = pulumi.ResourceOptions(ignore_changes=["numCacheClusters"]))
 /// replica: list[aws.elasticache.Cluster] = []
 /// for replica_range in [{"value": i} for i in range(0, 1)]:
 ///     replica.append(aws.elasticache.Cluster(f"replica-{replica_range['value']}",
@@ -272,6 +277,12 @@ import 'replication_group_state.dart';
 ///         NumCacheClusters = 2,
 ///         ParameterGroupName = "default.redis3.2",
 ///         Port = 6379,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "numCacheClusters",
+///         },
 ///     });
 ///
 ///     var replica = new List<Aws.ElastiCache.Cluster>();
@@ -310,7 +321,9 @@ import 'replication_group_state.dart';
 /// 			NumCacheClusters:   pulumi.Int(2),
 /// 			ParameterGroupName: pulumi.String("default.redis3.2"),
 /// 			Port:               pulumi.Int(6379),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"numCacheClusters",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -341,6 +354,9 @@ import 'replication_group_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_replicationgroup" "example" {
+///   lifecycle {
+///     ignore_changes = [numCacheClusters]
+///   }
 ///   automatic_failover_enabled  = true
 ///   preferred_cache_cluster_azs = ["us-west-2a", "us-west-2b"]
 ///   replication_group_id        = "tf-rep-group-1"
@@ -367,6 +383,7 @@ import 'replication_group_state.dart';
 /// import com.pulumi.aws.elasticache.Cluster;
 /// import com.pulumi.aws.elasticache.ClusterArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -391,7 +408,9 @@ import 'replication_group_state.dart';
 ///             .numCacheClusters(2)
 ///             .parameterGroupName("default.redis3.2")
 ///             .port(6379)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("numCacheClusters")
+///                 .build());
 ///
 ///         for (var i = 0; i < 1; i++) {
 ///             new Cluster("replica-" + i, ClusterArgs.builder()
@@ -419,6 +438,9 @@ import 'replication_group_state.dart';
 ///       numCacheClusters: 2
 ///       parameterGroupName: default.redis3.2
 ///       port: 6379
+///     options:
+///       ignoreChanges:
+///         - numCacheClusters
 ///   replica:
 ///     type: aws:elasticache:Cluster
 ///     properties:
@@ -592,13 +614,6 @@ import 'replication_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.elasticache.ReplicationGroup("example", {
-///     replicationGroupId: "tf-redis-cluster",
-///     description: "example description",
-///     nodeType: "cache.t2.small",
-///     port: 6379,
-///     parameterGroupName: "default.redis3.2.cluster.on",
-///     automaticFailoverEnabled: true,
-///     numNodeGroups: 2,
 ///     nodeGroupConfigurations: [
 ///         {
 ///             nodeGroupId: "0001",
@@ -615,6 +630,13 @@ import 'replication_group_state.dart';
 ///             slots: "8192-16383",
 ///         },
 ///     ],
+///     replicationGroupId: "tf-redis-cluster",
+///     description: "example description",
+///     nodeType: "cache.t2.small",
+///     port: 6379,
+///     parameterGroupName: "default.redis3.2.cluster.on",
+///     automaticFailoverEnabled: true,
+///     numNodeGroups: 2,
 /// });
 /// ```
 /// ```python
@@ -622,13 +644,6 @@ import 'replication_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticache.ReplicationGroup("example",
-///     replication_group_id="tf-redis-cluster",
-///     description="example description",
-///     node_type="cache.t2.small",
-///     port=6379,
-///     parameter_group_name="default.redis3.2.cluster.on",
-///     automatic_failover_enabled=True,
-///     num_node_groups=2,
 ///     node_group_configurations=[
 ///         {
 ///             "node_group_id": "0001",
@@ -644,7 +659,14 @@ import 'replication_group_state.dart';
 ///             "replica_count": 1,
 ///             "slots": "8192-16383",
 ///         },
-///     ])
+///     ],
+///     replication_group_id="tf-redis-cluster",
+///     description="example description",
+///     node_type="cache.t2.small",
+///     port=6379,
+///     parameter_group_name="default.redis3.2.cluster.on",
+///     automatic_failover_enabled=True,
+///     num_node_groups=2)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -656,13 +678,6 @@ import 'replication_group_state.dart';
 /// {
 ///     var example = new Aws.ElastiCache.ReplicationGroup("example", new()
 ///     {
-///         ReplicationGroupId = "tf-redis-cluster",
-///         Description = "example description",
-///         NodeType = "cache.t2.small",
-///         Port = 6379,
-///         ParameterGroupName = "default.redis3.2.cluster.on",
-///         AutomaticFailoverEnabled = true,
-///         NumNodeGroups = 2,
 ///         NodeGroupConfigurations = new[]
 ///         {
 ///             new Aws.ElastiCache.Inputs.ReplicationGroupNodeGroupConfigurationArgs
@@ -688,6 +703,13 @@ import 'replication_group_state.dart';
 ///                 Slots = "8192-16383",
 ///             },
 ///         },
+///         ReplicationGroupId = "tf-redis-cluster",
+///         Description = "example description",
+///         NodeType = "cache.t2.small",
+///         Port = 6379,
+///         ParameterGroupName = "default.redis3.2.cluster.on",
+///         AutomaticFailoverEnabled = true,
+///         NumNodeGroups = 2,
 ///     });
 ///
 /// });
@@ -703,13 +725,6 @@ import 'replication_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewReplicationGroup(ctx, "example", &elasticache.ReplicationGroupArgs{
-/// 			ReplicationGroupId:       pulumi.String("tf-redis-cluster"),
-/// 			Description:              pulumi.String("example description"),
-/// 			NodeType:                 pulumi.String("cache.t2.small"),
-/// 			Port:                     pulumi.Int(6379),
-/// 			ParameterGroupName:       pulumi.String("default.redis3.2.cluster.on"),
-/// 			AutomaticFailoverEnabled: pulumi.Bool(true),
-/// 			NumNodeGroups:            pulumi.Int(2),
 /// 			NodeGroupConfigurations: elasticache.ReplicationGroupNodeGroupConfigurationArray{
 /// 				&elasticache.ReplicationGroupNodeGroupConfigurationArgs{
 /// 					NodeGroupId:             pulumi.String("0001"),
@@ -730,6 +745,13 @@ import 'replication_group_state.dart';
 /// 					Slots:        pulumi.String("8192-16383"),
 /// 				},
 /// 			},
+/// 			ReplicationGroupId:       pulumi.String("tf-redis-cluster"),
+/// 			Description:              pulumi.String("example description"),
+/// 			NodeType:                 pulumi.String("cache.t2.small"),
+/// 			Port:                     pulumi.Int(6379),
+/// 			ParameterGroupName:       pulumi.String("default.redis3.2.cluster.on"),
+/// 			AutomaticFailoverEnabled: pulumi.Bool(true),
+/// 			NumNodeGroups:            pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -748,13 +770,6 @@ import 'replication_group_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_replicationgroup" "example" {
-///   replication_group_id       = "tf-redis-cluster"
-///   description                = "example description"
-///   node_type                  = "cache.t2.small"
-///   port                       = 6379
-///   parameter_group_name       = "default.redis3.2.cluster.on"
-///   automatic_failover_enabled = true
-///   num_node_groups            = 2
 ///   node_group_configurations {
 ///     node_group_id              = "0001"
 ///     primary_availability_zone  = "us-west-2a"
@@ -769,6 +784,13 @@ import 'replication_group_state.dart';
 ///     replica_count              = 1
 ///     slots                      = "8192-16383"
 ///   }
+///   replication_group_id       = "tf-redis-cluster"
+///   description                = "example description"
+///   node_type                  = "cache.t2.small"
+///   port                       = 6379
+///   parameter_group_name       = "default.redis3.2.cluster.on"
+///   automatic_failover_enabled = true
+///   num_node_groups            = 2
 /// }
 /// ```
 /// ```java
@@ -794,13 +816,6 @@ import 'replication_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ReplicationGroup("example", ReplicationGroupArgs.builder()
-///             .replicationGroupId("tf-redis-cluster")
-///             .description("example description")
-///             .nodeType("cache.t2.small")
-///             .port(6379)
-///             .parameterGroupName("default.redis3.2.cluster.on")
-///             .automaticFailoverEnabled(true)
-///             .numNodeGroups(2)
 ///             .nodeGroupConfigurations(
 ///                 ReplicationGroupNodeGroupConfigurationArgs.builder()
 ///                     .nodeGroupId("0001")
@@ -816,6 +831,13 @@ import 'replication_group_state.dart';
 ///                     .replicaCount(1)
 ///                     .slots("8192-16383")
 ///                     .build())
+///             .replicationGroupId("tf-redis-cluster")
+///             .description("example description")
+///             .nodeType("cache.t2.small")
+///             .port(6379)
+///             .parameterGroupName("default.redis3.2.cluster.on")
+///             .automaticFailoverEnabled(true)
+///             .numNodeGroups(2)
 ///             .build());
 ///
 ///     }
@@ -826,13 +848,6 @@ import 'replication_group_state.dart';
 ///   example:
 ///     type: aws:elasticache:ReplicationGroup
 ///     properties:
-///       replicationGroupId: tf-redis-cluster
-///       description: example description
-///       nodeType: cache.t2.small
-///       port: 6379
-///       parameterGroupName: default.redis3.2.cluster.on
-///       automaticFailoverEnabled: true
-///       numNodeGroups: 2
 ///       nodeGroupConfigurations:
 ///         - nodeGroupId: '0001'
 ///           primaryAvailabilityZone: us-west-2a
@@ -846,6 +861,13 @@ import 'replication_group_state.dart';
 ///             - us-west-2a
 ///           replicaCount: 1
 ///           slots: 8192-16383
+///       replicationGroupId: tf-redis-cluster
+///       description: example description
+///       nodeType: cache.t2.small
+///       port: 6379
+///       parameterGroupName: default.redis3.2.cluster.on
+///       automaticFailoverEnabled: true
+///       numNodeGroups: 2
 /// ```
 ///
 ///
@@ -857,14 +879,6 @@ import 'replication_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.elasticache.ReplicationGroup("test", {
-///     replicationGroupId: "myreplicaciongroup",
-///     description: "test description",
-///     nodeType: "cache.t3.small",
-///     port: 6379,
-///     applyImmediately: true,
-///     autoMinorVersionUpgrade: false,
-///     maintenanceWindow: "tue:06:30-tue:07:30",
-///     snapshotWindow: "01:00-02:00",
 ///     logDeliveryConfigurations: [
 ///         {
 ///             destination: example.name,
@@ -879,6 +893,14 @@ import 'replication_group_state.dart';
 ///             logType: "engine-log",
 ///         },
 ///     ],
+///     replicationGroupId: "myreplicaciongroup",
+///     description: "test description",
+///     nodeType: "cache.t3.small",
+///     port: 6379,
+///     applyImmediately: true,
+///     autoMinorVersionUpgrade: false,
+///     maintenanceWindow: "tue:06:30-tue:07:30",
+///     snapshotWindow: "01:00-02:00",
 /// });
 /// ```
 /// ```python
@@ -886,14 +908,6 @@ import 'replication_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.elasticache.ReplicationGroup("test",
-///     replication_group_id="myreplicaciongroup",
-///     description="test description",
-///     node_type="cache.t3.small",
-///     port=6379,
-///     apply_immediately=True,
-///     auto_minor_version_upgrade=False,
-///     maintenance_window="tue:06:30-tue:07:30",
-///     snapshot_window="01:00-02:00",
 ///     log_delivery_configurations=[
 ///         {
 ///             "destination": example["name"],
@@ -907,7 +921,15 @@ import 'replication_group_state.dart';
 ///             "log_format": "json",
 ///             "log_type": "engine-log",
 ///         },
-///     ])
+///     ],
+///     replication_group_id="myreplicaciongroup",
+///     description="test description",
+///     node_type="cache.t3.small",
+///     port=6379,
+///     apply_immediately=True,
+///     auto_minor_version_upgrade=False,
+///     maintenance_window="tue:06:30-tue:07:30",
+///     snapshot_window="01:00-02:00")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -919,14 +941,6 @@ import 'replication_group_state.dart';
 /// {
 ///     var test = new Aws.ElastiCache.ReplicationGroup("test", new()
 ///     {
-///         ReplicationGroupId = "myreplicaciongroup",
-///         Description = "test description",
-///         NodeType = "cache.t3.small",
-///         Port = 6379,
-///         ApplyImmediately = true,
-///         AutoMinorVersionUpgrade = false,
-///         MaintenanceWindow = "tue:06:30-tue:07:30",
-///         SnapshotWindow = "01:00-02:00",
 ///         LogDeliveryConfigurations = new[]
 ///         {
 ///             new Aws.ElastiCache.Inputs.ReplicationGroupLogDeliveryConfigurationArgs
@@ -944,6 +958,14 @@ import 'replication_group_state.dart';
 ///                 LogType = "engine-log",
 ///             },
 ///         },
+///         ReplicationGroupId = "myreplicaciongroup",
+///         Description = "test description",
+///         NodeType = "cache.t3.small",
+///         Port = 6379,
+///         ApplyImmediately = true,
+///         AutoMinorVersionUpgrade = false,
+///         MaintenanceWindow = "tue:06:30-tue:07:30",
+///         SnapshotWindow = "01:00-02:00",
 ///     });
 ///
 /// });
@@ -959,14 +981,6 @@ import 'replication_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewReplicationGroup(ctx, "test", &elasticache.ReplicationGroupArgs{
-/// 			ReplicationGroupId:      pulumi.String("myreplicaciongroup"),
-/// 			Description:             pulumi.String("test description"),
-/// 			NodeType:                pulumi.String("cache.t3.small"),
-/// 			Port:                    pulumi.Int(6379),
-/// 			ApplyImmediately:        pulumi.Bool(true),
-/// 			AutoMinorVersionUpgrade: pulumi.Bool(false),
-/// 			MaintenanceWindow:       pulumi.String("tue:06:30-tue:07:30"),
-/// 			SnapshotWindow:          pulumi.String("01:00-02:00"),
 /// 			LogDeliveryConfigurations: elasticache.ReplicationGroupLogDeliveryConfigurationArray{
 /// 				&elasticache.ReplicationGroupLogDeliveryConfigurationArgs{
 /// 					Destination:     pulumi.Any(example.Name),
@@ -981,6 +995,14 @@ import 'replication_group_state.dart';
 /// 					LogType:         pulumi.String("engine-log"),
 /// 				},
 /// 			},
+/// 			ReplicationGroupId:      pulumi.String("myreplicaciongroup"),
+/// 			Description:             pulumi.String("test description"),
+/// 			NodeType:                pulumi.String("cache.t3.small"),
+/// 			Port:                    pulumi.Int(6379),
+/// 			ApplyImmediately:        pulumi.Bool(true),
+/// 			AutoMinorVersionUpgrade: pulumi.Bool(false),
+/// 			MaintenanceWindow:       pulumi.String("tue:06:30-tue:07:30"),
+/// 			SnapshotWindow:          pulumi.String("01:00-02:00"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -999,14 +1021,6 @@ import 'replication_group_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_replicationgroup" "test" {
-///   replication_group_id       = "myreplicaciongroup"
-///   description                = "test description"
-///   node_type                  = "cache.t3.small"
-///   port                       = 6379
-///   apply_immediately          = true
-///   auto_minor_version_upgrade = false
-///   maintenance_window         = "tue:06:30-tue:07:30"
-///   snapshot_window            = "01:00-02:00"
 ///   log_delivery_configurations {
 ///     destination      = example.name
 ///     destination_type = "cloudwatch-logs"
@@ -1019,6 +1033,14 @@ import 'replication_group_state.dart';
 ///     log_format       = "json"
 ///     log_type         = "engine-log"
 ///   }
+///   replication_group_id       = "myreplicaciongroup"
+///   description                = "test description"
+///   node_type                  = "cache.t3.small"
+///   port                       = 6379
+///   apply_immediately          = true
+///   auto_minor_version_upgrade = false
+///   maintenance_window         = "tue:06:30-tue:07:30"
+///   snapshot_window            = "01:00-02:00"
 /// }
 /// ```
 /// ```java
@@ -1044,14 +1066,6 @@ import 'replication_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ReplicationGroup("test", ReplicationGroupArgs.builder()
-///             .replicationGroupId("myreplicaciongroup")
-///             .description("test description")
-///             .nodeType("cache.t3.small")
-///             .port(6379)
-///             .applyImmediately(true)
-///             .autoMinorVersionUpgrade(false)
-///             .maintenanceWindow("tue:06:30-tue:07:30")
-///             .snapshotWindow("01:00-02:00")
 ///             .logDeliveryConfigurations(
 ///                 ReplicationGroupLogDeliveryConfigurationArgs.builder()
 ///                     .destination(example.name())
@@ -1065,6 +1079,14 @@ import 'replication_group_state.dart';
 ///                     .logFormat("json")
 ///                     .logType("engine-log")
 ///                     .build())
+///             .replicationGroupId("myreplicaciongroup")
+///             .description("test description")
+///             .nodeType("cache.t3.small")
+///             .port(6379)
+///             .applyImmediately(true)
+///             .autoMinorVersionUpgrade(false)
+///             .maintenanceWindow("tue:06:30-tue:07:30")
+///             .snapshotWindow("01:00-02:00")
 ///             .build());
 ///
 ///     }
@@ -1075,14 +1097,6 @@ import 'replication_group_state.dart';
 ///   test:
 ///     type: aws:elasticache:ReplicationGroup
 ///     properties:
-///       replicationGroupId: myreplicaciongroup
-///       description: test description
-///       nodeType: cache.t3.small
-///       port: 6379
-///       applyImmediately: true
-///       autoMinorVersionUpgrade: false
-///       maintenanceWindow: tue:06:30-tue:07:30
-///       snapshotWindow: 01:00-02:00
 ///       logDeliveryConfigurations:
 ///         - destination: ${example.name}
 ///           destinationType: cloudwatch-logs
@@ -1092,6 +1106,14 @@ import 'replication_group_state.dart';
 ///           destinationType: kinesis-firehose
 ///           logFormat: json
 ///           logType: engine-log
+///       replicationGroupId: myreplicaciongroup
+///       description: test description
+///       nodeType: cache.t3.small
+///       port: 6379
+///       applyImmediately: true
+///       autoMinorVersionUpgrade: false
+///       maintenanceWindow: tue:06:30-tue:07:30
+///       snapshotWindow: 01:00-02:00
 /// ```
 ///
 ///
@@ -1531,8 +1553,13 @@ class ReplicationGroup extends pulumi.CustomResource {
   late final pulumi.Output<bool> atRestEncryptionEnabled;
   /// Password used to access a password protected server. Can be specified only if `transitEncryptionEnabled = true`.
   late final pulumi.Output<String?> authToken;
-  /// Strategy used when modifying `authToken` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `authToken` must be omitted.
+  /// Strategy used when modifying `authToken` or `authTokenWo` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `authToken` and `authTokenWo` must be omitted.
   late final pulumi.Output<String?> authTokenUpdateStrategy;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Password used to access a password protected server, whose value will not be stored in state. Can be specified only if `transitEncryptionEnabled = true`. Conflicts with `authToken`. Requires `authTokenWoVersion`.
+  late final pulumi.Output<String?> authTokenWo;
+  /// Integer that, when changed, triggers a re-send of `authTokenWo` to the replication group. Requires `authTokenWo`.
+  late final pulumi.Output<int?> authTokenWoVersion;
   /// Specifies whether minor version engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window.
   /// Only supported for engine types `"redis"` and `"valkey"` and if the engine version is 6 or higher.
   /// Defaults to `true`.
@@ -1573,7 +1600,7 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `atRestEncryptionEnabled = true`.
   late final pulumi.Output<String?> kmsKeyId;
   /// Specifies the destination and format of Redis OSS/Valkey [SLOWLOG](https://redis.io/commands/slowlog) or Redis OSS/Valkey [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See the documentation on [Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See Log Delivery Configuration below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logDeliveryConfigurations;
+  late final pulumi.Output<List<ReplicationGroupLogDeliveryConfiguration>?> logDeliveryConfigurations;
   /// Specifies the weekly time range for when maintenance on the cache cluster is performed. The format is `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:05:00-sun:09:00`
   late final pulumi.Output<String> maintenanceWindow;
   /// Identifiers of all the nodes that are part of this replication group.
@@ -1585,7 +1612,7 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// The IP versions for cache cluster connections. Valid values are `ipv4`, `ipv6` or `dualStack`.
   late final pulumi.Output<String> networkType;
   /// Configuration block for node groups (shards). Can be specified only if `numNodeGroups` is set. Conflicts with `preferredCacheClusterAzs`. See Node Group Configuration below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodeGroupConfigurations;
+  late final pulumi.Output<List<ReplicationGroupNodeGroupConfiguration>> nodeGroupConfigurations;
   /// Instance class to be used.
   /// See AWS documentation for information on [supported node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html) and [guidance on selecting node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes-select-size.html).
   /// Required unless `globalReplicationGroupId` is set.
@@ -1625,9 +1652,9 @@ class ReplicationGroup extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> replicationGroupId;
-  /// IDs of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud.
+  /// IDs of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in a VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// Names of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud.
+  /// Names of one or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in a VPC.
   late final pulumi.Output<List<String>> securityGroupNames;
   /// List of ARNs that identify Redis RDB snapshot files stored in Amazon S3. The names object names cannot contain any commas.
   late final pulumi.Output<List<String>?> snapshotArns;
@@ -1667,13 +1694,16 @@ class ReplicationGroup extends pulumi.CustomResource {
           'aws:elasticache/replicationGroup:ReplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['authToken', 'authTokenWo'],
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
     atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');
-    authToken = registerOutput<String?>('authToken');
+    authToken = registerOutput<String?>('authToken', isSecret: true);
     authTokenUpdateStrategy = registerOutput<String?>('authTokenUpdateStrategy');
+    authTokenWo = registerOutput<String?>('authTokenWo', isSecret: true);
+    authTokenWoVersion = registerOutput<int?>('authTokenWoVersion');
     autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
     automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
     clusterEnabled = registerOutput<bool>('clusterEnabled');
@@ -1689,36 +1719,36 @@ class ReplicationGroup extends pulumi.CustomResource {
     globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
     ipDiscovery = registerOutput<String>('ipDiscovery');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
-    logDeliveryConfigurations = registerOutput<List<Map<String, dynamic>>?>('logDeliveryConfigurations');
+    logDeliveryConfigurations = registerOutput<List<ReplicationGroupLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupLogDeliveryConfiguration>(guardedValue, (value) => ReplicationGroupLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
-    memberClusters = registerOutput<List<String>>('memberClusters');
+    memberClusters = registerOutput<List<String>>('memberClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiAzEnabled = registerOutput<bool?>('multiAzEnabled');
     networkType = registerOutput<String>('networkType');
-    nodeGroupConfigurations = registerOutput<List<Map<String, dynamic>>>('nodeGroupConfigurations');
+    nodeGroupConfigurations = registerOutput<List<ReplicationGroupNodeGroupConfiguration>>('nodeGroupConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupNodeGroupConfiguration>(guardedValue, (value) => ReplicationGroupNodeGroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     nodeType = registerOutput<String>('nodeType');
     notificationTopicArn = registerOutput<String?>('notificationTopicArn');
     numCacheClusters = registerOutput<int>('numCacheClusters');
     numNodeGroups = registerOutput<int>('numNodeGroups');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int?>('port');
-    preferredCacheClusterAzs = registerOutput<List<String>?>('preferredCacheClusterAzs');
+    preferredCacheClusterAzs = registerOutput<List<String>?>('preferredCacheClusterAzs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     primaryEndpointAddress = registerOutput<String>('primaryEndpointAddress');
     readerEndpointAddress = registerOutput<String>('readerEndpointAddress');
     region = registerOutput<String>('region');
     replicasPerNodeGroup = registerOutput<int>('replicasPerNodeGroup');
     replicationGroupId = registerOutput<String>('replicationGroupId');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    securityGroupNames = registerOutput<List<String>>('securityGroupNames');
-    snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupNames = registerOutput<List<String>>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
     transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
-    userGroupIds = registerOutput<List<String>?>('userGroupIds');
+    userGroupIds = registerOutput<List<String>?>('userGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ReplicationGroup] resource's state with the given [name] and [id].
@@ -1726,11 +1756,12 @@ class ReplicationGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1747,8 +1778,10 @@ class ReplicationGroup extends pulumi.CustomResource {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
     atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');
-    authToken = registerOutput<String?>('authToken');
+    authToken = registerOutput<String?>('authToken', isSecret: true);
     authTokenUpdateStrategy = registerOutput<String?>('authTokenUpdateStrategy');
+    authTokenWo = registerOutput<String?>('authTokenWo', isSecret: true);
+    authTokenWoVersion = registerOutput<int?>('authTokenWoVersion');
     autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
     automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
     clusterEnabled = registerOutput<bool>('clusterEnabled');
@@ -1764,35 +1797,99 @@ class ReplicationGroup extends pulumi.CustomResource {
     globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
     ipDiscovery = registerOutput<String>('ipDiscovery');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
-    logDeliveryConfigurations = registerOutput<List<Map<String, dynamic>>?>('logDeliveryConfigurations');
+    logDeliveryConfigurations = registerOutput<List<ReplicationGroupLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupLogDeliveryConfiguration>(guardedValue, (value) => ReplicationGroupLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
-    memberClusters = registerOutput<List<String>>('memberClusters');
+    memberClusters = registerOutput<List<String>>('memberClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiAzEnabled = registerOutput<bool?>('multiAzEnabled');
     networkType = registerOutput<String>('networkType');
-    nodeGroupConfigurations = registerOutput<List<Map<String, dynamic>>>('nodeGroupConfigurations');
+    nodeGroupConfigurations = registerOutput<List<ReplicationGroupNodeGroupConfiguration>>('nodeGroupConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupNodeGroupConfiguration>(guardedValue, (value) => ReplicationGroupNodeGroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     nodeType = registerOutput<String>('nodeType');
     notificationTopicArn = registerOutput<String?>('notificationTopicArn');
     numCacheClusters = registerOutput<int>('numCacheClusters');
     numNodeGroups = registerOutput<int>('numNodeGroups');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int?>('port');
-    preferredCacheClusterAzs = registerOutput<List<String>?>('preferredCacheClusterAzs');
+    preferredCacheClusterAzs = registerOutput<List<String>?>('preferredCacheClusterAzs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     primaryEndpointAddress = registerOutput<String>('primaryEndpointAddress');
     readerEndpointAddress = registerOutput<String>('readerEndpointAddress');
     region = registerOutput<String>('region');
     replicasPerNodeGroup = registerOutput<int>('replicasPerNodeGroup');
     replicationGroupId = registerOutput<String>('replicationGroupId');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    securityGroupNames = registerOutput<List<String>>('securityGroupNames');
-    snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupNames = registerOutput<List<String>>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
     transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
-    userGroupIds = registerOutput<List<String>?>('userGroupIds');
+    userGroupIds = registerOutput<List<String>?>('userGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReplicationGroup] resource.
+  ReplicationGroup.reference(String urn)
+    : super(
+        'aws:elasticache/replicationGroup:ReplicationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authToken', 'authTokenWo'],
+        isResourceReference: true,
+      ) {
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    atRestEncryptionEnabled = registerOutput<bool>('atRestEncryptionEnabled');
+    authToken = registerOutput<String?>('authToken', isSecret: true);
+    authTokenUpdateStrategy = registerOutput<String?>('authTokenUpdateStrategy');
+    authTokenWo = registerOutput<String?>('authTokenWo', isSecret: true);
+    authTokenWoVersion = registerOutput<int?>('authTokenWoVersion');
+    autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
+    automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
+    clusterEnabled = registerOutput<bool>('clusterEnabled');
+    clusterMode = registerOutput<String>('clusterMode');
+    configurationEndpointAddress = registerOutput<String>('configurationEndpointAddress');
+    dataTieringEnabled = registerOutput<bool>('dataTieringEnabled');
+    description = registerOutput<String>('description');
+    durability = registerOutput<String>('durability');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    globalReplicationGroupId = registerOutput<String>('globalReplicationGroupId');
+    ipDiscovery = registerOutput<String>('ipDiscovery');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    logDeliveryConfigurations = registerOutput<List<ReplicationGroupLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupLogDeliveryConfiguration>(guardedValue, (value) => ReplicationGroupLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    memberClusters = registerOutput<List<String>>('memberClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    multiAzEnabled = registerOutput<bool?>('multiAzEnabled');
+    networkType = registerOutput<String>('networkType');
+    nodeGroupConfigurations = registerOutput<List<ReplicationGroupNodeGroupConfiguration>>('nodeGroupConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationGroupNodeGroupConfiguration>(guardedValue, (value) => ReplicationGroupNodeGroupConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeType = registerOutput<String>('nodeType');
+    notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    numCacheClusters = registerOutput<int>('numCacheClusters');
+    numNodeGroups = registerOutput<int>('numNodeGroups');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    port = registerOutput<int?>('port');
+    preferredCacheClusterAzs = registerOutput<List<String>?>('preferredCacheClusterAzs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    primaryEndpointAddress = registerOutput<String>('primaryEndpointAddress');
+    readerEndpointAddress = registerOutput<String>('readerEndpointAddress');
+    region = registerOutput<String>('region');
+    replicasPerNodeGroup = registerOutput<int>('replicasPerNodeGroup');
+    replicationGroupId = registerOutput<String>('replicationGroupId');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupNames = registerOutput<List<String>>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotName = registerOutput<String?>('snapshotName');
+    snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
+    snapshotWindow = registerOutput<String>('snapshotWindow');
+    subnetGroupName = registerOutput<String>('subnetGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
+    transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
+    userGroupIds = registerOutput<List<String>?>('userGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

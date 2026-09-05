@@ -820,12 +820,13 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
           'aws:appconfig/hostedConfigurationVersion:HostedConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['content'],
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
     configurationProfileId = registerOutput<String>('configurationProfileId');
-    content = registerOutput<String>('content');
+    content = registerOutput<String>('content', isSecret: true);
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
@@ -837,11 +838,12 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedConfigurationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedConfigurationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -858,7 +860,27 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
     configurationProfileId = registerOutput<String>('configurationProfileId');
-    content = registerOutput<String>('content');
+    content = registerOutput<String>('content', isSecret: true);
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    versionNumber = registerOutput<int>('versionNumber');
+  }
+
+  /// Creates a typed reference to an existing [HostedConfigurationVersion] resource.
+  HostedConfigurationVersion.reference(String urn)
+    : super(
+        'aws:appconfig/hostedConfigurationVersion:HostedConfigurationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['content'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    content = registerOutput<String>('content', isSecret: true);
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');

@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AttachmentAccepter resources.
 class AttachmentAccepterState {
   /// ID of the attachment.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
   /// Policy rule number associated with the attachment.
-  final pulumi.Input<int>? attachmentPolicyRuleNumber;
+  final pulumi.Input<int?>? attachmentPolicyRuleNumber;
   /// Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// ARN of the core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of the core network.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edgeLocations`.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edgeLocation`.
-  final pulumi.Input<List<String>>? edgeLocations;
+  final pulumi.Input<List<String>?>? edgeLocations;
   /// ID of the attachment account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Attachment resource ARN.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Name of the segment attachment.
-  final pulumi.Input<String>? segmentName;
+  final pulumi.Input<String?>? segmentName;
   /// State of the attachment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [AttachmentAccepterState].
   /// [attachmentId] ID of the attachment.
@@ -72,7 +72,7 @@ class AttachmentAccepterState {
   factory AttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return AttachmentAccepterState(
       attachmentId: (() { final guardedValue = map['attachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       attachmentType: (() { final guardedValue = map['attachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

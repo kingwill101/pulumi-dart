@@ -5,9 +5,9 @@ import 'domain_cluster_config_node_option_node_config.dart';
 
 class DomainClusterConfigNodeOption {
   /// Container to specify sizing of a node type.
-  final pulumi.Input<DomainClusterConfigNodeOptionNodeConfig>? nodeConfig;
+  final pulumi.Input<DomainClusterConfigNodeOptionNodeConfig?>? nodeConfig;
   /// Type of node this configuration describes. Valid values: `coordinator`.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
 
   /// Creates a new [DomainClusterConfigNodeOption].
   /// [nodeConfig] Container to specify sizing of a node type.

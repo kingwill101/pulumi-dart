@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAddresses {
   /// The country that this address is in.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// The name that is typically displayed when the address is shown for display.
-  final pulumi.Input<String>? formatted;
+  final pulumi.Input<String?>? formatted;
   /// The address locality.
-  final pulumi.Input<String>? locality;
+  final pulumi.Input<String?>? locality;
   /// The postal code of the address.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// When `true`, this is the primary address associated with the user.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The region of the address.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The street of the address.
-  final pulumi.Input<String>? streetAddress;
+  final pulumi.Input<String?>? streetAddress;
   /// The type of address.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UserAddresses].
   /// [country] The country that this address is in.

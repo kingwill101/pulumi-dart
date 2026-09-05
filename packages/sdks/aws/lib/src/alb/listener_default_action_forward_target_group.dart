@@ -8,7 +8,7 @@ class ListenerDefaultActionForwardTargetGroup {
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
   /// Weight. The range is 0 to 999.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [ListenerDefaultActionForwardTargetGroup].
   /// [arn] ARN of the target group.
@@ -28,7 +28,7 @@ class ListenerDefaultActionForwardTargetGroup {
   factory ListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForwardTargetGroup(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'next_generation_firewall_virtual_network_local_rulestack_destination_nat
 
 class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat {
   /// A `backendConfig` block as defined above.
-  final pulumi.Input<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatBackendConfig>? backendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatBackendConfig?>? backendConfig;
   /// A `frontendConfig` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig>? frontendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig?>? frontendConfig;
   /// The name which should be used for this Destination NAT.
   final pulumi.Input<String> name;
   /// The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.

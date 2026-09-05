@@ -53,14 +53,14 @@ class TelemetryPipeline extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryPipeline:TelemetryPipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<TelemetryPipelineConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryPipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -69,11 +69,12 @@ class TelemetryPipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryPipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryPipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -91,8 +92,26 @@ class TelemetryPipeline extends pulumi.CustomResource {
     configuration = registerOutput<TelemetryPipelineConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<TelemetryPipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryPipeline] resource.
+  TelemetryPipeline.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryPipeline:TelemetryPipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<TelemetryPipelineConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TelemetryPipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryPipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

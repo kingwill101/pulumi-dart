@@ -126,3 +126,14 @@ Future<GetLocalDiskResult> getLocalDisk(
   );
   return GetLocalDiskResult.fromMap(result);
 }
+
+pulumi.Output<GetLocalDiskResult> getLocalDiskOutput(
+  GetLocalDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:storagegateway/getLocalDisk:getLocalDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalDiskResult.fromMap);
+}

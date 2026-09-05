@@ -6,7 +6,7 @@ class ContactListTopic {
   /// Default subscription status to be applied to a contact if the contact has not noted their preference for subscribing to a topic.
   final pulumi.Input<String> defaultSubscriptionStatus;
   /// Description of what the topic is about, which the contact will see.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the topic the contact will see.
   final pulumi.Input<String> displayName;
   /// Name of the topic.

@@ -19,17 +19,17 @@ class ThreeTierVirtualInstanceThreeTierConfiguration {
   /// A `databaseServerConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration> databaseServerConfiguration;
   /// The high availability type for the three tier configuration. Possible values are `AvailabilitySet` and `AvailabilityZone`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? highAvailabilityType;
+  final pulumi.Input<String?>? highAvailabilityType;
   /// A `resourceNames` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNames>? resourceNames;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNames?>? resourceNames;
   /// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? secondaryIpEnabled;
+  final pulumi.Input<bool?>? secondaryIpEnabled;
   /// A `transportCreateAndMount` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The file share configuration uses `skip` by default when `transportCreateAndMount` isn't set.
   ///
   /// &gt; **Note:** Due to [a bug in the Azure API](https://github.com/Azure/azure-rest-api-specs/issues/25209) where the Storage File Share Id is not defined correctly, it is not currently possible to support using Transport Mount.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount>? transportCreateAndMount;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount?>? transportCreateAndMount;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfiguration].
   /// [appResourceGroupName] The name of the application Resource Group where SAP system resources will be deployed. Changing this forces a new resource to be created.

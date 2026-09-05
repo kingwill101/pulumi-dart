@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleMatchHttpMatchHeaderMatchMatch {
   /// Value that the header must contain to match.
-  final pulumi.Input<String>? contains;
+  final pulumi.Input<String?>? contains;
   /// Exact type match.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Prefix type match. Matches the value with the prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ListenerRuleMatchHttpMatchHeaderMatchMatch].
   /// [contains] Value that the header must contain to match.

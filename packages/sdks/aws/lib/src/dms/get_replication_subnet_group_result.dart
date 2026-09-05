@@ -4,66 +4,66 @@
 /// Result data returned by getReplicationSubnetGroup.
 class GetReplicationSubnetGroupResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
-  final String replicationSubnetGroupArn;
+  final String? id;
+  final String? region;
+  final String? replicationSubnetGroupArn;
   /// Description for the subnet group.
-  final String replicationSubnetGroupDescription;
-  final String replicationSubnetGroupId;
-  final String subnetGroupStatus;
+  final String? replicationSubnetGroupDescription;
+  final String? replicationSubnetGroupId;
+  final String? subnetGroupStatus;
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
-  final List<String> subnetIds;
-  final Map<String, String> tags;
+  final List<String>? subnetIds;
+  final Map<String, String>? tags;
   /// The ID of the VPC the subnet group is in.
-  final String vpcId;
+  final String? vpcId;
 
   /// Creates a new [GetReplicationSubnetGroupResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
-  /// [replicationSubnetGroupArn] Required.
+  /// [region] Optional.
+  /// [replicationSubnetGroupArn] Optional.
   /// [replicationSubnetGroupDescription] Description for the subnet group.
-  /// [replicationSubnetGroupId] Required.
-  /// [subnetGroupStatus] Required.
+  /// [replicationSubnetGroupId] Optional.
+  /// [subnetGroupStatus] Optional.
   /// [subnetIds] List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
-  /// [tags] Required.
+  /// [tags] Optional.
   /// [vpcId] The ID of the VPC the subnet group is in.
   const GetReplicationSubnetGroupResult({
-    required this.id,
-    required this.region,
-    required this.replicationSubnetGroupArn,
-    required this.replicationSubnetGroupDescription,
-    required this.replicationSubnetGroupId,
-    required this.subnetGroupStatus,
-    required this.subnetIds,
-    required this.tags,
-    required this.vpcId,
+    this.id,
+    this.region,
+    this.replicationSubnetGroupArn,
+    this.replicationSubnetGroupDescription,
+    this.replicationSubnetGroupId,
+    this.subnetGroupStatus,
+    this.subnetIds,
+    this.tags,
+    this.vpcId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
-      'replicationSubnetGroupArn': replicationSubnetGroupArn,
-      'replicationSubnetGroupDescription': replicationSubnetGroupDescription,
-      'replicationSubnetGroupId': replicationSubnetGroupId,
-      'subnetGroupStatus': subnetGroupStatus,
-      'subnetIds': subnetIds,
-      'tags': tags,
-      'vpcId': vpcId,
+      'id': ?id,
+      'region': ?region,
+      'replicationSubnetGroupArn': ?replicationSubnetGroupArn,
+      'replicationSubnetGroupDescription': ?replicationSubnetGroupDescription,
+      'replicationSubnetGroupId': ?replicationSubnetGroupId,
+      'subnetGroupStatus': ?subnetGroupStatus,
+      'subnetIds': ?subnetIds,
+      'tags': ?tags,
+      'vpcId': ?vpcId,
     };
   }
 
   factory GetReplicationSubnetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationSubnetGroupResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
-      replicationSubnetGroupArn: map['replicationSubnetGroupArn'] as String,
-      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] as String,
-      replicationSubnetGroupId: map['replicationSubnetGroupId'] as String,
-      subnetGroupStatus: map['subnetGroupStatus'] as String,
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationSubnetGroupArn: (() { final guardedValue = map['replicationSubnetGroupArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationSubnetGroupDescription: (() { final guardedValue = map['replicationSubnetGroupDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationSubnetGroupId: (() { final guardedValue = map['replicationSubnetGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetGroupStatus: (() { final guardedValue = map['subnetGroupStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

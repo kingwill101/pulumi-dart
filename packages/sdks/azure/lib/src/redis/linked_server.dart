@@ -225,7 +225,7 @@ import 'linked_server_state.dart';
 /// 		_, err = redis.NewLinkedServer(ctx, "example-link", &redis.LinkedServerArgs{
 /// 			TargetRedisCacheName:     example_primaryCache.Name,
 /// 			ResourceGroupName:        example_primaryCache.ResourceGroupName,
-/// 			LinkedRedisCacheId:       example_secondaryCache.ID(),
+/// 			LinkedRedisCacheId:       example_secondaryCache.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedRedisCacheLocation: example_secondaryCache.Location,
 /// 			ServerRole:               pulumi.String("Secondary"),
 /// 		})
@@ -461,7 +461,7 @@ class LinkedServer extends pulumi.CustomResource {
           'azure:redis/linkedServer:LinkedServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     geoReplicatedPrimaryHostName = registerOutput<String>('geoReplicatedPrimaryHostName');
     linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
@@ -477,11 +477,12 @@ class LinkedServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -495,6 +496,24 @@ class LinkedServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    geoReplicatedPrimaryHostName = registerOutput<String>('geoReplicatedPrimaryHostName');
+    linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
+    linkedRedisCacheLocation = registerOutput<String>('linkedRedisCacheLocation');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverRole = registerOutput<String>('serverRole');
+    targetRedisCacheName = registerOutput<String>('targetRedisCacheName');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServer] resource.
+  LinkedServer.reference(String urn)
+    : super(
+        'azure:redis/linkedServer:LinkedServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     geoReplicatedPrimaryHostName = registerOutput<String>('geoReplicatedPrimaryHostName');
     linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
     linkedRedisCacheLocation = registerOutput<String>('linkedRedisCacheLocation');

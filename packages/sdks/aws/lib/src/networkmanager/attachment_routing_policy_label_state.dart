@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AttachmentRoutingPolicyLabel resources.
 class AttachmentRoutingPolicyLabelState {
   /// The ID of the attachment to apply the routing policy label to.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
   /// The ID of the core network containing the attachment.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// The routing policy label to apply to the attachment.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
 
   /// Creates a new [AttachmentRoutingPolicyLabelState].
   /// [attachmentId] The ID of the attachment to apply the routing policy label to.

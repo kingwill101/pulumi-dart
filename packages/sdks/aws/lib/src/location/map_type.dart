@@ -144,7 +144,7 @@ class MapType extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// An optional description for the map resource.
   late final pulumi.Output<String?> description;
-  /// The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS.
+  /// ARN for the map resource. Used to specify a resource across all AWS.
   late final pulumi.Output<String> mapArn;
   /// The name for the map resource.
   ///
@@ -171,7 +171,7 @@ class MapType extends pulumi.CustomResource {
           'aws:location/map:Map',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -179,8 +179,8 @@ class MapType extends pulumi.CustomResource {
     mapArn = registerOutput<String>('mapArn');
     mapName = registerOutput<String>('mapName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -189,11 +189,12 @@ class MapType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MapType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,8 +214,28 @@ class MapType extends pulumi.CustomResource {
     mapArn = registerOutput<String>('mapArn');
     mapName = registerOutput<String>('mapName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MapType] resource.
+  MapType.reference(String urn)
+    : super(
+        'aws:location/map:Map',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    mapArn = registerOutput<String>('mapArn');
+    mapName = registerOutput<String>('mapName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

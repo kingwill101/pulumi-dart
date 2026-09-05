@@ -9,21 +9,21 @@ import 'aad_diagnostic_setting_enabled_log.dart';
 /// {@macro pulumi_monitoring_aad_diagnostic_setting_aad_diagnostic_setting_args_doc}
 class AadDiagnosticSettingArgs {
   /// One or more `enabledLog` blocks as defined below.
-  final pulumi.Input<List<AadDiagnosticSettingEnabledLog>>? enabledLogs;
+  final pulumi.Input<List<AadDiagnosticSettingEnabledLog>?>? enabledLogs;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
-  final pulumi.Input<String>? eventhubAuthorizationRuleId;
+  final pulumi.Input<String?>? eventhubAuthorizationRuleId;
   /// Specifies the name of the Event Hub where Diagnostics Data should be sent. If not specified, the default Event Hub will be used. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubName;
+  final pulumi.Input<String?>? eventhubName;
   /// Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// The name which should be used for this Monitor Azure Active Directory Diagnostic Setting. Changing this forces a new Monitor Azure Active Directory Diagnostic Setting to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** One of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId` and `storageAccountId` must be specified.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [AadDiagnosticSettingArgs].
   /// [enabledLogs] One or more `enabledLog` blocks as defined below.

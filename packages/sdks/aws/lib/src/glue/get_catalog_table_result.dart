@@ -9,41 +9,41 @@ import 'get_catalog_table_target_table.dart';
 /// Result data returned by getCatalogTable.
 class GetCatalogTableResult {
   /// The ARN of the Glue Table.
-  final String arn;
+  final String? arn;
   /// ID of the Data Catalog in which the table resides.
-  final String catalogId;
+  final String? catalogId;
   /// Name of the catalog database that contains the target table.
-  final String databaseName;
+  final String? databaseName;
   /// Description of the table.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the target table.
-  final String name;
+  final String? name;
   /// Owner of the table.
-  final String owner;
+  final String? owner;
   /// Map of initialization parameters for the SerDe, in key-value form.
-  final Map<String, String> parameters;
+  final Map<String, String>? parameters;
   /// Configuration block for a maximum of 3 partition indexes. See `partitionIndex` below.
-  final List<GetCatalogTablePartitionIndex> partitionIndices;
+  final List<GetCatalogTablePartitionIndex>? partitionIndices;
   /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partitionKeys` below.
-  final List<GetCatalogTablePartitionKey> partitionKeys;
+  final List<GetCatalogTablePartitionKey>? partitionKeys;
   final String? queryAsOfTime;
   /// Region of the target table.
-  final String region;
+  final String? region;
   /// Retention time for this table.
-  final int retention;
+  final int? retention;
   /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storageDescriptor` below.
-  final List<GetCatalogTableStorageDescriptor> storageDescriptors;
+  final List<GetCatalogTableStorageDescriptor>? storageDescriptors;
   /// Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
-  final String tableType;
+  final String? tableType;
   /// Configuration block of a target table for resource linking. See `targetTable` below.
-  final List<GetCatalogTableTargetTable> targetTables;
+  final List<GetCatalogTableTargetTable>? targetTables;
   final int? transactionId;
   /// If the table is a view, the expanded text of the view; otherwise null.
-  final String viewExpandedText;
+  final String? viewExpandedText;
   /// If the table is a view, the original text of the view; otherwise null.
-  final String viewOriginalText;
+  final String? viewOriginalText;
 
   /// Creates a new [GetCatalogTableResult].
   /// [arn] The ARN of the Glue Table.
@@ -66,72 +66,72 @@ class GetCatalogTableResult {
   /// [viewExpandedText] If the table is a view, the expanded text of the view; otherwise null.
   /// [viewOriginalText] If the table is a view, the original text of the view; otherwise null.
   const GetCatalogTableResult({
-    required this.arn,
-    required this.catalogId,
-    required this.databaseName,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.owner,
-    required this.parameters,
-    required this.partitionIndices,
-    required this.partitionKeys,
+    this.arn,
+    this.catalogId,
+    this.databaseName,
+    this.description,
+    this.id,
+    this.name,
+    this.owner,
+    this.parameters,
+    this.partitionIndices,
+    this.partitionKeys,
     this.queryAsOfTime,
-    required this.region,
-    required this.retention,
-    required this.storageDescriptors,
-    required this.tableType,
-    required this.targetTables,
+    this.region,
+    this.retention,
+    this.storageDescriptors,
+    this.tableType,
+    this.targetTables,
     this.transactionId,
-    required this.viewExpandedText,
-    required this.viewOriginalText,
+    this.viewExpandedText,
+    this.viewOriginalText,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'catalogId': catalogId,
-      'databaseName': databaseName,
-      'description': description,
-      'id': id,
-      'name': name,
-      'owner': owner,
-      'parameters': parameters,
-      'partitionIndices': pulumi.Input.encodeList<GetCatalogTablePartitionIndex, Map<String, dynamic>>(partitionIndices, (value) => value.toMap()),
-      'partitionKeys': pulumi.Input.encodeList<GetCatalogTablePartitionKey, Map<String, dynamic>>(partitionKeys, (value) => value.toMap()),
+      'arn': ?arn,
+      'catalogId': ?catalogId,
+      'databaseName': ?databaseName,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'owner': ?owner,
+      'parameters': ?parameters,
+      'partitionIndices': ?(() { final guardedValue = partitionIndices; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCatalogTablePartitionIndex, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'partitionKeys': ?(() { final guardedValue = partitionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCatalogTablePartitionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'queryAsOfTime': ?queryAsOfTime,
-      'region': region,
-      'retention': retention,
-      'storageDescriptors': pulumi.Input.encodeList<GetCatalogTableStorageDescriptor, Map<String, dynamic>>(storageDescriptors, (value) => value.toMap()),
-      'tableType': tableType,
-      'targetTables': pulumi.Input.encodeList<GetCatalogTableTargetTable, Map<String, dynamic>>(targetTables, (value) => value.toMap()),
+      'region': ?region,
+      'retention': ?retention,
+      'storageDescriptors': ?(() { final guardedValue = storageDescriptors; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCatalogTableStorageDescriptor, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tableType': ?tableType,
+      'targetTables': ?(() { final guardedValue = targetTables; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCatalogTableTargetTable, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'transactionId': ?transactionId,
-      'viewExpandedText': viewExpandedText,
-      'viewOriginalText': viewOriginalText,
+      'viewExpandedText': ?viewExpandedText,
+      'viewOriginalText': ?viewOriginalText,
     };
   }
 
   factory GetCatalogTableResult.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableResult(
-      arn: map['arn'] as String,
-      catalogId: map['catalogId'] as String,
-      databaseName: map['databaseName'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      owner: map['owner'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      partitionIndices: pulumi.Input.decodeList<GetCatalogTablePartitionIndex>(map['partitionIndices']!, (value) => GetCatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>())),
-      partitionKeys: pulumi.Input.decodeList<GetCatalogTablePartitionKey>(map['partitionKeys']!, (value) => GetCatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      catalogId: (() { final guardedValue = map['catalogId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      partitionIndices: (() { final guardedValue = map['partitionIndices']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTablePartitionIndex>(guardedValue, (value) => GetCatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>())); })(),
+      partitionKeys: (() { final guardedValue = map['partitionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTablePartitionKey>(guardedValue, (value) => GetCatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       queryAsOfTime: (() { final guardedValue = map['queryAsOfTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      retention: map['retention'] as int,
-      storageDescriptors: pulumi.Input.decodeList<GetCatalogTableStorageDescriptor>(map['storageDescriptors']!, (value) => GetCatalogTableStorageDescriptor.fromMap((value as Map).cast<String, dynamic>())),
-      tableType: map['tableType'] as String,
-      targetTables: pulumi.Input.decodeList<GetCatalogTableTargetTable>(map['targetTables']!, (value) => GetCatalogTableTargetTable.fromMap((value as Map).cast<String, dynamic>())),
-      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      viewExpandedText: map['viewExpandedText'] as String,
-      viewOriginalText: map['viewOriginalText'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageDescriptors: (() { final guardedValue = map['storageDescriptors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTableStorageDescriptor>(guardedValue, (value) => GetCatalogTableStorageDescriptor.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tableType: (() { final guardedValue = map['tableType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetTables: (() { final guardedValue = map['targetTables']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTableTargetTable>(guardedValue, (value) => GetCatalogTableTargetTable.fromMap((value as Map).cast<String, dynamic>())); })(),
+      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      viewExpandedText: (() { final guardedValue = map['viewExpandedText']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      viewOriginalText: (() { final guardedValue = map['viewOriginalText']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

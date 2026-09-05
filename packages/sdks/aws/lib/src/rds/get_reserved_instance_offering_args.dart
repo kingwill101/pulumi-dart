@@ -18,7 +18,7 @@ class GetReservedInstanceOfferingArgs {
   /// Description of the reserved DB instance. Example values are `postgresql`, `aurora-postgresql`, `mysql`, `aurora-mysql`, `mariadb`.
   final pulumi.Input<String> productDescription;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetReservedInstanceOfferingArgs].
   /// [dbInstanceClass] DB instance class for the reserved DB instance.
@@ -50,7 +50,7 @@ class GetReservedInstanceOfferingArgs {
   factory GetReservedInstanceOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedInstanceOfferingArgs(
       dbInstanceClass: pulumi.Input.fromValue(map['dbInstanceClass'] as String),
-      duration: pulumi.Input.fromValue(map['duration'] as int),
+      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
       multiAz: pulumi.Input.fromValue(map['multiAz'] as bool),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
       productDescription: pulumi.Input.fromValue(map['productDescription'] as String),

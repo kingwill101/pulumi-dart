@@ -30,8 +30,8 @@ class GetAccessPointRootDirectoryCreationInfo {
 
   factory GetAccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectoryCreationInfo(
-      ownerGid: pulumi.Input.fromValue(map['ownerGid'] as int),
-      ownerUid: pulumi.Input.fromValue(map['ownerUid'] as int),
+      ownerGid: pulumi.Input.fromValue((map['ownerGid'] as num).toInt()),
+      ownerUid: pulumi.Input.fromValue((map['ownerUid'] as num).toInt()),
       permissions: pulumi.Input.fromValue(map['permissions'] as String),
     );
   }

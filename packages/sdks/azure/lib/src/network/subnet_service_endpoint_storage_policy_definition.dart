@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubnetServiceEndpointStoragePolicyDefinition {
   /// The description of this Subnet Service Endpoint Storage Policy Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Subnet Service Endpoint Storage Policy Definition.
   final pulumi.Input<String> name;
   /// The type of service resources. Valid values are `Microsoft.Storage` or `Global`. When the `serviceResources` property contains resource IDs, this property must be `Microsoft.Storage`. When the `serviceResources` property contains Aliases, this property must be `Global`. Defaults to `Microsoft.Storage`.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// Specifies a list of resources or aliases that this Subnet Service Endpoint Storage Policy Definition applies to.
   ///
   /// &gt; **Note:** The `serviceResources` property must contain either Aliases or Resource IDs, but not both.

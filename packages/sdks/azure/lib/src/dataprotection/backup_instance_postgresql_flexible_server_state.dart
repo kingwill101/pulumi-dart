@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BackupInstancePostgresqlFlexibleServer resources.
 class BackupInstancePostgresqlFlexibleServerState {
   /// The ID of the Backup Policy.
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// The location of the source database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Backup Instance for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection state of the Backup Instance PostgreSQL Flexible Server.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The ID of the source server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupInstancePostgresqlFlexibleServerState].
   /// [backupPolicyId] The ID of the Backup Policy.

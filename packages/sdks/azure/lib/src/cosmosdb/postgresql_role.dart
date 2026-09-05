@@ -116,7 +116,7 @@ import 'postgresql_role_state.dart';
 /// 		}
 /// 		_, err = cosmosdb.NewPostgresqlRole(ctx, "example", &cosmosdb.PostgresqlRoleArgs{
 /// 			Name:      pulumi.String("examplerole"),
-/// 			ClusterId: examplePostgresqlCluster.ID(),
+/// 			ClusterId: examplePostgresqlCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Password:  pulumi.String("H@Sh1CoR3!"),
 /// 		})
 /// 		if err != nil {
@@ -265,11 +265,12 @@ class PostgresqlRole extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlRole:PostgresqlRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
   }
 
   /// Gets an existing [PostgresqlRole] resource's state with the given [name] and [id].
@@ -277,11 +278,12 @@ class PostgresqlRole extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PostgresqlRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PostgresqlRole._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,6 +299,21 @@ class PostgresqlRole extends pulumi.CustomResource {
         ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [PostgresqlRole] resource.
+  PostgresqlRole.reference(String urn)
+    : super(
+        'azure:cosmosdb/postgresqlRole:PostgresqlRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
   }
 }

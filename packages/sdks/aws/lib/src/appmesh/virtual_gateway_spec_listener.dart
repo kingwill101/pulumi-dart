@@ -8,19 +8,19 @@ import 'virtual_gateway_spec_listener_tls.dart';
 
 class VirtualGatewaySpecListener {
   /// Connection pool information for the listener. See `connectionPool` Block for details.
-  final pulumi.Input<VirtualGatewaySpecListenerConnectionPool>? connectionPool;
+  final pulumi.Input<VirtualGatewaySpecListenerConnectionPool?>? connectionPool;
   /// Health check information for the listener. See `healthCheck` Block for details.
-  final pulumi.Input<VirtualGatewaySpecListenerHealthCheck>? healthCheck;
+  final pulumi.Input<VirtualGatewaySpecListenerHealthCheck?>? healthCheck;
   /// Port mapping information for the listener. See `portMapping` Block for details.
   final pulumi.Input<VirtualGatewaySpecListenerPortMapping> portMapping;
-  /// Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
-  final pulumi.Input<VirtualGatewaySpecListenerTls>? tls;
+  /// TLS properties for the listener. See `spec.listener.tls` Block for details.
+  final pulumi.Input<VirtualGatewaySpecListenerTls?>? tls;
 
   /// Creates a new [VirtualGatewaySpecListener].
   /// [connectionPool] Connection pool information for the listener. See `connectionPool` Block for details.
   /// [healthCheck] Health check information for the listener. See `healthCheck` Block for details.
   /// [portMapping] Port mapping information for the listener. See `portMapping` Block for details.
-  /// [tls] Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
+  /// [tls] TLS properties for the listener. See `spec.listener.tls` Block for details.
   const VirtualGatewaySpecListener({
     this.connectionPool,
     this.healthCheck,

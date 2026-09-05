@@ -19,39 +19,39 @@ import 'action_group_webhook_receiver.dart';
 /// {@macro pulumi_monitoring_action_group_action_group_args_doc}
 class ActionGroupArgs {
   /// One or more `armRoleReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupArmRoleReceiver>>? armRoleReceivers;
+  final pulumi.Input<List<ActionGroupArmRoleReceiver>?>? armRoleReceivers;
   /// One or more `automationRunbookReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupAutomationRunbookReceiver>>? automationRunbookReceivers;
+  final pulumi.Input<List<ActionGroupAutomationRunbookReceiver>?>? automationRunbookReceivers;
   /// One or more `azureAppPushReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupAzureAppPushReceiver>>? azureAppPushReceivers;
+  final pulumi.Input<List<ActionGroupAzureAppPushReceiver>?>? azureAppPushReceivers;
   /// One or more `azureFunctionReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupAzureFunctionReceiver>>? azureFunctionReceivers;
+  final pulumi.Input<List<ActionGroupAzureFunctionReceiver>?>? azureFunctionReceivers;
   /// One or more `emailReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupEmailReceiver>>? emailReceivers;
+  final pulumi.Input<List<ActionGroupEmailReceiver>?>? emailReceivers;
   /// Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `eventHubReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupEventHubReceiver>>? eventHubReceivers;
+  final pulumi.Input<List<ActionGroupEventHubReceiver>?>? eventHubReceivers;
   /// One or more `itsmReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupItsmReceiver>>? itsmReceivers;
+  final pulumi.Input<List<ActionGroupItsmReceiver>?>? itsmReceivers;
   /// The Azure Region where the Action Group should exist. Changing this forces a new Action Group to be created. Defaults to `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// One or more `logicAppReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupLogicAppReceiver>>? logicAppReceivers;
+  final pulumi.Input<List<ActionGroupLogicAppReceiver>?>? logicAppReceivers;
   /// The name of the Action Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Action Group instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The short name of the action group. This will be used in SMS messages.
   final pulumi.Input<String> shortName;
   /// One or more `smsReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupSmsReceiver>>? smsReceivers;
+  final pulumi.Input<List<ActionGroupSmsReceiver>?>? smsReceivers;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// One or more `voiceReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupVoiceReceiver>>? voiceReceivers;
+  final pulumi.Input<List<ActionGroupVoiceReceiver>?>? voiceReceivers;
   /// One or more `webhookReceiver` blocks as defined below.
-  final pulumi.Input<List<ActionGroupWebhookReceiver>>? webhookReceivers;
+  final pulumi.Input<List<ActionGroupWebhookReceiver>?>? webhookReceivers;
 
   /// Creates a new [ActionGroupArgs].
   /// [armRoleReceivers] One or more `armRoleReceiver` blocks as defined below.

@@ -168,7 +168,7 @@ import 'sql_pool_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -177,7 +177,7 @@ import 'sql_pool_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -189,7 +189,7 @@ import 'sql_pool_state.dart';
 /// 		}
 /// 		_, err = synapse.NewSqlPool(ctx, "example", &synapse.SqlPoolArgs{
 /// 			Name:               pulumi.String("examplesqlpool"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:            pulumi.String("DW100c"),
 /// 			CreateMode:         pulumi.String("Default"),
 /// 			StorageAccountType: pulumi.String("GRS"),
@@ -407,7 +407,7 @@ class SqlPool extends pulumi.CustomResource {
           'azure:synapse/sqlPool:SqlPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     collation = registerOutput<String>('collation');
     createMode = registerOutput<String?>('createMode');
@@ -419,7 +419,7 @@ class SqlPool extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String>('storageAccountType');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SqlPool] resource's state with the given [name] and [id].
@@ -427,11 +427,12 @@ class SqlPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -455,6 +456,28 @@ class SqlPool extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String>('storageAccountType');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SqlPool] resource.
+  SqlPool.reference(String urn)
+    : super(
+        'azure:synapse/sqlPool:SqlPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    dataEncrypted = registerOutput<bool?>('dataEncrypted');
+    geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
+    this.name = registerOutput<String>('name');
+    recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
+    restore = registerOutput<SqlPoolRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlPoolRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String>('storageAccountType');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

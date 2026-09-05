@@ -6,11 +6,11 @@ import 'organization_configuration_auto_enable.dart';
 /// Input properties used for looking up and filtering OrganizationConfiguration resources.
 class OrganizationConfigurationState {
   /// Configuration block for auto enabling. See below.
-  final pulumi.Input<OrganizationConfigurationAutoEnable>? autoEnable;
+  final pulumi.Input<OrganizationConfigurationAutoEnable?>? autoEnable;
   /// Whether your configuration reached the max account limit.
-  final pulumi.Input<bool>? maxAccountLimitReached;
+  final pulumi.Input<bool?>? maxAccountLimitReached;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationConfigurationState].
   /// [autoEnable] Configuration block for auto enabling. See below.

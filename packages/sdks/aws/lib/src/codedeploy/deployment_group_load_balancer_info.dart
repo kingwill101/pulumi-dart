@@ -7,11 +7,11 @@ import 'deployment_group_load_balancer_info_target_group_pair_info.dart';
 
 class DeploymentGroupLoadBalancerInfo {
   /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with `targetGroupInfo` and `targetGroupPairInfo`.
-  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoElbInfo>>? elbInfos;
+  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoElbInfo>?>? elbInfos;
   /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elbInfo` and `targetGroupPairInfo`.
-  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>>? targetGroupInfos;
+  final pulumi.Input<List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>?>? targetGroupInfos;
   /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elbInfo` and `targetGroupInfo`.
-  final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfo>? targetGroupPairInfo;
+  final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfo?>? targetGroupPairInfo;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfo].
   /// [elbInfos] The Classic Elastic Load Balancer to use in a deployment. Conflicts with `targetGroupInfo` and `targetGroupPairInfo`.

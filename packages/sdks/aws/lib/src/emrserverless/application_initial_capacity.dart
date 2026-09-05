@@ -5,7 +5,7 @@ import 'application_initial_capacity_initial_capacity_config.dart';
 
 class ApplicationInitialCapacity {
   /// The initial capacity configuration per worker.
-  final pulumi.Input<ApplicationInitialCapacityInitialCapacityConfig>? initialCapacityConfig;
+  final pulumi.Input<ApplicationInitialCapacityInitialCapacityConfig?>? initialCapacityConfig;
   /// The worker type for an analytics framework. For Spark applications, the key can either be set to `Driver` or `Executor`. For Hive applications, it can be set to `HiveDriver` or `TezTask`.
   final pulumi.Input<String> initialCapacityType;
 

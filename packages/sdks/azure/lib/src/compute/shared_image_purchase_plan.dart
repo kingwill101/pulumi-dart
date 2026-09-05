@@ -6,9 +6,9 @@ class SharedImagePurchasePlan {
   /// The Purchase Plan Name for this Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// The Purchase Plan Product for this Gallery Image. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// The Purchase Plan Publisher for this Gallery Image. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
 
   /// Creates a new [SharedImagePurchasePlan].
   /// [name] The Purchase Plan Name for this Shared Image. Changing this forces a new resource to be created.

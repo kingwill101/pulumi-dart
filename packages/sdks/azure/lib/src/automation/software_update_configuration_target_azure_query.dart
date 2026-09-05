@@ -5,13 +5,13 @@ import 'software_update_configuration_target_azure_query_tag.dart';
 
 class SoftwareUpdateConfigurationTargetAzureQuery {
   /// Specifies a list of locations to scope the query to.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Specifies a list of Subscription or Resource Group ARM Ids to query.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Specifies how the specified tags to filter VMs. Possible values are `Any` and `All`.
-  final pulumi.Input<String>? tagFilter;
+  final pulumi.Input<String?>? tagFilter;
   /// A mapping of tags used for query filter. One or more `tags` block as defined below.
-  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQueryTag>>? tags;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQueryTag>?>? tags;
 
   /// Creates a new [SoftwareUpdateConfigurationTargetAzureQuery].
   /// [locations] Specifies a list of locations to scope the query to.

@@ -137,7 +137,7 @@ import 'cache_access_policy_state.dart';
 /// 		}
 /// 		_, err = redis.NewCacheAccessPolicy(ctx, "example", &redis.CacheAccessPolicyArgs{
 /// 			Name:         pulumi.String("example"),
-/// 			RedisCacheId: exampleCache.ID(),
+/// 			RedisCacheId: exampleCache.ID().ToIDOutput().ToStringOutput(),
 /// 			Permissions:  pulumi.String("+@read +@connection +cluster|info"),
 /// 		})
 /// 		if err != nil {
@@ -301,7 +301,7 @@ class CacheAccessPolicy extends pulumi.CustomResource {
           'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     permissions = registerOutput<String>('permissions');
@@ -313,11 +313,12 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CacheAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,6 +332,20 @@ class CacheAccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<String>('permissions');
+    redisCacheId = registerOutput<String>('redisCacheId');
+  }
+
+  /// Creates a typed reference to an existing [CacheAccessPolicy] resource.
+  CacheAccessPolicy.reference(String urn)
+    : super(
+        'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     permissions = registerOutput<String>('permissions');
     redisCacheId = registerOutput<String>('redisCacheId');

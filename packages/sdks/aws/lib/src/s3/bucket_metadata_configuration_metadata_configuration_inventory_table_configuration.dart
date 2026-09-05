@@ -7,11 +7,11 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   /// Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> configurationState;
   /// Encryption configuration for the inventory table. See `encryptionConfiguration` Block for details.
-  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration?>? encryptionConfiguration;
   /// Journal table ARN.
-  final pulumi.Input<String>? tableArn;
+  final pulumi.Input<String?>? tableArn;
   /// Journal table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration].
   /// [configurationState] Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.

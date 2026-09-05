@@ -8,39 +8,39 @@ import 'stage_route_setting.dart';
 /// Input properties used for looking up and filtering Stage resources.
 class StageState {
   /// Settings for logging access in this stage. Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
-  final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
+  final pulumi.Input<StageAccessLogSettings?>? accessLogSettings;
   /// API identifier.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// ARN of the stage.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
-  final pulumi.Input<bool>? autoDeploy;
+  final pulumi.Input<bool?>? autoDeploy;
   /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate. Supported only for WebSocket APIs.
-  final pulumi.Input<String>? clientCertificateId;
+  final pulumi.Input<String?>? clientCertificateId;
   /// Default route settings for the stage.
-  final pulumi.Input<StageDefaultRouteSettings>? defaultRouteSettings;
+  final pulumi.Input<StageDefaultRouteSettings?>? defaultRouteSettings;
   /// Deployment identifier of the stage. Use the `aws.apigatewayv2.Deployment` resource to configure a deployment.
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Description for the stage. Must be less than or equal to 1024 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN prefix to be used in an `aws.lambda.Permission`'s `sourceArn` attribute. For WebSocket APIs this attribute can additionally be used in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html). See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
-  final pulumi.Input<String>? executionArn;
+  final pulumi.Input<String?>? executionArn;
   /// URL to invoke the API pointing to the stage, e.g., `wss://z4675bid1j.execute-api.eu-west-2.amazonaws.com/example-stage`, or `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/`
-  final pulumi.Input<String>? invokeUrl;
+  final pulumi.Input<String?>? invokeUrl;
   /// Name of the stage. Must be between 1 and 128 characters in length.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Route settings for the stage.
-  final pulumi.Input<List<StageRouteSetting>>? routeSettings;
+  final pulumi.Input<List<StageRouteSetting>?>? routeSettings;
   /// Map that defines the stage variables for the stage.
-  final pulumi.Input<Map<String, String>>? stageVariables;
+  final pulumi.Input<Map<String, String>?>? stageVariables;
   /// Map of tags to assign to the stage. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [StageState].
   /// [accessLogSettings] Settings for logging access in this stage. Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).

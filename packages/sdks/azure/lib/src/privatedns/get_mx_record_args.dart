@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_privatedns_get_mx_record_get_mx_record_args_doc}
 class GetMxRecordArgs {
   /// The name of the Private DNS MX Record.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the resource group where the Private DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the Private DNS Zone where the resource exists.

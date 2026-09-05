@@ -6,11 +6,11 @@ import 'managed_dev_ops_pool_stateless_agent_manual_resource_prediction.dart';
 
 class ManagedDevOpsPoolStatelessAgent {
   /// An `automaticResourcePrediction` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolStatelessAgentAutomaticResourcePrediction>? automaticResourcePrediction;
+  final pulumi.Input<ManagedDevOpsPoolStatelessAgentAutomaticResourcePrediction?>? automaticResourcePrediction;
   /// A `manualResourcePrediction` block as defined below.
   ///
   /// &gt; **Note:** Exactly one of `manualResourcePrediction` or `automaticResourcePrediction` may be specified.
-  final pulumi.Input<ManagedDevOpsPoolStatelessAgentManualResourcePrediction>? manualResourcePrediction;
+  final pulumi.Input<ManagedDevOpsPoolStatelessAgentManualResourcePrediction?>? manualResourcePrediction;
 
   /// Creates a new [ManagedDevOpsPoolStatelessAgent].
   /// [automaticResourcePrediction] An `automaticResourcePrediction` block as defined below.

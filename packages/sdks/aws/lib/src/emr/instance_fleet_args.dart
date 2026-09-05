@@ -12,17 +12,17 @@ class InstanceFleetArgs {
   /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
   /// Configuration block for instance fleet
-  final pulumi.Input<List<InstanceFleetInstanceTypeConfig>>? instanceTypeConfigs;
+  final pulumi.Input<List<InstanceFleetInstanceTypeConfig>?>? instanceTypeConfigs;
   /// Configuration block for launch specification
-  final pulumi.Input<InstanceFleetLaunchSpecifications>? launchSpecifications;
+  final pulumi.Input<InstanceFleetLaunchSpecifications?>? launchSpecifications;
   /// Friendly name given to the instance fleet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
-  final pulumi.Input<int>? targetOnDemandCapacity;
+  final pulumi.Input<int?>? targetOnDemandCapacity;
   /// The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  final pulumi.Input<int>? targetSpotCapacity;
+  final pulumi.Input<int?>? targetSpotCapacity;
 
   /// Creates a new [InstanceFleetArgs].
   /// [clusterId] ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
@@ -61,8 +61,8 @@ class InstanceFleetArgs {
       launchSpecifications: (() { final guardedValue = map['launchSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFleetLaunchSpecifications.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetOnDemandCapacity: (() { final guardedValue = map['targetOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetSpotCapacity: (() { final guardedValue = map['targetSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetOnDemandCapacity: (() { final guardedValue = map['targetOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetSpotCapacity: (() { final guardedValue = map['targetSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

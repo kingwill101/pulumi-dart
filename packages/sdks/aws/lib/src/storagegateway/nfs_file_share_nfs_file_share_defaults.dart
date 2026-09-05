@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NfsFileShareNfsFileShareDefaults {
   /// The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.
-  final pulumi.Input<String>? directoryMode;
+  final pulumi.Input<String?>? directoryMode;
   /// The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
-  final pulumi.Input<String>? fileMode;
+  final pulumi.Input<String?>? fileMode;
   /// The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
 
   /// Creates a new [NfsFileShareNfsFileShareDefaults].
   /// [directoryMode] The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.

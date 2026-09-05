@@ -172,7 +172,7 @@ class PortfolioShare extends pulumi.CustomResource {
           'aws:servicecatalog/portfolioShare:PortfolioShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     accepted = registerOutput<bool>('accepted');
@@ -190,11 +190,12 @@ class PortfolioShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PortfolioShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PortfolioShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,6 +209,26 @@ class PortfolioShare extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    accepted = registerOutput<bool>('accepted');
+    portfolioId = registerOutput<String>('portfolioId');
+    principalId = registerOutput<String>('principalId');
+    region = registerOutput<String>('region');
+    sharePrincipals = registerOutput<bool?>('sharePrincipals');
+    shareTagOptions = registerOutput<bool?>('shareTagOptions');
+    type = registerOutput<String>('type');
+    waitForAcceptance = registerOutput<bool?>('waitForAcceptance');
+  }
+
+  /// Creates a typed reference to an existing [PortfolioShare] resource.
+  PortfolioShare.reference(String urn)
+    : super(
+        'aws:servicecatalog/portfolioShare:PortfolioShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     accepted = registerOutput<bool>('accepted');
     portfolioId = registerOutput<String>('portfolioId');

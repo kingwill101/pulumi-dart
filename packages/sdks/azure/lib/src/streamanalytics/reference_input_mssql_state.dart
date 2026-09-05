@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReferenceInputMssql resources.
 class ReferenceInputMssqlState {
   /// The MS SQL database name where the reference data exists.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The query used to retrieve incremental changes in the reference data from the MS SQL database. Cannot be set when `refreshType` is `Static`.
-  final pulumi.Input<String>? deltaSnapshotQuery;
+  final pulumi.Input<String?>? deltaSnapshotQuery;
   /// The query used to retrieve the reference data from the MS SQL database.
-  final pulumi.Input<String>? fullSnapshotQuery;
+  final pulumi.Input<String?>? fullSnapshotQuery;
   /// The name of the Reference Input MS SQL data. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password to connect to the MS SQL database.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The frequency in `hh:mm:ss` with which the reference data should be retrieved from the MS SQL database e.g. `00:20:00` for every 20 minutes. Must be set when `refreshType` is `RefreshPeriodicallyWithFull` or `RefreshPeriodicallyWithDelta`.
-  final pulumi.Input<String>? refreshIntervalDuration;
+  final pulumi.Input<String?>? refreshIntervalDuration;
   /// Defines whether and how the reference data should be refreshed. Accepted values are `Static`, `RefreshPeriodicallyWithFull` and `RefreshPeriodicallyWithDelta`.
-  final pulumi.Input<String>? refreshType;
+  final pulumi.Input<String?>? refreshType;
   /// The name of the Resource Group where the Stream Analytics Job should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The fully qualified domain name of the MS SQL server.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
   /// The name of the table in the Azure SQL database.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// The username to connect to the MS SQL database.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ReferenceInputMssqlState].
   /// [database] The MS SQL database name where the reference data exists.

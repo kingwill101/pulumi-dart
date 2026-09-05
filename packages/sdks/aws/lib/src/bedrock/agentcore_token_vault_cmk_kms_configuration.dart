@@ -6,7 +6,7 @@ class AgentcoreTokenVaultCmkKmsConfiguration {
   /// Type of KMS key. Valid values: `CustomerManagedKey`, `ServiceManagedKey`.
   final pulumi.Input<String> keyType;
   /// ARN of the KMS key.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [AgentcoreTokenVaultCmkKmsConfiguration].
   /// [keyType] Type of KMS key. Valid values: `CustomerManagedKey`, `ServiceManagedKey`.

@@ -5,15 +5,15 @@ import 'regex_match_set_regex_match_tuple.dart';
 
 /// Input properties used for looking up and filtering RegexMatchSet resources.
 class RegexMatchSetState {
-  /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  /// ARN
+  final pulumi.Input<String?>? arn;
   /// The name or description of the Regex Match Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
-  final pulumi.Input<List<RegexMatchSetRegexMatchTuple>>? regexMatchTuples;
+  final pulumi.Input<List<RegexMatchSetRegexMatchTuple>?>? regexMatchTuples;
 
   /// Creates a new [RegexMatchSetState].
-  /// [arn] Amazon Resource Name (ARN)
+  /// [arn] ARN
   /// [name] The name or description of the Regex Match Set.
   /// [regexMatchTuples] The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
   const RegexMatchSetState({

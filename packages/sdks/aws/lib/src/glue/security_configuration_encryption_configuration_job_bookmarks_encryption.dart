@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
   /// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
-  final pulumi.Input<String>? jobBookmarksEncryptionMode;
-  /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? jobBookmarksEncryptionMode;
+  /// ARN of the KMS key to be used to encrypt the data.
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption].
   /// [jobBookmarksEncryptionMode] Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
-  /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+  /// [kmsKeyArn] ARN of the KMS key to be used to encrypt the data.
   const SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption({
     this.jobBookmarksEncryptionMode,
     this.kmsKeyArn,

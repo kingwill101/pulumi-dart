@@ -6,17 +6,17 @@ import 'channel_direct_line_site.dart';
 /// Input properties used for looking up and filtering ChannelDirectLine resources.
 class ChannelDirectLineState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The first key for Directline App Service Extension.
-  final pulumi.Input<String>? extensionKey1;
+  final pulumi.Input<String?>? extensionKey1;
   /// The second key for Directline App Service Extension.
-  final pulumi.Input<String>? extensionKey2;
+  final pulumi.Input<String?>? extensionKey2;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
-  final pulumi.Input<List<ChannelDirectLineSite>>? sites;
+  final pulumi.Input<List<ChannelDirectLineSite>?>? sites;
 
   /// Creates a new [ChannelDirectLineState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

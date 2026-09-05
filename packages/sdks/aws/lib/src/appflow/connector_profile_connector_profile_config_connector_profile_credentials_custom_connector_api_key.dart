@@ -6,7 +6,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.
   final pulumi.Input<String> apiKey;
   /// Secret Access Key portion of the credentials.
-  final pulumi.Input<String>? apiSecretKey;
+  final pulumi.Input<String?>? apiSecretKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey].
   /// [apiKey] Unique alphanumeric identifier used to authenticate a user, developer, or calling program to your API.

@@ -4,6 +4,7 @@ import 'web_acl_rule_args.dart';
 import 'web_acl_rule_captcha_config.dart';
 import 'web_acl_rule_challenge_config.dart';
 import 'web_acl_rule_override_action.dart';
+import 'web_acl_rule_rule_label.dart';
 import 'web_acl_rule_state.dart';
 import 'web_acl_rule_statement.dart';
 import 'web_acl_rule_timeouts.dart';
@@ -29,8 +30,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAcl("example", {
-///     name: "example",
-///     scope: "REGIONAL",
 ///     defaultAction: {
 ///         allow: {},
 ///     },
@@ -39,12 +38,13 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "example",
 ///         sampledRequestsEnabled: false,
 ///     },
+///     name: "example",
+///     scope: "REGIONAL",
+/// }, {
+///     ignoreChanges: ["rules"],
 /// });
 /// // Separate rule resource with identical configuration
 /// const blockCountries = new aws.wafv2.WebAclRule("block_countries", {
-///     name: "block-countries",
-///     priority: 1,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -61,6 +61,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-countries",
 ///         sampledRequestsEnabled: false,
 ///     },
+///     name: "block-countries",
+///     priority: 1,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -68,8 +71,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAcl("example",
-///     name="example",
-///     scope="REGIONAL",
 ///     default_action={
 ///         "allow": {},
 ///     },
@@ -77,12 +78,12 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": False,
 ///         "metric_name": "example",
 ///         "sampled_requests_enabled": False,
-///     })
+///     },
+///     name="example",
+///     scope="REGIONAL",
+///     opts = pulumi.ResourceOptions(ignore_changes=["rules"]))
 /// # Separate rule resource with identical configuration
 /// block_countries = aws.wafv2.WebAclRule("block_countries",
-///     name="block-countries",
-///     priority=1,
-///     web_acl_arn=example.arn,
 ///     action={
 ///         "block": {},
 ///     },
@@ -98,7 +99,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": False,
 ///         "metric_name": "block-countries",
 ///         "sampled_requests_enabled": False,
-///     })
+///     },
+///     name="block-countries",
+///     priority=1,
+///     web_acl_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -110,8 +114,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAcl("example", new()
 ///     {
-///         Name = "example",
-///         Scope = "REGIONAL",
 ///         DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Allow = null,
@@ -122,14 +124,19 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "example",
 ///             SampledRequestsEnabled = false,
 ///         },
+///         Name = "example",
+///         Scope = "REGIONAL",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "rules",
+///         },
 ///     });
 ///
 ///     // Separate rule resource with identical configuration
 ///     var blockCountries = new Aws.WafV2.WebAclRule("block_countries", new()
 ///     {
-///         Name = "block-countries",
-///         Priority = 1,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -151,6 +158,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-countries",
 ///             SampledRequestsEnabled = false,
 ///         },
+///         Name = "block-countries",
+///         Priority = 1,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -166,8 +176,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := wafv2.NewWebAcl(ctx, "example", &wafv2.WebAclArgs{
-/// 			Name:  pulumi.String("example"),
-/// 			Scope: pulumi.String("REGIONAL"),
 /// 			DefaultAction: &wafv2.WebAclDefaultActionArgs{
 /// 				Allow: &wafv2.WebAclDefaultActionAllowArgs{},
 /// 			},
@@ -176,15 +184,16 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("example"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(false),
 /// 			},
-/// 		})
+/// 			Name:  pulumi.String("example"),
+/// 			Scope: pulumi.String("REGIONAL"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"rules",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Separate rule resource with identical configuration
 /// 		_, err = wafv2.NewWebAclRule(ctx, "block_countries", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("block-countries"),
-/// 			Priority:  pulumi.Int(1),
-/// 			WebAclArn: example.Arn,
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -201,6 +210,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-countries"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(false),
 /// 			},
+/// 			Name:      pulumi.String("block-countries"),
+/// 			Priority:  pulumi.Int(1),
+/// 			WebAclArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -219,8 +231,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webacl" "example" {
-///   name  = "example"
-///   scope = "REGIONAL"
+///   lifecycle {
+///     ignore_changes = [rules]
+///   }
 ///   default_action = {
 ///     allow = {}
 ///   }
@@ -229,12 +242,11 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = false
 ///   }
+///   name  = "example"
+///   scope = "REGIONAL"
 /// }
 /// # Separate rule resource with identical configuration
 /// resource "aws_wafv2_webaclrule" "block_countries" {
-///   name        = "block-countries"
-///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -248,6 +260,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = false
 ///   }
+///   name        = "block-countries"
+///   priority    = 1
+///   web_acl_arn = aws_wafv2_webacl.example.arn
 /// }
 /// ```
 /// ```java
@@ -268,6 +283,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementGeoMatchStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleVisibilityConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -282,8 +298,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAcl("example", WebAclArgs.builder()
-///             .name("example")
-///             .scope("REGIONAL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .allow(WebAclDefaultActionAllowArgs.builder()
 ///                     .build())
@@ -293,13 +307,14 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("example")
 ///                 .sampledRequestsEnabled(false)
 ///                 .build())
-///             .build());
+///             .name("example")
+///             .scope("REGIONAL")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("rules")
+///                 .build());
 ///
 ///         // Separate rule resource with identical configuration
 ///         var blockCountries = new WebAclRule("blockCountries", WebAclRuleArgs.builder()
-///             .name("block-countries")
-///             .priority(1)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -316,6 +331,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-countries")
 ///                 .sampledRequestsEnabled(false)
 ///                 .build())
+///             .name("block-countries")
+///             .priority(1)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -326,22 +344,22 @@ import 'web_acl_rule_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAcl
 ///     properties:
-///       name: example
-///       scope: REGIONAL
 ///       defaultAction:
 ///         allow: {}
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: false
 ///         metricName: example
 ///         sampledRequestsEnabled: false
+///       name: example
+///       scope: REGIONAL
+///     options:
+///       ignoreChanges:
+///         - rules
 ///   # Separate rule resource with identical configuration
 ///   blockCountries:
 ///     type: aws:wafv2:WebAclRule
 ///     name: block_countries
 ///     properties:
-///       name: block-countries
-///       priority: 1
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -353,6 +371,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: false
 ///         metricName: block-countries
 ///         sampledRequestsEnabled: false
+///       name: block-countries
+///       priority: 1
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -376,8 +397,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAcl("example", {
-///     name: "example",
-///     scope: "REGIONAL",
 ///     defaultAction: {
 ///         allow: {},
 ///     },
@@ -386,11 +405,12 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "example",
 ///         sampledRequestsEnabled: false,
 ///     },
+///     name: "example",
+///     scope: "REGIONAL",
+/// }, {
+///     ignoreChanges: ["rules"],
 /// });
 /// const blockCountries = new aws.wafv2.WebAclRule("block_countries", {
-///     name: "block-countries",
-///     priority: 1,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -407,6 +427,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-countries",
 ///         sampledRequestsEnabled: false,
 ///     },
+///     name: "block-countries",
+///     priority: 1,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -414,8 +437,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAcl("example",
-///     name="example",
-///     scope="REGIONAL",
 ///     default_action={
 ///         "allow": {},
 ///     },
@@ -423,11 +444,11 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": False,
 ///         "metric_name": "example",
 ///         "sampled_requests_enabled": False,
-///     })
+///     },
+///     name="example",
+///     scope="REGIONAL",
+///     opts = pulumi.ResourceOptions(ignore_changes=["rules"]))
 /// block_countries = aws.wafv2.WebAclRule("block_countries",
-///     name="block-countries",
-///     priority=1,
-///     web_acl_arn=example.arn,
 ///     action={
 ///         "block": {},
 ///     },
@@ -443,7 +464,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": False,
 ///         "metric_name": "block-countries",
 ///         "sampled_requests_enabled": False,
-///     })
+///     },
+///     name="block-countries",
+///     priority=1,
+///     web_acl_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -455,8 +479,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAcl("example", new()
 ///     {
-///         Name = "example",
-///         Scope = "REGIONAL",
 ///         DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Allow = null,
@@ -467,13 +489,18 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "example",
 ///             SampledRequestsEnabled = false,
 ///         },
+///         Name = "example",
+///         Scope = "REGIONAL",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "rules",
+///         },
 ///     });
 ///
 ///     var blockCountries = new Aws.WafV2.WebAclRule("block_countries", new()
 ///     {
-///         Name = "block-countries",
-///         Priority = 1,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -495,6 +522,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-countries",
 ///             SampledRequestsEnabled = false,
 ///         },
+///         Name = "block-countries",
+///         Priority = 1,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -510,8 +540,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := wafv2.NewWebAcl(ctx, "example", &wafv2.WebAclArgs{
-/// 			Name:  pulumi.String("example"),
-/// 			Scope: pulumi.String("REGIONAL"),
 /// 			DefaultAction: &wafv2.WebAclDefaultActionArgs{
 /// 				Allow: &wafv2.WebAclDefaultActionAllowArgs{},
 /// 			},
@@ -520,14 +548,15 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("example"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(false),
 /// 			},
-/// 		})
+/// 			Name:  pulumi.String("example"),
+/// 			Scope: pulumi.String("REGIONAL"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"rules",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = wafv2.NewWebAclRule(ctx, "block_countries", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("block-countries"),
-/// 			Priority:  pulumi.Int(1),
-/// 			WebAclArn: example.Arn,
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -544,6 +573,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-countries"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(false),
 /// 			},
+/// 			Name:      pulumi.String("block-countries"),
+/// 			Priority:  pulumi.Int(1),
+/// 			WebAclArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -562,8 +594,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webacl" "example" {
-///   name  = "example"
-///   scope = "REGIONAL"
+///   lifecycle {
+///     ignore_changes = [rules]
+///   }
 ///   default_action = {
 ///     allow = {}
 ///   }
@@ -572,11 +605,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = false
 ///   }
+///   name  = "example"
+///   scope = "REGIONAL"
 /// }
 /// resource "aws_wafv2_webaclrule" "block_countries" {
-///   name        = "block-countries"
-///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -590,6 +622,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = false
 ///   }
+///   name        = "block-countries"
+///   priority    = 1
+///   web_acl_arn = aws_wafv2_webacl.example.arn
 /// }
 /// ```
 /// ```java
@@ -610,6 +645,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementGeoMatchStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleVisibilityConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -624,8 +660,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAcl("example", WebAclArgs.builder()
-///             .name("example")
-///             .scope("REGIONAL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .allow(WebAclDefaultActionAllowArgs.builder()
 ///                     .build())
@@ -635,12 +669,13 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("example")
 ///                 .sampledRequestsEnabled(false)
 ///                 .build())
-///             .build());
+///             .name("example")
+///             .scope("REGIONAL")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("rules")
+///                 .build());
 ///
 ///         var blockCountries = new WebAclRule("blockCountries", WebAclRuleArgs.builder()
-///             .name("block-countries")
-///             .priority(1)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -657,6 +692,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-countries")
 ///                 .sampledRequestsEnabled(false)
 ///                 .build())
+///             .name("block-countries")
+///             .priority(1)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -667,21 +705,21 @@ import 'web_acl_rule_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAcl
 ///     properties:
-///       name: example
-///       scope: REGIONAL
 ///       defaultAction:
 ///         allow: {}
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: false
 ///         metricName: example
 ///         sampledRequestsEnabled: false
+///       name: example
+///       scope: REGIONAL
+///     options:
+///       ignoreChanges:
+///         - rules
 ///   blockCountries:
 ///     type: aws:wafv2:WebAclRule
 ///     name: block_countries
 ///     properties:
-///       name: block-countries
-///       priority: 1
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -693,6 +731,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: false
 ///         metricName: block-countries
 ///         sampledRequestsEnabled: false
+///       name: block-countries
+///       priority: 1
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -715,8 +756,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     ],
 /// });
 /// const example = new aws.wafv2.WebAcl("example", {
-///     name: "example",
-///     scope: "REGIONAL",
 ///     defaultAction: {
 ///         allow: {},
 ///     },
@@ -725,11 +764,12 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "example",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "example",
+///     scope: "REGIONAL",
+/// }, {
+///     ignoreChanges: ["rules"],
 /// });
 /// const blockIps = new aws.wafv2.WebAclRule("block_ips", {
-///     name: "block-bad-ips",
-///     priority: 1,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -743,6 +783,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-bad-ips",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "block-bad-ips",
+///     priority: 1,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -758,8 +801,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "5.6.7.8/32",
 ///     ])
 /// example = aws.wafv2.WebAcl("example",
-///     name="example",
-///     scope="REGIONAL",
 ///     default_action={
 ///         "allow": {},
 ///     },
@@ -767,11 +808,11 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "example",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="example",
+///     scope="REGIONAL",
+///     opts = pulumi.ResourceOptions(ignore_changes=["rules"]))
 /// block_ips = aws.wafv2.WebAclRule("block_ips",
-///     name="block-bad-ips",
-///     priority=1,
-///     web_acl_arn=example.arn,
 ///     action={
 ///         "block": {},
 ///     },
@@ -784,7 +825,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "block-bad-ips",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="block-bad-ips",
+///     priority=1,
+///     web_acl_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -808,8 +852,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     var example = new Aws.WafV2.WebAcl("example", new()
 ///     {
-///         Name = "example",
-///         Scope = "REGIONAL",
 ///         DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Allow = null,
@@ -820,13 +862,18 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "example",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "example",
+///         Scope = "REGIONAL",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "rules",
+///         },
 ///     });
 ///
 ///     var blockIps = new Aws.WafV2.WebAclRule("block_ips", new()
 ///     {
-///         Name = "block-bad-ips",
-///         Priority = 1,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -844,6 +891,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-bad-ips",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "block-bad-ips",
+///         Priority = 1,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -871,8 +921,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// 			return err
 /// 		}
 /// 		example, err := wafv2.NewWebAcl(ctx, "example", &wafv2.WebAclArgs{
-/// 			Name:  pulumi.String("example"),
-/// 			Scope: pulumi.String("REGIONAL"),
 /// 			DefaultAction: &wafv2.WebAclDefaultActionArgs{
 /// 				Allow: &wafv2.WebAclDefaultActionAllowArgs{},
 /// 			},
@@ -881,14 +929,15 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("example"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
-/// 		})
+/// 			Name:  pulumi.String("example"),
+/// 			Scope: pulumi.String("REGIONAL"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"rules",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = wafv2.NewWebAclRule(ctx, "block_ips", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("block-bad-ips"),
-/// 			Priority:  pulumi.Int(1),
-/// 			WebAclArn: example.Arn,
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -902,6 +951,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-bad-ips"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("block-bad-ips"),
+/// 			Priority:  pulumi.Int(1),
+/// 			WebAclArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -926,8 +978,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///   addresses          = ["1.2.3.4/32", "5.6.7.8/32"]
 /// }
 /// resource "aws_wafv2_webacl" "example" {
-///   name  = "example"
-///   scope = "REGIONAL"
+///   lifecycle {
+///     ignore_changes = [rules]
+///   }
 ///   default_action = {
 ///     allow = {}
 ///   }
@@ -936,11 +989,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "example"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name  = "example"
+///   scope = "REGIONAL"
 /// }
 /// resource "aws_wafv2_webaclrule" "block_ips" {
-///   name        = "block-bad-ips"
-///   priority    = 1
-///   web_acl_arn = aws_wafv2_webacl.example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -954,6 +1006,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-bad-ips"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "block-bad-ips"
+///   priority    = 1
+///   web_acl_arn = aws_wafv2_webacl.example.arn
 /// }
 /// ```
 /// ```java
@@ -976,6 +1031,7 @@ import 'web_acl_rule_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementIpSetReferenceStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleVisibilityConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -999,8 +1055,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///             .build());
 ///
 ///         var example = new WebAcl("example", WebAclArgs.builder()
-///             .name("example")
-///             .scope("REGIONAL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .allow(WebAclDefaultActionAllowArgs.builder()
 ///                     .build())
@@ -1010,12 +1064,13 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("example")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
-///             .build());
+///             .name("example")
+///             .scope("REGIONAL")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("rules")
+///                 .build());
 ///
 ///         var blockIps = new WebAclRule("blockIps", WebAclRuleArgs.builder()
-///             .name("block-bad-ips")
-///             .priority(1)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -1030,6 +1085,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-bad-ips")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("block-bad-ips")
+///             .priority(1)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -1050,21 +1108,21 @@ import 'web_acl_rule_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAcl
 ///     properties:
-///       name: example
-///       scope: REGIONAL
 ///       defaultAction:
 ///         allow: {}
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: example
 ///         sampledRequestsEnabled: true
+///       name: example
+///       scope: REGIONAL
+///     options:
+///       ignoreChanges:
+///         - rules
 ///   blockIps:
 ///     type: aws:wafv2:WebAclRule
 ///     name: block_ips
 ///     properties:
-///       name: block-bad-ips
-///       priority: 1
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -1074,6 +1132,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: block-bad-ips
 ///         sampledRequestsEnabled: true
+///       name: block-bad-ips
+///       priority: 1
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -1085,9 +1146,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const rateLimit = new aws.wafv2.WebAclRule("rate_limit", {
-///     name: "rate-limit",
-///     priority: 2,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -1102,6 +1160,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "rate-limit",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "rate-limit",
+///     priority: 2,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -1109,9 +1170,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// rate_limit = aws.wafv2.WebAclRule("rate_limit",
-///     name="rate-limit",
-///     priority=2,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "block": {},
 ///     },
@@ -1125,7 +1183,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "rate-limit",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="rate-limit",
+///     priority=2,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1137,9 +1198,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var rateLimit = new Aws.WafV2.WebAclRule("rate_limit", new()
 ///     {
-///         Name = "rate-limit",
-///         Priority = 2,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -1158,6 +1216,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "rate-limit",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "rate-limit",
+///         Priority = 2,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -1173,9 +1234,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "rate_limit", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("rate-limit"),
-/// 			Priority:  pulumi.Int(2),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -1190,6 +1248,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("rate-limit"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("rate-limit"),
+/// 			Priority:  pulumi.Int(2),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1208,9 +1269,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "rate_limit" {
-///   name        = "rate-limit"
-///   priority    = 2
-///   web_acl_arn = example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -1225,6 +1283,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "rate-limit"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "rate-limit"
+///   priority    = 2
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -1254,9 +1315,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var rateLimit = new WebAclRule("rateLimit", WebAclRuleArgs.builder()
-///             .name("rate-limit")
-///             .priority(2)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -1272,6 +1330,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("rate-limit")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("rate-limit")
+///             .priority(2)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -1283,9 +1344,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: rate_limit
 ///     properties:
-///       name: rate-limit
-///       priority: 2
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -1296,6 +1354,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: rate-limit
 ///         sampledRequestsEnabled: true
+///       name: rate-limit
+///       priority: 2
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -1307,9 +1368,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const awsManagedRules = new aws.wafv2.WebAclRule("aws_managed_rules", {
-///     name: "aws-managed-rules",
-///     priority: 3,
-///     webAclArn: example.arn,
 ///     overrideAction: {
 ///         none: {},
 ///     },
@@ -1324,6 +1382,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "aws-managed-rules",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "aws-managed-rules",
+///     priority: 3,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -1331,9 +1392,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// aws_managed_rules = aws.wafv2.WebAclRule("aws_managed_rules",
-///     name="aws-managed-rules",
-///     priority=3,
-///     web_acl_arn=example["arn"],
 ///     override_action={
 ///         "none": {},
 ///     },
@@ -1347,7 +1405,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "aws-managed-rules",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="aws-managed-rules",
+///     priority=3,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1359,9 +1420,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var awsManagedRules = new Aws.WafV2.WebAclRule("aws_managed_rules", new()
 ///     {
-///         Name = "aws-managed-rules",
-///         Priority = 3,
-///         WebAclArn = example.Arn,
 ///         OverrideAction = new Aws.WafV2.Inputs.WebAclRuleOverrideActionArgs
 ///         {
 ///             None = null,
@@ -1380,6 +1438,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "aws-managed-rules",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "aws-managed-rules",
+///         Priority = 3,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -1395,9 +1456,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "aws_managed_rules", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("aws-managed-rules"),
-/// 			Priority:  pulumi.Int(3),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			OverrideAction: &wafv2.WebAclRuleOverrideActionArgs{
 /// 				None: &wafv2.WebAclRuleOverrideActionNoneArgs{},
 /// 			},
@@ -1412,6 +1470,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("aws-managed-rules"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("aws-managed-rules"),
+/// 			Priority:  pulumi.Int(3),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1430,9 +1491,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "aws_managed_rules" {
-///   name        = "aws-managed-rules"
-///   priority    = 3
-///   web_acl_arn = example.arn
 ///   override_action = {
 ///     none = {}
 ///   }
@@ -1447,6 +1505,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "aws-managed-rules"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "aws-managed-rules"
+///   priority    = 3
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -1476,9 +1537,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var awsManagedRules = new WebAclRule("awsManagedRules", WebAclRuleArgs.builder()
-///             .name("aws-managed-rules")
-///             .priority(3)
-///             .webAclArn(example.arn())
 ///             .overrideAction(WebAclRuleOverrideActionArgs.builder()
 ///                 .none(WebAclRuleOverrideActionNoneArgs.builder()
 ///                     .build())
@@ -1494,6 +1552,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("aws-managed-rules")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("aws-managed-rules")
+///             .priority(3)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -1505,9 +1566,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: aws_managed_rules
 ///     properties:
-///       name: aws-managed-rules
-///       priority: 3
-///       webAclArn: ${example.arn}
 ///       overrideAction:
 ///         none: {}
 ///       statement:
@@ -1518,6 +1576,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: aws-managed-rules
 ///         sampledRequestsEnabled: true
+///       name: aws-managed-rules
+///       priority: 3
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -1529,9 +1590,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const captchaWithHeaders = new aws.wafv2.WebAclRule("captcha_with_headers", {
-///     name: "captcha-with-headers",
-///     priority: 4,
-///     webAclArn: example.arn,
 ///     action: {
 ///         captcha: {
 ///             customRequestHandling: {
@@ -1552,6 +1610,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "captcha-with-headers",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "captcha-with-headers",
+///     priority: 4,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -1559,9 +1620,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// captcha_with_headers = aws.wafv2.WebAclRule("captcha_with_headers",
-///     name="captcha-with-headers",
-///     priority=4,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "captcha": {
 ///             "custom_request_handling": {
@@ -1581,7 +1639,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "captcha-with-headers",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="captcha-with-headers",
+///     priority=4,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1593,9 +1654,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var captchaWithHeaders = new Aws.WafV2.WebAclRule("captcha_with_headers", new()
 ///     {
-///         Name = "captcha-with-headers",
-///         Priority = 4,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Captcha = new Aws.WafV2.Inputs.WebAclRuleActionCaptchaArgs
@@ -1629,6 +1687,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "captcha-with-headers",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "captcha-with-headers",
+///         Priority = 4,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -1644,9 +1705,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "captcha_with_headers", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("captcha-with-headers"),
-/// 			Priority:  pulumi.Int(4),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Captcha: &wafv2.WebAclRuleActionCaptchaArgs{
 /// 					CustomRequestHandling: &wafv2.WebAclRuleActionCaptchaCustomRequestHandlingArgs{
@@ -1671,6 +1729,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("captcha-with-headers"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("captcha-with-headers"),
+/// 			Priority:  pulumi.Int(4),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1689,9 +1750,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "captcha_with_headers" {
-///   name        = "captcha-with-headers"
-///   priority    = 4
-///   web_acl_arn = example.arn
 ///   action = {
 ///     captcha = {
 ///       custom_request_handling = {
@@ -1712,6 +1770,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "captcha-with-headers"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "captcha-with-headers"
+///   priority    = 4
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -1743,9 +1804,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var captchaWithHeaders = new WebAclRule("captchaWithHeaders", WebAclRuleArgs.builder()
-///             .name("captcha-with-headers")
-///             .priority(4)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .captcha(WebAclRuleActionCaptchaArgs.builder()
 ///                     .customRequestHandling(WebAclRuleActionCaptchaCustomRequestHandlingArgs.builder()
@@ -1766,6 +1824,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("captcha-with-headers")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("captcha-with-headers")
+///             .priority(4)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -1777,9 +1838,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: captcha_with_headers
 ///     properties:
-///       name: captcha-with-headers
-///       priority: 4
-///       webAclArn: ${example.arn}
 ///       action:
 ///         captcha:
 ///           customRequestHandling:
@@ -1794,6 +1852,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: captcha-with-headers
 ///         sampledRequestsEnabled: true
+///       name: captcha-with-headers
+///       priority: 4
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -1805,9 +1866,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const blockedIps = new aws.wafv2.WebAclRule("blocked_ips", {
-///     name: "blocked-ips",
-///     priority: 1,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -1821,6 +1879,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-bad-ips",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "blocked-ips",
+///     priority: 1,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -1828,9 +1889,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// blocked_ips = aws.wafv2.WebAclRule("blocked_ips",
-///     name="blocked-ips",
-///     priority=1,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "block": {},
 ///     },
@@ -1843,7 +1901,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "block-bad-ips",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="blocked-ips",
+///     priority=1,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1855,9 +1916,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var blockedIps = new Aws.WafV2.WebAclRule("blocked_ips", new()
 ///     {
-///         Name = "blocked-ips",
-///         Priority = 1,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -1875,6 +1933,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-bad-ips",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "blocked-ips",
+///         Priority = 1,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -1890,9 +1951,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "blocked_ips", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("blocked-ips"),
-/// 			Priority:  pulumi.Int(1),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -1906,6 +1964,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-bad-ips"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("blocked-ips"),
+/// 			Priority:  pulumi.Int(1),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1924,9 +1985,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "blocked_ips" {
-///   name        = "blocked-ips"
-///   priority    = 1
-///   web_acl_arn = example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -1940,6 +1998,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-bad-ips"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "blocked-ips"
+///   priority    = 1
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -1969,9 +2030,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var blockedIps = new WebAclRule("blockedIps", WebAclRuleArgs.builder()
-///             .name("blocked-ips")
-///             .priority(1)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -1986,6 +2044,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-bad-ips")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("blocked-ips")
+///             .priority(1)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -1997,9 +2058,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: blocked_ips
 ///     properties:
-///       name: blocked-ips
-///       priority: 1
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -2009,6 +2067,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: block-bad-ips
 ///         sampledRequestsEnabled: true
+///       name: blocked-ips
+///       priority: 1
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -2029,9 +2090,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const blockSuspicious = new aws.wafv2.WebAclRule("block_suspicious", {
-///     name: "block-suspicious",
-///     priority: 1,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -2045,8 +2103,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 },
 ///                 {
 ///                     byteMatchStatement: {
-///                         searchString: "admin",
-///                         positionalConstraint: "CONTAINS",
 ///                         fieldToMatch: {
 ///                             uriPath: {},
 ///                         },
@@ -2054,6 +2110,8 @@ import 'web_acl_rule_visibility_config.dart';
 ///                             priority: 0,
 ///                             type: "LOWERCASE",
 ///                         }],
+///                         searchString: "admin",
+///                         positionalConstraint: "CONTAINS",
 ///                     },
 ///                 },
 ///             ],
@@ -2064,6 +2122,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-suspicious",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "block-suspicious",
+///     priority: 1,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -2071,9 +2132,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// block_suspicious = aws.wafv2.WebAclRule("block_suspicious",
-///     name="block-suspicious",
-///     priority=1,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "block": {},
 ///     },
@@ -2087,8 +2145,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 },
 ///                 {
 ///                     "byte_match_statement": {
-///                         "search_string": "admin",
-///                         "positional_constraint": "CONTAINS",
 ///                         "field_to_match": {
 ///                             "uri_path": {},
 ///                         },
@@ -2096,6 +2152,8 @@ import 'web_acl_rule_visibility_config.dart';
 ///                             "priority": 0,
 ///                             "type": "LOWERCASE",
 ///                         }],
+///                         "search_string": "admin",
+///                         "positional_constraint": "CONTAINS",
 ///                     },
 ///                 },
 ///             ],
@@ -2105,7 +2163,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "block-suspicious",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="block-suspicious",
+///     priority=1,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2117,9 +2178,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var blockSuspicious = new Aws.WafV2.WebAclRule("block_suspicious", new()
 ///     {
-///         Name = "block-suspicious",
-///         Priority = 1,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -2144,8 +2202,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///                     {
 ///                         ByteMatchStatement = new Aws.WafV2.Inputs.WebAclRuleStatementByteMatchStatementArgs
 ///                         {
-///                             SearchString = "admin",
-///                             PositionalConstraint = "CONTAINS",
 ///                             FieldToMatch = new Aws.WafV2.Inputs.WebAclRuleStatementByteMatchStatementFieldToMatchArgs
 ///                             {
 ///                                 UriPath = null,
@@ -2158,6 +2214,8 @@ import 'web_acl_rule_visibility_config.dart';
 ///                                     Type = "LOWERCASE",
 ///                                 },
 ///                             },
+///                             SearchString = "admin",
+///                             PositionalConstraint = "CONTAINS",
 ///                         },
 ///                     },
 ///                 },
@@ -2169,6 +2227,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-suspicious",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "block-suspicious",
+///         Priority = 1,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -2184,9 +2245,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "block_suspicious", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("block-suspicious"),
-/// 			Priority:  pulumi.Int(1),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -2202,8 +2260,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// 						},
 /// 						&wafv2.WebAclRuleStatementArgs{
 /// 							ByteMatchStatement: &wafv2.WebAclRuleStatementByteMatchStatementArgs{
-/// 								SearchString:         pulumi.String("admin"),
-/// 								PositionalConstraint: pulumi.String("CONTAINS"),
 /// 								FieldToMatch: &wafv2.WebAclRuleStatementByteMatchStatementFieldToMatchArgs{
 /// 									UriPath: &wafv2.WebAclRuleStatementByteMatchStatementFieldToMatchUriPathArgs{},
 /// 								},
@@ -2213,6 +2269,8 @@ import 'web_acl_rule_visibility_config.dart';
 /// 										Type:     pulumi.String("LOWERCASE"),
 /// 									},
 /// 								},
+/// 								SearchString:         pulumi.String("admin"),
+/// 								PositionalConstraint: pulumi.String("CONTAINS"),
 /// 							},
 /// 						},
 /// 					},
@@ -2223,6 +2281,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-suspicious"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("block-suspicious"),
+/// 			Priority:  pulumi.Int(1),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2241,9 +2302,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "block_suspicious" {
-///   name        = "block-suspicious"
-///   priority    = 1
-///   web_acl_arn = example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -2255,8 +2313,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///         }
 ///         }, {
 ///         "byteMatchStatement" = {
-///           "searchString"         = "admin"
-///           "positionalConstraint" = "CONTAINS"
 ///           "fieldToMatch" = {
 ///             "uriPath" = {}
 ///           }
@@ -2264,6 +2320,8 @@ import 'web_acl_rule_visibility_config.dart';
 ///             "priority" = 0
 ///             "type"     = "LOWERCASE"
 ///           }]
+///           "searchString"         = "admin"
+///           "positionalConstraint" = "CONTAINS"
 ///         }
 ///       }]
 ///     }
@@ -2273,6 +2331,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-suspicious"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "block-suspicious"
+///   priority    = 1
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -2307,9 +2368,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var blockSuspicious = new WebAclRule("blockSuspicious", WebAclRuleArgs.builder()
-///             .name("block-suspicious")
-///             .priority(1)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -2323,8 +2381,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///                         .build(),
 ///                     WebAclRuleStatementArgs.builder()
 ///                         .byteMatchStatement(WebAclRuleStatementByteMatchStatementArgs.builder()
-///                             .searchString("admin")
-///                             .positionalConstraint("CONTAINS")
 ///                             .fieldToMatch(WebAclRuleStatementByteMatchStatementFieldToMatchArgs.builder()
 ///                                 .uriPath(WebAclRuleStatementByteMatchStatementFieldToMatchUriPathArgs.builder()
 ///                                     .build())
@@ -2333,6 +2389,8 @@ import 'web_acl_rule_visibility_config.dart';
 ///                                 .priority(0)
 ///                                 .type("LOWERCASE")
 ///                                 .build())
+///                             .searchString("admin")
+///                             .positionalConstraint("CONTAINS")
 ///                             .build())
 ///                         .build())))
 ///                 .build())
@@ -2341,6 +2399,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-suspicious")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("block-suspicious")
+///             .priority(1)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -2352,9 +2413,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: block_suspicious
 ///     properties:
-///       name: block-suspicious
-///       priority: 1
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -2364,17 +2422,20 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 countryCodes:
 ///                   - CN
 ///             - byteMatchStatement:
-///                 searchString: admin
-///                 positionalConstraint: CONTAINS
 ///                 fieldToMatch:
 ///                   uriPath: {}
 ///                 textTransformations:
 ///                   - priority: 0
 ///                     type: LOWERCASE
+///                 searchString: admin
+///                 positionalConstraint: CONTAINS
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: block-suspicious
 ///         sampledRequestsEnabled: true
+///       name: block-suspicious
+///       priority: 1
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -2388,9 +2449,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const blockCountries = new aws.wafv2.WebAclRule("block_countries", {
-///     name: "block-countries",
-///     priority: 2,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -2415,6 +2473,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "block-countries",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "block-countries",
+///     priority: 2,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -2422,9 +2483,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// block_countries = aws.wafv2.WebAclRule("block_countries",
-///     name="block-countries",
-///     priority=2,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "block": {},
 ///     },
@@ -2448,7 +2506,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "block-countries",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="block-countries",
+///     priority=2,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2460,9 +2521,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var blockCountries = new Aws.WafV2.WebAclRule("block_countries", new()
 ///     {
-///         Name = "block-countries",
-///         Priority = 2,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -2502,6 +2560,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "block-countries",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "block-countries",
+///         Priority = 2,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -2517,9 +2578,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "block_countries", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("block-countries"),
-/// 			Priority:  pulumi.Int(2),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -2548,6 +2606,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("block-countries"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("block-countries"),
+/// 			Priority:  pulumi.Int(2),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2566,9 +2627,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "block_countries" {
-///   name        = "block-countries"
-///   priority    = 2
-///   web_acl_arn = example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -2590,6 +2648,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "block-countries"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "block-countries"
+///   priority    = 2
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -2620,9 +2681,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var blockCountries = new WebAclRule("blockCountries", WebAclRuleArgs.builder()
-///             .name("block-countries")
-///             .priority(2)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -2645,6 +2703,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("block-countries")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("block-countries")
+///             .priority(2)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -2656,9 +2717,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: block_countries
 ///     properties:
-///       name: block-countries
-///       priority: 2
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -2674,6 +2732,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: block-countries
 ///         sampledRequestsEnabled: true
+///       name: block-countries
+///       priority: 2
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -2687,9 +2748,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const allowOnlyUs = new aws.wafv2.WebAclRule("allow_only_us", {
-///     name: "allow-only-us",
-///     priority: 3,
-///     webAclArn: example.arn,
 ///     action: {
 ///         block: {},
 ///     },
@@ -2710,6 +2768,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         metricName: "allow-only-us",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "allow-only-us",
+///     priority: 3,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -2717,9 +2778,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// allow_only_us = aws.wafv2.WebAclRule("allow_only_us",
-///     name="allow-only-us",
-///     priority=3,
-///     web_acl_arn=example["arn"],
 ///     action={
 ///         "block": {},
 ///     },
@@ -2739,7 +2797,10 @@ import 'web_acl_rule_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "allow-only-us",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="allow-only-us",
+///     priority=3,
+///     web_acl_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2751,9 +2812,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// {
 ///     var allowOnlyUs = new Aws.WafV2.WebAclRule("allow_only_us", new()
 ///     {
-///         Name = "allow-only-us",
-///         Priority = 3,
-///         WebAclArn = example.Arn,
 ///         Action = new Aws.WafV2.Inputs.WebAclRuleActionArgs
 ///         {
 ///             Block = null,
@@ -2781,6 +2839,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///             MetricName = "allow-only-us",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "allow-only-us",
+///         Priority = 3,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -2796,9 +2857,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRule(ctx, "allow_only_us", &wafv2.WebAclRuleArgs{
-/// 			Name:      pulumi.String("allow-only-us"),
-/// 			Priority:  pulumi.Int(3),
-/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 			Action: &wafv2.WebAclRuleActionArgs{
 /// 				Block: &wafv2.WebAclRuleActionBlockArgs{},
 /// 			},
@@ -2819,6 +2877,9 @@ import 'web_acl_rule_visibility_config.dart';
 /// 				MetricName:               pulumi.String("allow-only-us"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			Name:      pulumi.String("allow-only-us"),
+/// 			Priority:  pulumi.Int(3),
+/// 			WebAclArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2837,9 +2898,6 @@ import 'web_acl_rule_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrule" "allow_only_us" {
-///   name        = "allow-only-us"
-///   priority    = 3
-///   web_acl_arn = example.arn
 ///   action = {
 ///     block = {}
 ///   }
@@ -2857,6 +2915,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///     metric_name                = "allow-only-us"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name        = "allow-only-us"
+///   priority    = 3
+///   web_acl_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -2887,9 +2948,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var allowOnlyUs = new WebAclRule("allowOnlyUs", WebAclRuleArgs.builder()
-///             .name("allow-only-us")
-///             .priority(3)
-///             .webAclArn(example.arn())
 ///             .action(WebAclRuleActionArgs.builder()
 ///                 .block(WebAclRuleActionBlockArgs.builder()
 ///                     .build())
@@ -2908,6 +2966,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///                 .metricName("allow-only-us")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .name("allow-only-us")
+///             .priority(3)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -2919,9 +2980,6 @@ import 'web_acl_rule_visibility_config.dart';
 ///     type: aws:wafv2:WebAclRule
 ///     name: allow_only_us
 ///     properties:
-///       name: allow-only-us
-///       priority: 3
-///       webAclArn: ${example.arn}
 ///       action:
 ///         block: {}
 ///       statement:
@@ -2935,6 +2993,9 @@ import 'web_acl_rule_visibility_config.dart';
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: allow-only-us
 ///         sampledRequestsEnabled: true
+///       name: allow-only-us
+///       priority: 3
+///       webAclArn: ${example.arn}
 /// ```
 ///
 ///
@@ -2974,7 +3035,7 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Labels to apply to matching web requests. See Rule Label below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ruleLabels;
+  late final pulumi.Output<List<WebAclRuleRuleLabel>?> ruleLabels;
   /// Rule statement. See Statement below.
   late final pulumi.Output<WebAclRuleStatement?> statement;
   late final pulumi.Output<WebAclRuleTimeouts?> timeouts;
@@ -2997,7 +3058,7 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
           'aws:wafv2/webAclRule:WebAclRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<WebAclRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     captchaConfig = registerOutput<WebAclRuleCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3006,7 +3067,7 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
     overrideAction = registerOutput<WebAclRuleOverrideAction?>('overrideAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
-    ruleLabels = registerOutput<List<Map<String, dynamic>>?>('ruleLabels');
+    ruleLabels = registerOutput<List<WebAclRuleRuleLabel>?>('ruleLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRuleRuleLabel>(guardedValue, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>())); });
     statement = registerOutput<WebAclRuleStatement?>('statement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<WebAclRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     visibilityConfig = registerOutput<WebAclRuleVisibilityConfig?>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3018,11 +3079,12 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAclRuleWafv2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3043,7 +3105,30 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
     overrideAction = registerOutput<WebAclRuleOverrideAction?>('overrideAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
-    ruleLabels = registerOutput<List<Map<String, dynamic>>?>('ruleLabels');
+    ruleLabels = registerOutput<List<WebAclRuleRuleLabel>?>('ruleLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRuleRuleLabel>(guardedValue, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    statement = registerOutput<WebAclRuleStatement?>('statement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<WebAclRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    visibilityConfig = registerOutput<WebAclRuleVisibilityConfig?>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webAclArn = registerOutput<String>('webAclArn');
+  }
+
+  /// Creates a typed reference to an existing [WebAclRuleWafv2] resource.
+  WebAclRuleWafv2.reference(String urn)
+    : super(
+        'aws:wafv2/webAclRule:WebAclRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<WebAclRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    captchaConfig = registerOutput<WebAclRuleCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    challengeConfig = registerOutput<WebAclRuleChallengeConfig?>('challengeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    overrideAction = registerOutput<WebAclRuleOverrideAction?>('overrideAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleLabels = registerOutput<List<WebAclRuleRuleLabel>?>('ruleLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRuleRuleLabel>(guardedValue, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>())); });
     statement = registerOutput<WebAclRuleStatement?>('statement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<WebAclRuleTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     visibilityConfig = registerOutput<WebAclRuleVisibilityConfig?>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

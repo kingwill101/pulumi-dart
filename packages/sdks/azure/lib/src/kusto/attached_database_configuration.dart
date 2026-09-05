@@ -282,7 +282,7 @@ import 'attached_database_configuration_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			ClusterName:       followerCluster.Name,
-/// 			ClusterId:         followedCluster.ID(),
+/// 			ClusterId:         followedCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			DatabaseName:      exampleDatabase.Name,
 /// 			Sharing: &kusto.AttachedDatabaseConfigurationSharingArgs{
 /// 				ExternalTablesToExcludes: pulumi.StringArray{
@@ -596,9 +596,9 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
           'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');
@@ -617,11 +617,12 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachedDatabaseConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttachedDatabaseConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,7 +636,30 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterId = registerOutput<String>('clusterId');
+    clusterName = registerOutput<String>('clusterName');
+    clusterResourceId = registerOutput<String>('clusterResourceId');
+    databaseName = registerOutput<String>('databaseName');
+    databaseNameOverride = registerOutput<String?>('databaseNameOverride');
+    databaseNamePrefix = registerOutput<String?>('databaseNamePrefix');
+    defaultPrincipalModificationKind = registerOutput<String?>('defaultPrincipalModificationKind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedDatabaseConfigurationSharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AttachedDatabaseConfiguration] resource.
+  AttachedDatabaseConfiguration.reference(String urn)
+    : super(
+        'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
     clusterResourceId = registerOutput<String>('clusterResourceId');

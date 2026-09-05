@@ -8,13 +8,13 @@ import 'analysis_parameters_string_parameter.dart';
 
 class AnalysisParameters {
   /// A list of parameters that have a data type of date-time. See [AWS API Documentation for complete description](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeParameter.html).
-  final pulumi.Input<List<AnalysisParametersDateTimeParameter>>? dateTimeParameters;
+  final pulumi.Input<List<AnalysisParametersDateTimeParameter>?>? dateTimeParameters;
   /// A list of parameters that have a data type of decimal. See [AWS API Documentation for complete description](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalParameter.html).
-  final pulumi.Input<List<AnalysisParametersDecimalParameter>>? decimalParameters;
+  final pulumi.Input<List<AnalysisParametersDecimalParameter>?>? decimalParameters;
   /// A list of parameters that have a data type of integer. See [AWS API Documentation for complete description](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerParameter.html).
-  final pulumi.Input<List<AnalysisParametersIntegerParameter>>? integerParameters;
+  final pulumi.Input<List<AnalysisParametersIntegerParameter>?>? integerParameters;
   /// A list of parameters that have a data type of string. See [AWS API Documentation for complete description](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringParameter.html).
-  final pulumi.Input<List<AnalysisParametersStringParameter>>? stringParameters;
+  final pulumi.Input<List<AnalysisParametersStringParameter>?>? stringParameters;
 
   /// Creates a new [AnalysisParameters].
   /// [dateTimeParameters] A list of parameters that have a data type of date-time. See [AWS API Documentation for complete description](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeParameter.html).

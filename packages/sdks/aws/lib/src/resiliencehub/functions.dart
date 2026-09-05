@@ -126,6 +126,17 @@ Future<GetV2PolicyResult> getV2Policy(
   return GetV2PolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetV2PolicyResult> getV2PolicyOutput(
+  GetV2PolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resiliencehub/getV2Policy:getV2Policy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2PolicyResult.fromMap);
+}
+
 /// Data source for reading an AWS Resilience Hub V2 Service.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetV2ServiceResult> getV2Service(
   return GetV2ServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetV2ServiceResult> getV2ServiceOutput(
+  GetV2ServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resiliencehub/getV2Service:getV2Service',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2ServiceResult.fromMap);
+}
+
 /// Data source for reading an AWS Resilience Hub V2 System.
 ///
 /// ## Example Usage
@@ -364,4 +386,15 @@ Future<GetV2SystemResult> getV2System(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV2SystemResult.fromMap(result);
+}
+
+pulumi.Output<GetV2SystemResult> getV2SystemOutput(
+  GetV2SystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:resiliencehub/getV2System:getV2System',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV2SystemResult.fromMap);
 }

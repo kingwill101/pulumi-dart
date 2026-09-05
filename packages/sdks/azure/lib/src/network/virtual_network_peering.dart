@@ -167,7 +167,7 @@ import 'virtual_network_peering_state.dart';
 /// 			Name:                   pulumi.String("peer1to2"),
 /// 			ResourceGroupName:      example.Name,
 /// 			VirtualNetworkName:     example_1.Name,
-/// 			RemoteVirtualNetworkId: example_2.ID(),
+/// 			RemoteVirtualNetworkId: example_2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -176,7 +176,7 @@ import 'virtual_network_peering_state.dart';
 /// 			Name:                   pulumi.String("peer2to1"),
 /// 			ResourceGroupName:      example.Name,
 /// 			VirtualNetworkName:     example_2.Name,
-/// 			RemoteVirtualNetworkId: example_1.ID(),
+/// 			RemoteVirtualNetworkId: example_1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -377,7 +377,7 @@ import 'virtual_network_peering_state.dart';
 /// const peering: azure.network.VirtualNetworkPeering[] = [];
 /// for (let range = 0; range < location.length; range++) {
 ///     peering.push(new azure.network.VirtualNetworkPeering(`peering-${range}`, {
-///         name: vnet.map(__item => __item.name)[1 - range].apply(names => `peering-to-${names}`),
+///         name: pulumi.interpolate`peering-to-${vnet.map(__item => __item.name)[1 - range]}`,
 ///         resourceGroupName: example.map(__item => __item.name)[range],
 ///         virtualNetworkName: vnet.map(__item => __item.name)[range],
 ///         remoteVirtualNetworkId: vnet.map(__item => __item.id)[1 - range],
@@ -612,7 +612,7 @@ import 'virtual_network_peering_state.dart';
 /// }).(pulumi.StringOutput),
 /// ResourceGroupName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:47,39-54)[val0],
 /// VirtualNetworkName: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:48,39-51)[val0],
-/// RemoteVirtualNetworkId: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:49,39-49)[int(1 - val0)],
+/// RemoteVirtualNetworkId: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:49,39-49)[int(1 - val0)].ToIDOutput().ToStringOutput(),
 /// AllowVirtualNetworkAccess: pulumi.Bool(true),
 /// AllowForwardedTraffic: pulumi.Bool(true),
 /// AllowGatewayTransit: pulumi.Bool(false),
@@ -799,7 +799,7 @@ import 'virtual_network_peering_state.dart';
 ///         remote_address_space: std.joinOutput({
 ///             separator: ",",
 ///             input: example_2.addressSpaces,
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     },
 /// });
 /// const example_2VirtualNetworkPeering = new azure.network.VirtualNetworkPeering("example-2", {
@@ -811,7 +811,7 @@ import 'virtual_network_peering_state.dart';
 ///         remote_address_space: std.joinOutput({
 ///             separator: ",",
 ///             input: example_1.addressSpaces,
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     },
 /// });
 /// ```
@@ -840,7 +840,7 @@ import 'virtual_network_peering_state.dart';
 ///     remote_virtual_network_id=example_2.id,
 ///     triggers={
 ///         "remote_address_space": std.join_output(separator=",",
-///             input=example_2.address_spaces).apply(lambda invoke: invoke.result),
+///             input=example_2.address_spaces).result,
 ///     })
 /// example_2_virtual_network_peering = azure.network.VirtualNetworkPeering("example-2",
 ///     name="peer2to1",
@@ -849,7 +849,7 @@ import 'virtual_network_peering_state.dart';
 ///     remote_virtual_network_id=example_1.id,
 ///     triggers={
 ///         "remote_address_space": std.join_output(separator=",",
-///             input=example_1.address_spaces).apply(lambda invoke: invoke.result),
+///             input=example_1.address_spaces).result,
 ///     })
 /// ```
 /// ```csharp
@@ -968,15 +968,12 @@ import 'virtual_network_peering_state.dart';
 /// 			Name:                   pulumi.String("peer1to2"),
 /// 			ResourceGroupName:      example.Name,
 /// 			VirtualNetworkName:     example_1.Name,
-/// 			RemoteVirtualNetworkId: example_2.ID(),
+/// 			RemoteVirtualNetworkId: example_2.ID().ToIDOutput().ToStringOutput(),
 /// 			Triggers: pulumi.StringMap{
-/// 				"remote_address_space": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 				"remote_address_space": std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 					Separator: pulumi.String(","),
 /// 					Input:     example_2.AddressSpaces,
-/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 					val := invoke.Result
-/// 					return &val, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}, nil).Result(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -986,15 +983,12 @@ import 'virtual_network_peering_state.dart';
 /// 			Name:                   pulumi.String("peer2to1"),
 /// 			ResourceGroupName:      example.Name,
 /// 			VirtualNetworkName:     example_2.Name,
-/// 			RemoteVirtualNetworkId: example_1.ID(),
+/// 			RemoteVirtualNetworkId: example_1.ID().ToIDOutput().ToStringOutput(),
 /// 			Triggers: pulumi.StringMap{
-/// 				"remote_address_space": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 				"remote_address_space": std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 					Separator: pulumi.String(","),
 /// 					Input:     example_1.AddressSpaces,
-/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 					val := invoke.Result
-/// 					return &val, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}, nil).Result(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1240,19 +1234,19 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
           'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
     allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
-    localSubnetNames = registerOutput<List<String>?>('localSubnetNames');
+    localSubnetNames = registerOutput<List<String>?>('localSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     onlyIpv6PeeringEnabled = registerOutput<bool?>('onlyIpv6PeeringEnabled');
     peerCompleteVirtualNetworksEnabled = registerOutput<bool?>('peerCompleteVirtualNetworksEnabled');
-    remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames');
+    remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
     virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }
@@ -1262,11 +1256,12 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1283,14 +1278,38 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
     allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
-    localSubnetNames = registerOutput<List<String>?>('localSubnetNames');
+    localSubnetNames = registerOutput<List<String>?>('localSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     onlyIpv6PeeringEnabled = registerOutput<bool?>('onlyIpv6PeeringEnabled');
     peerCompleteVirtualNetworksEnabled = registerOutput<bool?>('peerCompleteVirtualNetworksEnabled');
-    remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames');
+    remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+    virtualNetworkName = registerOutput<String>('virtualNetworkName');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkPeering] resource.
+  VirtualNetworkPeering.reference(String urn)
+    : super(
+        'azure:network/virtualNetworkPeering:VirtualNetworkPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
+    localSubnetNames = registerOutput<List<String>?>('localSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    onlyIpv6PeeringEnabled = registerOutput<bool?>('onlyIpv6PeeringEnabled');
+    peerCompleteVirtualNetworksEnabled = registerOutput<bool?>('peerCompleteVirtualNetworksEnabled');
+    remoteSubnetNames = registerOutput<List<String>?>('remoteSubnetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
     virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocalUserPermissionScopePermissions {
   /// Specifies if the Local User has the create permission for this scope. Defaults to `false`.
-  final pulumi.Input<bool>? create;
+  final pulumi.Input<bool?>? create;
   /// Specifies if the Local User has the delete permission for this scope. Defaults to `false`.
-  final pulumi.Input<bool>? delete;
+  final pulumi.Input<bool?>? delete;
   /// Specifies if the Local User has the list permission for this scope. Defaults to `false`.
-  final pulumi.Input<bool>? list;
+  final pulumi.Input<bool?>? list;
   /// Specifies if the Local User has the read permission for this scope. Defaults to `false`.
-  final pulumi.Input<bool>? read;
+  final pulumi.Input<bool?>? read;
   /// Specifies if the Local User has the write permission for this scope. Defaults to `false`.
-  final pulumi.Input<bool>? write;
+  final pulumi.Input<bool?>? write;
 
   /// Creates a new [LocalUserPermissionScopePermissions].
   /// [create] Specifies if the Local User has the create permission for this scope. Defaults to `false`.

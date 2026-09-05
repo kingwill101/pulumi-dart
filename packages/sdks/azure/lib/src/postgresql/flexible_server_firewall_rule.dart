@@ -123,7 +123,7 @@ import 'flexible_server_firewall_rule_state.dart';
 /// 		}
 /// 		_, err = postgresql.NewFlexibleServerFirewallRule(ctx, "example", &postgresql.FlexibleServerFirewallRuleArgs{
 /// 			Name:           pulumi.String("example-fw"),
-/// 			ServerId:       exampleFlexibleServer.ID(),
+/// 			ServerId:       exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress: pulumi.String("122.122.0.0"),
 /// 			EndIpAddress:   pulumi.String("122.122.0.0"),
 /// 		})
@@ -281,7 +281,7 @@ class FlexibleServerFirewallRule extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
@@ -294,11 +294,12 @@ class FlexibleServerFirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerFirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerFirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -312,6 +313,21 @@ class FlexibleServerFirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+    startIpAddress = registerOutput<String>('startIpAddress');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerFirewallRule] resource.
+  FlexibleServerFirewallRule.reference(String urn)
+    : super(
+        'azure:postgresql/flexibleServerFirewallRule:FlexibleServerFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

@@ -12,8 +12,8 @@ class DelegationSignerRecordArgs {
   /// The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
   final pulumi.Input<String> domainName;
   /// The information about a key, including the algorithm, public key-value, and flags.
-  final pulumi.Input<DelegationSignerRecordSigningAttributes>? signingAttributes;
-  final pulumi.Input<DelegationSignerRecordTimeouts>? timeouts;
+  final pulumi.Input<DelegationSignerRecordSigningAttributes?>? signingAttributes;
+  final pulumi.Input<DelegationSignerRecordTimeouts?>? timeouts;
 
   /// Creates a new [DelegationSignerRecordArgs].
   /// [domainName] The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.

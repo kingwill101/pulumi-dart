@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorize_vpc_endpoint_access_args.dart';
+import 'authorize_vpc_endpoint_access_authorized_principal.dart';
 import 'authorize_vpc_endpoint_access_state.dart';
 
 /// Resource for managing an AWS OpenSearch Authorize Vpc Endpoint Access.
@@ -149,7 +150,7 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
   /// AWS account ID to grant access to.
   late final pulumi.Output<String> account;
   /// Information about the Amazon Web Services account or service that was provided access to the domain. See `authorizedPrincipal` Block for further details.
-  late final pulumi.Output<List<Map<String, dynamic>>> authorizedPrincipals;
+  late final pulumi.Output<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>> authorizedPrincipals;
   /// Name of OpenSearch Service domain to provide access to.
   late final pulumi.Output<String> domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -167,10 +168,10 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
           'aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     account = registerOutput<String>('account');
-    authorizedPrincipals = registerOutput<List<Map<String, dynamic>>>('authorizedPrincipals');
+    authorizedPrincipals = registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>('authorizedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(guardedValue, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>())); });
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
   }
@@ -180,11 +181,12 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizeVpcEndpointAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthorizeVpcEndpointAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,7 +201,22 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     account = registerOutput<String>('account');
-    authorizedPrincipals = registerOutput<List<Map<String, dynamic>>>('authorizedPrincipals');
+    authorizedPrincipals = registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>('authorizedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(guardedValue, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>())); });
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizeVpcEndpointAccess] resource.
+  AuthorizeVpcEndpointAccess.reference(String urn)
+    : super(
+        'aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    account = registerOutput<String>('account');
+    authorizedPrincipals = registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>('authorizedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(guardedValue, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>())); });
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
   }

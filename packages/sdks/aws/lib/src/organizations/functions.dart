@@ -148,6 +148,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Get a list of AWS accounts that are designated as delegated administrators in this organization
 ///
 /// ## Example Usage
@@ -264,6 +275,17 @@ Future<GetDelegatedAdministratorsResult> getDelegatedAdministrators(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDelegatedAdministratorsResult.fromMap(result);
+}
+
+pulumi.Output<GetDelegatedAdministratorsResult> getDelegatedAdministratorsOutput(
+  GetDelegatedAdministratorsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getDelegatedAdministrators:getDelegatedAdministrators',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDelegatedAdministratorsResult.fromMap);
 }
 
 /// Get a list the AWS services for which the specified account is a delegated administrator
@@ -384,6 +406,17 @@ Future<GetDelegatedServicesResult> getDelegatedServices(
   return GetDelegatedServicesResult.fromMap(result);
 }
 
+pulumi.Output<GetDelegatedServicesResult> getDelegatedServicesOutput(
+  GetDelegatedServicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getDelegatedServices:getDelegatedServices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDelegatedServicesResult.fromMap);
+}
+
 /// Get the [entity path](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-view-data-orgs.html#access_policies_last-accessed-viewing-orgs-entity-path) for an entity. An entity's path is the text representation of the structure of that AWS Organizations entity.
 ///
 /// ## Example Usage
@@ -502,6 +535,17 @@ Future<GetEntityPathResult> getEntityPath(
   return GetEntityPathResult.fromMap(result);
 }
 
+pulumi.Output<GetEntityPathResult> getEntityPathOutput(
+  GetEntityPathArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getEntityPath:getEntityPath',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityPathResult.fromMap);
+}
+
 /// Get information about the organization that the users account belongs to.
 ///
 /// ## Example Usage
@@ -615,11 +659,6 @@ Future<GetEntityPathResult> getEntityPath(
 /// const snsTopic = new aws.sns.Topic("sns_topic", {name: "my-sns-topic"});
 /// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: [
-///             "SNS:Subscribe",
-///             "SNS:Publish",
-///         ],
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             variable: "aws:PrincipalOrgID",
@@ -629,6 +668,11 @@ Future<GetEntityPathResult> getEntityPath(
 ///             type: "AWS",
 ///             identifiers: ["*"],
 ///         }],
+///         effect: "Allow",
+///         actions: [
+///             "SNS:Subscribe",
+///             "SNS:Publish",
+///         ],
 ///         resources: [snsTopic.arn],
 ///     }],
 /// });
@@ -644,11 +688,6 @@ Future<GetEntityPathResult> getEntityPath(
 /// example = aws.organizations.get_organization()
 /// sns_topic = aws.sns.Topic("sns_topic", name="my-sns-topic")
 /// sns_topic_policy = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "actions": [
-///         "SNS:Subscribe",
-///         "SNS:Publish",
-///     ],
 ///     "conditions": [{
 ///         "test": "StringEquals",
 ///         "variable": "aws:PrincipalOrgID",
@@ -658,6 +697,11 @@ Future<GetEntityPathResult> getEntityPath(
 ///         "type": "AWS",
 ///         "identifiers": ["*"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": [
+///         "SNS:Subscribe",
+///         "SNS:Publish",
+///     ],
 ///     "resources": [sns_topic.arn],
 /// }])
 /// sns_topic_policy_topic_policy = aws.sns.TopicPolicy("sns_topic_policy",
@@ -685,12 +729,6 @@ Future<GetEntityPathResult> getEntityPath(
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "SNS:Subscribe",
-///                     "SNS:Publish",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -713,6 +751,12 @@ Future<GetEntityPathResult> getEntityPath(
 ///                             "*",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "SNS:Subscribe",
+///                     "SNS:Publish",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -755,11 +799,6 @@ Future<GetEntityPathResult> getEntityPath(
 /// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Subscribe"),
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -776,6 +815,11 @@ Future<GetEntityPathResult> getEntityPath(
 /// 								pulumi.String("*"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Subscribe"),
+/// 						pulumi.String("SNS:Publish"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						snsTopic.Arn,
@@ -807,8 +851,6 @@ Future<GetEntityPathResult> getEntityPath(
 /// }
 /// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["SNS:Subscribe", "SNS:Publish"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
@@ -818,6 +860,8 @@ Future<GetEntityPathResult> getEntityPath(
 ///       type        = "AWS"
 ///       identifiers = ["*"]
 ///     }
+///     effect    = "Allow"
+///     actions   = ["SNS:Subscribe", "SNS:Publish"]
 ///     resources = [aws_sns_topic.sns_topic.arn]
 ///   }
 /// }
@@ -869,10 +913,6 @@ Future<GetEntityPathResult> getEntityPath(
 ///
 ///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions(
-///                     "SNS:Subscribe",
-///                     "SNS:Publish")
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .variable("aws:PrincipalOrgID")
@@ -882,6 +922,10 @@ Future<GetEntityPathResult> getEntityPath(
 ///                     .type("AWS")
 ///                     .identifiers("*")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions(
+///                     "SNS:Subscribe",
+///                     "SNS:Publish")
 ///                 .resources(snsTopic.arn())
 ///                 .build())
 ///             .build());
@@ -917,11 +961,7 @@ Future<GetEntityPathResult> getEntityPath(
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - SNS:Subscribe
-///               - SNS:Publish
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: aws:PrincipalOrgID
 ///                 values:
@@ -930,6 +970,10 @@ Future<GetEntityPathResult> getEntityPath(
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '*'
+///             effect: Allow
+///             actions:
+///               - SNS:Subscribe
+///               - SNS:Publish
 ///             resources:
 ///               - ${snsTopic.arn}
 /// ```
@@ -946,6 +990,17 @@ Future<GetOrganizationResult> getOrganization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationResult> getOrganizationOutput(
+  GetOrganizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganization:getOrganization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationResult.fromMap);
 }
 
 /// Data source for getting an AWS Organizations Organizational Unit.
@@ -1093,6 +1148,17 @@ Future<GetOrganizationalUnitResult> getOrganizationalUnit(
   return GetOrganizationalUnitResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationalUnitResult> getOrganizationalUnitOutput(
+  GetOrganizationalUnitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganizationalUnit:getOrganizationalUnit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationalUnitResult.fromMap);
+}
+
 /// Get all direct child accounts under a parent organizational unit. This only provides immediate children, not all children.
 ///
 /// ## Example Usage
@@ -1227,6 +1293,17 @@ Future<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccou
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationalUnitChildAccountsResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccountsOutput(
+  GetOrganizationalUnitChildAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganizationalUnitChildAccounts:getOrganizationalUnitChildAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationalUnitChildAccountsResult.fromMap);
 }
 
 /// Get all direct child accounts under a parent organizational unit. This provides all children.
@@ -1365,6 +1442,17 @@ Future<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDesce
   return GetOrganizationalUnitDescendantAccountsResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDescendantAccountsOutput(
+  GetOrganizationalUnitDescendantAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganizationalUnitDescendantAccounts:getOrganizationalUnitDescendantAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationalUnitDescendantAccountsResult.fromMap);
+}
+
 /// Get all direct child organizational units under a parent organizational unit. This provides all children.
 ///
 /// ## Example Usage
@@ -1499,6 +1587,17 @@ Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganization
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationalUnitDescendantOrganizationalUnitsResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganizationalUnitDescendantOrganizationalUnitsOutput(
+  GetOrganizationalUnitDescendantOrganizationalUnitsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganizationalUnitDescendantOrganizationalUnits:getOrganizationalUnitDescendantOrganizationalUnits',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationalUnitDescendantOrganizationalUnitsResult.fromMap);
 }
 
 /// Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
@@ -1637,6 +1736,17 @@ Future<GetOrganizationalUnitsResult> getOrganizationalUnits(
   return GetOrganizationalUnitsResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationalUnitsResult> getOrganizationalUnitsOutput(
+  GetOrganizationalUnitsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getOrganizationalUnits:getOrganizationalUnits',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationalUnitsResult.fromMap);
+}
+
 /// Data source for managing an AWS Organizations Policies.
 ///
 /// ## Example Usage
@@ -1724,6 +1834,17 @@ Future<GetPoliciesResult> getPolicies(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPoliciesResult.fromMap(result);
+}
+
+pulumi.Output<GetPoliciesResult> getPoliciesOutput(
+  GetPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getPolicies:getPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoliciesResult.fromMap);
 }
 
 /// Data source for managing an AWS Organizations Policies For Target.
@@ -1825,6 +1946,17 @@ Future<GetPoliciesForTargetResult> getPoliciesForTarget(
   return GetPoliciesForTargetResult.fromMap(result);
 }
 
+pulumi.Output<GetPoliciesForTargetResult> getPoliciesForTargetOutput(
+  GetPoliciesForTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getPoliciesForTarget:getPoliciesForTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoliciesForTargetResult.fromMap);
+}
+
 /// Data source for managing an AWS Organizations Policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_policy_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1839,6 +1971,17 @@ Future<GetPolicyResult> getPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getPolicy:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
 }
 
 /// Get tags attached to the specified AWS Organizations resource.
@@ -1957,4 +2100,15 @@ Future<GetResourceTagsResult> getResourceTags(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceTagsResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceTagsResult> getResourceTagsOutput(
+  GetResourceTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:organizations/getResourceTags:getResourceTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceTagsResult.fromMap);
 }

@@ -311,7 +311,8 @@ class Service extends pulumi.CustomResource {
           'azure:webpubsub/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     capacity = registerOutput<int?>('capacity');
@@ -322,16 +323,16 @@ class Service extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     serverPort = registerOutput<int>('serverPort');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
     version = registerOutput<String>('version');
   }
@@ -341,11 +342,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,16 +370,49 @@ class Service extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     serverPort = registerOutput<int>('serverPort');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure:webpubsub/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    capacity = registerOutput<int?>('capacity');
+    externalIp = registerOutput<String>('externalIp');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLiveTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    serverPort = registerOutput<int>('serverPort');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
     version = registerOutput<String>('version');
   }

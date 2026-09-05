@@ -558,7 +558,7 @@ import 'topic_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the SNS topic.
+/// - `arn` (String) ARN of the SNS topic.
 ///
 ///
 /// Using `pulumi import`, import SNS Topics using the topic `arn`. For example:
@@ -646,7 +646,7 @@ class Topic extends pulumi.CustomResource {
           'aws:sns/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationFailureFeedbackRoleArn = registerOutput<String?>('applicationFailureFeedbackRoleArn');
     applicationSuccessFeedbackRoleArn = registerOutput<String?>('applicationSuccessFeedbackRoleArn');
@@ -678,8 +678,8 @@ class Topic extends pulumi.CustomResource {
     sqsFailureFeedbackRoleArn = registerOutput<String?>('sqsFailureFeedbackRoleArn');
     sqsSuccessFeedbackRoleArn = registerOutput<String?>('sqsSuccessFeedbackRoleArn');
     sqsSuccessFeedbackSampleRate = registerOutput<int?>('sqsSuccessFeedbackSampleRate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tracingConfig = registerOutput<String>('tracingConfig');
   }
 
@@ -688,11 +688,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -736,8 +737,52 @@ class Topic extends pulumi.CustomResource {
     sqsFailureFeedbackRoleArn = registerOutput<String?>('sqsFailureFeedbackRoleArn');
     sqsSuccessFeedbackRoleArn = registerOutput<String?>('sqsSuccessFeedbackRoleArn');
     sqsSuccessFeedbackSampleRate = registerOutput<int?>('sqsSuccessFeedbackSampleRate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tracingConfig = registerOutput<String>('tracingConfig');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'aws:sns/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationFailureFeedbackRoleArn = registerOutput<String?>('applicationFailureFeedbackRoleArn');
+    applicationSuccessFeedbackRoleArn = registerOutput<String?>('applicationSuccessFeedbackRoleArn');
+    applicationSuccessFeedbackSampleRate = registerOutput<int?>('applicationSuccessFeedbackSampleRate');
+    archivePolicy = registerOutput<String?>('archivePolicy');
+    arn = registerOutput<String>('arn');
+    beginningArchiveTime = registerOutput<String>('beginningArchiveTime');
+    contentBasedDeduplication = registerOutput<bool?>('contentBasedDeduplication');
+    deliveryPolicy = registerOutput<String?>('deliveryPolicy');
+    displayName = registerOutput<String?>('displayName');
+    fifoThroughputScope = registerOutput<String>('fifoThroughputScope');
+    fifoTopic = registerOutput<bool?>('fifoTopic');
+    firehoseFailureFeedbackRoleArn = registerOutput<String?>('firehoseFailureFeedbackRoleArn');
+    firehoseSuccessFeedbackRoleArn = registerOutput<String?>('firehoseSuccessFeedbackRoleArn');
+    firehoseSuccessFeedbackSampleRate = registerOutput<int?>('firehoseSuccessFeedbackSampleRate');
+    httpFailureFeedbackRoleArn = registerOutput<String?>('httpFailureFeedbackRoleArn');
+    httpSuccessFeedbackRoleArn = registerOutput<String?>('httpSuccessFeedbackRoleArn');
+    httpSuccessFeedbackSampleRate = registerOutput<int?>('httpSuccessFeedbackSampleRate');
+    kmsMasterKeyId = registerOutput<String?>('kmsMasterKeyId');
+    lambdaFailureFeedbackRoleArn = registerOutput<String?>('lambdaFailureFeedbackRoleArn');
+    lambdaSuccessFeedbackRoleArn = registerOutput<String?>('lambdaSuccessFeedbackRoleArn');
+    lambdaSuccessFeedbackSampleRate = registerOutput<int?>('lambdaSuccessFeedbackSampleRate');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    owner = registerOutput<String>('owner');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    signatureVersion = registerOutput<int>('signatureVersion');
+    sqsFailureFeedbackRoleArn = registerOutput<String?>('sqsFailureFeedbackRoleArn');
+    sqsSuccessFeedbackRoleArn = registerOutput<String?>('sqsSuccessFeedbackRoleArn');
+    sqsSuccessFeedbackSampleRate = registerOutput<int?>('sqsSuccessFeedbackSampleRate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tracingConfig = registerOutput<String>('tracingConfig');
   }
 }

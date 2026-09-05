@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_app_args.dart';
+import 'spring_cloud_app_custom_persistent_disk.dart';
 import 'spring_cloud_app_identity.dart';
 import 'spring_cloud_app_ingress_settings.dart';
 import 'spring_cloud_app_persistent_disk.dart';
@@ -241,7 +242,7 @@ class SpringCloudApp extends pulumi.CustomResource {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
   late final pulumi.Output<String> addonJson;
   /// A `customPersistentDisk` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customPersistentDisks;
+  late final pulumi.Output<List<SpringCloudAppCustomPersistentDisk>?> customPersistentDisks;
   /// The Fully Qualified DNS Name of the Spring Application in the service.
   late final pulumi.Output<String> fqdn;
   /// Is only HTTPS allowed? Defaults to `false`.
@@ -279,10 +280,10 @@ class SpringCloudApp extends pulumi.CustomResource {
           'azure:appplatform/springCloudApp:SpringCloudApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    customPersistentDisks = registerOutput<List<Map<String, dynamic>>?>('customPersistentDisks');
+    customPersistentDisks = registerOutput<List<SpringCloudAppCustomPersistentDisk>?>('customPersistentDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(guardedValue, (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String>('fqdn');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     identity = registerOutput<SpringCloudAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -302,11 +303,12 @@ class SpringCloudApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,7 +323,32 @@ class SpringCloudApp extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    customPersistentDisks = registerOutput<List<Map<String, dynamic>>?>('customPersistentDisks');
+    customPersistentDisks = registerOutput<List<SpringCloudAppCustomPersistentDisk>?>('customPersistentDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(guardedValue, (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String>('fqdn');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SpringCloudAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingressSettings = registerOutput<SpringCloudAppIngressSettings>('ingressSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudAppIngressSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isPublic = registerOutput<bool?>('isPublic');
+    this.name = registerOutput<String>('name');
+    persistentDisk = registerOutput<SpringCloudAppPersistentDisk>('persistentDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudAppPersistentDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    tlsEnabled = registerOutput<bool?>('tlsEnabled');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudApp] resource.
+  SpringCloudApp.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudApp:SpringCloudApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonJson = registerOutput<String>('addonJson');
+    customPersistentDisks = registerOutput<List<SpringCloudAppCustomPersistentDisk>?>('customPersistentDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(guardedValue, (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String>('fqdn');
     httpsOnly = registerOutput<bool?>('httpsOnly');
     identity = registerOutput<SpringCloudAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

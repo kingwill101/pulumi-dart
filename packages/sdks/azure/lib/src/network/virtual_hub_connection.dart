@@ -158,7 +158,7 @@ import 'virtual_hub_connection_state.dart';
 /// 			Name:              pulumi.String("example-hub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -166,8 +166,8 @@ import 'virtual_hub_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewVirtualHubConnection(ctx, "example", &network.VirtualHubConnectionArgs{
 /// 			Name:                   pulumi.String("example-vhub"),
-/// 			VirtualHubId:           exampleVirtualHub.ID(),
-/// 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID(),
+/// 			VirtualHubId:           exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,7 +357,7 @@ class VirtualHubConnection extends pulumi.CustomResource {
           'azure:network/virtualHubConnection:VirtualHubConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
@@ -371,11 +371,12 @@ class VirtualHubConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualHubConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualHubConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,6 +390,22 @@ class VirtualHubConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
+    this.name = registerOutput<String>('name');
+    remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
+    routing = registerOutput<VirtualHubConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualHubConnection] resource.
+  VirtualHubConnection.reference(String urn)
+    : super(
+        'azure:network/virtualHubConnection:VirtualHubConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');

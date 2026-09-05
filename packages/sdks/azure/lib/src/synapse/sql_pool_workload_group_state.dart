@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SqlPoolWorkloadGroup resources.
 class SqlPoolWorkloadGroupState {
   /// The workload group importance level. Defaults to `normal`.
-  final pulumi.Input<String>? importance;
+  final pulumi.Input<String?>? importance;
   /// The workload group cap percentage resource.
-  final pulumi.Input<int>? maxResourcePercent;
+  final pulumi.Input<int?>? maxResourcePercent;
   /// The workload group request maximum grant percentage. Defaults to `3`.
-  final pulumi.Input<double>? maxResourcePercentPerRequest;
+  final pulumi.Input<double?>? maxResourcePercentPerRequest;
   /// The workload group minimum percentage resource.
-  final pulumi.Input<int>? minResourcePercent;
+  final pulumi.Input<int?>? minResourcePercent;
   /// The workload group request minimum grant percentage.
-  final pulumi.Input<double>? minResourcePercentPerRequest;
+  final pulumi.Input<double?>? minResourcePercentPerRequest;
   /// The name which should be used for this Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The workload group query execution timeout.
-  final pulumi.Input<int>? queryExecutionTimeoutInSeconds;
+  final pulumi.Input<int?>? queryExecutionTimeoutInSeconds;
   /// The ID of the Synapse SQL Pool. Changing this forces a new Synapse SQL Pool Workload Group to be created.
-  final pulumi.Input<String>? sqlPoolId;
+  final pulumi.Input<String?>? sqlPoolId;
 
   /// Creates a new [SqlPoolWorkloadGroupState].
   /// [importance] The workload group importance level. Defaults to `normal`.
@@ -57,12 +57,12 @@ class SqlPoolWorkloadGroupState {
   factory SqlPoolWorkloadGroupState.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupState(
       importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxResourcePercent: (() { final guardedValue = map['maxResourcePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      minResourcePercent: (() { final guardedValue = map['minResourcePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minResourcePercentPerRequest: (() { final guardedValue = map['minResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxResourcePercent: (() { final guardedValue = map['maxResourcePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minResourcePercent: (() { final guardedValue = map['minResourcePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minResourcePercentPerRequest: (() { final guardedValue = map['minResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queryExecutionTimeoutInSeconds: (() { final guardedValue = map['queryExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queryExecutionTimeoutInSeconds: (() { final guardedValue = map['queryExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sqlPoolId: (() { final guardedValue = map['sqlPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

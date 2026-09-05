@@ -19,6 +19,8 @@ class LoadBalancerPoolState {
   final pulumi.Input<String?>? disabledAt;
   /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
   final pulumi.Input<bool?>? enabled;
+  /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+  final pulumi.Input<List<String>?>? healthSources;
   /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   final pulumi.Input<double?>? latitude;
   /// Configures load shedding policies and percentages for the pool.
@@ -52,6 +54,7 @@ class LoadBalancerPoolState {
   /// [description] A human-readable description of the pool.
   /// [disabledAt] This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
   /// [enabled] Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+  /// [healthSources] A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
   /// [latitude] The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   /// [loadShedding] Configures load shedding policies and percentages for the pool.
   /// [longitude] The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -72,6 +75,7 @@ class LoadBalancerPoolState {
     this.description,
     this.disabledAt,
     this.enabled,
+    this.healthSources,
     this.latitude,
     this.loadShedding,
     this.longitude,
@@ -95,6 +99,7 @@ class LoadBalancerPoolState {
       'description': ?description,
       'disabledAt': ?disabledAt,
       'enabled': ?enabled,
+      'healthSources': ?healthSources,
       'latitude': ?latitude,
       'loadShedding': ?pulumi.Input.mapOptionalInputValue<LoadBalancerPoolLoadShedding, Map<String, dynamic>>(loadShedding, (value) => value.toMap()),
       'longitude': ?longitude,
@@ -119,6 +124,7 @@ class LoadBalancerPoolState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabledAt: (() { final guardedValue = map['disabledAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      healthSources: (() { final guardedValue = map['healthSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       loadShedding: (() { final guardedValue = map['loadShedding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       longitude: (() { final guardedValue = map['longitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),

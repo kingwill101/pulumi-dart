@@ -250,7 +250,7 @@ import 'v2_system_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Resilience Hub V2 System.
+/// - `arn` (String) ARN of the Resilience Hub V2 System.
 ///
 ///
 /// Using `pulumi import`, import Resilience Hub V2 System using the `arn`. For example:
@@ -296,7 +296,7 @@ class V2System extends pulumi.CustomResource {
           'aws:resiliencehub/v2System:V2System',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -307,8 +307,8 @@ class V2System extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sharingEnabled = registerOutput<bool>('sharingEnabled');
     systemId = registerOutput<String>('systemId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [V2System] resource's state with the given [name] and [id].
@@ -316,11 +316,12 @@ class V2System extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2SystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2System._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,7 +344,29 @@ class V2System extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sharingEnabled = registerOutput<bool>('sharingEnabled');
     systemId = registerOutput<String>('systemId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [V2System] resource.
+  V2System.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2System:V2System',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    ouId = registerOutput<String>('ouId');
+    region = registerOutput<String>('region');
+    sharingEnabled = registerOutput<bool>('sharingEnabled');
+    systemId = registerOutput<String>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -5,29 +5,29 @@ import 'get_required_tags_required_tag.dart';
 
 /// Result data returned by getRequiredTags.
 class GetRequiredTagsResult {
-  final String region;
+  final String? region;
   /// List of required tag configurations. See `requiredTags` below.
-  final List<GetRequiredTagsRequiredTag> requiredTags;
+  final List<GetRequiredTagsRequiredTag>? requiredTags;
 
   /// Creates a new [GetRequiredTagsResult].
-  /// [region] Required.
+  /// [region] Optional.
   /// [requiredTags] List of required tag configurations. See `requiredTags` below.
   const GetRequiredTagsResult({
-    required this.region,
-    required this.requiredTags,
+    this.region,
+    this.requiredTags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'region': region,
-      'requiredTags': pulumi.Input.encodeList<GetRequiredTagsRequiredTag, Map<String, dynamic>>(requiredTags, (value) => value.toMap()),
+      'region': ?region,
+      'requiredTags': ?(() { final guardedValue = requiredTags; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRequiredTagsRequiredTag, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRequiredTagsResult.fromMap(Map<String, dynamic> map) {
     return GetRequiredTagsResult(
-      region: map['region'] as String,
-      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(map['requiredTags']!, (value) => GetRequiredTagsRequiredTag.fromMap((value as Map).cast<String, dynamic>())),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      requiredTags: (() { final guardedValue = map['requiredTags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(guardedValue, (value) => GetRequiredTagsRequiredTag.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

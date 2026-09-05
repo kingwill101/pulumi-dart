@@ -10,19 +10,19 @@ class GetObjectArgs {
   /// Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
   final pulumi.Input<String> bucket;
   /// To retrieve the object's checksum, this argument must be `ENABLED`. If you enable `checksumMode` and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `ENABLED`
-  final pulumi.Input<String>? checksumMode;
+  final pulumi.Input<String?>? checksumMode;
   /// Set to `true` to always download object data to `bodyBase64` attribute. If unset and conditions described above are met, `body` will be available but `bodyBase64` will not be. If set to `false`, the body is not downloaded and neither `body` nor `bodyBase64` is available, which may improve performance.
-  final pulumi.Input<String>? downloadBody;
+  final pulumi.Input<String?>? downloadBody;
   /// Full path to the object inside the bucket
   final pulumi.Input<String> key;
   /// Byte range of the object to retrieve, in the format expected by the [HTTP `Range` header](https://www.rfc-editor.org/rfc/rfc9110.html#name-range).
-  final pulumi.Input<String>? range;
+  final pulumi.Input<String?>? range;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the object.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specific version ID of the object returned (defaults to latest version)
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [GetObjectArgs].
   /// [bucket] Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified

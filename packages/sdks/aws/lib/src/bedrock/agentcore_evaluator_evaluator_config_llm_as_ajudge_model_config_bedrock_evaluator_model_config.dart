@@ -5,9 +5,9 @@ import 'agentcore_evaluator_evaluator_config_llm_as_ajudge_model_config_bedrock_
 
 class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfig {
   /// JSON-encoded model-specific request fields, for settings not covered by `inferenceConfig`.
-  final pulumi.Input<String>? additionalModelRequestFields;
+  final pulumi.Input<String?>? additionalModelRequestFields;
   /// Settings that control how the model generates its response. See `inferenceConfig` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig>? inferenceConfig;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfig?>? inferenceConfig;
   /// Identifier of the Amazon Bedrock model to use for evaluation.
   final pulumi.Input<String> modelId;
 

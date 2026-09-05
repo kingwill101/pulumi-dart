@@ -25,8 +25,8 @@ class GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerCo
 
   factory GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerConfigNodeResourcesFitScoringStrategyConstraintResourceWeight.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerConfigNodeResourcesFitScoringStrategyConstraintResourceWeight(
-      max: pulumi.Input.fromValue(map['max'] as int),
-      min: pulumi.Input.fromValue(map['min'] as int),
+      max: pulumi.Input.fromValue((map['max'] as num).toInt()),
+      min: pulumi.Input.fromValue((map['min'] as num).toInt()),
     );
   }
 }

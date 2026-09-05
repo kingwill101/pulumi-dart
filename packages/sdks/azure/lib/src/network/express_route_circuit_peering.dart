@@ -820,7 +820,8 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitPeering:ExpressRouteCircuitPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sharedKey'],
         ) {
     azureAsn = registerOutput<int>('azureAsn');
     expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
@@ -836,7 +837,7 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     routeFilterId = registerOutput<String?>('routeFilterId');
     secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
     secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
-    sharedKey = registerOutput<String?>('sharedKey');
+    sharedKey = registerOutput<String?>('sharedKey', isSecret: true);
     vlanId = registerOutput<int>('vlanId');
   }
 
@@ -845,11 +846,12 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteCircuitPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteCircuitPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -877,7 +879,35 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     routeFilterId = registerOutput<String?>('routeFilterId');
     secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
     secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
-    sharedKey = registerOutput<String?>('sharedKey');
+    sharedKey = registerOutput<String?>('sharedKey', isSecret: true);
+    vlanId = registerOutput<int>('vlanId');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuitPeering] resource.
+  ExpressRouteCircuitPeering.reference(String urn)
+    : super(
+        'azure:network/expressRouteCircuitPeering:ExpressRouteCircuitPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sharedKey'],
+        isResourceReference: true,
+      ) {
+    azureAsn = registerOutput<int>('azureAsn');
+    expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
+    gatewayManagerEtag = registerOutput<String>('gatewayManagerEtag');
+    ipv4Enabled = registerOutput<bool?>('ipv4Enabled');
+    ipv6 = registerOutput<ExpressRouteCircuitPeeringIpv6?>('ipv6', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringIpv6.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringMicrosoftPeeringConfig?>('microsoftPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerAsn = registerOutput<int>('peerAsn');
+    peeringType = registerOutput<String>('peeringType');
+    primaryAzurePort = registerOutput<String>('primaryAzurePort');
+    primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routeFilterId = registerOutput<String?>('routeFilterId');
+    secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
+    secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
+    sharedKey = registerOutput<String?>('sharedKey', isSecret: true);
     vlanId = registerOutput<int>('vlanId');
   }
 }

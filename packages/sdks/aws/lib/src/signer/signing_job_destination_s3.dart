@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningJobDestinationS3 {
   final pulumi.Input<String> bucket;
   /// An Amazon S3 object key prefix that you can use to limit signed objects keys to begin with the specified prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [SigningJobDestinationS3].
   /// [bucket] Required.

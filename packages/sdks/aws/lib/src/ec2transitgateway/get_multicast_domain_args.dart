@@ -9,13 +9,13 @@ import 'get_multicast_domain_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_multicast_domain_get_multicast_domain_args_doc}
 class GetMulticastDomainArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetMulticastDomainFilter>>? filters;
+  final pulumi.Input<List<GetMulticastDomainFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway Multicast Domain.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the EC2 Transit Gateway Multicast Domain.
-  final pulumi.Input<String>? transitGatewayMulticastDomainId;
+  final pulumi.Input<String?>? transitGatewayMulticastDomainId;
 
   /// Creates a new [GetMulticastDomainArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

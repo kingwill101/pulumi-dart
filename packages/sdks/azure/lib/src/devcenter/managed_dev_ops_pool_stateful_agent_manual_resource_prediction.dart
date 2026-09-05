@@ -11,29 +11,29 @@ import 'managed_dev_ops_pool_stateful_agent_manual_resource_prediction_wednesday
 
 class ManagedDevOpsPoolStatefulAgentManualResourcePrediction {
   /// A number of agents available 24/7 all week. Possible values range between `1` and `maximumConcurrency`.
-  final pulumi.Input<int>? allWeekSchedule;
+  final pulumi.Input<int?>? allWeekSchedule;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule>>? fridaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule>?>? fridaySchedules;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule>>? mondaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule>?>? mondaySchedules;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule>>? saturdaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule>?>? saturdaySchedules;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionSundaySchedule>>? sundaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionSundaySchedule>?>? sundaySchedules;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionThursdaySchedule>>? thursdaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionThursdaySchedule>?>? thursdaySchedules;
   /// Specifies the time zone for the predictions data to be provisioned at. Defaults to `UTC`.
   ///
   /// &gt; **Note:** A list of possible values for `timeZoneName` are available by executing `[System.TimeZoneInfo]::GetSystemTimeZones()` in PowerShell.
-  final pulumi.Input<String>? timeZoneName;
+  final pulumi.Input<String?>? timeZoneName;
   /// One or more `dailySchedule` blocks as defined below.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionTuesdaySchedule>>? tuesdaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionTuesdaySchedule>?>? tuesdaySchedules;
   /// One or more `dailySchedule` blocks as defined below.
   ///
   /// &gt; **Note:** Exactly one of `allWeekSchedule` or at least one individual daily schedule block must be specified.
   ///
   /// &gt; **Note:** Please refer to [Microsoft documentation](https://learn.microsoft.com/azure/devops/managed-devops-pools/configure-scaling?view=azure-devops&tabs=azure-cli#manual) for more information about the manual predictions setup.
-  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionWednesdaySchedule>>? wednesdaySchedules;
+  final pulumi.Input<List<ManagedDevOpsPoolStatefulAgentManualResourcePredictionWednesdaySchedule>?>? wednesdaySchedules;
 
   /// Creates a new [ManagedDevOpsPoolStatefulAgentManualResourcePrediction].
   /// [allWeekSchedule] A number of agents available 24/7 all week. Possible values range between `1` and `maximumConcurrency`.
@@ -73,7 +73,7 @@ class ManagedDevOpsPoolStatefulAgentManualResourcePrediction {
 
   factory ManagedDevOpsPoolStatefulAgentManualResourcePrediction.fromMap(Map<String, dynamic> map) {
     return ManagedDevOpsPoolStatefulAgentManualResourcePrediction(
-      allWeekSchedule: (() { final guardedValue = map['allWeekSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allWeekSchedule: (() { final guardedValue = map['allWeekSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       fridaySchedules: (() { final guardedValue = map['fridaySchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule>(guardedValue, (value) => ManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mondaySchedules: (() { final guardedValue = map['mondaySchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule>(guardedValue, (value) => ManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       saturdaySchedules: (() { final guardedValue = map['saturdaySchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule>(guardedValue, (value) => ManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),

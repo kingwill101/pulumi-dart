@@ -139,7 +139,7 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleHyperVSite, err := siterecovery.NewHyperVSite(ctx, "example", &siterecovery.HyperVSiteArgs{
-/// 			RecoveryVaultId: exampleVault.ID(),
+/// 			RecoveryVaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example-site"),
 /// 		})
 /// 		if err != nil {
@@ -147,7 +147,7 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 		}
 /// 		exampleHyperVReplicationPolicy, err := siterecovery.NewHyperVReplicationPolicy(ctx, "example", &siterecovery.HyperVReplicationPolicyArgs{
 /// 			Name:                          pulumi.String("policy"),
-/// 			RecoveryVaultId:               exampleVault.ID(),
+/// 			RecoveryVaultId:               exampleVault.ID().ToIDOutput().ToStringOutput(),
 /// 			RecoveryPointRetentionInHours: pulumi.Int(2),
 /// 			ApplicationConsistentSnapshotFrequencyInHours: pulumi.Int(1),
 /// 			ReplicationIntervalInSeconds:                  pulumi.Int(300),
@@ -157,8 +157,8 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewHyperVReplicationPolicyAssociation(ctx, "example", &siterecovery.HyperVReplicationPolicyAssociationArgs{
 /// 			Name:         pulumi.String("example-association"),
-/// 			HypervSiteId: exampleHyperVSite.ID(),
-/// 			PolicyId:     exampleHyperVReplicationPolicy.ID(),
+/// 			HypervSiteId: exampleHyperVSite.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId:     exampleHyperVReplicationPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -340,7 +340,7 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
           'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     hypervSiteId = registerOutput<String>('hypervSiteId');
     this.name = registerOutput<String>('name');
@@ -352,11 +352,12 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HyperVReplicationPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HyperVReplicationPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -370,6 +371,20 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    hypervSiteId = registerOutput<String>('hypervSiteId');
+    this.name = registerOutput<String>('name');
+    policyId = registerOutput<String>('policyId');
+  }
+
+  /// Creates a typed reference to an existing [HyperVReplicationPolicyAssociation] resource.
+  HyperVReplicationPolicyAssociation.reference(String urn)
+    : super(
+        'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     hypervSiteId = registerOutput<String>('hypervSiteId');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');

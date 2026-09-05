@@ -163,6 +163,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Automation Bool Variable.
 ///
 /// ## Example Usage
@@ -307,6 +318,17 @@ Future<GetBoolVariableResult> getBoolVariable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBoolVariableResult.fromMap(result);
+}
+
+pulumi.Output<GetBoolVariableResult> getBoolVariableOutput(
+  GetBoolVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getBoolVariable:getBoolVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBoolVariableResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Automation Datetime Variable.
@@ -455,6 +477,17 @@ Future<GetDateTimeVariableResult> getDateTimeVariable(
   return GetDateTimeVariableResult.fromMap(result);
 }
 
+pulumi.Output<GetDateTimeVariableResult> getDateTimeVariableOutput(
+  GetDateTimeVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getDateTimeVariable:getDateTimeVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDateTimeVariableResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Automation Int Variable.
 ///
 /// ## Example Usage
@@ -599,6 +632,17 @@ Future<GetIntVariableResult> getIntVariable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntVariableResult.fromMap(result);
+}
+
+pulumi.Output<GetIntVariableResult> getIntVariableOutput(
+  GetIntVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getIntVariable:getIntVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntVariableResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Automation Runbook.
@@ -755,6 +799,17 @@ Future<GetRunbookResult> getRunbook(
   return GetRunbookResult.fromMap(result);
 }
 
+pulumi.Output<GetRunbookResult> getRunbookOutput(
+  GetRunbookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getRunbook:getRunbook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRunbookResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Automation String Variable.
 ///
 /// ## Example Usage
@@ -899,6 +954,17 @@ Future<GetStringVariableResult> getStringVariable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStringVariableResult.fromMap(result);
+}
+
+pulumi.Output<GetStringVariableResult> getStringVariableOutput(
+  GetStringVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getStringVariable:getStringVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStringVariableResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Automation Object Variable.
@@ -1068,6 +1134,17 @@ Future<GetVariableObjectResult> getVariableObject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVariableObjectResult.fromMap(result);
+}
+
+pulumi.Output<GetVariableObjectResult> getVariableObjectOutput(
+  GetVariableObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getVariableObject:getVariableObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableObjectResult.fromMap);
 }
 
 /// Use this data source to get all variables in an Automation Account.
@@ -1243,4 +1320,15 @@ Future<GetVariablesResult> getVariables(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVariablesResult.fromMap(result);
+}
+
+pulumi.Output<GetVariablesResult> getVariablesOutput(
+  GetVariablesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:automation/getVariables:getVariables',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariablesResult.fromMap);
 }

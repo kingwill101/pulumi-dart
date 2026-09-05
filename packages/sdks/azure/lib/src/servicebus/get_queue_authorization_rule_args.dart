@@ -10,12 +10,12 @@ class GetQueueAuthorizationRuleArgs {
   /// The name of this ServiceBus Queue Authorisation Rule.
   final pulumi.Input<String> name;
   /// The name of the ServiceBus Namespace.
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? queueId;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? queueId;
   /// The name of the ServiceBus Queue.
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? queueName;
   /// The name of the Resource Group where the ServiceBus Queue Authorisation Rule exists.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetQueueAuthorizationRuleArgs].
   /// [name] The name of this ServiceBus Queue Authorisation Rule.

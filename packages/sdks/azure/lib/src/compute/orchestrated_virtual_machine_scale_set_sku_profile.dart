@@ -9,8 +9,8 @@ class OrchestratedVirtualMachineScaleSetSkuProfile {
   /// One or more `virtualMachineSize` blocks as defined below.
   ///
   /// &gt; **Note:** When `allocationStrategy` is set to `Prioritized`, you must use the `virtualMachineSize` block to specify rank values.
-  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetSkuProfileVirtualMachineSize>>? virtualMachineSizes;
-  final pulumi.Input<List<String>>? vmSizes;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetSkuProfileVirtualMachineSize>?>? virtualMachineSizes;
+  final pulumi.Input<List<String>?>? vmSizes;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetSkuProfile].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated. Possible values are `LowestPrice`, `Prioritized`, and `CapacityOptimized`.

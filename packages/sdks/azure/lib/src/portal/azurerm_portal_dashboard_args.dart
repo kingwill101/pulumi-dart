@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_portal_azurerm_portal_dashboard_azurerm_portal_dashboard_args_doc}
 class AzurermPortalDashboardArgs {
   /// JSON data representing dashboard body.
-  final pulumi.Input<String>? dashboardProperties;
+  final pulumi.Input<String?>? dashboardProperties;
   /// Specifies the display name of the shared Azure Portal Dashboard.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the name of the shared Azure Portal Dashboard.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the resource group the shared Azure Portal Dashboard is located in.
   final pulumi.Input<String> resourceGroupName;
 

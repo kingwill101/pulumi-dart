@@ -26,7 +26,7 @@ class ConfigurationFeatureTargetingFilterGroup {
   factory ConfigurationFeatureTargetingFilterGroup.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureTargetingFilterGroup(
       name: pulumi.Input.fromValue(map['name'] as String),
-      rolloutPercentage: pulumi.Input.fromValue(map['rolloutPercentage'] as int),
+      rolloutPercentage: pulumi.Input.fromValue((map['rolloutPercentage'] as num).toInt()),
     );
   }
 }

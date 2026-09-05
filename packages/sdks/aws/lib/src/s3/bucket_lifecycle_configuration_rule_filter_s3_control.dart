@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleConfigurationRuleFilterS3Control {
   /// Object prefix for rule filtering.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Key-value map of object tags for rule filtering.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BucketLifecycleConfigurationRuleFilterS3Control].
   /// [prefix] Object prefix for rule filtering.

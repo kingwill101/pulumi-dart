@@ -6,19 +6,19 @@ import 'standalone_gateway_sku.dart';
 /// Input properties used for looking up and filtering StandaloneGateway resources.
 class StandaloneGatewayState {
   /// Specifies the subnet ID in which the backend systems are hosted. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? backendSubnetId;
+  final pulumi.Input<String?>? backendSubnetId;
   /// Specifies the Azure Region where the API Management Standalone Gateway should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this API Management Standalone Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the API Management Standalone Gateway should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `sku` block as defined below.
-  final pulumi.Input<StandaloneGatewaySku>? sku;
+  final pulumi.Input<StandaloneGatewaySku?>? sku;
   /// A mapping of tags which should be assigned to the API Management Standalone Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the type of VPN in which API Management gateway needs to be configured. Possible values are `External` and `Internal`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualNetworkType;
+  final pulumi.Input<String?>? virtualNetworkType;
 
   /// Creates a new [StandaloneGatewayState].
   /// [backendSubnetId] Specifies the subnet ID in which the backend systems are hosted. Changing this forces a new resource to be created.

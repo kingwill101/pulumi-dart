@@ -6,11 +6,11 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_m
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement {
   /// Part of the web request that you want WAF to inspect. See Field to Match below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch?>? fieldToMatch;
   /// Regular expression pattern to match against the web request component.
   final pulumi.Input<String> regexString;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement].
   /// [fieldToMatch] Part of the web request that you want WAF to inspect. See Field to Match below.

@@ -293,10 +293,11 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
           'azure:network/expressRouteCircuit:ExpressRouteCircuit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['authorizationKey', 'serviceKey'],
         ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
     bandwidthInMbps = registerOutput<int?>('bandwidthInMbps');
     expressRoutePortId = registerOutput<String?>('expressRoutePortId');
@@ -305,11 +306,11 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     peeringLocation = registerOutput<String?>('peeringLocation');
     rateLimitingEnabled = registerOutput<bool?>('rateLimitingEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serviceKey = registerOutput<String>('serviceKey');
+    serviceKey = registerOutput<String>('serviceKey', isSecret: true);
     serviceProviderName = registerOutput<String?>('serviceProviderName');
     serviceProviderProvisioningState = registerOutput<String>('serviceProviderProvisioningState');
     sku = registerOutput<ExpressRouteCircuitSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ExpressRouteCircuit] resource's state with the given [name] and [id].
@@ -317,11 +318,12 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteCircuitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteCircuit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,7 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
     bandwidthInMbps = registerOutput<int?>('bandwidthInMbps');
     expressRoutePortId = registerOutput<String?>('expressRoutePortId');
@@ -345,10 +347,37 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     peeringLocation = registerOutput<String?>('peeringLocation');
     rateLimitingEnabled = registerOutput<bool?>('rateLimitingEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serviceKey = registerOutput<String>('serviceKey');
+    serviceKey = registerOutput<String>('serviceKey', isSecret: true);
     serviceProviderName = registerOutput<String?>('serviceProviderName');
     serviceProviderProvisioningState = registerOutput<String>('serviceProviderProvisioningState');
     sku = registerOutput<ExpressRouteCircuitSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuit] resource.
+  ExpressRouteCircuit.reference(String urn)
+    : super(
+        'azure:network/expressRouteCircuit:ExpressRouteCircuit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authorizationKey', 'serviceKey'],
+        isResourceReference: true,
+      ) {
+    allowClassicOperations = registerOutput<bool?>('allowClassicOperations');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
+    bandwidthInGbps = registerOutput<double?>('bandwidthInGbps');
+    bandwidthInMbps = registerOutput<int?>('bandwidthInMbps');
+    expressRoutePortId = registerOutput<String?>('expressRoutePortId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peeringLocation = registerOutput<String?>('peeringLocation');
+    rateLimitingEnabled = registerOutput<bool?>('rateLimitingEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceKey = registerOutput<String>('serviceKey', isSecret: true);
+    serviceProviderName = registerOutput<String?>('serviceProviderName');
+    serviceProviderProvisioningState = registerOutput<String>('serviceProviderProvisioningState');
+    sku = registerOutput<ExpressRouteCircuitSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

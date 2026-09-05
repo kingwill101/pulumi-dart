@@ -12,23 +12,23 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter {
   /// The bool `value` for a Boolean-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool>? bool_;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool?>? bool_;
   /// The float `value` for a Double-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble>? double_;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble?>? double_;
   /// The string `value` for a Enum-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum>? enum_;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum?>? enum_;
   /// The string list `value` for a EnumList-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList>? enumList;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList?>? enumList;
   /// The int `value` for a Int-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt>? int_;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt?>? int_;
   /// The int list `value` for a IntList-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList>? intList;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList?>? intList;
   /// The name of the control parameter. For more information see the [Security Hub controls reference] documentation.
   final pulumi.Input<String> name;
   /// The string `value` for a String-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString>? string_;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString?>? string_;
   /// The string list `value` for a StringList-typed Security Hub Control Parameter.
-  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList>? stringList;
+  final pulumi.Input<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList?>? stringList;
   /// Identifies whether a control parameter uses a custom user-defined value or subscribes to the default Security Hub behavior. Valid values: `DEFAULT`, `CUSTOM`.
   final pulumi.Input<String> valueType;
 

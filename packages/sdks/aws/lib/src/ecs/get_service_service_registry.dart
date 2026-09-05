@@ -36,8 +36,8 @@ class GetServiceServiceRegistry {
   factory GetServiceServiceRegistry.fromMap(Map<String, dynamic> map) {
     return GetServiceServiceRegistry(
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      containerPort: pulumi.Input.fromValue((map['containerPort'] as num).toInt()),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       registryArn: pulumi.Input.fromValue(map['registryArn'] as String),
     );
   }

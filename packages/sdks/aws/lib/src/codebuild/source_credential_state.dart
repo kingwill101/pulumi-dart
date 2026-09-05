@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SourceCredential resources.
 class SourceCredentialState {
   /// The ARN of Source Credential.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket
   /// repository. Valid values are `BASIC_AUTH`,
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The source provider used for this project.
-  final pulumi.Input<String>? serverType;
+  final pulumi.Input<String?>? serverType;
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// app password. When using an AWS CodeStar connection (`authType = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SourceCredentialState].
   /// [arn] The ARN of Source Credential.

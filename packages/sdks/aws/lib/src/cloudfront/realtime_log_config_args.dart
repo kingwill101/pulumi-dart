@@ -13,7 +13,7 @@ class RealtimeLogConfigArgs {
   /// The fields that are included in each real-time log record. See the [AWS documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields) for supported values. This includes `viewer-request-log-data` and `viewer-response-log-data`, which carry the custom data that a CloudFront Function logs with `cf.logCustomData()`.
   final pulumi.Input<List<String>> fields;
   /// The unique name to identify this real-time log configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The sampling rate for this real-time log configuration. The sampling rate determines the percentage of viewer requests that are represented in the real-time log data. An integer between `1` and `100`, inclusive.
   final pulumi.Input<int> samplingRate;
 
@@ -43,7 +43,7 @@ class RealtimeLogConfigArgs {
       endpoint: pulumi.Input.fromValue(RealtimeLogConfigEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())),
       fields: pulumi.Input.fromValue((map['fields'] as List).cast<String>()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplingRate: pulumi.Input.fromValue(map['samplingRate'] as int),
+      samplingRate: pulumi.Input.fromValue((map['samplingRate'] as num).toInt()),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'frontdoor_secret_secret.dart';
 /// Input properties used for looking up and filtering FrontdoorSecret resources.
 class FrontdoorSecretState {
   /// The Resource ID of the Front Door Profile. Changing this forces a new Front Door Secret to be created.
-  final pulumi.Input<String>? cdnFrontdoorProfileId;
+  final pulumi.Input<String?>? cdnFrontdoorProfileId;
   /// The name of the Front Door Profile containing this Front Door Secret.
-  final pulumi.Input<String>? cdnFrontdoorProfileName;
+  final pulumi.Input<String?>? cdnFrontdoorProfileName;
   /// The name which should be used for this Front Door Secret. Possible values must start with a letter or a number, only contain letters, numbers and hyphens and have a length of between 2 and 260 characters. Changing this forces a new Front Door Secret to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `secret` block as defined below. Changing this forces a new Front Door Secret to be created.
-  final pulumi.Input<FrontdoorSecretSecret>? secret;
+  final pulumi.Input<FrontdoorSecretSecret?>? secret;
 
   /// Creates a new [FrontdoorSecretState].
   /// [cdnFrontdoorProfileId] The Resource ID of the Front Door Profile. Changing this forces a new Front Door Secret to be created.

@@ -284,7 +284,7 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     content = registerOutput<String>('content');
     fileName = registerOutput<String?>('fileName');
@@ -299,11 +299,12 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountSchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountSchema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,6 +318,23 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    content = registerOutput<String>('content');
+    fileName = registerOutput<String?>('fileName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<String?>('metadata');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountSchema] resource.
+  IntegrationAccountSchema.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     content = registerOutput<String>('content');
     fileName = registerOutput<String?>('fileName');
     integrationAccountName = registerOutput<String>('integrationAccountName');

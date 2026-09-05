@@ -134,7 +134,7 @@ import 'app_bundle_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the AppFabric app bundle.
+/// - `arn` (String) ARN of the AppFabric app bundle.
 ///
 ///
 /// Using `pulumi import`, import AppFabric AppBundle using the `arn`. For example:
@@ -145,7 +145,7 @@ import 'app_bundle_state.dart';
 class AppBundle extends pulumi.CustomResource {
   /// ARN of the AppBundle.
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) of the AWS Key Management Service (AWS KMS) key to use to encrypt the application data. If this is not specified, an AWS owned key is used for encryption.
+  /// ARN of the KMS key to use to encrypt the application data. If this is not specified, an AWS owned key is used for encryption.
   late final pulumi.Output<String?> customerManagedKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -166,13 +166,13 @@ class AppBundle extends pulumi.CustomResource {
           'aws:appfabric/appBundle:AppBundle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customerManagedKeyArn = registerOutput<String?>('customerManagedKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AppBundle] resource's state with the given [name] and [id].
@@ -180,11 +180,12 @@ class AppBundle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppBundleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppBundle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +202,23 @@ class AppBundle extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     customerManagedKeyArn = registerOutput<String?>('customerManagedKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AppBundle] resource.
+  AppBundle.reference(String urn)
+    : super(
+        'aws:appfabric/appBundle:AppBundle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    customerManagedKeyArn = registerOutput<String?>('customerManagedKeyArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

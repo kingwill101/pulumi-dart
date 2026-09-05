@@ -5,7 +5,7 @@ import 'pipeline_definition_parameter_object_attribute.dart';
 
 class PipelineDefinitionParameterObject {
   /// Configuration block for attributes of the parameter object. See below
-  final pulumi.Input<List<PipelineDefinitionParameterObjectAttribute>>? attributes;
+  final pulumi.Input<List<PipelineDefinitionParameterObjectAttribute>?>? attributes;
   /// ID of the parameter object.
   final pulumi.Input<String> id;
 

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorRegionsOfInterestPolygon {
   /// Value of the X coordinate for a point on a Polygon.
-  final pulumi.Input<double>? x;
+  final pulumi.Input<double?>? x;
   /// Value of the Y coordinate for a point on a Polygon.
-  final pulumi.Input<double>? y;
+  final pulumi.Input<double?>? y;
 
   /// Creates a new [StreamProcessorRegionsOfInterestPolygon].
   /// [x] Value of the X coordinate for a point on a Polygon.
@@ -25,8 +25,8 @@ class StreamProcessorRegionsOfInterestPolygon {
 
   factory StreamProcessorRegionsOfInterestPolygon.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterestPolygon(
-      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

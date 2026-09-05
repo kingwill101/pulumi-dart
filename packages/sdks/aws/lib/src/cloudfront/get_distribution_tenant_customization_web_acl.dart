@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionTenantCustomizationWebAcl {
   final pulumi.Input<String> action;
-  /// ARN (Amazon Resource Name) for the distribution tenant.
+  /// ARN for the distribution tenant.
   final pulumi.Input<String> arn;
 
   /// Creates a new [GetDistributionTenantCustomizationWebAcl].
   /// [action] Required.
-  /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
+  /// [arn] ARN for the distribution tenant.
   const GetDistributionTenantCustomizationWebAcl({
     required this.action,
     required this.arn,

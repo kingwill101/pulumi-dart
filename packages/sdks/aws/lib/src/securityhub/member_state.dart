@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Member resources.
 class MemberState {
   /// The ID of the member AWS account.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The email of the member AWS account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
-  final pulumi.Input<bool>? invite;
+  final pulumi.Input<bool?>? invite;
   /// The ID of the master Security Hub AWS account.
-  final pulumi.Input<String>? masterId;
+  final pulumi.Input<String?>? masterId;
   /// The status of the member account relationship.
-  final pulumi.Input<String>? memberStatus;
+  final pulumi.Input<String?>? memberStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MemberState].
   /// [accountId] The ID of the member AWS account.

@@ -15,54 +15,54 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// Input properties used for looking up and filtering MultitenantDistribution resources.
 class MultitenantDistributionState {
   /// List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
-  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroup>>? activeTrustedKeyGroups;
+  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroup>?>? activeTrustedKeyGroups;
   /// ARN for the distribution.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Ordered list of cache behaviors resource for this distribution. See Cache Behavior below.
-  final pulumi.Input<List<MultitenantDistributionCacheBehavior>>? cacheBehaviors;
+  final pulumi.Input<List<MultitenantDistributionCacheBehavior>?>? cacheBehaviors;
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
-  final pulumi.Input<String>? callerReference;
+  final pulumi.Input<String?>? callerReference;
   /// Any comments you want to include about the distribution.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Connection mode for the distribution. Always set to `tenant-only` for multi-tenant distributions.
-  final pulumi.Input<String>? connectionMode;
+  final pulumi.Input<String?>? connectionMode;
   /// One or more custom error response elements. See Custom Error Response below.
-  final pulumi.Input<List<MultitenantDistributionCustomErrorResponse>>? customErrorResponses;
+  final pulumi.Input<List<MultitenantDistributionCustomErrorResponse>?>? customErrorResponses;
   /// Default cache behavior for this distribution. See Default Cache Behavior below.
-  final pulumi.Input<MultitenantDistributionDefaultCacheBehavior>? defaultCacheBehavior;
+  final pulumi.Input<MultitenantDistributionDefaultCacheBehavior?>? defaultCacheBehavior;
   /// Object that you want CloudFront to return when an end user requests the root URL.
-  final pulumi.Input<String>? defaultRootObject;
+  final pulumi.Input<String?>? defaultRootObject;
   /// Domain name corresponding to the distribution.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Current version of the distribution's information.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
-  final pulumi.Input<String>? httpVersion;
+  final pulumi.Input<String?>? httpVersion;
   /// Number of invalidation batches currently in progress.
-  final pulumi.Input<int>? inProgressInvalidationBatches;
+  final pulumi.Input<int?>? inProgressInvalidationBatches;
   /// Date and time the distribution was last modified.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
-  final pulumi.Input<List<MultitenantDistributionOriginGroup>>? originGroups;
+  final pulumi.Input<List<MultitenantDistributionOriginGroup>?>? originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
-  final pulumi.Input<List<MultitenantDistributionOrigin>>? origins;
+  final pulumi.Input<List<MultitenantDistributionOrigin>?>? origins;
   /// Restriction configuration for this distribution. See Restrictions below.
-  final pulumi.Input<MultitenantDistributionRestrictions>? restrictions;
+  final pulumi.Input<MultitenantDistributionRestrictions?>? restrictions;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
-  final pulumi.Input<MultitenantDistributionTenantConfig>? tenantConfig;
-  final pulumi.Input<MultitenantDistributionTimeouts>? timeouts;
+  final pulumi.Input<MultitenantDistributionTenantConfig?>? tenantConfig;
+  final pulumi.Input<MultitenantDistributionTimeouts?>? timeouts;
   /// SSL configuration for this distribution. See Viewer Certificate below.
-  final pulumi.Input<MultitenantDistributionViewerCertificate>? viewerCertificate;
+  final pulumi.Input<MultitenantDistributionViewerCertificate?>? viewerCertificate;
   /// Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
-  final pulumi.Input<String>? webAclId;
+  final pulumi.Input<String?>? webAclId;
 
   /// Creates a new [MultitenantDistributionState].
   /// [activeTrustedKeyGroups] List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
@@ -163,7 +163,7 @@ class MultitenantDistributionState {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpVersion: (() { final guardedValue = map['httpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inProgressInvalidationBatches: (() { final guardedValue = map['inProgressInvalidationBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inProgressInvalidationBatches: (() { final guardedValue = map['inProgressInvalidationBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originGroups: (() { final guardedValue = map['originGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(guardedValue, (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       origins: (() { final guardedValue = map['origins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOrigin>(guardedValue, (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>()))); })(),

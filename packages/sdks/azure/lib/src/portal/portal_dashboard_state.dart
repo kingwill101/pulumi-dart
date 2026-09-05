@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PortalDashboard resources.
 class PortalDashboardState {
   /// JSON data representing dashboard body. See above for details on how to obtain this from the Portal.
-  final pulumi.Input<String>? dashboardProperties;
+  final pulumi.Input<String?>? dashboardProperties;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Shared Dashboard. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** You can specify a tag with the key `hidden-title` to set a more user-friendly title for this Dashboard.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the dashboard. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PortalDashboardState].
   /// [dashboardProperties] JSON data representing dashboard body. See above for details on how to obtain this from the Portal.

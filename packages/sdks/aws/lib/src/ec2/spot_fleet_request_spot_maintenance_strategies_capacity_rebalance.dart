@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
   /// The replacement strategy to use. Only available for spot fleets with `fleetType` set to `maintain`. Valid values: `launch`.
-  final pulumi.Input<String>? replacementStrategy;
+  final pulumi.Input<String?>? replacementStrategy;
 
   /// Creates a new [SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance].
   /// [replacementStrategy] The replacement strategy to use. Only available for spot fleets with `fleetType` set to `maintain`. Valid values: `launch`.

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_origin_access_control_origin_access_control_args_doc}
 class OriginAccessControlArgs {
   /// The description of the Origin Access Control. Defaults to "Managed by Pulumi" if omitted.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A name that identifies the Origin Access Control.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   final pulumi.Input<String> originAccessControlOriginType;
   /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.

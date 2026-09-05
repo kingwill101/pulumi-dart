@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionVolumeS3filesVolumeConfiguration {
   /// Full ARN of the S3 Files access point to use. If configured, `rootDirectory` must either be omitted or set to `"/"`.
-  final pulumi.Input<String>? accessPointArn;
+  final pulumi.Input<String?>? accessPointArn;
   /// Full ARN of the S3 Files file system to mount.
   final pulumi.Input<String> fileSystemArn;
   /// Directory within the Amazon S3 Files file system to mount as the root directory.
-  final pulumi.Input<String>? rootDirectory;
+  final pulumi.Input<String?>? rootDirectory;
   /// Port to use for sending encrypted data between the ECS host and the S3 Files file system.
-  final pulumi.Input<int>? transitEncryptionPort;
+  final pulumi.Input<int?>? transitEncryptionPort;
 
   /// Creates a new [TaskDefinitionVolumeS3filesVolumeConfiguration].
   /// [accessPointArn] Full ARN of the S3 Files access point to use. If configured, `rootDirectory` must either be omitted or set to `"/"`.
@@ -38,7 +38,7 @@ class TaskDefinitionVolumeS3filesVolumeConfiguration {
       accessPointArn: (() { final guardedValue = map['accessPointArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileSystemArn: pulumi.Input.fromValue(map['fileSystemArn'] as String),
       rootDirectory: (() { final guardedValue = map['rootDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

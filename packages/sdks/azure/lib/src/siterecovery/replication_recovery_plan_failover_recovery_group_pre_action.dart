@@ -6,7 +6,7 @@ class ReplicationRecoveryPlanFailoverRecoveryGroupPreAction {
   /// The fabric location of runbook or script. Possible values are `Primary` and `Recovery`. It must not be specified when `type` is `ManualActionDetails`.
   ///
   /// &gt; **Note:** This is required when `type` is set to `AutomationRunbookActionDetails` or `ScriptActionDetails`.
-  final pulumi.Input<String>? fabricLocation;
+  final pulumi.Input<String?>? fabricLocation;
   /// Directions of fail over. Possible values are `PrimaryToRecovery` and `RecoveryToPrimary`
   final pulumi.Input<List<String>> failOverDirections;
   /// Types of fail over. Possible values are `TestFailover`, `PlannedFailover` and `UnplannedFailover`
@@ -14,17 +14,17 @@ class ReplicationRecoveryPlanFailoverRecoveryGroupPreAction {
   /// Instructions of manual action.
   ///
   /// &gt; **Note:** This property is required when `type` is set to `ManualActionDetails`.
-  final pulumi.Input<String>? manualActionInstruction;
+  final pulumi.Input<String?>? manualActionInstruction;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// Id of runbook.
   ///
   /// &gt; **Note:** This property is required when `type` is set to `AutomationRunbookActionDetails`.
-  final pulumi.Input<String>? runbookId;
+  final pulumi.Input<String?>? runbookId;
   /// Path of action script.
   ///
   /// &gt; **Note:** This property is required when `type` is set to `ScriptActionDetails`.
-  final pulumi.Input<String>? scriptPath;
+  final pulumi.Input<String?>? scriptPath;
   /// Type of the action detail. Possible values are `AutomationRunbookActionDetails`, `ManualActionDetails` and `ScriptActionDetails`.
   final pulumi.Input<String> type;
 

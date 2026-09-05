@@ -112,6 +112,17 @@ Future<GetDetectorResult> getDetector(
   return GetDetectorResult.fromMap(result);
 }
 
+pulumi.Output<GetDetectorResult> getDetectorOutput(
+  GetDetectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:guardduty/getDetector:getDetector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDetectorResult.fromMap);
+}
+
 /// Data source for managing an AWS GuardDuty Finding Ids.
 ///
 /// ## Example Usage
@@ -230,4 +241,15 @@ Future<GetFindingIdsResult> getFindingIds(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFindingIdsResult.fromMap(result);
+}
+
+pulumi.Output<GetFindingIdsResult> getFindingIdsOutput(
+  GetFindingIdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:guardduty/getFindingIds:getFindingIds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFindingIdsResult.fromMap);
 }

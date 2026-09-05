@@ -23,7 +23,7 @@ class RoleAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> featureName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
+  /// ARN of the IAM Role to associate with the DB Instance.
   late final pulumi.Output<String> roleArn;
 
   /// Creates a new [RoleAssociation].
@@ -38,7 +38,7 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:rds/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
     featureName = registerOutput<String>('featureName');
@@ -51,11 +51,12 @@ class RoleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -69,6 +70,21 @@ class RoleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
+    featureName = registerOutput<String>('featureName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [RoleAssociation] resource.
+  RoleAssociation.reference(String urn)
+    : super(
+        'aws:rds/roleAssociation:RoleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
     featureName = registerOutput<String>('featureName');
     region = registerOutput<String>('region');

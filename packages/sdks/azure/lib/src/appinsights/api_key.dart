@@ -224,7 +224,7 @@ import 'api_key_state.dart';
 /// 		}
 /// 		readTelemetry, err := appinsights.NewApiKey(ctx, "read_telemetry", &appinsights.ApiKeyArgs{
 /// 			Name:                  pulumi.String("tf-test-appinsights-read-telemetry-api-key"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			ReadPermissions: pulumi.StringArray{
 /// 				pulumi.String("aggregate"),
 /// 				pulumi.String("api"),
@@ -238,7 +238,7 @@ import 'api_key_state.dart';
 /// 		}
 /// 		writeAnnotations, err := appinsights.NewApiKey(ctx, "write_annotations", &appinsights.ApiKeyArgs{
 /// 			Name:                  pulumi.String("tf-test-appinsights-write-annotations-api-key"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			WritePermissions: pulumi.StringArray{
 /// 				pulumi.String("annotations"),
 /// 			},
@@ -248,7 +248,7 @@ import 'api_key_state.dart';
 /// 		}
 /// 		authenticateSdkControlChannel, err := appinsights.NewApiKey(ctx, "authenticate_sdk_control_channel", &appinsights.ApiKeyArgs{
 /// 			Name:                  pulumi.String("tf-test-appinsights-authenticate-sdk-control-channel-api-key"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			ReadPermissions: pulumi.StringArray{
 /// 				pulumi.String("agentconfig"),
 /// 			},
@@ -258,7 +258,7 @@ import 'api_key_state.dart';
 /// 		}
 /// 		fullPermissions, err := appinsights.NewApiKey(ctx, "full_permissions", &appinsights.ApiKeyArgs{
 /// 			Name:                  pulumi.String("tf-test-appinsights-full-permissions-api-key"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			ReadPermissions: pulumi.StringArray{
 /// 				pulumi.String("agentconfig"),
 /// 				pulumi.String("aggregate"),
@@ -523,13 +523,14 @@ class ApiKey extends pulumi.CustomResource {
           'azure:appinsights/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     this.name = registerOutput<String>('name');
-    readPermissions = registerOutput<List<String>?>('readPermissions');
-    writePermissions = registerOutput<List<String>?>('writePermissions');
+    readPermissions = registerOutput<List<String>?>('readPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    writePermissions = registerOutput<List<String>?>('writePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApiKey] resource's state with the given [name] and [id].
@@ -537,11 +538,12 @@ class ApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -555,10 +557,27 @@ class ApiKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     this.name = registerOutput<String>('name');
-    readPermissions = registerOutput<List<String>?>('readPermissions');
-    writePermissions = registerOutput<List<String>?>('writePermissions');
+    readPermissions = registerOutput<List<String>?>('readPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    writePermissions = registerOutput<List<String>?>('writePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApiKey] resource.
+  ApiKey.reference(String urn)
+    : super(
+        'azure:appinsights/apiKey:ApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    this.name = registerOutput<String>('name');
+    readPermissions = registerOutput<List<String>?>('readPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    writePermissions = registerOutput<List<String>?>('writePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

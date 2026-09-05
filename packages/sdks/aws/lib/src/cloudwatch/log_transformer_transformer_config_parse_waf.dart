@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigParseWaf {
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseWaf].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.

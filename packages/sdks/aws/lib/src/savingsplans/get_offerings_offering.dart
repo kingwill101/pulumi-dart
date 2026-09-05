@@ -73,7 +73,7 @@ class GetOfferingsOffering {
     return GetOfferingsOffering(
       currency: pulumi.Input.fromValue(map['currency'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      durationSeconds: pulumi.Input.fromValue(map['durationSeconds'] as int),
+      durationSeconds: pulumi.Input.fromValue((map['durationSeconds'] as num).toInt()),
       offeringId: pulumi.Input.fromValue(map['offeringId'] as String),
       operation: pulumi.Input.fromValue(map['operation'] as String),
       paymentOption: pulumi.Input.fromValue(map['paymentOption'] as String),

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleIotAnalytic {
   /// The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
-  final pulumi.Input<bool>? batchMode;
+  final pulumi.Input<bool?>? batchMode;
   /// Name of AWS IOT Analytics channel.
   final pulumi.Input<String> channelName;
   /// The ARN of the IAM role that grants access.

@@ -6,7 +6,7 @@ class ZoneVpc {
   /// ID of the VPC to associate.
   final pulumi.Input<String> vpcId;
   /// Region of the VPC to associate. Defaults to AWS provider region.
-  final pulumi.Input<String>? vpcRegion;
+  final pulumi.Input<String?>? vpcRegion;
 
   /// Creates a new [ZoneVpc].
   /// [vpcId] ID of the VPC to associate.

@@ -5,7 +5,7 @@ import 'web_acl_rule_statement.dart';
 
 class WebAclRuleStatementOrStatement {
   /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
-  final pulumi.Input<List<WebAclRuleStatement>>? statements;
+  final pulumi.Input<List<WebAclRuleStatement>?>? statements;
 
   /// Creates a new [WebAclRuleStatementOrStatement].
   /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.

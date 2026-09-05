@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_feature_args.dart';
+import 'configuration_feature_custom_filter.dart';
 import 'configuration_feature_state.dart';
+import 'configuration_feature_targeting_filter.dart';
+import 'configuration_feature_timewindow_filter.dart';
 
 /// Manages an Azure App Configuration Feature.
 ///
@@ -132,7 +135,7 @@ import 'configuration_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "appconf_dataowner", &authorization.AssignmentArgs{
-/// 			Scope:              appconf.ID(),
+/// 			Scope:              appconf.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("App Configuration Data Owner"),
 /// 			PrincipalId:        pulumi.String(current.ObjectId),
 /// 		})
@@ -140,7 +143,7 @@ import 'configuration_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appconfiguration.NewConfigurationFeature(ctx, "test", &appconfiguration.ConfigurationFeatureArgs{
-/// 			ConfigurationStoreId: appconf.ID(),
+/// 			ConfigurationStoreId: appconf.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:          pulumi.String("test description"),
 /// 			Name:                 pulumi.String("test-ackey"),
 /// 			Label:                pulumi.String("test-ackeylabel"),
@@ -298,7 +301,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationStoreId;
   /// A `customFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customFilters;
+  late final pulumi.Output<List<ConfigurationFeatureCustomFilter>?> customFilters;
   /// The description of the App Configuration Feature.
   late final pulumi.Output<String?> description;
   /// The status of the App Configuration Feature. By default, this is set to false.
@@ -317,9 +320,9 @@ class ConfigurationFeature extends pulumi.CustomResource {
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A `targetingFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetingFilters;
+  late final pulumi.Output<List<ConfigurationFeatureTargetingFilter>?> targetingFilters;
   /// A `timewindowFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> timewindowFilters;
+  late final pulumi.Output<List<ConfigurationFeatureTimewindowFilter>?> timewindowFilters;
 
   /// Creates a new [ConfigurationFeature].
   /// [name] The Pulumi resource name.
@@ -333,10 +336,10 @@ class ConfigurationFeature extends pulumi.CustomResource {
           'azure:appconfiguration/configurationFeature:ConfigurationFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
-    customFilters = registerOutput<List<Map<String, dynamic>>?>('customFilters');
+    customFilters = registerOutput<List<ConfigurationFeatureCustomFilter>?>('customFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureCustomFilter>(guardedValue, (value) => ConfigurationFeatureCustomFilter.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
@@ -345,9 +348,9 @@ class ConfigurationFeature extends pulumi.CustomResource {
     locked = registerOutput<bool?>('locked');
     this.name = registerOutput<String>('name');
     percentageFilterValue = registerOutput<double?>('percentageFilterValue');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetingFilters = registerOutput<List<Map<String, dynamic>>?>('targetingFilters');
-    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>('timewindowFilters');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetingFilters = registerOutput<List<ConfigurationFeatureTargetingFilter>?>('targetingFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(guardedValue, (value) => ConfigurationFeatureTargetingFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    timewindowFilters = registerOutput<List<ConfigurationFeatureTimewindowFilter>?>('timewindowFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(guardedValue, (value) => ConfigurationFeatureTimewindowFilter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ConfigurationFeature] resource's state with the given [name] and [id].
@@ -355,11 +358,12 @@ class ConfigurationFeature extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationFeatureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationFeature._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,7 +378,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
-    customFilters = registerOutput<List<Map<String, dynamic>>?>('customFilters');
+    customFilters = registerOutput<List<ConfigurationFeatureCustomFilter>?>('customFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureCustomFilter>(guardedValue, (value) => ConfigurationFeatureCustomFilter.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
@@ -383,8 +387,32 @@ class ConfigurationFeature extends pulumi.CustomResource {
     locked = registerOutput<bool?>('locked');
     this.name = registerOutput<String>('name');
     percentageFilterValue = registerOutput<double?>('percentageFilterValue');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetingFilters = registerOutput<List<Map<String, dynamic>>?>('targetingFilters');
-    timewindowFilters = registerOutput<List<Map<String, dynamic>>?>('timewindowFilters');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetingFilters = registerOutput<List<ConfigurationFeatureTargetingFilter>?>('targetingFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(guardedValue, (value) => ConfigurationFeatureTargetingFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    timewindowFilters = registerOutput<List<ConfigurationFeatureTimewindowFilter>?>('timewindowFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(guardedValue, (value) => ConfigurationFeatureTimewindowFilter.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationFeature] resource.
+  ConfigurationFeature.reference(String urn)
+    : super(
+        'azure:appconfiguration/configurationFeature:ConfigurationFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configurationStoreId = registerOutput<String>('configurationStoreId');
+    customFilters = registerOutput<List<ConfigurationFeatureCustomFilter>?>('customFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureCustomFilter>(guardedValue, (value) => ConfigurationFeatureCustomFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    etag = registerOutput<String>('etag');
+    key = registerOutput<String>('key');
+    label = registerOutput<String?>('label');
+    locked = registerOutput<bool?>('locked');
+    this.name = registerOutput<String>('name');
+    percentageFilterValue = registerOutput<double?>('percentageFilterValue');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetingFilters = registerOutput<List<ConfigurationFeatureTargetingFilter>?>('targetingFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(guardedValue, (value) => ConfigurationFeatureTargetingFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    timewindowFilters = registerOutput<List<ConfigurationFeatureTimewindowFilter>?>('timewindowFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(guardedValue, (value) => ConfigurationFeatureTimewindowFilter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -6,13 +6,13 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
   /// A list of Azure custom APIPA addresses assigned to the BGP peer of the Virtual Network Gateway.
   ///
   /// &gt; **Note:** The valid range for the reserved APIPA address in Azure Public is from `169.254.21.0` to `169.254.22.255`.
-  final pulumi.Input<List<String>>? apipaAddresses;
+  final pulumi.Input<List<String>?>? apipaAddresses;
   /// A list of peering address assigned to the BGP peer of the Virtual Network Gateway.
-  final pulumi.Input<List<String>>? defaultAddresses;
+  final pulumi.Input<List<String>?>? defaultAddresses;
   /// The name of the IP configuration of this Virtual Network Gateway. In case there are multiple `ipConfiguration` blocks defined, this property is **required** to specify.
-  final pulumi.Input<String>? ipConfigurationName;
+  final pulumi.Input<String?>? ipConfigurationName;
   /// A list of tunnel IP addresses assigned to the BGP peer of the Virtual Network Gateway.
-  final pulumi.Input<List<String>>? tunnelIpAddresses;
+  final pulumi.Input<List<String>?>? tunnelIpAddresses;
 
   /// Creates a new [VirtualNetworkGatewayBgpSettingsPeeringAddress].
   /// [apipaAddresses] A list of Azure custom APIPA addresses assigned to the BGP peer of the Virtual Network Gateway.

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsAccessScopeExcludePathSourceResourceStatement {
   /// List of resource types.
   /// Cannot be specified together with `resources`.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// List of resource ARNs.
   /// Cannot be specified together with `resourceTypes`.
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePathSourceResourceStatement].
   /// [resourceTypes] List of resource types.

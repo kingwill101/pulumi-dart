@@ -7,10 +7,10 @@ import 'data_cells_filter_timeouts.dart';
 /// Input properties used for looking up and filtering DataCellsFilter resources.
 class DataCellsFilterState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Information about the data cells filter. See Table Data below for details.
-  final pulumi.Input<DataCellsFilterTableData>? tableData;
-  final pulumi.Input<DataCellsFilterTimeouts>? timeouts;
+  final pulumi.Input<DataCellsFilterTableData?>? tableData;
+  final pulumi.Input<DataCellsFilterTimeouts?>? timeouts;
 
   /// Creates a new [DataCellsFilterState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -8,7 +8,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
   /// The path for which this slow request rule applies.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
   final pulumi.Input<String> timeTaken;
 
@@ -35,7 +35,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
 
   factory WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeTaken: pulumi.Input.fromValue(map['timeTaken'] as String),

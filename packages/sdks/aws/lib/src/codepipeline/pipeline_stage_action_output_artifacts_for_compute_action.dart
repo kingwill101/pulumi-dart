@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineStageActionOutputArtifactsForComputeAction {
   /// A list of the files to associate with the output artifact that will be exported from the compute action.
-  final pulumi.Input<List<String>>? files;
+  final pulumi.Input<List<String>?>? files;
   /// The name of the output artifact.
   final pulumi.Input<String> name;
 

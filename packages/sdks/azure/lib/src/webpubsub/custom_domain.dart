@@ -39,11 +39,12 @@ import 'custom_domain_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 ///   access_policies {
 ///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id               = data.azure_core_getclientconfig.current.object_id
@@ -104,6 +105,7 @@ import 'custom_domain_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       accessPolicies:
@@ -201,7 +203,7 @@ class CustomDomain extends pulumi.CustomResource {
           'azure:webpubsub/customDomain:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
@@ -214,11 +216,12 @@ class CustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -232,6 +235,21 @@ class CustomDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    webPubsubCustomCertificateId = registerOutput<String>('webPubsubCustomCertificateId');
+    webPubsubId = registerOutput<String>('webPubsubId');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomain] resource.
+  CustomDomain.reference(String urn)
+    : super(
+        'azure:webpubsub/customDomain:CustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     webPubsubCustomCertificateId = registerOutput<String>('webPubsubCustomCertificateId');

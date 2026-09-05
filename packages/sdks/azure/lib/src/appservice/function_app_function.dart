@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_app_function_args.dart';
+import 'function_app_function_file.dart';
 import 'function_app_function_state.dart';
 
 /// Manages a Function App Function.
@@ -263,7 +264,7 @@ import 'function_app_function_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			ServicePlanId:           exampleServicePlan.ID(),
+/// 			ServicePlanId:           exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig: &appservice.LinuxFunctionAppSiteConfigArgs{
@@ -275,14 +276,14 @@ import 'function_app_function_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"name": "Azure",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]interface{}{
 /// 			"bindings": []interface{}{
 /// 				map[string]interface{}{
 /// 					"authLevel": "function",
@@ -294,7 +295,7 @@ import 'function_app_function_state.dart';
 /// 					"name": "req",
 /// 					"type": "httpTrigger",
 /// 				},
-/// 				map[string]interface{}{
+/// 				map[string]string{
 /// 					"direction": "out",
 /// 					"name":      "$return",
 /// 					"type":      "http",
@@ -307,7 +308,7 @@ import 'function_app_function_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = appservice.NewFunctionAppFunction(ctx, "example", &appservice.FunctionAppFunctionArgs{
 /// 			Name:          pulumi.String("example-function-app-function"),
-/// 			FunctionAppId: exampleLinuxFunctionApp.ID(),
+/// 			FunctionAppId: exampleLinuxFunctionApp.ID().ToIDOutput().ToStringOutput(),
 /// 			Language:      pulumi.String("Python"),
 /// 			TestData:      pulumi.String(json0),
 /// 			ConfigJson:    pulumi.String(json1),
@@ -827,7 +828,7 @@ import 'function_app_function_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			ServicePlanId:           exampleServicePlan.ID(),
+/// 			ServicePlanId:           exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig: &appservice.WindowsFunctionAppSiteConfigArgs{
@@ -845,14 +846,14 @@ import 'function_app_function_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"name": "Azure",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]interface{}{
 /// 			"bindings": []interface{}{
 /// 				map[string]interface{}{
 /// 					"authLevel": "function",
@@ -864,7 +865,7 @@ import 'function_app_function_state.dart';
 /// 					"name": "req",
 /// 					"type": "httpTrigger",
 /// 				},
-/// 				map[string]interface{}{
+/// 				map[string]string{
 /// 					"direction": "out",
 /// 					"name":      "$return",
 /// 					"type":      "http",
@@ -877,7 +878,7 @@ import 'function_app_function_state.dart';
 /// 		json1 := string(tmpJSON1)
 /// 		_, err = appservice.NewFunctionAppFunction(ctx, "example", &appservice.FunctionAppFunctionArgs{
 /// 			Name:          pulumi.String("example-function-app-function"),
-/// 			FunctionAppId: exampleWindowsFunctionApp.ID(),
+/// 			FunctionAppId: exampleWindowsFunctionApp.ID().ToIDOutput().ToStringOutput(),
 /// 			Language:      pulumi.String("CSharp"),
 /// 			Files: appservice.FunctionAppFunctionFileArray{
 /// 				&appservice.FunctionAppFunctionFileArgs{
@@ -1167,7 +1168,7 @@ class FunctionAppFunction extends pulumi.CustomResource {
   /// Should this function be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// A `file` block as detailed below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> files;
+  late final pulumi.Output<List<FunctionAppFunctionFile>?> files;
   /// The ID of the Function App in which this function should reside. Changing this forces a new resource to be created.
   late final pulumi.Output<String> functionAppId;
   /// The invocation URL.
@@ -1203,12 +1204,12 @@ class FunctionAppFunction extends pulumi.CustomResource {
           'azure:appservice/functionAppFunction:FunctionAppFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configJson = registerOutput<String>('configJson');
     configUrl = registerOutput<String>('configUrl');
     enabled = registerOutput<bool?>('enabled');
-    files = registerOutput<List<Map<String, dynamic>>?>('files');
+    files = registerOutput<List<FunctionAppFunctionFile>?>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppFunctionFile>(guardedValue, (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>())); });
     functionAppId = registerOutput<String>('functionAppId');
     invocationUrl = registerOutput<String>('invocationUrl');
     language = registerOutput<String?>('language');
@@ -1226,11 +1227,12 @@ class FunctionAppFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionAppFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionAppFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1247,7 +1249,32 @@ class FunctionAppFunction extends pulumi.CustomResource {
     configJson = registerOutput<String>('configJson');
     configUrl = registerOutput<String>('configUrl');
     enabled = registerOutput<bool?>('enabled');
-    files = registerOutput<List<Map<String, dynamic>>?>('files');
+    files = registerOutput<List<FunctionAppFunctionFile>?>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppFunctionFile>(guardedValue, (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>())); });
+    functionAppId = registerOutput<String>('functionAppId');
+    invocationUrl = registerOutput<String>('invocationUrl');
+    language = registerOutput<String?>('language');
+    this.name = registerOutput<String>('name');
+    scriptRootPathUrl = registerOutput<String>('scriptRootPathUrl');
+    scriptUrl = registerOutput<String>('scriptUrl');
+    secretsFileUrl = registerOutput<String>('secretsFileUrl');
+    testData = registerOutput<String?>('testData');
+    testDataUrl = registerOutput<String>('testDataUrl');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [FunctionAppFunction] resource.
+  FunctionAppFunction.reference(String urn)
+    : super(
+        'azure:appservice/functionAppFunction:FunctionAppFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configJson = registerOutput<String>('configJson');
+    configUrl = registerOutput<String>('configUrl');
+    enabled = registerOutput<bool?>('enabled');
+    files = registerOutput<List<FunctionAppFunctionFile>?>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppFunctionFile>(guardedValue, (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>())); });
     functionAppId = registerOutput<String>('functionAppId');
     invocationUrl = registerOutput<String>('invocationUrl');
     language = registerOutput<String?>('language');

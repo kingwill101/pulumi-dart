@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// See https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
-enum Runtime {
+enum Runtime implements pulumi.PulumiEnum<String> {
   dotnet6("dotnet6"),
   dotnet8("dotnet8"),
   dotnet10("dotnet10"),
@@ -42,6 +44,7 @@ enum Runtime {
   ruby2d7("ruby2.7");
 
   const Runtime(this.wireValue);
+  @override
   final String wireValue;
 
   static Runtime fromValue(String value) {

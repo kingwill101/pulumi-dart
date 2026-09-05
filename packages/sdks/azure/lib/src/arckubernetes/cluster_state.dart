@@ -6,31 +6,31 @@ import 'cluster_identity.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// Specifies the base64-encoded public certificate used by the agent to do the initial handshake to the backend services in Azure. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? agentPublicKeyCertificate;
+  final pulumi.Input<String?>? agentPublicKeyCertificate;
   /// Version of the agent running on the cluster resource.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// The distribution running on this Arc Kubernetes Cluster.
-  final pulumi.Input<String>? distribution;
+  final pulumi.Input<String?>? distribution;
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<ClusterIdentity>? identity;
+  final pulumi.Input<ClusterIdentity?>? identity;
   /// The infrastructure on which the Arc Kubernetes Cluster is running on.
-  final pulumi.Input<String>? infrastructure;
+  final pulumi.Input<String?>? infrastructure;
   /// The Kubernetes version of the cluster resource.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// Specifies the Azure Region where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Arc Kubernetes Cluster. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The cluster offering.
-  final pulumi.Input<String>? offering;
+  final pulumi.Input<String?>? offering;
   /// Specifies the name of the Resource Group where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Number of CPU cores present in the cluster resource.
-  final pulumi.Input<int>? totalCoreCount;
+  final pulumi.Input<int?>? totalCoreCount;
   /// Number of nodes present in the cluster resource.
-  final pulumi.Input<int>? totalNodeCount;
+  final pulumi.Input<int?>? totalNodeCount;
 
   /// Creates a new [ClusterState].
   /// [agentPublicKeyCertificate] Specifies the base64-encoded public certificate used by the agent to do the initial handshake to the backend services in Azure. Changing this forces a new Arc Kubernetes Cluster to be created.
@@ -93,8 +93,8 @@ class ClusterState {
       offering: (() { final guardedValue = map['offering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalNodeCount: (() { final guardedValue = map['totalNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalNodeCount: (() { final guardedValue = map['totalNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

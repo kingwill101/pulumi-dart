@@ -12,7 +12,7 @@ class GetSshPublicKeyArgs {
   /// The name of the Resource Group where the SSH Public Key exists.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the SSH Public Key.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSshPublicKeyArgs].
   /// [name] The name of this SSH Public Key.

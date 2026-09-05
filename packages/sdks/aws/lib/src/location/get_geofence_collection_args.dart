@@ -10,11 +10,11 @@ class GetGeofenceCollectionArgs {
   /// Name of the geofence collection.
   final pulumi.Input<String> collectionName;
   /// Key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the geofence collection.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetGeofenceCollectionArgs].
   /// [collectionName] Name of the geofence collection.

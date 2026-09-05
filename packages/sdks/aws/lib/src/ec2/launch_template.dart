@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'launch_template_args.dart';
+import 'launch_template_block_device_mapping.dart';
 import 'launch_template_capacity_reservation_specification.dart';
 import 'launch_template_cpu_options.dart';
 import 'launch_template_credit_specification.dart';
@@ -8,13 +9,17 @@ import 'launch_template_hibernation_options.dart';
 import 'launch_template_iam_instance_profile.dart';
 import 'launch_template_instance_market_options.dart';
 import 'launch_template_instance_requirements.dart';
+import 'launch_template_license_specification.dart';
 import 'launch_template_maintenance_options.dart';
 import 'launch_template_metadata_options.dart';
 import 'launch_template_monitoring.dart';
+import 'launch_template_network_interface.dart';
 import 'launch_template_network_performance_options.dart';
 import 'launch_template_placement.dart';
 import 'launch_template_private_dns_name_options.dart';
+import 'launch_template_secondary_interface.dart';
 import 'launch_template_state.dart';
+import 'launch_template_tag_specification.dart';
 
 /// Provides an EC2 launch template resource. Can be used to create instances or auto scaling groups.
 ///
@@ -30,11 +35,11 @@ import 'launch_template_state.dart';
 /// $ pulumi import aws:ec2/launchTemplate:LaunchTemplate web lt-12345678
 /// ```
 class LaunchTemplate extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the launch template.
+  /// ARN of the launch template.
   late final pulumi.Output<String> arn;
   /// Specify volumes to attach to the instance besides the volumes specified by the AMI.
   /// See Block Devices below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> blockDeviceMappings;
+  late final pulumi.Output<List<LaunchTemplateBlockDeviceMapping>?> blockDeviceMappings;
   /// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
   late final pulumi.Output<LaunchTemplateCapacityReservationSpecification?> capacityReservationSpecification;
   /// The CPU options for the instance. See CPU Options below for more details.
@@ -79,7 +84,7 @@ class LaunchTemplate extends pulumi.CustomResource {
   /// The latest version of the launch template.
   late final pulumi.Output<int> latestVersion;
   /// A list of license specifications to associate with. See License Specification below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> licenseSpecifications;
+  late final pulumi.Output<List<LaunchTemplateLicenseSpecification>?> licenseSpecifications;
   /// The maintenance options for the instance. See Maintenance Options below for more details.
   late final pulumi.Output<LaunchTemplateMaintenanceOptions?> maintenanceOptions;
   /// Customize the metadata options for the instance. See Metadata Options below for more details.
@@ -92,7 +97,7 @@ class LaunchTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Customize network interfaces to be attached at instance boot time. See Network
   /// Interfaces below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+  late final pulumi.Output<List<LaunchTemplateNetworkInterface>?> networkInterfaces;
   late final pulumi.Output<LaunchTemplateNetworkPerformanceOptions?> networkPerformanceOptions;
   /// The placement of the instance. See Placement below for more details.
   late final pulumi.Output<LaunchTemplatePlacement?> placement;
@@ -104,12 +109,12 @@ class LaunchTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Secondary interfaces to associate with instances launched from the template. See Secondary
   /// Interfaces below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secondaryInterfaces;
+  late final pulumi.Output<List<LaunchTemplateSecondaryInterface>?> secondaryInterfaces;
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
   /// `vpcSecurityGroupIds` instead.
   late final pulumi.Output<List<String>?> securityGroupNames;
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tagSpecifications;
+  late final pulumi.Output<List<LaunchTemplateTagSpecification>?> tagSpecifications;
   /// A map of tags to assign to the launch template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -133,10 +138,10 @@ class LaunchTemplate extends pulumi.CustomResource {
           'aws:ec2/launchTemplate:LaunchTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
+    blockDeviceMappings = registerOutput<List<LaunchTemplateBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateBlockDeviceMapping>(guardedValue, (value) => LaunchTemplateBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
     capacityReservationSpecification = registerOutput<LaunchTemplateCapacityReservationSpecification?>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cpuOptions = registerOutput<LaunchTemplateCpuOptions?>('cpuOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creditSpecification = registerOutput<LaunchTemplateCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -156,26 +161,26 @@ class LaunchTemplate extends pulumi.CustomResource {
     kernelId = registerOutput<String?>('kernelId');
     keyName = registerOutput<String?>('keyName');
     latestVersion = registerOutput<int>('latestVersion');
-    licenseSpecifications = registerOutput<List<Map<String, dynamic>>?>('licenseSpecifications');
+    licenseSpecifications = registerOutput<List<LaunchTemplateLicenseSpecification>?>('licenseSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateLicenseSpecification>(guardedValue, (value) => LaunchTemplateLicenseSpecification.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceOptions = registerOutput<LaunchTemplateMaintenanceOptions?>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<LaunchTemplateMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<LaunchTemplateMonitoring?>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<LaunchTemplateNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateNetworkInterface>(guardedValue, (value) => LaunchTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     networkPerformanceOptions = registerOutput<LaunchTemplateNetworkPerformanceOptions?>('networkPerformanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateNetworkPerformanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     placement = registerOutput<LaunchTemplatePlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateDnsNameOptions = registerOutput<LaunchTemplatePrivateDnsNameOptions?>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ramDiskId = registerOutput<String?>('ramDiskId');
     region = registerOutput<String>('region');
-    secondaryInterfaces = registerOutput<List<Map<String, dynamic>>?>('secondaryInterfaces');
-    securityGroupNames = registerOutput<List<String>?>('securityGroupNames');
-    tagSpecifications = registerOutput<List<Map<String, dynamic>>?>('tagSpecifications');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    secondaryInterfaces = registerOutput<List<LaunchTemplateSecondaryInterface>?>('secondaryInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateSecondaryInterface>(guardedValue, (value) => LaunchTemplateSecondaryInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    securityGroupNames = registerOutput<List<String>?>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tagSpecifications = registerOutput<List<LaunchTemplateTagSpecification>?>('tagSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateTagSpecification>(guardedValue, (value) => LaunchTemplateTagSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateDefaultVersion = registerOutput<bool?>('updateDefaultVersion');
     userData = registerOutput<String?>('userData');
-    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [LaunchTemplate] resource's state with the given [name] and [id].
@@ -183,11 +188,12 @@ class LaunchTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LaunchTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LaunchTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,7 +208,7 @@ class LaunchTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
+    blockDeviceMappings = registerOutput<List<LaunchTemplateBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateBlockDeviceMapping>(guardedValue, (value) => LaunchTemplateBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
     capacityReservationSpecification = registerOutput<LaunchTemplateCapacityReservationSpecification?>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cpuOptions = registerOutput<LaunchTemplateCpuOptions?>('cpuOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creditSpecification = registerOutput<LaunchTemplateCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -222,25 +228,77 @@ class LaunchTemplate extends pulumi.CustomResource {
     kernelId = registerOutput<String?>('kernelId');
     keyName = registerOutput<String?>('keyName');
     latestVersion = registerOutput<int>('latestVersion');
-    licenseSpecifications = registerOutput<List<Map<String, dynamic>>?>('licenseSpecifications');
+    licenseSpecifications = registerOutput<List<LaunchTemplateLicenseSpecification>?>('licenseSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateLicenseSpecification>(guardedValue, (value) => LaunchTemplateLicenseSpecification.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceOptions = registerOutput<LaunchTemplateMaintenanceOptions?>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<LaunchTemplateMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<LaunchTemplateMonitoring?>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<LaunchTemplateNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateNetworkInterface>(guardedValue, (value) => LaunchTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     networkPerformanceOptions = registerOutput<LaunchTemplateNetworkPerformanceOptions?>('networkPerformanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateNetworkPerformanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     placement = registerOutput<LaunchTemplatePlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateDnsNameOptions = registerOutput<LaunchTemplatePrivateDnsNameOptions?>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ramDiskId = registerOutput<String?>('ramDiskId');
     region = registerOutput<String>('region');
-    secondaryInterfaces = registerOutput<List<Map<String, dynamic>>?>('secondaryInterfaces');
-    securityGroupNames = registerOutput<List<String>?>('securityGroupNames');
-    tagSpecifications = registerOutput<List<Map<String, dynamic>>?>('tagSpecifications');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    secondaryInterfaces = registerOutput<List<LaunchTemplateSecondaryInterface>?>('secondaryInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateSecondaryInterface>(guardedValue, (value) => LaunchTemplateSecondaryInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    securityGroupNames = registerOutput<List<String>?>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tagSpecifications = registerOutput<List<LaunchTemplateTagSpecification>?>('tagSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateTagSpecification>(guardedValue, (value) => LaunchTemplateTagSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateDefaultVersion = registerOutput<bool?>('updateDefaultVersion');
     userData = registerOutput<String?>('userData');
-    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LaunchTemplate] resource.
+  LaunchTemplate.reference(String urn)
+    : super(
+        'aws:ec2/launchTemplate:LaunchTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    blockDeviceMappings = registerOutput<List<LaunchTemplateBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateBlockDeviceMapping>(guardedValue, (value) => LaunchTemplateBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    capacityReservationSpecification = registerOutput<LaunchTemplateCapacityReservationSpecification?>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpuOptions = registerOutput<LaunchTemplateCpuOptions?>('cpuOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creditSpecification = registerOutput<LaunchTemplateCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultVersion = registerOutput<int>('defaultVersion');
+    description = registerOutput<String?>('description');
+    disableApiStop = registerOutput<bool?>('disableApiStop');
+    disableApiTermination = registerOutput<bool?>('disableApiTermination');
+    ebsOptimized = registerOutput<String?>('ebsOptimized');
+    enclaveOptions = registerOutput<LaunchTemplateEnclaveOptions?>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hibernationOptions = registerOutput<LaunchTemplateHibernationOptions?>('hibernationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateHibernationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iamInstanceProfile = registerOutput<LaunchTemplateIamInstanceProfile?>('iamInstanceProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateIamInstanceProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageId = registerOutput<String?>('imageId');
+    instanceInitiatedShutdownBehavior = registerOutput<String?>('instanceInitiatedShutdownBehavior');
+    instanceMarketOptions = registerOutput<LaunchTemplateInstanceMarketOptions?>('instanceMarketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateInstanceMarketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceRequirements = registerOutput<LaunchTemplateInstanceRequirements?>('instanceRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateInstanceRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceType = registerOutput<String?>('instanceType');
+    kernelId = registerOutput<String?>('kernelId');
+    keyName = registerOutput<String?>('keyName');
+    latestVersion = registerOutput<int>('latestVersion');
+    licenseSpecifications = registerOutput<List<LaunchTemplateLicenseSpecification>?>('licenseSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateLicenseSpecification>(guardedValue, (value) => LaunchTemplateLicenseSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceOptions = registerOutput<LaunchTemplateMaintenanceOptions?>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataOptions = registerOutput<LaunchTemplateMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoring = registerOutput<LaunchTemplateMonitoring?>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    networkInterfaces = registerOutput<List<LaunchTemplateNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateNetworkInterface>(guardedValue, (value) => LaunchTemplateNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    networkPerformanceOptions = registerOutput<LaunchTemplateNetworkPerformanceOptions?>('networkPerformanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplateNetworkPerformanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placement = registerOutput<LaunchTemplatePlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateDnsNameOptions = registerOutput<LaunchTemplatePrivateDnsNameOptions?>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchTemplatePrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ramDiskId = registerOutput<String?>('ramDiskId');
+    region = registerOutput<String>('region');
+    secondaryInterfaces = registerOutput<List<LaunchTemplateSecondaryInterface>?>('secondaryInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateSecondaryInterface>(guardedValue, (value) => LaunchTemplateSecondaryInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    securityGroupNames = registerOutput<List<String>?>('securityGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tagSpecifications = registerOutput<List<LaunchTemplateTagSpecification>?>('tagSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateTagSpecification>(guardedValue, (value) => LaunchTemplateTagSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateDefaultVersion = registerOutput<bool?>('updateDefaultVersion');
+    userData = registerOutput<String?>('userData');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

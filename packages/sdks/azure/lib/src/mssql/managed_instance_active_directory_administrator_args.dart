@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mssql_managed_instance_active_directory_administrator_managed_instance_active_directory_administrator_args_doc}
 class ManagedInstanceActiveDirectoryAdministratorArgs {
   /// When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.
-  final pulumi.Input<bool>? azureadAuthenticationOnly;
+  final pulumi.Input<bool?>? azureadAuthenticationOnly;
   /// The login name of the principal to set as the Managed Instance Administrator.
   final pulumi.Input<String> loginUsername;
   /// The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.

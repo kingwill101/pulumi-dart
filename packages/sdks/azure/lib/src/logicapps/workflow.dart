@@ -227,24 +227,24 @@ class Workflow extends pulumi.CustomResource {
           'azure:logicapps/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessControl = registerOutput<WorkflowAccessControl?>('accessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     accessEndpoint = registerOutput<String>('accessEndpoint');
-    connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses');
-    connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses');
+    connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     identity = registerOutput<WorkflowIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
     location = registerOutput<String>('location');
     logicAppIntegrationAccountId = registerOutput<String?>('logicAppIntegrationAccountId');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses');
-    workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses');
-    workflowParameters = registerOutput<Map<String, String>?>('workflowParameters');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowParameters = registerOutput<Map<String, String>?>('workflowParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workflowSchema = registerOutput<String?>('workflowSchema');
     workflowVersion = registerOutput<String?>('workflowVersion');
   }
@@ -254,11 +254,12 @@ class Workflow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkflowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workflow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,20 +275,49 @@ class Workflow extends pulumi.CustomResource {
         ) {
     accessControl = registerOutput<WorkflowAccessControl?>('accessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     accessEndpoint = registerOutput<String>('accessEndpoint');
-    connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses');
-    connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses');
+    connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     identity = registerOutput<WorkflowIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
     location = registerOutput<String>('location');
     logicAppIntegrationAccountId = registerOutput<String?>('logicAppIntegrationAccountId');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses');
-    workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses');
-    workflowParameters = registerOutput<Map<String, String>?>('workflowParameters');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowParameters = registerOutput<Map<String, String>?>('workflowParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowSchema = registerOutput<String?>('workflowSchema');
+    workflowVersion = registerOutput<String?>('workflowVersion');
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'azure:logicapps/workflow:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessControl = registerOutput<WorkflowAccessControl?>('accessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    accessEndpoint = registerOutput<String>('accessEndpoint');
+    connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    identity = registerOutput<WorkflowIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
+    location = registerOutput<String>('location');
+    logicAppIntegrationAccountId = registerOutput<String?>('logicAppIntegrationAccountId');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workflowParameters = registerOutput<Map<String, String>?>('workflowParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workflowSchema = registerOutput<String?>('workflowSchema');
     workflowVersion = registerOutput<String?>('workflowVersion');
   }

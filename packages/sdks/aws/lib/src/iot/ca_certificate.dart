@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ca_certificate_args.dart';
 import 'ca_certificate_registration_config.dart';
 import 'ca_certificate_state.dart';
+import 'ca_certificate_validity.dart';
 
 /// Creates and manages an AWS IoT CA Certificate.
 ///
@@ -15,11 +16,11 @@ import 'ca_certificate_state.dart';
 ///
 /// const caPrivateKey = new tls.PrivateKey("ca", {algorithm: "RSA"});
 /// const ca = new tls.SelfSignedCert("ca", {
-///     privateKeyPem: caPrivateKey.privateKeyPem,
 ///     subject: [{
 ///         commonName: "example.com",
 ///         organization: "ACME Examples, Inc",
 ///     }],
+///     privateKeyPem: caPrivateKey.privateKeyPem,
 ///     validityPeriodHours: 12,
 ///     allowedUses: [
 ///         "key_encipherment",
@@ -31,10 +32,10 @@ import 'ca_certificate_state.dart';
 /// const verificationPrivateKey = new tls.PrivateKey("verification", {algorithm: "RSA"});
 /// const example = aws.iot.getRegistrationCode({});
 /// const verification = new tls.CertRequest("verification", {
-///     privateKeyPem: verificationPrivateKey.privateKeyPem,
 ///     subject: [{
 ///         commonName: example.then(example => example.registrationCode),
 ///     }],
+///     privateKeyPem: verificationPrivateKey.privateKeyPem,
 /// });
 /// const verificationLocallySignedCert = new tls.LocallySignedCert("verification", {
 ///     certRequestPem: verification.certRequestPem,
@@ -61,11 +62,11 @@ import 'ca_certificate_state.dart';
 ///
 /// ca_private_key = tls.PrivateKey("ca", algorithm="RSA")
 /// ca = tls.SelfSignedCert("ca",
-///     private_key_pem=ca_private_key.private_key_pem,
 ///     subject=[{
 ///         "commonName": "example.com",
 ///         "organization": "ACME Examples, Inc",
 ///     }],
+///     private_key_pem=ca_private_key.private_key_pem,
 ///     validity_period_hours=12,
 ///     allowed_uses=[
 ///         "key_encipherment",
@@ -76,10 +77,10 @@ import 'ca_certificate_state.dart';
 /// verification_private_key = tls.PrivateKey("verification", algorithm="RSA")
 /// example = aws.iot.get_registration_code()
 /// verification = tls.CertRequest("verification",
-///     private_key_pem=verification_private_key.private_key_pem,
 ///     subject=[{
 ///         "commonName": example.registration_code,
-///     }])
+///     }],
+///     private_key_pem=verification_private_key.private_key_pem)
 /// verification_locally_signed_cert = tls.LocallySignedCert("verification",
 ///     cert_request_pem=verification.cert_request_pem,
 ///     ca_private_key_pem=ca_private_key.private_key_pem,
@@ -112,7 +113,6 @@ import 'ca_certificate_state.dart';
 ///
 ///     var ca = new Tls.SelfSignedCert("ca", new()
 ///     {
-///         PrivateKeyPem = caPrivateKey.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -121,6 +121,7 @@ import 'ca_certificate_state.dart';
 ///                 { "organization", "ACME Examples, Inc" },
 ///             },
 ///         },
+///         PrivateKeyPem = caPrivateKey.PrivateKeyPem,
 ///         ValidityPeriodHours = 12,
 ///         AllowedUses = new[]
 ///         {
@@ -140,7 +141,6 @@ import 'ca_certificate_state.dart';
 ///
 ///     var verification = new Tls.CertRequest("verification", new()
 ///     {
-///         PrivateKeyPem = verificationPrivateKey.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -148,6 +148,7 @@ import 'ca_certificate_state.dart';
 ///                 { "commonName", example.Apply(getRegistrationCodeResult => getRegistrationCodeResult.RegistrationCode) },
 ///             },
 ///         },
+///         PrivateKeyPem = verificationPrivateKey.PrivateKeyPem,
 ///     });
 ///
 ///     var verificationLocallySignedCert = new Tls.LocallySignedCert("verification", new()
@@ -192,13 +193,13 @@ import 'ca_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		ca, err := tls.NewSelfSignedCert(ctx, "ca", &tls.SelfSignedCertArgs{
-/// 			PrivateKeyPem: caPrivateKey.PrivateKeyPem,
 /// 			Subject: tls.SelfSignedCertSubjectArgs{
 /// 				map[string]string{
 /// 					"commonName":   "example.com",
 /// 					"organization": "ACME Examples, Inc",
 /// 				},
 /// 			},
+/// 			PrivateKeyPem:       caPrivateKey.PrivateKeyPem,
 /// 			ValidityPeriodHours: pulumi.Int(12),
 /// 			AllowedUses: pulumi.StringArray{
 /// 				pulumi.String("key_encipherment"),
@@ -221,12 +222,12 @@ import 'ca_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		verification, err := tls.NewCertRequest(ctx, "verification", &tls.CertRequestArgs{
-/// 			PrivateKeyPem: verificationPrivateKey.PrivateKeyPem,
 /// 			Subject: tls.CertRequestSubjectArgs{
 /// 				map[string]interface{}{
 /// 					"commonName": example.RegistrationCode,
 /// 				},
 /// 			},
+/// 			PrivateKeyPem: verificationPrivateKey.PrivateKeyPem,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -274,11 +275,11 @@ import 'ca_certificate_state.dart';
 /// }
 ///
 /// resource "tls_selfsignedcert" "ca" {
-///   private_key_pem = tls_privatekey.ca.private_key_pem
 ///   subject = [{
 ///     "commonName"   = "example.com"
 ///     "organization" = "ACME Examples, Inc"
 ///   }]
+///   private_key_pem       = tls_privatekey.ca.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 ///   is_ca_certificate     = true
@@ -287,10 +288,10 @@ import 'ca_certificate_state.dart';
 ///   algorithm = "RSA"
 /// }
 /// resource "tls_certrequest" "verification" {
-///   private_key_pem = tls_privatekey.verification.private_key_pem
 ///   subject = [{
 ///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
 ///   }]
+///   private_key_pem = tls_privatekey.verification.private_key_pem
 /// }
 /// resource "tls_privatekey" "verification" {
 ///   algorithm = "RSA"
@@ -345,11 +346,11 @@ import 'ca_certificate_state.dart';
 ///             .build());
 ///
 ///         var ca = new SelfSignedCert("ca", SelfSignedCertArgs.builder()
-///             .privateKeyPem(caPrivateKey.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.SelfSignedCertSubjectArgs.builder()
 ///                 .commonName("example.com")
 ///                 .organization("ACME Examples, Inc")
 ///                 .build())
+///             .privateKeyPem(caPrivateKey.privateKeyPem())
 ///             .validityPeriodHours(12)
 ///             .allowedUses(
 ///                 "key_encipherment",
@@ -366,10 +367,10 @@ import 'ca_certificate_state.dart';
 ///             .build());
 ///
 ///         var verification = new CertRequest("verification", CertRequestArgs.builder()
-///             .privateKeyPem(verificationPrivateKey.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName(example.registrationCode())
 ///                 .build())
+///             .privateKeyPem(verificationPrivateKey.privateKeyPem())
 ///             .build());
 ///
 ///         var verificationLocallySignedCert = new LocallySignedCert("verificationLocallySignedCert", LocallySignedCertArgs.builder()
@@ -398,10 +399,10 @@ import 'ca_certificate_state.dart';
 ///   ca:
 ///     type: tls:SelfSignedCert
 ///     properties:
-///       privateKeyPem: ${caPrivateKey.privateKeyPem}
 ///       subject:
 ///         - commonName: example.com
 ///           organization: ACME Examples, Inc
+///       privateKeyPem: ${caPrivateKey.privateKeyPem}
 ///       validityPeriodHours: 12
 ///       allowedUses:
 ///         - key_encipherment
@@ -416,9 +417,9 @@ import 'ca_certificate_state.dart';
 ///   verification:
 ///     type: tls:CertRequest
 ///     properties:
-///       privateKeyPem: ${verificationPrivateKey.privateKeyPem}
 ///       subject:
 ///         - commonName: ${example.registrationCode}
+///       privateKeyPem: ${verificationPrivateKey.privateKeyPem}
 ///   verificationPrivateKey:
 ///     type: tls:PrivateKey
 ///     name: verification
@@ -474,7 +475,7 @@ class CaCertificate extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// When the CA certificate is valid.
-  late final pulumi.Output<List<Map<String, dynamic>>> validities;
+  late final pulumi.Output<List<CaCertificateValidity>> validities;
   /// PEM encoded verification certificate containing the common name of a registration code. Review
   /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificateMode` is `DEFAULT`.
   late final pulumi.Output<String?> verificationCertificatePem;
@@ -491,21 +492,22 @@ class CaCertificate extends pulumi.CustomResource {
           'aws:iot/caCertificate:CaCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['caCertificatePem', 'verificationCertificatePem'],
         ) {
     active = registerOutput<bool>('active');
     allowAutoRegistration = registerOutput<bool>('allowAutoRegistration');
     arn = registerOutput<String>('arn');
-    caCertificatePem = registerOutput<String>('caCertificatePem');
+    caCertificatePem = registerOutput<String>('caCertificatePem', isSecret: true);
     certificateMode = registerOutput<String?>('certificateMode');
     customerVersion = registerOutput<int>('customerVersion');
     generationId = registerOutput<String>('generationId');
     region = registerOutput<String>('region');
     registrationConfig = registerOutput<CaCertificateRegistrationConfig?>('registrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaCertificateRegistrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    validities = registerOutput<List<Map<String, dynamic>>>('validities');
-    verificationCertificatePem = registerOutput<String?>('verificationCertificatePem');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validities = registerOutput<List<CaCertificateValidity>>('validities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CaCertificateValidity>(guardedValue, (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>())); });
+    verificationCertificatePem = registerOutput<String?>('verificationCertificatePem', isSecret: true);
   }
 
   /// Gets an existing [CaCertificate] resource's state with the given [name] and [id].
@@ -513,11 +515,12 @@ class CaCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CaCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CaCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -534,15 +537,40 @@ class CaCertificate extends pulumi.CustomResource {
     active = registerOutput<bool>('active');
     allowAutoRegistration = registerOutput<bool>('allowAutoRegistration');
     arn = registerOutput<String>('arn');
-    caCertificatePem = registerOutput<String>('caCertificatePem');
+    caCertificatePem = registerOutput<String>('caCertificatePem', isSecret: true);
     certificateMode = registerOutput<String?>('certificateMode');
     customerVersion = registerOutput<int>('customerVersion');
     generationId = registerOutput<String>('generationId');
     region = registerOutput<String>('region');
     registrationConfig = registerOutput<CaCertificateRegistrationConfig?>('registrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaCertificateRegistrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    validities = registerOutput<List<Map<String, dynamic>>>('validities');
-    verificationCertificatePem = registerOutput<String?>('verificationCertificatePem');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validities = registerOutput<List<CaCertificateValidity>>('validities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CaCertificateValidity>(guardedValue, (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>())); });
+    verificationCertificatePem = registerOutput<String?>('verificationCertificatePem', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [CaCertificate] resource.
+  CaCertificate.reference(String urn)
+    : super(
+        'aws:iot/caCertificate:CaCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caCertificatePem', 'verificationCertificatePem'],
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool>('active');
+    allowAutoRegistration = registerOutput<bool>('allowAutoRegistration');
+    arn = registerOutput<String>('arn');
+    caCertificatePem = registerOutput<String>('caCertificatePem', isSecret: true);
+    certificateMode = registerOutput<String?>('certificateMode');
+    customerVersion = registerOutput<int>('customerVersion');
+    generationId = registerOutput<String>('generationId');
+    region = registerOutput<String>('region');
+    registrationConfig = registerOutput<CaCertificateRegistrationConfig?>('registrationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaCertificateRegistrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validities = registerOutput<List<CaCertificateValidity>>('validities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CaCertificateValidity>(guardedValue, (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>())); });
+    verificationCertificatePem = registerOutput<String?>('verificationCertificatePem', isSecret: true);
   }
 }

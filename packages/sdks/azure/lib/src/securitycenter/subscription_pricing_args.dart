@@ -9,11 +9,11 @@ import 'subscription_pricing_extension.dart';
 /// {@macro pulumi_securitycenter_subscription_pricing_subscription_pricing_args_doc}
 class SubscriptionPricingArgs {
   /// One or more `extension` blocks as defined below.
-  final pulumi.Input<List<SubscriptionPricingExtension>>? extensions;
+  final pulumi.Input<List<SubscriptionPricingExtension>?>? extensions;
   /// The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subplan;
+  final pulumi.Input<String?>? subplan;
   /// The pricing tier to use. Possible values are `Free` and `Standard`.
   final pulumi.Input<String> tier;
 

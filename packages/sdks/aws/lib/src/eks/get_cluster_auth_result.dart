@@ -4,39 +4,39 @@
 /// Result data returned by getClusterAuth.
 class GetClusterAuthResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
   /// Token to use to authenticate with the cluster.
-  final String token;
+  final String? token;
 
   /// Creates a new [GetClusterAuthResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   /// [token] Token to use to authenticate with the cluster.
   const GetClusterAuthResult({
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.token,
+    this.id,
+    this.name,
+    this.region,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'region': region,
-      'token': token,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'token': ?token,
     };
   }
 
   factory GetClusterAuthResult.fromMap(Map<String, dynamic> map) {
     return GetClusterAuthResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      token: map['token'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

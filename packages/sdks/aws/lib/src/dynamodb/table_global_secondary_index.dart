@@ -7,25 +7,25 @@ import 'table_global_secondary_index_warm_throughput.dart';
 
 class TableGlobalSecondaryIndex {
   /// Name of the hash key in the index; must be defined as an attribute in the resource. Mutually exclusive with `keySchema`. Use `keySchema` instead.
-  final pulumi.Input<String>? hashKey;
+  final pulumi.Input<String?>? hashKey;
   /// Configuration block(s) for the key schema. Mutually exclusive with `hashKey` and `rangeKey`. Required if `hashKey` is not specified. Supports multi-attribute keys for the [Multi-Attribute Keys design pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.DesignPattern.MultiAttributeKeys.html). See below.
-  final pulumi.Input<List<TableGlobalSecondaryIndexKeySchema>>? keySchemas;
+  final pulumi.Input<List<TableGlobalSecondaryIndexKeySchema>?>? keySchemas;
   /// Name of the index.
   final pulumi.Input<String> name;
   /// Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
-  final pulumi.Input<List<String>>? nonKeyAttributes;
+  final pulumi.Input<List<String>?>? nonKeyAttributes;
   /// Sets the maximum number of read and write units for the specified on-demand index. See below.
-  final pulumi.Input<TableGlobalSecondaryIndexOnDemandThroughput>? onDemandThroughput;
+  final pulumi.Input<TableGlobalSecondaryIndexOnDemandThroughput?>? onDemandThroughput;
   /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects into the index only the table and index hashKey and sortKey attributes, `INCLUDE` projects into the index all of the attributes that are defined in `nonKeyAttributes` in addition to the attributes that `KEYS_ONLY` project.
   final pulumi.Input<String> projectionType;
   /// Name of the range key; must be defined as an attribute in the resource. Mutually exclusive with `keySchema`. Use `keySchema` instead.
-  final pulumi.Input<String>? rangeKey;
+  final pulumi.Input<String?>? rangeKey;
   /// Number of read units for this index. Must be set if billingMode is set to PROVISIONED.
-  final pulumi.Input<int>? readCapacity;
+  final pulumi.Input<int?>? readCapacity;
   /// Sets the number of warm read and write units for this index. See below.
-  final pulumi.Input<TableGlobalSecondaryIndexWarmThroughput>? warmThroughput;
+  final pulumi.Input<TableGlobalSecondaryIndexWarmThroughput?>? warmThroughput;
   /// Number of write units for this index. Must be set if billingMode is set to PROVISIONED.
-  final pulumi.Input<int>? writeCapacity;
+  final pulumi.Input<int?>? writeCapacity;
 
   /// Creates a new [TableGlobalSecondaryIndex].
   /// [hashKey] Name of the hash key in the index; must be defined as an attribute in the resource. Mutually exclusive with `keySchema`. Use `keySchema` instead.
@@ -75,9 +75,9 @@ class TableGlobalSecondaryIndex {
       onDemandThroughput: (() { final guardedValue = map['onDemandThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableGlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projectionType: pulumi.Input.fromValue(map['projectionType'] as String),
       rangeKey: (() { final guardedValue = map['rangeKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       warmThroughput: (() { final guardedValue = map['warmThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableGlobalSecondaryIndexWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

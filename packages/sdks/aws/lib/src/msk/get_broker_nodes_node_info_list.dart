@@ -9,7 +9,7 @@ class GetBrokerNodesNodeInfoList {
   final pulumi.Input<double> brokerId;
   /// Client subnet to which this broker node belongs
   final pulumi.Input<String> clientSubnet;
-  /// The client virtual private cloud (VPC) IP address
+  /// Client VPC IP address
   final pulumi.Input<String> clientVpcIpAddress;
   /// Set of endpoints for accessing the broker. This does not include ports
   final pulumi.Input<List<String>> endpoints;
@@ -20,7 +20,7 @@ class GetBrokerNodesNodeInfoList {
   /// [attachedEniId] Attached elastic network interface of the broker
   /// [brokerId] ID of the broker
   /// [clientSubnet] Client subnet to which this broker node belongs
-  /// [clientVpcIpAddress] The client virtual private cloud (VPC) IP address
+  /// [clientVpcIpAddress] Client VPC IP address
   /// [endpoints] Set of endpoints for accessing the broker. This does not include ports
   /// [nodeArn] ARN of the node
   const GetBrokerNodesNodeInfoList({
@@ -46,7 +46,7 @@ class GetBrokerNodesNodeInfoList {
   factory GetBrokerNodesNodeInfoList.fromMap(Map<String, dynamic> map) {
     return GetBrokerNodesNodeInfoList(
       attachedEniId: pulumi.Input.fromValue(map['attachedEniId'] as String),
-      brokerId: pulumi.Input.fromValue(map['brokerId'] as double),
+      brokerId: pulumi.Input.fromValue((map['brokerId'] as num).toDouble()),
       clientSubnet: pulumi.Input.fromValue(map['clientSubnet'] as String),
       clientVpcIpAddress: pulumi.Input.fromValue(map['clientVpcIpAddress'] as String),
       endpoints: pulumi.Input.fromValue((map['endpoints'] as List).cast<String>()),

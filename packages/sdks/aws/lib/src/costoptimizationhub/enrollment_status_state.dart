@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EnrollmentStatus resources.
 class EnrollmentStatusState {
   /// Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
-  final pulumi.Input<bool>? includeMemberAccounts;
+  final pulumi.Input<bool?>? includeMemberAccounts;
   /// Status of enrollment. When the resource is present in Terraform, its status will always be `Active`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [EnrollmentStatusState].
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.

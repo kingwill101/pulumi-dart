@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagegateway_get_local_disk_get_local_disk_args_doc}
 class GetLocalDiskArgs {
   /// Device node of the local disk to retrieve. For example, `/dev/sdb`.
-  final pulumi.Input<String>? diskNode;
+  final pulumi.Input<String?>? diskNode;
   /// Device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
-  final pulumi.Input<String>? diskPath;
+  final pulumi.Input<String?>? diskPath;
   /// ARN of the gateway.
   final pulumi.Input<String> gatewayArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetLocalDiskArgs].
   /// [diskNode] Device node of the local disk to retrieve. For example, `/dev/sdb`.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_elasticsearch_domain_policy_domain_policy_args_doc}
 class DomainPolicyArgs {
   /// IAM policy document specifying the access policies for the domain
-  final pulumi.Input<String> accessPolicies;
+  final pulumi.Input<dynamic> accessPolicies;
   /// Name of the domain.
   final pulumi.Input<String> domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainPolicyArgs].
   /// [accessPolicies] IAM policy document specifying the access policies for the domain
@@ -34,7 +34,7 @@ class DomainPolicyArgs {
 
   factory DomainPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DomainPolicyArgs(
-      accessPolicies: pulumi.Input.fromValue(map['accessPolicies'] as String),
+      accessPolicies: pulumi.Input.fromValue(map['accessPolicies']),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

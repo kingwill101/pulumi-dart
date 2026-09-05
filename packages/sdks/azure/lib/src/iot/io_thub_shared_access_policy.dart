@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubSharedAccessPolicy {
   /// The name of the shared access policy.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The permissions assigned to the shared access policy.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// The primary key.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The secondary key.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [IoTHubSharedAccessPolicy].
   /// [keyName] The name of the shared access policy.

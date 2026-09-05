@@ -150,7 +150,7 @@ class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
           'aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     contactFlowId = registerOutput<String>('contactFlowId');
     instanceId = registerOutput<String>('instanceId');
@@ -163,11 +163,12 @@ class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PhoneNumberContactFlowAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PhoneNumberContactFlowAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -181,6 +182,21 @@ class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    contactFlowId = registerOutput<String>('contactFlowId');
+    instanceId = registerOutput<String>('instanceId');
+    phoneNumberId = registerOutput<String>('phoneNumberId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PhoneNumberContactFlowAssociation] resource.
+  PhoneNumberContactFlowAssociation.reference(String urn)
+    : super(
+        'aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     contactFlowId = registerOutput<String>('contactFlowId');
     instanceId = registerOutput<String>('instanceId');
     phoneNumberId = registerOutput<String>('phoneNumberId');

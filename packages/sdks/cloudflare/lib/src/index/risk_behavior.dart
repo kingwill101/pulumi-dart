@@ -172,7 +172,7 @@ class RiskBehavior extends pulumi.CustomResource {
           'cloudflare:index/riskBehavior:RiskBehavior',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     behaviors = registerOutput<Map<String, RiskBehaviorBehaviors>>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RiskBehaviorBehaviors>(guardedValue, (value) => RiskBehaviorBehaviors.fromMap((value as Map).cast<String, dynamic>())); });

@@ -12,33 +12,33 @@ class FileSystemState {
   /// An `encryptionKey` block as defined below.
   ///
   /// &gt; **Note:** Removing `encryptionKey` forces a new resource to be created.
-  final pulumi.Input<FileSystemEncryptionKey>? encryptionKey;
+  final pulumi.Input<FileSystemEncryptionKey?>? encryptionKey;
   /// A `hsmSetting` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<FileSystemHsmSetting>? hsmSetting;
+  final pulumi.Input<FileSystemHsmSetting?>? hsmSetting;
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<FileSystemIdentity>? identity;
+  final pulumi.Input<FileSystemIdentity?>? identity;
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `maintenanceWindow` block as defined below.
-  final pulumi.Input<FileSystemMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<FileSystemMaintenanceWindow?>? maintenanceWindow;
   /// IP Address of Managed Lustre File System Services.
-  final pulumi.Input<String>? mgsAddress;
+  final pulumi.Input<String?>? mgsAddress;
   /// The name which should be used for this Azure Managed Lustre File System. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `rootSquash` block as defined below.
-  final pulumi.Input<FileSystemRootSquash>? rootSquash;
+  final pulumi.Input<FileSystemRootSquash?>? rootSquash;
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `skuName` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
-  final pulumi.Input<int>? storageCapacityInTb;
+  final pulumi.Input<int?>? storageCapacityInTb;
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A mapping of tags which should be assigned to the Azure Managed Lustre File System.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [FileSystemState].
   /// [encryptionKey] An `encryptionKey` block as defined below.
@@ -103,7 +103,7 @@ class FileSystemState {
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileSystemRootSquash.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageCapacityInTb: (() { final guardedValue = map['storageCapacityInTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageCapacityInTb: (() { final guardedValue = map['storageCapacityInTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

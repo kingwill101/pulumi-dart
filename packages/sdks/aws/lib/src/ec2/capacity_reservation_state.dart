@@ -5,39 +5,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CapacityReservation resources.
 class CapacityReservationState {
   /// The ARN of the Capacity Reservation.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The Availability Zone in which to create the Capacity Reservation.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Indicates whether the Capacity Reservation supports EBS-optimized instances.
-  final pulumi.Input<bool>? ebsOptimized;
+  final pulumi.Input<bool?>? ebsOptimized;
   /// The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity is released and you can no longer launch instances into it. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// Indicates the way in which the Capacity Reservation ends. Specify either `unlimited` or `limited`.
-  final pulumi.Input<String>? endDateType;
+  final pulumi.Input<String?>? endDateType;
   /// Indicates whether the Capacity Reservation supports instances with temporary, block-level storage.
-  final pulumi.Input<bool>? ephemeralStorage;
+  final pulumi.Input<bool?>? ephemeralStorage;
   /// The number of instances for which to reserve capacity.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Indicates the type of instance launches that the Capacity Reservation accepts. Specify either `open` or `targeted`.
-  final pulumi.Input<String>? instanceMatchCriteria;
+  final pulumi.Input<String?>? instanceMatchCriteria;
   /// The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
-  final pulumi.Input<String>? instancePlatform;
+  final pulumi.Input<dynamic>? instancePlatform;
   /// The instance type for which to reserve capacity.
-  final pulumi.Input<String>? instanceType;
-  /// The Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<dynamic>? instanceType;
+  /// ARN of the Outpost on which to create the Capacity Reservation.
+  final pulumi.Input<String?>? outpostArn;
   /// The ID of the AWS account that owns the Capacity Reservation.
-  final pulumi.Input<String>? ownerId;
-  /// The Amazon Resource Name (ARN) of the cluster placement group in which to create the Capacity Reservation.
-  final pulumi.Input<String>? placementGroupArn;
+  final pulumi.Input<String?>? ownerId;
+  /// ARN of the cluster placement group in which to create the Capacity Reservation.
+  final pulumi.Input<String?>? placementGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
-  final pulumi.Input<String>? tenancy;
+  final pulumi.Input<dynamic>? tenancy;
 
   /// Creates a new [CapacityReservationState].
   /// [arn] The ARN of the Capacity Reservation.
@@ -50,9 +50,9 @@ class CapacityReservationState {
   /// [instanceMatchCriteria] Indicates the type of instance launches that the Capacity Reservation accepts. Specify either `open` or `targeted`.
   /// [instancePlatform] The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
   /// [instanceType] The instance type for which to reserve capacity.
-  /// [outpostArn] The Amazon Resource Name (ARN) of the Outpost on which to create the Capacity Reservation.
+  /// [outpostArn] ARN of the Outpost on which to create the Capacity Reservation.
   /// [ownerId] The ID of the AWS account that owns the Capacity Reservation.
-  /// [placementGroupArn] The Amazon Resource Name (ARN) of the cluster placement group in which to create the Capacity Reservation.
+  /// [placementGroupArn] ARN of the cluster placement group in which to create the Capacity Reservation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block
@@ -107,17 +107,17 @@ class CapacityReservationState {
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endDateType: (() { final guardedValue = map['endDateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ephemeralStorage: (() { final guardedValue = map['ephemeralStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceMatchCriteria: (() { final guardedValue = map['instanceMatchCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instancePlatform: (() { final guardedValue = map['instancePlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instancePlatform: (() { final guardedValue = map['instancePlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       outpostArn: (() { final guardedValue = map['outpostArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroupArn: (() { final guardedValue = map['placementGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      tenancy: (() { final guardedValue = map['tenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenancy: (() { final guardedValue = map['tenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

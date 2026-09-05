@@ -1,9 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'io_thub_args.dart';
 import 'io_thub_cloud_to_device.dart';
+import 'io_thub_endpoint.dart';
+import 'io_thub_enrichment.dart';
 import 'io_thub_fallback_route.dart';
 import 'io_thub_file_upload.dart';
 import 'io_thub_identity.dart';
+import 'io_thub_network_rule_set.dart';
+import 'io_thub_route.dart';
+import 'io_thub_shared_access_policy.dart';
 import 'io_thub_sku.dart';
 import 'io_thub_state.dart';
 
@@ -416,7 +421,7 @@ import 'io_thub_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("example-eventhub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -866,8 +871,8 @@ import 'io_thub_state.dart';
 class IoTHub extends pulumi.CustomResource {
   late final pulumi.Output<IoTHubCloudToDevice> cloudToDevice;
   /// An `endpoint` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
-  late final pulumi.Output<List<Map<String, dynamic>>> enrichments;
+  late final pulumi.Output<List<IoTHubEndpoint>> endpoints;
+  late final pulumi.Output<List<IoTHubEnrichment>> enrichments;
   /// The EventHub compatible endpoint for events data
   late final pulumi.Output<String> eventHubEventsEndpoint;
   /// The EventHub namespace for events data
@@ -900,13 +905,13 @@ class IoTHub extends pulumi.CustomResource {
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A `networkRuleSet` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleSets;
+  late final pulumi.Output<List<IoTHubNetworkRuleSet>?> networkRuleSets;
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<IoTHubRoute>> routes;
   /// One or more `sharedAccessPolicy` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> sharedAccessPolicies;
+  late final pulumi.Output<List<IoTHubSharedAccessPolicy>> sharedAccessPolicies;
   /// A `sku` block as defined below.
   late final pulumi.Output<IoTHubSku> sku;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -924,11 +929,11 @@ class IoTHub extends pulumi.CustomResource {
           'azure:iot/ioTHub:IoTHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
-    enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
+    endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEndpoint>(guardedValue, (value) => IoTHubEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    enrichments = registerOutput<List<IoTHubEnrichment>>('enrichments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEnrichment>(guardedValue, (value) => IoTHubEnrichment.fromMap((value as Map).cast<String, dynamic>())); });
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
     eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
     eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
@@ -944,13 +949,13 @@ class IoTHub extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>('networkRuleSets');
+    networkRuleSets = registerOutput<List<IoTHubNetworkRuleSet>?>('networkRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubNetworkRuleSet>(guardedValue, (value) => IoTHubNetworkRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>('sharedAccessPolicies');
+    routes = registerOutput<List<IoTHubRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubRoute>(guardedValue, (value) => IoTHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    sharedAccessPolicies = registerOutput<List<IoTHubSharedAccessPolicy>>('sharedAccessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubSharedAccessPolicy>(guardedValue, (value) => IoTHubSharedAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<IoTHubSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -959,11 +964,12 @@ class IoTHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IoTHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IoTHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -978,8 +984,8 @@ class IoTHub extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
-    enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
+    endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEndpoint>(guardedValue, (value) => IoTHubEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    enrichments = registerOutput<List<IoTHubEnrichment>>('enrichments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEnrichment>(guardedValue, (value) => IoTHubEnrichment.fromMap((value as Map).cast<String, dynamic>())); });
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
     eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
     eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
@@ -995,13 +1001,50 @@ class IoTHub extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSets = registerOutput<List<Map<String, dynamic>>?>('networkRuleSets');
+    networkRuleSets = registerOutput<List<IoTHubNetworkRuleSet>?>('networkRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubNetworkRuleSet>(guardedValue, (value) => IoTHubNetworkRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>('sharedAccessPolicies');
+    routes = registerOutput<List<IoTHubRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubRoute>(guardedValue, (value) => IoTHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    sharedAccessPolicies = registerOutput<List<IoTHubSharedAccessPolicy>>('sharedAccessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubSharedAccessPolicy>(guardedValue, (value) => IoTHubSharedAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<IoTHubSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IoTHub] resource.
+  IoTHub.reference(String urn)
+    : super(
+        'azure:iot/ioTHub:IoTHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEndpoint>(guardedValue, (value) => IoTHubEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    enrichments = registerOutput<List<IoTHubEnrichment>>('enrichments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEnrichment>(guardedValue, (value) => IoTHubEnrichment.fromMap((value as Map).cast<String, dynamic>())); });
+    eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
+    eventHubEventsNamespace = registerOutput<String>('eventHubEventsNamespace');
+    eventHubEventsPath = registerOutput<String>('eventHubEventsPath');
+    eventHubOperationsEndpoint = registerOutput<String>('eventHubOperationsEndpoint');
+    eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
+    eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
+    eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFallbackRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubFileUpload.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<IoTHubIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    networkRuleSets = registerOutput<List<IoTHubNetworkRuleSet>?>('networkRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubNetworkRuleSet>(guardedValue, (value) => IoTHubNetworkRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<IoTHubRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubRoute>(guardedValue, (value) => IoTHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    sharedAccessPolicies = registerOutput<List<IoTHubSharedAccessPolicy>>('sharedAccessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubSharedAccessPolicy>(guardedValue, (value) => IoTHubSharedAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<IoTHubSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

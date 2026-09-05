@@ -4,62 +4,62 @@
 /// Result data returned by getDnsNamespace.
 class GetDnsNamespaceResult {
   /// ARN of the namespace.
-  final String arn;
+  final String? arn;
   /// Description of the namespace.
-  final String description;
+  final String? description;
   /// ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
-  final String hostedZone;
+  final String? hostedZone;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
   /// Map of tags for the resource.
-  final Map<String, String> tags;
-  final String type;
+  final Map<String, String>? tags;
+  final String? type;
 
   /// Creates a new [GetDnsNamespaceResult].
   /// [arn] ARN of the namespace.
   /// [description] Description of the namespace.
   /// [hostedZone] ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   /// [tags] Map of tags for the resource.
-  /// [type] Required.
+  /// [type] Optional.
   const GetDnsNamespaceResult({
-    required this.arn,
-    required this.description,
-    required this.hostedZone,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.tags,
-    required this.type,
+    this.arn,
+    this.description,
+    this.hostedZone,
+    this.id,
+    this.name,
+    this.region,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'hostedZone': hostedZone,
-      'id': id,
-      'name': name,
-      'region': region,
-      'tags': tags,
-      'type': type,
+      'arn': ?arn,
+      'description': ?description,
+      'hostedZone': ?hostedZone,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+      'type': ?type,
     };
   }
 
   factory GetDnsNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetDnsNamespaceResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      hostedZone: map['hostedZone'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostedZone: (() { final guardedValue = map['hostedZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

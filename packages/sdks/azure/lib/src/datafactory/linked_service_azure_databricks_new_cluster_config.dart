@@ -6,23 +6,23 @@ class LinkedServiceAzureDatabricksNewClusterConfig {
   /// Spark version of a the cluster.
   final pulumi.Input<String> clusterVersion;
   /// Tags for the cluster resource.
-  final pulumi.Input<Map<String, String>>? customTags;
+  final pulumi.Input<Map<String, String>?>? customTags;
   /// Driver node type for the cluster.
-  final pulumi.Input<String>? driverNodeType;
+  final pulumi.Input<String?>? driverNodeType;
   /// User defined initialization scripts for the cluster.
-  final pulumi.Input<List<String>>? initScripts;
+  final pulumi.Input<List<String>?>? initScripts;
   /// Location to deliver Spark driver, worker, and event logs.
-  final pulumi.Input<String>? logDestination;
+  final pulumi.Input<String?>? logDestination;
   /// Specifies the maximum number of worker nodes. It should be between 1 and 25000.
-  final pulumi.Input<int>? maxNumberOfWorkers;
+  final pulumi.Input<int?>? maxNumberOfWorkers;
   /// Specifies the minimum number of worker nodes. It should be between 1 and 25000. It defaults to `1`.
-  final pulumi.Input<int>? minNumberOfWorkers;
+  final pulumi.Input<int?>? minNumberOfWorkers;
   /// Node type for the new cluster.
   final pulumi.Input<String> nodeType;
   /// User-specified Spark configuration variables key-value pairs.
-  final pulumi.Input<Map<String, String>>? sparkConfig;
+  final pulumi.Input<Map<String, String>?>? sparkConfig;
   /// User-specified Spark environment variables key-value pairs.
-  final pulumi.Input<Map<String, String>>? sparkEnvironmentVariables;
+  final pulumi.Input<Map<String, String>?>? sparkEnvironmentVariables;
 
   /// Creates a new [LinkedServiceAzureDatabricksNewClusterConfig].
   /// [clusterVersion] Spark version of a the cluster.
@@ -70,8 +70,8 @@ class LinkedServiceAzureDatabricksNewClusterConfig {
       driverNodeType: (() { final guardedValue = map['driverNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       initScripts: (() { final guardedValue = map['initScripts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       logDestination: (() { final guardedValue = map['logDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
       sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       sparkEnvironmentVariables: (() { final guardedValue = map['sparkEnvironmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

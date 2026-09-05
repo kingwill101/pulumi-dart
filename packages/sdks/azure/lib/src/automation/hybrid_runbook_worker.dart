@@ -308,7 +308,7 @@ import 'hybrid_runbook_worker_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("vm-example"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -335,7 +335,7 @@ import 'hybrid_runbook_worker_state.dart';
 /// 				StorageAccountType: pulumi.String("Standard_LRS"),
 /// 			},
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -345,7 +345,7 @@ import 'hybrid_runbook_worker_state.dart';
 /// 			ResourceGroupName:     example.Name,
 /// 			AutomationAccountName: exampleAccount.Name,
 /// 			WorkerGroupName:       exampleHybridRunbookWorkerGroup.Name,
-/// 			VmResourceId:          exampleLinuxVirtualMachine.ID(),
+/// 			VmResourceId:          exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			WorkerId:              pulumi.String("00000000-0000-0000-0000-000000000000"),
 /// 		})
 /// 		if err != nil {
@@ -674,7 +674,7 @@ class HybridRunbookWorker extends pulumi.CustomResource {
           'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     ip = registerOutput<String>('ip');
@@ -693,11 +693,12 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HybridRunbookWorkerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HybridRunbookWorker._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -711,6 +712,27 @@ class HybridRunbookWorker extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    ip = registerOutput<String>('ip');
+    lastSeenDateTime = registerOutput<String>('lastSeenDateTime');
+    registrationDateTime = registerOutput<String>('registrationDateTime');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    vmResourceId = registerOutput<String>('vmResourceId');
+    workerGroupName = registerOutput<String>('workerGroupName');
+    workerId = registerOutput<String>('workerId');
+    workerName = registerOutput<String>('workerName');
+    workerType = registerOutput<String>('workerType');
+  }
+
+  /// Creates a typed reference to an existing [HybridRunbookWorker] resource.
+  HybridRunbookWorker.reference(String urn)
+    : super(
+        'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     ip = registerOutput<String>('ip');
     lastSeenDateTime = registerOutput<String>('lastSeenDateTime');

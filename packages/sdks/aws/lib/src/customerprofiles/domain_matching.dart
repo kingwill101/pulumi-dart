@@ -7,13 +7,13 @@ import 'domain_matching_job_schedule.dart';
 
 class DomainMatching {
   /// A block that specifies the configuration about the auto-merging process. Documented below.
-  final pulumi.Input<DomainMatchingAutoMerging>? autoMerging;
+  final pulumi.Input<DomainMatchingAutoMerging?>? autoMerging;
   /// The flag that enables the matching process of duplicate profiles.
   final pulumi.Input<bool> enabled;
   /// A block that specifies the configuration for exporting Identity Resolution results. Documented below.
-  final pulumi.Input<DomainMatchingExportingConfig>? exportingConfig;
+  final pulumi.Input<DomainMatchingExportingConfig?>? exportingConfig;
   /// A block that specifies the day and time when you want to start the Identity Resolution Job every week. Documented below.
-  final pulumi.Input<DomainMatchingJobSchedule>? jobSchedule;
+  final pulumi.Input<DomainMatchingJobSchedule?>? jobSchedule;
 
   /// Creates a new [DomainMatching].
   /// [autoMerging] A block that specifies the configuration about the auto-merging process. Documented below.

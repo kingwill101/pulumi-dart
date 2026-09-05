@@ -7,19 +7,19 @@ import 'backup_policy_kubernetes_cluster_retention_rule.dart';
 /// Input properties used for looking up and filtering BackupPolicyKubernetesCluster resources.
 class BackupPolicyKubernetesClusterState {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? backupRepeatingTimeIntervals;
+  final pulumi.Input<List<String>?>? backupRepeatingTimeIntervals;
   /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupPolicyKubernetesClusterDefaultRetentionRule>? defaultRetentionRule;
+  final pulumi.Input<BackupPolicyKubernetesClusterDefaultRetentionRule?>? defaultRetentionRule;
   /// The name which should be used for the Backup Policy Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyKubernetesClusterRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyKubernetesClusterRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The name of the Backup Vault where the Backup Policy Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultName;
+  final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [BackupPolicyKubernetesClusterState].
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval. Changing this forces a new resource to be created.

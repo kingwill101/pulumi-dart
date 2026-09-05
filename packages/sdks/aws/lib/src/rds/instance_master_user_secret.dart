@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMasterUserSecret {
   /// The ARN for the KMS encryption key. If creating an
   /// encrypted replica, set this to the destination KMS ARN.
-  final pulumi.Input<String>? kmsKeyId;
-  /// The Amazon Resource Name (ARN) of the secret.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? kmsKeyId;
+  /// ARN of the secret.
+  final pulumi.Input<String?>? secretArn;
   /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  final pulumi.Input<String>? secretStatus;
+  final pulumi.Input<String?>? secretStatus;
 
   /// Creates a new [InstanceMasterUserSecret].
   /// [kmsKeyId] The ARN for the KMS encryption key. If creating an
-  /// [secretArn] The Amazon Resource Name (ARN) of the secret.
+  /// [secretArn] ARN of the secret.
   /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   const InstanceMasterUserSecret({
     this.kmsKeyId,

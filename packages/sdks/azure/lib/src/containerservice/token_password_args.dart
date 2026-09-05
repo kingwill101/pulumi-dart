@@ -14,7 +14,7 @@ class TokenPasswordArgs {
   /// One `password` block as defined below.
   final pulumi.Input<TokenPasswordPassword1> password1;
   /// One `password` block as defined below.
-  final pulumi.Input<TokenPasswordPassword2>? password2;
+  final pulumi.Input<TokenPasswordPassword2?>? password2;
 
   /// Creates a new [TokenPasswordArgs].
   /// [containerRegistryTokenId] The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.

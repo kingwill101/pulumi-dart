@@ -16,42 +16,42 @@ import 'application_scheduler_configuration.dart';
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// The CPU architecture of an application. Valid values are `ARM64` or `X86_64`. Default value is `X86_64`.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// ARN of the cluster.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The configuration for an application to automatically start on job submission.
-  final pulumi.Input<ApplicationAutoStartConfiguration>? autoStartConfiguration;
+  final pulumi.Input<ApplicationAutoStartConfiguration?>? autoStartConfiguration;
   /// The configuration for an application to automatically stop after a certain amount of time being idle.
-  final pulumi.Input<ApplicationAutoStopConfiguration>? autoStopConfiguration;
+  final pulumi.Input<ApplicationAutoStopConfiguration?>? autoStopConfiguration;
   /// The image configuration applied to all worker types.
-  final pulumi.Input<ApplicationImageConfiguration>? imageConfiguration;
+  final pulumi.Input<ApplicationImageConfiguration?>? imageConfiguration;
   /// The capacity to initialize when the application is created.
-  final pulumi.Input<List<ApplicationInitialCapacity>>? initialCapacities;
+  final pulumi.Input<List<ApplicationInitialCapacity>?>? initialCapacities;
   /// Enables the interactive use cases to use when running an application.
-  final pulumi.Input<ApplicationInteractiveConfiguration>? interactiveConfiguration;
-  final pulumi.Input<ApplicationJobLevelCostAllocationConfiguration>? jobLevelCostAllocationConfiguration;
+  final pulumi.Input<ApplicationInteractiveConfiguration?>? interactiveConfiguration;
+  final pulumi.Input<ApplicationJobLevelCostAllocationConfiguration?>? jobLevelCostAllocationConfiguration;
   /// The maximum capacity to allocate when the application is created. This is cumulative across all workers at any given point in time, not just when an application is created. No new resources will be created once any one of the defined limits is hit.
-  final pulumi.Input<ApplicationMaximumCapacity>? maximumCapacity;
+  final pulumi.Input<ApplicationMaximumCapacity?>? maximumCapacity;
   /// The configuration setting for monitoring.
-  final pulumi.Input<ApplicationMonitoringConfiguration>? monitoringConfiguration;
+  final pulumi.Input<ApplicationMonitoringConfiguration?>? monitoringConfiguration;
   /// The name of the application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network configuration for customer VPC connectivity.
-  final pulumi.Input<ApplicationNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<ApplicationNetworkConfiguration?>? networkConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The EMR release version associated with the application.
-  final pulumi.Input<String>? releaseLabel;
+  final pulumi.Input<String?>? releaseLabel;
   /// A configuration specification to be used when provisioning an application. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file.
-  final pulumi.Input<List<ApplicationRuntimeConfiguration>>? runtimeConfigurations;
+  final pulumi.Input<List<ApplicationRuntimeConfiguration>?>? runtimeConfigurations;
   /// Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See schedulerConfiguration Arguments below.
-  final pulumi.Input<ApplicationSchedulerConfiguration>? schedulerConfiguration;
+  final pulumi.Input<ApplicationSchedulerConfiguration?>? schedulerConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The type of application you want to start, such as `spark` or `hive`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ApplicationState].
   /// [architecture] The CPU architecture of an application. Valid values are `ARM64` or `X86_64`. Default value is `X86_64`.

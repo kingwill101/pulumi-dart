@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_predictive_scaling_policy_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query_metric_stat.dart';
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery {
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   final pulumi.Input<String> id;
-  final pulumi.Input<String>? label;
-  final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat>? metricStat;
-  final pulumi.Input<bool>? returnData;
+  final pulumi.Input<String?>? label;
+  final pulumi.Input<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat?>? metricStat;
+  final pulumi.Input<bool?>? returnData;
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery].
   /// [expression] Optional.

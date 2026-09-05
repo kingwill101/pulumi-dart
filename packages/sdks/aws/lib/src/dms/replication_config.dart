@@ -15,6 +15,12 @@ import 'replication_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const name = new aws.dms.ReplicationConfig("name", {
+///     computeConfig: {
+///         replicationSubnetGroupId: _default.replicationSubnetGroupId,
+///         maxCapacityUnits: 64,
+///         minCapacityUnits: 2,
+///         preferredMaintenanceWindow: "sun:23:45-mon:00:30",
+///     },
 ///     replicationConfigIdentifier: "test-dms-serverless-replication-tf",
 ///     resourceIdentifier: "test-dms-serverless-replication-tf",
 ///     replicationType: "cdc",
@@ -25,12 +31,6 @@ import 'replication_config_state.dart';
 ///   }
 /// `,
 ///     startReplication: true,
-///     computeConfig: {
-///         replicationSubnetGroupId: _default.replicationSubnetGroupId,
-///         maxCapacityUnits: 64,
-///         minCapacityUnits: 2,
-///         preferredMaintenanceWindow: "sun:23:45-mon:00:30",
-///     },
 /// });
 /// ```
 /// ```python
@@ -38,6 +38,12 @@ import 'replication_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// name = aws.dms.ReplicationConfig("name",
+///     compute_config={
+///         "replication_subnet_group_id": default["replicationSubnetGroupId"],
+///         "max_capacity_units": 64,
+///         "min_capacity_units": 2,
+///         "preferred_maintenance_window": "sun:23:45-mon:00:30",
+///     },
 ///     replication_config_identifier="test-dms-serverless-replication-tf",
 ///     resource_identifier="test-dms-serverless-replication-tf",
 ///     replication_type="cdc",
@@ -47,13 +53,7 @@ import 'replication_config_state.dart';
 ///     \"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"rule-action\":\"include\",\"object-locator\":{\"schema-name\":\"%%\",\"table-name\":\"%%\"}}]
 ///   }
 /// """,
-///     start_replication=True,
-///     compute_config={
-///         "replication_subnet_group_id": default["replicationSubnetGroupId"],
-///         "max_capacity_units": 64,
-///         "min_capacity_units": 2,
-///         "preferred_maintenance_window": "sun:23:45-mon:00:30",
-///     })
+///     start_replication=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -65,6 +65,13 @@ import 'replication_config_state.dart';
 /// {
 ///     var name = new Aws.Dms.ReplicationConfig("name", new()
 ///     {
+///         ComputeConfig = new Aws.Dms.Inputs.ReplicationConfigComputeConfigArgs
+///         {
+///             ReplicationSubnetGroupId = @default.ReplicationSubnetGroupId,
+///             MaxCapacityUnits = 64,
+///             MinCapacityUnits = 2,
+///             PreferredMaintenanceWindow = "sun:23:45-mon:00:30",
+///         },
 ///         ReplicationConfigIdentifier = "test-dms-serverless-replication-tf",
 ///         ResourceIdentifier = "test-dms-serverless-replication-tf",
 ///         ReplicationType = "cdc",
@@ -75,13 +82,6 @@ import 'replication_config_state.dart';
 ///   }
 /// ",
 ///         StartReplication = true,
-///         ComputeConfig = new Aws.Dms.Inputs.ReplicationConfigComputeConfigArgs
-///         {
-///             ReplicationSubnetGroupId = @default.ReplicationSubnetGroupId,
-///             MaxCapacityUnits = 64,
-///             MinCapacityUnits = 2,
-///             PreferredMaintenanceWindow = "sun:23:45-mon:00:30",
-///         },
 ///     });
 ///
 /// });
@@ -97,6 +97,12 @@ import 'replication_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dms.NewReplicationConfig(ctx, "name", &dms.ReplicationConfigArgs{
+/// 			ComputeConfig: &dms.ReplicationConfigComputeConfigArgs{
+/// 				ReplicationSubnetGroupId:   pulumi.Any(_default.ReplicationSubnetGroupId),
+/// 				MaxCapacityUnits:           pulumi.Int(64),
+/// 				MinCapacityUnits:           pulumi.Int(2),
+/// 				PreferredMaintenanceWindow: pulumi.String("sun:23:45-mon:00:30"),
+/// 			},
 /// 			ReplicationConfigIdentifier: pulumi.String("test-dms-serverless-replication-tf"),
 /// 			ResourceIdentifier:          pulumi.String("test-dms-serverless-replication-tf"),
 /// 			ReplicationType:             pulumi.String("cdc"),
@@ -104,12 +110,6 @@ import 'replication_config_state.dart';
 /// 			TargetEndpointArn:           pulumi.Any(target.EndpointArn),
 /// 			TableMappings:               pulumi.String("  {\n    \\\"rules\\\":[{\\\"rule-type\\\":\\\"selection\\\",\\\"rule-id\\\":\\\"1\\\",\\\"rule-name\\\":\\\"1\\\",\\\"rule-action\\\":\\\"include\\\",\\\"object-locator\\\":{\\\"schema-name\\\":\\\"%%\\\",\\\"table-name\\\":\\\"%%\\\"}}]\n  }\n"),
 /// 			StartReplication:            pulumi.Bool(true),
-/// 			ComputeConfig: &dms.ReplicationConfigComputeConfigArgs{
-/// 				ReplicationSubnetGroupId:   pulumi.Any(_default.ReplicationSubnetGroupId),
-/// 				MaxCapacityUnits:           pulumi.Int(64),
-/// 				MinCapacityUnits:           pulumi.Int(2),
-/// 				PreferredMaintenanceWindow: pulumi.String("sun:23:45-mon:00:30"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -128,6 +128,12 @@ import 'replication_config_state.dart';
 /// }
 ///
 /// resource "aws_dms_replicationconfig" "name" {
+///   compute_config = {
+///     replication_subnet_group_id  = default.replicationSubnetGroupId
+///     max_capacity_units           = "64"
+///     min_capacity_units           = "2"
+///     preferred_maintenance_window = "sun:23:45-mon:00:30"
+///   }
 ///   replication_config_identifier = "test-dms-serverless-replication-tf"
 ///   resource_identifier           = "test-dms-serverless-replication-tf"
 ///   replication_type              = "cdc"
@@ -135,12 +141,6 @@ import 'replication_config_state.dart';
 ///   target_endpoint_arn           = target.endpointArn
 ///   table_mappings                = "  {\n    \\\"rules\\\":[{\\\"rule-type\\\":\\\"selection\\\",\\\"rule-id\\\":\\\"1\\\",\\\"rule-name\\\":\\\"1\\\",\\\"rule-action\\\":\\\"include\\\",\\\"object-locator\\\":{\\\"schema-name\\\":\\\"%%\\\",\\\"table-name\\\":\\\"%%\\\"}}]\n  }\n"
 ///   start_replication             = true
-///   compute_config = {
-///     replication_subnet_group_id  = default.replicationSubnetGroupId
-///     max_capacity_units           = "64"
-///     min_capacity_units           = "2"
-///     preferred_maintenance_window = "sun:23:45-mon:00:30"
-///   }
 /// }
 /// ```
 /// ```java
@@ -166,6 +166,12 @@ import 'replication_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var name = new ReplicationConfig("name", ReplicationConfigArgs.builder()
+///             .computeConfig(ReplicationConfigComputeConfigArgs.builder()
+///                 .replicationSubnetGroupId(default_.replicationSubnetGroupId())
+///                 .maxCapacityUnits(64)
+///                 .minCapacityUnits(2)
+///                 .preferredMaintenanceWindow("sun:23:45-mon:00:30")
+///                 .build())
 ///             .replicationConfigIdentifier("test-dms-serverless-replication-tf")
 ///             .resourceIdentifier("test-dms-serverless-replication-tf")
 ///             .replicationType("cdc")
@@ -177,12 +183,6 @@ import 'replication_config_state.dart';
 ///   }
 ///             """)
 ///             .startReplication(true)
-///             .computeConfig(ReplicationConfigComputeConfigArgs.builder()
-///                 .replicationSubnetGroupId(default_.replicationSubnetGroupId())
-///                 .maxCapacityUnits(64)
-///                 .minCapacityUnits(2)
-///                 .preferredMaintenanceWindow("sun:23:45-mon:00:30")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -193,6 +193,11 @@ import 'replication_config_state.dart';
 ///   name:
 ///     type: aws:dms:ReplicationConfig
 ///     properties:
+///       computeConfig:
+///         replicationSubnetGroupId: ${default.replicationSubnetGroupId}
+///         maxCapacityUnits: '64'
+///         minCapacityUnits: '2'
+///         preferredMaintenanceWindow: sun:23:45-mon:00:30
 ///       replicationConfigIdentifier: test-dms-serverless-replication-tf
 ///       resourceIdentifier: test-dms-serverless-replication-tf
 ///       replicationType: cdc
@@ -203,11 +208,6 @@ import 'replication_config_state.dart';
 ///             \"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"rule-action\":\"include\",\"object-locator\":{\"schema-name\":\"%%\",\"table-name\":\"%%\"}}]
 ///           }
 ///       startReplication: true
-///       computeConfig:
-///         replicationSubnetGroupId: ${default.replicationSubnetGroupId}
-///         maxCapacityUnits: '64'
-///         minCapacityUnits: '2'
-///         preferredMaintenanceWindow: sun:23:45-mon:00:30
 /// ```
 ///
 ///
@@ -217,7 +217,7 @@ import 'replication_config_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DMS replication configuration.
+/// - `arn` (String) ARN of the DMS replication configuration.
 ///
 ///
 /// Using `pulumi import`, import a replication config using the `arn`. For example:
@@ -226,7 +226,7 @@ import 'replication_config_state.dart';
 /// $ pulumi import aws:dms/replicationConfig:ReplicationConfig example arn:aws:dms:us-east-1:123456789012:replication-config:UX6OL6MHMMJKFFOXE3H7LLJCMEKBDUG4ZV7DRSI
 /// ```
 class ReplicationConfig extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the serverless replication config.
+  /// ARN for the serverless replication config.
   late final pulumi.Output<String> arn;
   /// Configuration block for provisioning an DMS Serverless replication.
   late final pulumi.Output<ReplicationConfigComputeConfig> computeConfig;
@@ -238,9 +238,9 @@ class ReplicationConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> replicationSettings;
   /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
   late final pulumi.Output<String> replicationType;
-  /// Unique value or name that you set for a given resource that can be used to construct an Amazon Resource Name (ARN) for that resource. For more information, see [Fine-grained access control using resource names and tags](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.FineGrainedAccess)
+  /// Unique value or name that you set for a given resource that can be used to construct an ARN for that resource. For more information, see [Fine-grained access control using resource names and tags](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.FineGrainedAccess)
   late final pulumi.Output<String> resourceIdentifier;
-  /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
+  /// ARN string that uniquely identifies the source endpoint.
   late final pulumi.Output<String> sourceEndpointArn;
   /// Whether to run or stop the serverless replication, default is false.
   late final pulumi.Output<bool?> startReplication;
@@ -252,7 +252,7 @@ class ReplicationConfig extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
+  /// ARN string that uniquely identifies the target endpoint.
   late final pulumi.Output<String> targetEndpointArn;
 
   /// Creates a new [ReplicationConfig].
@@ -267,7 +267,7 @@ class ReplicationConfig extends pulumi.CustomResource {
           'aws:dms/replicationConfig:ReplicationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -280,8 +280,8 @@ class ReplicationConfig extends pulumi.CustomResource {
     startReplication = registerOutput<bool?>('startReplication');
     supplementalSettings = registerOutput<String?>('supplementalSettings');
     tableMappings = registerOutput<String>('tableMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 
@@ -290,11 +290,12 @@ class ReplicationConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -319,8 +320,33 @@ class ReplicationConfig extends pulumi.CustomResource {
     startReplication = registerOutput<bool?>('startReplication');
     supplementalSettings = registerOutput<String?>('supplementalSettings');
     tableMappings = registerOutput<String>('tableMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetEndpointArn = registerOutput<String>('targetEndpointArn');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationConfig] resource.
+  ReplicationConfig.reference(String urn)
+    : super(
+        'aws:dms/replicationConfig:ReplicationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    replicationConfigIdentifier = registerOutput<String>('replicationConfigIdentifier');
+    replicationSettings = registerOutput<String>('replicationSettings');
+    replicationType = registerOutput<String>('replicationType');
+    resourceIdentifier = registerOutput<String>('resourceIdentifier');
+    sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    startReplication = registerOutput<bool?>('startReplication');
+    supplementalSettings = registerOutput<String?>('supplementalSettings');
+    tableMappings = registerOutput<String>('tableMappings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 }

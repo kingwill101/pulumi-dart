@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventDestinationCloudwatchDestination {
-  /// The default value for the event
+  /// Default value for the event
   final pulumi.Input<String> defaultValue;
-  /// The name for the dimension
+  /// Name for the dimension
   final pulumi.Input<String> dimensionName;
-  /// The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
+  /// Source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
   final pulumi.Input<String> valueSource;
 
   /// Creates a new [EventDestinationCloudwatchDestination].
-  /// [defaultValue] The default value for the event
-  /// [dimensionName] The name for the dimension
-  /// [valueSource] The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
+  /// [defaultValue] Default value for the event
+  /// [dimensionName] Name for the dimension
+  /// [valueSource] Source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
   const EventDestinationCloudwatchDestination({
     required this.defaultValue,
     required this.dimensionName,

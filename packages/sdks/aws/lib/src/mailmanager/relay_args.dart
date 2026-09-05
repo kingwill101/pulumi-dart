@@ -9,11 +9,11 @@ import 'relay_authentication.dart';
 /// {@macro pulumi_mailmanager_relay_relay_args_doc}
 class RelayArgs {
   /// Authentication configuration for the relay. See `authentication` Block.
-  final pulumi.Input<RelayAuthentication>? authentication;
+  final pulumi.Input<RelayAuthentication?>? authentication;
   /// Name of the relay.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Hostname of the SMTP server.
   final pulumi.Input<String> serverName;
   /// Port of the SMTP server.
@@ -21,7 +21,7 @@ class RelayArgs {
   /// The following arguments are optional:
   final pulumi.Input<int> serverPort;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RelayArgs].
   /// [authentication] Authentication configuration for the relay. See `authentication` Block.
@@ -56,7 +56,7 @@ class RelayArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      serverPort: pulumi.Input.fromValue(map['serverPort'] as int),
+      serverPort: pulumi.Input.fromValue((map['serverPort'] as num).toInt()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

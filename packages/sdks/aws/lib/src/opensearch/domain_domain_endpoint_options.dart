@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDomainEndpointOptions {
   /// Fully qualified domain for your custom endpoint.
-  final pulumi.Input<String>? customEndpoint;
+  final pulumi.Input<String?>? customEndpoint;
   /// ACM certificate ARN for your custom endpoint.
-  final pulumi.Input<String>? customEndpointCertificateArn;
+  final pulumi.Input<String?>? customEndpointCertificateArn;
   /// Whether to enable custom endpoint for the OpenSearch domain.
-  final pulumi.Input<bool>? customEndpointEnabled;
+  final pulumi.Input<bool?>? customEndpointEnabled;
   /// Whether or not to require HTTPS. Defaults to `true`.
-  final pulumi.Input<bool>? enforceHttps;
+  final pulumi.Input<bool?>? enforceHttps;
   /// Name of the TLS security policy that needs to be applied to the HTTPS endpoint. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainEndpointOptions.html#opensearchservice-Type-DomainEndpointOptions-TLSSecurityPolicy). Pulumi will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<String>? tlsSecurityPolicy;
+  final pulumi.Input<String?>? tlsSecurityPolicy;
 
   /// Creates a new [DomainDomainEndpointOptions].
   /// [customEndpoint] Fully qualified domain for your custom endpoint.

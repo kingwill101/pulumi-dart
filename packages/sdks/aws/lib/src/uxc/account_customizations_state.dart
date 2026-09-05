@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccountCustomizations resources.
 class AccountCustomizationsState {
   /// Color used to identify the account in the AWS Management Console. Valid values are `none`, `red`, `darkBlue`, `lightBlue`, `green`, `yellow`, `orange`, `pink`, `purple`, and `teal`. Defaults to `none`.
-  final pulumi.Input<String>? accountColor;
+  final pulumi.Input<String?>? accountColor;
   /// Set of AWS region codes to display in the console. When omitted or empty, all regions are visible.
-  final pulumi.Input<List<String>>? visibleRegions;
+  final pulumi.Input<List<String>?>? visibleRegions;
   /// Set of AWS service identifiers to display in the console. When omitted or empty, all services are visible.
-  final pulumi.Input<List<String>>? visibleServices;
+  final pulumi.Input<List<String>?>? visibleServices;
 
   /// Creates a new [AccountCustomizationsState].
   /// [accountColor] Color used to identify the account in the AWS Management Console. Valid values are `none`, `red`, `darkBlue`, `lightBlue`, `green`, `yellow`, `orange`, `pink`, `purple`, and `teal`. Defaults to `none`.

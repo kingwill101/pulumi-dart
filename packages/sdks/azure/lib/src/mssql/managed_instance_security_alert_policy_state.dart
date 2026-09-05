@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedInstanceSecurityAlertPolicy resources.
 class ManagedInstanceSecurityAlertPolicyState {
   /// Specifies an array of alerts that are disabled. Possible values are `Sql_Injection`, `Sql_Injection_Vulnerability`, `Access_Anomaly`, `Data_Exfiltration`, `Unsafe_Action` and `Brute_Force`.
-  final pulumi.Input<List<String>>? disabledAlerts;
+  final pulumi.Input<List<String>?>? disabledAlerts;
   /// Boolean flag which specifies if the alert is sent to the account administrators or not. Defaults to `false`.
-  final pulumi.Input<bool>? emailAccountAdminsEnabled;
+  final pulumi.Input<bool?>? emailAccountAdminsEnabled;
   /// Specifies an array of email addresses to which the alert is sent.
-  final pulumi.Input<List<String>>? emailAddresses;
+  final pulumi.Input<List<String>?>? emailAddresses;
   /// Specifies the state of the Security Alert Policy, whether it is enabled or disabled. Possible values are `true`, `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedInstanceName;
+  final pulumi.Input<String?>? managedInstanceName;
   /// The name of the resource group that contains the MS SQL Managed Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
   /// Specifies the identifier key of the Threat Detection audit storage account. This is mandatory when you use `storageEndpoint` to specify a storage account blob endpoint.
   ///
   /// &gt; **Note:** Please note that storage accounts configured with `sharedAccessKeyEnabled = false` cannot be used to configure `azure.mssql.ManagedInstanceSecurityAlertPolicy` with `storageEndpoint` for now.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
-  final pulumi.Input<String>? storageEndpoint;
+  final pulumi.Input<String?>? storageEndpoint;
 
   /// Creates a new [ManagedInstanceSecurityAlertPolicyState].
   /// [disabledAlerts] Specifies an array of alerts that are disabled. Possible values are `Sql_Injection`, `Sql_Injection_Vulnerability`, `Access_Anomaly`, `Data_Exfiltration`, `Unsafe_Action` and `Brute_Force`.
@@ -69,7 +69,7 @@ class ManagedInstanceSecurityAlertPolicyState {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       managedInstanceName: (() { final guardedValue = map['managedInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageAccountAccessKey: (() { final guardedValue = map['storageAccountAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

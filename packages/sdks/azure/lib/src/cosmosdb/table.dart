@@ -210,7 +210,7 @@ class Table extends pulumi.CustomResource {
           'azure:cosmosdb/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<TableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -224,11 +224,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,6 +243,22 @@ class Table extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountName = registerOutput<String>('accountName');
+    autoscaleSettings = registerOutput<TableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    throughput = registerOutput<int>('throughput');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'azure:cosmosdb/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<TableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

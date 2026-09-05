@@ -21,7 +21,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment>> environments;
   /// Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See `ephemeralStorage` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage>> ephemeralStorages;
-  /// Amazon Resource Name (ARN) of the execution role that AWS Batch can assume. For jobs that run on Fargate resources, you must provide an execution role.
+  /// ARN of the execution role that AWS Batch can assume. For jobs that run on Fargate resources, you must provide an execution role.
   final pulumi.Input<String> executionRoleArn;
   /// Platform configuration for jobs that are running on Fargate resources. Jobs that are running on EC2 resources must not specify this parameter. See `fargatePlatformConfiguration` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration>> fargatePlatformConfigurations;
@@ -29,7 +29,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
   final pulumi.Input<String> image;
   /// Instance type to use for a multi-node parallel job.
   final pulumi.Input<String> instanceType;
-  /// Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.
+  /// ARN of the IAM role that the container can assume for AWS permissions.
   final pulumi.Input<String> jobRoleArn;
   /// Linux-specific modifications that are applied to the container. See `linuxParameters` below.
   final pulumi.Input<List<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter>> linuxParameters;
@@ -60,11 +60,11 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
   /// [commands] Command that's passed to the container.
   /// [environments] Environment variables to pass to a container. See `environment` below.
   /// [ephemeralStorages] Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See `ephemeralStorage` below.
-  /// [executionRoleArn] Amazon Resource Name (ARN) of the execution role that AWS Batch can assume. For jobs that run on Fargate resources, you must provide an execution role.
+  /// [executionRoleArn] ARN of the execution role that AWS Batch can assume. For jobs that run on Fargate resources, you must provide an execution role.
   /// [fargatePlatformConfigurations] Platform configuration for jobs that are running on Fargate resources. Jobs that are running on EC2 resources must not specify this parameter. See `fargatePlatformConfiguration` below.
   /// [image] Image used to start a container.
   /// [instanceType] Instance type to use for a multi-node parallel job.
-  /// [jobRoleArn] Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.
+  /// [jobRoleArn] ARN of the IAM role that the container can assume for AWS permissions.
   /// [linuxParameters] Linux-specific modifications that are applied to the container. See `linuxParameters` below.
   /// [logConfigurations] Log configuration specification for the container. See `logConfiguration` below.
   /// [mountPoints] Mount points for data volumes in your container. See `mountPoints` below.

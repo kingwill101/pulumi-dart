@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
   /// The action that changes the rule group from DROP to ALERT . This only applies to managed rule groups.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride].
   /// [action] The action that changes the rule group from DROP to ALERT . This only applies to managed rule groups.

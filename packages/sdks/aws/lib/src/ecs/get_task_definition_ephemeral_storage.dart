@@ -20,7 +20,7 @@ class GetTaskDefinitionEphemeralStorage {
 
   factory GetTaskDefinitionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionEphemeralStorage(
-      sizeInGib: pulumi.Input.fromValue(map['sizeInGib'] as int),
+      sizeInGib: pulumi.Input.fromValue((map['sizeInGib'] as num).toInt()),
     );
   }
 }

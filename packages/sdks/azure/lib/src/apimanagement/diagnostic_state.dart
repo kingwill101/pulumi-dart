@@ -9,33 +9,33 @@ import 'diagnostic_frontend_response.dart';
 /// Input properties used for looking up and filtering Diagnostic resources.
 class DiagnosticState {
   /// Always log errors. Send telemetry if there is an erroneous condition, regardless of sampling settings.
-  final pulumi.Input<bool>? alwaysLogErrors;
+  final pulumi.Input<bool?>? alwaysLogErrors;
   /// The id of the target API Management Logger where the API Management Diagnostic should be saved.
-  final pulumi.Input<String>? apiManagementLoggerId;
+  final pulumi.Input<String?>? apiManagementLoggerId;
   /// The Name of the API Management Service where this Diagnostic should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// A `backendRequest` block as defined below.
-  final pulumi.Input<DiagnosticBackendRequest>? backendRequest;
+  final pulumi.Input<DiagnosticBackendRequest?>? backendRequest;
   /// A `backendResponse` block as defined below.
-  final pulumi.Input<DiagnosticBackendResponse>? backendResponse;
+  final pulumi.Input<DiagnosticBackendResponse?>? backendResponse;
   /// A `frontendRequest` block as defined below.
-  final pulumi.Input<DiagnosticFrontendRequest>? frontendRequest;
+  final pulumi.Input<DiagnosticFrontendRequest?>? frontendRequest;
   /// A `frontendResponse` block as defined below.
-  final pulumi.Input<DiagnosticFrontendResponse>? frontendResponse;
+  final pulumi.Input<DiagnosticFrontendResponse?>? frontendResponse;
   /// The HTTP Correlation Protocol to use. Possible values are `None`, `Legacy` or `W3C`.
-  final pulumi.Input<String>? httpCorrelationProtocol;
+  final pulumi.Input<String?>? httpCorrelationProtocol;
   /// The diagnostic identifier for the API Management Service. At this time the supported values are `applicationinsights` and `azuremonitor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Log client IP address.
-  final pulumi.Input<bool>? logClientIp;
+  final pulumi.Input<bool?>? logClientIp;
   /// The format of the Operation Name for Application Insights telemetries. Possible values are `Name`, and `Url`.
-  final pulumi.Input<String>? operationNameFormat;
+  final pulumi.Input<String?>? operationNameFormat;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Sampling (%). For high traffic APIs, please read this [documentation](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) to understand performance implications and log sampling. Valid values are between `0.0` and `100.0`.
-  final pulumi.Input<double>? samplingPercentage;
+  final pulumi.Input<double?>? samplingPercentage;
   /// Logging verbosity. Possible values are `verbose`, `information` or `error`.
-  final pulumi.Input<String>? verbosity;
+  final pulumi.Input<String?>? verbosity;
 
   /// Creates a new [DiagnosticState].
   /// [alwaysLogErrors] Always log errors. Send telemetry if there is an erroneous condition, regardless of sampling settings.
@@ -102,7 +102,7 @@ class DiagnosticState {
       logClientIp: (() { final guardedValue = map['logClientIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operationNameFormat: (() { final guardedValue = map['operationNameFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       verbosity: (() { final guardedValue = map['verbosity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

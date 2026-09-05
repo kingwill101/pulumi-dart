@@ -169,6 +169,17 @@ Future<GetAppServiceResult> getAppService(
   return GetAppServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetAppServiceResult> getAppServiceOutput(
+  GetAppServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getAppService:getAppService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing App Service Plan (formerly known as a `Server Farm`).
 ///
 /// &gt; **Note:** This data source has been deprecated and will be removed in version 6.0 of the provider. Please use the `azure.appservice.ServicePlan` data source instead.
@@ -308,6 +319,17 @@ Future<GetAppServicePlanResult> getAppServicePlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppServicePlanResult.fromMap(result);
+}
+
+pulumi.Output<GetAppServicePlanResult> getAppServicePlanOutput(
+  GetAppServicePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getAppServicePlan:getAppServicePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServicePlanResult.fromMap);
 }
 
 /// Use this data source to access information about an App Service Certificate.
@@ -457,6 +479,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Use this data source to access information about an existing App Service Certificate Order.
 ///
 /// ## Example Usage
@@ -602,6 +635,17 @@ Future<GetCertificateOrderResult> getCertificateOrder(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateOrderResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateOrderResult> getCertificateOrderOutput(
+  GetCertificateOrderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getCertificateOrder:getCertificateOrder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateOrderResult.fromMap);
 }
 
 /// Use this data source to access information about an existing 3rd Generation (v3) App Service Environment.
@@ -751,6 +795,17 @@ Future<GetEnvironmentV3Result> getEnvironmentV3(
   return GetEnvironmentV3Result.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentV3Result> getEnvironmentV3Output(
+  GetEnvironmentV3Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getEnvironmentV3:getEnvironmentV3',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentV3Result.fromMap);
+}
+
 /// Use this data source to access information about a Function App.
 ///
 /// &gt; **Note:** This data source has been deprecated and will be removed in version 6.0 of the provider. Please use the `azure.appservice.LinuxFunctionApp` and `azure.appservice.WindowsFunctionApp` data sources instead.
@@ -876,6 +931,17 @@ Future<GetFunctionAppResult> getFunctionApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionAppResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionAppResult> getFunctionAppOutput(
+  GetFunctionAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getFunctionApp:getFunctionApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionAppResult.fromMap);
 }
 
 /// Use this data source to fetch the Host Keys of an existing Function App
@@ -1009,6 +1075,17 @@ Future<GetFunctionAppHostKeysResult> getFunctionAppHostKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionAppHostKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionAppHostKeysResult> getFunctionAppHostKeysOutput(
+  GetFunctionAppHostKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getFunctionAppHostKeys:getFunctionAppHostKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionAppHostKeysResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Linux Function App.
@@ -1158,6 +1235,17 @@ Future<GetLinuxFunctionAppResult> getLinuxFunctionApp(
   return GetLinuxFunctionAppResult.fromMap(result);
 }
 
+pulumi.Output<GetLinuxFunctionAppResult> getLinuxFunctionAppOutput(
+  GetLinuxFunctionAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getLinuxFunctionApp:getLinuxFunctionApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinuxFunctionAppResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Linux Web App.
 ///
 /// ## Example Usage
@@ -1303,6 +1391,17 @@ Future<GetLinuxWebAppResult> getLinuxWebApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinuxWebAppResult.fromMap(result);
+}
+
+pulumi.Output<GetLinuxWebAppResult> getLinuxWebAppOutput(
+  GetLinuxWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getLinuxWebApp:getLinuxWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinuxWebAppResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Service Plan.
@@ -1452,6 +1551,17 @@ Future<GetServicePlanResult> getServicePlan(
   return GetServicePlanResult.fromMap(result);
 }
 
+pulumi.Output<GetServicePlanResult> getServicePlanOutput(
+  GetServicePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getServicePlan:getServicePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePlanResult.fromMap);
+}
+
 /// Use this data source to access information about an existing App Service Source Control Token.
 ///
 /// &gt; **Note:** This value can only be queried for the user or service principal that is executing Terraform. It is not possible to retrieve for another user.
@@ -1594,6 +1704,17 @@ Future<GetSourceControlTokenResult> getSourceControlToken(
   return GetSourceControlTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetSourceControlTokenResult> getSourceControlTokenOutput(
+  GetSourceControlTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getSourceControlToken:getSourceControlToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceControlTokenResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Static Web App.
 ///
 /// ## Example Usage
@@ -1725,6 +1846,17 @@ Future<GetStaticWebAppResult> getStaticWebApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticWebAppResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticWebAppResult> getStaticWebAppOutput(
+  GetStaticWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getStaticWebApp:getStaticWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticWebAppResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Windows Function App.
@@ -1874,6 +2006,17 @@ Future<GetWindowsFunctionAppResult> getWindowsFunctionApp(
   return GetWindowsFunctionAppResult.fromMap(result);
 }
 
+pulumi.Output<GetWindowsFunctionAppResult> getWindowsFunctionAppOutput(
+  GetWindowsFunctionAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getWindowsFunctionApp:getWindowsFunctionApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWindowsFunctionAppResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Windows Web App.
 ///
 /// ## Example Usage
@@ -2019,4 +2162,15 @@ Future<GetWindowsWebAppResult> getWindowsWebApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWindowsWebAppResult.fromMap(result);
+}
+
+pulumi.Output<GetWindowsWebAppResult> getWindowsWebAppOutput(
+  GetWindowsWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appservice/getWindowsWebApp:getWindowsWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWindowsWebAppResult.fromMap);
 }

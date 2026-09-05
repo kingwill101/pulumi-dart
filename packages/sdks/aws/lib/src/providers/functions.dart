@@ -17,3 +17,14 @@ Future<TerraformConfigResult> terraformConfig(
   );
   return TerraformConfigResult.fromMap(result);
 }
+
+pulumi.Output<TerraformConfigResult> terraformConfigOutput(
+  TerraformConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumi:providers:aws/terraformConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(TerraformConfigResult.fromMap);
+}

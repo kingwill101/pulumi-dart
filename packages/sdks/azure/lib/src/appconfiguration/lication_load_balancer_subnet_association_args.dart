@@ -10,13 +10,13 @@ class LicationLoadBalancerSubnetAssociationArgs {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationLoadBalancerId;
   /// The name which should be used for this Application Gateway for Containers Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the subnet which the Application Gateway for Containers associated to.
   ///
   /// &gt; **Note:** The subnet to be used must have a delegation for  `Microsoft.ServiceNetworking/trafficControllers` as shown in the example above.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Association.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LicationLoadBalancerSubnetAssociationArgs].
   /// [applicationLoadBalancerId] The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.

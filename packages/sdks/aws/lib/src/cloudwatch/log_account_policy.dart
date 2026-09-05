@@ -678,7 +678,7 @@ class LogAccountPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');
@@ -693,11 +693,12 @@ class LogAccountPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogAccountPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogAccountPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -711,6 +712,23 @@ class LogAccountPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyDocument = registerOutput<String>('policyDocument');
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
+    region = registerOutput<String>('region');
+    scope = registerOutput<String?>('scope');
+    selectionCriteria = registerOutput<String?>('selectionCriteria');
+  }
+
+  /// Creates a typed reference to an existing [LogAccountPolicy] resource.
+  LogAccountPolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/logAccountPolicy:LogAccountPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String>('policyName');
     policyType = registerOutput<String>('policyType');

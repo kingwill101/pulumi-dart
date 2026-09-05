@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_list_args.dart';
 import 'contact_list_state.dart';
+import 'contact_list_topic.dart';
 
 /// Resource for managing an AWS SESv2 (Simple Email V2) Contact List.
 ///
@@ -114,14 +115,14 @@ import 'contact_list_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sesv2.ContactList("example", {
-///     contactListName: "example",
-///     description: "description",
 ///     topics: [{
 ///         defaultSubscriptionStatus: "OPT_IN",
 ///         description: "topic description",
 ///         displayName: "Example Topic",
 ///         topicName: "example-topic",
 ///     }],
+///     contactListName: "example",
+///     description: "description",
 /// });
 /// ```
 /// ```python
@@ -129,14 +130,14 @@ import 'contact_list_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sesv2.ContactList("example",
-///     contact_list_name="example",
-///     description="description",
 ///     topics=[{
 ///         "default_subscription_status": "OPT_IN",
 ///         "description": "topic description",
 ///         "display_name": "Example Topic",
 ///         "topic_name": "example-topic",
-///     }])
+///     }],
+///     contact_list_name="example",
+///     description="description")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -148,8 +149,6 @@ import 'contact_list_state.dart';
 /// {
 ///     var example = new Aws.SesV2.ContactList("example", new()
 ///     {
-///         ContactListName = "example",
-///         Description = "description",
 ///         Topics = new[]
 ///         {
 ///             new Aws.SesV2.Inputs.ContactListTopicArgs
@@ -160,6 +159,8 @@ import 'contact_list_state.dart';
 ///                 TopicName = "example-topic",
 ///             },
 ///         },
+///         ContactListName = "example",
+///         Description = "description",
 ///     });
 ///
 /// });
@@ -175,8 +176,6 @@ import 'contact_list_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sesv2.NewContactList(ctx, "example", &sesv2.ContactListArgs{
-/// 			ContactListName: pulumi.String("example"),
-/// 			Description:     pulumi.String("description"),
 /// 			Topics: sesv2.ContactListTopicArray{
 /// 				&sesv2.ContactListTopicArgs{
 /// 					DefaultSubscriptionStatus: pulumi.String("OPT_IN"),
@@ -185,6 +184,8 @@ import 'contact_list_state.dart';
 /// 					TopicName:                 pulumi.String("example-topic"),
 /// 				},
 /// 			},
+/// 			ContactListName: pulumi.String("example"),
+/// 			Description:     pulumi.String("description"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -203,14 +204,14 @@ import 'contact_list_state.dart';
 /// }
 ///
 /// resource "aws_sesv2_contactlist" "example" {
-///   contact_list_name = "example"
-///   description       = "description"
 ///   topics {
 ///     default_subscription_status = "OPT_IN"
 ///     description                 = "topic description"
 ///     display_name                = "Example Topic"
 ///     topic_name                  = "example-topic"
 ///   }
+///   contact_list_name = "example"
+///   description       = "description"
 /// }
 /// ```
 /// ```java
@@ -236,14 +237,14 @@ import 'contact_list_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContactList("example", ContactListArgs.builder()
-///             .contactListName("example")
-///             .description("description")
 ///             .topics(ContactListTopicArgs.builder()
 ///                 .defaultSubscriptionStatus("OPT_IN")
 ///                 .description("topic description")
 ///                 .displayName("Example Topic")
 ///                 .topicName("example-topic")
 ///                 .build())
+///             .contactListName("example")
+///             .description("description")
 ///             .build());
 ///
 ///     }
@@ -254,13 +255,13 @@ import 'contact_list_state.dart';
 ///   example:
 ///     type: aws:sesv2:ContactList
 ///     properties:
-///       contactListName: example
-///       description: description
 ///       topics:
 ///         - defaultSubscriptionStatus: OPT_IN
 ///           description: topic description
 ///           displayName: Example Topic
 ///           topicName: example-topic
+///       contactListName: example
+///       description: description
 /// ```
 ///
 ///
@@ -272,6 +273,7 @@ import 'contact_list_state.dart';
 /// $ pulumi import aws:sesv2/contactList:ContactList example example
 /// ```
 class ContactList extends pulumi.CustomResource {
+  /// ARN of the contact list.
   late final pulumi.Output<String> arn;
   /// Name of the contact list.
   ///
@@ -289,7 +291,7 @@ class ContactList extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block(s) with topic for the contact list. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> topics;
+  late final pulumi.Output<List<ContactListTopic>?> topics;
 
   /// Creates a new [ContactList].
   /// [name] The Pulumi resource name.
@@ -303,7 +305,7 @@ class ContactList extends pulumi.CustomResource {
           'aws:sesv2/contactList:ContactList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactListName = registerOutput<String>('contactListName');
@@ -311,9 +313,9 @@ class ContactList extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<ContactListTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactListTopic>(guardedValue, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ContactList] resource's state with the given [name] and [id].
@@ -321,11 +323,12 @@ class ContactList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContactList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,8 +348,28 @@ class ContactList extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<ContactListTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactListTopic>(guardedValue, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ContactList] resource.
+  ContactList.reference(String urn)
+    : super(
+        'aws:sesv2/contactList:ContactList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    contactListName = registerOutput<String>('contactListName');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    description = registerOutput<String?>('description');
+    lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<ContactListTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactListTopic>(guardedValue, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

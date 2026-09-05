@@ -10,11 +10,11 @@ class LandingZoneArgs {
   /// The manifest JSON file is a text file that describes your AWS resources. For examples, review [Launch your landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch).
   final pulumi.Input<String> manifestJson;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies list of remediation actions to apply. Currently only supports the `INHERITANCE_DRIFT` value.
-  final pulumi.Input<List<String>>? remediationTypes;
+  final pulumi.Input<List<String>?>? remediationTypes;
   /// Tags to apply to the landing zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The landing zone version.
   final pulumi.Input<String> version;
 

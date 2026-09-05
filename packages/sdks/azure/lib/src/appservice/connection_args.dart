@@ -15,13 +15,13 @@ class ConnectionArgs {
   ///
   /// &gt; **Note:** If a Managed Identity is used, this will need to be configured on the App Service.
   final pulumi.Input<ConnectionAuthentication> authentication;
-  final pulumi.Input<String>? clientType;
+  final pulumi.Input<String?>? clientType;
   /// The name of the service connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<ConnectionSecretStore>? secretStore;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<ConnectionSecretStore?>? secretStore;
   /// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   final pulumi.Input<String> targetResourceId;
-  final pulumi.Input<String>? vnetSolution;
+  final pulumi.Input<String?>? vnetSolution;
 
   /// Creates a new [ConnectionArgs].
   /// [appServiceId] The ID of the data source web app. Changing this forces a new resource to be created.

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
-  final pulumi.Input<int>? dimension;
+  final pulumi.Input<int?>? dimension;
 
   /// Creates a new [FeatureGroupFeatureDefinitionCollectionConfigVectorConfig].
   /// [dimension] Optional.
@@ -19,7 +19,7 @@ class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
 
   factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfigVectorConfig(
-      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

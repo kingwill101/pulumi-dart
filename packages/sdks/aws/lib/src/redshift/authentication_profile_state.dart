@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AuthenticationProfile resources.
 class AuthenticationProfileState {
   /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
-  final pulumi.Input<String>? authenticationProfileContent;
+  final pulumi.Input<String?>? authenticationProfileContent;
   /// The name of the authentication profile.
-  final pulumi.Input<String>? authenticationProfileName;
+  final pulumi.Input<String?>? authenticationProfileName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AuthenticationProfileState].
   /// [authenticationProfileContent] The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.

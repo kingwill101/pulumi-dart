@@ -200,34 +200,35 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
           'aws:cognito/managedUserPoolClient:ManagedUserPoolClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
-    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
-    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analyticsConfiguration = registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
-    callbackUrls = registerOutput<List<String>>('callbackUrls');
-    clientSecret = registerOutput<String>('clientSecret');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
     enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
-    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     idTokenValidity = registerOutput<int>('idTokenValidity');
-    logoutUrls = registerOutput<List<String>>('logoutUrls');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     namePattern = registerOutput<String?>('namePattern');
     namePrefix = registerOutput<String?>('namePrefix');
     preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
-    readAttributes = registerOutput<List<String>>('readAttributes');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     refreshTokenRotation = registerOutput<ManagedUserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenValidityUnits = registerOutput<ManagedUserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
-    writeAttributes = registerOutput<List<String>>('writeAttributes');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ManagedUserPoolClient] resource's state with the given [name] and [id].
@@ -235,11 +236,12 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedUserPoolClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedUserPoolClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,30 +256,68 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessTokenValidity = registerOutput<int>('accessTokenValidity');
-    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
-    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analyticsConfiguration = registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSessionValidity = registerOutput<int>('authSessionValidity');
-    callbackUrls = registerOutput<List<String>>('callbackUrls');
-    clientSecret = registerOutput<String>('clientSecret');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
     enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
     enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
-    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     idTokenValidity = registerOutput<int>('idTokenValidity');
-    logoutUrls = registerOutput<List<String>>('logoutUrls');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     namePattern = registerOutput<String?>('namePattern');
     namePrefix = registerOutput<String?>('namePrefix');
     preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
-    readAttributes = registerOutput<List<String>>('readAttributes');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     refreshTokenRotation = registerOutput<ManagedUserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
-    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tokenValidityUnits = registerOutput<ManagedUserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolId = registerOutput<String>('userPoolId');
-    writeAttributes = registerOutput<List<String>>('writeAttributes');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedUserPoolClient] resource.
+  ManagedUserPoolClient.reference(String urn)
+    : super(
+        'aws:cognito/managedUserPoolClient:ManagedUserPoolClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    accessTokenValidity = registerOutput<int>('accessTokenValidity');
+    allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedOauthFlowsUserPoolClient = registerOutput<bool>('allowedOauthFlowsUserPoolClient');
+    allowedOauthScopes = registerOutput<List<String>>('allowedOauthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    analyticsConfiguration = registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>('analyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientAnalyticsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSessionValidity = registerOutput<int>('authSessionValidity');
+    callbackUrls = registerOutput<List<String>>('callbackUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
+    enablePropagateAdditionalUserContextData = registerOutput<bool>('enablePropagateAdditionalUserContextData');
+    enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
+    explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    idTokenValidity = registerOutput<int>('idTokenValidity');
+    logoutUrls = registerOutput<List<String>>('logoutUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    namePattern = registerOutput<String?>('namePattern');
+    namePrefix = registerOutput<String?>('namePrefix');
+    preventUserExistenceErrors = registerOutput<String>('preventUserExistenceErrors');
+    readAttributes = registerOutput<List<String>>('readAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    refreshTokenRotation = registerOutput<ManagedUserPoolClientRefreshTokenRotation?>('refreshTokenRotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientRefreshTokenRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
+    region = registerOutput<String>('region');
+    supportedIdentityProviders = registerOutput<List<String>>('supportedIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tokenValidityUnits = registerOutput<ManagedUserPoolClientTokenValidityUnits?>('tokenValidityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedUserPoolClientTokenValidityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userPoolId = registerOutput<String>('userPoolId');
+    writeAttributes = registerOutput<List<String>>('writeAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

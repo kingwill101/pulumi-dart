@@ -10,9 +10,9 @@ class GetClusterArgs {
   /// Group identifier.
   final pulumi.Input<String> clusterId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags assigned to the resource
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetClusterArgs].
   /// [clusterId] Group identifier.

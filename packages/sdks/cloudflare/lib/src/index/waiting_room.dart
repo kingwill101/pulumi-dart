@@ -331,7 +331,7 @@ class WaitingRoom extends pulumi.CustomResource {
   /// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
   late final pulumi.Output<String> customPageHtml;
   /// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-  /// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+  /// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
   late final pulumi.Output<String> defaultTemplateLanguage;
   /// A note that you can use to add more details about the waiting room.
   late final pulumi.Output<String> description;
@@ -491,7 +491,7 @@ class WaitingRoom extends pulumi.CustomResource {
           'cloudflare:index/waitingRoom:WaitingRoom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     additionalRoutes = registerOutput<List<WaitingRoomAdditionalRoute>>('additionalRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WaitingRoomAdditionalRoute>(guardedValue, (value) => WaitingRoomAdditionalRoute.fromMap((value as Map).cast<String, dynamic>())); });
     cookieAttributes = registerOutput<WaitingRoomCookieAttributes>('cookieAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WaitingRoomCookieAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

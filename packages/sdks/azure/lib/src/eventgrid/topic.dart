@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_args.dart';
 import 'topic_identity.dart';
+import 'topic_inbound_ip_rule.dart';
 import 'topic_input_mapping_default_values.dart';
 import 'topic_input_mapping_fields.dart';
 import 'topic_state.dart';
@@ -203,7 +204,7 @@ class Topic extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<TopicIdentity?> identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<TopicInboundIpRule>?> inboundIpRules;
   /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<TopicInputMappingDefaultValues?> inputMappingDefaultValues;
   /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
@@ -239,22 +240,23 @@ class Topic extends pulumi.CustomResource {
           'azure:eventgrid/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<TopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<TopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicInboundIpRule>(guardedValue, (value) => TopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<TopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<TopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
@@ -262,11 +264,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,17 +285,43 @@ class Topic extends pulumi.CustomResource {
         ) {
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<TopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<TopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicInboundIpRule>(guardedValue, (value) => TopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<TopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<TopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'azure:eventgrid/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<TopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<TopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicInboundIpRule>(guardedValue, (value) => TopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    inputMappingDefaultValues = registerOutput<TopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputMappingFields = registerOutput<TopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

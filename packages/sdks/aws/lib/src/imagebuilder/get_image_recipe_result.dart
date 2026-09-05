@@ -7,39 +7,39 @@ import 'get_image_recipe_component.dart';
 /// Result data returned by getImageRecipe.
 class GetImageRecipeResult {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
-  final Map<String, String> amiTags;
-  final String arn;
+  final Map<String, String>? amiTags;
+  final String? arn;
   /// Set of objects with block device mappings for the image recipe.
-  final List<GetImageRecipeBlockDeviceMapping> blockDeviceMappings;
+  final List<GetImageRecipeBlockDeviceMapping>? blockDeviceMappings;
   /// List of objects with components for the image recipe.
-  final List<GetImageRecipeComponent> components;
+  final List<GetImageRecipeComponent>? components;
   /// Date the image recipe was created.
-  final String dateCreated;
+  final String? dateCreated;
   /// Description of the image recipe.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the image recipe.
-  final String name;
+  final String? name;
   /// Owner of the image recipe.
-  final String owner;
+  final String? owner;
   /// Base image of the image recipe.
-  final String parentImage;
+  final String? parentImage;
   /// Platform of the image recipe.
-  final String platform;
-  final String region;
+  final String? platform;
+  final String? region;
   /// Key-value map of resource tags for the image recipe.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Base64 encoded contents of user data. Commands or a command script to run when build instance is launched.
-  final String userDataBase64;
+  final String? userDataBase64;
   /// Version of the image recipe.
-  final String version;
+  final String? version;
   /// Working directory used during build and test workflows.
-  final String workingDirectory;
+  final String? workingDirectory;
 
   /// Creates a new [GetImageRecipeResult].
   /// [amiTags] Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [blockDeviceMappings] Set of objects with block device mappings for the image recipe.
   /// [components] List of objects with components for the image recipe.
   /// [dateCreated] Date the image recipe was created.
@@ -49,69 +49,69 @@ class GetImageRecipeResult {
   /// [owner] Owner of the image recipe.
   /// [parentImage] Base image of the image recipe.
   /// [platform] Platform of the image recipe.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value map of resource tags for the image recipe.
   /// [userDataBase64] Base64 encoded contents of user data. Commands or a command script to run when build instance is launched.
   /// [version] Version of the image recipe.
   /// [workingDirectory] Working directory used during build and test workflows.
   const GetImageRecipeResult({
-    required this.amiTags,
-    required this.arn,
-    required this.blockDeviceMappings,
-    required this.components,
-    required this.dateCreated,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.owner,
-    required this.parentImage,
-    required this.platform,
-    required this.region,
-    required this.tags,
-    required this.userDataBase64,
-    required this.version,
-    required this.workingDirectory,
+    this.amiTags,
+    this.arn,
+    this.blockDeviceMappings,
+    this.components,
+    this.dateCreated,
+    this.description,
+    this.id,
+    this.name,
+    this.owner,
+    this.parentImage,
+    this.platform,
+    this.region,
+    this.tags,
+    this.userDataBase64,
+    this.version,
+    this.workingDirectory,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amiTags': amiTags,
-      'arn': arn,
-      'blockDeviceMappings': pulumi.Input.encodeList<GetImageRecipeBlockDeviceMapping, Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap()),
-      'components': pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(components, (value) => value.toMap()),
-      'dateCreated': dateCreated,
-      'description': description,
-      'id': id,
-      'name': name,
-      'owner': owner,
-      'parentImage': parentImage,
-      'platform': platform,
-      'region': region,
-      'tags': tags,
-      'userDataBase64': userDataBase64,
-      'version': version,
-      'workingDirectory': workingDirectory,
+      'amiTags': ?amiTags,
+      'arn': ?arn,
+      'blockDeviceMappings': ?(() { final guardedValue = blockDeviceMappings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetImageRecipeBlockDeviceMapping, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'components': ?(() { final guardedValue = components; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dateCreated': ?dateCreated,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'owner': ?owner,
+      'parentImage': ?parentImage,
+      'platform': ?platform,
+      'region': ?region,
+      'tags': ?tags,
+      'userDataBase64': ?userDataBase64,
+      'version': ?version,
+      'workingDirectory': ?workingDirectory,
     };
   }
 
   factory GetImageRecipeResult.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeResult(
-      amiTags: (map['amiTags'] as Map).cast<String, String>(),
-      arn: map['arn'] as String,
-      blockDeviceMappings: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
-      components: pulumi.Input.decodeList<GetImageRecipeComponent>(map['components']!, (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
-      dateCreated: map['dateCreated'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      owner: map['owner'] as String,
-      parentImage: map['parentImage'] as String,
-      platform: map['platform'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userDataBase64: map['userDataBase64'] as String,
-      version: map['version'] as String,
-      workingDirectory: map['workingDirectory'] as String,
+      amiTags: (() { final guardedValue = map['amiTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      blockDeviceMappings: (() { final guardedValue = map['blockDeviceMappings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(guardedValue, (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); })(),
+      components: (() { final guardedValue = map['components']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetImageRecipeComponent>(guardedValue, (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dateCreated: (() { final guardedValue = map['dateCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentImage: (() { final guardedValue = map['parentImage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      userDataBase64: (() { final guardedValue = map['userDataBase64']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workingDirectory: (() { final guardedValue = map['workingDirectory']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

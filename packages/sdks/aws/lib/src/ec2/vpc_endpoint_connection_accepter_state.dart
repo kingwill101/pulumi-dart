@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcEndpointConnectionAccepter resources.
 class VpcEndpointConnectionAccepterState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AWS VPC Endpoint ID.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// AWS VPC Endpoint Service ID.
-  final pulumi.Input<String>? vpcEndpointServiceId;
+  final pulumi.Input<String?>? vpcEndpointServiceId;
   /// State of the VPC Endpoint.
-  final pulumi.Input<String>? vpcEndpointState;
+  final pulumi.Input<String?>? vpcEndpointState;
 
   /// Creates a new [VpcEndpointConnectionAccepterState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

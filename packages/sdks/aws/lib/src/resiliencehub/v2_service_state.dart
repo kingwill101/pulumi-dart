@@ -7,31 +7,31 @@ import 'v2_service_permission_model.dart';
 /// Input properties used for looking up and filtering V2Service resources.
 class V2ServiceState {
   /// ARN of the service.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Systems to associate with the service. See `associatedSystem` Block below.
-  final pulumi.Input<List<V2ServiceAssociatedSystem>>? associatedSystems;
+  final pulumi.Input<List<V2ServiceAssociatedSystem>?>? associatedSystems;
   /// Dependency discovery. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? dependencyDiscovery;
+  final pulumi.Input<String?>? dependencyDiscovery;
   /// Description of the service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS key ARN.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the service. Changing this value requires creating a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Permission model for resource discovery. See `permissionModel` Block below.
-  final pulumi.Input<V2ServicePermissionModel>? permissionModel;
+  final pulumi.Input<V2ServicePermissionModel?>? permissionModel;
   /// ARN of the resilience policy to associate with this service.
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS regions where the service operates.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [V2ServiceState].
   /// [arn] ARN of the service.

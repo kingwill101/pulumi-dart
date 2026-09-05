@@ -7,45 +7,45 @@ class TransitGatewayState {
   /// Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
   ///
   /// &gt; **NOTE:** Modifying `amazonSideAsn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazonSideAsn`.
-  final pulumi.Input<int>? amazonSideAsn;
-  /// EC2 Transit Gateway Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<int?>? amazonSideAsn;
+  /// EC2 Transit Gateway ARN
+  final pulumi.Input<String?>? arn;
   /// Identifier of the default association route table
-  final pulumi.Input<String>? associationDefaultRouteTableId;
+  final pulumi.Input<String?>? associationDefaultRouteTableId;
   /// Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? autoAcceptSharedAttachments;
+  final pulumi.Input<String?>? autoAcceptSharedAttachments;
   /// Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
-  final pulumi.Input<String>? defaultRouteTableAssociation;
+  final pulumi.Input<String?>? defaultRouteTableAssociation;
   /// Whether resource attachments automatically propagate routes to the default propagation route table. Valid values: `disable`, `enable`. Default value: `enable`.
-  final pulumi.Input<String>? defaultRouteTablePropagation;
+  final pulumi.Input<String?>? defaultRouteTablePropagation;
   /// Description of the EC2 Transit Gateway.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-  final pulumi.Input<String>? dnsSupport;
+  final pulumi.Input<String?>? dnsSupport;
   /// Whether encryption support for VPC Encryption Control is enabled. Valid values: `disable`, `enable`. Default value: `disable`. Once set, switching to `disable` requires explicitly specifying `disable` rather than removing the argument.
-  final pulumi.Input<String>? encryptionSupport;
+  final pulumi.Input<String?>? encryptionSupport;
   /// Whether Multicast support is enabled. Required to use `ec2TransitGatewayMulticastDomain`. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? multicastSupport;
+  final pulumi.Input<String?>? multicastSupport;
   /// Identifier of the AWS account that owns the EC2 Transit Gateway
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Identifier of the default propagation route table
-  final pulumi.Input<String>? propagationDefaultRouteTableId;
+  final pulumi.Input<String?>? propagationDefaultRouteTableId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? securityGroupReferencingSupport;
+  final pulumi.Input<String?>? securityGroupReferencingSupport;
   /// Key-value tags for the EC2 Transit Gateway. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.
-  final pulumi.Input<List<String>>? transitGatewayCidrBlocks;
+  final pulumi.Input<List<String>?>? transitGatewayCidrBlocks;
   /// Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-  final pulumi.Input<String>? vpnEcmpSupport;
+  final pulumi.Input<String?>? vpnEcmpSupport;
 
   /// Creates a new [TransitGatewayState].
   /// [amazonSideAsn] Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
-  /// [arn] EC2 Transit Gateway Amazon Resource Name (ARN)
+  /// [arn] EC2 Transit Gateway ARN
   /// [associationDefaultRouteTableId] Identifier of the default association route table
   /// [autoAcceptSharedAttachments] Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
   /// [defaultRouteTableAssociation] Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
@@ -108,7 +108,7 @@ class TransitGatewayState {
 
   factory TransitGatewayState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayState(
-      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associationDefaultRouteTableId: (() { final guardedValue = map['associationDefaultRouteTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoAcceptSharedAttachments: (() { final guardedValue = map['autoAcceptSharedAttachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -7,29 +7,29 @@ import 'network_manager_connectivity_configuration_hub.dart';
 /// Input properties used for looking up and filtering NetworkManagerConnectivityConfiguration resources.
 class NetworkManagerConnectivityConfigurationState {
   /// One or more `appliesToGroup` blocks as defined below.
-  final pulumi.Input<List<NetworkManagerConnectivityConfigurationAppliesToGroup>>? appliesToGroups;
+  final pulumi.Input<List<NetworkManagerConnectivityConfigurationAppliesToGroup>?>? appliesToGroups;
   /// Whether connected group address overlap is enabled. Defaults to `true`.
   ///
   /// &gt; **Note:** Changing `connectedGroupAddressOverlapEnabled` from `true` to `false` forces a new Network Manager Connectivity Configuration to be created because the Azure API does not support this modification.
-  final pulumi.Input<bool>? connectedGroupAddressOverlapEnabled;
+  final pulumi.Input<bool?>? connectedGroupAddressOverlapEnabled;
   /// Specifies the scale of private endpoints allowed in the connected group. Possible values are `Standard` and `HighScale`. Defaults to `Standard`.
-  final pulumi.Input<String>? connectedGroupPrivateEndpointsScale;
+  final pulumi.Input<String?>? connectedGroupPrivateEndpointsScale;
   /// Specifies the connectivity topology type. Possible values are `HubAndSpoke` and `Mesh`.
-  final pulumi.Input<String>? connectivityTopology;
+  final pulumi.Input<String?>? connectivityTopology;
   /// Indicates whether to remove current existing Virtual Network Peering in the Connectivity Configuration affected scope. Possible values are `true` and `false`.
-  final pulumi.Input<bool>? deleteExistingPeeringEnabled;
+  final pulumi.Input<bool?>? deleteExistingPeeringEnabled;
   /// A description of the Connectivity Configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether to global mesh is supported. Possible values are `true` and `false`.
-  final pulumi.Input<bool>? globalMeshEnabled;
+  final pulumi.Input<bool?>? globalMeshEnabled;
   /// A `hub` block as defined below.
-  final pulumi.Input<NetworkManagerConnectivityConfigurationHub>? hub;
+  final pulumi.Input<NetworkManagerConnectivityConfigurationHub?>? hub;
   /// Specifies the name which should be used for this Network Manager Connectivity Configuration. Changing this forces a new Network Manager Connectivity Configuration to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
   /// Whether peering enforcement is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? peeringEnforcementEnabled;
+  final pulumi.Input<bool?>? peeringEnforcementEnabled;
 
   /// Creates a new [NetworkManagerConnectivityConfigurationState].
   /// [appliesToGroups] One or more `appliesToGroup` blocks as defined below.

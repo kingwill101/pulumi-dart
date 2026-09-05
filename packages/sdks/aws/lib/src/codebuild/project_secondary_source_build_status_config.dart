@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectSecondarySourceBuildStatusConfig {
   /// Specifies the context of the build status CodeBuild sends to the source provider. The usage of
   /// this parameter depends on the source provider.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// Specifies the target url of the build status CodeBuild sends to the source provider. The
   /// usage of this parameter depends on the source provider.
-  final pulumi.Input<String>? targetUrl;
+  final pulumi.Input<String?>? targetUrl;
 
   /// Creates a new [ProjectSecondarySourceBuildStatusConfig].
   /// [context] Specifies the context of the build status CodeBuild sends to the source provider. The usage of

@@ -144,7 +144,7 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
           'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
   }
@@ -154,11 +154,12 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PortalTenantConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PortalTenantConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -172,6 +173,18 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
+  }
+
+  /// Creates a typed reference to an existing [PortalTenantConfiguration] resource.
+  PortalTenantConfiguration.reference(String urn)
+    : super(
+        'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
   }
 }

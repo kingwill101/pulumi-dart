@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Ingestion resources.
 class IngestionState {
   /// ARN of the Ingestion.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// ID of the dataset used in the ingestion.
-  final pulumi.Input<String>? dataSetId;
+  final pulumi.Input<String?>? dataSetId;
   /// ID for the ingestion.
-  final pulumi.Input<String>? ingestionId;
+  final pulumi.Input<String?>? ingestionId;
   /// Ingestion status.
-  final pulumi.Input<String>? ingestionStatus;
+  final pulumi.Input<String?>? ingestionStatus;
   /// Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<String?>? ingestionType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IngestionState].
   /// [arn] ARN of the Ingestion.

@@ -16,6 +16,8 @@ class GetLoadBalancerPoolsResult {
   final pulumi.Input<String> disabledAt;
   /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
   final pulumi.Input<bool> enabled;
+  /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+  final pulumi.Input<List<String>> healthSources;
   final pulumi.Input<String> id;
   /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   final pulumi.Input<double> latitude;
@@ -49,6 +51,7 @@ class GetLoadBalancerPoolsResult {
   /// [description] A human-readable description of the pool.
   /// [disabledAt] This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
   /// [enabled] Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+  /// [healthSources] A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
   /// [id] Required.
   /// [latitude] The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   /// [loadShedding] Configures load shedding policies and percentages for the pool.
@@ -69,6 +72,7 @@ class GetLoadBalancerPoolsResult {
     required this.description,
     required this.disabledAt,
     required this.enabled,
+    required this.healthSources,
     required this.id,
     required this.latitude,
     required this.loadShedding,
@@ -92,6 +96,7 @@ class GetLoadBalancerPoolsResult {
       'description': description,
       'disabledAt': disabledAt,
       'enabled': enabled,
+      'healthSources': healthSources,
       'id': id,
       'latitude': latitude,
       'loadShedding': pulumi.Input.mapInputValue<GetLoadBalancerPoolsResultLoadShedding, Map<String, dynamic>>(loadShedding, (value) => value.toMap()),
@@ -116,6 +121,7 @@ class GetLoadBalancerPoolsResult {
       description: pulumi.Input.fromValue(map['description'] as String),
       disabledAt: pulumi.Input.fromValue(map['disabledAt'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      healthSources: pulumi.Input.fromValue((map['healthSources'] as List).cast<String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
       latitude: pulumi.Input.fromValue((map['latitude'] as num).toDouble()),
       loadShedding: pulumi.Input.fromValue(GetLoadBalancerPoolsResultLoadShedding.fromMap((map['loadShedding']! as Map).cast<String, dynamic>())),

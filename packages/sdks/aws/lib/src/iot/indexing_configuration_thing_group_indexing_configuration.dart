@@ -6,9 +6,9 @@ import 'indexing_configuration_thing_group_indexing_configuration_managed_field.
 
 class IndexingConfigurationThingGroupIndexingConfiguration {
   /// A list of thing group fields to index. This list cannot contain any managed fields. See below.
-  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationCustomField>>? customFields;
+  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationCustomField>?>? customFields;
   /// Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.
-  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationManagedField>>? managedFields;
+  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationManagedField>?>? managedFields;
   /// Thing group indexing mode. Valid values: `OFF`, `ON`.
   final pulumi.Input<String> thingGroupIndexingMode;
 

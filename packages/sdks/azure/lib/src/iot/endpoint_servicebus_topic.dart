@@ -184,14 +184,14 @@ import 'endpoint_servicebus_topic_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:        pulumi.String("exampleTopic"),
-/// 			NamespaceId: exampleNamespace.ID(),
+/// 			NamespaceId: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleTopicAuthorizationRule, err := servicebus.NewTopicAuthorizationRule(ctx, "example", &servicebus.TopicAuthorizationRuleArgs{
 /// 			Name:    pulumi.String("exampleRule"),
-/// 			TopicId: exampleTopic.ID(),
+/// 			TopicId: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:  pulumi.Bool(false),
 /// 			Send:    pulumi.Bool(true),
 /// 			Manage:  pulumi.Bool(false),
@@ -216,7 +216,7 @@ import 'endpoint_servicebus_topic_state.dart';
 /// 		}
 /// 		_, err = iot.NewEndpointServicebusTopic(ctx, "example", &iot.EndpointServicebusTopicArgs{
 /// 			ResourceGroupName: example.Name,
-/// 			IothubId:          exampleIoTHub.ID(),
+/// 			IothubId:          exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:              pulumi.String("example"),
 /// 			ConnectionString:  exampleTopicAuthorizationRule.PrimaryConnectionString,
 /// 		})
@@ -450,10 +450,11 @@ class EndpointServicebusTopic extends pulumi.CustomResource {
           'azure:iot/endpointServicebusTopic:EndpointServicebusTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');
@@ -468,11 +469,12 @@ class EndpointServicebusTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointServicebusTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointServicebusTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -487,7 +489,28 @@ class EndpointServicebusTopic extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    endpointUri = registerOutput<String?>('endpointUri');
+    entityPath = registerOutput<String?>('entityPath');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [EndpointServicebusTopic] resource.
+  EndpointServicebusTopic.reference(String urn)
+    : super(
+        'azure:iot/endpointServicebusTopic:EndpointServicebusTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');

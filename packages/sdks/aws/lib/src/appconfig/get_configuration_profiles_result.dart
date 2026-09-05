@@ -3,40 +3,40 @@
 
 /// Result data returned by getConfigurationProfiles.
 class GetConfigurationProfilesResult {
-  final String applicationId;
+  final String? applicationId;
   /// Set of Configuration Profile IDs associated with the AppConfig Application.
-  final List<String> configurationProfileIds;
+  final List<String>? configurationProfileIds;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetConfigurationProfilesResult].
-  /// [applicationId] Required.
+  /// [applicationId] Optional.
   /// [configurationProfileIds] Set of Configuration Profile IDs associated with the AppConfig Application.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   const GetConfigurationProfilesResult({
-    required this.applicationId,
-    required this.configurationProfileIds,
-    required this.id,
-    required this.region,
+    this.applicationId,
+    this.configurationProfileIds,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationId': applicationId,
-      'configurationProfileIds': configurationProfileIds,
-      'id': id,
-      'region': region,
+      'applicationId': ?applicationId,
+      'configurationProfileIds': ?configurationProfileIds,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetConfigurationProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfilesResult(
-      applicationId: map['applicationId'] as String,
-      configurationProfileIds: (map['configurationProfileIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      region: map['region'] as String,
+      applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationProfileIds: (() { final guardedValue = map['configurationProfileIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

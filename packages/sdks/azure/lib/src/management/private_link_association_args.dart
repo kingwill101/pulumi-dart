@@ -12,7 +12,7 @@ class PrivateLinkAssociationArgs {
   /// &gt; **Note:** For now, `managementGroupId` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
   final pulumi.Input<String> managementGroupId;
   /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignoreChanges` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   final pulumi.Input<bool> publicNetworkAccessEnabled;
   /// The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.

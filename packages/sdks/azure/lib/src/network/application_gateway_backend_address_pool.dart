@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayBackendAddressPool {
   /// A list of FQDN's which should be part of the Backend Address Pool.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of IP Addresses which should be part of the Backend Address Pool.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// The name of the Backend Address Pool.
   final pulumi.Input<String> name;
 

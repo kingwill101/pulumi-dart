@@ -245,7 +245,7 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
           'azure:iot/iotHubDeviceUpdateAccount:IotHubDeviceUpdateAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     hostName = registerOutput<String>('hostName');
     identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotHubDeviceUpdateAccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -254,7 +254,7 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IotHubDeviceUpdateAccount] resource's state with the given [name] and [id].
@@ -262,11 +262,12 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IotHubDeviceUpdateAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IotHubDeviceUpdateAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,6 +288,25 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IotHubDeviceUpdateAccount] resource.
+  IotHubDeviceUpdateAccount.reference(String urn)
+    : super(
+        'azure:iot/iotHubDeviceUpdateAccount:IotHubDeviceUpdateAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotHubDeviceUpdateAccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

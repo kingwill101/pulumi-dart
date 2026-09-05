@@ -128,6 +128,17 @@ Future<GetApiKeysResult> getApiKeys(
   return GetApiKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetApiKeysResult> getApiKeysOutput(
+  GetApiKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getApiKeys:getApiKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiKeysResult.fromMap);
+}
+
 /// Provides details about a specific API Gateway Authorizer.
 ///
 /// ## Example Usage
@@ -253,6 +264,17 @@ Future<GetAuthorizerResult> getAuthorizer(
   return GetAuthorizerResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizerResult> getAuthorizerOutput(
+  GetAuthorizerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getAuthorizer:getAuthorizer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizerResult.fromMap);
+}
+
 /// Provides details about multiple API Gateway Authorizers.
 ///
 /// ## Example Usage
@@ -371,6 +393,17 @@ Future<GetAuthorizersResult> getAuthorizers(
   return GetAuthorizersResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizersResult> getAuthorizersOutput(
+  GetAuthorizersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getAuthorizers:getAuthorizers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizersResult.fromMap);
+}
+
 /// Use this data source to get the custom domain name for use with AWS API Gateway.
 ///
 /// ## Example Usage
@@ -487,6 +520,17 @@ Future<GetDomainNameResult> getDomainName(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainNameResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainNameResult> getDomainNameOutput(
+  GetDomainNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getDomainName:getDomainName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainNameResult.fromMap);
 }
 
 /// ## Example Usage
@@ -619,6 +663,17 @@ Future<GetExportResult> getExport(
   return GetExportResult.fromMap(result);
 }
 
+pulumi.Output<GetExportResult> getExportOutput(
+  GetExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getExport:getExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportResult.fromMap);
+}
+
 /// Use this data source to get the name and value of a pre-existing API Key, for
 /// example to supply credentials for a dependency microservice.
 ///
@@ -736,6 +791,17 @@ Future<GetKeyResult> getKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getKey:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
 }
 
 /// Use this data source to get the id of a Resource in API Gateway.
@@ -892,6 +958,17 @@ Future<GetResourceResult> getResource(
   return GetResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetResourceResult> getResourceOutput(
+  GetResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getResource:getResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceResult.fromMap);
+}
+
 /// Use this data source to get the id and rootResourceId of a REST API in
 /// API Gateway. To fetch the REST API you must provide a name to match against.
 /// As there is no unique name constraint on REST APIs this data source will
@@ -1011,6 +1088,17 @@ Future<GetRestApiResult> getRestApi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestApiResult.fromMap(result);
+}
+
+pulumi.Output<GetRestApiResult> getRestApiOutput(
+  GetRestApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getRestApi:getRestApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestApiResult.fromMap);
 }
 
 /// ## Example Usage
@@ -1185,6 +1273,17 @@ Future<GetSdkResult> getSdk(
   return GetSdkResult.fromMap(result);
 }
 
+pulumi.Output<GetSdkResult> getSdkOutput(
+  GetSdkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getSdk:getSdk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSdkResult.fromMap);
+}
+
 /// Use this data source to get the id of a VPC Link in
 /// API Gateway. To fetch the VPC Link you must provide a name to match against.
 /// As there is no unique name constraint on API Gateway VPC Links this data source will
@@ -1304,4 +1403,15 @@ Future<GetVpcLinkResult> getVpcLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcLinkResult> getVpcLinkOutput(
+  GetVpcLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigateway/getVpcLink:getVpcLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcLinkResult.fromMap);
 }

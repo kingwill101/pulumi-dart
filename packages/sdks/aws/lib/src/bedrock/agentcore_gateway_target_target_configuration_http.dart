@@ -7,7 +7,7 @@ class AgentcoreGatewayTargetTargetConfigurationHttp {
   /// AgentCore Runtime target configuration. See `agentcoreRuntime` below.
   ///
   /// &gt; **Note:** HTTP targets can only be attached to gateways that do not have a `protocolType` set. They are not supported on MCP-protocol gateways.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntime>? agentcoreRuntime;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntime?>? agentcoreRuntime;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationHttp].
   /// [agentcoreRuntime] AgentCore Runtime target configuration. See `agentcoreRuntime` below.

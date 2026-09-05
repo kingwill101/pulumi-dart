@@ -21,7 +21,6 @@ import 'connection_state.dart';
 ///     artifactStores: [{}],
 ///     stages: [
 ///         {
-///             name: "Source",
 ///             actions: [{
 ///                 name: "Source",
 ///                 category: "Source",
@@ -35,6 +34,7 @@ import 'connection_state.dart';
 ///                     BranchName: "main",
 ///                 },
 ///             }],
+///             name: "Source",
 ///         },
 ///         {
 ///             actions: [{}],
@@ -60,7 +60,6 @@ import 'connection_state.dart';
 ///     artifact_stores=[{}],
 ///     stages=[
 ///         {
-///             "name": "Source",
 ///             "actions": [{
 ///                 "name": "Source",
 ///                 "category": "Source",
@@ -74,6 +73,7 @@ import 'connection_state.dart';
 ///                     "BranchName": "main",
 ///                 },
 ///             }],
+///             "name": "Source",
 ///         },
 ///         {
 ///             "actions": [{}],
@@ -111,7 +111,6 @@ import 'connection_state.dart';
 ///         {
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Source",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -133,6 +132,7 @@ import 'connection_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Source",
 ///             },
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
@@ -181,7 +181,6 @@ import 'connection_state.dart';
 /// 			},
 /// 			Stages: codepipeline.PipelineStageArray{
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Source"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Source"),
@@ -199,6 +198,7 @@ import 'connection_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Source"),
 /// 				},
 /// 				&codepipeline.PipelineStageArgs{
 /// 					Actions: codepipeline.PipelineStageActionArray{
@@ -240,7 +240,6 @@ import 'connection_state.dart';
 ///   artifact_stores {
 ///   }
 ///   stages {
-///     name = "Source"
 ///     actions {
 ///       name             = "Source"
 ///       category         = "Source"
@@ -254,6 +253,7 @@ import 'connection_state.dart';
 ///         "BranchName"       = "main"
 ///       }
 ///     }
+///     name = "Source"
 ///   }
 ///   stages {
 ///     actions {
@@ -305,7 +305,6 @@ import 'connection_state.dart';
 ///                 .build())
 ///             .stages(
 ///                 PipelineStageArgs.builder()
-///                     .name("Source")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Source")
 ///                         .category("Source")
@@ -319,6 +318,7 @@ import 'connection_state.dart';
 ///                             Map.entry("BranchName", "main")
 ///                         ))
 ///                         .build())
+///                     .name("Source")
 ///                     .build(),
 ///                 PipelineStageArgs.builder()
 ///                     .actions(PipelineStageActionArgs.builder()
@@ -351,8 +351,7 @@ import 'connection_state.dart';
 ///       artifactStores:
 ///         - {}
 ///       stages:
-///         - name: Source
-///           actions:
+///         - actions:
 ///             - name: Source
 ///               category: Source
 ///               owner: AWS
@@ -364,6 +363,7 @@ import 'connection_state.dart';
 ///                 ConnectionArn: ${example.arn}
 ///                 FullRepositoryId: my-organization/test
 ///                 BranchName: main
+///           name: Source
 ///         - actions:
 ///             - {}
 ///           name: Build
@@ -381,7 +381,7 @@ import 'connection_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeStar connection.
+/// - `arn` (String) ARN of the CodeStar connection.
 ///
 ///
 /// Using `pulumi import`, import CodeStar connections using the ARN. For example:
@@ -394,7 +394,7 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The codestar connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
-  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
+  /// ARN of the host associated with the connection. Conflicts with `providerType`
   late final pulumi.Output<String?> hostArn;
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   late final pulumi.Output<String> name;
@@ -419,7 +419,7 @@ class Connection extends pulumi.CustomResource {
           'aws:codestarconnections/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');
@@ -427,8 +427,8 @@ class Connection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -436,11 +436,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -460,7 +461,26 @@ class Connection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'aws:codestarconnections/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    hostArn = registerOutput<String?>('hostArn');
+    this.name = registerOutput<String>('name');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

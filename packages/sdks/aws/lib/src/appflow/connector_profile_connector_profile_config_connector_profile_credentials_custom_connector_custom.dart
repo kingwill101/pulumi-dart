@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom {
   /// Map that holds custom authentication credentials.
-  final pulumi.Input<Map<String, String>>? credentialsMap;
+  final pulumi.Input<Map<String, String>?>? credentialsMap;
   /// Custom authentication type that the connector uses.
   final pulumi.Input<String> customAuthenticationType;
 

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_images_settings_args.dart';
+import 'allowed_images_settings_image_criterion.dart';
 import 'allowed_images_settings_state.dart';
 
 /// Provides EC2 allowed images settings for an AWS account. This feature allows you to control which AMIs can be used to launch EC2 instances in your account based on specified criteria.
@@ -20,10 +21,10 @@ import 'allowed_images_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.AllowedImagesSettings("example", {
-///     state: "enabled",
 ///     imageCriterions: [{
 ///         imageProviders: ["amazon"],
 ///     }],
+///     state: "enabled",
 /// });
 /// ```
 /// ```python
@@ -31,10 +32,10 @@ import 'allowed_images_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.AllowedImagesSettings("example",
-///     state="enabled",
 ///     image_criterions=[{
 ///         "image_providers": ["amazon"],
-///     }])
+///     }],
+///     state="enabled")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,7 +47,6 @@ import 'allowed_images_settings_state.dart';
 /// {
 ///     var example = new Aws.Ec2.AllowedImagesSettings("example", new()
 ///     {
-///         State = "enabled",
 ///         ImageCriterions = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.AllowedImagesSettingsImageCriterionArgs
@@ -57,6 +57,7 @@ import 'allowed_images_settings_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "enabled",
 ///     });
 ///
 /// });
@@ -72,7 +73,6 @@ import 'allowed_images_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewAllowedImagesSettings(ctx, "example", &ec2.AllowedImagesSettingsArgs{
-/// 			State: pulumi.String("enabled"),
 /// 			ImageCriterions: ec2.AllowedImagesSettingsImageCriterionArray{
 /// 				&ec2.AllowedImagesSettingsImageCriterionArgs{
 /// 					ImageProviders: pulumi.StringArray{
@@ -80,6 +80,7 @@ import 'allowed_images_settings_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.String("enabled"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,10 +99,10 @@ import 'allowed_images_settings_state.dart';
 /// }
 ///
 /// resource "aws_ec2_allowedimagessettings" "example" {
-///   state = "enabled"
 ///   image_criterions {
 ///     image_providers = ["amazon"]
 ///   }
+///   state = "enabled"
 /// }
 /// ```
 /// ```java
@@ -127,10 +128,10 @@ import 'allowed_images_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AllowedImagesSettings("example", AllowedImagesSettingsArgs.builder()
-///             .state("enabled")
 ///             .imageCriterions(AllowedImagesSettingsImageCriterionArgs.builder()
 ///                 .imageProviders("amazon")
 ///                 .build())
+///             .state("enabled")
 ///             .build());
 ///
 ///     }
@@ -141,10 +142,10 @@ import 'allowed_images_settings_state.dart';
 ///   example:
 ///     type: aws:ec2:AllowedImagesSettings
 ///     properties:
-///       state: enabled
 ///       imageCriterions:
 ///         - imageProviders:
 ///             - amazon
+///       state: enabled
 /// ```
 ///
 ///
@@ -156,13 +157,13 @@ import 'allowed_images_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.AllowedImagesSettings("example", {
-///     state: "audit-mode",
 ///     imageCriterions: [{
 ///         imageProviders: [
 ///             "amazon",
 ///             "123456789012",
 ///         ],
 ///     }],
+///     state: "audit-mode",
 /// });
 /// ```
 /// ```python
@@ -170,13 +171,13 @@ import 'allowed_images_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.AllowedImagesSettings("example",
-///     state="audit-mode",
 ///     image_criterions=[{
 ///         "image_providers": [
 ///             "amazon",
 ///             "123456789012",
 ///         ],
-///     }])
+///     }],
+///     state="audit-mode")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -188,7 +189,6 @@ import 'allowed_images_settings_state.dart';
 /// {
 ///     var example = new Aws.Ec2.AllowedImagesSettings("example", new()
 ///     {
-///         State = "audit-mode",
 ///         ImageCriterions = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.AllowedImagesSettingsImageCriterionArgs
@@ -200,6 +200,7 @@ import 'allowed_images_settings_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "audit-mode",
 ///     });
 ///
 /// });
@@ -215,7 +216,6 @@ import 'allowed_images_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewAllowedImagesSettings(ctx, "example", &ec2.AllowedImagesSettingsArgs{
-/// 			State: pulumi.String("audit-mode"),
 /// 			ImageCriterions: ec2.AllowedImagesSettingsImageCriterionArray{
 /// 				&ec2.AllowedImagesSettingsImageCriterionArgs{
 /// 					ImageProviders: pulumi.StringArray{
@@ -224,6 +224,7 @@ import 'allowed_images_settings_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.String("audit-mode"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -242,10 +243,10 @@ import 'allowed_images_settings_state.dart';
 /// }
 ///
 /// resource "aws_ec2_allowedimagessettings" "example" {
-///   state = "audit-mode"
 ///   image_criterions {
 ///     image_providers = ["amazon", "123456789012"]
 ///   }
+///   state = "audit-mode"
 /// }
 /// ```
 /// ```java
@@ -271,12 +272,12 @@ import 'allowed_images_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AllowedImagesSettings("example", AllowedImagesSettingsArgs.builder()
-///             .state("audit-mode")
 ///             .imageCriterions(AllowedImagesSettingsImageCriterionArgs.builder()
 ///                 .imageProviders(
 ///                     "amazon",
 ///                     "123456789012")
 ///                 .build())
+///             .state("audit-mode")
 ///             .build());
 ///
 ///     }
@@ -287,11 +288,11 @@ import 'allowed_images_settings_state.dart';
 ///   example:
 ///     type: aws:ec2:AllowedImagesSettings
 ///     properties:
-///       state: audit-mode
 ///       imageCriterions:
 ///         - imageProviders:
 ///             - amazon
 ///             - '123456789012'
+///       state: audit-mode
 /// ```
 ///
 ///
@@ -304,7 +305,7 @@ import 'allowed_images_settings_state.dart';
 /// ```
 class AllowedImagesSettings extends pulumi.CustomResource {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `imageCriterion` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> imageCriterions;
+  late final pulumi.Output<List<AllowedImagesSettingsImageCriterion>?> imageCriterions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
@@ -322,9 +323,9 @@ class AllowedImagesSettings extends pulumi.CustomResource {
           'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    imageCriterions = registerOutput<List<Map<String, dynamic>>?>('imageCriterions');
+    imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(guardedValue, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
   }
@@ -334,11 +335,12 @@ class AllowedImagesSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AllowedImagesSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AllowedImagesSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,8 +354,22 @@ class AllowedImagesSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    imageCriterions = registerOutput<List<Map<String, dynamic>>?>('imageCriterions');
+    imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(guardedValue, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [AllowedImagesSettings] resource.
+  AllowedImagesSettings.reference(String urn)
+    : super(
+        'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(guardedValue, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 }

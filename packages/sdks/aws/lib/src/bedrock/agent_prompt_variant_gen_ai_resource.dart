@@ -5,7 +5,7 @@ import 'agent_prompt_variant_gen_ai_resource_agent.dart';
 
 class AgentPromptVariantGenAiResource {
   /// Specifies an Amazon Bedrock agent with which to use the prompt. See Agent Configuration for more information.
-  final pulumi.Input<AgentPromptVariantGenAiResourceAgent>? agent;
+  final pulumi.Input<AgentPromptVariantGenAiResourceAgent?>? agent;
 
   /// Creates a new [AgentPromptVariantGenAiResource].
   /// [agent] Specifies an Amazon Bedrock agent with which to use the prompt. See Agent Configuration for more information.

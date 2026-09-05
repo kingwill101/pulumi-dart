@@ -115,20 +115,20 @@ import 'data_protection_settings_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspacesweb.DataProtectionSettings("example", {
-///     displayName: "example",
-///     description: "Example data protection settings",
 ///     inlineRedactionConfiguration: {
-///         globalConfidenceLevel: 2,
-///         globalEnforcedUrls: ["https://example.com"],
 ///         inlineRedactionPatterns: [{
-///             builtInPatternId: "ssn",
-///             confidenceLevel: 3,
 ///             redactionPlaceHolders: [{
 ///                 redactionPlaceHolderType: "CustomText",
 ///                 redactionPlaceHolderText: "REDACTED",
 ///             }],
+///             builtInPatternId: "ssn",
+///             confidenceLevel: 3,
 ///         }],
+///         globalConfidenceLevel: 2,
+///         globalEnforcedUrls: ["https://example.com"],
 ///     },
+///     displayName: "example",
+///     description: "Example data protection settings",
 /// });
 /// ```
 /// ```python
@@ -136,20 +136,20 @@ import 'data_protection_settings_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspacesweb.DataProtectionSettings("example",
-///     display_name="example",
-///     description="Example data protection settings",
 ///     inline_redaction_configuration={
-///         "global_confidence_level": 2,
-///         "global_enforced_urls": ["https://example.com"],
 ///         "inline_redaction_patterns": [{
-///             "built_in_pattern_id": "ssn",
-///             "confidence_level": 3,
 ///             "redaction_place_holders": [{
 ///                 "redaction_place_holder_type": "CustomText",
 ///                 "redaction_place_holder_text": "REDACTED",
 ///             }],
+///             "built_in_pattern_id": "ssn",
+///             "confidence_level": 3,
 ///         }],
-///     })
+///         "global_confidence_level": 2,
+///         "global_enforced_urls": ["https://example.com"],
+///     },
+///     display_name="example",
+///     description="Example data protection settings")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -161,21 +161,12 @@ import 'data_protection_settings_state.dart';
 /// {
 ///     var example = new Aws.WorkSpacesWeb.DataProtectionSettings("example", new()
 ///     {
-///         DisplayName = "example",
-///         Description = "Example data protection settings",
 ///         InlineRedactionConfiguration = new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationArgs
 ///         {
-///             GlobalConfidenceLevel = 2,
-///             GlobalEnforcedUrls = new[]
-///             {
-///                 "https://example.com",
-///             },
 ///             InlineRedactionPatterns = new[]
 ///             {
 ///                 new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs
 ///                 {
-///                     BuiltInPatternId = "ssn",
-///                     ConfidenceLevel = 3,
 ///                     RedactionPlaceHolders = new[]
 ///                     {
 ///                         new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs
@@ -184,9 +175,18 @@ import 'data_protection_settings_state.dart';
 ///                             RedactionPlaceHolderText = "REDACTED",
 ///                         },
 ///                     },
+///                     BuiltInPatternId = "ssn",
+///                     ConfidenceLevel = 3,
 ///                 },
 ///             },
+///             GlobalConfidenceLevel = 2,
+///             GlobalEnforcedUrls = new[]
+///             {
+///                 "https://example.com",
+///             },
 ///         },
+///         DisplayName = "example",
+///         Description = "Example data protection settings",
 ///     });
 ///
 /// });
@@ -202,26 +202,26 @@ import 'data_protection_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspacesweb.NewDataProtectionSettings(ctx, "example", &workspacesweb.DataProtectionSettingsArgs{
-/// 			DisplayName: pulumi.String("example"),
-/// 			Description: pulumi.String("Example data protection settings"),
 /// 			InlineRedactionConfiguration: &workspacesweb.DataProtectionSettingsInlineRedactionConfigurationArgs{
-/// 				GlobalConfidenceLevel: pulumi.Int(2),
-/// 				GlobalEnforcedUrls: pulumi.StringArray{
-/// 					pulumi.String("https://example.com"),
-/// 				},
 /// 				InlineRedactionPatterns: workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArray{
 /// 					&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs{
-/// 						BuiltInPatternId: pulumi.String("ssn"),
-/// 						ConfidenceLevel:  pulumi.Int(3),
 /// 						RedactionPlaceHolders: workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArray{
 /// 							&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs{
 /// 								RedactionPlaceHolderType: pulumi.String("CustomText"),
 /// 								RedactionPlaceHolderText: pulumi.String("REDACTED"),
 /// 							},
 /// 						},
+/// 						BuiltInPatternId: pulumi.String("ssn"),
+/// 						ConfidenceLevel:  pulumi.Int(3),
 /// 					},
 /// 				},
+/// 				GlobalConfidenceLevel: pulumi.Int(2),
+/// 				GlobalEnforcedUrls: pulumi.StringArray{
+/// 					pulumi.String("https://example.com"),
+/// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example"),
+/// 			Description: pulumi.String("Example data protection settings"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -240,20 +240,20 @@ import 'data_protection_settings_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_dataprotectionsettings" "example" {
-///   display_name = "example"
-///   description  = "Example data protection settings"
 ///   inline_redaction_configuration = {
-///     global_confidence_level = 2
-///     global_enforced_urls    = ["https://example.com"]
 ///     inline_redaction_patterns = [{
-///       "builtInPatternId" = "ssn"
-///       "confidenceLevel"  = 3
 ///       "redactionPlaceHolders" = [{
 ///         "redactionPlaceHolderType" = "CustomText"
 ///         "redactionPlaceHolderText" = "REDACTED"
 ///       }]
+///       "builtInPatternId" = "ssn"
+///       "confidenceLevel"  = 3
 ///     }]
+///     global_confidence_level = 2
+///     global_enforced_urls    = ["https://example.com"]
 ///   }
+///   display_name = "example"
+///   description  = "Example data protection settings"
 /// }
 /// ```
 /// ```java
@@ -281,20 +281,20 @@ import 'data_protection_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataProtectionSettings("example", DataProtectionSettingsArgs.builder()
-///             .displayName("example")
-///             .description("Example data protection settings")
 ///             .inlineRedactionConfiguration(DataProtectionSettingsInlineRedactionConfigurationArgs.builder()
-///                 .globalConfidenceLevel(2)
-///                 .globalEnforcedUrls("https://example.com")
 ///                 .inlineRedactionPatterns(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs.builder()
-///                     .builtInPatternId("ssn")
-///                     .confidenceLevel(3)
 ///                     .redactionPlaceHolders(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs.builder()
 ///                         .redactionPlaceHolderType("CustomText")
 ///                         .redactionPlaceHolderText("REDACTED")
 ///                         .build())
+///                     .builtInPatternId("ssn")
+///                     .confidenceLevel(3)
 ///                     .build())
+///                 .globalConfidenceLevel(2)
+///                 .globalEnforcedUrls("https://example.com")
 ///                 .build())
+///             .displayName("example")
+///             .description("Example data protection settings")
 ///             .build());
 ///
 ///     }
@@ -305,18 +305,18 @@ import 'data_protection_settings_state.dart';
 ///   example:
 ///     type: aws:workspacesweb:DataProtectionSettings
 ///     properties:
-///       displayName: example
-///       description: Example data protection settings
 ///       inlineRedactionConfiguration:
+///         inlineRedactionPatterns:
+///           - redactionPlaceHolders:
+///               - redactionPlaceHolderType: CustomText
+///                 redactionPlaceHolderText: REDACTED
+///             builtInPatternId: ssn
+///             confidenceLevel: 3
 ///         globalConfidenceLevel: 2
 ///         globalEnforcedUrls:
 ///           - https://example.com
-///         inlineRedactionPatterns:
-///           - builtInPatternId: ssn
-///             confidenceLevel: 3
-///             redactionPlaceHolders:
-///               - redactionPlaceHolderType: CustomText
-///                 redactionPlaceHolderText: REDACTED
+///       displayName: example
+///       description: Example data protection settings
 /// ```
 ///
 ///
@@ -332,29 +332,17 @@ import 'data_protection_settings_state.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleDataProtectionSettings = new aws.workspacesweb.DataProtectionSettings("example", {
-///     displayName: "example-complete",
-///     description: "Complete example data protection settings",
-///     customerManagedKey: example.arn,
-///     additionalEncryptionContext: {
-///         Environment: "Production",
-///     },
 ///     inlineRedactionConfiguration: {
-///         globalConfidenceLevel: 2,
-///         globalEnforcedUrls: [
-///             "https://example.com",
-///             "https://test.example.com",
-///         ],
-///         globalExemptUrls: ["https://exempt.example.com"],
 ///         inlineRedactionPatterns: [
 ///             {
-///                 builtInPatternId: "ssn",
-///                 confidenceLevel: 3,
-///                 enforcedUrls: ["https://pattern1.example.com"],
-///                 exemptUrls: ["https://exempt-pattern1.example.com"],
 ///                 redactionPlaceHolders: [{
 ///                     redactionPlaceHolderType: "CustomText",
 ///                     redactionPlaceHolderText: "REDACTED-SSN",
 ///                 }],
+///                 builtInPatternId: "ssn",
+///                 confidenceLevel: 3,
+///                 enforcedUrls: ["https://pattern1.example.com"],
+///                 exemptUrls: ["https://exempt-pattern1.example.com"],
 ///             },
 ///             {
 ///                 customPattern: {
@@ -369,6 +357,18 @@ import 'data_protection_settings_state.dart';
 ///                 }],
 ///             },
 ///         ],
+///         globalConfidenceLevel: 2,
+///         globalEnforcedUrls: [
+///             "https://example.com",
+///             "https://test.example.com",
+///         ],
+///         globalExemptUrls: ["https://exempt.example.com"],
+///     },
+///     displayName: "example-complete",
+///     description: "Complete example data protection settings",
+///     customerManagedKey: example.arn,
+///     additionalEncryptionContext: {
+///         Environment: "Production",
 ///     },
 ///     tags: {
 ///         Name: "example-data-protection-settings",
@@ -383,29 +383,17 @@ import 'data_protection_settings_state.dart';
 ///     description="KMS key for WorkSpaces Web Data Protection Settings",
 ///     deletion_window_in_days=7)
 /// example_data_protection_settings = aws.workspacesweb.DataProtectionSettings("example",
-///     display_name="example-complete",
-///     description="Complete example data protection settings",
-///     customer_managed_key=example.arn,
-///     additional_encryption_context={
-///         "Environment": "Production",
-///     },
 ///     inline_redaction_configuration={
-///         "global_confidence_level": 2,
-///         "global_enforced_urls": [
-///             "https://example.com",
-///             "https://test.example.com",
-///         ],
-///         "global_exempt_urls": ["https://exempt.example.com"],
 ///         "inline_redaction_patterns": [
 ///             {
-///                 "built_in_pattern_id": "ssn",
-///                 "confidence_level": 3,
-///                 "enforced_urls": ["https://pattern1.example.com"],
-///                 "exempt_urls": ["https://exempt-pattern1.example.com"],
 ///                 "redaction_place_holders": [{
 ///                     "redaction_place_holder_type": "CustomText",
 ///                     "redaction_place_holder_text": "REDACTED-SSN",
 ///                 }],
+///                 "built_in_pattern_id": "ssn",
+///                 "confidence_level": 3,
+///                 "enforced_urls": ["https://pattern1.example.com"],
+///                 "exempt_urls": ["https://exempt-pattern1.example.com"],
 ///             },
 ///             {
 ///                 "custom_pattern": {
@@ -420,6 +408,18 @@ import 'data_protection_settings_state.dart';
 ///                 }],
 ///             },
 ///         ],
+///         "global_confidence_level": 2,
+///         "global_enforced_urls": [
+///             "https://example.com",
+///             "https://test.example.com",
+///         ],
+///         "global_exempt_urls": ["https://exempt.example.com"],
+///     },
+///     display_name="example-complete",
+///     description="Complete example data protection settings",
+///     customer_managed_key=example.arn,
+///     additional_encryption_context={
+///         "Environment": "Production",
 ///     },
 ///     tags={
 ///         "Name": "example-data-protection-settings",
@@ -441,29 +441,20 @@ import 'data_protection_settings_state.dart';
 ///
 ///     var exampleDataProtectionSettings = new Aws.WorkSpacesWeb.DataProtectionSettings("example", new()
 ///     {
-///         DisplayName = "example-complete",
-///         Description = "Complete example data protection settings",
-///         CustomerManagedKey = example.Arn,
-///         AdditionalEncryptionContext =
-///         {
-///             { "Environment", "Production" },
-///         },
 ///         InlineRedactionConfiguration = new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationArgs
 ///         {
-///             GlobalConfidenceLevel = 2,
-///             GlobalEnforcedUrls = new[]
-///             {
-///                 "https://example.com",
-///                 "https://test.example.com",
-///             },
-///             GlobalExemptUrls = new[]
-///             {
-///                 "https://exempt.example.com",
-///             },
 ///             InlineRedactionPatterns = new[]
 ///             {
 ///                 new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs
 ///                 {
+///                     RedactionPlaceHolders = new[]
+///                     {
+///                         new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs
+///                         {
+///                             RedactionPlaceHolderType = "CustomText",
+///                             RedactionPlaceHolderText = "REDACTED-SSN",
+///                         },
+///                     },
 ///                     BuiltInPatternId = "ssn",
 ///                     ConfidenceLevel = 3,
 ///                     EnforcedUrls = new[]
@@ -473,14 +464,6 @@ import 'data_protection_settings_state.dart';
 ///                     ExemptUrls = new[]
 ///                     {
 ///                         "https://exempt-pattern1.example.com",
-///                     },
-///                     RedactionPlaceHolders = new[]
-///                     {
-///                         new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs
-///                         {
-///                             RedactionPlaceHolderType = "CustomText",
-///                             RedactionPlaceHolderText = "REDACTED-SSN",
-///                         },
 ///                     },
 ///                 },
 ///                 new Aws.WorkSpacesWeb.Inputs.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs
@@ -502,6 +485,23 @@ import 'data_protection_settings_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             GlobalConfidenceLevel = 2,
+///             GlobalEnforcedUrls = new[]
+///             {
+///                 "https://example.com",
+///                 "https://test.example.com",
+///             },
+///             GlobalExemptUrls = new[]
+///             {
+///                 "https://exempt.example.com",
+///             },
+///         },
+///         DisplayName = "example-complete",
+///         Description = "Complete example data protection settings",
+///         CustomerManagedKey = example.Arn,
+///         AdditionalEncryptionContext =
+///         {
+///             { "Environment", "Production" },
 ///         },
 ///         Tags =
 ///         {
@@ -530,23 +530,15 @@ import 'data_protection_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspacesweb.NewDataProtectionSettings(ctx, "example", &workspacesweb.DataProtectionSettingsArgs{
-/// 			DisplayName:        pulumi.String("example-complete"),
-/// 			Description:        pulumi.String("Complete example data protection settings"),
-/// 			CustomerManagedKey: example.Arn,
-/// 			AdditionalEncryptionContext: pulumi.StringMap{
-/// 				"Environment": pulumi.String("Production"),
-/// 			},
 /// 			InlineRedactionConfiguration: &workspacesweb.DataProtectionSettingsInlineRedactionConfigurationArgs{
-/// 				GlobalConfidenceLevel: pulumi.Int(2),
-/// 				GlobalEnforcedUrls: pulumi.StringArray{
-/// 					pulumi.String("https://example.com"),
-/// 					pulumi.String("https://test.example.com"),
-/// 				},
-/// 				GlobalExemptUrls: pulumi.StringArray{
-/// 					pulumi.String("https://exempt.example.com"),
-/// 				},
 /// 				InlineRedactionPatterns: workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArray{
 /// 					&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs{
+/// 						RedactionPlaceHolders: workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArray{
+/// 							&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs{
+/// 								RedactionPlaceHolderType: pulumi.String("CustomText"),
+/// 								RedactionPlaceHolderText: pulumi.String("REDACTED-SSN"),
+/// 							},
+/// 						},
 /// 						BuiltInPatternId: pulumi.String("ssn"),
 /// 						ConfidenceLevel:  pulumi.Int(3),
 /// 						EnforcedUrls: pulumi.StringArray{
@@ -554,12 +546,6 @@ import 'data_protection_settings_state.dart';
 /// 						},
 /// 						ExemptUrls: pulumi.StringArray{
 /// 							pulumi.String("https://exempt-pattern1.example.com"),
-/// 						},
-/// 						RedactionPlaceHolders: workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArray{
-/// 							&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs{
-/// 								RedactionPlaceHolderType: pulumi.String("CustomText"),
-/// 								RedactionPlaceHolderText: pulumi.String("REDACTED-SSN"),
-/// 							},
 /// 						},
 /// 					},
 /// 					&workspacesweb.DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs{
@@ -577,6 +563,20 @@ import 'data_protection_settings_state.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				GlobalConfidenceLevel: pulumi.Int(2),
+/// 				GlobalEnforcedUrls: pulumi.StringArray{
+/// 					pulumi.String("https://example.com"),
+/// 					pulumi.String("https://test.example.com"),
+/// 				},
+/// 				GlobalExemptUrls: pulumi.StringArray{
+/// 					pulumi.String("https://exempt.example.com"),
+/// 				},
+/// 			},
+/// 			DisplayName:        pulumi.String("example-complete"),
+/// 			Description:        pulumi.String("Complete example data protection settings"),
+/// 			CustomerManagedKey: example.Arn,
+/// 			AdditionalEncryptionContext: pulumi.StringMap{
+/// 				"Environment": pulumi.String("Production"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-data-protection-settings"),
@@ -603,25 +603,16 @@ import 'data_protection_settings_state.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_workspacesweb_dataprotectionsettings" "example" {
-///   display_name         = "example-complete"
-///   description          = "Complete example data protection settings"
-///   customer_managed_key = aws_kms_key.example.arn
-///   additional_encryption_context = {
-///     "Environment" = "Production"
-///   }
 ///   inline_redaction_configuration = {
-///     global_confidence_level = 2
-///     global_enforced_urls    = ["https://example.com", "https://test.example.com"]
-///     global_exempt_urls      = ["https://exempt.example.com"]
 ///     inline_redaction_patterns = [{
-///       "builtInPatternId" = "ssn"
-///       "confidenceLevel"  = 3
-///       "enforcedUrls"     = ["https://pattern1.example.com"]
-///       "exemptUrls"       = ["https://exempt-pattern1.example.com"]
 ///       "redactionPlaceHolders" = [{
 ///         "redactionPlaceHolderType" = "CustomText"
 ///         "redactionPlaceHolderText" = "REDACTED-SSN"
 ///       }]
+///       "builtInPatternId" = "ssn"
+///       "confidenceLevel"  = 3
+///       "enforcedUrls"     = ["https://pattern1.example.com"]
+///       "exemptUrls"       = ["https://exempt-pattern1.example.com"]
 ///       }, {
 ///       "customPattern" = {
 ///         "patternName"        = "CustomPattern"
@@ -634,6 +625,15 @@ import 'data_protection_settings_state.dart';
 ///         "redactionPlaceHolderText" = "REDACTED-CUSTOM"
 ///       }]
 ///     }]
+///     global_confidence_level = 2
+///     global_enforced_urls    = ["https://example.com", "https://test.example.com"]
+///     global_exempt_urls      = ["https://exempt.example.com"]
+///   }
+///   display_name         = "example-complete"
+///   description          = "Complete example data protection settings"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
 ///   }
 ///   tags = {
 ///     "Name" = "example-data-protection-settings"
@@ -673,26 +673,17 @@ import 'data_protection_settings_state.dart';
 ///             .build());
 ///
 ///         var exampleDataProtectionSettings = new DataProtectionSettings("exampleDataProtectionSettings", DataProtectionSettingsArgs.builder()
-///             .displayName("example-complete")
-///             .description("Complete example data protection settings")
-///             .customerManagedKey(example.arn())
-///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .inlineRedactionConfiguration(DataProtectionSettingsInlineRedactionConfigurationArgs.builder()
-///                 .globalConfidenceLevel(2)
-///                 .globalEnforcedUrls(
-///                     "https://example.com",
-///                     "https://test.example.com")
-///                 .globalExemptUrls("https://exempt.example.com")
 ///                 .inlineRedactionPatterns(
 ///                     DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs.builder()
-///                         .builtInPatternId("ssn")
-///                         .confidenceLevel(3)
-///                         .enforcedUrls("https://pattern1.example.com")
-///                         .exemptUrls("https://exempt-pattern1.example.com")
 ///                         .redactionPlaceHolders(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolderArgs.builder()
 ///                             .redactionPlaceHolderType("CustomText")
 ///                             .redactionPlaceHolderText("REDACTED-SSN")
 ///                             .build())
+///                         .builtInPatternId("ssn")
+///                         .confidenceLevel(3)
+///                         .enforcedUrls("https://pattern1.example.com")
+///                         .exemptUrls("https://exempt-pattern1.example.com")
 ///                         .build(),
 ///                     DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternArgs.builder()
 ///                         .customPattern(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPatternArgs.builder()
@@ -706,7 +697,16 @@ import 'data_protection_settings_state.dart';
 ///                             .redactionPlaceHolderText("REDACTED-CUSTOM")
 ///                             .build())
 ///                         .build())
+///                 .globalConfidenceLevel(2)
+///                 .globalEnforcedUrls(
+///                     "https://example.com",
+///                     "https://test.example.com")
+///                 .globalExemptUrls("https://exempt.example.com")
 ///                 .build())
+///             .displayName("example-complete")
+///             .description("Complete example data protection settings")
+///             .customerManagedKey(example.arn())
+///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .tags(Map.of("Name", "example-data-protection-settings"))
 ///             .build());
 ///
@@ -724,28 +724,17 @@ import 'data_protection_settings_state.dart';
 ///     type: aws:workspacesweb:DataProtectionSettings
 ///     name: example
 ///     properties:
-///       displayName: example-complete
-///       description: Complete example data protection settings
-///       customerManagedKey: ${example.arn}
-///       additionalEncryptionContext:
-///         Environment: Production
 ///       inlineRedactionConfiguration:
-///         globalConfidenceLevel: 2
-///         globalEnforcedUrls:
-///           - https://example.com
-///           - https://test.example.com
-///         globalExemptUrls:
-///           - https://exempt.example.com
 ///         inlineRedactionPatterns:
-///           - builtInPatternId: ssn
+///           - redactionPlaceHolders:
+///               - redactionPlaceHolderType: CustomText
+///                 redactionPlaceHolderText: REDACTED-SSN
+///             builtInPatternId: ssn
 ///             confidenceLevel: 3
 ///             enforcedUrls:
 ///               - https://pattern1.example.com
 ///             exemptUrls:
 ///               - https://exempt-pattern1.example.com
-///             redactionPlaceHolders:
-///               - redactionPlaceHolderType: CustomText
-///                 redactionPlaceHolderText: REDACTED-SSN
 ///           - customPattern:
 ///               patternName: CustomPattern
 ///               patternRegex: /\d{3}-\d{2}-\d{4}/g
@@ -754,6 +743,17 @@ import 'data_protection_settings_state.dart';
 ///             redactionPlaceHolders:
 ///               - redactionPlaceHolderType: CustomText
 ///                 redactionPlaceHolderText: REDACTED-CUSTOM
+///         globalConfidenceLevel: 2
+///         globalEnforcedUrls:
+///           - https://example.com
+///           - https://test.example.com
+///         globalExemptUrls:
+///           - https://exempt.example.com
+///       displayName: example-complete
+///       description: Complete example data protection settings
+///       customerManagedKey: ${example.arn}
+///       additionalEncryptionContext:
+///         Environment: Production
 ///       tags:
 ///         Name: example-data-protection-settings
 /// ```
@@ -802,18 +802,18 @@ class DataProtectionSettings extends pulumi.CustomResource {
           'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     inlineRedactionConfiguration = registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>('inlineRedactionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProtectionSettingsInlineRedactionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataProtectionSettings] resource's state with the given [name] and [id].
@@ -821,11 +821,12 @@ class DataProtectionSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataProtectionSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataProtectionSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -839,15 +840,36 @@ class DataProtectionSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     inlineRedactionConfiguration = registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>('inlineRedactionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProtectionSettingsInlineRedactionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataProtectionSettings] resource.
+  DataProtectionSettings.reference(String urn)
+    : super(
+        'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    inlineRedactionConfiguration = registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>('inlineRedactionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProtectionSettingsInlineRedactionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

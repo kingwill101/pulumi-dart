@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agentcore_registry_approval_configuration.dart';
 import 'agentcore_registry_args.dart';
 import 'agentcore_registry_authorizer_configuration.dart';
 import 'agentcore_registry_state.dart';
@@ -36,7 +37,7 @@ import 'agentcore_registry_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentcoreRegistry:AgentcoreRegistry example registry-id-12345678
 /// ```
 class AgentcoreRegistry extends pulumi.CustomResource {
-  late final pulumi.Output<List<Map<String, dynamic>>> approvalConfigurations;
+  late final pulumi.Output<List<AgentcoreRegistryApprovalConfiguration>> approvalConfigurations;
   late final pulumi.Output<AgentcoreRegistryAuthorizerConfiguration?> authorizerConfiguration;
   late final pulumi.Output<String> authorizerType;
   late final pulumi.Output<String?> description;
@@ -61,9 +62,9 @@ class AgentcoreRegistry extends pulumi.CustomResource {
           'aws:bedrock/agentcoreRegistry:AgentcoreRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    approvalConfigurations = registerOutput<List<Map<String, dynamic>>>('approvalConfigurations');
+    approvalConfigurations = registerOutput<List<AgentcoreRegistryApprovalConfiguration>>('approvalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreRegistryApprovalConfiguration>(guardedValue, (value) => AgentcoreRegistryApprovalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     authorizerConfiguration = registerOutput<AgentcoreRegistryAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreRegistryAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');
@@ -79,11 +80,12 @@ class AgentcoreRegistry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreRegistryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreRegistry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -97,7 +99,27 @@ class AgentcoreRegistry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    approvalConfigurations = registerOutput<List<Map<String, dynamic>>>('approvalConfigurations');
+    approvalConfigurations = registerOutput<List<AgentcoreRegistryApprovalConfiguration>>('approvalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreRegistryApprovalConfiguration>(guardedValue, (value) => AgentcoreRegistryApprovalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    authorizerConfiguration = registerOutput<AgentcoreRegistryAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreRegistryAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizerType = registerOutput<String>('authorizerType');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    registryArn = registerOutput<String>('registryArn');
+    registryId = registerOutput<String>('registryId');
+    timeouts = registerOutput<AgentcoreRegistryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreRegistryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreRegistry] resource.
+  AgentcoreRegistry.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreRegistry:AgentcoreRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalConfigurations = registerOutput<List<AgentcoreRegistryApprovalConfiguration>>('approvalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreRegistryApprovalConfiguration>(guardedValue, (value) => AgentcoreRegistryApprovalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     authorizerConfiguration = registerOutput<AgentcoreRegistryAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreRegistryAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');

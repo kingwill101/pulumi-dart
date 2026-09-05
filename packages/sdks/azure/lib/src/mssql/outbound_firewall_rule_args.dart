@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mssql_outbound_firewall_rule_outbound_firewall_rule_args_doc}
 class OutboundFirewallRuleArgs {
   /// The name of the outbound firewall rule. This should be a FQDN. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the SQL Server on which to create the Outbound Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
 

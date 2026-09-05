@@ -205,7 +205,7 @@ import 'sql_role_assignment_state.dart';
 /// 			AccountName:       exampleAccount.Name,
 /// 			Type:              pulumi.String("CustomRole"),
 /// 			AssignableScopes: pulumi.StringArray{
-/// 				exampleAccount.ID(),
+/// 				exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Permissions: cosmosdb.SqlRoleDefinitionPermissionArray{
 /// 				&cosmosdb.SqlRoleDefinitionPermissionArgs{
@@ -222,9 +222,9 @@ import 'sql_role_assignment_state.dart';
 /// 			Name:              pulumi.String("736180af-7fbc-4c7f-9004-22735173c1c3"),
 /// 			ResourceGroupName: example.Name,
 /// 			AccountName:       exampleAccount.Name,
-/// 			RoleDefinitionId:  exampleSqlRoleDefinition.ID(),
+/// 			RoleDefinitionId:  exampleSqlRoleDefinition.ID().ToIDOutput().ToStringOutput(),
 /// 			PrincipalId:       pulumi.String(current.ObjectId),
-/// 			Scope:             exampleAccount.ID(),
+/// 			Scope:             exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -450,7 +450,7 @@ class SqlRoleAssignment extends pulumi.CustomResource {
           'azure:cosmosdb/sqlRoleAssignment:SqlRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     this.name = registerOutput<String>('name');
@@ -465,11 +465,12 @@ class SqlRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -483,6 +484,23 @@ class SqlRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountName = registerOutput<String>('accountName');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [SqlRoleAssignment] resource.
+  SqlRoleAssignment.reference(String urn)
+    : super(
+        'azure:cosmosdb/sqlRoleAssignment:SqlRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountName = registerOutput<String>('accountName');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');

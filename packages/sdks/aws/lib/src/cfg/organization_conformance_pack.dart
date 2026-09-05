@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_conformance_pack_args.dart';
+import 'organization_conformance_pack_input_parameter.dart';
 import 'organization_conformance_pack_state.dart';
 
 /// Manages a Config Organization Conformance Pack. More information can be found in the [Managing Conformance Packs Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. Example conformance pack templates may be found in the [AWS Config Rules Repository](https://github.com/awslabs/aws-config-rules/tree/master/aws-config-conformance-packs).
@@ -20,11 +21,11 @@ import 'organization_conformance_pack_state.dart';
 ///     featureSet: "ALL",
 /// });
 /// const example = new aws.cfg.OrganizationConformancePack("example", {
-///     name: "example",
 ///     inputParameters: [{
 ///         parameterName: "AccessKeysRotatedParameterMaxAccessKeyAge",
 ///         parameterValue: "90",
 ///     }],
+///     name: "example",
 ///     templateBody: `Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -52,11 +53,11 @@ import 'organization_conformance_pack_state.dart';
 ///     aws_service_access_principals=["config-multiaccountsetup.amazonaws.com"],
 ///     feature_set="ALL")
 /// example = aws.cfg.OrganizationConformancePack("example",
-///     name="example",
 ///     input_parameters=[{
 ///         "parameter_name": "AccessKeysRotatedParameterMaxAccessKeyAge",
 ///         "parameter_value": "90",
 ///     }],
+///     name="example",
 ///     template_body="""Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -93,7 +94,6 @@ import 'organization_conformance_pack_state.dart';
 ///
 ///     var example = new Aws.Cfg.OrganizationConformancePack("example", new()
 ///     {
-///         Name = "example",
 ///         InputParameters = new[]
 ///         {
 ///             new Aws.Cfg.Inputs.OrganizationConformancePackInputParameterArgs
@@ -102,6 +102,7 @@ import 'organization_conformance_pack_state.dart';
 ///                 ParameterValue = "90",
 ///             },
 ///         },
+///         Name = "example",
 ///         TemplateBody = @"Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -146,13 +147,13 @@ import 'organization_conformance_pack_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cfg.NewOrganizationConformancePack(ctx, "example", &cfg.OrganizationConformancePackArgs{
-/// 			Name: pulumi.String("example"),
 /// 			InputParameters: cfg.OrganizationConformancePackInputParameterArray{
 /// 				&cfg.OrganizationConformancePackInputParameterArgs{
 /// 					ParameterName:  pulumi.String("AccessKeysRotatedParameterMaxAccessKeyAge"),
 /// 					ParameterValue: pulumi.String("90"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			TemplateBody: pulumi.String(`Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -187,11 +188,11 @@ import 'organization_conformance_pack_state.dart';
 ///
 /// resource "aws_cfg_organizationconformancepack" "example" {
 ///   depends_on = [exampleAwsConfigConfigurationRecorder, aws_organizations_organization.example]
-///   name       = "example"
 ///   input_parameters {
 ///     parameter_name  = "AccessKeysRotatedParameterMaxAccessKeyAge"
 ///     parameter_value = "90"
 ///   }
+///   name          = "example"
 ///   template_body = "Parameters:\n  AccessKeysRotatedParameterMaxAccessKeyAge:\n    Type: String\nResources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
 /// }
 /// resource "aws_organizations_organization" "example" {
@@ -230,11 +231,11 @@ import 'organization_conformance_pack_state.dart';
 ///             .build());
 ///
 ///         var example = new OrganizationConformancePack("example", OrganizationConformancePackArgs.builder()
-///             .name("example")
 ///             .inputParameters(OrganizationConformancePackInputParameterArgs.builder()
 ///                 .parameterName("AccessKeysRotatedParameterMaxAccessKeyAge")
 ///                 .parameterValue("90")
 ///                 .build())
+///             .name("example")
 ///             .templateBody("""
 /// Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
@@ -262,10 +263,10 @@ import 'organization_conformance_pack_state.dart';
 ///   example:
 ///     type: aws:cfg:OrganizationConformancePack
 ///     properties:
-///       name: example
 ///       inputParameters:
 ///         - parameterName: AccessKeysRotatedParameterMaxAccessKeyAge
 ///           parameterValue: '90'
+///       name: example
 ///       templateBody: |
 ///         Parameters:
 ///           AccessKeysRotatedParameterMaxAccessKeyAge:
@@ -635,7 +636,7 @@ import 'organization_conformance_pack_state.dart';
 /// $ pulumi import aws:cfg/organizationConformancePack:OrganizationConformancePack example example
 /// ```
 class OrganizationConformancePack extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the organization conformance pack.
+  /// ARN of the organization conformance pack.
   late final pulumi.Output<String> arn;
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Delivery bucket must begin with `awsconfigconforms` prefix. Maximum length of 63.
   late final pulumi.Output<String?> deliveryS3Bucket;
@@ -644,7 +645,7 @@ class OrganizationConformancePack extends pulumi.CustomResource {
   /// Set of AWS accounts to be excluded from an organization conformance pack while deploying a conformance pack. Maximum of 1000 accounts.
   late final pulumi.Output<List<String>?> excludedAccounts;
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inputParameters;
+  late final pulumi.Output<List<OrganizationConformancePackInputParameter>?> inputParameters;
   /// The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -666,13 +667,13 @@ class OrganizationConformancePack extends pulumi.CustomResource {
           'aws:cfg/organizationConformancePack:OrganizationConformancePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputParameters = registerOutput<List<OrganizationConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConformancePackInputParameter>(guardedValue, (value) => OrganizationConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');
@@ -684,11 +685,12 @@ class OrganizationConformancePack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationConformancePackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationConformancePack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -705,8 +707,28 @@ class OrganizationConformancePack extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputParameters = registerOutput<List<OrganizationConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConformancePackInputParameter>(guardedValue, (value) => OrganizationConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    templateBody = registerOutput<String?>('templateBody');
+    templateS3Uri = registerOutput<String?>('templateS3Uri');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationConformancePack] resource.
+  OrganizationConformancePack.reference(String urn)
+    : super(
+        'aws:cfg/organizationConformancePack:OrganizationConformancePack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
+    deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputParameters = registerOutput<List<OrganizationConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConformancePackInputParameter>(guardedValue, (value) => OrganizationConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');

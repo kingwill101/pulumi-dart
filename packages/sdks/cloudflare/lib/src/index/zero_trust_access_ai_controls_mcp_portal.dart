@@ -18,9 +18,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// const exampleZeroTrustAccessAiControlsMcpPortal = new cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal", {
 ///     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
 ///     zeroTrustAccessAiControlsMcpPortalId: "my-mcp-portal",
-///     hostname: "exmaple.com",
+///     hostname: "example.com",
 ///     name: "My MCP Portal",
 ///     allowCodeMode: true,
+///     codeMode: "opt_in",
 ///     description: "This is my custom MCP Portal",
 ///     secureWebGateway: false,
 ///     servers: [{
@@ -49,9 +50,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// example_zero_trust_access_ai_controls_mcp_portal = cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal",
 ///     account_id="a86a8f5c339544d7bdc89926de14fb8c",
 ///     zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
-///     hostname="exmaple.com",
+///     hostname="example.com",
 ///     name="My MCP Portal",
 ///     allow_code_mode=True,
+///     code_mode="opt_in",
 ///     description="This is my custom MCP Portal",
 ///     secure_web_gateway=False,
 ///     servers=[{
@@ -84,9 +86,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 ///     {
 ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
 ///         ZeroTrustAccessAiControlsMcpPortalId = "my-mcp-portal",
-///         Hostname = "exmaple.com",
+///         Hostname = "example.com",
 ///         Name = "My MCP Portal",
 ///         AllowCodeMode = true,
+///         CodeMode = "opt_in",
 ///         Description = "This is my custom MCP Portal",
 ///         SecureWebGateway = false,
 ///         Servers = new[]
@@ -135,9 +138,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// 		_, err := cloudflare.NewZeroTrustAccessAiControlsMcpPortal(ctx, "example_zero_trust_access_ai_controls_mcp_portal", &cloudflare.ZeroTrustAccessAiControlsMcpPortalArgs{
 /// 			AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
 /// 			ZeroTrustAccessAiControlsMcpPortalId: pulumi.String("my-mcp-portal"),
-/// 			Hostname:                             pulumi.String("exmaple.com"),
+/// 			Hostname:                             pulumi.String("example.com"),
 /// 			Name:                                 pulumi.String("My MCP Portal"),
 /// 			AllowCodeMode:                        pulumi.Bool(true),
+/// 			CodeMode:                             pulumi.String("opt_in"),
 /// 			Description:                          pulumi.String("This is my custom MCP Portal"),
 /// 			SecureWebGateway:                     pulumi.Bool(false),
 /// 			Servers: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerArray{
@@ -183,9 +187,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// resource "cloudflare_zerotrustaccessaicontrolsmcpportal" "example_zero_trust_access_ai_controls_mcp_portal" {
 ///   account_id                                  = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   zero_trust_access_ai_controls_mcp_portal_id = "my-mcp-portal"
-///   hostname                                    = "exmaple.com"
+///   hostname                                    = "example.com"
 ///   name                                        = "My MCP Portal"
 ///   allow_code_mode                             = true
+///   code_mode                                   = "opt_in"
 ///   description                                 = "This is my custom MCP Portal"
 ///   secure_web_gateway                          = false
 ///   servers {
@@ -234,9 +239,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 ///         var exampleZeroTrustAccessAiControlsMcpPortal = new ZeroTrustAccessAiControlsMcpPortal("exampleZeroTrustAccessAiControlsMcpPortal", ZeroTrustAccessAiControlsMcpPortalArgs.builder()
 ///             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
 ///             .zeroTrustAccessAiControlsMcpPortalId("my-mcp-portal")
-///             .hostname("exmaple.com")
+///             .hostname("example.com")
 ///             .name("My MCP Portal")
 ///             .allowCodeMode(true)
+///             .codeMode("opt_in")
 ///             .description("This is my custom MCP Portal")
 ///             .secureWebGateway(false)
 ///             .servers(ZeroTrustAccessAiControlsMcpPortalServerArgs.builder()
@@ -269,9 +275,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 ///     properties:
 ///       accountId: a86a8f5c339544d7bdc89926de14fb8c
 ///       zeroTrustAccessAiControlsMcpPortalId: my-mcp-portal
-///       hostname: exmaple.com
+///       hostname: example.com
 ///       name: My MCP Portal
 ///       allowCodeMode: true
+///       codeMode: opt_in
 ///       description: This is my custom MCP Portal
 ///       secureWebGateway: false
 ///       servers:
@@ -298,19 +305,26 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// ```
 class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
-  /// Allow remote code execution in Dynamic Workers (beta)
+  /// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
   late final pulumi.Output<bool> allowCodeMode;
+  /// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+  /// Available values: "off", "opt*in", "default*on", "enforced".
+  late final pulumi.Output<String> codeMode;
   late final pulumi.Output<String> createdAt;
   late final pulumi.Output<String> createdBy;
+  /// Optional description of the MCP portal.
   late final pulumi.Output<String?> description;
+  /// Hostname where the MCP portal is available.
   late final pulumi.Output<String> hostname;
   late final pulumi.Output<String> modifiedAt;
   late final pulumi.Output<String> modifiedBy;
+  /// Display name for the MCP portal.
   late final pulumi.Output<String> name;
-  /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+  /// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
   late final pulumi.Output<bool> secureWebGateway;
+  /// MCP servers attached to the portal and their portal-specific settings.
   late final pulumi.Output<List<ZeroTrustAccessAiControlsMcpPortalServer>> servers;
-  /// portal id
+  /// Unique identifier for the MCP portal.
   late final pulumi.Output<String> zeroTrustAccessAiControlsMcpPortalId;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpPortal].
@@ -325,10 +339,11 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');
+    codeMode = registerOutput<String>('codeMode');
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
@@ -367,6 +382,7 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');
+    codeMode = registerOutput<String>('codeMode');
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');
@@ -390,6 +406,7 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');
+    codeMode = registerOutput<String>('codeMode');
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     description = registerOutput<String?>('description');

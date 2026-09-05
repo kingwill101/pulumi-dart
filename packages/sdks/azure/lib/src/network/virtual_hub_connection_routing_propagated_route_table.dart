@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualHubConnectionRoutingPropagatedRouteTable {
   /// The list of labels to assign to this route table.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// A list of Route Table IDs to associated with this Virtual Hub Connection.
-  final pulumi.Input<List<String>>? routeTableIds;
+  final pulumi.Input<List<String>?>? routeTableIds;
 
   /// Creates a new [VirtualHubConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels to assign to this route table.

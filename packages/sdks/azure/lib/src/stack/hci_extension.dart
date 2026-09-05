@@ -235,13 +235,14 @@ class HciExtension extends pulumi.CustomResource {
           'azure:stack/hciExtension:HciExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['protectedSettings'],
         ) {
     arcSettingId = registerOutput<String>('arcSettingId');
     autoUpgradeMinorVersionEnabled = registerOutput<bool?>('autoUpgradeMinorVersionEnabled');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
     type = registerOutput<String>('type');
@@ -253,11 +254,12 @@ class HciExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,7 +277,28 @@ class HciExtension extends pulumi.CustomResource {
     autoUpgradeMinorVersionEnabled = registerOutput<bool?>('autoUpgradeMinorVersionEnabled');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+  }
+
+  /// Creates a typed reference to an existing [HciExtension] resource.
+  HciExtension.reference(String urn)
+    : super(
+        'azure:stack/hciExtension:HciExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['protectedSettings'],
+        isResourceReference: true,
+      ) {
+    arcSettingId = registerOutput<String>('arcSettingId');
+    autoUpgradeMinorVersionEnabled = registerOutput<bool?>('autoUpgradeMinorVersionEnabled');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
     type = registerOutput<String>('type');

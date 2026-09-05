@@ -25,9 +25,6 @@ import 'application_state.dart';
 ///     source: new pulumi.asset.FileAsset("flink-app.jar"),
 /// });
 /// const exampleApplication = new aws.kinesisanalyticsv2.Application("example", {
-///     name: "example-flink-application",
-///     runtimeEnvironment: "FLINK-1_8",
-///     serviceExecutionRole: exampleAwsIamRole.arn,
 ///     applicationConfiguration: {
 ///         applicationCodeConfiguration: {
 ///             codeContent: {
@@ -72,6 +69,9 @@ import 'application_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example-flink-application",
+///     runtimeEnvironment: "FLINK-1_8",
+///     serviceExecutionRole: exampleAwsIamRole.arn,
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -87,9 +87,6 @@ import 'application_state.dart';
 ///     key="example-flink-application",
 ///     source=pulumi.FileAsset("flink-app.jar"))
 /// example_application = aws.kinesisanalyticsv2.Application("example",
-///     name="example-flink-application",
-///     runtime_environment="FLINK-1_8",
-///     service_execution_role=example_aws_iam_role["arn"],
 ///     application_configuration={
 ///         "application_code_configuration": {
 ///             "code_content": {
@@ -134,6 +131,9 @@ import 'application_state.dart';
 ///             },
 ///         },
 ///     },
+///     name="example-flink-application",
+///     runtime_environment="FLINK-1_8",
+///     service_execution_role=example_aws_iam_role["arn"],
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -160,9 +160,6 @@ import 'application_state.dart';
 ///
 ///     var exampleApplication = new Aws.KinesisAnalyticsV2.Application("example", new()
 ///     {
-///         Name = "example-flink-application",
-///         RuntimeEnvironment = "FLINK-1_8",
-///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///         ApplicationConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationArgs
 ///         {
 ///             ApplicationCodeConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs
@@ -221,6 +218,9 @@ import 'application_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-flink-application",
+///         RuntimeEnvironment = "FLINK-1_8",
+///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -255,9 +255,6 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesisanalyticsv2.NewApplication(ctx, "example", &kinesisanalyticsv2.ApplicationArgs{
-/// 			Name:                 pulumi.String("example-flink-application"),
-/// 			RuntimeEnvironment:   pulumi.String("FLINK-1_8"),
-/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			ApplicationConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationArgs{
 /// 				ApplicationCodeConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs{
 /// 					CodeContent: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs{
@@ -302,6 +299,9 @@ import 'application_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:                 pulumi.String("example-flink-application"),
+/// 			RuntimeEnvironment:   pulumi.String("FLINK-1_8"),
+/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
 /// 			},
@@ -331,9 +331,6 @@ import 'application_state.dart';
 ///   source = fileAsset("flink-app.jar")
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   name                   = "example-flink-application"
-///   runtime_environment    = "FLINK-1_8"
-///   service_execution_role = exampleAwsIamRole.arn
 ///   application_configuration = {
 ///     application_code_configuration = {
 ///       code_content = {
@@ -375,6 +372,9 @@ import 'application_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                   = "example-flink-application"
+///   runtime_environment    = "FLINK-1_8"
+///   service_execution_role = exampleAwsIamRole.arn
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -427,9 +427,6 @@ import 'application_state.dart';
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("example-flink-application")
-///             .runtimeEnvironment("FLINK-1_8")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .applicationConfiguration(ApplicationApplicationConfigurationArgs.builder()
 ///                 .applicationCodeConfiguration(ApplicationApplicationConfigurationApplicationCodeConfigurationArgs.builder()
 ///                     .codeContent(ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs.builder()
@@ -471,6 +468,9 @@ import 'application_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example-flink-application")
+///             .runtimeEnvironment("FLINK-1_8")
+///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -495,9 +495,6 @@ import 'application_state.dart';
 ///     type: aws:kinesisanalyticsv2:Application
 ///     name: example
 ///     properties:
-///       name: example-flink-application
-///       runtimeEnvironment: FLINK-1_8
-///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 ///       applicationConfiguration:
 ///         applicationCodeConfiguration:
 ///           codeContent:
@@ -526,6 +523,9 @@ import 'application_state.dart';
 ///             configurationType: CUSTOM
 ///             parallelism: 10
 ///             parallelismPerKpu: 4
+///       name: example-flink-application
+///       runtimeEnvironment: FLINK-1_8
+///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 ///       tags:
 ///         Environment: test
 /// ```
@@ -544,9 +544,6 @@ import 'application_state.dart';
 ///     logGroupName: example.name,
 /// });
 /// const exampleApplication = new aws.kinesisanalyticsv2.Application("example", {
-///     name: "example-sql-application",
-///     runtimeEnvironment: "SQL-1_0",
-///     serviceExecutionRole: exampleAwsIamRole.arn,
 ///     applicationConfiguration: {
 ///         applicationCodeConfiguration: {
 ///             codeContent: {
@@ -556,11 +553,19 @@ import 'application_state.dart';
 ///         },
 ///         sqlApplicationConfiguration: {
 ///             input: {
-///                 namePrefix: "PREFIX_1",
 ///                 inputParallelism: {
 ///                     count: 3,
 ///                 },
 ///                 inputSchema: {
+///                     recordFormat: {
+///                         mappingParameters: {
+///                             csvMappingParameters: {
+///                                 recordColumnDelimiter: ",",
+///                                 recordRowDelimiter: "\n",
+///                             },
+///                         },
+///                         recordFormatType: "CSV",
+///                     },
 ///                     recordColumns: [
 ///                         {
 ///                             name: "COLUMN_1",
@@ -573,66 +578,61 @@ import 'application_state.dart';
 ///                         },
 ///                     ],
 ///                     recordEncoding: "UTF-8",
-///                     recordFormat: {
-///                         recordFormatType: "CSV",
-///                         mappingParameters: {
-///                             csvMappingParameters: {
-///                                 recordColumnDelimiter: ",",
-///                                 recordRowDelimiter: "\n",
-///                             },
-///                         },
-///                     },
 ///                 },
 ///                 kinesisStreamsInput: {
 ///                     resourceArn: exampleAwsKinesisStream.arn,
 ///                 },
+///                 namePrefix: "PREFIX_1",
+///             },
+///             referenceDataSource: {
+///                 referenceSchema: {
+///                     recordFormat: {
+///                         mappingParameters: {
+///                             jsonMappingParameters: {
+///                                 recordRowPath: "$",
+///                             },
+///                         },
+///                         recordFormatType: "JSON",
+///                     },
+///                     recordColumns: [{
+///                         name: "COLUMN_1",
+///                         sqlType: "INTEGER",
+///                     }],
+///                 },
+///                 s3ReferenceDataSource: {
+///                     bucketArn: exampleAwsS3Bucket.arn,
+///                     fileKey: "KEY-1",
+///                 },
+///                 tableName: "TABLE-1",
 ///             },
 ///             outputs: [
 ///                 {
-///                     name: "OUTPUT_1",
 ///                     destinationSchema: {
 ///                         recordFormatType: "JSON",
 ///                     },
 ///                     lambdaOutput: {
 ///                         resourceArn: exampleAwsLambdaFunction.arn,
 ///                     },
+///                     name: "OUTPUT_1",
 ///                 },
 ///                 {
-///                     name: "OUTPUT_2",
 ///                     destinationSchema: {
 ///                         recordFormatType: "CSV",
 ///                     },
 ///                     kinesisFirehoseOutput: {
 ///                         resourceArn: exampleAwsKinesisFirehoseDeliveryStream.arn,
 ///                     },
+///                     name: "OUTPUT_2",
 ///                 },
 ///             ],
-///             referenceDataSource: {
-///                 tableName: "TABLE-1",
-///                 referenceSchema: {
-///                     recordColumns: [{
-///                         name: "COLUMN_1",
-///                         sqlType: "INTEGER",
-///                     }],
-///                     recordFormat: {
-///                         recordFormatType: "JSON",
-///                         mappingParameters: {
-///                             jsonMappingParameters: {
-///                                 recordRowPath: "$",
-///                             },
-///                         },
-///                     },
-///                 },
-///                 s3ReferenceDataSource: {
-///                     bucketArn: exampleAwsS3Bucket.arn,
-///                     fileKey: "KEY-1",
-///                 },
-///             },
 ///         },
 ///     },
 ///     cloudwatchLoggingOptions: {
 ///         logStreamArn: exampleLogStream.arn,
 ///     },
+///     name: "example-sql-application",
+///     runtimeEnvironment: "SQL-1_0",
+///     serviceExecutionRole: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -644,9 +644,6 @@ import 'application_state.dart';
 ///     name="example-sql-application",
 ///     log_group_name=example.name)
 /// example_application = aws.kinesisanalyticsv2.Application("example",
-///     name="example-sql-application",
-///     runtime_environment="SQL-1_0",
-///     service_execution_role=example_aws_iam_role["arn"],
 ///     application_configuration={
 ///         "application_code_configuration": {
 ///             "code_content": {
@@ -656,11 +653,19 @@ import 'application_state.dart';
 ///         },
 ///         "sql_application_configuration": {
 ///             "input": {
-///                 "name_prefix": "PREFIX_1",
 ///                 "input_parallelism": {
 ///                     "count": 3,
 ///                 },
 ///                 "input_schema": {
+///                     "record_format": {
+///                         "mapping_parameters": {
+///                             "csv_mapping_parameters": {
+///                                 "record_column_delimiter": ",",
+///                                 "record_row_delimiter": "\n",
+///                             },
+///                         },
+///                         "record_format_type": "CSV",
+///                     },
 ///                     "record_columns": [
 ///                         {
 ///                             "name": "COLUMN_1",
@@ -673,66 +678,61 @@ import 'application_state.dart';
 ///                         },
 ///                     ],
 ///                     "record_encoding": "UTF-8",
-///                     "record_format": {
-///                         "record_format_type": "CSV",
-///                         "mapping_parameters": {
-///                             "csv_mapping_parameters": {
-///                                 "record_column_delimiter": ",",
-///                                 "record_row_delimiter": "\n",
-///                             },
-///                         },
-///                     },
 ///                 },
 ///                 "kinesis_streams_input": {
 ///                     "resource_arn": example_aws_kinesis_stream["arn"],
 ///                 },
+///                 "name_prefix": "PREFIX_1",
+///             },
+///             "reference_data_source": {
+///                 "reference_schema": {
+///                     "record_format": {
+///                         "mapping_parameters": {
+///                             "json_mapping_parameters": {
+///                                 "record_row_path": "$",
+///                             },
+///                         },
+///                         "record_format_type": "JSON",
+///                     },
+///                     "record_columns": [{
+///                         "name": "COLUMN_1",
+///                         "sql_type": "INTEGER",
+///                     }],
+///                 },
+///                 "s3_reference_data_source": {
+///                     "bucket_arn": example_aws_s3_bucket["arn"],
+///                     "file_key": "KEY-1",
+///                 },
+///                 "table_name": "TABLE-1",
 ///             },
 ///             "outputs": [
 ///                 {
-///                     "name": "OUTPUT_1",
 ///                     "destination_schema": {
 ///                         "record_format_type": "JSON",
 ///                     },
 ///                     "lambda_output": {
 ///                         "resource_arn": example_aws_lambda_function["arn"],
 ///                     },
+///                     "name": "OUTPUT_1",
 ///                 },
 ///                 {
-///                     "name": "OUTPUT_2",
 ///                     "destination_schema": {
 ///                         "record_format_type": "CSV",
 ///                     },
 ///                     "kinesis_firehose_output": {
 ///                         "resource_arn": example_aws_kinesis_firehose_delivery_stream["arn"],
 ///                     },
+///                     "name": "OUTPUT_2",
 ///                 },
 ///             ],
-///             "reference_data_source": {
-///                 "table_name": "TABLE-1",
-///                 "reference_schema": {
-///                     "record_columns": [{
-///                         "name": "COLUMN_1",
-///                         "sql_type": "INTEGER",
-///                     }],
-///                     "record_format": {
-///                         "record_format_type": "JSON",
-///                         "mapping_parameters": {
-///                             "json_mapping_parameters": {
-///                                 "record_row_path": "$",
-///                             },
-///                         },
-///                     },
-///                 },
-///                 "s3_reference_data_source": {
-///                     "bucket_arn": example_aws_s3_bucket["arn"],
-///                     "file_key": "KEY-1",
-///                 },
-///             },
 ///         },
 ///     },
 ///     cloudwatch_logging_options={
 ///         "log_stream_arn": example_log_stream.arn,
-///     })
+///     },
+///     name="example-sql-application",
+///     runtime_environment="SQL-1_0",
+///     service_execution_role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -755,9 +755,6 @@ import 'application_state.dart';
 ///
 ///     var exampleApplication = new Aws.KinesisAnalyticsV2.Application("example", new()
 ///     {
-///         Name = "example-sql-application",
-///         RuntimeEnvironment = "SQL-1_0",
-///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///         ApplicationConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationArgs
 ///         {
 ///             ApplicationCodeConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs
@@ -773,13 +770,25 @@ import 'application_state.dart';
 ///             {
 ///                 Input = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputArgs
 ///                 {
-///                     NamePrefix = "PREFIX_1",
 ///                     InputParallelism = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismArgs
 ///                     {
 ///                         Count = 3,
 ///                     },
 ///                     InputSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaArgs
 ///                     {
+///                         RecordFormat = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs
+///                         {
+///                             MappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs
+///                             {
+///                                 CsvMappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs
+///                                 {
+///                                     RecordColumnDelimiter = ",",
+///                                     RecordRowDelimiter = @"
+/// ",
+///                                 },
+///                             },
+///                             RecordFormatType = "CSV",
+///                         },
 ///                         RecordColumns = new[]
 ///                         {
 ///                             new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs
@@ -795,57 +804,28 @@ import 'application_state.dart';
 ///                             },
 ///                         },
 ///                         RecordEncoding = "UTF-8",
-///                         RecordFormat = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs
-///                         {
-///                             RecordFormatType = "CSV",
-///                             MappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs
-///                             {
-///                                 CsvMappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs
-///                                 {
-///                                     RecordColumnDelimiter = ",",
-///                                     RecordRowDelimiter = @"
-/// ",
-///                                 },
-///                             },
-///                         },
 ///                     },
 ///                     KinesisStreamsInput = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs
 ///                     {
 ///                         ResourceArn = exampleAwsKinesisStream.Arn,
 ///                     },
-///                 },
-///                 Outputs = new[]
-///                 {
-///                     new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs
-///                     {
-///                         Name = "OUTPUT_1",
-///                         DestinationSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs
-///                         {
-///                             RecordFormatType = "JSON",
-///                         },
-///                         LambdaOutput = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs
-///                         {
-///                             ResourceArn = exampleAwsLambdaFunction.Arn,
-///                         },
-///                     },
-///                     new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs
-///                     {
-///                         Name = "OUTPUT_2",
-///                         DestinationSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs
-///                         {
-///                             RecordFormatType = "CSV",
-///                         },
-///                         KinesisFirehoseOutput = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs
-///                         {
-///                             ResourceArn = exampleAwsKinesisFirehoseDeliveryStream.Arn,
-///                         },
-///                     },
+///                     NamePrefix = "PREFIX_1",
 ///                 },
 ///                 ReferenceDataSource = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs
 ///                 {
-///                     TableName = "TABLE-1",
 ///                     ReferenceSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs
 ///                     {
+///                         RecordFormat = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs
+///                         {
+///                             MappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs
+///                             {
+///                                 JsonMappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs
+///                                 {
+///                                     RecordRowPath = "$",
+///                                 },
+///                             },
+///                             RecordFormatType = "JSON",
+///                         },
 ///                         RecordColumns = new[]
 ///                         {
 ///                             new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs
@@ -854,22 +834,39 @@ import 'application_state.dart';
 ///                                 SqlType = "INTEGER",
 ///                             },
 ///                         },
-///                         RecordFormat = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs
-///                         {
-///                             RecordFormatType = "JSON",
-///                             MappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs
-///                             {
-///                                 JsonMappingParameters = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs
-///                                 {
-///                                     RecordRowPath = "$",
-///                                 },
-///                             },
-///                         },
 ///                     },
 ///                     S3ReferenceDataSource = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs
 ///                     {
 ///                         BucketArn = exampleAwsS3Bucket.Arn,
 ///                         FileKey = "KEY-1",
+///                     },
+///                     TableName = "TABLE-1",
+///                 },
+///                 Outputs = new[]
+///                 {
+///                     new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs
+///                     {
+///                         DestinationSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs
+///                         {
+///                             RecordFormatType = "JSON",
+///                         },
+///                         LambdaOutput = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs
+///                         {
+///                             ResourceArn = exampleAwsLambdaFunction.Arn,
+///                         },
+///                         Name = "OUTPUT_1",
+///                     },
+///                     new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs
+///                     {
+///                         DestinationSchema = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs
+///                         {
+///                             RecordFormatType = "CSV",
+///                         },
+///                         KinesisFirehoseOutput = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs
+///                         {
+///                             ResourceArn = exampleAwsKinesisFirehoseDeliveryStream.Arn,
+///                         },
+///                         Name = "OUTPUT_2",
 ///                     },
 ///                 },
 ///             },
@@ -878,6 +875,9 @@ import 'application_state.dart';
 ///         {
 ///             LogStreamArn = exampleLogStream.Arn,
 ///         },
+///         Name = "example-sql-application",
+///         RuntimeEnvironment = "SQL-1_0",
+///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -907,9 +907,6 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesisanalyticsv2.NewApplication(ctx, "example", &kinesisanalyticsv2.ApplicationArgs{
-/// 			Name:                 pulumi.String("example-sql-application"),
-/// 			RuntimeEnvironment:   pulumi.String("SQL-1_0"),
-/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			ApplicationConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationArgs{
 /// 				ApplicationCodeConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs{
 /// 					CodeContent: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs{
@@ -919,11 +916,19 @@ import 'application_state.dart';
 /// 				},
 /// 				SqlApplicationConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationArgs{
 /// 					Input: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputTypeArgs{
-/// 						NamePrefix: pulumi.String("PREFIX_1"),
 /// 						InputParallelism: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismArgs{
 /// 							Count: pulumi.Int(3),
 /// 						},
 /// 						InputSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaArgs{
+/// 							RecordFormat: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs{
+/// 								MappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs{
+/// 									CsvMappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs{
+/// 										RecordColumnDelimiter: pulumi.String(","),
+/// 										RecordRowDelimiter:    pulumi.String("\n"),
+/// 									},
+/// 								},
+/// 								RecordFormatType: pulumi.String("CSV"),
+/// 							},
 /// 							RecordColumns: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArray{
 /// 								&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs{
 /// 									Name:    pulumi.String("COLUMN_1"),
@@ -936,55 +941,26 @@ import 'application_state.dart';
 /// 								},
 /// 							},
 /// 							RecordEncoding: pulumi.String("UTF-8"),
-/// 							RecordFormat: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs{
-/// 								RecordFormatType: pulumi.String("CSV"),
-/// 								MappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs{
-/// 									CsvMappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs{
-/// 										RecordColumnDelimiter: pulumi.String(","),
-/// 										RecordRowDelimiter:    pulumi.String("\n"),
-/// 									},
-/// 								},
-/// 							},
 /// 						},
 /// 						KinesisStreamsInput: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs{
 /// 							ResourceArn: pulumi.Any(exampleAwsKinesisStream.Arn),
 /// 						},
-/// 					},
-/// 					Outputs: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArray{
-/// 						&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArgs{
-/// 							Name: pulumi.String("OUTPUT_1"),
-/// 							DestinationSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs{
-/// 								RecordFormatType: pulumi.String("JSON"),
-/// 							},
-/// 							LambdaOutput: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs{
-/// 								ResourceArn: pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 							},
-/// 						},
-/// 						&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArgs{
-/// 							Name: pulumi.String("OUTPUT_2"),
-/// 							DestinationSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs{
-/// 								RecordFormatType: pulumi.String("CSV"),
-/// 							},
-/// 							KinesisFirehoseOutput: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs{
-/// 								ResourceArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
-/// 							},
-/// 						},
+/// 						NamePrefix: pulumi.String("PREFIX_1"),
 /// 					},
 /// 					ReferenceDataSource: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs{
-/// 						TableName: pulumi.String("TABLE-1"),
 /// 						ReferenceSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs{
-/// 							RecordColumns: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArray{
-/// 								&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs{
-/// 									Name:    pulumi.String("COLUMN_1"),
-/// 									SqlType: pulumi.String("INTEGER"),
-/// 								},
-/// 							},
 /// 							RecordFormat: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs{
-/// 								RecordFormatType: pulumi.String("JSON"),
 /// 								MappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs{
 /// 									JsonMappingParameters: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs{
 /// 										RecordRowPath: pulumi.String("$"),
 /// 									},
+/// 								},
+/// 								RecordFormatType: pulumi.String("JSON"),
+/// 							},
+/// 							RecordColumns: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArray{
+/// 								&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs{
+/// 									Name:    pulumi.String("COLUMN_1"),
+/// 									SqlType: pulumi.String("INTEGER"),
 /// 								},
 /// 							},
 /// 						},
@@ -992,12 +968,36 @@ import 'application_state.dart';
 /// 							BucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// 							FileKey:   pulumi.String("KEY-1"),
 /// 						},
+/// 						TableName: pulumi.String("TABLE-1"),
+/// 					},
+/// 					Outputs: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArray{
+/// 						&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArgs{
+/// 							DestinationSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs{
+/// 								RecordFormatType: pulumi.String("JSON"),
+/// 							},
+/// 							LambdaOutput: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs{
+/// 								ResourceArn: pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 							},
+/// 							Name: pulumi.String("OUTPUT_1"),
+/// 						},
+/// 						&kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputTypeArgs{
+/// 							DestinationSchema: &kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs{
+/// 								RecordFormatType: pulumi.String("CSV"),
+/// 							},
+/// 							KinesisFirehoseOutput: kinesisanalyticsv2.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs{
+/// 								ResourceArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
+/// 							},
+/// 							Name: pulumi.String("OUTPUT_2"),
+/// 						},
 /// 					},
 /// 				},
 /// 			},
 /// 			CloudwatchLoggingOptions: &kinesisanalyticsv2.ApplicationCloudwatchLoggingOptionsArgs{
 /// 				LogStreamArn: exampleLogStream.Arn,
 /// 			},
+/// 			Name:                 pulumi.String("example-sql-application"),
+/// 			RuntimeEnvironment:   pulumi.String("SQL-1_0"),
+/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1023,9 +1023,6 @@ import 'application_state.dart';
 ///   log_group_name = aws_cloudwatch_loggroup.example.name
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   name                   = "example-sql-application"
-///   runtime_environment    = "SQL-1_0"
-///   service_execution_role = exampleAwsIamRole.arn
 ///   application_configuration = {
 ///     application_code_configuration = {
 ///       code_content = {
@@ -1035,11 +1032,19 @@ import 'application_state.dart';
 ///     }
 ///     sql_application_configuration = {
 ///       input = {
-///         name_prefix = "PREFIX_1"
 ///         input_parallelism = {
 ///           count = 3
 ///         }
 ///         input_schema = {
+///           record_format = {
+///             mapping_parameters = {
+///               csv_mapping_parameters = {
+///                 record_column_delimiter = ","
+///                 record_row_delimiter    = "\n"
+///               }
+///             }
+///             record_format_type = "CSV"
+///           }
 ///           record_columns = [{
 ///             "name"    = "COLUMN_1"
 ///             "sqlType" = "VARCHAR(8)"
@@ -1049,63 +1054,58 @@ import 'application_state.dart';
 ///             "sqlType" = "DOUBLE"
 ///           }]
 ///           record_encoding = "UTF-8"
-///           record_format = {
-///             record_format_type = "CSV"
-///             mapping_parameters = {
-///               csv_mapping_parameters = {
-///                 record_column_delimiter = ","
-///                 record_row_delimiter    = "\n"
-///               }
-///             }
-///           }
 ///         }
 ///         kinesis_streams_input = {
 ///           resource_arn = exampleAwsKinesisStream.arn
 ///         }
+///         name_prefix = "PREFIX_1"
+///       }
+///       reference_data_source = {
+///         reference_schema = {
+///           record_format = {
+///             mapping_parameters = {
+///               json_mapping_parameters = {
+///                 record_row_path = "$"
+///               }
+///             }
+///             record_format_type = "JSON"
+///           }
+///           record_columns = [{
+///             "name"    = "COLUMN_1"
+///             "sqlType" = "INTEGER"
+///           }]
+///         }
+///         s3_reference_data_source = {
+///           bucket_arn = exampleAwsS3Bucket.arn
+///           file_key   = "KEY-1"
+///         }
+///         table_name = "TABLE-1"
 ///       }
 ///       outputs = [{
-///         "name" = "OUTPUT_1"
 ///         "destinationSchema" = {
 ///           "recordFormatType" = "JSON"
 ///         }
 ///         "lambdaOutput" = {
 ///           "resourceArn" = exampleAwsLambdaFunction.arn
 ///         }
+///         "name" = "OUTPUT_1"
 ///         }, {
-///         "name" = "OUTPUT_2"
 ///         "destinationSchema" = {
 ///           "recordFormatType" = "CSV"
 ///         }
 ///         "kinesisFirehoseOutput" = {
 ///           "resourceArn" = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///         }
+///         "name" = "OUTPUT_2"
 ///       }]
-///       reference_data_source = {
-///         table_name = "TABLE-1"
-///         reference_schema = {
-///           record_columns = [{
-///             "name"    = "COLUMN_1"
-///             "sqlType" = "INTEGER"
-///           }]
-///           record_format = {
-///             record_format_type = "JSON"
-///             mapping_parameters = {
-///               json_mapping_parameters = {
-///                 record_row_path = "$"
-///               }
-///             }
-///           }
-///         }
-///         s3_reference_data_source = {
-///           bucket_arn = exampleAwsS3Bucket.arn
-///           file_key   = "KEY-1"
-///         }
-///       }
 ///     }
 ///   }
 ///   cloudwatch_logging_options = {
 ///     log_stream_arn = aws_cloudwatch_logstream.example.arn
 ///   }
+///   name                   = "example-sql-application"
+///   runtime_environment    = "SQL-1_0"
+///   service_execution_role = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1127,22 +1127,22 @@ import 'application_state.dart';
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs;
+/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs;
-/// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs;
 /// import com.pulumi.aws.kinesisanalyticsv2.inputs.ApplicationCloudwatchLoggingOptionsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1167,9 +1167,6 @@ import 'application_state.dart';
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("example-sql-application")
-///             .runtimeEnvironment("SQL-1_0")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .applicationConfiguration(ApplicationApplicationConfigurationArgs.builder()
 ///                 .applicationCodeConfiguration(ApplicationApplicationConfigurationApplicationCodeConfigurationArgs.builder()
 ///                     .codeContent(ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs.builder()
@@ -1181,11 +1178,21 @@ import 'application_state.dart';
 ///                     .build())
 ///                 .sqlApplicationConfiguration(ApplicationApplicationConfigurationSqlApplicationConfigurationArgs.builder()
 ///                     .input(ApplicationApplicationConfigurationSqlApplicationConfigurationInputArgs.builder()
-///                         .namePrefix("PREFIX_1")
 ///                         .inputParallelism(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelismArgs.builder()
 ///                             .count(3)
 ///                             .build())
 ///                         .inputSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaArgs.builder()
+///                             .recordFormat(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs.builder()
+///                                 .mappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs.builder()
+///                                     .csvMappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs.builder()
+///                                         .recordColumnDelimiter(",")
+///                                         .recordRowDelimiter("""
+///
+///                                         """)
+///                                         .build())
+///                                     .build())
+///                                 .recordFormatType("CSV")
+///                                 .build())
 ///                             .recordColumns(
 ///                                 ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumnArgs.builder()
 ///                                     .name("COLUMN_1")
@@ -1197,67 +1204,60 @@ import 'application_state.dart';
 ///                                     .sqlType("DOUBLE")
 ///                                     .build())
 ///                             .recordEncoding("UTF-8")
-///                             .recordFormat(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatArgs.builder()
-///                                 .recordFormatType("CSV")
-///                                 .mappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersArgs.builder()
-///                                     .csvMappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParametersArgs.builder()
-///                                         .recordColumnDelimiter(",")
-///                                         .recordRowDelimiter("""
-///
-///                                         """)
-///                                         .build())
-///                                     .build())
-///                                 .build())
 ///                             .build())
 ///                         .kinesisStreamsInput(ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInputArgs.builder()
 ///                             .resourceArn(exampleAwsKinesisStream.arn())
 ///                             .build())
+///                         .namePrefix("PREFIX_1")
 ///                         .build())
-///                     .outputs(
-///                         ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs.builder()
-///                             .name("OUTPUT_1")
-///                             .destinationSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs.builder()
-///                                 .recordFormatType("JSON")
-///                                 .build())
-///                             .lambdaOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs.builder()
-///                                 .resourceArn(exampleAwsLambdaFunction.arn())
-///                                 .build())
-///                             .build(),
-///                         ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs.builder()
-///                             .name("OUTPUT_2")
-///                             .destinationSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs.builder()
-///                                 .recordFormatType("CSV")
-///                                 .build())
-///                             .kinesisFirehoseOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs.builder()
-///                                 .resourceArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///                                 .build())
-///                             .build())
 ///                     .referenceDataSource(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceArgs.builder()
-///                         .tableName("TABLE-1")
 ///                         .referenceSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaArgs.builder()
-///                             .recordColumns(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs.builder()
-///                                 .name("COLUMN_1")
-///                                 .sqlType("INTEGER")
-///                                 .build())
 ///                             .recordFormat(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatArgs.builder()
-///                                 .recordFormatType("JSON")
 ///                                 .mappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersArgs.builder()
 ///                                     .jsonMappingParameters(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParametersArgs.builder()
 ///                                         .recordRowPath("$")
 ///                                         .build())
 ///                                     .build())
+///                                 .recordFormatType("JSON")
+///                                 .build())
+///                             .recordColumns(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumnArgs.builder()
+///                                 .name("COLUMN_1")
+///                                 .sqlType("INTEGER")
 ///                                 .build())
 ///                             .build())
 ///                         .s3ReferenceDataSource(ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSourceArgs.builder()
 ///                             .bucketArn(exampleAwsS3Bucket.arn())
 ///                             .fileKey("KEY-1")
 ///                             .build())
+///                         .tableName("TABLE-1")
 ///                         .build())
+///                     .outputs(
+///                         ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs.builder()
+///                             .destinationSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs.builder()
+///                                 .recordFormatType("JSON")
+///                                 .build())
+///                             .lambdaOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutputArgs.builder()
+///                                 .resourceArn(exampleAwsLambdaFunction.arn())
+///                                 .build())
+///                             .name("OUTPUT_1")
+///                             .build(),
+///                         ApplicationApplicationConfigurationSqlApplicationConfigurationOutputArgs.builder()
+///                             .destinationSchema(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchemaArgs.builder()
+///                                 .recordFormatType("CSV")
+///                                 .build())
+///                             .kinesisFirehoseOutput(ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutputArgs.builder()
+///                                 .resourceArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///                                 .build())
+///                             .name("OUTPUT_2")
+///                             .build())
 ///                     .build())
 ///                 .build())
 ///             .cloudwatchLoggingOptions(ApplicationCloudwatchLoggingOptionsArgs.builder()
 ///                 .logStreamArn(exampleLogStream.arn())
 ///                 .build())
+///             .name("example-sql-application")
+///             .runtimeEnvironment("SQL-1_0")
+///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1279,9 +1279,6 @@ import 'application_state.dart';
 ///     type: aws:kinesisanalyticsv2:Application
 ///     name: example
 ///     properties:
-///       name: example-sql-application
-///       runtimeEnvironment: SQL-1_0
-///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 ///       applicationConfiguration:
 ///         applicationCodeConfiguration:
 ///           codeContent:
@@ -1290,10 +1287,15 @@ import 'application_state.dart';
 ///           codeContentType: PLAINTEXT
 ///         sqlApplicationConfiguration:
 ///           input:
-///             namePrefix: PREFIX_1
 ///             inputParallelism:
 ///               count: 3
 ///             inputSchema:
+///               recordFormat:
+///                 mappingParameters:
+///                   csvMappingParameters:
+///                     recordColumnDelimiter: ','
+///                     recordRowDelimiter: |2+
+///                 recordFormatType: CSV
 ///               recordColumns:
 ///                 - name: COLUMN_1
 ///                   sqlType: VARCHAR(8)
@@ -1301,41 +1303,39 @@ import 'application_state.dart';
 ///                 - name: COLUMN_2
 ///                   sqlType: DOUBLE
 ///               recordEncoding: UTF-8
-///               recordFormat:
-///                 recordFormatType: CSV
-///                 mappingParameters:
-///                   csvMappingParameters:
-///                     recordColumnDelimiter: ','
-///                     recordRowDelimiter: |2+
 ///             kinesisStreamsInput:
 ///               resourceArn: ${exampleAwsKinesisStream.arn}
-///           outputs:
-///             - name: OUTPUT_1
-///               destinationSchema:
-///                 recordFormatType: JSON
-///               lambdaOutput:
-///                 resourceArn: ${exampleAwsLambdaFunction.arn}
-///             - name: OUTPUT_2
-///               destinationSchema:
-///                 recordFormatType: CSV
-///               kinesisFirehoseOutput:
-///                 resourceArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
+///             namePrefix: PREFIX_1
 ///           referenceDataSource:
-///             tableName: TABLE-1
 ///             referenceSchema:
-///               recordColumns:
-///                 - name: COLUMN_1
-///                   sqlType: INTEGER
 ///               recordFormat:
-///                 recordFormatType: JSON
 ///                 mappingParameters:
 ///                   jsonMappingParameters:
 ///                     recordRowPath: $
+///                 recordFormatType: JSON
+///               recordColumns:
+///                 - name: COLUMN_1
+///                   sqlType: INTEGER
 ///             s3ReferenceDataSource:
 ///               bucketArn: ${exampleAwsS3Bucket.arn}
 ///               fileKey: KEY-1
+///             tableName: TABLE-1
+///           outputs:
+///             - destinationSchema:
+///                 recordFormatType: JSON
+///               lambdaOutput:
+///                 resourceArn: ${exampleAwsLambdaFunction.arn}
+///               name: OUTPUT_1
+///             - destinationSchema:
+///                 recordFormatType: CSV
+///               kinesisFirehoseOutput:
+///                 resourceArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
+///               name: OUTPUT_2
 ///       cloudwatchLoggingOptions:
 ///         logStreamArn: ${exampleLogStream.arn}
+///       name: example-sql-application
+///       runtimeEnvironment: SQL-1_0
+///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1353,9 +1353,6 @@ import 'application_state.dart';
 ///     source: new pulumi.asset.FileAsset("flink-app.jar"),
 /// });
 /// const exampleApplication = new aws.kinesisanalyticsv2.Application("example", {
-///     name: "example-flink-application",
-///     runtimeEnvironment: "FLINK-1_8",
-///     serviceExecutionRole: exampleAwsIamRole.arn,
 ///     applicationConfiguration: {
 ///         applicationCodeConfiguration: {
 ///             codeContent: {
@@ -1374,6 +1371,9 @@ import 'application_state.dart';
 ///             subnetIds: [exampleAwsSubnet.id],
 ///         },
 ///     },
+///     name: "example-flink-application",
+///     runtimeEnvironment: "FLINK-1_8",
+///     serviceExecutionRole: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1386,9 +1386,6 @@ import 'application_state.dart';
 ///     key="example-flink-application",
 ///     source=pulumi.FileAsset("flink-app.jar"))
 /// example_application = aws.kinesisanalyticsv2.Application("example",
-///     name="example-flink-application",
-///     runtime_environment="FLINK-1_8",
-///     service_execution_role=example_aws_iam_role["arn"],
 ///     application_configuration={
 ///         "application_code_configuration": {
 ///             "code_content": {
@@ -1406,7 +1403,10 @@ import 'application_state.dart';
 ///             ],
 ///             "subnet_ids": [example_aws_subnet["id"]],
 ///         },
-///     })
+///     },
+///     name="example-flink-application",
+///     runtime_environment="FLINK-1_8",
+///     service_execution_role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1430,9 +1430,6 @@ import 'application_state.dart';
 ///
 ///     var exampleApplication = new Aws.KinesisAnalyticsV2.Application("example", new()
 ///     {
-///         Name = "example-flink-application",
-///         RuntimeEnvironment = "FLINK-1_8",
-///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///         ApplicationConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationArgs
 ///         {
 ///             ApplicationCodeConfiguration = new Aws.KinesisAnalyticsV2.Inputs.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs
@@ -1460,6 +1457,9 @@ import 'application_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-flink-application",
+///         RuntimeEnvironment = "FLINK-1_8",
+///         ServiceExecutionRole = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1490,9 +1490,6 @@ import 'application_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesisanalyticsv2.NewApplication(ctx, "example", &kinesisanalyticsv2.ApplicationArgs{
-/// 			Name:                 pulumi.String("example-flink-application"),
-/// 			RuntimeEnvironment:   pulumi.String("FLINK-1_8"),
-/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			ApplicationConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationArgs{
 /// 				ApplicationCodeConfiguration: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationArgs{
 /// 					CodeContent: &kinesisanalyticsv2.ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs{
@@ -1513,6 +1510,9 @@ import 'application_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:                 pulumi.String("example-flink-application"),
+/// 			RuntimeEnvironment:   pulumi.String("FLINK-1_8"),
+/// 			ServiceExecutionRole: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1539,9 +1539,6 @@ import 'application_state.dart';
 ///   source = fileAsset("flink-app.jar")
 /// }
 /// resource "aws_kinesisanalyticsv2_application" "example" {
-///   name                   = "example-flink-application"
-///   runtime_environment    = "FLINK-1_8"
-///   service_execution_role = exampleAwsIamRole.arn
 ///   application_configuration = {
 ///     application_code_configuration = {
 ///       code_content = {
@@ -1557,6 +1554,9 @@ import 'application_state.dart';
 ///       subnet_ids         = [exampleAwsSubnet.id]
 ///     }
 ///   }
+///   name                   = "example-flink-application"
+///   runtime_environment    = "FLINK-1_8"
+///   service_execution_role = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1601,9 +1601,6 @@ import 'application_state.dart';
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("example-flink-application")
-///             .runtimeEnvironment("FLINK-1_8")
-///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .applicationConfiguration(ApplicationApplicationConfigurationArgs.builder()
 ///                 .applicationCodeConfiguration(ApplicationApplicationConfigurationApplicationCodeConfigurationArgs.builder()
 ///                     .codeContent(ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentArgs.builder()
@@ -1621,6 +1618,9 @@ import 'application_state.dart';
 ///                     .subnetIds(exampleAwsSubnet.id())
 ///                     .build())
 ///                 .build())
+///             .name("example-flink-application")
+///             .runtimeEnvironment("FLINK-1_8")
+///             .serviceExecutionRole(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1644,9 +1644,6 @@ import 'application_state.dart';
 ///     type: aws:kinesisanalyticsv2:Application
 ///     name: example
 ///     properties:
-///       name: example-flink-application
-///       runtimeEnvironment: FLINK-1_8
-///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 ///       applicationConfiguration:
 ///         applicationCodeConfiguration:
 ///           codeContent:
@@ -1660,6 +1657,9 @@ import 'application_state.dart';
 ///             - ${exampleAwsSecurityGroup[1].id}
 ///           subnetIds:
 ///             - ${exampleAwsSubnet.id}
+///       name: example-flink-application
+///       runtimeEnvironment: FLINK-1_8
+///       serviceExecutionRole: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1718,7 +1718,7 @@ class Application extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationConfiguration = registerOutput<ApplicationApplicationConfiguration>('applicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationMode = registerOutput<String>('applicationMode');
@@ -1734,8 +1734,8 @@ class Application extends pulumi.CustomResource {
     serviceExecutionRole = registerOutput<String>('serviceExecutionRole');
     startApplication = registerOutput<bool?>('startApplication');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<int>('versionId');
   }
 
@@ -1744,11 +1744,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1776,8 +1777,36 @@ class Application extends pulumi.CustomResource {
     serviceExecutionRole = registerOutput<String>('serviceExecutionRole');
     startApplication = registerOutput<bool?>('startApplication');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionId = registerOutput<int>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:kinesisanalyticsv2/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationConfiguration = registerOutput<ApplicationApplicationConfiguration>('applicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applicationMode = registerOutput<String>('applicationMode');
+    arn = registerOutput<String>('arn');
+    cloudwatchLoggingOptions = registerOutput<ApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTimestamp = registerOutput<String>('createTimestamp');
+    description = registerOutput<String?>('description');
+    forceStop = registerOutput<bool?>('forceStop');
+    lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    runtimeEnvironment = registerOutput<String>('runtimeEnvironment');
+    serviceExecutionRole = registerOutput<String>('serviceExecutionRole');
+    startApplication = registerOutput<bool?>('startApplication');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<int>('versionId');
   }
 }

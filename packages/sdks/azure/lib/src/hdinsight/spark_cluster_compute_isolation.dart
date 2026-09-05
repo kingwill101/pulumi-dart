@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkClusterComputeIsolation {
   /// This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
-  final pulumi.Input<bool>? computeIsolationEnabled;
+  final pulumi.Input<bool?>? computeIsolationEnabled;
   /// The name of the host SKU.
-  final pulumi.Input<String>? hostSku;
+  final pulumi.Input<String?>? hostSku;
 
   /// Creates a new [SparkClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.

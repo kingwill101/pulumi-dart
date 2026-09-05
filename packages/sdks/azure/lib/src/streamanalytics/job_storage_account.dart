@@ -205,7 +205,7 @@ import 'job_storage_account_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewJobStorageAccount(ctx, "example", &streamanalytics.JobStorageAccountArgs{
-/// 			StreamAnalyticsJobId: exampleJob.ID(),
+/// 			StreamAnalyticsJobId: exampleJob.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:   exampleAccount.Name,
 /// 			AuthenticationMode:   pulumi.String("Msi"),
 /// 		})
@@ -418,10 +418,11 @@ class JobStorageAccount extends pulumi.CustomResource {
           'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountKey'],
         ) {
     authenticationMode = registerOutput<String>('authenticationMode');
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
@@ -431,11 +432,12 @@ class JobStorageAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobStorageAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobStorageAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -450,7 +452,23 @@ class JobStorageAccount extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationMode = registerOutput<String>('authenticationMode');
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
+    storageAccountName = registerOutput<String>('storageAccountName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+  }
+
+  /// Creates a typed reference to an existing [JobStorageAccount] resource.
+  JobStorageAccount.reference(String urn)
+    : super(
+        'azure:streamanalytics/jobStorageAccount:JobStorageAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountKey'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String>('authenticationMode');
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }

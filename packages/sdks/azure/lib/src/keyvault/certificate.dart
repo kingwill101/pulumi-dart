@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
 import 'certificate_certificate.dart';
+import 'certificate_certificate_attribute.dart';
 import 'certificate_certificate_policy.dart';
 import 'certificate_state.dart';
 
@@ -27,6 +28,7 @@ import 'certificate_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     accessPolicies: [{
@@ -100,6 +102,7 @@ import 'certificate_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     access_policies=[{
@@ -178,6 +181,7 @@ import 'certificate_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         AccessPolicies = new[]
@@ -275,11 +279,12 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("examplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -340,7 +345,7 @@ import 'certificate_state.dart';
 /// 		}
 /// 		_, err = keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("imported-cert"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Certificate: &keyvault.CertificateCertificateArgs{
 /// 				Contents: pulumi.String(invokeFilebase64.Result),
 /// 				Password: pulumi.String(""),
@@ -373,11 +378,12 @@ import 'certificate_state.dart';
 ///   location = "West Europe"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 ///   access_policies {
 ///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id               = data.azure_core_getclientconfig.current.object_id
@@ -436,6 +442,7 @@ import 'certificate_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .accessPolicies(KeyVaultAccessPolicyArgs.builder()
@@ -511,6 +518,7 @@ import 'certificate_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       accessPolicies:
@@ -593,6 +601,7 @@ import 'certificate_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -702,6 +711,7 @@ import 'certificate_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7,
@@ -818,6 +828,7 @@ import 'certificate_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -966,12 +977,13 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -1027,7 +1039,7 @@ import 'certificate_state.dart';
 /// 		}
 /// 		_, err = keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("generated-cert"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
 /// 				IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
 /// 					Name: pulumi.String("Self"),
@@ -1101,6 +1113,7 @@ import 'certificate_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -1195,6 +1208,7 @@ import 'certificate_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -1305,6 +1319,7 @@ import 'certificate_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -1407,7 +1422,7 @@ class Certificate extends pulumi.CustomResource {
   /// A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.
   late final pulumi.Output<CertificateCertificate?> certificate;
   /// A `certificateAttribute` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificateAttributes;
+  late final pulumi.Output<List<CertificateCertificateAttribute>> certificateAttributes;
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
   late final pulumi.Output<String> certificateData;
   /// The Base64 encoded Key Vault Certificate data.
@@ -1449,10 +1464,10 @@ class Certificate extends pulumi.CustomResource {
           'azure:keyvault/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificate = registerOutput<CertificateCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificateAttributes = registerOutput<List<Map<String, dynamic>>>('certificateAttributes');
+    certificateAttributes = registerOutput<List<CertificateCertificateAttribute>>('certificateAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateAttribute>(guardedValue, (value) => CertificateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     certificateData = registerOutput<String>('certificateData');
     certificateDataBase64 = registerOutput<String>('certificateDataBase64');
     certificatePolicy = registerOutput<CertificateCertificatePolicy>('certificatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1461,7 +1476,7 @@ class Certificate extends pulumi.CustomResource {
     resourceManagerId = registerOutput<String>('resourceManagerId');
     resourceManagerVersionlessId = registerOutput<String>('resourceManagerVersionlessId');
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');
@@ -1473,11 +1488,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1492,7 +1508,7 @@ class Certificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     certificate = registerOutput<CertificateCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificateAttributes = registerOutput<List<Map<String, dynamic>>>('certificateAttributes');
+    certificateAttributes = registerOutput<List<CertificateCertificateAttribute>>('certificateAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateAttribute>(guardedValue, (value) => CertificateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     certificateData = registerOutput<String>('certificateData');
     certificateDataBase64 = registerOutput<String>('certificateDataBase64');
     certificatePolicy = registerOutput<CertificateCertificatePolicy>('certificatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1501,7 +1517,33 @@ class Certificate extends pulumi.CustomResource {
     resourceManagerId = registerOutput<String>('resourceManagerId');
     resourceManagerVersionlessId = registerOutput<String>('resourceManagerVersionlessId');
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thumbprint = registerOutput<String>('thumbprint');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
+    versionlessSecretId = registerOutput<String>('versionlessSecretId');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'azure:keyvault/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<CertificateCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateAttributes = registerOutput<List<CertificateCertificateAttribute>>('certificateAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateAttribute>(guardedValue, (value) => CertificateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    certificateData = registerOutput<String>('certificateData');
+    certificateDataBase64 = registerOutput<String>('certificateDataBase64');
+    certificatePolicy = registerOutput<CertificateCertificatePolicy>('certificatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateCertificatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultId = registerOutput<String>('keyVaultId');
+    this.name = registerOutput<String>('name');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    resourceManagerVersionlessId = registerOutput<String>('resourceManagerVersionlessId');
+    secretId = registerOutput<String>('secretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');

@@ -8,23 +8,23 @@ import 'model_card_export_job_timeouts.dart';
 /// Input properties used for looking up and filtering ModelCardExportJob resources.
 class ModelCardExportJobState {
   /// Exported model card artifacts.
-  final pulumi.Input<List<ModelCardExportJobExportArtifact>>? exportArtifacts;
-  /// The Amazon Resource Name (ARN) of the model card export job.
-  final pulumi.Input<String>? modelCardExportJobArn;
+  final pulumi.Input<List<ModelCardExportJobExportArtifact>?>? exportArtifacts;
+  /// ARN of the model card export job.
+  final pulumi.Input<String?>? modelCardExportJobArn;
   /// Name of the model card export job.
-  final pulumi.Input<String>? modelCardExportJobName;
+  final pulumi.Input<String?>? modelCardExportJobName;
   /// Name of the model card.
-  final pulumi.Input<String>? modelCardName;
-  final pulumi.Input<int>? modelCardVersion;
+  final pulumi.Input<String?>? modelCardName;
+  final pulumi.Input<int?>? modelCardVersion;
   /// Export output details. Fields are documented below.
-  final pulumi.Input<ModelCardExportJobOutputConfig>? outputConfig;
+  final pulumi.Input<ModelCardExportJobOutputConfig?>? outputConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ModelCardExportJobTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ModelCardExportJobTimeouts?>? timeouts;
 
   /// Creates a new [ModelCardExportJobState].
   /// [exportArtifacts] Exported model card artifacts.
-  /// [modelCardExportJobArn] The Amazon Resource Name (ARN) of the model card export job.
+  /// [modelCardExportJobArn] ARN of the model card export job.
   /// [modelCardExportJobName] Name of the model card export job.
   /// [modelCardName] Name of the model card.
   /// [modelCardVersion] Optional.
@@ -61,7 +61,7 @@ class ModelCardExportJobState {
       modelCardExportJobArn: (() { final guardedValue = map['modelCardExportJobArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelCardExportJobName: (() { final guardedValue = map['modelCardExportJobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelCardName: (() { final guardedValue = map['modelCardName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      modelCardVersion: (() { final guardedValue = map['modelCardVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      modelCardVersion: (() { final guardedValue = map['modelCardVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       outputConfig: (() { final guardedValue = map['outputConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelCardExportJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelCardExportJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -25,8 +25,8 @@ class DomainDefaultUserSettingsCustomPosixUserConfig {
 
   factory DomainDefaultUserSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCustomPosixUserConfig(
-      gid: pulumi.Input.fromValue(map['gid'] as int),
-      uid: pulumi.Input.fromValue(map['uid'] as int),
+      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
+      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
     );
   }
 }

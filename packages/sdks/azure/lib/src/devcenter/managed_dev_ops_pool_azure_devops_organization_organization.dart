@@ -10,7 +10,7 @@ class ManagedDevOpsPoolAzureDevopsOrganizationOrganization {
   /// List of projects in which the pool should be created.
   ///
   /// &gt; **Note:** Please refer to [Azure DevOps Project Names](https://learn.microsoft.com/azure/devops/organizations/settings/naming-restrictions?view=azure-devops#project-names) for more information on project naming restrictions.
-  final pulumi.Input<List<String>>? projects;
+  final pulumi.Input<List<String>?>? projects;
   /// The Azure DevOps organization URL in which the pool should be created. It must end with a letter or number.
   final pulumi.Input<String> url;
 
@@ -34,7 +34,7 @@ class ManagedDevOpsPoolAzureDevopsOrganizationOrganization {
 
   factory ManagedDevOpsPoolAzureDevopsOrganizationOrganization.fromMap(Map<String, dynamic> map) {
     return ManagedDevOpsPoolAzureDevopsOrganizationOrganization(
-      parallelism: pulumi.Input.fromValue(map['parallelism'] as int),
+      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
       projects: (() { final guardedValue = map['projects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

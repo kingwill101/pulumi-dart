@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersDynamodbStreamParametersDeadLetterConfig {
   /// ARN of this pipe.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
 
   /// Creates a new [PipeSourceParametersDynamodbStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.

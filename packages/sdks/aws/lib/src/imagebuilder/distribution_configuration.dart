@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_configuration_args.dart';
+import 'distribution_configuration_distribution.dart';
 import 'distribution_configuration_state.dart';
 
 /// Manages an Image Builder Distribution Configuration.
@@ -12,22 +13,22 @@ import 'distribution_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.imagebuilder.DistributionConfiguration("example", {
-///     name: "example",
 ///     distributions: [{
 ///         amiDistributionConfiguration: {
+///             launchPermission: {
+///                 userIds: ["123456789012"],
+///             },
 ///             amiTags: {
 ///                 CostCenter: "IT",
 ///             },
 ///             name: "example-{{ imagebuilder:buildDate }}",
-///             launchPermission: {
-///                 userIds: ["123456789012"],
-///             },
 ///         },
 ///         launchTemplateConfigurations: [{
 ///             launchTemplateId: "lt-0aaa1bcde2ff3456",
 ///         }],
 ///         region: "us-east-1",
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -35,22 +36,22 @@ import 'distribution_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.imagebuilder.DistributionConfiguration("example",
-///     name="example",
 ///     distributions=[{
 ///         "ami_distribution_configuration": {
+///             "launch_permission": {
+///                 "user_ids": ["123456789012"],
+///             },
 ///             "ami_tags": {
 ///                 "CostCenter": "IT",
 ///             },
 ///             "name": "example-{{ imagebuilder:buildDate }}",
-///             "launch_permission": {
-///                 "user_ids": ["123456789012"],
-///             },
 ///         },
 ///         "launch_template_configurations": [{
 ///             "launch_template_id": "lt-0aaa1bcde2ff3456",
 ///         }],
 ///         "region": "us-east-1",
-///     }])
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,18 +63,12 @@ import 'distribution_configuration_state.dart';
 /// {
 ///     var example = new Aws.ImageBuilder.DistributionConfiguration("example", new()
 ///     {
-///         Name = "example",
 ///         Distributions = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.DistributionConfigurationDistributionArgs
 ///             {
 ///                 AmiDistributionConfiguration = new Aws.ImageBuilder.Inputs.DistributionConfigurationDistributionAmiDistributionConfigurationArgs
 ///                 {
-///                     AmiTags =
-///                     {
-///                         { "CostCenter", "IT" },
-///                     },
-///                     Name = "example-{{ imagebuilder:buildDate }}",
 ///                     LaunchPermission = new Aws.ImageBuilder.Inputs.DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs
 ///                     {
 ///                         UserIds = new[]
@@ -81,6 +76,11 @@ import 'distribution_configuration_state.dart';
 ///                             "123456789012",
 ///                         },
 ///                     },
+///                     AmiTags =
+///                     {
+///                         { "CostCenter", "IT" },
+///                     },
+///                     Name = "example-{{ imagebuilder:buildDate }}",
 ///                 },
 ///                 LaunchTemplateConfigurations = new[]
 ///                 {
@@ -92,6 +92,7 @@ import 'distribution_configuration_state.dart';
 ///                 Region = "us-east-1",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -107,19 +108,18 @@ import 'distribution_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.NewDistributionConfiguration(ctx, "example", &imagebuilder.DistributionConfigurationArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Distributions: imagebuilder.DistributionConfigurationDistributionArray{
 /// 				&imagebuilder.DistributionConfigurationDistributionArgs{
 /// 					AmiDistributionConfiguration: &imagebuilder.DistributionConfigurationDistributionAmiDistributionConfigurationArgs{
-/// 						AmiTags: pulumi.StringMap{
-/// 							"CostCenter": pulumi.String("IT"),
-/// 						},
-/// 						Name: pulumi.String("example-{{ imagebuilder:buildDate }}"),
 /// 						LaunchPermission: &imagebuilder.DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs{
 /// 							UserIds: pulumi.StringArray{
 /// 								pulumi.String("123456789012"),
 /// 							},
 /// 						},
+/// 						AmiTags: pulumi.StringMap{
+/// 							"CostCenter": pulumi.String("IT"),
+/// 						},
+/// 						Name: pulumi.String("example-{{ imagebuilder:buildDate }}"),
 /// 					},
 /// 					LaunchTemplateConfigurations: imagebuilder.DistributionConfigurationDistributionLaunchTemplateConfigurationArray{
 /// 						&imagebuilder.DistributionConfigurationDistributionLaunchTemplateConfigurationArgs{
@@ -129,6 +129,7 @@ import 'distribution_configuration_state.dart';
 /// 					Region: pulumi.String("us-east-1"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -147,22 +148,22 @@ import 'distribution_configuration_state.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_distributionconfiguration" "example" {
-///   name = "example"
 ///   distributions {
 ///     ami_distribution_configuration = {
+///       launch_permission = {
+///         user_ids = ["123456789012"]
+///       }
 ///       ami_tags = {
 ///         "CostCenter" = "IT"
 ///       }
 ///       name = "example-{{ imagebuilder:buildDate }}"
-///       launch_permission = {
-///         user_ids = ["123456789012"]
-///       }
 ///     }
 ///     launch_template_configurations {
 ///       launch_template_id = "lt-0aaa1bcde2ff3456"
 ///     }
 ///     region = "us-east-1"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -191,20 +192,20 @@ import 'distribution_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DistributionConfiguration("example", DistributionConfigurationArgs.builder()
-///             .name("example")
 ///             .distributions(DistributionConfigurationDistributionArgs.builder()
 ///                 .amiDistributionConfiguration(DistributionConfigurationDistributionAmiDistributionConfigurationArgs.builder()
-///                     .amiTags(Map.of("CostCenter", "IT"))
-///                     .name("example-{{ imagebuilder:buildDate }}")
 ///                     .launchPermission(DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs.builder()
 ///                         .userIds("123456789012")
 ///                         .build())
+///                     .amiTags(Map.of("CostCenter", "IT"))
+///                     .name("example-{{ imagebuilder:buildDate }}")
 ///                     .build())
 ///                 .launchTemplateConfigurations(DistributionConfigurationDistributionLaunchTemplateConfigurationArgs.builder()
 ///                     .launchTemplateId("lt-0aaa1bcde2ff3456")
 ///                     .build())
 ///                 .region("us-east-1")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -215,18 +216,18 @@ import 'distribution_configuration_state.dart';
 ///   example:
 ///     type: aws:imagebuilder:DistributionConfiguration
 ///     properties:
-///       name: example
 ///       distributions:
 ///         - amiDistributionConfiguration:
-///             amiTags:
-///               CostCenter: IT
-///             name: example-{{ imagebuilder:buildDate }}
 ///             launchPermission:
 ///               userIds:
 ///                 - '123456789012'
+///             amiTags:
+///               CostCenter: IT
+///             name: example-{{ imagebuilder:buildDate }}
 ///           launchTemplateConfigurations:
 ///             - launchTemplateId: lt-0aaa1bcde2ff3456
 ///           region: us-east-1
+///       name: example
 /// ```
 ///
 ///
@@ -236,16 +237,16 @@ import 'distribution_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder distribution configuration.
+/// - `arn` (String) ARN of the Image Builder distribution configuration.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.getDistributionConfigurations` resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.getDistributionConfigurations` resources using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/distributionConfiguration:DistributionConfiguration example arn:aws:imagebuilder:us-east-1:123456789012:distribution-configuration/example
 /// ```
 class DistributionConfiguration extends pulumi.CustomResource {
-  /// (Required) Amazon Resource Name (ARN) of the distribution configuration.
+  /// (Required) ARN of the distribution configuration.
   late final pulumi.Output<String> arn;
   /// Date the distribution configuration was created.
   late final pulumi.Output<String> dateCreated;
@@ -256,7 +257,7 @@ class DistributionConfiguration extends pulumi.CustomResource {
   /// One or more configuration blocks with distribution settings. Detailed below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> distributions;
+  late final pulumi.Output<List<DistributionConfigurationDistribution>> distributions;
   /// Name of the distribution configuration.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -278,17 +279,17 @@ class DistributionConfiguration extends pulumi.CustomResource {
           'aws:imagebuilder/distributionConfiguration:DistributionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');
     dateUpdated = registerOutput<String>('dateUpdated');
     description = registerOutput<String?>('description');
-    distributions = registerOutput<List<Map<String, dynamic>>>('distributions');
+    distributions = registerOutput<List<DistributionConfigurationDistribution>>('distributions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionConfigurationDistribution>(guardedValue, (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DistributionConfiguration] resource's state with the given [name] and [id].
@@ -296,11 +297,12 @@ class DistributionConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DistributionConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DistributionConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,10 +320,30 @@ class DistributionConfiguration extends pulumi.CustomResource {
     dateCreated = registerOutput<String>('dateCreated');
     dateUpdated = registerOutput<String>('dateUpdated');
     description = registerOutput<String?>('description');
-    distributions = registerOutput<List<Map<String, dynamic>>>('distributions');
+    distributions = registerOutput<List<DistributionConfigurationDistribution>>('distributions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionConfigurationDistribution>(guardedValue, (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DistributionConfiguration] resource.
+  DistributionConfiguration.reference(String urn)
+    : super(
+        'aws:imagebuilder/distributionConfiguration:DistributionConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dateCreated = registerOutput<String>('dateCreated');
+    dateUpdated = registerOutput<String>('dateUpdated');
+    description = registerOutput<String?>('description');
+    distributions = registerOutput<List<DistributionConfigurationDistribution>>('distributions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionConfigurationDistribution>(guardedValue, (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_rule_args.dart';
+import 'tag_rule_log_tag_filter.dart';
+import 'tag_rule_metric_tag_filter.dart';
 import 'tag_rule_state.dart';
 
 /// Manages an Azure Native New Relic Tag Rule.
@@ -181,7 +183,7 @@ import 'tag_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = newrelic.NewTagRule(ctx, "example", &newrelic.TagRuleArgs{
-/// 			MonitorId:                      exampleMonitor.ID(),
+/// 			MonitorId:                      exampleMonitor.ID().ToIDOutput().ToStringOutput(),
 /// 			AzureActiveDirectoryLogEnabled: pulumi.Bool(true),
 /// 			ActivityLogEnabled:             pulumi.Bool(true),
 /// 			MetricEnabled:                  pulumi.Bool(true),
@@ -384,11 +386,11 @@ class TagRule extends pulumi.CustomResource {
   /// Whether Azure Active Directory logs should be sent for the Monitor resource. Defaults to `false`.
   late final pulumi.Output<bool?> azureActiveDirectoryLogEnabled;
   /// A `logTagFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logTagFilters;
+  late final pulumi.Output<List<TagRuleLogTagFilter>?> logTagFilters;
   /// Whether metrics should be sent for the Monitor resource. Defaults to `false`.
   late final pulumi.Output<bool?> metricEnabled;
   /// A `metricTagFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metricTagFilters;
+  late final pulumi.Output<List<TagRuleMetricTagFilter>?> metricTagFilters;
   /// Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   late final pulumi.Output<String> monitorId;
   /// Whether subscription logs should be sent for the Monitor resource. Defaults to `false`.
@@ -406,13 +408,13 @@ class TagRule extends pulumi.CustomResource {
           'azure:newrelic/tagRule:TagRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activityLogEnabled = registerOutput<bool?>('activityLogEnabled');
     azureActiveDirectoryLogEnabled = registerOutput<bool?>('azureActiveDirectoryLogEnabled');
-    logTagFilters = registerOutput<List<Map<String, dynamic>>?>('logTagFilters');
+    logTagFilters = registerOutput<List<TagRuleLogTagFilter>?>('logTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleLogTagFilter>(guardedValue, (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     metricEnabled = registerOutput<bool?>('metricEnabled');
-    metricTagFilters = registerOutput<List<Map<String, dynamic>>?>('metricTagFilters');
+    metricTagFilters = registerOutput<List<TagRuleMetricTagFilter>?>('metricTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleMetricTagFilter>(guardedValue, (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     monitorId = registerOutput<String>('monitorId');
     subscriptionLogEnabled = registerOutput<bool?>('subscriptionLogEnabled');
   }
@@ -422,11 +424,12 @@ class TagRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -442,9 +445,27 @@ class TagRule extends pulumi.CustomResource {
         ) {
     activityLogEnabled = registerOutput<bool?>('activityLogEnabled');
     azureActiveDirectoryLogEnabled = registerOutput<bool?>('azureActiveDirectoryLogEnabled');
-    logTagFilters = registerOutput<List<Map<String, dynamic>>?>('logTagFilters');
+    logTagFilters = registerOutput<List<TagRuleLogTagFilter>?>('logTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleLogTagFilter>(guardedValue, (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     metricEnabled = registerOutput<bool?>('metricEnabled');
-    metricTagFilters = registerOutput<List<Map<String, dynamic>>?>('metricTagFilters');
+    metricTagFilters = registerOutput<List<TagRuleMetricTagFilter>?>('metricTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleMetricTagFilter>(guardedValue, (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    monitorId = registerOutput<String>('monitorId');
+    subscriptionLogEnabled = registerOutput<bool?>('subscriptionLogEnabled');
+  }
+
+  /// Creates a typed reference to an existing [TagRule] resource.
+  TagRule.reference(String urn)
+    : super(
+        'azure:newrelic/tagRule:TagRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activityLogEnabled = registerOutput<bool?>('activityLogEnabled');
+    azureActiveDirectoryLogEnabled = registerOutput<bool?>('azureActiveDirectoryLogEnabled');
+    logTagFilters = registerOutput<List<TagRuleLogTagFilter>?>('logTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleLogTagFilter>(guardedValue, (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    metricEnabled = registerOutput<bool?>('metricEnabled');
+    metricTagFilters = registerOutput<List<TagRuleMetricTagFilter>?>('metricTagFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagRuleMetricTagFilter>(guardedValue, (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>())); });
     monitorId = registerOutput<String>('monitorId');
     subscriptionLogEnabled = registerOutput<bool?>('subscriptionLogEnabled');
   }

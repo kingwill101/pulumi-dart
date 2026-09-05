@@ -6,25 +6,25 @@ import 'contact_profile_link.dart';
 /// Input properties used for looking up and filtering ContactProfile resources.
 class ContactProfileState {
   /// Auto-tracking configurations for a spacecraft. Possible values are `disabled`, `xBand` and `sBand`.
-  final pulumi.Input<String>? autoTracking;
+  final pulumi.Input<String?>? autoTracking;
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
-  final pulumi.Input<String>? eventHubUri;
+  final pulumi.Input<String?>? eventHubUri;
   /// A list of spacecraft links. A `links` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<ContactProfileLink>>? links;
+  final pulumi.Input<List<ContactProfileLink>?>? links;
   /// The location where the contact profile exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum elevation of the antenna during the contact in decimal degrees.
-  final pulumi.Input<double>? minimumElevationDegrees;
+  final pulumi.Input<double?>? minimumElevationDegrees;
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
-  final pulumi.Input<String>? minimumVariableContactDuration;
+  final pulumi.Input<String?>? minimumVariableContactDuration;
   /// The name of the contact profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkConfigurationSubnetId;
+  final pulumi.Input<String?>? networkConfigurationSubnetId;
   /// The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ContactProfileState].
   /// [autoTracking] Auto-tracking configurations for a spacecraft. Possible values are `disabled`, `xBand` and `sBand`.
@@ -71,7 +71,7 @@ class ContactProfileState {
       eventHubUri: (() { final guardedValue = map['eventHubUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       links: (() { final guardedValue = map['links']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactProfileLink>(guardedValue, (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       minimumVariableContactDuration: (() { final guardedValue = map['minimumVariableContactDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfigurationSubnetId: (() { final guardedValue = map['networkConfigurationSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

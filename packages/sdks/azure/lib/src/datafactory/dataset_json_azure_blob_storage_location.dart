@@ -6,11 +6,11 @@ class DatasetJsonAzureBlobStorageLocation {
   /// The container on the Azure Blob Storage Account hosting the file.
   final pulumi.Input<String> container;
   /// Is the `container` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicContainerEnabled;
+  final pulumi.Input<bool?>? dynamicContainerEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicFilenameEnabled;
+  final pulumi.Input<bool?>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicPathEnabled;
+  final pulumi.Input<bool?>? dynamicPathEnabled;
   /// The filename of the file on the web server.
   final pulumi.Input<String> filename;
   /// The folder path to the file on the web server.

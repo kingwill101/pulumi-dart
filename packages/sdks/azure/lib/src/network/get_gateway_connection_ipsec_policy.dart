@@ -71,8 +71,8 @@ class GetGatewayConnectionIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDatasize: pulumi.Input.fromValue(map['saDatasize'] as int),
-      saLifetime: pulumi.Input.fromValue(map['saLifetime'] as int),
+      saDatasize: pulumi.Input.fromValue((map['saDatasize'] as num).toInt()),
+      saLifetime: pulumi.Input.fromValue((map['saLifetime'] as num).toInt()),
     );
   }
 }

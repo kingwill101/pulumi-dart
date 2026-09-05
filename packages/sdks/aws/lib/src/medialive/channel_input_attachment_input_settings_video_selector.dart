@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsVideoSelector {
-  final pulumi.Input<String>? colorSpace;
-  final pulumi.Input<String>? colorSpaceUsage;
+  final pulumi.Input<String?>? colorSpace;
+  final pulumi.Input<String?>? colorSpaceUsage;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsVideoSelector].
   /// [colorSpace] Optional.

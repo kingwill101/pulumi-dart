@@ -5,7 +5,7 @@ import 'data_set_physical_table_map_relational_table_input_column.dart';
 
 class DataSetPhysicalTableMapRelationalTable {
   /// Catalog associated with the table.
-  final pulumi.Input<String>? catalog;
+  final pulumi.Input<String?>? catalog;
   /// ARN of the data source.
   final pulumi.Input<String> dataSourceArn;
   /// Column schema of the table. See input_columns.
@@ -13,7 +13,7 @@ class DataSetPhysicalTableMapRelationalTable {
   /// Name of the relational table.
   final pulumi.Input<String> name;
   /// Schema name. This name applies to certain relational database engines.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [DataSetPhysicalTableMapRelationalTable].
   /// [catalog] Catalog associated with the table.

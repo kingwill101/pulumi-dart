@@ -16,26 +16,26 @@ import 'web_acl_rule_visibility_config.dart';
 /// {@macro pulumi_wafv2_web_acl_rule_web_acl_rule_args_doc}
 class WebAclRuleArgs {
   /// Action to take when the rule matches. See Action below. Conflicts with `overrideAction`.
-  final pulumi.Input<WebAclRuleAction>? action;
+  final pulumi.Input<WebAclRuleAction?>? action;
   /// CAPTCHA configuration that overrides the web ACL level setting. See Captcha Config below.
-  final pulumi.Input<WebAclRuleCaptchaConfig>? captchaConfig;
+  final pulumi.Input<WebAclRuleCaptchaConfig?>? captchaConfig;
   /// Challenge configuration that overrides the web ACL level setting. See Challenge Config below.
-  final pulumi.Input<WebAclRuleChallengeConfig>? challengeConfig;
+  final pulumi.Input<WebAclRuleChallengeConfig?>? challengeConfig;
   /// Name of the rule. Must be unique within the Web ACL.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Override action for managed rule groups. See Override Action below. Conflicts with `action`.
-  final pulumi.Input<WebAclRuleOverrideAction>? overrideAction;
+  final pulumi.Input<WebAclRuleOverrideAction?>? overrideAction;
   /// Rule priority. Rules with lower priority are evaluated first.
   final pulumi.Input<int> priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Labels to apply to matching web requests. See Rule Label below.
-  final pulumi.Input<List<WebAclRuleRuleLabel>>? ruleLabels;
+  final pulumi.Input<List<WebAclRuleRuleLabel>?>? ruleLabels;
   /// Rule statement. See Statement below.
-  final pulumi.Input<WebAclRuleStatement>? statement;
-  final pulumi.Input<WebAclRuleTimeouts>? timeouts;
+  final pulumi.Input<WebAclRuleStatement?>? statement;
+  final pulumi.Input<WebAclRuleTimeouts?>? timeouts;
   /// CloudWatch metrics configuration. See Visibility Config below.
-  final pulumi.Input<WebAclRuleVisibilityConfig>? visibilityConfig;
+  final pulumi.Input<WebAclRuleVisibilityConfig?>? visibilityConfig;
   /// ARN of the Web ACL to add the rule to.
   ///
   /// The following arguments are optional:
@@ -93,7 +93,7 @@ class WebAclRuleArgs {
       challengeConfig: (() { final guardedValue = map['challengeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       overrideAction: (() { final guardedValue = map['overrideAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleLabels: (() { final guardedValue = map['ruleLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleRuleLabel>(guardedValue, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statement: (() { final guardedValue = map['statement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

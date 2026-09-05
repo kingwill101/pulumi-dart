@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectEnvironmentFleet {
   /// Compute fleet ARN for the build project.
-  final pulumi.Input<String>? fleetArn;
+  final pulumi.Input<String?>? fleetArn;
 
   /// Creates a new [ProjectEnvironmentFleet].
   /// [fleetArn] Compute fleet ARN for the build project.

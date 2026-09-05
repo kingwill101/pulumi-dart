@@ -361,13 +361,13 @@ class TelemetryEvaluationForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryEvaluationForOrganization:TelemetryEvaluationForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allRegions = registerOutput<bool?>('allRegions');
     failureReason = registerOutput<String>('failureReason');
     homeRegion = registerOutput<String>('homeRegion');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>?>('regions');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     timeouts = registerOutput<TelemetryEvaluationForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEvaluationForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -377,11 +377,12 @@ class TelemetryEvaluationForOrganization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryEvaluationForOrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryEvaluationForOrganization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,7 +400,25 @@ class TelemetryEvaluationForOrganization extends pulumi.CustomResource {
     failureReason = registerOutput<String>('failureReason');
     homeRegion = registerOutput<String>('homeRegion');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>?>('regions');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<TelemetryEvaluationForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEvaluationForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryEvaluationForOrganization] resource.
+  TelemetryEvaluationForOrganization.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryEvaluationForOrganization:TelemetryEvaluationForOrganization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allRegions = registerOutput<bool?>('allRegions');
+    failureReason = registerOutput<String>('failureReason');
+    homeRegion = registerOutput<String>('homeRegion');
+    region = registerOutput<String>('region');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     timeouts = registerOutput<TelemetryEvaluationForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEvaluationForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

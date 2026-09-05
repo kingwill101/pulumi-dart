@@ -13,25 +13,25 @@ class StateMachineArgs {
   /// The [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) definition of the state machine.
   final pulumi.Input<String> definition;
   /// Defines what encryption configuration is used to encrypt data in the State Machine. For more information see [TBD] in the AWS Step Functions User Guide.
-  final pulumi.Input<StateMachineEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<StateMachineEncryptionConfiguration?>? encryptionConfiguration;
   /// Defines what execution history events are logged and where they are logged. The `loggingConfiguration` parameter is valid when `type` is set to `STANDARD` or `EXPRESS`. Defaults to `OFF`. For more information see [Logging Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html), [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) and [Logging Configuration](https://docs.aws.amazon.com/step-functions/latest/apireference/API_CreateStateMachine.html) in the AWS Step Functions User Guide.
-  final pulumi.Input<StateMachineLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<StateMachineLoggingConfiguration?>? loggingConfiguration;
   /// The name of the state machine. The name should only contain `0`-`9`, `A`-`Z`, `a`-`z`, `-` and `_`. If omitted, the provider will assign a random, unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Set to true to publish a version of the state machine during creation. Default: false.
-  final pulumi.Input<bool>? publish;
+  final pulumi.Input<bool?>? publish;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role to use for this state machine.
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Selects whether AWS X-Ray tracing is enabled.
-  final pulumi.Input<StateMachineTracingConfiguration>? tracingConfiguration;
+  final pulumi.Input<StateMachineTracingConfiguration?>? tracingConfiguration;
   /// Determines whether a Standard or Express state machine is created. The default is `STANDARD`. You cannot update the type of a state machine once it has been created. Valid values: `STANDARD`, `EXPRESS`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [StateMachineArgs].
   /// [definition] The [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) definition of the state machine.
@@ -41,7 +41,7 @@ class StateMachineArgs {
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [publish] Set to true to publish a version of the state machine during creation. Default: false.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
+  /// [roleArn] ARN of the IAM role to use for this state machine.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tracingConfiguration] Selects whether AWS X-Ray tracing is enabled.
   /// [type] Determines whether a Standard or Express state machine is created. The default is `STANDARD`. You cannot update the type of a state machine once it has been created. Valid values: `STANDARD`, `EXPRESS`.

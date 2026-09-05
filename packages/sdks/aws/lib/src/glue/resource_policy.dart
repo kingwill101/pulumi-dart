@@ -16,12 +16,12 @@ import 'resource_policy_state.dart';
 /// const currentGetRegion = aws.getRegion({});
 /// const glue_example_policy = Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["glue:CreateTable"],
-///         resources: [`arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:*`],
 ///         principals: [{
 ///             identifiers: ["*"],
 ///             type: "AWS",
 ///         }],
+///         actions: ["glue:CreateTable"],
+///         resources: [`arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:*`],
 ///     }],
 /// }));
 /// const example = new aws.glue.ResourcePolicy("example", {policy: glue_example_policy.then(glue_example_policy => glue_example_policy.json)});
@@ -34,12 +34,12 @@ import 'resource_policy_state.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_region = aws.get_region()
 /// glue_example_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["glue:CreateTable"],
-///     "resources": [f"arn:{current_get_partition.partition}:glue:{current_get_region.region}:{current.account_id}:*"],
 ///     "principals": [{
 ///         "identifiers": ["*"],
 ///         "type": "AWS",
 ///     }],
+///     "actions": ["glue:CreateTable"],
+///     "resources": [f"arn:{current_get_partition.partition}:glue:{current_get_region.region}:{current.account_id}:*"],
 /// }])
 /// example = aws.glue.ResourcePolicy("example", policy=glue_example_policy.json)
 /// ```
@@ -63,14 +63,6 @@ import 'resource_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "glue:CreateTable",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:glue:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -81,6 +73,14 @@ import 'resource_policy_state.dart';
 ///                         },
 ///                         Type = "AWS",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "glue:CreateTable",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:glue:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:*",
 ///                 },
 ///             },
 ///         },
@@ -122,12 +122,6 @@ import 'resource_policy_state.dart';
 /// 		glue_example_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"glue:CreateTable",
-/// 					},
-/// 					Resources: []string{
-/// 						fmt.Sprintf("arn:%v:glue:%v:%v:*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -135,6 +129,12 @@ import 'resource_policy_state.dart';
 /// 							},
 /// 							Type: "AWS",
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"glue:CreateTable",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:%v:glue:%v:%v:*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
 /// 					},
 /// 				},
 /// 			},
@@ -169,12 +169,12 @@ import 'resource_policy_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "glue-example-policy" {
 ///   statements {
-///     actions   = ["glue:CreateTable"]
-///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:*"]
 ///     principals {
 ///       identifiers = ["*"]
 ///       type        = "AWS"
 ///     }
+///     actions   = ["glue:CreateTable"]
+///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:*"]
 ///   }
 /// }
 ///
@@ -222,12 +222,12 @@ import 'resource_policy_state.dart';
 ///
 ///         final var glue-example-policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("glue:CreateTable")
-///                 .resources(String.format("arn:%s:glue:%s:%s:*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("*")
 ///                     .type("AWS")
 ///                     .build())
+///                 .actions("glue:CreateTable")
+///                 .resources(String.format("arn:%s:glue:%s:%s:*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                 .build())
 ///             .build());
 ///
@@ -262,14 +262,14 @@ import 'resource_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - glue:CreateTable
-///             resources:
-///               - arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:*
-///             principals:
+///           - principals:
 ///               - identifiers:
 ///                   - '*'
 ///                 type: AWS
+///             actions:
+///               - glue:CreateTable
+///             resources:
+///               - arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:*
 /// ```
 ///
 ///
@@ -308,7 +308,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:glue/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enableHybrid = registerOutput<String?>('enableHybrid');
     policy = registerOutput<String>('policy');
@@ -320,11 +320,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,6 +339,20 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enableHybrid = registerOutput<String?>('enableHybrid');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:glue/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enableHybrid = registerOutput<String?>('enableHybrid');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

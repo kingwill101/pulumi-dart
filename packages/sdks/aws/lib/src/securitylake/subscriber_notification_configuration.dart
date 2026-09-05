@@ -5,10 +5,10 @@ import 'subscriber_notification_configuration_https_notification_configuration.d
 
 class SubscriberNotificationConfiguration {
   /// The configurations for HTTPS subscriber notification.
-  final pulumi.Input<SubscriberNotificationConfigurationHttpsNotificationConfiguration>? httpsNotificationConfiguration;
+  final pulumi.Input<SubscriberNotificationConfigurationHttpsNotificationConfiguration?>? httpsNotificationConfiguration;
   /// The configurations for SQS subscriber notification.
   /// There are no parameters within `sqsNotificationConfiguration`.
-  final pulumi.Input<Map<String, dynamic>>? sqsNotificationConfiguration;
+  final pulumi.Input<Map<String, dynamic>?>? sqsNotificationConfiguration;
 
   /// Creates a new [SubscriberNotificationConfiguration].
   /// [httpsNotificationConfiguration] The configurations for HTTPS subscriber notification.

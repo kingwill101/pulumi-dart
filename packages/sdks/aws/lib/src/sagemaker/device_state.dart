@@ -5,19 +5,19 @@ import 'device_device.dart';
 
 /// Input properties used for looking up and filtering Device resources.
 class DeviceState {
-  final pulumi.Input<String>? agentVersion;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Device.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? agentVersion;
+  /// ARN assigned by AWS to this Device.
+  final pulumi.Input<String?>? arn;
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
-  final pulumi.Input<DeviceDevice>? device;
+  final pulumi.Input<DeviceDevice?>? device;
   /// The name of the Device Fleet.
-  final pulumi.Input<String>? deviceFleetName;
+  final pulumi.Input<String?>? deviceFleetName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DeviceState].
   /// [agentVersion] Optional.
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Device.
+  /// [arn] ARN assigned by AWS to this Device.
   /// [device] The device to register with SageMaker AI Edge Manager. See Device details below.
   /// [deviceFleetName] The name of the Device Fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

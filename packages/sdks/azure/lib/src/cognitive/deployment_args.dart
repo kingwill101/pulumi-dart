@@ -12,17 +12,17 @@ class DeploymentArgs {
   /// The ID of the Cognitive Services Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> cognitiveAccountId;
   /// Whether dynamic throttling is enabled.
-  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<bool?>? dynamicThrottlingEnabled;
   /// A `model` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<DeploymentModel> model;
   /// The name of the Cognitive Services Account Deployment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of RAI policy.
-  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<String?>? raiPolicyName;
   /// A `sku` block as defined below.
   final pulumi.Input<DeploymentSku> sku;
   /// Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
-  final pulumi.Input<String>? versionUpgradeOption;
+  final pulumi.Input<String?>? versionUpgradeOption;
 
   /// Creates a new [DeploymentArgs].
   /// [cognitiveAccountId] The ID of the Cognitive Services Account. Changing this forces a new resource to be created.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AppregistryAttributeGroupAssociation resources.
 class AppregistryAttributeGroupAssociationState {
   /// ID of the application.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// ID of the attribute group to associate with the application.
-  final pulumi.Input<String>? attributeGroupId;
+  final pulumi.Input<String?>? attributeGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AppregistryAttributeGroupAssociationState].
   /// [applicationId] ID of the application.

@@ -10,15 +10,15 @@ class VirtualMachineManagerVirtualNetworkArgs {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Network. Changing this forces a new resource to be created.
   final pulumi.Input<String> customLocationId;
   /// The Azure Region where the System Center Virtual Machine Manager Virtual Network should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the System Center Virtual Machine Manager Virtual Network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the System Center Virtual Machine Virtual Network should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
   final pulumi.Input<String> systemCenterVirtualMachineManagerServerInventoryItemId;
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Virtual Network.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualMachineManagerVirtualNetworkArgs].
   /// [customLocationId] The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Network. Changing this forces a new resource to be created.

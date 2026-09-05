@@ -234,7 +234,7 @@ class AccountRegistration extends pulumi.CustomResource {
           'aws:auditmanager/accountRegistration:AccountRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     delegatedAdminAccount = registerOutput<String?>('delegatedAdminAccount');
     deregisterOnDestroy = registerOutput<bool?>('deregisterOnDestroy');
@@ -248,11 +248,12 @@ class AccountRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,6 +267,22 @@ class AccountRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    delegatedAdminAccount = registerOutput<String?>('delegatedAdminAccount');
+    deregisterOnDestroy = registerOutput<bool?>('deregisterOnDestroy');
+    kmsKey = registerOutput<String?>('kmsKey');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [AccountRegistration] resource.
+  AccountRegistration.reference(String urn)
+    : super(
+        'aws:auditmanager/accountRegistration:AccountRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     delegatedAdminAccount = registerOutput<String?>('delegatedAdminAccount');
     deregisterOnDestroy = registerOutput<bool?>('deregisterOnDestroy');
     kmsKey = registerOutput<String?>('kmsKey');

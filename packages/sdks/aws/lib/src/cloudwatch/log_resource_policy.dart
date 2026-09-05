@@ -15,16 +15,16 @@ import 'log_resource_policy_state.dart';
 ///
 /// const elasticsearch_log_publishing_policy = aws.iam.getPolicyDocument({
 ///     statements: [{
+///         principals: [{
+///             identifiers: ["es.amazonaws.com"],
+///             type: "Service",
+///         }],
 ///         actions: [
 ///             "logs:CreateLogStream",
 ///             "logs:PutLogEvents",
 ///             "logs:PutLogEventsBatch",
 ///         ],
 ///         resources: ["arn:aws:logs:*"],
-///         principals: [{
-///             identifiers: ["es.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///     }],
 /// });
 /// const elasticsearch_log_publishing_policyLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("elasticsearch-log-publishing-policy", {
@@ -37,16 +37,16 @@ import 'log_resource_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// elasticsearch_log_publishing_policy = aws.iam.get_policy_document(statements=[{
+///     "principals": [{
+///         "identifiers": ["es.amazonaws.com"],
+///         "type": "Service",
+///     }],
 ///     "actions": [
 ///         "logs:CreateLogStream",
 ///         "logs:PutLogEvents",
 ///         "logs:PutLogEventsBatch",
 ///     ],
 ///     "resources": ["arn:aws:logs:*"],
-///     "principals": [{
-///         "identifiers": ["es.amazonaws.com"],
-///         "type": "Service",
-///     }],
 /// }])
 /// elasticsearch_log_publishing_policy_log_resource_policy = aws.cloudwatch.LogResourcePolicy("elasticsearch-log-publishing-policy",
 ///     policy_document=elasticsearch_log_publishing_policy.json,
@@ -66,16 +66,6 @@ import 'log_resource_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents",
-///                     "logs:PutLogEventsBatch",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:logs:*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -86,6 +76,16 @@ import 'log_resource_policy_state.dart';
 ///                         },
 ///                         Type = "Service",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents",
+///                     "logs:PutLogEventsBatch",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:logs:*",
 ///                 },
 ///             },
 ///         },
@@ -113,14 +113,6 @@ import 'log_resource_policy_state.dart';
 /// 		elasticsearch_log_publishing_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"logs:CreateLogStream",
-/// 						"logs:PutLogEvents",
-/// 						"logs:PutLogEventsBatch",
-/// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:logs:*",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -128,6 +120,14 @@ import 'log_resource_policy_state.dart';
 /// 							},
 /// 							Type: "Service",
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"logs:CreateLogStream",
+/// 						"logs:PutLogEvents",
+/// 						"logs:PutLogEventsBatch",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:logs:*",
 /// 					},
 /// 				},
 /// 			},
@@ -157,12 +157,12 @@ import 'log_resource_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "elasticsearch-log-publishing-policy" {
 ///   statements {
-///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents", "logs:PutLogEventsBatch"]
-///     resources = ["arn:aws:logs:*"]
 ///     principals {
 ///       identifiers = ["es.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents", "logs:PutLogEventsBatch"]
+///     resources = ["arn:aws:logs:*"]
 ///   }
 /// }
 ///
@@ -198,15 +198,15 @@ import 'log_resource_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var elasticsearch-log-publishing-policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .identifiers("es.amazonaws.com")
+///                     .type("Service")
+///                     .build())
 ///                 .actions(
 ///                     "logs:CreateLogStream",
 ///                     "logs:PutLogEvents",
 ///                     "logs:PutLogEventsBatch")
 ///                 .resources("arn:aws:logs:*")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers("es.amazonaws.com")
-///                     .type("Service")
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -232,16 +232,16 @@ import 'log_resource_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
+///           - principals:
+///               - identifiers:
+///                   - es.amazonaws.com
+///                 type: Service
+///             actions:
 ///               - logs:CreateLogStream
 ///               - logs:PutLogEvents
 ///               - logs:PutLogEventsBatch
 ///             resources:
 ///               - arn:aws:logs:*
-///             principals:
-///               - identifiers:
-///                   - es.amazonaws.com
-///                 type: Service
 /// ```
 ///
 ///
@@ -254,15 +254,15 @@ import 'log_resource_policy_state.dart';
 ///
 /// const route53_query_logging_policy = aws.iam.getPolicyDocument({
 ///     statements: [{
+///         principals: [{
+///             identifiers: ["route53.amazonaws.com"],
+///             type: "Service",
+///         }],
 ///         actions: [
 ///             "logs:CreateLogStream",
 ///             "logs:PutLogEvents",
 ///         ],
 ///         resources: ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-///         principals: [{
-///             identifiers: ["route53.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///     }],
 /// });
 /// const route53_query_logging_policyLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("route53-query-logging-policy", {
@@ -275,15 +275,15 @@ import 'log_resource_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// route53_query_logging_policy = aws.iam.get_policy_document(statements=[{
+///     "principals": [{
+///         "identifiers": ["route53.amazonaws.com"],
+///         "type": "Service",
+///     }],
 ///     "actions": [
 ///         "logs:CreateLogStream",
 ///         "logs:PutLogEvents",
 ///     ],
 ///     "resources": ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
-///     "principals": [{
-///         "identifiers": ["route53.amazonaws.com"],
-///         "type": "Service",
-///     }],
 /// }])
 /// route53_query_logging_policy_log_resource_policy = aws.cloudwatch.LogResourcePolicy("route53-query-logging-policy",
 ///     policy_document=route53_query_logging_policy.json,
@@ -303,15 +303,6 @@ import 'log_resource_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:logs:*:*:log-group:/aws/route53/*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -322,6 +313,15 @@ import 'log_resource_policy_state.dart';
 ///                         },
 ///                         Type = "Service",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:logs:*:*:log-group:/aws/route53/*",
 ///                 },
 ///             },
 ///         },
@@ -349,13 +349,6 @@ import 'log_resource_policy_state.dart';
 /// 		route53_query_logging_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"logs:CreateLogStream",
-/// 						"logs:PutLogEvents",
-/// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:logs:*:*:log-group:/aws/route53/*",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -363,6 +356,13 @@ import 'log_resource_policy_state.dart';
 /// 							},
 /// 							Type: "Service",
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"logs:CreateLogStream",
+/// 						"logs:PutLogEvents",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:logs:*:*:log-group:/aws/route53/*",
 /// 					},
 /// 				},
 /// 			},
@@ -392,12 +392,12 @@ import 'log_resource_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
 ///   statements {
-///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
 ///     principals {
 ///       identifiers = ["route53.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
 ///   }
 /// }
 ///
@@ -433,14 +433,14 @@ import 'log_resource_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var route53-query-logging-policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents")
-///                 .resources("arn:aws:logs:*:*:log-group:/aws/route53/*")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("route53.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
+///                 .actions(
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents")
+///                 .resources("arn:aws:logs:*:*:log-group:/aws/route53/*")
 ///                 .build())
 ///             .build());
 ///
@@ -466,15 +466,15 @@ import 'log_resource_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
+///           - principals:
+///               - identifiers:
+///                   - route53.amazonaws.com
+///                 type: Service
+///             actions:
 ///               - logs:CreateLogStream
 ///               - logs:PutLogEvents
 ///             resources:
 ///               - arn:aws:logs:*:*:log-group:/aws/route53/*
-///             principals:
-///               - identifiers:
-///                   - route53.amazonaws.com
-///                 type: Service
 /// ```
 ///
 ///
@@ -528,7 +528,7 @@ class LogResourcePolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String?>('policyName');
@@ -543,11 +543,12 @@ class LogResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -561,6 +562,23 @@ class LogResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policyDocument = registerOutput<String>('policyDocument');
+    policyName = registerOutput<String?>('policyName');
+    policyScope = registerOutput<String>('policyScope');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String?>('resourceArn');
+    revisionId = registerOutput<String>('revisionId');
+  }
+
+  /// Creates a typed reference to an existing [LogResourcePolicy] resource.
+  LogResourcePolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String?>('policyName');
     policyScope = registerOutput<String>('policyScope');

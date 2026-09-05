@@ -10,21 +10,21 @@ import 'frontdoor_profile_log_scrubbing_rule.dart';
 /// {@macro pulumi_cdn_frontdoor_profile_frontdoor_profile_args_doc}
 class FrontdoorProfileArgs {
   /// An `identity` block as defined below.
-  final pulumi.Input<FrontdoorProfileIdentity>? identity;
+  final pulumi.Input<FrontdoorProfileIdentity?>? identity;
   /// One or more `logScrubbingRule` blocks as defined below.
   ///
   /// &gt; **Note:** When no `logScrubbingRule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `logScrubbingRule` blocks are present, log scrubbing will be `enabled`.
-  final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>>? logScrubbingRules;
+  final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>?>? logScrubbingRules;
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
-  final pulumi.Input<int>? responseTimeoutSeconds;
+  final pulumi.Input<int?>? responseTimeoutSeconds;
   /// Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   final pulumi.Input<String> skuName;
   /// Specifies a mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorProfileArgs].
   /// [identity] An `identity` block as defined below.
@@ -62,7 +62,7 @@ class FrontdoorProfileArgs {
       logScrubbingRules: (() { final guardedValue = map['logScrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      responseTimeoutSeconds: (() { final guardedValue = map['responseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      responseTimeoutSeconds: (() { final guardedValue = map['responseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

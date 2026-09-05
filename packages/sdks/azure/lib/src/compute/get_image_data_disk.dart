@@ -42,9 +42,9 @@ class GetImageDataDisk {
     return GetImageDataDisk(
       blobUri: pulumi.Input.fromValue(map['blobUri'] as String),
       caching: pulumi.Input.fromValue(map['caching'] as String),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      lun: pulumi.Input.fromValue((map['lun'] as num).toInt()),
       managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
     );
   }
 }

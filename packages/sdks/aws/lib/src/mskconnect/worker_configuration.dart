@@ -135,7 +135,7 @@ import 'worker_configuration_state.dart';
 /// $ pulumi import aws:mskconnect/workerConfiguration:WorkerConfiguration example 'arn:aws:kafkaconnect:eu-central-1:123456789012:worker-configuration/example/8848493b-7fcc-478c-a646-4a52634e3378-4'
 /// ```
 class WorkerConfiguration extends pulumi.CustomResource {
-  /// the Amazon Resource Name (ARN) of the worker configuration.
+  /// the ARN of the worker configuration.
   late final pulumi.Output<String> arn;
   /// A summary description of the worker configuration.
   late final pulumi.Output<String?> description;
@@ -166,7 +166,7 @@ class WorkerConfiguration extends pulumi.CustomResource {
           'aws:mskconnect/workerConfiguration:WorkerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -174,8 +174,8 @@ class WorkerConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     propertiesFileContent = registerOutput<String>('propertiesFileContent');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [WorkerConfiguration] resource's state with the given [name] and [id].
@@ -183,11 +183,12 @@ class WorkerConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkerConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkerConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,7 +208,26 @@ class WorkerConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     propertiesFileContent = registerOutput<String>('propertiesFileContent');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [WorkerConfiguration] resource.
+  WorkerConfiguration.reference(String urn)
+    : super(
+        'aws:mskconnect/workerConfiguration:WorkerConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    latestRevision = registerOutput<int>('latestRevision');
+    this.name = registerOutput<String>('name');
+    propertiesFileContent = registerOutput<String>('propertiesFileContent');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

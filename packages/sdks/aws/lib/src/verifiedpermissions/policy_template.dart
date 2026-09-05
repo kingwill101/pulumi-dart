@@ -151,7 +151,7 @@ class PolicyTemplate extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
@@ -166,11 +166,12 @@ class PolicyTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,6 +185,23 @@ class PolicyTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    policyStoreId = registerOutput<String>('policyStoreId');
+    policyTemplateId = registerOutput<String>('policyTemplateId');
+    region = registerOutput<String>('region');
+    statement = registerOutput<String>('statement');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTemplate] resource.
+  PolicyTemplate.reference(String urn)
+    : super(
+        'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     policyStoreId = registerOutput<String>('policyStoreId');

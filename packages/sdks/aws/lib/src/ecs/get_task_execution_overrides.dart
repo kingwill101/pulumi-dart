@@ -5,22 +5,22 @@ import 'get_task_execution_overrides_container_override.dart';
 
 class GetTaskExecutionOverrides {
   /// One or more container overrides that are sent to a task. See below.
-  final pulumi.Input<List<GetTaskExecutionOverridesContainerOverride>>? containerOverrides;
+  final pulumi.Input<List<GetTaskExecutionOverridesContainerOverride>?>? containerOverrides;
   /// CPU override for the task.
-  final pulumi.Input<String>? cpu;
-  /// Amazon Resource Name (ARN) of the task execution role override for the task.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? cpu;
+  /// ARN of the task execution role override for the task.
+  final pulumi.Input<String?>? executionRoleArn;
   /// Memory override for the task.
-  final pulumi.Input<String>? memory;
-  /// Amazon Resource Name (ARN) of the role that containers in this task can assume.
-  final pulumi.Input<String>? taskRoleArn;
+  final pulumi.Input<String?>? memory;
+  /// ARN of the role that containers in this task can assume.
+  final pulumi.Input<String?>? taskRoleArn;
 
   /// Creates a new [GetTaskExecutionOverrides].
   /// [containerOverrides] One or more container overrides that are sent to a task. See below.
   /// [cpu] CPU override for the task.
-  /// [executionRoleArn] Amazon Resource Name (ARN) of the task execution role override for the task.
+  /// [executionRoleArn] ARN of the task execution role override for the task.
   /// [memory] Memory override for the task.
-  /// [taskRoleArn] Amazon Resource Name (ARN) of the role that containers in this task can assume.
+  /// [taskRoleArn] ARN of the role that containers in this task can assume.
   const GetTaskExecutionOverrides({
     this.containerOverrides,
     this.cpu,

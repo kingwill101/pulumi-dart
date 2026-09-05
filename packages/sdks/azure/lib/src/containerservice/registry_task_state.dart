@@ -15,43 +15,43 @@ import 'registry_task_timer_trigger.dart';
 /// Input properties used for looking up and filtering RegistryTask resources.
 class RegistryTaskState {
   /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// A `agentSetting` block as defined below.
   ///
   /// &gt; **Note:** Only one of `agentPoolName` and `agentSetting` can be specified.
-  final pulumi.Input<RegistryTaskAgentSetting>? agentSetting;
+  final pulumi.Input<RegistryTaskAgentSetting?>? agentSetting;
   /// A `baseImageTrigger` block as defined below.
-  final pulumi.Input<RegistryTaskBaseImageTrigger>? baseImageTrigger;
+  final pulumi.Input<RegistryTaskBaseImageTrigger?>? baseImageTrigger;
   /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
-  final pulumi.Input<String>? containerRegistryId;
+  final pulumi.Input<String?>? containerRegistryId;
   /// A `dockerStep` block as defined below.
-  final pulumi.Input<RegistryTaskDockerStep>? dockerStep;
+  final pulumi.Input<RegistryTaskDockerStep?>? dockerStep;
   /// Should this Container Registry Task be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A `encodedStep` block as defined below.
-  final pulumi.Input<RegistryTaskEncodedStep>? encodedStep;
+  final pulumi.Input<RegistryTaskEncodedStep?>? encodedStep;
   /// A `fileStep` block as defined below.
   ///
   /// &gt; **Note:** For non-system task (when `isSystemTask` is set to `false`), one and only one of the `dockerStep`, `encodedStep` and `fileStep` should be specified.
-  final pulumi.Input<RegistryTaskFileStep>? fileStep;
+  final pulumi.Input<RegistryTaskFileStep?>? fileStep;
   /// An `identity` block as defined below.
-  final pulumi.Input<RegistryTaskIdentity>? identity;
+  final pulumi.Input<RegistryTaskIdentity?>? identity;
   /// Whether this Container Registry Task is a system task. Changing this forces a new Container Registry Task to be created. Defaults to `false`.
-  final pulumi.Input<bool>? isSystemTask;
-  final pulumi.Input<String>? logTemplate;
+  final pulumi.Input<bool?>? isSystemTask;
+  final pulumi.Input<String?>? logTemplate;
   /// The name which should be used for this Container Registry Task. Changing this forces a new Container Registry Task to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `platform` block as defined below.
   ///
   /// &gt; **Note:** The `platform` is required for non-system task (when `isSystemTask` is set to `false`).
-  final pulumi.Input<RegistryTaskPlatform>? platform;
-  final pulumi.Input<RegistryTaskRegistryCredential>? registryCredential;
+  final pulumi.Input<RegistryTaskPlatform?>? platform;
+  final pulumi.Input<RegistryTaskRegistryCredential?>? registryCredential;
   /// One or more `sourceTrigger` blocks as defined below.
-  final pulumi.Input<List<RegistryTaskSourceTrigger>>? sourceTriggers;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<int>? timeoutInSeconds;
+  final pulumi.Input<List<RegistryTaskSourceTrigger>?>? sourceTriggers;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<int?>? timeoutInSeconds;
   /// One or more `timerTrigger` blocks as defined below.
-  final pulumi.Input<List<RegistryTaskTimerTrigger>>? timerTriggers;
+  final pulumi.Input<List<RegistryTaskTimerTrigger>?>? timerTriggers;
 
   /// Creates a new [RegistryTaskState].
   /// [agentPoolName] The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
@@ -134,7 +134,7 @@ class RegistryTaskState {
       registryCredential: (() { final guardedValue = map['registryCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryTaskRegistryCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceTriggers: (() { final guardedValue = map['sourceTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryTaskSourceTrigger>(guardedValue, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timerTriggers: (() { final guardedValue = map['timerTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryTaskTimerTrigger>(guardedValue, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

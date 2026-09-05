@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionPhysicalConnectionRequirements {
   /// Availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an API requirement.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Security group ID list used by the connection.
-  final pulumi.Input<List<String>>? securityGroupIdLists;
+  final pulumi.Input<List<String>?>? securityGroupIdLists;
   /// Subnet ID used by the connection.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [ConnectionPhysicalConnectionRequirements].
   /// [availabilityZone] Availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an API requirement.

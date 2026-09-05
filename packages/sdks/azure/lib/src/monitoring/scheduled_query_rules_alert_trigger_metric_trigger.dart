@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRulesAlertTriggerMetricTrigger {
   /// Evaluation of metric on a particular column.
-  final pulumi.Input<String>? metricColumn;
+  final pulumi.Input<String?>? metricColumn;
   /// Metric Trigger Type - 'Consecutive' or 'Total'.
   final pulumi.Input<String> metricTriggerType;
   /// Evaluation operation for rule - 'Equal', 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
@@ -38,7 +38,7 @@ class ScheduledQueryRulesAlertTriggerMetricTrigger {
       metricColumn: (() { final guardedValue = map['metricColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricTriggerType: pulumi.Input.fromValue(map['metricTriggerType'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
     );
   }
 }

@@ -46,7 +46,7 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
           'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     hypervGeneration = registerOutput<String>('hypervGeneration');
@@ -56,7 +56,7 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     osType = registerOutput<String>('osType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storagePathId = registerOutput<String?>('storagePathId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 
@@ -65,11 +65,12 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciMarketplaceGalleryImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciMarketplaceGalleryImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -91,7 +92,28 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     osType = registerOutput<String>('osType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storagePathId = registerOutput<String?>('storagePathId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [HciMarketplaceGalleryImage] resource.
+  HciMarketplaceGalleryImage.reference(String urn)
+    : super(
+        'azure:stack/hciMarketplaceGalleryImage:HciMarketplaceGalleryImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    hypervGeneration = registerOutput<String>('hypervGeneration');
+    identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciMarketplaceGalleryImageIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String>('osType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storagePathId = registerOutput<String?>('storagePathId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 }

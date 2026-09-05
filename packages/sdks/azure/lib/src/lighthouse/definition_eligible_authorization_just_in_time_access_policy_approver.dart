@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover {
   /// The display name of the Azure Active Directory Principal for the approver.
-  final pulumi.Input<String>? principalDisplayName;
+  final pulumi.Input<String?>? principalDisplayName;
   /// The Principal ID of the Azure Active Directory principal for the approver.
   final pulumi.Input<String> principalId;
 

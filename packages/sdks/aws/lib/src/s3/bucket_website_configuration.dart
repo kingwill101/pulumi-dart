@@ -3,6 +3,7 @@ import 'bucket_website_configuration_args.dart';
 import 'bucket_website_configuration_error_document.dart';
 import 'bucket_website_configuration_index_document.dart';
 import 'bucket_website_configuration_redirect_all_requests_to.dart';
+import 'bucket_website_configuration_routing_rule.dart';
 import 'bucket_website_configuration_state.dart';
 
 /// Provides an S3 bucket website configuration resource. For more information, see [Hosting Websites on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html).
@@ -19,7 +20,6 @@ import 'bucket_website_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketWebsiteConfiguration("example", {
-///     bucket: exampleAwsS3Bucket.id,
 ///     indexDocument: {
 ///         suffix: "index.html",
 ///     },
@@ -34,6 +34,7 @@ import 'bucket_website_configuration_state.dart';
 ///             replaceKeyPrefixWith: "documents/",
 ///         },
 ///     }],
+///     bucket: exampleAwsS3Bucket.id,
 /// });
 /// ```
 /// ```python
@@ -41,7 +42,6 @@ import 'bucket_website_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketWebsiteConfiguration("example",
-///     bucket=example_aws_s3_bucket["id"],
 ///     index_document={
 ///         "suffix": "index.html",
 ///     },
@@ -55,7 +55,8 @@ import 'bucket_website_configuration_state.dart';
 ///         "redirect": {
 ///             "replace_key_prefix_with": "documents/",
 ///         },
-///     }])
+///     }],
+///     bucket=example_aws_s3_bucket["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,7 +68,6 @@ import 'bucket_website_configuration_state.dart';
 /// {
 ///     var example = new Aws.S3.BucketWebsiteConfiguration("example", new()
 ///     {
-///         Bucket = exampleAwsS3Bucket.Id,
 ///         IndexDocument = new Aws.S3.Inputs.BucketWebsiteConfigurationIndexDocumentArgs
 ///         {
 ///             Suffix = "index.html",
@@ -90,6 +90,7 @@ import 'bucket_website_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = exampleAwsS3Bucket.Id,
 ///     });
 ///
 /// });
@@ -105,7 +106,6 @@ import 'bucket_website_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketWebsiteConfiguration(ctx, "example", &s3.BucketWebsiteConfigurationArgs{
-/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 			IndexDocument: &s3.BucketWebsiteConfigurationIndexDocumentArgs{
 /// 				Suffix: pulumi.String("index.html"),
 /// 			},
@@ -122,6 +122,7 @@ import 'bucket_website_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -140,7 +141,6 @@ import 'bucket_website_configuration_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucketwebsiteconfiguration" "example" {
-///   bucket = exampleAwsS3Bucket.id
 ///   index_document = {
 ///     suffix = "index.html"
 ///   }
@@ -155,6 +155,7 @@ import 'bucket_website_configuration_state.dart';
 ///       replace_key_prefix_with = "documents/"
 ///     }
 ///   }
+///   bucket = exampleAwsS3Bucket.id
 /// }
 /// ```
 /// ```java
@@ -184,7 +185,6 @@ import 'bucket_website_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketWebsiteConfiguration("example", BucketWebsiteConfigurationArgs.builder()
-///             .bucket(exampleAwsS3Bucket.id())
 ///             .indexDocument(BucketWebsiteConfigurationIndexDocumentArgs.builder()
 ///                 .suffix("index.html")
 ///                 .build())
@@ -199,6 +199,7 @@ import 'bucket_website_configuration_state.dart';
 ///                     .replaceKeyPrefixWith("documents/")
 ///                     .build())
 ///                 .build())
+///             .bucket(exampleAwsS3Bucket.id())
 ///             .build());
 ///
 ///     }
@@ -209,7 +210,6 @@ import 'bucket_website_configuration_state.dart';
 ///   example:
 ///     type: aws:s3:BucketWebsiteConfiguration
 ///     properties:
-///       bucket: ${exampleAwsS3Bucket.id}
 ///       indexDocument:
 ///         suffix: index.html
 ///       errorDocument:
@@ -219,6 +219,7 @@ import 'bucket_website_configuration_state.dart';
 ///             keyPrefixEquals: docs/
 ///           redirect:
 ///             replaceKeyPrefixWith: documents/
+///       bucket: ${exampleAwsS3Bucket.id}
 /// ```
 ///
 ///
@@ -230,13 +231,13 @@ import 'bucket_website_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.BucketWebsiteConfiguration("example", {
-///     bucket: exampleAwsS3Bucket.id,
 ///     indexDocument: {
 ///         suffix: "index.html",
 ///     },
 ///     errorDocument: {
 ///         key: "error.html",
 ///     },
+///     bucket: exampleAwsS3Bucket.id,
 ///     routingRuleDetails: `[{
 ///     \\"Condition\\": {
 ///         \\"KeyPrefixEquals\\": \\"docs/\\"
@@ -253,13 +254,13 @@ import 'bucket_website_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.BucketWebsiteConfiguration("example",
-///     bucket=example_aws_s3_bucket["id"],
 ///     index_document={
 ///         "suffix": "index.html",
 ///     },
 ///     error_document={
 ///         "key": "error.html",
 ///     },
+///     bucket=example_aws_s3_bucket["id"],
 ///     routing_rule_details="""[{
 ///     \"Condition\": {
 ///         \"KeyPrefixEquals\": \"docs/\"
@@ -280,7 +281,6 @@ import 'bucket_website_configuration_state.dart';
 /// {
 ///     var example = new Aws.S3.BucketWebsiteConfiguration("example", new()
 ///     {
-///         Bucket = exampleAwsS3Bucket.Id,
 ///         IndexDocument = new Aws.S3.Inputs.BucketWebsiteConfigurationIndexDocumentArgs
 ///         {
 ///             Suffix = "index.html",
@@ -289,6 +289,7 @@ import 'bucket_website_configuration_state.dart';
 ///         {
 ///             Key = "error.html",
 ///         },
+///         Bucket = exampleAwsS3Bucket.Id,
 ///         RoutingRuleDetails = @"[{
 ///     \""Condition\"": {
 ///         \""KeyPrefixEquals\"": \""docs/\""
@@ -313,13 +314,13 @@ import 'bucket_website_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewBucketWebsiteConfiguration(ctx, "example", &s3.BucketWebsiteConfigurationArgs{
-/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 			IndexDocument: &s3.BucketWebsiteConfigurationIndexDocumentArgs{
 /// 				Suffix: pulumi.String("index.html"),
 /// 			},
 /// 			ErrorDocument: &s3.BucketWebsiteConfigurationErrorDocumentArgs{
 /// 				Key: pulumi.String("error.html"),
 /// 			},
+/// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 			RoutingRuleDetails: pulumi.String(`[{
 ///     \"Condition\": {
 ///         \"KeyPrefixEquals\": \"docs/\"
@@ -347,13 +348,13 @@ import 'bucket_website_configuration_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucketwebsiteconfiguration" "example" {
-///   bucket = exampleAwsS3Bucket.id
 ///   index_document = {
 ///     suffix = "index.html"
 ///   }
 ///   error_document = {
 ///     key = "error.html"
 ///   }
+///   bucket               = exampleAwsS3Bucket.id
 ///   routing_rule_details = "[{\n    \\\"Condition\\\": {\n        \\\"KeyPrefixEquals\\\": \\\"docs/\\\"\n    },\n    \\\"Redirect\\\": {\n        \\\"ReplaceKeyPrefixWith\\\": \\\"\\\"\n    }\n}]\n"
 /// }
 /// ```
@@ -381,13 +382,13 @@ import 'bucket_website_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketWebsiteConfiguration("example", BucketWebsiteConfigurationArgs.builder()
-///             .bucket(exampleAwsS3Bucket.id())
 ///             .indexDocument(BucketWebsiteConfigurationIndexDocumentArgs.builder()
 ///                 .suffix("index.html")
 ///                 .build())
 ///             .errorDocument(BucketWebsiteConfigurationErrorDocumentArgs.builder()
 ///                 .key("error.html")
 ///                 .build())
+///             .bucket(exampleAwsS3Bucket.id())
 ///             .routingRuleDetails("""
 /// [{
 ///     \"Condition\": {
@@ -408,11 +409,11 @@ import 'bucket_website_configuration_state.dart';
 ///   example:
 ///     type: aws:s3:BucketWebsiteConfiguration
 ///     properties:
-///       bucket: ${exampleAwsS3Bucket.id}
 ///       indexDocument:
 ///         suffix: index.html
 ///       errorDocument:
 ///         key: error.html
+///       bucket: ${exampleAwsS3Bucket.id}
 ///       routingRuleDetails: |
 ///         [{
 ///             \"Condition\": {
@@ -471,7 +472,7 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
   /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html) describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
   late final pulumi.Output<String> routingRuleDetails;
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingRules;
+  late final pulumi.Output<List<BucketWebsiteConfigurationRoutingRule>> routingRules;
   /// Domain of the website endpoint. This is used to create Route 53 alias records.
   late final pulumi.Output<String> websiteDomain;
   /// Website endpoint.
@@ -489,7 +490,7 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteConfigurationErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -498,7 +499,7 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
     redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>('redirectAllRequestsTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');
-    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
+    routingRules = registerOutput<List<BucketWebsiteConfigurationRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(guardedValue, (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     websiteDomain = registerOutput<String>('websiteDomain');
     websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }
@@ -508,11 +509,12 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketWebsiteConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketWebsiteConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -533,7 +535,28 @@ class BucketWebsiteConfiguration extends pulumi.CustomResource {
     redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>('redirectAllRequestsTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');
-    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
+    routingRules = registerOutput<List<BucketWebsiteConfigurationRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(guardedValue, (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    websiteDomain = registerOutput<String>('websiteDomain');
+    websiteEndpoint = registerOutput<String>('websiteEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [BucketWebsiteConfiguration] resource.
+  BucketWebsiteConfiguration.reference(String urn)
+    : super(
+        'aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    errorDocument = registerOutput<BucketWebsiteConfigurationErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    indexDocument = registerOutput<BucketWebsiteConfigurationIndexDocument?>('indexDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationIndexDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redirectAllRequestsTo = registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>('redirectAllRequestsTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    routingRuleDetails = registerOutput<String>('routingRuleDetails');
+    routingRules = registerOutput<List<BucketWebsiteConfigurationRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(guardedValue, (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     websiteDomain = registerOutput<String>('websiteDomain');
     websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }

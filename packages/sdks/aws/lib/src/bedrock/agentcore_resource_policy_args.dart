@@ -10,8 +10,8 @@ class AgentcoreResourcePolicyArgs {
   /// Resource policy definition
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the resource for which to create or update the resource policy.
+  final pulumi.Input<String?>? region;
+  /// ARN of the resource for which to create or update the resource policy.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceArn;
@@ -19,7 +19,7 @@ class AgentcoreResourcePolicyArgs {
   /// Creates a new [AgentcoreResourcePolicyArgs].
   /// [policy] Resource policy definition
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] Amazon Resource Name (ARN) of the resource for which to create or update the resource policy.
+  /// [resourceArn] ARN of the resource for which to create or update the resource policy.
   const AgentcoreResourcePolicyArgs({
     required this.policy,
     this.region,

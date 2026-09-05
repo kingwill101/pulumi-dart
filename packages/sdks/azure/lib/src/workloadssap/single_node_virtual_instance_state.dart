@@ -7,29 +7,29 @@ import 'single_node_virtual_instance_single_server_configuration.dart';
 /// Input properties used for looking up and filtering SingleNodeVirtualInstance resources.
 class SingleNodeVirtualInstanceState {
   /// The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appLocation;
+  final pulumi.Input<String?>? appLocation;
   /// The environment type for the SAP Single Node Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// An `identity` block as defined below.
-  final pulumi.Input<SingleNodeVirtualInstanceIdentity>? identity;
+  final pulumi.Input<SingleNodeVirtualInstanceIdentity?>? identity;
   /// The Azure Region where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the managed Resource Group for the SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
-  final pulumi.Input<String>? managedResourcesNetworkAccessType;
+  final pulumi.Input<String?>? managedResourcesNetworkAccessType;
   /// Specifies the name of this SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The fully qualified domain name for the SAP system. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sapFqdn;
+  final pulumi.Input<String?>? sapFqdn;
   /// The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sapProduct;
+  final pulumi.Input<String?>? sapProduct;
   /// A `singleServerConfiguration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfiguration>? singleServerConfiguration;
+  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfiguration?>? singleServerConfiguration;
   /// A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SingleNodeVirtualInstanceState].
   /// [appLocation] The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.

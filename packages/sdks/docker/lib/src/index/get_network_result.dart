@@ -7,21 +7,21 @@ import 'get_network_ipam_config.dart';
 /// Result data returned by getNetwork.
 class GetNetworkResult {
   /// Containers attached to the network.
-  final List<GetNetworkContainer> containers;
+  final List<GetNetworkContainer>? containers;
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
-  final String driver;
+  final String? driver;
   /// The ID of this resource.
-  final String id;
+  final String? id;
   /// If `true`, the network is internal.
-  final bool internal;
+  final bool? internal;
   /// The IPAM configuration options
-  final List<GetNetworkIpamConfig> ipamConfigs;
+  final List<GetNetworkIpamConfig>? ipamConfigs;
   /// The name of the Docker network.
-  final String name;
+  final String? name;
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
-  final Map<String, String> options;
+  final Map<String, String>? options;
   /// Scope of the network. One of `swarm`, `global`, or `local`.
-  final String scope;
+  final String? scope;
 
   /// Creates a new [GetNetworkResult].
   /// [containers] Containers attached to the network.
@@ -33,39 +33,39 @@ class GetNetworkResult {
   /// [options] Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   /// [scope] Scope of the network. One of `swarm`, `global`, or `local`.
   const GetNetworkResult({
-    required this.containers,
-    required this.driver,
-    required this.id,
-    required this.internal,
-    required this.ipamConfigs,
-    required this.name,
-    required this.options,
-    required this.scope,
+    this.containers,
+    this.driver,
+    this.id,
+    this.internal,
+    this.ipamConfigs,
+    this.name,
+    this.options,
+    this.scope,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.encodeList<GetNetworkContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
-      'driver': driver,
-      'id': id,
-      'internal': internal,
-      'ipamConfigs': pulumi.Input.encodeList<GetNetworkIpamConfig, Map<String, dynamic>>(ipamConfigs, (value) => value.toMap()),
-      'name': name,
-      'options': options,
-      'scope': scope,
+      'containers': ?(() { final guardedValue = containers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkContainer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'driver': ?driver,
+      'id': ?id,
+      'internal': ?internal,
+      'ipamConfigs': ?(() { final guardedValue = ipamConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkIpamConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'options': ?options,
+      'scope': ?scope,
     };
   }
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkResult(
-      containers: pulumi.Input.decodeList<GetNetworkContainer>(map['containers']!, (value) => GetNetworkContainer.fromMap((value as Map).cast<String, dynamic>())),
-      driver: map['driver'] as String,
-      id: map['id'] as String,
-      internal: map['internal'] as bool,
-      ipamConfigs: pulumi.Input.decodeList<GetNetworkIpamConfig>(map['ipamConfigs']!, (value) => GetNetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      options: (map['options'] as Map).cast<String, String>(),
-      scope: map['scope'] as String,
+      containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkContainer>(guardedValue, (value) => GetNetworkContainer.fromMap((value as Map).cast<String, dynamic>())); })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      internal: (() { final guardedValue = map['internal']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      ipamConfigs: (() { final guardedValue = map['ipamConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkIpamConfig>(guardedValue, (value) => GetNetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

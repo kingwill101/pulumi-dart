@@ -22,10 +22,7 @@ import 'response_headers_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ResponseHeadersPolicy("example", {
-///     name: "example-policy",
-///     comment: "test comment",
 ///     corsConfig: {
-///         accessControlAllowCredentials: true,
 ///         accessControlAllowHeaders: {
 ///             items: ["test"],
 ///         },
@@ -35,8 +32,11 @@ import 'response_headers_policy_state.dart';
 ///         accessControlAllowOrigins: {
 ///             items: ["test.example.comtest"],
 ///         },
+///         accessControlAllowCredentials: true,
 ///         originOverride: true,
 ///     },
+///     name: "example-policy",
+///     comment: "test comment",
 /// });
 /// ```
 /// ```python
@@ -44,10 +44,7 @@ import 'response_headers_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ResponseHeadersPolicy("example",
-///     name="example-policy",
-///     comment="test comment",
 ///     cors_config={
-///         "access_control_allow_credentials": True,
 ///         "access_control_allow_headers": {
 ///             "items": ["test"],
 ///         },
@@ -57,8 +54,11 @@ import 'response_headers_policy_state.dart';
 ///         "access_control_allow_origins": {
 ///             "items": ["test.example.comtest"],
 ///         },
+///         "access_control_allow_credentials": True,
 ///         "origin_override": True,
-///     })
+///     },
+///     name="example-policy",
+///     comment="test comment")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -70,11 +70,8 @@ import 'response_headers_policy_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ResponseHeadersPolicy("example", new()
 ///     {
-///         Name = "example-policy",
-///         Comment = "test comment",
 ///         CorsConfig = new Aws.CloudFront.Inputs.ResponseHeadersPolicyCorsConfigArgs
 ///         {
-///             AccessControlAllowCredentials = true,
 ///             AccessControlAllowHeaders = new Aws.CloudFront.Inputs.ResponseHeadersPolicyCorsConfigAccessControlAllowHeadersArgs
 ///             {
 ///                 Items = new[]
@@ -96,8 +93,11 @@ import 'response_headers_policy_state.dart';
 ///                     "test.example.comtest",
 ///                 },
 ///             },
+///             AccessControlAllowCredentials = true,
 ///             OriginOverride = true,
 ///         },
+///         Name = "example-policy",
+///         Comment = "test comment",
 ///     });
 ///
 /// });
@@ -113,10 +113,7 @@ import 'response_headers_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewResponseHeadersPolicy(ctx, "example", &cloudfront.ResponseHeadersPolicyArgs{
-/// 			Name:    pulumi.String("example-policy"),
-/// 			Comment: pulumi.String("test comment"),
 /// 			CorsConfig: &cloudfront.ResponseHeadersPolicyCorsConfigArgs{
-/// 				AccessControlAllowCredentials: pulumi.Bool(true),
 /// 				AccessControlAllowHeaders: &cloudfront.ResponseHeadersPolicyCorsConfigAccessControlAllowHeadersArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("test"),
@@ -132,8 +129,11 @@ import 'response_headers_policy_state.dart';
 /// 						pulumi.String("test.example.comtest"),
 /// 					},
 /// 				},
-/// 				OriginOverride: pulumi.Bool(true),
+/// 				AccessControlAllowCredentials: pulumi.Bool(true),
+/// 				OriginOverride:                pulumi.Bool(true),
 /// 			},
+/// 			Name:    pulumi.String("example-policy"),
+/// 			Comment: pulumi.String("test comment"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -152,10 +152,7 @@ import 'response_headers_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   name    = "example-policy"
-///   comment = "test comment"
 ///   cors_config = {
-///     access_control_allow_credentials = true
 ///     access_control_allow_headers = {
 ///       items = ["test"]
 ///     }
@@ -165,8 +162,11 @@ import 'response_headers_policy_state.dart';
 ///     access_control_allow_origins = {
 ///       items = ["test.example.comtest"]
 ///     }
-///     origin_override = true
+///     access_control_allow_credentials = true
+///     origin_override                  = true
 ///   }
+///   name    = "example-policy"
+///   comment = "test comment"
 /// }
 /// ```
 /// ```java
@@ -195,10 +195,7 @@ import 'response_headers_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResponseHeadersPolicy("example", ResponseHeadersPolicyArgs.builder()
-///             .name("example-policy")
-///             .comment("test comment")
 ///             .corsConfig(ResponseHeadersPolicyCorsConfigArgs.builder()
-///                 .accessControlAllowCredentials(true)
 ///                 .accessControlAllowHeaders(ResponseHeadersPolicyCorsConfigAccessControlAllowHeadersArgs.builder()
 ///                     .items("test")
 ///                     .build())
@@ -208,8 +205,11 @@ import 'response_headers_policy_state.dart';
 ///                 .accessControlAllowOrigins(ResponseHeadersPolicyCorsConfigAccessControlAllowOriginsArgs.builder()
 ///                     .items("test.example.comtest")
 ///                     .build())
+///                 .accessControlAllowCredentials(true)
 ///                 .originOverride(true)
 ///                 .build())
+///             .name("example-policy")
+///             .comment("test comment")
 ///             .build());
 ///
 ///     }
@@ -220,10 +220,7 @@ import 'response_headers_policy_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ResponseHeadersPolicy
 ///     properties:
-///       name: example-policy
-///       comment: test comment
 ///       corsConfig:
-///         accessControlAllowCredentials: true
 ///         accessControlAllowHeaders:
 ///           items:
 ///             - test
@@ -233,7 +230,10 @@ import 'response_headers_policy_state.dart';
 ///         accessControlAllowOrigins:
 ///           items:
 ///             - test.example.comtest
+///         accessControlAllowCredentials: true
 ///         originOverride: true
+///       name: example-policy
+///       comment: test comment
 /// ```
 ///
 ///
@@ -245,7 +245,6 @@ import 'response_headers_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ResponseHeadersPolicy("example", {
-///     name: "example-headers-policy",
 ///     customHeadersConfig: {
 ///         items: [
 ///             {
@@ -260,6 +259,7 @@ import 'response_headers_policy_state.dart';
 ///             },
 ///         ],
 ///     },
+///     name: "example-headers-policy",
 /// });
 /// ```
 /// ```python
@@ -267,7 +267,6 @@ import 'response_headers_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ResponseHeadersPolicy("example",
-///     name="example-headers-policy",
 ///     custom_headers_config={
 ///         "items": [
 ///             {
@@ -281,7 +280,8 @@ import 'response_headers_policy_state.dart';
 ///                 "value": "none",
 ///             },
 ///         ],
-///     })
+///     },
+///     name="example-headers-policy")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -293,7 +293,6 @@ import 'response_headers_policy_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ResponseHeadersPolicy("example", new()
 ///     {
-///         Name = "example-headers-policy",
 ///         CustomHeadersConfig = new Aws.CloudFront.Inputs.ResponseHeadersPolicyCustomHeadersConfigArgs
 ///         {
 ///             Items = new[]
@@ -312,6 +311,7 @@ import 'response_headers_policy_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-headers-policy",
 ///     });
 ///
 /// });
@@ -327,7 +327,6 @@ import 'response_headers_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewResponseHeadersPolicy(ctx, "example", &cloudfront.ResponseHeadersPolicyArgs{
-/// 			Name: pulumi.String("example-headers-policy"),
 /// 			CustomHeadersConfig: &cloudfront.ResponseHeadersPolicyCustomHeadersConfigArgs{
 /// 				Items: cloudfront.ResponseHeadersPolicyCustomHeadersConfigItemArray{
 /// 					&cloudfront.ResponseHeadersPolicyCustomHeadersConfigItemArgs{
@@ -342,6 +341,7 @@ import 'response_headers_policy_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-headers-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -360,7 +360,6 @@ import 'response_headers_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   name = "example-headers-policy"
 ///   custom_headers_config = {
 ///     items = [{
 ///       "header"   = "X-Permitted-Cross-Domain-Policies"
@@ -372,6 +371,7 @@ import 'response_headers_policy_state.dart';
 ///       "value"    = "none"
 ///     }]
 ///   }
+///   name = "example-headers-policy"
 /// }
 /// ```
 /// ```java
@@ -398,7 +398,6 @@ import 'response_headers_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResponseHeadersPolicy("example", ResponseHeadersPolicyArgs.builder()
-///             .name("example-headers-policy")
 ///             .customHeadersConfig(ResponseHeadersPolicyCustomHeadersConfigArgs.builder()
 ///                 .items(
 ///                     ResponseHeadersPolicyCustomHeadersConfigItemArgs.builder()
@@ -412,6 +411,7 @@ import 'response_headers_policy_state.dart';
 ///                         .value("none")
 ///                         .build())
 ///                 .build())
+///             .name("example-headers-policy")
 ///             .build());
 ///
 ///     }
@@ -422,7 +422,6 @@ import 'response_headers_policy_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ResponseHeadersPolicy
 ///     properties:
-///       name: example-headers-policy
 ///       customHeadersConfig:
 ///         items:
 ///           - header: X-Permitted-Cross-Domain-Policies
@@ -431,6 +430,7 @@ import 'response_headers_policy_state.dart';
 ///           - header: X-Test
 ///             override: true
 ///             value: none
+///       name: example-headers-policy
 /// ```
 ///
 ///
@@ -444,7 +444,6 @@ import 'response_headers_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ResponseHeadersPolicy("example", {
-///     name: "example-headers-policy",
 ///     customHeadersConfig: {
 ///         items: [{
 ///             header: "X-Permitted-Cross-Domain-Policies",
@@ -461,6 +460,7 @@ import 'response_headers_policy_state.dart';
 ///         enabled: true,
 ///         samplingRate: 50,
 ///     },
+///     name: "example-headers-policy",
 /// });
 /// ```
 /// ```python
@@ -468,7 +468,6 @@ import 'response_headers_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ResponseHeadersPolicy("example",
-///     name="example-headers-policy",
 ///     custom_headers_config={
 ///         "items": [{
 ///             "header": "X-Permitted-Cross-Domain-Policies",
@@ -484,7 +483,8 @@ import 'response_headers_policy_state.dart';
 ///     server_timing_headers_config={
 ///         "enabled": True,
 ///         "sampling_rate": float(50),
-///     })
+///     },
+///     name="example-headers-policy")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -496,7 +496,6 @@ import 'response_headers_policy_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ResponseHeadersPolicy("example", new()
 ///     {
-///         Name = "example-headers-policy",
 ///         CustomHeadersConfig = new Aws.CloudFront.Inputs.ResponseHeadersPolicyCustomHeadersConfigArgs
 ///         {
 ///             Items = new[]
@@ -524,6 +523,7 @@ import 'response_headers_policy_state.dart';
 ///             Enabled = true,
 ///             SamplingRate = 50,
 ///         },
+///         Name = "example-headers-policy",
 ///     });
 ///
 /// });
@@ -539,7 +539,6 @@ import 'response_headers_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewResponseHeadersPolicy(ctx, "example", &cloudfront.ResponseHeadersPolicyArgs{
-/// 			Name: pulumi.String("example-headers-policy"),
 /// 			CustomHeadersConfig: &cloudfront.ResponseHeadersPolicyCustomHeadersConfigArgs{
 /// 				Items: cloudfront.ResponseHeadersPolicyCustomHeadersConfigItemArray{
 /// 					&cloudfront.ResponseHeadersPolicyCustomHeadersConfigItemArgs{
@@ -560,6 +559,7 @@ import 'response_headers_policy_state.dart';
 /// 				Enabled:      pulumi.Bool(true),
 /// 				SamplingRate: pulumi.Float64(50),
 /// 			},
+/// 			Name: pulumi.String("example-headers-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -578,7 +578,6 @@ import 'response_headers_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_responseheaderspolicy" "example" {
-///   name = "example-headers-policy"
 ///   custom_headers_config = {
 ///     items = [{
 ///       "header"   = "X-Permitted-Cross-Domain-Policies"
@@ -595,6 +594,7 @@ import 'response_headers_policy_state.dart';
 ///     enabled       = true
 ///     sampling_rate = 50
 ///   }
+///   name = "example-headers-policy"
 /// }
 /// ```
 /// ```java
@@ -624,7 +624,6 @@ import 'response_headers_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResponseHeadersPolicy("example", ResponseHeadersPolicyArgs.builder()
-///             .name("example-headers-policy")
 ///             .customHeadersConfig(ResponseHeadersPolicyCustomHeadersConfigArgs.builder()
 ///                 .items(ResponseHeadersPolicyCustomHeadersConfigItemArgs.builder()
 ///                     .header("X-Permitted-Cross-Domain-Policies")
@@ -641,6 +640,7 @@ import 'response_headers_policy_state.dart';
 ///                 .enabled(true)
 ///                 .samplingRate(50.0)
 ///                 .build())
+///             .name("example-headers-policy")
 ///             .build());
 ///
 ///     }
@@ -651,7 +651,6 @@ import 'response_headers_policy_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ResponseHeadersPolicy
 ///     properties:
-///       name: example-headers-policy
 ///       customHeadersConfig:
 ///         items:
 ///           - header: X-Permitted-Cross-Domain-Policies
@@ -663,6 +662,7 @@ import 'response_headers_policy_state.dart';
 ///       serverTimingHeadersConfig:
 ///         enabled: true
 ///         samplingRate: 50
+///       name: example-headers-policy
 /// ```
 ///
 ///
@@ -705,7 +705,7 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
           'aws:cloudfront/responseHeadersPolicy:ResponseHeadersPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
@@ -723,11 +723,12 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResponseHeadersPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResponseHeadersPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -741,6 +742,26 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>('corsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicyCorsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHeadersConfig = registerOutput<ResponseHeadersPolicyCustomHeadersConfig?>('customHeadersConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicyCustomHeadersConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    removeHeadersConfig = registerOutput<ResponseHeadersPolicyRemoveHeadersConfig?>('removeHeadersConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicyRemoveHeadersConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityHeadersConfig = registerOutput<ResponseHeadersPolicySecurityHeadersConfig?>('securityHeadersConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicySecurityHeadersConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverTimingHeadersConfig = registerOutput<ResponseHeadersPolicyServerTimingHeadersConfig?>('serverTimingHeadersConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicyServerTimingHeadersConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResponseHeadersPolicy] resource.
+  ResponseHeadersPolicy.reference(String urn)
+    : super(
+        'aws:cloudfront/responseHeadersPolicy:ResponseHeadersPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>('corsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseHeadersPolicyCorsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

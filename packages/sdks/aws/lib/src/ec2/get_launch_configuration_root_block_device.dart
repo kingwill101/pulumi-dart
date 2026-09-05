@@ -47,9 +47,9 @@ class GetLaunchConfigurationRootBlockDevice {
     return GetLaunchConfigurationRootBlockDevice(
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

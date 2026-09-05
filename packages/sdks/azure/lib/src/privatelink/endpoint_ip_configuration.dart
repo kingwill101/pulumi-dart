@@ -6,13 +6,13 @@ class EndpointIpConfiguration {
   /// Specifies the member name this IP address applies to. If it is not specified, it will use the value of `subresourceName`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `memberName` will be required and will not take the value of `subresourceName` in the next major version.
-  final pulumi.Input<String>? memberName;
+  final pulumi.Input<String?>? memberName;
   /// Specifies the Name of the IP Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// Specifies the static IP address within the private endpoint's subnet to be used. Changing this forces a new resource to be created.
   final pulumi.Input<String> privateIpAddress;
   /// Specifies the subresource this IP address applies to. `subresourceNames` corresponds to `groupId`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
 
   /// Creates a new [EndpointIpConfiguration].
   /// [memberName] Specifies the member name this IP address applies to. If it is not specified, it will use the value of `subresourceName`. Changing this forces a new resource to be created.

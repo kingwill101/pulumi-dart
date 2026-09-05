@@ -7,21 +7,21 @@ class VpnSiteLink {
   /// A `bgp` block as defined above.
   ///
   /// &gt; **Note:** The `link.bgp` has to be set when the `addressCidrs` isn't specified.
-  final pulumi.Input<VpnSiteLinkBgp>? bgp;
+  final pulumi.Input<VpnSiteLinkBgp?>? bgp;
   /// The FQDN of this VPN Site Link.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The ID of the VPN Site Link.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The IP address of this VPN Site Link.
   ///
   /// &gt; **Note:** Either `fqdn` or `ipAddress` should be specified.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name which should be used for this VPN Site Link.
   final pulumi.Input<String> name;
   /// The name of the physical link at the VPN Site. Example: `ATT`, `Verizon`.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// The speed of the VPN device at the branch location in unit of mbps. Defaults to `0`.
-  final pulumi.Input<int>? speedInMbps;
+  final pulumi.Input<int?>? speedInMbps;
 
   /// Creates a new [VpnSiteLink].
   /// [bgp] A `bgp` block as defined above.
@@ -61,7 +61,7 @@ class VpnSiteLink {
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      speedInMbps: (() { final guardedValue = map['speedInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      speedInMbps: (() { final guardedValue = map['speedInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

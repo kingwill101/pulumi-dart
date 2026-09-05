@@ -9,21 +9,21 @@ import 'connect_peer_bgp_options.dart';
 /// {@macro pulumi_networkmanager_connect_peer_connect_peer_args_doc}
 class ConnectPeerArgs {
   /// Connect peer BGP options. See bgpOptions for more information.
-  final pulumi.Input<ConnectPeerBgpOptions>? bgpOptions;
+  final pulumi.Input<ConnectPeerBgpOptions?>? bgpOptions;
   /// ID of the connection attachment.
   final pulumi.Input<String> connectAttachmentId;
   /// Connect peer core network address.
-  final pulumi.Input<String>? coreNetworkAddress;
+  final pulumi.Input<String?>? coreNetworkAddress;
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
-  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<List<String>?>? insideCidrBlocks;
   /// Connect peer address.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> peerAddress;
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
-  final pulumi.Input<String>? subnetArn;
+  final pulumi.Input<String?>? subnetArn;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectPeerArgs].
   /// [bgpOptions] Connect peer BGP options. See bgpOptions for more information.

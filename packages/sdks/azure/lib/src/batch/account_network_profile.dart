@@ -6,11 +6,11 @@ import 'account_network_profile_node_management_access.dart';
 
 class AccountNetworkProfile {
   /// An `accountAccess` block as defined below.
-  final pulumi.Input<AccountNetworkProfileAccountAccess>? accountAccess;
+  final pulumi.Input<AccountNetworkProfileAccountAccess?>? accountAccess;
   /// A `nodeManagementAccess` block as defined below.
   ///
   /// &gt; **NOTE:** At least one of `accountAccess` or `nodeManagementAccess` must be specified.
-  final pulumi.Input<AccountNetworkProfileNodeManagementAccess>? nodeManagementAccess;
+  final pulumi.Input<AccountNetworkProfileNodeManagementAccess?>? nodeManagementAccess;
 
   /// Creates a new [AccountNetworkProfile].
   /// [accountAccess] An `accountAccess` block as defined below.

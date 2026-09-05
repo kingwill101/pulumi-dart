@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlossaryTermTermRelations {
   /// String array that calssifies the term relations.
-  final pulumi.Input<List<String>>? classifies;
-  final pulumi.Input<List<String>>? isAs;
+  final pulumi.Input<List<String>?>? classifies;
+  final pulumi.Input<List<String>?>? isAs;
 
   /// Creates a new [GlossaryTermTermRelations].
   /// [classifies] String array that calssifies the term relations.

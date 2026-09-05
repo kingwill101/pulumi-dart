@@ -9,47 +9,47 @@ import 'metadata_support.dart';
 /// Input properties used for looking up and filtering Metadata resources.
 class MetadataState {
   /// An `author` blocks as defined below.
-  final pulumi.Input<MetadataAuthor>? author;
+  final pulumi.Input<MetadataAuthor?>? author;
   /// A `category` block as defined below.
-  final pulumi.Input<MetadataCategory>? category;
+  final pulumi.Input<MetadataCategory?>? category;
   /// The ID of the content. Used to identify dependencies and content from solutions or community.
-  final pulumi.Input<String>? contentId;
+  final pulumi.Input<String?>? contentId;
   /// Schema version of the content. Can be used to distinguish between flow based on the schema version.
-  final pulumi.Input<String>? contentSchemaVersion;
+  final pulumi.Input<String?>? contentSchemaVersion;
   /// The Custom version of the content.
-  final pulumi.Input<String>? customVersion;
+  final pulumi.Input<String?>? customVersion;
   /// A JSON formatted `dependency` block as defined below. Dependency for the content item, what other content items it requires to work.
-  final pulumi.Input<String>? dependency;
+  final pulumi.Input<String?>? dependency;
   /// The first publish date of solution content item.
-  final pulumi.Input<String>? firstPublishDate;
+  final pulumi.Input<String?>? firstPublishDate;
   /// The ID of the icon, this id can be fetched from the solution template.
-  final pulumi.Input<String>? iconId;
+  final pulumi.Input<String?>? iconId;
   /// The kind of content the metadata is for. Possible values are `AnalyticsRule`, `AnalyticsRuleTemplate`, `AutomationRule`, `AzureFunction`, `DataConnector`, `DataType`, `HuntingQuery`, `InvestigationQuery`, `LogicAppsCustomConnector`, `Parser`, `Playbook`, `PlaybookTemplate`, `Solution`, `Watchlist`, `WatchlistTemplate`, `Workbook` and `WorkbookTemplate`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The last publish date of solution content item.
-  final pulumi.Input<String>? lastPublishDate;
+  final pulumi.Input<String?>? lastPublishDate;
   /// The name which should be used for this Sentinel Metadata. Changing this forces a new Sentinel Metadata to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the parent resource ID of the content item, which the metadata belongs to.
-  final pulumi.Input<String>? parentId;
+  final pulumi.Input<String?>? parentId;
   /// Specifies a list of preview image file names. These will be taken from solution artifacts.
-  final pulumi.Input<List<String>>? previewImages;
+  final pulumi.Input<List<String>?>? previewImages;
   /// Specifies a list of preview image file names used for dark theme. These will be taken from solution artifacts.
-  final pulumi.Input<List<String>>? previewImagesDarks;
+  final pulumi.Input<List<String>?>? previewImagesDarks;
   /// Specifies a list of providers for the solution content item.
-  final pulumi.Input<List<String>>? providers;
+  final pulumi.Input<List<String>?>? providers;
   /// A `source` block as defined below.
-  final pulumi.Input<MetadataSource>? source;
+  final pulumi.Input<MetadataSource?>? source;
   /// A `support` block as defined below.
-  final pulumi.Input<MetadataSupport>? support;
+  final pulumi.Input<MetadataSupport?>? support;
   /// Specifies a list of tactics the resource covers. Possible values are `Reconnaissance`, `ResourceDevelopment`, `InitialAccess`, `Execution`, `Persistence`, `PrivilegeEscalation`, `DefenseEvasion`, `CredentialAccess`, `Discovery`, `LateralMovement`, `Collection`, `CommandAndControl`, `Exfiltration`, `Impact`, `ImpairProcessControl` and `InhibitResponseFunction`.
-  final pulumi.Input<List<String>>? threatAnalysisTactics;
+  final pulumi.Input<List<String>?>? threatAnalysisTactics;
   /// Specifies a list of techniques the resource covers.
-  final pulumi.Input<List<String>>? threatAnalysisTechniques;
+  final pulumi.Input<List<String>?>? threatAnalysisTechniques;
   /// Version of the content.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Metadata to be created.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [MetadataState].
   /// [author] An `author` blocks as defined below.

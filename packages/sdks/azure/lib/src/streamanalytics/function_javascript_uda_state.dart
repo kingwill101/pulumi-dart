@@ -7,15 +7,15 @@ import 'function_javascript_uda_output.dart';
 /// Input properties used for looking up and filtering FunctionJavascriptUda resources.
 class FunctionJavascriptUdaState {
   /// One or more `input` blocks as defined below.
-  final pulumi.Input<List<FunctionJavascriptUdaInput>>? inputs;
+  final pulumi.Input<List<FunctionJavascriptUdaInput>?>? inputs;
   /// The name of the JavaScript UDA Function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `output` block as defined below.
-  final pulumi.Input<FunctionJavascriptUdaOutput>? output;
+  final pulumi.Input<FunctionJavascriptUdaOutput?>? output;
   /// The JavaScript of this UDA Function.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// The resource ID of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobId;
+  final pulumi.Input<String?>? streamAnalyticsJobId;
 
   /// Creates a new [FunctionJavascriptUdaState].
   /// [inputs] One or more `input` blocks as defined below.

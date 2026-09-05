@@ -143,7 +143,7 @@ class WaitingRoomSettings extends pulumi.CustomResource {
           'cloudflare:index/waitingRoomSettings:WaitingRoomSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     searchEngineCrawlerBypass = registerOutput<bool>('searchEngineCrawlerBypass');
     zoneId = registerOutput<String>('zoneId');

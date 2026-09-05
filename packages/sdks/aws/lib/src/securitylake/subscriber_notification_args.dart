@@ -11,7 +11,7 @@ class SubscriberNotificationArgs {
   /// Specify the configuration using which you want to create the subscriber notification..
   final pulumi.Input<SubscriberNotificationConfiguration> configuration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The subscriber ID for the notification subscription.
   final pulumi.Input<String> subscriberId;
 

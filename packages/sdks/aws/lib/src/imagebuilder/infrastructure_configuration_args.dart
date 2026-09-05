@@ -11,37 +11,37 @@ import 'infrastructure_configuration_placement.dart';
 /// {@macro pulumi_imagebuilder_infrastructure_configuration_infrastructure_configuration_args_doc}
 class InfrastructureConfigurationArgs {
   /// Description for the configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block with instance metadata options for the HTTP requests that pipeline builds use to launch EC2 build and test instances. Detailed below.
-  final pulumi.Input<InfrastructureConfigurationInstanceMetadataOptions>? instanceMetadataOptions;
+  final pulumi.Input<InfrastructureConfigurationInstanceMetadataOptions?>? instanceMetadataOptions;
   /// Name of IAM Instance Profile.
   final pulumi.Input<String> instanceProfileName;
   /// Set of EC2 Instance Types.
-  final pulumi.Input<List<String>>? instanceTypes;
+  final pulumi.Input<List<String>?>? instanceTypes;
   /// Name of EC2 Key Pair.
-  final pulumi.Input<String>? keyPair;
+  final pulumi.Input<String?>? keyPair;
   /// Configuration block with logging settings. Detailed below.
-  final pulumi.Input<InfrastructureConfigurationLogging>? logging;
+  final pulumi.Input<InfrastructureConfigurationLogging?>? logging;
   /// Name for the configuration.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block with placement settings that define where the instances that are launched from your image will run. Detailed below.
-  final pulumi.Input<InfrastructureConfigurationPlacement>? placement;
+  final pulumi.Input<InfrastructureConfigurationPlacement?>? placement;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags to assign to infrastructure created by the configuration.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Set of EC2 Security Group identifiers.
-  final pulumi.Input<List<String>>? securityGroupIds;
-  /// Amazon Resource Name (ARN) of SNS Topic.
-  final pulumi.Input<String>? snsTopicArn;
+  final pulumi.Input<List<String>?>? securityGroupIds;
+  /// ARN of SNS Topic.
+  final pulumi.Input<String?>? snsTopicArn;
   /// EC2 Subnet identifier. Also requires `securityGroupIds` argument.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
-  final pulumi.Input<bool>? terminateInstanceOnFailure;
+  final pulumi.Input<bool?>? terminateInstanceOnFailure;
 
   /// Creates a new [InfrastructureConfigurationArgs].
   /// [description] Description for the configuration.
@@ -55,7 +55,7 @@ class InfrastructureConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTags] Key-value map of resource tags to assign to infrastructure created by the configuration.
   /// [securityGroupIds] Set of EC2 Security Group identifiers.
-  /// [snsTopicArn] Amazon Resource Name (ARN) of SNS Topic.
+  /// [snsTopicArn] ARN of SNS Topic.
   /// [subnetId] EC2 Subnet identifier. Also requires `securityGroupIds` argument.
   /// [tags] Key-value map of resource tags to assign to the configuration. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [terminateInstanceOnFailure] Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.

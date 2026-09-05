@@ -6,33 +6,33 @@ import 'folder_permission.dart';
 /// Input properties used for looking up and filtering Folder resources.
 class FolderState {
   /// ARN of the folder.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The time that the folder was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Identifier for the folder.
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// An array of ancestor ARN strings for the folder. Empty for root-level folders.
-  final pulumi.Input<List<String>>? folderPaths;
+  final pulumi.Input<List<String>?>? folderPaths;
   /// The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
-  final pulumi.Input<String>? folderType;
+  final pulumi.Input<String?>? folderType;
   /// The time that the folder was last updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// Display name for the folder.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
-  /// The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
-  final pulumi.Input<String>? parentFolderArn;
+  final pulumi.Input<String?>? name;
+  /// ARN for the parent folder. If not set, creates a root-level folder.
+  final pulumi.Input<String?>? parentFolderArn;
   /// A set of resource permissions on the folder. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<FolderPermission>>? permissions;
+  final pulumi.Input<List<FolderPermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [FolderState].
   /// [arn] ARN of the folder.
@@ -43,7 +43,7 @@ class FolderState {
   /// [folderType] The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
   /// [lastUpdatedTime] The time that the folder was last updated.
   /// [name] Display name for the folder.
-  /// [parentFolderArn] The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
+  /// [parentFolderArn] ARN for the parent folder. If not set, creates a root-level folder.
   /// [permissions] A set of resource permissions on the folder. Maximum of 64 items. See permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

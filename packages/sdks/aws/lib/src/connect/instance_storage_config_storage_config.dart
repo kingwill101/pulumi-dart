@@ -8,13 +8,13 @@ import 'instance_storage_config_storage_config_s3_config.dart';
 
 class InstanceStorageConfigStorageConfig {
   /// A block that specifies the configuration of the Kinesis Firehose delivery stream. Documented below.
-  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisFirehoseConfig>? kinesisFirehoseConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisFirehoseConfig?>? kinesisFirehoseConfig;
   /// A block that specifies the configuration of the Kinesis data stream. Documented below.
-  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisStreamConfig>? kinesisStreamConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisStreamConfig?>? kinesisStreamConfig;
   /// A block that specifies the configuration of the Kinesis video stream. Documented below.
-  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisVideoStreamConfig>? kinesisVideoStreamConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigKinesisVideoStreamConfig?>? kinesisVideoStreamConfig;
   /// A block that specifies the configuration of S3 Bucket. Documented below.
-  final pulumi.Input<InstanceStorageConfigStorageConfigS3Config>? s3Config;
+  final pulumi.Input<InstanceStorageConfigStorageConfigS3Config?>? s3Config;
   /// A valid storage type. Valid Values: `S3` | `KINESIS_VIDEO_STREAM` | `KINESIS_STREAM` | `KINESIS_FIREHOSE`.
   final pulumi.Input<String> storageType;
 

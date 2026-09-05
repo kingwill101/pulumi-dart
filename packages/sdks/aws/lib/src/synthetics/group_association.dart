@@ -146,7 +146,7 @@ class GroupAssociation extends pulumi.CustomResource {
           'aws:synthetics/groupAssociation:GroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     canaryArn = registerOutput<String>('canaryArn');
     groupArn = registerOutput<String>('groupArn');
@@ -160,11 +160,12 @@ class GroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,22 @@ class GroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    canaryArn = registerOutput<String>('canaryArn');
+    groupArn = registerOutput<String>('groupArn');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GroupAssociation] resource.
+  GroupAssociation.reference(String urn)
+    : super(
+        'aws:synthetics/groupAssociation:GroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     canaryArn = registerOutput<String>('canaryArn');
     groupArn = registerOutput<String>('groupArn');
     groupId = registerOutput<String>('groupId');

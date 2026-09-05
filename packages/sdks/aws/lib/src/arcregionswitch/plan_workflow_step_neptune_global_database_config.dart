@@ -7,17 +7,17 @@ class PlanWorkflowStepNeptuneGlobalDatabaseConfig {
   /// Behavior for global database operations.
   final pulumi.Input<String> behavior;
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Global cluster identifier.
   final pulumi.Input<String> globalClusterIdentifier;
   /// Map of regions to database cluster ARNs.
   final pulumi.Input<Map<String, String>> regionDatabaseClusterArns;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.neptune_global_database_config.ungraceful` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepNeptuneGlobalDatabaseConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepNeptuneGlobalDatabaseConfigUngraceful>?>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepNeptuneGlobalDatabaseConfig].
   /// [behavior] Behavior for global database operations.
@@ -56,7 +56,7 @@ class PlanWorkflowStepNeptuneGlobalDatabaseConfig {
       externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalClusterIdentifier: pulumi.Input.fromValue(map['globalClusterIdentifier'] as String),
       regionDatabaseClusterArns: pulumi.Input.fromValue((map['regionDatabaseClusterArns'] as Map).cast<String, String>()),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepNeptuneGlobalDatabaseConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepNeptuneGlobalDatabaseConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

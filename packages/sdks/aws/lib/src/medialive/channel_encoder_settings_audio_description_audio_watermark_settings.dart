@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings.dart';
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings {
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings>? nielsenWatermarksSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings?>? nielsenWatermarksSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings].
   /// [nielsenWatermarksSettings] Optional.

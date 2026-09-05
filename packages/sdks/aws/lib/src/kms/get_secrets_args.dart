@@ -8,7 +8,7 @@ import 'get_secrets_secret.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_secrets_get_secrets_args_doc}
 class GetSecretsArgs {
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
   final pulumi.Input<List<GetSecretsSecret>> secrets;
 

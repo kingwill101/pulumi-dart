@@ -9,17 +9,17 @@ import 'linked_service_integration_runtime.dart';
 /// {@macro pulumi_synapse_linked_service_linked_service_args_doc}
 class LinkedServiceArgs {
   /// A map of additional properties to associate with the Synapse Linked Service.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Synapse Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The description for the Synapse Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `integrationRuntime` block as defined below.
-  final pulumi.Input<LinkedServiceIntegrationRuntime>? integrationRuntime;
+  final pulumi.Input<LinkedServiceIntegrationRuntime?>? integrationRuntime;
   /// The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Synapse Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The Synapse Workspace ID in which to associate the Linked Service with. Changing this forces a new Synapse Linked Service to be created.
   final pulumi.Input<String> synapseWorkspaceId;
   /// The type of data stores that will be connected to Synapse. Valid Values include `AmazonMWS`, `AmazonRdsForOracle`, `AmazonRdsForSqlServer`, `AmazonRedshift`, `AmazonS3`, `AzureBatch`. Changing this forces a new resource to be created.

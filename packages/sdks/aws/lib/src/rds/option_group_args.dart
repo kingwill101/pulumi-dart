@@ -13,19 +13,19 @@ class OptionGroupArgs {
   /// Specifies the major version of the engine that this option group should be associated with.
   final pulumi.Input<String> majorEngineVersion;
   /// Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Description of the option group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? optionGroupDescription;
+  final pulumi.Input<String?>? optionGroupDescription;
   /// The options to apply. See `option` Block below for more details.
-  final pulumi.Input<List<OptionGroupOption>>? options;
+  final pulumi.Input<List<OptionGroupOption>?>? options;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OptionGroupArgs].
   /// [engineName] Specifies the name of the engine that this option group should be associated with.
@@ -37,17 +37,17 @@ class OptionGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  const OptionGroupArgs({
+  OptionGroupArgs({
     required this.engineName,
     required this.majorEngineVersion,
     this.name,
     this.namePrefix,
-    this.optionGroupDescription,
+    pulumi.Input<String?>? optionGroupDescription,
     this.options,
     this.region,
     this.skipDestroy,
     this.tags,
-  });
+  }) : optionGroupDescription = optionGroupDescription ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

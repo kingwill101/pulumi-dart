@@ -5,11 +5,11 @@ import 'agent_agent_action_group_function_schema_member_functions_function_param
 
 class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction {
   /// Description of the function and its purpose.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name for the function.
   final pulumi.Input<String> name;
   /// Parameters that the agent elicits from the user to fulfill the function. See `parameters` Block for details.
-  final pulumi.Input<List<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter>>? parameters;
+  final pulumi.Input<List<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter>?>? parameters;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction].
   /// [description] Description of the function and its purpose.

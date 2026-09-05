@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAssociationCertificateSettings {
   /// DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
-  final pulumi.Input<String>? certificateVerificationDnsRecord;
-  /// The Amazon resource name (ARN) for the custom certificate.
+  final pulumi.Input<String?>? certificateVerificationDnsRecord;
+  /// ARN for the custom certificate.
   /// Required when `type` is `CUSTOM`.
-  final pulumi.Input<String>? customCertificateArn;
+  final pulumi.Input<String?>? customCertificateArn;
   /// The certificate type.
   /// Valid values are `AMPLIFY_MANAGED` and `CUSTOM`.
   final pulumi.Input<String> type;
 
   /// Creates a new [DomainAssociationCertificateSettings].
   /// [certificateVerificationDnsRecord] DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
-  /// [customCertificateArn] The Amazon resource name (ARN) for the custom certificate.
+  /// [customCertificateArn] ARN for the custom certificate.
   /// [type] The certificate type.
   const DomainAssociationCertificateSettings({
     this.certificateVerificationDnsRecord,

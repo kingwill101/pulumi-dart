@@ -17,12 +17,12 @@ class ClusterOutpostConfig {
   final pulumi.Input<String> controlPlaneInstanceType;
   /// An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on AWS Outpost.
   /// The `controlPlanePlacement` configuration block supports the following arguments:
-  final pulumi.Input<ClusterOutpostConfigControlPlanePlacement>? controlPlanePlacement;
+  final pulumi.Input<ClusterOutpostConfigControlPlanePlacement?>? controlPlanePlacement;
   /// Amazon EC2 instance type for etcd instances of your local Amazon EKS cluster on AWS Outposts.
-  final pulumi.Input<String>? etcdInstanceType;
+  final pulumi.Input<String?>? etcdInstanceType;
   /// Placement configuration for the etcd instances of your local Amazon EKS cluster on an AWS Outpost.
   /// The `etcdPlacement` configuration block supports the following arguments:
-  final pulumi.Input<ClusterOutpostConfigEtcdPlacement>? etcdPlacement;
+  final pulumi.Input<ClusterOutpostConfigEtcdPlacement?>? etcdPlacement;
   /// The ARN of the Outpost that you want to use for your local Amazon EKS cluster on Outposts. This argument is a list of arns, but only a single Outpost ARN is supported currently.
   final pulumi.Input<List<String>> outpostArns;
 

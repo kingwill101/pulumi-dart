@@ -8,9 +8,9 @@ class PolicyDefinitionTemplateLinked {
   /// The ID of the template.
   final pulumi.Input<String> policyTemplateId;
   /// The principal of the template linked policy.
-  final pulumi.Input<PolicyDefinitionTemplateLinkedPrincipal>? principal;
+  final pulumi.Input<PolicyDefinitionTemplateLinkedPrincipal?>? principal;
   /// The resource of the template linked policy.
-  final pulumi.Input<PolicyDefinitionTemplateLinkedResource>? resource;
+  final pulumi.Input<PolicyDefinitionTemplateLinkedResource?>? resource;
 
   /// Creates a new [PolicyDefinitionTemplateLinked].
   /// [policyTemplateId] The ID of the template.

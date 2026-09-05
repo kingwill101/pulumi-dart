@@ -7,13 +7,13 @@ import 'data_lake_configuration_replication_configuration.dart';
 
 class DataLakeConfiguration {
   /// Provides encryption details of Amazon Security Lake object.
-  final pulumi.Input<List<DataLakeConfigurationEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<DataLakeConfigurationEncryptionConfiguration>?>? encryptionConfigurations;
   /// Provides lifecycle details of Amazon Security Lake object.
-  final pulumi.Input<DataLakeConfigurationLifecycleConfiguration>? lifecycleConfiguration;
+  final pulumi.Input<DataLakeConfigurationLifecycleConfiguration?>? lifecycleConfiguration;
   /// The AWS Regions where Security Lake is automatically enabled.
   final pulumi.Input<String> region;
   /// Provides replication details of Amazon Security Lake object.
-  final pulumi.Input<DataLakeConfigurationReplicationConfiguration>? replicationConfiguration;
+  final pulumi.Input<DataLakeConfigurationReplicationConfiguration?>? replicationConfiguration;
 
   /// Creates a new [DataLakeConfiguration].
   /// [encryptionConfigurations] Provides encryption details of Amazon Security Lake object.

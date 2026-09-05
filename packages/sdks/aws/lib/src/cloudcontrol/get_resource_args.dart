@@ -10,15 +10,15 @@ class GetResourceArgs {
   /// Identifier of the CloudFormation resource type. For example, `vpc-12345678`.
   final pulumi.Input<String> identifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM Role to assume for operations.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> typeName;
   /// Identifier of the CloudFormation resource type version.
-  final pulumi.Input<String>? typeVersionId;
+  final pulumi.Input<String?>? typeVersionId;
 
   /// Creates a new [GetResourceArgs].
   /// [identifier] Identifier of the CloudFormation resource type. For example, `vpc-12345678`.

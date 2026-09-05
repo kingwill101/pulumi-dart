@@ -12,7 +12,7 @@ class GetLinkArgs {
   /// ID of the specific link to retrieve.
   final pulumi.Input<String> linkId;
   /// Key-value tags for the link.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLinkArgs].
   /// [globalNetworkId] ID of the Global Network of the link to retrieve.

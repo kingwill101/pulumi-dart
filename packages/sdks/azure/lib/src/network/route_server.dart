@@ -205,8 +205,8 @@ import 'route_server_state.dart';
 /// 			ResourceGroupName:            example.Name,
 /// 			Location:                     example.Location,
 /// 			Sku:                          pulumi.String("Standard"),
-/// 			PublicIpAddressId:            examplePublicIp.ID(),
-/// 			SubnetId:                     exampleSubnet.ID(),
+/// 			PublicIpAddressId:            examplePublicIp.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchToBranchTrafficEnabled: pulumi.Bool(true),
 /// 			HubRoutingPreference:         pulumi.String("ASPath"),
 /// 		})
@@ -436,7 +436,7 @@ class RouteServer extends pulumi.CustomResource {
           'azure:network/routeServer:RouteServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
     hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
@@ -447,9 +447,9 @@ class RouteServer extends pulumi.CustomResource {
     routingState = registerOutput<String>('routingState');
     sku = registerOutput<String>('sku');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [RouteServer] resource's state with the given [name] and [id].
@@ -457,11 +457,12 @@ class RouteServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -484,8 +485,31 @@ class RouteServer extends pulumi.CustomResource {
     routingState = registerOutput<String>('routingState');
     sku = registerOutput<String>('sku');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RouteServer] resource.
+  RouteServer.reference(String urn)
+    : super(
+        'azure:network/routeServer:RouteServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingState = registerOutput<String>('routingState');
+    sku = registerOutput<String>('sku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

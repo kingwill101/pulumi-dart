@@ -5,7 +5,7 @@ import 'get_core_network_policy_document_routing_policy_routing_policy_rule.dart
 
 class GetCoreNetworkPolicyDocumentRoutingPolicy {
   /// Description of the routing policy.
-  final pulumi.Input<String>? routingPolicyDescription;
+  final pulumi.Input<String?>? routingPolicyDescription;
   /// Direction of the routing policy. Valid values: `inbound`, `outbound`.
   final pulumi.Input<String> routingPolicyDirection;
   /// Name of the routing policy. Must be 1-100 alphanumeric characters.
@@ -44,7 +44,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
       routingPolicyDescription: (() { final guardedValue = map['routingPolicyDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingPolicyDirection: pulumi.Input.fromValue(map['routingPolicyDirection'] as String),
       routingPolicyName: pulumi.Input.fromValue(map['routingPolicyName'] as String),
-      routingPolicyNumber: pulumi.Input.fromValue(map['routingPolicyNumber'] as int),
+      routingPolicyNumber: pulumi.Input.fromValue((map['routingPolicyNumber'] as num).toInt()),
       routingPolicyRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(map['routingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

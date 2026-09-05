@@ -6,13 +6,13 @@ class EventSubscriptionDeliveryProperty {
   /// The name of the header to send on to the destination
   final pulumi.Input<String> headerName;
   /// True if the `value` is a secret and should be protected, otherwise false. If True, then this value won't be returned from Azure API calls
-  final pulumi.Input<bool>? secret;
+  final pulumi.Input<bool?>? secret;
   /// If the `type` is `Dynamic`, then provide the payload field to be used as the value. Valid source fields differ by subscription type.
-  final pulumi.Input<String>? sourceField;
+  final pulumi.Input<String?>? sourceField;
   /// Either `Static` or `Dynamic`
   final pulumi.Input<String> type;
   /// If the `type` is `Static`, then provide the value to use
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EventSubscriptionDeliveryProperty].
   /// [headerName] The name of the header to send on to the destination

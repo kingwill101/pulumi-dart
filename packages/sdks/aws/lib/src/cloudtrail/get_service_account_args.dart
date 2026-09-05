@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudtrail_get_service_account_get_service_account_args_doc}
 class GetServiceAccountArgs {
   /// Name of the Region whose AWS CloudTrail account ID is desired. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetServiceAccountArgs].
   /// [region] Name of the Region whose AWS CloudTrail account ID is desired. Defaults to the Region set in the provider configuration.

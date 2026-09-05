@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupDeploymentStyle {
   /// Indicates whether to route deployment traffic behind a load balancer. Valid Values are `WITH_TRAFFIC_CONTROL` or `WITHOUT_TRAFFIC_CONTROL`. Default is `WITHOUT_TRAFFIC_CONTROL`.
-  final pulumi.Input<String>? deploymentOption;
+  final pulumi.Input<String?>? deploymentOption;
   /// Indicates whether to run an in-place deployment or a blue/green deployment. Valid Values are `IN_PLACE` or `BLUE_GREEN`. Default is `IN_PLACE`.
   ///
   /// _Only one `deploymentStyle` is allowed_.
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
 
   /// Creates a new [DeploymentGroupDeploymentStyle].
   /// [deploymentOption] Indicates whether to route deployment traffic behind a load balancer. Valid Values are `WITH_TRAFFIC_CONTROL` or `WITHOUT_TRAFFIC_CONTROL`. Default is `WITHOUT_TRAFFIC_CONTROL`.

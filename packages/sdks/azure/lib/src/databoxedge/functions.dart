@@ -134,3 +134,14 @@ Future<GetDeviceResult> getDevice(
   );
   return GetDeviceResult.fromMap(result);
 }
+
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databoxedge/getDevice:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
+}

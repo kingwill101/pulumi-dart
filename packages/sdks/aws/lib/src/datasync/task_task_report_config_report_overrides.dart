@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskTaskReportConfigReportOverrides {
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to delete in your destination location. This only applies if you configure your task to delete data in the destination that isn't in the source. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final pulumi.Input<String>? deletedOverride;
+  final pulumi.Input<String?>? deletedOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to skip during your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final pulumi.Input<String>? skippedOverride;
+  final pulumi.Input<String?>? skippedOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final pulumi.Input<String>? transferredOverride;
+  final pulumi.Input<String?>? transferredOverride;
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to verify at the end of your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   ///
   /// &gt; **NOTE:** If any `reportOverrides` are set to the same value as `task_report_config.report_level`, they will always be flagged as changed. Only set overrides to a value that differs from `task_report_config.report_level`.
-  final pulumi.Input<String>? verifiedOverride;
+  final pulumi.Input<String?>? verifiedOverride;
 
   /// Creates a new [TaskTaskReportConfigReportOverrides].
   /// [deletedOverride] Specifies the level of reporting for the files, objects, and directories that DataSync attempted to delete in your destination location. This only applies if you configure your task to delete data in the destination that isn't in the source. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.

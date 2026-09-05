@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineScaleSetRollingUpgradePolicy {
   /// Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` or `false`.
-  final pulumi.Input<bool>? crossZoneUpgradesEnabled;
+  final pulumi.Input<bool?>? crossZoneUpgradesEnabled;
   /// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability.
   final pulumi.Input<int> maxBatchInstancePercent;
   /// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch.
@@ -14,11 +14,11 @@ class LinuxVirtualMachineScaleSetRollingUpgradePolicy {
   /// Create new virtual machines to upgrade the scale set, rather than updating the existing virtual machines. Existing virtual machines will be deleted once the new virtual machines are created for each batch. Possible values are `true` or `false`.
   ///
   /// &gt; **Note:** `overprovision` must be set to `false` when `maximumSurgeInstancesEnabled` is specified.
-  final pulumi.Input<bool>? maximumSurgeInstancesEnabled;
+  final pulumi.Input<bool?>? maximumSurgeInstancesEnabled;
   /// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
   final pulumi.Input<String> pauseTimeBetweenBatches;
   /// Upgrade all unhealthy instances in a scale set before any healthy instances. Possible values are `true` or `false`.
-  final pulumi.Input<bool>? prioritizeUnhealthyInstancesEnabled;
+  final pulumi.Input<bool?>? prioritizeUnhealthyInstancesEnabled;
 
   /// Creates a new [LinuxVirtualMachineScaleSetRollingUpgradePolicy].
   /// [crossZoneUpgradesEnabled] Should the Virtual Machine Scale Set ignore the Azure Zone boundaries when constructing upgrade batches? Possible values are `true` or `false`.
@@ -53,9 +53,9 @@ class LinuxVirtualMachineScaleSetRollingUpgradePolicy {
   factory LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetRollingUpgradePolicy(
       crossZoneUpgradesEnabled: (() { final guardedValue = map['crossZoneUpgradesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxBatchInstancePercent: pulumi.Input.fromValue(map['maxBatchInstancePercent'] as int),
-      maxUnhealthyInstancePercent: pulumi.Input.fromValue(map['maxUnhealthyInstancePercent'] as int),
-      maxUnhealthyUpgradedInstancePercent: pulumi.Input.fromValue(map['maxUnhealthyUpgradedInstancePercent'] as int),
+      maxBatchInstancePercent: pulumi.Input.fromValue((map['maxBatchInstancePercent'] as num).toInt()),
+      maxUnhealthyInstancePercent: pulumi.Input.fromValue((map['maxUnhealthyInstancePercent'] as num).toInt()),
+      maxUnhealthyUpgradedInstancePercent: pulumi.Input.fromValue((map['maxUnhealthyUpgradedInstancePercent'] as num).toInt()),
       maximumSurgeInstancesEnabled: (() { final guardedValue = map['maximumSurgeInstancesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pauseTimeBetweenBatches: pulumi.Input.fromValue(map['pauseTimeBetweenBatches'] as String),
       prioritizeUnhealthyInstancesEnabled: (() { final guardedValue = map['prioritizeUnhealthyInstancesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

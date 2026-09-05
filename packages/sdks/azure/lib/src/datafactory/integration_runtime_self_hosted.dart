@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_runtime_self_hosted_args.dart';
+import 'integration_runtime_self_hosted_rbac_authorization.dart';
 import 'integration_runtime_self_hosted_state.dart';
 
 /// Manages a Data Factory Self-hosted Integration Runtime.
@@ -97,7 +98,7 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewIntegrationRuntimeSelfHosted(ctx, "example", &datafactory.IntegrationRuntimeSelfHostedArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -220,7 +221,7 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
   /// The primary integration runtime authentication key.
   late final pulumi.Output<String> primaryAuthorizationKey;
   /// A `rbacAuthorization` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rbacAuthorizations;
+  late final pulumi.Output<List<IntegrationRuntimeSelfHostedRbacAuthorization>?> rbacAuthorizations;
   /// The secondary integration runtime authentication key.
   late final pulumi.Output<String> secondaryAuthorizationKey;
   /// Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
@@ -238,13 +239,13 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
           'azure:datafactory/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     primaryAuthorizationKey = registerOutput<String>('primaryAuthorizationKey');
-    rbacAuthorizations = registerOutput<List<Map<String, dynamic>>?>('rbacAuthorizations');
+    rbacAuthorizations = registerOutput<List<IntegrationRuntimeSelfHostedRbacAuthorization>?>('rbacAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(guardedValue, (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     secondaryAuthorizationKey = registerOutput<String>('secondaryAuthorizationKey');
     selfContainedInteractiveAuthoringEnabled = registerOutput<bool?>('selfContainedInteractiveAuthoringEnabled');
   }
@@ -254,11 +255,12 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationRuntimeSelfHostedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationRuntimeSelfHosted._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,7 +278,25 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     primaryAuthorizationKey = registerOutput<String>('primaryAuthorizationKey');
-    rbacAuthorizations = registerOutput<List<Map<String, dynamic>>?>('rbacAuthorizations');
+    rbacAuthorizations = registerOutput<List<IntegrationRuntimeSelfHostedRbacAuthorization>?>('rbacAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(guardedValue, (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryAuthorizationKey = registerOutput<String>('secondaryAuthorizationKey');
+    selfContainedInteractiveAuthoringEnabled = registerOutput<bool?>('selfContainedInteractiveAuthoringEnabled');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntimeSelfHosted] resource.
+  IntegrationRuntimeSelfHosted.reference(String urn)
+    : super(
+        'azure:datafactory/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    primaryAuthorizationKey = registerOutput<String>('primaryAuthorizationKey');
+    rbacAuthorizations = registerOutput<List<IntegrationRuntimeSelfHostedRbacAuthorization>?>('rbacAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(guardedValue, (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     secondaryAuthorizationKey = registerOutput<String>('secondaryAuthorizationKey');
     selfContainedInteractiveAuthoringEnabled = registerOutput<bool?>('selfContainedInteractiveAuthoringEnabled');
   }

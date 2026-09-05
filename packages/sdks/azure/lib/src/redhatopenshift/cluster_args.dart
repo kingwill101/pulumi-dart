@@ -21,11 +21,11 @@ class ClusterArgs {
   /// An `ingressProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterIngressProfile> ingressProfile;
   /// The location where the Azure Red Hat OpenShift Cluster should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `mainProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterMainProfile> mainProfile;
   /// The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterNetworkProfile> networkProfile;
   /// Specifies the Resource Group where the Azure Red Hat OpenShift Cluster should exist. Changing this forces a new resource to be created.
@@ -33,7 +33,7 @@ class ClusterArgs {
   /// A `servicePrincipal` block as defined below.
   final pulumi.Input<ClusterServicePrincipal> servicePrincipal;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `workerProfile` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ClusterWorkerProfile> workerProfile;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
   /// The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
 
   /// Creates a new [DomainAimlOptionsNaturalLanguageQueryGenerationOptions].
   /// [desiredState] The desired state of the natural language query generation feature. Valid values are `ENABLED` and `DISABLED`.

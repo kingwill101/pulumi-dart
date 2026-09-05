@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationDefinition {
   /// JSON application definition. Either this or `s3Location` must be specified.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Location of the application definition in S3. Either this or `content` must be specified.
-  final pulumi.Input<String>? s3Location;
+  final pulumi.Input<String?>? s3Location;
 
   /// Creates a new [ApplicationDefinition].
   /// [content] JSON application definition. Either this or `s3Location` must be specified.

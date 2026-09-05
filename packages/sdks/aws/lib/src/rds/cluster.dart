@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_master_user_secret.dart';
 import 'cluster_restore_to_point_in_time.dart';
 import 'cluster_s3_import.dart';
 import 'cluster_scaling_configuration.dart';
@@ -750,6 +751,11 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.rds.Cluster("example", {
+///     serverlessv2ScalingConfiguration: {
+///         maxCapacity: 1,
+///         minCapacity: 0,
+///         secondsUntilAutoPause: 3600,
+///     },
 ///     clusterIdentifier: "example",
 ///     engine: aws.rds.EngineType.AuroraPostgresql,
 ///     engineMode: aws.rds.EngineMode.Provisioned,
@@ -758,11 +764,6 @@ import 'cluster_state.dart';
 ///     masterUsername: "test",
 ///     masterPassword: "must_be_eight_characters",
 ///     storageEncrypted: true,
-///     serverlessv2ScalingConfiguration: {
-///         maxCapacity: 1,
-///         minCapacity: 0,
-///         secondsUntilAutoPause: 3600,
-///     },
 /// });
 /// const exampleClusterInstance = new aws.rds.ClusterInstance("example", {
 ///     clusterIdentifier: example.id,
@@ -776,6 +777,11 @@ import 'cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.rds.Cluster("example",
+///     serverlessv2_scaling_configuration={
+///         "max_capacity": float(1),
+///         "min_capacity": float(0),
+///         "seconds_until_auto_pause": 3600,
+///     },
 ///     cluster_identifier="example",
 ///     engine=aws.rds.EngineType.AURORA_POSTGRESQL,
 ///     engine_mode=aws.rds.EngineMode.PROVISIONED,
@@ -783,12 +789,7 @@ import 'cluster_state.dart';
 ///     database_name="test",
 ///     master_username="test",
 ///     master_password="must_be_eight_characters",
-///     storage_encrypted=True,
-///     serverlessv2_scaling_configuration={
-///         "max_capacity": float(1),
-///         "min_capacity": float(0),
-///         "seconds_until_auto_pause": 3600,
-///     })
+///     storage_encrypted=True)
 /// example_cluster_instance = aws.rds.ClusterInstance("example",
 ///     cluster_identifier=example.id,
 ///     instance_class="db.serverless",
@@ -805,6 +806,12 @@ import 'cluster_state.dart';
 /// {
 ///     var example = new Aws.Rds.Cluster("example", new()
 ///     {
+///         Serverlessv2ScalingConfiguration = new Aws.Rds.Inputs.ClusterServerlessv2ScalingConfigurationArgs
+///         {
+///             MaxCapacity = 1,
+///             MinCapacity = 0,
+///             SecondsUntilAutoPause = 3600,
+///         },
 ///         ClusterIdentifier = "example",
 ///         Engine = Aws.Rds.EngineType.AuroraPostgresql,
 ///         EngineMode = Aws.Rds.EngineMode.Provisioned,
@@ -813,12 +820,6 @@ import 'cluster_state.dart';
 ///         MasterUsername = "test",
 ///         MasterPassword = "must_be_eight_characters",
 ///         StorageEncrypted = true,
-///         Serverlessv2ScalingConfiguration = new Aws.Rds.Inputs.ClusterServerlessv2ScalingConfigurationArgs
-///         {
-///             MaxCapacity = 1,
-///             MinCapacity = 0,
-///             SecondsUntilAutoPause = 3600,
-///         },
 ///     });
 ///
 ///     var exampleClusterInstance = new Aws.Rds.ClusterInstance("example", new()
@@ -842,6 +843,11 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := rds.NewCluster(ctx, "example", &rds.ClusterArgs{
+/// 			Serverlessv2ScalingConfiguration: &rds.ClusterServerlessv2ScalingConfigurationArgs{
+/// 				MaxCapacity:           pulumi.Float64(1),
+/// 				MinCapacity:           pulumi.Float64(0),
+/// 				SecondsUntilAutoPause: pulumi.Int(3600),
+/// 			},
 /// 			ClusterIdentifier: pulumi.String("example"),
 /// 			Engine:            pulumi.String(rds.EngineTypeAuroraPostgresql),
 /// 			EngineMode:        pulumi.String(rds.EngineModeProvisioned),
@@ -850,11 +856,6 @@ import 'cluster_state.dart';
 /// 			MasterUsername:    pulumi.String("test"),
 /// 			MasterPassword:    pulumi.String("must_be_eight_characters"),
 /// 			StorageEncrypted:  pulumi.Bool(true),
-/// 			Serverlessv2ScalingConfiguration: &rds.ClusterServerlessv2ScalingConfigurationArgs{
-/// 				MaxCapacity:           pulumi.Float64(1),
-/// 				MinCapacity:           pulumi.Float64(0),
-/// 				SecondsUntilAutoPause: pulumi.Int(3600),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -882,6 +883,11 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   serverlessv2_scaling_configuration = {
+///     max_capacity             = 1
+///     min_capacity             = 0
+///     seconds_until_auto_pause = 3600
+///   }
 ///   cluster_identifier = "example"
 ///   engine             = "aurora-postgresql"
 ///   engine_mode        = "provisioned"
@@ -890,11 +896,6 @@ import 'cluster_state.dart';
 ///   master_username    = "test"
 ///   master_password    = "must_be_eight_characters"
 ///   storage_encrypted  = true
-///   serverlessv2_scaling_configuration = {
-///     max_capacity             = 1
-///     min_capacity             = 0
-///     seconds_until_auto_pause = 3600
-///   }
 /// }
 /// resource "aws_rds_clusterinstance" "example" {
 ///   cluster_identifier = aws_rds_cluster.example.id
@@ -928,6 +929,11 @@ import 'cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Cluster("example", ClusterArgs.builder()
+///             .serverlessv2ScalingConfiguration(ClusterServerlessv2ScalingConfigurationArgs.builder()
+///                 .maxCapacity(1.0)
+///                 .minCapacity(0.0)
+///                 .secondsUntilAutoPause(3600)
+///                 .build())
 ///             .clusterIdentifier("example")
 ///             .engine("aurora-postgresql")
 ///             .engineMode("provisioned")
@@ -936,11 +942,6 @@ import 'cluster_state.dart';
 ///             .masterUsername("test")
 ///             .masterPassword("must_be_eight_characters")
 ///             .storageEncrypted(true)
-///             .serverlessv2ScalingConfiguration(ClusterServerlessv2ScalingConfigurationArgs.builder()
-///                 .maxCapacity(1.0)
-///                 .minCapacity(0.0)
-///                 .secondsUntilAutoPause(3600)
-///                 .build())
 ///             .build());
 ///
 ///         var exampleClusterInstance = new ClusterInstance("exampleClusterInstance", ClusterInstanceArgs.builder()
@@ -958,6 +959,10 @@ import 'cluster_state.dart';
 ///   example:
 ///     type: aws:rds:Cluster
 ///     properties:
+///       serverlessv2ScalingConfiguration:
+///         maxCapacity: 1
+///         minCapacity: 0
+///         secondsUntilAutoPause: 3600
 ///       clusterIdentifier: example
 ///       engine: aurora-postgresql
 ///       engineMode: provisioned
@@ -966,10 +971,6 @@ import 'cluster_state.dart';
 ///       masterUsername: test
 ///       masterPassword: must_be_eight_characters
 ///       storageEncrypted: true
-///       serverlessv2ScalingConfiguration:
-///         maxCapacity: 1
-///         minCapacity: 0
-///         secondsUntilAutoPause: 3600
 ///   exampleClusterInstance:
 ///     type: aws:rds:ClusterInstance
 ///     name: example
@@ -1271,6 +1272,250 @@ import 'cluster_state.dart';
 /// ```
 ///
 ///
+/// ### Disabling Master Password Rotation
+///
+/// &gt; **Note:** The `aws.secretsmanager.SecretRotation` resource must depend on a cluster instance, otherwise AWS re-enables rotation once the instance finishes provisioning. Use `dependsOn` as shown below when the cluster and its instance are created together.
+///
+/// When `manageMasterUserPassword` is enabled, Secrets Manager rotates the master user password automatically (every 7 days by default). To disable that rotation while keeping the managed secret, manage the secret's rotation with `aws.secretsmanager.SecretRotation` and set `rotationEnabled = false`.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.rds.Cluster("test", {
+///     clusterIdentifier: "example",
+///     databaseName: "test",
+///     manageMasterUserPassword: true,
+///     masterUsername: "test",
+/// });
+/// const testClusterInstance = new aws.rds.ClusterInstance("test", {
+///     clusterIdentifier: test.id,
+///     identifier: "example-1",
+///     instanceClass: aws.rds.InstanceType.R6G_Large,
+///     engine: test.engine.apply((x) => aws.rds.EngineType[x]),
+///     engineVersion: test.engineVersion,
+/// });
+/// const testSecretRotation = new aws.secretsmanager.SecretRotation("test", {
+///     secretId: test.masterUserSecrets[0].secretArn,
+///     rotationEnabled: false,
+/// }, {
+///     dependsOn: [testClusterInstance],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.rds.Cluster("test",
+///     cluster_identifier="example",
+///     database_name="test",
+///     manage_master_user_password=True,
+///     master_username="test")
+/// test_cluster_instance = aws.rds.ClusterInstance("test",
+///     cluster_identifier=test.id,
+///     identifier="example-1",
+///     instance_class=aws.rds.InstanceType.R6_G_LARGE,
+///     engine=test.engine.apply(lambda x: aws.rds.EngineType(x)),
+///     engine_version=test.engine_version)
+/// test_secret_rotation = aws.secretsmanager.SecretRotation("test",
+///     secret_id=test.master_user_secrets[0].secret_arn,
+///     rotation_enabled=False,
+///     opts = pulumi.ResourceOptions(depends_on=[test_cluster_instance]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Aws.Rds.Cluster("test", new()
+///     {
+///         ClusterIdentifier = "example",
+///         DatabaseName = "test",
+///         ManageMasterUserPassword = true,
+///         MasterUsername = "test",
+///     });
+///
+///     var testClusterInstance = new Aws.Rds.ClusterInstance("test", new()
+///     {
+///         ClusterIdentifier = test.Id,
+///         Identifier = "example-1",
+///         InstanceClass = Aws.Rds.InstanceType.R6G_Large,
+///         Engine = test.Engine.Apply(System.Enum.Parse<Aws.Rds.EngineType>),
+///         EngineVersion = test.EngineVersion,
+///     });
+///
+///     var testSecretRotation = new Aws.SecretsManager.SecretRotation("test", new()
+///     {
+///         SecretId = test.MasterUserSecrets.Apply(masterUserSecrets => masterUserSecrets[0].SecretArn),
+///         RotationEnabled = false,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             testClusterInstance,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/secretsmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		test, err := rds.NewCluster(ctx, "test", &rds.ClusterArgs{
+/// 			ClusterIdentifier:        pulumi.String("example"),
+/// 			DatabaseName:             pulumi.String("test"),
+/// 			ManageMasterUserPassword: pulumi.Bool(true),
+/// 			MasterUsername:           pulumi.String("test"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		testClusterInstance, err := rds.NewClusterInstance(ctx, "test", &rds.ClusterInstanceArgs{
+/// 			ClusterIdentifier: test.ID().ToIDOutput().ToStringOutput(),
+/// 			Identifier:        pulumi.String("example-1"),
+/// 			InstanceClass:     pulumi.String(rds.InstanceType_R6G_Large),
+/// 			Engine:            test.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
+/// 			EngineVersion:     test.EngineVersion,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretsmanager.NewSecretRotation(ctx, "test", &secretsmanager.SecretRotationArgs{
+/// 			SecretId: test.MasterUserSecrets.ApplyT(func(masterUserSecrets []rds.ClusterMasterUserSecret) (*string, error) {
+/// 				return masterUserSecrets[0].SecretArn, nil
+/// 			}).(pulumi.StringPtrOutput),
+/// 			RotationEnabled: pulumi.Bool(false),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			testClusterInstance,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_cluster" "test" {
+///   cluster_identifier          = "example"
+///   database_name               = "test"
+///   manage_master_user_password = true
+///   master_username             = "test"
+/// }
+/// resource "aws_rds_clusterinstance" "test" {
+///   cluster_identifier = aws_rds_cluster.test.id
+///   identifier         = "example-1"
+///   instance_class     = "db.r6g.large"
+///   engine             = aws_rds_cluster.test.engine
+///   engine_version     = aws_rds_cluster.test.engine_version
+/// }
+/// resource "aws_secretsmanager_secretrotation" "test" {
+///   depends_on       = [aws_rds_clusterinstance.test]
+///   secret_id        = aws_rds_cluster.test.master_user_secrets[0].secret_arn
+///   rotation_enabled = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.rds.Cluster;
+/// import com.pulumi.aws.rds.ClusterArgs;
+/// import com.pulumi.aws.rds.ClusterInstance;
+/// import com.pulumi.aws.rds.ClusterInstanceArgs;
+/// import com.pulumi.aws.secretsmanager.SecretRotation;
+/// import com.pulumi.aws.secretsmanager.SecretRotationArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new Cluster("test", ClusterArgs.builder()
+///             .clusterIdentifier("example")
+///             .databaseName("test")
+///             .manageMasterUserPassword(true)
+///             .masterUsername("test")
+///             .build());
+///
+///         var testClusterInstance = new ClusterInstance("testClusterInstance", ClusterInstanceArgs.builder()
+///             .clusterIdentifier(test.id())
+///             .identifier("example-1")
+///             .instanceClass("db.r6g.large")
+///             .engine(test.engine())
+///             .engineVersion(test.engineVersion())
+///             .build());
+///
+///         var testSecretRotation = new SecretRotation("testSecretRotation", SecretRotationArgs.builder()
+///             .secretId(test.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .rotationEnabled(false)
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(testClusterInstance)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test:
+///     type: aws:rds:Cluster
+///     properties:
+///       clusterIdentifier: example
+///       databaseName: test
+///       manageMasterUserPassword: true
+///       masterUsername: test
+///   testClusterInstance:
+///     type: aws:rds:ClusterInstance
+///     name: test
+///     properties:
+///       clusterIdentifier: ${test.id}
+///       identifier: example-1
+///       instanceClass: db.r6g.large
+///       engine: ${test.engine}
+///       engineVersion: ${test.engineVersion}
+///   testSecretRotation:
+///     type: aws:secretsmanager:SecretRotation
+///     name: test
+///     properties:
+///       secretId: ${test.masterUserSecrets[0].secretArn}
+///       rotationEnabled: false
+///     options:
+///       dependsOn:
+///         - ${testClusterInstance}
+/// ```
+///
+///
 /// ### Global Cluster Restored From Snapshot
 ///
 ///
@@ -1287,6 +1532,11 @@ import 'cluster_state.dart';
 ///     engineVersion: "5.6.mysql_aurora.1.22.4",
 ///     clusterIdentifier: "example",
 ///     snapshotIdentifier: example.then(example => example.id),
+/// }, {
+///     ignoreChanges: [
+///         "snapshotIdentifier",
+///         "globalClusterIdentifier",
+///     ],
 /// });
 /// const exampleGlobalCluster = new aws.rds.GlobalCluster("example", {
 ///     globalClusterIdentifier: "example",
@@ -1304,7 +1554,11 @@ import 'cluster_state.dart';
 ///     engine=aws.rds.EngineType.AURORA,
 ///     engine_version="5.6.mysql_aurora.1.22.4",
 ///     cluster_identifier="example",
-///     snapshot_identifier=example.id)
+///     snapshot_identifier=example.id,
+///     opts = pulumi.ResourceOptions(ignore_changes=[
+///             "snapshotIdentifier",
+///             "globalClusterIdentifier",
+///         ]))
 /// example_global_cluster = aws.rds.GlobalCluster("example",
 ///     global_cluster_identifier="example",
 ///     source_db_cluster_identifier=example_cluster.arn,
@@ -1330,6 +1584,13 @@ import 'cluster_state.dart';
 ///         EngineVersion = "5.6.mysql_aurora.1.22.4",
 ///         ClusterIdentifier = "example",
 ///         SnapshotIdentifier = example.Apply(getClusterSnapshotResult => getClusterSnapshotResult.Id),
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "snapshotIdentifier",
+///             "globalClusterIdentifier",
+///         },
 ///     });
 ///
 ///     var exampleGlobalCluster = new Aws.Rds.GlobalCluster("example", new()
@@ -1363,7 +1624,10 @@ import 'cluster_state.dart';
 /// 			EngineVersion:      pulumi.String("5.6.mysql_aurora.1.22.4"),
 /// 			ClusterIdentifier:  pulumi.String("example"),
 /// 			SnapshotIdentifier: pulumi.String(example.Id),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"snapshotIdentifier",
+/// 			"globalClusterIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -1394,6 +1658,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_rds_cluster" "example" {
+///   lifecycle {
+///     ignore_changes = [snapshotIdentifier, globalClusterIdentifier]
+///   }
 ///   engine              = "aurora"
 ///   engine_version      = "5.6.mysql_aurora.1.22.4"
 ///   cluster_identifier  = "example"
@@ -1417,6 +1684,7 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.GlobalCluster;
 /// import com.pulumi.aws.rds.GlobalClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1440,7 +1708,9 @@ import 'cluster_state.dart';
 ///             .engineVersion("5.6.mysql_aurora.1.22.4")
 ///             .clusterIdentifier("example")
 ///             .snapshotIdentifier(example.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("snapshotIdentifier", "globalClusterIdentifier")
+///                 .build());
 ///
 ///         var exampleGlobalCluster = new GlobalCluster("exampleGlobalCluster", GlobalClusterArgs.builder()
 ///             .globalClusterIdentifier("example")
@@ -1461,6 +1731,10 @@ import 'cluster_state.dart';
 ///       engineVersion: 5.6.mysql_aurora.1.22.4
 ///       clusterIdentifier: example
 ///       snapshotIdentifier: ${example.id}
+///     options:
+///       ignoreChanges:
+///         - snapshotIdentifier
+///         - globalClusterIdentifier
 ///   exampleGlobalCluster:
 ///     type: aws:rds:GlobalCluster
 ///     name: example
@@ -1504,7 +1778,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> allowMajorVersionUpgrade;
   /// Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`. See [Amazon RDS Documentation for more information.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
   late final pulumi.Output<bool> applyImmediately;
-  /// Amazon Resource Name (ARN) of cluster
+  /// ARN of cluster
   late final pulumi.Output<String> arn;
   /// Whether to apply minor engine upgrades automatically to the DB cluster during the maintenance window. Defaults to `true`.
   late final pulumi.Output<bool> autoMinorVersionUpgrade;
@@ -1605,7 +1879,7 @@ class Cluster extends pulumi.CustomResource {
   /// Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used.
   late final pulumi.Output<String> masterUserSecretKmsKeyId;
   /// Block that specifies the master user secret. Only available when `manageMasterUserPassword` is set to true. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> masterUserSecrets;
+  late final pulumi.Output<List<ClusterMasterUserSecret>> masterUserSecrets;
   /// Username for the master DB user. Please refer to the [RDS Naming Constraints](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.Constraints). This argument does not support in-place updates and cannot be changed during a restore from snapshot.
   late final pulumi.Output<String> masterUsername;
   /// Interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB cluster. To turn off collecting Enhanced Monitoring metrics, specify 0. The default is 0. Valid Values: 0, 1, 5, 10, 15, 30, 60.
@@ -1677,21 +1951,22 @@ class Cluster extends pulumi.CustomResource {
           'aws:rds/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backtrackWindow = registerOutput<int?>('backtrackWindow');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     caCertificateIdentifier = registerOutput<String>('caCertificateIdentifier');
     caCertificateValidTill = registerOutput<String>('caCertificateValidTill');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
-    clusterMembers = registerOutput<List<String>>('clusterMembers');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterResourceId = registerOutput<String>('clusterResourceId');
     clusterScalabilityType = registerOutput<String>('clusterScalabilityType');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
@@ -1709,7 +1984,7 @@ class Cluster extends pulumi.CustomResource {
     enableGlobalWriteForwarding = registerOutput<bool?>('enableGlobalWriteForwarding');
     enableHttpEndpoint = registerOutput<bool?>('enableHttpEndpoint');
     enableLocalWriteForwarding = registerOutput<bool?>('enableLocalWriteForwarding');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
@@ -1720,15 +1995,15 @@ class Cluster extends pulumi.CustomResource {
     globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iops = registerOutput<int?>('iops');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
-    masterPassword = registerOutput<String?>('masterPassword');
-    masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
     masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
     masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
+    masterUserSecrets = registerOutput<List<ClusterMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMasterUserSecret>(guardedValue, (value) => ClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
     masterUsername = registerOutput<String>('masterUsername');
     monitoringInterval = registerOutput<int>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -1751,10 +2026,10 @@ class Cluster extends pulumi.CustomResource {
     sourceRegion = registerOutput<String?>('sourceRegion');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -1762,11 +2037,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1785,14 +2061,14 @@ class Cluster extends pulumi.CustomResource {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backtrackWindow = registerOutput<int?>('backtrackWindow');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
     caCertificateIdentifier = registerOutput<String>('caCertificateIdentifier');
     caCertificateValidTill = registerOutput<String>('caCertificateValidTill');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
-    clusterMembers = registerOutput<List<String>>('clusterMembers');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterResourceId = registerOutput<String>('clusterResourceId');
     clusterScalabilityType = registerOutput<String>('clusterScalabilityType');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
@@ -1810,7 +2086,7 @@ class Cluster extends pulumi.CustomResource {
     enableGlobalWriteForwarding = registerOutput<bool?>('enableGlobalWriteForwarding');
     enableHttpEndpoint = registerOutput<bool?>('enableHttpEndpoint');
     enableLocalWriteForwarding = registerOutput<bool?>('enableLocalWriteForwarding');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
@@ -1821,15 +2097,15 @@ class Cluster extends pulumi.CustomResource {
     globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iops = registerOutput<int?>('iops');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
-    masterPassword = registerOutput<String?>('masterPassword');
-    masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
     masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
     masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
+    masterUserSecrets = registerOutput<List<ClusterMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMasterUserSecret>(guardedValue, (value) => ClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
     masterUsername = registerOutput<String>('masterUsername');
     monitoringInterval = registerOutput<int>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -1852,9 +2128,97 @@ class Cluster extends pulumi.CustomResource {
     sourceRegion = registerOutput<String?>('sourceRegion');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:rds/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool>('autoMinorVersionUpgrade');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backtrackWindow = registerOutput<int?>('backtrackWindow');
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    caCertificateIdentifier = registerOutput<String>('caCertificateIdentifier');
+    caCertificateValidTill = registerOutput<String>('caCertificateValidTill');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterResourceId = registerOutput<String>('clusterResourceId');
+    clusterScalabilityType = registerOutput<String>('clusterScalabilityType');
+    copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
+    databaseName = registerOutput<String>('databaseName');
+    dbClusterInstanceClass = registerOutput<String?>('dbClusterInstanceClass');
+    dbClusterParameterGroupName = registerOutput<String>('dbClusterParameterGroupName');
+    dbInstanceParameterGroupName = registerOutput<String?>('dbInstanceParameterGroupName');
+    dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    dbSystemId = registerOutput<String>('dbSystemId');
+    deleteAutomatedBackups = registerOutput<bool?>('deleteAutomatedBackups');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    domain = registerOutput<String?>('domain');
+    domainIamRoleName = registerOutput<String?>('domainIamRoleName');
+    enableGlobalWriteForwarding = registerOutput<bool?>('enableGlobalWriteForwarding');
+    enableHttpEndpoint = registerOutput<bool?>('enableHttpEndpoint');
+    enableLocalWriteForwarding = registerOutput<bool?>('enableLocalWriteForwarding');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String>('engine');
+    engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
+    engineMode = registerOutput<String?>('engineMode');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iops = registerOutput<int?>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
+    masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
+    masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
+    masterUserSecrets = registerOutput<List<ClusterMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMasterUserSecret>(guardedValue, (value) => ClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    masterUsername = registerOutput<String>('masterUsername');
+    monitoringInterval = registerOutput<int>('monitoringInterval');
+    monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    networkType = registerOutput<String>('networkType');
+    performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    performanceInsightsRetentionPeriod = registerOutput<int>('performanceInsightsRetentionPeriod');
+    port = registerOutput<int>('port');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    readerEndpoint = registerOutput<String>('readerEndpoint');
+    region = registerOutput<String>('region');
+    replicationSourceIdentifier = registerOutput<String?>('replicationSourceIdentifier');
+    restoreToPointInTime = registerOutput<ClusterRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Import = registerOutput<ClusterS3Import?>('s3Import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterS3Import.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scalingConfiguration = registerOutput<ClusterScalingConfiguration?>('scalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverlessv2ScalingConfiguration = registerOutput<ClusterServerlessv2ScalingConfiguration?>('serverlessv2ScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerlessv2ScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    sourceRegion = registerOutput<String?>('sourceRegion');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

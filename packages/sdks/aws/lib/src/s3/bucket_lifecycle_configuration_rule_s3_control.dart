@@ -7,15 +7,15 @@ import 'bucket_lifecycle_configuration_rule_filter_s3_control.dart';
 
 class BucketLifecycleConfigurationRuleS3Control {
   /// Configuration block containing settings for abort incomplete multipart upload. See `abortIncompleteMultipartUpload` below.
-  final pulumi.Input<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control>? abortIncompleteMultipartUpload;
+  final pulumi.Input<BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control?>? abortIncompleteMultipartUpload;
   /// Configuration block containing settings for expiration of objects. See `expiration` below.
-  final pulumi.Input<BucketLifecycleConfigurationRuleExpirationS3Control>? expiration;
+  final pulumi.Input<BucketLifecycleConfigurationRuleExpirationS3Control?>? expiration;
   /// Configuration block containing settings for filtering. See `filter` below.
-  final pulumi.Input<BucketLifecycleConfigurationRuleFilterS3Control>? filter;
+  final pulumi.Input<BucketLifecycleConfigurationRuleFilterS3Control?>? filter;
   /// Unique identifier for the rule.
   final pulumi.Input<String> id;
   /// Status of the rule. Valid values: `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [BucketLifecycleConfigurationRuleS3Control].
   /// [abortIncompleteMultipartUpload] Configuration block containing settings for abort incomplete multipart upload. See `abortIncompleteMultipartUpload` below.

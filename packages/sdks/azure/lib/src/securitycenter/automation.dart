@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'automation_action.dart';
 import 'automation_args.dart';
+import 'automation_source.dart';
 import 'automation_state.dart';
 
 /// Manages Security Center Automation and Continuous Export. This resource supports three types of destination in the `action`, Logic Apps, Log Analytics and Event Hubs
@@ -234,7 +236,7 @@ import 'automation_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("acceptanceTestEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(2),
 /// 		})
@@ -260,7 +262,7 @@ import 'automation_state.dart';
 /// 			Actions: securitycenter.AutomationActionArray{
 /// 				&securitycenter.AutomationActionArgs{
 /// 					Type:             pulumi.String("EventHub"),
-/// 					ResourceId:       exampleEventHub.ID(),
+/// 					ResourceId:       exampleEventHub.ID().ToIDOutput().ToStringOutput(),
 /// 					ConnectionString: exampleAuthorizationRule.PrimaryConnectionString,
 /// 				},
 /// 			},
@@ -525,7 +527,7 @@ import 'automation_state.dart';
 /// ```
 class Automation extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below. An `action` tells this automation where the data is to be sent to upon being evaluated by the rules in the `source`.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<AutomationAction>> actions;
   /// Specifies the description for the Security Center Automation.
   late final pulumi.Output<String?> description;
   /// Boolean to enable or disable this Security Center Automation. Defaults to `true`.
@@ -541,7 +543,7 @@ class Automation extends pulumi.CustomResource {
   /// A list of scopes on which the automation logic is applied, at least one is required. Supported scopes are a subscription (in this format `/subscriptions/00000000-0000-0000-0000-000000000000`) or a resource group under that subscription (in the format `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example`). The automation will only apply on defined scopes.
   late final pulumi.Output<List<String>> scopes;
   /// One or more `source` blocks as defined below. A `source` defines what data types will be processed and a set of rules to filter that data.
-  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+  late final pulumi.Output<List<AutomationSource>> sources;
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -557,17 +559,17 @@ class Automation extends pulumi.CustomResource {
           'azure:securitycenter/automation:Automation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<AutomationAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationAction>(guardedValue, (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopes = registerOutput<List<String>>('scopes');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<AutomationSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationSource>(guardedValue, (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Automation] resource's state with the given [name] and [id].
@@ -575,11 +577,12 @@ class Automation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Automation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -593,14 +596,34 @@ class Automation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<AutomationAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationAction>(guardedValue, (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopes = registerOutput<List<String>>('scopes');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<AutomationSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationSource>(guardedValue, (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Automation] resource.
+  Automation.reference(String urn)
+    : super(
+        'azure:securitycenter/automation:Automation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<AutomationAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationAction>(guardedValue, (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<AutomationSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationSource>(guardedValue, (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

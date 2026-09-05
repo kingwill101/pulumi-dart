@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration {
   /// When restoring from a snapshot, specifies whether the runtime is allowed to skip a state that cannot be mapped to the new program. Default is `false`.
-  final pulumi.Input<bool>? allowNonRestoredState;
+  final pulumi.Input<bool?>? allowNonRestoredState;
 
   /// Creates a new [ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration].
   /// [allowNonRestoredState] When restoring from a snapshot, specifies whether the runtime is allowed to skip a state that cannot be mapped to the new program. Default is `false`.

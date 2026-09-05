@@ -10,13 +10,13 @@ class GetEncryptedValueArgs {
   /// The Algorithm which should be used to Decrypt/Encrypt this Value. Possible values are `RSA1_5`, `RSA-OAEP` and `RSA-OAEP-256`.
   final pulumi.Input<String> algorithm;
   /// The Base64 URL Encoded Encrypted Data which should be decrypted into `plainTextValue`.
-  final pulumi.Input<String>? encryptedData;
+  final pulumi.Input<String?>? encryptedData;
   /// The ID of the Key Vault Key which should be used to Decrypt/Encrypt this Value.
   final pulumi.Input<String> keyVaultKeyId;
   /// The plain-text value which should be Encrypted into `encryptedData`.
   ///
   /// &gt; **Note:** One of either `encryptedData` or `plainTextValue` must be specified and is used to populate the encrypted/decrypted value for the other field.
-  final pulumi.Input<String>? plainTextValue;
+  final pulumi.Input<String?>? plainTextValue;
 
   /// Creates a new [GetEncryptedValueArgs].
   /// [algorithm] The Algorithm which should be used to Decrypt/Encrypt this Value. Possible values are `RSA1_5`, `RSA-OAEP` and `RSA-OAEP-256`.

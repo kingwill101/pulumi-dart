@@ -11,11 +11,11 @@ class SharedDirectoryArgs {
   /// Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
   final pulumi.Input<String> directoryId;
   /// Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier for the directory consumer account with whom the directory is to be shared. See below.
   ///
   /// The following arguments are optional:

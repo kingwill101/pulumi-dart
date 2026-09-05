@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceQueryKey {
   /// The value of this Query Key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServiceQueryKey].
   /// [key] The value of this Query Key.

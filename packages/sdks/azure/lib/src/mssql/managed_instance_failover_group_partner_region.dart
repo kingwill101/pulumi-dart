@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedInstanceFailoverGroupPartnerRegion {
   /// The Azure Region where the Managed Instance Failover Group should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The partner replication role of the Managed Instance Failover Group.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [ManagedInstanceFailoverGroupPartnerRegion].
   /// [location] The Azure Region where the Managed Instance Failover Group should exist. Changing this forces a new resource to be created.

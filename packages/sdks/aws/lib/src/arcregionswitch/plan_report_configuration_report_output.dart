@@ -5,7 +5,7 @@ import 'plan_report_configuration_report_output_s3_configuration.dart';
 
 class PlanReportConfigurationReportOutput {
   /// S3 output configuration. See `s3Configuration` Block for details.
-  final pulumi.Input<List<PlanReportConfigurationReportOutputS3Configuration>>? s3Configurations;
+  final pulumi.Input<List<PlanReportConfigurationReportOutputS3Configuration>?>? s3Configurations;
 
   /// Creates a new [PlanReportConfigurationReportOutput].
   /// [s3Configurations] S3 output configuration. See `s3Configuration` Block for details.

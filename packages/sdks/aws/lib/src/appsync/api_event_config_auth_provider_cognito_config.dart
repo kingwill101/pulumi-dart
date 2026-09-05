@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiEventConfigAuthProviderCognitoConfig {
   /// Regular expression for matching the client ID.
-  final pulumi.Input<String>? appIdClientRegex;
+  final pulumi.Input<String?>? appIdClientRegex;
   /// AWS region where the user pool is located.
   final pulumi.Input<String> awsRegion;
   /// ID of the Cognito user pool.

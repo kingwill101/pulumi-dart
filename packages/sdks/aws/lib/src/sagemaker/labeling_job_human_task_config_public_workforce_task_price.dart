@@ -5,7 +5,7 @@ import 'labeling_job_human_task_config_public_workforce_task_price_amount_in_usd
 
 class LabelingJobHumanTaskConfigPublicWorkforceTaskPrice {
   /// Amount of money paid to an Amazon Mechanical Turk worker in United States dollars. Fields are documented below.
-  final pulumi.Input<LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd>? amountInUsd;
+  final pulumi.Input<LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd?>? amountInUsd;
 
   /// Creates a new [LabelingJobHumanTaskConfigPublicWorkforceTaskPrice].
   /// [amountInUsd] Amount of money paid to an Amazon Mechanical Turk worker in United States dollars. Fields are documented below.

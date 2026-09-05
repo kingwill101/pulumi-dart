@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds {
-  /// Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
+  /// Name of the secret for a virtual gateway's TLS Secret Discovery Service validation context trust.
   final pulumi.Input<String> secretName;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds].
-  /// [secretName] Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
+  /// [secretName] Name of the secret for a virtual gateway's TLS Secret Discovery Service validation context trust.
   const VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds({
     required this.secretName,
   });

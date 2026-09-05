@@ -8,7 +8,7 @@ class InfrastructureConfigurationLoggingS3Logs {
   /// The following arguments are optional:
   final pulumi.Input<String> s3BucketName;
   /// Prefix to use for S3 logs. Defaults to `/`.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [InfrastructureConfigurationLoggingS3Logs].
   /// [s3BucketName] Name of the S3 Bucket.

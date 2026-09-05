@@ -7,9 +7,9 @@ class DomainAdvancedSecurityOptions {
   /// Whether advanced security is enabled.
   final pulumi.Input<bool> enabled;
   /// Whether the internal user database is enabled. If not set, defaults to `false` by the AWS API.
-  final pulumi.Input<bool>? internalUserDatabaseEnabled;
+  final pulumi.Input<bool?>? internalUserDatabaseEnabled;
   /// Configuration block for the main user. Detailed below.
-  final pulumi.Input<DomainAdvancedSecurityOptionsMasterUserOptions>? masterUserOptions;
+  final pulumi.Input<DomainAdvancedSecurityOptionsMasterUserOptions?>? masterUserOptions;
 
   /// Creates a new [DomainAdvancedSecurityOptions].
   /// [enabled] Whether advanced security is enabled.

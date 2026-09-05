@@ -25,7 +25,7 @@ class GetFailoverGroupReadWriteEndpointFailoverPolicy {
 
   factory GetFailoverGroupReadWriteEndpointFailoverPolicy.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupReadWriteEndpointFailoverPolicy(
-      graceMinutes: pulumi.Input.fromValue(map['graceMinutes'] as int),
+      graceMinutes: pulumi.Input.fromValue((map['graceMinutes'] as num).toInt()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

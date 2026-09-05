@@ -173,18 +173,18 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetworkVpcAssociation:ServiceNetworkVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     dnsOptions = registerOutput<ServiceNetworkVpcAssociationDnsOptions?>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkVpcAssociationDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcIdentifier = registerOutput<String>('vpcIdentifier');
   }
 
@@ -193,11 +193,12 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceNetworkVpcAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceNetworkVpcAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,11 +217,33 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
     dnsOptions = registerOutput<ServiceNetworkVpcAssociationDnsOptions?>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkVpcAssociationDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcIdentifier = registerOutput<String>('vpcIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [ServiceNetworkVpcAssociation] resource.
+  ServiceNetworkVpcAssociation.reference(String urn)
+    : super(
+        'aws:vpclattice/serviceNetworkVpcAssociation:ServiceNetworkVpcAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdBy = registerOutput<String>('createdBy');
+    dnsOptions = registerOutput<ServiceNetworkVpcAssociationDnsOptions?>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkVpcAssociationDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcIdentifier = registerOutput<String>('vpcIdentifier');
   }
 }

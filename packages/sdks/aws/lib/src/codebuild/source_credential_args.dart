@@ -12,7 +12,7 @@ class SourceCredentialArgs {
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
   final pulumi.Input<String> authType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The source provider used for this project.
   final pulumi.Input<String> serverType;
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
@@ -21,7 +21,7 @@ class SourceCredentialArgs {
   final pulumi.Input<String> token;
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SourceCredentialArgs].
   /// [authType] The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket

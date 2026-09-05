@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicateMultiSelectObservation {
   /// The description of the multi select observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the multi select observation.
   final pulumi.Input<String> name;
   /// A list of supported values of the multi select observation.
-  final pulumi.Input<List<String>>? supportedValues;
+  final pulumi.Input<List<String>?>? supportedValues;
   /// A list of values of the multi select observation.
   final pulumi.Input<List<String>> values;
 

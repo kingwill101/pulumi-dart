@@ -6,9 +6,9 @@ import 'cluster_master_instance_fleet_launch_specifications_spot_specification.d
 
 class ClusterMasterInstanceFleetLaunchSpecifications {
   /// Configuration block for on demand instances launch specifications.
-  final pulumi.Input<List<ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification>>? onDemandSpecifications;
+  final pulumi.Input<List<ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification>?>? onDemandSpecifications;
   /// Configuration block for spot instances launch specifications.
-  final pulumi.Input<List<ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification>>? spotSpecifications;
+  final pulumi.Input<List<ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification>?>? spotSpecifications;
 
   /// Creates a new [ClusterMasterInstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications.

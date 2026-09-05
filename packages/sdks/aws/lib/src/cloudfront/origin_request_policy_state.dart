@@ -8,19 +8,19 @@ import 'origin_request_policy_query_strings_config.dart';
 /// Input properties used for looking up and filtering OriginRequestPolicy resources.
 class OriginRequestPolicyState {
   /// The origin request policy ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Comment to describe the origin request policy.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Object that determines whether any cookies in viewer requests (and if so, which cookies) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Cookies Config for more information.
-  final pulumi.Input<OriginRequestPolicyCookiesConfig>? cookiesConfig;
+  final pulumi.Input<OriginRequestPolicyCookiesConfig?>? cookiesConfig;
   /// The current version of the origin request policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Object that determines whether any HTTP headers (and if so, which headers) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
-  final pulumi.Input<OriginRequestPolicyHeadersConfig>? headersConfig;
+  final pulumi.Input<OriginRequestPolicyHeadersConfig?>? headersConfig;
   /// Unique name to identify the origin request policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  final pulumi.Input<OriginRequestPolicyQueryStringsConfig>? queryStringsConfig;
+  final pulumi.Input<OriginRequestPolicyQueryStringsConfig?>? queryStringsConfig;
 
   /// Creates a new [OriginRequestPolicyState].
   /// [arn] The origin request policy ARN.

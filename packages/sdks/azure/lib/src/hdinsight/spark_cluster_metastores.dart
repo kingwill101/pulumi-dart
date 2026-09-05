@@ -7,11 +7,11 @@ import 'spark_cluster_metastores_oozie.dart';
 
 class SparkClusterMetastores {
   /// An `ambari` block as defined below.
-  final pulumi.Input<SparkClusterMetastoresAmbari>? ambari;
+  final pulumi.Input<SparkClusterMetastoresAmbari?>? ambari;
   /// A `hive` block as defined below.
-  final pulumi.Input<SparkClusterMetastoresHive>? hive;
+  final pulumi.Input<SparkClusterMetastoresHive?>? hive;
   /// An `oozie` block as defined below.
-  final pulumi.Input<SparkClusterMetastoresOozie>? oozie;
+  final pulumi.Input<SparkClusterMetastoresOozie?>? oozie;
 
   /// Creates a new [SparkClusterMetastores].
   /// [ambari] An `ambari` block as defined below.

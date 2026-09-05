@@ -12,7 +12,7 @@ class ContactArgs {
   /// Name of the Azure ground station. Changing this forces a new resource to be created.
   final pulumi.Input<String> groundStationName;
   /// The name of the Contact. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reservation end time of the Contact. Changing this forces a new resource to be created.
   final pulumi.Input<String> reservationEndTime;
   /// Reservation start time of the Contact. Changing this forces a new resource to be created.

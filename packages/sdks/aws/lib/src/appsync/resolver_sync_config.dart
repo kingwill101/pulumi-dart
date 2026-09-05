@@ -5,11 +5,11 @@ import 'resolver_sync_config_lambda_conflict_handler_config.dart';
 
 class ResolverSyncConfig {
   /// Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
-  final pulumi.Input<String>? conflictDetection;
+  final pulumi.Input<String?>? conflictDetection;
   /// Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
-  final pulumi.Input<String>? conflictHandler;
+  final pulumi.Input<String?>? conflictHandler;
   /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See Lambda Conflict Handler Config.
-  final pulumi.Input<ResolverSyncConfigLambdaConflictHandlerConfig>? lambdaConflictHandlerConfig;
+  final pulumi.Input<ResolverSyncConfigLambdaConflictHandlerConfig?>? lambdaConflictHandlerConfig;
 
   /// Creates a new [ResolverSyncConfig].
   /// [conflictDetection] Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.

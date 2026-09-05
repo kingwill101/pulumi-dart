@@ -6,17 +6,17 @@ class DefaultNetworkAclEgress {
   /// The action to take.
   final pulumi.Input<String> action;
   /// The CIDR block to match. This must be a valid network mask.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// The from port to match.
   final pulumi.Input<int> fromPort;
   /// The ICMP type code to be used. Default 0.
-  final pulumi.Input<int>? icmpCode;
+  final pulumi.Input<int?>? icmpCode;
   /// The ICMP type to be used. Default 0.
-  final pulumi.Input<int>? icmpType;
+  final pulumi.Input<int?>? icmpType;
   /// The IPv6 CIDR block.
   ///
   /// &gt; For more information on ICMP types and codes, see [Internet Control Message Protocol (ICMP) Parameters](https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml).
-  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlock;
   /// The protocol to match. If using the -1 'all' protocol, you must specify a from and to port of 0.
   final pulumi.Input<String> protocol;
   /// The rule number. Used for ordering.
@@ -66,13 +66,13 @@ class DefaultNetworkAclEgress {
     return DefaultNetworkAclEgress(
       action: pulumi.Input.fromValue(map['action'] as String),
       cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
-      icmpCode: (() { final guardedValue = map['icmpCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      icmpType: (() { final guardedValue = map['icmpType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      icmpCode: (() { final guardedValue = map['icmpCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      icmpType: (() { final guardedValue = map['icmpType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ipv6CidrBlock: (() { final guardedValue = map['ipv6CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      ruleNo: pulumi.Input.fromValue(map['ruleNo'] as int),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      ruleNo: pulumi.Input.fromValue((map['ruleNo'] as num).toInt()),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

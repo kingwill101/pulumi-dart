@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityConfigurationArgoCdAwsIdc {
   /// ARN of the IAM Identity Center instance.
   final pulumi.Input<String> idcInstanceArn;
-  final pulumi.Input<String>? idcManagedApplicationArn;
+  final pulumi.Input<String?>? idcManagedApplicationArn;
   /// Region of the IAM Identity Center instance.
-  final pulumi.Input<String>? idcRegion;
+  final pulumi.Input<String?>? idcRegion;
 
   /// Creates a new [CapabilityConfigurationArgoCdAwsIdc].
   /// [idcInstanceArn] ARN of the IAM Identity Center instance.

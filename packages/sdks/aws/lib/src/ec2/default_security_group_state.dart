@@ -7,27 +7,27 @@ import 'default_security_group_ingress.dart';
 /// Input properties used for looking up and filtering DefaultSecurityGroup resources.
 class DefaultSecurityGroupState {
   /// ARN of the security group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the security group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<DefaultSecurityGroupEgress>>? egress;
+  final pulumi.Input<List<DefaultSecurityGroupEgress>?>? egress;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<DefaultSecurityGroupIngress>>? ingress;
+  final pulumi.Input<List<DefaultSecurityGroupIngress>?>? ingress;
   /// Name of the security group.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? namePrefix;
   /// Owner ID.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<bool>? revokeRulesOnDelete;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<bool?>? revokeRulesOnDelete;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// VPC ID. **Note that changing the `vpcId` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [DefaultSecurityGroupState].
   /// [arn] ARN of the security group.

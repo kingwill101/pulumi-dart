@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_rules_alert_v2_action.dart';
 import 'scheduled_query_rules_alert_v2_args.dart';
+import 'scheduled_query_rules_alert_v2_criteria.dart';
 import 'scheduled_query_rules_alert_v2_identity.dart';
 import 'scheduled_query_rules_alert_v2_state.dart';
 
@@ -340,7 +341,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleInsights.ID(),
+/// 			Scope:              exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
 /// 			PrincipalId:        exampleUserAssignedIdentity.PrincipalId,
 /// 		})
@@ -353,7 +354,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 			Location:            example.Location,
 /// 			EvaluationFrequency: pulumi.String("PT10M"),
 /// 			WindowDuration:      pulumi.String("PT10M"),
-/// 			Scopes:              exampleInsights.ID(),
+/// 			Scopes:              exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Severity:            pulumi.Int(4),
 /// 			Criterias: monitoring.ScheduledQueryRulesAlertV2CriteriaArray{
 /// 				&monitoring.ScheduledQueryRulesAlertV2CriteriaArgs{
@@ -387,7 +388,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 			SkipQueryValidation:           pulumi.Bool(true),
 /// 			Action: &monitoring.ScheduledQueryRulesAlertV2ActionArgs{
 /// 				ActionGroups: pulumi.StringArray{
-/// 					exampleActionGroup.ID(),
+/// 					exampleActionGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				CustomProperties: pulumi.StringMap{
 /// 					"key":  pulumi.String("value"),
@@ -398,7 +399,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// 			Identity: &monitoring.ScheduledQueryRulesAlertV2IdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -738,7 +739,7 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
   /// The api-version used when creating this alert rule.
   late final pulumi.Output<String> createdWithApiVersion;
   /// A `criteria` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> criterias;
+  late final pulumi.Output<List<ScheduledQueryRulesAlertV2Criteria>> criterias;
   /// Specifies the description of the scheduled query rule.
   late final pulumi.Output<String?> description;
   /// Specifies the display name of the alert rule.
@@ -798,12 +799,12 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
+    criterias = registerOutput<List<ScheduledQueryRulesAlertV2Criteria>>('criterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRulesAlertV2Criteria>(guardedValue, (value) => ScheduledQueryRulesAlertV2Criteria.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
@@ -819,8 +820,8 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     scopes = registerOutput<String>('scopes');
     severity = registerOutput<int>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     windowDuration = registerOutput<String>('windowDuration');
     workspaceAlertsStorageEnabled = registerOutput<bool?>('workspaceAlertsStorageEnabled');
   }
@@ -830,11 +831,12 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledQueryRulesAlertV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledQueryRulesAlertV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -851,7 +853,7 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
+    criterias = registerOutput<List<ScheduledQueryRulesAlertV2Criteria>>('criterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRulesAlertV2Criteria>(guardedValue, (value) => ScheduledQueryRulesAlertV2Criteria.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
@@ -867,8 +869,42 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     scopes = registerOutput<String>('scopes');
     severity = registerOutput<int>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    windowDuration = registerOutput<String>('windowDuration');
+    workspaceAlertsStorageEnabled = registerOutput<bool?>('workspaceAlertsStorageEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ScheduledQueryRulesAlertV2] resource.
+  ScheduledQueryRulesAlertV2.reference(String urn)
+    : super(
+        'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
+    criterias = registerOutput<List<ScheduledQueryRulesAlertV2Criteria>>('criterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRulesAlertV2Criteria>(guardedValue, (value) => ScheduledQueryRulesAlertV2Criteria.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    evaluationFrequency = registerOutput<String>('evaluationFrequency');
+    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertV2Identity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isALegacyLogAnalyticsRule = registerOutput<bool>('isALegacyLogAnalyticsRule');
+    isWorkspaceAlertsStorageConfigured = registerOutput<bool>('isWorkspaceAlertsStorageConfigured');
+    location = registerOutput<String>('location');
+    muteActionsAfterAlertDuration = registerOutput<String?>('muteActionsAfterAlertDuration');
+    this.name = registerOutput<String>('name');
+    queryTimeRangeOverride = registerOutput<String?>('queryTimeRangeOverride');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopes = registerOutput<String>('scopes');
+    severity = registerOutput<int>('severity');
+    skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     windowDuration = registerOutput<String>('windowDuration');
     workspaceAlertsStorageEnabled = registerOutput<bool?>('workspaceAlertsStorageEnabled');
   }

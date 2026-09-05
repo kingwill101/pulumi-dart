@@ -6,13 +6,13 @@ import 'flow_destination_flow_config_destination_connector_properties_s3_s3_outp
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig {
   /// Aggregation settings that you can use to customize the output format of your flow data. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.aggregation_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig>? aggregationConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig?>? aggregationConfig;
   /// File type that Amazon AppFlow places in the Upsolver Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
-  final pulumi.Input<String>? fileType;
+  final pulumi.Input<String?>? fileType;
   /// Prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.prefix_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig>? prefixConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig?>? prefixConfig;
   /// Whether to preserve the data types from the source system. Only valid for the `PARQUET` file type.
-  final pulumi.Input<bool>? preserveSourceDataTyping;
+  final pulumi.Input<bool?>? preserveSourceDataTyping;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig].
   /// [aggregationConfig] Aggregation settings that you can use to customize the output format of your flow data. See the `destination_flow_config.destination_connector_properties.upsolver.s3_output_format_config.aggregation_config` Block for details.

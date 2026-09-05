@@ -6,11 +6,11 @@ class AccessConnectorIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to the Databricks Access Connector. Only one User Assigned Managed Identity ID is supported per Databricks Access Connector resource.
   ///
   /// &gt; **Note:** `identityIds` are required when `type` is set to `UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on the Databricks Access Connector. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

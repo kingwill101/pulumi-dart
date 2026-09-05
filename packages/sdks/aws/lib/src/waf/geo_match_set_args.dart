@@ -9,9 +9,9 @@ import 'geo_match_set_geo_match_constraint.dart';
 /// {@macro pulumi_waf_geo_match_set_geo_match_set_args_doc}
 class GeoMatchSetArgs {
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-  final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
+  final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>?>? geoMatchConstraints;
   /// The name or description of the GeoMatchSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GeoMatchSetArgs].
   /// [geoMatchConstraints] The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.

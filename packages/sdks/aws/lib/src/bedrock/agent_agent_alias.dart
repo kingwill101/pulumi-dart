@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_agent_alias_args.dart';
+import 'agent_agent_alias_routing_configuration.dart';
 import 'agent_agent_alias_state.dart';
 import 'agent_agent_alias_timeouts.dart';
 
@@ -19,11 +20,6 @@ import 'agent_agent_alias_timeouts.dart';
 /// const currentGetRegion = aws.getRegion({});
 /// const exampleAgentTrust = Promise.all([current, currentGetPartition, currentGetRegion]).then(([current, currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         principals: [{
-///             identifiers: ["bedrock.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -36,6 +32,11 @@ import 'agent_agent_alias_timeouts.dart';
 ///                 variable: "AWS:SourceArn",
 ///             },
 ///         ],
+///         principals: [{
+///             identifiers: ["bedrock.amazonaws.com"],
+///             type: "Service",
+///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
 /// const exampleAgentPermissions = Promise.all([currentGetPartition, currentGetRegion]).then(([currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
@@ -72,11 +73,6 @@ import 'agent_agent_alias_timeouts.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_region = aws.get_region()
 /// example_agent_trust = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "principals": [{
-///         "identifiers": ["bedrock.amazonaws.com"],
-///         "type": "Service",
-///     }],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -89,6 +85,11 @@ import 'agent_agent_alias_timeouts.dart';
 ///             "variable": "AWS:SourceArn",
 ///         },
 ///     ],
+///     "principals": [{
+///         "identifiers": ["bedrock.amazonaws.com"],
+///         "type": "Service",
+///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_agent_permissions = aws.iam.get_policy_document(statements=[{
 ///     "actions": ["bedrock:InvokeModel"],
@@ -130,21 +131,6 @@ import 'agent_agent_alias_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Identifiers = new[]
-///                         {
-///                             "bedrock.amazonaws.com",
-///                         },
-///                         Type = "Service",
-///                     },
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -165,6 +151,21 @@ import 'agent_agent_alias_timeouts.dart';
 ///                         },
 ///                         Variable = "AWS:SourceArn",
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Identifiers = new[]
+///                         {
+///                             "bedrock.amazonaws.com",
+///                         },
+///                         Type = "Service",
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -246,17 +247,6 @@ import 'agent_agent_alias_timeouts.dart';
 /// 		exampleAgentTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Identifiers: []string{
-/// 								"bedrock.amazonaws.com",
-/// 							},
-/// 							Type: "Service",
-/// 						},
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
@@ -272,6 +262,17 @@ import 'agent_agent_alias_timeouts.dart';
 /// 							},
 /// 							Variable: "AWS:SourceArn",
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Identifiers: []string{
+/// 								"bedrock.amazonaws.com",
+/// 							},
+/// 							Type: "Service",
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -346,11 +347,6 @@ import 'agent_agent_alias_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     principals {
-///       identifiers = ["bedrock.amazonaws.com"]
-///       type        = "Service"
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
@@ -361,6 +357,11 @@ import 'agent_agent_alias_timeouts.dart';
 ///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
 ///       variable = "AWS:SourceArn"
 ///     }
+///     principals {
+///       identifiers = ["bedrock.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
@@ -403,8 +404,8 @@ import 'agent_agent_alias_timeouts.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -437,11 +438,6 @@ import 'agent_agent_alias_timeouts.dart';
 ///
 ///         final var exampleAgentTrust = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers("bedrock.amazonaws.com")
-///                     .type("Service")
-///                     .build())
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -453,6 +449,11 @@ import 'agent_agent_alias_timeouts.dart';
 ///                         .values(String.format("arn:%s:bedrock:%s:%s:agent/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                         .variable("AWS:SourceArn")
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .identifiers("bedrock.amazonaws.com")
+///                     .type("Service")
+///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -535,13 +536,7 @@ import 'agent_agent_alias_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
-///               - identifiers:
-///                   - bedrock.amazonaws.com
-///                 type: Service
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
@@ -550,6 +545,12 @@ import 'agent_agent_alias_timeouts.dart';
 ///                 values:
 ///                   - arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*
 ///                 variable: AWS:SourceArn
+///             principals:
+///               - identifiers:
+///                   - bedrock.amazonaws.com
+///                 type: Service
+///             actions:
+///               - sts:AssumeRole
 ///   exampleAgentPermissions:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -585,7 +586,7 @@ class AgentAgentAlias extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Details about the routing configuration of the alias. See `routingConfiguration` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingConfigurations;
+  late final pulumi.Output<List<AgentAgentAliasRoutingConfiguration>> routingConfigurations;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -604,7 +605,7 @@ class AgentAgentAlias extends pulumi.CustomResource {
           'aws:bedrock/agentAgentAlias:AgentAgentAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentAliasArn = registerOutput<String>('agentAliasArn');
     agentAliasId = registerOutput<String>('agentAliasId');
@@ -612,9 +613,9 @@ class AgentAgentAlias extends pulumi.CustomResource {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routingConfigurations = registerOutput<List<AgentAgentAliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(guardedValue, (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentAgentAliasTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentAliasTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -623,11 +624,12 @@ class AgentAgentAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentAgentAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentAgentAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -647,9 +649,30 @@ class AgentAgentAlias extends pulumi.CustomResource {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    routingConfigurations = registerOutput<List<Map<String, dynamic>>>('routingConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routingConfigurations = registerOutput<List<AgentAgentAliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(guardedValue, (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentAgentAliasTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentAliasTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentAgentAlias] resource.
+  AgentAgentAlias.reference(String urn)
+    : super(
+        'aws:bedrock/agentAgentAlias:AgentAgentAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentAliasArn = registerOutput<String>('agentAliasArn');
+    agentAliasId = registerOutput<String>('agentAliasId');
+    agentAliasName = registerOutput<String>('agentAliasName');
+    agentId = registerOutput<String>('agentId');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    routingConfigurations = registerOutput<List<AgentAgentAliasRoutingConfiguration>>('routingConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentAliasRoutingConfiguration>(guardedValue, (value) => AgentAgentAliasRoutingConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentAgentAliasTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentAliasTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

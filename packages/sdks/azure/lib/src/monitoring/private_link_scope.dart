@@ -204,13 +204,13 @@ class PrivateLinkScope extends pulumi.CustomResource {
           'azure:monitoring/privateLinkScope:PrivateLinkScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ingestionAccessMode = registerOutput<String?>('ingestionAccessMode');
     this.name = registerOutput<String>('name');
     queryAccessMode = registerOutput<String?>('queryAccessMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PrivateLinkScope] resource's state with the given [name] and [id].
@@ -218,11 +218,12 @@ class PrivateLinkScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateLinkScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateLinkScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -240,6 +241,22 @@ class PrivateLinkScope extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     queryAccessMode = registerOutput<String?>('queryAccessMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateLinkScope] resource.
+  PrivateLinkScope.reference(String urn)
+    : super(
+        'azure:monitoring/privateLinkScope:PrivateLinkScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ingestionAccessMode = registerOutput<String?>('ingestionAccessMode');
+    this.name = registerOutput<String>('name');
+    queryAccessMode = registerOutput<String?>('queryAccessMode');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

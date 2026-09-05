@@ -118,7 +118,7 @@ import 'working_storage_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.WorkingStorage` using the gateway Amazon Resource Name (ARN) and local disk identifier separated with a colon (`:`). For example:
+/// Using `pulumi import`, import `aws.storagegateway.WorkingStorage` using the gateway ARN and local disk identifier separated with a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/workingStorage:WorkingStorage example arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678:pci-0000:03:00.0-scsi-0:0:0:0
@@ -126,7 +126,7 @@ import 'working_storage_state.dart';
 class WorkingStorage extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
-  /// The Amazon Resource Name (ARN) of the gateway.
+  /// ARN of the gateway.
   late final pulumi.Output<String> gatewayArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -143,7 +143,7 @@ class WorkingStorage extends pulumi.CustomResource {
           'aws:storagegateway/workingStorage:WorkingStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
@@ -155,11 +155,12 @@ class WorkingStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkingStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkingStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -173,6 +174,20 @@ class WorkingStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    diskId = registerOutput<String>('diskId');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [WorkingStorage] resource.
+  WorkingStorage.reference(String urn)
+    : super(
+        'aws:storagegateway/workingStorage:WorkingStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     diskId = registerOutput<String>('diskId');
     gatewayArn = registerOutput<String>('gatewayArn');
     region = registerOutput<String>('region');

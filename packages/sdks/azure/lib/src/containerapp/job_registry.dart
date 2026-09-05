@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobRegistry {
   /// A Managed Identity to use to authenticate with Azure Container Registry.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The name of the Secret that contains the registry login password.
-  final pulumi.Input<String>? passwordSecretName;
+  final pulumi.Input<String?>? passwordSecretName;
   /// The URL of the Azure Container Registry server.
   final pulumi.Input<String> server;
   /// The username to use to authenticate with Azure Container Registry.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [JobRegistry].
   /// [identity] A Managed Identity to use to authenticate with Azure Container Registry.

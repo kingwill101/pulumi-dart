@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Enrichment resources.
 class EnrichmentState {
   /// The list of endpoints which will be enriched.
-  final pulumi.Input<List<String>>? endpointNames;
+  final pulumi.Input<List<String>?>? endpointNames;
   /// The IoTHub name of the enrichment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iothubName;
+  final pulumi.Input<String?>? iothubName;
   /// The key of the enrichment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnrichmentState].
   /// [endpointNames] The list of endpoints which will be enriched.

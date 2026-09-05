@@ -11,9 +11,9 @@ class GetAgentAgentVersionsArgs {
   /// Unique identifier of the agent.
   final pulumi.Input<String> agentId;
   /// List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
-  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummary>>? agentVersionSummaries;
+  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummary>?>? agentVersionSummaries;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAgentAgentVersionsArgs].
   /// [agentId] Unique identifier of the agent.

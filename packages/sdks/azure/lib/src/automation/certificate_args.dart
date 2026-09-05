@@ -12,11 +12,11 @@ class CertificateArgs {
   /// Base64 encoded value of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> base64;
   /// The description of this Automation Certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The is exportable flag of the certificate.
-  final pulumi.Input<bool>? exportable;
+  final pulumi.Input<bool?>? exportable;
   /// Specifies the name of the Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

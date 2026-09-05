@@ -6,25 +6,25 @@ import 'plugin_grant_permission.dart';
 /// Input properties used for looking up and filtering Plugin resources.
 class PluginState {
   /// Docker Plugin alias
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// HTTP client timeout to enable the plugin
-  final pulumi.Input<int>? enableTimeout;
+  final pulumi.Input<int?>? enableTimeout;
   /// If `true` the plugin is enabled. Defaults to `true`
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The environment variables in the form of `KEY=VALUE`, e.g. `DEBUG=0`
-  final pulumi.Input<List<String>>? envs;
+  final pulumi.Input<List<String>?>? envs;
   /// If true, then the plugin is destroyed forcibly
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// If true, then the plugin is disabled forcibly
-  final pulumi.Input<bool>? forceDisable;
+  final pulumi.Input<bool?>? forceDisable;
   /// If true, grant all permissions necessary to run the plugin
-  final pulumi.Input<bool>? grantAllPermissions;
+  final pulumi.Input<bool?>? grantAllPermissions;
   /// Grant specific permissions only
-  final pulumi.Input<List<PluginGrantPermission>>? grantPermissions;
+  final pulumi.Input<List<PluginGrantPermission>?>? grantPermissions;
   /// Docker Plugin name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Docker Plugin Reference
-  final pulumi.Input<String>? pluginReference;
+  final pulumi.Input<String?>? pluginReference;
 
   /// Creates a new [PluginState].
   /// [alias] Docker Plugin alias
@@ -68,7 +68,7 @@ class PluginState {
   factory PluginState.fromMap(Map<String, dynamic> map) {
     return PluginState(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enableTimeout: (() { final guardedValue = map['enableTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableTimeout: (() { final guardedValue = map['enableTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

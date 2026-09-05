@@ -852,13 +852,13 @@ class MethodResponse extends pulumi.CustomResource {
           'aws:apigateway/methodResponse:MethodResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     httpMethod = registerOutput<String>('httpMethod');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
-    responseModels = registerOutput<Map<String, String>?>('responseModels');
-    responseParameters = registerOutput<Map<String, bool>?>('responseParameters');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<Map<String, bool>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     restApi = registerOutput<String>('restApi');
     statusCode = registerOutput<String>('statusCode');
   }
@@ -868,11 +868,12 @@ class MethodResponse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MethodResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MethodResponse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -889,8 +890,26 @@ class MethodResponse extends pulumi.CustomResource {
     httpMethod = registerOutput<String>('httpMethod');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
-    responseModels = registerOutput<Map<String, String>?>('responseModels');
-    responseParameters = registerOutput<Map<String, bool>?>('responseParameters');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<Map<String, bool>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    restApi = registerOutput<String>('restApi');
+    statusCode = registerOutput<String>('statusCode');
+  }
+
+  /// Creates a typed reference to an existing [MethodResponse] resource.
+  MethodResponse.reference(String urn)
+    : super(
+        'aws:apigateway/methodResponse:MethodResponse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    httpMethod = registerOutput<String>('httpMethod');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<Map<String, bool>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     restApi = registerOutput<String>('restApi');
     statusCode = registerOutput<String>('statusCode');
   }

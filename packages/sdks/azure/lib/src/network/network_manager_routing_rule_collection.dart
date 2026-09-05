@@ -169,21 +169,21 @@ import 'network_manager_routing_rule_collection_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-network-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerRoutingConfiguration, err := network.NewNetworkManagerRoutingConfiguration(ctx, "example", &network.NetworkManagerRoutingConfigurationArgs{
 /// 			Name:             pulumi.String("example-routing-configuration"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerRoutingRuleCollection(ctx, "example", &network.NetworkManagerRoutingRuleCollectionArgs{
 /// 			Name:                   pulumi.String("example-routing-rule-collection"),
-/// 			RoutingConfigurationId: exampleNetworkManagerRoutingConfiguration.ID(),
+/// 			RoutingConfigurationId: exampleNetworkManagerRoutingConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkGroupIds: pulumi.StringArray{
 /// 				pulumi.String("azurerm_network_manager_network_group.example.id"),
 /// 			},
@@ -392,12 +392,12 @@ class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
           'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    networkGroupIds = registerOutput<List<String>>('networkGroupIds');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     routingConfigurationId = registerOutput<String>('routingConfigurationId');
   }
 
@@ -406,11 +406,12 @@ class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerRoutingRuleCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerRoutingRuleCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -427,7 +428,23 @@ class NetworkManagerRoutingRuleCollection extends pulumi.CustomResource {
     bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    networkGroupIds = registerOutput<List<String>>('networkGroupIds');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    routingConfigurationId = registerOutput<String>('routingConfigurationId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerRoutingRuleCollection] resource.
+  NetworkManagerRoutingRuleCollection.reference(String urn)
+    : super(
+        'azure:network/networkManagerRoutingRuleCollection:NetworkManagerRoutingRuleCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkGroupIds = registerOutput<List<String>>('networkGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     routingConfigurationId = registerOutput<String>('routingConfigurationId');
   }
 }

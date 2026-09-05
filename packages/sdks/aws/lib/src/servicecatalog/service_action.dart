@@ -15,11 +15,11 @@ import 'service_action_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.servicecatalog.ServiceAction("example", {
-///     description: "Motor generator unit",
-///     name: "MGU",
 ///     definition: {
 ///         name: "AWS-RestartEC2Instance",
 ///     },
+///     description: "Motor generator unit",
+///     name: "MGU",
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'service_action_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.servicecatalog.ServiceAction("example",
-///     description="Motor generator unit",
-///     name="MGU",
 ///     definition={
 ///         "name": "AWS-RestartEC2Instance",
-///     })
+///     },
+///     description="Motor generator unit",
+///     name="MGU")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +43,12 @@ import 'service_action_state.dart';
 /// {
 ///     var example = new Aws.ServiceCatalog.ServiceAction("example", new()
 ///     {
-///         Description = "Motor generator unit",
-///         Name = "MGU",
 ///         Definition = new Aws.ServiceCatalog.Inputs.ServiceActionDefinitionArgs
 ///         {
 ///             Name = "AWS-RestartEC2Instance",
 ///         },
+///         Description = "Motor generator unit",
+///         Name = "MGU",
 ///     });
 ///
 /// });
@@ -64,11 +64,11 @@ import 'service_action_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := servicecatalog.NewServiceAction(ctx, "example", &servicecatalog.ServiceActionArgs{
-/// 			Description: pulumi.String("Motor generator unit"),
-/// 			Name:        pulumi.String("MGU"),
 /// 			Definition: &servicecatalog.ServiceActionDefinitionArgs{
 /// 				Name: pulumi.String("AWS-RestartEC2Instance"),
 /// 			},
+/// 			Description: pulumi.String("Motor generator unit"),
+/// 			Name:        pulumi.String("MGU"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +87,11 @@ import 'service_action_state.dart';
 /// }
 ///
 /// resource "aws_servicecatalog_serviceaction" "example" {
-///   description = "Motor generator unit"
-///   name        = "MGU"
 ///   definition = {
 ///     name = "AWS-RestartEC2Instance"
 ///   }
+///   description = "Motor generator unit"
+///   name        = "MGU"
 /// }
 /// ```
 /// ```java
@@ -117,11 +117,11 @@ import 'service_action_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServiceAction("example", ServiceActionArgs.builder()
-///             .description("Motor generator unit")
-///             .name("MGU")
 ///             .definition(ServiceActionDefinitionArgs.builder()
 ///                 .name("AWS-RestartEC2Instance")
 ///                 .build())
+///             .description("Motor generator unit")
+///             .name("MGU")
 ///             .build());
 ///
 ///     }
@@ -132,10 +132,10 @@ import 'service_action_state.dart';
 ///   example:
 ///     type: aws:servicecatalog:ServiceAction
 ///     properties:
-///       description: Motor generator unit
-///       name: MGU
 ///       definition:
 ///         name: AWS-RestartEC2Instance
+///       description: Motor generator unit
+///       name: MGU
 /// ```
 ///
 ///
@@ -172,7 +172,7 @@ class ServiceAction extends pulumi.CustomResource {
           'aws:servicecatalog/serviceAction:ServiceAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -186,11 +186,12 @@ class ServiceAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,6 +205,22 @@ class ServiceAction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ServiceAction] resource.
+  ServiceAction.reference(String urn)
+    : super(
+        'aws:servicecatalog/serviceAction:ServiceAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     definition = registerOutput<ServiceActionDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceActionDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

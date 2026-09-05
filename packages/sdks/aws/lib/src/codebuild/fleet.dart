@@ -3,6 +3,8 @@ import 'fleet_args.dart';
 import 'fleet_compute_configuration.dart';
 import 'fleet_scaling_configuration.dart';
 import 'fleet_state.dart';
+import 'fleet_status.dart';
+import 'fleet_vpc_config.dart';
 
 /// Provides a CodeBuild Fleet Resource.
 ///
@@ -14,19 +16,19 @@ import 'fleet_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.codebuild.Fleet("test", {
+///     scalingConfiguration: {
+///         targetTrackingScalingConfigs: [{
+///             metricType: "FLEET_UTILIZATION_RATE",
+///             targetValue: 97.5,
+///         }],
+///         maxCapacity: 5,
+///         scalingType: "TARGET_TRACKING_SCALING",
+///     },
 ///     baseCapacity: 2,
 ///     computeType: "BUILD_GENERAL1_SMALL",
 ///     environmentType: "LINUX_CONTAINER",
 ///     name: "full-example-codebuild-fleet",
 ///     overflowBehavior: "QUEUE",
-///     scalingConfiguration: {
-///         maxCapacity: 5,
-///         scalingType: "TARGET_TRACKING_SCALING",
-///         targetTrackingScalingConfigs: [{
-///             metricType: "FLEET_UTILIZATION_RATE",
-///             targetValue: 97.5,
-///         }],
-///     },
 /// });
 /// ```
 /// ```python
@@ -34,19 +36,19 @@ import 'fleet_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.codebuild.Fleet("test",
-///     base_capacity=2,
-///     compute_type="BUILD_GENERAL1_SMALL",
-///     environment_type="LINUX_CONTAINER",
-///     name="full-example-codebuild-fleet",
-///     overflow_behavior="QUEUE",
 ///     scaling_configuration={
-///         "max_capacity": 5,
-///         "scaling_type": "TARGET_TRACKING_SCALING",
 ///         "target_tracking_scaling_configs": [{
 ///             "metric_type": "FLEET_UTILIZATION_RATE",
 ///             "target_value": 97.5,
 ///         }],
-///     })
+///         "max_capacity": 5,
+///         "scaling_type": "TARGET_TRACKING_SCALING",
+///     },
+///     base_capacity=2,
+///     compute_type="BUILD_GENERAL1_SMALL",
+///     environment_type="LINUX_CONTAINER",
+///     name="full-example-codebuild-fleet",
+///     overflow_behavior="QUEUE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,15 +60,8 @@ import 'fleet_state.dart';
 /// {
 ///     var test = new Aws.CodeBuild.Fleet("test", new()
 ///     {
-///         BaseCapacity = 2,
-///         ComputeType = "BUILD_GENERAL1_SMALL",
-///         EnvironmentType = "LINUX_CONTAINER",
-///         Name = "full-example-codebuild-fleet",
-///         OverflowBehavior = "QUEUE",
 ///         ScalingConfiguration = new Aws.CodeBuild.Inputs.FleetScalingConfigurationArgs
 ///         {
-///             MaxCapacity = 5,
-///             ScalingType = "TARGET_TRACKING_SCALING",
 ///             TargetTrackingScalingConfigs = new[]
 ///             {
 ///                 new Aws.CodeBuild.Inputs.FleetScalingConfigurationTargetTrackingScalingConfigArgs
@@ -75,7 +70,14 @@ import 'fleet_state.dart';
 ///                     TargetValue = 97.5,
 ///                 },
 ///             },
+///             MaxCapacity = 5,
+///             ScalingType = "TARGET_TRACKING_SCALING",
 ///         },
+///         BaseCapacity = 2,
+///         ComputeType = "BUILD_GENERAL1_SMALL",
+///         EnvironmentType = "LINUX_CONTAINER",
+///         Name = "full-example-codebuild-fleet",
+///         OverflowBehavior = "QUEUE",
 ///     });
 ///
 /// });
@@ -91,21 +93,21 @@ import 'fleet_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codebuild.NewFleet(ctx, "test", &codebuild.FleetArgs{
-/// 			BaseCapacity:     pulumi.Int(2),
-/// 			ComputeType:      pulumi.String("BUILD_GENERAL1_SMALL"),
-/// 			EnvironmentType:  pulumi.String("LINUX_CONTAINER"),
-/// 			Name:             pulumi.String("full-example-codebuild-fleet"),
-/// 			OverflowBehavior: pulumi.String("QUEUE"),
 /// 			ScalingConfiguration: &codebuild.FleetScalingConfigurationArgs{
-/// 				MaxCapacity: pulumi.Int(5),
-/// 				ScalingType: pulumi.String("TARGET_TRACKING_SCALING"),
 /// 				TargetTrackingScalingConfigs: codebuild.FleetScalingConfigurationTargetTrackingScalingConfigArray{
 /// 					&codebuild.FleetScalingConfigurationTargetTrackingScalingConfigArgs{
 /// 						MetricType:  pulumi.String("FLEET_UTILIZATION_RATE"),
 /// 						TargetValue: pulumi.Float64(97.5),
 /// 					},
 /// 				},
+/// 				MaxCapacity: pulumi.Int(5),
+/// 				ScalingType: pulumi.String("TARGET_TRACKING_SCALING"),
 /// 			},
+/// 			BaseCapacity:     pulumi.Int(2),
+/// 			ComputeType:      pulumi.String("BUILD_GENERAL1_SMALL"),
+/// 			EnvironmentType:  pulumi.String("LINUX_CONTAINER"),
+/// 			Name:             pulumi.String("full-example-codebuild-fleet"),
+/// 			OverflowBehavior: pulumi.String("QUEUE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -124,19 +126,19 @@ import 'fleet_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_fleet" "test" {
+///   scaling_configuration = {
+///     target_tracking_scaling_configs = [{
+///       "metricType"  = "FLEET_UTILIZATION_RATE"
+///       "targetValue" = 97.5
+///     }]
+///     max_capacity = 5
+///     scaling_type = "TARGET_TRACKING_SCALING"
+///   }
 ///   base_capacity     = 2
 ///   compute_type      = "BUILD_GENERAL1_SMALL"
 ///   environment_type  = "LINUX_CONTAINER"
 ///   name              = "full-example-codebuild-fleet"
 ///   overflow_behavior = "QUEUE"
-///   scaling_configuration = {
-///     max_capacity = 5
-///     scaling_type = "TARGET_TRACKING_SCALING"
-///     target_tracking_scaling_configs = [{
-///       "metricType"  = "FLEET_UTILIZATION_RATE"
-///       "targetValue" = 97.5
-///     }]
-///   }
 /// }
 /// ```
 /// ```java
@@ -163,19 +165,19 @@ import 'fleet_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Fleet("test", FleetArgs.builder()
+///             .scalingConfiguration(FleetScalingConfigurationArgs.builder()
+///                 .targetTrackingScalingConfigs(FleetScalingConfigurationTargetTrackingScalingConfigArgs.builder()
+///                     .metricType("FLEET_UTILIZATION_RATE")
+///                     .targetValue(97.5)
+///                     .build())
+///                 .maxCapacity(5)
+///                 .scalingType("TARGET_TRACKING_SCALING")
+///                 .build())
 ///             .baseCapacity(2)
 ///             .computeType("BUILD_GENERAL1_SMALL")
 ///             .environmentType("LINUX_CONTAINER")
 ///             .name("full-example-codebuild-fleet")
 ///             .overflowBehavior("QUEUE")
-///             .scalingConfiguration(FleetScalingConfigurationArgs.builder()
-///                 .maxCapacity(5)
-///                 .scalingType("TARGET_TRACKING_SCALING")
-///                 .targetTrackingScalingConfigs(FleetScalingConfigurationTargetTrackingScalingConfigArgs.builder()
-///                     .metricType("FLEET_UTILIZATION_RATE")
-///                     .targetValue(97.5)
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -186,17 +188,17 @@ import 'fleet_state.dart';
 ///   test:
 ///     type: aws:codebuild:Fleet
 ///     properties:
+///       scalingConfiguration:
+///         targetTrackingScalingConfigs:
+///           - metricType: FLEET_UTILIZATION_RATE
+///             targetValue: 97.5
+///         maxCapacity: 5
+///         scalingType: TARGET_TRACKING_SCALING
 ///       baseCapacity: 2
 ///       computeType: BUILD_GENERAL1_SMALL
 ///       environmentType: LINUX_CONTAINER
 ///       name: full-example-codebuild-fleet
 ///       overflowBehavior: QUEUE
-///       scalingConfiguration:
-///         maxCapacity: 5
-///         scalingType: TARGET_TRACKING_SCALING
-///         targetTrackingScalingConfigs:
-///           - metricType: FLEET_UTILIZATION_RATE
-///             targetValue: 97.5
 /// ```
 ///
 ///
@@ -306,7 +308,7 @@ import 'fleet_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeBuild fleet.
+/// - `arn` (String) ARN of the CodeBuild fleet.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Fleet using the `name`. For example:
@@ -331,7 +333,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String> environmentType;
   /// The service role associated with the compute fleet.
   late final pulumi.Output<String?> fleetServiceRole;
-  /// The Amazon Machine Image (AMI) of the compute fleet.
+  /// AMI of the compute fleet.
   late final pulumi.Output<String?> imageId;
   /// Last modification time of the fleet.
   late final pulumi.Output<String> lastModified;
@@ -344,12 +346,12 @@ class Fleet extends pulumi.CustomResource {
   /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scalingConfiguration` below.
   late final pulumi.Output<FleetScalingConfiguration?> scalingConfiguration;
   /// Nested attribute containing information about the current status of the fleet.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<FleetStatus>> statuses;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block. See `vpcConfig` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> vpcConfigs;
+  late final pulumi.Output<List<FleetVpcConfig>?> vpcConfigs;
 
   /// Creates a new [Fleet].
   /// [name] The Pulumi resource name.
@@ -363,7 +365,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:codebuild/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseCapacity = registerOutput<int>('baseCapacity');
@@ -378,10 +380,10 @@ class Fleet extends pulumi.CustomResource {
     overflowBehavior = registerOutput<String>('overflowBehavior');
     region = registerOutput<String>('region');
     scalingConfiguration = registerOutput<FleetScalingConfiguration?>('scalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfigs = registerOutput<List<Map<String, dynamic>>?>('vpcConfigs');
+    statuses = registerOutput<List<FleetStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetStatus>(guardedValue, (value) => FleetStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<FleetVpcConfig>?>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetVpcConfig>(guardedValue, (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Fleet] resource's state with the given [name] and [id].
@@ -389,11 +391,12 @@ class Fleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -420,9 +423,37 @@ class Fleet extends pulumi.CustomResource {
     overflowBehavior = registerOutput<String>('overflowBehavior');
     region = registerOutput<String>('region');
     scalingConfiguration = registerOutput<FleetScalingConfiguration?>('scalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfigs = registerOutput<List<Map<String, dynamic>>?>('vpcConfigs');
+    statuses = registerOutput<List<FleetStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetStatus>(guardedValue, (value) => FleetStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<FleetVpcConfig>?>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetVpcConfig>(guardedValue, (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'aws:codebuild/fleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    baseCapacity = registerOutput<int>('baseCapacity');
+    computeConfiguration = registerOutput<FleetComputeConfiguration?>('computeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeType = registerOutput<String>('computeType');
+    created = registerOutput<String>('created');
+    environmentType = registerOutput<String>('environmentType');
+    fleetServiceRole = registerOutput<String?>('fleetServiceRole');
+    imageId = registerOutput<String?>('imageId');
+    lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    overflowBehavior = registerOutput<String>('overflowBehavior');
+    region = registerOutput<String>('region');
+    scalingConfiguration = registerOutput<FleetScalingConfiguration?>('scalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statuses = registerOutput<List<FleetStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetStatus>(guardedValue, (value) => FleetStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfigs = registerOutput<List<FleetVpcConfig>?>('vpcConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetVpcConfig>(guardedValue, (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

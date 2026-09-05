@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_args.dart';
+import 'workflow_on_exception_step.dart';
 import 'workflow_state.dart';
+import 'workflow_step.dart';
 
 /// Provides a AWS Transfer Workflow resource.
 ///
@@ -174,12 +176,12 @@ import 'workflow_state.dart';
 ///     },
 ///     {
 ///         tagStepDetails: {
-///             name: "example",
-///             sourceFileLocation: "${original.file}",
 ///             tags: [{
 ///                 key: "Name",
 ///                 value: "Hello World",
 ///             }],
+///             name: "example",
+///             sourceFileLocation: "${original.file}",
 ///         },
 ///         type: "TAG",
 ///     },
@@ -201,12 +203,12 @@ import 'workflow_state.dart';
 ///     },
 ///     {
 ///         "tag_step_details": {
-///             "name": "example",
-///             "source_file_location": "${original.file}",
 ///             "tags": [{
 ///                 "key": "Name",
 ///                 "value": "Hello World",
 ///             }],
+///             "name": "example",
+///             "source_file_location": "${original.file}",
 ///         },
 ///         "type": "TAG",
 ///     },
@@ -239,8 +241,6 @@ import 'workflow_state.dart';
 ///             {
 ///                 TagStepDetails = new Aws.Transfer.Inputs.WorkflowStepTagStepDetailsArgs
 ///                 {
-///                     Name = "example",
-///                     SourceFileLocation = "${original.file}",
 ///                     Tags = new[]
 ///                     {
 ///                         new Aws.Transfer.Inputs.WorkflowStepTagStepDetailsTagArgs
@@ -249,6 +249,8 @@ import 'workflow_state.dart';
 ///                             Value = "Hello World",
 ///                         },
 ///                     },
+///                     Name = "example",
+///                     SourceFileLocation = "${original.file}",
 ///                 },
 ///                 Type = "TAG",
 ///             },
@@ -280,14 +282,14 @@ import 'workflow_state.dart';
 /// 				},
 /// 				&transfer.WorkflowStepArgs{
 /// 					TagStepDetails: &transfer.WorkflowStepTagStepDetailsArgs{
-/// 						Name:               pulumi.String("example"),
-/// 						SourceFileLocation: pulumi.String("${original.file}"),
 /// 						Tags: transfer.WorkflowStepTagStepDetailsTagArray{
 /// 							&transfer.WorkflowStepTagStepDetailsTagArgs{
 /// 								Key:   pulumi.String("Name"),
 /// 								Value: pulumi.String("Hello World"),
 /// 							},
 /// 						},
+/// 						Name:               pulumi.String("example"),
+/// 						SourceFileLocation: pulumi.String("${original.file}"),
 /// 					},
 /// 					Type: pulumi.String("TAG"),
 /// 				},
@@ -321,12 +323,12 @@ import 'workflow_state.dart';
 ///   }
 ///   steps {
 ///     tag_step_details = {
-///       name                 = "example"
-///       source_file_location = "$${original.file}"
 ///       tags = [{
 ///         "key"   = "Name"
 ///         "value" = "Hello World"
 ///       }]
+///       name                 = "example"
+///       source_file_location = "$${original.file}"
 ///     }
 ///     type = "TAG"
 ///   }
@@ -370,12 +372,12 @@ import 'workflow_state.dart';
 ///                     .build(),
 ///                 WorkflowStepArgs.builder()
 ///                     .tagStepDetails(WorkflowStepTagStepDetailsArgs.builder()
-///                         .name("example")
-///                         .sourceFileLocation("${original.file}")
 ///                         .tags(WorkflowStepTagStepDetailsTagArgs.builder()
 ///                             .key("Name")
 ///                             .value("Hello World")
 ///                             .build())
+///                         .name("example")
+///                         .sourceFileLocation("${original.file}")
 ///                         .build())
 ///                     .type("TAG")
 ///                     .build())
@@ -397,11 +399,11 @@ import 'workflow_state.dart';
 ///             timeoutSeconds: 60
 ///           type: CUSTOM
 ///         - tagStepDetails:
-///             name: example
-///             sourceFileLocation: $${original.file}
 ///             tags:
 ///               - key: Name
 ///                 value: Hello World
+///             name: example
+///             sourceFileLocation: $${original.file}
 ///           type: TAG
 /// ```
 ///
@@ -419,11 +421,11 @@ class Workflow extends pulumi.CustomResource {
   /// Textual description for the workflow.
   late final pulumi.Output<String?> description;
   /// Steps (actions) to take if errors are encountered during execution of the workflow. See `onExceptionSteps` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> onExceptionSteps;
+  late final pulumi.Output<List<WorkflowOnExceptionStep>?> onExceptionSteps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Details for the steps that are in the specified workflow. See `steps` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<WorkflowStep>> steps;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -441,15 +443,15 @@ class Workflow extends pulumi.CustomResource {
           'aws:transfer/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    onExceptionSteps = registerOutput<List<Map<String, dynamic>>?>('onExceptionSteps');
+    onExceptionSteps = registerOutput<List<WorkflowOnExceptionStep>?>('onExceptionSteps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowOnExceptionStep>(guardedValue, (value) => WorkflowOnExceptionStep.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    steps = registerOutput<List<WorkflowStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowStep>(guardedValue, (value) => WorkflowStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workflow] resource's state with the given [name] and [id].
@@ -457,11 +459,12 @@ class Workflow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkflowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workflow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,10 +480,28 @@ class Workflow extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    onExceptionSteps = registerOutput<List<Map<String, dynamic>>?>('onExceptionSteps');
+    onExceptionSteps = registerOutput<List<WorkflowOnExceptionStep>?>('onExceptionSteps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowOnExceptionStep>(guardedValue, (value) => WorkflowOnExceptionStep.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    steps = registerOutput<List<WorkflowStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowStep>(guardedValue, (value) => WorkflowStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'aws:transfer/workflow:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    onExceptionSteps = registerOutput<List<WorkflowOnExceptionStep>?>('onExceptionSteps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowOnExceptionStep>(guardedValue, (value) => WorkflowOnExceptionStep.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    steps = registerOutput<List<WorkflowStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowStep>(guardedValue, (value) => WorkflowStep.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

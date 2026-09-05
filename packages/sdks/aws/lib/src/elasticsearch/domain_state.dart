@@ -16,51 +16,51 @@ import 'domain_vpc_options.dart';
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// IAM policy document specifying the access policies for the domain.
-  final pulumi.Input<String>? accessPolicies;
+  final pulumi.Input<dynamic>? accessPolicies;
   /// Key-value string pairs to specify advanced configuration options. Note that the values for these configuration options must be strings (wrapped in quotes) or they may be wrong and cause a perpetual diff, causing the provider to want to recreate your Elasticsearch domain on every apply.
-  final pulumi.Input<Map<String, String>>? advancedOptions;
+  final pulumi.Input<Map<String, String>?>? advancedOptions;
   /// Configuration block for [fine-grained access control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html). Detailed below.
-  final pulumi.Input<DomainAdvancedSecurityOptions>? advancedSecurityOptions;
+  final pulumi.Input<DomainAdvancedSecurityOptions?>? advancedSecurityOptions;
   /// ARN of the domain.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Configuration block for the Auto-Tune options of the domain. Detailed below.
-  final pulumi.Input<DomainAutoTuneOptions>? autoTuneOptions;
+  final pulumi.Input<DomainAutoTuneOptions?>? autoTuneOptions;
   /// Configuration block for the cluster of the domain. Detailed below.
-  final pulumi.Input<DomainClusterConfig>? clusterConfig;
+  final pulumi.Input<DomainClusterConfig?>? clusterConfig;
   /// Configuration block for authenticating Kibana with Cognito. Detailed below.
-  final pulumi.Input<DomainCognitoOptions>? cognitoOptions;
+  final pulumi.Input<DomainCognitoOptions?>? cognitoOptions;
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
-  final pulumi.Input<DomainDomainEndpointOptions>? domainEndpointOptions;
+  final pulumi.Input<DomainDomainEndpointOptions?>? domainEndpointOptions;
   /// Unique identifier for the domain.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// Name of the domain.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Configuration block for EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/elasticsearch-service/pricing/). Detailed below.
-  final pulumi.Input<DomainEbsOptions>? ebsOptions;
+  final pulumi.Input<DomainEbsOptions?>? ebsOptions;
   /// Version of Elasticsearch to deploy. Defaults to `1.5`.
-  final pulumi.Input<String>? elasticsearchVersion;
+  final pulumi.Input<String?>? elasticsearchVersion;
   /// Configuration block for encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). Detailed below.
-  final pulumi.Input<DomainEncryptAtRest>? encryptAtRest;
+  final pulumi.Input<DomainEncryptAtRest?>? encryptAtRest;
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Domain-specific endpoint for kibana without https scheme.
-  final pulumi.Input<String>? kibanaEndpoint;
+  final pulumi.Input<String?>? kibanaEndpoint;
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
-  final pulumi.Input<List<DomainLogPublishingOption>>? logPublishingOptions;
+  final pulumi.Input<List<DomainLogPublishingOption>?>? logPublishingOptions;
   /// Configuration block for node-to-node encryption options. Detailed below.
-  final pulumi.Input<DomainNodeToNodeEncryption>? nodeToNodeEncryption;
+  final pulumi.Input<DomainNodeToNodeEncryption?>? nodeToNodeEncryption;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running Elasticsearch 5.3 and later, Amazon ES takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions of Elasticsearch, Amazon ES takes daily automated snapshots.
-  final pulumi.Input<DomainSnapshotOptions>? snapshotOptions;
+  final pulumi.Input<DomainSnapshotOptions?>? snapshotOptions;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-vpc-limitations)). Detailed below.
-  final pulumi.Input<DomainVpcOptions>? vpcOptions;
+  final pulumi.Input<DomainVpcOptions?>? vpcOptions;
 
   /// Creates a new [DomainState].
   /// [accessPolicies] IAM policy document specifying the access policies for the domain.
@@ -139,7 +139,7 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      accessPolicies: (() { final guardedValue = map['accessPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessPolicies: (() { final guardedValue = map['accessPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       advancedOptions: (() { final guardedValue = map['advancedOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       advancedSecurityOptions: (() { final guardedValue = map['advancedSecurityOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainAdvancedSecurityOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

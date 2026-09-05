@@ -6,7 +6,7 @@ class DistributionTenantDomain {
   /// Set of domains associated with the distribution tenant.
   final pulumi.Input<String> domain;
   /// Current status of the distribution tenant.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DistributionTenantDomain].
   /// [domain] Set of domains associated with the distribution tenant.

@@ -10,31 +10,31 @@ class DatasetJsonState {
   /// A map of additional properties to associate with the Data Factory Dataset.
   ///
   /// The following supported arguments are specific to JSON Dataset:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// A `azureBlobStorageLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
-  final pulumi.Input<DatasetJsonAzureBlobStorageLocation>? azureBlobStorageLocation;
+  final pulumi.Input<DatasetJsonAzureBlobStorageLocation?>? azureBlobStorageLocation;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encoding format for the file.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// A `httpServerLocation` block as defined below.
-  final pulumi.Input<DatasetJsonHttpServerLocation>? httpServerLocation;
+  final pulumi.Input<DatasetJsonHttpServerLocation?>? httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
-  final pulumi.Input<String>? linkedServiceName;
+  final pulumi.Input<String?>? linkedServiceName;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetJsonSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetJsonSchemaColumn>?>? schemaColumns;
 
   /// Creates a new [DatasetJsonState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.

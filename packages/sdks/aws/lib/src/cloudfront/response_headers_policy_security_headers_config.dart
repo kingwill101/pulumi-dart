@@ -10,17 +10,17 @@ import 'response_headers_policy_security_headers_config_xss_protection.dart';
 
 class ResponseHeadersPolicySecurityHeadersConfig {
   /// The policy directives and their values that CloudFront includes as values for the `Content-Security-Policy` HTTP response header. See Content Security Policy for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy>? contentSecurityPolicy;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy?>? contentSecurityPolicy;
   /// Determines whether CloudFront includes the `X-Content-Type-Options` HTTP response header with its value set to `nosniff`. See Content Type Options for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions>? contentTypeOptions;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions?>? contentTypeOptions;
   /// Determines whether CloudFront includes the `X-Frame-Options` HTTP response header and the header’s value. See Frame Options for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigFrameOptions>? frameOptions;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigFrameOptions?>? frameOptions;
   /// Determines whether CloudFront includes the `Referrer-Policy` HTTP response header and the header’s value. See Referrer Policy for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy>? referrerPolicy;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy?>? referrerPolicy;
   /// Determines whether CloudFront includes the `Strict-Transport-Security` HTTP response header and the header’s value. See Strict Transport Security for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity>? strictTransportSecurity;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity?>? strictTransportSecurity;
   /// Determine whether CloudFront includes the `X-XSS-Protection` HTTP response header and the header’s value. See XSS Protection for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigXssProtection>? xssProtection;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfigXssProtection?>? xssProtection;
 
   /// Creates a new [ResponseHeadersPolicySecurityHeadersConfig].
   /// [contentSecurityPolicy] The policy directives and their values that CloudFront includes as values for the `Content-Security-Policy` HTTP response header. See Content Security Policy for more information.

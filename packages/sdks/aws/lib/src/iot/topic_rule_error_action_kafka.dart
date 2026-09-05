@@ -9,11 +9,11 @@ class TopicRuleErrorActionKafka {
   /// The ARN of Kafka action's VPC `aws.iot.TopicRuleDestination`.
   final pulumi.Input<String> destinationArn;
   /// The list of Kafka headers that you specify. Nested arguments below.
-  final pulumi.Input<List<TopicRuleErrorActionKafkaHeader>>? headers;
+  final pulumi.Input<List<TopicRuleErrorActionKafkaHeader>?>? headers;
   /// The Kafka message key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The Kafka message partition.
-  final pulumi.Input<String>? partition;
+  final pulumi.Input<String?>? partition;
   /// The Kafka topic for messages to be sent to the Kafka broker.
   final pulumi.Input<String> topic;
 

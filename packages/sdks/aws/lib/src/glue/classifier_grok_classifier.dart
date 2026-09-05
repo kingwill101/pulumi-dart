@@ -6,7 +6,7 @@ class ClassifierGrokClassifier {
   /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   final pulumi.Input<String> classification;
   /// Custom grok patterns used by this classifier.
-  final pulumi.Input<String>? customPatterns;
+  final pulumi.Input<String?>? customPatterns;
   /// The grok pattern used by this classifier.
   final pulumi.Input<String> grokPattern;
 

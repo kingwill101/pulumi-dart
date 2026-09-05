@@ -543,11 +543,11 @@ import 'db_cluster_timeouts.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         actions: ["s3:PutObject"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["timestream-influxdb.amazonaws.com"],
 ///         }],
+///         actions: ["s3:PutObject"],
 ///         resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///     }],
 /// });
@@ -556,6 +556,12 @@ import 'db_cluster_timeouts.dart';
 ///     policy: example.json,
 /// });
 /// const exampleDbCluster = new aws.timestreaminfluxdb.DbCluster("example", {
+///     logDeliveryConfiguration: {
+///         s3Configuration: {
+///             bucketName: exampleBucket.bucket,
+///             enabled: true,
+///         },
+///     },
 ///     allocatedStorage: 20,
 ///     bucket: "example-bucket-name",
 ///     dbInstanceType: "db.influx.medium",
@@ -568,12 +574,6 @@ import 'db_cluster_timeouts.dart';
 ///     ],
 ///     vpcSecurityGroupIds: [exampleAwsSecurityGroup.id],
 ///     name: "example-db-cluster",
-///     logDeliveryConfiguration: {
-///         s3Configuration: {
-///             bucketName: exampleBucket.bucket,
-///             enabled: true,
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -584,17 +584,23 @@ import 'db_cluster_timeouts.dart';
 ///     bucket="example-s3-bucket",
 ///     force_destroy=True)
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "actions": ["s3:PutObject"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["timestream-influxdb.amazonaws.com"],
 ///     }],
+///     "actions": ["s3:PutObject"],
 ///     "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 /// }])
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
 ///     bucket=example_bucket.id,
 ///     policy=example.json)
 /// example_db_cluster = aws.timestreaminfluxdb.DbCluster("example",
+///     log_delivery_configuration={
+///         "s3_configuration": {
+///             "bucket_name": example_bucket.bucket,
+///             "enabled": True,
+///         },
+///     },
 ///     allocated_storage=20,
 ///     bucket="example-bucket-name",
 ///     db_instance_type="db.influx.medium",
@@ -606,13 +612,7 @@ import 'db_cluster_timeouts.dart';
 ///         example2["id"],
 ///     ],
 ///     vpc_security_group_ids=[example_aws_security_group["id"]],
-///     name="example-db-cluster",
-///     log_delivery_configuration={
-///         "s3_configuration": {
-///             "bucket_name": example_bucket.bucket,
-///             "enabled": True,
-///         },
-///     })
+///     name="example-db-cluster")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -634,10 +634,6 @@ import 'db_cluster_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "s3:PutObject",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -648,6 +644,10 @@ import 'db_cluster_timeouts.dart';
 ///                             "timestream-influxdb.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "s3:PutObject",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -665,6 +665,14 @@ import 'db_cluster_timeouts.dart';
 ///
 ///     var exampleDbCluster = new Aws.TimestreamInfluxDB.DbCluster("example", new()
 ///     {
+///         LogDeliveryConfiguration = new Aws.TimestreamInfluxDB.Inputs.DbClusterLogDeliveryConfigurationArgs
+///         {
+///             S3Configuration = new Aws.TimestreamInfluxDB.Inputs.DbClusterLogDeliveryConfigurationS3ConfigurationArgs
+///             {
+///                 BucketName = exampleBucket.BucketName,
+///                 Enabled = true,
+///             },
+///         },
 ///         AllocatedStorage = 20,
 ///         Bucket = "example-bucket-name",
 ///         DbInstanceType = "db.influx.medium",
@@ -681,14 +689,6 @@ import 'db_cluster_timeouts.dart';
 ///             exampleAwsSecurityGroup.Id,
 ///         },
 ///         Name = "example-db-cluster",
-///         LogDeliveryConfiguration = new Aws.TimestreamInfluxDB.Inputs.DbClusterLogDeliveryConfigurationArgs
-///         {
-///             S3Configuration = new Aws.TimestreamInfluxDB.Inputs.DbClusterLogDeliveryConfigurationS3ConfigurationArgs
-///             {
-///                 BucketName = exampleBucket.BucketName,
-///                 Enabled = true,
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -717,9 +717,6 @@ import 'db_cluster_timeouts.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("s3:PutObject"),
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -727,6 +724,9 @@ import 'db_cluster_timeouts.dart';
 /// 								pulumi.String("timestream-influxdb.amazonaws.com"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
@@ -744,6 +744,12 @@ import 'db_cluster_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = timestreaminfluxdb.NewDbCluster(ctx, "example", &timestreaminfluxdb.DbClusterArgs{
+/// 			LogDeliveryConfiguration: &timestreaminfluxdb.DbClusterLogDeliveryConfigurationArgs{
+/// 				S3Configuration: &timestreaminfluxdb.DbClusterLogDeliveryConfigurationS3ConfigurationArgs{
+/// 					BucketName: exampleBucket.Bucket,
+/// 					Enabled:    pulumi.Bool(true),
+/// 				},
+/// 			},
 /// 			AllocatedStorage: pulumi.Int(20),
 /// 			Bucket:           pulumi.String("example-bucket-name"),
 /// 			DbInstanceType:   pulumi.String("db.influx.medium"),
@@ -758,12 +764,6 @@ import 'db_cluster_timeouts.dart';
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
 /// 			Name: pulumi.String("example-db-cluster"),
-/// 			LogDeliveryConfiguration: &timestreaminfluxdb.DbClusterLogDeliveryConfigurationArgs{
-/// 				S3Configuration: &timestreaminfluxdb.DbClusterLogDeliveryConfigurationS3ConfigurationArgs{
-/// 					BucketName: exampleBucket.Bucket,
-/// 					Enabled:    pulumi.Bool(true),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -783,11 +783,11 @@ import 'db_cluster_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions = ["s3:PutObject"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["timestream-influxdb.amazonaws.com"]
 ///     }
+///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///   }
 /// }
@@ -801,6 +801,12 @@ import 'db_cluster_timeouts.dart';
 ///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// resource "aws_timestreaminfluxdb_dbcluster" "example" {
+///   log_delivery_configuration = {
+///     s3_configuration = {
+///       bucket_name = aws_s3_bucket.example.bucket
+///       enabled     = true
+///     }
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -810,12 +816,6 @@ import 'db_cluster_timeouts.dart';
 ///   vpc_subnet_ids         = [example1.id, example2.id]
 ///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
 ///   name                   = "example-db-cluster"
-///   log_delivery_configuration = {
-///     s3_configuration = {
-///       bucket_name = aws_s3_bucket.example.bucket
-///       enabled     = true
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -856,11 +856,11 @@ import 'db_cluster_timeouts.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("s3:PutObject")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("timestream-influxdb.amazonaws.com")
 ///                     .build())
+///                 .actions("s3:PutObject")
 ///                 .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .build())
 ///             .build());
@@ -871,6 +871,12 @@ import 'db_cluster_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleDbCluster = new DbCluster("exampleDbCluster", DbClusterArgs.builder()
+///             .logDeliveryConfiguration(DbClusterLogDeliveryConfigurationArgs.builder()
+///                 .s3Configuration(DbClusterLogDeliveryConfigurationS3ConfigurationArgs.builder()
+///                     .bucketName(exampleBucket.bucket())
+///                     .enabled(true)
+///                     .build())
+///                 .build())
 ///             .allocatedStorage(20)
 ///             .bucket("example-bucket-name")
 ///             .dbInstanceType("db.influx.medium")
@@ -882,12 +888,6 @@ import 'db_cluster_timeouts.dart';
 ///                 example2.id())
 ///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
 ///             .name("example-db-cluster")
-///             .logDeliveryConfiguration(DbClusterLogDeliveryConfigurationArgs.builder()
-///                 .s3Configuration(DbClusterLogDeliveryConfigurationS3ConfigurationArgs.builder()
-///                     .bucketName(exampleBucket.bucket())
-///                     .enabled(true)
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -911,6 +911,10 @@ import 'db_cluster_timeouts.dart';
 ///     type: aws:timestreaminfluxdb:DbCluster
 ///     name: example
 ///     properties:
+///       logDeliveryConfiguration:
+///         s3Configuration:
+///           bucketName: ${exampleBucket.bucket}
+///           enabled: true
 ///       allocatedStorage: 20
 ///       bucket: example-bucket-name
 ///       dbInstanceType: db.influx.medium
@@ -923,22 +927,18 @@ import 'db_cluster_timeouts.dart';
 ///       vpcSecurityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
 ///       name: example-db-cluster
-///       logDeliveryConfiguration:
-///         s3Configuration:
-///           bucketName: ${exampleBucket.bucket}
-///           enabled: true
 /// variables:
 ///   example:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - s3:PutObject
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - timestream-influxdb.amazonaws.com
+///             actions:
+///               - s3:PutObject
 ///             resources:
 ///               - ${exampleBucket.arn}/*
 /// ```
@@ -954,6 +954,10 @@ import 'db_cluster_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.timestreaminfluxdb.DbCluster("example", {
+///     maintenanceSchedule: {
+///         preferredMaintenanceWindow: "Sun:02:00-Sun:06:00",
+///         timezone: "America/New_York",
+///     },
 ///     name: "example-v3-cluster",
 ///     dbInstanceType: "db.influx.large",
 ///     dbParameterGroupIdentifier: "InfluxDBV3Core",
@@ -962,10 +966,6 @@ import 'db_cluster_timeouts.dart';
 ///         example2.id,
 ///     ],
 ///     vpcSecurityGroupIds: [exampleAwsSecurityGroup.id],
-///     maintenanceSchedule: {
-///         preferredMaintenanceWindow: "Sun:02:00-Sun:06:00",
-///         timezone: "America/New_York",
-///     },
 /// });
 /// ```
 /// ```python
@@ -973,6 +973,10 @@ import 'db_cluster_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.timestreaminfluxdb.DbCluster("example",
+///     maintenance_schedule={
+///         "preferred_maintenance_window": "Sun:02:00-Sun:06:00",
+///         "timezone": "America/New_York",
+///     },
 ///     name="example-v3-cluster",
 ///     db_instance_type="db.influx.large",
 ///     db_parameter_group_identifier="InfluxDBV3Core",
@@ -980,11 +984,7 @@ import 'db_cluster_timeouts.dart';
 ///         example1["id"],
 ///         example2["id"],
 ///     ],
-///     vpc_security_group_ids=[example_aws_security_group["id"]],
-///     maintenance_schedule={
-///         "preferred_maintenance_window": "Sun:02:00-Sun:06:00",
-///         "timezone": "America/New_York",
-///     })
+///     vpc_security_group_ids=[example_aws_security_group["id"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -996,6 +996,11 @@ import 'db_cluster_timeouts.dart';
 /// {
 ///     var example = new Aws.TimestreamInfluxDB.DbCluster("example", new()
 ///     {
+///         MaintenanceSchedule = new Aws.TimestreamInfluxDB.Inputs.DbClusterMaintenanceScheduleArgs
+///         {
+///             PreferredMaintenanceWindow = "Sun:02:00-Sun:06:00",
+///             Timezone = "America/New_York",
+///         },
 ///         Name = "example-v3-cluster",
 ///         DbInstanceType = "db.influx.large",
 ///         DbParameterGroupIdentifier = "InfluxDBV3Core",
@@ -1007,11 +1012,6 @@ import 'db_cluster_timeouts.dart';
 ///         VpcSecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
-///         },
-///         MaintenanceSchedule = new Aws.TimestreamInfluxDB.Inputs.DbClusterMaintenanceScheduleArgs
-///         {
-///             PreferredMaintenanceWindow = "Sun:02:00-Sun:06:00",
-///             Timezone = "America/New_York",
 ///         },
 ///     });
 ///
@@ -1028,6 +1028,10 @@ import 'db_cluster_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := timestreaminfluxdb.NewDbCluster(ctx, "example", &timestreaminfluxdb.DbClusterArgs{
+/// 			MaintenanceSchedule: &timestreaminfluxdb.DbClusterMaintenanceScheduleArgs{
+/// 				PreferredMaintenanceWindow: pulumi.String("Sun:02:00-Sun:06:00"),
+/// 				Timezone:                   pulumi.String("America/New_York"),
+/// 			},
 /// 			Name:                       pulumi.String("example-v3-cluster"),
 /// 			DbInstanceType:             pulumi.String("db.influx.large"),
 /// 			DbParameterGroupIdentifier: pulumi.String("InfluxDBV3Core"),
@@ -1037,10 +1041,6 @@ import 'db_cluster_timeouts.dart';
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
-/// 			},
-/// 			MaintenanceSchedule: &timestreaminfluxdb.DbClusterMaintenanceScheduleArgs{
-/// 				PreferredMaintenanceWindow: pulumi.String("Sun:02:00-Sun:06:00"),
-/// 				Timezone:                   pulumi.String("America/New_York"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1060,15 +1060,15 @@ import 'db_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_timestreaminfluxdb_dbcluster" "example" {
+///   maintenance_schedule = {
+///     preferred_maintenance_window = "Sun:02:00-Sun:06:00"
+///     timezone                     = "America/New_York"
+///   }
 ///   name                          = "example-v3-cluster"
 ///   db_instance_type              = "db.influx.large"
 ///   db_parameter_group_identifier = "InfluxDBV3Core"
 ///   vpc_subnet_ids                = [example1.id, example2.id]
 ///   vpc_security_group_ids        = [exampleAwsSecurityGroup.id]
-///   maintenance_schedule = {
-///     preferred_maintenance_window = "Sun:02:00-Sun:06:00"
-///     timezone                     = "America/New_York"
-///   }
 /// }
 /// ```
 /// ```java
@@ -1094,6 +1094,10 @@ import 'db_cluster_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DbCluster("example", DbClusterArgs.builder()
+///             .maintenanceSchedule(DbClusterMaintenanceScheduleArgs.builder()
+///                 .preferredMaintenanceWindow("Sun:02:00-Sun:06:00")
+///                 .timezone("America/New_York")
+///                 .build())
 ///             .name("example-v3-cluster")
 ///             .dbInstanceType("db.influx.large")
 ///             .dbParameterGroupIdentifier("InfluxDBV3Core")
@@ -1101,10 +1105,6 @@ import 'db_cluster_timeouts.dart';
 ///                 example1.id(),
 ///                 example2.id())
 ///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
-///             .maintenanceSchedule(DbClusterMaintenanceScheduleArgs.builder()
-///                 .preferredMaintenanceWindow("Sun:02:00-Sun:06:00")
-///                 .timezone("America/New_York")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1115,6 +1115,9 @@ import 'db_cluster_timeouts.dart';
 ///   example:
 ///     type: aws:timestreaminfluxdb:DbCluster
 ///     properties:
+///       maintenanceSchedule:
+///         preferredMaintenanceWindow: Sun:02:00-Sun:06:00
+///         timezone: America/New_York
 ///       name: example-v3-cluster
 ///       dbInstanceType: db.influx.large
 ///       dbParameterGroupIdentifier: InfluxDBV3Core
@@ -1123,9 +1126,6 @@ import 'db_cluster_timeouts.dart';
 ///         - ${example2.id}
 ///       vpcSecurityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
-///       maintenanceSchedule:
-///         preferredMaintenanceWindow: Sun:02:00-Sun:06:00
-///         timezone: America/New_York
 /// ```
 ///
 ///
@@ -1243,7 +1243,8 @@ class DbCluster extends pulumi.CustomResource {
           'aws:timestreaminfluxdb/dbCluster:DbCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     allocatedStorage = registerOutput<int?>('allocatedStorage');
     arn = registerOutput<String>('arn');
@@ -1261,17 +1262,17 @@ class DbCluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     organization = registerOutput<String?>('organization');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int>('port');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     readerEndpoint = registerOutput<String>('readerEndpoint');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DbClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     username = registerOutput<String?>('username');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DbCluster] resource's state with the given [name] and [id].
@@ -1279,11 +1280,12 @@ class DbCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DbClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DbCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1313,16 +1315,55 @@ class DbCluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     organization = registerOutput<String?>('organization');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int>('port');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     readerEndpoint = registerOutput<String>('readerEndpoint');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DbClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     username = registerOutput<String?>('username');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DbCluster] resource.
+  DbCluster.reference(String urn)
+    : super(
+        'aws:timestreaminfluxdb/dbCluster:DbCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    allocatedStorage = registerOutput<int?>('allocatedStorage');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String?>('bucket');
+    dbInstanceType = registerOutput<String>('dbInstanceType');
+    dbParameterGroupIdentifier = registerOutput<String?>('dbParameterGroupIdentifier');
+    dbStorageType = registerOutput<String>('dbStorageType');
+    deploymentType = registerOutput<String>('deploymentType');
+    endpoint = registerOutput<String>('endpoint');
+    engineType = registerOutput<String>('engineType');
+    failoverMode = registerOutput<String>('failoverMode');
+    influxAuthParametersSecretArn = registerOutput<String>('influxAuthParametersSecretArn');
+    logDeliveryConfiguration = registerOutput<DbClusterLogDeliveryConfiguration?>('logDeliveryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbClusterLogDeliveryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedule = registerOutput<DbClusterMaintenanceSchedule?>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbClusterMaintenanceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkType = registerOutput<String>('networkType');
+    organization = registerOutput<String?>('organization');
+    password = registerOutput<String?>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    readerEndpoint = registerOutput<String>('readerEndpoint');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<DbClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    username = registerOutput<String?>('username');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

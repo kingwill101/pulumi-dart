@@ -309,11 +309,11 @@ class AccountCustomizations extends pulumi.CustomResource {
           'aws:uxc/accountCustomizations:AccountCustomizations',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountColor = registerOutput<String>('accountColor');
-    visibleRegions = registerOutput<List<String>>('visibleRegions');
-    visibleServices = registerOutput<List<String>>('visibleServices');
+    visibleRegions = registerOutput<List<String>>('visibleRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    visibleServices = registerOutput<List<String>>('visibleServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AccountCustomizations] resource's state with the given [name] and [id].
@@ -321,11 +321,12 @@ class AccountCustomizations extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountCustomizationsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountCustomizations._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -340,7 +341,21 @@ class AccountCustomizations extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountColor = registerOutput<String>('accountColor');
-    visibleRegions = registerOutput<List<String>>('visibleRegions');
-    visibleServices = registerOutput<List<String>>('visibleServices');
+    visibleRegions = registerOutput<List<String>>('visibleRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    visibleServices = registerOutput<List<String>>('visibleServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountCustomizations] resource.
+  AccountCustomizations.reference(String urn)
+    : super(
+        'aws:uxc/accountCustomizations:AccountCustomizations',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountColor = registerOutput<String>('accountColor');
+    visibleRegions = registerOutput<List<String>>('visibleRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    visibleServices = registerOutput<List<String>>('visibleServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

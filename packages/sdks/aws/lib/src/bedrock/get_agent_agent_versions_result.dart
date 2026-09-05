@@ -5,34 +5,34 @@ import 'get_agent_agent_versions_agent_version_summary.dart';
 
 /// Result data returned by getAgentAgentVersions.
 class GetAgentAgentVersionsResult {
-  final String agentId;
+  final String? agentId;
   /// List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
   final List<GetAgentAgentVersionsAgentVersionSummary>? agentVersionSummaries;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetAgentAgentVersionsResult].
-  /// [agentId] Required.
+  /// [agentId] Optional.
   /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
-  /// [region] Required.
+  /// [region] Optional.
   const GetAgentAgentVersionsResult({
-    required this.agentId,
+    this.agentId,
     this.agentVersionSummaries,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentId': agentId,
+      'agentId': ?agentId,
       'agentVersionSummaries': ?(() { final guardedValue = agentVersionSummaries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAgentAgentVersionsAgentVersionSummary, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetAgentAgentVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsResult(
-      agentId: map['agentId'] as String,
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       agentVersionSummaries: (() { final guardedValue = map['agentVersionSummaries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(guardedValue, (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>())); })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

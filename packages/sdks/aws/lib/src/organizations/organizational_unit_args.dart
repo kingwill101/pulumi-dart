@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_organizations_organizational_unit_organizational_unit_args_doc}
 class OrganizationalUnitArgs {
   /// The name for the organizational unit
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the parent organizational unit, which may be the root
   final pulumi.Input<String> parentId;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OrganizationalUnitArgs].
   /// [name] The name for the organizational unit

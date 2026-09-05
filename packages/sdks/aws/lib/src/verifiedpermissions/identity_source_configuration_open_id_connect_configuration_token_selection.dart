@@ -6,9 +6,9 @@ import 'identity_source_configuration_open_id_connect_configuration_token_select
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection {
   /// The OIDC configuration for processing access tokens. See Access Token Only below.
-  final pulumi.Input<IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly>? accessTokenOnly;
+  final pulumi.Input<IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly?>? accessTokenOnly;
   /// The OIDC configuration for processing identity (ID) tokens. See Identity Token Only below.
-  final pulumi.Input<IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly>? identityTokenOnly;
+  final pulumi.Input<IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly?>? identityTokenOnly;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection].
   /// [accessTokenOnly] The OIDC configuration for processing access tokens. See Access Token Only below.

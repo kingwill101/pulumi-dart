@@ -152,7 +152,7 @@ import 'event_hub_authorization_rule_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("acceptanceTestEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(2),
 /// 		})
@@ -371,20 +371,21 @@ class EventHubAuthorizationRule extends pulumi.CustomResource {
           'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     eventhubName = registerOutput<String>('eventhubName');
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 
@@ -393,11 +394,12 @@ class EventHubAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventHubAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventHubAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -416,13 +418,38 @@ class EventHubAuthorizationRule extends pulumi.CustomResource {
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+  }
+
+  /// Creates a typed reference to an existing [EventHubAuthorizationRule] resource.
+  EventHubAuthorizationRule.reference(String urn)
+    : super(
+        'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    eventhubName = registerOutput<String>('eventhubName');
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 }

@@ -12,35 +12,35 @@ class LocationHdfsArgs {
   /// A list of DataSync Agent ARNs with which this location will be associated.
   final pulumi.Input<List<String>> agentArns;
   /// The type of authentication used to determine the identity of the user. Valid values are `SIMPLE` and `KERBEROS`.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The size of data blocks to write into the HDFS cluster. The block size must be a multiple of 512 bytes. The default block size is 128 mebibytes (MiB).
-  final pulumi.Input<int>? blockSize;
+  final pulumi.Input<int?>? blockSize;
   /// The Kerberos key table (keytab) that contains mappings between the defined Kerberos principal and the encrypted keys. Use `kerberosKeytabBase64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKeytabBase64`) is required.
-  final pulumi.Input<String>? kerberosKeytab;
+  final pulumi.Input<String?>? kerberosKeytab;
   /// Use instead of `kerberosKeytab` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKeytab`) is required.
-  final pulumi.Input<String>? kerberosKeytabBase64;
+  final pulumi.Input<String?>? kerberosKeytabBase64;
   /// The krb5.conf file that contains the Kerberos configuration information. Use `kerberosKrb5ConfBase64` instead whenever the value is not a valid UTF-8 string. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKrb5ConfBase64`) is required.
-  final pulumi.Input<String>? kerberosKrb5Conf;
+  final pulumi.Input<String?>? kerberosKrb5Conf;
   /// Use instead of `kerberosKrb5Conf` to pass base64-encoded binary data directly. If `KERBEROS` is specified for `authenticationType`, this parameter (or `kerberosKrb5Conf`) is required.
-  final pulumi.Input<String>? kerberosKrb5ConfBase64;
+  final pulumi.Input<String?>? kerberosKrb5ConfBase64;
   /// The Kerberos principal with access to the files and folders on the HDFS cluster. If `KERBEROS` is specified for `authenticationType`, this parameter is required.
-  final pulumi.Input<String>? kerberosPrincipal;
+  final pulumi.Input<String?>? kerberosPrincipal;
   /// The URI of the HDFS cluster's Key Management Server (KMS).
-  final pulumi.Input<String>? kmsKeyProviderUri;
+  final pulumi.Input<String?>? kmsKeyProviderUri;
   /// The NameNode that manages the HDFS namespace. The NameNode performs operations such as opening, closing, and renaming files and directories. The NameNode contains the information to map blocks of data to the DataNodes. You can use only one NameNode. See configuration below.
   final pulumi.Input<List<LocationHdfsNameNode>> nameNodes;
   /// The Quality of Protection (QOP) configuration specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the Hadoop Distributed File System (HDFS) cluster. If `qopConfiguration` isn't specified, `rpcProtection` and `dataTransferProtection` default to `PRIVACY`. If you set RpcProtection or DataTransferProtection, the other parameter assumes the same value.  See configuration below.
-  final pulumi.Input<LocationHdfsQopConfiguration>? qopConfiguration;
+  final pulumi.Input<LocationHdfsQopConfiguration?>? qopConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The number of DataNodes to replicate the data to when writing to the HDFS cluster. By default, data is replicated to three DataNodes.
-  final pulumi.Input<int>? replicationFactor;
+  final pulumi.Input<int?>? replicationFactor;
   /// The user name used to identify the client on the host operating system. If `SIMPLE` is specified for `authenticationType`, this parameter is required.
-  final pulumi.Input<String>? simpleUser;
+  final pulumi.Input<String?>? simpleUser;
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
-  final pulumi.Input<String>? subdirectory;
+  final pulumi.Input<String?>? subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LocationHdfsArgs].
   /// [agentArns] A list of DataSync Agent ARNs with which this location will be associated.
@@ -103,7 +103,7 @@ class LocationHdfsArgs {
     return LocationHdfsArgs(
       agentArns: pulumi.Input.fromValue((map['agentArns'] as List).cast<String>()),
       authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      blockSize: (() { final guardedValue = map['blockSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      blockSize: (() { final guardedValue = map['blockSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       kerberosKeytab: (() { final guardedValue = map['kerberosKeytab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kerberosKeytabBase64: (() { final guardedValue = map['kerberosKeytabBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kerberosKrb5Conf: (() { final guardedValue = map['kerberosKrb5Conf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -113,7 +113,7 @@ class LocationHdfsArgs {
       nameNodes: pulumi.Input.fromValue(pulumi.Input.decodeList<LocationHdfsNameNode>(map['nameNodes']!, (value) => LocationHdfsNameNode.fromMap((value as Map).cast<String, dynamic>()))),
       qopConfiguration: (() { final guardedValue = map['qopConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocationHdfsQopConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       simpleUser: (() { final guardedValue = map['simpleUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subdirectory: (() { final guardedValue = map['subdirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

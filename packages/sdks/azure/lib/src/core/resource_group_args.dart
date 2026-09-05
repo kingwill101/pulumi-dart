@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_core_resource_group_resource_group_args_doc}
 class ResourceGroupArgs {
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the resource or application that manages this Resource Group.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// The Name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Resource Group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceGroupArgs].
   /// [location] The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.

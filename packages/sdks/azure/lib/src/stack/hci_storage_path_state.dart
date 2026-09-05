@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HciStoragePath resources.
 class HciStoragePathState {
   /// The ID of Custom Location where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// The Azure Region where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Azure Stack HCI Storage Path. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The file path on the disk to create the Storage Path. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The name of the Resource Group where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Storage Path.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HciStoragePathState].
   /// [customLocationId] The ID of Custom Location where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.

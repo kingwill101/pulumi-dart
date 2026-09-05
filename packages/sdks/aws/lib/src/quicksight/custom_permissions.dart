@@ -13,11 +13,11 @@ import 'custom_permissions_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.CustomPermissions("example", {
-///     customPermissionsName: "example-permissions",
 ///     capabilities: {
 ///         printReports: "DENY",
 ///         shareDashboards: "DENY",
 ///     },
+///     customPermissionsName: "example-permissions",
 /// });
 /// ```
 /// ```python
@@ -25,11 +25,11 @@ import 'custom_permissions_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.CustomPermissions("example",
-///     custom_permissions_name="example-permissions",
 ///     capabilities={
 ///         "print_reports": "DENY",
 ///         "share_dashboards": "DENY",
-///     })
+///     },
+///     custom_permissions_name="example-permissions")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,12 +41,12 @@ import 'custom_permissions_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.CustomPermissions("example", new()
 ///     {
-///         CustomPermissionsName = "example-permissions",
 ///         Capabilities = new Aws.Quicksight.Inputs.CustomPermissionsCapabilitiesArgs
 ///         {
 ///             PrintReports = "DENY",
 ///             ShareDashboards = "DENY",
 ///         },
+///         CustomPermissionsName = "example-permissions",
 ///     });
 ///
 /// });
@@ -62,11 +62,11 @@ import 'custom_permissions_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewCustomPermissions(ctx, "example", &quicksight.CustomPermissionsArgs{
-/// 			CustomPermissionsName: pulumi.String("example-permissions"),
 /// 			Capabilities: &quicksight.CustomPermissionsCapabilitiesArgs{
 /// 				PrintReports:    pulumi.String("DENY"),
 /// 				ShareDashboards: pulumi.String("DENY"),
 /// 			},
+/// 			CustomPermissionsName: pulumi.String("example-permissions"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -85,11 +85,11 @@ import 'custom_permissions_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_custompermissions" "example" {
-///   custom_permissions_name = "example-permissions"
 ///   capabilities = {
 ///     print_reports    = "DENY"
 ///     share_dashboards = "DENY"
 ///   }
+///   custom_permissions_name = "example-permissions"
 /// }
 /// ```
 /// ```java
@@ -115,11 +115,11 @@ import 'custom_permissions_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomPermissions("example", CustomPermissionsArgs.builder()
-///             .customPermissionsName("example-permissions")
 ///             .capabilities(CustomPermissionsCapabilitiesArgs.builder()
 ///                 .printReports("DENY")
 ///                 .shareDashboards("DENY")
 ///                 .build())
+///             .customPermissionsName("example-permissions")
 ///             .build());
 ///
 ///     }
@@ -130,10 +130,10 @@ import 'custom_permissions_state.dart';
 ///   example:
 ///     type: aws:quicksight:CustomPermissions
 ///     properties:
-///       customPermissionsName: example-permissions
 ///       capabilities:
 ///         printReports: DENY
 ///         shareDashboards: DENY
+///       customPermissionsName: example-permissions
 /// ```
 ///
 ///
@@ -174,15 +174,15 @@ class CustomPermissions extends pulumi.CustomResource {
           'aws:quicksight/customPermissions:CustomPermissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     capabilities = registerOutput<CustomPermissionsCapabilities>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomPermissionsCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customPermissionsName = registerOutput<String>('customPermissionsName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CustomPermissions] resource's state with the given [name] and [id].
@@ -190,11 +190,12 @@ class CustomPermissions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomPermissionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomPermissions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,7 +214,25 @@ class CustomPermissions extends pulumi.CustomResource {
     capabilities = registerOutput<CustomPermissionsCapabilities>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomPermissionsCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customPermissionsName = registerOutput<String>('customPermissionsName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomPermissions] resource.
+  CustomPermissions.reference(String urn)
+    : super(
+        'aws:quicksight/customPermissions:CustomPermissions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    capabilities = registerOutput<CustomPermissionsCapabilities>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomPermissionsCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customPermissionsName = registerOutput<String>('customPermissionsName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

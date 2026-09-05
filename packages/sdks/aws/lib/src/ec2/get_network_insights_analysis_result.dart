@@ -10,35 +10,35 @@ import 'get_network_insights_analysis_return_path_component.dart';
 /// Result data returned by getNetworkInsightsAnalysis.
 class GetNetworkInsightsAnalysisResult {
   /// Potential intermediate components of a feasible path.
-  final List<GetNetworkInsightsAnalysisAlternatePathHint> alternatePathHints;
+  final List<GetNetworkInsightsAnalysisAlternatePathHint>? alternatePathHints;
   /// ARN of the selected Network Insights Analysis.
-  final String arn;
+  final String? arn;
   /// Explanation codes for an unreachable path.
-  final List<GetNetworkInsightsAnalysisExplanation> explanations;
+  final List<GetNetworkInsightsAnalysisExplanation>? explanations;
   /// ARNs of the AWS resources that the path must traverse.
-  final List<String> filterInArns;
+  final List<String>? filterInArns;
   final List<GetNetworkInsightsAnalysisFilter>? filters;
   /// The components in the path from source to destination.
-  final List<GetNetworkInsightsAnalysisForwardPathComponent> forwardPathComponents;
+  final List<GetNetworkInsightsAnalysisForwardPathComponent>? forwardPathComponents;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String networkInsightsAnalysisId;
+  final String? id;
+  final String? networkInsightsAnalysisId;
   /// The ID of the path.
-  final String networkInsightsPathId;
+  final String? networkInsightsPathId;
   /// Set to `true` if the destination was reachable.
-  final bool pathFound;
-  final String region;
+  final bool? pathFound;
+  final String? region;
   /// The components in the path from destination to source.
-  final List<GetNetworkInsightsAnalysisReturnPathComponent> returnPathComponents;
+  final List<GetNetworkInsightsAnalysisReturnPathComponent>? returnPathComponents;
   /// Date/time the analysis was started.
-  final String startDate;
+  final String? startDate;
   /// Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
-  final String status;
+  final String? status;
   /// Message to provide more context when the `status` is `failed`.
-  final String statusMessage;
-  final Map<String, String> tags;
+  final String? statusMessage;
+  final Map<String, String>? tags;
   /// Warning message.
-  final String warningMessage;
+  final String? warningMessage;
 
   /// Creates a new [GetNetworkInsightsAnalysisResult].
   /// [alternatePathHints] Potential intermediate components of a feasible path.
@@ -48,77 +48,77 @@ class GetNetworkInsightsAnalysisResult {
   /// [filters] Optional.
   /// [forwardPathComponents] The components in the path from source to destination.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [networkInsightsAnalysisId] Required.
+  /// [networkInsightsAnalysisId] Optional.
   /// [networkInsightsPathId] The ID of the path.
   /// [pathFound] Set to `true` if the destination was reachable.
-  /// [region] Required.
+  /// [region] Optional.
   /// [returnPathComponents] The components in the path from destination to source.
   /// [startDate] Date/time the analysis was started.
   /// [status] Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
   /// [statusMessage] Message to provide more context when the `status` is `failed`.
-  /// [tags] Required.
+  /// [tags] Optional.
   /// [warningMessage] Warning message.
   const GetNetworkInsightsAnalysisResult({
-    required this.alternatePathHints,
-    required this.arn,
-    required this.explanations,
-    required this.filterInArns,
+    this.alternatePathHints,
+    this.arn,
+    this.explanations,
+    this.filterInArns,
     this.filters,
-    required this.forwardPathComponents,
-    required this.id,
-    required this.networkInsightsAnalysisId,
-    required this.networkInsightsPathId,
-    required this.pathFound,
-    required this.region,
-    required this.returnPathComponents,
-    required this.startDate,
-    required this.status,
-    required this.statusMessage,
-    required this.tags,
-    required this.warningMessage,
+    this.forwardPathComponents,
+    this.id,
+    this.networkInsightsAnalysisId,
+    this.networkInsightsPathId,
+    this.pathFound,
+    this.region,
+    this.returnPathComponents,
+    this.startDate,
+    this.status,
+    this.statusMessage,
+    this.tags,
+    this.warningMessage,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternatePathHints': pulumi.Input.encodeList<GetNetworkInsightsAnalysisAlternatePathHint, Map<String, dynamic>>(alternatePathHints, (value) => value.toMap()),
-      'arn': arn,
-      'explanations': pulumi.Input.encodeList<GetNetworkInsightsAnalysisExplanation, Map<String, dynamic>>(explanations, (value) => value.toMap()),
-      'filterInArns': filterInArns,
+      'alternatePathHints': ?(() { final guardedValue = alternatePathHints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInsightsAnalysisAlternatePathHint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'arn': ?arn,
+      'explanations': ?(() { final guardedValue = explanations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInsightsAnalysisExplanation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'filterInArns': ?filterInArns,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInsightsAnalysisFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'forwardPathComponents': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponent, Map<String, dynamic>>(forwardPathComponents, (value) => value.toMap()),
-      'id': id,
-      'networkInsightsAnalysisId': networkInsightsAnalysisId,
-      'networkInsightsPathId': networkInsightsPathId,
-      'pathFound': pathFound,
-      'region': region,
-      'returnPathComponents': pulumi.Input.encodeList<GetNetworkInsightsAnalysisReturnPathComponent, Map<String, dynamic>>(returnPathComponents, (value) => value.toMap()),
-      'startDate': startDate,
-      'status': status,
-      'statusMessage': statusMessage,
-      'tags': tags,
-      'warningMessage': warningMessage,
+      'forwardPathComponents': ?(() { final guardedValue = forwardPathComponents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'networkInsightsAnalysisId': ?networkInsightsAnalysisId,
+      'networkInsightsPathId': ?networkInsightsPathId,
+      'pathFound': ?pathFound,
+      'region': ?region,
+      'returnPathComponents': ?(() { final guardedValue = returnPathComponents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkInsightsAnalysisReturnPathComponent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'startDate': ?startDate,
+      'status': ?status,
+      'statusMessage': ?statusMessage,
+      'tags': ?tags,
+      'warningMessage': ?warningMessage,
     };
   }
 
   factory GetNetworkInsightsAnalysisResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisResult(
-      alternatePathHints: pulumi.Input.decodeList<GetNetworkInsightsAnalysisAlternatePathHint>(map['alternatePathHints']!, (value) => GetNetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())),
-      arn: map['arn'] as String,
-      explanations: pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanation>(map['explanations']!, (value) => GetNetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())),
-      filterInArns: (map['filterInArns'] as List).cast<String>(),
+      alternatePathHints: (() { final guardedValue = map['alternatePathHints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInsightsAnalysisAlternatePathHint>(guardedValue, (value) => GetNetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      explanations: (() { final guardedValue = map['explanations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInsightsAnalysisExplanation>(guardedValue, (value) => GetNetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())); })(),
+      filterInArns: (() { final guardedValue = map['filterInArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInsightsAnalysisFilter>(guardedValue, (value) => GetNetworkInsightsAnalysisFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      forwardPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponent>(map['forwardPathComponents']!, (value) => GetNetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      networkInsightsAnalysisId: map['networkInsightsAnalysisId'] as String,
-      networkInsightsPathId: map['networkInsightsPathId'] as String,
-      pathFound: map['pathFound'] as bool,
-      region: map['region'] as String,
-      returnPathComponents: pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponent>(map['returnPathComponents']!, (value) => GetNetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())),
-      startDate: map['startDate'] as String,
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      warningMessage: map['warningMessage'] as String,
+      forwardPathComponents: (() { final guardedValue = map['forwardPathComponents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponent>(guardedValue, (value) => GetNetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInsightsAnalysisId: (() { final guardedValue = map['networkInsightsAnalysisId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInsightsPathId: (() { final guardedValue = map['networkInsightsPathId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pathFound: (() { final guardedValue = map['pathFound']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      returnPathComponents: (() { final guardedValue = map['returnPathComponents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponent>(guardedValue, (value) => GetNetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      warningMessage: (() { final guardedValue = map['warningMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

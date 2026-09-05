@@ -6,9 +6,9 @@ class V2modelsIntentKendraConfiguration {
   /// ARN of the Kendra index.
   final pulumi.Input<String> kendraIndex;
   /// Query filter string for Kendra.
-  final pulumi.Input<String>? queryFilterString;
+  final pulumi.Input<String?>? queryFilterString;
   /// Whether the query filter string is enabled.
-  final pulumi.Input<bool>? queryFilterStringEnabled;
+  final pulumi.Input<bool?>? queryFilterStringEnabled;
 
   /// Creates a new [V2modelsIntentKendraConfiguration].
   /// [kendraIndex] ARN of the Kendra index.

@@ -10,9 +10,9 @@ class GetApplicationArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Requested version of the application. By default, retrieves the latest version.
-  final pulumi.Input<String>? semanticVersion;
+  final pulumi.Input<String?>? semanticVersion;
 
   /// Creates a new [GetApplicationArgs].
   /// [applicationId] ARN of the application.

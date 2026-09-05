@@ -5,7 +5,7 @@ import 'permissions_lf_tag_policy_expression.dart';
 
 class PermissionsLfTagPolicy {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// A list of tag conditions that apply to the resource's tag policy. Configuration block for tag conditions that apply to the policy. See `expression` below.
   ///
   /// The following argument is optional:

@@ -124,7 +124,7 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
           'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
@@ -134,11 +134,12 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutboundWebIdentityFederationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutboundWebIdentityFederation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -152,6 +153,18 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    issuerIdentifier = registerOutput<String>('issuerIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [OutboundWebIdentityFederation] resource.
+  OutboundWebIdentityFederation.reference(String urn)
+    : super(
+        'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
 }

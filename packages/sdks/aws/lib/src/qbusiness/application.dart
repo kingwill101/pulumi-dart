@@ -15,12 +15,12 @@ import 'application_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.qbusiness.Application("example", {
-///     displayName: "example-app",
-///     iamServiceRoleArn: exampleAwsIamRole.arn,
-///     identityCenterInstanceArn: exampleAwsSsoadminInstances.arns[0],
 ///     attachmentsConfiguration: {
 ///         attachmentsControlMode: "ENABLED",
 ///     },
+///     displayName: "example-app",
+///     iamServiceRoleArn: exampleAwsIamRole.arn,
+///     identityCenterInstanceArn: exampleAwsSsoadminInstances.arns[0],
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'application_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.qbusiness.Application("example",
-///     display_name="example-app",
-///     iam_service_role_arn=example_aws_iam_role["arn"],
-///     identity_center_instance_arn=example_aws_ssoadmin_instances["arns"][0],
 ///     attachments_configuration={
 ///         "attachments_control_mode": "ENABLED",
-///     })
+///     },
+///     display_name="example-app",
+///     iam_service_role_arn=example_aws_iam_role["arn"],
+///     identity_center_instance_arn=example_aws_ssoadmin_instances["arns"][0])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,13 +45,13 @@ import 'application_timeouts.dart';
 /// {
 ///     var example = new Aws.Qbusiness.Application("example", new()
 ///     {
-///         DisplayName = "example-app",
-///         IamServiceRoleArn = exampleAwsIamRole.Arn,
-///         IdentityCenterInstanceArn = exampleAwsSsoadminInstances.Arns[0],
 ///         AttachmentsConfiguration = new Aws.Qbusiness.Inputs.ApplicationAttachmentsConfigurationArgs
 ///         {
 ///             AttachmentsControlMode = "ENABLED",
 ///         },
+///         DisplayName = "example-app",
+///         IamServiceRoleArn = exampleAwsIamRole.Arn,
+///         IdentityCenterInstanceArn = exampleAwsSsoadminInstances.Arns[0],
 ///     });
 ///
 /// });
@@ -67,12 +67,12 @@ import 'application_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := qbusiness.NewApplication(ctx, "example", &qbusiness.ApplicationArgs{
-/// 			DisplayName:               pulumi.String("example-app"),
-/// 			IamServiceRoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
-/// 			IdentityCenterInstanceArn: pulumi.Any(exampleAwsSsoadminInstances.Arns[0]),
 /// 			AttachmentsConfiguration: &qbusiness.ApplicationAttachmentsConfigurationArgs{
 /// 				AttachmentsControlMode: pulumi.String("ENABLED"),
 /// 			},
+/// 			DisplayName:               pulumi.String("example-app"),
+/// 			IamServiceRoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
+/// 			IdentityCenterInstanceArn: pulumi.Any(exampleAwsSsoadminInstances.Arns[0]),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,12 +91,12 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_qbusiness_application" "example" {
-///   display_name                 = "example-app"
-///   iam_service_role_arn         = exampleAwsIamRole.arn
-///   identity_center_instance_arn = exampleAwsSsoadminInstances.arns[0]
 ///   attachments_configuration = {
 ///     attachments_control_mode = "ENABLED"
 ///   }
+///   display_name                 = "example-app"
+///   iam_service_role_arn         = exampleAwsIamRole.arn
+///   identity_center_instance_arn = exampleAwsSsoadminInstances.arns[0]
 /// }
 /// ```
 /// ```java
@@ -122,12 +122,12 @@ import 'application_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Application("example", ApplicationArgs.builder()
-///             .displayName("example-app")
-///             .iamServiceRoleArn(exampleAwsIamRole.arn())
-///             .identityCenterInstanceArn(exampleAwsSsoadminInstances.arns()[0])
 ///             .attachmentsConfiguration(ApplicationAttachmentsConfigurationArgs.builder()
 ///                 .attachmentsControlMode("ENABLED")
 ///                 .build())
+///             .displayName("example-app")
+///             .iamServiceRoleArn(exampleAwsIamRole.arn())
+///             .identityCenterInstanceArn(exampleAwsSsoadminInstances.arns()[0])
 ///             .build());
 ///
 ///     }
@@ -138,11 +138,11 @@ import 'application_timeouts.dart';
 ///   example:
 ///     type: aws:qbusiness:Application
 ///     properties:
+///       attachmentsConfiguration:
+///         attachmentsControlMode: ENABLED
 ///       displayName: example-app
 ///       iamServiceRoleArn: ${exampleAwsIamRole.arn}
 ///       identityCenterInstanceArn: ${exampleAwsSsoadminInstances.arns[0]}
-///       attachmentsConfiguration:
-///         attachmentsControlMode: ENABLED
 /// ```
 ///
 ///
@@ -191,7 +191,7 @@ class Application extends pulumi.CustomResource {
           'aws:qbusiness/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -202,8 +202,8 @@ class Application extends pulumi.CustomResource {
     identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
     identityCenterInstanceArn = registerOutput<String>('identityCenterInstanceArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -212,11 +212,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,8 +240,31 @@ class Application extends pulumi.CustomResource {
     identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
     identityCenterInstanceArn = registerOutput<String>('identityCenterInstanceArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:qbusiness/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    encryptionConfiguration = registerOutput<ApplicationEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
+    identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
+    identityCenterInstanceArn = registerOutput<String>('identityCenterInstanceArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionSend {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// ARN of the IAM role used to send the email.
   final pulumi.Input<String> roleArn;
 

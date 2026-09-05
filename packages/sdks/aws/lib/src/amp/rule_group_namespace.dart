@@ -174,7 +174,7 @@ import 'rule_group_namespace_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Prometheus rule group namespace.
+/// - `arn` (String) ARN of the Prometheus rule group namespace.
 ///
 ///
 /// Using `pulumi import`, import the prometheus rule group namespace using the arn. For example:
@@ -210,14 +210,14 @@ class RuleGroupNamespace extends pulumi.CustomResource {
           'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -226,11 +226,12 @@ class RuleGroupNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleGroupNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuleGroupNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,8 +249,26 @@ class RuleGroupNamespace extends pulumi.CustomResource {
     data = registerOutput<String>('data');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [RuleGroupNamespace] resource.
+  RuleGroupNamespace.reference(String urn)
+    : super(
+        'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    data = registerOutput<String>('data');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_core_resource_provider_feature_registration_resource_provider_feature_registration_args_doc}
 class ResourceProviderFeatureRegistrationArgs {
   /// Specifies the name of the feature to register. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Resource Provider name. Changing this forces a new resource to be created.
   final pulumi.Input<String> providerName;
 

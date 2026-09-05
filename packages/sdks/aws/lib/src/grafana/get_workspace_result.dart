@@ -4,48 +4,48 @@
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
-  final String accountAccessType;
+  final String? accountAccessType;
   /// ARN of the Grafana workspace.
-  final String arn;
+  final String? arn;
   /// (Required) Authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
-  final List<String> authenticationProviders;
+  final List<String>? authenticationProviders;
   /// Creation date of the Grafana workspace.
-  final String createdDate;
+  final String? createdDate;
   /// Data sources for the workspace.
-  final List<String> dataSources;
+  final List<String>? dataSources;
   /// Workspace description.
-  final String description;
+  final String? description;
   /// Endpoint of the Grafana workspace.
-  final String endpoint;
+  final String? endpoint;
   /// Version of Grafana running on the workspace.
-  final String grafanaVersion;
+  final String? grafanaVersion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The ID or ARN of the AWS KMS key for encrypting workspace data.
-  final String kmsKeyId;
+  final String? kmsKeyId;
   /// Last updated date of the Grafana workspace.
-  final String lastUpdatedDate;
+  final String? lastUpdatedDate;
   /// Grafana workspace name.
-  final String name;
+  final String? name;
   /// The notification destinations.
-  final List<String> notificationDestinations;
+  final List<String>? notificationDestinations;
   /// The role name that the workspace uses to access resources through Amazon Organizations.
-  final String organizationRoleName;
+  final String? organizationRoleName;
   /// The Amazon Organizations organizational units that the workspace is authorized to use data sources from.
-  final List<String> organizationalUnits;
+  final List<String>? organizationalUnits;
   /// Permission type of the workspace.
-  final String permissionType;
-  final String region;
+  final String? permissionType;
+  final String? region;
   /// IAM role ARN that the workspace assumes.
-  final String roleArn;
-  final String samlConfigurationStatus;
+  final String? roleArn;
+  final String? samlConfigurationStatus;
   /// AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
-  final String stackSetName;
+  final String? stackSetName;
   /// Status of the Grafana workspace.
-  final String status;
+  final String? status;
   /// Tags assigned to the resource
-  final Map<String, String> tags;
-  final String workspaceId;
+  final Map<String, String>? tags;
+  final String? workspaceId;
 
   /// Creates a new [GetWorkspaceResult].
   /// [accountAccessType] (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
@@ -64,92 +64,92 @@ class GetWorkspaceResult {
   /// [organizationRoleName] The role name that the workspace uses to access resources through Amazon Organizations.
   /// [organizationalUnits] The Amazon Organizations organizational units that the workspace is authorized to use data sources from.
   /// [permissionType] Permission type of the workspace.
-  /// [region] Required.
+  /// [region] Optional.
   /// [roleArn] IAM role ARN that the workspace assumes.
-  /// [samlConfigurationStatus] Required.
+  /// [samlConfigurationStatus] Optional.
   /// [stackSetName] AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   /// [status] Status of the Grafana workspace.
   /// [tags] Tags assigned to the resource
-  /// [workspaceId] Required.
+  /// [workspaceId] Optional.
   const GetWorkspaceResult({
-    required this.accountAccessType,
-    required this.arn,
-    required this.authenticationProviders,
-    required this.createdDate,
-    required this.dataSources,
-    required this.description,
-    required this.endpoint,
-    required this.grafanaVersion,
-    required this.id,
-    required this.kmsKeyId,
-    required this.lastUpdatedDate,
-    required this.name,
-    required this.notificationDestinations,
-    required this.organizationRoleName,
-    required this.organizationalUnits,
-    required this.permissionType,
-    required this.region,
-    required this.roleArn,
-    required this.samlConfigurationStatus,
-    required this.stackSetName,
-    required this.status,
-    required this.tags,
-    required this.workspaceId,
+    this.accountAccessType,
+    this.arn,
+    this.authenticationProviders,
+    this.createdDate,
+    this.dataSources,
+    this.description,
+    this.endpoint,
+    this.grafanaVersion,
+    this.id,
+    this.kmsKeyId,
+    this.lastUpdatedDate,
+    this.name,
+    this.notificationDestinations,
+    this.organizationRoleName,
+    this.organizationalUnits,
+    this.permissionType,
+    this.region,
+    this.roleArn,
+    this.samlConfigurationStatus,
+    this.stackSetName,
+    this.status,
+    this.tags,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountAccessType': accountAccessType,
-      'arn': arn,
-      'authenticationProviders': authenticationProviders,
-      'createdDate': createdDate,
-      'dataSources': dataSources,
-      'description': description,
-      'endpoint': endpoint,
-      'grafanaVersion': grafanaVersion,
-      'id': id,
-      'kmsKeyId': kmsKeyId,
-      'lastUpdatedDate': lastUpdatedDate,
-      'name': name,
-      'notificationDestinations': notificationDestinations,
-      'organizationRoleName': organizationRoleName,
-      'organizationalUnits': organizationalUnits,
-      'permissionType': permissionType,
-      'region': region,
-      'roleArn': roleArn,
-      'samlConfigurationStatus': samlConfigurationStatus,
-      'stackSetName': stackSetName,
-      'status': status,
-      'tags': tags,
-      'workspaceId': workspaceId,
+      'accountAccessType': ?accountAccessType,
+      'arn': ?arn,
+      'authenticationProviders': ?authenticationProviders,
+      'createdDate': ?createdDate,
+      'dataSources': ?dataSources,
+      'description': ?description,
+      'endpoint': ?endpoint,
+      'grafanaVersion': ?grafanaVersion,
+      'id': ?id,
+      'kmsKeyId': ?kmsKeyId,
+      'lastUpdatedDate': ?lastUpdatedDate,
+      'name': ?name,
+      'notificationDestinations': ?notificationDestinations,
+      'organizationRoleName': ?organizationRoleName,
+      'organizationalUnits': ?organizationalUnits,
+      'permissionType': ?permissionType,
+      'region': ?region,
+      'roleArn': ?roleArn,
+      'samlConfigurationStatus': ?samlConfigurationStatus,
+      'stackSetName': ?stackSetName,
+      'status': ?status,
+      'tags': ?tags,
+      'workspaceId': ?workspaceId,
     };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      accountAccessType: map['accountAccessType'] as String,
-      arn: map['arn'] as String,
-      authenticationProviders: (map['authenticationProviders'] as List).cast<String>(),
-      createdDate: map['createdDate'] as String,
-      dataSources: (map['dataSources'] as List).cast<String>(),
-      description: map['description'] as String,
-      endpoint: map['endpoint'] as String,
-      grafanaVersion: map['grafanaVersion'] as String,
-      id: map['id'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      lastUpdatedDate: map['lastUpdatedDate'] as String,
-      name: map['name'] as String,
-      notificationDestinations: (map['notificationDestinations'] as List).cast<String>(),
-      organizationRoleName: map['organizationRoleName'] as String,
-      organizationalUnits: (map['organizationalUnits'] as List).cast<String>(),
-      permissionType: map['permissionType'] as String,
-      region: map['region'] as String,
-      roleArn: map['roleArn'] as String,
-      samlConfigurationStatus: map['samlConfigurationStatus'] as String,
-      stackSetName: map['stackSetName'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      workspaceId: map['workspaceId'] as String,
+      accountAccessType: (() { final guardedValue = map['accountAccessType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authenticationProviders: (() { final guardedValue = map['authenticationProviders']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSources: (() { final guardedValue = map['dataSources']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      grafanaVersion: (() { final guardedValue = map['grafanaVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastUpdatedDate: (() { final guardedValue = map['lastUpdatedDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notificationDestinations: (() { final guardedValue = map['notificationDestinations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      organizationRoleName: (() { final guardedValue = map['organizationRoleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      organizationalUnits: (() { final guardedValue = map['organizationalUnits']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      permissionType: (() { final guardedValue = map['permissionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      samlConfigurationStatus: (() { final guardedValue = map['samlConfigurationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stackSetName: (() { final guardedValue = map['stackSetName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

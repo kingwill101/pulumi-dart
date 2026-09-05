@@ -49,7 +49,7 @@ class GetBudgetNotification {
       notificationType: pulumi.Input.fromValue(map['notificationType'] as String),
       subscriberEmailAddresses: pulumi.Input.fromValue((map['subscriberEmailAddresses'] as List).cast<String>()),
       subscriberSnsTopicArns: pulumi.Input.fromValue((map['subscriberSnsTopicArns'] as List).cast<String>()),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
     );
   }

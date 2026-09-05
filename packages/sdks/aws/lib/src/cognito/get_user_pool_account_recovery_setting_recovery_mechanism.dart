@@ -26,7 +26,7 @@ class GetUserPoolAccountRecoverySettingRecoveryMechanism {
   factory GetUserPoolAccountRecoverySettingRecoveryMechanism.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAccountRecoverySettingRecoveryMechanism(
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

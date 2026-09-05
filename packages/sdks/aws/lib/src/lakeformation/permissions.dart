@@ -206,23 +206,23 @@ import 'permissions_table_with_columns.dart';
 ///
 /// const example = new aws.glue.CatalogDatabase("example", {name: "sadabate"});
 /// const exampleCatalogTable = new aws.glue.CatalogTable("example", {
-///     name: "abelt",
-///     databaseName: test.name,
 ///     storageDescriptor: {
 ///         columns: [{
 ///             name: "event",
 ///             type: "string",
 ///         }],
 ///     },
+///     name: "abelt",
+///     databaseName: test.name,
 /// });
 /// const examplePermissions = new aws.lakeformation.Permissions("example", {
-///     permissions: ["SELECT"],
-///     principal: "arn:aws:iam:us-east-1:123456789012:user/SanHolo",
 ///     tableWithColumns: {
 ///         databaseName: exampleCatalogTable.databaseName,
 ///         name: exampleCatalogTable.name,
 ///         columnNames: ["event"],
 ///     },
+///     permissions: ["SELECT"],
+///     principal: "arn:aws:iam:us-east-1:123456789012:user/SanHolo",
 /// });
 /// ```
 /// ```python
@@ -231,22 +231,22 @@ import 'permissions_table_with_columns.dart';
 ///
 /// example = aws.glue.CatalogDatabase("example", name="sadabate")
 /// example_catalog_table = aws.glue.CatalogTable("example",
-///     name="abelt",
-///     database_name=test["name"],
 ///     storage_descriptor={
 ///         "columns": [{
 ///             "name": "event",
 ///             "type": "string",
 ///         }],
-///     })
+///     },
+///     name="abelt",
+///     database_name=test["name"])
 /// example_permissions = aws.lakeformation.Permissions("example",
-///     permissions=["SELECT"],
-///     principal="arn:aws:iam:us-east-1:123456789012:user/SanHolo",
 ///     table_with_columns={
 ///         "database_name": example_catalog_table.database_name,
 ///         "name": example_catalog_table.name,
 ///         "column_names": ["event"],
-///     })
+///     },
+///     permissions=["SELECT"],
+///     principal="arn:aws:iam:us-east-1:123456789012:user/SanHolo")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -263,8 +263,6 @@ import 'permissions_table_with_columns.dart';
 ///
 ///     var exampleCatalogTable = new Aws.Glue.CatalogTable("example", new()
 ///     {
-///         Name = "abelt",
-///         DatabaseName = test.Name,
 ///         StorageDescriptor = new Aws.Glue.Inputs.CatalogTableStorageDescriptorArgs
 ///         {
 ///             Columns = new[]
@@ -276,15 +274,12 @@ import 'permissions_table_with_columns.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "abelt",
+///         DatabaseName = test.Name,
 ///     });
 ///
 ///     var examplePermissions = new Aws.LakeFormation.Permissions("example", new()
 ///     {
-///         PermissionDetails = new[]
-///         {
-///             "SELECT",
-///         },
-///         Principal = "arn:aws:iam:us-east-1:123456789012:user/SanHolo",
 ///         TableWithColumns = new Aws.LakeFormation.Inputs.PermissionsTableWithColumnsArgs
 ///         {
 ///             DatabaseName = exampleCatalogTable.DatabaseName,
@@ -294,6 +289,11 @@ import 'permissions_table_with_columns.dart';
 ///                 "event",
 ///             },
 ///         },
+///         PermissionDetails = new[]
+///         {
+///             "SELECT",
+///         },
+///         Principal = "arn:aws:iam:us-east-1:123456789012:user/SanHolo",
 ///     });
 ///
 /// });
@@ -316,8 +316,6 @@ import 'permissions_table_with_columns.dart';
 /// 			return err
 /// 		}
 /// 		exampleCatalogTable, err := glue.NewCatalogTable(ctx, "example", &glue.CatalogTableArgs{
-/// 			Name:         pulumi.String("abelt"),
-/// 			DatabaseName: pulumi.Any(test.Name),
 /// 			StorageDescriptor: &glue.CatalogTableStorageDescriptorArgs{
 /// 				Columns: glue.CatalogTableStorageDescriptorColumnArray{
 /// 					&glue.CatalogTableStorageDescriptorColumnArgs{
@@ -326,15 +324,13 @@ import 'permissions_table_with_columns.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("abelt"),
+/// 			DatabaseName: pulumi.Any(test.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = lakeformation.NewPermissions(ctx, "example", &lakeformation.PermissionsArgs{
-/// 			Permissions: pulumi.StringArray{
-/// 				pulumi.String("SELECT"),
-/// 			},
-/// 			Principal: pulumi.String("arn:aws:iam:us-east-1:123456789012:user/SanHolo"),
 /// 			TableWithColumns: &lakeformation.PermissionsTableWithColumnsArgs{
 /// 				DatabaseName: exampleCatalogTable.DatabaseName,
 /// 				Name:         exampleCatalogTable.Name,
@@ -342,6 +338,10 @@ import 'permissions_table_with_columns.dart';
 /// 					pulumi.String("event"),
 /// 				},
 /// 			},
+/// 			Permissions: pulumi.StringArray{
+/// 				pulumi.String("SELECT"),
+/// 			},
+/// 			Principal: pulumi.String("arn:aws:iam:us-east-1:123456789012:user/SanHolo"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -363,23 +363,23 @@ import 'permissions_table_with_columns.dart';
 ///   name = "sadabate"
 /// }
 /// resource "aws_glue_catalogtable" "example" {
-///   name          = "abelt"
-///   database_name = test.name
 ///   storage_descriptor = {
 ///     columns = [{
 ///       "name" = "event"
 ///       "type" = "string"
 ///     }]
 ///   }
+///   name          = "abelt"
+///   database_name = test.name
 /// }
 /// resource "aws_lakeformation_permissions" "example" {
-///   permissions = ["SELECT"]
-///   principal   = "arn:aws:iam:us-east-1:123456789012:user/SanHolo"
 ///   table_with_columns = {
 ///     database_name = aws_glue_catalogtable.example.database_name
 ///     name          = aws_glue_catalogtable.example.name
 ///     column_names  = ["event"]
 ///   }
+///   permissions = ["SELECT"]
+///   principal   = "arn:aws:iam:us-east-1:123456789012:user/SanHolo"
 /// }
 /// ```
 /// ```java
@@ -415,24 +415,24 @@ import 'permissions_table_with_columns.dart';
 ///             .build());
 ///
 ///         var exampleCatalogTable = new CatalogTable("exampleCatalogTable", CatalogTableArgs.builder()
-///             .name("abelt")
-///             .databaseName(test.name())
 ///             .storageDescriptor(CatalogTableStorageDescriptorArgs.builder()
 ///                 .columns(CatalogTableStorageDescriptorColumnArgs.builder()
 ///                     .name("event")
 ///                     .type("string")
 ///                     .build())
 ///                 .build())
+///             .name("abelt")
+///             .databaseName(test.name())
 ///             .build());
 ///
 ///         var examplePermissions = new Permissions("examplePermissions", PermissionsArgs.builder()
-///             .permissions("SELECT")
-///             .principal("arn:aws:iam:us-east-1:123456789012:user/SanHolo")
 ///             .tableWithColumns(PermissionsTableWithColumnsArgs.builder()
 ///                 .databaseName(exampleCatalogTable.databaseName())
 ///                 .name(exampleCatalogTable.name())
 ///                 .columnNames("event")
 ///                 .build())
+///             .permissions("SELECT")
+///             .principal("arn:aws:iam:us-east-1:123456789012:user/SanHolo")
 ///             .build());
 ///
 ///     }
@@ -448,24 +448,24 @@ import 'permissions_table_with_columns.dart';
 ///     type: aws:glue:CatalogTable
 ///     name: example
 ///     properties:
-///       name: abelt
-///       databaseName: ${test.name}
 ///       storageDescriptor:
 ///         columns:
 ///           - name: event
 ///             type: string
+///       name: abelt
+///       databaseName: ${test.name}
 ///   examplePermissions:
 ///     type: aws:lakeformation:Permissions
 ///     name: example
 ///     properties:
-///       permissions:
-///         - SELECT
-///       principal: arn:aws:iam:us-east-1:123456789012:user/SanHolo
 ///       tableWithColumns:
 ///         databaseName: ${exampleCatalogTable.databaseName}
 ///         name: ${exampleCatalogTable.name}
 ///         columnNames:
 ///           - event
+///       permissions:
+///         - SELECT
+///       principal: arn:aws:iam:us-east-1:123456789012:user/SanHolo
 /// ```
 ///
 ///
@@ -485,13 +485,13 @@ import 'permissions_table_with_columns.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.Permissions("example", {
-///     permissions: ["SELECT"],
-///     principal: "123456789012:IAMPrincipals",
 ///     tableWithColumns: {
 ///         databaseName: exampleAwsGlueCatalogTable.databaseName,
 ///         name: exampleAwsGlueCatalogTable.name,
 ///         columnNames: ["event"],
 ///     },
+///     permissions: ["SELECT"],
+///     principal: "123456789012:IAMPrincipals",
 /// });
 /// ```
 /// ```python
@@ -499,13 +499,13 @@ import 'permissions_table_with_columns.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.Permissions("example",
-///     permissions=["SELECT"],
-///     principal="123456789012:IAMPrincipals",
 ///     table_with_columns={
 ///         "database_name": example_aws_glue_catalog_table["databaseName"],
 ///         "name": example_aws_glue_catalog_table["name"],
 ///         "column_names": ["event"],
-///     })
+///     },
+///     permissions=["SELECT"],
+///     principal="123456789012:IAMPrincipals")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -517,11 +517,6 @@ import 'permissions_table_with_columns.dart';
 /// {
 ///     var example = new Aws.LakeFormation.Permissions("example", new()
 ///     {
-///         PermissionDetails = new[]
-///         {
-///             "SELECT",
-///         },
-///         Principal = "123456789012:IAMPrincipals",
 ///         TableWithColumns = new Aws.LakeFormation.Inputs.PermissionsTableWithColumnsArgs
 ///         {
 ///             DatabaseName = exampleAwsGlueCatalogTable.DatabaseName,
@@ -531,6 +526,11 @@ import 'permissions_table_with_columns.dart';
 ///                 "event",
 ///             },
 ///         },
+///         PermissionDetails = new[]
+///         {
+///             "SELECT",
+///         },
+///         Principal = "123456789012:IAMPrincipals",
 ///     });
 ///
 /// });
@@ -546,10 +546,6 @@ import 'permissions_table_with_columns.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewPermissions(ctx, "example", &lakeformation.PermissionsArgs{
-/// 			Permissions: pulumi.StringArray{
-/// 				pulumi.String("SELECT"),
-/// 			},
-/// 			Principal: pulumi.String("123456789012:IAMPrincipals"),
 /// 			TableWithColumns: &lakeformation.PermissionsTableWithColumnsArgs{
 /// 				DatabaseName: pulumi.Any(exampleAwsGlueCatalogTable.DatabaseName),
 /// 				Name:         pulumi.Any(exampleAwsGlueCatalogTable.Name),
@@ -557,6 +553,10 @@ import 'permissions_table_with_columns.dart';
 /// 					pulumi.String("event"),
 /// 				},
 /// 			},
+/// 			Permissions: pulumi.StringArray{
+/// 				pulumi.String("SELECT"),
+/// 			},
+/// 			Principal: pulumi.String("123456789012:IAMPrincipals"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -575,13 +575,13 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   permissions = ["SELECT"]
-///   principal   = "123456789012:IAMPrincipals"
 ///   table_with_columns = {
 ///     database_name = exampleAwsGlueCatalogTable.databaseName
 ///     name          = exampleAwsGlueCatalogTable.name
 ///     column_names  = ["event"]
 ///   }
+///   permissions = ["SELECT"]
+///   principal   = "123456789012:IAMPrincipals"
 /// }
 /// ```
 /// ```java
@@ -607,13 +607,13 @@ import 'permissions_table_with_columns.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
-///             .permissions("SELECT")
-///             .principal("123456789012:IAMPrincipals")
 ///             .tableWithColumns(PermissionsTableWithColumnsArgs.builder()
 ///                 .databaseName(exampleAwsGlueCatalogTable.databaseName())
 ///                 .name(exampleAwsGlueCatalogTable.name())
 ///                 .columnNames("event")
 ///                 .build())
+///             .permissions("SELECT")
+///             .principal("123456789012:IAMPrincipals")
 ///             .build());
 ///
 ///     }
@@ -624,14 +624,14 @@ import 'permissions_table_with_columns.dart';
 ///   example:
 ///     type: aws:lakeformation:Permissions
 ///     properties:
-///       permissions:
-///         - SELECT
-///       principal: 123456789012:IAMPrincipals
 ///       tableWithColumns:
 ///         databaseName: ${exampleAwsGlueCatalogTable.databaseName}
 ///         name: ${exampleAwsGlueCatalogTable.name}
 ///         columnNames:
 ///           - event
+///       permissions:
+///         - SELECT
+///       principal: 123456789012:IAMPrincipals
 /// ```
 ///
 ///
@@ -651,11 +651,11 @@ import 'permissions_table_with_columns.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.Permissions("example", {
-///     principal: workflowRole.arn,
-///     permissions: ["DATA_LOCATION_ACCESS"],
 ///     dataLocation: {
 ///         arn: exampleAwsLakeformationResource.arn,
 ///     },
+///     principal: workflowRole.arn,
+///     permissions: ["DATA_LOCATION_ACCESS"],
 /// });
 /// ```
 /// ```python
@@ -663,11 +663,11 @@ import 'permissions_table_with_columns.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.Permissions("example",
-///     principal=workflow_role["arn"],
-///     permissions=["DATA_LOCATION_ACCESS"],
 ///     data_location={
 ///         "arn": example_aws_lakeformation_resource["arn"],
-///     })
+///     },
+///     principal=workflow_role["arn"],
+///     permissions=["DATA_LOCATION_ACCESS"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -679,14 +679,14 @@ import 'permissions_table_with_columns.dart';
 /// {
 ///     var example = new Aws.LakeFormation.Permissions("example", new()
 ///     {
+///         DataLocation = new Aws.LakeFormation.Inputs.PermissionsDataLocationArgs
+///         {
+///             Arn = exampleAwsLakeformationResource.Arn,
+///         },
 ///         Principal = workflowRole.Arn,
 ///         PermissionDetails = new[]
 ///         {
 ///             "DATA_LOCATION_ACCESS",
-///         },
-///         DataLocation = new Aws.LakeFormation.Inputs.PermissionsDataLocationArgs
-///         {
-///             Arn = exampleAwsLakeformationResource.Arn,
 ///         },
 ///     });
 ///
@@ -703,12 +703,12 @@ import 'permissions_table_with_columns.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewPermissions(ctx, "example", &lakeformation.PermissionsArgs{
+/// 			DataLocation: &lakeformation.PermissionsDataLocationArgs{
+/// 				Arn: pulumi.Any(exampleAwsLakeformationResource.Arn),
+/// 			},
 /// 			Principal: pulumi.Any(workflowRole.Arn),
 /// 			Permissions: pulumi.StringArray{
 /// 				pulumi.String("DATA_LOCATION_ACCESS"),
-/// 			},
-/// 			DataLocation: &lakeformation.PermissionsDataLocationArgs{
-/// 				Arn: pulumi.Any(exampleAwsLakeformationResource.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -728,11 +728,11 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   principal   = workflowRole.arn
-///   permissions = ["DATA_LOCATION_ACCESS"]
 ///   data_location = {
 ///     arn = exampleAwsLakeformationResource.arn
 ///   }
+///   principal   = workflowRole.arn
+///   permissions = ["DATA_LOCATION_ACCESS"]
 /// }
 /// ```
 /// ```java
@@ -758,11 +758,11 @@ import 'permissions_table_with_columns.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
-///             .principal(workflowRole.arn())
-///             .permissions("DATA_LOCATION_ACCESS")
 ///             .dataLocation(PermissionsDataLocationArgs.builder()
 ///                 .arn(exampleAwsLakeformationResource.arn())
 ///                 .build())
+///             .principal(workflowRole.arn())
+///             .permissions("DATA_LOCATION_ACCESS")
 ///             .build());
 ///
 ///     }
@@ -773,11 +773,11 @@ import 'permissions_table_with_columns.dart';
 ///   example:
 ///     type: aws:lakeformation:Permissions
 ///     properties:
+///       dataLocation:
+///         arn: ${exampleAwsLakeformationResource.arn}
 ///       principal: ${workflowRole.arn}
 ///       permissions:
 ///         - DATA_LOCATION_ACCESS
-///       dataLocation:
-///         arn: ${exampleAwsLakeformationResource.arn}
 /// ```
 ///
 ///
@@ -789,16 +789,16 @@ import 'permissions_table_with_columns.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.Permissions("example", {
+///     database: {
+///         name: exampleAwsGlueCatalogDatabase.name,
+///         catalogId: "110376042874",
+///     },
 ///     principal: workflowRole.arn,
 ///     permissions: [
 ///         "CREATE_TABLE",
 ///         "ALTER",
 ///         "DROP",
 ///     ],
-///     database: {
-///         name: exampleAwsGlueCatalogDatabase.name,
-///         catalogId: "110376042874",
-///     },
 /// });
 /// ```
 /// ```python
@@ -806,16 +806,16 @@ import 'permissions_table_with_columns.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.Permissions("example",
+///     database={
+///         "name": example_aws_glue_catalog_database["name"],
+///         "catalog_id": "110376042874",
+///     },
 ///     principal=workflow_role["arn"],
 ///     permissions=[
 ///         "CREATE_TABLE",
 ///         "ALTER",
 ///         "DROP",
-///     ],
-///     database={
-///         "name": example_aws_glue_catalog_database["name"],
-///         "catalog_id": "110376042874",
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -827,17 +827,17 @@ import 'permissions_table_with_columns.dart';
 /// {
 ///     var example = new Aws.LakeFormation.Permissions("example", new()
 ///     {
+///         Database = new Aws.LakeFormation.Inputs.PermissionsDatabaseArgs
+///         {
+///             Name = exampleAwsGlueCatalogDatabase.Name,
+///             CatalogId = "110376042874",
+///         },
 ///         Principal = workflowRole.Arn,
 ///         PermissionDetails = new[]
 ///         {
 ///             "CREATE_TABLE",
 ///             "ALTER",
 ///             "DROP",
-///         },
-///         Database = new Aws.LakeFormation.Inputs.PermissionsDatabaseArgs
-///         {
-///             Name = exampleAwsGlueCatalogDatabase.Name,
-///             CatalogId = "110376042874",
 ///         },
 ///     });
 ///
@@ -854,15 +854,15 @@ import 'permissions_table_with_columns.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewPermissions(ctx, "example", &lakeformation.PermissionsArgs{
+/// 			Database: &lakeformation.PermissionsDatabaseArgs{
+/// 				Name:      pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
+/// 				CatalogId: pulumi.String("110376042874"),
+/// 			},
 /// 			Principal: pulumi.Any(workflowRole.Arn),
 /// 			Permissions: pulumi.StringArray{
 /// 				pulumi.String("CREATE_TABLE"),
 /// 				pulumi.String("ALTER"),
 /// 				pulumi.String("DROP"),
-/// 			},
-/// 			Database: &lakeformation.PermissionsDatabaseArgs{
-/// 				Name:      pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
-/// 				CatalogId: pulumi.String("110376042874"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -882,12 +882,12 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "example" {
-///   principal   = workflowRole.arn
-///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
 ///   database = {
 ///     name       = exampleAwsGlueCatalogDatabase.name
 ///     catalog_id = "110376042874"
 ///   }
+///   principal   = workflowRole.arn
+///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
 /// }
 /// ```
 /// ```java
@@ -913,15 +913,15 @@ import 'permissions_table_with_columns.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Permissions("example", PermissionsArgs.builder()
+///             .database(PermissionsDatabaseArgs.builder()
+///                 .name(exampleAwsGlueCatalogDatabase.name())
+///                 .catalogId("110376042874")
+///                 .build())
 ///             .principal(workflowRole.arn())
 ///             .permissions(
 ///                 "CREATE_TABLE",
 ///                 "ALTER",
 ///                 "DROP")
-///             .database(PermissionsDatabaseArgs.builder()
-///                 .name(exampleAwsGlueCatalogDatabase.name())
-///                 .catalogId("110376042874")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -932,14 +932,14 @@ import 'permissions_table_with_columns.dart';
 ///   example:
 ///     type: aws:lakeformation:Permissions
 ///     properties:
+///       database:
+///         name: ${exampleAwsGlueCatalogDatabase.name}
+///         catalogId: '110376042874'
 ///       principal: ${workflowRole.arn}
 ///       permissions:
 ///         - CREATE_TABLE
 ///         - ALTER
 ///         - DROP
-///       database:
-///         name: ${exampleAwsGlueCatalogDatabase.name}
-///         catalogId: '110376042874'
 /// ```
 ///
 ///
@@ -951,14 +951,7 @@ import 'permissions_table_with_columns.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.lakeformation.Permissions("test", {
-///     principal: salesRole.arn,
-///     permissions: [
-///         "CREATE_TABLE",
-///         "ALTER",
-///         "DROP",
-///     ],
 ///     lfTagPolicy: {
-///         resourceType: "DATABASE",
 ///         expressions: [
 ///             {
 ///                 key: "Team",
@@ -972,7 +965,14 @@ import 'permissions_table_with_columns.dart';
 ///                 ],
 ///             },
 ///         ],
+///         resourceType: "DATABASE",
 ///     },
+///     principal: salesRole.arn,
+///     permissions: [
+///         "CREATE_TABLE",
+///         "ALTER",
+///         "DROP",
+///     ],
 /// });
 /// ```
 /// ```python
@@ -980,14 +980,7 @@ import 'permissions_table_with_columns.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.lakeformation.Permissions("test",
-///     principal=sales_role["arn"],
-///     permissions=[
-///         "CREATE_TABLE",
-///         "ALTER",
-///         "DROP",
-///     ],
 ///     lf_tag_policy={
-///         "resource_type": "DATABASE",
 ///         "expressions": [
 ///             {
 ///                 "key": "Team",
@@ -1001,7 +994,14 @@ import 'permissions_table_with_columns.dart';
 ///                 ],
 ///             },
 ///         ],
-///     })
+///         "resource_type": "DATABASE",
+///     },
+///     principal=sales_role["arn"],
+///     permissions=[
+///         "CREATE_TABLE",
+///         "ALTER",
+///         "DROP",
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1013,16 +1013,8 @@ import 'permissions_table_with_columns.dart';
 /// {
 ///     var test = new Aws.LakeFormation.Permissions("test", new()
 ///     {
-///         Principal = salesRole.Arn,
-///         PermissionDetails = new[]
-///         {
-///             "CREATE_TABLE",
-///             "ALTER",
-///             "DROP",
-///         },
 ///         LfTagPolicy = new Aws.LakeFormation.Inputs.PermissionsLfTagPolicyArgs
 ///         {
-///             ResourceType = "DATABASE",
 ///             Expressions = new[]
 ///             {
 ///                 new Aws.LakeFormation.Inputs.PermissionsLfTagPolicyExpressionArgs
@@ -1043,6 +1035,14 @@ import 'permissions_table_with_columns.dart';
 ///                     },
 ///                 },
 ///             },
+///             ResourceType = "DATABASE",
+///         },
+///         Principal = salesRole.Arn,
+///         PermissionDetails = new[]
+///         {
+///             "CREATE_TABLE",
+///             "ALTER",
+///             "DROP",
 ///         },
 ///     });
 ///
@@ -1059,14 +1059,7 @@ import 'permissions_table_with_columns.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewPermissions(ctx, "test", &lakeformation.PermissionsArgs{
-/// 			Principal: pulumi.Any(salesRole.Arn),
-/// 			Permissions: pulumi.StringArray{
-/// 				pulumi.String("CREATE_TABLE"),
-/// 				pulumi.String("ALTER"),
-/// 				pulumi.String("DROP"),
-/// 			},
 /// 			LfTagPolicy: &lakeformation.PermissionsLfTagPolicyArgs{
-/// 				ResourceType: pulumi.String("DATABASE"),
 /// 				Expressions: lakeformation.PermissionsLfTagPolicyExpressionArray{
 /// 					&lakeformation.PermissionsLfTagPolicyExpressionArgs{
 /// 						Key: pulumi.String("Team"),
@@ -1082,6 +1075,13 @@ import 'permissions_table_with_columns.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				ResourceType: pulumi.String("DATABASE"),
+/// 			},
+/// 			Principal: pulumi.Any(salesRole.Arn),
+/// 			Permissions: pulumi.StringArray{
+/// 				pulumi.String("CREATE_TABLE"),
+/// 				pulumi.String("ALTER"),
+/// 				pulumi.String("DROP"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1101,10 +1101,7 @@ import 'permissions_table_with_columns.dart';
 /// }
 ///
 /// resource "aws_lakeformation_permissions" "test" {
-///   principal   = salesRole.arn
-///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
 ///   lf_tag_policy = {
-///     resource_type = "DATABASE"
 ///     expressions = [{
 ///       "key"    = "Team"
 ///       "values" = ["Sales"]
@@ -1112,7 +1109,10 @@ import 'permissions_table_with_columns.dart';
 ///       "key"    = "Environment"
 ///       "values" = ["Dev", "Production"]
 ///     }]
+///     resource_type = "DATABASE"
 ///   }
+///   principal   = salesRole.arn
+///   permissions = ["CREATE_TABLE", "ALTER", "DROP"]
 /// }
 /// ```
 /// ```java
@@ -1139,13 +1139,7 @@ import 'permissions_table_with_columns.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Permissions("test", PermissionsArgs.builder()
-///             .principal(salesRole.arn())
-///             .permissions(
-///                 "CREATE_TABLE",
-///                 "ALTER",
-///                 "DROP")
 ///             .lfTagPolicy(PermissionsLfTagPolicyArgs.builder()
-///                 .resourceType("DATABASE")
 ///                 .expressions(
 ///                     PermissionsLfTagPolicyExpressionArgs.builder()
 ///                         .key("Team")
@@ -1157,7 +1151,13 @@ import 'permissions_table_with_columns.dart';
 ///                             "Dev",
 ///                             "Production")
 ///                         .build())
+///                 .resourceType("DATABASE")
 ///                 .build())
+///             .principal(salesRole.arn())
+///             .permissions(
+///                 "CREATE_TABLE",
+///                 "ALTER",
+///                 "DROP")
 ///             .build());
 ///
 ///     }
@@ -1168,13 +1168,7 @@ import 'permissions_table_with_columns.dart';
 ///   test:
 ///     type: aws:lakeformation:Permissions
 ///     properties:
-///       principal: ${salesRole.arn}
-///       permissions:
-///         - CREATE_TABLE
-///         - ALTER
-///         - DROP
 ///       lfTagPolicy:
-///         resourceType: DATABASE
 ///         expressions:
 ///           - key: Team
 ///             values:
@@ -1183,6 +1177,12 @@ import 'permissions_table_with_columns.dart';
 ///             values:
 ///               - Dev
 ///               - Production
+///         resourceType: DATABASE
+///       principal: ${salesRole.arn}
+///       permissions:
+///         - CREATE_TABLE
+///         - ALTER
+///         - DROP
 /// ```
 class Permissions extends pulumi.CustomResource {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
@@ -1230,7 +1230,7 @@ class Permissions extends pulumi.CustomResource {
           'aws:lakeformation/permissions:Permissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String?>('catalogId');
     catalogResource = registerOutput<bool?>('catalogResource');
@@ -1239,8 +1239,8 @@ class Permissions extends pulumi.CustomResource {
     database = registerOutput<PermissionsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lfTag = registerOutput<PermissionsLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<String>>('permissions');
-    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions');
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
     table = registerOutput<PermissionsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1252,11 +1252,12 @@ class Permissions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PermissionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Permissions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1277,8 +1278,32 @@ class Permissions extends pulumi.CustomResource {
     database = registerOutput<PermissionsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lfTag = registerOutput<PermissionsLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<String>>('permissions');
-    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions');
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    table = registerOutput<PermissionsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableWithColumns = registerOutput<PermissionsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Permissions] resource.
+  Permissions.reference(String urn)
+    : super(
+        'aws:lakeformation/permissions:Permissions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String?>('catalogId');
+    catalogResource = registerOutput<bool?>('catalogResource');
+    dataCellsFilter = registerOutput<PermissionsDataCellsFilter?>('dataCellsFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataCellsFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataLocation = registerOutput<PermissionsDataLocation>('dataLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDataLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<PermissionsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTag = registerOutput<PermissionsLfTag>('lfTag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsLfTagPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    permissionsWithGrantOptions = registerOutput<List<String>>('permissionsWithGrantOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
     table = registerOutput<PermissionsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PermissionsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });

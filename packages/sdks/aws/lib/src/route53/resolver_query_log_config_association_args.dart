@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_resolver_query_log_config_association_resolver_query_log_config_association_args_doc}
 class ResolverQueryLogConfigAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   final pulumi.Input<String> resolverQueryLogConfigId;
   /// The ID of a VPC that you want this query logging configuration to log queries for.

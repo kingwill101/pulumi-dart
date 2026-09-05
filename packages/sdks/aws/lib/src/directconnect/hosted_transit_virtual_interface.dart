@@ -187,7 +187,7 @@ class HostedTransitVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/hostedTransitVirtualInterface:HostedTransitVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
@@ -211,11 +211,12 @@ class HostedTransitVirtualInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedTransitVirtualInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedTransitVirtualInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,6 +230,32 @@ class HostedTransitVirtualInterface extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
+    jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    vlan = registerOutput<int>('vlan');
+  }
+
+  /// Creates a typed reference to an existing [HostedTransitVirtualInterface] resource.
+  HostedTransitVirtualInterface.reference(String urn)
+    : super(
+        'aws:directconnect/hostedTransitVirtualInterface:HostedTransitVirtualInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     amazonSideAsn = registerOutput<String>('amazonSideAsn');

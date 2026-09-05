@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_gallery_application_gallery_application_args_doc}
 class GalleryApplicationArgs {
   /// A description of the Gallery Application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The end of life date in RFC3339 format of the Gallery Application.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// The End User Licence Agreement of the Gallery Application.
-  final pulumi.Input<String>? eula;
+  final pulumi.Input<String?>? eula;
   /// The ID of the Shared Image Gallery. Changing this forces a new resource to be created.
   final pulumi.Input<String> galleryId;
   /// The Azure Region where the Gallery Application exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Gallery Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URI containing the Privacy Statement associated with the Gallery Application.
-  final pulumi.Input<String>? privacyStatementUri;
+  final pulumi.Input<String?>? privacyStatementUri;
   /// The URI containing the Release Notes associated with the Gallery Application.
-  final pulumi.Input<String>? releaseNoteUri;
+  final pulumi.Input<String?>? releaseNoteUri;
   /// The type of the Operating System supported for the Gallery Application. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   final pulumi.Input<String> supportedOsType;
   /// A mapping of tags to assign to the Gallery Application.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryApplicationArgs].
   /// [description] A description of the Gallery Application.

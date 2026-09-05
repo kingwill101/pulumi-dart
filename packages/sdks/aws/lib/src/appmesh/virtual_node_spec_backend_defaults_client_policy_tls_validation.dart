@@ -6,7 +6,7 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_validation_trust.da
 
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation {
   /// SANs for a TLS validation context. See `spec.listener.tls.validation.subject_alternative_names` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
+  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames?>? subjectAlternativeNames;
   /// TLS validation context trust. See `spec.listener.tls.validation.trust` Block for details.
   final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust> trust;
 

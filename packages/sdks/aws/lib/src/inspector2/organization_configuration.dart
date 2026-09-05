@@ -172,7 +172,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
@@ -184,11 +184,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,6 +203,20 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationConfiguration] resource.
+  OrganizationConfiguration.reference(String urn)
+    : super(
+        'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     region = registerOutput<String>('region');

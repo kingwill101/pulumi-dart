@@ -187,6 +187,17 @@ Future<GetAAAARecordResult> getAAAARecord(
   return GetAAAARecordResult.fromMap(result);
 }
 
+pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
+  GetAAAARecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getAAAARecord:getAAAARecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAAAARecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private DNS A Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -341,6 +352,17 @@ Future<GetARecordResult> getARecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetARecordResult.fromMap(result);
+}
+
+pulumi.Output<GetARecordResult> getARecordOutput(
+  GetARecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getARecord:getARecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetARecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Private DNS CNAME Record within Azure DNS.
@@ -498,6 +520,17 @@ Future<GetCnameRecordResult> getCnameRecord(
   return GetCnameRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
+  GetCnameRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getCnameRecord:getCnameRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCnameRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private DNS Zone.
 ///
 /// ## Example Usage
@@ -635,6 +668,17 @@ Future<GetDnsZoneResult> getDnsZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDnsZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetDnsZoneResult> getDnsZoneOutput(
+  GetDnsZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getDnsZone:getDnsZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnsZoneResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Private DNS MX Record within Azure DNS.
@@ -792,6 +836,17 @@ Future<GetMxRecordResult> getMxRecord(
   return GetMxRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetMxRecordResult> getMxRecordOutput(
+  GetMxRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getMxRecord:getMxRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMxRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private DNS PTR Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -947,6 +1002,17 @@ Future<GetPtrRecordResult> getPtrRecord(
   return GetPtrRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
+  GetPtrRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getPtrRecord:getPtrRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPtrRecordResult.fromMap);
+}
+
 /// Gets information about an existing Private DNS Resolver.
 ///
 /// ## Example Usage
@@ -1078,6 +1144,17 @@ Future<GetResolverResult> getResolver(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverResult> getResolverOutput(
+  GetResolverArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolver:getResolver',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverResult.fromMap);
 }
 
 /// Gets information about an existing Private DNS Resolver Dns Forwarding Ruleset.
@@ -1213,6 +1290,17 @@ Future<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRuleset(
   return GetResolverDnsForwardingRulesetResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRulesetOutput(
+  GetResolverDnsForwardingRulesetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolverDnsForwardingRuleset:getResolverDnsForwardingRuleset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverDnsForwardingRulesetResult.fromMap);
+}
+
 /// Gets information about an existing Private DNS Resolver Forwarding Rule.
 ///
 /// ## Example Usage
@@ -1344,6 +1432,17 @@ Future<GetResolverForwardingRuleResult> getResolverForwardingRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverForwardingRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverForwardingRuleResult> getResolverForwardingRuleOutput(
+  GetResolverForwardingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolverForwardingRule:getResolverForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverForwardingRuleResult.fromMap);
 }
 
 /// Gets information about an existing Private DNS Resolver Inbound Endpoint.
@@ -1479,6 +1578,17 @@ Future<GetResolverInboundEndpointResult> getResolverInboundEndpoint(
   return GetResolverInboundEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverInboundEndpointResult> getResolverInboundEndpointOutput(
+  GetResolverInboundEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolverInboundEndpoint:getResolverInboundEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverInboundEndpointResult.fromMap);
+}
+
 /// Gets information about an existing Private DNS Resolver Outbound Endpoint.
 ///
 /// ## Example Usage
@@ -1612,6 +1722,17 @@ Future<GetResolverOutboundEndpointResult> getResolverOutboundEndpoint(
   return GetResolverOutboundEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverOutboundEndpointResult> getResolverOutboundEndpointOutput(
+  GetResolverOutboundEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolverOutboundEndpoint:getResolverOutboundEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverOutboundEndpointResult.fromMap);
+}
+
 /// Gets information about an existing Private DNS Resolver Virtual Network Link.
 ///
 /// ## Example Usage
@@ -1743,6 +1864,17 @@ Future<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverVirtualNetworkLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLinkOutput(
+  GetResolverVirtualNetworkLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getResolverVirtualNetworkLink:getResolverVirtualNetworkLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverVirtualNetworkLinkResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Private DNS SOA Record within Azure DNS.
@@ -1883,6 +2015,17 @@ Future<GetSoaRecordResult> getSoaRecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSoaRecordResult.fromMap(result);
+}
+
+pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
+  GetSoaRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getSoaRecord:getSoaRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSoaRecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Private DNS SRV Record within Azure DNS.
@@ -2040,6 +2183,17 @@ Future<GetSrvRecordResult> getSrvRecord(
   return GetSrvRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
+  GetSrvRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getSrvRecord:getSrvRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSrvRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private DNS TXT Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -2195,6 +2349,17 @@ Future<GetTxtRecordResult> getTxtRecord(
   return GetTxtRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
+  GetTxtRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getTxtRecord:getTxtRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTxtRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private DNS zone Virtual Network Link. These Links enable DNS resolution and registration inside Azure Virtual Networks using Azure Private DNS.
 ///
 /// ## Example Usage
@@ -2347,4 +2512,15 @@ Future<GetZoneVirtualNetworkLinkResult> getZoneVirtualNetworkLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneVirtualNetworkLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneVirtualNetworkLinkResult> getZoneVirtualNetworkLinkOutput(
+  GetZoneVirtualNetworkLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatedns/getZoneVirtualNetworkLink:getZoneVirtualNetworkLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneVirtualNetworkLinkResult.fromMap);
 }

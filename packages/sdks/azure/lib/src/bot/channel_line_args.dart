@@ -13,7 +13,7 @@ class ChannelLineArgs {
   /// One or more `lineChannel` blocks as defined below.
   final pulumi.Input<List<ChannelLineLineChannel>> lineChannels;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

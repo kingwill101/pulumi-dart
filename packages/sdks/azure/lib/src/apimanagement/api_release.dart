@@ -171,7 +171,7 @@ import 'api_release_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewApiRelease(ctx, "example", &apimanagement.ApiReleaseArgs{
 /// 			Name:  pulumi.String("example-Api-Release"),
-/// 			ApiId: exampleApi.ID(),
+/// 			ApiId: exampleApi.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -358,7 +358,7 @@ class ApiRelease extends pulumi.CustomResource {
           'azure:apimanagement/apiRelease:ApiRelease',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
@@ -370,11 +370,12 @@ class ApiRelease extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiReleaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiRelease._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -388,6 +389,20 @@ class ApiRelease extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+  }
+
+  /// Creates a typed reference to an existing [ApiRelease] resource.
+  ApiRelease.reference(String urn)
+    : super(
+        'azure:apimanagement/apiRelease:ApiRelease',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');

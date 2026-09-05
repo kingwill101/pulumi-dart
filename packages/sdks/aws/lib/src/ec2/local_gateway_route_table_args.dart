@@ -15,10 +15,10 @@ class LocalGatewayRouteTableArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<LocalGatewayRouteTableTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<LocalGatewayRouteTableTimeouts?>? timeouts;
 
   /// Creates a new [LocalGatewayRouteTableArgs].
   /// [localGatewayId] Identifier of the EC2 Local Gateway.

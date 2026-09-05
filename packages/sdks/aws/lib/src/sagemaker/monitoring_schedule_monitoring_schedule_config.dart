@@ -6,13 +6,13 @@ import 'monitoring_schedule_monitoring_schedule_config_schedule_config.dart';
 
 class MonitoringScheduleMonitoringScheduleConfig {
   /// Defines the monitoring job. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition>? monitoringJobDefinition;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition?>? monitoringJobDefinition;
   /// The name of the monitoring job definition to schedule.
-  final pulumi.Input<String>? monitoringJobDefinitionName;
+  final pulumi.Input<String?>? monitoringJobDefinitionName;
   /// The type of the monitoring job definition to schedule. Valid values are `DataQuality`, `ModelQuality`, `ModelBias` or `ModelExplainability`
   final pulumi.Input<String> monitoringType;
   /// Configures the monitoring schedule. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigScheduleConfig>? scheduleConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigScheduleConfig?>? scheduleConfig;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfig].
   /// [monitoringJobDefinition] Defines the monitoring job. Fields are documented below.

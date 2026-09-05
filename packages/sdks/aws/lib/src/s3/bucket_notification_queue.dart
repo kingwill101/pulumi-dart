@@ -6,11 +6,11 @@ class BucketNotificationQueue {
   /// [Event](http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations) for which to send notifications.
   final pulumi.Input<List<String>> events;
   /// Object key name prefix.
-  final pulumi.Input<String>? filterPrefix;
+  final pulumi.Input<String?>? filterPrefix;
   /// Object key name suffix.
-  final pulumi.Input<String>? filterSuffix;
+  final pulumi.Input<String?>? filterSuffix;
   /// Unique identifier for each of the notification configurations.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// SQS queue ARN.
   final pulumi.Input<String> queueArn;
 

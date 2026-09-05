@@ -120,7 +120,7 @@ import 'environment_type_state.dart';
 /// 		}
 /// 		_, err = devcenter.NewEnvironmentType(ctx, "example", &devcenter.EnvironmentTypeArgs{
 /// 			Name:        pulumi.String("example-dcet"),
-/// 			DevCenterId: exampleDevCenter.ID(),
+/// 			DevCenterId: exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Env": pulumi.String("Test"),
 /// 			},
@@ -271,11 +271,11 @@ class EnvironmentType extends pulumi.CustomResource {
           'azure:devcenter/environmentType:EnvironmentType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EnvironmentType] resource's state with the given [name] and [id].
@@ -283,11 +283,12 @@ class EnvironmentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,6 +304,20 @@ class EnvironmentType extends pulumi.CustomResource {
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentType] resource.
+  EnvironmentType.reference(String urn)
+    : super(
+        'azure:devcenter/environmentType:EnvironmentType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    devCenterId = registerOutput<String>('devCenterId');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

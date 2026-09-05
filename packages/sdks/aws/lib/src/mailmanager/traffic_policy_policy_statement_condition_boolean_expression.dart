@@ -5,7 +5,7 @@ import 'traffic_policy_policy_statement_condition_boolean_expression_evaluate.da
 
 class TrafficPolicyPolicyStatementConditionBooleanExpression {
   /// Operand evaluated by the expression. See `policy_statement.condition.boolean_expression.evaluate` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluate>? evaluate;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpressionEvaluate?>? evaluate;
   /// Boolean operator used for the comparison.
   final pulumi.Input<String> operator;
 

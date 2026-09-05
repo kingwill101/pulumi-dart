@@ -8,7 +8,7 @@ class ApplicationGatewayPrivateLinkConfigurationIpConfiguration {
   /// Is this the Primary IP Configuration?
   final pulumi.Input<bool> primary;
   /// The Static IP Address which should be used.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The allocation method used for the Private IP Address. Possible values are `Dynamic` and `Static`.
   final pulumi.Input<String> privateIpAddressAllocation;
   /// The ID of the subnet the private link configuration should connect to.

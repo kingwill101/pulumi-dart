@@ -16,11 +16,11 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.opensearchingest.PipelineEndpoint("example", {
-///     pipelineArn: exampleAwsOsisPipeline.pipelineArn,
 ///     vpcOptions: {
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         subnetIds: [exampleAwsSubnet.id],
 ///     },
+///     pipelineArn: exampleAwsOsisPipeline.pipelineArn,
 /// });
 /// ```
 /// ```python
@@ -28,11 +28,11 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.opensearchingest.PipelineEndpoint("example",
-///     pipeline_arn=example_aws_osis_pipeline["pipelineArn"],
 ///     vpc_options={
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///         "subnet_ids": [example_aws_subnet["id"]],
-///     })
+///     },
+///     pipeline_arn=example_aws_osis_pipeline["pipelineArn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,7 +44,6 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// {
 ///     var example = new Aws.OpenSearchIngest.PipelineEndpoint("example", new()
 ///     {
-///         PipelineArn = exampleAwsOsisPipeline.PipelineArn,
 ///         VpcOptions = new Aws.OpenSearchIngest.Inputs.PipelineEndpointVpcOptionsArgs
 ///         {
 ///             SecurityGroupIds = new[]
@@ -56,6 +55,7 @@ import 'pipeline_endpoint_vpc_options.dart';
 ///                 exampleAwsSubnet.Id,
 ///             },
 ///         },
+///         PipelineArn = exampleAwsOsisPipeline.PipelineArn,
 ///     });
 ///
 /// });
@@ -71,7 +71,6 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := opensearchingest.NewPipelineEndpoint(ctx, "example", &opensearchingest.PipelineEndpointArgs{
-/// 			PipelineArn: pulumi.Any(exampleAwsOsisPipeline.PipelineArn),
 /// 			VpcOptions: &opensearchingest.PipelineEndpointVpcOptionsArgs{
 /// 				SecurityGroupIds: pulumi.StringArray{
 /// 					exampleAwsSecurityGroup.Id,
@@ -80,6 +79,7 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// 					exampleAwsSubnet.Id,
 /// 				},
 /// 			},
+/// 			PipelineArn: pulumi.Any(exampleAwsOsisPipeline.PipelineArn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,11 +98,11 @@ import 'pipeline_endpoint_vpc_options.dart';
 /// }
 ///
 /// resource "aws_opensearchingest_pipelineendpoint" "example" {
-///   pipeline_arn = exampleAwsOsisPipeline.pipelineArn
 ///   vpc_options = {
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnet_ids         = [exampleAwsSubnet.id]
 ///   }
+///   pipeline_arn = exampleAwsOsisPipeline.pipelineArn
 /// }
 /// ```
 /// ```java
@@ -128,11 +128,11 @@ import 'pipeline_endpoint_vpc_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PipelineEndpoint("example", PipelineEndpointArgs.builder()
-///             .pipelineArn(exampleAwsOsisPipeline.pipelineArn())
 ///             .vpcOptions(PipelineEndpointVpcOptionsArgs.builder()
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                 .subnetIds(exampleAwsSubnet.id())
 ///                 .build())
+///             .pipelineArn(exampleAwsOsisPipeline.pipelineArn())
 ///             .build());
 ///
 ///     }
@@ -143,12 +143,12 @@ import 'pipeline_endpoint_vpc_options.dart';
 ///   example:
 ///     type: aws:opensearchingest:PipelineEndpoint
 ///     properties:
-///       pipelineArn: ${exampleAwsOsisPipeline.pipelineArn}
 ///       vpcOptions:
 ///         securityGroupIds:
 ///           - ${exampleAwsSecurityGroup.id}
 ///         subnetIds:
 ///           - ${exampleAwsSubnet.id}
+///       pipelineArn: ${exampleAwsOsisPipeline.pipelineArn}
 /// ```
 ///
 ///
@@ -198,7 +198,7 @@ class PipelineEndpoint extends pulumi.CustomResource {
           'aws:opensearchingest/pipelineEndpoint:PipelineEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     pipelineArn = registerOutput<String>('pipelineArn');
     region = registerOutput<String>('region');
@@ -213,11 +213,12 @@ class PipelineEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PipelineEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,6 +232,23 @@ class PipelineEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    pipelineArn = registerOutput<String>('pipelineArn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<PipelineEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+    vpcOptions = registerOutput<PipelineEndpointVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEndpointVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PipelineEndpoint] resource.
+  PipelineEndpoint.reference(String urn)
+    : super(
+        'aws:opensearchingest/pipelineEndpoint:PipelineEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     pipelineArn = registerOutput<String>('pipelineArn');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

@@ -21,15 +21,15 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const alb = new aws.cloudfront.VpcOrigin("alb", {vpcOriginEndpointConfig: {
+///     originSslProtocols: {
+///         items: ["TLSv1.2"],
+///         quantity: 1,
+///     },
 ///     name: "example-vpc-origin",
 ///     arn: _this.arn,
 ///     httpPort: 8080,
 ///     httpsPort: 8443,
 ///     originProtocolPolicy: "https-only",
-///     originSslProtocols: {
-///         items: ["TLSv1.2"],
-///         quantity: 1,
-///     },
 /// }});
 /// ```
 /// ```python
@@ -37,15 +37,15 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// import pulumi_aws as aws
 ///
 /// alb = aws.cloudfront.VpcOrigin("alb", vpc_origin_endpoint_config={
+///     "origin_ssl_protocols": {
+///         "items": ["TLSv1.2"],
+///         "quantity": 1,
+///     },
 ///     "name": "example-vpc-origin",
 ///     "arn": this["arn"],
 ///     "http_port": 8080,
 ///     "https_port": 8443,
 ///     "origin_protocol_policy": "https-only",
-///     "origin_ssl_protocols": {
-///         "items": ["TLSv1.2"],
-///         "quantity": 1,
-///     },
 /// })
 /// ```
 /// ```csharp
@@ -60,11 +60,6 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///     {
 ///         VpcOriginEndpointConfig = new Aws.CloudFront.Inputs.VpcOriginVpcOriginEndpointConfigArgs
 ///         {
-///             Name = "example-vpc-origin",
-///             Arn = @this.Arn,
-///             HttpPort = 8080,
-///             HttpsPort = 8443,
-///             OriginProtocolPolicy = "https-only",
 ///             OriginSslProtocols = new Aws.CloudFront.Inputs.VpcOriginVpcOriginEndpointConfigOriginSslProtocolsArgs
 ///             {
 ///                 Items = new[]
@@ -73,6 +68,11 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///                 },
 ///                 Quantity = 1,
 ///             },
+///             Name = "example-vpc-origin",
+///             Arn = @this.Arn,
+///             HttpPort = 8080,
+///             HttpsPort = 8443,
+///             OriginProtocolPolicy = "https-only",
 ///         },
 ///     });
 ///
@@ -90,17 +90,17 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewVpcOrigin(ctx, "alb", &cloudfront.VpcOriginArgs{
 /// 			VpcOriginEndpointConfig: &cloudfront.VpcOriginVpcOriginEndpointConfigArgs{
-/// 				Name:                 pulumi.String("example-vpc-origin"),
-/// 				Arn:                  pulumi.Any(this.Arn),
-/// 				HttpPort:             pulumi.Int(8080),
-/// 				HttpsPort:            pulumi.Int(8443),
-/// 				OriginProtocolPolicy: pulumi.String("https-only"),
 /// 				OriginSslProtocols: &cloudfront.VpcOriginVpcOriginEndpointConfigOriginSslProtocolsArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("TLSv1.2"),
 /// 					},
 /// 					Quantity: pulumi.Int(1),
 /// 				},
+/// 				Name:                 pulumi.String("example-vpc-origin"),
+/// 				Arn:                  pulumi.Any(this.Arn),
+/// 				HttpPort:             pulumi.Int(8080),
+/// 				HttpsPort:            pulumi.Int(8443),
+/// 				OriginProtocolPolicy: pulumi.String("https-only"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -121,15 +121,15 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///
 /// resource "aws_cloudfront_vpcorigin" "alb" {
 ///   vpc_origin_endpoint_config = {
+///     origin_ssl_protocols = {
+///       items    = ["TLSv1.2"]
+///       quantity = 1
+///     }
 ///     name                   = "example-vpc-origin"
 ///     arn                    = this.arn
 ///     http_port              = 8080
 ///     https_port             = 8443
 ///     origin_protocol_policy = "https-only"
-///     origin_ssl_protocols = {
-///       items    = ["TLSv1.2"]
-///       quantity = 1
-///     }
 ///   }
 /// }
 /// ```
@@ -158,15 +158,15 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var alb = new VpcOrigin("alb", VpcOriginArgs.builder()
 ///             .vpcOriginEndpointConfig(VpcOriginVpcOriginEndpointConfigArgs.builder()
+///                 .originSslProtocols(VpcOriginVpcOriginEndpointConfigOriginSslProtocolsArgs.builder()
+///                     .items("TLSv1.2")
+///                     .quantity(1)
+///                     .build())
 ///                 .name("example-vpc-origin")
 ///                 .arn(this_.arn())
 ///                 .httpPort(8080)
 ///                 .httpsPort(8443)
 ///                 .originProtocolPolicy("https-only")
-///                 .originSslProtocols(VpcOriginVpcOriginEndpointConfigOriginSslProtocolsArgs.builder()
-///                     .items("TLSv1.2")
-///                     .quantity(1)
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -179,15 +179,15 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///     type: aws:cloudfront:VpcOrigin
 ///     properties:
 ///       vpcOriginEndpointConfig:
+///         originSslProtocols:
+///           items:
+///             - TLSv1.2
+///           quantity: 1
 ///         name: example-vpc-origin
 ///         arn: ${this.arn}
 ///         httpPort: 8080
 ///         httpsPort: 8443
 ///         originProtocolPolicy: https-only
-///         originSslProtocols:
-///           items:
-///             - TLSv1.2
-///           quantity: 1
 /// ```
 ///
 ///
@@ -225,12 +225,12 @@ class VpcOrigin extends pulumi.CustomResource {
           'aws:cloudfront/vpcOrigin:VpcOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcOriginTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginVpcOriginEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -240,11 +240,12 @@ class VpcOrigin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcOriginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcOrigin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,8 +261,25 @@ class VpcOrigin extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<VpcOriginTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginVpcOriginEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VpcOrigin] resource.
+  VpcOrigin.reference(String urn)
+    : super(
+        'aws:cloudfront/vpcOrigin:VpcOrigin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    etag = registerOutput<String>('etag');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcOriginTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>('vpcOriginEndpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcOriginVpcOriginEndpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

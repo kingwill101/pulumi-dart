@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerNetworkGroup resources.
 class NetworkManagerNetworkGroupState {
   /// A description of the Network Manager Network Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   ///
   /// &gt; **Note:** `memberType` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scopeAccesses`.
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<String?>? memberType;
   /// Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Network Group to be created.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
 
   /// Creates a new [NetworkManagerNetworkGroupState].
   /// [description] A description of the Network Manager Network Group.

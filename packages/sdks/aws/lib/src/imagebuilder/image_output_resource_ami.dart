@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageOutputResourceAmi {
   /// Account identifier of the AMI.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Description of the AMI.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier of the AMI.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Name of the AMI.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ImageOutputResourceAmi].
   /// [accountId] Account identifier of the AMI.

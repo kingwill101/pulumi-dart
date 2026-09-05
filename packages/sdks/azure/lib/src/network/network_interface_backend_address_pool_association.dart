@@ -256,7 +256,7 @@ import 'network_interface_backend_address_pool_association_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("primary"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -264,7 +264,7 @@ import 'network_interface_backend_address_pool_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBackendAddressPool, err := lb.NewBackendAddressPool(ctx, "example", &lb.BackendAddressPoolArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("acctestpool"),
 /// 		})
 /// 		if err != nil {
@@ -277,7 +277,7 @@ import 'network_interface_backend_address_pool_association_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -286,9 +286,9 @@ import 'network_interface_backend_address_pool_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkInterfaceBackendAddressPoolAssociation(ctx, "example", &network.NetworkInterfaceBackendAddressPoolAssociationArgs{
-/// 			NetworkInterfaceId:   exampleNetworkInterface.ID(),
+/// 			NetworkInterfaceId:   exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			IpConfigurationName:  pulumi.String("testconfiguration1"),
-/// 			BackendAddressPoolId: exampleBackendAddressPool.ID(),
+/// 			BackendAddressPoolId: exampleBackendAddressPool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -561,7 +561,7 @@ class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResourc
           'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
@@ -573,11 +573,12 @@ class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResourc
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceBackendAddressPoolAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfaceBackendAddressPoolAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -591,6 +592,20 @@ class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResourc
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceBackendAddressPoolAssociation] resource.
+  NetworkInterfaceBackendAddressPoolAssociation.reference(String urn)
+    : super(
+        'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

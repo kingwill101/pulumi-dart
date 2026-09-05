@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesDatabricksWorkspace {
   /// When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
 
   /// Creates a new [FeaturesDatabricksWorkspace].
   /// [forceDelete] When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.

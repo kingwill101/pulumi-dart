@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceSourceConfigurationAuthenticationConfiguration {
   /// ARN of the IAM role that grants the App Runner service access to a source repository. Required for ECR image repositories (but not for ECR Public)
-  final pulumi.Input<String>? accessRoleArn;
+  final pulumi.Input<String?>? accessRoleArn;
   /// ARN of the App Runner connection that enables the App Runner service to connect to a source repository. Required for GitHub code repositories.
-  final pulumi.Input<String>? connectionArn;
+  final pulumi.Input<String?>? connectionArn;
 
   /// Creates a new [ServiceSourceConfigurationAuthenticationConfiguration].
   /// [accessRoleArn] ARN of the IAM role that grants the App Runner service access to a source repository. Required for ECR image repositories (but not for ECR Public)

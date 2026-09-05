@@ -15,8 +15,6 @@ import 'virtual_router_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb = new aws.appmesh.VirtualRouter("serviceb", {
-///     name: "serviceB",
-///     meshName: simple.id,
 ///     spec: {
 ///         listeners: [{
 ///             portMapping: {
@@ -25,6 +23,8 @@ import 'virtual_router_state.dart';
 ///             },
 ///         }],
 ///     },
+///     name: "serviceB",
+///     meshName: simple.id,
 /// });
 /// ```
 /// ```python
@@ -32,8 +32,6 @@ import 'virtual_router_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb = aws.appmesh.VirtualRouter("serviceb",
-///     name="serviceB",
-///     mesh_name=simple["id"],
 ///     spec={
 ///         "listeners": [{
 ///             "port_mapping": {
@@ -41,7 +39,9 @@ import 'virtual_router_state.dart';
 ///                 "protocol": "http",
 ///             },
 ///         }],
-///     })
+///     },
+///     name="serviceB",
+///     mesh_name=simple["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,8 +53,6 @@ import 'virtual_router_state.dart';
 /// {
 ///     var serviceb = new Aws.AppMesh.VirtualRouter("serviceb", new()
 ///     {
-///         Name = "serviceB",
-///         MeshName = simple.Id,
 ///         Spec = new Aws.AppMesh.Inputs.VirtualRouterSpecArgs
 ///         {
 ///             Listeners = new[]
@@ -69,6 +67,8 @@ import 'virtual_router_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "serviceB",
+///         MeshName = simple.Id,
 ///     });
 ///
 /// });
@@ -84,8 +84,6 @@ import 'virtual_router_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualRouter(ctx, "serviceb", &appmesh.VirtualRouterArgs{
-/// 			Name:     pulumi.String("serviceB"),
-/// 			MeshName: pulumi.Any(simple.Id),
 /// 			Spec: &appmesh.VirtualRouterSpecArgs{
 /// 				Listeners: appmesh.VirtualRouterSpecListenerArray{
 /// 					&appmesh.VirtualRouterSpecListenerArgs{
@@ -96,6 +94,8 @@ import 'virtual_router_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("serviceB"),
+/// 			MeshName: pulumi.Any(simple.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,8 +114,6 @@ import 'virtual_router_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualrouter" "serviceb" {
-///   name      = "serviceB"
-///   mesh_name = simple.id
 ///   spec = {
 ///     listeners = [{
 ///       "portMapping" = {
@@ -124,6 +122,8 @@ import 'virtual_router_state.dart';
 ///       }
 ///     }]
 ///   }
+///   name      = "serviceB"
+///   mesh_name = simple.id
 /// }
 /// ```
 /// ```java
@@ -151,8 +151,6 @@ import 'virtual_router_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb = new VirtualRouter("serviceb", VirtualRouterArgs.builder()
-///             .name("serviceB")
-///             .meshName(simple.id())
 ///             .spec(VirtualRouterSpecArgs.builder()
 ///                 .listeners(VirtualRouterSpecListenerArgs.builder()
 ///                     .portMapping(VirtualRouterSpecListenerPortMappingArgs.builder()
@@ -161,6 +159,8 @@ import 'virtual_router_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("serviceB")
+///             .meshName(simple.id())
 ///             .build());
 ///
 ///     }
@@ -171,13 +171,13 @@ import 'virtual_router_state.dart';
 ///   serviceb:
 ///     type: aws:appmesh:VirtualRouter
 ///     properties:
-///       name: serviceB
-///       meshName: ${simple.id}
 ///       spec:
 ///         listeners:
 ///           - portMapping:
 ///               port: 8080
 ///               protocol: http
+///       name: serviceB
+///       meshName: ${simple.id}
 /// ```
 ///
 ///
@@ -224,7 +224,7 @@ class VirtualRouter extends pulumi.CustomResource {
           'aws:appmesh/virtualRouter:VirtualRouter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -235,8 +235,8 @@ class VirtualRouter extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualRouterSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualRouterSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualRouter] resource's state with the given [name] and [id].
@@ -244,11 +244,12 @@ class VirtualRouter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualRouterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualRouter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -271,7 +272,29 @@ class VirtualRouter extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualRouterSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualRouterSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualRouter] resource.
+  VirtualRouter.reference(String urn)
+    : super(
+        'aws:appmesh/virtualRouter:VirtualRouter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<VirtualRouterSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualRouterSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

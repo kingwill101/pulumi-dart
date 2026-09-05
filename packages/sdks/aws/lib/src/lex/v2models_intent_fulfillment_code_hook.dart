@@ -6,13 +6,13 @@ import 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specificat
 
 class V2modelsIntentFulfillmentCodeHook {
   /// Whether the fulfillment code hook is used. When active is false, the code hook doesn't run.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Whether a Lambda function should be invoked to fulfill a specific intent.
   final pulumi.Input<bool> enabled;
   /// Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillmentUpdatesSpecification`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification>? fulfillmentUpdatesSpecification;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification?>? fulfillmentUpdatesSpecification;
   /// Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `postFulfillmentStatusSpecification`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification>? postFulfillmentStatusSpecification;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification?>? postFulfillmentStatusSpecification;
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHook].
   /// [active] Whether the fulfillment code hook is used. When active is false, the code hook doesn't run.

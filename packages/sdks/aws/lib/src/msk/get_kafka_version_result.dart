@@ -4,44 +4,44 @@
 /// Result data returned by getKafkaVersion.
 class GetKafkaVersionResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final List<String>? preferredVersions;
-  final String region;
+  final String? region;
   /// Status of the MSK Kafka version eg. `ACTIVE` or `DEPRECATED`.
-  final String status;
-  final String version;
+  final String? status;
+  final String? version;
 
   /// Creates a new [GetKafkaVersionResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [preferredVersions] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Status of the MSK Kafka version eg. `ACTIVE` or `DEPRECATED`.
-  /// [version] Required.
+  /// [version] Optional.
   const GetKafkaVersionResult({
-    required this.id,
+    this.id,
     this.preferredVersions,
-    required this.region,
-    required this.status,
-    required this.version,
+    this.region,
+    this.status,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'preferredVersions': ?preferredVersions,
-      'region': region,
-      'status': status,
-      'version': version,
+      'region': ?region,
+      'status': ?status,
+      'version': ?version,
     };
   }
 
   factory GetKafkaVersionResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaVersionResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preferredVersions: (() { final guardedValue = map['preferredVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      region: map['region'] as String,
-      status: map['status'] as String,
-      version: map['version'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

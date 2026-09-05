@@ -7,22 +7,22 @@ import 'user_profile_user_settings_code_editor_app_settings_default_resource_spe
 
 class UserProfileUserSettingsCodeEditorAppSettings {
   /// Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
-  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement>? appLifecycleManagement;
+  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement?>? appLifecycleManagement;
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
-  final pulumi.Input<String>? builtInLifecycleConfigArn;
+  final pulumi.Input<String?>? builtInLifecycleConfigArn;
   /// A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see Custom Image below.
-  final pulumi.Input<List<UserProfileUserSettingsCodeEditorAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsDefaultResourceSpec>? defaultResourceSpec;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<List<UserProfileUserSettingsCodeEditorAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [UserProfileUserSettingsCodeEditorAppSettings].
   /// [appLifecycleManagement] Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
   /// [builtInLifecycleConfigArn] The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see Custom Image below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const UserProfileUserSettingsCodeEditorAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,

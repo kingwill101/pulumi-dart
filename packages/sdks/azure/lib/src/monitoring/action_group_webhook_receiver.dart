@@ -7,13 +7,13 @@ class ActionGroupWebhookReceiver {
   /// The `aadAuth` block as defined below.
   ///
   /// &gt; **Note:** Before adding a secure webhook receiver by setting `aadAuth`, please read [the configuration instruction of the AAD application](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#secure-webhook).
-  final pulumi.Input<ActionGroupWebhookReceiverAadAuth>? aadAuth;
+  final pulumi.Input<ActionGroupWebhookReceiverAadAuth?>? aadAuth;
   /// The name of the webhook receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   final pulumi.Input<String> name;
   /// The URI where webhooks should be sent.
   final pulumi.Input<String> serviceUri;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupWebhookReceiver].
   /// [aadAuth] The `aadAuth` block as defined below.

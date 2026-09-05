@@ -6,13 +6,13 @@ import 'web_acl_rule_statement_byte_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementByteMatchStatement {
   /// Part of the web request that you want WAF to inspect. See Field to Match below.
-  final pulumi.Input<WebAclRuleStatementByteMatchStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementByteMatchStatementFieldToMatch?>? fieldToMatch;
   /// Area within the portion of the web request that you want WAF to search for `searchString`. Valid values: `EXACTLY`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CONTAINS_WORD`.
   final pulumi.Input<String> positionalConstraint;
   /// String value to search for within the request (1-200 characters).
   final pulumi.Input<String> searchString;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. See Text Transformation below.
-  final pulumi.Input<List<WebAclRuleStatementByteMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementByteMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementByteMatchStatement].
   /// [fieldToMatch] Part of the web request that you want WAF to inspect. See Field to Match below.

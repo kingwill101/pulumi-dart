@@ -405,15 +405,15 @@ class AgentcoreBrowserProfile extends pulumi.CustomResource {
           'aws:bedrock/agentcoreBrowserProfile:AgentcoreBrowserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     profileArn = registerOutput<String>('profileArn');
     profileId = registerOutput<String>('profileId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreBrowserProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -422,11 +422,12 @@ class AgentcoreBrowserProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreBrowserProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreBrowserProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -445,8 +446,27 @@ class AgentcoreBrowserProfile extends pulumi.CustomResource {
     profileArn = registerOutput<String>('profileArn');
     profileId = registerOutput<String>('profileId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreBrowserProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreBrowserProfile] resource.
+  AgentcoreBrowserProfile.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreBrowserProfile:AgentcoreBrowserProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    profileArn = registerOutput<String>('profileArn');
+    profileId = registerOutput<String>('profileId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreBrowserProfileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserProfileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

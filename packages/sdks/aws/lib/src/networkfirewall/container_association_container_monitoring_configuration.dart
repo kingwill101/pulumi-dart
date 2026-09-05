@@ -5,7 +5,7 @@ import 'container_association_container_monitoring_configuration_attribute_filte
 
 class ContainerAssociationContainerMonitoringConfiguration {
   /// Key-value pairs that filter which containers within the cluster are monitored. For Amazon EKS, filter by namespace and Kubernetes labels. For Amazon ECS, filter by container instance attributes; attribute filters only match containers on the EC2 launch type, not Fargate. See `attributeFilter` Block below.
-  final pulumi.Input<List<ContainerAssociationContainerMonitoringConfigurationAttributeFilter>>? attributeFilters;
+  final pulumi.Input<List<ContainerAssociationContainerMonitoringConfigurationAttributeFilter>?>? attributeFilters;
   /// ARN of the Amazon ECS or Amazon EKS cluster to monitor. The cluster must be in the same Region and account as the container association.
   final pulumi.Input<String> clusterArn;
 

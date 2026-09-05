@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_msi_user_assigned_identity_user_assigned_identity_args_doc}
 class UserAssignedIdentityArgs {
   /// The isolation scope for the User Assigned Identity. The only possible value is `Regional`.
-  final pulumi.Input<String>? isolationScope;
+  final pulumi.Input<String?>? isolationScope;
   /// The Azure Region where the User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this User Assigned Identity. Changing this forces a new User Assigned Identity to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group within which this User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the User Assigned Identity.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [UserAssignedIdentityArgs].
   /// [isolationScope] The isolation scope for the User Assigned Identity. The only possible value is `Regional`.

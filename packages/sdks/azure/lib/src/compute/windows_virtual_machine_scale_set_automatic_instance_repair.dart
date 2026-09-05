@@ -8,13 +8,13 @@ class WindowsVirtualMachineScaleSetAutomaticInstanceRepair {
   /// &gt; **Note:** Once the `action` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
   ///
   /// &gt; **Note:** If you wish to update the repair `action` of an existing `automaticInstanceRepair` policy, you must first `disable` the `automaticInstanceRepair` policy before you can re-enable the `automaticInstanceRepair` policy with the new repair `action` defined.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Should the automatic instance repair be enabled on this Virtual Machine Scale Set?
   final pulumi.Input<bool> enabled;
   /// Amount of time for which automatic repairs will be delayed. The grace period starts right after the VM is found unhealthy. Possible values are between `10` and `90` minutes. The time duration should be specified in `ISO 8601` format (e.g. `PT10M` to `PT90M`).
   ///
   /// &gt; **Note:** Once the `gracePeriod` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
-  final pulumi.Input<String>? gracePeriod;
+  final pulumi.Input<String?>? gracePeriod;
 
   /// Creates a new [WindowsVirtualMachineScaleSetAutomaticInstanceRepair].
   /// [action] The repair action that will be used for repairing unhealthy virtual machines in the scale set. Possible values include `Replace`, `Restart`, `Reimage`.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkmanager_get_global_networks_get_global_networks_args_doc}
 class GetGlobalNetworksArgs {
   /// Restricts the list to the global networks with these tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetGlobalNetworksArgs].
   /// [tags] Restricts the list to the global networks with these tags.

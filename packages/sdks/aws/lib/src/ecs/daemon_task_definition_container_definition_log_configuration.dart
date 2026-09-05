@@ -7,9 +7,9 @@ class DaemonTaskDefinitionContainerDefinitionLogConfiguration {
   /// Log driver to use for the container. Valid values: `json-file`, `syslog`, `journald`, `gelf`, `fluentd`, `awslogs`, `splunk`, `awsfirelens`.
   final pulumi.Input<String> logDriver;
   /// Configuration options to send to the log driver.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// Secrets to pass to the log configuration. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLogConfigurationSecretOption>>? secretOptions;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLogConfigurationSecretOption>?>? secretOptions;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionLogConfiguration].
   /// [logDriver] Log driver to use for the container. Valid values: `json-file`, `syslog`, `journald`, `gelf`, `fluentd`, `awslogs`, `splunk`, `awsfirelens`.

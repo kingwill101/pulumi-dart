@@ -7,11 +7,11 @@ import 'agentcore_harness_model_openai_model_config.dart';
 
 class AgentcoreHarnessModel {
   /// Amazon Bedrock model configuration. See `bedrockModelConfig` Block below.
-  final pulumi.Input<AgentcoreHarnessModelBedrockModelConfig>? bedrockModelConfig;
+  final pulumi.Input<AgentcoreHarnessModelBedrockModelConfig?>? bedrockModelConfig;
   /// Gemini model configuration. See `geminiModelConfig` Block below.
-  final pulumi.Input<AgentcoreHarnessModelGeminiModelConfig>? geminiModelConfig;
+  final pulumi.Input<AgentcoreHarnessModelGeminiModelConfig?>? geminiModelConfig;
   /// OpenAI model configuration. See `openaiModelConfig` Block below.
-  final pulumi.Input<AgentcoreHarnessModelOpenaiModelConfig>? openaiModelConfig;
+  final pulumi.Input<AgentcoreHarnessModelOpenaiModelConfig?>? openaiModelConfig;
 
   /// Creates a new [AgentcoreHarnessModel].
   /// [bedrockModelConfig] Amazon Bedrock model configuration. See `bedrockModelConfig` Block below.

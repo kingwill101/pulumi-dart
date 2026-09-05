@@ -262,9 +262,9 @@ class Queue extends pulumi.CustomResource {
           'azure:storage/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
@@ -277,11 +277,12 @@ class Queue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Queue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,7 +296,24 @@ class Queue extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'azure:storage/queue:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');

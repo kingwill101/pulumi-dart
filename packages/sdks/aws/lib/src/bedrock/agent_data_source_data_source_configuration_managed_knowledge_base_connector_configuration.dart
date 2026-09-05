@@ -6,11 +6,11 @@ import 'agent_data_source_data_source_configuration_managed_knowledge_base_conne
 
 class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration {
   /// JSON-encoded string containing the connector-specific parameters. The structure depends on the connector type (S3, SharePoint, Google Drive, etc.). See [Managed Knowledge Base connector parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-connectors.html) for details on each connector type.
-  final pulumi.Input<String>? connectorParameters;
+  final pulumi.Input<String?>? connectorParameters;
   /// Configuration for deletion protection on the data source. See `deletionProtectionConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration>? deletionProtectionConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration?>? deletionProtectionConfiguration;
   /// Configuration for extracting media content (images, audio, video) from documents. See `mediaExtractionConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration>? mediaExtractionConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration?>? mediaExtractionConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration].
   /// [connectorParameters] JSON-encoded string containing the connector-specific parameters. The structure depends on the connector type (S3, SharePoint, Google Drive, etc.). See [Managed Knowledge Base connector parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-connectors.html) for details on each connector type.

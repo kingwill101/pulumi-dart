@@ -5,9 +5,9 @@ import 'v2models_intent_initial_response_setting_conditional_default_branch_next
 
 class V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent].
   /// [name] Name of the intent.

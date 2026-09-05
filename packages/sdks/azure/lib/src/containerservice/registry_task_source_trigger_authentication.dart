@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskSourceTriggerAuthentication {
   /// Time in seconds that the token remains valid.
-  final pulumi.Input<int>? expireInSeconds;
+  final pulumi.Input<int?>? expireInSeconds;
   /// The refresh token used to refresh the access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The scope of the access token.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The access token used to access the source control provider.
   final pulumi.Input<String> token;
   /// The type of the token. Possible values are `PAT` (personal access token) and `OAuth`.
@@ -40,7 +40,7 @@ class RegistryTaskSourceTriggerAuthentication {
 
   factory RegistryTaskSourceTriggerAuthentication.fromMap(Map<String, dynamic> map) {
     return RegistryTaskSourceTriggerAuthentication(
-      expireInSeconds: (() { final guardedValue = map['expireInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expireInSeconds: (() { final guardedValue = map['expireInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       refreshToken: (() { final guardedValue = map['refreshToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       token: pulumi.Input.fromValue(map['token'] as String),

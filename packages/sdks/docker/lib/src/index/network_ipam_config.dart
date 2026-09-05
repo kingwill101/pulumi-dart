@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkIpamConfig {
   /// Auxiliary IPv4 or IPv6 addresses used by Network driver
-  final pulumi.Input<Map<String, String>>? auxAddress;
+  final pulumi.Input<Map<String, String>?>? auxAddress;
   /// The IP address of the gateway
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The ip range in CIDR form
-  final pulumi.Input<String>? ipRange;
+  final pulumi.Input<String?>? ipRange;
   /// The subnet in CIDR form
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [NetworkIpamConfig].
   /// [auxAddress] Auxiliary IPv4 or IPv6 addresses used by Network driver

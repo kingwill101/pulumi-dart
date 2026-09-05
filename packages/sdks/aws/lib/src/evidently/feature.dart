@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_args.dart';
+import 'feature_evaluation_rule.dart';
 import 'feature_state.dart';
+import 'feature_variation.dart';
 
 /// Provides a CloudWatch Evidently Feature resource.
 ///
@@ -16,15 +18,15 @@ import 'feature_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Feature("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     description: "example description",
 ///     variations: [{
-///         name: "Variation1",
 ///         value: {
 ///             stringValue: "example",
 ///         },
+///         name: "Variation1",
 ///     }],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
+///     description: "example description",
 ///     tags: {
 ///         Key1: "example Feature",
 ///     },
@@ -35,15 +37,15 @@ import 'feature_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Feature("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     description="example description",
 ///     variations=[{
-///         "name": "Variation1",
 ///         "value": {
 ///             "string_value": "example",
 ///         },
+///         "name": "Variation1",
 ///     }],
+///     name="example",
+///     project=example_aws_evidently_project["name"],
+///     description="example description",
 ///     tags={
 ///         "Key1": "example Feature",
 ///     })
@@ -58,20 +60,20 @@ import 'feature_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Feature("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         Description = "example description",
 ///         Variations = new[]
 ///         {
 ///             new Aws.Evidently.Inputs.FeatureVariationArgs
 ///             {
-///                 Name = "Variation1",
 ///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
 ///                 {
 ///                     StringValue = "example",
 ///                 },
+///                 Name = "Variation1",
 ///             },
 ///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
+///         Description = "example description",
 ///         Tags =
 ///         {
 ///             { "Key1", "example Feature" },
@@ -91,17 +93,17 @@ import 'feature_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewFeature(ctx, "example", &evidently.FeatureArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Project:     pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			Description: pulumi.String("example description"),
 /// 			Variations: evidently.FeatureVariationArray{
 /// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation1"),
 /// 					Value: &evidently.FeatureVariationValueArgs{
 /// 						StringValue: pulumi.String("example"),
 /// 					},
+/// 					Name: pulumi.String("Variation1"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Project:     pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			Description: pulumi.String("example description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Key1": pulumi.String("example Feature"),
 /// 			},
@@ -123,15 +125,15 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
-///   name        = "example"
-///   project     = exampleAwsEvidentlyProject.name
-///   description = "example description"
 ///   variations {
-///     name = "Variation1"
 ///     value = {
 ///       string_value = "example"
 ///     }
+///     name = "Variation1"
 ///   }
+///   name        = "example"
+///   project     = exampleAwsEvidentlyProject.name
+///   description = "example description"
 ///   tags = {
 ///     "Key1" = "example Feature"
 ///   }
@@ -161,15 +163,15 @@ import 'feature_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Feature("example", FeatureArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .description("example description")
 ///             .variations(FeatureVariationArgs.builder()
-///                 .name("Variation1")
 ///                 .value(FeatureVariationValueArgs.builder()
 ///                     .stringValue("example")
 ///                     .build())
+///                 .name("Variation1")
 ///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
+///             .description("example description")
 ///             .tags(Map.of("Key1", "example Feature"))
 ///             .build());
 ///
@@ -181,13 +183,13 @@ import 'feature_state.dart';
 ///   example:
 ///     type: aws:evidently:Feature
 ///     properties:
+///       variations:
+///         - value:
+///             stringValue: example
+///           name: Variation1
 ///       name: example
 ///       project: ${exampleAwsEvidentlyProject.name}
 ///       description: example description
-///       variations:
-///         - name: Variation1
-///           value:
-///             stringValue: example
 ///       tags:
 ///         Key1: example Feature
 /// ```
@@ -201,23 +203,23 @@ import 'feature_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Feature("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     defaultVariation: "Variation2",
 ///     variations: [
 ///         {
-///             name: "Variation1",
 ///             value: {
 ///                 stringValue: "exampleval1",
 ///             },
+///             name: "Variation1",
 ///         },
 ///         {
-///             name: "Variation2",
 ///             value: {
 ///                 stringValue: "exampleval2",
 ///             },
+///             name: "Variation2",
 ///         },
 ///     ],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
+///     defaultVariation: "Variation2",
 /// });
 /// ```
 /// ```python
@@ -225,23 +227,23 @@ import 'feature_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Feature("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     default_variation="Variation2",
 ///     variations=[
 ///         {
-///             "name": "Variation1",
 ///             "value": {
 ///                 "string_value": "exampleval1",
 ///             },
+///             "name": "Variation1",
 ///         },
 ///         {
-///             "name": "Variation2",
 ///             "value": {
 ///                 "string_value": "exampleval2",
 ///             },
+///             "name": "Variation2",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     project=example_aws_evidently_project["name"],
+///     default_variation="Variation2")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -253,28 +255,28 @@ import 'feature_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Feature("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         DefaultVariation = "Variation2",
 ///         Variations = new[]
 ///         {
 ///             new Aws.Evidently.Inputs.FeatureVariationArgs
 ///             {
-///                 Name = "Variation1",
 ///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
 ///                 {
 ///                     StringValue = "exampleval1",
 ///                 },
+///                 Name = "Variation1",
 ///             },
 ///             new Aws.Evidently.Inputs.FeatureVariationArgs
 ///             {
-///                 Name = "Variation2",
 ///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
 ///                 {
 ///                     StringValue = "exampleval2",
 ///                 },
+///                 Name = "Variation2",
 ///             },
 ///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
+///         DefaultVariation = "Variation2",
 ///     });
 ///
 /// });
@@ -290,23 +292,23 @@ import 'feature_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewFeature(ctx, "example", &evidently.FeatureArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			Project:          pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			DefaultVariation: pulumi.String("Variation2"),
 /// 			Variations: evidently.FeatureVariationArray{
 /// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation1"),
 /// 					Value: &evidently.FeatureVariationValueArgs{
 /// 						StringValue: pulumi.String("exampleval1"),
 /// 					},
+/// 					Name: pulumi.String("Variation1"),
 /// 				},
 /// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation2"),
 /// 					Value: &evidently.FeatureVariationValueArgs{
 /// 						StringValue: pulumi.String("exampleval2"),
 /// 					},
+/// 					Name: pulumi.String("Variation2"),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			Project:          pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			DefaultVariation: pulumi.String("Variation2"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -325,21 +327,21 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
-///   name              = "example"
-///   project           = exampleAwsEvidentlyProject.name
-///   default_variation = "Variation2"
 ///   variations {
-///     name = "Variation1"
 ///     value = {
 ///       string_value = "exampleval1"
 ///     }
+///     name = "Variation1"
 ///   }
 ///   variations {
-///     name = "Variation2"
 ///     value = {
 ///       string_value = "exampleval2"
 ///     }
+///     name = "Variation2"
 ///   }
+///   name              = "example"
+///   project           = exampleAwsEvidentlyProject.name
+///   default_variation = "Variation2"
 /// }
 /// ```
 /// ```java
@@ -366,22 +368,22 @@ import 'feature_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Feature("example", FeatureArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .defaultVariation("Variation2")
 ///             .variations(
 ///                 FeatureVariationArgs.builder()
-///                     .name("Variation1")
 ///                     .value(FeatureVariationValueArgs.builder()
 ///                         .stringValue("exampleval1")
 ///                         .build())
+///                     .name("Variation1")
 ///                     .build(),
 ///                 FeatureVariationArgs.builder()
-///                     .name("Variation2")
 ///                     .value(FeatureVariationValueArgs.builder()
 ///                         .stringValue("exampleval2")
 ///                         .build())
+///                     .name("Variation2")
 ///                     .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
+///             .defaultVariation("Variation2")
 ///             .build());
 ///
 ///     }
@@ -392,16 +394,16 @@ import 'feature_state.dart';
 ///   example:
 ///     type: aws:evidently:Feature
 ///     properties:
+///       variations:
+///         - value:
+///             stringValue: exampleval1
+///           name: Variation1
+///         - value:
+///             stringValue: exampleval2
+///           name: Variation2
 ///       name: example
 ///       project: ${exampleAwsEvidentlyProject.name}
 ///       defaultVariation: Variation2
-///       variations:
-///         - name: Variation1
-///           value:
-///             stringValue: exampleval1
-///         - name: Variation2
-///           value:
-///             stringValue: exampleval2
 /// ```
 ///
 ///
@@ -413,25 +415,25 @@ import 'feature_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Feature("example", {
+///     variations: [
+///         {
+///             value: {
+///                 stringValue: "exampleval1",
+///             },
+///             name: "Variation1",
+///         },
+///         {
+///             value: {
+///                 stringValue: "exampleval2",
+///             },
+///             name: "Variation2",
+///         },
+///     ],
 ///     name: "example",
 ///     project: exampleAwsEvidentlyProject.name,
 ///     entityOverrides: {
 ///         test1: "Variation1",
 ///     },
-///     variations: [
-///         {
-///             name: "Variation1",
-///             value: {
-///                 stringValue: "exampleval1",
-///             },
-///         },
-///         {
-///             name: "Variation2",
-///             value: {
-///                 stringValue: "exampleval2",
-///             },
-///         },
-///     ],
 /// });
 /// ```
 /// ```python
@@ -439,25 +441,25 @@ import 'feature_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Feature("example",
+///     variations=[
+///         {
+///             "value": {
+///                 "string_value": "exampleval1",
+///             },
+///             "name": "Variation1",
+///         },
+///         {
+///             "value": {
+///                 "string_value": "exampleval2",
+///             },
+///             "name": "Variation2",
+///         },
+///     ],
 ///     name="example",
 ///     project=example_aws_evidently_project["name"],
 ///     entity_overrides={
 ///         "test1": "Variation1",
-///     },
-///     variations=[
-///         {
-///             "name": "Variation1",
-///             "value": {
-///                 "string_value": "exampleval1",
-///             },
-///         },
-///         {
-///             "name": "Variation2",
-///             "value": {
-///                 "string_value": "exampleval2",
-///             },
-///         },
-///     ])
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -469,30 +471,30 @@ import 'feature_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Feature("example", new()
 ///     {
+///         Variations = new[]
+///         {
+///             new Aws.Evidently.Inputs.FeatureVariationArgs
+///             {
+///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
+///                 {
+///                     StringValue = "exampleval1",
+///                 },
+///                 Name = "Variation1",
+///             },
+///             new Aws.Evidently.Inputs.FeatureVariationArgs
+///             {
+///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
+///                 {
+///                     StringValue = "exampleval2",
+///                 },
+///                 Name = "Variation2",
+///             },
+///         },
 ///         Name = "example",
 ///         Project = exampleAwsEvidentlyProject.Name,
 ///         EntityOverrides =
 ///         {
 ///             { "test1", "Variation1" },
-///         },
-///         Variations = new[]
-///         {
-///             new Aws.Evidently.Inputs.FeatureVariationArgs
-///             {
-///                 Name = "Variation1",
-///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
-///                 {
-///                     StringValue = "exampleval1",
-///                 },
-///             },
-///             new Aws.Evidently.Inputs.FeatureVariationArgs
-///             {
-///                 Name = "Variation2",
-///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
-///                 {
-///                     StringValue = "exampleval2",
-///                 },
-///             },
 ///         },
 ///     });
 ///
@@ -509,24 +511,24 @@ import 'feature_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewFeature(ctx, "example", &evidently.FeatureArgs{
+/// 			Variations: evidently.FeatureVariationArray{
+/// 				&evidently.FeatureVariationArgs{
+/// 					Value: &evidently.FeatureVariationValueArgs{
+/// 						StringValue: pulumi.String("exampleval1"),
+/// 					},
+/// 					Name: pulumi.String("Variation1"),
+/// 				},
+/// 				&evidently.FeatureVariationArgs{
+/// 					Value: &evidently.FeatureVariationValueArgs{
+/// 						StringValue: pulumi.String("exampleval2"),
+/// 					},
+/// 					Name: pulumi.String("Variation2"),
+/// 				},
+/// 			},
 /// 			Name:    pulumi.String("example"),
 /// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 			EntityOverrides: pulumi.StringMap{
 /// 				"test1": pulumi.String("Variation1"),
-/// 			},
-/// 			Variations: evidently.FeatureVariationArray{
-/// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation1"),
-/// 					Value: &evidently.FeatureVariationValueArgs{
-/// 						StringValue: pulumi.String("exampleval1"),
-/// 					},
-/// 				},
-/// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation2"),
-/// 					Value: &evidently.FeatureVariationValueArgs{
-/// 						StringValue: pulumi.String("exampleval2"),
-/// 					},
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -546,22 +548,22 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   variations {
+///     value = {
+///       string_value = "exampleval1"
+///     }
+///     name = "Variation1"
+///   }
+///   variations {
+///     value = {
+///       string_value = "exampleval2"
+///     }
+///     name = "Variation2"
+///   }
 ///   name    = "example"
 ///   project = exampleAwsEvidentlyProject.name
 ///   entity_overrides = {
 ///     "test1" = "Variation1"
-///   }
-///   variations {
-///     name = "Variation1"
-///     value = {
-///       string_value = "exampleval1"
-///     }
-///   }
-///   variations {
-///     name = "Variation2"
-///     value = {
-///       string_value = "exampleval2"
-///     }
 ///   }
 /// }
 /// ```
@@ -589,22 +591,22 @@ import 'feature_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Feature("example", FeatureArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .entityOverrides(Map.of("test1", "Variation1"))
 ///             .variations(
 ///                 FeatureVariationArgs.builder()
-///                     .name("Variation1")
 ///                     .value(FeatureVariationValueArgs.builder()
 ///                         .stringValue("exampleval1")
 ///                         .build())
+///                     .name("Variation1")
 ///                     .build(),
 ///                 FeatureVariationArgs.builder()
-///                     .name("Variation2")
 ///                     .value(FeatureVariationValueArgs.builder()
 ///                         .stringValue("exampleval2")
 ///                         .build())
+///                     .name("Variation2")
 ///                     .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
+///             .entityOverrides(Map.of("test1", "Variation1"))
 ///             .build());
 ///
 ///     }
@@ -615,17 +617,17 @@ import 'feature_state.dart';
 ///   example:
 ///     type: aws:evidently:Feature
 ///     properties:
+///       variations:
+///         - value:
+///             stringValue: exampleval1
+///           name: Variation1
+///         - value:
+///             stringValue: exampleval2
+///           name: Variation2
 ///       name: example
 ///       project: ${exampleAwsEvidentlyProject.name}
 ///       entityOverrides:
 ///         test1: Variation1
-///       variations:
-///         - name: Variation1
-///           value:
-///             stringValue: exampleval1
-///         - name: Variation2
-///           value:
-///             stringValue: exampleval2
 /// ```
 ///
 ///
@@ -637,18 +639,18 @@ import 'feature_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Feature("example", {
+///     variations: [{
+///         value: {
+///             stringValue: "exampleval1",
+///         },
+///         name: "Variation1",
+///     }],
 ///     name: "example",
 ///     project: exampleAwsEvidentlyProject.name,
 ///     evaluationStrategy: "ALL_RULES",
 ///     entityOverrides: {
 ///         test1: "Variation1",
 ///     },
-///     variations: [{
-///         name: "Variation1",
-///         value: {
-///             stringValue: "exampleval1",
-///         },
-///     }],
 /// });
 /// ```
 /// ```python
@@ -656,18 +658,18 @@ import 'feature_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Feature("example",
+///     variations=[{
+///         "value": {
+///             "string_value": "exampleval1",
+///         },
+///         "name": "Variation1",
+///     }],
 ///     name="example",
 ///     project=example_aws_evidently_project["name"],
 ///     evaluation_strategy="ALL_RULES",
 ///     entity_overrides={
 ///         "test1": "Variation1",
-///     },
-///     variations=[{
-///         "name": "Variation1",
-///         "value": {
-///             "string_value": "exampleval1",
-///         },
-///     }])
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -679,23 +681,23 @@ import 'feature_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Feature("example", new()
 ///     {
+///         Variations = new[]
+///         {
+///             new Aws.Evidently.Inputs.FeatureVariationArgs
+///             {
+///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
+///                 {
+///                     StringValue = "exampleval1",
+///                 },
+///                 Name = "Variation1",
+///             },
+///         },
 ///         Name = "example",
 ///         Project = exampleAwsEvidentlyProject.Name,
 ///         EvaluationStrategy = "ALL_RULES",
 ///         EntityOverrides =
 ///         {
 ///             { "test1", "Variation1" },
-///         },
-///         Variations = new[]
-///         {
-///             new Aws.Evidently.Inputs.FeatureVariationArgs
-///             {
-///                 Name = "Variation1",
-///                 Value = new Aws.Evidently.Inputs.FeatureVariationValueArgs
-///                 {
-///                     StringValue = "exampleval1",
-///                 },
-///             },
 ///         },
 ///     });
 ///
@@ -712,19 +714,19 @@ import 'feature_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewFeature(ctx, "example", &evidently.FeatureArgs{
+/// 			Variations: evidently.FeatureVariationArray{
+/// 				&evidently.FeatureVariationArgs{
+/// 					Value: &evidently.FeatureVariationValueArgs{
+/// 						StringValue: pulumi.String("exampleval1"),
+/// 					},
+/// 					Name: pulumi.String("Variation1"),
+/// 				},
+/// 			},
 /// 			Name:               pulumi.String("example"),
 /// 			Project:            pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 			EvaluationStrategy: pulumi.String("ALL_RULES"),
 /// 			EntityOverrides: pulumi.StringMap{
 /// 				"test1": pulumi.String("Variation1"),
-/// 			},
-/// 			Variations: evidently.FeatureVariationArray{
-/// 				&evidently.FeatureVariationArgs{
-/// 					Name: pulumi.String("Variation1"),
-/// 					Value: &evidently.FeatureVariationValueArgs{
-/// 						StringValue: pulumi.String("exampleval1"),
-/// 					},
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -744,17 +746,17 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "aws_evidently_feature" "example" {
+///   variations {
+///     value = {
+///       string_value = "exampleval1"
+///     }
+///     name = "Variation1"
+///   }
 ///   name                = "example"
 ///   project             = exampleAwsEvidentlyProject.name
 ///   evaluation_strategy = "ALL_RULES"
 ///   entity_overrides = {
 ///     "test1" = "Variation1"
-///   }
-///   variations {
-///     name = "Variation1"
-///     value = {
-///       string_value = "exampleval1"
-///     }
 ///   }
 /// }
 /// ```
@@ -782,16 +784,16 @@ import 'feature_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Feature("example", FeatureArgs.builder()
+///             .variations(FeatureVariationArgs.builder()
+///                 .value(FeatureVariationValueArgs.builder()
+///                     .stringValue("exampleval1")
+///                     .build())
+///                 .name("Variation1")
+///                 .build())
 ///             .name("example")
 ///             .project(exampleAwsEvidentlyProject.name())
 ///             .evaluationStrategy("ALL_RULES")
 ///             .entityOverrides(Map.of("test1", "Variation1"))
-///             .variations(FeatureVariationArgs.builder()
-///                 .name("Variation1")
-///                 .value(FeatureVariationValueArgs.builder()
-///                     .stringValue("exampleval1")
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -802,15 +804,15 @@ import 'feature_state.dart';
 ///   example:
 ///     type: aws:evidently:Feature
 ///     properties:
+///       variations:
+///         - value:
+///             stringValue: exampleval1
+///           name: Variation1
 ///       name: example
 ///       project: ${exampleAwsEvidentlyProject.name}
 ///       evaluationStrategy: ALL_RULES
 ///       entityOverrides:
 ///         test1: Variation1
-///       variations:
-///         - name: Variation1
-///           value:
-///             stringValue: exampleval1
 /// ```
 ///
 ///
@@ -833,7 +835,7 @@ class Feature extends pulumi.CustomResource {
   /// Specify users that should always be served a specific variation of a feature. Each user is specified by a key-value pair . For each key, specify a user by entering their user ID, account ID, or some other identifier. For the value, specify the name of the variation that they are to be served.
   late final pulumi.Output<Map<String, String>?> entityOverrides;
   /// One or more blocks that define the evaluation rules for the feature. Detailed below
-  late final pulumi.Output<List<Map<String, dynamic>>> evaluationRules;
+  late final pulumi.Output<List<FeatureEvaluationRule>> evaluationRules;
   /// Specify `ALL_RULES` to activate the traffic allocation specified by any ongoing launches or experiments. Specify `DEFAULT_VARIATION` to serve the default variation to all users instead.
   late final pulumi.Output<String> evaluationStrategy;
   /// The date and time that the feature was most recently updated.
@@ -853,7 +855,7 @@ class Feature extends pulumi.CustomResource {
   /// Defines the type of value used to define the different feature variations. Valid Values: `STRING`, `LONG`, `DOUBLE`, `BOOLEAN`.
   late final pulumi.Output<String> valueType;
   /// One or more blocks that contain the configuration of the feature's different variations. Detailed below
-  late final pulumi.Output<List<Map<String, dynamic>>> variations;
+  late final pulumi.Output<List<FeatureVariation>> variations;
 
   /// Creates a new [Feature].
   /// [name] The Pulumi resource name.
@@ -867,24 +869,24 @@ class Feature extends pulumi.CustomResource {
           'aws:evidently/feature:Feature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     defaultVariation = registerOutput<String>('defaultVariation');
     description = registerOutput<String?>('description');
-    entityOverrides = registerOutput<Map<String, String>?>('entityOverrides');
-    evaluationRules = registerOutput<List<Map<String, dynamic>>>('evaluationRules');
+    entityOverrides = registerOutput<Map<String, String>?>('entityOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    evaluationRules = registerOutput<List<FeatureEvaluationRule>>('evaluationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureEvaluationRule>(guardedValue, (value) => FeatureEvaluationRule.fromMap((value as Map).cast<String, dynamic>())); });
     evaluationStrategy = registerOutput<String>('evaluationStrategy');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     valueType = registerOutput<String>('valueType');
-    variations = registerOutput<List<Map<String, dynamic>>>('variations');
+    variations = registerOutput<List<FeatureVariation>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureVariation>(guardedValue, (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Feature] resource's state with the given [name] and [id].
@@ -892,11 +894,12 @@ class Feature extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FeatureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Feature._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -914,17 +917,44 @@ class Feature extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     defaultVariation = registerOutput<String>('defaultVariation');
     description = registerOutput<String?>('description');
-    entityOverrides = registerOutput<Map<String, String>?>('entityOverrides');
-    evaluationRules = registerOutput<List<Map<String, dynamic>>>('evaluationRules');
+    entityOverrides = registerOutput<Map<String, String>?>('entityOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    evaluationRules = registerOutput<List<FeatureEvaluationRule>>('evaluationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureEvaluationRule>(guardedValue, (value) => FeatureEvaluationRule.fromMap((value as Map).cast<String, dynamic>())); });
     evaluationStrategy = registerOutput<String>('evaluationStrategy');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     valueType = registerOutput<String>('valueType');
-    variations = registerOutput<List<Map<String, dynamic>>>('variations');
+    variations = registerOutput<List<FeatureVariation>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureVariation>(guardedValue, (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Feature] resource.
+  Feature.reference(String urn)
+    : super(
+        'aws:evidently/feature:Feature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    defaultVariation = registerOutput<String>('defaultVariation');
+    description = registerOutput<String?>('description');
+    entityOverrides = registerOutput<Map<String, String>?>('entityOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    evaluationRules = registerOutput<List<FeatureEvaluationRule>>('evaluationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureEvaluationRule>(guardedValue, (value) => FeatureEvaluationRule.fromMap((value as Map).cast<String, dynamic>())); });
+    evaluationStrategy = registerOutput<String>('evaluationStrategy');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    valueType = registerOutput<String>('valueType');
+    variations = registerOutput<List<FeatureVariation>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FeatureVariation>(guardedValue, (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

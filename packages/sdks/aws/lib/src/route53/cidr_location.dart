@@ -192,9 +192,9 @@ class CidrLocation extends pulumi.CustomResource {
           'aws:route53/cidrLocation:CidrLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cidrCollectionId = registerOutput<String>('cidrCollectionId');
     this.name = registerOutput<String>('name');
   }
@@ -204,11 +204,12 @@ class CidrLocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CidrLocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CidrLocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,7 +223,21 @@ class CidrLocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cidrCollectionId = registerOutput<String>('cidrCollectionId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [CidrLocation] resource.
+  CidrLocation.reference(String urn)
+    : super(
+        'aws:route53/cidrLocation:CidrLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cidrCollectionId = registerOutput<String>('cidrCollectionId');
     this.name = registerOutput<String>('name');
   }

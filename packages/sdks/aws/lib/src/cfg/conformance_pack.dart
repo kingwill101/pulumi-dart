@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conformance_pack_args.dart';
+import 'conformance_pack_input_parameter.dart';
 import 'conformance_pack_state.dart';
 
 /// Manages a Config Conformance Pack. More information about this collection of Config rules and remediation actions can be found in the
@@ -21,11 +22,11 @@ import 'conformance_pack_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cfg.ConformancePack("example", {
-///     name: "example",
 ///     inputParameters: [{
 ///         parameterName: "AccessKeysRotatedParameterMaxAccessKeyAge",
 ///         parameterValue: "90",
 ///     }],
+///     name: "example",
 ///     templateBody: `Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -47,11 +48,11 @@ import 'conformance_pack_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cfg.ConformancePack("example",
-///     name="example",
 ///     input_parameters=[{
 ///         "parameter_name": "AccessKeysRotatedParameterMaxAccessKeyAge",
 ///         "parameter_value": "90",
 ///     }],
+///     name="example",
 ///     template_body="""Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -76,7 +77,6 @@ import 'conformance_pack_state.dart';
 /// {
 ///     var example = new Aws.Cfg.ConformancePack("example", new()
 ///     {
-///         Name = "example",
 ///         InputParameters = new[]
 ///         {
 ///             new Aws.Cfg.Inputs.ConformancePackInputParameterArgs
@@ -85,6 +85,7 @@ import 'conformance_pack_state.dart';
 ///                 ParameterValue = "90",
 ///             },
 ///         },
+///         Name = "example",
 ///         TemplateBody = @"Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -118,13 +119,13 @@ import 'conformance_pack_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cfg.NewConformancePack(ctx, "example", &cfg.ConformancePackArgs{
-/// 			Name: pulumi.String("example"),
 /// 			InputParameters: cfg.ConformancePackInputParameterArray{
 /// 				&cfg.ConformancePackInputParameterArgs{
 /// 					ParameterName:  pulumi.String("AccessKeysRotatedParameterMaxAccessKeyAge"),
 /// 					ParameterValue: pulumi.String("90"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			TemplateBody: pulumi.String(`Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
 ///     Type: String
@@ -158,11 +159,11 @@ import 'conformance_pack_state.dart';
 ///
 /// resource "aws_cfg_conformancepack" "example" {
 ///   depends_on = [exampleAwsConfigConfigurationRecorder]
-///   name       = "example"
 ///   input_parameters {
 ///     parameter_name  = "AccessKeysRotatedParameterMaxAccessKeyAge"
 ///     parameter_value = "90"
 ///   }
+///   name          = "example"
 ///   template_body = "Parameters:\n  AccessKeysRotatedParameterMaxAccessKeyAge:\n    Type: String\nResources:\n  IAMPasswordPolicy:\n    Properties:\n      ConfigRuleName: IAMPasswordPolicy\n      Source:\n        Owner: AWS\n        SourceIdentifier: IAM_PASSWORD_POLICY\n    Type: AWS::Config::ConfigRule\n"
 /// }
 /// ```
@@ -190,11 +191,11 @@ import 'conformance_pack_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConformancePack("example", ConformancePackArgs.builder()
-///             .name("example")
 ///             .inputParameters(ConformancePackInputParameterArgs.builder()
 ///                 .parameterName("AccessKeysRotatedParameterMaxAccessKeyAge")
 ///                 .parameterValue("90")
 ///                 .build())
+///             .name("example")
 ///             .templateBody("""
 /// Parameters:
 ///   AccessKeysRotatedParameterMaxAccessKeyAge:
@@ -220,10 +221,10 @@ import 'conformance_pack_state.dart';
 ///   example:
 ///     type: aws:cfg:ConformancePack
 ///     properties:
-///       name: example
 ///       inputParameters:
 ///         - parameterName: AccessKeysRotatedParameterMaxAccessKeyAge
 ///           parameterValue: '90'
+///       name: example
 ///       templateBody: |
 ///         Parameters:
 ///           AccessKeysRotatedParameterMaxAccessKeyAge:
@@ -530,14 +531,14 @@ import 'conformance_pack_state.dart';
 /// $ pulumi import aws:cfg/conformancePack:ConformancePack example example
 /// ```
 class ConformancePack extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the conformance pack.
+  /// ARN of the conformance pack.
   late final pulumi.Output<String> arn;
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Maximum length of 63.
   late final pulumi.Output<String?> deliveryS3Bucket;
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
   late final pulumi.Output<String?> deliveryS3KeyPrefix;
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inputParameters;
+  late final pulumi.Output<List<ConformancePackInputParameter>?> inputParameters;
   /// The name of the conformance pack. Must begin with a letter and contain from 1 to 256 alphanumeric characters and hyphens.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -561,12 +562,12 @@ class ConformancePack extends pulumi.CustomResource {
           'aws:cfg/conformancePack:ConformancePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
+    inputParameters = registerOutput<List<ConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConformancePackInputParameter>(guardedValue, (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');
@@ -578,11 +579,12 @@ class ConformancePack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConformancePackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConformancePack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -599,7 +601,26 @@ class ConformancePack extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
     deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
-    inputParameters = registerOutput<List<Map<String, dynamic>>?>('inputParameters');
+    inputParameters = registerOutput<List<ConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConformancePackInputParameter>(guardedValue, (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    templateBody = registerOutput<String?>('templateBody');
+    templateS3Uri = registerOutput<String?>('templateS3Uri');
+  }
+
+  /// Creates a typed reference to an existing [ConformancePack] resource.
+  ConformancePack.reference(String urn)
+    : super(
+        'aws:cfg/conformancePack:ConformancePack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
+    deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
+    inputParameters = registerOutput<List<ConformancePackInputParameter>?>('inputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConformancePackInputParameter>(guardedValue, (value) => ConformancePackInputParameter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     templateBody = registerOutput<String?>('templateBody');

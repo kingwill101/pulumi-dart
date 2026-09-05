@@ -120,7 +120,7 @@ import 'data_connector_aws_s3_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -289,13 +289,13 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     destinationTable = registerOutput<String>('destinationTable');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    sqsUrls = registerOutput<List<String>>('sqsUrls');
+    sqsUrls = registerOutput<List<String>>('sqsUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DataConnectorAwsS3] resource's state with the given [name] and [id].
@@ -303,11 +303,12 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorAwsS3State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorAwsS3._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,6 +326,22 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
     destinationTable = registerOutput<String>('destinationTable');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    sqsUrls = registerOutput<List<String>>('sqsUrls');
+    sqsUrls = registerOutput<List<String>>('sqsUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorAwsS3] resource.
+  DataConnectorAwsS3.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsRoleArn = registerOutput<String>('awsRoleArn');
+    destinationTable = registerOutput<String>('destinationTable');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    sqsUrls = registerOutput<List<String>>('sqsUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

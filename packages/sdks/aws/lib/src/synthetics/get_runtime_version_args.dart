@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synthetics_get_runtime_version_get_runtime_version_args_doc}
 class GetRuntimeVersionArgs {
   /// Whether the latest version of the runtime should be fetched. Conflicts with `version`. Valid values: `true`.
-  final pulumi.Input<bool>? latest;
+  final pulumi.Input<bool?>? latest;
   /// Name prefix of the runtime version (for example, `syn-nodejs-puppeteer`).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetRuntimeVersionArgs].
   /// [latest] Whether the latest version of the runtime should be fetched. Conflicts with `version`. Valid values: `true`.

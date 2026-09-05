@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet {
-  final pulumi.Input<bool>? enableMachineLearning;
+  final pulumi.Input<bool?>? enableMachineLearning;
   final pulumi.Input<String> inspectionLevel;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet].

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubManagedNetwork {
   /// The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
-  final pulumi.Input<String>? isolationMode;
+  final pulumi.Input<String?>? isolationMode;
 
   /// Creates a new [HubManagedNetwork].
   /// [isolationMode] The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.

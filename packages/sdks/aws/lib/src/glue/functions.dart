@@ -130,6 +130,17 @@ Future<GetCatalogResult> getCatalog(
   return GetCatalogResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogResult> getCatalogOutput(
+  GetCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getCatalog:getCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogResult.fromMap);
+}
+
 /// This data source can be used to fetch information about an AWS Glue Data Catalog Table.
 ///
 /// ## Example Usage
@@ -255,6 +266,17 @@ Future<GetCatalogTableResult> getCatalogTable(
   return GetCatalogTableResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogTableResult> getCatalogTableOutput(
+  GetCatalogTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getCatalogTable:getCatalogTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogTableResult.fromMap);
+}
+
 /// Provides details about an AWS Glue Connection.
 ///
 /// ## Example Usage
@@ -373,6 +395,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getConnection:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// This data source can be used to fetch information about AWS Glue Data Catalog Encryption Settings.
 ///
 /// ## Example Usage
@@ -412,6 +445,17 @@ Future<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataCatalogEncryptionSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetDataCatalogEncryptionSettingsResult> getDataCatalogEncryptionSettingsOutput(
+  GetDataCatalogEncryptionSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getDataCatalogEncryptionSettings:getDataCatalogEncryptionSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCatalogEncryptionSettingsResult.fromMap);
 }
 
 /// Data source for managing an AWS Glue Registry.
@@ -534,6 +578,17 @@ Future<GetRegistryResult> getRegistry(
   return GetRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryResult> getRegistryOutput(
+  GetRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getRegistry:getRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryResult.fromMap);
+}
+
 /// Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
 ///
 /// ## Example Usage
@@ -546,7 +601,6 @@ Future<GetRegistryResult> getRegistry(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.glue.getScript({
-///     language: "PYTHON",
 ///     dagEdges: [
 ///         {
 ///             source: "datasource0",
@@ -567,8 +621,6 @@ Future<GetRegistryResult> getRegistry(
 ///     ],
 ///     dagNodes: [
 ///         {
-///             id: "datasource0",
-///             nodeType: "DataSource",
 ///             args: [
 ///                 {
 ///                     name: "database",
@@ -579,26 +631,26 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${sourceAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "datasource0",
+///             nodeType: "DataSource",
 ///         },
 ///         {
-///             id: "applymapping1",
-///             nodeType: "ApplyMapping",
 ///             args: [{
 ///                 name: "mapping",
 ///                 value: "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///             }],
+///             id: "applymapping1",
+///             nodeType: "ApplyMapping",
 ///         },
 ///         {
-///             id: "selectfields2",
-///             nodeType: "SelectFields",
 ///             args: [{
 ///                 name: "paths",
 ///                 value: "[\"column1\"]",
 ///             }],
+///             id: "selectfields2",
+///             nodeType: "SelectFields",
 ///         },
 ///         {
-///             id: "resolvechoice3",
-///             nodeType: "ResolveChoice",
 ///             args: [
 ///                 {
 ///                     name: "choice",
@@ -613,10 +665,10 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${destinationAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "resolvechoice3",
+///             nodeType: "ResolveChoice",
 ///         },
 ///         {
-///             id: "datasink4",
-///             nodeType: "DataSink",
 ///             args: [
 ///                 {
 ///                     name: "database",
@@ -627,8 +679,11 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${destinationAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "datasink4",
+///             nodeType: "DataSink",
 ///         },
 ///     ],
+///     language: "PYTHON",
 /// });
 /// export const pythonScript = example.then(example => example.pythonScript);
 /// ```
@@ -636,8 +691,7 @@ Future<GetRegistryResult> getRegistry(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.glue.get_script(language="PYTHON",
-///     dag_edges=[
+/// example = aws.glue.get_script(dag_edges=[
 ///         {
 ///             "source": "datasource0",
 ///             "target": "applymapping1",
@@ -657,8 +711,6 @@ Future<GetRegistryResult> getRegistry(
 ///     ],
 ///     dag_nodes=[
 ///         {
-///             "id": "datasource0",
-///             "node_type": "DataSource",
 ///             "args": [
 ///                 {
 ///                     "name": "database",
@@ -669,26 +721,26 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{source_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "datasource0",
+///             "node_type": "DataSource",
 ///         },
 ///         {
-///             "id": "applymapping1",
-///             "node_type": "ApplyMapping",
 ///             "args": [{
 ///                 "name": "mapping",
 ///                 "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///             }],
+///             "id": "applymapping1",
+///             "node_type": "ApplyMapping",
 ///         },
 ///         {
-///             "id": "selectfields2",
-///             "node_type": "SelectFields",
 ///             "args": [{
 ///                 "name": "paths",
 ///                 "value": "[\"column1\"]",
 ///             }],
+///             "id": "selectfields2",
+///             "node_type": "SelectFields",
 ///         },
 ///         {
-///             "id": "resolvechoice3",
-///             "node_type": "ResolveChoice",
 ///             "args": [
 ///                 {
 ///                     "name": "choice",
@@ -703,10 +755,10 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{destination_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "resolvechoice3",
+///             "node_type": "ResolveChoice",
 ///         },
 ///         {
-///             "id": "datasink4",
-///             "node_type": "DataSink",
 ///             "args": [
 ///                 {
 ///                     "name": "database",
@@ -717,8 +769,11 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{destination_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "datasink4",
+///             "node_type": "DataSink",
 ///         },
-///     ])
+///     ],
+///     language="PYTHON")
 /// pulumi.export("pythonScript", example.python_script)
 /// ```
 /// ```csharp
@@ -731,7 +786,6 @@ Future<GetRegistryResult> getRegistry(
 /// {
 ///     var example = Aws.Glue.GetScript.Invoke(new()
 ///     {
-///         Language = "PYTHON",
 ///         DagEdges = new[]
 ///         {
 ///             new Aws.Glue.Inputs.GetScriptDagEdgeInputArgs
@@ -759,8 +813,6 @@ Future<GetRegistryResult> getRegistry(
 ///         {
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "datasource0",
-///                 NodeType = "DataSource",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -774,11 +826,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{sourceAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "datasource0",
+///                 NodeType = "DataSource",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "applymapping1",
-///                 NodeType = "ApplyMapping",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -787,11 +839,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///                     },
 ///                 },
+///                 Id = "applymapping1",
+///                 NodeType = "ApplyMapping",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "selectfields2",
-///                 NodeType = "SelectFields",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -800,11 +852,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = "[\"column1\"]",
 ///                     },
 ///                 },
+///                 Id = "selectfields2",
+///                 NodeType = "SelectFields",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "resolvechoice3",
-///                 NodeType = "ResolveChoice",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -823,11 +875,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{destinationAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "resolvechoice3",
+///                 NodeType = "ResolveChoice",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "datasink4",
-///                 NodeType = "DataSink",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -841,8 +893,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{destinationAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "datasink4",
+///                 NodeType = "DataSink",
 ///             },
 ///         },
+///         Language = "PYTHON",
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -864,7 +919,6 @@ Future<GetRegistryResult> getRegistry(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := glue.GetScript(ctx, &glue.GetScriptArgs{
-/// 			Language: pulumi.StringRef("PYTHON"),
 /// 			DagEdges: []glue.GetScriptDagEdge{
 /// 				{
 /// 					Source: "datasource0",
@@ -885,8 +939,6 @@ Future<GetRegistryResult> getRegistry(
 /// 			},
 /// 			DagNodes: []glue.GetScriptDagNode{
 /// 				{
-/// 					Id:       "datasource0",
-/// 					NodeType: "DataSource",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "database",
@@ -897,30 +949,30 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", sourceAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "datasource0",
+/// 					NodeType: "DataSource",
 /// 				},
 /// 				{
-/// 					Id:       "applymapping1",
-/// 					NodeType: "ApplyMapping",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "mapping",
 /// 							Value: "[(\"column1\", \"string\", \"column1\", \"string\")]",
 /// 						},
 /// 					},
+/// 					Id:       "applymapping1",
+/// 					NodeType: "ApplyMapping",
 /// 				},
 /// 				{
-/// 					Id:       "selectfields2",
-/// 					NodeType: "SelectFields",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "paths",
 /// 							Value: "[\"column1\"]",
 /// 						},
 /// 					},
+/// 					Id:       "selectfields2",
+/// 					NodeType: "SelectFields",
 /// 				},
 /// 				{
-/// 					Id:       "resolvechoice3",
-/// 					NodeType: "ResolveChoice",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "choice",
@@ -935,10 +987,10 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", destinationAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "resolvechoice3",
+/// 					NodeType: "ResolveChoice",
 /// 				},
 /// 				{
-/// 					Id:       "datasink4",
-/// 					NodeType: "DataSink",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "database",
@@ -949,8 +1001,11 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", destinationAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "datasink4",
+/// 					NodeType: "DataSink",
 /// 				},
 /// 			},
+/// 			Language: pulumi.StringRef("PYTHON"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -970,7 +1025,6 @@ Future<GetRegistryResult> getRegistry(
 /// }
 ///
 /// data "aws_glue_getscript" "example" {
-///   language = "PYTHON"
 ///   dag_edges {
 ///     source = "datasource0"
 ///     target = "applymapping1"
@@ -988,8 +1042,6 @@ Future<GetRegistryResult> getRegistry(
 ///     target = "datasink4"
 ///   }
 ///   dag_nodes {
-///     id        = "datasource0"
-///     node_type = "DataSource"
 ///     args {
 ///       name  = "database"
 ///       value =""${source.name}""
@@ -998,26 +1050,26 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${sourceAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "datasource0"
+///     node_type = "DataSource"
 ///   }
 ///   dag_nodes {
-///     id        = "applymapping1"
-///     node_type = "ApplyMapping"
 ///     args {
 ///       name  = "mapping"
 ///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
 ///     }
+///     id        = "applymapping1"
+///     node_type = "ApplyMapping"
 ///   }
 ///   dag_nodes {
-///     id        = "selectfields2"
-///     node_type = "SelectFields"
 ///     args {
 ///       name  = "paths"
 ///       value = "[\"column1\"]"
 ///     }
+///     id        = "selectfields2"
+///     node_type = "SelectFields"
 ///   }
 ///   dag_nodes {
-///     id        = "resolvechoice3"
-///     node_type = "ResolveChoice"
 ///     args {
 ///       name  = "choice"
 ///       value = "\"MATCH_CATALOG\""
@@ -1030,10 +1082,10 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${destinationAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "resolvechoice3"
+///     node_type = "ResolveChoice"
 ///   }
 ///   dag_nodes {
-///     id        = "datasink4"
-///     node_type = "DataSink"
 ///     args {
 ///       name  = "database"
 ///       value =""${destination.name}""
@@ -1042,7 +1094,10 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${destinationAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "datasink4"
+///     node_type = "DataSink"
 ///   }
+///   language = "PYTHON"
 /// }
 ///
 /// output "pythonScript" {
@@ -1074,7 +1129,6 @@ Future<GetRegistryResult> getRegistry(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = GlueFunctions.getScript(GetScriptArgs.builder()
-///             .language("PYTHON")
 ///             .dagEdges(
 ///                 GetScriptDagEdgeArgs.builder()
 ///                     .source("datasource0")
@@ -1094,8 +1148,6 @@ Future<GetRegistryResult> getRegistry(
 ///                     .build())
 ///             .dagNodes(
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("datasource0")
-///                     .nodeType("DataSource")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
@@ -1105,26 +1157,26 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("datasource0")
+///                     .nodeType("DataSource")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("applymapping1")
-///                     .nodeType("ApplyMapping")
 ///                     .args(GetScriptDagNodeArgArgs.builder()
 ///                         .name("mapping")
 ///                         .value("[(\"column1\", \"string\", \"column1\", \"string\")]")
 ///                         .build())
+///                     .id("applymapping1")
+///                     .nodeType("ApplyMapping")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("selectfields2")
-///                     .nodeType("SelectFields")
 ///                     .args(GetScriptDagNodeArgArgs.builder()
 ///                         .name("paths")
 ///                         .value("[\"column1\"]")
 ///                         .build())
+///                     .id("selectfields2")
+///                     .nodeType("SelectFields")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("resolvechoice3")
-///                     .nodeType("ResolveChoice")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("choice")
@@ -1138,10 +1190,10 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("resolvechoice3")
+///                     .nodeType("ResolveChoice")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("datasink4")
-///                     .nodeType("DataSink")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
@@ -1151,7 +1203,10 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("datasink4")
+///                     .nodeType("DataSink")
 ///                     .build())
+///             .language("PYTHON")
 ///             .build());
 ///
 ///         ctx.export("pythonScript", example.pythonScript());
@@ -1164,7 +1219,6 @@ Future<GetRegistryResult> getRegistry(
 ///     fn::invoke:
 ///       function: aws:glue:getScript
 ///       arguments:
-///         language: PYTHON
 ///         dagEdges:
 ///           - source: datasource0
 ///             target: applymapping1
@@ -1175,39 +1229,40 @@ Future<GetRegistryResult> getRegistry(
 ///           - source: resolvechoice3
 ///             target: datasink4
 ///         dagNodes:
-///           - id: datasource0
-///             nodeType: DataSource
-///             args:
+///           - args:
 ///               - name: database
 ///                 value: '"${source.name}"'
 ///               - name: table_name
 ///                 value: '"${sourceAwsGlueCatalogTable.name}"'
-///           - id: applymapping1
-///             nodeType: ApplyMapping
-///             args:
+///             id: datasource0
+///             nodeType: DataSource
+///           - args:
 ///               - name: mapping
 ///                 value: '[("column1", "string", "column1", "string")]'
-///           - id: selectfields2
-///             nodeType: SelectFields
-///             args:
+///             id: applymapping1
+///             nodeType: ApplyMapping
+///           - args:
 ///               - name: paths
 ///                 value: '["column1"]'
-///           - id: resolvechoice3
-///             nodeType: ResolveChoice
-///             args:
+///             id: selectfields2
+///             nodeType: SelectFields
+///           - args:
 ///               - name: choice
 ///                 value: '"MATCH_CATALOG"'
 ///               - name: database
 ///                 value: '"${destination.name}"'
 ///               - name: table_name
 ///                 value: '"${destinationAwsGlueCatalogTable.name}"'
-///           - id: datasink4
-///             nodeType: DataSink
-///             args:
+///             id: resolvechoice3
+///             nodeType: ResolveChoice
+///           - args:
 ///               - name: database
 ///                 value: '"${destination.name}"'
 ///               - name: table_name
 ///                 value: '"${destinationAwsGlueCatalogTable.name}"'
+///             id: datasink4
+///             nodeType: DataSink
+///         language: PYTHON
 /// outputs:
 ///   pythonScript: ${example.pythonScript}
 /// ```
@@ -1221,7 +1276,6 @@ Future<GetRegistryResult> getRegistry(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.glue.getScript({
-///     language: "SCALA",
 ///     dagEdges: [
 ///         {
 ///             source: "datasource0",
@@ -1242,8 +1296,6 @@ Future<GetRegistryResult> getRegistry(
 ///     ],
 ///     dagNodes: [
 ///         {
-///             id: "datasource0",
-///             nodeType: "DataSource",
 ///             args: [
 ///                 {
 ///                     name: "database",
@@ -1254,26 +1306,26 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${sourceAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "datasource0",
+///             nodeType: "DataSource",
 ///         },
 ///         {
-///             id: "applymapping1",
-///             nodeType: "ApplyMapping",
 ///             args: [{
 ///                 name: "mappings",
 ///                 value: "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///             }],
+///             id: "applymapping1",
+///             nodeType: "ApplyMapping",
 ///         },
 ///         {
-///             id: "selectfields2",
-///             nodeType: "SelectFields",
 ///             args: [{
 ///                 name: "paths",
 ///                 value: "[\"column1\"]",
 ///             }],
+///             id: "selectfields2",
+///             nodeType: "SelectFields",
 ///         },
 ///         {
-///             id: "resolvechoice3",
-///             nodeType: "ResolveChoice",
 ///             args: [
 ///                 {
 ///                     name: "choice",
@@ -1288,10 +1340,10 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${destinationAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "resolvechoice3",
+///             nodeType: "ResolveChoice",
 ///         },
 ///         {
-///             id: "datasink4",
-///             nodeType: "DataSink",
 ///             args: [
 ///                 {
 ///                     name: "database",
@@ -1302,8 +1354,11 @@ Future<GetRegistryResult> getRegistry(
 ///                     value: `"${destinationAwsGlueCatalogTable.name}"`,
 ///                 },
 ///             ],
+///             id: "datasink4",
+///             nodeType: "DataSink",
 ///         },
 ///     ],
+///     language: "SCALA",
 /// });
 /// export const scalaCode = example.then(example => example.scalaCode);
 /// ```
@@ -1311,8 +1366,7 @@ Future<GetRegistryResult> getRegistry(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.glue.get_script(language="SCALA",
-///     dag_edges=[
+/// example = aws.glue.get_script(dag_edges=[
 ///         {
 ///             "source": "datasource0",
 ///             "target": "applymapping1",
@@ -1332,8 +1386,6 @@ Future<GetRegistryResult> getRegistry(
 ///     ],
 ///     dag_nodes=[
 ///         {
-///             "id": "datasource0",
-///             "node_type": "DataSource",
 ///             "args": [
 ///                 {
 ///                     "name": "database",
@@ -1344,26 +1396,26 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{source_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "datasource0",
+///             "node_type": "DataSource",
 ///         },
 ///         {
-///             "id": "applymapping1",
-///             "node_type": "ApplyMapping",
 ///             "args": [{
 ///                 "name": "mappings",
 ///                 "value": "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///             }],
+///             "id": "applymapping1",
+///             "node_type": "ApplyMapping",
 ///         },
 ///         {
-///             "id": "selectfields2",
-///             "node_type": "SelectFields",
 ///             "args": [{
 ///                 "name": "paths",
 ///                 "value": "[\"column1\"]",
 ///             }],
+///             "id": "selectfields2",
+///             "node_type": "SelectFields",
 ///         },
 ///         {
-///             "id": "resolvechoice3",
-///             "node_type": "ResolveChoice",
 ///             "args": [
 ///                 {
 ///                     "name": "choice",
@@ -1378,10 +1430,10 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{destination_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "resolvechoice3",
+///             "node_type": "ResolveChoice",
 ///         },
 ///         {
-///             "id": "datasink4",
-///             "node_type": "DataSink",
 ///             "args": [
 ///                 {
 ///                     "name": "database",
@@ -1392,8 +1444,11 @@ Future<GetRegistryResult> getRegistry(
 ///                     "value": f"\"{destination_aws_glue_catalog_table['name']}\"",
 ///                 },
 ///             ],
+///             "id": "datasink4",
+///             "node_type": "DataSink",
 ///         },
-///     ])
+///     ],
+///     language="SCALA")
 /// pulumi.export("scalaCode", example.scala_code)
 /// ```
 /// ```csharp
@@ -1406,7 +1461,6 @@ Future<GetRegistryResult> getRegistry(
 /// {
 ///     var example = Aws.Glue.GetScript.Invoke(new()
 ///     {
-///         Language = "SCALA",
 ///         DagEdges = new[]
 ///         {
 ///             new Aws.Glue.Inputs.GetScriptDagEdgeInputArgs
@@ -1434,8 +1488,6 @@ Future<GetRegistryResult> getRegistry(
 ///         {
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "datasource0",
-///                 NodeType = "DataSource",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -1449,11 +1501,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{sourceAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "datasource0",
+///                 NodeType = "DataSource",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "applymapping1",
-///                 NodeType = "ApplyMapping",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -1462,11 +1514,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = "[(\"column1\", \"string\", \"column1\", \"string\")]",
 ///                     },
 ///                 },
+///                 Id = "applymapping1",
+///                 NodeType = "ApplyMapping",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "selectfields2",
-///                 NodeType = "SelectFields",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -1475,11 +1527,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = "[\"column1\"]",
 ///                     },
 ///                 },
+///                 Id = "selectfields2",
+///                 NodeType = "SelectFields",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "resolvechoice3",
-///                 NodeType = "ResolveChoice",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -1498,11 +1550,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{destinationAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "resolvechoice3",
+///                 NodeType = "ResolveChoice",
 ///             },
 ///             new Aws.Glue.Inputs.GetScriptDagNodeInputArgs
 ///             {
-///                 Id = "datasink4",
-///                 NodeType = "DataSink",
 ///                 Args = new[]
 ///                 {
 ///                     new Aws.Glue.Inputs.GetScriptDagNodeArgInputArgs
@@ -1516,8 +1568,11 @@ Future<GetRegistryResult> getRegistry(
 ///                         Value = $"\"{destinationAwsGlueCatalogTable.Name}\"",
 ///                     },
 ///                 },
+///                 Id = "datasink4",
+///                 NodeType = "DataSink",
 ///             },
 ///         },
+///         Language = "SCALA",
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -1539,7 +1594,6 @@ Future<GetRegistryResult> getRegistry(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := glue.GetScript(ctx, &glue.GetScriptArgs{
-/// 			Language: pulumi.StringRef("SCALA"),
 /// 			DagEdges: []glue.GetScriptDagEdge{
 /// 				{
 /// 					Source: "datasource0",
@@ -1560,8 +1614,6 @@ Future<GetRegistryResult> getRegistry(
 /// 			},
 /// 			DagNodes: []glue.GetScriptDagNode{
 /// 				{
-/// 					Id:       "datasource0",
-/// 					NodeType: "DataSource",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "database",
@@ -1572,30 +1624,30 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", sourceAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "datasource0",
+/// 					NodeType: "DataSource",
 /// 				},
 /// 				{
-/// 					Id:       "applymapping1",
-/// 					NodeType: "ApplyMapping",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "mappings",
 /// 							Value: "[(\"column1\", \"string\", \"column1\", \"string\")]",
 /// 						},
 /// 					},
+/// 					Id:       "applymapping1",
+/// 					NodeType: "ApplyMapping",
 /// 				},
 /// 				{
-/// 					Id:       "selectfields2",
-/// 					NodeType: "SelectFields",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "paths",
 /// 							Value: "[\"column1\"]",
 /// 						},
 /// 					},
+/// 					Id:       "selectfields2",
+/// 					NodeType: "SelectFields",
 /// 				},
 /// 				{
-/// 					Id:       "resolvechoice3",
-/// 					NodeType: "ResolveChoice",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "choice",
@@ -1610,10 +1662,10 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", destinationAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "resolvechoice3",
+/// 					NodeType: "ResolveChoice",
 /// 				},
 /// 				{
-/// 					Id:       "datasink4",
-/// 					NodeType: "DataSink",
 /// 					Args: []glue.GetScriptDagNodeArg{
 /// 						{
 /// 							Name:  "database",
@@ -1624,8 +1676,11 @@ Future<GetRegistryResult> getRegistry(
 /// 							Value: fmt.Sprintf("\"%v\"", destinationAwsGlueCatalogTable.Name),
 /// 						},
 /// 					},
+/// 					Id:       "datasink4",
+/// 					NodeType: "DataSink",
 /// 				},
 /// 			},
+/// 			Language: pulumi.StringRef("SCALA"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1645,7 +1700,6 @@ Future<GetRegistryResult> getRegistry(
 /// }
 ///
 /// data "aws_glue_getscript" "example" {
-///   language = "SCALA"
 ///   dag_edges {
 ///     source = "datasource0"
 ///     target = "applymapping1"
@@ -1663,8 +1717,6 @@ Future<GetRegistryResult> getRegistry(
 ///     target = "datasink4"
 ///   }
 ///   dag_nodes {
-///     id        = "datasource0"
-///     node_type = "DataSource"
 ///     args {
 ///       name  = "database"
 ///       value =""${source.name}""
@@ -1673,26 +1725,26 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${sourceAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "datasource0"
+///     node_type = "DataSource"
 ///   }
 ///   dag_nodes {
-///     id        = "applymapping1"
-///     node_type = "ApplyMapping"
 ///     args {
 ///       name  = "mappings"
 ///       value = "[(\"column1\", \"string\", \"column1\", \"string\")]"
 ///     }
+///     id        = "applymapping1"
+///     node_type = "ApplyMapping"
 ///   }
 ///   dag_nodes {
-///     id        = "selectfields2"
-///     node_type = "SelectFields"
 ///     args {
 ///       name  = "paths"
 ///       value = "[\"column1\"]"
 ///     }
+///     id        = "selectfields2"
+///     node_type = "SelectFields"
 ///   }
 ///   dag_nodes {
-///     id        = "resolvechoice3"
-///     node_type = "ResolveChoice"
 ///     args {
 ///       name  = "choice"
 ///       value = "\"MATCH_CATALOG\""
@@ -1705,10 +1757,10 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${destinationAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "resolvechoice3"
+///     node_type = "ResolveChoice"
 ///   }
 ///   dag_nodes {
-///     id        = "datasink4"
-///     node_type = "DataSink"
 ///     args {
 ///       name  = "database"
 ///       value =""${destination.name}""
@@ -1717,7 +1769,10 @@ Future<GetRegistryResult> getRegistry(
 ///       name  = "table_name"
 ///       value =""${destinationAwsGlueCatalogTable.name}""
 ///     }
+///     id        = "datasink4"
+///     node_type = "DataSink"
 ///   }
+///   language = "SCALA"
 /// }
 ///
 /// output "scalaCode" {
@@ -1749,7 +1804,6 @@ Future<GetRegistryResult> getRegistry(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = GlueFunctions.getScript(GetScriptArgs.builder()
-///             .language("SCALA")
 ///             .dagEdges(
 ///                 GetScriptDagEdgeArgs.builder()
 ///                     .source("datasource0")
@@ -1769,8 +1823,6 @@ Future<GetRegistryResult> getRegistry(
 ///                     .build())
 ///             .dagNodes(
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("datasource0")
-///                     .nodeType("DataSource")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
@@ -1780,26 +1832,26 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", sourceAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("datasource0")
+///                     .nodeType("DataSource")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("applymapping1")
-///                     .nodeType("ApplyMapping")
 ///                     .args(GetScriptDagNodeArgArgs.builder()
 ///                         .name("mappings")
 ///                         .value("[(\"column1\", \"string\", \"column1\", \"string\")]")
 ///                         .build())
+///                     .id("applymapping1")
+///                     .nodeType("ApplyMapping")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("selectfields2")
-///                     .nodeType("SelectFields")
 ///                     .args(GetScriptDagNodeArgArgs.builder()
 ///                         .name("paths")
 ///                         .value("[\"column1\"]")
 ///                         .build())
+///                     .id("selectfields2")
+///                     .nodeType("SelectFields")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("resolvechoice3")
-///                     .nodeType("ResolveChoice")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("choice")
@@ -1813,10 +1865,10 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("resolvechoice3")
+///                     .nodeType("ResolveChoice")
 ///                     .build(),
 ///                 GetScriptDagNodeArgs.builder()
-///                     .id("datasink4")
-///                     .nodeType("DataSink")
 ///                     .args(
 ///                         GetScriptDagNodeArgArgs.builder()
 ///                             .name("database")
@@ -1826,7 +1878,10 @@ Future<GetRegistryResult> getRegistry(
 ///                             .name("table_name")
 ///                             .value(String.format("\"%s\"", destinationAwsGlueCatalogTable.name()))
 ///                             .build())
+///                     .id("datasink4")
+///                     .nodeType("DataSink")
 ///                     .build())
+///             .language("SCALA")
 ///             .build());
 ///
 ///         ctx.export("scalaCode", example.scalaCode());
@@ -1839,7 +1894,6 @@ Future<GetRegistryResult> getRegistry(
 ///     fn::invoke:
 ///       function: aws:glue:getScript
 ///       arguments:
-///         language: SCALA
 ///         dagEdges:
 ///           - source: datasource0
 ///             target: applymapping1
@@ -1850,39 +1904,40 @@ Future<GetRegistryResult> getRegistry(
 ///           - source: resolvechoice3
 ///             target: datasink4
 ///         dagNodes:
-///           - id: datasource0
-///             nodeType: DataSource
-///             args:
+///           - args:
 ///               - name: database
 ///                 value: '"${source.name}"'
 ///               - name: table_name
 ///                 value: '"${sourceAwsGlueCatalogTable.name}"'
-///           - id: applymapping1
-///             nodeType: ApplyMapping
-///             args:
+///             id: datasource0
+///             nodeType: DataSource
+///           - args:
 ///               - name: mappings
 ///                 value: '[("column1", "string", "column1", "string")]'
-///           - id: selectfields2
-///             nodeType: SelectFields
-///             args:
+///             id: applymapping1
+///             nodeType: ApplyMapping
+///           - args:
 ///               - name: paths
 ///                 value: '["column1"]'
-///           - id: resolvechoice3
-///             nodeType: ResolveChoice
-///             args:
+///             id: selectfields2
+///             nodeType: SelectFields
+///           - args:
 ///               - name: choice
 ///                 value: '"MATCH_CATALOG"'
 ///               - name: database
 ///                 value: '"${destination.name}"'
 ///               - name: table_name
 ///                 value: '"${destinationAwsGlueCatalogTable.name}"'
-///           - id: datasink4
-///             nodeType: DataSink
-///             args:
+///             id: resolvechoice3
+///             nodeType: ResolveChoice
+///           - args:
 ///               - name: database
 ///                 value: '"${destination.name}"'
 ///               - name: table_name
 ///                 value: '"${destinationAwsGlueCatalogTable.name}"'
+///             id: datasink4
+///             nodeType: DataSink
+///         language: SCALA
 /// outputs:
 ///   scalaCode: ${example.scalaCode}
 /// ```
@@ -1899,4 +1954,15 @@ Future<GetScriptResult> getScript(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScriptResult.fromMap(result);
+}
+
+pulumi.Output<GetScriptResult> getScriptOutput(
+  GetScriptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:glue/getScript:getScript',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScriptResult.fromMap);
 }

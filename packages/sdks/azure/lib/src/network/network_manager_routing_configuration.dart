@@ -135,7 +135,7 @@ import 'network_manager_routing_configuration_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerRoutingConfiguration(ctx, "example", &network.NetworkManagerRoutingConfigurationArgs{
 /// 			Name:             pulumi.String("example-routing-configuration"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:      pulumi.String("example routing configuration"),
 /// 		})
 /// 		if err != nil {
@@ -301,7 +301,7 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
           'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -314,11 +314,12 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerRoutingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerRoutingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,6 +333,21 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    routeTableUsageMode = registerOutput<String?>('routeTableUsageMode');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerRoutingConfiguration] resource.
+  NetworkManagerRoutingConfiguration.reference(String urn)
+    : super(
+        'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');

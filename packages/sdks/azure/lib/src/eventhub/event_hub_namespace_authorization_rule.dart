@@ -311,19 +311,20 @@ class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
           'azure:eventhub/eventHubNamespaceAuthorizationRule:EventHubNamespaceAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 
@@ -332,11 +333,12 @@ class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventHubNamespaceAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventHubNamespaceAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,13 +356,37 @@ class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+  }
+
+  /// Creates a typed reference to an existing [EventHubNamespaceAuthorizationRule] resource.
+  EventHubNamespaceAuthorizationRule.reference(String urn)
+    : super(
+        'azure:eventhub/eventHubNamespaceAuthorizationRule:EventHubNamespaceAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 }

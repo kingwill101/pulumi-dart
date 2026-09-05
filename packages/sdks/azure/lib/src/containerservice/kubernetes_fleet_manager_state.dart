@@ -5,15 +5,15 @@ import 'kubernetes_fleet_manager_hub_profile.dart';
 
 /// Input properties used for looking up and filtering KubernetesFleetManager resources.
 class KubernetesFleetManagerState {
-  final pulumi.Input<KubernetesFleetManagerHubProfile>? hubProfile;
+  final pulumi.Input<KubernetesFleetManagerHubProfile?>? hubProfile;
   /// The Azure Region where the Kubernetes Fleet Manager should exist. Changing this forces a new Kubernetes Fleet Manager to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Kubernetes Fleet Manager. Changing this forces a new Kubernetes Fleet Manager to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group within which this Kubernetes Fleet Manager should exist. Changing this forces a new Kubernetes Fleet Manager to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Kubernetes Fleet Manager.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KubernetesFleetManagerState].
   /// [hubProfile] Optional.

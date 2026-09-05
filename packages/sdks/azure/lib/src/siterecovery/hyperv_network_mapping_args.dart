@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_siterecovery_hyperv_network_mapping_hyperv_network_mapping_args_doc}
 class HypervNetworkMappingArgs {
   /// The name of the HyperV network mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Recovery Services Vault where the HyperV network mapping should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultId;
   /// The Name of the primary network. Changing this forces a new resource to be created.

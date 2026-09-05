@@ -129,7 +129,7 @@ import 'policy_fragment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewPolicyFragment(ctx, "example", &apimanagement.PolicyFragmentArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example-policy-fragment"),
 /// 			Format:          pulumi.String("xml"),
 /// 			Value:           pulumi.String(invokeFile.Result),
@@ -302,7 +302,7 @@ class PolicyFragment extends pulumi.CustomResource {
           'azure:apimanagement/policyFragment:PolicyFragment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
@@ -316,11 +316,12 @@ class PolicyFragment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyFragmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyFragment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,6 +335,22 @@ class PolicyFragment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    format = registerOutput<String?>('format');
+    this.name = registerOutput<String>('name');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [PolicyFragment] resource.
+  PolicyFragment.reference(String urn)
+    : super(
+        'azure:apimanagement/policyFragment:PolicyFragment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
     format = registerOutput<String?>('format');

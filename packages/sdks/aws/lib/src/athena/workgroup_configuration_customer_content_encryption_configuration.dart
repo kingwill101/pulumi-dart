@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationCustomerContentEncryptionConfiguration {
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [WorkgroupConfigurationCustomerContentEncryptionConfiguration].
   /// [kmsKey] Optional.

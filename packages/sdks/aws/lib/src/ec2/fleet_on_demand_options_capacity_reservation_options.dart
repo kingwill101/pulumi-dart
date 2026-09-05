@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetOnDemandOptionsCapacityReservationOptions {
   /// Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity. Valid values: `use-capacity-reservations-first`.
-  final pulumi.Input<String>? usageStrategy;
+  final pulumi.Input<String?>? usageStrategy;
 
   /// Creates a new [FleetOnDemandOptionsCapacityReservationOptions].
   /// [usageStrategy] Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity. Valid values: `use-capacity-reservations-first`.

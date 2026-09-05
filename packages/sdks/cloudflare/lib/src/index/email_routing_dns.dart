@@ -164,7 +164,7 @@ class EmailRoutingDns extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingDns:EmailRoutingDns',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     created = registerOutput<String>('created');
     enabled = registerOutput<bool>('enabled');

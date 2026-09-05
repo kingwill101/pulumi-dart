@@ -3,54 +3,54 @@
 
 /// Result data returned by getInvocation.
 class GetInvocationResult {
-  final String functionName;
+  final String? functionName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String input;
+  final String? id;
+  final String? input;
   final String? qualifier;
-  final String region;
+  final String? region;
   /// String result of the Lambda function invocation.
-  final String result;
+  final String? result;
   final String? tenantId;
 
   /// Creates a new [GetInvocationResult].
-  /// [functionName] Required.
+  /// [functionName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [input] Required.
+  /// [input] Optional.
   /// [qualifier] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [result] String result of the Lambda function invocation.
   /// [tenantId] Optional.
   const GetInvocationResult({
-    required this.functionName,
-    required this.id,
-    required this.input,
+    this.functionName,
+    this.id,
+    this.input,
     this.qualifier,
-    required this.region,
-    required this.result,
+    this.region,
+    this.result,
     this.tenantId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'functionName': functionName,
-      'id': id,
-      'input': input,
+      'functionName': ?functionName,
+      'id': ?id,
+      'input': ?input,
       'qualifier': ?qualifier,
-      'region': region,
-      'result': result,
+      'region': ?region,
+      'result': ?result,
       'tenantId': ?tenantId,
     };
   }
 
   factory GetInvocationResult.fromMap(Map<String, dynamic> map) {
     return GetInvocationResult(
-      functionName: map['functionName'] as String,
-      id: map['id'] as String,
-      input: map['input'] as String,
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return guardedValue as String; })(),
       qualifier: (() { final guardedValue = map['qualifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      result: map['result'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

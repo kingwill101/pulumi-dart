@@ -286,7 +286,7 @@ class ApiVersionSet extends pulumi.CustomResource {
           'azure:apimanagement/apiVersionSet:ApiVersionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
@@ -303,11 +303,12 @@ class ApiVersionSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiVersionSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiVersionSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,6 +322,25 @@ class ApiVersionSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
+  }
+
+  /// Creates a typed reference to an existing [ApiVersionSet] resource.
+  ApiVersionSet.reference(String urn)
+    : super(
+        'azure:apimanagement/apiVersionSet:ApiVersionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

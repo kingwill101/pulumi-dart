@@ -11,17 +11,17 @@ import 'deployment_config_zonal_config.dart';
 /// {@macro pulumi_codedeploy_deployment_config_deployment_config_args_doc}
 class DeploymentConfigArgs {
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
-  final pulumi.Input<String>? computePlatform;
+  final pulumi.Input<String?>? computePlatform;
   /// The name of the deployment config.
-  final pulumi.Input<String>? deploymentConfigName;
+  final pulumi.Input<String?>? deploymentConfigName;
   /// A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-  final pulumi.Input<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts;
+  final pulumi.Input<DeploymentConfigMinimumHealthyHosts?>? minimumHealthyHosts;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A trafficRoutingConfig block. Traffic Routing Config is documented below.
-  final pulumi.Input<DeploymentConfigTrafficRoutingConfig>? trafficRoutingConfig;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfig?>? trafficRoutingConfig;
   /// A zonalConfig block. Zonal Config is documented below.
-  final pulumi.Input<DeploymentConfigZonalConfig>? zonalConfig;
+  final pulumi.Input<DeploymentConfigZonalConfig?>? zonalConfig;
 
   /// Creates a new [DeploymentConfigArgs].
   /// [computePlatform] The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeCluster {
   /// Availability of the volume. Can be `active` (default), `pause`, or `drain`.
-  final pulumi.Input<String>? availability;
+  final pulumi.Input<String?>? availability;
   /// Cluster Volume group
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The ID of the cluster volume.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Minimum size of the Cluster Volume in human readable memory bytes (like 128MiB, 2GiB, etc). Must be in format of KiB, MiB, Gib, Tib or PiB.
-  final pulumi.Input<String>? limitBytes;
+  final pulumi.Input<String?>? limitBytes;
   /// Maximum size of the Cluster Volume in human readable memory bytes (like 128MiB, 2GiB, etc). Must be in format of KiB, MiB, Gib, Tib or PiB.
-  final pulumi.Input<String>? requiredBytes;
+  final pulumi.Input<String?>? requiredBytes;
   /// The scope of the volume. Can be `single` (default) or `multi`.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The sharing mode. Can be `none` (default), `readonly`, `onewriter` or `all`.
-  final pulumi.Input<String>? sharing;
+  final pulumi.Input<String?>? sharing;
   /// A topology that the Cluster Volume would be preferred in
-  final pulumi.Input<String>? topologyPreferred;
+  final pulumi.Input<String?>? topologyPreferred;
   /// A topology that the Cluster Volume must be accessible from
-  final pulumi.Input<String>? topologyRequired;
+  final pulumi.Input<String?>? topologyRequired;
   /// Cluster Volume access type. Can be `mount` or `block` (default).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VolumeCluster].
   /// [availability] Availability of the volume. Can be `active` (default), `pause`, or `drain`.

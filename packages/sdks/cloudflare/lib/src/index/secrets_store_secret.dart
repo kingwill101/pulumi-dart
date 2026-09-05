@@ -126,7 +126,7 @@ import 'secrets_store_secret_state.dart';
 class SecretsStoreSecret extends pulumi.CustomResource {
   /// Account Identifier
   late final pulumi.Output<String> accountId;
-  /// Freeform text describing the secret.
+  /// Freeform text describing the secret
   late final pulumi.Output<String?> comment;
   /// When the secret was created.
   late final pulumi.Output<String> created;
@@ -134,7 +134,7 @@ class SecretsStoreSecret extends pulumi.CustomResource {
   late final pulumi.Output<String> modified;
   /// The name of the secret
   late final pulumi.Output<String> name;
-  /// The list of services that can use this secret.
+  /// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
   late final pulumi.Output<List<String>> scopes;
   /// Available values: "pending", "active", "deleted".
   late final pulumi.Output<String> status;
@@ -155,7 +155,7 @@ class SecretsStoreSecret extends pulumi.CustomResource {
           'cloudflare:index/secretsStoreSecret:SecretsStoreSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     accountId = registerOutput<String>('accountId');

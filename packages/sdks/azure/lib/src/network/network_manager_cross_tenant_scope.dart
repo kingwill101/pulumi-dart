@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagerCrossTenantScope {
   /// List of management groups.
-  final pulumi.Input<List<String>>? managementGroups;
+  final pulumi.Input<List<String>?>? managementGroups;
   /// List of subscriptions.
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [NetworkManagerCrossTenantScope].
   /// [managementGroups] List of management groups.

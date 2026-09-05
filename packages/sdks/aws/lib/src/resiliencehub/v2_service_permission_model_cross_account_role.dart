@@ -6,7 +6,7 @@ class V2ServicePermissionModelCrossAccountRole {
   /// ARN of the IAM Role for the profile.
   final pulumi.Input<String> crossAccountRoleArn;
   /// External ID used for assuming the cross-account role.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
 
   /// Creates a new [V2ServicePermissionModelCrossAccountRole].
   /// [crossAccountRoleArn] ARN of the IAM Role for the profile.

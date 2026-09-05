@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// See https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html
-enum Metric {
+enum Metric implements pulumi.PulumiEnum<String> {
   valueGroupMinSize("GroupMinSize"),
   valueGroupMaxSize("GroupMaxSize"),
   valueGroupDesiredCapacity("GroupDesiredCapacity"),
@@ -22,6 +24,7 @@ enum Metric {
   valueGroupAndWarmPoolTotalCapacity("GroupAndWarmPoolTotalCapacity");
 
   const Metric(this.wireValue);
+  @override
   final String wireValue;
 
   static Metric fromValue(String value) {

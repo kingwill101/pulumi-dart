@@ -19,12 +19,12 @@ import 'product_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.servicecatalog.Product("example", {
-///     name: "example",
-///     owner: "example-owner",
-///     type: "CLOUD_FORMATION_TEMPLATE",
 ///     provisioningArtifactParameters: {
 ///         templateUrl: "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json",
 ///     },
+///     name: "example",
+///     owner: "example-owner",
+///     type: "CLOUD_FORMATION_TEMPLATE",
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -35,12 +35,12 @@ import 'product_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.servicecatalog.Product("example",
-///     name="example",
-///     owner="example-owner",
-///     type="CLOUD_FORMATION_TEMPLATE",
 ///     provisioning_artifact_parameters={
 ///         "template_url": "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json",
 ///     },
+///     name="example",
+///     owner="example-owner",
+///     type="CLOUD_FORMATION_TEMPLATE",
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -55,13 +55,13 @@ import 'product_state.dart';
 /// {
 ///     var example = new Aws.ServiceCatalog.Product("example", new()
 ///     {
-///         Name = "example",
-///         Owner = "example-owner",
-///         Type = "CLOUD_FORMATION_TEMPLATE",
 ///         ProvisioningArtifactParameters = new Aws.ServiceCatalog.Inputs.ProductProvisioningArtifactParametersArgs
 ///         {
 ///             TemplateUrl = "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json",
 ///         },
+///         Name = "example",
+///         Owner = "example-owner",
+///         Type = "CLOUD_FORMATION_TEMPLATE",
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -81,12 +81,12 @@ import 'product_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := servicecatalog.NewProduct(ctx, "example", &servicecatalog.ProductArgs{
-/// 			Name:  pulumi.String("example"),
-/// 			Owner: pulumi.String("example-owner"),
-/// 			Type:  pulumi.String("CLOUD_FORMATION_TEMPLATE"),
 /// 			ProvisioningArtifactParameters: &servicecatalog.ProductProvisioningArtifactParametersArgs{
 /// 				TemplateUrl: pulumi.String("https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json"),
 /// 			},
+/// 			Name:  pulumi.String("example"),
+/// 			Owner: pulumi.String("example-owner"),
+/// 			Type:  pulumi.String("CLOUD_FORMATION_TEMPLATE"),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -108,12 +108,12 @@ import 'product_state.dart';
 /// }
 ///
 /// resource "aws_servicecatalog_product" "example" {
-///   name  = "example"
-///   owner = "example-owner"
-///   type  = "CLOUD_FORMATION_TEMPLATE"
 ///   provisioning_artifact_parameters = {
 ///     template_url = "https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json"
 ///   }
+///   name  = "example"
+///   owner = "example-owner"
+///   type  = "CLOUD_FORMATION_TEMPLATE"
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -142,12 +142,12 @@ import 'product_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Product("example", ProductArgs.builder()
-///             .name("example")
-///             .owner("example-owner")
-///             .type("CLOUD_FORMATION_TEMPLATE")
 ///             .provisioningArtifactParameters(ProductProvisioningArtifactParametersArgs.builder()
 ///                 .templateUrl("https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json")
 ///                 .build())
+///             .name("example")
+///             .owner("example-owner")
+///             .type("CLOUD_FORMATION_TEMPLATE")
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -159,11 +159,11 @@ import 'product_state.dart';
 ///   example:
 ///     type: aws:servicecatalog:Product
 ///     properties:
+///       provisioningArtifactParameters:
+///         templateUrl: https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json
 ///       name: example
 ///       owner: example-owner
 ///       type: CLOUD_FORMATION_TEMPLATE
-///       provisioningArtifactParameters:
-///         templateUrl: https://s3.amazonaws.com/cf-templates-ozkq9d3hgiq2-us-east-1/temp1.json
 ///       tags:
 ///         foo: bar
 /// ```
@@ -226,7 +226,7 @@ class Product extends pulumi.CustomResource {
           'aws:servicecatalog/product:Product',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     arn = registerOutput<String>('arn');
@@ -242,8 +242,8 @@ class Product extends pulumi.CustomResource {
     supportDescription = registerOutput<String>('supportDescription');
     supportEmail = registerOutput<String>('supportEmail');
     supportUrl = registerOutput<String>('supportUrl');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -252,11 +252,12 @@ class Product extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Product._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,8 +285,36 @@ class Product extends pulumi.CustomResource {
     supportDescription = registerOutput<String>('supportDescription');
     supportEmail = registerOutput<String>('supportEmail');
     supportUrl = registerOutput<String>('supportUrl');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Product] resource.
+  Product.reference(String urn)
+    : super(
+        'aws:servicecatalog/product:Product',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String>('description');
+    distributor = registerOutput<String>('distributor');
+    hasDefaultPath = registerOutput<bool>('hasDefaultPath');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    provisioningArtifactParameters = registerOutput<ProductProvisioningArtifactParameters>('provisioningArtifactParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProductProvisioningArtifactParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    supportDescription = registerOutput<String>('supportDescription');
+    supportEmail = registerOutput<String>('supportEmail');
+    supportUrl = registerOutput<String>('supportUrl');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

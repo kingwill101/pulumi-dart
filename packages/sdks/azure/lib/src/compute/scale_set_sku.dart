@@ -8,7 +8,7 @@ class ScaleSetSku {
   /// Specifies the size of virtual machines in a scale set.
   final pulumi.Input<String> name;
   /// Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ScaleSetSku].
   /// [capacity] Specifies the number of virtual machines in the scale set.
@@ -30,7 +30,7 @@ class ScaleSetSku {
 
   factory ScaleSetSku.fromMap(Map<String, dynamic> map) {
     return ScaleSetSku(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersProcessPid {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<String>? eq;
+  final pulumi.Input<String?>? eq;
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<String>? gte;
+  final pulumi.Input<String?>? gte;
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<String>? lte;
+  final pulumi.Input<String?>? lte;
 
   /// Creates a new [InsightFiltersProcessPid].
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.

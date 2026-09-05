@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'link_service_args.dart';
+import 'link_service_nat_ip_configuration.dart';
 import 'link_service_state.dart';
 
 /// Manages a Private Link Service.
@@ -292,7 +293,7 @@ import 'link_service_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              examplePublicIp.Name,
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -310,23 +311,23 @@ import 'link_service_state.dart';
 /// 				pulumi.String("00000000-0000-0000-0000-000000000000"),
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
-/// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
+/// 				exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
 /// 					return frontendIpConfigurations[0].Id, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 			NatIpConfigurations: privatedns.LinkServiceNatIpConfigurationArray{
 /// 				&privatedns.LinkServiceNatIpConfigurationArgs{
 /// 					Name:                    pulumi.String("primary"),
 /// 					PrivateIpAddress:        pulumi.String("10.5.1.17"),
 /// 					PrivateIpAddressVersion: pulumi.String("IPv4"),
-/// 					SubnetId:                exampleSubnet.ID(),
+/// 					SubnetId:                exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Primary:                 pulumi.Bool(true),
 /// 				},
 /// 				&privatedns.LinkServiceNatIpConfigurationArgs{
 /// 					Name:                    pulumi.String("secondary"),
 /// 					PrivateIpAddress:        pulumi.String("10.5.1.18"),
 /// 					PrivateIpAddressVersion: pulumi.String("IPv4"),
-/// 					SubnetId:                exampleSubnet.ID(),
+/// 					SubnetId:                exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Primary:                 pulumi.Bool(false),
 /// 				},
 /// 			},
@@ -607,7 +608,7 @@ class LinkService extends pulumi.CustomResource {
   /// Specifies the name of this Private Link Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more (up to 8) `natIpConfiguration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> natIpConfigurations;
+  late final pulumi.Output<List<LinkServiceNatIpConfiguration>> natIpConfigurations;
   /// Should the Private Link Service support the Proxy Protocol? Defaults to `false`.
   late final pulumi.Output<bool> proxyProtocolEnabled;
   /// The name of the Resource Group where the Private Link Service should exist. Changing this forces a new resource to be created.
@@ -631,21 +632,21 @@ class LinkService extends pulumi.CustomResource {
           'azure:privatedns/linkService:LinkService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
-    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
+    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
-    fqdns = registerOutput<List<String>?>('fqdns');
-    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
+    natIpConfigurations = registerOutput<List<LinkServiceNatIpConfiguration>>('natIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(guardedValue, (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [LinkService] resource's state with the given [name] and [id].
@@ -653,11 +654,12 @@ class LinkService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -672,17 +674,41 @@ class LinkService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     alias = registerOutput<String>('alias');
-    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds');
+    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     destinationIpAddress = registerOutput<String?>('destinationIpAddress');
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
-    fqdns = registerOutput<List<String>?>('fqdns');
-    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    natIpConfigurations = registerOutput<List<Map<String, dynamic>>>('natIpConfigurations');
+    natIpConfigurations = registerOutput<List<LinkServiceNatIpConfiguration>>('natIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(guardedValue, (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinkService] resource.
+  LinkService.reference(String urn)
+    : super(
+        'azure:privatedns/linkService:LinkService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationIpAddress = registerOutput<String?>('destinationIpAddress');
+    enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancerFrontendIpConfigurationIds = registerOutput<List<String>?>('loadBalancerFrontendIpConfigurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    natIpConfigurations = registerOutput<List<LinkServiceNatIpConfiguration>>('natIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(guardedValue, (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    visibilitySubscriptionIds = registerOutput<List<String>?>('visibilitySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

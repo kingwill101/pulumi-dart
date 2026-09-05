@@ -6,7 +6,7 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacemen
   /// Number of instances in this placement item.
   final pulumi.Input<int> instanceCount;
   /// UltraServer ID.
-  final pulumi.Input<String>? ultraServerId;
+  final pulumi.Input<String?>? ultraServerId;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification].
   /// [instanceCount] Number of instances in this placement item.
@@ -25,7 +25,7 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacemen
 
   factory HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       ultraServerId: (() { final guardedValue = map['ultraServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -8,9 +8,9 @@ class PipeLogConfigurationS3LogDestination {
   /// Amazon Web Services account that owns the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.
   final pulumi.Input<String> bucketOwner;
   /// EventBridge format for the log records. Valid values `json`, `plain` and `w3c`.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Prefix text with which to begin Amazon S3 log object names.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [PipeLogConfigurationS3LogDestination].
   /// [bucketName] Name of the Amazon S3 bucket to which EventBridge delivers the log records for the pipe.

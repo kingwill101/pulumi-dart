@@ -6,39 +6,39 @@ import 'kx_environment_transit_gateway_configuration.dart';
 
 /// Input properties used for looking up and filtering KxEnvironment resources.
 class KxEnvironmentState {
-  /// Amazon Resource Name (ARN) identifier of the KX environment.
-  final pulumi.Input<String>? arn;
+  /// ARN identifier of the KX environment.
+  final pulumi.Input<String?>? arn;
   /// AWS Availability Zone IDs that this environment is available in. Important when selecting VPC subnets to use in cluster creation.
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// Timestamp at which the environment is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  final pulumi.Input<String>? createdTimestamp;
+  final pulumi.Input<String?>? createdTimestamp;
   /// List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.
-  final pulumi.Input<List<KxEnvironmentCustomDnsConfiguration>>? customDnsConfigurations;
+  final pulumi.Input<List<KxEnvironmentCustomDnsConfiguration>?>? customDnsConfigurations;
   /// Description for the KX environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the AWS environment infrastructure account.
-  final pulumi.Input<String>? infrastructureAccountId;
+  final pulumi.Input<String?>? infrastructureAccountId;
   /// KMS key ID to encrypt your data in the FinSpace environment.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Last timestamp at which the environment was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  final pulumi.Input<String>? lastModifiedTimestamp;
+  final pulumi.Input<String?>? lastModifiedTimestamp;
   /// Name of the KX environment that you want to create.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of environment creation
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
-  final pulumi.Input<KxEnvironmentTransitGatewayConfiguration>? transitGatewayConfiguration;
+  final pulumi.Input<KxEnvironmentTransitGatewayConfiguration?>? transitGatewayConfiguration;
 
   /// Creates a new [KxEnvironmentState].
-  /// [arn] Amazon Resource Name (ARN) identifier of the KX environment.
+  /// [arn] ARN identifier of the KX environment.
   /// [availabilityZones] AWS Availability Zone IDs that this environment is available in. Important when selecting VPC subnets to use in cluster creation.
   /// [createdTimestamp] Timestamp at which the environment is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   /// [customDnsConfigurations] List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.

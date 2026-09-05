@@ -6,13 +6,13 @@ import 'subscription_pricing_extension.dart';
 /// Input properties used for looking up and filtering SubscriptionPricing resources.
 class SubscriptionPricingState {
   /// One or more `extension` blocks as defined below.
-  final pulumi.Input<List<SubscriptionPricingExtension>>? extensions;
+  final pulumi.Input<List<SubscriptionPricingExtension>?>? extensions;
   /// The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subplan;
+  final pulumi.Input<String?>? subplan;
   /// The pricing tier to use. Possible values are `Free` and `Standard`.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SubscriptionPricingState].
   /// [extensions] One or more `extension` blocks as defined below.

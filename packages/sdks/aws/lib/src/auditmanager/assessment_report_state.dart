@@ -7,17 +7,17 @@ class AssessmentReportState {
   /// Unique identifier of the assessment to create the report from.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? assessmentId;
+  final pulumi.Input<String?>? assessmentId;
   /// Name of the user who created the assessment report.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// Description of the assessment report.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the assessment report.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current status of the specified assessment report. Valid values are `COMPLETE`, `IN_PROGRESS`, and `FAILED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AssessmentReportState].
   /// [assessmentId] Unique identifier of the assessment to create the report from.

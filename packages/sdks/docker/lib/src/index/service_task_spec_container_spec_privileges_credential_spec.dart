@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecPrivilegesCredentialSpec {
   /// Load credential spec from this file
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// Load credential spec from this value in the Windows registry
-  final pulumi.Input<String>? registry;
+  final pulumi.Input<String?>? registry;
 
   /// Creates a new [ServiceTaskSpecContainerSpecPrivilegesCredentialSpec].
   /// [file] Load credential spec from this file

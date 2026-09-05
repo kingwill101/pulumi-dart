@@ -137,7 +137,7 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
           'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');
@@ -151,11 +151,12 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcBlockPublicAccessOptionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcBlockPublicAccessOptions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -169,6 +170,22 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    awsRegion = registerOutput<String>('awsRegion');
+    internetGatewayBlockMode = registerOutput<String>('internetGatewayBlockMode');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcBlockPublicAccessOptionsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VpcBlockPublicAccessOptions] resource.
+  VpcBlockPublicAccessOptions.reference(String urn)
+    : super(
+        'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');
     internetGatewayBlockMode = registerOutput<String>('internetGatewayBlockMode');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_source_entity_source_analysis_data_set_reference.dart';
 
 class TemplateSourceEntitySourceAnalysis {
-  /// The Amazon Resource Name (ARN) of the resource.
+  /// ARN of the resource.
   final pulumi.Input<String> arn;
   /// A list of dataset references used as placeholders in the template. See data_set_references.
   final pulumi.Input<List<TemplateSourceEntitySourceAnalysisDataSetReference>> dataSetReferences;
 
   /// Creates a new [TemplateSourceEntitySourceAnalysis].
-  /// [arn] The Amazon Resource Name (ARN) of the resource.
+  /// [arn] ARN of the resource.
   /// [dataSetReferences] A list of dataset references used as placeholders in the template. See data_set_references.
   const TemplateSourceEntitySourceAnalysis({
     required this.arn,

@@ -5,37 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HostedConnection resources.
 class HostedConnectionState {
   /// The Direct Connect endpoint on which the physical connection terminates.
-  final pulumi.Input<String>? awsDevice;
+  final pulumi.Input<String?>? awsDevice;
   /// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps, and 25Gbps. Case sensitive. Refer to the AWS Direct Connection supported bandwidths for [Hosted Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/hosted_connection.html).
-  final pulumi.Input<String>? bandwidth;
+  final pulumi.Input<String?>? bandwidth;
   /// The ID of the interconnect or LAG.
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// The AWS Region where the connection is located.
-  final pulumi.Input<String>? connectionRegion;
+  final pulumi.Input<String?>? connectionRegion;
   /// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-  final pulumi.Input<String>? hasLogicalRedundancy;
+  final pulumi.Input<String?>? hasLogicalRedundancy;
   /// Boolean value representing if jumbo frames have been enabled for this connection.
-  final pulumi.Input<bool>? jumboFrameCapable;
+  final pulumi.Input<bool?>? jumboFrameCapable;
   /// The ID of the LAG.
-  final pulumi.Input<String>? lagId;
+  final pulumi.Input<String?>? lagId;
   /// The time of the most recent call to [DescribeLoa](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLoa.html) for this connection.
-  final pulumi.Input<String>? loaIssueTime;
+  final pulumi.Input<String?>? loaIssueTime;
   /// The location of the connection.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the connection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the AWS account of the customer for the connection.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// The name of the AWS Direct Connect service provider associated with the connection.
-  final pulumi.Input<String>? partnerName;
+  final pulumi.Input<String?>? partnerName;
   /// The name of the service provider associated with the connection.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// (**Deprecated**) The AWS Region where the connection is located. Use `connectionRegion` instead.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The dedicated VLAN provisioned to the hosted connection.
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [HostedConnectionState].
   /// [awsDevice] The Direct Connect endpoint on which the physical connection terminates.
@@ -111,7 +111,7 @@ class HostedConnectionState {
       providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

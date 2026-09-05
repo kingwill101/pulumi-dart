@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyIntrusionDetectionSignatureOverride {
   /// 12-digit number (id) which identifies your signature.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// state can be any of `Off`, `Alert` or `Deny`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureOverride].
   /// [id] 12-digit number (id) which identifies your signature.

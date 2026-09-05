@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_args.dart';
+import 'firewall_policy_custom_rule.dart';
+import 'firewall_policy_managed_rule.dart';
 import 'firewall_policy_state.dart';
 
 /// &gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
@@ -858,7 +860,7 @@ class FirewallPolicy extends pulumi.CustomResource {
   /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
   late final pulumi.Output<int?> customBlockResponseStatusCode;
   /// One or more `customRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+  late final pulumi.Output<List<FirewallPolicyCustomRule>?> customRules;
   /// Is the policy a enabled state or disabled state. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// The Frontend Endpoints associated with this Front Door Web Application Firewall policy.
@@ -866,7 +868,7 @@ class FirewallPolicy extends pulumi.CustomResource {
   /// The Azure Region where this Front Door Firewall Policy exists.
   late final pulumi.Output<String> location;
   /// One or more `managedRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedRules;
+  late final pulumi.Output<List<FirewallPolicyManagedRule>?> managedRules;
   /// The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
   late final pulumi.Output<String?> mode;
   /// The name of the policy. Changing this forces a new resource to be created.
@@ -890,20 +892,20 @@ class FirewallPolicy extends pulumi.CustomResource {
           'azure:frontdoor/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
     customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<FirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyCustomRule>(guardedValue, (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
-    managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
+    managedRules = registerOutput<List<FirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyManagedRule>(guardedValue, (value) => FirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String?>('redirectUrl');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FirewallPolicy] resource's state with the given [name] and [id].
@@ -911,11 +913,12 @@ class FirewallPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -931,15 +934,38 @@ class FirewallPolicy extends pulumi.CustomResource {
         ) {
     customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
     customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<FirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyCustomRule>(guardedValue, (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
-    managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
+    managedRules = registerOutput<List<FirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyManagedRule>(guardedValue, (value) => FirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String?>('redirectUrl');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicy] resource.
+  FirewallPolicy.reference(String urn)
+    : super(
+        'azure:frontdoor/firewallPolicy:FirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
+    customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
+    customRules = registerOutput<List<FirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyCustomRule>(guardedValue, (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    managedRules = registerOutput<List<FirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyManagedRule>(guardedValue, (value) => FirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    redirectUrl = registerOutput<String?>('redirectUrl');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

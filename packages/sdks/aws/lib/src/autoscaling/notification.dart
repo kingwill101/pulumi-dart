@@ -271,9 +271,9 @@ class Notification extends pulumi.CustomResource {
           'aws:autoscaling/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    groupNames = registerOutput<List<String>>('groupNames');
+    groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });
     region = registerOutput<String>('region');
     topicArn = registerOutput<String>('topicArn');
@@ -284,11 +284,12 @@ class Notification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Notification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,7 +303,22 @@ class Notification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    groupNames = registerOutput<List<String>>('groupNames');
+    groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });
+    region = registerOutput<String>('region');
+    topicArn = registerOutput<String>('topicArn');
+  }
+
+  /// Creates a typed reference to an existing [Notification] resource.
+  Notification.reference(String urn)
+    : super(
+        'aws:autoscaling/notification:Notification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });
     region = registerOutput<String>('region');
     topicArn = registerOutput<String>('topicArn');

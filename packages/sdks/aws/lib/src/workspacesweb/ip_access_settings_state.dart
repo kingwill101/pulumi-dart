@@ -6,27 +6,27 @@ import 'ip_access_settings_ip_rule.dart';
 /// Input properties used for looking up and filtering IpAccessSettings resources.
 class IpAccessSettingsState {
   /// Additional encryption context for the IP access settings.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// List of web portal ARNs that this IP access settings resource is associated with.
-  final pulumi.Input<List<String>>? associatedPortalArns;
+  final pulumi.Input<List<String>?>? associatedPortalArns;
   /// ARN of the customer managed KMS key.
-  final pulumi.Input<String>? customerManagedKey;
+  final pulumi.Input<String?>? customerManagedKey;
   /// The description of the IP access settings.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the IP access settings.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// ARN of the IP access settings resource.
-  final pulumi.Input<String>? ipAccessSettingsArn;
+  final pulumi.Input<String?>? ipAccessSettingsArn;
   /// The IP rules of the IP access settings. See IP Rule below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<IpAccessSettingsIpRule>>? ipRules;
+  final pulumi.Input<List<IpAccessSettingsIpRule>?>? ipRules;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [IpAccessSettingsState].
   /// [additionalEncryptionContext] Additional encryption context for the IP access settings.

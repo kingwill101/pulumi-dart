@@ -9,9 +9,9 @@ import 'registry_scanning_configuration_rule.dart';
 /// {@macro pulumi_ecr_registry_scanning_configuration_registry_scanning_configuration_args_doc}
 class RegistryScanningConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
-  final pulumi.Input<List<RegistryScanningConfigurationRule>>? rules;
+  final pulumi.Input<List<RegistryScanningConfigurationRule>?>? rules;
   /// the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
   final pulumi.Input<String> scanType;
 

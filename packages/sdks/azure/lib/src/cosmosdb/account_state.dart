@@ -14,86 +14,86 @@ import 'account_virtual_network_rule.dart';
 
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
-  final pulumi.Input<bool>? accessKeyMetadataWritesEnabled;
+  final pulumi.Input<bool?>? accessKeyMetadataWritesEnabled;
   /// An `analyticalStorage` block as defined below.
-  final pulumi.Input<AccountAnalyticalStorage>? analyticalStorage;
-  final pulumi.Input<bool>? analyticalStorageEnabled;
-  final pulumi.Input<bool>? automaticFailoverEnabled;
-  final pulumi.Input<AccountBackup>? backup;
-  final pulumi.Input<bool>? burstCapacityEnabled;
-  final pulumi.Input<List<AccountCapability>>? capabilities;
+  final pulumi.Input<AccountAnalyticalStorage?>? analyticalStorage;
+  final pulumi.Input<bool?>? analyticalStorageEnabled;
+  final pulumi.Input<bool?>? automaticFailoverEnabled;
+  final pulumi.Input<AccountBackup?>? backup;
+  final pulumi.Input<bool?>? burstCapacityEnabled;
+  final pulumi.Input<List<AccountCapability>?>? capabilities;
   /// A `capacity` block as defined below.
-  final pulumi.Input<AccountCapacity>? capacity;
-  final pulumi.Input<AccountConsistencyPolicy>? consistencyPolicy;
-  final pulumi.Input<AccountCorsRule>? corsRule;
+  final pulumi.Input<AccountCapacity?>? capacity;
+  final pulumi.Input<AccountConsistencyPolicy?>? consistencyPolicy;
+  final pulumi.Input<AccountCorsRule?>? corsRule;
   /// The creation mode for the CosmosDB Account. Possible values are `Default` and `Restore`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `createMode` can only be defined when the `backup.type` is set to `Continuous`.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// The default identity for accessing Key Vault. Possible values are `FirstPartyIdentity`, `SystemAssignedIdentity` or `UserAssignedIdentity`. Defaults to `FirstPartyIdentity`.
-  final pulumi.Input<String>? defaultIdentityType;
+  final pulumi.Input<String?>? defaultIdentityType;
   /// The endpoint used to connect to the CosmosDB account.
-  final pulumi.Input<String>? endpoint;
-  final pulumi.Input<bool>? freeTierEnabled;
-  final pulumi.Input<List<AccountGeoLocation>>? geoLocations;
-  final pulumi.Input<AccountIdentity>? identity;
-  final pulumi.Input<List<String>>? ipRangeFilters;
-  final pulumi.Input<bool>? isVirtualNetworkFilterEnabled;
-  final pulumi.Input<String>? keyVaultKeyId;
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<bool>? localAuthenticationDisabled;
-  final pulumi.Input<bool>? localAuthenticationEnabled;
+  final pulumi.Input<String?>? endpoint;
+  final pulumi.Input<bool?>? freeTierEnabled;
+  final pulumi.Input<List<AccountGeoLocation>?>? geoLocations;
+  final pulumi.Input<AccountIdentity?>? identity;
+  final pulumi.Input<List<String>?>? ipRangeFilters;
+  final pulumi.Input<bool?>? isVirtualNetworkFilterEnabled;
+  final pulumi.Input<String?>? keyVaultKeyId;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<bool?>? localAuthenticationDisabled;
+  final pulumi.Input<bool?>? localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? managedHsmKeyId;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? managedHsmKeyId;
   /// Specifies the minimal TLS version for the CosmosDB account. Possible values are: `Tls`, `Tls11`, and `Tls12`. Defaults to `Tls12`.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more details.
-  final pulumi.Input<String>? minimalTlsVersion;
-  final pulumi.Input<String>? mongoServerVersion;
-  final pulumi.Input<bool>? multipleWriteLocationsEnabled;
+  final pulumi.Input<String?>? minimalTlsVersion;
+  final pulumi.Input<String?>? mongoServerVersion;
+  final pulumi.Input<bool?>? multipleWriteLocationsEnabled;
   /// Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<bool>? networkAclBypassForAzureServices;
-  final pulumi.Input<List<String>>? networkAclBypassIds;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<bool?>? networkAclBypassForAzureServices;
+  final pulumi.Input<List<String>?>? networkAclBypassIds;
   /// Specifies the Offer Type to use for this CosmosDB Account; currently, this can only be set to `Standard`.
-  final pulumi.Input<String>? offerType;
-  final pulumi.Input<bool>? partitionMergeEnabled;
+  final pulumi.Input<String?>? offerType;
+  final pulumi.Input<bool?>? partitionMergeEnabled;
   /// The Primary key for the CosmosDB Account.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Primary Mongodb connection string for the CosmosDB Account.
-  final pulumi.Input<String>? primaryMongodbConnectionString;
+  final pulumi.Input<String?>? primaryMongodbConnectionString;
   /// The Primary read-only Key for the CosmosDB Account.
-  final pulumi.Input<String>? primaryReadonlyKey;
+  final pulumi.Input<String?>? primaryReadonlyKey;
   /// Primary readonly Mongodb connection string for the CosmosDB Account.
-  final pulumi.Input<String>? primaryReadonlyMongodbConnectionString;
+  final pulumi.Input<String?>? primaryReadonlyMongodbConnectionString;
   /// Primary readonly SQL connection string for the CosmosDB Account.
-  final pulumi.Input<String>? primaryReadonlySqlConnectionString;
+  final pulumi.Input<String?>? primaryReadonlySqlConnectionString;
   /// Primary SQL connection string for the CosmosDB Account.
-  final pulumi.Input<String>? primarySqlConnectionString;
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<String?>? primarySqlConnectionString;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// A list of read endpoints available for this CosmosDB account.
-  final pulumi.Input<List<String>>? readEndpoints;
+  final pulumi.Input<List<String>?>? readEndpoints;
   /// The name of the resource group in which the CosmosDB Account is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
-  final pulumi.Input<AccountRestore>? restore;
+  final pulumi.Input<String?>? resourceGroupName;
+  final pulumi.Input<AccountRestore?>? restore;
   /// The Secondary key for the CosmosDB Account.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// Secondary Mongodb connection string for the CosmosDB Account.
-  final pulumi.Input<String>? secondaryMongodbConnectionString;
+  final pulumi.Input<String?>? secondaryMongodbConnectionString;
   /// The Secondary read-only key for the CosmosDB Account.
-  final pulumi.Input<String>? secondaryReadonlyKey;
+  final pulumi.Input<String?>? secondaryReadonlyKey;
   /// Secondary readonly Mongodb connection string for the CosmosDB Account.
-  final pulumi.Input<String>? secondaryReadonlyMongodbConnectionString;
+  final pulumi.Input<String?>? secondaryReadonlyMongodbConnectionString;
   /// Secondary readonly SQL connection string for the CosmosDB Account.
-  final pulumi.Input<String>? secondaryReadonlySqlConnectionString;
+  final pulumi.Input<String?>? secondaryReadonlySqlConnectionString;
   /// Secondary SQL connection string for the CosmosDB Account.
-  final pulumi.Input<String>? secondarySqlConnectionString;
+  final pulumi.Input<String?>? secondarySqlConnectionString;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<List<AccountVirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<List<AccountVirtualNetworkRule>?>? virtualNetworkRules;
   /// A list of write endpoints available for this CosmosDB account.
-  final pulumi.Input<List<String>>? writeEndpoints;
+  final pulumi.Input<List<String>?>? writeEndpoints;
 
   /// Creates a new [AccountState].
   /// [accessKeyMetadataWritesEnabled] Optional.

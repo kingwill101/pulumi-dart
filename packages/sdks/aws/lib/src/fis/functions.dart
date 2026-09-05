@@ -349,3 +349,14 @@ Future<GetExperimentTemplatesResult> getExperimentTemplates(
   );
   return GetExperimentTemplatesResult.fromMap(result);
 }
+
+pulumi.Output<GetExperimentTemplatesResult> getExperimentTemplatesOutput(
+  GetExperimentTemplatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fis/getExperimentTemplates:getExperimentTemplates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExperimentTemplatesResult.fromMap);
+}

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateInstanceRequirementsMemoryGibPerVcpu {
   /// Maximum. May be a decimal number, e.g. `0.5`.
-  final pulumi.Input<double>? max;
+  final pulumi.Input<double?>? max;
   /// Minimum. May be a decimal number, e.g. `0.5`.
-  final pulumi.Input<double>? min;
+  final pulumi.Input<double?>? min;
 
   /// Creates a new [LaunchTemplateInstanceRequirementsMemoryGibPerVcpu].
   /// [max] Maximum. May be a decimal number, e.g. `0.5`.
@@ -25,8 +25,8 @@ class LaunchTemplateInstanceRequirementsMemoryGibPerVcpu {
 
   factory LaunchTemplateInstanceRequirementsMemoryGibPerVcpu.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceRequirementsMemoryGibPerVcpu(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

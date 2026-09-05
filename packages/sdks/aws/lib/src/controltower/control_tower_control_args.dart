@@ -11,9 +11,9 @@ class ControlTowerControlArgs {
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
   final pulumi.Input<String> controlIdentifier;
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
-  final pulumi.Input<List<ControlTowerControlParameter>>? parameters;
+  final pulumi.Input<List<ControlTowerControlParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the organizational unit.
   ///
   /// The following arguments are optional:

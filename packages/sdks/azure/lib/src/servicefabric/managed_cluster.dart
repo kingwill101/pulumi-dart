@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_cluster_args.dart';
 import 'managed_cluster_authentication.dart';
+import 'managed_cluster_custom_fabric_setting.dart';
+import 'managed_cluster_lb_rule.dart';
+import 'managed_cluster_node_type.dart';
 import 'managed_cluster_state.dart';
 
 /// Manages a Resource Group.
@@ -310,7 +313,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// Port to use when connecting to the cluster.
   late final pulumi.Output<int> clientConnectionPort;
   /// One or more `customFabricSetting` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customFabricSettings;
+  late final pulumi.Output<List<ManagedClusterCustomFabricSetting>?> customFabricSettings;
   /// Hostname for the cluster. If unset the cluster's name will be used..
   late final pulumi.Output<String> dnsName;
   /// If true, DNS service is enabled.
@@ -318,13 +321,13 @@ class ManagedCluster extends pulumi.CustomResource {
   /// Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
   late final pulumi.Output<int> httpGatewayPort;
   /// One or more `lbRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lbRules;
+  late final pulumi.Output<List<ManagedClusterLbRule>> lbRules;
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> name;
   /// One or more `nodeType` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nodeTypes;
+  late final pulumi.Output<List<ManagedClusterNodeType>?> nodeTypes;
   /// Administrator password for the VMs that will be created as part of this cluster.
   late final pulumi.Output<String?> password;
   /// The name of the Resource Group where the Resource Group should exist. Changing this forces a new Resource Group to be created.
@@ -352,24 +355,25 @@ class ManagedCluster extends pulumi.CustomResource {
           'azure:servicefabric/managedCluster:ManagedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     authentication = registerOutput<ManagedClusterAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
     clientConnectionPort = registerOutput<int>('clientConnectionPort');
-    customFabricSettings = registerOutput<List<Map<String, dynamic>>?>('customFabricSettings');
+    customFabricSettings = registerOutput<List<ManagedClusterCustomFabricSetting>?>('customFabricSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(guardedValue, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>())); });
     dnsName = registerOutput<String>('dnsName');
     dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
     httpGatewayPort = registerOutput<int>('httpGatewayPort');
-    lbRules = registerOutput<List<Map<String, dynamic>>>('lbRules');
+    lbRules = registerOutput<List<ManagedClusterLbRule>>('lbRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterLbRule>(guardedValue, (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nodeTypes = registerOutput<List<Map<String, dynamic>>?>('nodeTypes');
-    password = registerOutput<String?>('password');
+    nodeTypes = registerOutput<List<ManagedClusterNodeType>?>('nodeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterNodeType>(guardedValue, (value) => ManagedClusterNodeType.fromMap((value as Map).cast<String, dynamic>())); });
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeWave = registerOutput<String?>('upgradeWave');
     username = registerOutput<String?>('username');
   }
@@ -379,11 +383,12 @@ class ManagedCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,19 +405,49 @@ class ManagedCluster extends pulumi.CustomResource {
     authentication = registerOutput<ManagedClusterAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
     clientConnectionPort = registerOutput<int>('clientConnectionPort');
-    customFabricSettings = registerOutput<List<Map<String, dynamic>>?>('customFabricSettings');
+    customFabricSettings = registerOutput<List<ManagedClusterCustomFabricSetting>?>('customFabricSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(guardedValue, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>())); });
     dnsName = registerOutput<String>('dnsName');
     dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
     httpGatewayPort = registerOutput<int>('httpGatewayPort');
-    lbRules = registerOutput<List<Map<String, dynamic>>>('lbRules');
+    lbRules = registerOutput<List<ManagedClusterLbRule>>('lbRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterLbRule>(guardedValue, (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nodeTypes = registerOutput<List<Map<String, dynamic>>?>('nodeTypes');
-    password = registerOutput<String?>('password');
+    nodeTypes = registerOutput<List<ManagedClusterNodeType>?>('nodeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterNodeType>(guardedValue, (value) => ManagedClusterNodeType.fromMap((value as Map).cast<String, dynamic>())); });
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upgradeWave = registerOutput<String?>('upgradeWave');
+    username = registerOutput<String?>('username');
+  }
+
+  /// Creates a typed reference to an existing [ManagedCluster] resource.
+  ManagedCluster.reference(String urn)
+    : super(
+        'azure:servicefabric/managedCluster:ManagedCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<ManagedClusterAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
+    clientConnectionPort = registerOutput<int>('clientConnectionPort');
+    customFabricSettings = registerOutput<List<ManagedClusterCustomFabricSetting>?>('customFabricSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(guardedValue, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsName = registerOutput<String>('dnsName');
+    dnsServiceEnabled = registerOutput<bool?>('dnsServiceEnabled');
+    httpGatewayPort = registerOutput<int>('httpGatewayPort');
+    lbRules = registerOutput<List<ManagedClusterLbRule>>('lbRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterLbRule>(guardedValue, (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodeTypes = registerOutput<List<ManagedClusterNodeType>?>('nodeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedClusterNodeType>(guardedValue, (value) => ManagedClusterNodeType.fromMap((value as Map).cast<String, dynamic>())); });
+    password = registerOutput<String?>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeWave = registerOutput<String?>('upgradeWave');
     username = registerOutput<String?>('username');
   }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keyvaluestore_keys_exclusive_args.dart';
+import 'keyvaluestore_keys_exclusive_resource_key_value_pair.dart';
 import 'keyvaluestore_keys_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of resource key value pairs defined in an AWS CloudFront KeyValueStore.
@@ -22,11 +23,11 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///     comment: "This is an example key value store",
 /// });
 /// const exampleKeyvaluestoreKeysExclusive = new aws.cloudfront.KeyvaluestoreKeysExclusive("example", {
-///     keyValueStoreArn: example.arn,
 ///     resourceKeyValuePairs: [{
 ///         key: "Test Key",
 ///         value: "Test Value",
 ///     }],
+///     keyValueStoreArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -37,11 +38,11 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///     name="ExampleKeyValueStore",
 ///     comment="This is an example key value store")
 /// example_keyvaluestore_keys_exclusive = aws.cloudfront.KeyvaluestoreKeysExclusive("example",
-///     key_value_store_arn=example.arn,
 ///     resource_key_value_pairs=[{
 ///         "key": "Test Key",
 ///         "value": "Test Value",
-///     }])
+///     }],
+///     key_value_store_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,7 +60,6 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///
 ///     var exampleKeyvaluestoreKeysExclusive = new Aws.CloudFront.KeyvaluestoreKeysExclusive("example", new()
 ///     {
-///         KeyValueStoreArn = example.Arn,
 ///         ResourceKeyValuePairs = new[]
 ///         {
 ///             new Aws.CloudFront.Inputs.KeyvaluestoreKeysExclusiveResourceKeyValuePairArgs
@@ -68,6 +68,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///                 Value = "Test Value",
 ///             },
 ///         },
+///         KeyValueStoreArn = example.Arn,
 ///     });
 ///
 /// });
@@ -90,13 +91,13 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudfront.NewKeyvaluestoreKeysExclusive(ctx, "example", &cloudfront.KeyvaluestoreKeysExclusiveArgs{
-/// 			KeyValueStoreArn: example.Arn,
 /// 			ResourceKeyValuePairs: cloudfront.KeyvaluestoreKeysExclusiveResourceKeyValuePairArray{
 /// 				&cloudfront.KeyvaluestoreKeysExclusiveResourceKeyValuePairArgs{
 /// 					Key:   pulumi.String("Test Key"),
 /// 					Value: pulumi.String("Test Value"),
 /// 				},
 /// 			},
+/// 			KeyValueStoreArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -119,11 +120,11 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///   comment = "This is an example key value store"
 /// }
 /// resource "aws_cloudfront_keyvaluestorekeysexclusive" "example" {
-///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
 ///   resource_key_value_pairs {
 ///     key   = "Test Key"
 ///     value = "Test Value"
 ///   }
+///   key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
 /// }
 /// ```
 /// ```java
@@ -156,11 +157,11 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///             .build());
 ///
 ///         var exampleKeyvaluestoreKeysExclusive = new KeyvaluestoreKeysExclusive("exampleKeyvaluestoreKeysExclusive", KeyvaluestoreKeysExclusiveArgs.builder()
-///             .keyValueStoreArn(example.arn())
 ///             .resourceKeyValuePairs(KeyvaluestoreKeysExclusiveResourceKeyValuePairArgs.builder()
 ///                 .key("Test Key")
 ///                 .value("Test Value")
 ///                 .build())
+///             .keyValueStoreArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -177,10 +178,10 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///     type: aws:cloudfront:KeyvaluestoreKeysExclusive
 ///     name: example
 ///     properties:
-///       keyValueStoreArn: ${example.arn}
 ///       resourceKeyValuePairs:
 ///         - key: Test Key
 ///           value: Test Value
+///       keyValueStoreArn: ${example.arn}
 /// ```
 ///
 ///
@@ -296,7 +297,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 /// $ pulumi import aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive example arn:aws:cloudfront::111111111111:key-value-store/8562g61f-caba-2845-9d99-b97diwae5d3c
 /// ```
 class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Key Value Store.
+  /// ARN of the Key Value Store.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> keyValueStoreArn;
@@ -304,7 +305,7 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
   late final pulumi.Output<int> maxBatchSize;
   /// A list of all resource key value pairs associated with the KeyValueStore.
   /// See `resourceKeyValuePair` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceKeyValuePairs;
+  late final pulumi.Output<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?> resourceKeyValuePairs;
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
 
@@ -320,11 +321,11 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
           'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');
-    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>('resourceKeyValuePairs');
+    resourceKeyValuePairs = registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>('resourceKeyValuePairs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(guardedValue, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>())); });
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 
@@ -333,11 +334,12 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyvaluestoreKeysExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyvaluestoreKeysExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -353,7 +355,22 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
         ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');
-    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>('resourceKeyValuePairs');
+    resourceKeyValuePairs = registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>('resourceKeyValuePairs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(guardedValue, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>())); });
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+  }
+
+  /// Creates a typed reference to an existing [KeyvaluestoreKeysExclusive] resource.
+  KeyvaluestoreKeysExclusive.reference(String urn)
+    : super(
+        'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    maxBatchSize = registerOutput<int>('maxBatchSize');
+    resourceKeyValuePairs = registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>('resourceKeyValuePairs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(guardedValue, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>())); });
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 }

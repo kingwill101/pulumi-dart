@@ -5,7 +5,7 @@ import 'catalog_table_optimizer_configuration_compaction_configuration_iceberg_c
 
 class CatalogTableOptimizerConfigurationCompactionConfiguration {
   /// The configuration for an Iceberg compaction optimizer.
-  final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfiguration>? icebergConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfiguration?>? icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationCompactionConfiguration].
   /// [icebergConfiguration] The configuration for an Iceberg compaction optimizer.

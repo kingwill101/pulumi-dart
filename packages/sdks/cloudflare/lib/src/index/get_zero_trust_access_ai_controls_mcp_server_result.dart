@@ -12,16 +12,22 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
   final String? accountId;
   /// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
   final GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary? authConfigSummary;
+  /// Authentication method used to connect to the upstream MCP server.
   /// Available values: "oauth", "bearer", "unauthenticated".
   final String? authType;
+  /// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+  /// Available values: "notRequired", "required", "connected", "stale", "manual".
+  final String? authenticationStatus;
   final String? createdAt;
   final String? createdBy;
+  /// Optional description of the MCP server.
   final String? description;
   final String? error;
   final GetZeroTrustAccessAiControlsMcpServerErrorDetails? errorDetails;
   final GetZeroTrustAccessAiControlsMcpServerFilter? filter;
+  /// URL of the upstream MCP endpoint.
   final String? hostname;
-  /// server id
+  /// Unique identifier for the MCP server.
   final String? id;
   /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
   final bool? isSharedOauthCallbackEnabled;
@@ -29,45 +35,50 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
   final String? lastSynced;
   final String? modifiedAt;
   final String? modifiedBy;
+  /// Display name for the MCP server.
   final String? name;
   final List<Map<String, String>>? prompts;
-  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final bool? secureWebGateway;
   /// Current sync state of the server
   /// Available values: "waiting", "ready", "stale", "error".
   final String? status;
   final List<Map<String, String>>? tools;
+  /// Server-wide prompt capability overrides.
   final List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt>? updatedPrompts;
+  /// Server-wide tool capability overrides.
   final List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool>? updatedTools;
 
   /// Creates a new [GetZeroTrustAccessAiControlsMcpServerResult].
   /// [accountId] Optional.
   /// [authConfigSummary] Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
-  /// [authType] Available values: "oauth", "bearer", "unauthenticated".
+  /// [authType] Authentication method used to connect to the upstream MCP server.
+  /// [authenticationStatus] Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
   /// [createdAt] Optional.
   /// [createdBy] Optional.
-  /// [description] Optional.
+  /// [description] Optional description of the MCP server.
   /// [error] Optional.
   /// [errorDetails] Optional.
   /// [filter] Optional.
-  /// [hostname] Optional.
-  /// [id] server id
+  /// [hostname] URL of the upstream MCP endpoint.
+  /// [id] Unique identifier for the MCP server.
   /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
   /// [lastSuccessfulSync] Optional.
   /// [lastSynced] Optional.
   /// [modifiedAt] Optional.
   /// [modifiedBy] Optional.
-  /// [name] Optional.
+  /// [name] Display name for the MCP server.
   /// [prompts] Optional.
-  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   /// [status] Current sync state of the server
   /// [tools] Optional.
-  /// [updatedPrompts] Optional.
-  /// [updatedTools] Optional.
+  /// [updatedPrompts] Server-wide prompt capability overrides.
+  /// [updatedTools] Server-wide tool capability overrides.
   const GetZeroTrustAccessAiControlsMcpServerResult({
     this.accountId,
     this.authConfigSummary,
     this.authType,
+    this.authenticationStatus,
     this.createdAt,
     this.createdBy,
     this.description,
@@ -95,6 +106,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
       'accountId': ?accountId,
       'authConfigSummary': ?authConfigSummary?.toMap(),
       'authType': ?authType,
+      'authenticationStatus': ?authenticationStatus,
       'createdAt': ?createdAt,
       'createdBy': ?createdBy,
       'description': ?description,
@@ -123,6 +135,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authConfigSummary: (() { final guardedValue = map['authConfigSummary']; if (guardedValue == null) return null; return GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authenticationStatus: (() { final guardedValue = map['authenticationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),

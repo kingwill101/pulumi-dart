@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_lf_tags_args.dart';
 import 'resource_lf_tags_database.dart';
+import 'resource_lf_tags_lf_tag.dart';
 import 'resource_lf_tags_state.dart';
 import 'resource_lf_tags_table.dart';
 import 'resource_lf_tags_table_with_columns.dart';
@@ -612,7 +613,7 @@ class ResourceLfTags extends pulumi.CustomResource {
   /// Set of LF-tags to attach to the resource. See below.
   ///
   /// Exactly one of the following is required:
-  late final pulumi.Output<List<Map<String, dynamic>>> lfTags;
+  late final pulumi.Output<List<ResourceLfTagsLfTag>> lfTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block for a table resource. See below.
@@ -634,11 +635,11 @@ class ResourceLfTags extends pulumi.CustomResource {
           'aws:lakeformation/resourceLfTags:ResourceLfTags',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     database = registerOutput<ResourceLfTagsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
+    lfTags = registerOutput<List<ResourceLfTagsLfTag>>('lfTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceLfTagsLfTag>(guardedValue, (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     table = registerOutput<ResourceLfTagsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -649,11 +650,12 @@ class ResourceLfTags extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceLfTagsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceLfTags._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -669,7 +671,24 @@ class ResourceLfTags extends pulumi.CustomResource {
         ) {
     catalogId = registerOutput<String>('catalogId');
     database = registerOutput<ResourceLfTagsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
+    lfTags = registerOutput<List<ResourceLfTagsLfTag>>('lfTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceLfTagsLfTag>(guardedValue, (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    table = registerOutput<ResourceLfTagsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceLfTags] resource.
+  ResourceLfTags.reference(String urn)
+    : super(
+        'aws:lakeformation/resourceLfTags:ResourceLfTags',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    database = registerOutput<ResourceLfTagsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lfTags = registerOutput<List<ResourceLfTagsLfTag>>('lfTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceLfTagsLfTag>(guardedValue, (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     table = registerOutput<ResourceLfTagsTable>('table', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>('tableWithColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsTableWithColumns.fromMap((guardedValue as Map).cast<String, dynamic>()); });

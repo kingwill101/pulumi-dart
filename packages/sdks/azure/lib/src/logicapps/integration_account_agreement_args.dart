@@ -24,9 +24,9 @@ class IntegrationAccountAgreementArgs {
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> integrationAccountName;
   /// The metadata of the Logic App Integration Account Agreement.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name which should be used for this Logic App Integration Account Agreement. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Logic App Integration Account Agreement should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

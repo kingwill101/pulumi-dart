@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Directory resources.
 class DirectoryState {
   /// The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.
-  final pulumi.Input<String>? billingType;
+  final pulumi.Input<String?>? billingType;
   /// Country code of the B2C tenant. The `countryCode` should be valid for the specified `dataResidencyLocation`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// Location in which the B2C tenant is hosted and data resides. The `dataResidencyLocation` should be valid for the specified `countryCode`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
-  final pulumi.Input<String>? dataResidencyLocation;
+  final pulumi.Input<String?>? dataResidencyLocation;
   /// The initial display name of the B2C tenant. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Domain name of the B2C tenant, including the `.onmicrosoft.com` suffix. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The date from which the billing type took effect. May not be populated until after the first billing cycle.
-  final pulumi.Input<String>? effectiveStartDate;
+  final pulumi.Input<String?>? effectiveStartDate;
   /// The name of the Resource Group where the AAD B2C Directory should exist. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the AAD B2C Directory.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Tenant ID for the AAD B2C tenant.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [DirectoryState].
   /// [billingType] The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.

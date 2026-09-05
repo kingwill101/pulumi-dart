@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisExplanationRouteTableRoute {
-  final pulumi.Input<String>? destinationCidr;
-  final pulumi.Input<String>? destinationPrefixListId;
-  final pulumi.Input<String>? egressOnlyInternetGatewayId;
-  final pulumi.Input<String>? gatewayId;
-  final pulumi.Input<String>? instanceId;
-  final pulumi.Input<String>? natGatewayId;
-  final pulumi.Input<String>? networkInterfaceId;
-  final pulumi.Input<String>? origin;
-  final pulumi.Input<String>? transitGatewayId;
-  final pulumi.Input<String>? vpcPeeringConnectionId;
+  final pulumi.Input<String?>? destinationCidr;
+  final pulumi.Input<String?>? destinationPrefixListId;
+  final pulumi.Input<String?>? egressOnlyInternetGatewayId;
+  final pulumi.Input<String?>? gatewayId;
+  final pulumi.Input<String?>? instanceId;
+  final pulumi.Input<String?>? natGatewayId;
+  final pulumi.Input<String?>? networkInterfaceId;
+  final pulumi.Input<String?>? origin;
+  final pulumi.Input<String?>? transitGatewayId;
+  final pulumi.Input<String?>? vpcPeeringConnectionId;
 
   /// Creates a new [NetworkInsightsAnalysisExplanationRouteTableRoute].
   /// [destinationCidr] Optional.

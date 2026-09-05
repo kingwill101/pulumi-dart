@@ -11,15 +11,15 @@ class EnvironmentArgs {
   /// AppConfig application ID. Must be between 4 and 7 characters in length.
   final pulumi.Input<String> applicationId;
   /// Description of the environment. Can be at most 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Set of Amazon CloudWatch alarms to monitor during the deployment process. Maximum of 5. See Monitor below for more details.
-  final pulumi.Input<List<EnvironmentMonitor>>? monitors;
+  final pulumi.Input<List<EnvironmentMonitor>?>? monitors;
   /// Name for the environment. Must be between 1 and 64 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentArgs].
   /// [applicationId] AppConfig application ID. Must be between 4 and 7 characters in length.

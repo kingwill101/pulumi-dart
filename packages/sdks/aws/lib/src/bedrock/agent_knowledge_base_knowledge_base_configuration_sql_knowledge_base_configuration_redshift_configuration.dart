@@ -9,7 +9,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// Configurations for an Amazon Redshift query engine. See `queryEngineConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration> queryEngineConfiguration;
   /// Configurations for generating queries. See `queryGenerationConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration>? queryGenerationConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration?>? queryGenerationConfiguration;
   /// Configurations for Amazon Redshift database storage. See `storageConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration> storageConfiguration;
 

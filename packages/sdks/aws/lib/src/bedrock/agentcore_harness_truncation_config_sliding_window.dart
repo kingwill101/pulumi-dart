@@ -20,7 +20,7 @@ class AgentcoreHarnessTruncationConfigSlidingWindow {
 
   factory AgentcoreHarnessTruncationConfigSlidingWindow.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessTruncationConfigSlidingWindow(
-      messagesCount: pulumi.Input.fromValue(map['messagesCount'] as int),
+      messagesCount: pulumi.Input.fromValue((map['messagesCount'] as num).toInt()),
     );
   }
 }

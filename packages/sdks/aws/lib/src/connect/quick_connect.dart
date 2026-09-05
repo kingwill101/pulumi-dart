@@ -14,15 +14,15 @@ import 'quick_connect_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.connect.QuickConnect("test", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name: "Example Name",
-///     description: "quick connect phone number",
 ///     quickConnectConfig: {
-///         quickConnectType: "PHONE_NUMBER",
 ///         phoneConfigs: [{
 ///             phoneNumber: "+12345678912",
 ///         }],
+///         quickConnectType: "PHONE_NUMBER",
 ///     },
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name: "Example Name",
+///     description: "quick connect phone number",
 ///     tags: {
 ///         Name: "Example Quick Connect",
 ///     },
@@ -33,15 +33,15 @@ import 'quick_connect_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.connect.QuickConnect("test",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name="Example Name",
-///     description="quick connect phone number",
 ///     quick_connect_config={
-///         "quick_connect_type": "PHONE_NUMBER",
 ///         "phone_configs": [{
 ///             "phone_number": "+12345678912",
 ///         }],
+///         "quick_connect_type": "PHONE_NUMBER",
 ///     },
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name="Example Name",
+///     description="quick connect phone number",
 ///     tags={
 ///         "Name": "Example Quick Connect",
 ///     })
@@ -56,12 +56,8 @@ import 'quick_connect_state.dart';
 /// {
 ///     var test = new Aws.Connect.QuickConnect("test", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///         Name = "Example Name",
-///         Description = "quick connect phone number",
 ///         QuickConnectConfig = new Aws.Connect.Inputs.QuickConnectQuickConnectConfigArgs
 ///         {
-///             QuickConnectType = "PHONE_NUMBER",
 ///             PhoneConfigs = new[]
 ///             {
 ///                 new Aws.Connect.Inputs.QuickConnectQuickConnectConfigPhoneConfigArgs
@@ -69,7 +65,11 @@ import 'quick_connect_state.dart';
 ///                     PhoneNumber = "+12345678912",
 ///                 },
 ///             },
+///             QuickConnectType = "PHONE_NUMBER",
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///         Name = "Example Name",
+///         Description = "quick connect phone number",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Quick Connect" },
@@ -89,17 +89,17 @@ import 'quick_connect_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewQuickConnect(ctx, "test", &connect.QuickConnectArgs{
-/// 			InstanceId:  pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
-/// 			Name:        pulumi.String("Example Name"),
-/// 			Description: pulumi.String("quick connect phone number"),
 /// 			QuickConnectConfig: &connect.QuickConnectQuickConnectConfigArgs{
-/// 				QuickConnectType: pulumi.String("PHONE_NUMBER"),
 /// 				PhoneConfigs: connect.QuickConnectQuickConnectConfigPhoneConfigArray{
 /// 					&connect.QuickConnectQuickConnectConfigPhoneConfigArgs{
 /// 						PhoneNumber: pulumi.String("+12345678912"),
 /// 					},
 /// 				},
+/// 				QuickConnectType: pulumi.String("PHONE_NUMBER"),
 /// 			},
+/// 			InstanceId:  pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
+/// 			Name:        pulumi.String("Example Name"),
+/// 			Description: pulumi.String("quick connect phone number"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Quick Connect"),
 /// 			},
@@ -121,15 +121,15 @@ import 'quick_connect_state.dart';
 /// }
 ///
 /// resource "aws_connect_quickconnect" "test" {
-///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
-///   name        = "Example Name"
-///   description = "quick connect phone number"
 ///   quick_connect_config = {
-///     quick_connect_type = "PHONE_NUMBER"
 ///     phone_configs = [{
 ///       "phoneNumber" = "+12345678912"
 ///     }]
+///     quick_connect_type = "PHONE_NUMBER"
 ///   }
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Example Name"
+///   description = "quick connect phone number"
 ///   tags = {
 ///     "Name" = "Example Quick Connect"
 ///   }
@@ -159,15 +159,15 @@ import 'quick_connect_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new QuickConnect("test", QuickConnectArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
-///             .name("Example Name")
-///             .description("quick connect phone number")
 ///             .quickConnectConfig(QuickConnectQuickConnectConfigArgs.builder()
-///                 .quickConnectType("PHONE_NUMBER")
 ///                 .phoneConfigs(QuickConnectQuickConnectConfigPhoneConfigArgs.builder()
 ///                     .phoneNumber("+12345678912")
 ///                     .build())
+///                 .quickConnectType("PHONE_NUMBER")
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
+///             .name("Example Name")
+///             .description("quick connect phone number")
 ///             .tags(Map.of("Name", "Example Quick Connect"))
 ///             .build());
 ///
@@ -179,13 +179,13 @@ import 'quick_connect_state.dart';
 ///   test:
 ///     type: aws:connect:QuickConnect
 ///     properties:
+///       quickConnectConfig:
+///         phoneConfigs:
+///           - phoneNumber: '+12345678912'
+///         quickConnectType: PHONE_NUMBER
 ///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 ///       name: Example Name
 ///       description: quick connect phone number
-///       quickConnectConfig:
-///         quickConnectType: PHONE_NUMBER
-///         phoneConfigs:
-///           - phoneNumber: '+12345678912'
 ///       tags:
 ///         Name: Example Quick Connect
 /// ```
@@ -199,7 +199,7 @@ import 'quick_connect_state.dart';
 /// $ pulumi import aws:connect/quickConnect:QuickConnect example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class QuickConnect extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Quick Connect.
+  /// ARN of the Quick Connect.
   late final pulumi.Output<String> arn;
   /// Specifies the description of the Quick Connect.
   late final pulumi.Output<String?> description;
@@ -230,7 +230,7 @@ class QuickConnect extends pulumi.CustomResource {
           'aws:connect/quickConnect:QuickConnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -239,8 +239,8 @@ class QuickConnect extends pulumi.CustomResource {
     quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>('quickConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuickConnectQuickConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [QuickConnect] resource's state with the given [name] and [id].
@@ -248,11 +248,12 @@ class QuickConnect extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QuickConnectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QuickConnect._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,7 +274,27 @@ class QuickConnect extends pulumi.CustomResource {
     quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>('quickConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuickConnectQuickConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [QuickConnect] resource.
+  QuickConnect.reference(String urn)
+    : super(
+        'aws:connect/quickConnect:QuickConnect',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>('quickConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuickConnectQuickConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    quickConnectId = registerOutput<String>('quickConnectId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

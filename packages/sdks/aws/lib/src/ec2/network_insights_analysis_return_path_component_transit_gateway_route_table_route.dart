@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
-  final pulumi.Input<String>? attachmentId;
-  final pulumi.Input<String>? destinationCidr;
-  final pulumi.Input<String>? prefixListId;
-  final pulumi.Input<String>? resourceId;
-  final pulumi.Input<String>? resourceType;
-  final pulumi.Input<String>? routeOrigin;
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? attachmentId;
+  final pulumi.Input<String?>? destinationCidr;
+  final pulumi.Input<String?>? prefixListId;
+  final pulumi.Input<String?>? resourceId;
+  final pulumi.Input<String?>? resourceType;
+  final pulumi.Input<String?>? routeOrigin;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute].
   /// [attachmentId] Optional.

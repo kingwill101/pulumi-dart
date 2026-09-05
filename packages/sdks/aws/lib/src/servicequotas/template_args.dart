@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicequotas_template_template_args_doc}
 class TemplateArgs {
   /// AWS Region to which the template applies.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// Quota identifier. To find the quota code for a specific quota, use the aws.servicequotas.ServiceQuota data source.
   final pulumi.Input<String> quotaCode;
   /// AWS Region to which the template applies. Use `aws.getRegion` instead.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
   final pulumi.Input<String> serviceCode;
   /// The new, increased value for the quota.
@@ -48,7 +48,7 @@ class TemplateArgs {
       quotaCode: pulumi.Input.fromValue(map['quotaCode'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceCode: pulumi.Input.fromValue(map['serviceCode'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

@@ -7,17 +7,17 @@ import 'log_delivery_configuration_log_configuration_s3_configuration.dart';
 
 class LogDeliveryConfigurationLogConfiguration {
   /// Configuration for CloudWatch Logs delivery. See CloudWatch Logs Configuration below.
-  final pulumi.Input<LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration>? cloudWatchLogsConfiguration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration?>? cloudWatchLogsConfiguration;
   /// The event source to configure logging for. Valid values are `userNotification` and `userAuthEvents`.
   final pulumi.Input<String> eventSource;
   /// Configuration for Kinesis Data Firehose delivery. See Firehose Configuration below.
-  final pulumi.Input<LogDeliveryConfigurationLogConfigurationFirehoseConfiguration>? firehoseConfiguration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationFirehoseConfiguration?>? firehoseConfiguration;
   /// The log level to set for the event source. Valid values are `ERROR` and `INFO`.
   final pulumi.Input<String> logLevel;
   /// Configuration for S3 delivery. See S3 Configuration below.
   ///
   /// &gt; **Note:** At least one destination configuration (`cloudWatchLogsConfiguration`, `firehoseConfiguration`, or `s3Configuration`) must be specified for each log configuration.
-  final pulumi.Input<LogDeliveryConfigurationLogConfigurationS3Configuration>? s3Configuration;
+  final pulumi.Input<LogDeliveryConfigurationLogConfigurationS3Configuration?>? s3Configuration;
 
   /// Creates a new [LogDeliveryConfigurationLogConfiguration].
   /// [cloudWatchLogsConfiguration] Configuration for CloudWatch Logs delivery. See CloudWatch Logs Configuration below.

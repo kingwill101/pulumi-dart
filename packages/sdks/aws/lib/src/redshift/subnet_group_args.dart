@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redshift_subnet_group_subnet_group_args_doc}
 class SubnetGroupArgs {
   /// The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Redshift Subnet group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An array of VPC subnet IDs.
   final pulumi.Input<List<String>> subnetIds;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SubnetGroupArgs].
   /// [description] The description of the Redshift Subnet group. Defaults to "Managed by Pulumi".
@@ -24,13 +24,13 @@ class SubnetGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] An array of VPC subnet IDs.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  const SubnetGroupArgs({
-    this.description,
+  SubnetGroupArgs({
+    pulumi.Input<String?>? description,
     this.name,
     this.region,
     required this.subnetIds,
     this.tags,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecTcpRouteActionWeightedTarget {
   /// Port number to match from the request.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Virtual node to associate with the weighted target. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> virtualNode;
   /// Relative weight of the weighted target. An integer between 0 and 100.
@@ -30,9 +30,9 @@ class RouteSpecTcpRouteActionWeightedTarget {
 
   factory RouteSpecTcpRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteActionWeightedTarget(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       virtualNode: pulumi.Input.fromValue(map['virtualNode'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

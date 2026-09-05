@@ -13,23 +13,23 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification {
   /// Configuration block for conditional branches to evaluate after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditional>? failureConditional;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditional?>? failureConditional;
   /// Configuration block for the next step the bot runs after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed . See `failureNextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep>? failureNextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep?>? failureNextStep;
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `failureResponse`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureResponse>? failureResponse;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureResponse?>? failureResponse;
   /// Configuration block for conditional branches to evaluate after the dialog code hook finishes successfully. See `successConditional`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional>? successConditional;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditional?>? successConditional;
   /// Configuration block for the next step the bot runs after the dialog code hook finishes successfully. See `successNextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep>? successNextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessNextStep?>? successNextStep;
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `successResponse`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse>? successResponse;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponse?>? successResponse;
   /// Configuration block for conditional branches to evaluate if the code hook times out. See `timeoutConditional`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional>? timeoutConditional;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional?>? timeoutConditional;
   /// Configuration block for the next step that the bot runs when the code hook times out. See `timeoutNextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStep>? timeoutNextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStep?>? timeoutNextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond the user input. See `timeoutResponse`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponse>? timeoutResponse;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponse?>? timeoutResponse;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification].
   /// [failureConditional] Configuration block for conditional branches to evaluate after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed.

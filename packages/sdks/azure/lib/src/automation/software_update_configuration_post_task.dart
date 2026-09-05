@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SoftwareUpdateConfigurationPostTask {
   /// Specifies a map of parameters for the task.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the runbook for the post task.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SoftwareUpdateConfigurationPostTask].
   /// [parameters] Specifies a map of parameters for the task.

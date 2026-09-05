@@ -134,7 +134,7 @@ class LoggingOptions extends pulumi.CustomResource {
           'aws:iot/loggingOptions:LoggingOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');
@@ -147,11 +147,12 @@ class LoggingOptions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoggingOptionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoggingOptions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -165,6 +166,21 @@ class LoggingOptions extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultLogLevel = registerOutput<String>('defaultLogLevel');
+    disableAllLogs = registerOutput<bool?>('disableAllLogs');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [LoggingOptions] resource.
+  LoggingOptions.reference(String urn)
+    : super(
+        'aws:iot/loggingOptions:LoggingOptions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');
     region = registerOutput<String>('region');

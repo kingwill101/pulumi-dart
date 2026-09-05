@@ -12,24 +12,24 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// {@macro pulumi_bedrock_agent_data_source_agent_data_source_args_doc}
 class AgentDataSourceArgs {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
-  final pulumi.Input<String>? dataDeletionPolicy;
+  final pulumi.Input<String?>? dataDeletionPolicy;
   /// Details about how the data source is stored. See `dataSourceConfiguration` block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Description of the data source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier of the knowledge base to which the data source belongs.
   final pulumi.Input<String> knowledgeBaseId;
   /// Name of the data source.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration;
-  final pulumi.Input<AgentDataSourceTimeouts>? timeouts;
+  final pulumi.Input<AgentDataSourceServerSideEncryptionConfiguration?>? serverSideEncryptionConfiguration;
+  final pulumi.Input<AgentDataSourceTimeouts?>? timeouts;
   /// Details about the configuration of the server-side encryption. See `vectorIngestionConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfiguration>? vectorIngestionConfiguration;
+  final pulumi.Input<AgentDataSourceVectorIngestionConfiguration?>? vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSourceArgs].
   /// [dataDeletionPolicy] Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.

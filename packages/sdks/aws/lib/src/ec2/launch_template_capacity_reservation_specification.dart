@@ -5,9 +5,9 @@ import 'launch_template_capacity_reservation_specification_capacity_reservation_
 
 class LaunchTemplateCapacityReservationSpecification {
   /// Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacityReservationId` or `capacityReservationResourceGroupArn` is specified in `capacityReservationTarget` block, either omit `capacityReservationPreference` or set it to `capacity-reservations-only`.
-  final pulumi.Input<String>? capacityReservationPreference;
+  final pulumi.Input<String?>? capacityReservationPreference;
   /// Used to target a specific Capacity Reservation:
-  final pulumi.Input<LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget>? capacityReservationTarget;
+  final pulumi.Input<LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget?>? capacityReservationTarget;
 
   /// Creates a new [LaunchTemplateCapacityReservationSpecification].
   /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacityReservationId` or `capacityReservationResourceGroupArn` is specified in `capacityReservationTarget` block, either omit `capacityReservationPreference` or set it to `capacity-reservations-only`.

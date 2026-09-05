@@ -182,7 +182,7 @@ import 'delegation_set_state.dart';
 /// $ pulumi import aws:route53/delegationSet:DelegationSet set1 N1PA6795SAMPLE
 /// ```
 class DelegationSet extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Delegation Set.
+  /// ARN of the Delegation Set.
   late final pulumi.Output<String> arn;
   /// A list of authoritative name servers for the hosted zone
   /// (effectively a list of NS records).
@@ -203,10 +203,10 @@ class DelegationSet extends pulumi.CustomResource {
           'aws:route53/delegationSet:DelegationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     referenceName = registerOutput<String?>('referenceName');
   }
 
@@ -215,11 +215,12 @@ class DelegationSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DelegationSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DelegationSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,7 +235,21 @@ class DelegationSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referenceName = registerOutput<String?>('referenceName');
+  }
+
+  /// Creates a typed reference to an existing [DelegationSet] resource.
+  DelegationSet.reference(String urn)
+    : super(
+        'aws:route53/delegationSet:DelegationSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     referenceName = registerOutput<String?>('referenceName');
   }
 }

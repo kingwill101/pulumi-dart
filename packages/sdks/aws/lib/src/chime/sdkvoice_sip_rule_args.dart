@@ -9,11 +9,11 @@ import 'sdkvoice_sip_rule_target_application.dart';
 /// {@macro pulumi_chime_sdkvoice_sip_rule_sdkvoice_sip_rule_args_doc}
 class SdkvoiceSipRuleArgs {
   /// Enables or disables a rule. You must disable rules before you can delete them.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The name of the SIP rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `targetApplications`.
   final pulumi.Input<List<SdkvoiceSipRuleTargetApplication>> targetApplications;
   /// The type of trigger assigned to the SIP rule in `triggerValue`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.

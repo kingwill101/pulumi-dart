@@ -23,43 +23,43 @@ import 'frontdoor_rule_conditions_url_path_condition.dart';
 
 class FrontdoorRuleConditions {
   /// A `clientPortCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsClientPortCondition>>? clientPortConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsClientPortCondition>?>? clientPortConditions;
   /// A `cookiesCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsCookiesCondition>>? cookiesConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsCookiesCondition>?>? cookiesConditions;
   /// A `hostNameCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsHostNameCondition>>? hostNameConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsHostNameCondition>?>? hostNameConditions;
   /// A `httpVersionCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsHttpVersionCondition>>? httpVersionConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsHttpVersionCondition>?>? httpVersionConditions;
   /// A `isDeviceCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsIsDeviceCondition>>? isDeviceConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsIsDeviceCondition>?>? isDeviceConditions;
   /// A `postArgsCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsPostArgsCondition>>? postArgsConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsPostArgsCondition>?>? postArgsConditions;
   /// A `queryStringCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsQueryStringCondition>>? queryStringConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsQueryStringCondition>?>? queryStringConditions;
   /// A `remoteAddressCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRemoteAddressCondition>>? remoteAddressConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRemoteAddressCondition>?>? remoteAddressConditions;
   /// A `requestBodyCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRequestBodyCondition>>? requestBodyConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRequestBodyCondition>?>? requestBodyConditions;
   /// A `requestHeaderCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRequestHeaderCondition>>? requestHeaderConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRequestHeaderCondition>?>? requestHeaderConditions;
   /// A `requestMethodCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRequestMethodCondition>>? requestMethodConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRequestMethodCondition>?>? requestMethodConditions;
   /// A `requestSchemeCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRequestSchemeCondition>>? requestSchemeConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRequestSchemeCondition>?>? requestSchemeConditions;
   /// A `requestUriCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsRequestUriCondition>>? requestUriConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsRequestUriCondition>?>? requestUriConditions;
   /// A `serverPortCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsServerPortCondition>>? serverPortConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsServerPortCondition>?>? serverPortConditions;
   /// A `socketAddressCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsSocketAddressCondition>>? socketAddressConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsSocketAddressCondition>?>? socketAddressConditions;
   /// A `sslProtocolCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsSslProtocolCondition>>? sslProtocolConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsSslProtocolCondition>?>? sslProtocolConditions;
   /// A `urlFileExtensionCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsUrlFileExtensionCondition>>? urlFileExtensionConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsUrlFileExtensionCondition>?>? urlFileExtensionConditions;
   /// A `urlFilenameCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsUrlFilenameCondition>>? urlFilenameConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsUrlFilenameCondition>?>? urlFilenameConditions;
   /// A `urlPathCondition` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleConditionsUrlPathCondition>>? urlPathConditions;
+  final pulumi.Input<List<FrontdoorRuleConditionsUrlPathCondition>?>? urlPathConditions;
 
   /// Creates a new [FrontdoorRuleConditions].
   /// [clientPortConditions] A `clientPortCondition` block as defined below.

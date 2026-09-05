@@ -13,22 +13,22 @@ import 'resource_lf_tag_timeouts.dart';
 /// {@macro pulumi_lakeformation_resource_lf_tag_resource_lf_tag_args_doc}
 class ResourceLfTagArgs {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Configuration block for a database resource. See Database for more details.
-  final pulumi.Input<ResourceLfTagDatabase>? database;
+  final pulumi.Input<ResourceLfTagDatabase?>? database;
   /// Set of LF-tags to attach to the resource. See LF Tag for more details.
   ///
   /// Exactly one of the following is required:
   final pulumi.Input<ResourceLfTagLfTag> lfTag;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for a table resource. See Table for more details.
-  final pulumi.Input<ResourceLfTagTable>? table;
+  final pulumi.Input<ResourceLfTagTable?>? table;
   /// Configuration block for a table with columns resource. See Table With Columns for more details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ResourceLfTagTableWithColumns>? tableWithColumns;
-  final pulumi.Input<ResourceLfTagTimeouts>? timeouts;
+  final pulumi.Input<ResourceLfTagTableWithColumns?>? tableWithColumns;
+  final pulumi.Input<ResourceLfTagTimeouts?>? timeouts;
 
   /// Creates a new [ResourceLfTagArgs].
   /// [catalogId] Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.

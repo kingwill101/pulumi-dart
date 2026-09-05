@@ -8,13 +8,13 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_shar
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNames {
   /// An `applicationServer` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer>? applicationServer;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer?>? applicationServer;
   /// A `centralServer` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer>? centralServer;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer?>? centralServer;
   /// A `databaseServer` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer>? databaseServer;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer?>? databaseServer;
   /// A `sharedStorage` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage>? sharedStorage;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage?>? sharedStorage;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNames].
   /// [applicationServer] An `applicationServer` block as defined below. Changing this forces a new resource to be created.

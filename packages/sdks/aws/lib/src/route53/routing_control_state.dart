@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RoutingControl resources.
 class RoutingControlState {
   /// ARN of the routing control.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the cluster in which this routing control will reside.
-  final pulumi.Input<String>? clusterArn;
+  final pulumi.Input<String?>? clusterArn;
   /// ARN of the control panel in which this routing control will reside.
-  final pulumi.Input<String>? controlPanelArn;
+  final pulumi.Input<String?>? controlPanelArn;
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [RoutingControlState].
   /// [arn] ARN of the routing control.

@@ -6,11 +6,11 @@ import 'rule_set_rule_unless_boolean_expression_evaluate_is_in_address_list.dart
 
 class RuleSetRuleUnlessBooleanExpressionEvaluate {
   /// Add On result to evaluate. See `analysis` Block.
-  final pulumi.Input<RuleSetRuleUnlessBooleanExpressionEvaluateAnalysis>? analysis;
+  final pulumi.Input<RuleSetRuleUnlessBooleanExpressionEvaluateAnalysis?>? analysis;
   /// Email authentication attribute to evaluate. Valid values are `SPF` and `DKIM`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
   /// Address-list membership expression.
-  final pulumi.Input<RuleSetRuleUnlessBooleanExpressionEvaluateIsInAddressList>? isInAddressList;
+  final pulumi.Input<RuleSetRuleUnlessBooleanExpressionEvaluateIsInAddressList?>? isInAddressList;
 
   /// Creates a new [RuleSetRuleUnlessBooleanExpressionEvaluate].
   /// [analysis] Add On result to evaluate. See `analysis` Block.

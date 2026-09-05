@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GroupPolicyAttachment resources.
 class GroupPolicyAttachmentState {
   /// The group the policy should be applied to
-  final pulumi.Input<String>? group;
+  final pulumi.Input<dynamic>? group;
   /// The ARN of the policy you want to apply
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
 
   /// Creates a new [GroupPolicyAttachmentState].
   /// [group] The group the policy should be applied to
@@ -26,7 +26,7 @@ class GroupPolicyAttachmentState {
 
   factory GroupPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentState(
-      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policyArn: (() { final guardedValue = map['policyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -10,9 +10,9 @@ class GetBotArgs {
   /// Name of the bot. The name is case sensitive.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Version or alias of the bot.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetBotArgs].
   /// [name] Name of the bot. The name is case sensitive.

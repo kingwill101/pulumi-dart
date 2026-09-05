@@ -188,7 +188,7 @@ import 'job_schedule_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -198,14 +198,14 @@ import 'job_schedule_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-job-credential"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("my-username"),
 /// 			Password:   pulumi.String("MyP4ssw0rd!!!"),
 /// 		})
@@ -214,13 +214,13 @@ import 'job_schedule_state.dart';
 /// 		}
 /// 		exampleJob, err := mssql.NewJob(ctx, "example", &mssql.JobArgs{
 /// 			Name:       pulumi.String("example-job"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewJobSchedule(ctx, "example", &mssql.JobScheduleArgs{
-/// 			JobId:     exampleJob.ID(),
+/// 			JobId:     exampleJob.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:      pulumi.String("Recurring"),
 /// 			Enabled:   pulumi.Bool(true),
 /// 			EndTime:   pulumi.String("2025-12-01T00:00:00Z"),
@@ -470,7 +470,7 @@ class JobSchedule extends pulumi.CustomResource {
           'azure:mssql/jobSchedule:JobSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     endTime = registerOutput<String>('endTime');
@@ -485,11 +485,12 @@ class JobSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -503,6 +504,23 @@ class JobSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+    endTime = registerOutput<String>('endTime');
+    interval = registerOutput<String?>('interval');
+    jobId = registerOutput<String>('jobId');
+    startTime = registerOutput<String>('startTime');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [JobSchedule] resource.
+  JobSchedule.reference(String urn)
+    : super(
+        'azure:mssql/jobSchedule:JobSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
     endTime = registerOutput<String>('endTime');
     interval = registerOutput<String?>('interval');

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Setting resources.
 class SettingState {
   /// Boolean flag to enable/disable data access.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The setting to manage. Possible values are `MCAS` , `WDATP`, `WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW`, `WDATP_UNIFIED_SOLUTION` and `Sentinel`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<String?>? settingName;
 
   /// Creates a new [SettingState].
   /// [enabled] Boolean flag to enable/disable data access.

@@ -143,7 +143,7 @@ import 'workspace_policy_fragment_state.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("Example Workspace"),
 /// 			Description:     pulumi.String("Example API Management Workspace"),
 /// 		})
@@ -158,7 +158,7 @@ import 'workspace_policy_fragment_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewWorkspacePolicyFragment(ctx, "example", &apimanagement.WorkspacePolicyFragmentArgs{
 /// 			Name:                     pulumi.String("example-policy-fragment"),
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			XmlFormat:                pulumi.String("xml"),
 /// 			XmlContent:               pulumi.String(invokeFile.Result),
 /// 		})
@@ -349,7 +349,7 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
           'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
@@ -363,11 +363,12 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspacePolicyFragmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspacePolicyFragment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,6 +382,22 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlFormat = registerOutput<String?>('xmlFormat');
+  }
+
+  /// Creates a typed reference to an existing [WorkspacePolicyFragment] resource.
+  WorkspacePolicyFragment.reference(String urn)
+    : super(
+        'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

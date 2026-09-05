@@ -22,11 +22,11 @@ import 'api_tag_state.dart';
 /// const exampleApi = new azure.apimanagement.Api("example", {
 ///     name: "example-api",
 ///     resourceGroupName: exampleResourceGroup.name,
-///     apiManagementName: example.apply(example => example.name),
+///     apiManagementName: example.name,
 ///     revision: "1",
 /// });
 /// const exampleTag = new azure.apimanagement.Tag("example", {
-///     apiManagementId: example.apply(example => example.id),
+///     apiManagementId: example.id,
 ///     name: "example-tag",
 /// });
 /// const exampleApiTag = new azure.apimanagement.ApiTag("example", {
@@ -122,25 +122,21 @@ import 'api_tag_state.dart';
 /// 		exampleApi, err := apimanagement.NewApi(ctx, "example", &apimanagement.ApiArgs{
 /// 			Name:              pulumi.String("example-api"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
-/// 			ApiManagementName: pulumi.String(example.ApplyT(func(example apimanagement.GetServiceResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Revision: pulumi.String("1"),
+/// 			ApiManagementName: example.Name(),
+/// 			Revision:          pulumi.String("1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleTag, err := apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
-/// 			ApiManagementId: pulumi.String(example.ApplyT(func(example apimanagement.GetServiceResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Name: pulumi.String("example-tag"),
+/// 			ApiManagementId: example.Id(),
+/// 			Name:            pulumi.String("example-tag"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewApiTag(ctx, "example", &apimanagement.ApiTagArgs{
-/// 			ApiId: exampleApi.ID(),
+/// 			ApiId: exampleApi.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:  exampleTag.Name,
 /// 		})
 /// 		if err != nil {
@@ -312,7 +308,7 @@ class ApiTag extends pulumi.CustomResource {
           'azure:apimanagement/apiTag:ApiTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
@@ -323,11 +319,12 @@ class ApiTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,6 +338,19 @@ class ApiTag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ApiTag] resource.
+  ApiTag.reference(String urn)
+    : super(
+        'azure:apimanagement/apiTag:ApiTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
   }

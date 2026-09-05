@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_backend_virtual_service_client_policy_tls.dart';
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicy {
-  /// Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTls>? tls;
+  /// TLS properties for the listener. See `spec.listener.tls` Block for details.
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTls?>? tls;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicy].
-  /// [tls] Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
+  /// [tls] TLS properties for the listener. See `spec.listener.tls` Block for details.
   const VirtualNodeSpecBackendVirtualServiceClientPolicy({
     this.tls,
   });

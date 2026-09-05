@@ -6,7 +6,7 @@ class LinkedServiceIntegrationRuntime {
   /// The integration runtime reference to associate with the Synapse Linked Service.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the integration runtime.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [LinkedServiceIntegrationRuntime].
   /// [name] The integration runtime reference to associate with the Synapse Linked Service.

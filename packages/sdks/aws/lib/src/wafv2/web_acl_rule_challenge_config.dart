@@ -5,7 +5,7 @@ import 'web_acl_rule_challenge_config_immunity_time_property.dart';
 
 class WebAclRuleChallengeConfig {
   /// Immunity time configuration. See Immunity Time Property below.
-  final pulumi.Input<WebAclRuleChallengeConfigImmunityTimeProperty>? immunityTimeProperty;
+  final pulumi.Input<WebAclRuleChallengeConfigImmunityTimeProperty?>? immunityTimeProperty;
 
   /// Creates a new [WebAclRuleChallengeConfig].
   /// [immunityTimeProperty] Immunity time configuration. See Immunity Time Property below.

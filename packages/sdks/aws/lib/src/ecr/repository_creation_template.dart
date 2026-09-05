@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_creation_template_args.dart';
+import 'repository_creation_template_encryption_configuration.dart';
+import 'repository_creation_template_image_tag_mutability_exclusion_filter.dart';
 import 'repository_creation_template_state.dart';
 
 /// Provides an Elastic Container Registry Repository Creation Template.
@@ -13,12 +15,12 @@ import 'repository_creation_template_state.dart';
 ///
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "new policy",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["123456789012"],
 ///         }],
+///         sid: "new policy",
+///         effect: "Allow",
 ///         actions: [
 ///             "ecr:GetDownloadUrlForLayer",
 ///             "ecr:BatchGetImage",
@@ -38,14 +40,14 @@ import 'repository_creation_template_state.dart';
 ///     }],
 /// });
 /// const exampleRepositoryCreationTemplate = new aws.ecr.RepositoryCreationTemplate("example", {
+///     encryptionConfigurations: [{
+///         encryptionType: "AES256",
+///     }],
 ///     prefix: "example",
 ///     description: "An example template",
 ///     imageTagMutability: "IMMUTABLE",
 ///     customRoleArn: "arn:aws:iam::123456789012:role/example",
 ///     appliedFors: ["PULL_THROUGH_CACHE"],
-///     encryptionConfigurations: [{
-///         encryptionType: "AES256",
-///     }],
 ///     repositoryPolicy: example.then(example => example.json),
 ///     lifecyclePolicy: `{
 ///   \\"rules\\": [
@@ -75,12 +77,12 @@ import 'repository_creation_template_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "new policy",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["123456789012"],
 ///     }],
+///     "sid": "new policy",
+///     "effect": "Allow",
 ///     "actions": [
 ///         "ecr:GetDownloadUrlForLayer",
 ///         "ecr:BatchGetImage",
@@ -99,14 +101,14 @@ import 'repository_creation_template_state.dart';
 ///     ],
 /// }])
 /// example_repository_creation_template = aws.ecr.RepositoryCreationTemplate("example",
+///     encryption_configurations=[{
+///         "encryption_type": "AES256",
+///     }],
 ///     prefix="example",
 ///     description="An example template",
 ///     image_tag_mutability="IMMUTABLE",
 ///     custom_role_arn="arn:aws:iam::123456789012:role/example",
 ///     applied_fors=["PULL_THROUGH_CACHE"],
-///     encryption_configurations=[{
-///         "encryption_type": "AES256",
-///     }],
 ///     repository_policy=example.json,
 ///     lifecycle_policy="""{
 ///   \"rules\": [
@@ -144,8 +146,6 @@ import 'repository_creation_template_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "new policy",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -157,6 +157,8 @@ import 'repository_creation_template_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "new policy",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "ecr:GetDownloadUrlForLayer",
@@ -180,6 +182,13 @@ import 'repository_creation_template_state.dart';
 ///
 ///     var exampleRepositoryCreationTemplate = new Aws.Ecr.RepositoryCreationTemplate("example", new()
 ///     {
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.Ecr.Inputs.RepositoryCreationTemplateEncryptionConfigurationArgs
+///             {
+///                 EncryptionType = "AES256",
+///             },
+///         },
 ///         Prefix = "example",
 ///         Description = "An example template",
 ///         ImageTagMutability = "IMMUTABLE",
@@ -187,13 +196,6 @@ import 'repository_creation_template_state.dart';
 ///         AppliedFors = new[]
 ///         {
 ///             "PULL_THROUGH_CACHE",
-///         },
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.Ecr.Inputs.RepositoryCreationTemplateEncryptionConfigurationArgs
-///             {
-///                 EncryptionType = "AES256",
-///             },
 ///         },
 ///         RepositoryPolicy = example.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///         LifecyclePolicy = @"{
@@ -236,8 +238,6 @@ import 'repository_creation_template_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("new policy"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -246,6 +246,8 @@ import 'repository_creation_template_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("new policy"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"ecr:GetDownloadUrlForLayer",
 /// 						"ecr:BatchGetImage",
@@ -269,17 +271,17 @@ import 'repository_creation_template_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecr.NewRepositoryCreationTemplate(ctx, "example", &ecr.RepositoryCreationTemplateArgs{
+/// 			EncryptionConfigurations: ecr.RepositoryCreationTemplateEncryptionConfigurationArray{
+/// 				&ecr.RepositoryCreationTemplateEncryptionConfigurationArgs{
+/// 					EncryptionType: pulumi.String("AES256"),
+/// 				},
+/// 			},
 /// 			Prefix:             pulumi.String("example"),
 /// 			Description:        pulumi.String("An example template"),
 /// 			ImageTagMutability: pulumi.String("IMMUTABLE"),
 /// 			CustomRoleArn:      pulumi.String("arn:aws:iam::123456789012:role/example"),
 /// 			AppliedFors: pulumi.StringArray{
 /// 				pulumi.String("PULL_THROUGH_CACHE"),
-/// 			},
-/// 			EncryptionConfigurations: ecr.RepositoryCreationTemplateEncryptionConfigurationArray{
-/// 				&ecr.RepositoryCreationTemplateEncryptionConfigurationArgs{
-/// 					EncryptionType: pulumi.String("AES256"),
-/// 				},
 /// 			},
 /// 			RepositoryPolicy: pulumi.String(example.Json),
 /// 			LifecyclePolicy: pulumi.String(`{
@@ -322,27 +324,27 @@ import 'repository_creation_template_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "new policy"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     sid     = "new policy"
+///     effect  = "Allow"
 ///     actions = ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability", "ecr:PutImage", "ecr:InitiateLayerUpload", "ecr:UploadLayerPart", "ecr:CompleteLayerUpload", "ecr:DescribeRepositories", "ecr:GetRepositoryPolicy", "ecr:ListImages", "ecr:DeleteRepository", "ecr:BatchDeleteImage", "ecr:SetRepositoryPolicy", "ecr:DeleteRepositoryPolicy"]
 ///   }
 /// }
 ///
 /// resource "aws_ecr_repositorycreationtemplate" "example" {
+///   encryption_configurations {
+///     encryption_type = "AES256"
+///   }
 ///   prefix               = "example"
 ///   description          = "An example template"
 ///   image_tag_mutability = "IMMUTABLE"
 ///   custom_role_arn      = "arn:aws:iam::123456789012:role/example"
 ///   applied_fors         = ["PULL_THROUGH_CACHE"]
-///   encryption_configurations {
-///     encryption_type = "AES256"
-///   }
-///   repository_policy = data.aws_iam_getpolicydocument.example.json
-///   lifecycle_policy  = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Expire images older than 14 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"untagged\\\",\n        \\\"countType\\\": \\\"sinceImagePushed\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 14\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
+///   repository_policy    = data.aws_iam_getpolicydocument.example.json
+///   lifecycle_policy     = "{\n  \\\"rules\\\": [\n    {\n      \\\"rulePriority\\\": 1,\n      \\\"description\\\": \\\"Expire images older than 14 days\\\",\n      \\\"selection\\\": {\n        \\\"tagStatus\\\": \\\"untagged\\\",\n        \\\"countType\\\": \\\"sinceImagePushed\\\",\n        \\\"countUnit\\\": \\\"days\\\",\n        \\\"countNumber\\\": 14\n      },\n      \\\"action\\\": {\n        \\\"type\\\": \\\"expire\\\"\n      }\n    }\n  ]\n}\n"
 ///   resource_tags = {
 ///     "Foo" = "Bar"
 ///   }
@@ -376,12 +378,12 @@ import 'repository_creation_template_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("new policy")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("123456789012")
 ///                     .build())
+///                 .sid("new policy")
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "ecr:GetDownloadUrlForLayer",
 ///                     "ecr:BatchGetImage",
@@ -401,14 +403,14 @@ import 'repository_creation_template_state.dart';
 ///             .build());
 ///
 ///         var exampleRepositoryCreationTemplate = new RepositoryCreationTemplate("exampleRepositoryCreationTemplate", RepositoryCreationTemplateArgs.builder()
+///             .encryptionConfigurations(RepositoryCreationTemplateEncryptionConfigurationArgs.builder()
+///                 .encryptionType("AES256")
+///                 .build())
 ///             .prefix("example")
 ///             .description("An example template")
 ///             .imageTagMutability("IMMUTABLE")
 ///             .customRoleArn("arn:aws:iam::123456789012:role/example")
 ///             .appliedFors("PULL_THROUGH_CACHE")
-///             .encryptionConfigurations(RepositoryCreationTemplateEncryptionConfigurationArgs.builder()
-///                 .encryptionType("AES256")
-///                 .build())
 ///             .repositoryPolicy(example.json())
 ///             .lifecyclePolicy("""
 /// {
@@ -441,14 +443,14 @@ import 'repository_creation_template_state.dart';
 ///     type: aws:ecr:RepositoryCreationTemplate
 ///     name: example
 ///     properties:
+///       encryptionConfigurations:
+///         - encryptionType: AES256
 ///       prefix: example
 ///       description: An example template
 ///       imageTagMutability: IMMUTABLE
 ///       customRoleArn: arn:aws:iam::123456789012:role/example
 ///       appliedFors:
 ///         - PULL_THROUGH_CACHE
-///       encryptionConfigurations:
-///         - encryptionType: AES256
 ///       repositoryPolicy: ${example.json}
 ///       lifecyclePolicy: |
 ///         {
@@ -476,12 +478,12 @@ import 'repository_creation_template_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: new policy
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '123456789012'
+///             sid: new policy
+///             effect: Allow
 ///             actions:
 ///               - ecr:GetDownloadUrlForLayer
 ///               - ecr:BatchGetImage
@@ -515,11 +517,11 @@ class RepositoryCreationTemplate extends pulumi.CustomResource {
   /// The description for this template.
   late final pulumi.Output<String?> description;
   /// Encryption configuration for any created repositories. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?> encryptionConfigurations;
+  late final pulumi.Output<List<RepositoryCreationTemplateEncryptionConfiguration>?> encryptionConfigurations;
   /// The tag mutability setting for any created repositories. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
   late final pulumi.Output<String?> imageTagMutability;
   /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `imageTagMutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
-  late final pulumi.Output<List<Map<String, dynamic>>?> imageTagMutabilityExclusionFilters;
+  late final pulumi.Output<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?> imageTagMutabilityExclusionFilters;
   /// The lifecycle policy document to apply to any created repositories. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` dataSource to generate/manage the JSON document used for the `lifecyclePolicy` argument.
   late final pulumi.Output<String?> lifecyclePolicy;
   /// The repository name prefix to match against. Use `ROOT` to match any prefix that doesn't explicitly match another template.
@@ -545,20 +547,20 @@ class RepositoryCreationTemplate extends pulumi.CustomResource {
           'aws:ecr/repositoryCreationTemplate:RepositoryCreationTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    appliedFors = registerOutput<List<String>>('appliedFors');
+    appliedFors = registerOutput<List<String>>('appliedFors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customRoleArn = registerOutput<String?>('customRoleArn');
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<RepositoryCreationTemplateEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(guardedValue, (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
     lifecyclePolicy = registerOutput<String?>('lifecyclePolicy');
     prefix = registerOutput<String>('prefix');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
     repositoryPolicy = registerOutput<String?>('repositoryPolicy');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RepositoryCreationTemplate] resource's state with the given [name] and [id].
@@ -566,11 +568,12 @@ class RepositoryCreationTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryCreationTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryCreationTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -584,17 +587,40 @@ class RepositoryCreationTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appliedFors = registerOutput<List<String>>('appliedFors');
+    appliedFors = registerOutput<List<String>>('appliedFors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customRoleArn = registerOutput<String?>('customRoleArn');
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>?>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<RepositoryCreationTemplateEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(guardedValue, (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     imageTagMutability = registerOutput<String?>('imageTagMutability');
-    imageTagMutabilityExclusionFilters = registerOutput<List<Map<String, dynamic>>?>('imageTagMutabilityExclusionFilters');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
     lifecyclePolicy = registerOutput<String?>('lifecyclePolicy');
     prefix = registerOutput<String>('prefix');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
     repositoryPolicy = registerOutput<String?>('repositoryPolicy');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RepositoryCreationTemplate] resource.
+  RepositoryCreationTemplate.reference(String urn)
+    : super(
+        'aws:ecr/repositoryCreationTemplate:RepositoryCreationTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appliedFors = registerOutput<List<String>>('appliedFors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customRoleArn = registerOutput<String?>('customRoleArn');
+    description = registerOutput<String?>('description');
+    encryptionConfigurations = registerOutput<List<RepositoryCreationTemplateEncryptionConfiguration>?>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(guardedValue, (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    imageTagMutability = registerOutput<String?>('imageTagMutability');
+    imageTagMutabilityExclusionFilters = registerOutput<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?>('imageTagMutabilityExclusionFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(guardedValue, (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecyclePolicy = registerOutput<String?>('lifecyclePolicy');
+    prefix = registerOutput<String>('prefix');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryPolicy = registerOutput<String?>('repositoryPolicy');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,9 +6,9 @@ import 'next_generation_firewall_virtual_network_panorama_destination_nat_fronte
 
 class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
   /// A `backendConfig` block as defined above.
-  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig>? backendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatBackendConfig?>? backendConfig;
   /// A `frontendConfig` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig>? frontendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig?>? frontendConfig;
   /// The name which should be used for this Destination NAT.
   final pulumi.Input<String> name;
   /// The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.

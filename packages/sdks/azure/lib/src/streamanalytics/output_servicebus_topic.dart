@@ -33,8 +33,8 @@ import 'output_servicebus_topic_state.dart';
 /// });
 /// const exampleOutputServicebusTopic = new azure.streamanalytics.OutputServicebusTopic("example", {
 ///     name: "service-bus-topic-output",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     topicName: exampleTopic.name,
 ///     servicebusNamespace: exampleNamespace.name,
 ///     sharedAccessPolicyKey: exampleNamespace.defaultPrimaryKey,
@@ -176,20 +176,16 @@ import 'output_servicebus_topic_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:               pulumi.String("example-topic"),
-/// 			NamespaceId:        exampleNamespace.ID(),
+/// 			NamespaceId:        exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EnablePartitioning: true,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputServicebusTopic(ctx, "example", &streamanalytics.OutputServicebusTopicArgs{
-/// 			Name: pulumi.String("service-bus-topic-output"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                   pulumi.String("service-bus-topic-output"),
+/// 			StreamAnalyticsJobName: example.Name(),
+/// 			ResourceGroupName:      example.ResourceGroupName(),
 /// 			TopicName:              exampleTopic.Name,
 /// 			ServicebusNamespace:    exampleNamespace.Name,
 /// 			SharedAccessPolicyKey:  exampleNamespace.DefaultPrimaryKey,
@@ -429,18 +425,19 @@ class OutputServicebusTopic extends pulumi.CustomResource {
           'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     this.name = registerOutput<String>('name');
-    propertyColumns = registerOutput<List<String>?>('propertyColumns');
+    propertyColumns = registerOutput<List<String>?>('propertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputServicebusTopicSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputServicebusTopicSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns');
+    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topicName = registerOutput<String>('topicName');
   }
 
@@ -449,11 +446,12 @@ class OutputServicebusTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputServicebusTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputServicebusTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -469,14 +467,37 @@ class OutputServicebusTopic extends pulumi.CustomResource {
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     this.name = registerOutput<String>('name');
-    propertyColumns = registerOutput<List<String>?>('propertyColumns');
+    propertyColumns = registerOutput<List<String>?>('propertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputServicebusTopicSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputServicebusTopicSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns');
+    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topicName = registerOutput<String>('topicName');
+  }
+
+  /// Creates a typed reference to an existing [OutputServicebusTopic] resource.
+  OutputServicebusTopic.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    this.name = registerOutput<String>('name');
+    propertyColumns = registerOutput<List<String>?>('propertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serialization = registerOutput<OutputServicebusTopicSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputServicebusTopicSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicebusNamespace = registerOutput<String>('servicebusNamespace');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
+    sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    systemPropertyColumns = registerOutput<Map<String, String>?>('systemPropertyColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topicName = registerOutput<String>('topicName');
   }
 }

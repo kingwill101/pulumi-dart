@@ -6,7 +6,7 @@ class AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig {
   /// ARN of the Lambda function that runs the evaluation.
   final pulumi.Input<String> lambdaArn;
   /// Time in seconds to wait for the Lambda function before timing out. Defaults to 60. Range 1–300.
-  final pulumi.Input<int>? lambdaTimeoutInSeconds;
+  final pulumi.Input<int?>? lambdaTimeoutInSeconds;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig].
   /// [lambdaArn] ARN of the Lambda function that runs the evaluation.
@@ -26,7 +26,7 @@ class AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig {
   factory AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig(
       lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
-      lambdaTimeoutInSeconds: (() { final guardedValue = map['lambdaTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lambdaTimeoutInSeconds: (() { final guardedValue = map['lambdaTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

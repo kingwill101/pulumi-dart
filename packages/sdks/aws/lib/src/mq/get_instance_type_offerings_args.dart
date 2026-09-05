@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mq_get_instance_type_offerings_get_instance_type_offerings_args_doc}
 class GetInstanceTypeOfferingsArgs {
   /// Filter response by engine type.
-  final pulumi.Input<String>? engineType;
+  final pulumi.Input<String?>? engineType;
   /// Filter response by host instance type.
-  final pulumi.Input<String>? hostInstanceType;
+  final pulumi.Input<String?>? hostInstanceType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Filter response by storage type.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
 
   /// Creates a new [GetInstanceTypeOfferingsArgs].
   /// [engineType] Filter response by engine type.

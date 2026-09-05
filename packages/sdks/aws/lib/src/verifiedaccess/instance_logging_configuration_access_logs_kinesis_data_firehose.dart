@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
   /// The name of the delivery stream.
-  final pulumi.Input<String>? deliveryStream;
+  final pulumi.Input<String?>? deliveryStream;
   /// Indicates whether logging is enabled.
   final pulumi.Input<bool> enabled;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetTypeFormsInput {
   final pulumi.Input<String> mapBlockKey;
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   final pulumi.Input<String> typeIdentifier;
   final pulumi.Input<String> typeRevision;
 

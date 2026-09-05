@@ -7,10 +7,10 @@ import 'v2models_slot_type_slot_type_value_synonym.dart';
 class V2modelsSlotTypeSlotTypeValue {
   /// Value of the slot type entry.
   /// See `sampleValue` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValueSampleValue>>? sampleValues;
+  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValueSampleValue>?>? sampleValues;
   /// A list of additional values related to the slot type entry.
   /// See `synonyms` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValueSynonym>>? synonyms;
+  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValueSynonym>?>? synonyms;
 
   /// Creates a new [V2modelsSlotTypeSlotTypeValue].
   /// [sampleValues] Value of the slot type entry.

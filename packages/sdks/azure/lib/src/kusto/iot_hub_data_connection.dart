@@ -298,7 +298,7 @@ import 'iot_hub_data_connection_state.dart';
 /// 			Location:               example.Location,
 /// 			ClusterName:            exampleCluster.Name,
 /// 			DatabaseName:           exampleDatabase.Name,
-/// 			IothubId:               exampleIoTHub.ID(),
+/// 			IothubId:               exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerGroup:          exampleConsumerGroup.Name,
 /// 			SharedAccessPolicyName: exampleSharedAccessPolicy.Name,
 /// 			EventSystemProperties: pulumi.StringArray{
@@ -622,14 +622,14 @@ class IotHubDataConnection extends pulumi.CustomResource {
           'azure:kusto/iotHubDataConnection:IotHubDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     consumerGroup = registerOutput<String>('consumerGroup');
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iothubId = registerOutput<String>('iothubId');
     location = registerOutput<String>('location');
     mappingRuleName = registerOutput<String?>('mappingRuleName');
@@ -645,11 +645,12 @@ class IotHubDataConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IotHubDataConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IotHubDataConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -668,7 +669,32 @@ class IotHubDataConnection extends pulumi.CustomResource {
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iothubId = registerOutput<String>('iothubId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [IotHubDataConnection] resource.
+  IotHubDataConnection.reference(String urn)
+    : super(
+        'azure:kusto/iotHubDataConnection:IotHubDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterName = registerOutput<String>('clusterName');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iothubId = registerOutput<String>('iothubId');
     location = registerOutput<String>('location');
     mappingRuleName = registerOutput<String?>('mappingRuleName');

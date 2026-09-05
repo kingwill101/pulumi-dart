@@ -4,26 +4,28 @@ import 'get_secrets_store_filter.dart';
 
 /// Result data returned by getSecretsStore.
 class GetSecretsStoreResult {
+  /// Account Identifier
   final String? accountId;
   /// When the secret was created.
   final String? created;
   final GetSecretsStoreFilter? filter;
-  /// The ID of this resource.
+  /// Store Identifier
   final String? id;
   /// When the secret was modified.
   final String? modified;
   /// The name of the store.
   final String? name;
+  /// Store Identifier
   final String? storeId;
 
   /// Creates a new [GetSecretsStoreResult].
-  /// [accountId] Optional.
+  /// [accountId] Account Identifier
   /// [created] When the secret was created.
   /// [filter] Optional.
-  /// [id] The ID of this resource.
+  /// [id] Store Identifier
   /// [modified] When the secret was modified.
   /// [name] The name of the store.
-  /// [storeId] Optional.
+  /// [storeId] Store Identifier
   const GetSecretsStoreResult({
     this.accountId,
     this.created,

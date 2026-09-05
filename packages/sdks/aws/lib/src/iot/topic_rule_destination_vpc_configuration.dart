@@ -6,7 +6,7 @@ class TopicRuleDestinationVpcConfiguration {
   /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
   final pulumi.Input<String> roleArn;
   /// The security groups of the VPC destination.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The subnet IDs of the VPC destination.
   final pulumi.Input<List<String>> subnetIds;
   /// The ID of the VPC.

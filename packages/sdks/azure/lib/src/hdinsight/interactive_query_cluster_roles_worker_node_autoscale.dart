@@ -5,7 +5,7 @@ import 'interactive_query_cluster_roles_worker_node_autoscale_recurrence.dart';
 
 class InteractiveQueryClusterRolesWorkerNodeAutoscale {
   /// A `recurrence` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
+  final pulumi.Input<InteractiveQueryClusterRolesWorkerNodeAutoscaleRecurrence?>? recurrence;
 
   /// Creates a new [InteractiveQueryClusterRolesWorkerNodeAutoscale].
   /// [recurrence] A `recurrence` block as defined below.

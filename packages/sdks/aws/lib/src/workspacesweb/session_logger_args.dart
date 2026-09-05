@@ -10,11 +10,11 @@ import 'session_logger_log_configuration.dart';
 /// {@macro pulumi_workspacesweb_session_logger_session_logger_args_doc}
 class SessionLoggerArgs {
   /// Map of additional encryption context key-value pairs.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// ARN of the customer managed KMS key used to encrypt sensitive information.
-  final pulumi.Input<String>? customerManagedKey;
+  final pulumi.Input<String?>? customerManagedKey;
   /// Human-readable display name for the session logger resource. Forces replacement if changed.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Event filter that determines which events are logged. See Event Filter below.
   final pulumi.Input<SessionLoggerEventFilter> eventFilter;
   /// Configuration block for specifying where logs are delivered. See Log Configuration below.
@@ -22,9 +22,9 @@ class SessionLoggerArgs {
   /// The following arguments are optional:
   final pulumi.Input<SessionLoggerLogConfiguration> logConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SessionLoggerArgs].
   /// [additionalEncryptionContext] Map of additional encryption context key-value pairs.

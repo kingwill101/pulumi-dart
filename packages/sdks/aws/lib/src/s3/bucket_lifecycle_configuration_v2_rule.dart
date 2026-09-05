@@ -10,23 +10,23 @@ import 'bucket_lifecycle_configuration_v2_rule_transition.dart';
 
 class BucketLifecycleConfigurationV2Rule {
   /// Configuration block that specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. See below.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload>? abortIncompleteMultipartUpload;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload?>? abortIncompleteMultipartUpload;
   /// Configuration block that specifies the expiration for the lifecycle of the object in the form of date, days and, whether the object has a delete marker. See below.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleExpiration>? expiration;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleExpiration?>? expiration;
   /// Configuration block used to identify objects that a Lifecycle Rule applies to. See below.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilter>? filter;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilter?>? filter;
   /// Unique identifier for the rule. The value cannot be longer than 255 characters.
   final pulumi.Input<String> id;
   /// Configuration block that specifies when noncurrent object versions expire. See below.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration?>? noncurrentVersionExpiration;
   /// Set of configuration blocks that specify the transition rule for the lifecycle rule that describes when noncurrent objects transition to a specific storage class. See below.
-  final pulumi.Input<List<BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition>>? noncurrentVersionTransitions;
+  final pulumi.Input<List<BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition>?>? noncurrentVersionTransitions;
   /// Prefix identifying one or more objects to which the rule applies. Use `filter` instead, as this has been deprecated by Amazon S3.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Whether the rule is currently being applied. Valid values: `Enabled` or `Disabled`.
   final pulumi.Input<String> status;
   /// Set of configuration blocks that specify when an Amazon S3 object transitions to a specified storage class. See below.
-  final pulumi.Input<List<BucketLifecycleConfigurationV2RuleTransition>>? transitions;
+  final pulumi.Input<List<BucketLifecycleConfigurationV2RuleTransition>?>? transitions;
 
   /// Creates a new [BucketLifecycleConfigurationV2Rule].
   /// [abortIncompleteMultipartUpload] Configuration block that specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. See below.

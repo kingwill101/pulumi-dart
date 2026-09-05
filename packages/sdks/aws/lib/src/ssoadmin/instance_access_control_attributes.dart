@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_access_control_attributes_args.dart';
+import 'instance_access_control_attributes_attribute.dart';
 import 'instance_access_control_attributes_state.dart';
 
 /// Provides a Single Sign-On (SSO) ABAC Resource: https://docs.aws.amazon.com/singlesignon/latest/userguide/abac.html
@@ -13,21 +14,21 @@ import 'instance_access_control_attributes_state.dart';
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleInstanceAccessControlAttributes = new aws.ssoadmin.InstanceAccessControlAttributes("example", {
-///     instanceArn: example.then(example => example.arns?.[0]),
 ///     attributes: [
 ///         {
-///             key: "name",
 ///             values: [{
 ///                 sources: ["${path:name.givenName}"],
 ///             }],
+///             key: "name",
 ///         },
 ///         {
-///             key: "last",
 ///             values: [{
 ///                 sources: ["${path:name.familyName}"],
 ///             }],
+///             key: "last",
 ///         },
 ///     ],
+///     instanceArn: example.then(example => example.arns?.[0]),
 /// });
 /// ```
 /// ```python
@@ -36,21 +37,21 @@ import 'instance_access_control_attributes_state.dart';
 ///
 /// example = aws.ssoadmin.get_instances()
 /// example_instance_access_control_attributes = aws.ssoadmin.InstanceAccessControlAttributes("example",
-///     instance_arn=example.arns[0],
 ///     attributes=[
 ///         {
-///             "key": "name",
 ///             "values": [{
 ///                 "sources": ["${path:name.givenName}"],
 ///             }],
+///             "key": "name",
 ///         },
 ///         {
-///             "key": "last",
 ///             "values": [{
 ///                 "sources": ["${path:name.familyName}"],
 ///             }],
+///             "key": "last",
 ///         },
-///     ])
+///     ],
+///     instance_arn=example.arns[0])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -64,12 +65,10 @@ import 'instance_access_control_attributes_state.dart';
 ///
 ///     var exampleInstanceAccessControlAttributes = new Aws.SsoAdmin.InstanceAccessControlAttributes("example", new()
 ///     {
-///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
 ///         Attributes = new[]
 ///         {
 ///             new Aws.SsoAdmin.Inputs.InstanceAccessControlAttributesAttributeArgs
 ///             {
-///                 Key = "name",
 ///                 Values = new[]
 ///                 {
 ///                     new Aws.SsoAdmin.Inputs.InstanceAccessControlAttributesAttributeValueArgs
@@ -80,10 +79,10 @@ import 'instance_access_control_attributes_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Key = "name",
 ///             },
 ///             new Aws.SsoAdmin.Inputs.InstanceAccessControlAttributesAttributeArgs
 ///             {
-///                 Key = "last",
 ///                 Values = new[]
 ///                 {
 ///                     new Aws.SsoAdmin.Inputs.InstanceAccessControlAttributesAttributeValueArgs
@@ -94,8 +93,10 @@ import 'instance_access_control_attributes_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Key = "last",
 ///             },
 ///         },
+///         InstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
 ///     });
 ///
 /// });
@@ -115,10 +116,8 @@ import 'instance_access_control_attributes_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssoadmin.NewInstanceAccessControlAttributes(ctx, "example", &ssoadmin.InstanceAccessControlAttributesArgs{
-/// 			InstanceArn: pulumi.String(example.Arns[0]),
 /// 			Attributes: ssoadmin.InstanceAccessControlAttributesAttributeArray{
 /// 				&ssoadmin.InstanceAccessControlAttributesAttributeArgs{
-/// 					Key: pulumi.String("name"),
 /// 					Values: ssoadmin.InstanceAccessControlAttributesAttributeValueArray{
 /// 						&ssoadmin.InstanceAccessControlAttributesAttributeValueArgs{
 /// 							Sources: pulumi.StringArray{
@@ -126,9 +125,9 @@ import 'instance_access_control_attributes_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Key: pulumi.String("name"),
 /// 				},
 /// 				&ssoadmin.InstanceAccessControlAttributesAttributeArgs{
-/// 					Key: pulumi.String("last"),
 /// 					Values: ssoadmin.InstanceAccessControlAttributesAttributeValueArray{
 /// 						&ssoadmin.InstanceAccessControlAttributesAttributeValueArgs{
 /// 							Sources: pulumi.StringArray{
@@ -136,8 +135,10 @@ import 'instance_access_control_attributes_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Key: pulumi.String("last"),
 /// 				},
 /// 			},
+/// 			InstanceArn: pulumi.String(example.Arns[0]),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -159,19 +160,19 @@ import 'instance_access_control_attributes_state.dart';
 /// }
 ///
 /// resource "aws_ssoadmin_instanceaccesscontrolattributes" "example" {
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
 ///   attributes {
-///     key = "name"
 ///     values {
 ///       sources = ["$${path:name.givenName}"]
 ///     }
+///     key = "name"
 ///   }
 ///   attributes {
-///     key = "last"
 ///     values {
 ///       sources = ["$${path:name.familyName}"]
 ///     }
+///     key = "last"
 ///   }
+///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -203,20 +204,20 @@ import 'instance_access_control_attributes_state.dart';
 ///             .build());
 ///
 ///         var exampleInstanceAccessControlAttributes = new InstanceAccessControlAttributes("exampleInstanceAccessControlAttributes", InstanceAccessControlAttributesArgs.builder()
-///             .instanceArn(example.arns()[0])
 ///             .attributes(
 ///                 InstanceAccessControlAttributesAttributeArgs.builder()
-///                     .key("name")
 ///                     .values(InstanceAccessControlAttributesAttributeValueArgs.builder()
 ///                         .sources("${path:name.givenName}")
 ///                         .build())
+///                     .key("name")
 ///                     .build(),
 ///                 InstanceAccessControlAttributesAttributeArgs.builder()
-///                     .key("last")
 ///                     .values(InstanceAccessControlAttributesAttributeValueArgs.builder()
 ///                         .sources("${path:name.familyName}")
 ///                         .build())
+///                     .key("last")
 ///                     .build())
+///             .instanceArn(example.arns()[0])
 ///             .build());
 ///
 ///     }
@@ -228,16 +229,16 @@ import 'instance_access_control_attributes_state.dart';
 ///     type: aws:ssoadmin:InstanceAccessControlAttributes
 ///     name: example
 ///     properties:
-///       instanceArn: ${example.arns[0]}
 ///       attributes:
-///         - key: name
-///           values:
+///         - values:
 ///             - sources:
 ///                 - $${path:name.givenName}
-///         - key: last
-///           values:
+///           key: name
+///         - values:
 ///             - sources:
 ///                 - $${path:name.familyName}
+///           key: last
+///       instanceArn: ${example.arns[0]}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -255,8 +256,8 @@ import 'instance_access_control_attributes_state.dart';
 /// ```
 class InstanceAccessControlAttributes extends pulumi.CustomResource {
   /// See AccessControlAttribute for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
-  /// The Amazon Resource Name (ARN) of the SSO Instance.
+  late final pulumi.Output<List<InstanceAccessControlAttributesAttribute>> attributes;
+  /// ARN of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -275,9 +276,9 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
           'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(guardedValue, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -289,11 +290,12 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceAccessControlAttributesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceAccessControlAttributes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,7 +309,23 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(guardedValue, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceArn = registerOutput<String>('instanceArn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+  }
+
+  /// Creates a typed reference to an existing [InstanceAccessControlAttributes] resource.
+  InstanceAccessControlAttributes.reference(String urn)
+    : super(
+        'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(guardedValue, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

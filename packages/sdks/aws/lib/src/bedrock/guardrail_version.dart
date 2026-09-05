@@ -158,7 +158,7 @@ class GuardrailVersion extends pulumi.CustomResource {
           'aws:bedrock/guardrailVersion:GuardrailVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     guardrailArn = registerOutput<String>('guardrailArn');
@@ -173,11 +173,12 @@ class GuardrailVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GuardrailVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GuardrailVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,23 @@ class GuardrailVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    guardrailArn = registerOutput<String>('guardrailArn');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailVersionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [GuardrailVersion] resource.
+  GuardrailVersion.reference(String urn)
+    : super(
+        'aws:bedrock/guardrailVersion:GuardrailVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     guardrailArn = registerOutput<String>('guardrailArn');
     region = registerOutput<String>('region');

@@ -4,39 +4,39 @@
 /// Result data returned by getUserPoolSigningCertificate.
 class GetUserPoolSigningCertificateResult {
   /// Certificate string
-  final String certificate;
+  final String? certificate;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
-  final String userPoolId;
+  final String? id;
+  final String? region;
+  final String? userPoolId;
 
   /// Creates a new [GetUserPoolSigningCertificateResult].
   /// [certificate] Certificate string
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
-  /// [userPoolId] Required.
+  /// [region] Optional.
+  /// [userPoolId] Optional.
   const GetUserPoolSigningCertificateResult({
-    required this.certificate,
-    required this.id,
-    required this.region,
-    required this.userPoolId,
+    this.certificate,
+    this.id,
+    this.region,
+    this.userPoolId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': certificate,
-      'id': id,
-      'region': region,
-      'userPoolId': userPoolId,
+      'certificate': ?certificate,
+      'id': ?id,
+      'region': ?region,
+      'userPoolId': ?userPoolId,
     };
   }
 
   factory GetUserPoolSigningCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetUserPoolSigningCertificateResult(
-      certificate: map['certificate'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
-      userPoolId: map['userPoolId'] as String,
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userPoolId: (() { final guardedValue = map['userPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,8 +5,8 @@ import 'diagnostic_setting_metric_retention_policy.dart';
 
 class DiagnosticSettingMetric {
   final pulumi.Input<String> category;
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<DiagnosticSettingMetricRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<DiagnosticSettingMetricRetentionPolicy?>? retentionPolicy;
 
   /// Creates a new [DiagnosticSettingMetric].
   /// [category] Required.

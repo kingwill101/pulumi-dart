@@ -8,9 +8,9 @@ class GetRegionsResult {
   final bool? allRegions;
   final List<GetRegionsFilter>? filters;
   /// (**Deprecated**) Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
-  final String id;
+  final String? id;
   /// Names of regions that meets the criteria.
-  final List<String> names;
+  final List<String>? names;
 
   /// Creates a new [GetRegionsResult].
   /// [allRegions] Optional.
@@ -20,16 +20,16 @@ class GetRegionsResult {
   const GetRegionsResult({
     this.allRegions,
     this.filters,
-    required this.id,
-    required this.names,
+    this.id,
+    this.names,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allRegions': ?allRegions,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'names': names,
+      'id': ?id,
+      'names': ?names,
     };
   }
 
@@ -37,8 +37,8 @@ class GetRegionsResult {
     return GetRegionsResult(
       allRegions: (() { final guardedValue = map['allRegions']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionsFilter>(guardedValue, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      names: (map['names'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

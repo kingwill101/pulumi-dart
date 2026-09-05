@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_account_get_regions_get_regions_args_doc}
 class GetRegionsArgs {
   /// AWS account ID. Must be a member account in the same organization.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  final pulumi.Input<List<String>>? regionOptStatusContains;
+  final pulumi.Input<List<String>?>? regionOptStatusContains;
 
   /// Creates a new [GetRegionsArgs].
   /// [accountId] AWS account ID. Must be a member account in the same organization.

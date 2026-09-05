@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig {
   /// Message attribute to validate. Valid values: `KEY`, `VALUE`.
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig].
   /// [attribute] Message attribute to validate. Valid values: `KEY`, `VALUE`.

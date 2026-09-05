@@ -208,7 +208,7 @@ class GetWindowsFunctionAppSiteConfig {
       apiDefinitionUrl: pulumi.Input.fromValue(map['apiDefinitionUrl'] as String),
       apiManagementApiId: pulumi.Input.fromValue(map['apiManagementApiId'] as String),
       appCommandLine: pulumi.Input.fromValue(map['appCommandLine'] as String),
-      appScaleLimit: pulumi.Input.fromValue(map['appScaleLimit'] as int),
+      appScaleLimit: pulumi.Input.fromValue((map['appScaleLimit'] as num).toInt()),
       appServiceLogs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsFunctionAppSiteConfigAppServiceLog>(map['appServiceLogs']!, (value) => GetWindowsFunctionAppSiteConfigAppServiceLog.fromMap((value as Map).cast<String, dynamic>()))),
       applicationInsightsConnectionString: pulumi.Input.fromValue(map['applicationInsightsConnectionString'] as String),
       applicationInsightsKey: pulumi.Input.fromValue(map['applicationInsightsKey'] as String),
@@ -216,9 +216,9 @@ class GetWindowsFunctionAppSiteConfig {
       cors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsFunctionAppSiteConfigCor>(map['cors']!, (value) => GetWindowsFunctionAppSiteConfigCor.fromMap((value as Map).cast<String, dynamic>()))),
       defaultDocuments: pulumi.Input.fromValue((map['defaultDocuments'] as List).cast<String>()),
       detailedErrorLoggingEnabled: pulumi.Input.fromValue(map['detailedErrorLoggingEnabled'] as bool),
-      elasticInstanceMinimum: pulumi.Input.fromValue(map['elasticInstanceMinimum'] as int),
+      elasticInstanceMinimum: pulumi.Input.fromValue((map['elasticInstanceMinimum'] as num).toInt()),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
-      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(map['healthCheckEvictionTimeInMin'] as int),
+      healthCheckEvictionTimeInMin: pulumi.Input.fromValue((map['healthCheckEvictionTimeInMin'] as num).toInt()),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
       ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
@@ -227,7 +227,7 @@ class GetWindowsFunctionAppSiteConfig {
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
       minimumTlsCipherSuite: pulumi.Input.fromValue(map['minimumTlsCipherSuite'] as String),
       minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
-      preWarmedInstanceCount: pulumi.Input.fromValue(map['preWarmedInstanceCount'] as int),
+      preWarmedInstanceCount: pulumi.Input.fromValue((map['preWarmedInstanceCount'] as num).toInt()),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
       remoteDebuggingVersion: pulumi.Input.fromValue(map['remoteDebuggingVersion'] as String),
       runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
@@ -240,7 +240,7 @@ class GetWindowsFunctionAppSiteConfig {
       vnetRouteAllEnabled: pulumi.Input.fromValue(map['vnetRouteAllEnabled'] as bool),
       websocketsEnabled: pulumi.Input.fromValue(map['websocketsEnabled'] as bool),
       windowsFxVersion: pulumi.Input.fromValue(map['windowsFxVersion'] as String),
-      workerCount: pulumi.Input.fromValue(map['workerCount'] as int),
+      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
     );
   }
 }

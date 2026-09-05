@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Route resources.
 class RouteState {
   /// The ID of the Client VPN endpoint.
-  final pulumi.Input<String>? clientVpnEndpointId;
+  final pulumi.Input<String?>? clientVpnEndpointId;
   /// A brief description of the route.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
-  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationCidrBlock;
   /// Indicates how the Client VPN route was added. Will be `add-route` for routes created by this resource.
-  final pulumi.Input<String>? origin;
+  final pulumi.Input<String?>? origin;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN. Required for VPC-based Client VPN endpoints. Not applicable for Transit Gateway-based Client VPN endpoints.
-  final pulumi.Input<String>? targetVpcSubnetId;
+  final pulumi.Input<String?>? targetVpcSubnetId;
   /// The ID of the Transit Gateway attachment, if the route targets a Transit Gateway-based Client VPN endpoint.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// The type of the route.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RouteState].
   /// [clientVpnEndpointId] The ID of the Client VPN endpoint.

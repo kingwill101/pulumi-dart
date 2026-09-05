@@ -11,19 +11,19 @@ import 'cluster_timeouts.dart';
 class ClusterArgs {
   /// Whether deletion protection is enabled in this cluster.
   /// Default value is `false`.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.
-  final pulumi.Input<String>? kmsEncryptionKey;
+  final pulumi.Input<String?>? kmsEncryptionKey;
   /// Multi-region properties of the DSQL Cluster.
-  final pulumi.Input<ClusterMultiRegionProperties>? multiRegionProperties;
+  final pulumi.Input<ClusterMultiRegionProperties?>? multiRegionProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of tags to be associated with the AWS DSQL Cluster resource.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ClusterTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ClusterTimeouts?>? timeouts;
 
   /// Creates a new [ClusterArgs].
   /// [deletionProtectionEnabled] Whether deletion protection is enabled in this cluster.

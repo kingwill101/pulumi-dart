@@ -9,11 +9,11 @@ import 'get_instance_type_offerings_filter.dart';
 /// {@macro pulumi_ec2_get_instance_type_offerings_get_instance_type_offerings_args_doc}
 class GetInstanceTypeOfferingsArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
-  final pulumi.Input<List<GetInstanceTypeOfferingsFilter>>? filters;
+  final pulumi.Input<List<GetInstanceTypeOfferingsFilter>?>? filters;
   /// Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
-  final pulumi.Input<String>? locationType;
+  final pulumi.Input<String?>? locationType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInstanceTypeOfferingsArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.

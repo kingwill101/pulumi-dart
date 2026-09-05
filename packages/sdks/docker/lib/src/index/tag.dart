@@ -25,11 +25,11 @@ class Tag extends pulumi.CustomResource {
           'docker:index/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     sourceImage = registerOutput<String>('sourceImage');
     sourceImageId = registerOutput<String>('sourceImageId');
-    tagTriggers = registerOutput<List<String>?>('tagTriggers');
+    tagTriggers = registerOutput<List<String>?>('tagTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetImage = registerOutput<String>('targetImage');
   }
 
@@ -38,11 +38,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -58,7 +59,22 @@ class Tag extends pulumi.CustomResource {
         ) {
     sourceImage = registerOutput<String>('sourceImage');
     sourceImageId = registerOutput<String>('sourceImageId');
-    tagTriggers = registerOutput<List<String>?>('tagTriggers');
+    tagTriggers = registerOutput<List<String>?>('tagTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetImage = registerOutput<String>('targetImage');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'docker:index/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    sourceImage = registerOutput<String>('sourceImage');
+    sourceImageId = registerOutput<String>('sourceImageId');
+    tagTriggers = registerOutput<List<String>?>('tagTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetImage = registerOutput<String>('targetImage');
   }
 }

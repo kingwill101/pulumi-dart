@@ -9,35 +9,35 @@ import 'cassandra_cluster_identity.dart';
 /// {@macro pulumi_cosmosdb_cassandra_cluster_cassandra_cluster_args_doc}
 class CassandraClusterArgs {
   /// The authentication method that is used to authenticate clients. Possible values are `None` and `Cassandra`. Defaults to `Cassandra`.
-  final pulumi.Input<String>? authenticationMethod;
+  final pulumi.Input<String?>? authenticationMethod;
   /// A list of TLS certificates that is used to authorize client connecting to the Cassandra Cluster.
-  final pulumi.Input<List<String>>? clientCertificatePems;
+  final pulumi.Input<List<String>?>? clientCertificatePems;
   /// The initial admin password for this Cassandra Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> defaultAdminPassword;
   /// The ID of the delegated management subnet for this Cassandra Cluster. Changing this forces a new Cassandra Cluster to be created.
   final pulumi.Input<String> delegatedManagementSubnetId;
   /// A list of TLS certificates that is used to authorize gossip from unmanaged Cassandra Data Center.
-  final pulumi.Input<List<String>>? externalGossipCertificatePems;
+  final pulumi.Input<List<String>?>? externalGossipCertificatePems;
   /// A list of IP Addresses of the seed nodes in unmanaged the Cassandra Data Center which will be added to the seed node lists of all managed nodes.
-  final pulumi.Input<List<String>>? externalSeedNodeIpAddresses;
+  final pulumi.Input<List<String>?>? externalSeedNodeIpAddresses;
   /// The number of hours to wait between taking a backup of the Cassandra Cluster. Defaults to `24`.
   ///
   /// &gt; **Note:** To disable this feature, set this property to `0`.
-  final pulumi.Input<int>? hoursBetweenBackups;
+  final pulumi.Input<int?>? hoursBetweenBackups;
   /// An `identity` block as defined below.
-  final pulumi.Input<CassandraClusterIdentity>? identity;
+  final pulumi.Input<CassandraClusterIdentity?>? identity;
   /// The Azure Region where the Cassandra Cluster should exist. Changing this forces a new Cassandra Cluster to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Cassandra Cluster. Changing this forces a new Cassandra Cluster to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Is the automatic repair enabled on the Cassandra Cluster? Defaults to `true`.
-  final pulumi.Input<bool>? repairEnabled;
+  final pulumi.Input<bool?>? repairEnabled;
   /// The name of the Resource Group where the Cassandra Cluster should exist. Changing this forces a new Cassandra Cluster to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The version of Cassandra what the Cluster converges to run. Possible values are `3.11`, `4.0`, `4.1` and `5.0`. Defaults to `3.11`. Changing this forces a new Cassandra Cluster to be created.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CassandraClusterArgs].
   /// [authenticationMethod] The authentication method that is used to authenticate clients. Possible values are `None` and `Cassandra`. Defaults to `Cassandra`.
@@ -98,7 +98,7 @@ class CassandraClusterArgs {
       delegatedManagementSubnetId: pulumi.Input.fromValue(map['delegatedManagementSubnetId'] as String),
       externalGossipCertificatePems: (() { final guardedValue = map['externalGossipCertificatePems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       externalSeedNodeIpAddresses: (() { final guardedValue = map['externalSeedNodeIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      hoursBetweenBackups: (() { final guardedValue = map['hoursBetweenBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hoursBetweenBackups: (() { final guardedValue = map['hoursBetweenBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

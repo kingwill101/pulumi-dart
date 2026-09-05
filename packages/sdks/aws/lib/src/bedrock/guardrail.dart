@@ -21,10 +21,6 @@ import 'guardrail_word_policy_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.Guardrail("example", {
-///     name: "example",
-///     blockedInputMessaging: "example",
-///     blockedOutputsMessaging: "example",
-///     description: "example",
 ///     contentPolicyConfig: {
 ///         filtersConfigs: [{
 ///             inputStrength: "MEDIUM",
@@ -56,14 +52,14 @@ import 'guardrail_word_policy_config.dart';
 ///         }],
 ///     },
 ///     topicPolicyConfig: {
+///         tierConfigs: [{
+///             tierName: "CLASSIC",
+///         }],
 ///         topicsConfigs: [{
 ///             name: "investment_topic",
 ///             examples: ["Where should I invest my money ?"],
 ///             type: "DENY",
 ///             definition: "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns .",
-///         }],
-///         tierConfigs: [{
-///             tierName: "CLASSIC",
 ///         }],
 ///     },
 ///     wordPolicyConfig: {
@@ -74,6 +70,10 @@ import 'guardrail_word_policy_config.dart';
 ///             text: "HATE",
 ///         }],
 ///     },
+///     name: "example",
+///     blockedInputMessaging: "example",
+///     blockedOutputsMessaging: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -81,10 +81,6 @@ import 'guardrail_word_policy_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.Guardrail("example",
-///     name="example",
-///     blocked_input_messaging="example",
-///     blocked_outputs_messaging="example",
-///     description="example",
 ///     content_policy_config={
 ///         "filters_configs": [{
 ///             "input_strength": "MEDIUM",
@@ -116,14 +112,14 @@ import 'guardrail_word_policy_config.dart';
 ///         }],
 ///     },
 ///     topic_policy_config={
+///         "tier_configs": [{
+///             "tier_name": "CLASSIC",
+///         }],
 ///         "topics_configs": [{
 ///             "name": "investment_topic",
 ///             "examples": ["Where should I invest my money ?"],
 ///             "type": "DENY",
 ///             "definition": "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns .",
-///         }],
-///         "tier_configs": [{
-///             "tier_name": "CLASSIC",
 ///         }],
 ///     },
 ///     word_policy_config={
@@ -133,7 +129,11 @@ import 'guardrail_word_policy_config.dart';
 ///         "words_configs": [{
 ///             "text": "HATE",
 ///         }],
-///     })
+///     },
+///     name="example",
+///     blocked_input_messaging="example",
+///     blocked_outputs_messaging="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -145,10 +145,6 @@ import 'guardrail_word_policy_config.dart';
 /// {
 ///     var example = new Aws.Bedrock.Guardrail("example", new()
 ///     {
-///         Name = "example",
-///         BlockedInputMessaging = "example",
-///         BlockedOutputsMessaging = "example",
-///         Description = "example",
 ///         ContentPolicyConfig = new Aws.Bedrock.Inputs.GuardrailContentPolicyConfigArgs
 ///         {
 ///             FiltersConfigs = new[]
@@ -199,6 +195,13 @@ import 'guardrail_word_policy_config.dart';
 ///         },
 ///         TopicPolicyConfig = new Aws.Bedrock.Inputs.GuardrailTopicPolicyConfigArgs
 ///         {
+///             TierConfigs = new[]
+///             {
+///                 new Aws.Bedrock.Inputs.GuardrailTopicPolicyConfigTierConfigArgs
+///                 {
+///                     TierName = "CLASSIC",
+///                 },
+///             },
 ///             TopicsConfigs = new[]
 ///             {
 ///                 new Aws.Bedrock.Inputs.GuardrailTopicPolicyConfigTopicsConfigArgs
@@ -210,13 +213,6 @@ import 'guardrail_word_policy_config.dart';
 ///                     },
 ///                     Type = "DENY",
 ///                     Definition = "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns .",
-///                 },
-///             },
-///             TierConfigs = new[]
-///             {
-///                 new Aws.Bedrock.Inputs.GuardrailTopicPolicyConfigTierConfigArgs
-///                 {
-///                     TierName = "CLASSIC",
 ///                 },
 ///             },
 ///         },
@@ -237,6 +233,10 @@ import 'guardrail_word_policy_config.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         BlockedInputMessaging = "example",
+///         BlockedOutputsMessaging = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -252,10 +252,6 @@ import 'guardrail_word_policy_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewGuardrail(ctx, "example", &bedrock.GuardrailArgs{
-/// 			Name:                    pulumi.String("example"),
-/// 			BlockedInputMessaging:   pulumi.String("example"),
-/// 			BlockedOutputsMessaging: pulumi.String("example"),
-/// 			Description:             pulumi.String("example"),
 /// 			ContentPolicyConfig: &bedrock.GuardrailContentPolicyConfigArgs{
 /// 				FiltersConfigs: bedrock.GuardrailContentPolicyConfigFiltersConfigArray{
 /// 					&bedrock.GuardrailContentPolicyConfigFiltersConfigArgs{
@@ -295,6 +291,11 @@ import 'guardrail_word_policy_config.dart';
 /// 				},
 /// 			},
 /// 			TopicPolicyConfig: &bedrock.GuardrailTopicPolicyConfigArgs{
+/// 				TierConfigs: bedrock.GuardrailTopicPolicyConfigTierConfigArray{
+/// 					&bedrock.GuardrailTopicPolicyConfigTierConfigArgs{
+/// 						TierName: pulumi.String("CLASSIC"),
+/// 					},
+/// 				},
 /// 				TopicsConfigs: bedrock.GuardrailTopicPolicyConfigTopicsConfigArray{
 /// 					&bedrock.GuardrailTopicPolicyConfigTopicsConfigArgs{
 /// 						Name: pulumi.String("investment_topic"),
@@ -303,11 +304,6 @@ import 'guardrail_word_policy_config.dart';
 /// 						},
 /// 						Type:       pulumi.String("DENY"),
 /// 						Definition: pulumi.String("Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns ."),
-/// 					},
-/// 				},
-/// 				TierConfigs: bedrock.GuardrailTopicPolicyConfigTierConfigArray{
-/// 					&bedrock.GuardrailTopicPolicyConfigTierConfigArgs{
-/// 						TierName: pulumi.String("CLASSIC"),
 /// 					},
 /// 				},
 /// 			},
@@ -323,6 +319,10 @@ import 'guardrail_word_policy_config.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:                    pulumi.String("example"),
+/// 			BlockedInputMessaging:   pulumi.String("example"),
+/// 			BlockedOutputsMessaging: pulumi.String("example"),
+/// 			Description:             pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -341,10 +341,6 @@ import 'guardrail_word_policy_config.dart';
 /// }
 ///
 /// resource "aws_bedrock_guardrail" "example" {
-///   name                      = "example"
-///   blocked_input_messaging   = "example"
-///   blocked_outputs_messaging = "example"
-///   description               = "example"
 ///   content_policy_config = {
 ///     filters_configs = [{
 ///       "inputStrength"  = "MEDIUM"
@@ -376,14 +372,14 @@ import 'guardrail_word_policy_config.dart';
 ///     }]
 ///   }
 ///   topic_policy_config = {
+///     tier_configs = [{
+///       "tierName" = "CLASSIC"
+///     }]
 ///     topics_configs = [{
 ///       "name"       = "investment_topic"
 ///       "examples"   = ["Where should I invest my money ?"]
 ///       "type"       = "DENY"
 ///       "definition" = "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns ."
-///     }]
-///     tier_configs = [{
-///       "tierName" = "CLASSIC"
 ///     }]
 ///   }
 ///   word_policy_config = {
@@ -394,6 +390,10 @@ import 'guardrail_word_policy_config.dart';
 ///       "text" = "HATE"
 ///     }]
 ///   }
+///   name                      = "example"
+///   blocked_input_messaging   = "example"
+///   blocked_outputs_messaging = "example"
+///   description               = "example"
 /// }
 /// ```
 /// ```java
@@ -411,8 +411,8 @@ import 'guardrail_word_policy_config.dart';
 /// import com.pulumi.aws.bedrock.inputs.GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailSensitiveInformationPolicyConfigRegexesConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigArgs;
-/// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigTopicsConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigTierConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.GuardrailTopicPolicyConfigTopicsConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigManagedWordListsConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.GuardrailWordPolicyConfigWordsConfigArgs;
@@ -430,10 +430,6 @@ import 'guardrail_word_policy_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Guardrail("example", GuardrailArgs.builder()
-///             .name("example")
-///             .blockedInputMessaging("example")
-///             .blockedOutputsMessaging("example")
-///             .description("example")
 ///             .contentPolicyConfig(GuardrailContentPolicyConfigArgs.builder()
 ///                 .filtersConfigs(GuardrailContentPolicyConfigFiltersConfigArgs.builder()
 ///                     .inputStrength("MEDIUM")
@@ -465,14 +461,14 @@ import 'guardrail_word_policy_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .topicPolicyConfig(GuardrailTopicPolicyConfigArgs.builder()
+///                 .tierConfigs(GuardrailTopicPolicyConfigTierConfigArgs.builder()
+///                     .tierName("CLASSIC")
+///                     .build())
 ///                 .topicsConfigs(GuardrailTopicPolicyConfigTopicsConfigArgs.builder()
 ///                     .name("investment_topic")
 ///                     .examples("Where should I invest my money ?")
 ///                     .type("DENY")
 ///                     .definition("Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns .")
-///                     .build())
-///                 .tierConfigs(GuardrailTopicPolicyConfigTierConfigArgs.builder()
-///                     .tierName("CLASSIC")
 ///                     .build())
 ///                 .build())
 ///             .wordPolicyConfig(GuardrailWordPolicyConfigArgs.builder()
@@ -483,6 +479,10 @@ import 'guardrail_word_policy_config.dart';
 ///                     .text("HATE")
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .blockedInputMessaging("example")
+///             .blockedOutputsMessaging("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -493,10 +493,6 @@ import 'guardrail_word_policy_config.dart';
 ///   example:
 ///     type: aws:bedrock:Guardrail
 ///     properties:
-///       name: example
-///       blockedInputMessaging: example
-///       blockedOutputsMessaging: example
-///       description: example
 ///       contentPolicyConfig:
 ///         filtersConfigs:
 ///           - inputStrength: MEDIUM
@@ -522,19 +518,23 @@ import 'guardrail_word_policy_config.dart';
 ///             name: regex_example
 ///             pattern: ^\d{3}-\d{2}-\d{4}$
 ///       topicPolicyConfig:
+///         tierConfigs:
+///           - tierName: CLASSIC
 ///         topicsConfigs:
 ///           - name: investment_topic
 ///             examples:
 ///               - Where should I invest my money ?
 ///             type: DENY
 ///             definition: Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns .
-///         tierConfigs:
-///           - tierName: CLASSIC
 ///       wordPolicyConfig:
 ///         managedWordListsConfigs:
 ///           - type: PROFANITY
 ///         wordsConfigs:
 ///           - text: HATE
+///       name: example
+///       blockedInputMessaging: example
+///       blockedOutputsMessaging: example
+///       description: example
 /// ```
 ///
 ///
@@ -600,7 +600,7 @@ class Guardrail extends pulumi.CustomResource {
           'aws:bedrock/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
     blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');
@@ -616,8 +616,8 @@ class Guardrail extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sensitiveInformationPolicyConfig = registerOutput<GuardrailSensitiveInformationPolicyConfig?>('sensitiveInformationPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailSensitiveInformationPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
@@ -630,11 +630,12 @@ class Guardrail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GuardrailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Guardrail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -662,8 +663,40 @@ class Guardrail extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sensitiveInformationPolicyConfig = registerOutput<GuardrailSensitiveInformationPolicyConfig?>('sensitiveInformationPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailSensitiveInformationPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+    version = registerOutput<String>('version');
+    wordPolicyConfig = registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailWordPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Guardrail] resource.
+  Guardrail.reference(String urn)
+    : super(
+        'aws:bedrock/guardrail:Guardrail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
+    blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');
+    contentPolicyConfig = registerOutput<GuardrailContentPolicyConfig?>('contentPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContentPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contextualGroundingPolicyConfig = registerOutput<GuardrailContextualGroundingPolicyConfig?>('contextualGroundingPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailContextualGroundingPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    crossRegionConfig = registerOutput<GuardrailCrossRegionConfig?>('crossRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailCrossRegionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    guardrailArn = registerOutput<String>('guardrailArn');
+    guardrailId = registerOutput<String>('guardrailId');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    sensitiveInformationPolicyConfig = registerOutput<GuardrailSensitiveInformationPolicyConfig?>('sensitiveInformationPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailSensitiveInformationPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<GuardrailTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topicPolicyConfig = registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailTopicPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');

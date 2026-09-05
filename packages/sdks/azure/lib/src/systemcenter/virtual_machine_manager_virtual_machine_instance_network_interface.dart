@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
   /// The IPv4 address type. Possible values are `Dynamic` and `Static`.
-  final pulumi.Input<String>? ipv4AddressType;
+  final pulumi.Input<String?>? ipv4AddressType;
   /// The IPv6 address type. Possible values are `Dynamic` and `Static`.
-  final pulumi.Input<String>? ipv6AddressType;
+  final pulumi.Input<String?>? ipv6AddressType;
   /// The MAC address type. Possible values are `Dynamic` and `Static`.
-  final pulumi.Input<String>? macAddressType;
+  final pulumi.Input<String?>? macAddressType;
   /// The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
   final pulumi.Input<String> name;
   /// The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceNetworkInterface].
   /// [ipv4AddressType] The IPv4 address type. Possible values are `Dynamic` and `Static`.

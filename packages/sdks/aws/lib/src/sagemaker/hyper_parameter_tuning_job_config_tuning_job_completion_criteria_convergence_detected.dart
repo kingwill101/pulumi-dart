@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobConfigTuningJobCompletionCriteriaConvergenceDetected {
   /// Whether to complete tuning when convergence is detected.
-  final pulumi.Input<String>? completeOnConvergence;
+  final pulumi.Input<String?>? completeOnConvergence;
 
   /// Creates a new [HyperParameterTuningJobConfigTuningJobCompletionCriteriaConvergenceDetected].
   /// [completeOnConvergence] Whether to complete tuning when convergence is detected.

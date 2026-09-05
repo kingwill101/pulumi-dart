@@ -11,9 +11,9 @@ class AgentcoreTokenVaultCmkArgs {
   /// KMS configuration for the token vault. See `kmsConfiguration` below.
   final pulumi.Input<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Token vault ID. Defaults to `default`.
-  final pulumi.Input<String>? tokenVaultId;
+  final pulumi.Input<String?>? tokenVaultId;
 
   /// Creates a new [AgentcoreTokenVaultCmkArgs].
   /// [kmsConfiguration] KMS configuration for the token vault. See `kmsConfiguration` below.

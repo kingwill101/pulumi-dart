@@ -9,31 +9,31 @@ import 'factory_vsts_configuration.dart';
 /// Input properties used for looking up and filtering Factory resources.
 class FactoryState {
   /// Specifies the Azure Key Vault Key ID to be used as the Customer Managed Key (CMK) for double encryption. Required with user assigned identity.
-  final pulumi.Input<String>? customerManagedKeyId;
+  final pulumi.Input<String?>? customerManagedKeyId;
   /// Specifies the ID of the user assigned identity associated with the Customer Managed Key. Must be supplied at factory creation if `customerManagedKeyId` is set. Can be left empty once factory is created to use the system assigned identity. See the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/data-factory/enable-customer-managed-key) for more information.
-  final pulumi.Input<String>? customerManagedKeyIdentityId;
+  final pulumi.Input<String?>? customerManagedKeyIdentityId;
   /// A `githubConfiguration` block as defined below.
-  final pulumi.Input<FactoryGithubConfiguration>? githubConfiguration;
+  final pulumi.Input<FactoryGithubConfiguration?>? githubConfiguration;
   /// A list of `globalParameter` blocks as defined above.
-  final pulumi.Input<List<FactoryGlobalParameter>>? globalParameters;
+  final pulumi.Input<List<FactoryGlobalParameter>?>? globalParameters;
   /// An `identity` block as defined below.
-  final pulumi.Input<FactoryIdentity>? identity;
+  final pulumi.Input<FactoryIdentity?>? identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Is Managed Virtual Network enabled?
-  final pulumi.Input<bool>? managedVirtualNetworkEnabled;
+  final pulumi.Input<bool?>? managedVirtualNetworkEnabled;
   /// Specifies the name of the Data Factory. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Is the Data Factory visible to the public network? Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkEnabled;
+  final pulumi.Input<bool?>? publicNetworkEnabled;
   /// Specifies the ID of the purview account resource associated with the Data Factory.
-  final pulumi.Input<String>? purviewId;
+  final pulumi.Input<String?>? purviewId;
   /// The name of the resource group in which to create the Data Factory. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `vstsConfiguration` block as defined below.
-  final pulumi.Input<FactoryVstsConfiguration>? vstsConfiguration;
+  final pulumi.Input<FactoryVstsConfiguration?>? vstsConfiguration;
 
   /// Creates a new [FactoryState].
   /// [customerManagedKeyId] Specifies the Azure Key Vault Key ID to be used as the Customer Managed Key (CMK) for double encryption. Required with user assigned identity.

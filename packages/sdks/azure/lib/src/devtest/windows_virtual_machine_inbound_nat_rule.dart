@@ -6,7 +6,7 @@ class WindowsVirtualMachineInboundNatRule {
   /// The Backend Port associated with this NAT Rule. Changing this forces a new resource to be created.
   final pulumi.Input<int> backendPort;
   /// The frontend port associated with this Inbound NAT Rule.
-  final pulumi.Input<int>? frontendPort;
+  final pulumi.Input<int?>? frontendPort;
   /// The Protocol used for this NAT Rule. Possible values are `Tcp` and `Udp`.
   final pulumi.Input<String> protocol;
 
@@ -30,8 +30,8 @@ class WindowsVirtualMachineInboundNatRule {
 
   factory WindowsVirtualMachineInboundNatRule.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineInboundNatRule(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
-      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }

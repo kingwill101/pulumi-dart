@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'organization_configuration_feature_additional_configuration.dart';
 import 'organization_configuration_feature_args.dart';
 import 'organization_configuration_feature_state.dart';
 
@@ -15,13 +16,13 @@ import 'organization_configuration_feature_state.dart';
 ///
 /// const example = new aws.guardduty.Detector("example", {enable: true});
 /// const eksRuntimeMonitoring = new aws.guardduty.OrganizationConfigurationFeature("eks_runtime_monitoring", {
-///     detectorId: example.id,
-///     name: "EKS_RUNTIME_MONITORING",
-///     autoEnable: "ALL",
 ///     additionalConfigurations: [{
 ///         name: "EKS_ADDON_MANAGEMENT",
 ///         autoEnable: "NEW",
 ///     }],
+///     detectorId: example.id,
+///     name: "EKS_RUNTIME_MONITORING",
+///     autoEnable: "ALL",
 /// });
 /// ```
 /// ```python
@@ -30,13 +31,13 @@ import 'organization_configuration_feature_state.dart';
 ///
 /// example = aws.guardduty.Detector("example", enable=True)
 /// eks_runtime_monitoring = aws.guardduty.OrganizationConfigurationFeature("eks_runtime_monitoring",
-///     detector_id=example.id,
-///     name="EKS_RUNTIME_MONITORING",
-///     auto_enable="ALL",
 ///     additional_configurations=[{
 ///         "name": "EKS_ADDON_MANAGEMENT",
 ///         "auto_enable": "NEW",
-///     }])
+///     }],
+///     detector_id=example.id,
+///     name="EKS_RUNTIME_MONITORING",
+///     auto_enable="ALL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,9 +54,6 @@ import 'organization_configuration_feature_state.dart';
 ///
 ///     var eksRuntimeMonitoring = new Aws.GuardDuty.OrganizationConfigurationFeature("eks_runtime_monitoring", new()
 ///     {
-///         DetectorId = example.Id,
-///         Name = "EKS_RUNTIME_MONITORING",
-///         AutoEnable = "ALL",
 ///         AdditionalConfigurations = new[]
 ///         {
 ///             new Aws.GuardDuty.Inputs.OrganizationConfigurationFeatureAdditionalConfigurationArgs
@@ -64,6 +62,9 @@ import 'organization_configuration_feature_state.dart';
 ///                 AutoEnable = "NEW",
 ///             },
 ///         },
+///         DetectorId = example.Id,
+///         Name = "EKS_RUNTIME_MONITORING",
+///         AutoEnable = "ALL",
 ///     });
 ///
 /// });
@@ -85,15 +86,15 @@ import 'organization_configuration_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewOrganizationConfigurationFeature(ctx, "eks_runtime_monitoring", &guardduty.OrganizationConfigurationFeatureArgs{
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
-/// 			AutoEnable: pulumi.String("ALL"),
 /// 			AdditionalConfigurations: guardduty.OrganizationConfigurationFeatureAdditionalConfigurationArray{
 /// 				&guardduty.OrganizationConfigurationFeatureAdditionalConfigurationArgs{
 /// 					Name:       pulumi.String("EKS_ADDON_MANAGEMENT"),
 /// 					AutoEnable: pulumi.String("NEW"),
 /// 				},
 /// 			},
+/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
+/// 			AutoEnable: pulumi.String("ALL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,13 +116,13 @@ import 'organization_configuration_feature_state.dart';
 ///   enable = true
 /// }
 /// resource "aws_guardduty_organizationconfigurationfeature" "eks_runtime_monitoring" {
-///   detector_id = aws_guardduty_detector.example.id
-///   name        = "EKS_RUNTIME_MONITORING"
-///   auto_enable = "ALL"
 ///   additional_configurations {
 ///     name        = "EKS_ADDON_MANAGEMENT"
 ///     auto_enable = "NEW"
 ///   }
+///   detector_id = aws_guardduty_detector.example.id
+///   name        = "EKS_RUNTIME_MONITORING"
+///   auto_enable = "ALL"
 /// }
 /// ```
 /// ```java
@@ -153,13 +154,13 @@ import 'organization_configuration_feature_state.dart';
 ///             .build());
 ///
 ///         var eksRuntimeMonitoring = new OrganizationConfigurationFeature("eksRuntimeMonitoring", OrganizationConfigurationFeatureArgs.builder()
-///             .detectorId(example.id())
-///             .name("EKS_RUNTIME_MONITORING")
-///             .autoEnable("ALL")
 ///             .additionalConfigurations(OrganizationConfigurationFeatureAdditionalConfigurationArgs.builder()
 ///                 .name("EKS_ADDON_MANAGEMENT")
 ///                 .autoEnable("NEW")
 ///                 .build())
+///             .detectorId(example.id())
+///             .name("EKS_RUNTIME_MONITORING")
+///             .autoEnable("ALL")
 ///             .build());
 ///
 ///     }
@@ -175,16 +176,16 @@ import 'organization_configuration_feature_state.dart';
 ///     type: aws:guardduty:OrganizationConfigurationFeature
 ///     name: eks_runtime_monitoring
 ///     properties:
-///       detectorId: ${example.id}
-///       name: EKS_RUNTIME_MONITORING
-///       autoEnable: ALL
 ///       additionalConfigurations:
 ///         - name: EKS_ADDON_MANAGEMENT
 ///           autoEnable: NEW
+///       detectorId: ${example.id}
+///       name: EKS_RUNTIME_MONITORING
+///       autoEnable: ALL
 /// ```
 class OrganizationConfigurationFeature extends pulumi.CustomResource {
   /// Additional feature configuration block for features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING`. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalConfigurations;
+  late final pulumi.Output<List<OrganizationConfigurationFeatureAdditionalConfiguration>?> additionalConfigurations;
   /// The status of the feature that is configured for the member accounts within the organization. Valid values: `NEW`, `ALL`, `NONE`.
   late final pulumi.Output<String> autoEnable;
   /// The ID of the detector that configures the delegated administrator.
@@ -206,9 +207,9 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
           'aws:guardduty/organizationConfigurationFeature:OrganizationConfigurationFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalConfigurations = registerOutput<List<Map<String, dynamic>>?>('additionalConfigurations');
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
@@ -220,11 +221,12 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationConfigurationFeatureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationConfigurationFeature._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,7 +240,23 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalConfigurations = registerOutput<List<Map<String, dynamic>>?>('additionalConfigurations');
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    autoEnable = registerOutput<String>('autoEnable');
+    detectorId = registerOutput<String>('detectorId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationConfigurationFeature] resource.
+  OrganizationConfigurationFeature.reference(String urn)
+    : super(
+        'aws:guardduty/organizationConfigurationFeature:OrganizationConfigurationFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');

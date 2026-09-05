@@ -6,7 +6,7 @@ class AgentcoreGatewayRuleConditionMatchPrincipalsAnyOfIamPrincipal {
   /// IAM principal ARN. Wildcards are allowed with the `StringLike` operator.
   final pulumi.Input<String> arn;
   /// Match operator, one of `StringEquals` or `StringLike`. Defaults to `StringEquals`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [AgentcoreGatewayRuleConditionMatchPrincipalsAnyOfIamPrincipal].
   /// [arn] IAM principal ARN. Wildcards are allowed with the `StringLike` operator.

@@ -189,7 +189,7 @@ import 'registry_token_state.dart';
 /// 			Name:                  pulumi.String("exampletoken"),
 /// 			ContainerRegistryName: exampleRegistry.Name,
 /// 			ResourceGroupName:     example.Name,
-/// 			ScopeMapId:            exampleRegistryScopeMap.ID(),
+/// 			ScopeMapId:            exampleRegistryScopeMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -382,7 +382,7 @@ class RegistryToken extends pulumi.CustomResource {
           'azure:containerservice/registryToken:RegistryToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     enabled = registerOutput<bool?>('enabled');
@@ -396,11 +396,12 @@ class RegistryToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +415,22 @@ class RegistryToken extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerRegistryName = registerOutput<String>('containerRegistryName');
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeMapId = registerOutput<String>('scopeMapId');
+  }
+
+  /// Creates a typed reference to an existing [RegistryToken] resource.
+  RegistryToken.reference(String urn)
+    : super(
+        'azure:containerservice/registryToken:RegistryToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');

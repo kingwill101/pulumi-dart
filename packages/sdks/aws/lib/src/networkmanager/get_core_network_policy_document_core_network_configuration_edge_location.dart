@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation {
   /// ASN of the Core Network Edge in an AWS Region. By default, the ASN will be a single integer automatically assigned from `asnRanges`
-  final pulumi.Input<String>? asn;
+  final pulumi.Input<String?>? asn;
   /// The local CIDR blocks for this Core Network Edge for AWS Transit Gateway Connect attachments. By default, this CIDR block will be one or more optional IPv4 and IPv6 CIDR prefixes auto-assigned from `insideCidrBlocks`.
-  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<List<String>?>? insideCidrBlocks;
   final pulumi.Input<String> location;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation].

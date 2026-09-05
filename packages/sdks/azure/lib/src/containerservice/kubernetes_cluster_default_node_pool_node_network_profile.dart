@@ -5,11 +5,11 @@ import 'kubernetes_cluster_default_node_pool_node_network_profile_allowed_host_p
 
 class KubernetesClusterDefaultNodePoolNodeNetworkProfile {
   /// One or more `allowedHostPorts` blocks as defined below.
-  final pulumi.Input<List<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>>? allowedHostPorts;
+  final pulumi.Input<List<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>?>? allowedHostPorts;
   /// A list of Application Security Group IDs which should be associated with this Node Pool.
-  final pulumi.Input<List<String>>? applicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? applicationSecurityGroupIds;
   /// Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? nodePublicIpTags;
+  final pulumi.Input<Map<String, String>?>? nodePublicIpTags;
 
   /// Creates a new [KubernetesClusterDefaultNodePoolNodeNetworkProfile].
   /// [allowedHostPorts] One or more `allowedHostPorts` blocks as defined below.

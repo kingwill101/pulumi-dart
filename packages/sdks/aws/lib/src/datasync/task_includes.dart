@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskIncludes {
   /// The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
-  final pulumi.Input<String>? filterType;
+  final pulumi.Input<String?>? filterType;
   /// A single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TaskIncludes].
   /// [filterType] The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.

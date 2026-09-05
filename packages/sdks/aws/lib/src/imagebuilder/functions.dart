@@ -144,6 +144,17 @@ Future<GetComponentResult> getComponent(
   return GetComponentResult.fromMap(result);
 }
 
+pulumi.Output<GetComponentResult> getComponentOutput(
+  GetComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getComponent:getComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentResult.fromMap);
+}
+
 /// Use this data source to get the ARNs and names of Image Builder Components matching the specified criteria.
 ///
 /// ## Example Usage
@@ -154,22 +165,22 @@ Future<GetComponentResult> getComponent(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.imagebuilder.getComponents({
-///     owner: "Self",
 ///     filters: [{
 ///         name: "platform",
 ///         values: ["Linux"],
 ///     }],
+///     owner: "Self",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.imagebuilder.get_components(owner="Self",
-///     filters=[{
+/// example = aws.imagebuilder.get_components(filters=[{
 ///         "name": "platform",
 ///         "values": ["Linux"],
-///     }])
+///     }],
+///     owner="Self")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -181,7 +192,6 @@ Future<GetComponentResult> getComponent(
 /// {
 ///     var example = Aws.ImageBuilder.GetComponents.Invoke(new()
 ///     {
-///         Owner = "Self",
 ///         Filters = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.GetComponentsFilterInputArgs
@@ -193,6 +203,7 @@ Future<GetComponentResult> getComponent(
 ///                 },
 ///             },
 ///         },
+///         Owner = "Self",
 ///     });
 ///
 /// });
@@ -208,7 +219,6 @@ Future<GetComponentResult> getComponent(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.GetComponents(ctx, &imagebuilder.GetComponentsArgs{
-/// 			Owner: pulumi.StringRef("Self"),
 /// 			Filters: []imagebuilder.GetComponentsFilter{
 /// 				{
 /// 					Name: "platform",
@@ -217,6 +227,7 @@ Future<GetComponentResult> getComponent(
 /// 					},
 /// 				},
 /// 			},
+/// 			Owner: pulumi.StringRef("Self"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -235,11 +246,11 @@ Future<GetComponentResult> getComponent(
 /// }
 ///
 /// data "aws_imagebuilder_getcomponents" "example" {
-///   owner = "Self"
 ///   filters {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
+///   owner = "Self"
 /// }
 /// ```
 /// ```java
@@ -265,11 +276,11 @@ Future<GetComponentResult> getComponent(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ImagebuilderFunctions.getComponents(GetComponentsArgs.builder()
-///             .owner("Self")
 ///             .filters(GetComponentsFilterArgs.builder()
 ///                 .name("platform")
 ///                 .values("Linux")
 ///                 .build())
+///             .owner("Self")
 ///             .build());
 ///
 ///     }
@@ -281,11 +292,11 @@ Future<GetComponentResult> getComponent(
 ///     fn::invoke:
 ///       function: aws:imagebuilder:getComponents
 ///       arguments:
-///         owner: Self
 ///         filters:
 ///           - name: platform
 ///             values:
 ///               - Linux
+///         owner: Self
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_imagebuilder_get_components_get_components_args_doc}
 /// [options] Invoke options controlling this call.
@@ -300,6 +311,17 @@ Future<GetComponentsResult> getComponents(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetComponentsResult.fromMap(result);
+}
+
+pulumi.Output<GetComponentsResult> getComponentsOutput(
+  GetComponentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getComponents:getComponents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentsResult.fromMap);
 }
 
 /// Provides details about an Image builder Container Recipe.
@@ -420,6 +442,17 @@ Future<GetContainerRecipeResult> getContainerRecipe(
   return GetContainerRecipeResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerRecipeResult> getContainerRecipeOutput(
+  GetContainerRecipeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getContainerRecipe:getContainerRecipe',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerRecipeResult.fromMap);
+}
+
 /// Use this data source to get the ARNs and names of Image Builder Container Recipes matching the specified criteria.
 ///
 /// ## Example Usage
@@ -430,22 +463,22 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.imagebuilder.getContainerRecipes({
-///     owner: "Self",
 ///     filters: [{
 ///         name: "platform",
 ///         values: ["Linux"],
 ///     }],
+///     owner: "Self",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.imagebuilder.get_container_recipes(owner="Self",
-///     filters=[{
+/// example = aws.imagebuilder.get_container_recipes(filters=[{
 ///         "name": "platform",
 ///         "values": ["Linux"],
-///     }])
+///     }],
+///     owner="Self")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -457,7 +490,6 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// {
 ///     var example = Aws.ImageBuilder.GetContainerRecipes.Invoke(new()
 ///     {
-///         Owner = "Self",
 ///         Filters = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.GetContainerRecipesFilterInputArgs
@@ -469,6 +501,7 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 ///                 },
 ///             },
 ///         },
+///         Owner = "Self",
 ///     });
 ///
 /// });
@@ -484,7 +517,6 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.GetContainerRecipes(ctx, &imagebuilder.GetContainerRecipesArgs{
-/// 			Owner: pulumi.StringRef("Self"),
 /// 			Filters: []imagebuilder.GetContainerRecipesFilter{
 /// 				{
 /// 					Name: "platform",
@@ -493,6 +525,7 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// 					},
 /// 				},
 /// 			},
+/// 			Owner: pulumi.StringRef("Self"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -511,11 +544,11 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 /// }
 ///
 /// data "aws_imagebuilder_getcontainerrecipes" "example" {
-///   owner = "Self"
 ///   filters {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
+///   owner = "Self"
 /// }
 /// ```
 /// ```java
@@ -541,11 +574,11 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ImagebuilderFunctions.getContainerRecipes(GetContainerRecipesArgs.builder()
-///             .owner("Self")
 ///             .filters(GetContainerRecipesFilterArgs.builder()
 ///                 .name("platform")
 ///                 .values("Linux")
 ///                 .build())
+///             .owner("Self")
 ///             .build());
 ///
 ///     }
@@ -557,11 +590,11 @@ Future<GetContainerRecipeResult> getContainerRecipe(
 ///     fn::invoke:
 ///       function: aws:imagebuilder:getContainerRecipes
 ///       arguments:
-///         owner: Self
 ///         filters:
 ///           - name: platform
 ///             values:
 ///               - Linux
+///         owner: Self
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_imagebuilder_get_container_recipes_get_container_recipes_args_doc}
 /// [options] Invoke options controlling this call.
@@ -576,6 +609,17 @@ Future<GetContainerRecipesResult> getContainerRecipes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerRecipesResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerRecipesResult> getContainerRecipesOutput(
+  GetContainerRecipesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getContainerRecipes:getContainerRecipes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerRecipesResult.fromMap);
 }
 
 /// Provides details about an Image Builder Distribution Configuration.
@@ -694,6 +738,17 @@ Future<GetDistributionConfigurationResult> getDistributionConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDistributionConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetDistributionConfigurationResult> getDistributionConfigurationOutput(
+  GetDistributionConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getDistributionConfiguration:getDistributionConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDistributionConfigurationResult.fromMap);
 }
 
 /// Use this data source to get the ARNs and names of Image Builder Distribution Configurations matching the specified criteria.
@@ -847,6 +902,17 @@ Future<GetDistributionConfigurationsResult> getDistributionConfigurations(
   return GetDistributionConfigurationsResult.fromMap(result);
 }
 
+pulumi.Output<GetDistributionConfigurationsResult> getDistributionConfigurationsOutput(
+  GetDistributionConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getDistributionConfigurations:getDistributionConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDistributionConfigurationsResult.fromMap);
+}
+
 /// Provides details about an Image Builder Image.
 ///
 /// ## Example Usage
@@ -967,6 +1033,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Provides details about an Image Builder Image Pipeline.
 ///
 /// ## Example Usage
@@ -1083,6 +1160,17 @@ Future<GetImagePipelineResult> getImagePipeline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImagePipelineResult.fromMap(result);
+}
+
+pulumi.Output<GetImagePipelineResult> getImagePipelineOutput(
+  GetImagePipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getImagePipeline:getImagePipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagePipelineResult.fromMap);
 }
 
 /// Use this data source to get the ARNs and names of Image Builder Image Pipelines matching the specified criteria.
@@ -1236,6 +1324,17 @@ Future<GetImagePipelinesResult> getImagePipelines(
   return GetImagePipelinesResult.fromMap(result);
 }
 
+pulumi.Output<GetImagePipelinesResult> getImagePipelinesOutput(
+  GetImagePipelinesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getImagePipelines:getImagePipelines',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagePipelinesResult.fromMap);
+}
+
 /// Provides details about an Image Builder Image Recipe.
 ///
 /// ## Example Usage
@@ -1354,6 +1453,17 @@ Future<GetImageRecipeResult> getImageRecipe(
   return GetImageRecipeResult.fromMap(result);
 }
 
+pulumi.Output<GetImageRecipeResult> getImageRecipeOutput(
+  GetImageRecipeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getImageRecipe:getImageRecipe',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageRecipeResult.fromMap);
+}
+
 /// Use this data source to get the ARNs and names of Image Builder Image Recipes matching the specified criteria.
 ///
 /// ## Example Usage
@@ -1364,22 +1474,22 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.imagebuilder.getImageRecipes({
-///     owner: "Self",
 ///     filters: [{
 ///         name: "platform",
 ///         values: ["Linux"],
 ///     }],
+///     owner: "Self",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.imagebuilder.get_image_recipes(owner="Self",
-///     filters=[{
+/// example = aws.imagebuilder.get_image_recipes(filters=[{
 ///         "name": "platform",
 ///         "values": ["Linux"],
-///     }])
+///     }],
+///     owner="Self")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1391,7 +1501,6 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// {
 ///     var example = Aws.ImageBuilder.GetImageRecipes.Invoke(new()
 ///     {
-///         Owner = "Self",
 ///         Filters = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.GetImageRecipesFilterInputArgs
@@ -1403,6 +1512,7 @@ Future<GetImageRecipeResult> getImageRecipe(
 ///                 },
 ///             },
 ///         },
+///         Owner = "Self",
 ///     });
 ///
 /// });
@@ -1418,7 +1528,6 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.GetImageRecipes(ctx, &imagebuilder.GetImageRecipesArgs{
-/// 			Owner: pulumi.StringRef("Self"),
 /// 			Filters: []imagebuilder.GetImageRecipesFilter{
 /// 				{
 /// 					Name: "platform",
@@ -1427,6 +1536,7 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// 					},
 /// 				},
 /// 			},
+/// 			Owner: pulumi.StringRef("Self"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1445,11 +1555,11 @@ Future<GetImageRecipeResult> getImageRecipe(
 /// }
 ///
 /// data "aws_imagebuilder_getimagerecipes" "example" {
-///   owner = "Self"
 ///   filters {
 ///     name   = "platform"
 ///     values = ["Linux"]
 ///   }
+///   owner = "Self"
 /// }
 /// ```
 /// ```java
@@ -1475,11 +1585,11 @@ Future<GetImageRecipeResult> getImageRecipe(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ImagebuilderFunctions.getImageRecipes(GetImageRecipesArgs.builder()
-///             .owner("Self")
 ///             .filters(GetImageRecipesFilterArgs.builder()
 ///                 .name("platform")
 ///                 .values("Linux")
 ///                 .build())
+///             .owner("Self")
 ///             .build());
 ///
 ///     }
@@ -1491,11 +1601,11 @@ Future<GetImageRecipeResult> getImageRecipe(
 ///     fn::invoke:
 ///       function: aws:imagebuilder:getImageRecipes
 ///       arguments:
-///         owner: Self
 ///         filters:
 ///           - name: platform
 ///             values:
 ///               - Linux
+///         owner: Self
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_imagebuilder_get_image_recipes_get_image_recipes_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1510,6 +1620,17 @@ Future<GetImageRecipesResult> getImageRecipes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageRecipesResult.fromMap(result);
+}
+
+pulumi.Output<GetImageRecipesResult> getImageRecipesOutput(
+  GetImageRecipesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getImageRecipes:getImageRecipes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageRecipesResult.fromMap);
 }
 
 /// Provides details about an Image Builder Infrastructure Configuration.
@@ -1628,6 +1749,17 @@ Future<GetInfrastructureConfigurationResult> getInfrastructureConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInfrastructureConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetInfrastructureConfigurationResult> getInfrastructureConfigurationOutput(
+  GetInfrastructureConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getInfrastructureConfiguration:getInfrastructureConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInfrastructureConfigurationResult.fromMap);
 }
 
 /// Use this data source to get the ARNs and names of Image Builder Infrastructure Configurations matching the specified criteria.
@@ -1779,4 +1911,15 @@ Future<GetInfrastructureConfigurationsResult> getInfrastructureConfigurations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInfrastructureConfigurationsResult.fromMap(result);
+}
+
+pulumi.Output<GetInfrastructureConfigurationsResult> getInfrastructureConfigurationsOutput(
+  GetInfrastructureConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:imagebuilder/getInfrastructureConfigurations:getInfrastructureConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInfrastructureConfigurationsResult.fromMap);
 }

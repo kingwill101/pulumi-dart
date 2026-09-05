@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'graph_qlapi_additional_authentication_provider.dart';
 import 'graph_qlapi_args.dart';
 import 'graph_qlapi_enhanced_metrics_config.dart';
 import 'graph_qlapi_lambda_authorizer_config.dart';
@@ -239,13 +240,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.GraphQLApi("example", {
-///     authenticationType: "AMAZON_COGNITO_USER_POOLS",
-///     name: "example",
 ///     userPoolConfig: {
 ///         awsRegion: current.region,
 ///         defaultAction: "DENY",
 ///         userPoolId: exampleAwsCognitoUserPool.id,
 ///     },
+///     authenticationType: "AMAZON_COGNITO_USER_POOLS",
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -253,13 +254,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.GraphQLApi("example",
-///     authentication_type="AMAZON_COGNITO_USER_POOLS",
-///     name="example",
 ///     user_pool_config={
 ///         "aws_region": current["region"],
 ///         "default_action": "DENY",
 ///         "user_pool_id": example_aws_cognito_user_pool["id"],
-///     })
+///     },
+///     authentication_type="AMAZON_COGNITO_USER_POOLS",
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -271,14 +272,14 @@ import 'graph_qlapi_user_pool_config.dart';
 /// {
 ///     var example = new Aws.AppSync.GraphQLApi("example", new()
 ///     {
-///         AuthenticationType = "AMAZON_COGNITO_USER_POOLS",
-///         Name = "example",
 ///         UserPoolConfig = new Aws.AppSync.Inputs.GraphQLApiUserPoolConfigArgs
 ///         {
 ///             AwsRegion = current.Region,
 ///             DefaultAction = "DENY",
 ///             UserPoolId = exampleAwsCognitoUserPool.Id,
 ///         },
+///         AuthenticationType = "AMAZON_COGNITO_USER_POOLS",
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -294,13 +295,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-/// 			AuthenticationType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
-/// 			Name:               pulumi.String("example"),
 /// 			UserPoolConfig: &appsync.GraphQLApiUserPoolConfigArgs{
 /// 				AwsRegion:     pulumi.Any(current.Region),
 /// 				DefaultAction: pulumi.String("DENY"),
 /// 				UserPoolId:    pulumi.Any(exampleAwsCognitoUserPool.Id),
 /// 			},
+/// 			AuthenticationType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
+/// 			Name:               pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -319,13 +320,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 ///
 /// resource "aws_appsync_graphqlapi" "example" {
-///   authentication_type = "AMAZON_COGNITO_USER_POOLS"
-///   name                = "example"
 ///   user_pool_config = {
 ///     aws_region     = current.region
 ///     default_action = "DENY"
 ///     user_pool_id   = exampleAwsCognitoUserPool.id
 ///   }
+///   authentication_type = "AMAZON_COGNITO_USER_POOLS"
+///   name                = "example"
 /// }
 /// ```
 /// ```java
@@ -351,13 +352,13 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GraphQLApi("example", GraphQLApiArgs.builder()
-///             .authenticationType("AMAZON_COGNITO_USER_POOLS")
-///             .name("example")
 ///             .userPoolConfig(GraphQLApiUserPoolConfigArgs.builder()
 ///                 .awsRegion(current.region())
 ///                 .defaultAction("DENY")
 ///                 .userPoolId(exampleAwsCognitoUserPool.id())
 ///                 .build())
+///             .authenticationType("AMAZON_COGNITO_USER_POOLS")
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -368,12 +369,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   example:
 ///     type: aws:appsync:GraphQLApi
 ///     properties:
-///       authenticationType: AMAZON_COGNITO_USER_POOLS
-///       name: example
 ///       userPoolConfig:
 ///         awsRegion: ${current.region}
 ///         defaultAction: DENY
 ///         userPoolId: ${exampleAwsCognitoUserPool.id}
+///       authenticationType: AMAZON_COGNITO_USER_POOLS
+///       name: example
 /// ```
 ///
 ///
@@ -385,11 +386,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.GraphQLApi("example", {
-///     authenticationType: "OPENID_CONNECT",
-///     name: "example",
 ///     openidConnectConfig: {
 ///         issuer: "https://example.com",
 ///     },
+///     authenticationType: "OPENID_CONNECT",
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -397,11 +398,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.GraphQLApi("example",
-///     authentication_type="OPENID_CONNECT",
-///     name="example",
 ///     openid_connect_config={
 ///         "issuer": "https://example.com",
-///     })
+///     },
+///     authentication_type="OPENID_CONNECT",
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -413,12 +414,12 @@ import 'graph_qlapi_user_pool_config.dart';
 /// {
 ///     var example = new Aws.AppSync.GraphQLApi("example", new()
 ///     {
-///         AuthenticationType = "OPENID_CONNECT",
-///         Name = "example",
 ///         OpenidConnectConfig = new Aws.AppSync.Inputs.GraphQLApiOpenidConnectConfigArgs
 ///         {
 ///             Issuer = "https://example.com",
 ///         },
+///         AuthenticationType = "OPENID_CONNECT",
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -434,11 +435,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-/// 			AuthenticationType: pulumi.String("OPENID_CONNECT"),
-/// 			Name:               pulumi.String("example"),
 /// 			OpenidConnectConfig: &appsync.GraphQLApiOpenidConnectConfigArgs{
 /// 				Issuer: pulumi.String("https://example.com"),
 /// 			},
+/// 			AuthenticationType: pulumi.String("OPENID_CONNECT"),
+/// 			Name:               pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -457,11 +458,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 ///
 /// resource "aws_appsync_graphqlapi" "example" {
-///   authentication_type = "OPENID_CONNECT"
-///   name                = "example"
 ///   openid_connect_config = {
 ///     issuer = "https://example.com"
 ///   }
+///   authentication_type = "OPENID_CONNECT"
+///   name                = "example"
 /// }
 /// ```
 /// ```java
@@ -487,11 +488,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GraphQLApi("example", GraphQLApiArgs.builder()
-///             .authenticationType("OPENID_CONNECT")
-///             .name("example")
 ///             .openidConnectConfig(GraphQLApiOpenidConnectConfigArgs.builder()
 ///                 .issuer("https://example.com")
 ///                 .build())
+///             .authenticationType("OPENID_CONNECT")
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -502,10 +503,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   example:
 ///     type: aws:appsync:GraphQLApi
 ///     properties:
-///       authenticationType: OPENID_CONNECT
-///       name: example
 ///       openidConnectConfig:
 ///         issuer: https://example.com
+///       authenticationType: OPENID_CONNECT
+///       name: example
 /// ```
 ///
 ///
@@ -517,11 +518,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.GraphQLApi("example", {
-///     authenticationType: "AWS_LAMBDA",
-///     name: "example",
 ///     lambdaAuthorizerConfig: {
 ///         authorizerUri: "arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer",
 ///     },
+///     authenticationType: "AWS_LAMBDA",
+///     name: "example",
 /// });
 /// const appsyncLambdaAuthorizer = new aws.lambda.Permission("appsync_lambda_authorizer", {
 ///     statementId: "appsync_lambda_authorizer",
@@ -536,11 +537,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.GraphQLApi("example",
-///     authentication_type="AWS_LAMBDA",
-///     name="example",
 ///     lambda_authorizer_config={
 ///         "authorizer_uri": "arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer",
-///     })
+///     },
+///     authentication_type="AWS_LAMBDA",
+///     name="example")
 /// appsync_lambda_authorizer = aws.lambda_.Permission("appsync_lambda_authorizer",
 ///     statement_id="appsync_lambda_authorizer",
 ///     action="lambda:InvokeFunction",
@@ -558,12 +559,12 @@ import 'graph_qlapi_user_pool_config.dart';
 /// {
 ///     var example = new Aws.AppSync.GraphQLApi("example", new()
 ///     {
-///         AuthenticationType = "AWS_LAMBDA",
-///         Name = "example",
 ///         LambdaAuthorizerConfig = new Aws.AppSync.Inputs.GraphQLApiLambdaAuthorizerConfigArgs
 ///         {
 ///             AuthorizerUri = "arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer",
 ///         },
+///         AuthenticationType = "AWS_LAMBDA",
+///         Name = "example",
 ///     });
 ///
 ///     var appsyncLambdaAuthorizer = new Aws.Lambda.Permission("appsync_lambda_authorizer", new()
@@ -589,11 +590,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-/// 			AuthenticationType: pulumi.String("AWS_LAMBDA"),
-/// 			Name:               pulumi.String("example"),
 /// 			LambdaAuthorizerConfig: &appsync.GraphQLApiLambdaAuthorizerConfigArgs{
 /// 				AuthorizerUri: pulumi.String("arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer"),
 /// 			},
+/// 			AuthenticationType: pulumi.String("AWS_LAMBDA"),
+/// 			Name:               pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -622,11 +623,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 ///
 /// resource "aws_appsync_graphqlapi" "example" {
-///   authentication_type = "AWS_LAMBDA"
-///   name                = "example"
 ///   lambda_authorizer_config = {
 ///     authorizer_uri = "arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer"
 ///   }
+///   authentication_type = "AWS_LAMBDA"
+///   name                = "example"
 /// }
 /// resource "aws_lambda_permission" "appsync_lambda_authorizer" {
 ///   statement_id = "appsync_lambda_authorizer"
@@ -661,11 +662,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GraphQLApi("example", GraphQLApiArgs.builder()
-///             .authenticationType("AWS_LAMBDA")
-///             .name("example")
 ///             .lambdaAuthorizerConfig(GraphQLApiLambdaAuthorizerConfigArgs.builder()
 ///                 .authorizerUri("arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer")
 ///                 .build())
+///             .authenticationType("AWS_LAMBDA")
+///             .name("example")
 ///             .build());
 ///
 ///         var appsyncLambdaAuthorizer = new Permission("appsyncLambdaAuthorizer", PermissionArgs.builder()
@@ -684,10 +685,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   example:
 ///     type: aws:appsync:GraphQLApi
 ///     properties:
-///       authenticationType: AWS_LAMBDA
-///       name: example
 ///       lambdaAuthorizerConfig:
 ///         authorizerUri: arn:aws:lambda:us-east-1:123456789012:function:custom_lambda_authorizer
+///       authenticationType: AWS_LAMBDA
+///       name: example
 ///   appsyncLambdaAuthorizer:
 ///     type: aws:lambda:Permission
 ///     name: appsync_lambda_authorizer
@@ -708,11 +709,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.GraphQLApi("example", {
-///     authenticationType: "API_KEY",
-///     name: "example",
 ///     additionalAuthenticationProviders: [{
 ///         authenticationType: "AWS_IAM",
 ///     }],
+///     authenticationType: "API_KEY",
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -720,11 +721,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.GraphQLApi("example",
-///     authentication_type="API_KEY",
-///     name="example",
 ///     additional_authentication_providers=[{
 ///         "authentication_type": "AWS_IAM",
-///     }])
+///     }],
+///     authentication_type="API_KEY",
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -736,8 +737,6 @@ import 'graph_qlapi_user_pool_config.dart';
 /// {
 ///     var example = new Aws.AppSync.GraphQLApi("example", new()
 ///     {
-///         AuthenticationType = "API_KEY",
-///         Name = "example",
 ///         AdditionalAuthenticationProviders = new[]
 ///         {
 ///             new Aws.AppSync.Inputs.GraphQLApiAdditionalAuthenticationProviderArgs
@@ -745,6 +744,8 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                 AuthenticationType = "AWS_IAM",
 ///             },
 ///         },
+///         AuthenticationType = "API_KEY",
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -760,13 +761,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appsync.NewGraphQLApi(ctx, "example", &appsync.GraphQLApiArgs{
-/// 			AuthenticationType: pulumi.String("API_KEY"),
-/// 			Name:               pulumi.String("example"),
 /// 			AdditionalAuthenticationProviders: appsync.GraphQLApiAdditionalAuthenticationProviderArray{
 /// 				&appsync.GraphQLApiAdditionalAuthenticationProviderArgs{
 /// 					AuthenticationType: pulumi.String("AWS_IAM"),
 /// 				},
 /// 			},
+/// 			AuthenticationType: pulumi.String("API_KEY"),
+/// 			Name:               pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -785,11 +786,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// }
 ///
 /// resource "aws_appsync_graphqlapi" "example" {
-///   authentication_type = "API_KEY"
-///   name                = "example"
 ///   additional_authentication_providers {
 ///     authentication_type = "AWS_IAM"
 ///   }
+///   authentication_type = "API_KEY"
+///   name                = "example"
 /// }
 /// ```
 /// ```java
@@ -815,11 +816,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GraphQLApi("example", GraphQLApiArgs.builder()
-///             .authenticationType("API_KEY")
-///             .name("example")
 ///             .additionalAuthenticationProviders(GraphQLApiAdditionalAuthenticationProviderArgs.builder()
 ///                 .authenticationType("AWS_IAM")
 ///                 .build())
+///             .authenticationType("API_KEY")
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -830,10 +831,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   example:
 ///     type: aws:appsync:GraphQLApi
 ///     properties:
-///       authenticationType: API_KEY
-///       name: example
 ///       additionalAuthenticationProviders:
 ///         - authenticationType: AWS_IAM
+///       authenticationType: API_KEY
+///       name: example
 /// ```
 ///
 ///
@@ -1000,11 +1001,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["appsync.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -1026,11 +1027,11 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["appsync.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
@@ -1058,7 +1059,6 @@ import 'graph_qlapi_user_pool_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1070,6 +1070,7 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -1115,7 +1116,6 @@ import 'graph_qlapi_user_pool_config.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -1124,6 +1124,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -1171,11 +1172,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appsync.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1227,11 +1228,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("appsync.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1282,11 +1283,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - appsync.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1304,15 +1305,15 @@ import 'graph_qlapi_user_pool_config.dart';
 ///     name: "example",
 /// });
 /// const exampleWebAcl = new aws.wafv2.WebAcl("example", {
-///     name: "managed-rule-example",
-///     description: "Example of a managed rule.",
-///     scope: "REGIONAL",
 ///     defaultAction: {
 ///         allow: {},
 ///     },
+///     visibilityConfig: {
+///         cloudwatchMetricsEnabled: false,
+///         metricName: "friendly-metric-name",
+///         sampledRequestsEnabled: false,
+///     },
 ///     rules: [{
-///         name: "rule-1",
-///         priority: 1,
 ///         overrideAction: {
 ///             block: [{}],
 ///         },
@@ -1327,12 +1328,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///             metricName: "friendly-rule-metric-name",
 ///             sampledRequestsEnabled: false,
 ///         },
+///         name: "rule-1",
+///         priority: 1,
 ///     }],
-///     visibilityConfig: {
-///         cloudwatchMetricsEnabled: false,
-///         metricName: "friendly-metric-name",
-///         sampledRequestsEnabled: false,
-///     },
+///     name: "managed-rule-example",
+///     description: "Example of a managed rule.",
+///     scope: "REGIONAL",
 /// });
 /// const exampleWebAclAssociation = new aws.wafv2.WebAclAssociation("example", {
 ///     resourceArn: example.arn,
@@ -1347,15 +1348,15 @@ import 'graph_qlapi_user_pool_config.dart';
 ///     authentication_type="API_KEY",
 ///     name="example")
 /// example_web_acl = aws.wafv2.WebAcl("example",
-///     name="managed-rule-example",
-///     description="Example of a managed rule.",
-///     scope="REGIONAL",
 ///     default_action={
 ///         "allow": {},
 ///     },
+///     visibility_config={
+///         "cloudwatch_metrics_enabled": False,
+///         "metric_name": "friendly-metric-name",
+///         "sampled_requests_enabled": False,
+///     },
 ///     rules=[{
-///         "name": "rule-1",
-///         "priority": 1,
 ///         "override_action": {
 ///             "block": [{}],
 ///         },
@@ -1370,12 +1371,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///             "metric_name": "friendly-rule-metric-name",
 ///             "sampled_requests_enabled": False,
 ///         },
+///         "name": "rule-1",
+///         "priority": 1,
 ///     }],
-///     visibility_config={
-///         "cloudwatch_metrics_enabled": False,
-///         "metric_name": "friendly-metric-name",
-///         "sampled_requests_enabled": False,
-///     })
+///     name="managed-rule-example",
+///     description="Example of a managed rule.",
+///     scope="REGIONAL")
 /// example_web_acl_association = aws.wafv2.WebAclAssociation("example",
 ///     resource_arn=example.arn,
 ///     web_acl_arn=example_web_acl.arn)
@@ -1396,19 +1397,20 @@ import 'graph_qlapi_user_pool_config.dart';
 ///
 ///     var exampleWebAcl = new Aws.WafV2.WebAcl("example", new()
 ///     {
-///         Name = "managed-rule-example",
-///         Description = "Example of a managed rule.",
-///         Scope = "REGIONAL",
 ///         DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Allow = null,
+///         },
+///         VisibilityConfig = new Aws.WafV2.Inputs.WebAclVisibilityConfigArgs
+///         {
+///             CloudwatchMetricsEnabled = false,
+///             MetricName = "friendly-metric-name",
+///             SampledRequestsEnabled = false,
 ///         },
 ///         Rules =
 ///         {
 ///             new Aws.WafV2.Inputs.WebAclRuleArgs
 ///             {
-///                 Name = "rule-1",
-///                 Priority = 1,
 ///                 OverrideAction = new Aws.WafV2.Inputs.WebAclRuleOverrideActionArgs
 ///                 {
 ///                     Block = new[]
@@ -1430,14 +1432,13 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                     MetricName = "friendly-rule-metric-name",
 ///                     SampledRequestsEnabled = false,
 ///                 },
+///                 Name = "rule-1",
+///                 Priority = 1,
 ///             },
 ///         },
-///         VisibilityConfig = new Aws.WafV2.Inputs.WebAclVisibilityConfigArgs
-///         {
-///             CloudwatchMetricsEnabled = false,
-///             MetricName = "friendly-metric-name",
-///             SampledRequestsEnabled = false,
-///         },
+///         Name = "managed-rule-example",
+///         Description = "Example of a managed rule.",
+///         Scope = "REGIONAL",
 ///     });
 ///
 ///     var exampleWebAclAssociation = new Aws.WafV2.WebAclAssociation("example", new()
@@ -1467,16 +1468,16 @@ import 'graph_qlapi_user_pool_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleWebAcl, err := wafv2.NewWebAcl(ctx, "example", &wafv2.WebAclArgs{
-/// 			Name:        pulumi.String("managed-rule-example"),
-/// 			Description: pulumi.String("Example of a managed rule."),
-/// 			Scope:       pulumi.String("REGIONAL"),
 /// 			DefaultAction: &wafv2.WebAclDefaultActionArgs{
 /// 				Allow: &wafv2.WebAclDefaultActionAllowArgs{},
 /// 			},
+/// 			VisibilityConfig: &wafv2.WebAclVisibilityConfigArgs{
+/// 				CloudwatchMetricsEnabled: pulumi.Bool(false),
+/// 				MetricName:               pulumi.String("friendly-metric-name"),
+/// 				SampledRequestsEnabled:   pulumi.Bool(false),
+/// 			},
 /// 			Rules: wafv2.WebAclRuleTypeArray{
 /// 				&wafv2.WebAclRuleTypeArgs{
-/// 					Name:     pulumi.String("rule-1"),
-/// 					Priority: pulumi.Int(1),
 /// 					OverrideAction: &wafv2.WebAclRuleOverrideActionArgs{
 /// 						Block: []map[string]interface{}{
 /// 							map[string]interface{}{},
@@ -1493,13 +1494,13 @@ import 'graph_qlapi_user_pool_config.dart';
 /// 						MetricName:               pulumi.String("friendly-rule-metric-name"),
 /// 						SampledRequestsEnabled:   pulumi.Bool(false),
 /// 					},
+/// 					Name:     pulumi.String("rule-1"),
+/// 					Priority: pulumi.Int(1),
 /// 				},
 /// 			},
-/// 			VisibilityConfig: &wafv2.WebAclVisibilityConfigArgs{
-/// 				CloudwatchMetricsEnabled: pulumi.Bool(false),
-/// 				MetricName:               pulumi.String("friendly-metric-name"),
-/// 				SampledRequestsEnabled:   pulumi.Bool(false),
-/// 			},
+/// 			Name:        pulumi.String("managed-rule-example"),
+/// 			Description: pulumi.String("Example of a managed rule."),
+/// 			Scope:       pulumi.String("REGIONAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1533,15 +1534,15 @@ import 'graph_qlapi_user_pool_config.dart';
 ///   web_acl_arn  = aws_wafv2_webacl.example.arn
 /// }
 /// resource "aws_wafv2_webacl" "example" {
-///   name        = "managed-rule-example"
-///   description = "Example of a managed rule."
-///   scope       = "REGIONAL"
 ///   default_action = {
 ///     allow = {}
 ///   }
+///   visibility_config = {
+///     cloudwatch_metrics_enabled = false
+///     metric_name                = "friendly-metric-name"
+///     sampled_requests_enabled   = false
+///   }
 ///   rules {
-///     name     = "rule-1"
-///     priority = 1
 ///     override_action = {
 ///       block = [{}]
 ///     }
@@ -1556,12 +1557,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///       metric_name                = "friendly-rule-metric-name"
 ///       sampled_requests_enabled   = false
 ///     }
+///     name     = "rule-1"
+///     priority = 1
 ///   }
-///   visibility_config = {
-///     cloudwatch_metrics_enabled = false
-///     metric_name                = "friendly-metric-name"
-///     sampled_requests_enabled   = false
-///   }
+///   name        = "managed-rule-example"
+///   description = "Example of a managed rule."
+///   scope       = "REGIONAL"
 /// }
 /// ```
 /// ```java
@@ -1576,12 +1577,12 @@ import 'graph_qlapi_user_pool_config.dart';
 /// import com.pulumi.aws.wafv2.WebAclArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclDefaultActionArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclDefaultActionAllowArgs;
+/// import com.pulumi.aws.wafv2.inputs.WebAclVisibilityConfigArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleOverrideActionArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleStatementManagedRuleGroupStatementArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleVisibilityConfigArgs;
-/// import com.pulumi.aws.wafv2.inputs.WebAclVisibilityConfigArgs;
 /// import com.pulumi.aws.wafv2.WebAclAssociation;
 /// import com.pulumi.aws.wafv2.WebAclAssociationArgs;
 /// import java.util.ArrayList;
@@ -1603,16 +1604,16 @@ import 'graph_qlapi_user_pool_config.dart';
 ///             .build());
 ///
 ///         var exampleWebAcl = new WebAcl("exampleWebAcl", WebAclArgs.builder()
-///             .name("managed-rule-example")
-///             .description("Example of a managed rule.")
-///             .scope("REGIONAL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .allow(WebAclDefaultActionAllowArgs.builder()
 ///                     .build())
 ///                 .build())
+///             .visibilityConfig(WebAclVisibilityConfigArgs.builder()
+///                 .cloudwatchMetricsEnabled(false)
+///                 .metricName("friendly-metric-name")
+///                 .sampledRequestsEnabled(false)
+///                 .build())
 ///             .rules(WebAclRuleArgs.builder()
-///                 .name("rule-1")
-///                 .priority(1)
 ///                 .overrideAction(WebAclRuleOverrideActionArgs.builder()
 ///                     .block(Arrays.asList(Map.ofEntries(
 ///                     )))
@@ -1628,12 +1629,12 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                     .metricName("friendly-rule-metric-name")
 ///                     .sampledRequestsEnabled(false)
 ///                     .build())
+///                 .name("rule-1")
+///                 .priority(1)
 ///                 .build())
-///             .visibilityConfig(WebAclVisibilityConfigArgs.builder()
-///                 .cloudwatchMetricsEnabled(false)
-///                 .metricName("friendly-metric-name")
-///                 .sampledRequestsEnabled(false)
-///                 .build())
+///             .name("managed-rule-example")
+///             .description("Example of a managed rule.")
+///             .scope("REGIONAL")
 ///             .build());
 ///
 ///         var exampleWebAclAssociation = new WebAclAssociation("exampleWebAclAssociation", WebAclAssociationArgs.builder()
@@ -1661,15 +1662,14 @@ import 'graph_qlapi_user_pool_config.dart';
 ///     type: aws:wafv2:WebAcl
 ///     name: example
 ///     properties:
-///       name: managed-rule-example
-///       description: Example of a managed rule.
-///       scope: REGIONAL
 ///       defaultAction:
 ///         allow: {}
+///       visibilityConfig:
+///         cloudwatchMetricsEnabled: false
+///         metricName: friendly-metric-name
+///         sampledRequestsEnabled: false
 ///       rules:
-///         - name: rule-1
-///           priority: 1
-///           overrideAction:
+///         - overrideAction:
 ///             block:
 ///               - {}
 ///           statement:
@@ -1680,10 +1680,11 @@ import 'graph_qlapi_user_pool_config.dart';
 ///             cloudwatchMetricsEnabled: false
 ///             metricName: friendly-rule-metric-name
 ///             sampledRequestsEnabled: false
-///       visibilityConfig:
-///         cloudwatchMetricsEnabled: false
-///         metricName: friendly-metric-name
-///         sampledRequestsEnabled: false
+///           name: rule-1
+///           priority: 1
+///       name: managed-rule-example
+///       description: Example of a managed rule.
+///       scope: REGIONAL
 /// ```
 ///
 ///
@@ -1827,7 +1828,7 @@ import 'graph_qlapi_user_pool_config.dart';
 /// ```
 class GraphQLApi extends pulumi.CustomResource {
   /// One or more additional authentication providers for the GraphQL API. See `additionalAuthenticationProvider` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalAuthenticationProviders;
+  late final pulumi.Output<List<GraphQLApiAdditionalAuthenticationProvider>?> additionalAuthenticationProviders;
   /// API type. Valid values are `GRAPHQL` or `MERGED`. A `MERGED` type requires `mergedApiExecutionRoleArn` to be set.
   late final pulumi.Output<String?> apiType;
   /// ARN
@@ -1885,9 +1886,9 @@ class GraphQLApi extends pulumi.CustomResource {
           'aws:appsync/graphQLApi:GraphQLApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalAuthenticationProviders = registerOutput<List<Map<String, dynamic>>?>('additionalAuthenticationProviders');
+    additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
     apiType = registerOutput<String?>('apiType');
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
@@ -1902,9 +1903,9 @@ class GraphQLApi extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resolverCountLimit = registerOutput<int?>('resolverCountLimit');
     schema = registerOutput<String?>('schema');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uris = registerOutput<Map<String, String>>('uris');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uris = registerOutput<Map<String, String>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userPoolConfig = registerOutput<GraphQLApiUserPoolConfig?>('userPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiUserPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     visibility = registerOutput<String?>('visibility');
     xrayEnabled = registerOutput<bool?>('xrayEnabled');
@@ -1915,11 +1916,12 @@ class GraphQLApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GraphQLApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GraphQLApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1933,7 +1935,7 @@ class GraphQLApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalAuthenticationProviders = registerOutput<List<Map<String, dynamic>>?>('additionalAuthenticationProviders');
+    additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
     apiType = registerOutput<String?>('apiType');
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
@@ -1948,9 +1950,41 @@ class GraphQLApi extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resolverCountLimit = registerOutput<int?>('resolverCountLimit');
     schema = registerOutput<String?>('schema');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uris = registerOutput<Map<String, String>>('uris');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uris = registerOutput<Map<String, String>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userPoolConfig = registerOutput<GraphQLApiUserPoolConfig?>('userPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiUserPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    visibility = registerOutput<String?>('visibility');
+    xrayEnabled = registerOutput<bool?>('xrayEnabled');
+  }
+
+  /// Creates a typed reference to an existing [GraphQLApi] resource.
+  GraphQLApi.reference(String urn)
+    : super(
+        'aws:appsync/graphQLApi:GraphQLApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
+    apiType = registerOutput<String?>('apiType');
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    enhancedMetricsConfig = registerOutput<GraphQLApiEnhancedMetricsConfig?>('enhancedMetricsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiEnhancedMetricsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    introspectionConfig = registerOutput<String?>('introspectionConfig');
+    lambdaAuthorizerConfig = registerOutput<GraphQLApiLambdaAuthorizerConfig?>('lambdaAuthorizerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiLambdaAuthorizerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfig = registerOutput<GraphQLApiLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mergedApiExecutionRoleArn = registerOutput<String?>('mergedApiExecutionRoleArn');
+    this.name = registerOutput<String>('name');
+    openidConnectConfig = registerOutput<GraphQLApiOpenidConnectConfig?>('openidConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiOpenidConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queryDepthLimit = registerOutput<int?>('queryDepthLimit');
+    region = registerOutput<String>('region');
+    resolverCountLimit = registerOutput<int?>('resolverCountLimit');
+    schema = registerOutput<String?>('schema');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uris = registerOutput<Map<String, String>>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userPoolConfig = registerOutput<GraphQLApiUserPoolConfig?>('userPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphQLApiUserPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     visibility = registerOutput<String?>('visibility');
     xrayEnabled = registerOutput<bool?>('xrayEnabled');

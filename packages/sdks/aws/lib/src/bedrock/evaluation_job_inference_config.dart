@@ -6,9 +6,9 @@ import 'evaluation_job_inference_config_rag_config.dart';
 
 class EvaluationJobInferenceConfig {
   /// One or more inference models. Automated jobs support a single model; jobs that use human workers support up to two models. See `model` Block below.
-  final pulumi.Input<List<EvaluationJobInferenceConfigModel>>? models;
+  final pulumi.Input<List<EvaluationJobInferenceConfigModel>?>? models;
   /// Inference configuration for a knowledge base evaluation job. See `ragConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfig>? ragConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfig?>? ragConfig;
 
   /// Creates a new [EvaluationJobInferenceConfig].
   /// [models] One or more inference models. Automated jobs support a single model; jobs that use human workers support up to two models. See `model` Block below.

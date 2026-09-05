@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanSku {
   /// Specifies the number of workers associated with this App Service Plan.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Specifies the plan's instance size.
   final pulumi.Input<String> size;
   /// Specifies the plan's pricing tier.
@@ -30,7 +30,7 @@ class PlanSku {
 
   factory PlanSku.fromMap(Map<String, dynamic> map) {
     return PlanSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       size: pulumi.Input.fromValue(map['size'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

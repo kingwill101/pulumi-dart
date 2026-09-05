@@ -8,30 +8,30 @@ import 'anomaly_detector_timeouts.dart';
 /// Input properties used for looking up and filtering AnomalyDetector resources.
 class AnomalyDetectorState {
   /// Name of the anomaly detector.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// ARN of the Anomaly Detector.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Configuration block for the anomaly detector algorithm. See `configuration` below.
-  final pulumi.Input<AnomalyDetectorConfiguration>? configuration;
+  final pulumi.Input<AnomalyDetectorConfiguration?>? configuration;
   /// RFC3339 timestamp of when the anomaly detector was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Interval in seconds at which the anomaly detector evaluates data.
-  final pulumi.Input<int>? evaluationIntervalInSeconds;
+  final pulumi.Input<int?>? evaluationIntervalInSeconds;
   /// Map of label key-value pairs used to scope the anomaly detector to specific time series.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configuration block for the action to take when data is missing. See `missingDataAction` below.
-  final pulumi.Input<AnomalyDetectorMissingDataAction>? missingDataAction;
+  final pulumi.Input<AnomalyDetectorMissingDataAction?>? missingDataAction;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AnomalyDetectorTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AnomalyDetectorTimeouts?>? timeouts;
   /// ID of the AMP workspace in which to create the anomaly detector.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [AnomalyDetectorState].
   /// [alias] Name of the anomaly detector.
@@ -84,7 +84,7 @@ class AnomalyDetectorState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnomalyDetectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       missingDataAction: (() { final guardedValue = map['missingDataAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnomalyDetectorMissingDataAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -33,8 +33,8 @@ import 'output_mssql_state.dart';
 /// });
 /// const exampleOutputMssql = new azure.streamanalytics.OutputMssql("example", {
 ///     name: "example-output-sql",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     server: exampleServer.fullyQualifiedDomainName,
 ///     user: exampleServer.administratorLogin,
 ///     password: exampleServer.administratorLoginPassword,
@@ -163,18 +163,14 @@ import 'output_mssql_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputMssql(ctx, "example", &streamanalytics.OutputMssqlArgs{
-/// 			Name: pulumi.String("example-output-sql"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Server:   exampleServer.FullyQualifiedDomainName,
-/// 			User:     exampleServer.AdministratorLogin,
-/// 			Password: exampleServer.AdministratorLoginPassword,
-/// 			Database: exampleDatabase.Name,
-/// 			Table:    pulumi.String("ExampleTable"),
+/// 			Name:                   pulumi.String("example-output-sql"),
+/// 			StreamAnalyticsJobName: example.Name(),
+/// 			ResourceGroupName:      example.ResourceGroupName(),
+/// 			Server:                 exampleServer.FullyQualifiedDomainName,
+/// 			User:                   exampleServer.AdministratorLogin,
+/// 			Password:               exampleServer.AdministratorLoginPassword,
+/// 			Database:               exampleDatabase.Name,
+/// 			Table:                  pulumi.String("ExampleTable"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -387,14 +383,15 @@ class OutputMssql extends pulumi.CustomResource {
           'azure:streamanalytics/outputMssql:OutputMssql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     database = registerOutput<String>('database');
     maxBatchCount = registerOutput<double?>('maxBatchCount');
     maxWriterCount = registerOutput<double?>('maxWriterCount');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     server = registerOutput<String>('server');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
@@ -407,11 +404,12 @@ class OutputMssql extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputMssqlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputMssql._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -430,7 +428,30 @@ class OutputMssql extends pulumi.CustomResource {
     maxBatchCount = registerOutput<double?>('maxBatchCount');
     maxWriterCount = registerOutput<double?>('maxWriterCount');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [OutputMssql] resource.
+  OutputMssql.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputMssql:OutputMssql',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    database = registerOutput<String>('database');
+    maxBatchCount = registerOutput<double?>('maxBatchCount');
+    maxWriterCount = registerOutput<double?>('maxWriterCount');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     server = registerOutput<String>('server');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');

@@ -20,7 +20,7 @@ class GetDomainSnapshotOption {
 
   factory GetDomainSnapshotOption.fromMap(Map<String, dynamic> map) {
     return GetDomainSnapshotOption(
-      automatedSnapshotStartHour: pulumi.Input.fromValue(map['automatedSnapshotStartHour'] as int),
+      automatedSnapshotStartHour: pulumi.Input.fromValue((map['automatedSnapshotStartHour'] as num).toInt()),
     );
   }
 }

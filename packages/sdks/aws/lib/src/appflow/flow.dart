@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_args.dart';
+import 'flow_destination_flow_config.dart';
 import 'flow_metadata_catalog_config.dart';
 import 'flow_source_flow_config.dart';
 import 'flow_state.dart';
+import 'flow_task.dart';
 import 'flow_trigger_config.dart';
 
 /// Provides an AppFlow flow resource.
@@ -17,12 +19,12 @@ import 'flow_trigger_config.dart';
 /// const exampleSourceBucket = new aws.s3.Bucket("example_source", {bucket: "example-source"});
 /// const exampleSource = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "AllowAppFlowSourceActions",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["appflow.amazonaws.com"],
 ///         }],
+///         sid: "AllowAppFlowSourceActions",
+///         effect: "Allow",
 ///         actions: [
 ///             "s3:ListBucket",
 ///             "s3:GetObject",
@@ -45,12 +47,12 @@ import 'flow_trigger_config.dart';
 /// const exampleDestinationBucket = new aws.s3.Bucket("example_destination", {bucket: "example-destination"});
 /// const exampleDestination = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "AllowAppFlowDestinationActions",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["appflow.amazonaws.com"],
 ///         }],
+///         sid: "AllowAppFlowDestinationActions",
+///         effect: "Allow",
 ///         actions: [
 ///             "s3:PutObject",
 ///             "s3:AbortMultipartUpload",
@@ -70,40 +72,40 @@ import 'flow_trigger_config.dart';
 ///     policy: exampleDestination.then(exampleDestination => exampleDestination.json),
 /// });
 /// const exampleFlow = new aws.appflow.Flow("example", {
-///     name: "example",
 ///     sourceFlowConfig: {
-///         connectorType: "S3",
 ///         sourceConnectorProperties: {
 ///             s3: {
 ///                 bucketName: exampleSourceBucketPolicy.bucket,
 ///                 bucketPrefix: "example",
 ///             },
 ///         },
+///         connectorType: "S3",
+///     },
+///     triggerConfig: {
+///         triggerType: "OnDemand",
 ///     },
 ///     destinationFlowConfigs: [{
-///         connectorType: "S3",
 ///         destinationConnectorProperties: {
 ///             s3: {
-///                 bucketName: exampleDestinationBucketPolicy.bucket,
 ///                 s3OutputFormatConfig: {
 ///                     prefixConfig: {
 ///                         prefixType: "PATH",
 ///                     },
 ///                 },
+///                 bucketName: exampleDestinationBucketPolicy.bucket,
 ///             },
 ///         },
+///         connectorType: "S3",
 ///     }],
 ///     tasks: [{
-///         sourceFields: ["exampleField"],
-///         destinationField: "exampleField",
-///         taskType: "Map",
 ///         connectorOperators: [{
 ///             s3: "NO_OP",
 ///         }],
+///         sourceFields: ["exampleField"],
+///         destinationField: "exampleField",
+///         taskType: "Map",
 ///     }],
-///     triggerConfig: {
-///         triggerType: "OnDemand",
-///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -112,12 +114,12 @@ import 'flow_trigger_config.dart';
 ///
 /// example_source_bucket = aws.s3.Bucket("example_source", bucket="example-source")
 /// example_source = aws.iam.get_policy_document(statements=[{
-///     "sid": "AllowAppFlowSourceActions",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["appflow.amazonaws.com"],
 ///     }],
+///     "sid": "AllowAppFlowSourceActions",
+///     "effect": "Allow",
 ///     "actions": [
 ///         "s3:ListBucket",
 ///         "s3:GetObject",
@@ -136,12 +138,12 @@ import 'flow_trigger_config.dart';
 ///     source=pulumi.FileAsset("example_source.csv"))
 /// example_destination_bucket = aws.s3.Bucket("example_destination", bucket="example-destination")
 /// example_destination = aws.iam.get_policy_document(statements=[{
-///     "sid": "AllowAppFlowDestinationActions",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["appflow.amazonaws.com"],
 ///     }],
+///     "sid": "AllowAppFlowDestinationActions",
+///     "effect": "Allow",
 ///     "actions": [
 ///         "s3:PutObject",
 ///         "s3:AbortMultipartUpload",
@@ -159,40 +161,40 @@ import 'flow_trigger_config.dart';
 ///     bucket=example_destination_bucket.id,
 ///     policy=example_destination.json)
 /// example_flow = aws.appflow.Flow("example",
-///     name="example",
 ///     source_flow_config={
-///         "connector_type": "S3",
 ///         "source_connector_properties": {
 ///             "s3": {
 ///                 "bucket_name": example_source_bucket_policy.bucket,
 ///                 "bucket_prefix": "example",
 ///             },
 ///         },
+///         "connector_type": "S3",
+///     },
+///     trigger_config={
+///         "trigger_type": "OnDemand",
 ///     },
 ///     destination_flow_configs=[{
-///         "connector_type": "S3",
 ///         "destination_connector_properties": {
 ///             "s3": {
-///                 "bucket_name": example_destination_bucket_policy.bucket,
 ///                 "s3_output_format_config": {
 ///                     "prefix_config": {
 ///                         "prefix_type": "PATH",
 ///                     },
 ///                 },
+///                 "bucket_name": example_destination_bucket_policy.bucket,
 ///             },
 ///         },
+///         "connector_type": "S3",
 ///     }],
 ///     tasks=[{
-///         "source_fields": ["exampleField"],
-///         "destination_field": "exampleField",
-///         "task_type": "Map",
 ///         "connector_operators": [{
 ///             "s3": "NO_OP",
 ///         }],
+///         "source_fields": ["exampleField"],
+///         "destination_field": "exampleField",
+///         "task_type": "Map",
 ///     }],
-///     trigger_config={
-///         "trigger_type": "OnDemand",
-///     })
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -213,8 +215,6 @@ import 'flow_trigger_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AllowAppFlowSourceActions",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -226,6 +226,8 @@ import 'flow_trigger_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AllowAppFlowSourceActions",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:ListBucket",
@@ -264,8 +266,6 @@ import 'flow_trigger_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AllowAppFlowDestinationActions",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -277,6 +277,8 @@ import 'flow_trigger_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AllowAppFlowDestinationActions",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -303,10 +305,8 @@ import 'flow_trigger_config.dart';
 ///
 ///     var exampleFlow = new Aws.AppFlow.Flow("example", new()
 ///     {
-///         Name = "example",
 ///         SourceFlowConfig = new Aws.AppFlow.Inputs.FlowSourceFlowConfigArgs
 ///         {
-///             ConnectorType = "S3",
 ///             SourceConnectorProperties = new Aws.AppFlow.Inputs.FlowSourceFlowConfigSourceConnectorPropertiesArgs
 ///             {
 ///                 S3 = new Aws.AppFlow.Inputs.FlowSourceFlowConfigSourceConnectorPropertiesS3Args
@@ -315,17 +315,20 @@ import 'flow_trigger_config.dart';
 ///                     BucketPrefix = "example",
 ///                 },
 ///             },
+///             ConnectorType = "S3",
+///         },
+///         TriggerConfig = new Aws.AppFlow.Inputs.FlowTriggerConfigArgs
+///         {
+///             TriggerType = "OnDemand",
 ///         },
 ///         DestinationFlowConfigs = new[]
 ///         {
 ///             new Aws.AppFlow.Inputs.FlowDestinationFlowConfigArgs
 ///             {
-///                 ConnectorType = "S3",
 ///                 DestinationConnectorProperties = new Aws.AppFlow.Inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesArgs
 ///                 {
 ///                     S3 = new Aws.AppFlow.Inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3Args
 ///                     {
-///                         BucketName = exampleDestinationBucketPolicy.Bucket,
 ///                         S3OutputFormatConfig = new Aws.AppFlow.Inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigArgs
 ///                         {
 ///                             PrefixConfig = new Aws.AppFlow.Inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfigArgs
@@ -333,20 +336,16 @@ import 'flow_trigger_config.dart';
 ///                                 PrefixType = "PATH",
 ///                             },
 ///                         },
+///                         BucketName = exampleDestinationBucketPolicy.Bucket,
 ///                     },
 ///                 },
+///                 ConnectorType = "S3",
 ///             },
 ///         },
 ///         Tasks = new[]
 ///         {
 ///             new Aws.AppFlow.Inputs.FlowTaskArgs
 ///             {
-///                 SourceFields = new[]
-///                 {
-///                     "exampleField",
-///                 },
-///                 DestinationField = "exampleField",
-///                 TaskType = "Map",
 ///                 ConnectorOperators = new[]
 ///                 {
 ///                     new Aws.AppFlow.Inputs.FlowTaskConnectorOperatorArgs
@@ -354,12 +353,15 @@ import 'flow_trigger_config.dart';
 ///                         S3 = "NO_OP",
 ///                     },
 ///                 },
+///                 SourceFields = new[]
+///                 {
+///                     "exampleField",
+///                 },
+///                 DestinationField = "exampleField",
+///                 TaskType = "Map",
 ///             },
 ///         },
-///         TriggerConfig = new Aws.AppFlow.Inputs.FlowTriggerConfigArgs
-///         {
-///             TriggerType = "OnDemand",
-///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -385,8 +387,6 @@ import 'flow_trigger_config.dart';
 /// 		exampleSource, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("AllowAppFlowSourceActions"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -395,6 +395,8 @@ import 'flow_trigger_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("AllowAppFlowSourceActions"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"s3:ListBucket",
 /// 						"s3:GetObject",
@@ -433,8 +435,6 @@ import 'flow_trigger_config.dart';
 /// 		exampleDestination, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("AllowAppFlowDestinationActions"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -443,6 +443,8 @@ import 'flow_trigger_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("AllowAppFlowDestinationActions"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"s3:PutObject",
 /// 						"s3:AbortMultipartUpload",
@@ -469,48 +471,48 @@ import 'flow_trigger_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appflow.NewFlow(ctx, "example", &appflow.FlowArgs{
-/// 			Name: pulumi.String("example"),
 /// 			SourceFlowConfig: &appflow.FlowSourceFlowConfigArgs{
-/// 				ConnectorType: pulumi.String("S3"),
 /// 				SourceConnectorProperties: &appflow.FlowSourceFlowConfigSourceConnectorPropertiesArgs{
 /// 					S3: &appflow.FlowSourceFlowConfigSourceConnectorPropertiesS3Args{
 /// 						BucketName:   exampleSourceBucketPolicy.Bucket,
 /// 						BucketPrefix: pulumi.String("example"),
 /// 					},
 /// 				},
+/// 				ConnectorType: pulumi.String("S3"),
+/// 			},
+/// 			TriggerConfig: &appflow.FlowTriggerConfigArgs{
+/// 				TriggerType: pulumi.String("OnDemand"),
 /// 			},
 /// 			DestinationFlowConfigs: appflow.FlowDestinationFlowConfigArray{
 /// 				&appflow.FlowDestinationFlowConfigArgs{
-/// 					ConnectorType: pulumi.String("S3"),
 /// 					DestinationConnectorProperties: &appflow.FlowDestinationFlowConfigDestinationConnectorPropertiesArgs{
 /// 						S3: &appflow.FlowDestinationFlowConfigDestinationConnectorPropertiesS3Args{
-/// 							BucketName: exampleDestinationBucketPolicy.Bucket,
 /// 							S3OutputFormatConfig: &appflow.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigArgs{
 /// 								PrefixConfig: &appflow.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfigArgs{
 /// 									PrefixType: pulumi.String("PATH"),
 /// 								},
 /// 							},
+/// 							BucketName: exampleDestinationBucketPolicy.Bucket,
 /// 						},
 /// 					},
+/// 					ConnectorType: pulumi.String("S3"),
 /// 				},
 /// 			},
 /// 			Tasks: appflow.FlowTaskArray{
 /// 				&appflow.FlowTaskArgs{
-/// 					SourceFields: pulumi.StringArray{
-/// 						pulumi.String("exampleField"),
-/// 					},
-/// 					DestinationField: pulumi.String("exampleField"),
-/// 					TaskType:         pulumi.String("Map"),
 /// 					ConnectorOperators: appflow.FlowTaskConnectorOperatorArray{
 /// 						&appflow.FlowTaskConnectorOperatorArgs{
 /// 							S3: pulumi.String("NO_OP"),
 /// 						},
 /// 					},
+/// 					SourceFields: pulumi.StringArray{
+/// 						pulumi.String("exampleField"),
+/// 					},
+/// 					DestinationField: pulumi.String("exampleField"),
+/// 					TaskType:         pulumi.String("Map"),
 /// 				},
 /// 			},
-/// 			TriggerConfig: &appflow.FlowTriggerConfigArgs{
-/// 				TriggerType: pulumi.String("OnDemand"),
-/// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -530,24 +532,24 @@ import 'flow_trigger_config.dart';
 ///
 /// data "aws_iam_getpolicydocument" "exampleSource" {
 ///   statements {
-///     sid    = "AllowAppFlowSourceActions"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appflow.amazonaws.com"]
 ///     }
+///     sid       = "AllowAppFlowSourceActions"
+///     effect    = "Allow"
 ///     actions   = ["s3:ListBucket", "s3:GetObject"]
 ///     resources = ["arn:aws:s3:::example-source", "arn:aws:s3:::example-source/*"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "exampleDestination" {
 ///   statements {
-///     sid    = "AllowAppFlowDestinationActions"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appflow.amazonaws.com"]
 ///     }
+///     sid       = "AllowAppFlowDestinationActions"
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject", "s3:AbortMultipartUpload", "s3:ListMultipartUploadParts", "s3:ListBucketMultipartUploads", "s3:GetBucketAcl", "s3:PutObjectAcl"]
 ///     resources = ["arn:aws:s3:::example-destination", "arn:aws:s3:::example-destination/*"]
 ///   }
@@ -573,40 +575,40 @@ import 'flow_trigger_config.dart';
 ///   policy = data.aws_iam_getpolicydocument.exampleDestination.json
 /// }
 /// resource "aws_appflow_flow" "example" {
-///   name = "example"
 ///   source_flow_config = {
-///     connector_type = "S3"
 ///     source_connector_properties = {
 ///       s3 = {
 ///         bucket_name   = aws_s3_bucketpolicy.example_source.bucket
 ///         bucket_prefix = "example"
 ///       }
 ///     }
+///     connector_type = "S3"
+///   }
+///   trigger_config = {
+///     trigger_type = "OnDemand"
 ///   }
 ///   destination_flow_configs {
-///     connector_type = "S3"
 ///     destination_connector_properties = {
 ///       s3 = {
-///         bucket_name = aws_s3_bucketpolicy.example_destination.bucket
 ///         s3_output_format_config = {
 ///           prefix_config = {
 ///             prefix_type = "PATH"
 ///           }
 ///         }
+///         bucket_name = aws_s3_bucketpolicy.example_destination.bucket
 ///       }
 ///     }
+///     connector_type = "S3"
 ///   }
 ///   tasks {
-///     source_fields     = ["exampleField"]
-///     destination_field = "exampleField"
-///     task_type         = "Map"
 ///     connector_operators {
 ///       s3 = "NO_OP"
 ///     }
+///     source_fields     = ["exampleField"]
+///     destination_field = "exampleField"
+///     task_type         = "Map"
 ///   }
-///   trigger_config = {
-///     trigger_type = "OnDemand"
-///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -630,6 +632,7 @@ import 'flow_trigger_config.dart';
 /// import com.pulumi.aws.appflow.inputs.FlowSourceFlowConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowSourceFlowConfigSourceConnectorPropertiesArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowSourceFlowConfigSourceConnectorPropertiesS3Args;
+/// import com.pulumi.aws.appflow.inputs.FlowTriggerConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3Args;
@@ -637,7 +640,6 @@ import 'flow_trigger_config.dart';
 /// import com.pulumi.aws.appflow.inputs.FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfigArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowTaskArgs;
 /// import com.pulumi.aws.appflow.inputs.FlowTaskConnectorOperatorArgs;
-/// import com.pulumi.aws.appflow.inputs.FlowTriggerConfigArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -658,12 +660,12 @@ import 'flow_trigger_config.dart';
 ///
 ///         final var exampleSource = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("AllowAppFlowSourceActions")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("appflow.amazonaws.com")
 ///                     .build())
+///                 .sid("AllowAppFlowSourceActions")
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "s3:ListBucket",
 ///                     "s3:GetObject")
@@ -690,12 +692,12 @@ import 'flow_trigger_config.dart';
 ///
 ///         final var exampleDestination = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("AllowAppFlowDestinationActions")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("appflow.amazonaws.com")
 ///                     .build())
+///                 .sid("AllowAppFlowDestinationActions")
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "s3:PutObject",
 ///                     "s3:AbortMultipartUpload",
@@ -715,40 +717,40 @@ import 'flow_trigger_config.dart';
 ///             .build());
 ///
 ///         var exampleFlow = new Flow("exampleFlow", FlowArgs.builder()
-///             .name("example")
 ///             .sourceFlowConfig(FlowSourceFlowConfigArgs.builder()
-///                 .connectorType("S3")
 ///                 .sourceConnectorProperties(FlowSourceFlowConfigSourceConnectorPropertiesArgs.builder()
 ///                     .s3(FlowSourceFlowConfigSourceConnectorPropertiesS3Args.builder()
 ///                         .bucketName(exampleSourceBucketPolicy.bucket())
 ///                         .bucketPrefix("example")
 ///                         .build())
 ///                     .build())
+///                 .connectorType("S3")
+///                 .build())
+///             .triggerConfig(FlowTriggerConfigArgs.builder()
+///                 .triggerType("OnDemand")
 ///                 .build())
 ///             .destinationFlowConfigs(FlowDestinationFlowConfigArgs.builder()
-///                 .connectorType("S3")
 ///                 .destinationConnectorProperties(FlowDestinationFlowConfigDestinationConnectorPropertiesArgs.builder()
 ///                     .s3(FlowDestinationFlowConfigDestinationConnectorPropertiesS3Args.builder()
-///                         .bucketName(exampleDestinationBucketPolicy.bucket())
 ///                         .s3OutputFormatConfig(FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigArgs.builder()
 ///                             .prefixConfig(FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfigArgs.builder()
 ///                                 .prefixType("PATH")
 ///                                 .build())
 ///                             .build())
+///                         .bucketName(exampleDestinationBucketPolicy.bucket())
 ///                         .build())
 ///                     .build())
+///                 .connectorType("S3")
 ///                 .build())
 ///             .tasks(FlowTaskArgs.builder()
-///                 .sourceFields("exampleField")
-///                 .destinationField("exampleField")
-///                 .taskType("Map")
 ///                 .connectorOperators(FlowTaskConnectorOperatorArgs.builder()
 ///                     .s3("NO_OP")
 ///                     .build())
+///                 .sourceFields("exampleField")
+///                 .destinationField("exampleField")
+///                 .taskType("Map")
 ///                 .build())
-///             .triggerConfig(FlowTriggerConfigArgs.builder()
-///                 .triggerType("OnDemand")
-///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -789,42 +791,42 @@ import 'flow_trigger_config.dart';
 ///     type: aws:appflow:Flow
 ///     name: example
 ///     properties:
-///       name: example
 ///       sourceFlowConfig:
-///         connectorType: S3
 ///         sourceConnectorProperties:
 ///           s3:
 ///             bucketName: ${exampleSourceBucketPolicy.bucket}
 ///             bucketPrefix: example
+///         connectorType: S3
+///       triggerConfig:
+///         triggerType: OnDemand
 ///       destinationFlowConfigs:
-///         - connectorType: S3
-///           destinationConnectorProperties:
+///         - destinationConnectorProperties:
 ///             s3:
-///               bucketName: ${exampleDestinationBucketPolicy.bucket}
 ///               s3OutputFormatConfig:
 ///                 prefixConfig:
 ///                   prefixType: PATH
+///               bucketName: ${exampleDestinationBucketPolicy.bucket}
+///           connectorType: S3
 ///       tasks:
-///         - sourceFields:
+///         - connectorOperators:
+///             - s3: NO_OP
+///           sourceFields:
 ///             - exampleField
 ///           destinationField: exampleField
 ///           taskType: Map
-///           connectorOperators:
-///             - s3: NO_OP
-///       triggerConfig:
-///         triggerType: OnDemand
+///       name: example
 /// variables:
 ///   exampleSource:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: AllowAppFlowSourceActions
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - appflow.amazonaws.com
+///             sid: AllowAppFlowSourceActions
+///             effect: Allow
 ///             actions:
 ///               - s3:ListBucket
 ///               - s3:GetObject
@@ -836,12 +838,12 @@ import 'flow_trigger_config.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: AllowAppFlowDestinationActions
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - appflow.amazonaws.com
+///             sid: AllowAppFlowDestinationActions
+///             effect: Allow
 ///             actions:
 ///               - s3:PutObject
 ///               - s3:AbortMultipartUpload
@@ -880,10 +882,10 @@ class Flow extends pulumi.CustomResource {
   /// Description of the flow.
   late final pulumi.Output<String?> description;
   /// Configuration that controls how Amazon AppFlow places data in the destination connector. See the `destinationFlowConfig` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinationFlowConfigs;
+  late final pulumi.Output<List<FlowDestinationFlowConfig>> destinationFlowConfigs;
   /// Current status of the flow.
   late final pulumi.Output<String> flowStatus;
-  /// ARN of the Key Management Service (KMS) key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
+  /// ARN of the KMS key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
   late final pulumi.Output<String> kmsArn;
   /// Configuration that determines how Amazon AppFlow catalogs the data that the flow transfers. See the `metadataCatalogConfig` Block for details.
   late final pulumi.Output<FlowMetadataCatalogConfig> metadataCatalogConfig;
@@ -898,7 +900,7 @@ class Flow extends pulumi.CustomResource {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Tasks that Amazon AppFlow performs while transferring the data in the flow run. See the `task` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> tasks;
+  late final pulumi.Output<List<FlowTask>> tasks;
   /// Configuration that determines how and when the flow runs. See the `triggerConfig` Block for details.
   late final pulumi.Output<FlowTriggerConfig> triggerConfig;
 
@@ -914,20 +916,20 @@ class Flow extends pulumi.CustomResource {
           'aws:appflow/flow:Flow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    destinationFlowConfigs = registerOutput<List<Map<String, dynamic>>>('destinationFlowConfigs');
+    destinationFlowConfigs = registerOutput<List<FlowDestinationFlowConfig>>('destinationFlowConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowDestinationFlowConfig>(guardedValue, (value) => FlowDestinationFlowConfig.fromMap((value as Map).cast<String, dynamic>())); });
     flowStatus = registerOutput<String>('flowStatus');
     kmsArn = registerOutput<String>('kmsArn');
     metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowMetadataCatalogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSourceFlowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tasks = registerOutput<List<FlowTask>>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowTask>(guardedValue, (value) => FlowTask.fromMap((value as Map).cast<String, dynamic>())); });
     triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -936,11 +938,12 @@ class Flow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Flow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -956,16 +959,40 @@ class Flow extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    destinationFlowConfigs = registerOutput<List<Map<String, dynamic>>>('destinationFlowConfigs');
+    destinationFlowConfigs = registerOutput<List<FlowDestinationFlowConfig>>('destinationFlowConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowDestinationFlowConfig>(guardedValue, (value) => FlowDestinationFlowConfig.fromMap((value as Map).cast<String, dynamic>())); });
     flowStatus = registerOutput<String>('flowStatus');
     kmsArn = registerOutput<String>('kmsArn');
     metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowMetadataCatalogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSourceFlowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tasks = registerOutput<List<FlowTask>>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowTask>(guardedValue, (value) => FlowTask.fromMap((value as Map).cast<String, dynamic>())); });
+    triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Flow] resource.
+  Flow.reference(String urn)
+    : super(
+        'aws:appflow/flow:Flow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    destinationFlowConfigs = registerOutput<List<FlowDestinationFlowConfig>>('destinationFlowConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowDestinationFlowConfig>(guardedValue, (value) => FlowDestinationFlowConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    flowStatus = registerOutput<String>('flowStatus');
+    kmsArn = registerOutput<String>('kmsArn');
+    metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowMetadataCatalogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowSourceFlowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tasks = registerOutput<List<FlowTask>>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowTask>(guardedValue, (value) => FlowTask.fromMap((value as Map).cast<String, dynamic>())); });
     triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

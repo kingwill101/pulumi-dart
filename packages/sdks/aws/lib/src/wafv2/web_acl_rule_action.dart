@@ -9,15 +9,15 @@ import 'web_acl_rule_action_count.dart';
 
 class WebAclRuleAction {
   /// Allow the request. See Allow below.
-  final pulumi.Input<WebAclRuleActionAllow>? allow;
+  final pulumi.Input<WebAclRuleActionAllow?>? allow;
   /// Block the request. See Block below.
-  final pulumi.Input<WebAclRuleActionBlock>? block;
+  final pulumi.Input<WebAclRuleActionBlock?>? block;
   /// Present a CAPTCHA challenge. See Captcha below.
-  final pulumi.Input<WebAclRuleActionCaptcha>? captcha;
+  final pulumi.Input<WebAclRuleActionCaptcha?>? captcha;
   /// Present a silent challenge. See Challenge below.
-  final pulumi.Input<WebAclRuleActionChallenge>? challenge;
+  final pulumi.Input<WebAclRuleActionChallenge?>? challenge;
   /// Count the request without blocking. See Count below.
-  final pulumi.Input<WebAclRuleActionCount>? count;
+  final pulumi.Input<WebAclRuleActionCount?>? count;
 
   /// Creates a new [WebAclRuleAction].
   /// [allow] Allow the request. See Allow below.

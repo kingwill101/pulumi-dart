@@ -126,7 +126,7 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      allocatedStorage: pulumi.Input.fromValue(map['allocatedStorage'] as int),
+      allocatedStorage: pulumi.Input.fromValue((map['allocatedStorage'] as num).toInt()),
       availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       dbInstanceIdentifier: pulumi.Input.fromValue(map['dbInstanceIdentifier'] as String),
       dbSnapshotArn: pulumi.Input.fromValue(map['dbSnapshotArn'] as String),
@@ -134,12 +134,12 @@ class GetSnapshotsSnapshot {
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       engine: pulumi.Input.fromValue(map['engine'] as String),
       engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       licenseModel: pulumi.Input.fromValue(map['licenseModel'] as String),
       optionGroupName: pulumi.Input.fromValue(map['optionGroupName'] as String),
       originalSnapshotCreateTime: pulumi.Input.fromValue(map['originalSnapshotCreateTime'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       snapshotCreateTime: pulumi.Input.fromValue(map['snapshotCreateTime'] as String),
       snapshotType: pulumi.Input.fromValue(map['snapshotType'] as String),
       sourceDbSnapshotIdentifier: pulumi.Input.fromValue(map['sourceDbSnapshotIdentifier'] as String),

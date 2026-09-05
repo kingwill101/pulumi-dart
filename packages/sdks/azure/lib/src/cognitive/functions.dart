@@ -151,6 +151,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cognitive/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Cognitive Services Account Project.
 ///
 /// ## Example Usage
@@ -312,4 +323,15 @@ Future<GetAccountProjectResult> getAccountProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetAccountProjectResult> getAccountProjectOutput(
+  GetAccountProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cognitive/getAccountProject:getAccountProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountProjectResult.fromMap);
 }

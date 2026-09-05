@@ -464,15 +464,6 @@ import 'domain_timeouts.dart';
 /// // IAM role for Domain Execution
 /// const assumeRoleDomainExecution = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: [
-///             "sts:AssumeRole",
-///             "sts:TagSession",
-///             "sts:SetContext",
-///         ],
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["datazone.amazonaws.com"],
-///         }],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -484,6 +475,15 @@ import 'domain_timeouts.dart';
 ///                 values: ["datazone*"],
 ///                 variable: "aws:TagKeys",
 ///             },
+///         ],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["datazone.amazonaws.com"],
+///         }],
+///         actions: [
+///             "sts:AssumeRole",
+///             "sts:TagSession",
+///             "sts:SetContext",
 ///         ],
 ///     }],
 /// }));
@@ -501,16 +501,16 @@ import 'domain_timeouts.dart';
 /// // IAM role for Domain Service
 /// const assumeRoleDomainService = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["datazone.amazonaws.com"],
-///         }],
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             values: [current.accountId],
 ///             variable: "aws:SourceAccount",
 ///         }],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["datazone.amazonaws.com"],
+///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
 /// const domainService = new aws.iam.Role("domain_service", {
@@ -539,15 +539,6 @@ import 'domain_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// # IAM role for Domain Execution
 /// assume_role_domain_execution = aws.iam.get_policy_document(statements=[{
-///     "actions": [
-///         "sts:AssumeRole",
-///         "sts:TagSession",
-///         "sts:SetContext",
-///     ],
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["datazone.amazonaws.com"],
-///     }],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -560,6 +551,15 @@ import 'domain_timeouts.dart';
 ///             "variable": "aws:TagKeys",
 ///         },
 ///     ],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["datazone.amazonaws.com"],
+///     }],
+///     "actions": [
+///         "sts:AssumeRole",
+///         "sts:TagSession",
+///         "sts:SetContext",
+///     ],
 /// }])
 /// domain_execution = aws.iam.Role("domain_execution",
 ///     assume_role_policy=assume_role_domain_execution.json,
@@ -570,16 +570,16 @@ import 'domain_timeouts.dart';
 ///     role=domain_execution.name)
 /// # IAM role for Domain Service
 /// assume_role_domain_service = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["datazone.amazonaws.com"],
-///     }],
 ///     "conditions": [{
 ///         "test": "StringEquals",
 ///         "values": [current.account_id],
 ///         "variable": "aws:SourceAccount",
 ///     }],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["datazone.amazonaws.com"],
+///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// domain_service = aws.iam.Role("domain_service",
 ///     assume_role_policy=assume_role_domain_service.json,
@@ -612,23 +612,6 @@ import 'domain_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                     "sts:TagSession",
-///                     "sts:SetContext",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "datazone.amazonaws.com",
-///                         },
-///                     },
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -649,6 +632,23 @@ import 'domain_timeouts.dart';
 ///                         },
 ///                         Variable = "aws:TagKeys",
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "datazone.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                     "sts:TagSession",
+///                     "sts:SetContext",
 ///                 },
 ///             },
 ///         },
@@ -678,9 +678,17 @@ import 'domain_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
+///                 Conditions = new[]
 ///                 {
-///                     "sts:AssumeRole",
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Values = new[]
+///                         {
+///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                         },
+///                         Variable = "aws:SourceAccount",
+///                     },
 ///                 },
 ///                 Principals = new[]
 ///                 {
@@ -693,17 +701,9 @@ import 'domain_timeouts.dart';
 ///                         },
 ///                     },
 ///                 },
-///                 Conditions = new[]
+///                 Actions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Values = new[]
-///                         {
-///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///                         },
-///                         Variable = "aws:SourceAccount",
-///                     },
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -757,19 +757,6 @@ import 'domain_timeouts.dart';
 /// 		assumeRoleDomainExecution, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 						"sts:TagSession",
-/// 						"sts:SetContext",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "Service",
-/// 							Identifiers: []string{
-/// 								"datazone.amazonaws.com",
-/// 							},
-/// 						},
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
@@ -785,6 +772,19 @@ import 'domain_timeouts.dart';
 /// 							},
 /// 							Variable: "aws:TagKeys",
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"datazone.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 						"sts:TagSession",
+/// 						"sts:SetContext",
 /// 					},
 /// 				},
 /// 			},
@@ -816,8 +816,14 @@ import 'domain_timeouts.dart';
 /// 		assumeRoleDomainService, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "aws:SourceAccount",
+/// 						},
 /// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
@@ -827,14 +833,8 @@ import 'domain_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
-/// 								current.AccountId,
-/// 							},
-/// 							Variable: "aws:SourceAccount",
-/// 						},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -889,11 +889,6 @@ import 'domain_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRoleDomainExecution" {
 ///   statements {
-///     actions = ["sts:AssumeRole", "sts:TagSession", "sts:SetContext"]
-///     principals {
-///       type        = "Service"
-///       identifiers = ["datazone.amazonaws.com"]
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
@@ -904,6 +899,11 @@ import 'domain_timeouts.dart';
 ///       values   = ["datazone*"]
 ///       variable = "aws:TagKeys"
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["datazone.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole", "sts:TagSession", "sts:SetContext"]
 ///   }
 /// }
 /// data "aws_iam_getpolicy" "domainExecutionRole" {
@@ -911,16 +911,16 @@ import 'domain_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRoleDomainService" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     principals {
-///       type        = "Service"
-///       identifiers = ["datazone.amazonaws.com"]
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["datazone.amazonaws.com"]
+///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicy" "domainServiceRole" {
@@ -964,8 +964,8 @@ import 'domain_timeouts.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyArgs;
@@ -992,14 +992,6 @@ import 'domain_timeouts.dart';
 ///         // IAM role for Domain Execution
 ///         final var assumeRoleDomainExecution = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "sts:AssumeRole",
-///                     "sts:TagSession",
-///                     "sts:SetContext")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("datazone.amazonaws.com")
-///                     .build())
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -1011,6 +1003,14 @@ import 'domain_timeouts.dart';
 ///                         .values("datazone*")
 ///                         .variable("aws:TagKeys")
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("datazone.amazonaws.com")
+///                     .build())
+///                 .actions(
+///                     "sts:AssumeRole",
+///                     "sts:TagSession",
+///                     "sts:SetContext")
 ///                 .build())
 ///             .build());
 ///
@@ -1031,16 +1031,16 @@ import 'domain_timeouts.dart';
 ///         // IAM role for Domain Service
 ///         final var assumeRoleDomainService = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("datazone.amazonaws.com")
-///                     .build())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .values(current.accountId())
 ///                     .variable("aws:SourceAccount")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("datazone.amazonaws.com")
+///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -1114,15 +1114,7 @@ import 'domain_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///               - sts:TagSession
-///               - sts:SetContext
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - datazone.amazonaws.com
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
@@ -1131,6 +1123,14 @@ import 'domain_timeouts.dart';
 ///                 values:
 ///                   - datazone*
 ///                 variable: aws:TagKeys
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - datazone.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
+///               - sts:TagSession
+///               - sts:SetContext
 ///   domainExecutionRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicy
@@ -1142,17 +1142,17 @@ import 'domain_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - datazone.amazonaws.com
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
 ///                 variable: aws:SourceAccount
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - datazone.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 ///   domainServiceRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicy
@@ -1224,7 +1224,7 @@ class Domain extends pulumi.CustomResource {
           'aws:datazone/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -1238,8 +1238,8 @@ class Domain extends pulumi.CustomResource {
     serviceRole = registerOutput<String?>('serviceRole');
     singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1248,11 +1248,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1278,8 +1279,34 @@ class Domain extends pulumi.CustomResource {
     serviceRole = registerOutput<String?>('serviceRole');
     singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:datazone/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    domainExecutionRole = registerOutput<String>('domainExecutionRole');
+    domainVersion = registerOutput<String>('domainVersion');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.name = registerOutput<String>('name');
+    portalUrl = registerOutput<String>('portalUrl');
+    region = registerOutput<String>('region');
+    rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
+    serviceRole = registerOutput<String?>('serviceRole');
+    singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

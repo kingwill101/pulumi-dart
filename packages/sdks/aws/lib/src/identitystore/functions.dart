@@ -21,13 +21,13 @@ import 'get_users_result.dart';
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleGetGroup = example.then(example => aws.identitystore.getGroup({
-///     identityStoreId: example.identityStoreIds?.[0],
 ///     alternateIdentifier: {
 ///         uniqueAttribute: {
 ///             attributePath: "DisplayName",
 ///             attributeValue: "ExampleGroup",
 ///         },
 ///     },
+///     identityStoreId: example.identityStoreIds?.[0],
 /// }));
 /// export const groupId = exampleGetGroup.then(exampleGetGroup => exampleGetGroup.groupId);
 /// ```
@@ -36,13 +36,13 @@ import 'get_users_result.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssoadmin.get_instances()
-/// example_get_group = aws.identitystore.get_group(identity_store_id=example.identity_store_ids[0],
-///     alternate_identifier={
+/// example_get_group = aws.identitystore.get_group(alternate_identifier={
 ///         "unique_attribute": {
 ///             "attribute_path": "DisplayName",
 ///             "attribute_value": "ExampleGroup",
 ///         },
-///     })
+///     },
+///     identity_store_id=example.identity_store_ids[0])
 /// pulumi.export("groupId", example_get_group.group_id)
 /// ```
 /// ```csharp
@@ -57,7 +57,6 @@ import 'get_users_result.dart';
 ///
 ///     var exampleGetGroup = Aws.IdentityStore.GetGroup.Invoke(new()
 ///     {
-///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///         AlternateIdentifier = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierInputArgs
 ///         {
 ///             UniqueAttribute = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierUniqueAttributeInputArgs
@@ -66,6 +65,7 @@ import 'get_users_result.dart';
 ///                 AttributeValue = "ExampleGroup",
 ///             },
 ///         },
+///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -90,13 +90,13 @@ import 'get_users_result.dart';
 /// 			return err
 /// 		}
 /// 		exampleGetGroup, err := identitystore.LookupGroup(ctx, &identitystore.LookupGroupArgs{
-/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 			AlternateIdentifier: identitystore.GetGroupAlternateIdentifier{
 /// 				UniqueAttribute: identitystore.GetGroupAlternateIdentifierUniqueAttribute{
 /// 					AttributePath:  "DisplayName",
 /// 					AttributeValue: "ExampleGroup",
 /// 				},
 /// 			},
+/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -118,13 +118,13 @@ import 'get_users_result.dart';
 /// data "aws_ssoadmin_getinstances" "example" {
 /// }
 /// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 ///   alternate_identifier = {
 ///     unique_attribute = {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 /// }
 ///
 /// output "groupId" {
@@ -160,13 +160,13 @@ import 'get_users_result.dart';
 ///             .build());
 ///
 ///         final var exampleGetGroup = IdentitystoreFunctions.getGroup(GetGroupArgs.builder()
-///             .identityStoreId(example.identityStoreIds()[0])
 ///             .alternateIdentifier(GetGroupAlternateIdentifierArgs.builder()
 ///                 .uniqueAttribute(GetGroupAlternateIdentifierUniqueAttributeArgs.builder()
 ///                     .attributePath("DisplayName")
 ///                     .attributeValue("ExampleGroup")
 ///                     .build())
 ///                 .build())
+///             .identityStoreId(example.identityStoreIds()[0])
 ///             .build());
 ///
 ///         ctx.export("groupId", exampleGetGroup.groupId());
@@ -183,11 +183,11 @@ import 'get_users_result.dart';
 ///     fn::invoke:
 ///       function: aws:identitystore:getGroup
 ///       arguments:
-///         identityStoreId: ${example.identityStoreIds[0]}
 ///         alternateIdentifier:
 ///           uniqueAttribute:
 ///             attributePath: DisplayName
 ///             attributeValue: ExampleGroup
+///         identityStoreId: ${example.identityStoreIds[0]}
 /// outputs:
 ///   groupId: ${exampleGetGroup.groupId}
 /// ```
@@ -206,6 +206,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:identitystore/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Use this data source to get a list of members in an Identity Store Group.
 ///
 /// ## Example Usage
@@ -219,13 +230,13 @@ Future<GetGroupResult> getGroup(
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleGetGroup = example.then(example => aws.identitystore.getGroup({
-///     identityStoreId: example.identityStoreIds?.[0],
 ///     alternateIdentifier: {
 ///         uniqueAttribute: {
 ///             attributePath: "DisplayName",
 ///             attributeValue: "ExampleGroup",
 ///         },
 ///     },
+///     identityStoreId: example.identityStoreIds?.[0],
 /// }));
 /// const exampleGetGroupMemberships = Promise.all([example, exampleGetGroup]).then(([example, exampleGetGroup]) => aws.identitystore.getGroupMemberships({
 ///     identityStoreId: example.identityStoreIds?.[0],
@@ -237,13 +248,13 @@ Future<GetGroupResult> getGroup(
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssoadmin.get_instances()
-/// example_get_group = aws.identitystore.get_group(identity_store_id=example.identity_store_ids[0],
-///     alternate_identifier={
+/// example_get_group = aws.identitystore.get_group(alternate_identifier={
 ///         "unique_attribute": {
 ///             "attribute_path": "DisplayName",
 ///             "attribute_value": "ExampleGroup",
 ///         },
-///     })
+///     },
+///     identity_store_id=example.identity_store_ids[0])
 /// example_get_group_memberships = aws.identitystore.get_group_memberships(identity_store_id=example.identity_store_ids[0],
 ///     group_id=example_get_group.group_id)
 /// ```
@@ -259,7 +270,6 @@ Future<GetGroupResult> getGroup(
 ///
 ///     var exampleGetGroup = Aws.IdentityStore.GetGroup.Invoke(new()
 ///     {
-///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///         AlternateIdentifier = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierInputArgs
 ///         {
 ///             UniqueAttribute = new Aws.IdentityStore.Inputs.GetGroupAlternateIdentifierUniqueAttributeInputArgs
@@ -268,6 +278,7 @@ Future<GetGroupResult> getGroup(
 ///                 AttributeValue = "ExampleGroup",
 ///             },
 ///         },
+///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///     });
 ///
 ///     var exampleGetGroupMemberships = Aws.IdentityStore.GetGroupMemberships.Invoke(new()
@@ -294,13 +305,13 @@ Future<GetGroupResult> getGroup(
 /// 			return err
 /// 		}
 /// 		exampleGetGroup, err := identitystore.LookupGroup(ctx, &identitystore.LookupGroupArgs{
-/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 			AlternateIdentifier: identitystore.GetGroupAlternateIdentifier{
 /// 				UniqueAttribute: identitystore.GetGroupAlternateIdentifierUniqueAttribute{
 /// 					AttributePath:  "DisplayName",
 /// 					AttributeValue: "ExampleGroup",
 /// 				},
 /// 			},
+/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -328,13 +339,13 @@ Future<GetGroupResult> getGroup(
 /// data "aws_ssoadmin_getinstances" "example" {
 /// }
 /// data "aws_identitystore_getgroup" "exampleGetGroup" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 ///   alternate_identifier = {
 ///     unique_attribute = {
 ///       attribute_path  = "DisplayName"
 ///       attribute_value = "ExampleGroup"
 ///     }
 ///   }
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 /// }
 /// data "aws_identitystore_getgroupmemberships" "exampleGetGroupMemberships" {
 ///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
@@ -371,13 +382,13 @@ Future<GetGroupResult> getGroup(
 ///             .build());
 ///
 ///         final var exampleGetGroup = IdentitystoreFunctions.getGroup(GetGroupArgs.builder()
-///             .identityStoreId(example.identityStoreIds()[0])
 ///             .alternateIdentifier(GetGroupAlternateIdentifierArgs.builder()
 ///                 .uniqueAttribute(GetGroupAlternateIdentifierUniqueAttributeArgs.builder()
 ///                     .attributePath("DisplayName")
 ///                     .attributeValue("ExampleGroup")
 ///                     .build())
 ///                 .build())
+///             .identityStoreId(example.identityStoreIds()[0])
 ///             .build());
 ///
 ///         final var exampleGetGroupMemberships = IdentitystoreFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
@@ -398,11 +409,11 @@ Future<GetGroupResult> getGroup(
 ///     fn::invoke:
 ///       function: aws:identitystore:getGroup
 ///       arguments:
-///         identityStoreId: ${example.identityStoreIds[0]}
 ///         alternateIdentifier:
 ///           uniqueAttribute:
 ///             attributePath: DisplayName
 ///             attributeValue: ExampleGroup
+///         identityStoreId: ${example.identityStoreIds[0]}
 ///   exampleGetGroupMemberships:
 ///     fn::invoke:
 ///       function: aws:identitystore:getGroupMemberships
@@ -423,6 +434,17 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupMembershipsResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
+  GetGroupMembershipsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:identitystore/getGroupMemberships:getGroupMemberships',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupMembershipsResult.fromMap);
 }
 
 /// Data source for managing an AWS SSO Identity Store Groups.
@@ -565,6 +587,17 @@ Future<GetGroupsResult> getGroups(
   return GetGroupsResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupsResult> getGroupsOutput(
+  GetGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:identitystore/getGroups:getGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupsResult.fromMap);
+}
+
 /// Use this data source to get an Identity Store User.
 ///
 /// ## Example Usage
@@ -576,13 +609,13 @@ Future<GetGroupsResult> getGroups(
 ///
 /// const example = aws.ssoadmin.getInstances({});
 /// const exampleGetUser = example.then(example => aws.identitystore.getUser({
-///     identityStoreId: example.identityStoreIds?.[0],
 ///     alternateIdentifier: {
 ///         uniqueAttribute: {
 ///             attributePath: "UserName",
 ///             attributeValue: "ExampleUser",
 ///         },
 ///     },
+///     identityStoreId: example.identityStoreIds?.[0],
 /// }));
 /// export const userId = exampleGetUser.then(exampleGetUser => exampleGetUser.userId);
 /// ```
@@ -591,13 +624,13 @@ Future<GetGroupsResult> getGroups(
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssoadmin.get_instances()
-/// example_get_user = aws.identitystore.get_user(identity_store_id=example.identity_store_ids[0],
-///     alternate_identifier={
+/// example_get_user = aws.identitystore.get_user(alternate_identifier={
 ///         "unique_attribute": {
 ///             "attribute_path": "UserName",
 ///             "attribute_value": "ExampleUser",
 ///         },
-///     })
+///     },
+///     identity_store_id=example.identity_store_ids[0])
 /// pulumi.export("userId", example_get_user.user_id)
 /// ```
 /// ```csharp
@@ -612,7 +645,6 @@ Future<GetGroupsResult> getGroups(
 ///
 ///     var exampleGetUser = Aws.IdentityStore.GetUser.Invoke(new()
 ///     {
-///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///         AlternateIdentifier = new Aws.IdentityStore.Inputs.GetUserAlternateIdentifierInputArgs
 ///         {
 ///             UniqueAttribute = new Aws.IdentityStore.Inputs.GetUserAlternateIdentifierUniqueAttributeInputArgs
@@ -621,6 +653,7 @@ Future<GetGroupsResult> getGroups(
 ///                 AttributeValue = "ExampleUser",
 ///             },
 ///         },
+///         IdentityStoreId = example.Apply(getInstancesResult => getInstancesResult.IdentityStoreIds[0]),
 ///     });
 ///
 ///     return new Dictionary<string, object?>
@@ -645,13 +678,13 @@ Future<GetGroupsResult> getGroups(
 /// 			return err
 /// 		}
 /// 		exampleGetUser, err := identitystore.LookupUser(ctx, &identitystore.LookupUserArgs{
-/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 			AlternateIdentifier: identitystore.GetUserAlternateIdentifier{
 /// 				UniqueAttribute: identitystore.GetUserAlternateIdentifierUniqueAttribute{
 /// 					AttributePath:  "UserName",
 /// 					AttributeValue: "ExampleUser",
 /// 				},
 /// 			},
+/// 			IdentityStoreId: example.IdentityStoreIds[0],
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -673,13 +706,13 @@ Future<GetGroupsResult> getGroups(
 /// data "aws_ssoadmin_getinstances" "example" {
 /// }
 /// data "aws_identitystore_getuser" "exampleGetUser" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 ///   alternate_identifier = {
 ///     unique_attribute = {
 ///       attribute_path  = "UserName"
 ///       attribute_value = "ExampleUser"
 ///     }
 ///   }
+///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
 /// }
 ///
 /// output "userId" {
@@ -715,13 +748,13 @@ Future<GetGroupsResult> getGroups(
 ///             .build());
 ///
 ///         final var exampleGetUser = IdentitystoreFunctions.getUser(GetUserArgs.builder()
-///             .identityStoreId(example.identityStoreIds()[0])
 ///             .alternateIdentifier(GetUserAlternateIdentifierArgs.builder()
 ///                 .uniqueAttribute(GetUserAlternateIdentifierUniqueAttributeArgs.builder()
 ///                     .attributePath("UserName")
 ///                     .attributeValue("ExampleUser")
 ///                     .build())
 ///                 .build())
+///             .identityStoreId(example.identityStoreIds()[0])
 ///             .build());
 ///
 ///         ctx.export("userId", exampleGetUser.userId());
@@ -738,11 +771,11 @@ Future<GetGroupsResult> getGroups(
 ///     fn::invoke:
 ///       function: aws:identitystore:getUser
 ///       arguments:
-///         identityStoreId: ${example.identityStoreIds[0]}
 ///         alternateIdentifier:
 ///           uniqueAttribute:
 ///             attributePath: UserName
 ///             attributeValue: ExampleUser
+///         identityStoreId: ${example.identityStoreIds[0]}
 /// outputs:
 ///   userId: ${exampleGetUser.userId}
 /// ```
@@ -759,6 +792,17 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:identitystore/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }
 
 /// Use this data source to get a list of users in an Identity Store instance.
@@ -899,4 +943,15 @@ Future<GetUsersResult> getUsers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsersResult.fromMap(result);
+}
+
+pulumi.Output<GetUsersResult> getUsersOutput(
+  GetUsersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:identitystore/getUsers:getUsers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUsersResult.fromMap);
 }

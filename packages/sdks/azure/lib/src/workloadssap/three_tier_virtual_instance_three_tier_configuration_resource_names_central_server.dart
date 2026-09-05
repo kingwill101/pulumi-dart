@@ -6,11 +6,11 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_cent
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer {
   /// The full name for the availability set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? availabilitySetName;
+  final pulumi.Input<String?>? availabilitySetName;
   /// A `loadBalancer` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer>? loadBalancer;
+  final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer?>? loadBalancer;
   /// One or more `virtualMachine` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine>>? virtualMachines;
+  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine>?>? virtualMachines;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer].
   /// [availabilitySetName] The full name for the availability set. Changing this forces a new resource to be created.

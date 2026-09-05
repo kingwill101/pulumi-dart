@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_sync_group_sync_group_args_doc}
 class SyncGroupArgs {
   /// The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
   final pulumi.Input<String> storageSyncId;
 

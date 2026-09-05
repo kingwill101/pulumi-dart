@@ -224,3 +224,14 @@ Future<GetConnectionResult> getConnection(
   );
   return GetConnectionResult.fromMap(result);
 }
+
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codestarconnections/getConnection:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}

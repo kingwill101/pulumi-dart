@@ -130,13 +130,13 @@ import 'event_permission_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const organizationAccess = new aws.cloudwatch.EventPermission("OrganizationAccess", {
-///     principal: "*",
-///     statementId: "OrganizationAccess",
 ///     condition: {
 ///         key: "aws:PrincipalOrgID",
 ///         type: "StringEquals",
 ///         value: example.id,
 ///     },
+///     principal: "*",
+///     statementId: "OrganizationAccess",
 /// });
 /// ```
 /// ```python
@@ -144,13 +144,13 @@ import 'event_permission_state.dart';
 /// import pulumi_aws as aws
 ///
 /// organization_access = aws.cloudwatch.EventPermission("OrganizationAccess",
-///     principal="*",
-///     statement_id="OrganizationAccess",
 ///     condition={
 ///         "key": "aws:PrincipalOrgID",
 ///         "type": "StringEquals",
 ///         "value": example["id"],
-///     })
+///     },
+///     principal="*",
+///     statement_id="OrganizationAccess")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -162,14 +162,14 @@ import 'event_permission_state.dart';
 /// {
 ///     var organizationAccess = new Aws.CloudWatch.EventPermission("OrganizationAccess", new()
 ///     {
-///         Principal = "*",
-///         StatementId = "OrganizationAccess",
 ///         Condition = new Aws.CloudWatch.Inputs.EventPermissionConditionArgs
 ///         {
 ///             Key = "aws:PrincipalOrgID",
 ///             Type = "StringEquals",
 ///             Value = example.Id,
 ///         },
+///         Principal = "*",
+///         StatementId = "OrganizationAccess",
 ///     });
 ///
 /// });
@@ -185,13 +185,13 @@ import 'event_permission_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewEventPermission(ctx, "OrganizationAccess", &cloudwatch.EventPermissionArgs{
-/// 			Principal:   pulumi.String("*"),
-/// 			StatementId: pulumi.String("OrganizationAccess"),
 /// 			Condition: &cloudwatch.EventPermissionConditionArgs{
 /// 				Key:   pulumi.String("aws:PrincipalOrgID"),
 /// 				Type:  pulumi.String("StringEquals"),
 /// 				Value: pulumi.Any(example.Id),
 /// 			},
+/// 			Principal:   pulumi.String("*"),
+/// 			StatementId: pulumi.String("OrganizationAccess"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -210,13 +210,13 @@ import 'event_permission_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_eventpermission" "OrganizationAccess" {
-///   principal    = "*"
-///   statement_id = "OrganizationAccess"
 ///   condition = {
 ///     key   = "aws:PrincipalOrgID"
 ///     type  = "StringEquals"
 ///     value = example.id
 ///   }
+///   principal    = "*"
+///   statement_id = "OrganizationAccess"
 /// }
 /// ```
 /// ```java
@@ -242,13 +242,13 @@ import 'event_permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var organizationAccess = new EventPermission("organizationAccess", EventPermissionArgs.builder()
-///             .principal("*")
-///             .statementId("OrganizationAccess")
 ///             .condition(EventPermissionConditionArgs.builder()
 ///                 .key("aws:PrincipalOrgID")
 ///                 .type("StringEquals")
 ///                 .value(example.id())
 ///                 .build())
+///             .principal("*")
+///             .statementId("OrganizationAccess")
 ///             .build());
 ///
 ///     }
@@ -260,12 +260,12 @@ import 'event_permission_state.dart';
 ///     type: aws:cloudwatch:EventPermission
 ///     name: OrganizationAccess
 ///     properties:
-///       principal: '*'
-///       statementId: OrganizationAccess
 ///       condition:
 ///         key: aws:PrincipalOrgID
 ///         type: StringEquals
 ///         value: ${example.id}
+///       principal: '*'
+///       statementId: OrganizationAccess
 /// ```
 ///
 ///
@@ -315,7 +315,7 @@ class EventPermission extends pulumi.CustomResource {
           'aws:cloudwatch/eventPermission:EventPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<EventPermissionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPermissionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -330,11 +330,12 @@ class EventPermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventPermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventPermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,6 +349,23 @@ class EventPermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String?>('action');
+    condition = registerOutput<EventPermissionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPermissionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventBusName = registerOutput<String?>('eventBusName');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    statementId = registerOutput<String>('statementId');
+  }
+
+  /// Creates a typed reference to an existing [EventPermission] resource.
+  EventPermission.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventPermission:EventPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<EventPermissionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPermissionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventBusName = registerOutput<String?>('eventBusName');

@@ -7,11 +7,11 @@ import 'v2models_intent_qna_intent_configuration_data_source_configuration_opens
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
   /// Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrockKnowledgeStoreConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration>? bedrockKnowledgeStoreConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration?>? bedrockKnowledgeStoreConfiguration;
   /// Configuration block for Amazon Kendra as a data source. See `kendraConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration>? kendraConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration?>? kendraConfiguration;
   /// Configuration block for OpenSearch as a data source. See `opensearchConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration>? opensearchConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration?>? opensearchConfiguration;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfiguration].
   /// [bedrockKnowledgeStoreConfiguration] Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrockKnowledgeStoreConfiguration`.

@@ -7,13 +7,13 @@ class FirewallRuleState {
   /// The ending IP address to allow through the firewall for this rule.
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// The name of the firewall rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// The starting IP address to allow through the firewall for this rule.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
 
   /// Creates a new [FirewallRuleState].
   /// [endIpAddress] The ending IP address to allow through the firewall for this rule.

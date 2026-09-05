@@ -167,7 +167,7 @@ import 'job_state.dart';
 /// 		}
 /// 		_, err = batch.NewJob(ctx, "example", &batch.JobArgs{
 /// 			Name:        pulumi.String("examplejob"),
-/// 			BatchPoolId: examplePool.ID(),
+/// 			BatchPoolId: examplePool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -359,10 +359,10 @@ class Job extends pulumi.CustomResource {
           'azure:batch/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     batchPoolId = registerOutput<String>('batchPoolId');
-    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties');
+    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
@@ -374,11 +374,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,7 +394,24 @@ class Job extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     batchPoolId = registerOutput<String>('batchPoolId');
-    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties');
+    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int?>('priority');
+    taskRetryMaximum = registerOutput<int?>('taskRetryMaximum');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'azure:batch/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    batchPoolId = registerOutput<String>('batchPoolId');
+    commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorFirewallPolicyLogScrubbingScrubbingRule {
   /// Is this `scrubbingRule` enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The variable to be scrubbed from the logs. Possible values include `QueryStringArgNames`, `RequestBodyJsonArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`, `RequestIPAddress`, or `RequestUri`.
   ///
   /// &gt; **Note:** `RequestIPAddress` and `RequestUri` must use the `EqualsAny` `operator`.
   final pulumi.Input<String> matchVariable;
   /// When the `matchVariable` is a collection, operate on the `selector` to specify which elements in the collection this `scrubbingRule` applies to. Possible values are `Equals` or `EqualsAny`. Defaults to `Equals`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// When the `matchVariable` is a collection, the `operator` is used to specify which elements in the collection this `scrubbingRule` applies to.
   ///
   /// &gt; **Note:** The `selector` field cannot be set if the `operator` is set to `EqualsAny`.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
 
   /// Creates a new [FrontdoorFirewallPolicyLogScrubbingScrubbingRule].
   /// [enabled] Is this `scrubbingRule` enabled? Defaults to `true`.

@@ -11,15 +11,15 @@ class AgentcoreOauth2CredentialProviderArgs {
   /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
   final pulumi.Input<String> credentialProviderVendor;
   /// Name of the OAuth2 credential provider.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>? oauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>? oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderArgs].
   /// [credentialProviderVendor] Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.

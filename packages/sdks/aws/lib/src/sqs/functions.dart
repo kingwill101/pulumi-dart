@@ -126,6 +126,17 @@ Future<GetQueueResult> getQueue(
   return GetQueueResult.fromMap(result);
 }
 
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sqs/getQueue:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
+}
+
 /// Data source for managing an AWS SQS (Simple Queue) Queues.
 ///
 /// ## Example Usage
@@ -244,4 +255,15 @@ Future<GetQueuesResult> getQueues(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueuesResult.fromMap(result);
+}
+
+pulumi.Output<GetQueuesResult> getQueuesOutput(
+  GetQueuesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sqs/getQueues:getQueues',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueuesResult.fromMap);
 }

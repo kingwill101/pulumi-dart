@@ -5,8 +5,8 @@ import 'environment_storage_configuration_efs.dart';
 import 'environment_storage_configuration_fsx.dart';
 
 class EnvironmentStorageConfiguration {
-  final pulumi.Input<EnvironmentStorageConfigurationEfs>? efs;
-  final pulumi.Input<EnvironmentStorageConfigurationFsx>? fsx;
+  final pulumi.Input<EnvironmentStorageConfigurationEfs?>? efs;
+  final pulumi.Input<EnvironmentStorageConfigurationFsx?>? fsx;
 
   /// Creates a new [EnvironmentStorageConfiguration].
   /// [efs] Optional.

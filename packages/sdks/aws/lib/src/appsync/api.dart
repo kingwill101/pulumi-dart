@@ -15,7 +15,6 @@ import 'api_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.Api("example", {
-///     name: "example-event-api",
 ///     eventConfig: {
 ///         authProviders: [{
 ///             authType: "API_KEY",
@@ -30,6 +29,7 @@ import 'api_state.dart';
 ///             authType: "API_KEY",
 ///         }],
 ///     },
+///     name: "example-event-api",
 /// });
 /// ```
 /// ```python
@@ -37,7 +37,6 @@ import 'api_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.Api("example",
-///     name="example-event-api",
 ///     event_config={
 ///         "auth_providers": [{
 ///             "auth_type": "API_KEY",
@@ -51,7 +50,8 @@ import 'api_state.dart';
 ///         "default_subscribe_auth_modes": [{
 ///             "auth_type": "API_KEY",
 ///         }],
-///     })
+///     },
+///     name="example-event-api")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -63,7 +63,6 @@ import 'api_state.dart';
 /// {
 ///     var example = new Aws.AppSync.Api("example", new()
 ///     {
-///         Name = "example-event-api",
 ///         EventConfig = new Aws.AppSync.Inputs.ApiEventConfigArgs
 ///         {
 ///             AuthProviders = new[]
@@ -95,6 +94,7 @@ import 'api_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-event-api",
 ///     });
 ///
 /// });
@@ -110,7 +110,6 @@ import 'api_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appsync.NewApi(ctx, "example", &appsync.ApiArgs{
-/// 			Name: pulumi.String("example-event-api"),
 /// 			EventConfig: &appsync.ApiEventConfigArgs{
 /// 				AuthProviders: appsync.ApiEventConfigAuthProviderArray{
 /// 					&appsync.ApiEventConfigAuthProviderArgs{
@@ -133,6 +132,7 @@ import 'api_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-event-api"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -151,7 +151,6 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_appsync_api" "example" {
-///   name = "example-event-api"
 ///   event_config = {
 ///     auth_providers = [{
 ///       "authType" = "API_KEY"
@@ -166,6 +165,7 @@ import 'api_state.dart';
 ///       "authType" = "API_KEY"
 ///     }]
 ///   }
+///   name = "example-event-api"
 /// }
 /// ```
 /// ```java
@@ -195,7 +195,6 @@ import 'api_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Api("example", ApiArgs.builder()
-///             .name("example-event-api")
 ///             .eventConfig(ApiEventConfigArgs.builder()
 ///                 .authProviders(ApiEventConfigAuthProviderArgs.builder()
 ///                     .authType("API_KEY")
@@ -210,6 +209,7 @@ import 'api_state.dart';
 ///                     .authType("API_KEY")
 ///                     .build())
 ///                 .build())
+///             .name("example-event-api")
 ///             .build());
 ///
 ///     }
@@ -220,7 +220,6 @@ import 'api_state.dart';
 ///   example:
 ///     type: aws:appsync:Api
 ///     properties:
-///       name: example-event-api
 ///       eventConfig:
 ///         authProviders:
 ///           - authType: API_KEY
@@ -230,6 +229,7 @@ import 'api_state.dart';
 ///           - authType: API_KEY
 ///         defaultSubscribeAuthModes:
 ///           - authType: API_KEY
+///       name: example-event-api
 /// ```
 ///
 ///
@@ -243,14 +243,13 @@ import 'api_state.dart';
 /// const example = new aws.cognito.UserPool("example", {name: "example-user-pool"});
 /// const current = aws.getRegion({});
 /// const exampleApi = new aws.appsync.Api("example", {
-///     name: "example-event-api",
 ///     eventConfig: {
 ///         authProviders: [{
-///             authType: "AMAZON_COGNITO_USER_POOLS",
 ///             cognitoConfig: {
 ///                 userPoolId: example.id,
 ///                 awsRegion: current.then(current => current.region),
 ///             },
+///             authType: "AMAZON_COGNITO_USER_POOLS",
 ///         }],
 ///         connectionAuthModes: [{
 ///             authType: "AMAZON_COGNITO_USER_POOLS",
@@ -262,6 +261,7 @@ import 'api_state.dart';
 ///             authType: "AMAZON_COGNITO_USER_POOLS",
 ///         }],
 ///     },
+///     name: "example-event-api",
 /// });
 /// ```
 /// ```python
@@ -271,14 +271,13 @@ import 'api_state.dart';
 /// example = aws.cognito.UserPool("example", name="example-user-pool")
 /// current = aws.get_region()
 /// example_api = aws.appsync.Api("example",
-///     name="example-event-api",
 ///     event_config={
 ///         "auth_providers": [{
-///             "auth_type": "AMAZON_COGNITO_USER_POOLS",
 ///             "cognito_config": {
 ///                 "user_pool_id": example.id,
 ///                 "aws_region": current.region,
 ///             },
+///             "auth_type": "AMAZON_COGNITO_USER_POOLS",
 ///         }],
 ///         "connection_auth_modes": [{
 ///             "auth_type": "AMAZON_COGNITO_USER_POOLS",
@@ -289,7 +288,8 @@ import 'api_state.dart';
 ///         "default_subscribe_auth_modes": [{
 ///             "auth_type": "AMAZON_COGNITO_USER_POOLS",
 ///         }],
-///     })
+///     },
+///     name="example-event-api")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -308,19 +308,18 @@ import 'api_state.dart';
 ///
 ///     var exampleApi = new Aws.AppSync.Api("example", new()
 ///     {
-///         Name = "example-event-api",
 ///         EventConfig = new Aws.AppSync.Inputs.ApiEventConfigArgs
 ///         {
 ///             AuthProviders = new[]
 ///             {
 ///                 new Aws.AppSync.Inputs.ApiEventConfigAuthProviderArgs
 ///                 {
-///                     AuthType = "AMAZON_COGNITO_USER_POOLS",
 ///                     CognitoConfig = new Aws.AppSync.Inputs.ApiEventConfigAuthProviderCognitoConfigArgs
 ///                     {
 ///                         UserPoolId = example.Id,
 ///                         AwsRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///                     },
+///                     AuthType = "AMAZON_COGNITO_USER_POOLS",
 ///                 },
 ///             },
 ///             ConnectionAuthModes = new[]
@@ -345,6 +344,7 @@ import 'api_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-event-api",
 ///     });
 ///
 /// });
@@ -372,15 +372,14 @@ import 'api_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewApi(ctx, "example", &appsync.ApiArgs{
-/// 			Name: pulumi.String("example-event-api"),
 /// 			EventConfig: &appsync.ApiEventConfigArgs{
 /// 				AuthProviders: appsync.ApiEventConfigAuthProviderArray{
 /// 					&appsync.ApiEventConfigAuthProviderArgs{
-/// 						AuthType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
 /// 						CognitoConfig: &appsync.ApiEventConfigAuthProviderCognitoConfigArgs{
 /// 							UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 							AwsRegion:  pulumi.String(current.Region),
 /// 						},
+/// 						AuthType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
 /// 					},
 /// 				},
 /// 				ConnectionAuthModes: appsync.ApiEventConfigConnectionAuthModeArray{
@@ -399,6 +398,7 @@ import 'api_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-event-api"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -423,14 +423,13 @@ import 'api_state.dart';
 ///   name = "example-user-pool"
 /// }
 /// resource "aws_appsync_api" "example" {
-///   name = "example-event-api"
 ///   event_config = {
 ///     auth_providers = [{
-///       "authType" = "AMAZON_COGNITO_USER_POOLS"
 ///       "cognitoConfig" = {
 ///         "userPoolId" = aws_cognito_userpool.example.id
 ///         "awsRegion"  = data.aws_getregion.current.region
 ///       }
+///       "authType" = "AMAZON_COGNITO_USER_POOLS"
 ///     }]
 ///     connection_auth_modes = [{
 ///       "authType" = "AMAZON_COGNITO_USER_POOLS"
@@ -442,6 +441,7 @@ import 'api_state.dart';
 ///       "authType" = "AMAZON_COGNITO_USER_POOLS"
 ///     }]
 ///   }
+///   name = "example-event-api"
 /// }
 /// ```
 /// ```java
@@ -483,14 +483,13 @@ import 'api_state.dart';
 ///             .build());
 ///
 ///         var exampleApi = new Api("exampleApi", ApiArgs.builder()
-///             .name("example-event-api")
 ///             .eventConfig(ApiEventConfigArgs.builder()
 ///                 .authProviders(ApiEventConfigAuthProviderArgs.builder()
-///                     .authType("AMAZON_COGNITO_USER_POOLS")
 ///                     .cognitoConfig(ApiEventConfigAuthProviderCognitoConfigArgs.builder()
 ///                         .userPoolId(example.id())
 ///                         .awsRegion(current.region())
 ///                         .build())
+///                     .authType("AMAZON_COGNITO_USER_POOLS")
 ///                     .build())
 ///                 .connectionAuthModes(ApiEventConfigConnectionAuthModeArgs.builder()
 ///                     .authType("AMAZON_COGNITO_USER_POOLS")
@@ -502,6 +501,7 @@ import 'api_state.dart';
 ///                     .authType("AMAZON_COGNITO_USER_POOLS")
 ///                     .build())
 ///                 .build())
+///             .name("example-event-api")
 ///             .build());
 ///
 ///     }
@@ -517,19 +517,19 @@ import 'api_state.dart';
 ///     type: aws:appsync:Api
 ///     name: example
 ///     properties:
-///       name: example-event-api
 ///       eventConfig:
 ///         authProviders:
-///           - authType: AMAZON_COGNITO_USER_POOLS
-///             cognitoConfig:
+///           - cognitoConfig:
 ///               userPoolId: ${example.id}
 ///               awsRegion: ${current.region}
+///             authType: AMAZON_COGNITO_USER_POOLS
 ///         connectionAuthModes:
 ///           - authType: AMAZON_COGNITO_USER_POOLS
 ///         defaultPublishAuthModes:
 ///           - authType: AMAZON_COGNITO_USER_POOLS
 ///         defaultSubscribeAuthModes:
 ///           - authType: AMAZON_COGNITO_USER_POOLS
+///       name: example-event-api
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -546,14 +546,13 @@ import 'api_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appsync.Api("example", {
-///     name: "example-event-api",
 ///     eventConfig: {
 ///         authProviders: [{
-///             authType: "AWS_LAMBDA",
 ///             lambdaAuthorizerConfig: {
 ///                 authorizerUri: exampleAwsLambdaFunction.arn,
 ///                 authorizerResultTtlInSeconds: 300,
 ///             },
+///             authType: "AWS_LAMBDA",
 ///         }],
 ///         connectionAuthModes: [{
 ///             authType: "AWS_LAMBDA",
@@ -565,6 +564,7 @@ import 'api_state.dart';
 ///             authType: "AWS_LAMBDA",
 ///         }],
 ///     },
+///     name: "example-event-api",
 /// });
 /// ```
 /// ```python
@@ -572,14 +572,13 @@ import 'api_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appsync.Api("example",
-///     name="example-event-api",
 ///     event_config={
 ///         "auth_providers": [{
-///             "auth_type": "AWS_LAMBDA",
 ///             "lambda_authorizer_config": {
 ///                 "authorizer_uri": example_aws_lambda_function["arn"],
 ///                 "authorizer_result_ttl_in_seconds": 300,
 ///             },
+///             "auth_type": "AWS_LAMBDA",
 ///         }],
 ///         "connection_auth_modes": [{
 ///             "auth_type": "AWS_LAMBDA",
@@ -590,7 +589,8 @@ import 'api_state.dart';
 ///         "default_subscribe_auth_modes": [{
 ///             "auth_type": "AWS_LAMBDA",
 ///         }],
-///     })
+///     },
+///     name="example-event-api")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -602,19 +602,18 @@ import 'api_state.dart';
 /// {
 ///     var example = new Aws.AppSync.Api("example", new()
 ///     {
-///         Name = "example-event-api",
 ///         EventConfig = new Aws.AppSync.Inputs.ApiEventConfigArgs
 ///         {
 ///             AuthProviders = new[]
 ///             {
 ///                 new Aws.AppSync.Inputs.ApiEventConfigAuthProviderArgs
 ///                 {
-///                     AuthType = "AWS_LAMBDA",
 ///                     LambdaAuthorizerConfig = new Aws.AppSync.Inputs.ApiEventConfigAuthProviderLambdaAuthorizerConfigArgs
 ///                     {
 ///                         AuthorizerUri = exampleAwsLambdaFunction.Arn,
 ///                         AuthorizerResultTtlInSeconds = 300,
 ///                     },
+///                     AuthType = "AWS_LAMBDA",
 ///                 },
 ///             },
 ///             ConnectionAuthModes = new[]
@@ -639,6 +638,7 @@ import 'api_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-event-api",
 ///     });
 ///
 /// });
@@ -654,15 +654,14 @@ import 'api_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appsync.NewApi(ctx, "example", &appsync.ApiArgs{
-/// 			Name: pulumi.String("example-event-api"),
 /// 			EventConfig: &appsync.ApiEventConfigArgs{
 /// 				AuthProviders: appsync.ApiEventConfigAuthProviderArray{
 /// 					&appsync.ApiEventConfigAuthProviderArgs{
-/// 						AuthType: pulumi.String("AWS_LAMBDA"),
 /// 						LambdaAuthorizerConfig: &appsync.ApiEventConfigAuthProviderLambdaAuthorizerConfigArgs{
 /// 							AuthorizerUri:                pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 							AuthorizerResultTtlInSeconds: pulumi.Int(300),
 /// 						},
+/// 						AuthType: pulumi.String("AWS_LAMBDA"),
 /// 					},
 /// 				},
 /// 				ConnectionAuthModes: appsync.ApiEventConfigConnectionAuthModeArray{
@@ -681,6 +680,7 @@ import 'api_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-event-api"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -699,14 +699,13 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_appsync_api" "example" {
-///   name = "example-event-api"
 ///   event_config = {
 ///     auth_providers = [{
-///       "authType" = "AWS_LAMBDA"
 ///       "lambdaAuthorizerConfig" = {
 ///         "authorizerUri"                = exampleAwsLambdaFunction.arn
 ///         "authorizerResultTtlInSeconds" = 300
 ///       }
+///       "authType" = "AWS_LAMBDA"
 ///     }]
 ///     connection_auth_modes = [{
 ///       "authType" = "AWS_LAMBDA"
@@ -718,6 +717,7 @@ import 'api_state.dart';
 ///       "authType" = "AWS_LAMBDA"
 ///     }]
 ///   }
+///   name = "example-event-api"
 /// }
 /// ```
 /// ```java
@@ -748,14 +748,13 @@ import 'api_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Api("example", ApiArgs.builder()
-///             .name("example-event-api")
 ///             .eventConfig(ApiEventConfigArgs.builder()
 ///                 .authProviders(ApiEventConfigAuthProviderArgs.builder()
-///                     .authType("AWS_LAMBDA")
 ///                     .lambdaAuthorizerConfig(ApiEventConfigAuthProviderLambdaAuthorizerConfigArgs.builder()
 ///                         .authorizerUri(exampleAwsLambdaFunction.arn())
 ///                         .authorizerResultTtlInSeconds(300)
 ///                         .build())
+///                     .authType("AWS_LAMBDA")
 ///                     .build())
 ///                 .connectionAuthModes(ApiEventConfigConnectionAuthModeArgs.builder()
 ///                     .authType("AWS_LAMBDA")
@@ -767,6 +766,7 @@ import 'api_state.dart';
 ///                     .authType("AWS_LAMBDA")
 ///                     .build())
 ///                 .build())
+///             .name("example-event-api")
 ///             .build());
 ///
 ///     }
@@ -777,19 +777,19 @@ import 'api_state.dart';
 ///   example:
 ///     type: aws:appsync:Api
 ///     properties:
-///       name: example-event-api
 ///       eventConfig:
 ///         authProviders:
-///           - authType: AWS_LAMBDA
-///             lambdaAuthorizerConfig:
+///           - lambdaAuthorizerConfig:
 ///               authorizerUri: ${exampleAwsLambdaFunction.arn}
 ///               authorizerResultTtlInSeconds: 300
+///             authType: AWS_LAMBDA
 ///         connectionAuthModes:
 ///           - authType: AWS_LAMBDA
 ///         defaultPublishAuthModes:
 ///           - authType: AWS_LAMBDA
 ///         defaultSubscribeAuthModes:
 ///           - authType: AWS_LAMBDA
+///       name: example-event-api
 /// ```
 ///
 ///
@@ -838,17 +838,17 @@ class Api extends pulumi.CustomResource {
           'aws:appsync/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
-    dns = registerOutput<Map<String, String>>('dns');
+    dns = registerOutput<Map<String, String>>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     eventConfig = registerOutput<ApiEventConfig>('eventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     wafWebAclArn = registerOutput<String>('wafWebAclArn');
     xrayEnabled = registerOutput<bool>('xrayEnabled');
   }
@@ -858,11 +858,12 @@ class Api extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Api._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -878,13 +879,35 @@ class Api extends pulumi.CustomResource {
         ) {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
-    dns = registerOutput<Map<String, String>>('dns');
+    dns = registerOutput<Map<String, String>>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     eventConfig = registerOutput<ApiEventConfig>('eventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    wafWebAclArn = registerOutput<String>('wafWebAclArn');
+    xrayEnabled = registerOutput<bool>('xrayEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'aws:appsync/api:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiArn = registerOutput<String>('apiArn');
+    apiId = registerOutput<String>('apiId');
+    dns = registerOutput<Map<String, String>>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventConfig = registerOutput<ApiEventConfig>('eventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    ownerContact = registerOutput<String?>('ownerContact');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     wafWebAclArn = registerOutput<String>('wafWebAclArn');
     xrayEnabled = registerOutput<bool>('xrayEnabled');
   }

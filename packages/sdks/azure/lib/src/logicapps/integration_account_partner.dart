@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_account_partner_args.dart';
+import 'integration_account_partner_business_identity.dart';
 import 'integration_account_partner_state.dart';
 
 /// Manages a Logic App Integration Account Partner.
@@ -260,7 +261,7 @@ import 'integration_account_partner_state.dart';
 /// ```
 class IntegrationAccountPartner extends pulumi.CustomResource {
   /// A `businessIdentity` block as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> businessIdentities;
+  late final pulumi.Output<List<IntegrationAccountPartnerBusinessIdentity>> businessIdentities;
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   late final pulumi.Output<String> integrationAccountName;
   /// A JSON mapping of any Metadata for this Logic App Integration Account Partner.
@@ -282,9 +283,9 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    businessIdentities = registerOutput<List<Map<String, dynamic>>>('businessIdentities');
+    businessIdentities = registerOutput<List<IntegrationAccountPartnerBusinessIdentity>>('businessIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(guardedValue, (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     integrationAccountName = registerOutput<String>('integrationAccountName');
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
@@ -296,11 +297,12 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountPartnerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountPartner._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,7 +316,23 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    businessIdentities = registerOutput<List<Map<String, dynamic>>>('businessIdentities');
+    businessIdentities = registerOutput<List<IntegrationAccountPartnerBusinessIdentity>>('businessIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(guardedValue, (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<String?>('metadata');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountPartner] resource.
+  IntegrationAccountPartner.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountPartner:IntegrationAccountPartner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    businessIdentities = registerOutput<List<IntegrationAccountPartnerBusinessIdentity>>('businessIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationAccountPartnerBusinessIdentity>(guardedValue, (value) => IntegrationAccountPartnerBusinessIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     integrationAccountName = registerOutput<String>('integrationAccountName');
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');

@@ -260,7 +260,7 @@ import 'image_version_state.dart';
 class ImageVersion extends pulumi.CustomResource {
   /// A list of aliases for the image version.
   late final pulumi.Output<List<String>?> aliases;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Image Version.
+  /// ARN assigned by AWS to this Image Version.
   late final pulumi.Output<String> arn;
   /// The registry path of the container image on which this image version is based.
   late final pulumi.Output<String> baseImage;
@@ -300,9 +300,9 @@ class ImageVersion extends pulumi.CustomResource {
           'aws:sagemaker/imageVersion:ImageVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    aliases = registerOutput<List<String>?>('aliases');
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     baseImage = registerOutput<String>('baseImage');
     containerImage = registerOutput<String>('containerImage');
@@ -324,11 +324,12 @@ class ImageVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImageVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -342,7 +343,33 @@ class ImageVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aliases = registerOutput<List<String>?>('aliases');
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    baseImage = registerOutput<String>('baseImage');
+    containerImage = registerOutput<String>('containerImage');
+    horovod = registerOutput<bool?>('horovod');
+    imageArn = registerOutput<String>('imageArn');
+    imageName = registerOutput<String>('imageName');
+    jobType = registerOutput<String?>('jobType');
+    mlFramework = registerOutput<String?>('mlFramework');
+    processor = registerOutput<String?>('processor');
+    programmingLang = registerOutput<String?>('programmingLang');
+    region = registerOutput<String>('region');
+    releaseNotes = registerOutput<String?>('releaseNotes');
+    vendorGuidance = registerOutput<String?>('vendorGuidance');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [ImageVersion] resource.
+  ImageVersion.reference(String urn)
+    : super(
+        'aws:sagemaker/imageVersion:ImageVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     baseImage = registerOutput<String>('baseImage');
     containerImage = registerOutput<String>('containerImage');

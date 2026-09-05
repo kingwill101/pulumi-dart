@@ -8,15 +8,15 @@ import 'agentcore_gateway_target_credential_provider_configuration_oauth.dart';
 
 class AgentcoreGatewayTargetCredentialProviderConfiguration {
   /// API key-based authentication configuration. See `apiKey` below.
-  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationApiKey>? apiKey;
+  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationApiKey?>? apiKey;
   /// Caller IAM credentials-based authentication configuration. See `callerIamCredentials` below.
-  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials>? callerIamCredentials;
+  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials?>? callerIamCredentials;
   /// Use the gateway's IAM role for authentication. See `gatewayIamRole` below.
-  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRole>? gatewayIamRole;
+  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRole?>? gatewayIamRole;
   /// JWT passthrough-based authentication configuration. This is an empty configuration block.
-  final pulumi.Input<Map<String, dynamic>>? jwtPassthrough;
+  final pulumi.Input<Map<String, dynamic>?>? jwtPassthrough;
   /// OAuth-based authentication configuration. See `oauth` below.
-  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationOauth>? oauth;
+  final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationOauth?>? oauth;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfiguration].
   /// [apiKey] API key-based authentication configuration. See `apiKey` below.

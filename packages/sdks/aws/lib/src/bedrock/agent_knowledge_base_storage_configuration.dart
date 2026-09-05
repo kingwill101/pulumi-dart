@@ -12,21 +12,21 @@ import 'agent_knowledge_base_storage_configuration_s3_vectors_configuration.dart
 
 class AgentKnowledgeBaseStorageConfiguration {
   /// The storage configuration of the knowledge base in MongoDB Atlas. See `mongoDbAtlasConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration>? mongoDbAtlasConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration?>? mongoDbAtlasConfiguration;
   /// The storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptuneAnalyticsConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration>? neptuneAnalyticsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration?>? neptuneAnalyticsConfiguration;
   /// The storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearchManagedClusterConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration>? opensearchManagedClusterConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration?>? opensearchManagedClusterConfiguration;
   /// The storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearchServerlessConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration>? opensearchServerlessConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration?>? opensearchServerlessConfiguration;
   /// The storage configuration of the knowledge base in Pinecone. See `pineconeConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfiguration>? pineconeConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfiguration?>? pineconeConfiguration;
   /// Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rdsConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRdsConfiguration>? rdsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRdsConfiguration?>? rdsConfiguration;
   /// The storage configuration of the knowledge base in Redis Enterprise Cloud. See `redisEnterpriseCloudConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration>? redisEnterpriseCloudConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration?>? redisEnterpriseCloudConfiguration;
   /// The storage configuration of the knowledge base in Amazon S3 Vectors. See `s3VectorsConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration>? s3VectorsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration?>? s3VectorsConfiguration;
   /// Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   final pulumi.Input<String> type;
 

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_web_chat_args.dart';
+import 'channel_web_chat_site.dart';
 import 'channel_web_chat_state.dart';
 
 /// Manages a Web Chat integration for a Bot Channel
@@ -278,7 +279,7 @@ class ChannelWebChat extends pulumi.CustomResource {
   /// The name of the resource group where the Web Chat Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sites;
+  late final pulumi.Output<List<ChannelWebChatSite>?> sites;
 
   /// Creates a new [ChannelWebChat].
   /// [name] The Pulumi resource name.
@@ -292,12 +293,12 @@ class ChannelWebChat extends pulumi.CustomResource {
           'azure:bot/channelWebChat:ChannelWebChat',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sites = registerOutput<List<Map<String, dynamic>>?>('sites');
+    sites = registerOutput<List<ChannelWebChatSite>?>('sites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelWebChatSite>(guardedValue, (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ChannelWebChat] resource's state with the given [name] and [id].
@@ -305,11 +306,12 @@ class ChannelWebChat extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelWebChatState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelWebChat._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -326,6 +328,21 @@ class ChannelWebChat extends pulumi.CustomResource {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sites = registerOutput<List<Map<String, dynamic>>?>('sites');
+    sites = registerOutput<List<ChannelWebChatSite>?>('sites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelWebChatSite>(guardedValue, (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ChannelWebChat] resource.
+  ChannelWebChat.reference(String urn)
+    : super(
+        'azure:bot/channelWebChat:ChannelWebChat',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sites = registerOutput<List<ChannelWebChatSite>?>('sites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelWebChatSite>(guardedValue, (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

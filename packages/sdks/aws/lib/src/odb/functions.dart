@@ -156,6 +156,17 @@ Future<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmCluster(
   return GetCloudAutonomousVmClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudAutonomousVmClusterResult> getCloudAutonomousVmClusterOutput(
+  GetCloudAutonomousVmClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudAutonomousVmCluster:getCloudAutonomousVmCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudAutonomousVmClusterResult.fromMap);
+}
+
 /// Data source for managing cloud autonomous vm clusters in AWS for Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -266,6 +277,17 @@ Future<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClusters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudAutonomousVmClustersResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClustersOutput(
+  GetCloudAutonomousVmClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudAutonomousVmClusters:getCloudAutonomousVmClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudAutonomousVmClustersResult.fromMap);
 }
 
 /// Data source for exadata infrastructure resource in AWS for Oracle Database@AWS.
@@ -390,6 +412,17 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
   return GetCloudExadataInfrastructureResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructureOutput(
+  GetCloudExadataInfrastructureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudExadataInfrastructure:getCloudExadataInfrastructure',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudExadataInfrastructureResult.fromMap);
+}
+
 /// Data source for exadata infrastructures in AWS for Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -500,6 +533,17 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudExadataInfrastructuresResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructuresOutput(
+  GetCloudExadataInfrastructuresArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudExadataInfrastructures:getCloudExadataInfrastructures',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudExadataInfrastructuresResult.fromMap);
 }
 
 /// Data source for cloud vm cluster in AWS for Oracle Database@AWS.
@@ -624,6 +668,17 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
   return GetCloudVmClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
+  GetCloudVmClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudVmCluster:getCloudVmCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudVmClusterResult.fromMap);
+}
+
 /// Data source for retrieving all cloud vm clusters AWS for Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -734,6 +789,17 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudVmClustersResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
+  GetCloudVmClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getCloudVmClusters:getCloudVmClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudVmClustersResult.fromMap);
 }
 
 /// Data source for manging db nodes linked to cloud vm cluster of Oracle Database@AWS.
@@ -865,6 +931,17 @@ Future<GetDbNodeResult> getDbNode(
   return GetDbNodeResult.fromMap(result);
 }
 
+pulumi.Output<GetDbNodeResult> getDbNodeOutput(
+  GetDbNodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getDbNode:getDbNode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbNodeResult.fromMap);
+}
+
 /// Data source for manging db nodes linked to cloud vm cluster of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -985,6 +1062,17 @@ Future<GetDbNodesResult> getDbNodes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbNodesResult.fromMap(result);
+}
+
+pulumi.Output<GetDbNodesResult> getDbNodesOutput(
+  GetDbNodesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getDbNodes:getDbNodes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbNodesResult.fromMap);
 }
 
 /// Data source for manging db server linked to exadata infrastructure of Oracle Database@AWS.
@@ -1116,6 +1204,17 @@ Future<GetDbServerResult> getDbServer(
   return GetDbServerResult.fromMap(result);
 }
 
+pulumi.Output<GetDbServerResult> getDbServerOutput(
+  GetDbServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getDbServer:getDbServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbServerResult.fromMap);
+}
+
 /// Data source for manging db servers linked to exadata infrastructure of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -1238,6 +1337,17 @@ Future<GetDbServersResult> getDbServers(
   return GetDbServersResult.fromMap(result);
 }
 
+pulumi.Output<GetDbServersResult> getDbServersOutput(
+  GetDbServersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getDbServers:getDbServers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbServersResult.fromMap);
+}
+
 /// Data source to retrieve available system shapes Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -1350,6 +1460,17 @@ Future<GetDbSystemShapesResult> getDbSystemShapes(
   return GetDbSystemShapesResult.fromMap(result);
 }
 
+pulumi.Output<GetDbSystemShapesResult> getDbSystemShapesOutput(
+  GetDbSystemShapesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getDbSystemShapes:getDbSystemShapes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbSystemShapesResult.fromMap);
+}
+
 /// Data source to retrieve available Grid Infrastructure versions of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -1366,6 +1487,17 @@ Future<GetGiVersionsResult> getGiVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGiVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
+  GetGiVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getGiVersions:getGiVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGiVersionsResult.fromMap);
 }
 
 /// Provides details about an AWS Oracle Database@AWS Associate Disassociate IAM Role.
@@ -1495,6 +1627,17 @@ Future<GetIamRoleAssociationResult> getIamRoleAssociation(
   return GetIamRoleAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetIamRoleAssociationResult> getIamRoleAssociationOutput(
+  GetIamRoleAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getIamRoleAssociation:getIamRoleAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamRoleAssociationResult.fromMap);
+}
+
 /// Data source for to retrieve network resource in AWS for Oracle Database@AWS.
 ///
 /// ## Example Usage
@@ -1613,6 +1756,17 @@ Future<GetNetworkResult> getNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
 }
 
 /// Data source for managing oracle database network peering resource in AWS.
@@ -1737,6 +1891,17 @@ Future<GetNetworkPeeringConnectionResult> getNetworkPeeringConnection(
   return GetNetworkPeeringConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkPeeringConnectionResult> getNetworkPeeringConnectionOutput(
+  GetNetworkPeeringConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getNetworkPeeringConnection:getNetworkPeeringConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPeeringConnectionResult.fromMap);
+}
+
 /// Data source for retrieving all oracle database network peering resource in Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
@@ -1849,6 +2014,17 @@ Future<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnections(
   return GetNetworkPeeringConnectionsResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnectionsOutput(
+  GetNetworkPeeringConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getNetworkPeeringConnections:getNetworkPeeringConnections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPeeringConnectionsResult.fromMap);
+}
+
 /// Data source for to retrieve networks from AWS for Oracle Database@AWS.
 ///
 /// ## Example Usage
@@ -1957,4 +2133,15 @@ Future<GetNetworksResult> getNetworks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworksResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworksResult> getNetworksOutput(
+  GetNetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getNetworks:getNetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworksResult.fromMap);
 }

@@ -538,15 +538,15 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
           'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
     replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
     replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -555,11 +555,12 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationSubnetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationSubnetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -577,9 +578,28 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
     replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
     replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
     replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationSubnetGroup] resource.
+  ReplicationSubnetGroup.reference(String urn)
+    : super(
+        'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
+    replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
+    replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

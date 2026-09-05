@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiagnosticSettingEnabledLogRetentionPolicy {
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [DiagnosticSettingEnabledLogRetentionPolicy].
@@ -23,7 +23,7 @@ class DiagnosticSettingEnabledLogRetentionPolicy {
 
   factory DiagnosticSettingEnabledLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingEnabledLogRetentionPolicy(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

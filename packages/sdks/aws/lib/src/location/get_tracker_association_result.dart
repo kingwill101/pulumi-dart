@@ -3,39 +3,39 @@
 
 /// Result data returned by getTrackerAssociation.
 class GetTrackerAssociationResult {
-  final String consumerArn;
+  final String? consumerArn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
-  final String trackerName;
+  final String? id;
+  final String? region;
+  final String? trackerName;
 
   /// Creates a new [GetTrackerAssociationResult].
-  /// [consumerArn] Required.
+  /// [consumerArn] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
-  /// [trackerName] Required.
+  /// [region] Optional.
+  /// [trackerName] Optional.
   const GetTrackerAssociationResult({
-    required this.consumerArn,
-    required this.id,
-    required this.region,
-    required this.trackerName,
+    this.consumerArn,
+    this.id,
+    this.region,
+    this.trackerName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumerArn': consumerArn,
-      'id': id,
-      'region': region,
-      'trackerName': trackerName,
+      'consumerArn': ?consumerArn,
+      'id': ?id,
+      'region': ?region,
+      'trackerName': ?trackerName,
     };
   }
 
   factory GetTrackerAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetTrackerAssociationResult(
-      consumerArn: map['consumerArn'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
-      trackerName: map['trackerName'] as String,
+      consumerArn: (() { final guardedValue = map['consumerArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trackerName: (() { final guardedValue = map['trackerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

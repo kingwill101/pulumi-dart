@@ -36,9 +36,9 @@ class GetSnapshotPolicyWeeklySchedule {
   factory GetSnapshotPolicyWeeklySchedule.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyWeeklySchedule(
       daysOfWeeks: pulumi.Input.fromValue((map['daysOfWeeks'] as List).cast<String>()),
-      hour: pulumi.Input.fromValue(map['hour'] as int),
-      minute: pulumi.Input.fromValue(map['minute'] as int),
-      snapshotsToKeep: pulumi.Input.fromValue(map['snapshotsToKeep'] as int),
+      hour: pulumi.Input.fromValue((map['hour'] as num).toInt()),
+      minute: pulumi.Input.fromValue((map['minute'] as num).toInt()),
+      snapshotsToKeep: pulumi.Input.fromValue((map['snapshotsToKeep'] as num).toInt()),
     );
   }
 }

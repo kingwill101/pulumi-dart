@@ -9,30 +9,30 @@ import 'folder_permission.dart';
 /// {@macro pulumi_quicksight_folder_folder_args_doc}
 class FolderArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Identifier for the folder.
   final pulumi.Input<String> folderId;
   /// The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
-  final pulumi.Input<String>? folderType;
+  final pulumi.Input<String?>? folderType;
   /// Display name for the folder.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
-  /// The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
-  final pulumi.Input<String>? parentFolderArn;
+  final pulumi.Input<String?>? name;
+  /// ARN for the parent folder. If not set, creates a root-level folder.
+  final pulumi.Input<String?>? parentFolderArn;
   /// A set of resource permissions on the folder. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<FolderPermission>>? permissions;
+  final pulumi.Input<List<FolderPermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FolderArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [folderId] Identifier for the folder.
   /// [folderType] The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
   /// [name] Display name for the folder.
-  /// [parentFolderArn] The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
+  /// [parentFolderArn] ARN for the parent folder. If not set, creates a root-level folder.
   /// [permissions] A set of resource permissions on the folder. Maximum of 64 items. See permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

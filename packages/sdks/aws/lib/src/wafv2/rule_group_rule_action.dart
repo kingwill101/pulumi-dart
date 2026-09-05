@@ -9,15 +9,15 @@ import 'rule_group_rule_action_count.dart';
 
 class RuleGroupRuleAction {
   /// Instructs AWS WAF to allow the web request. See Allow below for details.
-  final pulumi.Input<RuleGroupRuleActionAllow>? allow;
+  final pulumi.Input<RuleGroupRuleActionAllow?>? allow;
   /// Instructs AWS WAF to block the web request. See Block below for details.
-  final pulumi.Input<RuleGroupRuleActionBlock>? block;
+  final pulumi.Input<RuleGroupRuleActionBlock?>? block;
   /// Instructs AWS WAF to run a `CAPTCHA` check against the web request. See Captcha below for details.
-  final pulumi.Input<RuleGroupRuleActionCaptcha>? captcha;
+  final pulumi.Input<RuleGroupRuleActionCaptcha?>? captcha;
   /// Instructs AWS WAF to run a check against the request to verify that the request is coming from a legitimate client session. See Challenge below for details.
-  final pulumi.Input<RuleGroupRuleActionChallenge>? challenge;
+  final pulumi.Input<RuleGroupRuleActionChallenge?>? challenge;
   /// Instructs AWS WAF to count the web request and allow it. See Count below for details.
-  final pulumi.Input<RuleGroupRuleActionCount>? count;
+  final pulumi.Input<RuleGroupRuleActionCount?>? count;
 
   /// Creates a new [RuleGroupRuleAction].
   /// [allow] Instructs AWS WAF to allow the web request. See Allow below for details.

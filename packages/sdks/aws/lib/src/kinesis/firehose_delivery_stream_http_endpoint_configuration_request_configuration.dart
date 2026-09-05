@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_http_endpoint_configuration_request_configurati
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
   /// Describes the metadata sent to the HTTP endpoint destination. See `commonAttributes` block below for details.
-  final pulumi.Input<List<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>>? commonAttributes;
+  final pulumi.Input<List<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>?>? commonAttributes;
   /// Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination. Valid values are `NONE` and `GZIP`.  Default value is `NONE`.
-  final pulumi.Input<String>? contentEncoding;
+  final pulumi.Input<String?>? contentEncoding;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration].
   /// [commonAttributes] Describes the metadata sent to the HTTP endpoint destination. See `commonAttributes` block below for details.

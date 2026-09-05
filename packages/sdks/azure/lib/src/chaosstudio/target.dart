@@ -154,7 +154,7 @@ import 'target_state.dart';
 /// 		}
 /// 		_, err = chaosstudio.NewTarget(ctx, "example", &chaosstudio.TargetArgs{
 /// 			Location:         exampleResourceGroup.Location,
-/// 			TargetResourceId: example.ID(),
+/// 			TargetResourceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetType:       pulumi.String("example-value"),
 /// 		})
 /// 		if err != nil {
@@ -323,7 +323,7 @@ class Target extends pulumi.CustomResource {
           'azure:chaosstudio/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     targetResourceId = registerOutput<String>('targetResourceId');
@@ -335,11 +335,12 @@ class Target extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Target._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -353,6 +354,20 @@ class Target extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    targetType = registerOutput<String>('targetType');
+  }
+
+  /// Creates a typed reference to an existing [Target] resource.
+  Target.reference(String urn)
+    : super(
+        'azure:chaosstudio/target:Target',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     targetResourceId = registerOutput<String>('targetResourceId');
     targetType = registerOutput<String>('targetType');

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventDestinationSnsDestination {
-  /// The ARN of the SNS topic
+  /// ARN of the SNS topic
   final pulumi.Input<String> topicArn;
 
   /// Creates a new [EventDestinationSnsDestination].
-  /// [topicArn] The ARN of the SNS topic
+  /// [topicArn] ARN of the SNS topic
   const EventDestinationSnsDestination({
     required this.topicArn,
   });

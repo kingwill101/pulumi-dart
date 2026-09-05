@@ -265,14 +265,14 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			Name:              pulumi.String("example-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewVirtualNetworkSwiftConnection(ctx, "example", &appservice.VirtualNetworkSwiftConnectionArgs{
-/// 			AppServiceId: exampleAppService.ID(),
-/// 			SubnetId:     exampleSubnet.ID(),
+/// 			AppServiceId: exampleAppService.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -754,7 +754,7 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID(),
+/// 			AppServicePlanId:        examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 		})
@@ -762,8 +762,8 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewVirtualNetworkSwiftConnection(ctx, "example", &appservice.VirtualNetworkSwiftConnectionArgs{
-/// 			AppServiceId: exampleFunctionApp.ID(),
-/// 			SubnetId:     exampleSubnet.ID(),
+/// 			AppServiceId: exampleFunctionApp.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1031,7 +1031,7 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
           'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceId = registerOutput<String>('appServiceId');
     subnetId = registerOutput<String>('subnetId');
@@ -1042,11 +1042,12 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkSwiftConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkSwiftConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1060,6 +1061,19 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceId = registerOutput<String>('appServiceId');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkSwiftConnection] resource.
+  VirtualNetworkSwiftConnection.reference(String urn)
+    : super(
+        'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceId = registerOutput<String>('appServiceId');
     subnetId = registerOutput<String>('subnetId');
   }

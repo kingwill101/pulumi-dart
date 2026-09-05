@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePublicPortsPortInfo {
   /// Set of CIDR aliases that define access for a preconfigured range of IP addresses.
-  final pulumi.Input<List<String>>? cidrListAliases;
+  final pulumi.Input<List<String>?>? cidrListAliases;
   /// Set of IPv4 addresses or ranges of IPv4 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
   /// First port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
   final pulumi.Input<int> fromPort;
   /// Set of IPv6 addresses or ranges of IPv6 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
-  final pulumi.Input<List<String>>? ipv6Cidrs;
+  final pulumi.Input<List<String>?>? ipv6Cidrs;
   /// IP protocol name. Valid values: `tcp`, `all`, `udp`, `icmp`, `icmpv6`. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
   final pulumi.Input<String> protocol;
   /// Last port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
@@ -47,10 +47,10 @@ class InstancePublicPortsPortInfo {
     return InstancePublicPortsPortInfo(
       cidrListAliases: (() { final guardedValue = map['cidrListAliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       cidrs: (() { final guardedValue = map['cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
       ipv6Cidrs: (() { final guardedValue = map['ipv6Cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

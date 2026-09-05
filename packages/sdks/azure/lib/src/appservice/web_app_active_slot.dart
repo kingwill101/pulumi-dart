@@ -141,7 +141,7 @@ import 'web_app_active_slot_state.dart';
 /// 			Name:              pulumi.String("example-windows-web-app"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          exampleServicePlan.Location,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.WindowsWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -156,7 +156,7 @@ import 'web_app_active_slot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewWebAppActiveSlot(ctx, "example", &appservice.WebAppActiveSlotArgs{
-/// 			SlotId: exampleWindowsWebAppSlot.ID(),
+/// 			SlotId: exampleWindowsWebAppSlot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -449,7 +449,7 @@ import 'web_app_active_slot_state.dart';
 /// 			Name:              pulumi.String("example-linux-web-app"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          exampleServicePlan.Location,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.LinuxWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -459,14 +459,14 @@ import 'web_app_active_slot_state.dart';
 /// 			Name:           pulumi.String("example-linux-web-app-slot"),
 /// 			AppServiceName: exampleLinuxWebApp.Name,
 /// 			Location:       exampleServicePlan.Location,
-/// 			ServicePlanId:  exampleServicePlan.ID(),
+/// 			ServicePlanId:  exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:     &appservice.LinuxWebAppSlotSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewWebAppActiveSlot(ctx, "example", &appservice.WebAppActiveSlotArgs{
-/// 			SlotId: exampleLinuxWebAppSlot.ID(),
+/// 			SlotId: exampleLinuxWebAppSlot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -658,7 +658,7 @@ class WebAppActiveSlot extends pulumi.CustomResource {
           'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
@@ -670,11 +670,12 @@ class WebAppActiveSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAppActiveSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAppActiveSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -688,6 +689,20 @@ class WebAppActiveSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
+    overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
+    slotId = registerOutput<String>('slotId');
+  }
+
+  /// Creates a typed reference to an existing [WebAppActiveSlot] resource.
+  WebAppActiveSlot.reference(String urn)
+    : super(
+        'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
     slotId = registerOutput<String>('slotId');

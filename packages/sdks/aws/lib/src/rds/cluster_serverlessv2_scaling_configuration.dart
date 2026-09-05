@@ -8,7 +8,7 @@ class ClusterServerlessv2ScalingConfiguration {
   /// Minimum capacity for an Aurora DB cluster in `provisioned` DB engine mode. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are in a range of `0` up to `256` in steps of `0.5`.
   final pulumi.Input<double> minCapacity;
   /// Time, in seconds, before an Aurora DB cluster in `provisioned` DB engine mode is paused. Valid values are `300` through `86400`.
-  final pulumi.Input<int>? secondsUntilAutoPause;
+  final pulumi.Input<int?>? secondsUntilAutoPause;
 
   /// Creates a new [ClusterServerlessv2ScalingConfiguration].
   /// [maxCapacity] Maximum capacity for an Aurora DB cluster in `provisioned` DB engine mode. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are in a range of `0` up to `256` in steps of `0.5`.
@@ -30,9 +30,9 @@ class ClusterServerlessv2ScalingConfiguration {
 
   factory ClusterServerlessv2ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterServerlessv2ScalingConfiguration(
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as double),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as double),
-      secondsUntilAutoPause: (() { final guardedValue = map['secondsUntilAutoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toDouble()),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toDouble()),
+      secondsUntilAutoPause: (() { final guardedValue = map['secondsUntilAutoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

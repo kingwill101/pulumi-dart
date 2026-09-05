@@ -6,7 +6,7 @@ class PolicyVMInstantRestoreResourceGroup {
   /// The prefix for the `instantRestoreResourceGroup` name.
   final pulumi.Input<String> prefix;
   /// The suffix for the `instantRestoreResourceGroup` name.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [PolicyVMInstantRestoreResourceGroup].
   /// [prefix] The prefix for the `instantRestoreResourceGroup` name.

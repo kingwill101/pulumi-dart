@@ -5,23 +5,23 @@ import 'api_operation_request_header_example.dart';
 
 class ApiOperationRequestHeader {
   /// The default value for this Header.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description of this Header.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more `example` blocks as defined above.
-  final pulumi.Input<List<ApiOperationRequestHeaderExample>>? examples;
+  final pulumi.Input<List<ApiOperationRequestHeaderExample>?>? examples;
   /// The Name of this Header.
   final pulumi.Input<String> name;
   /// Is this Header Required?
   final pulumi.Input<bool> required;
   /// The name of the Schema.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The Type of this Header, such as a `string`.
   final pulumi.Input<String> type;
   /// The type name defined by the Schema.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
   /// One or more acceptable values for this Header.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ApiOperationRequestHeader].
   /// [defaultValue] The default value for this Header.

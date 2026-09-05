@@ -6,31 +6,31 @@ import 'definition_authorization.dart';
 /// Input properties used for looking up and filtering Definition resources.
 class DefinitionState {
   /// One or more `authorization` block defined below.
-  final pulumi.Input<List<DefinitionAuthorization>>? authorizations;
+  final pulumi.Input<List<DefinitionAuthorization>?>? authorizations;
   /// Specifies the `createUiDefinition` JSON for the backing template with `Microsoft.Solutions/applications` resource.
-  final pulumi.Input<String>? createUiDefinition;
+  final pulumi.Input<String?>? createUiDefinition;
   /// Specifies the managed application definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the managed application definition display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the managed application lock level. Valid values include `CanNotDelete`, `None`, `ReadOnly`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? lockLevel;
+  final pulumi.Input<String?>? lockLevel;
   /// Specifies the inline main template JSON which has resources to be provisioned.
-  final pulumi.Input<String>? mainTemplate;
+  final pulumi.Input<String?>? mainTemplate;
   /// Specifies the name of the Managed Application Definition. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Is the package enabled? Defaults to `true`.
-  final pulumi.Input<bool>? packageEnabled;
+  final pulumi.Input<bool?>? packageEnabled;
   /// Specifies the managed application definition package file Uri.
-  final pulumi.Input<String>? packageFileUri;
+  final pulumi.Input<String?>? packageFileUri;
   /// The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
   /// &gt; **Note:** If either `createUiDefinition` or `mainTemplate` is set they both must be set.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DefinitionState].
   /// [authorizations] One or more `authorization` block defined below.

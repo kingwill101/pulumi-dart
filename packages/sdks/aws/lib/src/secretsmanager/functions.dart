@@ -137,6 +137,17 @@ Future<GetRandomPasswordResult> getRandomPassword(
   return GetRandomPasswordResult.fromMap(result);
 }
 
+pulumi.Output<GetRandomPasswordResult> getRandomPasswordOutput(
+  GetRandomPasswordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getRandomPassword:getRandomPassword',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRandomPasswordResult.fromMap);
+}
+
 /// Retrieve metadata information about a Secrets Manager secret. To retrieve a secret value, see the `aws.secretsmanager.SecretVersion` data source.
 ///
 /// ## Example Usage
@@ -360,6 +371,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getSecret:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Retrieve information about a Secrets Manager secret rotation. To retrieve secret metadata, see the `aws.secretsmanager.Secret` data source. To retrieve a secret value, see the `aws.secretsmanager.SecretVersion` data source.
 ///
 /// ## Example Usage
@@ -478,6 +500,17 @@ Future<GetSecretRotationResult> getSecretRotation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretRotationResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
+  GetSecretRotationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getSecretRotation:getSecretRotation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretRotationResult.fromMap);
 }
 
 /// Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `aws.secretsmanager.Secret` data source.
@@ -816,6 +849,17 @@ Future<GetSecretVersionResult> getSecretVersion(
   return GetSecretVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
+  GetSecretVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getSecretVersion:getSecretVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretVersionResult.fromMap);
+}
+
 /// Retrieve the versions of a Secrets Manager secret. To retrieve secret metadata, see the data sources `aws.secretsmanager.Secret` and `aws.secretsmanager.SecretVersion`.
 ///
 /// ## Example Usage
@@ -1152,6 +1196,17 @@ Future<GetSecretVersionsResult> getSecretVersions(
   return GetSecretVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretVersionsResult> getSecretVersionsOutput(
+  GetSecretVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getSecretVersions:getSecretVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretVersionsResult.fromMap);
+}
+
 /// Use this data source to get the ARNs and names of Secrets Manager secrets matching the specified criteria.
 ///
 /// ## Example Usage
@@ -1301,4 +1356,15 @@ Future<GetSecretsResult> getSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretsResult> getSecretsOutput(
+  GetSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:secretsmanager/getSecrets:getSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsResult.fromMap);
 }

@@ -14,33 +14,33 @@ import 'web_acl_rule_statement_xss_match_statement_field_to_match_uri_fragment.d
 
 class WebAclRuleStatementXssMatchStatementFieldToMatch {
   /// Inspect all query arguments.
-  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>?>? allQueryArguments;
   /// Inspect the request body as plain text. See Body below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchBody>? body;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchBody?>? body;
   /// Inspect the request cookies. See Cookies below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchCookies?>? cookies;
   /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request. See Header Order below.
-  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchHeaderOrder>?>? headerOrders;
   /// Inspect the request headers. See Headers below.
-  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<List<WebAclRuleStatementXssMatchStatementFieldToMatchHeader>?>? headers;
   /// Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJa3Fingerprint?>? ja3Fingerprint;
   /// Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint?>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchJsonBody?>? jsonBody;
   /// Inspect the HTTP method.
-  final pulumi.Input<Map<String, dynamic>>? method;
+  final pulumi.Input<Map<String, dynamic>?>? method;
   /// Inspect the query string.
-  final pulumi.Input<Map<String, dynamic>>? queryString;
+  final pulumi.Input<Map<String, dynamic>?>? queryString;
   /// Inspect a single header. See Single Header below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader?>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument?>? singleQueryArgument;
   /// Inspect fragments of the request URI. See URI Fragment below.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatementFieldToMatchUriFragment?>? uriFragment;
   /// Inspect the request URI path.
-  final pulumi.Input<Map<String, dynamic>>? uriPath;
+  final pulumi.Input<Map<String, dynamic>?>? uriPath;
 
   /// Creates a new [WebAclRuleStatementXssMatchStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.

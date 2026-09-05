@@ -10,33 +10,33 @@ class AccountBlobProperties {
   /// Is the blob service properties for change feed events enabled? Default to `false`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
-  final pulumi.Input<bool>? changeFeedEnabled;
+  final pulumi.Input<bool?>? changeFeedEnabled;
   /// The duration of change feed events retention in days. The possible values are between 1 and 146000 days (400 years). Setting this to null (or omit this in the configuration file) indicates an infinite retention of the change feed.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
-  final pulumi.Input<int>? changeFeedRetentionInDays;
+  final pulumi.Input<int?>? changeFeedRetentionInDays;
   /// A `containerDeleteRetentionPolicy` block as defined below.
-  final pulumi.Input<AccountBlobPropertiesContainerDeleteRetentionPolicy>? containerDeleteRetentionPolicy;
+  final pulumi.Input<AccountBlobPropertiesContainerDeleteRetentionPolicy?>? containerDeleteRetentionPolicy;
   /// A `corsRule` block as defined below.
-  final pulumi.Input<List<AccountBlobPropertiesCorsRule>>? corsRules;
+  final pulumi.Input<List<AccountBlobPropertiesCorsRule>?>? corsRules;
   /// The API Version which should be used by default for requests to the Data Plane API if an incoming request doesn't specify an API Version.
-  final pulumi.Input<String>? defaultServiceVersion;
+  final pulumi.Input<String?>? defaultServiceVersion;
   /// A `deleteRetentionPolicy` block as defined below.
-  final pulumi.Input<AccountBlobPropertiesDeleteRetentionPolicy>? deleteRetentionPolicy;
+  final pulumi.Input<AccountBlobPropertiesDeleteRetentionPolicy?>? deleteRetentionPolicy;
   /// Is the last access time based tracking enabled? Default to `false`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
-  final pulumi.Input<bool>? lastAccessTimeEnabled;
+  final pulumi.Input<bool?>? lastAccessTimeEnabled;
   /// A `restorePolicy` block as defined below. This must be used together with `deleteRetentionPolicy` set, `versioningEnabled` and `changeFeedEnabled` set to `true`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
   ///
   /// &gt; **Note:** `restorePolicy` can not be configured when `dnsEndpointType` is `AzureDnsZone`.
-  final pulumi.Input<AccountBlobPropertiesRestorePolicy>? restorePolicy;
+  final pulumi.Input<AccountBlobPropertiesRestorePolicy?>? restorePolicy;
   /// Is versioning enabled? Default to `false`.
   ///
   /// &gt; **Note:** This field cannot be configured when `kind` is set to `Storage` (V1).
-  final pulumi.Input<bool>? versioningEnabled;
+  final pulumi.Input<bool?>? versioningEnabled;
 
   /// Creates a new [AccountBlobProperties].
   /// [changeFeedEnabled] Is the blob service properties for change feed events enabled? Default to `false`.
@@ -77,7 +77,7 @@ class AccountBlobProperties {
   factory AccountBlobProperties.fromMap(Map<String, dynamic> map) {
     return AccountBlobProperties(
       changeFeedEnabled: (() { final guardedValue = map['changeFeedEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      changeFeedRetentionInDays: (() { final guardedValue = map['changeFeedRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      changeFeedRetentionInDays: (() { final guardedValue = map['changeFeedRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       containerDeleteRetentionPolicy: (() { final guardedValue = map['containerDeleteRetentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       corsRules: (() { final guardedValue = map['corsRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccountBlobPropertiesCorsRule>(guardedValue, (value) => AccountBlobPropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultServiceVersion: (() { final guardedValue = map['defaultServiceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

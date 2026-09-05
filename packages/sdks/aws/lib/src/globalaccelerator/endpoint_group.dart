@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_group_args.dart';
+import 'endpoint_group_endpoint_configuration.dart';
+import 'endpoint_group_port_override.dart';
 import 'endpoint_group_state.dart';
 
 /// Provides a Global Accelerator endpoint group.
@@ -12,11 +14,11 @@ import 'endpoint_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.globalaccelerator.EndpointGroup("example", {
-///     listenerArn: exampleAwsGlobalacceleratorListener.arn,
 ///     endpointConfigurations: [{
 ///         endpointId: exampleAwsLb.arn,
 ///         weight: 100,
 ///     }],
+///     listenerArn: exampleAwsGlobalacceleratorListener.arn,
 /// });
 /// ```
 /// ```python
@@ -24,11 +26,11 @@ import 'endpoint_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.globalaccelerator.EndpointGroup("example",
-///     listener_arn=example_aws_globalaccelerator_listener["arn"],
 ///     endpoint_configurations=[{
 ///         "endpoint_id": example_aws_lb["arn"],
 ///         "weight": 100,
-///     }])
+///     }],
+///     listener_arn=example_aws_globalaccelerator_listener["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,7 +42,6 @@ import 'endpoint_group_state.dart';
 /// {
 ///     var example = new Aws.GlobalAccelerator.EndpointGroup("example", new()
 ///     {
-///         ListenerArn = exampleAwsGlobalacceleratorListener.Arn,
 ///         EndpointConfigurations = new[]
 ///         {
 ///             new Aws.GlobalAccelerator.Inputs.EndpointGroupEndpointConfigurationArgs
@@ -49,6 +50,7 @@ import 'endpoint_group_state.dart';
 ///                 Weight = 100,
 ///             },
 ///         },
+///         ListenerArn = exampleAwsGlobalacceleratorListener.Arn,
 ///     });
 ///
 /// });
@@ -64,13 +66,13 @@ import 'endpoint_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := globalaccelerator.NewEndpointGroup(ctx, "example", &globalaccelerator.EndpointGroupArgs{
-/// 			ListenerArn: pulumi.Any(exampleAwsGlobalacceleratorListener.Arn),
 /// 			EndpointConfigurations: globalaccelerator.EndpointGroupEndpointConfigurationArray{
 /// 				&globalaccelerator.EndpointGroupEndpointConfigurationArgs{
 /// 					EndpointId: pulumi.Any(exampleAwsLb.Arn),
 /// 					Weight:     pulumi.Int(100),
 /// 				},
 /// 			},
+/// 			ListenerArn: pulumi.Any(exampleAwsGlobalacceleratorListener.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,11 +91,11 @@ import 'endpoint_group_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_endpointgroup" "example" {
-///   listener_arn = exampleAwsGlobalacceleratorListener.arn
 ///   endpoint_configurations {
 ///     endpoint_id = exampleAwsLb.arn
 ///     weight      = 100
 ///   }
+///   listener_arn = exampleAwsGlobalacceleratorListener.arn
 /// }
 /// ```
 /// ```java
@@ -119,11 +121,11 @@ import 'endpoint_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EndpointGroup("example", EndpointGroupArgs.builder()
-///             .listenerArn(exampleAwsGlobalacceleratorListener.arn())
 ///             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
 ///                 .endpointId(exampleAwsLb.arn())
 ///                 .weight(100)
 ///                 .build())
+///             .listenerArn(exampleAwsGlobalacceleratorListener.arn())
 ///             .build());
 ///
 ///     }
@@ -134,10 +136,10 @@ import 'endpoint_group_state.dart';
 ///   example:
 ///     type: aws:globalaccelerator:EndpointGroup
 ///     properties:
-///       listenerArn: ${exampleAwsGlobalacceleratorListener.arn}
 ///       endpointConfigurations:
 ///         - endpointId: ${exampleAwsLb.arn}
 ///           weight: 100
+///       listenerArn: ${exampleAwsGlobalacceleratorListener.arn}
 /// ```
 ///
 ///
@@ -147,7 +149,7 @@ import 'endpoint_group_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Global Accelerator endpoint group.
+/// - `arn` (String) ARN of the Global Accelerator endpoint group.
 ///
 ///
 /// Using `pulumi import`, import Global Accelerator endpoint groups using the `id`. For example:
@@ -156,10 +158,10 @@ import 'endpoint_group_state.dart';
 /// $ pulumi import aws:globalaccelerator/endpointGroup:EndpointGroup example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/listener/xxxxxxx/endpoint-group/xxxxxxxx
 /// ```
 class EndpointGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the endpoint group.
+  /// ARN of the endpoint group.
   late final pulumi.Output<String> arn;
   /// The list of endpoint objects. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpointConfigurations;
+  late final pulumi.Output<List<EndpointGroupEndpointConfiguration>?> endpointConfigurations;
   /// The name of the AWS Region where the endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
   /// The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
@@ -171,10 +173,10 @@ class EndpointGroup extends pulumi.CustomResource {
   late final pulumi.Output<int> healthCheckPort;
   /// The protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
   late final pulumi.Output<String?> healthCheckProtocol;
-  /// The Amazon Resource Name (ARN) of the listener.
+  /// ARN of the listener.
   late final pulumi.Output<String> listenerArn;
   /// Override specific listener ports used to route traffic to endpoints that are part of this endpoint group. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> portOverrides;
+  late final pulumi.Output<List<EndpointGroupPortOverride>?> portOverrides;
   /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
   late final pulumi.Output<int?> thresholdCount;
   /// The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
@@ -192,17 +194,17 @@ class EndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/endpointGroup:EndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
+    endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(guardedValue, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     healthCheckIntervalSeconds = registerOutput<int?>('healthCheckIntervalSeconds');
     healthCheckPath = registerOutput<String>('healthCheckPath');
     healthCheckPort = registerOutput<int>('healthCheckPort');
     healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
     listenerArn = registerOutput<String>('listenerArn');
-    portOverrides = registerOutput<List<Map<String, dynamic>>?>('portOverrides');
+    portOverrides = registerOutput<List<EndpointGroupPortOverride>?>('portOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupPortOverride>(guardedValue, (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>())); });
     thresholdCount = registerOutput<int?>('thresholdCount');
     trafficDialPercentage = registerOutput<double?>('trafficDialPercentage');
   }
@@ -212,11 +214,12 @@ class EndpointGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,14 +234,36 @@ class EndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    endpointConfigurations = registerOutput<List<Map<String, dynamic>>?>('endpointConfigurations');
+    endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(guardedValue, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
     healthCheckIntervalSeconds = registerOutput<int?>('healthCheckIntervalSeconds');
     healthCheckPath = registerOutput<String>('healthCheckPath');
     healthCheckPort = registerOutput<int>('healthCheckPort');
     healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
     listenerArn = registerOutput<String>('listenerArn');
-    portOverrides = registerOutput<List<Map<String, dynamic>>?>('portOverrides');
+    portOverrides = registerOutput<List<EndpointGroupPortOverride>?>('portOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupPortOverride>(guardedValue, (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>())); });
+    thresholdCount = registerOutput<int?>('thresholdCount');
+    trafficDialPercentage = registerOutput<double?>('trafficDialPercentage');
+  }
+
+  /// Creates a typed reference to an existing [EndpointGroup] resource.
+  EndpointGroup.reference(String urn)
+    : super(
+        'aws:globalaccelerator/endpointGroup:EndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(guardedValue, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    healthCheckIntervalSeconds = registerOutput<int?>('healthCheckIntervalSeconds');
+    healthCheckPath = registerOutput<String>('healthCheckPath');
+    healthCheckPort = registerOutput<int>('healthCheckPort');
+    healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
+    listenerArn = registerOutput<String>('listenerArn');
+    portOverrides = registerOutput<List<EndpointGroupPortOverride>?>('portOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupPortOverride>(guardedValue, (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>())); });
     thresholdCount = registerOutput<int?>('thresholdCount');
     trafficDialPercentage = registerOutput<double?>('trafficDialPercentage');
   }

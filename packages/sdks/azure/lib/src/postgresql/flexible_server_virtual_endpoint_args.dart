@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_postgresql_flexible_server_virtual_endpoint_flexible_server_virtual_endpoint_args_doc}
 class FlexibleServerVirtualEndpointArgs {
   /// The name of the Virtual Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
   /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replicaServerId`. You can remove the resource from state and reimport it back in with `sourceServerId` and `replicaServerId` flipped and then update `replicaServerId`.

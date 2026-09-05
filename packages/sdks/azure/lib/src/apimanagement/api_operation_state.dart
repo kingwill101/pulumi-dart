@@ -8,27 +8,27 @@ import 'api_operation_template_parameter.dart';
 /// Input properties used for looking up and filtering ApiOperation resources.
 class ApiOperationState {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The name of the API within the API Management Service where this API Operation should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// A description for this API Operation, which may include HTML formatting tags.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Display Name for this API Management Operation.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The HTTP Method used for this API Management Operation, like `GET`, `DELETE`, `PUT` or `POST` - but not limited to these values.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// A unique identifier for this API Operation. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// A `request` block as defined below.
-  final pulumi.Input<ApiOperationRequest>? request;
+  final pulumi.Input<ApiOperationRequest?>? request;
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `response` blocks as defined below.
-  final pulumi.Input<List<ApiOperationResponse>>? responses;
+  final pulumi.Input<List<ApiOperationResponse>?>? responses;
   /// One or more `templateParameter` blocks as defined below. Required if `urlTemplate` contains one or more parameters.
-  final pulumi.Input<List<ApiOperationTemplateParameter>>? templateParameters;
+  final pulumi.Input<List<ApiOperationTemplateParameter>?>? templateParameters;
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
-  final pulumi.Input<String>? urlTemplate;
+  final pulumi.Input<String?>? urlTemplate;
 
   /// Creates a new [ApiOperationState].
   /// [apiManagementName] The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.

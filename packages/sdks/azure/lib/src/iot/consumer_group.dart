@@ -287,7 +287,7 @@ class ConsumerGroup extends pulumi.CustomResource {
           'azure:iot/consumerGroup:ConsumerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
     iothubName = registerOutput<String>('iothubName');
@@ -300,11 +300,12 @@ class ConsumerGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsumerGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsumerGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,6 +319,21 @@ class ConsumerGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
+    iothubName = registerOutput<String>('iothubName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ConsumerGroup] resource.
+  ConsumerGroup.reference(String urn)
+    : super(
+        'azure:iot/consumerGroup:ConsumerGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');

@@ -5,9 +5,9 @@ import 'integration_runtime_ssis_express_custom_setup_component_key_vault_licens
 
 class IntegrationRuntimeSsisExpressCustomSetupComponent {
   /// A `keyVaultSecretReference` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense>? keyVaultLicense;
+  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense?>? keyVaultLicense;
   /// The license used for the Component.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
   /// The Component Name installed for the Azure-SSIS Integration Runtime.
   final pulumi.Input<String> name;
 

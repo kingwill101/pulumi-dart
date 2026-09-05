@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAthena {
   /// Use the `roleArn` to override an account-wide role for a specific athena data source.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The work-group to which to connect.
-  final pulumi.Input<String>? workGroup;
+  final pulumi.Input<String?>? workGroup;
 
   /// Creates a new [DataSourceParametersAthena].
   /// [roleArn] Use the `roleArn` to override an account-wide role for a specific athena data source.

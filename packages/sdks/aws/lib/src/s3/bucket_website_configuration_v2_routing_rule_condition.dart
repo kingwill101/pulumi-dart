@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteConfigurationV2RoutingRuleCondition {
   /// HTTP error code when the redirect is applied. If specified with `keyPrefixEquals`, then both must be true for the redirect to be applied.
-  final pulumi.Input<String>? httpErrorCodeReturnedEquals;
+  final pulumi.Input<String?>? httpErrorCodeReturnedEquals;
   /// Object key name prefix when the redirect is applied. If specified with `httpErrorCodeReturnedEquals`, then both must be true for the redirect to be applied.
-  final pulumi.Input<String>? keyPrefixEquals;
+  final pulumi.Input<String?>? keyPrefixEquals;
 
   /// Creates a new [BucketWebsiteConfigurationV2RoutingRuleCondition].
   /// [httpErrorCodeReturnedEquals] HTTP error code when the redirect is applied. If specified with `keyPrefixEquals`, then both must be true for the redirect to be applied.

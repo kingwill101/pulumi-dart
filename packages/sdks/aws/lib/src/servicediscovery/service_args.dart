@@ -11,25 +11,25 @@ import 'service_health_check_custom_config.dart';
 /// {@macro pulumi_servicediscovery_service_service_args_doc}
 class ServiceArgs {
   /// The description of the service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dnsConfig` Block for details.
-  final pulumi.Input<ServiceDnsConfig>? dnsConfig;
+  final pulumi.Input<ServiceDnsConfig?>? dnsConfig;
   /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `healthCheckConfig` Block for details.
-  final pulumi.Input<ServiceHealthCheckConfig>? healthCheckConfig;
+  final pulumi.Input<ServiceHealthCheckConfig?>? healthCheckConfig;
   /// Please use `healthCheckConfig` instead. See `healthCheckCustomConfig` Block for details.
-  final pulumi.Input<ServiceHealthCheckCustomConfig>? healthCheckCustomConfig;
+  final pulumi.Input<ServiceHealthCheckCustomConfig?>? healthCheckCustomConfig;
   /// The name of the service.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the namespace that you want to use to create the service.
-  final pulumi.Input<String>? namespaceId;
+  final pulumi.Input<String?>? namespaceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceArgs].
   /// [description] The description of the service.

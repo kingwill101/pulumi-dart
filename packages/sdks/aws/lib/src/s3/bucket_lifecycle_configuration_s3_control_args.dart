@@ -8,15 +8,15 @@ import 'bucket_lifecycle_configuration_rule_s3_control.dart';
 /// {@endtemplate}
 /// {@macro pulumi_s3_control_bucket_lifecycle_configuration_bucket_lifecycle_configuration_s3_control_args_doc}
 class BucketLifecycleConfigurationS3ControlArgs {
-  /// Amazon Resource Name (ARN) of the bucket.
+  /// ARN of the bucket.
   final pulumi.Input<String> bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block(s) containing lifecycle rules for the bucket. See `rule` below.
   final pulumi.Input<List<BucketLifecycleConfigurationRuleS3Control>> rules;
 
   /// Creates a new [BucketLifecycleConfigurationS3ControlArgs].
-  /// [bucket] Amazon Resource Name (ARN) of the bucket.
+  /// [bucket] ARN of the bucket.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Configuration block(s) containing lifecycle rules for the bucket. See `rule` below.
   const BucketLifecycleConfigurationS3ControlArgs({

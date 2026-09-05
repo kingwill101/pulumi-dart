@@ -141,7 +141,7 @@ import 'resource_state.dart';
 ///         bucket: an-example-bucket
 /// ```
 class ResourceType extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the resource.
+  /// ARN of the resource.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> arn;
@@ -174,7 +174,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:lakeformation/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
@@ -191,11 +191,12 @@ class ResourceType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,6 +210,25 @@ class ResourceType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
+    lastModified = registerOutput<String>('lastModified');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    useServiceLinkedRole = registerOutput<bool?>('useServiceLinkedRole');
+    withFederation = registerOutput<bool>('withFederation');
+    withPrivilegedAccess = registerOutput<bool>('withPrivilegedAccess');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'aws:lakeformation/resource:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');
     lastModified = registerOutput<String>('lastModified');

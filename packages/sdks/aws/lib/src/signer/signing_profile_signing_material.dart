@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SigningProfileSigningMaterial {
-  /// The Amazon Resource Name (ARN) of the certificates that is used to sign your code.
+  /// ARN of the certificates that is used to sign your code.
   final pulumi.Input<String> certificateArn;
 
   /// Creates a new [SigningProfileSigningMaterial].
-  /// [certificateArn] The Amazon Resource Name (ARN) of the certificates that is used to sign your code.
+  /// [certificateArn] ARN of the certificates that is used to sign your code.
   const SigningProfileSigningMaterial({
     required this.certificateArn,
   });

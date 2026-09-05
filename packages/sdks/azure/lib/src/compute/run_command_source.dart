@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'run_command_source_script_uri_managed_identity.dart';
 
 class RunCommandSource {
-  final pulumi.Input<String>? commandId;
-  final pulumi.Input<String>? script;
-  final pulumi.Input<String>? scriptUri;
+  final pulumi.Input<String?>? commandId;
+  final pulumi.Input<String?>? script;
+  final pulumi.Input<String?>? scriptUri;
   /// A `scriptUriManagedIdentity` block as defined above.
-  final pulumi.Input<RunCommandSourceScriptUriManagedIdentity>? scriptUriManagedIdentity;
+  final pulumi.Input<RunCommandSourceScriptUriManagedIdentity?>? scriptUriManagedIdentity;
 
   /// Creates a new [RunCommandSource].
   /// [commandId] Optional.

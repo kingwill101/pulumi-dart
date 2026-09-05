@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingInfoBrokerLogsFirehose {
   /// Name of the Kinesis Data Firehose delivery stream to deliver logs to.
-  final pulumi.Input<String>? deliveryStream;
+  final pulumi.Input<String?>? deliveryStream;
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsFirehose].

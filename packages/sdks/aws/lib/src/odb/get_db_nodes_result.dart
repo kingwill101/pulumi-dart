@@ -5,34 +5,34 @@ import 'get_db_nodes_db_node.dart';
 
 /// Result data returned by getDbNodes.
 class GetDbNodesResult {
-  final String cloudVmClusterId;
+  final String? cloudVmClusterId;
   /// List of DB nodes along with their properties.
-  final List<GetDbNodesDbNode> dbNodes;
-  final String region;
+  final List<GetDbNodesDbNode>? dbNodes;
+  final String? region;
 
   /// Creates a new [GetDbNodesResult].
-  /// [cloudVmClusterId] Required.
+  /// [cloudVmClusterId] Optional.
   /// [dbNodes] List of DB nodes along with their properties.
-  /// [region] Required.
+  /// [region] Optional.
   const GetDbNodesResult({
-    required this.cloudVmClusterId,
-    required this.dbNodes,
-    required this.region,
+    this.cloudVmClusterId,
+    this.dbNodes,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudVmClusterId': cloudVmClusterId,
-      'dbNodes': pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(dbNodes, (value) => value.toMap()),
-      'region': region,
+      'cloudVmClusterId': ?cloudVmClusterId,
+      'dbNodes': ?(() { final guardedValue = dbNodes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetDbNodesResult.fromMap(Map<String, dynamic> map) {
     return GetDbNodesResult(
-      cloudVmClusterId: map['cloudVmClusterId'] as String,
-      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes']!, (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      cloudVmClusterId: (() { final guardedValue = map['cloudVmClusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbNodes: (() { final guardedValue = map['dbNodes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDbNodesDbNode>(guardedValue, (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FindingsFilterFindingCriteriaCriterion {
   /// The value for the property exclusively matches (equals an exact match for) all the specified values. If you specify multiple values, Amazon Macie uses AND logic to join the values.
-  final pulumi.Input<List<String>>? eqExactMatches;
+  final pulumi.Input<List<String>?>? eqExactMatches;
   /// The value for the property matches (equals) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
-  final pulumi.Input<List<String>>? eqs;
+  final pulumi.Input<List<String>?>? eqs;
   /// The name of the field to be evaluated.
   final pulumi.Input<String> field;
   /// The value for the property is greater than the specified value.
-  final pulumi.Input<String>? gt;
+  final pulumi.Input<String?>? gt;
   /// The value for the property is greater than or equal to the specified value.
-  final pulumi.Input<String>? gte;
+  final pulumi.Input<String?>? gte;
   /// The value for the property is less than the specified value.
-  final pulumi.Input<String>? lt;
+  final pulumi.Input<String?>? lt;
   /// The value for the property is less than or equal to the specified value.
-  final pulumi.Input<String>? lte;
+  final pulumi.Input<String?>? lte;
   /// The value for the property doesn't match (doesn't equal) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
-  final pulumi.Input<List<String>>? neqs;
+  final pulumi.Input<List<String>?>? neqs;
 
   /// Creates a new [FindingsFilterFindingCriteriaCriterion].
   /// [eqExactMatches] The value for the property exclusively matches (equals an exact match for) all the specified values. If you specify multiple values, Amazon Macie uses AND logic to join the values.

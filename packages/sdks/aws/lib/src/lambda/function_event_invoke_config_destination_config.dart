@@ -6,9 +6,9 @@ import 'function_event_invoke_config_destination_config_on_success.dart';
 
 class FunctionEventInvokeConfigDestinationConfig {
   /// Configuration block with destination configuration for failed asynchronous invocations. See below.
-  final pulumi.Input<FunctionEventInvokeConfigDestinationConfigOnFailure>? onFailure;
+  final pulumi.Input<FunctionEventInvokeConfigDestinationConfigOnFailure?>? onFailure;
   /// Configuration block with destination configuration for successful asynchronous invocations. See below.
-  final pulumi.Input<FunctionEventInvokeConfigDestinationConfigOnSuccess>? onSuccess;
+  final pulumi.Input<FunctionEventInvokeConfigDestinationConfigOnSuccess?>? onSuccess;
 
   /// Creates a new [FunctionEventInvokeConfigDestinationConfig].
   /// [onFailure] Configuration block with destination configuration for failed asynchronous invocations. See below.

@@ -13,14 +13,14 @@ class VpcBlockPublicAccessExclusionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> internetGatewayExclusionMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Id of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<VpcBlockPublicAccessExclusionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<VpcBlockPublicAccessExclusionTimeouts?>? timeouts;
   /// Id of the VPC to which this exclusion applies. Either this or the subnetId needs to be provided.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcBlockPublicAccessExclusionArgs].
   /// [internetGatewayExclusionMode] Mode of exclusion from Block Public Access. The allowed values are `allow-egress` and `allow-bidirectional`.

@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_collection_args.dart';
 import 'mongo_collection_autoscale_settings.dart';
+import 'mongo_collection_index.dart';
 import 'mongo_collection_state.dart';
+import 'mongo_collection_system_index.dart';
 
 /// Manages a Mongo Collection within a Cosmos DB Account.
 ///
@@ -301,7 +303,7 @@ class MongoCollection extends pulumi.CustomResource {
   /// The default Time To Live in seconds. If the value is `-1`, items are not automatically expired.
   late final pulumi.Output<int?> defaultTtlSeconds;
   /// One or more `index` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> indices;
+  late final pulumi.Output<List<MongoCollectionIndex>?> indices;
   /// Specifies the name of the Cosmos DB Mongo Collection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
@@ -309,7 +311,7 @@ class MongoCollection extends pulumi.CustomResource {
   /// The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> shardKey;
   /// One or more `systemIndexes` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> systemIndexes;
+  late final pulumi.Output<List<MongoCollectionSystemIndex>> systemIndexes;
   /// The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   late final pulumi.Output<int> throughput;
 
@@ -325,18 +327,18 @@ class MongoCollection extends pulumi.CustomResource {
           'azure:cosmosdb/mongoCollection:MongoCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoCollectionAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
-    indices = registerOutput<List<Map<String, dynamic>>?>('indices');
+    indices = registerOutput<List<MongoCollectionIndex>?>('indices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionIndex>(guardedValue, (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shardKey = registerOutput<String?>('shardKey');
-    systemIndexes = registerOutput<List<Map<String, dynamic>>>('systemIndexes');
+    systemIndexes = registerOutput<List<MongoCollectionSystemIndex>>('systemIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionSystemIndex>(guardedValue, (value) => MongoCollectionSystemIndex.fromMap((value as Map).cast<String, dynamic>())); });
     throughput = registerOutput<int>('throughput');
   }
 
@@ -345,11 +347,12 @@ class MongoCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MongoCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MongoCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,11 +371,33 @@ class MongoCollection extends pulumi.CustomResource {
     autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoCollectionAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     databaseName = registerOutput<String>('databaseName');
     defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
-    indices = registerOutput<List<Map<String, dynamic>>?>('indices');
+    indices = registerOutput<List<MongoCollectionIndex>?>('indices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionIndex>(guardedValue, (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shardKey = registerOutput<String?>('shardKey');
-    systemIndexes = registerOutput<List<Map<String, dynamic>>>('systemIndexes');
+    systemIndexes = registerOutput<List<MongoCollectionSystemIndex>>('systemIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionSystemIndex>(guardedValue, (value) => MongoCollectionSystemIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    throughput = registerOutput<int>('throughput');
+  }
+
+  /// Creates a typed reference to an existing [MongoCollection] resource.
+  MongoCollection.reference(String urn)
+    : super(
+        'azure:cosmosdb/mongoCollection:MongoCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoCollectionAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
+    indices = registerOutput<List<MongoCollectionIndex>?>('indices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionIndex>(guardedValue, (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shardKey = registerOutput<String?>('shardKey');
+    systemIndexes = registerOutput<List<MongoCollectionSystemIndex>>('systemIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoCollectionSystemIndex>(guardedValue, (value) => MongoCollectionSystemIndex.fromMap((value as Map).cast<String, dynamic>())); });
     throughput = registerOutput<int>('throughput');
   }
 }

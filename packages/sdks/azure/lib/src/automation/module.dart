@@ -269,7 +269,7 @@ class Module extends pulumi.CustomResource {
           'azure:automation/module:Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -282,11 +282,12 @@ class Module extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Module._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,21 @@ class Module extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [Module] resource.
+  Module.reference(String urn)
+    : super(
+        'azure:automation/module:Module',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

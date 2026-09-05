@@ -108,7 +108,7 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> operationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
+  /// ARN of the App Runner service to start the deployment for.
   late final pulumi.Output<String> serviceArn;
   /// Current status of the App Runner service deployment.
   late final pulumi.Output<String> status;
@@ -126,7 +126,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apprunner/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     operationId = registerOutput<String>('operationId');
     region = registerOutput<String>('region');
@@ -140,11 +140,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -158,6 +159,22 @@ class DeploymentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    operationId = registerOutput<String>('operationId');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<DeploymentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'aws:apprunner/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     operationId = registerOutput<String>('operationId');
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');

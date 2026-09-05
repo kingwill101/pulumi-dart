@@ -7,45 +7,45 @@ import 'get_resource_collection_tag.dart';
 /// Result data returned by getResourceCollection.
 class GetResourceCollectionResult {
   /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
-  final List<GetResourceCollectionCloudformation> cloudformations;
+  final List<GetResourceCollectionCloudformation>? cloudformations;
   /// Type of AWS resource collection to create (same value as `type`).
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
-  final List<GetResourceCollectionTag> tags;
-  final String type;
+  final List<GetResourceCollectionTag>? tags;
+  final String? type;
 
   /// Creates a new [GetResourceCollectionResult].
   /// [cloudformations] A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
   /// [id] Type of AWS resource collection to create (same value as `type`).
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
-  /// [type] Required.
+  /// [type] Optional.
   const GetResourceCollectionResult({
-    required this.cloudformations,
-    required this.id,
-    required this.region,
-    required this.tags,
-    required this.type,
+    this.cloudformations,
+    this.id,
+    this.region,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudformations': pulumi.Input.encodeList<GetResourceCollectionCloudformation, Map<String, dynamic>>(cloudformations, (value) => value.toMap()),
-      'id': id,
-      'region': region,
-      'tags': pulumi.Input.encodeList<GetResourceCollectionTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
-      'type': type,
+      'cloudformations': ?(() { final guardedValue = cloudformations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResourceCollectionCloudformation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'region': ?region,
+      'tags': ?(() { final guardedValue = tags; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetResourceCollectionTag, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
     };
   }
 
   factory GetResourceCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionResult(
-      cloudformations: pulumi.Input.decodeList<GetResourceCollectionCloudformation>(map['cloudformations']!, (value) => GetResourceCollectionCloudformation.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      region: map['region'] as String,
-      tags: pulumi.Input.decodeList<GetResourceCollectionTag>(map['tags']!, (value) => GetResourceCollectionTag.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      cloudformations: (() { final guardedValue = map['cloudformations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResourceCollectionCloudformation>(guardedValue, (value) => GetResourceCollectionCloudformation.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetResourceCollectionTag>(guardedValue, (value) => GetResourceCollectionTag.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

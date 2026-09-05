@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigateway_get_api_keys_get_api_keys_args_doc}
 class GetApiKeysArgs {
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
-  final pulumi.Input<String>? customerId;
+  final pulumi.Input<String?>? customerId;
   /// Set this value to `true` if you wish the result contains the key value. Defaults to `false`.
-  final pulumi.Input<bool>? includeValues;
+  final pulumi.Input<bool?>? includeValues;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetApiKeysArgs].
   /// [customerId] Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.

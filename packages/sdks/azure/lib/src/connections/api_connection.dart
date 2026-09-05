@@ -28,7 +28,7 @@ import 'api_connection_state.dart';
 /// const exampleApiConnection = new azure.connections.ApiConnection("example", {
 ///     name: "example-connection",
 ///     resourceGroupName: exampleResourceGroup.name,
-///     managedApiId: example.apply(example => example.id),
+///     managedApiId: example.id,
 ///     displayName: "Example 1",
 ///     parameterValues: {
 ///         connectionString: exampleNamespace.defaultPrimaryConnectionString,
@@ -145,10 +145,8 @@ import 'api_connection_state.dart';
 /// 		_, err = connections.NewApiConnection(ctx, "example", &connections.ApiConnectionArgs{
 /// 			Name:              pulumi.String("example-connection"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
-/// 			ManagedApiId: pulumi.String(example.ApplyT(func(example connections.GetManagedApiResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			DisplayName: pulumi.String("Example 1"),
+/// 			ManagedApiId:      example.Id(),
+/// 			DisplayName:       pulumi.String("Example 1"),
 /// 			ParameterValues: pulumi.StringMap{
 /// 				"connectionString": exampleNamespace.DefaultPrimaryConnectionString,
 /// 			},
@@ -336,14 +334,14 @@ class ApiConnection extends pulumi.CustomResource {
           'azure:connections/apiConnection:ApiConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     managedApiId = registerOutput<String>('managedApiId');
     this.name = registerOutput<String>('name');
-    parameterValues = registerOutput<Map<String, String>?>('parameterValues');
+    parameterValues = registerOutput<Map<String, String>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ApiConnection] resource's state with the given [name] and [id].
@@ -351,11 +349,12 @@ class ApiConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,8 +371,25 @@ class ApiConnection extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     managedApiId = registerOutput<String>('managedApiId');
     this.name = registerOutput<String>('name');
-    parameterValues = registerOutput<Map<String, String>?>('parameterValues');
+    parameterValues = registerOutput<Map<String, String>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApiConnection] resource.
+  ApiConnection.reference(String urn)
+    : super(
+        'azure:connections/apiConnection:ApiConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    managedApiId = registerOutput<String>('managedApiId');
+    this.name = registerOutput<String>('name');
+    parameterValues = registerOutput<Map<String, String>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

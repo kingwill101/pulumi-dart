@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateExperimentOptions {
   /// Account targeting setting for experiment options. Supports `single-account` and `multi-account`.
-  final pulumi.Input<String>? accountTargeting;
+  final pulumi.Input<String?>? accountTargeting;
   /// Empty target resolution mode for experiment options. Supports `fail` and `skip`.
-  final pulumi.Input<String>? emptyTargetResolutionMode;
+  final pulumi.Input<String?>? emptyTargetResolutionMode;
 
   /// Creates a new [ExperimentTemplateExperimentOptions].
   /// [accountTargeting] Account targeting setting for experiment options. Supports `single-account` and `multi-account`.

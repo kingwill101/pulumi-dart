@@ -6,9 +6,9 @@ import 'classification_export_configuration_s3_destination.dart';
 /// Input properties used for looking up and filtering ClassificationExportConfiguration resources.
 class ClassificationExportConfigurationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for a S3 Destination. Defined below
-  final pulumi.Input<ClassificationExportConfigurationS3Destination>? s3Destination;
+  final pulumi.Input<ClassificationExportConfigurationS3Destination?>? s3Destination;
 
   /// Creates a new [ClassificationExportConfigurationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

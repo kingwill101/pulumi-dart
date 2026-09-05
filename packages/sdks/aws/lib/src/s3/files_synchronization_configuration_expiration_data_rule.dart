@@ -20,7 +20,7 @@ class FilesSynchronizationConfigurationExpirationDataRule {
 
   factory FilesSynchronizationConfigurationExpirationDataRule.fromMap(Map<String, dynamic> map) {
     return FilesSynchronizationConfigurationExpirationDataRule(
-      daysAfterLastAccess: pulumi.Input.fromValue(map['daysAfterLastAccess'] as int),
+      daysAfterLastAccess: pulumi.Input.fromValue((map['daysAfterLastAccess'] as num).toInt()),
     );
   }
 }

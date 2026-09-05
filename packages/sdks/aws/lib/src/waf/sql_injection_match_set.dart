@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_injection_match_set_args.dart';
+import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 import 'sql_injection_match_set_state.dart';
 
 /// Provides a WAF SQL Injection Match Set Resource
@@ -12,13 +13,13 @@ import 'sql_injection_match_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sqlInjectionMatchSet = new aws.waf.SqlInjectionMatchSet("sql_injection_match_set", {
-///     name: "tf-sql_injection_match_set",
 ///     sqlInjectionMatchTuples: [{
-///         textTransformation: "URL_DECODE",
 ///         fieldToMatch: {
 ///             type: "QUERY_STRING",
 ///         },
+///         textTransformation: "URL_DECODE",
 ///     }],
+///     name: "tf-sql_injection_match_set",
 /// });
 /// ```
 /// ```python
@@ -26,13 +27,13 @@ import 'sql_injection_match_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// sql_injection_match_set = aws.waf.SqlInjectionMatchSet("sql_injection_match_set",
-///     name="tf-sql_injection_match_set",
 ///     sql_injection_match_tuples=[{
-///         "text_transformation": "URL_DECODE",
 ///         "field_to_match": {
 ///             "type": "QUERY_STRING",
 ///         },
-///     }])
+///         "text_transformation": "URL_DECODE",
+///     }],
+///     name="tf-sql_injection_match_set")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,18 +45,18 @@ import 'sql_injection_match_set_state.dart';
 /// {
 ///     var sqlInjectionMatchSet = new Aws.Waf.SqlInjectionMatchSet("sql_injection_match_set", new()
 ///     {
-///         Name = "tf-sql_injection_match_set",
 ///         SqlInjectionMatchTuples = new[]
 ///         {
 ///             new Aws.Waf.Inputs.SqlInjectionMatchSetSqlInjectionMatchTupleArgs
 ///             {
-///                 TextTransformation = "URL_DECODE",
 ///                 FieldToMatch = new Aws.Waf.Inputs.SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs
 ///                 {
 ///                     Type = "QUERY_STRING",
 ///                 },
+///                 TextTransformation = "URL_DECODE",
 ///             },
 ///         },
+///         Name = "tf-sql_injection_match_set",
 ///     });
 ///
 /// });
@@ -71,15 +72,15 @@ import 'sql_injection_match_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := waf.NewSqlInjectionMatchSet(ctx, "sql_injection_match_set", &waf.SqlInjectionMatchSetArgs{
-/// 			Name: pulumi.String("tf-sql_injection_match_set"),
 /// 			SqlInjectionMatchTuples: waf.SqlInjectionMatchSetSqlInjectionMatchTupleArray{
 /// 				&waf.SqlInjectionMatchSetSqlInjectionMatchTupleArgs{
-/// 					TextTransformation: pulumi.String("URL_DECODE"),
 /// 					FieldToMatch: &waf.SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs{
 /// 						Type: pulumi.String("QUERY_STRING"),
 /// 					},
+/// 					TextTransformation: pulumi.String("URL_DECODE"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tf-sql_injection_match_set"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,13 +99,13 @@ import 'sql_injection_match_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_sqlinjectionmatchset" "sql_injection_match_set" {
-///   name = "tf-sql_injection_match_set"
 ///   sql_injection_match_tuples {
-///     text_transformation = "URL_DECODE"
 ///     field_to_match = {
 ///       type = "QUERY_STRING"
 ///     }
+///     text_transformation = "URL_DECODE"
 ///   }
+///   name = "tf-sql_injection_match_set"
 /// }
 /// ```
 /// ```java
@@ -131,13 +132,13 @@ import 'sql_injection_match_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sqlInjectionMatchSet = new SqlInjectionMatchSet("sqlInjectionMatchSet", SqlInjectionMatchSetArgs.builder()
-///             .name("tf-sql_injection_match_set")
 ///             .sqlInjectionMatchTuples(SqlInjectionMatchSetSqlInjectionMatchTupleArgs.builder()
-///                 .textTransformation("URL_DECODE")
 ///                 .fieldToMatch(SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs.builder()
 ///                     .type("QUERY_STRING")
 ///                     .build())
+///                 .textTransformation("URL_DECODE")
 ///                 .build())
+///             .name("tf-sql_injection_match_set")
 ///             .build());
 ///
 ///     }
@@ -149,11 +150,11 @@ import 'sql_injection_match_set_state.dart';
 ///     type: aws:waf:SqlInjectionMatchSet
 ///     name: sql_injection_match_set
 ///     properties:
-///       name: tf-sql_injection_match_set
 ///       sqlInjectionMatchTuples:
-///         - textTransformation: URL_DECODE
-///           fieldToMatch:
+///         - fieldToMatch:
 ///             type: QUERY_STRING
+///           textTransformation: URL_DECODE
+///       name: tf-sql_injection_match_set
 /// ```
 ///
 ///
@@ -165,12 +166,12 @@ import 'sql_injection_match_set_state.dart';
 /// $ pulumi import aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class SqlInjectionMatchSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the SQL injection match set.
+  /// ARN of the SQL injection match set.
   late final pulumi.Output<String> arn;
   /// The name or description of the SQL Injection Match Set.
   late final pulumi.Output<String> name;
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sqlInjectionMatchTuples;
+  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?> sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSet].
   /// [name] The Pulumi resource name.
@@ -184,11 +185,11 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
           'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>('sqlInjectionMatchTuples');
+    sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(guardedValue, (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [SqlInjectionMatchSet] resource's state with the given [name] and [id].
@@ -196,11 +197,12 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlInjectionMatchSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlInjectionMatchSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,6 +218,20 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>('sqlInjectionMatchTuples');
+    sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(guardedValue, (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SqlInjectionMatchSet] resource.
+  SqlInjectionMatchSet.reference(String urn)
+    : super(
+        'aws:waf/sqlInjectionMatchSet:SqlInjectionMatchSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(guardedValue, (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

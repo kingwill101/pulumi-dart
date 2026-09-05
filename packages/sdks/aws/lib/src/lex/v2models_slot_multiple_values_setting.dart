@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotMultipleValuesSetting {
   /// Whether a slot can return multiple values. When `true`, the slot may return more than one value in a response. When `false`, the slot returns only a single value. Multi-value slots are only available in the `en-US` locale.
-  final pulumi.Input<bool>? allowMultipleValues;
+  final pulumi.Input<bool?>? allowMultipleValues;
 
   /// Creates a new [V2modelsSlotMultipleValuesSetting].
   /// [allowMultipleValues] Whether a slot can return multiple values. When `true`, the slot may return more than one value in a response. When `false`, the slot returns only a single value. Multi-value slots are only available in the `en-US` locale.

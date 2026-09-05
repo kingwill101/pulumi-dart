@@ -10,36 +10,43 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 /// {@macro pulumi_index_zero_trust_access_ai_controls_mcp_server_zero_trust_access_ai_controls_mcp_server_args_doc}
 class ZeroTrustAccessAiControlsMcpServerArgs {
   final pulumi.Input<String> accountId;
+  /// Static credential for the upstream MCP server. For authType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
   final pulumi.Input<String?>? authCredentials;
+  /// Authentication method used to connect to the upstream MCP server.
   /// Available values: "oauth", "bearer", "unauthenticated".
   final pulumi.Input<String> authType;
   /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
   final pulumi.Input<String?>? clientSecret;
+  /// Optional description of the MCP server.
   final pulumi.Input<String?>? description;
+  /// URL of the upstream MCP endpoint.
   final pulumi.Input<String> hostname;
-  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
   final pulumi.Input<bool?>? isSharedOauthCallbackEnabled;
+  /// Display name for the MCP server.
   final pulumi.Input<String> name;
-  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final pulumi.Input<bool?>? secureWebGateway;
+  /// Server-wide prompt capability overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>?>? updatedPrompts;
+  /// Server-wide tool capability overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>?>? updatedTools;
-  /// server id
+  /// Unique identifier for the MCP server.
   final pulumi.Input<String> zeroTrustAccessAiControlsMcpServerId;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpServerArgs].
   /// [accountId] Required.
-  /// [authCredentials] Optional.
-  /// [authType] Available values: "oauth", "bearer", "unauthenticated".
+  /// [authCredentials] Static credential for the upstream MCP server. For authType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
+  /// [authType] Authentication method used to connect to the upstream MCP server.
   /// [clientSecret] Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
-  /// [description] Optional.
-  /// [hostname] Required.
-  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
-  /// [name] Required.
-  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
-  /// [updatedPrompts] Optional.
-  /// [updatedTools] Optional.
-  /// [zeroTrustAccessAiControlsMcpServerId] server id
+  /// [description] Optional description of the MCP server.
+  /// [hostname] URL of the upstream MCP endpoint.
+  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
+  /// [name] Display name for the MCP server.
+  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
+  /// [updatedPrompts] Server-wide prompt capability overrides.
+  /// [updatedTools] Server-wide tool capability overrides.
+  /// [zeroTrustAccessAiControlsMcpServerId] Unique identifier for the MCP server.
   const ZeroTrustAccessAiControlsMcpServerArgs({
     required this.accountId,
     this.authCredentials,

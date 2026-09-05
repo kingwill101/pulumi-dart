@@ -5,6 +5,7 @@ import 'integration_runtime_ssis_copy_compute_scale.dart';
 import 'integration_runtime_ssis_custom_setup_script.dart';
 import 'integration_runtime_ssis_express_custom_setup.dart';
 import 'integration_runtime_ssis_express_vnet_integration.dart';
+import 'integration_runtime_ssis_package_store.dart';
 import 'integration_runtime_ssis_pipeline_external_compute_scale.dart';
 import 'integration_runtime_ssis_proxy.dart';
 import 'integration_runtime_ssis_state.dart';
@@ -111,7 +112,7 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// 		}
 /// 		_, err = datafactory.NewIntegrationRuntimeSsis(ctx, "example", &datafactory.IntegrationRuntimeSsisArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:      example.Location,
 /// 			NodeSize:      pulumi.String("Standard_D8_v3"),
 /// 		})
@@ -266,7 +267,7 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
   /// Number of nodes for the Azure-SSIS Integration Runtime. Max is `10`. Defaults to `1`.
   late final pulumi.Output<int?> numberOfNodes;
   /// One or more `packageStore` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> packageStores;
+  late final pulumi.Output<List<IntegrationRuntimeSsisPackageStore>?> packageStores;
   /// One `pipelineExternalComputeScale` block as defined below.
   late final pulumi.Output<IntegrationRuntimeSsisPipelineExternalComputeScale?> pipelineExternalComputeScale;
   /// A `proxy` block as defined below.
@@ -286,7 +287,7 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
           'azure:datafactory/integrationRuntimeSsis:IntegrationRuntimeSsis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     catalogInfo = registerOutput<IntegrationRuntimeSsisCatalogInfo?>('catalogInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCatalogInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     copyComputeScale = registerOutput<IntegrationRuntimeSsisCopyComputeScale?>('copyComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCopyComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -303,7 +304,7 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeSize = registerOutput<String>('nodeSize');
     numberOfNodes = registerOutput<int?>('numberOfNodes');
-    packageStores = registerOutput<List<Map<String, dynamic>>?>('packageStores');
+    packageStores = registerOutput<List<IntegrationRuntimeSsisPackageStore>?>('packageStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSsisPackageStore>(guardedValue, (value) => IntegrationRuntimeSsisPackageStore.fromMap((value as Map).cast<String, dynamic>())); });
     pipelineExternalComputeScale = registerOutput<IntegrationRuntimeSsisPipelineExternalComputeScale?>('pipelineExternalComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     proxy = registerOutput<IntegrationRuntimeSsisProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vnetIntegration = registerOutput<IntegrationRuntimeSsisVnetIntegration?>('vnetIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisVnetIntegration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -314,11 +315,12 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationRuntimeSsisState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationRuntimeSsis._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,7 +349,37 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeSize = registerOutput<String>('nodeSize');
     numberOfNodes = registerOutput<int?>('numberOfNodes');
-    packageStores = registerOutput<List<Map<String, dynamic>>?>('packageStores');
+    packageStores = registerOutput<List<IntegrationRuntimeSsisPackageStore>?>('packageStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSsisPackageStore>(guardedValue, (value) => IntegrationRuntimeSsisPackageStore.fromMap((value as Map).cast<String, dynamic>())); });
+    pipelineExternalComputeScale = registerOutput<IntegrationRuntimeSsisPipelineExternalComputeScale?>('pipelineExternalComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    proxy = registerOutput<IntegrationRuntimeSsisProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vnetIntegration = registerOutput<IntegrationRuntimeSsisVnetIntegration?>('vnetIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisVnetIntegration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntimeSsis] resource.
+  IntegrationRuntimeSsis.reference(String urn)
+    : super(
+        'azure:datafactory/integrationRuntimeSsis:IntegrationRuntimeSsis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogInfo = registerOutput<IntegrationRuntimeSsisCatalogInfo?>('catalogInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCatalogInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    copyComputeScale = registerOutput<IntegrationRuntimeSsisCopyComputeScale?>('copyComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCopyComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentialName = registerOutput<String?>('credentialName');
+    customSetupScript = registerOutput<IntegrationRuntimeSsisCustomSetupScript?>('customSetupScript', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCustomSetupScript.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    edition = registerOutput<String?>('edition');
+    expressCustomSetup = registerOutput<IntegrationRuntimeSsisExpressCustomSetup?>('expressCustomSetup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisExpressCustomSetup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expressVnetIntegration = registerOutput<IntegrationRuntimeSsisExpressVnetIntegration?>('expressVnetIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisExpressVnetIntegration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maxParallelExecutionsPerNode = registerOutput<int?>('maxParallelExecutionsPerNode');
+    this.name = registerOutput<String>('name');
+    nodeSize = registerOutput<String>('nodeSize');
+    numberOfNodes = registerOutput<int?>('numberOfNodes');
+    packageStores = registerOutput<List<IntegrationRuntimeSsisPackageStore>?>('packageStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationRuntimeSsisPackageStore>(guardedValue, (value) => IntegrationRuntimeSsisPackageStore.fromMap((value as Map).cast<String, dynamic>())); });
     pipelineExternalComputeScale = registerOutput<IntegrationRuntimeSsisPipelineExternalComputeScale?>('pipelineExternalComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     proxy = registerOutput<IntegrationRuntimeSsisProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vnetIntegration = registerOutput<IntegrationRuntimeSsisVnetIntegration?>('vnetIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisVnetIntegration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

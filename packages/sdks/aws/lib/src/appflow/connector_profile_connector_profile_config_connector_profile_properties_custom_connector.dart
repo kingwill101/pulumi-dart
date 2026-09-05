@@ -5,9 +5,9 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector {
   /// OAuth 2.0 properties required for OAuth 2.0 authentication. See `connector_profile_config.connector_profile_properties.custom_connector.oauth2_properties` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties>? oauth2Properties;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties?>? oauth2Properties;
   /// Map of properties that are required to create a profile for the custom connector.
-  final pulumi.Input<Map<String, String>>? profileProperties;
+  final pulumi.Input<Map<String, String>?>? profileProperties;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector].
   /// [oauth2Properties] OAuth 2.0 properties required for OAuth 2.0 authentication. See `connector_profile_config.connector_profile_properties.custom_connector.oauth2_properties` Block for details.

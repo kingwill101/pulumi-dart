@@ -5,7 +5,7 @@ import 'classification_job_s3_job_definition_scoping_excludes_and.dart';
 
 class ClassificationJobS3JobDefinitionScopingExcludes {
   /// An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
-  final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingExcludesAnd>>? ands;
+  final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingExcludesAnd>?>? ands;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludes].
   /// [ands] An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)

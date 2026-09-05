@@ -6,7 +6,7 @@ class AppTemplateHttpScaleRuleAuthentication {
   /// The name of the Container App Secret to use for this Scale Rule Authentication.
   final pulumi.Input<String> secretName;
   /// The Trigger Parameter name to use the supply the value retrieved from the `secretName`.
-  final pulumi.Input<String>? triggerParameter;
+  final pulumi.Input<String?>? triggerParameter;
 
   /// Creates a new [AppTemplateHttpScaleRuleAuthentication].
   /// [secretName] The name of the Container App Secret to use for this Scale Rule Authentication.

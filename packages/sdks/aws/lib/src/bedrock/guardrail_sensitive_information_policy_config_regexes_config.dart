@@ -6,17 +6,17 @@ class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String> action;
   /// The regex description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final pulumi.Input<String>? inputAction;
+  final pulumi.Input<String?>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  final pulumi.Input<bool>? inputEnabled;
+  final pulumi.Input<bool?>? inputEnabled;
   /// The regex name.
   final pulumi.Input<String> name;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  final pulumi.Input<String>? outputAction;
+  final pulumi.Input<String?>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  final pulumi.Input<bool>? outputEnabled;
+  final pulumi.Input<bool?>? outputEnabled;
   /// The regex pattern.
   final pulumi.Input<String> pattern;
 

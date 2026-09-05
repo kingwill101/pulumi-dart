@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_prometheus_rule_group_args.dart';
+import 'alert_prometheus_rule_group_rule.dart';
 import 'alert_prometheus_rule_group_state.dart';
 
 /// Manages an Alert Management Prometheus Rule Group.
@@ -329,7 +330,7 @@ import 'alert_prometheus_rule_group_state.dart';
 /// 			RuleGroupEnabled:  pulumi.Bool(false),
 /// 			Interval:          pulumi.String("PT1M"),
 /// 			Scopes: pulumi.StringArray{
-/// 				exampleWorkspace.ID(),
+/// 				exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Rules: monitoring.AlertPrometheusRuleGroupRuleArray{
 /// 				&monitoring.AlertPrometheusRuleGroupRuleArgs{
@@ -348,7 +349,7 @@ import 'alert_prometheus_rule_group_state.dart';
 /// 					Severity:   pulumi.Int(2),
 /// 					Actions: monitoring.AlertPrometheusRuleGroupRuleActionArray{
 /// 						&monitoring.AlertPrometheusRuleGroupRuleActionArgs{
-/// 							ActionGroupId: exampleActionGroup.ID(),
+/// 							ActionGroupId: exampleActionGroup.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 					AlertResolution: &monitoring.AlertPrometheusRuleGroupRuleAlertResolutionArgs{
@@ -669,7 +670,7 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
   /// Is this Alert Management Prometheus Rule Group enabled? Possible values are `true` and `false`.
   late final pulumi.Output<bool?> ruleGroupEnabled;
   /// One or more `rule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<AlertPrometheusRuleGroupRule>> rules;
   /// Specifies the resource ID of the Azure Monitor Workspace.
   late final pulumi.Output<List<String>> scopes;
   /// A mapping of tags to assign to the Alert Management Prometheus Rule Group.
@@ -687,7 +688,7 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
           'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterName = registerOutput<String?>('clusterName');
     description = registerOutput<String?>('description');
@@ -696,9 +697,9 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     ruleGroupEnabled = registerOutput<bool?>('ruleGroupEnabled');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    scopes = registerOutput<List<String>>('scopes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    rules = registerOutput<List<AlertPrometheusRuleGroupRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(guardedValue, (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AlertPrometheusRuleGroup] resource's state with the given [name] and [id].
@@ -706,11 +707,12 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertPrometheusRuleGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertPrometheusRuleGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -731,8 +733,29 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     ruleGroupEnabled = registerOutput<bool?>('ruleGroupEnabled');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    scopes = registerOutput<List<String>>('scopes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    rules = registerOutput<List<AlertPrometheusRuleGroupRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(guardedValue, (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AlertPrometheusRuleGroup] resource.
+  AlertPrometheusRuleGroup.reference(String urn)
+    : super(
+        'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterName = registerOutput<String?>('clusterName');
+    description = registerOutput<String?>('description');
+    interval = registerOutput<String?>('interval');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    ruleGroupEnabled = registerOutput<bool?>('ruleGroupEnabled');
+    rules = registerOutput<List<AlertPrometheusRuleGroupRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(guardedValue, (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

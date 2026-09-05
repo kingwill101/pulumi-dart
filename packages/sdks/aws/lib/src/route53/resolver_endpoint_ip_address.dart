@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverEndpointIpAddress {
   /// IPv4 address in the subnet that you want to use for DNS queries.
-  final pulumi.Input<String>? ip;
-  final pulumi.Input<String>? ipId;
+  final pulumi.Input<String?>? ip;
+  final pulumi.Input<String?>? ipId;
   /// IPv6 address in the subnet that you want to use for DNS queries.
-  final pulumi.Input<String>? ipv6;
+  final pulumi.Input<String?>? ipv6;
   /// ID of the subnet that contains the IP address.
   final pulumi.Input<String> subnetId;
 

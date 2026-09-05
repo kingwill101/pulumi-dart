@@ -13,11 +13,11 @@ class BudgetSubscriptionArgs {
   /// The total amount of cost to track with the budget.
   final pulumi.Input<double> amount;
   /// (Optional) The ETag of the Subscription Consumption Budget.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A `filter` block as defined below.
-  final pulumi.Input<BudgetSubscriptionFilter>? filter;
+  final pulumi.Input<BudgetSubscriptionFilter?>? filter;
   /// The name which should be used for this Subscription Consumption Budget. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `notification` blocks as defined below.
   final pulumi.Input<List<BudgetSubscriptionNotification>> notifications;
   /// The ID of the Subscription for which to create a Consumption Budget. Changing this forces a new resource to be created.
@@ -25,7 +25,7 @@ class BudgetSubscriptionArgs {
   /// &gt; **Note:** The `subscriptionId` property can accept a subscription ID e.g. `00000000-0000-0000-0000-000000000000` or the subscription resource ID e.g. `/subscriptions/00000000-0000-0000-0000-000000000000`. In version 3.0 this property will only accept the subscription resource ID.
   final pulumi.Input<String> subscriptionId;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeGrain;
+  final pulumi.Input<String?>? timeGrain;
   /// A `timePeriod` block as defined below.
   final pulumi.Input<BudgetSubscriptionTimePeriod> timePeriod;
 
@@ -64,7 +64,7 @@ class BudgetSubscriptionArgs {
 
   factory BudgetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionArgs(
-      amount: pulumi.Input.fromValue(map['amount'] as double),
+      amount: pulumi.Input.fromValue((map['amount'] as num).toDouble()),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetSubscriptionFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

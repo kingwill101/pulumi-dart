@@ -6,17 +6,17 @@ import 'account_rai_policy_content_filter.dart';
 /// Input properties used for looking up and filtering AccountRaiPolicy resources.
 class AccountRaiPolicyState {
   /// The name of the base policy to use for this RAI Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? basePolicyName;
+  final pulumi.Input<String?>? basePolicyName;
   /// The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cognitiveAccountId;
+  final pulumi.Input<String?>? cognitiveAccountId;
   /// A `contentFilter` block as defined below.
-  final pulumi.Input<List<AccountRaiPolicyContentFilter>>? contentFilters;
+  final pulumi.Input<List<AccountRaiPolicyContentFilter>?>? contentFilters;
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountRaiPolicyState].
   /// [basePolicyName] The name of the base policy to use for this RAI Policy. Changing this forces a new resource to be created.

@@ -131,7 +131,7 @@ import 'endpoint_event_grid_state.dart';
 /// 		}
 /// 		_, err = digitaltwins.NewEndpointEventGrid(ctx, "example", &digitaltwins.EndpointEventGridArgs{
 /// 			Name:                             pulumi.String("example-EG"),
-/// 			DigitalTwinsId:                   exampleInstance.ID(),
+/// 			DigitalTwinsId:                   exampleInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			EventgridTopicEndpoint:           exampleTopic.Endpoint,
 /// 			EventgridTopicPrimaryAccessKey:   exampleTopic.PrimaryAccessKey,
 /// 			EventgridTopicSecondaryAccessKey: exampleTopic.SecondaryAccessKey,
@@ -302,7 +302,7 @@ class EndpointEventGrid extends pulumi.CustomResource {
           'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
@@ -317,11 +317,12 @@ class EndpointEventGrid extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointEventGridState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointEventGrid._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,6 +336,23 @@ class EndpointEventGrid extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
+    eventgridTopicPrimaryAccessKey = registerOutput<String>('eventgridTopicPrimaryAccessKey');
+    eventgridTopicSecondaryAccessKey = registerOutput<String>('eventgridTopicSecondaryAccessKey');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [EndpointEventGrid] resource.
+  EndpointEventGrid.reference(String urn)
+    : super(
+        'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');

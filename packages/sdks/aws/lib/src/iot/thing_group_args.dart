@@ -9,15 +9,15 @@ import 'thing_group_properties.dart';
 /// {@macro pulumi_iot_thing_group_thing_group_args_doc}
 class ThingGroupArgs {
   /// The name of the Thing Group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the parent Thing Group.
-  final pulumi.Input<String>? parentGroupName;
+  final pulumi.Input<String?>? parentGroupName;
   /// The Thing Group properties. Defined below.
-  final pulumi.Input<ThingGroupProperties>? properties;
+  final pulumi.Input<ThingGroupProperties?>? properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ThingGroupArgs].
   /// [name] The name of the Thing Group.

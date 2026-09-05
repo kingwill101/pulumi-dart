@@ -5,7 +5,7 @@ import 'space_space_settings_jupyter_lab_app_settings_app_lifecycle_management_i
 
 class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.
-  final pulumi.Input<SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idleSettings` Block below.

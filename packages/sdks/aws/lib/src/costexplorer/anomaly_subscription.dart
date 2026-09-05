@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anomaly_subscription_args.dart';
 import 'anomaly_subscription_state.dart';
+import 'anomaly_subscription_subscriber.dart';
 import 'anomaly_subscription_threshold_expression.dart';
 
 /// Provides a CE Anomaly Subscription.
@@ -20,13 +21,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     monitorDimension: "SERVICE",
 /// });
 /// const testAnomalySubscription = new aws.costexplorer.AnomalySubscription("test", {
-///     name: "DAILYSUBSCRIPTION",
-///     frequency: "DAILY",
-///     monitorArnLists: [test.arn],
-///     subscribers: [{
-///         type: "EMAIL",
-///         address: "abc@example.com",
-///     }],
 ///     thresholdExpression: {
 ///         dimension: {
 ///             key: "ANOMALY_TOTAL_IMPACT_ABSOLUTE",
@@ -34,6 +28,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             values: ["100"],
 ///         },
 ///     },
+///     subscribers: [{
+///         type: "EMAIL",
+///         address: "abc@example.com",
+///     }],
+///     name: "DAILYSUBSCRIPTION",
+///     frequency: "DAILY",
+///     monitorArnLists: [test.arn],
 /// });
 /// ```
 /// ```python
@@ -45,20 +46,20 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     monitor_type="DIMENSIONAL",
 ///     monitor_dimension="SERVICE")
 /// test_anomaly_subscription = aws.costexplorer.AnomalySubscription("test",
-///     name="DAILYSUBSCRIPTION",
-///     frequency="DAILY",
-///     monitor_arn_lists=[test.arn],
-///     subscribers=[{
-///         "type": "EMAIL",
-///         "address": "abc@example.com",
-///     }],
 ///     threshold_expression={
 ///         "dimension": {
 ///             "key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE",
 ///             "match_options": ["GREATER_THAN_OR_EQUAL"],
 ///             "values": ["100"],
 ///         },
-///     })
+///     },
+///     subscribers=[{
+///         "type": "EMAIL",
+///         "address": "abc@example.com",
+///     }],
+///     name="DAILYSUBSCRIPTION",
+///     frequency="DAILY",
+///     monitor_arn_lists=[test.arn])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,20 +78,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 ///     var testAnomalySubscription = new Aws.CostExplorer.AnomalySubscription("test", new()
 ///     {
-///         Name = "DAILYSUBSCRIPTION",
-///         Frequency = "DAILY",
-///         MonitorArnLists = new[]
-///         {
-///             test.Arn,
-///         },
-///         Subscribers = new[]
-///         {
-///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
-///             {
-///                 Type = "EMAIL",
-///                 Address = "abc@example.com",
-///             },
-///         },
 ///         ThresholdExpression = new Aws.CostExplorer.Inputs.AnomalySubscriptionThresholdExpressionArgs
 ///         {
 ///             Dimension = new Aws.CostExplorer.Inputs.AnomalySubscriptionThresholdExpressionDimensionArgs
@@ -105,6 +92,20 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     "100",
 ///                 },
 ///             },
+///         },
+///         Subscribers = new[]
+///         {
+///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
+///             {
+///                 Type = "EMAIL",
+///                 Address = "abc@example.com",
+///             },
+///         },
+///         Name = "DAILYSUBSCRIPTION",
+///         Frequency = "DAILY",
+///         MonitorArnLists = new[]
+///         {
+///             test.Arn,
 ///         },
 ///     });
 ///
@@ -129,17 +130,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 			return err
 /// 		}
 /// 		_, err = costexplorer.NewAnomalySubscription(ctx, "test", &costexplorer.AnomalySubscriptionArgs{
-/// 			Name:      pulumi.String("DAILYSUBSCRIPTION"),
-/// 			Frequency: pulumi.String("DAILY"),
-/// 			MonitorArnLists: pulumi.StringArray{
-/// 				test.Arn,
-/// 			},
-/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
-/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
-/// 					Type:    pulumi.String("EMAIL"),
-/// 					Address: pulumi.String("abc@example.com"),
-/// 				},
-/// 			},
 /// 			ThresholdExpression: &costexplorer.AnomalySubscriptionThresholdExpressionArgs{
 /// 				Dimension: &costexplorer.AnomalySubscriptionThresholdExpressionDimensionArgs{
 /// 					Key: pulumi.String("ANOMALY_TOTAL_IMPACT_ABSOLUTE"),
@@ -150,6 +140,17 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 						pulumi.String("100"),
 /// 					},
 /// 				},
+/// 			},
+/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
+/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
+/// 					Type:    pulumi.String("EMAIL"),
+/// 					Address: pulumi.String("abc@example.com"),
+/// 				},
+/// 			},
+/// 			Name:      pulumi.String("DAILYSUBSCRIPTION"),
+/// 			Frequency: pulumi.String("DAILY"),
+/// 			MonitorArnLists: pulumi.StringArray{
+/// 				test.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -174,13 +175,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   monitor_dimension = "SERVICE"
 /// }
 /// resource "aws_costexplorer_anomalysubscription" "test" {
-///   name              = "DAILYSUBSCRIPTION"
-///   frequency         = "DAILY"
-///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.test.arn]
-///   subscribers {
-///     type    = "EMAIL"
-///     address = "abc@example.com"
-///   }
 ///   threshold_expression = {
 ///     dimension = {
 ///       key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
@@ -188,6 +182,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///       values        = ["100"]
 ///     }
 ///   }
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   name              = "DAILYSUBSCRIPTION"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.test.arn]
 /// }
 /// ```
 /// ```java
@@ -200,9 +201,9 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.aws.costexplorer.AnomalyMonitorArgs;
 /// import com.pulumi.aws.costexplorer.AnomalySubscription;
 /// import com.pulumi.aws.costexplorer.AnomalySubscriptionArgs;
-/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionDimensionArgs;
+/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -223,13 +224,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             .build());
 ///
 ///         var testAnomalySubscription = new AnomalySubscription("testAnomalySubscription", AnomalySubscriptionArgs.builder()
-///             .name("DAILYSUBSCRIPTION")
-///             .frequency("DAILY")
-///             .monitorArnLists(test.arn())
-///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
-///                 .type("EMAIL")
-///                 .address("abc@example.com")
-///                 .build())
 ///             .thresholdExpression(AnomalySubscriptionThresholdExpressionArgs.builder()
 ///                 .dimension(AnomalySubscriptionThresholdExpressionDimensionArgs.builder()
 ///                     .key("ANOMALY_TOTAL_IMPACT_ABSOLUTE")
@@ -237,6 +231,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     .values("100")
 ///                     .build())
 ///                 .build())
+///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
+///                 .type("EMAIL")
+///                 .address("abc@example.com")
+///                 .build())
+///             .name("DAILYSUBSCRIPTION")
+///             .frequency("DAILY")
+///             .monitorArnLists(test.arn())
 ///             .build());
 ///
 ///     }
@@ -254,13 +255,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     type: aws:costexplorer:AnomalySubscription
 ///     name: test
 ///     properties:
-///       name: DAILYSUBSCRIPTION
-///       frequency: DAILY
-///       monitorArnLists:
-///         - ${test.arn}
-///       subscribers:
-///         - type: EMAIL
-///           address: abc@example.com
 ///       thresholdExpression:
 ///         dimension:
 ///           key: ANOMALY_TOTAL_IMPACT_ABSOLUTE
@@ -268,6 +262,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             - GREATER_THAN_OR_EQUAL
 ///           values:
 ///             - '100'
+///       subscribers:
+///         - type: EMAIL
+///           address: abc@example.com
+///       name: DAILYSUBSCRIPTION
+///       frequency: DAILY
+///       monitorArnLists:
+///         - ${test.arn}
 /// ```
 ///
 ///
@@ -281,13 +282,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.costexplorer.AnomalySubscription("test", {
-///     name: "AWSServiceMonitor",
-///     frequency: "DAILY",
-///     monitorArnLists: [testAwsCeAnomalyMonitor.arn],
-///     subscribers: [{
-///         type: "EMAIL",
-///         address: "abc@example.com",
-///     }],
 ///     thresholdExpression: {
 ///         dimension: {
 ///             key: "ANOMALY_TOTAL_IMPACT_PERCENTAGE",
@@ -295,6 +289,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             values: ["100"],
 ///         },
 ///     },
+///     subscribers: [{
+///         type: "EMAIL",
+///         address: "abc@example.com",
+///     }],
+///     name: "AWSServiceMonitor",
+///     frequency: "DAILY",
+///     monitorArnLists: [testAwsCeAnomalyMonitor.arn],
 /// });
 /// ```
 /// ```python
@@ -302,20 +303,20 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.costexplorer.AnomalySubscription("test",
-///     name="AWSServiceMonitor",
-///     frequency="DAILY",
-///     monitor_arn_lists=[test_aws_ce_anomaly_monitor["arn"]],
-///     subscribers=[{
-///         "type": "EMAIL",
-///         "address": "abc@example.com",
-///     }],
 ///     threshold_expression={
 ///         "dimension": {
 ///             "key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 ///             "match_options": ["GREATER_THAN_OR_EQUAL"],
 ///             "values": ["100"],
 ///         },
-///     })
+///     },
+///     subscribers=[{
+///         "type": "EMAIL",
+///         "address": "abc@example.com",
+///     }],
+///     name="AWSServiceMonitor",
+///     frequency="DAILY",
+///     monitor_arn_lists=[test_aws_ce_anomaly_monitor["arn"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -327,20 +328,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// {
 ///     var test = new Aws.CostExplorer.AnomalySubscription("test", new()
 ///     {
-///         Name = "AWSServiceMonitor",
-///         Frequency = "DAILY",
-///         MonitorArnLists = new[]
-///         {
-///             testAwsCeAnomalyMonitor.Arn,
-///         },
-///         Subscribers = new[]
-///         {
-///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
-///             {
-///                 Type = "EMAIL",
-///                 Address = "abc@example.com",
-///             },
-///         },
 ///         ThresholdExpression = new Aws.CostExplorer.Inputs.AnomalySubscriptionThresholdExpressionArgs
 ///         {
 ///             Dimension = new Aws.CostExplorer.Inputs.AnomalySubscriptionThresholdExpressionDimensionArgs
@@ -355,6 +342,20 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     "100",
 ///                 },
 ///             },
+///         },
+///         Subscribers = new[]
+///         {
+///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
+///             {
+///                 Type = "EMAIL",
+///                 Address = "abc@example.com",
+///             },
+///         },
+///         Name = "AWSServiceMonitor",
+///         Frequency = "DAILY",
+///         MonitorArnLists = new[]
+///         {
+///             testAwsCeAnomalyMonitor.Arn,
 ///         },
 ///     });
 ///
@@ -371,17 +372,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := costexplorer.NewAnomalySubscription(ctx, "test", &costexplorer.AnomalySubscriptionArgs{
-/// 			Name:      pulumi.String("AWSServiceMonitor"),
-/// 			Frequency: pulumi.String("DAILY"),
-/// 			MonitorArnLists: pulumi.StringArray{
-/// 				testAwsCeAnomalyMonitor.Arn,
-/// 			},
-/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
-/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
-/// 					Type:    pulumi.String("EMAIL"),
-/// 					Address: pulumi.String("abc@example.com"),
-/// 				},
-/// 			},
 /// 			ThresholdExpression: &costexplorer.AnomalySubscriptionThresholdExpressionArgs{
 /// 				Dimension: &costexplorer.AnomalySubscriptionThresholdExpressionDimensionArgs{
 /// 					Key: pulumi.String("ANOMALY_TOTAL_IMPACT_PERCENTAGE"),
@@ -392,6 +382,17 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 						pulumi.String("100"),
 /// 					},
 /// 				},
+/// 			},
+/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
+/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
+/// 					Type:    pulumi.String("EMAIL"),
+/// 					Address: pulumi.String("abc@example.com"),
+/// 				},
+/// 			},
+/// 			Name:      pulumi.String("AWSServiceMonitor"),
+/// 			Frequency: pulumi.String("DAILY"),
+/// 			MonitorArnLists: pulumi.StringArray{
+/// 				testAwsCeAnomalyMonitor.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -411,13 +412,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 ///
 /// resource "aws_costexplorer_anomalysubscription" "test" {
-///   name              = "AWSServiceMonitor"
-///   frequency         = "DAILY"
-///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
-///   subscribers {
-///     type    = "EMAIL"
-///     address = "abc@example.com"
-///   }
 ///   threshold_expression = {
 ///     dimension = {
 ///       key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
@@ -425,6 +419,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///       values        = ["100"]
 ///     }
 ///   }
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   name              = "AWSServiceMonitor"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
 /// }
 /// ```
 /// ```java
@@ -435,9 +436,9 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costexplorer.AnomalySubscription;
 /// import com.pulumi.aws.costexplorer.AnomalySubscriptionArgs;
-/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionDimensionArgs;
+/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -452,13 +453,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AnomalySubscription("test", AnomalySubscriptionArgs.builder()
-///             .name("AWSServiceMonitor")
-///             .frequency("DAILY")
-///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
-///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
-///                 .type("EMAIL")
-///                 .address("abc@example.com")
-///                 .build())
 ///             .thresholdExpression(AnomalySubscriptionThresholdExpressionArgs.builder()
 ///                 .dimension(AnomalySubscriptionThresholdExpressionDimensionArgs.builder()
 ///                     .key("ANOMALY_TOTAL_IMPACT_PERCENTAGE")
@@ -466,6 +460,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     .values("100")
 ///                     .build())
 ///                 .build())
+///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
+///                 .type("EMAIL")
+///                 .address("abc@example.com")
+///                 .build())
+///             .name("AWSServiceMonitor")
+///             .frequency("DAILY")
+///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
 ///             .build());
 ///
 ///     }
@@ -476,13 +477,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   test:
 ///     type: aws:costexplorer:AnomalySubscription
 ///     properties:
-///       name: AWSServiceMonitor
-///       frequency: DAILY
-///       monitorArnLists:
-///         - ${testAwsCeAnomalyMonitor.arn}
-///       subscribers:
-///         - type: EMAIL
-///           address: abc@example.com
 ///       thresholdExpression:
 ///         dimension:
 ///           key: ANOMALY_TOTAL_IMPACT_PERCENTAGE
@@ -490,6 +484,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             - GREATER_THAN_OR_EQUAL
 ///           values:
 ///             - '100'
+///       subscribers:
+///         - type: EMAIL
+///           address: abc@example.com
+///       name: AWSServiceMonitor
+///       frequency: DAILY
+///       monitorArnLists:
+///         - ${testAwsCeAnomalyMonitor.arn}
 /// ```
 ///
 ///
@@ -501,13 +502,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.costexplorer.AnomalySubscription("test", {
-///     name: "AWSServiceMonitor",
-///     frequency: "DAILY",
-///     monitorArnLists: [testAwsCeAnomalyMonitor.arn],
-///     subscribers: [{
-///         type: "EMAIL",
-///         address: "abc@example.com",
-///     }],
 ///     thresholdExpression: {
 ///         ands: [
 ///             {
@@ -526,6 +520,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             },
 ///         ],
 ///     },
+///     subscribers: [{
+///         type: "EMAIL",
+///         address: "abc@example.com",
+///     }],
+///     name: "AWSServiceMonitor",
+///     frequency: "DAILY",
+///     monitorArnLists: [testAwsCeAnomalyMonitor.arn],
 /// });
 /// ```
 /// ```python
@@ -533,13 +534,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.costexplorer.AnomalySubscription("test",
-///     name="AWSServiceMonitor",
-///     frequency="DAILY",
-///     monitor_arn_lists=[test_aws_ce_anomaly_monitor["arn"]],
-///     subscribers=[{
-///         "type": "EMAIL",
-///         "address": "abc@example.com",
-///     }],
 ///     threshold_expression={
 ///         "ands": [
 ///             {
@@ -557,7 +551,14 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 },
 ///             },
 ///         ],
-///     })
+///     },
+///     subscribers=[{
+///         "type": "EMAIL",
+///         "address": "abc@example.com",
+///     }],
+///     name="AWSServiceMonitor",
+///     frequency="DAILY",
+///     monitor_arn_lists=[test_aws_ce_anomaly_monitor["arn"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -569,20 +570,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// {
 ///     var test = new Aws.CostExplorer.AnomalySubscription("test", new()
 ///     {
-///         Name = "AWSServiceMonitor",
-///         Frequency = "DAILY",
-///         MonitorArnLists = new[]
-///         {
-///             testAwsCeAnomalyMonitor.Arn,
-///         },
-///         Subscribers = new[]
-///         {
-///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
-///             {
-///                 Type = "EMAIL",
-///                 Address = "abc@example.com",
-///             },
-///         },
 ///         ThresholdExpression = new Aws.CostExplorer.Inputs.AnomalySubscriptionThresholdExpressionArgs
 ///         {
 ///             Ands = new[]
@@ -619,6 +606,20 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 },
 ///             },
 ///         },
+///         Subscribers = new[]
+///         {
+///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
+///             {
+///                 Type = "EMAIL",
+///                 Address = "abc@example.com",
+///             },
+///         },
+///         Name = "AWSServiceMonitor",
+///         Frequency = "DAILY",
+///         MonitorArnLists = new[]
+///         {
+///             testAwsCeAnomalyMonitor.Arn,
+///         },
 ///     });
 ///
 /// });
@@ -634,17 +635,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := costexplorer.NewAnomalySubscription(ctx, "test", &costexplorer.AnomalySubscriptionArgs{
-/// 			Name:      pulumi.String("AWSServiceMonitor"),
-/// 			Frequency: pulumi.String("DAILY"),
-/// 			MonitorArnLists: pulumi.StringArray{
-/// 				testAwsCeAnomalyMonitor.Arn,
-/// 			},
-/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
-/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
-/// 					Type:    pulumi.String("EMAIL"),
-/// 					Address: pulumi.String("abc@example.com"),
-/// 				},
-/// 			},
 /// 			ThresholdExpression: &costexplorer.AnomalySubscriptionThresholdExpressionArgs{
 /// 				Ands: costexplorer.AnomalySubscriptionThresholdExpressionAndArray{
 /// 					&costexplorer.AnomalySubscriptionThresholdExpressionAndArgs{
@@ -671,6 +661,17 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
+/// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
+/// 					Type:    pulumi.String("EMAIL"),
+/// 					Address: pulumi.String("abc@example.com"),
+/// 				},
+/// 			},
+/// 			Name:      pulumi.String("AWSServiceMonitor"),
+/// 			Frequency: pulumi.String("DAILY"),
+/// 			MonitorArnLists: pulumi.StringArray{
+/// 				testAwsCeAnomalyMonitor.Arn,
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -689,13 +690,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 ///
 /// resource "aws_costexplorer_anomalysubscription" "test" {
-///   name              = "AWSServiceMonitor"
-///   frequency         = "DAILY"
-///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
-///   subscribers {
-///     type    = "EMAIL"
-///     address = "abc@example.com"
-///   }
 ///   threshold_expression = {
 ///     ands = [{
 ///       "dimension" = {
@@ -711,6 +705,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///       }
 ///     }]
 ///   }
+///   subscribers {
+///     type    = "EMAIL"
+///     address = "abc@example.com"
+///   }
+///   name              = "AWSServiceMonitor"
+///   frequency         = "DAILY"
+///   monitor_arn_lists = [testAwsCeAnomalyMonitor.arn]
 /// }
 /// ```
 /// ```java
@@ -721,10 +722,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.costexplorer.AnomalySubscription;
 /// import com.pulumi.aws.costexplorer.AnomalySubscriptionArgs;
-/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionAndArgs;
 /// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionThresholdExpressionAndDimensionArgs;
+/// import com.pulumi.aws.costexplorer.inputs.AnomalySubscriptionSubscriberArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -739,13 +740,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new AnomalySubscription("test", AnomalySubscriptionArgs.builder()
-///             .name("AWSServiceMonitor")
-///             .frequency("DAILY")
-///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
-///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
-///                 .type("EMAIL")
-///                 .address("abc@example.com")
-///                 .build())
 ///             .thresholdExpression(AnomalySubscriptionThresholdExpressionArgs.builder()
 ///                 .ands(
 ///                     AnomalySubscriptionThresholdExpressionAndArgs.builder()
@@ -763,6 +757,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                             .build())
 ///                         .build())
 ///                 .build())
+///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
+///                 .type("EMAIL")
+///                 .address("abc@example.com")
+///                 .build())
+///             .name("AWSServiceMonitor")
+///             .frequency("DAILY")
+///             .monitorArnLists(testAwsCeAnomalyMonitor.arn())
 ///             .build());
 ///
 ///     }
@@ -773,13 +774,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   test:
 ///     type: aws:costexplorer:AnomalySubscription
 ///     properties:
-///       name: AWSServiceMonitor
-///       frequency: DAILY
-///       monitorArnLists:
-///         - ${testAwsCeAnomalyMonitor.arn}
-///       subscribers:
-///         - type: EMAIL
-///           address: abc@example.com
 ///       thresholdExpression:
 ///         ands:
 ///           - dimension:
@@ -794,6 +788,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 - GREATER_THAN_OR_EQUAL
 ///               values:
 ///                 - '50'
+///       subscribers:
+///         - type: EMAIL
+///           address: abc@example.com
+///       name: AWSServiceMonitor
+///       frequency: DAILY
+///       monitorArnLists:
+///         - ${testAwsCeAnomalyMonitor.arn}
 /// ```
 ///
 ///
@@ -806,19 +807,27 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 /// const costAnomalyUpdates = new aws.sns.Topic("cost_anomaly_updates", {name: "CostAnomalyUpdates"});
 /// const snsTopicPolicy = aws.iam.getPolicyDocumentOutput({
-///     policyId: "__default_policy_ID",
 ///     statements: [
 ///         {
-///             sid: "AWSAnomalyDetectionSNSPublishingPermissions",
-///             actions: ["SNS:Publish"],
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["costalerts.amazonaws.com"],
 ///             }],
+///             sid: "AWSAnomalyDetectionSNSPublishingPermissions",
+///             actions: ["SNS:Publish"],
+///             effect: "Allow",
 ///             resources: [costAnomalyUpdates.arn],
 ///         },
 ///         {
+///             conditions: [{
+///                 test: "StringEquals",
+///                 variable: "AWS:SourceOwner",
+///                 values: [accountId],
+///             }],
+///             principals: [{
+///                 type: "AWS",
+///                 identifiers: ["*"],
+///             }],
 ///             sid: "__default_statement_ID",
 ///             actions: [
 ///                 "SNS:Subscribe",
@@ -831,19 +840,11 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 "SNS:DeleteTopic",
 ///                 "SNS:AddPermission",
 ///             ],
-///             conditions: [{
-///                 test: "StringEquals",
-///                 variable: "AWS:SourceOwner",
-///                 values: [accountId],
-///             }],
 ///             effect: "Allow",
-///             principals: [{
-///                 type: "AWS",
-///                 identifiers: ["*"],
-///             }],
 ///             resources: [costAnomalyUpdates.arn],
 ///         },
 ///     ],
+///     policyId: "__default_policy_ID",
 /// });
 /// const _default = new aws.sns.TopicPolicy("default", {
 ///     arn: costAnomalyUpdates.arn,
@@ -855,13 +856,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     monitorDimension: "SERVICE",
 /// });
 /// const realtimeSubscription = new aws.costexplorer.AnomalySubscription("realtime_subscription", {
-///     name: "RealtimeAnomalySubscription",
-///     frequency: "IMMEDIATE",
-///     monitorArnLists: [anomalyMonitor.arn],
 ///     subscribers: [{
 ///         type: "SNS",
 ///         address: costAnomalyUpdates.arn,
 ///     }],
+///     name: "RealtimeAnomalySubscription",
+///     frequency: "IMMEDIATE",
+///     monitorArnLists: [anomalyMonitor.arn],
 /// }, {
 ///     dependsOn: [_default],
 /// });
@@ -871,19 +872,27 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// import pulumi_aws as aws
 ///
 /// cost_anomaly_updates = aws.sns.Topic("cost_anomaly_updates", name="CostAnomalyUpdates")
-/// sns_topic_policy = aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
-///     statements=[
+/// sns_topic_policy = aws.iam.get_policy_document_output(statements=[
 ///         {
-///             "sid": "AWSAnomalyDetectionSNSPublishingPermissions",
-///             "actions": ["SNS:Publish"],
-///             "effect": "Allow",
 ///             "principals": [{
 ///                 "type": "Service",
 ///                 "identifiers": ["costalerts.amazonaws.com"],
 ///             }],
+///             "sid": "AWSAnomalyDetectionSNSPublishingPermissions",
+///             "actions": ["SNS:Publish"],
+///             "effect": "Allow",
 ///             "resources": [cost_anomaly_updates.arn],
 ///         },
 ///         {
+///             "conditions": [{
+///                 "test": "StringEquals",
+///                 "variable": "AWS:SourceOwner",
+///                 "values": [account_id],
+///             }],
+///             "principals": [{
+///                 "type": "AWS",
+///                 "identifiers": ["*"],
+///             }],
 ///             "sid": "__default_statement_ID",
 ///             "actions": [
 ///                 "SNS:Subscribe",
@@ -896,19 +905,11 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 "SNS:DeleteTopic",
 ///                 "SNS:AddPermission",
 ///             ],
-///             "conditions": [{
-///                 "test": "StringEquals",
-///                 "variable": "AWS:SourceOwner",
-///                 "values": [account_id],
-///             }],
 ///             "effect": "Allow",
-///             "principals": [{
-///                 "type": "AWS",
-///                 "identifiers": ["*"],
-///             }],
 ///             "resources": [cost_anomaly_updates.arn],
 ///         },
-///     ])
+///     ],
+///     policy_id="__default_policy_ID")
 /// default = aws.sns.TopicPolicy("default",
 ///     arn=cost_anomaly_updates.arn,
 ///     policy=sns_topic_policy.json)
@@ -917,13 +918,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     monitor_type="DIMENSIONAL",
 ///     monitor_dimension="SERVICE")
 /// realtime_subscription = aws.costexplorer.AnomalySubscription("realtime_subscription",
-///     name="RealtimeAnomalySubscription",
-///     frequency="IMMEDIATE",
-///     monitor_arn_lists=[anomaly_monitor.arn],
 ///     subscribers=[{
 ///         "type": "SNS",
 ///         "address": cost_anomaly_updates.arn,
 ///     }],
+///     name="RealtimeAnomalySubscription",
+///     frequency="IMMEDIATE",
+///     monitor_arn_lists=[anomaly_monitor.arn],
 ///     opts = pulumi.ResourceOptions(depends_on=[default]))
 /// ```
 /// ```csharp
@@ -941,17 +942,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 ///     var snsTopicPolicy = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         PolicyId = "__default_policy_ID",
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AWSAnomalyDetectionSNSPublishingPermissions",
-///                 Actions = new[]
-///                 {
-///                     "SNS:Publish",
-///                 },
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -963,6 +957,12 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AWSAnomalyDetectionSNSPublishingPermissions",
+///                 Actions = new[]
+///                 {
+///                     "SNS:Publish",
+///                 },
+///                 Effect = "Allow",
 ///                 Resources = new[]
 ///                 {
 ///                     costAnomalyUpdates.Arn,
@@ -970,6 +970,29 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Variable = "AWS:SourceOwner",
+///                         Values = new[]
+///                         {
+///                             accountId,
+///                         },
+///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
 ///                 Sid = "__default_statement_ID",
 ///                 Actions = new[]
 ///                 {
@@ -983,36 +1006,14 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                     "SNS:DeleteTopic",
 ///                     "SNS:AddPermission",
 ///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Variable = "AWS:SourceOwner",
-///                         Values = new[]
-///                         {
-///                             accountId,
-///                         },
-///                     },
-///                 },
 ///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
 ///                 Resources = new[]
 ///                 {
 ///                     costAnomalyUpdates.Arn,
 ///                 },
 ///             },
 ///         },
+///         PolicyId = "__default_policy_ID",
 ///     });
 ///
 ///     var @default = new Aws.Sns.TopicPolicy("default", new()
@@ -1030,12 +1031,6 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 ///     var realtimeSubscription = new Aws.CostExplorer.AnomalySubscription("realtime_subscription", new()
 ///     {
-///         Name = "RealtimeAnomalySubscription",
-///         Frequency = "IMMEDIATE",
-///         MonitorArnLists = new[]
-///         {
-///             anomalyMonitor.Arn,
-///         },
 ///         Subscribers = new[]
 ///         {
 ///             new Aws.CostExplorer.Inputs.AnomalySubscriptionSubscriberArgs
@@ -1043,6 +1038,12 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                 Type = "SNS",
 ///                 Address = costAnomalyUpdates.Arn,
 ///             },
+///         },
+///         Name = "RealtimeAnomalySubscription",
+///         Frequency = "IMMEDIATE",
+///         MonitorArnLists = new[]
+///         {
+///             anomalyMonitor.Arn,
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -1073,14 +1074,8 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 			return err
 /// 		}
 /// 		snsTopicPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
-/// 			PolicyId: pulumi.String("__default_policy_ID"),
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid: pulumi.String("AWSAnomalyDetectionSNSPublishingPermissions"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -1089,11 +1084,33 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid: pulumi.String("AWSAnomalyDetectionSNSPublishingPermissions"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Resources: pulumi.StringArray{
 /// 						costAnomalyUpdates.Arn,
 /// 					},
 /// 				},
 /// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("AWS:SourceOwner"),
+/// 							Values: pulumi.StringArray{
+/// 								accountId,
+/// 							},
+/// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
 /// 					Sid: pulumi.String("__default_statement_ID"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("SNS:Subscribe"),
@@ -1106,29 +1123,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 						pulumi.String("SNS:DeleteTopic"),
 /// 						pulumi.String("SNS:AddPermission"),
 /// 					},
-/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
-/// 						&iam.GetPolicyDocumentStatementConditionArgs{
-/// 							Test:     pulumi.String("StringEquals"),
-/// 							Variable: pulumi.String("AWS:SourceOwner"),
-/// 							Values: pulumi.StringArray{
-/// 								accountId,
-/// 							},
-/// 						},
-/// 					},
 /// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("AWS"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						costAnomalyUpdates.Arn,
 /// 					},
 /// 				},
 /// 			},
+/// 			PolicyId: pulumi.String("__default_policy_ID"),
 /// 		}, nil)
 /// 		_default, err := sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
 /// 			Arn:    costAnomalyUpdates.Arn,
@@ -1146,16 +1147,16 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// 			return err
 /// 		}
 /// 		_, err = costexplorer.NewAnomalySubscription(ctx, "realtime_subscription", &costexplorer.AnomalySubscriptionArgs{
-/// 			Name:      pulumi.String("RealtimeAnomalySubscription"),
-/// 			Frequency: pulumi.String("IMMEDIATE"),
-/// 			MonitorArnLists: pulumi.StringArray{
-/// 				anomalyMonitor.Arn,
-/// 			},
 /// 			Subscribers: costexplorer.AnomalySubscriptionSubscriberArray{
 /// 				&costexplorer.AnomalySubscriptionSubscriberArgs{
 /// 					Type:    pulumi.String("SNS"),
 /// 					Address: costAnomalyUpdates.Arn,
 /// 				},
+/// 			},
+/// 			Name:      pulumi.String("RealtimeAnomalySubscription"),
+/// 			Frequency: pulumi.String("IMMEDIATE"),
+/// 			MonitorArnLists: pulumi.StringArray{
+/// 				anomalyMonitor.Arn,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
@@ -1177,32 +1178,32 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// }
 ///
 /// data "aws_iam_getpolicydocument" "snsTopicPolicy" {
-///   policy_id = "__default_policy_ID"
 ///   statements {
-///     sid     = "AWSAnomalyDetectionSNSPublishingPermissions"
-///     actions = ["SNS:Publish"]
-///     effect  = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["costalerts.amazonaws.com"]
 ///     }
+///     sid       = "AWSAnomalyDetectionSNSPublishingPermissions"
+///     actions   = ["SNS:Publish"]
+///     effect    = "Allow"
 ///     resources = [aws_sns_topic.cost_anomaly_updates.arn]
 ///   }
 ///   statements {
-///     sid     = "__default_statement_ID"
-///     actions = ["SNS:Subscribe", "SNS:SetTopicAttributes", "SNS:RemovePermission", "SNS:Receive", "SNS:Publish", "SNS:ListSubscriptionsByTopic", "SNS:GetTopicAttributes", "SNS:DeleteTopic", "SNS:AddPermission"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "AWS:SourceOwner"
 ///       values   = [accountId]
 ///     }
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["*"]
 ///     }
+///     sid       = "__default_statement_ID"
+///     actions   = ["SNS:Subscribe", "SNS:SetTopicAttributes", "SNS:RemovePermission", "SNS:Receive", "SNS:Publish", "SNS:ListSubscriptionsByTopic", "SNS:GetTopicAttributes", "SNS:DeleteTopic", "SNS:AddPermission"]
+///     effect    = "Allow"
 ///     resources = [aws_sns_topic.cost_anomaly_updates.arn]
 ///   }
+///   policy_id = "__default_policy_ID"
 /// }
 ///
 /// resource "aws_sns_topic" "cost_anomaly_updates" {
@@ -1218,14 +1219,14 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///   monitor_dimension = "SERVICE"
 /// }
 /// resource "aws_costexplorer_anomalysubscription" "realtime_subscription" {
-///   depends_on        = [aws_sns_topicpolicy.default]
-///   name              = "RealtimeAnomalySubscription"
-///   frequency         = "IMMEDIATE"
-///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.anomaly_monitor.arn]
+///   depends_on = [aws_sns_topicpolicy.default]
 ///   subscribers {
 ///     type    = "SNS"
 ///     address = aws_sns_topic.cost_anomaly_updates.arn
 ///   }
+///   name              = "RealtimeAnomalySubscription"
+///   frequency         = "IMMEDIATE"
+///   monitor_arn_lists = [aws_costexplorer_anomalymonitor.anomaly_monitor.arn]
 /// }
 /// ```
 /// ```java
@@ -1267,19 +1268,27 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             .build());
 ///
 ///         final var snsTopicPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .policyId("__default_policy_ID")
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("AWSAnomalyDetectionSNSPublishingPermissions")
-///                     .actions("SNS:Publish")
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("costalerts.amazonaws.com")
 ///                         .build())
+///                     .sid("AWSAnomalyDetectionSNSPublishingPermissions")
+///                     .actions("SNS:Publish")
+///                     .effect("Allow")
 ///                     .resources(costAnomalyUpdates.arn())
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
+///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                         .test("StringEquals")
+///                         .variable("AWS:SourceOwner")
+///                         .values(accountId)
+///                         .build())
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers("*")
+///                         .build())
 ///                     .sid("__default_statement_ID")
 ///                     .actions(
 ///                         "SNS:Subscribe",
@@ -1291,18 +1300,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///                         "SNS:GetTopicAttributes",
 ///                         "SNS:DeleteTopic",
 ///                         "SNS:AddPermission")
-///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                         .test("StringEquals")
-///                         .variable("AWS:SourceOwner")
-///                         .values(accountId)
-///                         .build())
 ///                     .effect("Allow")
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("AWS")
-///                         .identifiers("*")
-///                         .build())
 ///                     .resources(costAnomalyUpdates.arn())
 ///                     .build())
+///             .policyId("__default_policy_ID")
 ///             .build());
 ///
 ///         var default_ = new TopicPolicy("default", TopicPolicyArgs.builder()
@@ -1317,13 +1318,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///             .build());
 ///
 ///         var realtimeSubscription = new AnomalySubscription("realtimeSubscription", AnomalySubscriptionArgs.builder()
-///             .name("RealtimeAnomalySubscription")
-///             .frequency("IMMEDIATE")
-///             .monitorArnLists(anomalyMonitor.arn())
 ///             .subscribers(AnomalySubscriptionSubscriberArgs.builder()
 ///                 .type("SNS")
 ///                 .address(costAnomalyUpdates.arn())
 ///                 .build())
+///             .name("RealtimeAnomalySubscription")
+///             .frequency("IMMEDIATE")
+///             .monitorArnLists(anomalyMonitor.arn())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(default_)
 ///                 .build());
@@ -1354,13 +1355,13 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     type: aws:costexplorer:AnomalySubscription
 ///     name: realtime_subscription
 ///     properties:
+///       subscribers:
+///         - type: SNS
+///           address: ${costAnomalyUpdates.arn}
 ///       name: RealtimeAnomalySubscription
 ///       frequency: IMMEDIATE
 ///       monitorArnLists:
 ///         - ${anomalyMonitor.arn}
-///       subscribers:
-///         - type: SNS
-///           address: ${costAnomalyUpdates.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${default}
@@ -1369,19 +1370,27 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         policyId: __default_policy_ID
 ///         statements:
-///           - sid: AWSAnomalyDetectionSNSPublishingPermissions
-///             actions:
-///               - SNS:Publish
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - costalerts.amazonaws.com
+///             sid: AWSAnomalyDetectionSNSPublishingPermissions
+///             actions:
+///               - SNS:Publish
+///             effect: Allow
 ///             resources:
 ///               - ${costAnomalyUpdates.arn}
-///           - sid: __default_statement_ID
+///           - conditions:
+///               - test: StringEquals
+///                 variable: AWS:SourceOwner
+///                 values:
+///                   - ${accountId}
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '*'
+///             sid: __default_statement_ID
 ///             actions:
 ///               - SNS:Subscribe
 ///               - SNS:SetTopicAttributes
@@ -1392,18 +1401,10 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///               - SNS:GetTopicAttributes
 ///               - SNS:DeleteTopic
 ///               - SNS:AddPermission
-///             conditions:
-///               - test: StringEquals
-///                 variable: AWS:SourceOwner
-///                 values:
-///                   - ${accountId}
 ///             effect: Allow
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '*'
 ///             resources:
 ///               - ${costAnomalyUpdates.arn}
+///         policyId: __default_policy_ID
 /// ```
 ///
 ///
@@ -1413,7 +1414,7 @@ import 'anomaly_subscription_threshold_expression.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Cost Explorer anomaly subscription.
+/// - `arn` (String) ARN of the Cost Explorer anomaly subscription.
 ///
 ///
 /// Using `pulumi import`, import `aws.costexplorer.AnomalySubscription` using the `id`. For example:
@@ -1433,7 +1434,7 @@ class AnomalySubscription extends pulumi.CustomResource {
   /// The name for the subscription.
   late final pulumi.Output<String> name;
   /// A subscriber configuration. Multiple subscribers can be defined.
-  late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
+  late final pulumi.Output<List<AnomalySubscriptionSubscriber>> subscribers;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1453,16 +1454,16 @@ class AnomalySubscription extends pulumi.CustomResource {
           'aws:costexplorer/anomalySubscription:AnomalySubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     frequency = registerOutput<String>('frequency');
-    monitorArnLists = registerOutput<List<String>>('monitorArnLists');
+    monitorArnLists = registerOutput<List<String>>('monitorArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subscribers = registerOutput<List<AnomalySubscriptionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(guardedValue, (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thresholdExpression = registerOutput<AnomalySubscriptionThresholdExpression>('thresholdExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalySubscriptionThresholdExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1471,11 +1472,12 @@ class AnomalySubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnomalySubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnomalySubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1492,11 +1494,31 @@ class AnomalySubscription extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     frequency = registerOutput<String>('frequency');
-    monitorArnLists = registerOutput<List<String>>('monitorArnLists');
+    monitorArnLists = registerOutput<List<String>>('monitorArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subscribers = registerOutput<List<AnomalySubscriptionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(guardedValue, (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thresholdExpression = registerOutput<AnomalySubscriptionThresholdExpression>('thresholdExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalySubscriptionThresholdExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AnomalySubscription] resource.
+  AnomalySubscription.reference(String urn)
+    : super(
+        'aws:costexplorer/anomalySubscription:AnomalySubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    frequency = registerOutput<String>('frequency');
+    monitorArnLists = registerOutput<List<String>>('monitorArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    subscribers = registerOutput<List<AnomalySubscriptionSubscriber>>('subscribers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(guardedValue, (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thresholdExpression = registerOutput<AnomalySubscriptionThresholdExpression>('thresholdExpression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalySubscriptionThresholdExpression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

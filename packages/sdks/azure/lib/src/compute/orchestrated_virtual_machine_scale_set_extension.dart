@@ -5,29 +5,29 @@ import 'orchestrated_virtual_machine_scale_set_extension_protected_settings_from
 
 class OrchestratedVirtualMachineScaleSetExtension {
   /// Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.
-  final pulumi.Input<bool>? autoUpgradeMinorVersionEnabled;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersionEnabled;
   /// An ordered list of Extension names which Virtual Machine Scale Set should provision after VM creation.
-  final pulumi.Input<List<String>>? extensionsToProvisionAfterVmCreations;
+  final pulumi.Input<List<String>?>? extensionsToProvisionAfterVmCreations;
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`.
   ///
   /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failureSuppressionEnabled` value.
-  final pulumi.Input<bool>? failureSuppressionEnabled;
+  final pulumi.Input<bool?>? failureSuppressionEnabled;
   /// A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
-  final pulumi.Input<String>? forceExtensionExecutionOnChange;
+  final pulumi.Input<String?>? forceExtensionExecutionOnChange;
   /// The name for the Virtual Machine Scale Set Extension.
   final pulumi.Input<String> name;
   /// A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
   ///
   /// &gt; **Note:** Keys within the `protectedSettings` block are notoriously case-sensitive, where the casing required (e.g. `TitleCase` vs `snakeCase`) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
-  final pulumi.Input<String>? protectedSettings;
+  final pulumi.Input<String?>? protectedSettings;
   /// A `protectedSettingsFromKeyVault` block as defined below.
   ///
   /// &gt; **Note:** `protectedSettingsFromKeyVault` cannot be used with `protectedSettings`.
-  final pulumi.Input<OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>? protectedSettingsFromKeyVault;
+  final pulumi.Input<OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>? protectedSettingsFromKeyVault;
   /// Specifies the Publisher of the Extension.
   final pulumi.Input<String> publisher;
   /// A JSON String which specifies Settings for the Extension.
-  final pulumi.Input<String>? settings;
+  final pulumi.Input<String?>? settings;
   /// Specifies the Type of the Extension.
   final pulumi.Input<String> type;
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.

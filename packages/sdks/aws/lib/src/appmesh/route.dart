@@ -15,9 +15,6 @@ import 'route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb = new aws.appmesh.Route("serviceb", {
-///     name: "serviceB-route",
-///     meshName: simple.id,
-///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 ///     spec: {
 ///         httpRoute: {
 ///             match: {
@@ -37,6 +34,9 @@ import 'route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "serviceB-route",
+///     meshName: simple.id,
+///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 /// });
 /// ```
 /// ```python
@@ -44,9 +44,6 @@ import 'route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb = aws.appmesh.Route("serviceb",
-///     name="serviceB-route",
-///     mesh_name=simple["id"],
-///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"],
 ///     spec={
 ///         "http_route": {
 ///             "match": {
@@ -65,7 +62,10 @@ import 'route_state.dart';
 ///                 ],
 ///             },
 ///         },
-///     })
+///     },
+///     name="serviceB-route",
+///     mesh_name=simple["id"],
+///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,9 +77,6 @@ import 'route_state.dart';
 /// {
 ///     var serviceb = new Aws.AppMesh.Route("serviceb", new()
 ///     {
-///         Name = "serviceB-route",
-///         MeshName = simple.Id,
-///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///         Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
 ///         {
 ///             HttpRoute = new Aws.AppMesh.Inputs.RouteSpecHttpRouteArgs
@@ -106,6 +103,9 @@ import 'route_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "serviceB-route",
+///         MeshName = simple.Id,
+///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///     });
 ///
 /// });
@@ -121,9 +121,6 @@ import 'route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-/// 			Name:              pulumi.String("serviceB-route"),
-/// 			MeshName:          pulumi.Any(simple.Id),
-/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 			Spec: &appmesh.RouteSpecArgs{
 /// 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
 /// 					Match: &appmesh.RouteSpecHttpRouteMatchArgs{
@@ -143,6 +140,9 @@ import 'route_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("serviceB-route"),
+/// 			MeshName:          pulumi.Any(simple.Id),
+/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,9 +161,6 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   name                = "serviceB-route"
-///   mesh_name           = simple.id
-///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 ///   spec = {
 ///     http_route = {
 ///       match = {
@@ -180,6 +177,9 @@ import 'route_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 /// }
 /// ```
 /// ```java
@@ -209,9 +209,6 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb = new Route("serviceb", RouteArgs.builder()
-///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .spec(RouteSpecArgs.builder()
 ///                 .httpRoute(RouteSpecHttpRouteArgs.builder()
 ///                     .match(RouteSpecHttpRouteMatchArgs.builder()
@@ -230,6 +227,9 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("serviceB-route")
+///             .meshName(simple.id())
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .build());
 ///
 ///     }
@@ -240,9 +240,6 @@ import 'route_state.dart';
 ///   serviceb:
 ///     type: aws:appmesh:Route
 ///     properties:
-///       name: serviceB-route
-///       meshName: ${simple.id}
-///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 ///       spec:
 ///         httpRoute:
 ///           match:
@@ -253,6 +250,9 @@ import 'route_state.dart';
 ///                 weight: 90
 ///               - virtualNode: ${serviceb2.name}
 ///                 weight: 10
+///       name: serviceB-route
+///       meshName: ${simple.id}
+///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 /// ```
 ///
 ///
@@ -264,21 +264,18 @@ import 'route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb = new aws.appmesh.Route("serviceb", {
-///     name: "serviceB-route",
-///     meshName: simple.id,
-///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 ///     spec: {
 ///         httpRoute: {
 ///             match: {
-///                 method: "POST",
-///                 prefix: "/",
-///                 scheme: "https",
 ///                 headers: [{
-///                     name: "clientRequestId",
 ///                     match: {
 ///                         prefix: "123",
 ///                     },
+///                     name: "clientRequestId",
 ///                 }],
+///                 method: "POST",
+///                 prefix: "/",
+///                 scheme: "https",
 ///             },
 ///             action: {
 ///                 weightedTargets: [{
@@ -288,6 +285,9 @@ import 'route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "serviceB-route",
+///     meshName: simple.id,
+///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 /// });
 /// ```
 /// ```python
@@ -295,21 +295,18 @@ import 'route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb = aws.appmesh.Route("serviceb",
-///     name="serviceB-route",
-///     mesh_name=simple["id"],
-///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"],
 ///     spec={
 ///         "http_route": {
 ///             "match": {
-///                 "method": "POST",
-///                 "prefix": "/",
-///                 "scheme": "https",
 ///                 "headers": [{
-///                     "name": "clientRequestId",
 ///                     "match": {
 ///                         "prefix": "123",
 ///                     },
+///                     "name": "clientRequestId",
 ///                 }],
+///                 "method": "POST",
+///                 "prefix": "/",
+///                 "scheme": "https",
 ///             },
 ///             "action": {
 ///                 "weighted_targets": [{
@@ -318,7 +315,10 @@ import 'route_state.dart';
 ///                 }],
 ///             },
 ///         },
-///     })
+///     },
+///     name="serviceB-route",
+///     mesh_name=simple["id"],
+///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -330,29 +330,26 @@ import 'route_state.dart';
 /// {
 ///     var serviceb = new Aws.AppMesh.Route("serviceb", new()
 ///     {
-///         Name = "serviceB-route",
-///         MeshName = simple.Id,
-///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///         Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
 ///         {
 ///             HttpRoute = new Aws.AppMesh.Inputs.RouteSpecHttpRouteArgs
 ///             {
 ///                 Match = new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchArgs
 ///                 {
-///                     Method = "POST",
-///                     Prefix = "/",
-///                     Scheme = "https",
 ///                     Headers = new[]
 ///                     {
 ///                         new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchHeaderArgs
 ///                         {
-///                             Name = "clientRequestId",
 ///                             Match = new Aws.AppMesh.Inputs.RouteSpecHttpRouteMatchHeaderMatchArgs
 ///                             {
 ///                                 Prefix = "123",
 ///                             },
+///                             Name = "clientRequestId",
 ///                         },
 ///                     },
+///                     Method = "POST",
+///                     Prefix = "/",
+///                     Scheme = "https",
 ///                 },
 ///                 Action = new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionArgs
 ///                 {
@@ -367,6 +364,9 @@ import 'route_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "serviceB-route",
+///         MeshName = simple.Id,
+///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///     });
 ///
 /// });
@@ -382,23 +382,20 @@ import 'route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-/// 			Name:              pulumi.String("serviceB-route"),
-/// 			MeshName:          pulumi.Any(simple.Id),
-/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 			Spec: &appmesh.RouteSpecArgs{
 /// 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
 /// 					Match: &appmesh.RouteSpecHttpRouteMatchArgs{
-/// 						Method: pulumi.String("POST"),
-/// 						Prefix: pulumi.String("/"),
-/// 						Scheme: pulumi.String("https"),
 /// 						Headers: appmesh.RouteSpecHttpRouteMatchHeaderArray{
 /// 							&appmesh.RouteSpecHttpRouteMatchHeaderArgs{
-/// 								Name: pulumi.String("clientRequestId"),
 /// 								Match: &appmesh.RouteSpecHttpRouteMatchHeaderMatchArgs{
 /// 									Prefix: pulumi.String("123"),
 /// 								},
+/// 								Name: pulumi.String("clientRequestId"),
 /// 							},
 /// 						},
+/// 						Method: pulumi.String("POST"),
+/// 						Prefix: pulumi.String("/"),
+/// 						Scheme: pulumi.String("https"),
 /// 					},
 /// 					Action: &appmesh.RouteSpecHttpRouteActionArgs{
 /// 						WeightedTargets: appmesh.RouteSpecHttpRouteActionWeightedTargetArray{
@@ -410,6 +407,9 @@ import 'route_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("serviceB-route"),
+/// 			MeshName:          pulumi.Any(simple.Id),
+/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -428,21 +428,18 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   name                = "serviceB-route"
-///   mesh_name           = simple.id
-///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 ///   spec = {
 ///     http_route = {
 ///       match = {
-///         method = "POST"
-///         prefix = "/"
-///         scheme = "https"
 ///         headers = [{
-///           "name" = "clientRequestId"
 ///           "match" = {
 ///             "prefix" = "123"
 ///           }
+///           "name" = "clientRequestId"
 ///         }]
+///         method = "POST"
+///         prefix = "/"
+///         scheme = "https"
 ///       }
 ///       action = {
 ///         weighted_targets = [{
@@ -452,6 +449,9 @@ import 'route_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 /// }
 /// ```
 /// ```java
@@ -483,21 +483,18 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb = new Route("serviceb", RouteArgs.builder()
-///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .spec(RouteSpecArgs.builder()
 ///                 .httpRoute(RouteSpecHttpRouteArgs.builder()
 ///                     .match(RouteSpecHttpRouteMatchArgs.builder()
-///                         .method("POST")
-///                         .prefix("/")
-///                         .scheme("https")
 ///                         .headers(RouteSpecHttpRouteMatchHeaderArgs.builder()
-///                             .name("clientRequestId")
 ///                             .match(RouteSpecHttpRouteMatchHeaderMatchArgs.builder()
 ///                                 .prefix("123")
 ///                                 .build())
+///                             .name("clientRequestId")
 ///                             .build())
+///                         .method("POST")
+///                         .prefix("/")
+///                         .scheme("https")
 ///                         .build())
 ///                     .action(RouteSpecHttpRouteActionArgs.builder()
 ///                         .weightedTargets(RouteSpecHttpRouteActionWeightedTargetArgs.builder()
@@ -507,6 +504,9 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("serviceB-route")
+///             .meshName(simple.id())
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .build());
 ///
 ///     }
@@ -517,23 +517,23 @@ import 'route_state.dart';
 ///   serviceb:
 ///     type: aws:appmesh:Route
 ///     properties:
-///       name: serviceB-route
-///       meshName: ${simple.id}
-///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 ///       spec:
 ///         httpRoute:
 ///           match:
+///             headers:
+///               - match:
+///                   prefix: '123'
+///                 name: clientRequestId
 ///             method: POST
 ///             prefix: /
 ///             scheme: https
-///             headers:
-///               - name: clientRequestId
-///                 match:
-///                   prefix: '123'
 ///           action:
 ///             weightedTargets:
 ///               - virtualNode: ${servicebAwsAppmeshVirtualNode.name}
 ///                 weight: 100
+///       name: serviceB-route
+///       meshName: ${simple.id}
+///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 /// ```
 ///
 ///
@@ -545,21 +545,18 @@ import 'route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb = new aws.appmesh.Route("serviceb", {
-///     name: "serviceB-route",
-///     meshName: simple.id,
-///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 ///     spec: {
 ///         httpRoute: {
 ///             match: {
 ///                 prefix: "/",
 ///             },
 ///             retryPolicy: {
-///                 httpRetryEvents: ["server-error"],
-///                 maxRetries: 1,
 ///                 perRetryTimeout: {
 ///                     unit: "s",
 ///                     value: 15,
 ///                 },
+///                 httpRetryEvents: ["server-error"],
+///                 maxRetries: 1,
 ///             },
 ///             action: {
 ///                 weightedTargets: [{
@@ -569,6 +566,9 @@ import 'route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "serviceB-route",
+///     meshName: simple.id,
+///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 /// });
 /// ```
 /// ```python
@@ -576,21 +576,18 @@ import 'route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb = aws.appmesh.Route("serviceb",
-///     name="serviceB-route",
-///     mesh_name=simple["id"],
-///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"],
 ///     spec={
 ///         "http_route": {
 ///             "match": {
 ///                 "prefix": "/",
 ///             },
 ///             "retry_policy": {
-///                 "http_retry_events": ["server-error"],
-///                 "max_retries": 1,
 ///                 "per_retry_timeout": {
 ///                     "unit": "s",
 ///                     "value": 15,
 ///                 },
+///                 "http_retry_events": ["server-error"],
+///                 "max_retries": 1,
 ///             },
 ///             "action": {
 ///                 "weighted_targets": [{
@@ -599,7 +596,10 @@ import 'route_state.dart';
 ///                 }],
 ///             },
 ///         },
-///     })
+///     },
+///     name="serviceB-route",
+///     mesh_name=simple["id"],
+///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -611,9 +611,6 @@ import 'route_state.dart';
 /// {
 ///     var serviceb = new Aws.AppMesh.Route("serviceb", new()
 ///     {
-///         Name = "serviceB-route",
-///         MeshName = simple.Id,
-///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///         Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
 ///         {
 ///             HttpRoute = new Aws.AppMesh.Inputs.RouteSpecHttpRouteArgs
@@ -624,16 +621,16 @@ import 'route_state.dart';
 ///                 },
 ///                 RetryPolicy = new Aws.AppMesh.Inputs.RouteSpecHttpRouteRetryPolicyArgs
 ///                 {
-///                     HttpRetryEvents = new[]
-///                     {
-///                         "server-error",
-///                     },
-///                     MaxRetries = 1,
 ///                     PerRetryTimeout = new Aws.AppMesh.Inputs.RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs
 ///                     {
 ///                         Unit = "s",
 ///                         Value = 15,
 ///                     },
+///                     HttpRetryEvents = new[]
+///                     {
+///                         "server-error",
+///                     },
+///                     MaxRetries = 1,
 ///                 },
 ///                 Action = new Aws.AppMesh.Inputs.RouteSpecHttpRouteActionArgs
 ///                 {
@@ -648,6 +645,9 @@ import 'route_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "serviceB-route",
+///         MeshName = simple.Id,
+///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///     });
 ///
 /// });
@@ -663,23 +663,20 @@ import 'route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-/// 			Name:              pulumi.String("serviceB-route"),
-/// 			MeshName:          pulumi.Any(simple.Id),
-/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 			Spec: &appmesh.RouteSpecArgs{
 /// 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
 /// 					Match: &appmesh.RouteSpecHttpRouteMatchArgs{
 /// 						Prefix: pulumi.String("/"),
 /// 					},
 /// 					RetryPolicy: &appmesh.RouteSpecHttpRouteRetryPolicyArgs{
-/// 						HttpRetryEvents: pulumi.StringArray{
-/// 							pulumi.String("server-error"),
-/// 						},
-/// 						MaxRetries: pulumi.Int(1),
 /// 						PerRetryTimeout: &appmesh.RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs{
 /// 							Unit:  pulumi.String("s"),
 /// 							Value: pulumi.Int(15),
 /// 						},
+/// 						HttpRetryEvents: pulumi.StringArray{
+/// 							pulumi.String("server-error"),
+/// 						},
+/// 						MaxRetries: pulumi.Int(1),
 /// 					},
 /// 					Action: &appmesh.RouteSpecHttpRouteActionArgs{
 /// 						WeightedTargets: appmesh.RouteSpecHttpRouteActionWeightedTargetArray{
@@ -691,6 +688,9 @@ import 'route_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("serviceB-route"),
+/// 			MeshName:          pulumi.Any(simple.Id),
+/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -709,21 +709,18 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   name                = "serviceB-route"
-///   mesh_name           = simple.id
-///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 ///   spec = {
 ///     http_route = {
 ///       match = {
 ///         prefix = "/"
 ///       }
 ///       retry_policy = {
-///         http_retry_events = ["server-error"]
-///         max_retries       = 1
 ///         per_retry_timeout = {
 ///           unit  = "s"
 ///           value = 15
 ///         }
+///         http_retry_events = ["server-error"]
+///         max_retries       = 1
 ///       }
 ///       action = {
 ///         weighted_targets = [{
@@ -733,6 +730,9 @@ import 'route_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 /// }
 /// ```
 /// ```java
@@ -764,21 +764,18 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb = new Route("serviceb", RouteArgs.builder()
-///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .spec(RouteSpecArgs.builder()
 ///                 .httpRoute(RouteSpecHttpRouteArgs.builder()
 ///                     .match(RouteSpecHttpRouteMatchArgs.builder()
 ///                         .prefix("/")
 ///                         .build())
 ///                     .retryPolicy(RouteSpecHttpRouteRetryPolicyArgs.builder()
-///                         .httpRetryEvents("server-error")
-///                         .maxRetries(1)
 ///                         .perRetryTimeout(RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs.builder()
 ///                             .unit("s")
 ///                             .value(15)
 ///                             .build())
+///                         .httpRetryEvents("server-error")
+///                         .maxRetries(1)
 ///                         .build())
 ///                     .action(RouteSpecHttpRouteActionArgs.builder()
 ///                         .weightedTargets(RouteSpecHttpRouteActionWeightedTargetArgs.builder()
@@ -788,6 +785,9 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("serviceB-route")
+///             .meshName(simple.id())
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .build());
 ///
 ///     }
@@ -798,24 +798,24 @@ import 'route_state.dart';
 ///   serviceb:
 ///     type: aws:appmesh:Route
 ///     properties:
-///       name: serviceB-route
-///       meshName: ${simple.id}
-///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 ///       spec:
 ///         httpRoute:
 ///           match:
 ///             prefix: /
 ///           retryPolicy:
-///             httpRetryEvents:
-///               - server-error
-///             maxRetries: 1
 ///             perRetryTimeout:
 ///               unit: s
 ///               value: 15
+///             httpRetryEvents:
+///               - server-error
+///             maxRetries: 1
 ///           action:
 ///             weightedTargets:
 ///               - virtualNode: ${servicebAwsAppmeshVirtualNode.name}
 ///                 weight: 100
+///       name: serviceB-route
+///       meshName: ${simple.id}
+///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 /// ```
 ///
 ///
@@ -827,9 +827,6 @@ import 'route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const serviceb = new aws.appmesh.Route("serviceb", {
-///     name: "serviceB-route",
-///     meshName: simple.id,
-///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 ///     spec: {
 ///         tcpRoute: {
 ///             action: {
@@ -840,6 +837,9 @@ import 'route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "serviceB-route",
+///     meshName: simple.id,
+///     virtualRouterName: servicebAwsAppmeshVirtualRouter.name,
 /// });
 /// ```
 /// ```python
@@ -847,9 +847,6 @@ import 'route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// serviceb = aws.appmesh.Route("serviceb",
-///     name="serviceB-route",
-///     mesh_name=simple["id"],
-///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"],
 ///     spec={
 ///         "tcp_route": {
 ///             "action": {
@@ -859,7 +856,10 @@ import 'route_state.dart';
 ///                 }],
 ///             },
 ///         },
-///     })
+///     },
+///     name="serviceB-route",
+///     mesh_name=simple["id"],
+///     virtual_router_name=serviceb_aws_appmesh_virtual_router["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -871,9 +871,6 @@ import 'route_state.dart';
 /// {
 ///     var serviceb = new Aws.AppMesh.Route("serviceb", new()
 ///     {
-///         Name = "serviceB-route",
-///         MeshName = simple.Id,
-///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///         Spec = new Aws.AppMesh.Inputs.RouteSpecArgs
 ///         {
 ///             TcpRoute = new Aws.AppMesh.Inputs.RouteSpecTcpRouteArgs
@@ -891,6 +888,9 @@ import 'route_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "serviceB-route",
+///         MeshName = simple.Id,
+///         VirtualRouterName = servicebAwsAppmeshVirtualRouter.Name,
 ///     });
 ///
 /// });
@@ -906,9 +906,6 @@ import 'route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-/// 			Name:              pulumi.String("serviceB-route"),
-/// 			MeshName:          pulumi.Any(simple.Id),
-/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 			Spec: &appmesh.RouteSpecArgs{
 /// 				TcpRoute: &appmesh.RouteSpecTcpRouteArgs{
 /// 					Action: &appmesh.RouteSpecTcpRouteActionArgs{
@@ -921,6 +918,9 @@ import 'route_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("serviceB-route"),
+/// 			MeshName:          pulumi.Any(simple.Id),
+/// 			VirtualRouterName: pulumi.Any(servicebAwsAppmeshVirtualRouter.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -939,9 +939,6 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_route" "serviceb" {
-///   name                = "serviceB-route"
-///   mesh_name           = simple.id
-///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 ///   spec = {
 ///     tcp_route = {
 ///       action = {
@@ -952,6 +949,9 @@ import 'route_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                = "serviceB-route"
+///   mesh_name           = simple.id
+///   virtual_router_name = servicebAwsAppmeshVirtualRouter.name
 /// }
 /// ```
 /// ```java
@@ -980,9 +980,6 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var serviceb = new Route("serviceb", RouteArgs.builder()
-///             .name("serviceB-route")
-///             .meshName(simple.id())
-///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .spec(RouteSpecArgs.builder()
 ///                 .tcpRoute(RouteSpecTcpRouteArgs.builder()
 ///                     .action(RouteSpecTcpRouteActionArgs.builder()
@@ -993,6 +990,9 @@ import 'route_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("serviceB-route")
+///             .meshName(simple.id())
+///             .virtualRouterName(servicebAwsAppmeshVirtualRouter.name())
 ///             .build());
 ///
 ///     }
@@ -1003,15 +1003,15 @@ import 'route_state.dart';
 ///   serviceb:
 ///     type: aws:appmesh:Route
 ///     properties:
-///       name: serviceB-route
-///       meshName: ${simple.id}
-///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 ///       spec:
 ///         tcpRoute:
 ///           action:
 ///             weightedTargets:
 ///               - virtualNode: ${serviceb1.name}
 ///                 weight: 100
+///       name: serviceB-route
+///       meshName: ${simple.id}
+///       virtualRouterName: ${servicebAwsAppmeshVirtualRouter.name}
 /// ```
 ///
 ///
@@ -1060,7 +1060,7 @@ class Route extends pulumi.CustomResource {
           'aws:appmesh/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -1071,8 +1071,8 @@ class Route extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<RouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterName = registerOutput<String>('virtualRouterName');
   }
 
@@ -1081,11 +1081,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1108,8 +1109,31 @@ class Route extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<RouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualRouterName = registerOutput<String>('virtualRouterName');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'aws:appmesh/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<RouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterName = registerOutput<String>('virtualRouterName');
   }
 }

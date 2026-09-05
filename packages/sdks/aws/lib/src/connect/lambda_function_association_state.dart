@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering LambdaFunctionAssociation resources.
 class LambdaFunctionAssociationState {
-  /// Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
-  final pulumi.Input<String>? functionArn;
+  /// ARN of the Lambda Function, omitting any version or alias qualifier.
+  final pulumi.Input<String?>? functionArn;
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LambdaFunctionAssociationState].
-  /// [functionArn] Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
+  /// [functionArn] ARN of the Lambda Function, omitting any version or alias qualifier.
   /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const LambdaFunctionAssociationState({

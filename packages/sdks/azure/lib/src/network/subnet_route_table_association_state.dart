@@ -7,9 +7,9 @@ class SubnetRouteTableAssociationState {
   /// The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Use this resource only when the subnet is managed as a standalone `azure.network.Subnet`. If the subnet is declared inline inside `azure.network.VirtualNetwork`, set `routeTableId` in the inline `subnet` block and do not create this association for the same subnet.
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// The ID of the Subnet. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SubnetRouteTableAssociationState].
   /// [routeTableId] The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.

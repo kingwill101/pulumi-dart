@@ -7,7 +7,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource 
   /// Kubernetes namespace.
   final pulumi.Input<String> namespace;
   /// Resources to scale. See `resources` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource>>? resources;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource>?>? resources;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource].
   /// [namespace] Kubernetes namespace.

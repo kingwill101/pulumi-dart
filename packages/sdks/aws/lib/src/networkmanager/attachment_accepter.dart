@@ -592,7 +592,7 @@ class AttachmentAccepter extends pulumi.CustomResource {
           'aws:networkmanager/attachmentAccepter:AttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
@@ -600,7 +600,7 @@ class AttachmentAccepter extends pulumi.CustomResource {
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
     edgeLocation = registerOutput<String>('edgeLocation');
-    edgeLocations = registerOutput<List<String>>('edgeLocations');
+    edgeLocations = registerOutput<List<String>>('edgeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerAccountId = registerOutput<String>('ownerAccountId');
     resourceArn = registerOutput<String>('resourceArn');
     segmentName = registerOutput<String>('segmentName');
@@ -612,11 +612,12 @@ class AttachmentAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachmentAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AttachmentAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -636,10 +637,32 @@ class AttachmentAccepter extends pulumi.CustomResource {
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
     edgeLocation = registerOutput<String>('edgeLocation');
-    edgeLocations = registerOutput<List<String>>('edgeLocations');
+    edgeLocations = registerOutput<List<String>>('edgeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerAccountId = registerOutput<String>('ownerAccountId');
     resourceArn = registerOutput<String>('resourceArn');
     segmentName = registerOutput<String>('segmentName');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [AttachmentAccepter] resource.
+  AttachmentAccepter.reference(String urn)
+    : super(
+        'aws:networkmanager/attachmentAccepter:AttachmentAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    edgeLocations = registerOutput<List<String>>('edgeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    resourceArn = registerOutput<String>('resourceArn');
+    segmentName = registerOutput<String>('segmentName');
+    state = registerOutput<String>('state');
   }
 }

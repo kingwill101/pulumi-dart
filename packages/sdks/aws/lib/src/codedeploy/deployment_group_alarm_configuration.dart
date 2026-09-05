@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupAlarmConfiguration {
   /// A list of alarms configured for the deployment group.
-  final pulumi.Input<List<String>>? alarms;
+  final pulumi.Input<List<String>?>? alarms;
   /// Indicates whether the alarm configuration is enabled. This option is useful when you want to temporarily deactivate alarm monitoring for a deployment group without having to add the same alarms again later.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from CloudWatch. The default value is `false`.
-  final pulumi.Input<bool>? ignorePollAlarmFailure;
+  final pulumi.Input<bool?>? ignorePollAlarmFailure;
 
   /// Creates a new [DeploymentGroupAlarmConfiguration].
   /// [alarms] A list of alarms configured for the deployment group.

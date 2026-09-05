@@ -7,11 +7,11 @@ import 'organization_configuration_datasources_s3_logs.dart';
 
 class OrganizationConfigurationDatasources {
   /// Enable Kubernetes Audit Logs Monitoring automatically for new member accounts.
-  final pulumi.Input<OrganizationConfigurationDatasourcesKubernetes>? kubernetes;
+  final pulumi.Input<OrganizationConfigurationDatasourcesKubernetes?>? kubernetes;
   /// Enable Malware Protection automatically for new member accounts.
-  final pulumi.Input<OrganizationConfigurationDatasourcesMalwareProtection>? malwareProtection;
+  final pulumi.Input<OrganizationConfigurationDatasourcesMalwareProtection?>? malwareProtection;
   /// Enable S3 Protection automatically for new member accounts.
-  final pulumi.Input<OrganizationConfigurationDatasourcesS3Logs>? s3Logs;
+  final pulumi.Input<OrganizationConfigurationDatasourcesS3Logs?>? s3Logs;
 
   /// Creates a new [OrganizationConfigurationDatasources].
   /// [kubernetes] Enable Kubernetes Audit Logs Monitoring automatically for new member accounts.

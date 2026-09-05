@@ -6,7 +6,7 @@ class InstanceS3Import {
   /// The bucket name where your backup is stored
   final pulumi.Input<String> bucketName;
   /// Can be blank, but is the path to your backup
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Role applied to load the data.
   final pulumi.Input<String> ingestionRole;
   /// Source engine for the backup

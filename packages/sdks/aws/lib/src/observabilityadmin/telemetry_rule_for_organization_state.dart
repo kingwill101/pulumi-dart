@@ -7,20 +7,20 @@ import 'telemetry_rule_for_organization_timeouts.dart';
 /// Input properties used for looking up and filtering TelemetryRuleForOrganization resources.
 class TelemetryRuleForOrganizationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the organization telemetry rule. See `rule` below.
-  final pulumi.Input<TelemetryRuleForOrganizationRule>? rule;
+  final pulumi.Input<TelemetryRuleForOrganizationRule?>? rule;
   /// ARN of the organization telemetry rule.
-  final pulumi.Input<String>? ruleArn;
+  final pulumi.Input<String?>? ruleArn;
   /// Name of the organization telemetry rule. Must be between 1 and 100 characters and contain only alphanumeric characters, hyphens, underscores, periods, hash symbols, and forward slashes. Changing this argument forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<TelemetryRuleForOrganizationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<TelemetryRuleForOrganizationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryRuleForOrganizationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

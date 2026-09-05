@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ProductSubscription resources.
 class ProductSubscriptionState {
   /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
   ///
   /// Amazon maintains a list of [Product integrations in AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-providers.html) that changes over time. Any of the products on the linked [Available AWS service integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-internal-providers.html) or [Available third-party partner product integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-partner-providers.html) can be configured using `aws.securityhub.ProductSubscription`.
@@ -45,9 +45,9 @@ class ProductSubscriptionState {
   /// * `arn:aws:securityhub:${var.region}::product/trend-micro/deep-security`
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
-  final pulumi.Input<String>? productArn;
+  final pulumi.Input<String?>? productArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ProductSubscriptionState].
   /// [arn] The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.

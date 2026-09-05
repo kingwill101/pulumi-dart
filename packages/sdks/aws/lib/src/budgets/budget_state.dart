@@ -11,50 +11,50 @@ import 'budget_planned_limit.dart';
 /// Input properties used for looking up and filtering Budget resources.
 class BudgetState {
   /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The ARN of the budget.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Object containing AutoAdjustData which determines the budget amount for an auto-adjusting budget.
-  final pulumi.Input<BudgetAutoAdjustData>? autoAdjustData;
+  final pulumi.Input<BudgetAutoAdjustData?>? autoAdjustData;
   /// ARN of the billing view.
-  final pulumi.Input<String>? billingViewArn;
+  final pulumi.Input<String?>? billingViewArn;
   /// Whether this budget tracks monetary cost or usage.
-  final pulumi.Input<String>? budgetType;
+  final pulumi.Input<String?>? budgetType;
   /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filterExpression`.
-  final pulumi.Input<List<BudgetCostFilter>>? costFilters;
+  final pulumi.Input<List<BudgetCostFilter>?>? costFilters;
   /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
-  final pulumi.Input<BudgetCostTypes>? costTypes;
+  final pulumi.Input<BudgetCostTypes?>? costTypes;
   /// Object containing Filter Expression to apply to budget. Conflicts with `costFilter` and requires `metrics`.
-  final pulumi.Input<BudgetFilterExpression>? filterExpression;
+  final pulumi.Input<BudgetFilterExpression?>? filterExpression;
   /// The amount of cost or usage being measured for a budget.
-  final pulumi.Input<String>? limitAmount;
+  final pulumi.Input<String?>? limitAmount;
   /// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
-  final pulumi.Input<String>? limitUnit;
+  final pulumi.Input<String?>? limitUnit;
   /// List containing definition for how the budget data is aggregated. Conflicts with `costTypes` and requires `filterExpression`.
-  final pulumi.Input<String>? metrics;
+  final pulumi.Input<String?>? metrics;
   /// The name of a budget. Unique within accounts.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The prefix of the name of a budget. Unique within accounts.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification.
-  final pulumi.Input<List<BudgetNotification>>? notifications;
+  final pulumi.Input<List<BudgetNotification>?>? notifications;
   /// Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
-  final pulumi.Input<List<BudgetPlannedLimit>>? plannedLimits;
+  final pulumi.Input<List<BudgetPlannedLimit>?>? plannedLimits;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
-  final pulumi.Input<String>? timePeriodEnd;
+  final pulumi.Input<String?>? timePeriodEnd;
   /// The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official
   /// documentation](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-budget.html).
-  final pulumi.Input<String>? timePeriodStart;
+  final pulumi.Input<String?>? timePeriodStart;
   /// The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? timeUnit;
+  final pulumi.Input<String?>? timeUnit;
 
   /// Creates a new [BudgetState].
   /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesRecoveryServicesVaults {
-  final pulumi.Input<bool>? recoverSoftDeletedBackupProtectedVm;
+  final pulumi.Input<bool?>? recoverSoftDeletedBackupProtectedVm;
 
   /// Creates a new [ProviderFeaturesRecoveryServicesVaults].
   /// [recoverSoftDeletedBackupProtectedVm] Optional.

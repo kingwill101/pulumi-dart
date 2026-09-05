@@ -5,34 +5,34 @@ import 'get_db_servers_db_server.dart';
 
 /// Result data returned by getDbServers.
 class GetDbServersResult {
-  final String cloudExadataInfrastructureId;
+  final String? cloudExadataInfrastructureId;
   /// the list of DB servers along with their properties.
-  final List<GetDbServersDbServer> dbServers;
-  final String region;
+  final List<GetDbServersDbServer>? dbServers;
+  final String? region;
 
   /// Creates a new [GetDbServersResult].
-  /// [cloudExadataInfrastructureId] Required.
+  /// [cloudExadataInfrastructureId] Optional.
   /// [dbServers] the list of DB servers along with their properties.
-  /// [region] Required.
+  /// [region] Optional.
   const GetDbServersResult({
-    required this.cloudExadataInfrastructureId,
-    required this.dbServers,
-    required this.region,
+    this.cloudExadataInfrastructureId,
+    this.dbServers,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudExadataInfrastructureId': cloudExadataInfrastructureId,
-      'dbServers': pulumi.Input.encodeList<GetDbServersDbServer, Map<String, dynamic>>(dbServers, (value) => value.toMap()),
-      'region': region,
+      'cloudExadataInfrastructureId': ?cloudExadataInfrastructureId,
+      'dbServers': ?(() { final guardedValue = dbServers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDbServersDbServer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetDbServersResult.fromMap(Map<String, dynamic> map) {
     return GetDbServersResult(
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
-      dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(map['dbServers']!, (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      cloudExadataInfrastructureId: (() { final guardedValue = map['cloudExadataInfrastructureId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbServers: (() { final guardedValue = map['dbServers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDbServersDbServer>(guardedValue, (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

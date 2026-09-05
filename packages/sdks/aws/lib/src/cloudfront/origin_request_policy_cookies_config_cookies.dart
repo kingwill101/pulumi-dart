@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OriginRequestPolicyCookiesConfigCookies {
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [OriginRequestPolicyCookiesConfigCookies].
   /// [items] Optional.

@@ -26,7 +26,7 @@ class GetFleetScalingConfigurationTargetTrackingScalingConfig {
   factory GetFleetScalingConfigurationTargetTrackingScalingConfig.fromMap(Map<String, dynamic> map) {
     return GetFleetScalingConfigurationTargetTrackingScalingConfig(
       metricType: pulumi.Input.fromValue(map['metricType'] as String),
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'guardrail_word_policy_config_words_config.dart';
 
 class GuardrailWordPolicyConfig {
   /// A config for the list of managed words. See Managed Word Lists Config for more information.
-  final pulumi.Input<List<GuardrailWordPolicyConfigManagedWordListsConfig>>? managedWordListsConfigs;
+  final pulumi.Input<List<GuardrailWordPolicyConfigManagedWordListsConfig>?>? managedWordListsConfigs;
   /// List of custom word configs. See Words Config for more information.
-  final pulumi.Input<List<GuardrailWordPolicyConfigWordsConfig>>? wordsConfigs;
+  final pulumi.Input<List<GuardrailWordPolicyConfigWordsConfig>?>? wordsConfigs;
 
   /// Creates a new [GuardrailWordPolicyConfig].
   /// [managedWordListsConfigs] A config for the list of managed words. See Managed Word Lists Config for more information.

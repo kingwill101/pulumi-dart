@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_recovery_control_cluster_cluster_args_doc}
 class ClusterArgs {
   /// Unique name describing the cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network type of cluster. Valid values are `IPV4` and `DUALSTACK`. Defaults to `IPV4`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [name] Unique name describing the cluster.

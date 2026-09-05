@@ -329,7 +329,7 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
           'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     automationAccountName = registerOutput<String>('automationAccountName');
@@ -346,11 +346,12 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionServicePrincipalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionServicePrincipal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -364,6 +365,25 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    automationAccountName = registerOutput<String>('automationAccountName');
+    certificateThumbprint = registerOutput<String>('certificateThumbprint');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionServicePrincipal] resource.
+  ConnectionServicePrincipal.reference(String urn)
+    : super(
+        'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateThumbprint = registerOutput<String>('certificateThumbprint');

@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAccessScopeExcludePathDestinationPacketHeaderStatement {
   /// Set of destination addresses.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// Set of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Set of destination prefix lists.
-  final pulumi.Input<List<String>>? destinationPrefixLists;
+  final pulumi.Input<List<String>?>? destinationPrefixLists;
   /// Set of protocols.
   /// Valid values are `tcp` and `udp`.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// Set of source addresses.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// Set of source ports.
-  final pulumi.Input<List<String>>? sourcePorts;
+  final pulumi.Input<List<String>?>? sourcePorts;
   /// Set of source prefix lists.
-  final pulumi.Input<List<String>>? sourcePrefixLists;
+  final pulumi.Input<List<String>?>? sourcePrefixLists;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePathDestinationPacketHeaderStatement].
   /// [destinationAddresses] Set of destination addresses.

@@ -6,7 +6,7 @@ class ParameterGroupParameter {
   /// "immediate" (default), or "pending-reboot". Some
   /// engines can't apply some parameters without a reboot, and you will need to
   /// specify "pending-reboot" here.
-  final pulumi.Input<String>? applyMethod;
+  final pulumi.Input<String?>? applyMethod;
   /// The name of the DB parameter.
   final pulumi.Input<String> name;
   /// The value of the DB parameter.
@@ -16,11 +16,11 @@ class ParameterGroupParameter {
   /// [applyMethod] "immediate" (default), or "pending-reboot". Some
   /// [name] The name of the DB parameter.
   /// [value] The value of the DB parameter.
-  const ParameterGroupParameter({
-    this.applyMethod,
+  ParameterGroupParameter({
+    pulumi.Input<String?>? applyMethod,
     required this.name,
     required this.value,
-  });
+  }) : applyMethod = applyMethod ?? pulumi.Input.fromValue('immediate');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

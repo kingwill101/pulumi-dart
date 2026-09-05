@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'block_public_access_configuration_args.dart';
+import 'block_public_access_configuration_permitted_public_security_group_rule_range.dart';
 import 'block_public_access_configuration_state.dart';
 
 /// Resource for managing an AWS EMR block public access configuration. This region level security configuration restricts the launch of EMR clusters that have associated security groups permitting public access on unspecified ports. See the [EMR Block Public Access Configuration](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-block-public-access.html) documentation for further information.
@@ -116,11 +117,11 @@ import 'block_public_access_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.emr.BlockPublicAccessConfiguration("example", {
-///     blockPublicSecurityGroupRules: true,
 ///     permittedPublicSecurityGroupRuleRanges: [{
 ///         minRange: 22,
 ///         maxRange: 22,
 ///     }],
+///     blockPublicSecurityGroupRules: true,
 /// });
 /// ```
 /// ```python
@@ -128,11 +129,11 @@ import 'block_public_access_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.emr.BlockPublicAccessConfiguration("example",
-///     block_public_security_group_rules=True,
 ///     permitted_public_security_group_rule_ranges=[{
 ///         "min_range": 22,
 ///         "max_range": 22,
-///     }])
+///     }],
+///     block_public_security_group_rules=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -144,7 +145,6 @@ import 'block_public_access_configuration_state.dart';
 /// {
 ///     var example = new Aws.Emr.BlockPublicAccessConfiguration("example", new()
 ///     {
-///         BlockPublicSecurityGroupRules = true,
 ///         PermittedPublicSecurityGroupRuleRanges = new[]
 ///         {
 ///             new Aws.Emr.Inputs.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs
@@ -153,6 +153,7 @@ import 'block_public_access_configuration_state.dart';
 ///                 MaxRange = 22,
 ///             },
 ///         },
+///         BlockPublicSecurityGroupRules = true,
 ///     });
 ///
 /// });
@@ -168,13 +169,13 @@ import 'block_public_access_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := emr.NewBlockPublicAccessConfiguration(ctx, "example", &emr.BlockPublicAccessConfigurationArgs{
-/// 			BlockPublicSecurityGroupRules: pulumi.Bool(true),
 /// 			PermittedPublicSecurityGroupRuleRanges: emr.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArray{
 /// 				&emr.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs{
 /// 					MinRange: pulumi.Int(22),
 /// 					MaxRange: pulumi.Int(22),
 /// 				},
 /// 			},
+/// 			BlockPublicSecurityGroupRules: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -193,11 +194,11 @@ import 'block_public_access_configuration_state.dart';
 /// }
 ///
 /// resource "aws_emr_blockpublicaccessconfiguration" "example" {
-///   block_public_security_group_rules = true
 ///   permitted_public_security_group_rule_ranges {
 ///     min_range = 22
 ///     max_range = 22
 ///   }
+///   block_public_security_group_rules = true
 /// }
 /// ```
 /// ```java
@@ -223,11 +224,11 @@ import 'block_public_access_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BlockPublicAccessConfiguration("example", BlockPublicAccessConfigurationArgs.builder()
-///             .blockPublicSecurityGroupRules(true)
 ///             .permittedPublicSecurityGroupRuleRanges(BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs.builder()
 ///                 .minRange(22)
 ///                 .maxRange(22)
 ///                 .build())
+///             .blockPublicSecurityGroupRules(true)
 ///             .build());
 ///
 ///     }
@@ -238,10 +239,10 @@ import 'block_public_access_configuration_state.dart';
 ///   example:
 ///     type: aws:emr:BlockPublicAccessConfiguration
 ///     properties:
-///       blockPublicSecurityGroupRules: true
 ///       permittedPublicSecurityGroupRuleRanges:
 ///         - minRange: 22
 ///           maxRange: 22
+///       blockPublicSecurityGroupRules: true
 /// ```
 ///
 ///
@@ -257,7 +258,6 @@ import 'block_public_access_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.emr.BlockPublicAccessConfiguration("example", {
-///     blockPublicSecurityGroupRules: true,
 ///     permittedPublicSecurityGroupRuleRanges: [
 ///         {
 ///             minRange: 22,
@@ -268,6 +268,7 @@ import 'block_public_access_configuration_state.dart';
 ///             maxRange: 101,
 ///         },
 ///     ],
+///     blockPublicSecurityGroupRules: true,
 /// });
 /// ```
 /// ```python
@@ -275,7 +276,6 @@ import 'block_public_access_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.emr.BlockPublicAccessConfiguration("example",
-///     block_public_security_group_rules=True,
 ///     permitted_public_security_group_rule_ranges=[
 ///         {
 ///             "min_range": 22,
@@ -285,7 +285,8 @@ import 'block_public_access_configuration_state.dart';
 ///             "min_range": 100,
 ///             "max_range": 101,
 ///         },
-///     ])
+///     ],
+///     block_public_security_group_rules=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -297,7 +298,6 @@ import 'block_public_access_configuration_state.dart';
 /// {
 ///     var example = new Aws.Emr.BlockPublicAccessConfiguration("example", new()
 ///     {
-///         BlockPublicSecurityGroupRules = true,
 ///         PermittedPublicSecurityGroupRuleRanges = new[]
 ///         {
 ///             new Aws.Emr.Inputs.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs
@@ -311,6 +311,7 @@ import 'block_public_access_configuration_state.dart';
 ///                 MaxRange = 101,
 ///             },
 ///         },
+///         BlockPublicSecurityGroupRules = true,
 ///     });
 ///
 /// });
@@ -326,7 +327,6 @@ import 'block_public_access_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := emr.NewBlockPublicAccessConfiguration(ctx, "example", &emr.BlockPublicAccessConfigurationArgs{
-/// 			BlockPublicSecurityGroupRules: pulumi.Bool(true),
 /// 			PermittedPublicSecurityGroupRuleRanges: emr.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArray{
 /// 				&emr.BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs{
 /// 					MinRange: pulumi.Int(22),
@@ -337,6 +337,7 @@ import 'block_public_access_configuration_state.dart';
 /// 					MaxRange: pulumi.Int(101),
 /// 				},
 /// 			},
+/// 			BlockPublicSecurityGroupRules: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -355,7 +356,6 @@ import 'block_public_access_configuration_state.dart';
 /// }
 ///
 /// resource "aws_emr_blockpublicaccessconfiguration" "example" {
-///   block_public_security_group_rules = true
 ///   permitted_public_security_group_rule_ranges {
 ///     min_range = 22
 ///     max_range = 22
@@ -364,6 +364,7 @@ import 'block_public_access_configuration_state.dart';
 ///     min_range = 100
 ///     max_range = 101
 ///   }
+///   block_public_security_group_rules = true
 /// }
 /// ```
 /// ```java
@@ -389,7 +390,6 @@ import 'block_public_access_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BlockPublicAccessConfiguration("example", BlockPublicAccessConfigurationArgs.builder()
-///             .blockPublicSecurityGroupRules(true)
 ///             .permittedPublicSecurityGroupRuleRanges(
 ///                 BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRangeArgs.builder()
 ///                     .minRange(22)
@@ -399,6 +399,7 @@ import 'block_public_access_configuration_state.dart';
 ///                     .minRange(100)
 ///                     .maxRange(101)
 ///                     .build())
+///             .blockPublicSecurityGroupRules(true)
 ///             .build());
 ///
 ///     }
@@ -409,12 +410,12 @@ import 'block_public_access_configuration_state.dart';
 ///   example:
 ///     type: aws:emr:BlockPublicAccessConfiguration
 ///     properties:
-///       blockPublicSecurityGroupRules: true
 ///       permittedPublicSecurityGroupRuleRanges:
 ///         - minRange: 22
 ///           maxRange: 22
 ///         - minRange: 100
 ///           maxRange: 101
+///       blockPublicSecurityGroupRules: true
 /// ```
 ///
 ///
@@ -533,7 +534,7 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<bool> blockPublicSecurityGroupRules;
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `blockPublicSecurityGroupRules` is set to `true`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permittedPublicSecurityGroupRuleRanges;
+  late final pulumi.Output<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?> permittedPublicSecurityGroupRuleRanges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -549,10 +550,10 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
           'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
-    permittedPublicSecurityGroupRuleRanges = registerOutput<List<Map<String, dynamic>>?>('permittedPublicSecurityGroupRuleRanges');
+    permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(guardedValue, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -561,11 +562,12 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BlockPublicAccessConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BlockPublicAccessConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -580,7 +582,21 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
-    permittedPublicSecurityGroupRuleRanges = registerOutput<List<Map<String, dynamic>>?>('permittedPublicSecurityGroupRuleRanges');
+    permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(guardedValue, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BlockPublicAccessConfiguration] resource.
+  BlockPublicAccessConfiguration.reference(String urn)
+    : super(
+        'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
+    permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(guardedValue, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

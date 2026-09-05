@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleMatchHttpMatchPathMatchMatch {
   /// Exact type match.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Prefix type match. Matches the value with the prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatchMatch].
   /// [exact] Exact type match.

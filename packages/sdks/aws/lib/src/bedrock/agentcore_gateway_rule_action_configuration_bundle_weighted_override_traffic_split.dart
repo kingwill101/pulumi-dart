@@ -5,11 +5,11 @@ import 'agentcore_gateway_rule_action_configuration_bundle_weighted_override_tra
 
 class AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplit {
   /// Reference to the configuration bundle for this variant.
-  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplitConfigurationBundle>? configurationBundle;
+  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplitConfigurationBundle?>? configurationBundle;
   /// Description of the rule. Between 1 and 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Up to 25 key/value metadata pairs describing this variant.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Name of this variant. Between 1 and 64 characters; alphanumeric with internal hyphens.
   final pulumi.Input<String> name;
   /// Percentage of traffic routed to this variant, between 1 and 99.
@@ -45,7 +45,7 @@ class AgentcoreGatewayRuleActionConfigurationBundleWeightedOverrideTrafficSplit 
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

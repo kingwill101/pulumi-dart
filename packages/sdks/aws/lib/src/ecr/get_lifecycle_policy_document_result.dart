@@ -6,28 +6,28 @@ import 'get_lifecycle_policy_document_rule.dart';
 /// Result data returned by getLifecyclePolicyDocument.
 class GetLifecyclePolicyDocumentResult {
   /// The above arguments serialized as a standard JSON policy document.
-  final String json;
-  final List<GetLifecyclePolicyDocumentRule> rules;
+  final String? json;
+  final List<GetLifecyclePolicyDocumentRule>? rules;
 
   /// Creates a new [GetLifecyclePolicyDocumentResult].
   /// [json] The above arguments serialized as a standard JSON policy document.
-  /// [rules] Required.
+  /// [rules] Optional.
   const GetLifecyclePolicyDocumentResult({
-    required this.json,
-    required this.rules,
+    this.json,
+    this.rules,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'json': json,
-      'rules': pulumi.Input.encodeList<GetLifecyclePolicyDocumentRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'json': ?json,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLifecyclePolicyDocumentRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetLifecyclePolicyDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetLifecyclePolicyDocumentResult(
-      json: map['json'] as String,
-      rules: pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(map['rules']!, (value) => GetLifecyclePolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(guardedValue, (value) => GetLifecyclePolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

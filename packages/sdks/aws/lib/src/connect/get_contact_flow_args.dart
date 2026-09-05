@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connect_get_contact_flow_get_contact_flow_args_doc}
 class GetContactFlowArgs {
   /// Returns information on a specific Contact Flow by contact flow id
-  final pulumi.Input<String>? contactFlowId;
+  final pulumi.Input<String?>? contactFlowId;
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
   /// Returns information on a specific Contact Flow by name
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `contactFlowId` is required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to assign to the Contact Flow.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of Contact Flow.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetContactFlowArgs].
   /// [contactFlowId] Returns information on a specific Contact Flow by contact flow id

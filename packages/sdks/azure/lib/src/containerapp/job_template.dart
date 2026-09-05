@@ -9,9 +9,9 @@ class JobTemplate {
   /// A `container` block as defined below.
   final pulumi.Input<List<JobTemplateContainer>> containers;
   /// A `initContainer` block as defined below.
-  final pulumi.Input<List<JobTemplateInitContainer>>? initContainers;
+  final pulumi.Input<List<JobTemplateInitContainer>?>? initContainers;
   /// A `volume` block as defined below.
-  final pulumi.Input<List<JobTemplateVolume>>? volumes;
+  final pulumi.Input<List<JobTemplateVolume>?>? volumes;
 
   /// Creates a new [JobTemplate].
   /// [containers] A `container` block as defined below.

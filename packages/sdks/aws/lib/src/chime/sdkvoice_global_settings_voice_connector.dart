@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SdkvoiceGlobalSettingsVoiceConnector {
   /// The S3 bucket that stores the Voice Connector's call detail records.
-  final pulumi.Input<String>? cdrBucket;
+  final pulumi.Input<String?>? cdrBucket;
 
   /// Creates a new [SdkvoiceGlobalSettingsVoiceConnector].
   /// [cdrBucket] The S3 bucket that stores the Voice Connector's call detail records.

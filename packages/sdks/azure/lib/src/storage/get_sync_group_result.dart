@@ -4,33 +4,33 @@
 /// Result data returned by getSyncGroup.
 class GetSyncGroupResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String storageSyncId;
+  final String? id;
+  final String? name;
+  final String? storageSyncId;
 
   /// Creates a new [GetSyncGroupResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [storageSyncId] Required.
+  /// [name] Optional.
+  /// [storageSyncId] Optional.
   const GetSyncGroupResult({
-    required this.id,
-    required this.name,
-    required this.storageSyncId,
+    this.id,
+    this.name,
+    this.storageSyncId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'storageSyncId': storageSyncId,
+      'id': ?id,
+      'name': ?name,
+      'storageSyncId': ?storageSyncId,
     };
   }
 
   factory GetSyncGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      storageSyncId: map['storageSyncId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageSyncId: (() { final guardedValue = map['storageSyncId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

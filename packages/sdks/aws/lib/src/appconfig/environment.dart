@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
+import 'environment_monitor.dart';
 import 'environment_state.dart';
 
 /// Provides an AppConfig Environment resource for an `aws.appconfig.Application` resource. One or more environments can be defined for an application.
@@ -19,13 +20,13 @@ import 'environment_state.dart';
 ///     },
 /// });
 /// const example = new aws.appconfig.Environment("example", {
-///     name: "example-environment-tf",
-///     description: "Example AppConfig Environment",
-///     applicationId: exampleApplication.id,
 ///     monitors: [{
 ///         alarmArn: exampleAwsCloudwatchMetricAlarm.arn,
 ///         alarmRoleArn: exampleAwsIamRole.arn,
 ///     }],
+///     name: "example-environment-tf",
+///     description: "Example AppConfig Environment",
+///     applicationId: exampleApplication.id,
 ///     tags: {
 ///         Type: "AppConfig Environment",
 ///     },
@@ -42,13 +43,13 @@ import 'environment_state.dart';
 ///         "Type": "AppConfig Application",
 ///     })
 /// example = aws.appconfig.Environment("example",
-///     name="example-environment-tf",
-///     description="Example AppConfig Environment",
-///     application_id=example_application.id,
 ///     monitors=[{
 ///         "alarm_arn": example_aws_cloudwatch_metric_alarm["arn"],
 ///         "alarm_role_arn": example_aws_iam_role["arn"],
 ///     }],
+///     name="example-environment-tf",
+///     description="Example AppConfig Environment",
+///     application_id=example_application.id,
 ///     tags={
 ///         "Type": "AppConfig Environment",
 ///     })
@@ -73,9 +74,6 @@ import 'environment_state.dart';
 ///
 ///     var example = new Aws.AppConfig.Environment("example", new()
 ///     {
-///         Name = "example-environment-tf",
-///         Description = "Example AppConfig Environment",
-///         ApplicationId = exampleApplication.Id,
 ///         Monitors = new[]
 ///         {
 ///             new Aws.AppConfig.Inputs.EnvironmentMonitorArgs
@@ -84,6 +82,9 @@ import 'environment_state.dart';
 ///                 AlarmRoleArn = exampleAwsIamRole.Arn,
 ///             },
 ///         },
+///         Name = "example-environment-tf",
+///         Description = "Example AppConfig Environment",
+///         ApplicationId = exampleApplication.Id,
 ///         Tags =
 ///         {
 ///             { "Type", "AppConfig Environment" },
@@ -113,15 +114,15 @@ import 'environment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appconfig.NewEnvironment(ctx, "example", &appconfig.EnvironmentArgs{
-/// 			Name:          pulumi.String("example-environment-tf"),
-/// 			Description:   pulumi.String("Example AppConfig Environment"),
-/// 			ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			Monitors: appconfig.EnvironmentMonitorArray{
 /// 				&appconfig.EnvironmentMonitorArgs{
 /// 					AlarmArn:     pulumi.Any(exampleAwsCloudwatchMetricAlarm.Arn),
 /// 					AlarmRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("example-environment-tf"),
+/// 			Description:   pulumi.String("Example AppConfig Environment"),
+/// 			ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Type": pulumi.String("AppConfig Environment"),
 /// 			},
@@ -143,13 +144,13 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "aws_appconfig_environment" "example" {
-///   name           = "example-environment-tf"
-///   description    = "Example AppConfig Environment"
-///   application_id = aws_appconfig_application.example.id
 ///   monitors {
 ///     alarm_arn      = exampleAwsCloudwatchMetricAlarm.arn
 ///     alarm_role_arn = exampleAwsIamRole.arn
 ///   }
+///   name           = "example-environment-tf"
+///   description    = "Example AppConfig Environment"
+///   application_id = aws_appconfig_application.example.id
 ///   tags = {
 ///     "Type" = "AppConfig Environment"
 ///   }
@@ -193,13 +194,13 @@ import 'environment_state.dart';
 ///             .build());
 ///
 ///         var example = new Environment("example", EnvironmentArgs.builder()
-///             .name("example-environment-tf")
-///             .description("Example AppConfig Environment")
-///             .applicationId(exampleApplication.id())
 ///             .monitors(EnvironmentMonitorArgs.builder()
 ///                 .alarmArn(exampleAwsCloudwatchMetricAlarm.arn())
 ///                 .alarmRoleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("example-environment-tf")
+///             .description("Example AppConfig Environment")
+///             .applicationId(exampleApplication.id())
 ///             .tags(Map.of("Type", "AppConfig Environment"))
 ///             .build());
 ///
@@ -211,12 +212,12 @@ import 'environment_state.dart';
 ///   example:
 ///     type: aws:appconfig:Environment
 ///     properties:
-///       name: example-environment-tf
-///       description: Example AppConfig Environment
-///       applicationId: ${exampleApplication.id}
 ///       monitors:
 ///         - alarmArn: ${exampleAwsCloudwatchMetricAlarm.arn}
 ///           alarmRoleArn: ${exampleAwsIamRole.arn}
+///       name: example-environment-tf
+///       description: Example AppConfig Environment
+///       applicationId: ${exampleApplication.id}
 ///       tags:
 ///         Type: AppConfig Environment
 ///   exampleApplication:
@@ -247,7 +248,7 @@ class Environment extends pulumi.CustomResource {
   /// AppConfig environment ID.
   late final pulumi.Output<String> environmentId;
   /// Set of Amazon CloudWatch alarms to monitor during the deployment process. Maximum of 5. See Monitor below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> monitors;
+  late final pulumi.Output<List<EnvironmentMonitor>?> monitors;
   /// Name for the environment. Must be between 1 and 64 characters in length.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -271,18 +272,18 @@ class Environment extends pulumi.CustomResource {
           'aws:appconfig/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     environmentId = registerOutput<String>('environmentId');
-    monitors = registerOutput<List<Map<String, dynamic>>?>('monitors');
+    monitors = registerOutput<List<EnvironmentMonitor>?>('monitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentMonitor>(guardedValue, (value) => EnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -290,11 +291,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -312,11 +314,32 @@ class Environment extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     environmentId = registerOutput<String>('environmentId');
-    monitors = registerOutput<List<Map<String, dynamic>>?>('monitors');
+    monitors = registerOutput<List<EnvironmentMonitor>?>('monitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentMonitor>(guardedValue, (value) => EnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'aws:appconfig/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    environmentId = registerOutput<String>('environmentId');
+    monitors = registerOutput<List<EnvironmentMonitor>?>('monitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentMonitor>(guardedValue, (value) => EnvironmentMonitor.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

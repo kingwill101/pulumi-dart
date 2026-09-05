@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteLocation {
   /// Address of the location.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Latitude of the location.
-  final pulumi.Input<String>? latitude;
+  final pulumi.Input<String?>? latitude;
   /// Longitude of the location.
-  final pulumi.Input<String>? longitude;
+  final pulumi.Input<String?>? longitude;
 
   /// Creates a new [SiteLocation].
   /// [address] Address of the location.

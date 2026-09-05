@@ -24,7 +24,7 @@ import 'role_management_policy_state.dart';
 /// });
 /// const exampleRoleManagementPolicy = new azure.pim.RoleManagementPolicy("example", {
 ///     scope: example.id,
-///     roleDefinitionId: mgContributor.apply(mgContributor => mgContributor.id),
+///     roleDefinitionId: mgContributor.id,
 ///     eligibleAssignmentRules: {
 ///         expirationRequired: false,
 ///     },
@@ -151,13 +151,11 @@ import 'role_management_policy_state.dart';
 /// 		}
 /// 		mgContributor := authorization.LookupRoleDefinitionOutput(ctx, authorization.GetRoleDefinitionOutputArgs{
 /// 			Name:  pulumi.String("Contributor"),
-/// 			Scope: example.ID(),
+/// 			Scope: example.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		_, err = pim.NewRoleManagementPolicy(ctx, "example", &pim.RoleManagementPolicyArgs{
-/// 			Scope: example.ID(),
-/// 			RoleDefinitionId: pulumi.String(mgContributor.ApplyT(func(mgContributor authorization.GetRoleDefinitionResult) (*string, error) {
-/// 				return mgContributor.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Scope:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			RoleDefinitionId: mgContributor.Id(),
 /// 			EligibleAssignmentRules: &pim.RoleManagementPolicyEligibleAssignmentRulesArgs{
 /// 				ExpirationRequired: pulumi.Bool(false),
 /// 			},
@@ -375,7 +373,7 @@ class RoleManagementPolicy extends pulumi.CustomResource {
           'azure:pim/roleManagementPolicy:RoleManagementPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -392,11 +390,12 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleManagementPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleManagementPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -410,6 +409,25 @@ class RoleManagementPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    eligibleAssignmentRules = registerOutput<RoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyEligibleAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notificationRules = registerOutput<RoleManagementPolicyNotificationRules>('notificationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyNotificationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [RoleManagementPolicy] resource.
+  RoleManagementPolicy.reference(String urn)
+    : super(
+        'azure:pim/roleManagementPolicy:RoleManagementPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

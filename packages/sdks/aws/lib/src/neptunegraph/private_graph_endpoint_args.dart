@@ -11,16 +11,16 @@ class PrivateGraphEndpointArgs {
   /// Unique identifier of the Neptune Analytics graph.
   final pulumi.Input<String> graphIdentifier;
   /// Region where this resource will be managed. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Subnets in which private graph endpoint ENIs are created.
-  final pulumi.Input<List<String>>? subnetIds;
-  final pulumi.Input<PrivateGraphEndpointTimeouts>? timeouts;
+  final pulumi.Input<List<String>?>? subnetIds;
+  final pulumi.Input<PrivateGraphEndpointTimeouts?>? timeouts;
   /// VPC in which the private graph endpoint needs to be created.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> vpcId;
   /// Security groups to be attached to the private graph endpoint. The Neptune Analytics API does not return this value, so Terraform cannot detect drift or repopulate it on import; the value present at creation persists in state until changed in configuration.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [PrivateGraphEndpointArgs].
   /// [graphIdentifier] Unique identifier of the Neptune Analytics graph.

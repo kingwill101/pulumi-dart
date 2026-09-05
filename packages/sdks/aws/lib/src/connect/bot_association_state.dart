@@ -6,11 +6,11 @@ import 'bot_association_lex_bot.dart';
 /// Input properties used for looking up and filtering BotAssociation resources.
 class BotAssociationState {
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
-  final pulumi.Input<BotAssociationLexBot>? lexBot;
+  final pulumi.Input<BotAssociationLexBot?>? lexBot;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BotAssociationState].
   /// [instanceId] The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.

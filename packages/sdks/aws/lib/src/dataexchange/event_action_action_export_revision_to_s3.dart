@@ -7,7 +7,7 @@ import 'event_action_action_export_revision_to_s3_revision_destination.dart';
 class EventActionActionExportRevisionToS3 {
   /// Configures server-side encryption of the exported revision.
   /// Described in `encryption` Configuration Block below.
-  final pulumi.Input<EventActionActionExportRevisionToS3Encryption>? encryption;
+  final pulumi.Input<EventActionActionExportRevisionToS3Encryption?>? encryption;
   /// Configures the S3 destination of the exported revision.
   /// Described in `revisionDestination` Configuration Block below.
   final pulumi.Input<EventActionActionExportRevisionToS3RevisionDestination> revisionDestination;

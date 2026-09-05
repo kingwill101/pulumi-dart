@@ -35,7 +35,7 @@ class GetUserPhoneConfig {
 
   factory GetUserPhoneConfig.fromMap(Map<String, dynamic> map) {
     return GetUserPhoneConfig(
-      afterContactWorkTimeLimit: pulumi.Input.fromValue(map['afterContactWorkTimeLimit'] as int),
+      afterContactWorkTimeLimit: pulumi.Input.fromValue((map['afterContactWorkTimeLimit'] as num).toInt()),
       autoAccept: pulumi.Input.fromValue(map['autoAccept'] as bool),
       deskPhoneNumber: pulumi.Input.fromValue(map['deskPhoneNumber'] as String),
       phoneType: pulumi.Input.fromValue(map['phoneType'] as String),

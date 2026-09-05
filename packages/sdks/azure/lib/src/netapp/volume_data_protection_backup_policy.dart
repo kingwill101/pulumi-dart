@@ -10,7 +10,7 @@ class VolumeDataProtectionBackupPolicy {
   /// Enables the backup policy on the volume, defaults to `true`.
   ///
   /// For more information on Azure NetApp Files Backup feature please see [Understand Azure NetApp Files backup](https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction)
-  final pulumi.Input<bool>? policyEnabled;
+  final pulumi.Input<bool?>? policyEnabled;
 
   /// Creates a new [VolumeDataProtectionBackupPolicy].
   /// [backupPolicyId] Resource ID of the backup policy to apply to the volume.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_mysql_args.dart';
+import 'dataset_mysql_schema_column.dart';
 import 'dataset_mysql_state.dart';
 
 /// Manages a MySQL Dataset inside a Azure Data Factory.
@@ -116,7 +117,7 @@ import 'dataset_mysql_state.dart';
 /// 		}
 /// 		exampleLinkedServiceMysql, err := datafactory.NewLinkedServiceMysql(ctx, "example", &datafactory.LinkedServiceMysqlArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"),
 /// 		})
 /// 		if err != nil {
@@ -124,7 +125,7 @@ import 'dataset_mysql_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetMysql(ctx, "example", &datafactory.DatasetMysqlArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceMysql.Name,
 /// 		})
 /// 		if err != nil {
@@ -274,7 +275,7 @@ class DatasetMysql extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset MySQL.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetMysqlSchemaColumn>?> schemaColumns;
   /// The table name of the Data Factory Dataset MySQL.
   late final pulumi.Output<String?> tableName;
 
@@ -290,17 +291,17 @@ class DatasetMysql extends pulumi.CustomResource {
           'azure:datafactory/datasetMysql:DatasetMysql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetMysqlSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetMysqlSchemaColumn>(guardedValue, (value) => DatasetMysqlSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     tableName = registerOutput<String?>('tableName');
   }
 
@@ -309,11 +310,12 @@ class DatasetMysql extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetMysqlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetMysql._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,15 +329,36 @@ class DatasetMysql extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetMysqlSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetMysqlSchemaColumn>(guardedValue, (value) => DatasetMysqlSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [DatasetMysql] resource.
+  DatasetMysql.reference(String urn)
+    : super(
+        'azure:datafactory/datasetMysql:DatasetMysql',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetMysqlSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetMysqlSchemaColumn>(guardedValue, (value) => DatasetMysqlSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     tableName = registerOutput<String?>('tableName');
   }
 }

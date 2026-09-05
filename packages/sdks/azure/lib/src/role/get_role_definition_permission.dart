@@ -10,11 +10,11 @@ class GetRoleDefinitionPermission {
   /// The version of the condition.
   final pulumi.Input<String> conditionVersion;
   /// A list of data actions allowed by this role.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// A list of actions which are denied by this role.
   final pulumi.Input<List<String>> notActions;
   /// A list of data actions which are denied by this role.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [GetRoleDefinitionPermission].
   /// [actions] A list of actions supported by this role.

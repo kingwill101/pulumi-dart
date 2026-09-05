@@ -177,7 +177,7 @@ class Organization extends pulumi.CustomResource {
           'aws:workmail/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     completedDate = registerOutput<String>('completedDate');
@@ -193,8 +193,8 @@ class Organization extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<OrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -203,11 +203,12 @@ class Organization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Organization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,8 +236,36 @@ class Organization extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<OrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Organization] resource.
+  Organization.reference(String urn)
+    : super(
+        'aws:workmail/organization:Organization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    completedDate = registerOutput<String>('completedDate');
+    defaultMailDomain = registerOutput<String>('defaultMailDomain');
+    deleteDirectory = registerOutput<bool?>('deleteDirectory');
+    deleteIdentityCenterApplication = registerOutput<bool?>('deleteIdentityCenterApplication');
+    directoryId = registerOutput<String>('directoryId');
+    directoryType = registerOutput<String>('directoryType');
+    interoperabilityEnabled = registerOutput<bool>('interoperabilityEnabled');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    migrationAdmin = registerOutput<String>('migrationAdmin');
+    organizationAlias = registerOutput<String>('organizationAlias');
+    organizationId = registerOutput<String>('organizationId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<OrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

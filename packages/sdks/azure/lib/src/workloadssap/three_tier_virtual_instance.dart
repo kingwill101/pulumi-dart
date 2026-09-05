@@ -1007,7 +1007,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 				SecondaryIpEnabled:   pulumi.Bool(true),
 /// 				ApplicationServerConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationArgs{
 /// 					InstanceCount: pulumi.Int(1),
-/// 					SubnetId:      exampleSubnet.ID(),
+/// 					SubnetId:      exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					VirtualMachineConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationArgs{
 /// 						VirtualMachineSize: pulumi.String("Standard_D16ds_v4"),
 /// 						Image: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationImageArgs{
@@ -1025,7 +1025,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 				},
 /// 				CentralServerConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationArgs{
 /// 					InstanceCount: pulumi.Int(1),
-/// 					SubnetId:      exampleSubnet.ID(),
+/// 					SubnetId:      exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					VirtualMachineConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationArgs{
 /// 						VirtualMachineSize: pulumi.String("Standard_D16ds_v4"),
 /// 						Image: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationImageArgs{
@@ -1043,7 +1043,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 				},
 /// 				DatabaseServerConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationArgs{
 /// 					InstanceCount: pulumi.Int(1),
-/// 					SubnetId:      exampleSubnet.ID(),
+/// 					SubnetId:      exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					DatabaseType:  pulumi.String("HANA"),
 /// 					VirtualMachineConfiguration: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationArgs{
 /// 						VirtualMachineSize: pulumi.String("Standard_E16ds_v4"),
@@ -1214,14 +1214,14 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// 					},
 /// 				},
 /// 				TransportCreateAndMount: &workloadssap.ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMountArgs{
-/// 					ResourceGroupId:    app.ID(),
+/// 					ResourceGroupId:    app.ID().ToIDOutput().ToStringOutput(),
 /// 					StorageAccountName: pulumi.String("exampletranssa"),
 /// 				},
 /// 			},
 /// 			Identity: &workloadssap.ThreeTierVirtualInstanceIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -2087,7 +2087,7 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
           'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
@@ -2099,7 +2099,7 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapFqdn = registerOutput<String>('sapFqdn');
     sapProduct = registerOutput<String>('sapProduct');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threeTierConfiguration = registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>('threeTierConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -2108,11 +2108,12 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThreeTierVirtualInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ThreeTierVirtualInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2136,7 +2137,30 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapFqdn = registerOutput<String>('sapFqdn');
     sapProduct = registerOutput<String>('sapProduct');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    threeTierConfiguration = registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>('threeTierConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ThreeTierVirtualInstance] resource.
+  ThreeTierVirtualInstance.reference(String urn)
+    : super(
+        'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appLocation = registerOutput<String>('appLocation');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThreeTierVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapFqdn = registerOutput<String>('sapFqdn');
+    sapProduct = registerOutput<String>('sapProduct');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threeTierConfiguration = registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>('threeTierConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

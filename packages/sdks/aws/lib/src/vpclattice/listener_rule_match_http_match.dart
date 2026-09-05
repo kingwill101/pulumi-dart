@@ -6,11 +6,11 @@ import 'listener_rule_match_http_match_path_match.dart';
 
 class ListenerRuleMatchHttpMatch {
   /// Header matches that match incoming requests based on the request header value before applying the rule action. See `headerMatches` Block for details.
-  final pulumi.Input<List<ListenerRuleMatchHttpMatchHeaderMatch>>? headerMatches;
+  final pulumi.Input<List<ListenerRuleMatchHttpMatchHeaderMatch>?>? headerMatches;
   /// HTTP method type.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Path match. See `pathMatch` Block for details.
-  final pulumi.Input<ListenerRuleMatchHttpMatchPathMatch>? pathMatch;
+  final pulumi.Input<ListenerRuleMatchHttpMatchPathMatch?>? pathMatch;
 
   /// Creates a new [ListenerRuleMatchHttpMatch].
   /// [headerMatches] Header matches that match incoming requests based on the request header value before applying the rule action. See `headerMatches` Block for details.

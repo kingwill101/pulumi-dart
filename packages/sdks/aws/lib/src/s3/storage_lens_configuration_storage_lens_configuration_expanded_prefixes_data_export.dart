@@ -6,9 +6,9 @@ import 'storage_lens_configuration_storage_lens_configuration_expanded_prefixes_
 
 class StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExport {
   /// Bucket where the S3 Storage Lens expanded prefix metrics export will be located. See `s3BucketDestination` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestination>? s3BucketDestination;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestination?>? s3BucketDestination;
   /// S3 table bucket where the S3 Storage Lens expanded prefix metrics export will be located. See `storageLensTableDestination` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportStorageLensTableDestination>? storageLensTableDestination;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportStorageLensTableDestination?>? storageLensTableDestination;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExport].
   /// [s3BucketDestination] Bucket where the S3 Storage Lens expanded prefix metrics export will be located. See `s3BucketDestination` below for more details.

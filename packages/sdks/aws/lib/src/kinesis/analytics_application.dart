@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytics_application_args.dart';
 import 'analytics_application_cloudwatch_logging_options.dart';
 import 'analytics_application_inputs.dart';
+import 'analytics_application_output.dart';
 import 'analytics_application_reference_data_sources.dart';
 import 'analytics_application_state.dart';
 
@@ -28,9 +29,7 @@ import 'analytics_application_state.dart';
 ///     shardCount: 1,
 /// });
 /// const testApplication = new aws.kinesis.AnalyticsApplication("test_application", {
-///     name: "kinesis-analytics-application-test",
 ///     inputs: {
-///         namePrefix: "test_prefix",
 ///         kinesisStream: {
 ///             resourceArn: testStream.arn,
 ///             roleArn: test.arn,
@@ -39,12 +38,6 @@ import 'analytics_application_state.dart';
 ///             count: 1,
 ///         },
 ///         schema: {
-///             recordColumns: [{
-///                 mapping: "$.test",
-///                 name: "test",
-///                 sqlType: "VARCHAR(8)",
-///             }],
-///             recordEncoding: "UTF-8",
 ///             recordFormat: {
 ///                 mappingParameters: {
 ///                     json: {
@@ -52,8 +45,16 @@ import 'analytics_application_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             recordColumns: [{
+///                 mapping: "$.test",
+///                 name: "test",
+///                 sqlType: "VARCHAR(8)",
+///             }],
+///             recordEncoding: "UTF-8",
 ///         },
+///         namePrefix: "test_prefix",
 ///     },
+///     name: "kinesis-analytics-application-test",
 /// });
 /// ```
 /// ```python
@@ -64,9 +65,7 @@ import 'analytics_application_state.dart';
 ///     name="kinesis-test",
 ///     shard_count=1)
 /// test_application = aws.kinesis.AnalyticsApplication("test_application",
-///     name="kinesis-analytics-application-test",
 ///     inputs={
-///         "name_prefix": "test_prefix",
 ///         "kinesis_stream": {
 ///             "resource_arn": test_stream.arn,
 ///             "role_arn": test["arn"],
@@ -75,12 +74,6 @@ import 'analytics_application_state.dart';
 ///             "count": 1,
 ///         },
 ///         "schema": {
-///             "record_columns": [{
-///                 "mapping": "$.test",
-///                 "name": "test",
-///                 "sql_type": "VARCHAR(8)",
-///             }],
-///             "record_encoding": "UTF-8",
 ///             "record_format": {
 ///                 "mapping_parameters": {
 ///                     "json": {
@@ -88,8 +81,16 @@ import 'analytics_application_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             "record_columns": [{
+///                 "mapping": "$.test",
+///                 "name": "test",
+///                 "sql_type": "VARCHAR(8)",
+///             }],
+///             "record_encoding": "UTF-8",
 ///         },
-///     })
+///         "name_prefix": "test_prefix",
+///     },
+///     name="kinesis-analytics-application-test")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -107,10 +108,8 @@ import 'analytics_application_state.dart';
 ///
 ///     var testApplication = new Aws.Kinesis.AnalyticsApplication("test_application", new()
 ///     {
-///         Name = "kinesis-analytics-application-test",
 ///         Inputs = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsArgs
 ///         {
-///             NamePrefix = "test_prefix",
 ///             KinesisStream = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsKinesisStreamArgs
 ///             {
 ///                 ResourceArn = testStream.Arn,
@@ -122,16 +121,6 @@ import 'analytics_application_state.dart';
 ///             },
 ///             Schema = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaArgs
 ///             {
-///                 RecordColumns = new[]
-///                 {
-///                     new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs
-///                     {
-///                         Mapping = "$.test",
-///                         Name = "test",
-///                         SqlType = "VARCHAR(8)",
-///                     },
-///                 },
-///                 RecordEncoding = "UTF-8",
 ///                 RecordFormat = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs
 ///                 {
 ///                     MappingParameters = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs
@@ -142,8 +131,20 @@ import 'analytics_application_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 RecordColumns = new[]
+///                 {
+///                     new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs
+///                     {
+///                         Mapping = "$.test",
+///                         Name = "test",
+///                         SqlType = "VARCHAR(8)",
+///                     },
+///                 },
+///                 RecordEncoding = "UTF-8",
 ///             },
+///             NamePrefix = "test_prefix",
 ///         },
+///         Name = "kinesis-analytics-application-test",
 ///     });
 ///
 /// });
@@ -166,9 +167,7 @@ import 'analytics_application_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewAnalyticsApplication(ctx, "test_application", &kinesis.AnalyticsApplicationArgs{
-/// 			Name: pulumi.String("kinesis-analytics-application-test"),
 /// 			Inputs: &kinesis.AnalyticsApplicationInputsArgs{
-/// 				NamePrefix: pulumi.String("test_prefix"),
 /// 				KinesisStream: &kinesis.AnalyticsApplicationInputsKinesisStreamArgs{
 /// 					ResourceArn: testStream.Arn,
 /// 					RoleArn:     pulumi.Any(test.Arn),
@@ -177,6 +176,13 @@ import 'analytics_application_state.dart';
 /// 					Count: pulumi.Int(1),
 /// 				},
 /// 				Schema: &kinesis.AnalyticsApplicationInputsSchemaArgs{
+/// 					RecordFormat: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs{
+/// 						MappingParameters: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs{
+/// 							Json: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs{
+/// 								RecordRowPath: pulumi.String("$"),
+/// 							},
+/// 						},
+/// 					},
 /// 					RecordColumns: kinesis.AnalyticsApplicationInputsSchemaRecordColumnArray{
 /// 						&kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
 /// 							Mapping: pulumi.String("$.test"),
@@ -185,15 +191,10 @@ import 'analytics_application_state.dart';
 /// 						},
 /// 					},
 /// 					RecordEncoding: pulumi.String("UTF-8"),
-/// 					RecordFormat: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs{
-/// 						MappingParameters: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs{
-/// 							Json: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs{
-/// 								RecordRowPath: pulumi.String("$"),
-/// 							},
-/// 						},
-/// 					},
 /// 				},
+/// 				NamePrefix: pulumi.String("test_prefix"),
 /// 			},
+/// 			Name: pulumi.String("kinesis-analytics-application-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -216,9 +217,7 @@ import 'analytics_application_state.dart';
 ///   shard_count = 1
 /// }
 /// resource "aws_kinesis_analyticsapplication" "test_application" {
-///   name = "kinesis-analytics-application-test"
 ///   inputs = {
-///     name_prefix = "test_prefix"
 ///     kinesis_stream = {
 ///       resource_arn = aws_kinesis_stream.test_stream.arn
 ///       role_arn     = test.arn
@@ -227,12 +226,6 @@ import 'analytics_application_state.dart';
 ///       count = 1
 ///     }
 ///     schema = {
-///       record_columns = [{
-///         "mapping" = "$.test"
-///         "name"    = "test"
-///         "sqlType" = "VARCHAR(8)"
-///       }]
-///       record_encoding = "UTF-8"
 ///       record_format = {
 ///         mapping_parameters = {
 ///           json = {
@@ -240,8 +233,16 @@ import 'analytics_application_state.dart';
 ///           }
 ///         }
 ///       }
+///       record_columns = [{
+///         "mapping" = "$.test"
+///         "name"    = "test"
+///         "sqlType" = "VARCHAR(8)"
+///       }]
+///       record_encoding = "UTF-8"
 ///     }
+///     name_prefix = "test_prefix"
 ///   }
+///   name = "kinesis-analytics-application-test"
 /// }
 /// ```
 /// ```java
@@ -258,10 +259,10 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsKinesisStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsParallelismArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaArgs;
-/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs;
+/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -281,9 +282,7 @@ import 'analytics_application_state.dart';
 ///             .build());
 ///
 ///         var testApplication = new AnalyticsApplication("testApplication", AnalyticsApplicationArgs.builder()
-///             .name("kinesis-analytics-application-test")
 ///             .inputs(AnalyticsApplicationInputsArgs.builder()
-///                 .namePrefix("test_prefix")
 ///                 .kinesisStream(AnalyticsApplicationInputsKinesisStreamArgs.builder()
 ///                     .resourceArn(testStream.arn())
 ///                     .roleArn(test.arn())
@@ -292,12 +291,6 @@ import 'analytics_application_state.dart';
 ///                     .count(1)
 ///                     .build())
 ///                 .schema(AnalyticsApplicationInputsSchemaArgs.builder()
-///                     .recordColumns(AnalyticsApplicationInputsSchemaRecordColumnArgs.builder()
-///                         .mapping("$.test")
-///                         .name("test")
-///                         .sqlType("VARCHAR(8)")
-///                         .build())
-///                     .recordEncoding("UTF-8")
 ///                     .recordFormat(AnalyticsApplicationInputsSchemaRecordFormatArgs.builder()
 ///                         .mappingParameters(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs.builder()
 ///                             .json(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs.builder()
@@ -305,8 +298,16 @@ import 'analytics_application_state.dart';
 ///                                 .build())
 ///                             .build())
 ///                         .build())
+///                     .recordColumns(AnalyticsApplicationInputsSchemaRecordColumnArgs.builder()
+///                         .mapping("$.test")
+///                         .name("test")
+///                         .sqlType("VARCHAR(8)")
+///                         .build())
+///                     .recordEncoding("UTF-8")
 ///                     .build())
+///                 .namePrefix("test_prefix")
 ///                 .build())
+///             .name("kinesis-analytics-application-test")
 ///             .build());
 ///
 ///     }
@@ -324,24 +325,24 @@ import 'analytics_application_state.dart';
 ///     type: aws:kinesis:AnalyticsApplication
 ///     name: test_application
 ///     properties:
-///       name: kinesis-analytics-application-test
 ///       inputs:
-///         namePrefix: test_prefix
 ///         kinesisStream:
 ///           resourceArn: ${testStream.arn}
 ///           roleArn: ${test.arn}
 ///         parallelism:
 ///           count: 1
 ///         schema:
+///           recordFormat:
+///             mappingParameters:
+///               json:
+///                 recordRowPath: $
 ///           recordColumns:
 ///             - mapping: $.test
 ///               name: test
 ///               sqlType: VARCHAR(8)
 ///           recordEncoding: UTF-8
-///           recordFormat:
-///             mappingParameters:
-///               json:
-///                 recordRowPath: $
+///         namePrefix: test_prefix
+///       name: kinesis-analytics-application-test
 /// ```
 ///
 ///
@@ -362,26 +363,20 @@ import 'analytics_application_state.dart';
 ///     shardCount: 1,
 /// });
 /// const exampleFirehoseDeliveryStream = new aws.kinesis.FirehoseDeliveryStream("example", {
-///     name: "example-kinesis-delivery-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
 ///         bucketArn: exampleAwsS3Bucket.arn,
 ///         roleArn: exampleAwsIamRole.arn,
 ///     },
+///     name: "example-kinesis-delivery-stream",
+///     destination: "extended_s3",
 /// });
 /// const test = new aws.kinesis.AnalyticsApplication("test", {
-///     name: "example-application",
 ///     cloudwatchLoggingOptions: {
 ///         logStreamArn: exampleLogStream.arn,
 ///         roleArn: exampleAwsIamRole.arn,
 ///     },
 ///     inputs: {
-///         namePrefix: "example_prefix",
 ///         schema: {
-///             recordColumns: [{
-///                 name: "COLUMN_1",
-///                 sqlType: "INTEGER",
-///             }],
 ///             recordFormat: {
 ///                 mappingParameters: {
 ///                     csv: {
@@ -390,6 +385,10 @@ import 'analytics_application_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             recordColumns: [{
+///                 name: "COLUMN_1",
+///                 sqlType: "INTEGER",
+///             }],
 ///         },
 ///         kinesisStream: {
 ///             resourceArn: exampleStream.arn,
@@ -398,9 +397,9 @@ import 'analytics_application_state.dart';
 ///         startingPositionConfigurations: [{
 ///             startingPosition: "NOW",
 ///         }],
+///         namePrefix: "example_prefix",
 ///     },
 ///     outputs: [{
-///         name: "OUTPUT_1",
 ///         schema: {
 ///             recordFormatType: "CSV",
 ///         },
@@ -408,7 +407,9 @@ import 'analytics_application_state.dart';
 ///             resourceArn: exampleFirehoseDeliveryStream.arn,
 ///             roleArn: exampleAwsIamRole.arn,
 ///         },
+///         name: "OUTPUT_1",
 ///     }],
+///     name: "example-application",
 ///     startApplication: true,
 /// });
 /// ```
@@ -424,25 +425,19 @@ import 'analytics_application_state.dart';
 ///     name="example-kinesis-stream",
 ///     shard_count=1)
 /// example_firehose_delivery_stream = aws.kinesis.FirehoseDeliveryStream("example",
-///     name="example-kinesis-delivery-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
 ///         "bucket_arn": example_aws_s3_bucket["arn"],
 ///         "role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     name="example-kinesis-delivery-stream",
+///     destination="extended_s3")
 /// test = aws.kinesis.AnalyticsApplication("test",
-///     name="example-application",
 ///     cloudwatch_logging_options={
 ///         "log_stream_arn": example_log_stream.arn,
 ///         "role_arn": example_aws_iam_role["arn"],
 ///     },
 ///     inputs={
-///         "name_prefix": "example_prefix",
 ///         "schema": {
-///             "record_columns": [{
-///                 "name": "COLUMN_1",
-///                 "sql_type": "INTEGER",
-///             }],
 ///             "record_format": {
 ///                 "mapping_parameters": {
 ///                     "csv": {
@@ -451,6 +446,10 @@ import 'analytics_application_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             "record_columns": [{
+///                 "name": "COLUMN_1",
+///                 "sql_type": "INTEGER",
+///             }],
 ///         },
 ///         "kinesis_stream": {
 ///             "resource_arn": example_stream.arn,
@@ -459,9 +458,9 @@ import 'analytics_application_state.dart';
 ///         "starting_position_configurations": [{
 ///             "starting_position": "NOW",
 ///         }],
+///         "name_prefix": "example_prefix",
 ///     },
 ///     outputs=[{
-///         "name": "OUTPUT_1",
 ///         "schema": {
 ///             "record_format_type": "CSV",
 ///         },
@@ -469,7 +468,9 @@ import 'analytics_application_state.dart';
 ///             "resource_arn": example_firehose_delivery_stream.arn,
 ///             "role_arn": example_aws_iam_role["arn"],
 ///         },
+///         "name": "OUTPUT_1",
 ///     }],
+///     name="example-application",
 ///     start_application=True)
 /// ```
 /// ```csharp
@@ -499,18 +500,17 @@ import 'analytics_application_state.dart';
 ///
 ///     var exampleFirehoseDeliveryStream = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
 ///     {
-///         Name = "example-kinesis-delivery-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
 ///             BucketArn = exampleAwsS3Bucket.Arn,
 ///             RoleArn = exampleAwsIamRole.Arn,
 ///         },
+///         Name = "example-kinesis-delivery-stream",
+///         Destination = "extended_s3",
 ///     });
 ///
 ///     var test = new Aws.Kinesis.AnalyticsApplication("test", new()
 ///     {
-///         Name = "example-application",
 ///         CloudwatchLoggingOptions = new Aws.Kinesis.Inputs.AnalyticsApplicationCloudwatchLoggingOptionsArgs
 ///         {
 ///             LogStreamArn = exampleLogStream.Arn,
@@ -518,17 +518,8 @@ import 'analytics_application_state.dart';
 ///         },
 ///         Inputs = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsArgs
 ///         {
-///             NamePrefix = "example_prefix",
 ///             Schema = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaArgs
 ///             {
-///                 RecordColumns = new[]
-///                 {
-///                     new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs
-///                     {
-///                         Name = "COLUMN_1",
-///                         SqlType = "INTEGER",
-///                     },
-///                 },
 ///                 RecordFormat = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs
 ///                 {
 ///                     MappingParameters = new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs
@@ -538,6 +529,14 @@ import 'analytics_application_state.dart';
 ///                             RecordColumnDelimiter = ",",
 ///                             RecordRowDelimiter = "|",
 ///                         },
+///                     },
+///                 },
+///                 RecordColumns = new[]
+///                 {
+///                     new Aws.Kinesis.Inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs
+///                     {
+///                         Name = "COLUMN_1",
+///                         SqlType = "INTEGER",
 ///                     },
 ///                 },
 ///             },
@@ -553,12 +552,12 @@ import 'analytics_application_state.dart';
 ///                     StartingPosition = "NOW",
 ///                 },
 ///             },
+///             NamePrefix = "example_prefix",
 ///         },
 ///         Outputs = new[]
 ///         {
 ///             new Aws.Kinesis.Inputs.AnalyticsApplicationOutputArgs
 ///             {
-///                 Name = "OUTPUT_1",
 ///                 Schema = new Aws.Kinesis.Inputs.AnalyticsApplicationOutputSchemaArgs
 ///                 {
 ///                     RecordFormatType = "CSV",
@@ -568,8 +567,10 @@ import 'analytics_application_state.dart';
 ///                     ResourceArn = exampleFirehoseDeliveryStream.Arn,
 ///                     RoleArn = exampleAwsIamRole.Arn,
 ///                 },
+///                 Name = "OUTPUT_1",
 ///             },
 ///         },
+///         Name = "example-application",
 ///         StartApplication = true,
 ///     });
 ///
@@ -607,37 +608,35 @@ import 'analytics_application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleFirehoseDeliveryStream, err := kinesis.NewFirehoseDeliveryStream(ctx, "example", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("example-kinesis-delivery-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
 /// 				BucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
 /// 				RoleArn:   pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
+/// 			Name:        pulumi.String("example-kinesis-delivery-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewAnalyticsApplication(ctx, "test", &kinesis.AnalyticsApplicationArgs{
-/// 			Name: pulumi.String("example-application"),
 /// 			CloudwatchLoggingOptions: &kinesis.AnalyticsApplicationCloudwatchLoggingOptionsArgs{
 /// 				LogStreamArn: exampleLogStream.Arn,
 /// 				RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
 /// 			Inputs: &kinesis.AnalyticsApplicationInputsArgs{
-/// 				NamePrefix: pulumi.String("example_prefix"),
 /// 				Schema: &kinesis.AnalyticsApplicationInputsSchemaArgs{
-/// 					RecordColumns: kinesis.AnalyticsApplicationInputsSchemaRecordColumnArray{
-/// 						&kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
-/// 							Name:    pulumi.String("COLUMN_1"),
-/// 							SqlType: pulumi.String("INTEGER"),
-/// 						},
-/// 					},
 /// 					RecordFormat: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatArgs{
 /// 						MappingParameters: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs{
 /// 							Csv: &kinesis.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs{
 /// 								RecordColumnDelimiter: pulumi.String(","),
 /// 								RecordRowDelimiter:    pulumi.String("|"),
 /// 							},
+/// 						},
+/// 					},
+/// 					RecordColumns: kinesis.AnalyticsApplicationInputsSchemaRecordColumnArray{
+/// 						&kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
+/// 							Name:    pulumi.String("COLUMN_1"),
+/// 							SqlType: pulumi.String("INTEGER"),
 /// 						},
 /// 					},
 /// 				},
@@ -650,10 +649,10 @@ import 'analytics_application_state.dart';
 /// 						StartingPosition: pulumi.String("NOW"),
 /// 					},
 /// 				},
+/// 				NamePrefix: pulumi.String("example_prefix"),
 /// 			},
 /// 			Outputs: kinesis.AnalyticsApplicationOutputTypeArray{
 /// 				&kinesis.AnalyticsApplicationOutputTypeArgs{
-/// 					Name: pulumi.String("OUTPUT_1"),
 /// 					Schema: &kinesis.AnalyticsApplicationOutputSchemaArgs{
 /// 						RecordFormatType: pulumi.String("CSV"),
 /// 					},
@@ -661,8 +660,10 @@ import 'analytics_application_state.dart';
 /// 						ResourceArn: exampleFirehoseDeliveryStream.Arn,
 /// 						RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
 /// 					},
+/// 					Name: pulumi.String("OUTPUT_1"),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example-application"),
 /// 			StartApplication: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -693,26 +694,20 @@ import 'analytics_application_state.dart';
 ///   shard_count = 1
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   name        = "example-kinesis-delivery-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
 ///     bucket_arn = exampleAwsS3Bucket.arn
 ///     role_arn   = exampleAwsIamRole.arn
 ///   }
+///   name        = "example-kinesis-delivery-stream"
+///   destination = "extended_s3"
 /// }
 /// resource "aws_kinesis_analyticsapplication" "test" {
-///   name = "example-application"
 ///   cloudwatch_logging_options = {
 ///     log_stream_arn = aws_cloudwatch_logstream.example.arn
 ///     role_arn       = exampleAwsIamRole.arn
 ///   }
 ///   inputs = {
-///     name_prefix = "example_prefix"
 ///     schema = {
-///       record_columns = [{
-///         "name"    = "COLUMN_1"
-///         "sqlType" = "INTEGER"
-///       }]
 ///       record_format = {
 ///         mapping_parameters = {
 ///           csv = {
@@ -721,6 +716,10 @@ import 'analytics_application_state.dart';
 ///           }
 ///         }
 ///       }
+///       record_columns = [{
+///         "name"    = "COLUMN_1"
+///         "sqlType" = "INTEGER"
+///       }]
 ///     }
 ///     kinesis_stream = {
 ///       resource_arn = aws_kinesis_stream.example.arn
@@ -729,9 +728,9 @@ import 'analytics_application_state.dart';
 ///     starting_position_configurations = [{
 ///       "startingPosition" = "NOW"
 ///     }]
+///     name_prefix = "example_prefix"
 ///   }
 ///   outputs {
-///     name = "OUTPUT_1"
 ///     schema = {
 ///       record_format_type = "CSV"
 ///     }
@@ -739,7 +738,9 @@ import 'analytics_application_state.dart';
 ///       resource_arn = aws_kinesis_firehosedeliverystream.example.arn
 ///       role_arn     = exampleAwsIamRole.arn
 ///     }
+///     name = "OUTPUT_1"
 ///   }
+///   name              = "example-application"
 ///   start_application = true
 /// }
 /// ```
@@ -763,10 +764,10 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationCloudwatchLoggingOptionsArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaArgs;
-/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs;
+/// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsSchemaRecordColumnArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsKinesisStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsStartingPositionConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationOutputArgs;
@@ -800,27 +801,21 @@ import 'analytics_application_state.dart';
 ///             .build());
 ///
 ///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("example-kinesis-delivery-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
 ///                 .bucketArn(exampleAwsS3Bucket.arn())
 ///                 .roleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("example-kinesis-delivery-stream")
+///             .destination("extended_s3")
 ///             .build());
 ///
 ///         var test = new AnalyticsApplication("test", AnalyticsApplicationArgs.builder()
-///             .name("example-application")
 ///             .cloudwatchLoggingOptions(AnalyticsApplicationCloudwatchLoggingOptionsArgs.builder()
 ///                 .logStreamArn(exampleLogStream.arn())
 ///                 .roleArn(exampleAwsIamRole.arn())
 ///                 .build())
 ///             .inputs(AnalyticsApplicationInputsArgs.builder()
-///                 .namePrefix("example_prefix")
 ///                 .schema(AnalyticsApplicationInputsSchemaArgs.builder()
-///                     .recordColumns(AnalyticsApplicationInputsSchemaRecordColumnArgs.builder()
-///                         .name("COLUMN_1")
-///                         .sqlType("INTEGER")
-///                         .build())
 ///                     .recordFormat(AnalyticsApplicationInputsSchemaRecordFormatArgs.builder()
 ///                         .mappingParameters(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs.builder()
 ///                             .csv(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs.builder()
@@ -828,6 +823,10 @@ import 'analytics_application_state.dart';
 ///                                 .recordRowDelimiter("|")
 ///                                 .build())
 ///                             .build())
+///                         .build())
+///                     .recordColumns(AnalyticsApplicationInputsSchemaRecordColumnArgs.builder()
+///                         .name("COLUMN_1")
+///                         .sqlType("INTEGER")
 ///                         .build())
 ///                     .build())
 ///                 .kinesisStream(AnalyticsApplicationInputsKinesisStreamArgs.builder()
@@ -837,9 +836,9 @@ import 'analytics_application_state.dart';
 ///                 .startingPositionConfigurations(AnalyticsApplicationInputsStartingPositionConfigurationArgs.builder()
 ///                     .startingPosition("NOW")
 ///                     .build())
+///                 .namePrefix("example_prefix")
 ///                 .build())
 ///             .outputs(AnalyticsApplicationOutputArgs.builder()
-///                 .name("OUTPUT_1")
 ///                 .schema(AnalyticsApplicationOutputSchemaArgs.builder()
 ///                     .recordFormatType("CSV")
 ///                     .build())
@@ -847,7 +846,9 @@ import 'analytics_application_state.dart';
 ///                     .resourceArn(exampleFirehoseDeliveryStream.arn())
 ///                     .roleArn(exampleAwsIamRole.arn())
 ///                     .build())
+///                 .name("OUTPUT_1")
 ///                 .build())
+///             .name("example-application")
 ///             .startApplication(true)
 ///             .build());
 ///
@@ -876,41 +877,41 @@ import 'analytics_application_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: example
 ///     properties:
-///       name: example-kinesis-delivery-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
 ///         bucketArn: ${exampleAwsS3Bucket.arn}
 ///         roleArn: ${exampleAwsIamRole.arn}
+///       name: example-kinesis-delivery-stream
+///       destination: extended_s3
 ///   test:
 ///     type: aws:kinesis:AnalyticsApplication
 ///     properties:
-///       name: example-application
 ///       cloudwatchLoggingOptions:
 ///         logStreamArn: ${exampleLogStream.arn}
 ///         roleArn: ${exampleAwsIamRole.arn}
 ///       inputs:
-///         namePrefix: example_prefix
 ///         schema:
-///           recordColumns:
-///             - name: COLUMN_1
-///               sqlType: INTEGER
 ///           recordFormat:
 ///             mappingParameters:
 ///               csv:
 ///                 recordColumnDelimiter: ','
 ///                 recordRowDelimiter: '|'
+///           recordColumns:
+///             - name: COLUMN_1
+///               sqlType: INTEGER
 ///         kinesisStream:
 ///           resourceArn: ${exampleStream.arn}
 ///           roleArn: ${exampleAwsIamRole.arn}
 ///         startingPositionConfigurations:
 ///           - startingPosition: NOW
+///         namePrefix: example_prefix
 ///       outputs:
-///         - name: OUTPUT_1
-///           schema:
+///         - schema:
 ///             recordFormatType: CSV
 ///           kinesisFirehose:
 ///             resourceArn: ${exampleFirehoseDeliveryStream.arn}
 ///             roleArn: ${exampleAwsIamRole.arn}
+///           name: OUTPUT_1
+///       name: example-application
 ///       startApplication: true
 /// ```
 ///
@@ -941,7 +942,7 @@ class AnalyticsApplication extends pulumi.CustomResource {
   /// Name of the Kinesis Analytics Application.
   late final pulumi.Output<String> name;
   /// Output destination configuration of the application. See Outputs below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outputs;
+  late final pulumi.Output<List<AnalyticsApplicationOutput>?> outputs;
   /// An S3 Reference Data Source for the application.
   /// See Reference Data Sources below for more details.
   late final pulumi.Output<AnalyticsApplicationReferenceDataSources?> referenceDataSources;
@@ -971,7 +972,7 @@ class AnalyticsApplication extends pulumi.CustomResource {
           'aws:kinesis/analyticsApplication:AnalyticsApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions = registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -981,13 +982,13 @@ class AnalyticsApplication extends pulumi.CustomResource {
     inputs = registerOutput<AnalyticsApplicationInputs?>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationInputs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
+    outputs = registerOutput<List<AnalyticsApplicationOutput>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalyticsApplicationOutput>(guardedValue, (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>())); });
     referenceDataSources = registerOutput<AnalyticsApplicationReferenceDataSources?>('referenceDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationReferenceDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     startApplication = registerOutput<bool?>('startApplication');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 
@@ -996,11 +997,12 @@ class AnalyticsApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyticsApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalyticsApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1022,13 +1024,40 @@ class AnalyticsApplication extends pulumi.CustomResource {
     inputs = registerOutput<AnalyticsApplicationInputs?>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationInputs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
+    outputs = registerOutput<List<AnalyticsApplicationOutput>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalyticsApplicationOutput>(guardedValue, (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>())); });
     referenceDataSources = registerOutput<AnalyticsApplicationReferenceDataSources?>('referenceDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationReferenceDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     startApplication = registerOutput<bool?>('startApplication');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsApplication] resource.
+  AnalyticsApplication.reference(String urn)
+    : super(
+        'aws:kinesis/analyticsApplication:AnalyticsApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchLoggingOptions = registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    code = registerOutput<String?>('code');
+    createTimestamp = registerOutput<String>('createTimestamp');
+    description = registerOutput<String?>('description');
+    inputs = registerOutput<AnalyticsApplicationInputs?>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationInputs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
+    this.name = registerOutput<String>('name');
+    outputs = registerOutput<List<AnalyticsApplicationOutput>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalyticsApplicationOutput>(guardedValue, (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>())); });
+    referenceDataSources = registerOutput<AnalyticsApplicationReferenceDataSources?>('referenceDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationReferenceDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    startApplication = registerOutput<bool?>('startApplication');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 }

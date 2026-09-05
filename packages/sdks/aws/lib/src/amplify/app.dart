@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_args.dart';
 import 'app_auto_branch_creation_config.dart';
 import 'app_cache_config.dart';
+import 'app_custom_rule.dart';
 import 'app_job_config.dart';
+import 'app_production_branch.dart';
 import 'app_state.dart';
 
 /// Provides an Amplify App resource, a fullstack serverless app hosted on the [AWS Amplify Console](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html).
@@ -17,6 +19,11 @@ import 'app_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amplify.App("example", {
+///     customRules: [{
+///         source: "/<*>",
+///         status: "404",
+///         target: "/index.html",
+///     }],
 ///     name: "example",
 ///     repository: "https://github.com/example/app",
 ///     buildSpec: `version: 0.1
@@ -36,11 +43,6 @@ import 'app_state.dart';
 ///     paths:
 ///       - node_modules/**/*
 /// `,
-///     customRules: [{
-///         source: "/<*>",
-///         status: "404",
-///         target: "/index.html",
-///     }],
 ///     environmentVariables: {
 ///         ENV: "test",
 ///     },
@@ -51,6 +53,11 @@ import 'app_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amplify.App("example",
+///     custom_rules=[{
+///         "source": "/<*>",
+///         "status": "404",
+///         "target": "/index.html",
+///     }],
 ///     name="example",
 ///     repository="https://github.com/example/app",
 ///     build_spec="""version: 0.1
@@ -70,11 +77,6 @@ import 'app_state.dart';
 ///     paths:
 ///       - node_modules/**/*
 /// """,
-///     custom_rules=[{
-///         "source": "/<*>",
-///         "status": "404",
-///         "target": "/index.html",
-///     }],
 ///     environment_variables={
 ///         "ENV": "test",
 ///     })
@@ -89,6 +91,15 @@ import 'app_state.dart';
 /// {
 ///     var example = new Aws.Amplify.App("example", new()
 ///     {
+///         CustomRules = new[]
+///         {
+///             new Aws.Amplify.Inputs.AppCustomRuleArgs
+///             {
+///                 Source = "/<*>",
+///                 Status = "404",
+///                 Target = "/index.html",
+///             },
+///         },
 ///         Name = "example",
 ///         Repository = "https://github.com/example/app",
 ///         BuildSpec = @"version: 0.1
@@ -108,15 +119,6 @@ import 'app_state.dart';
 ///     paths:
 ///       - node_modules/**/*
 /// ",
-///         CustomRules = new[]
-///         {
-///             new Aws.Amplify.Inputs.AppCustomRuleArgs
-///             {
-///                 Source = "/<*>",
-///                 Status = "404",
-///                 Target = "/index.html",
-///             },
-///         },
 ///         EnvironmentVariables =
 ///         {
 ///             { "ENV", "test" },
@@ -136,6 +138,13 @@ import 'app_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := amplify.NewApp(ctx, "example", &amplify.AppArgs{
+/// 			CustomRules: amplify.AppCustomRuleArray{
+/// 				&amplify.AppCustomRuleArgs{
+/// 					Source: pulumi.String("/<*>"),
+/// 					Status: pulumi.String("404"),
+/// 					Target: pulumi.String("/index.html"),
+/// 				},
+/// 			},
 /// 			Name:       pulumi.String("example"),
 /// 			Repository: pulumi.String("https://github.com/example/app"),
 /// 			BuildSpec: pulumi.String(`version: 0.1
@@ -155,13 +164,6 @@ import 'app_state.dart';
 ///     paths:
 ///       - node_modules/**/*
 /// `),
-/// 			CustomRules: amplify.AppCustomRuleArray{
-/// 				&amplify.AppCustomRuleArgs{
-/// 					Source: pulumi.String("/<*>"),
-/// 					Status: pulumi.String("404"),
-/// 					Target: pulumi.String("/index.html"),
-/// 				},
-/// 			},
 /// 			EnvironmentVariables: pulumi.StringMap{
 /// 				"ENV": pulumi.String("test"),
 /// 			},
@@ -183,14 +185,14 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   name       = "example"
-///   repository = "https://github.com/example/app"
-///   build_spec = "version: 0.1\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - yarn install\n    build:\n      commands:\n        - yarn run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - '**/*'\n  cache:\n    paths:\n      - node_modules/**/*\n"
 ///   custom_rules {
 ///     source = "/<*>"
 ///     status = "404"
 ///     target = "/index.html"
 ///   }
+///   name       = "example"
+///   repository = "https://github.com/example/app"
+///   build_spec = "version: 0.1\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - yarn install\n    build:\n      commands:\n        - yarn run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - '**/*'\n  cache:\n    paths:\n      - node_modules/**/*\n"
 ///   environment_variables = {
 ///     "ENV" = "test"
 ///   }
@@ -219,6 +221,11 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
+///             .customRules(AppCustomRuleArgs.builder()
+///                 .source("/<*>")
+///                 .status("404")
+///                 .target("/index.html")
+///                 .build())
 ///             .name("example")
 ///             .repository("https://github.com/example/app")
 ///             .buildSpec("""
@@ -239,11 +246,6 @@ import 'app_state.dart';
 ///     paths:
 ///       - node_modules/**/*
 ///             """)
-///             .customRules(AppCustomRuleArgs.builder()
-///                 .source("/<*>")
-///                 .status("404")
-///                 .target("/index.html")
-///                 .build())
 ///             .environmentVariables(Map.of("ENV", "test"))
 ///             .build());
 ///
@@ -255,6 +257,10 @@ import 'app_state.dart';
 ///   example:
 ///     type: aws:amplify:App
 ///     properties:
+///       customRules:
+///         - source: /<*>
+///           status: '404'
+///           target: /index.html
 ///       name: example
 ///       repository: https://github.com/example/app
 ///       buildSpec: |
@@ -274,10 +280,6 @@ import 'app_state.dart';
 ///           cache:
 ///             paths:
 ///               - node_modules/**/*
-///       customRules:
-///         - source: /<*>
-///           status: '404'
-///           target: /index.html
 ///       environmentVariables:
 ///         ENV: test
 /// ```
@@ -412,15 +414,15 @@ import 'app_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amplify.App("example", {
+///     autoBranchCreationConfig: {
+///         enableAutoBuild: true,
+///     },
 ///     name: "example",
 ///     enableAutoBranchCreation: true,
 ///     autoBranchCreationPatterns: [
 ///         "*",
 ///         "*/**",
 ///     ],
-///     autoBranchCreationConfig: {
-///         enableAutoBuild: true,
-///     },
 /// });
 /// ```
 /// ```python
@@ -428,15 +430,15 @@ import 'app_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amplify.App("example",
+///     auto_branch_creation_config={
+///         "enable_auto_build": True,
+///     },
 ///     name="example",
 ///     enable_auto_branch_creation=True,
 ///     auto_branch_creation_patterns=[
 ///         "*",
 ///         "*/**",
-///     ],
-///     auto_branch_creation_config={
-///         "enable_auto_build": True,
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -448,16 +450,16 @@ import 'app_state.dart';
 /// {
 ///     var example = new Aws.Amplify.App("example", new()
 ///     {
+///         AutoBranchCreationConfig = new Aws.Amplify.Inputs.AppAutoBranchCreationConfigArgs
+///         {
+///             EnableAutoBuild = true,
+///         },
 ///         Name = "example",
 ///         EnableAutoBranchCreation = true,
 ///         AutoBranchCreationPatterns = new[]
 ///         {
 ///             "*",
 ///             "*/**",
-///         },
-///         AutoBranchCreationConfig = new Aws.Amplify.Inputs.AppAutoBranchCreationConfigArgs
-///         {
-///             EnableAutoBuild = true,
 ///         },
 ///     });
 ///
@@ -474,14 +476,14 @@ import 'app_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := amplify.NewApp(ctx, "example", &amplify.AppArgs{
+/// 			AutoBranchCreationConfig: &amplify.AppAutoBranchCreationConfigArgs{
+/// 				EnableAutoBuild: pulumi.Bool(true),
+/// 			},
 /// 			Name:                     pulumi.String("example"),
 /// 			EnableAutoBranchCreation: pulumi.Bool(true),
 /// 			AutoBranchCreationPatterns: pulumi.StringArray{
 /// 				pulumi.String("*"),
 /// 				pulumi.String("*/**"),
-/// 			},
-/// 			AutoBranchCreationConfig: &amplify.AppAutoBranchCreationConfigArgs{
-/// 				EnableAutoBuild: pulumi.Bool(true),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -501,13 +503,14 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   auto_branch_creation_config = {
+///     enable_auto_build = true
+///   }
+///   # Enable auto build for the created branch.
 ///   name                        = "example"
 ///   enable_auto_branch_creation = true
 ///   # The default patterns added by the Amplify Console.
 ///   auto_branch_creation_patterns = ["*", "*/**"]
-///   auto_branch_creation_config = {
-///     enable_auto_build = true
-///   }
 /// }
 /// ```
 /// ```java
@@ -533,14 +536,14 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
+///             .autoBranchCreationConfig(AppAutoBranchCreationConfigArgs.builder()
+///                 .enableAutoBuild(true)
+///                 .build())
 ///             .name("example")
 ///             .enableAutoBranchCreation(true)
 ///             .autoBranchCreationPatterns(
 ///                 "*",
 ///                 "*/**")
-///             .autoBranchCreationConfig(AppAutoBranchCreationConfigArgs.builder()
-///                 .enableAutoBuild(true)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -551,13 +554,13 @@ import 'app_state.dart';
 ///   example:
 ///     type: aws:amplify:App
 ///     properties:
+///       autoBranchCreationConfig:
+///         enableAutoBuild: true
 ///       name: example
 ///       enableAutoBranchCreation: true # The default patterns added by the Amplify Console.
 ///       autoBranchCreationPatterns:
 ///         - '*'
 ///         - '*/**'
-///       autoBranchCreationConfig:
-///         enableAutoBuild: true
 /// ```
 ///
 ///
@@ -713,7 +716,6 @@ import 'app_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amplify.App("example", {
-///     name: "example",
 ///     customRules: [
 ///         {
 ///             source: "/api/<*>",
@@ -726,6 +728,7 @@ import 'app_state.dart';
 ///             target: "/index.html",
 ///         },
 ///     ],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -733,7 +736,6 @@ import 'app_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amplify.App("example",
-///     name="example",
 ///     custom_rules=[
 ///         {
 ///             "source": "/api/<*>",
@@ -745,7 +747,8 @@ import 'app_state.dart';
 ///             "status": "200",
 ///             "target": "/index.html",
 ///         },
-///     ])
+///     ],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -757,7 +760,6 @@ import 'app_state.dart';
 /// {
 ///     var example = new Aws.Amplify.App("example", new()
 ///     {
-///         Name = "example",
 ///         CustomRules = new[]
 ///         {
 ///             new Aws.Amplify.Inputs.AppCustomRuleArgs
@@ -773,6 +775,7 @@ import 'app_state.dart';
 ///                 Target = "/index.html",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -788,7 +791,6 @@ import 'app_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := amplify.NewApp(ctx, "example", &amplify.AppArgs{
-/// 			Name: pulumi.String("example"),
 /// 			CustomRules: amplify.AppCustomRuleArray{
 /// 				&amplify.AppCustomRuleArgs{
 /// 					Source: pulumi.String("/api/<*>"),
@@ -801,6 +803,7 @@ import 'app_state.dart';
 /// 					Target: pulumi.String("/index.html"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -819,7 +822,6 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   name = "example"
 ///   custom_rules {
 ///     source = "/api/<*>"
 ///     status = "200"
@@ -830,6 +832,7 @@ import 'app_state.dart';
 ///     status = "200"
 ///     target = "/index.html"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -855,7 +858,6 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
-///             .name("example")
 ///             .customRules(
 ///                 AppCustomRuleArgs.builder()
 ///                     .source("/api/<*>")
@@ -867,6 +869,7 @@ import 'app_state.dart';
 ///                     .status("200")
 ///                     .target("/index.html")
 ///                     .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -877,7 +880,6 @@ import 'app_state.dart';
 ///   example:
 ///     type: aws:amplify:App
 ///     properties:
-///       name: example
 ///       customRules:
 ///         - source: /api/<*>
 ///           status: '200'
@@ -885,6 +887,7 @@ import 'app_state.dart';
 ///         - source: </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>
 ///           status: '200'
 ///           target: /index.html
+///       name: example
 /// ```
 ///
 ///
@@ -1207,10 +1210,10 @@ import 'app_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amplify.App("example", {
-///     name: "example",
 ///     jobConfig: {
 ///         buildComputeType: "STANDARD_8GB",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -1218,10 +1221,10 @@ import 'app_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amplify.App("example",
-///     name="example",
 ///     job_config={
 ///         "build_compute_type": "STANDARD_8GB",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1233,11 +1236,11 @@ import 'app_state.dart';
 /// {
 ///     var example = new Aws.Amplify.App("example", new()
 ///     {
-///         Name = "example",
 ///         JobConfig = new Aws.Amplify.Inputs.AppJobConfigArgs
 ///         {
 ///             BuildComputeType = "STANDARD_8GB",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -1253,10 +1256,10 @@ import 'app_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := amplify.NewApp(ctx, "example", &amplify.AppArgs{
-/// 			Name: pulumi.String("example"),
 /// 			JobConfig: &amplify.AppJobConfigArgs{
 /// 				BuildComputeType: pulumi.String("STANDARD_8GB"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1275,10 +1278,10 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   name = "example"
 ///   job_config = {
 ///     build_compute_type = "STANDARD_8GB"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -1304,10 +1307,10 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
-///             .name("example")
 ///             .jobConfig(AppJobConfigArgs.builder()
 ///                 .buildComputeType("STANDARD_8GB")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -1318,9 +1321,9 @@ import 'app_state.dart';
 ///   example:
 ///     type: aws:amplify:App
 ///     properties:
-///       name: example
 ///       jobConfig:
 ///         buildComputeType: STANDARD_8GB
+///       name: example
 /// ```
 ///
 ///
@@ -1353,7 +1356,7 @@ class App extends pulumi.CustomResource {
   /// The [custom HTTP headers](https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html) for an Amplify app.
   late final pulumi.Output<String> customHeaders;
   /// Custom rewrite and redirect rules for an Amplify app. See `customRule` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+  late final pulumi.Output<List<AppCustomRule>?> customRules;
   /// Default domain for the Amplify app.
   late final pulumi.Output<String> defaultDomain;
   /// Description for an Amplify app.
@@ -1379,7 +1382,7 @@ class App extends pulumi.CustomResource {
   /// Platform or framework for an Amplify app. Valid values: `WEB`, `WEB_COMPUTE`. Default value: `WEB`.
   late final pulumi.Output<String?> platform;
   /// Describes the information about a production branch for an Amplify app. A `productionBranch` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> productionBranches;
+  late final pulumi.Output<List<AppProductionBranch>> productionBranches;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Repository for an Amplify app.
@@ -1401,35 +1404,36 @@ class App extends pulumi.CustomResource {
           'aws:amplify/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['accessToken', 'basicAuthCredentials', 'oauthToken'],
         ) {
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     arn = registerOutput<String>('arn');
     autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAutoBranchCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns');
-    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
     buildSpec = registerOutput<String>('buildSpec');
     cacheConfig = registerOutput<AppCacheConfig>('cacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<AppCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppCustomRule>(guardedValue, (value) => AppCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     defaultDomain = registerOutput<String>('defaultDomain');
     description = registerOutput<String?>('description');
     enableAutoBranchCreation = registerOutput<bool?>('enableAutoBranchCreation');
     enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
     enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
     enableBranchAutoDeletion = registerOutput<bool?>('enableBranchAutoDeletion');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
     jobConfig = registerOutput<AppJobConfig>('jobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oauthToken = registerOutput<String?>('oauthToken');
+    oauthToken = registerOutput<String?>('oauthToken', isSecret: true);
     platform = registerOutput<String?>('platform');
-    productionBranches = registerOutput<List<Map<String, dynamic>>>('productionBranches');
+    productionBranches = registerOutput<List<AppProductionBranch>>('productionBranches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppProductionBranch>(guardedValue, (value) => AppProductionBranch.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     repository = registerOutput<String?>('repository');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
@@ -1437,11 +1441,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1455,32 +1460,71 @@ class App extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     arn = registerOutput<String>('arn');
     autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAutoBranchCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns');
-    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
     buildSpec = registerOutput<String>('buildSpec');
     cacheConfig = registerOutput<AppCacheConfig>('cacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<AppCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppCustomRule>(guardedValue, (value) => AppCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     defaultDomain = registerOutput<String>('defaultDomain');
     description = registerOutput<String?>('description');
     enableAutoBranchCreation = registerOutput<bool?>('enableAutoBranchCreation');
     enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
     enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
     enableBranchAutoDeletion = registerOutput<bool?>('enableBranchAutoDeletion');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
     jobConfig = registerOutput<AppJobConfig>('jobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    oauthToken = registerOutput<String?>('oauthToken');
+    oauthToken = registerOutput<String?>('oauthToken', isSecret: true);
     platform = registerOutput<String?>('platform');
-    productionBranches = registerOutput<List<Map<String, dynamic>>>('productionBranches');
+    productionBranches = registerOutput<List<AppProductionBranch>>('productionBranches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppProductionBranch>(guardedValue, (value) => AppProductionBranch.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     repository = registerOutput<String?>('repository');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'aws:amplify/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accessToken', 'basicAuthCredentials', 'oauthToken'],
+        isResourceReference: true,
+      ) {
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
+    arn = registerOutput<String>('arn');
+    autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAutoBranchCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoBranchCreationPatterns = registerOutput<List<String>?>('autoBranchCreationPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
+    buildSpec = registerOutput<String>('buildSpec');
+    cacheConfig = registerOutput<AppCacheConfig>('cacheConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCacheConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeRoleArn = registerOutput<String?>('computeRoleArn');
+    customHeaders = registerOutput<String>('customHeaders');
+    customRules = registerOutput<List<AppCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppCustomRule>(guardedValue, (value) => AppCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultDomain = registerOutput<String>('defaultDomain');
+    description = registerOutput<String?>('description');
+    enableAutoBranchCreation = registerOutput<bool?>('enableAutoBranchCreation');
+    enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
+    enableBranchAutoDeletion = registerOutput<bool?>('enableBranchAutoDeletion');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
+    jobConfig = registerOutput<AppJobConfig>('jobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oauthToken = registerOutput<String?>('oauthToken', isSecret: true);
+    platform = registerOutput<String?>('platform');
+    productionBranches = registerOutput<List<AppProductionBranch>>('productionBranches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppProductionBranch>(guardedValue, (value) => AppProductionBranch.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    repository = registerOutput<String?>('repository');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

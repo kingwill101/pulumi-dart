@@ -5,17 +5,17 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce {
   /// Credentials used to access protected Zendesk resources.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Secret manager ARN, which contains the client ID and client secret of the connected app.
-  final pulumi.Input<String>? clientCredentialsArn;
+  final pulumi.Input<String?>? clientCredentialsArn;
   /// JSON web token (JWT) that authorizes access to Salesforce records.
-  final pulumi.Input<String>? jwtToken;
+  final pulumi.Input<String?>? jwtToken;
   /// OAuth 2.0 grant type used by the connector for OAuth 2.0 authentication. One of: `AUTHORIZATION_CODE`, `CLIENT_CREDENTIALS`.
-  final pulumi.Input<String>? oauth2GrantType;
+  final pulumi.Input<String?>? oauth2GrantType;
   /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest>? oauthRequest;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest?>? oauthRequest;
   /// Refresh token used to refresh an expired access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce].
   /// [accessToken] Credentials used to access protected Zendesk resources.

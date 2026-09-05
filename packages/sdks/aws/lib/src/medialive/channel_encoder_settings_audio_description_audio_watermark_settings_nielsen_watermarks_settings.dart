@@ -6,11 +6,11 @@ import 'channel_encoder_settings_audio_description_audio_watermark_settings_niel
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings {
   /// Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings>? nielsenCbetSettings;
+  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings?>? nielsenCbetSettings;
   /// Distribution types to assign to the watermarks. Options are `PROGRAM_CONTENT` and `FINAL_DISTRIBUTOR`.
-  final pulumi.Input<String>? nielsenDistributionType;
+  final pulumi.Input<String?>? nielsenDistributionType;
   /// Used to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See Nielsen NAES II NW Settings for more details.
-  final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>>? nielsenNaesIiNwSettings;
+  final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>?>? nielsenNaesIiNwSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings].
   /// [nielsenCbetSettings] Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.

@@ -9,10 +9,10 @@ import 'security_group_vpc_association_timeouts.dart';
 /// {@macro pulumi_vpc_security_group_vpc_association_security_group_vpc_association_args_doc}
 class SecurityGroupVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the security group.
   final pulumi.Input<String> securityGroupId;
-  final pulumi.Input<SecurityGroupVpcAssociationTimeouts>? timeouts;
+  final pulumi.Input<SecurityGroupVpcAssociationTimeouts?>? timeouts;
   /// The ID of the VPC to make the association with.
   final pulumi.Input<String> vpcId;
 

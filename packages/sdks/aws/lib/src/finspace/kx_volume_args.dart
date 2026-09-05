@@ -13,17 +13,17 @@ class KxVolumeArgs {
   /// Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
   final pulumi.Input<String> azMode;
   /// Description of the volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the kdb environment, whose clusters can attach to the volume.
   final pulumi.Input<String> environmentId;
   /// Unique name for the volume that you want to create.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
-  final pulumi.Input<List<KxVolumeNas1Configuration>>? nas1Configurations;
+  final pulumi.Input<List<KxVolumeNas1Configuration>?>? nas1Configurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value pairs to label the volume. You can add up to 50 tags to a volume.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1Configuration`.
   ///
   /// The following arguments are optional:

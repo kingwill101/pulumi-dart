@@ -13,12 +13,12 @@ import 'link_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkmanager.Link("example", {
-///     globalNetworkId: exampleAwsNetworkmanagerGlobalNetwork.id,
-///     siteId: exampleAwsNetworkmanagerSite.id,
 ///     bandwidth: {
 ///         uploadSpeed: 10,
 ///         downloadSpeed: 50,
 ///     },
+///     globalNetworkId: exampleAwsNetworkmanagerGlobalNetwork.id,
+///     siteId: exampleAwsNetworkmanagerSite.id,
 ///     providerName: "MegaCorp",
 /// });
 /// ```
@@ -27,12 +27,12 @@ import 'link_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkmanager.Link("example",
-///     global_network_id=example_aws_networkmanager_global_network["id"],
-///     site_id=example_aws_networkmanager_site["id"],
 ///     bandwidth={
 ///         "upload_speed": 10,
 ///         "download_speed": 50,
 ///     },
+///     global_network_id=example_aws_networkmanager_global_network["id"],
+///     site_id=example_aws_networkmanager_site["id"],
 ///     provider_name="MegaCorp")
 /// ```
 /// ```csharp
@@ -45,13 +45,13 @@ import 'link_state.dart';
 /// {
 ///     var example = new Aws.NetworkManager.Link("example", new()
 ///     {
-///         GlobalNetworkId = exampleAwsNetworkmanagerGlobalNetwork.Id,
-///         SiteId = exampleAwsNetworkmanagerSite.Id,
 ///         Bandwidth = new Aws.NetworkManager.Inputs.LinkBandwidthArgs
 ///         {
 ///             UploadSpeed = 10,
 ///             DownloadSpeed = 50,
 ///         },
+///         GlobalNetworkId = exampleAwsNetworkmanagerGlobalNetwork.Id,
+///         SiteId = exampleAwsNetworkmanagerSite.Id,
 ///         ProviderName = "MegaCorp",
 ///     });
 ///
@@ -68,13 +68,13 @@ import 'link_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.NewLink(ctx, "example", &networkmanager.LinkArgs{
-/// 			GlobalNetworkId: pulumi.Any(exampleAwsNetworkmanagerGlobalNetwork.Id),
-/// 			SiteId:          pulumi.Any(exampleAwsNetworkmanagerSite.Id),
 /// 			Bandwidth: &networkmanager.LinkBandwidthArgs{
 /// 				UploadSpeed:   pulumi.Int(10),
 /// 				DownloadSpeed: pulumi.Int(50),
 /// 			},
-/// 			ProviderName: pulumi.String("MegaCorp"),
+/// 			GlobalNetworkId: pulumi.Any(exampleAwsNetworkmanagerGlobalNetwork.Id),
+/// 			SiteId:          pulumi.Any(exampleAwsNetworkmanagerSite.Id),
+/// 			ProviderName:    pulumi.String("MegaCorp"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,13 +93,13 @@ import 'link_state.dart';
 /// }
 ///
 /// resource "aws_networkmanager_link" "example" {
-///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
-///   site_id           = exampleAwsNetworkmanagerSite.id
 ///   bandwidth = {
 ///     upload_speed   = 10
 ///     download_speed = 50
 ///   }
-///   provider_name = "MegaCorp"
+///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
+///   site_id           = exampleAwsNetworkmanagerSite.id
+///   provider_name     = "MegaCorp"
 /// }
 /// ```
 /// ```java
@@ -125,12 +125,12 @@ import 'link_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Link("example", LinkArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .siteId(exampleAwsNetworkmanagerSite.id())
 ///             .bandwidth(LinkBandwidthArgs.builder()
 ///                 .uploadSpeed(10)
 ///                 .downloadSpeed(50)
 ///                 .build())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
+///             .siteId(exampleAwsNetworkmanagerSite.id())
 ///             .providerName("MegaCorp")
 ///             .build());
 ///
@@ -142,11 +142,11 @@ import 'link_state.dart';
 ///   example:
 ///     type: aws:networkmanager:Link
 ///     properties:
-///       globalNetworkId: ${exampleAwsNetworkmanagerGlobalNetwork.id}
-///       siteId: ${exampleAwsNetworkmanagerSite.id}
 ///       bandwidth:
 ///         uploadSpeed: 10
 ///         downloadSpeed: 50
+///       globalNetworkId: ${exampleAwsNetworkmanagerGlobalNetwork.id}
+///       siteId: ${exampleAwsNetworkmanagerSite.id}
 ///       providerName: MegaCorp
 /// ```
 ///
@@ -192,7 +192,7 @@ class Link extends pulumi.CustomResource {
           'aws:networkmanager/link:Link',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bandwidth = registerOutput<LinkBandwidth>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -200,8 +200,8 @@ class Link extends pulumi.CustomResource {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     providerName = registerOutput<String?>('providerName');
     siteId = registerOutput<String>('siteId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -210,11 +210,12 @@ class Link extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Link._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,8 +235,28 @@ class Link extends pulumi.CustomResource {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     providerName = registerOutput<String?>('providerName');
     siteId = registerOutput<String>('siteId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Link] resource.
+  Link.reference(String urn)
+    : super(
+        'aws:networkmanager/link:Link',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bandwidth = registerOutput<LinkBandwidth>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    providerName = registerOutput<String?>('providerName');
+    siteId = registerOutput<String>('siteId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 }

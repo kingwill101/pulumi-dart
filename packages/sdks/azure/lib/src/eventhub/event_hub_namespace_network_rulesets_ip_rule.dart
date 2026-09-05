@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventHubNamespaceNetworkRulesetsIpRule {
   /// The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The IP mask to match on.
   final pulumi.Input<String> ipMask;
 

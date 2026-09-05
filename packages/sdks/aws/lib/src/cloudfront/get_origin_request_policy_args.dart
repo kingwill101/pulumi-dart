@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_origin_request_policy_get_origin_request_policy_args_doc}
 class GetOriginRequestPolicyArgs {
   /// Identifier for the origin request policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Unique name to identify the origin request policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetOriginRequestPolicyArgs].
   /// [id] Identifier for the origin request policy.

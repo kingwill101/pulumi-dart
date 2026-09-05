@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionRuleCorrelationFilter {
   /// Content type of the message.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Identifier of the correlation.
-  final pulumi.Input<String>? correlationId;
+  final pulumi.Input<String?>? correlationId;
   /// Application specific label.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Identifier of the message.
-  final pulumi.Input<String>? messageId;
+  final pulumi.Input<String?>? messageId;
   /// A list of user defined properties to be included in the filter. Specified as a map of name/value pairs.
   ///
   /// &gt; **Note:** When creating a subscription rule of type `CorrelationFilter` at least one property must be set in the `correlationFilter` block.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Address of the queue to reply to.
-  final pulumi.Input<String>? replyTo;
+  final pulumi.Input<String?>? replyTo;
   /// Session identifier to reply to.
-  final pulumi.Input<String>? replyToSessionId;
+  final pulumi.Input<String?>? replyToSessionId;
   /// Session identifier.
-  final pulumi.Input<String>? sessionId;
+  final pulumi.Input<String?>? sessionId;
   /// Address to send to.
-  final pulumi.Input<String>? to;
+  final pulumi.Input<String?>? to;
 
   /// Creates a new [SubscriptionRuleCorrelationFilter].
   /// [contentType] Content type of the message.

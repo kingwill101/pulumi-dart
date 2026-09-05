@@ -6,11 +6,11 @@ import 'listener_rule_transform_url_rewrite_config.dart';
 
 class ListenerRuleTransform {
   /// Configuration block for host header rewrite. Required if `type` is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.
-  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfig>? hostHeaderRewriteConfig;
+  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfig?>? hostHeaderRewriteConfig;
   /// Type of transform. Valid values are `host-header-rewrite` and `url-rewrite`.
   final pulumi.Input<String> type;
   /// Configuration block for URL rewrite. Required if `type` is `url-rewrite`. See URL Rewrite Config Blocks below.
-  final pulumi.Input<ListenerRuleTransformUrlRewriteConfig>? urlRewriteConfig;
+  final pulumi.Input<ListenerRuleTransformUrlRewriteConfig?>? urlRewriteConfig;
 
   /// Creates a new [ListenerRuleTransform].
   /// [hostHeaderRewriteConfig] Configuration block for host header rewrite. Required if `type` is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.

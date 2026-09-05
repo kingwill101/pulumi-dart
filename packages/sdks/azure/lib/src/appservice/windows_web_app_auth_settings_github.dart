@@ -6,11 +6,11 @@ class WindowsWebAppAuthSettingsGithub {
   /// The ID of the GitHub app used for login.
   final pulumi.Input<String> clientId;
   /// The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `clientSecretSettingName`.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The app setting name that contains the `clientSecret` value used for GitHub login. Cannot be specified with `clientSecret`.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of GitHub login authentication.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [WindowsWebAppAuthSettingsGithub].
   /// [clientId] The ID of the GitHub app used for login.

@@ -11,16 +11,16 @@ class BgpPeerArgs {
   final pulumi.Input<String> addressFamily;
   /// The IPv4 CIDR address to use to send traffic to Amazon.
   /// Required for IPv4 BGP peers on public virtual interfaces.
-  final pulumi.Input<String>? amazonAddress;
+  final pulumi.Input<String?>? amazonAddress;
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   final pulumi.Input<int> bgpAsn;
   /// The authentication key for BGP configuration.
-  final pulumi.Input<String>? bgpAuthKey;
+  final pulumi.Input<String?>? bgpAuthKey;
   /// The IPv4 CIDR destination address to which Amazon should send traffic.
   /// Required for IPv4 BGP peers on public virtual interfaces.
-  final pulumi.Input<String>? customerAddress;
+  final pulumi.Input<String?>? customerAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
   final pulumi.Input<String> virtualInterfaceId;
 
@@ -58,7 +58,7 @@ class BgpPeerArgs {
     return BgpPeerArgs(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
       amazonAddress: (() { final guardedValue = map['amazonAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bgpAsn: pulumi.Input.fromValue(map['bgpAsn'] as int),
+      bgpAsn: pulumi.Input.fromValue((map['bgpAsn'] as num).toInt()),
       bgpAuthKey: (() { final guardedValue = map['bgpAuthKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerAddress: (() { final guardedValue = map['customerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

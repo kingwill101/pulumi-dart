@@ -25,8 +25,8 @@ class GetSnapshotPolicyHourlySchedule {
 
   factory GetSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyHourlySchedule(
-      minute: pulumi.Input.fromValue(map['minute'] as int),
-      snapshotsToKeep: pulumi.Input.fromValue(map['snapshotsToKeep'] as int),
+      minute: pulumi.Input.fromValue((map['minute'] as num).toInt()),
+      snapshotsToKeep: pulumi.Input.fromValue((map['snapshotsToKeep'] as num).toInt()),
     );
   }
 }

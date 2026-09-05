@@ -9,13 +9,13 @@ class VirtualNodeSpecListenerTls {
   final pulumi.Input<VirtualNodeSpecListenerTlsCertificate> certificate;
   /// Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   final pulumi.Input<String> mode;
-  /// Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTlsValidation>? validation;
+  /// Listener's TLS validation context. See `spec.listener.tls.validation` Block for details.
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidation?>? validation;
 
   /// Creates a new [VirtualNodeSpecListenerTls].
   /// [certificate] Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   /// [mode] Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
-  /// [validation] Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
+  /// [validation] Listener's TLS validation context. See `spec.listener.tls.validation` Block for details.
   const VirtualNodeSpecListenerTls({
     required this.certificate,
     required this.mode,

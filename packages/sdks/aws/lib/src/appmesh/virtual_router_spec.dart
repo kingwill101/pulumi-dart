@@ -5,7 +5,7 @@ import 'virtual_router_spec_listener.dart';
 
 class VirtualRouterSpec {
   /// Listeners that the virtual router is expected to receive inbound traffic from. Currently only one listener is supported per virtual router. See `listener` Block for details.
-  final pulumi.Input<List<VirtualRouterSpecListener>>? listeners;
+  final pulumi.Input<List<VirtualRouterSpecListener>?>? listeners;
 
   /// Creates a new [VirtualRouterSpec].
   /// [listeners] Listeners that the virtual router is expected to receive inbound traffic from. Currently only one listener is supported per virtual router. See `listener` Block for details.

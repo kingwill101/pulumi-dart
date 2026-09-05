@@ -306,7 +306,7 @@ import 'diagnostic_state.dart';
 /// 			Identifier:              pulumi.String("applicationinsights"),
 /// 			ResourceGroupName:       example.Name,
 /// 			ApiManagementName:       exampleService.Name,
-/// 			ApiManagementLoggerId:   exampleLogger.ID(),
+/// 			ApiManagementLoggerId:   exampleLogger.ID().ToIDOutput().ToStringOutput(),
 /// 			SamplingPercentage:      pulumi.Float64(5),
 /// 			AlwaysLogErrors:         pulumi.Bool(true),
 /// 			LogClientIp:             pulumi.Bool(true),
@@ -652,7 +652,7 @@ class Diagnostic extends pulumi.CustomResource {
           'azure:apimanagement/diagnostic:Diagnostic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
@@ -675,11 +675,12 @@ class Diagnostic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiagnosticState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Diagnostic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -693,6 +694,31 @@ class Diagnostic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
+    apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    backendRequest = registerOutput<DiagnosticBackendRequest>('backendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticBackendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendResponse = registerOutput<DiagnosticBackendResponse>('backendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticBackendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendRequest = registerOutput<DiagnosticFrontendRequest>('frontendRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticFrontendRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendResponse = registerOutput<DiagnosticFrontendResponse>('frontendResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticFrontendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
+    identifier = registerOutput<String>('identifier');
+    logClientIp = registerOutput<bool>('logClientIp');
+    operationNameFormat = registerOutput<String?>('operationNameFormat');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    samplingPercentage = registerOutput<double>('samplingPercentage');
+    verbosity = registerOutput<String>('verbosity');
+  }
+
+  /// Creates a typed reference to an existing [Diagnostic] resource.
+  Diagnostic.reference(String urn)
+    : super(
+        'azure:apimanagement/diagnostic:Diagnostic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
     apiManagementName = registerOutput<String>('apiManagementName');

@@ -259,3 +259,14 @@ Future<GetRulesPackagesResult> getRulesPackages(
   );
   return GetRulesPackagesResult.fromMap(result);
 }
+
+pulumi.Output<GetRulesPackagesResult> getRulesPackagesOutput(
+  GetRulesPackagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:inspector/getRulesPackages:getRulesPackages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRulesPackagesResult.fromMap);
+}

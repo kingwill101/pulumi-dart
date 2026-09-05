@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateDomainValidationOption {
   /// Domain to be validated
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The name of the DNS record to create to validate the certificate
-  final pulumi.Input<String>? resourceRecordName;
+  final pulumi.Input<String?>? resourceRecordName;
   /// The type of DNS record to create
-  final pulumi.Input<String>? resourceRecordType;
+  final pulumi.Input<String?>? resourceRecordType;
   /// The value the DNS record needs to have
-  final pulumi.Input<String>? resourceRecordValue;
+  final pulumi.Input<String?>? resourceRecordValue;
 
   /// Creates a new [CertificateDomainValidationOption].
   /// [domainName] Domain to be validated

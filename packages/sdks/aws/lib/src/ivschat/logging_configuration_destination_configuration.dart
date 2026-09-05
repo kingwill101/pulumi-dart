@@ -7,11 +7,11 @@ import 'logging_configuration_destination_configuration_s3.dart';
 
 class LoggingConfigurationDestinationConfiguration {
   /// An Amazon CloudWatch Logs destination configuration where chat activity will be logged.
-  final pulumi.Input<LoggingConfigurationDestinationConfigurationCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<LoggingConfigurationDestinationConfigurationCloudwatchLogs?>? cloudwatchLogs;
   /// An Amazon Kinesis Data Firehose destination configuration where chat activity will be logged.
-  final pulumi.Input<LoggingConfigurationDestinationConfigurationFirehose>? firehose;
+  final pulumi.Input<LoggingConfigurationDestinationConfigurationFirehose?>? firehose;
   /// An Amazon S3 destination configuration where chat activity will be logged.
-  final pulumi.Input<LoggingConfigurationDestinationConfigurationS3>? s3;
+  final pulumi.Input<LoggingConfigurationDestinationConfigurationS3?>? s3;
 
   /// Creates a new [LoggingConfigurationDestinationConfiguration].
   /// [cloudwatchLogs] An Amazon CloudWatch Logs destination configuration where chat activity will be logged.

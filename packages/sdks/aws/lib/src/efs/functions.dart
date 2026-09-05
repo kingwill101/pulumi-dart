@@ -126,6 +126,17 @@ Future<GetAccessPointResult> getAccessPoint(
   return GetAccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPointResult> getAccessPointOutput(
+  GetAccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:efs/getAccessPoint:getAccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPointResult.fromMap);
+}
+
 /// Provides information about multiple Elastic File System (EFS) Access Points.
 ///
 /// ## Example Usage
@@ -242,6 +253,17 @@ Future<GetAccessPointsResult> getAccessPoints(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPointsResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
+  GetAccessPointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:efs/getAccessPoints:getAccessPoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPointsResult.fromMap);
 }
 
 /// Provides information about an Elastic File System (EFS) File System.
@@ -426,6 +448,17 @@ Future<GetFileSystemResult> getFileSystem(
   return GetFileSystemResult.fromMap(result);
 }
 
+pulumi.Output<GetFileSystemResult> getFileSystemOutput(
+  GetFileSystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:efs/getFileSystem:getFileSystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileSystemResult.fromMap);
+}
+
 /// Provides information about an Elastic File System Mount Target (EFS).
 ///
 /// ## Example Usage
@@ -567,4 +600,15 @@ Future<GetMountTargetResult> getMountTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMountTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetMountTargetResult> getMountTargetOutput(
+  GetMountTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:efs/getMountTarget:getMountTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMountTargetResult.fromMap);
 }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudAppRedisAssociation resources.
 class SpringCloudAppRedisAssociationState {
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Redis Cache access key.
-  final pulumi.Input<String>? redisAccessKey;
+  final pulumi.Input<String?>? redisAccessKey;
   /// Specifies the Redis Cache resource ID. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? redisCacheId;
+  final pulumi.Input<String?>? redisCacheId;
   /// Specifies the Spring Cloud Application resource ID in which the Association is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? springCloudAppId;
+  final pulumi.Input<String?>? springCloudAppId;
   /// Should SSL be used when connecting to Redis? Defaults to `true`.
-  final pulumi.Input<bool>? sslEnabled;
+  final pulumi.Input<bool?>? sslEnabled;
 
   /// Creates a new [SpringCloudAppRedisAssociationState].
   /// [name] Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.

@@ -5,11 +5,11 @@ import 'alert_rule_fusion_source_sub_type.dart';
 
 class AlertRuleFusionSource {
   /// Whether this source signal is enabled or disabled in Fusion detection? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the Fusion source signal. Refer to Fusion alert rule template for supported values.
   final pulumi.Input<String> name;
   /// One or more `subType` blocks as defined below.
-  final pulumi.Input<List<AlertRuleFusionSourceSubType>>? subTypes;
+  final pulumi.Input<List<AlertRuleFusionSourceSubType>?>? subTypes;
 
   /// Creates a new [AlertRuleFusionSource].
   /// [enabled] Whether this source signal is enabled or disabled in Fusion detection? Defaults to `true`.

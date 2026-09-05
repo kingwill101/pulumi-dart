@@ -9,23 +9,23 @@ class CodeSigningConfigState {
   /// Configuration block of allowed publishers as signing profiles for this code signing configuration. See below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<CodeSigningConfigAllowedPublishers>? allowedPublishers;
+  final pulumi.Input<CodeSigningConfigAllowedPublishers?>? allowedPublishers;
   /// ARN of the code signing configuration.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique identifier for the code signing configuration.
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   /// Descriptive name for this code signing configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Date and time that the code signing configuration was last modified.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
-  final pulumi.Input<CodeSigningConfigPolicies>? policies;
+  final pulumi.Input<CodeSigningConfigPolicies?>? policies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CodeSigningConfigState].
   /// [allowedPublishers] Configuration block of allowed publishers as signing profiles for this code signing configuration. See below.

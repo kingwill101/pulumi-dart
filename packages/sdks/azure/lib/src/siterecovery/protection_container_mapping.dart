@@ -286,8 +286,8 @@ import 'protection_container_mapping_state.dart';
 /// 			RecoveryVaultName:                     vault.Name,
 /// 			RecoveryFabricName:                    primaryFabric.Name,
 /// 			RecoverySourceProtectionContainerName: primaryProtectionContainer.Name,
-/// 			RecoveryTargetProtectionContainerId:   secondaryProtectionContainer.ID(),
-/// 			RecoveryReplicationPolicyId:           policy.ID(),
+/// 			RecoveryTargetProtectionContainerId:   secondaryProtectionContainer.ID().ToIDOutput().ToStringOutput(),
+/// 			RecoveryReplicationPolicyId:           policy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -503,7 +503,7 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
           'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtectionContainerMappingAutomaticUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -520,11 +520,12 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectionContainerMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectionContainerMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -538,6 +539,25 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtectionContainerMappingAutomaticUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
+    recoverySourceProtectionContainerName = registerOutput<String>('recoverySourceProtectionContainerName');
+    recoveryTargetProtectionContainerId = registerOutput<String>('recoveryTargetProtectionContainerId');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ProtectionContainerMapping] resource.
+  ProtectionContainerMapping.reference(String urn)
+    : super(
+        'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtectionContainerMappingAutomaticUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');

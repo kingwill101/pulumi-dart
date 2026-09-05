@@ -6,17 +6,17 @@ import 'data_protection_settings_inline_redaction_configuration_inline_redaction
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
   /// The built-in pattern from the list of preconfigured patterns. Either a `customPattern` or `builtInPatternId` is required.
-  final pulumi.Input<String>? builtInPatternId;
+  final pulumi.Input<String?>? builtInPatternId;
   /// The confidence level for inline redaction pattern. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
-  final pulumi.Input<int>? confidenceLevel;
+  final pulumi.Input<int?>? confidenceLevel;
   /// The configuration for a custom pattern. Either a `customPattern` or `builtInPatternId` is required. Detailed below.
-  final pulumi.Input<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern>? customPattern;
+  final pulumi.Input<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern?>? customPattern;
   /// The enforced URL configuration for the inline redaction pattern.
-  final pulumi.Input<List<String>>? enforcedUrls;
+  final pulumi.Input<List<String>?>? enforcedUrls;
   /// The exempt URL configuration for the inline redaction pattern.
-  final pulumi.Input<List<String>>? exemptUrls;
+  final pulumi.Input<List<String>?>? exemptUrls;
   /// The redaction placeholder that will replace the redacted text in session. Detailed below.
-  final pulumi.Input<List<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>>? redactionPlaceHolders;
+  final pulumi.Input<List<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>?>? redactionPlaceHolders;
 
   /// Creates a new [DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern].
   /// [builtInPatternId] The built-in pattern from the list of preconfigured patterns. Either a `customPattern` or `builtInPatternId` is required.
@@ -48,7 +48,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern(
       builtInPatternId: (() { final guardedValue = map['builtInPatternId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customPattern: (() { final guardedValue = map['customPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enforcedUrls: (() { final guardedValue = map['enforcedUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exemptUrls: (() { final guardedValue = map['exemptUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

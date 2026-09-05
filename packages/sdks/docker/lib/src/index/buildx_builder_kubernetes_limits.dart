@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderKubernetesLimits {
   /// CPU limit for the Kubernetes pod.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Ephemeral storage limit for the Kubernetes pod.
-  final pulumi.Input<String>? ephemeralStorage;
+  final pulumi.Input<String?>? ephemeralStorage;
   /// Memory limit for the Kubernetes pod.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [BuildxBuilderKubernetesLimits].
   /// [cpu] CPU limit for the Kubernetes pod.

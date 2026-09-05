@@ -10,27 +10,27 @@ class LinkedServiceWebArgs {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to Web Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The type of authentication used to connect to the web table source. Valid options are `Anonymous`, `Basic` and `ClientCertificate`.
   final pulumi.Input<String> authenticationType;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The password for Basic authentication. Required if `authenticationType` sets to `Basic`.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   final pulumi.Input<String> url;
   /// The username for Basic authentication. Required if `authenticationType` sets to `Basic`.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [LinkedServiceWebArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service.

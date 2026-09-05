@@ -268,12 +268,13 @@ class Certificate extends pulumi.CustomResource {
           'azure:appservice/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password', 'pfxBlob'],
         ) {
     appServicePlanId = registerOutput<String?>('appServicePlanId');
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
-    hostNames = registerOutput<List<String>>('hostNames');
+    hostNames = registerOutput<List<String>>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hostingEnvironmentProfileId = registerOutput<String>('hostingEnvironmentProfileId');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
@@ -281,11 +282,11 @@ class Certificate extends pulumi.CustomResource {
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    pfxBlob = registerOutput<String?>('pfxBlob');
+    password = registerOutput<String?>('password', isSecret: true);
+    pfxBlob = registerOutput<String?>('pfxBlob', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
   }
 
@@ -294,11 +295,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,7 +317,7 @@ class Certificate extends pulumi.CustomResource {
     appServicePlanId = registerOutput<String?>('appServicePlanId');
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
-    hostNames = registerOutput<List<String>>('hostNames');
+    hostNames = registerOutput<List<String>>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hostingEnvironmentProfileId = registerOutput<String>('hostingEnvironmentProfileId');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
@@ -323,11 +325,40 @@ class Certificate extends pulumi.CustomResource {
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    pfxBlob = registerOutput<String?>('pfxBlob');
+    password = registerOutput<String?>('password', isSecret: true);
+    pfxBlob = registerOutput<String?>('pfxBlob', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'azure:appservice/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'pfxBlob'],
+        isResourceReference: true,
+      ) {
+    appServicePlanId = registerOutput<String?>('appServicePlanId');
+    expirationDate = registerOutput<String>('expirationDate');
+    friendlyName = registerOutput<String>('friendlyName');
+    hostNames = registerOutput<List<String>>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hostingEnvironmentProfileId = registerOutput<String>('hostingEnvironmentProfileId');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
+    keyVaultId = registerOutput<String?>('keyVaultId');
+    keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    pfxBlob = registerOutput<String?>('pfxBlob', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
   }
 }

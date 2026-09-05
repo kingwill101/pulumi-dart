@@ -7,18 +7,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ses_receipt_filter_receipt_filter_args_doc}
 class ReceiptFilterArgs {
-  /// The IP address or address range to filter, in CIDR notation
+  /// IP address or address range to filter, in CIDR notation
   final pulumi.Input<String> cidr;
-  /// The name of the filter
-  final pulumi.Input<String>? name;
+  /// Name of the filter
+  final pulumi.Input<String?>? name;
   /// Block or Allow
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ReceiptFilterArgs].
-  /// [cidr] The IP address or address range to filter, in CIDR notation
-  /// [name] The name of the filter
+  /// [cidr] IP address or address range to filter, in CIDR notation
+  /// [name] Name of the filter
   /// [policy] Block or Allow
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ReceiptFilterArgs({

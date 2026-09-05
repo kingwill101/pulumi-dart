@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WatchlistItem resources.
 class WatchlistItemState {
   /// The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The key value pairs of the Sentinel Watchlist Item.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
-  final pulumi.Input<String>? watchlistId;
+  final pulumi.Input<String?>? watchlistId;
 
   /// Creates a new [WatchlistItemState].
   /// [name] The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.

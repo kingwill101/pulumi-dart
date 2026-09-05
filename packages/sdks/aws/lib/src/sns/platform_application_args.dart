@@ -8,35 +8,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sns_platform_application_platform_application_args_doc}
 class PlatformApplicationArgs {
   /// The bundle identifier that's assigned to your iOS app. May only include alphanumeric characters, hyphens (-), and periods (.).
-  final pulumi.Input<String>? applePlatformBundleId;
+  final pulumi.Input<String?>? applePlatformBundleId;
   /// The identifier that's assigned to your Apple developer account team. Must be 10 alphanumeric characters.
-  final pulumi.Input<String>? applePlatformTeamId;
+  final pulumi.Input<String?>? applePlatformTeamId;
   /// The ARN of the SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
-  final pulumi.Input<String>? eventDeliveryFailureTopicArn;
+  final pulumi.Input<String?>? eventDeliveryFailureTopicArn;
   /// The ARN of the SNS Topic triggered when a new platform endpoint is added to your platform application.
-  final pulumi.Input<String>? eventEndpointCreatedTopicArn;
+  final pulumi.Input<String?>? eventEndpointCreatedTopicArn;
   /// The ARN of the SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
-  final pulumi.Input<String>? eventEndpointDeletedTopicArn;
+  final pulumi.Input<String?>? eventEndpointDeletedTopicArn;
   /// The ARN of the SNS Topic triggered when an existing platform endpoint is changed from your platform application.
-  final pulumi.Input<String>? eventEndpointUpdatedTopicArn;
+  final pulumi.Input<String?>? eventEndpointUpdatedTopicArn;
   /// The IAM role ARN permitted to receive failure feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
-  final pulumi.Input<String>? failureFeedbackRoleArn;
+  final pulumi.Input<String?>? failureFeedbackRoleArn;
   /// The friendly name for the SNS platform application
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
   final pulumi.Input<String> platform;
   /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the Terraform state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
   final pulumi.Input<String> platformCredential;
   /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the Terraform state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
-  final pulumi.Input<String>? platformPrincipal;
+  final pulumi.Input<String?>? platformPrincipal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IAM role ARN permitted to receive success feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
-  final pulumi.Input<String>? successFeedbackRoleArn;
+  final pulumi.Input<String?>? successFeedbackRoleArn;
   /// The sample rate percentage (0-100) of successfully delivered messages.
   ///
   /// The following attributes are needed only when using APNS token credentials:
-  final pulumi.Input<String>? successFeedbackSampleRate;
+  final pulumi.Input<String?>? successFeedbackSampleRate;
 
   /// Creates a new [PlatformApplicationArgs].
   /// [applePlatformBundleId] The bundle identifier that's assigned to your iOS app. May only include alphanumeric characters, hyphens (-), and periods (.).

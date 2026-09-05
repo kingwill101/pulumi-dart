@@ -8,7 +8,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsCustomImage {
   /// The name of the Custom Image.
   final pulumi.Input<String> imageName;
   /// The version number of the Custom Image.
-  final pulumi.Input<int>? imageVersionNumber;
+  final pulumi.Input<int?>? imageVersionNumber;
 
   /// Creates a new [UserProfileUserSettingsCodeEditorAppSettingsCustomImage].
   /// [appImageConfigName] The name of the App Image Config.
@@ -32,7 +32,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsCustomImage {
     return UserProfileUserSettingsCodeEditorAppSettingsCustomImage(
       appImageConfigName: pulumi.Input.fromValue(map['appImageConfigName'] as String),
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
-      imageVersionNumber: (() { final guardedValue = map['imageVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      imageVersionNumber: (() { final guardedValue = map['imageVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

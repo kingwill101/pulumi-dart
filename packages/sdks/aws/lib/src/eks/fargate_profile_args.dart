@@ -11,24 +11,24 @@ class FargateProfileArgs {
   /// Name of the EKS Cluster.
   final pulumi.Input<String> clusterName;
   /// Name of the EKS Fargate Profile.
-  final pulumi.Input<String>? fargateProfileName;
-  /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
+  final pulumi.Input<String?>? fargateProfileName;
+  /// ARN of the IAM Role that provides permissions for the EKS Fargate Profile.
   final pulumi.Input<String> podExecutionRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
   final pulumi.Input<List<FargateProfileSelector>> selectors;
   /// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FargateProfileArgs].
   /// [clusterName] Name of the EKS Cluster.
   /// [fargateProfileName] Name of the EKS Fargate Profile.
-  /// [podExecutionRoleArn] Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
+  /// [podExecutionRoleArn] ARN of the IAM Role that provides permissions for the EKS Fargate Profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [selectors] Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
   /// [subnetIds] Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).

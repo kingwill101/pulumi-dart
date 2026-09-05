@@ -7,7 +7,7 @@ class IntentSlotValueElicitationPrompt {
   /// The number of times to prompt the user for information. Must be a number between 1 and 5 (inclusive).
   final pulumi.Input<int> maxAttempts;
   final pulumi.Input<List<IntentSlotValueElicitationPromptMessage>> messages;
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [IntentSlotValueElicitationPrompt].
   /// [maxAttempts] The number of times to prompt the user for information. Must be a number between 1 and 5 (inclusive).
@@ -29,7 +29,7 @@ class IntentSlotValueElicitationPrompt {
 
   factory IntentSlotValueElicitationPrompt.fromMap(Map<String, dynamic> map) {
     return IntentSlotValueElicitationPrompt(
-      maxAttempts: pulumi.Input.fromValue(map['maxAttempts'] as int),
+      maxAttempts: pulumi.Input.fromValue((map['maxAttempts'] as num).toInt()),
       messages: pulumi.Input.fromValue(pulumi.Input.decodeList<IntentSlotValueElicitationPromptMessage>(map['messages']!, (value) => IntentSlotValueElicitationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))),
       responseCard: (() { final guardedValue = map['responseCard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -73,7 +73,7 @@ class GetListenerRuleActionAuthenticateOidc {
       onUnauthenticatedRequest: pulumi.Input.fromValue(map['onUnauthenticatedRequest'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
       sessionCookieName: pulumi.Input.fromValue(map['sessionCookieName'] as String),
-      sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
+      sessionTimeout: pulumi.Input.fromValue((map['sessionTimeout'] as num).toInt()),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
       userInfoEndpoint: pulumi.Input.fromValue(map['userInfoEndpoint'] as String),
     );

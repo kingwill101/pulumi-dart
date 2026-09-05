@@ -140,6 +140,12 @@ import 'portal_timeouts.dart';
 ///     tags: {
 ///         Name: "example-portal",
 ///     },
+/// }, {
+///     customTimeouts: {
+///         create: "10m",
+///         update: "10m",
+///         "delete": "10m",
+///     },
 /// });
 /// ```
 /// ```python
@@ -160,7 +166,8 @@ import 'portal_timeouts.dart';
 ///     },
 ///     tags={
 ///         "Name": "example-portal",
-///     })
+///     },
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="10m", update="10m", delete="10m")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -225,7 +232,7 @@ import 'portal_timeouts.dart';
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-portal"),
 /// 			},
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "10m", Update: "10m", Delete: "10m"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -247,6 +254,11 @@ import 'portal_timeouts.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_workspacesweb_portal" "example" {
+///   timeouts {
+///     create = "10m"
+///     update = "10m"
+///     delete = "10m"
+///   }
 ///   display_name            = "example-portal"
 ///   instance_type           = "standard.large"
 ///   authentication_type     = "IAM_Identity_Center"
@@ -270,6 +282,8 @@ import 'portal_timeouts.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.workspacesweb.Portal;
 /// import com.pulumi.aws.workspacesweb.PortalArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -296,7 +310,13 @@ import 'portal_timeouts.dart';
 ///             .maxConcurrentSessions(10)
 ///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .tags(Map.of("Name", "example-portal"))
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("10m"))
+///                     .update(CustomTimeouts.parseTimeoutString("10m"))
+///                     .delete(CustomTimeouts.parseTimeoutString("10m"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -321,6 +341,11 @@ import 'portal_timeouts.dart';
 ///         Environment: Production
 ///       tags:
 ///         Name: example-portal
+///     options:
+///       customTimeouts:
+///         create: 10m
+///         update: 10m
+///         delete: 10m
 /// ```
 ///
 ///
@@ -394,9 +419,9 @@ class Portal extends pulumi.CustomResource {
           'aws:workspacesweb/portal:Portal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     browserSettingsArn = registerOutput<String>('browserSettingsArn');
     browserType = registerOutput<String>('browserType');
@@ -415,8 +440,8 @@ class Portal extends pulumi.CustomResource {
     rendererType = registerOutput<String>('rendererType');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PortalTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PortalTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trustStoreArn = registerOutput<String>('trustStoreArn');
     userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
@@ -428,11 +453,12 @@ class Portal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PortalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Portal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,7 +472,7 @@ class Portal extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     browserSettingsArn = registerOutput<String>('browserSettingsArn');
     browserType = registerOutput<String>('browserType');
@@ -465,8 +491,44 @@ class Portal extends pulumi.CustomResource {
     rendererType = registerOutput<String>('rendererType');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<PortalTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PortalTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trustStoreArn = registerOutput<String>('trustStoreArn');
+    userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
+    userSettingsArn = registerOutput<String>('userSettingsArn');
+  }
+
+  /// Creates a typed reference to an existing [Portal] resource.
+  Portal.reference(String urn)
+    : super(
+        'aws:workspacesweb/portal:Portal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authenticationType = registerOutput<String>('authenticationType');
+    browserSettingsArn = registerOutput<String>('browserSettingsArn');
+    browserType = registerOutput<String>('browserType');
+    creationDate = registerOutput<String>('creationDate');
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
+    displayName = registerOutput<String>('displayName');
+    instanceType = registerOutput<String>('instanceType');
+    ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    maxConcurrentSessions = registerOutput<int>('maxConcurrentSessions');
+    networkSettingsArn = registerOutput<String>('networkSettingsArn');
+    portalArn = registerOutput<String>('portalArn');
+    portalEndpoint = registerOutput<String>('portalEndpoint');
+    portalStatus = registerOutput<String>('portalStatus');
+    region = registerOutput<String>('region');
+    rendererType = registerOutput<String>('rendererType');
+    sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PortalTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PortalTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trustStoreArn = registerOutput<String>('trustStoreArn');
     userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');

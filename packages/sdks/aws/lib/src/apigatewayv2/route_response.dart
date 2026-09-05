@@ -159,12 +159,12 @@ class RouteResponse extends pulumi.CustomResource {
           'aws:apigatewayv2/routeResponse:RouteResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
     region = registerOutput<String>('region');
-    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     routeId = registerOutput<String>('routeId');
     routeResponseKey = registerOutput<String>('routeResponseKey');
   }
@@ -174,11 +174,12 @@ class RouteResponse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteResponse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,7 +196,24 @@ class RouteResponse extends pulumi.CustomResource {
     apiId = registerOutput<String>('apiId');
     modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
     region = registerOutput<String>('region');
-    responseModels = registerOutput<Map<String, String>?>('responseModels');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    routeId = registerOutput<String>('routeId');
+    routeResponseKey = registerOutput<String>('routeResponseKey');
+  }
+
+  /// Creates a typed reference to an existing [RouteResponse] resource.
+  RouteResponse.reference(String urn)
+    : super(
+        'aws:apigatewayv2/routeResponse:RouteResponse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');
+    region = registerOutput<String>('region');
+    responseModels = registerOutput<Map<String, String>?>('responseModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     routeId = registerOutput<String>('routeId');
     routeResponseKey = registerOutput<String>('routeResponseKey');
   }

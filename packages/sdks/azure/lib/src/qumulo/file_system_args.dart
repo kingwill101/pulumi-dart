@@ -12,15 +12,15 @@ class FileSystemArgs {
   /// The email address used for the Azure Native Qumulo Scalable File System. Changing this forces a new resource to be created.
   final pulumi.Input<String> email;
   /// The Azure Region where the Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Azure Native Qumulo Scalable File System resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the marketplace offer ID. Defaults to `qumulo-saas-mpp`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? offerId;
+  final pulumi.Input<String?>? offerId;
   /// Specifies the marketplace plan ID. Defaults to `azure-native-qumulo-v3`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? planId;
+  final pulumi.Input<String?>? planId;
   /// Specifies the marketplace publisher ID. Defaults to `qumulo1584033880660`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? publisherId;
+  final pulumi.Input<String?>? publisherId;
   /// Specifies the name of the Resource Group within which this Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The storage Sku. Possible values are `Cold_LRS`, `Hot_LRS` and `Hot_ZRS`. Changing this forces a new resource to be created.
@@ -28,7 +28,7 @@ class FileSystemArgs {
   /// The delegated subnet ID for Vnet injection. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags which should be assigned to the File System.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
   final pulumi.Input<String> zone;
 

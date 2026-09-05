@@ -147,7 +147,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:appsync/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appsyncDomainName = registerOutput<String>('appsyncDomainName');
     certificateArn = registerOutput<String>('certificateArn');
@@ -162,11 +162,12 @@ class DomainName extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainNameState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainName._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,6 +181,23 @@ class DomainName extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appsyncDomainName = registerOutput<String>('appsyncDomainName');
+    certificateArn = registerOutput<String>('certificateArn');
+    description = registerOutput<String?>('description');
+    domainName = registerOutput<String>('domainName');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DomainName] resource.
+  DomainName.reference(String urn)
+    : super(
+        'aws:appsync/domainName:DomainName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appsyncDomainName = registerOutput<String>('appsyncDomainName');
     certificateArn = registerOutput<String>('certificateArn');
     description = registerOutput<String?>('description');

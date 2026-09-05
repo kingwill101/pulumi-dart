@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'proactive_engagement_args.dart';
+import 'proactive_engagement_emergency_contact.dart';
 import 'proactive_engagement_state.dart';
 
 /// Resource for managing a AWS Shield Proactive Engagement.
@@ -30,7 +31,6 @@ import 'proactive_engagement_state.dart';
 /// });
 /// const exampleDrtAccessRoleArnAssociation = new aws.shield.DrtAccessRoleArnAssociation("example", {roleArn: exampleRole.arn});
 /// const example = new aws.shield.ProactiveEngagement("example", {
-///     enabled: true,
 ///     emergencyContacts: [
 ///         {
 ///             contactNotes: "Notes",
@@ -43,6 +43,7 @@ import 'proactive_engagement_state.dart';
 ///             phoneNumber: "+12358132134",
 ///         },
 ///     ],
+///     enabled: true,
 /// }, {
 ///     dependsOn: [exampleDrtAccessRoleArnAssociation],
 /// });
@@ -76,7 +77,6 @@ import 'proactive_engagement_state.dart';
 ///     }))
 /// example_drt_access_role_arn_association = aws.shield.DrtAccessRoleArnAssociation("example", role_arn=example_role.arn)
 /// example = aws.shield.ProactiveEngagement("example",
-///     enabled=True,
 ///     emergency_contacts=[
 ///         {
 ///             "contact_notes": "Notes",
@@ -89,6 +89,7 @@ import 'proactive_engagement_state.dart';
 ///             "phone_number": "+12358132134",
 ///         },
 ///     ],
+///     enabled=True,
 ///     opts = pulumi.ResourceOptions(depends_on=[example_drt_access_role_arn_association]))
 /// example_role_policy_attachment = aws.iam.RolePolicyAttachment("example",
 ///     role=example_role.name,
@@ -136,7 +137,6 @@ import 'proactive_engagement_state.dart';
 ///
 ///     var example = new Aws.Shield.ProactiveEngagement("example", new()
 ///     {
-///         Enabled = true,
 ///         EmergencyContacts = new[]
 ///         {
 ///             new Aws.Shield.Inputs.ProactiveEngagementEmergencyContactArgs
@@ -152,6 +152,7 @@ import 'proactive_engagement_state.dart';
 ///                 PhoneNumber = "+12358132134",
 ///             },
 ///         },
+///         Enabled = true,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -219,7 +220,6 @@ import 'proactive_engagement_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = shield.NewProactiveEngagement(ctx, "example", &shield.ProactiveEngagementArgs{
-/// 			Enabled: pulumi.Bool(true),
 /// 			EmergencyContacts: shield.ProactiveEngagementEmergencyContactArray{
 /// 				&shield.ProactiveEngagementEmergencyContactArgs{
 /// 					ContactNotes: pulumi.String("Notes"),
@@ -232,6 +232,7 @@ import 'proactive_engagement_state.dart';
 /// 					PhoneNumber:  pulumi.String("+12358132134"),
 /// 				},
 /// 			},
+/// 			Enabled: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleDrtAccessRoleArnAssociation,
 /// 		}))
@@ -268,7 +269,6 @@ import 'proactive_engagement_state.dart';
 ///
 /// resource "aws_shield_proactiveengagement" "example" {
 ///   depends_on = [aws_shield_drtaccessrolearnassociation.example]
-///   enabled    = true
 ///   emergency_contacts {
 ///     contact_notes = "Notes"
 ///     email_address = "contact1@example.com"
@@ -279,6 +279,7 @@ import 'proactive_engagement_state.dart';
 ///     email_address = "contact2@example.com"
 ///     phone_number  = "+12358132134"
 ///   }
+///   enabled = true
 /// }
 /// resource "aws_iam_role" "example" {
 ///   name = "example-role"
@@ -360,7 +361,6 @@ import 'proactive_engagement_state.dart';
 ///             .build());
 ///
 ///         var example = new ProactiveEngagement("example", ProactiveEngagementArgs.builder()
-///             .enabled(true)
 ///             .emergencyContacts(
 ///                 ProactiveEngagementEmergencyContactArgs.builder()
 ///                     .contactNotes("Notes")
@@ -372,6 +372,7 @@ import 'proactive_engagement_state.dart';
 ///                     .emailAddress("contact2@example.com")
 ///                     .phoneNumber("+12358132134")
 ///                     .build())
+///             .enabled(true)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleDrtAccessRoleArnAssociation)
 ///                 .build());
@@ -395,7 +396,6 @@ import 'proactive_engagement_state.dart';
 ///   example:
 ///     type: aws:shield:ProactiveEngagement
 ///     properties:
-///       enabled: true
 ///       emergencyContacts:
 ///         - contactNotes: Notes
 ///           emailAddress: contact1@example.com
@@ -403,6 +403,7 @@ import 'proactive_engagement_state.dart';
 ///         - contactNotes: Notes 2
 ///           emailAddress: contact2@example.com
 ///           phoneNumber: '+12358132134'
+///       enabled: true
 ///     options:
 ///       dependsOn:
 ///         - ${exampleDrtAccessRoleArnAssociation}
@@ -450,7 +451,7 @@ import 'proactive_engagement_state.dart';
 /// ```
 class ProactiveEngagement extends pulumi.CustomResource {
   /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergencyContacts`.
-  late final pulumi.Output<List<Map<String, dynamic>>> emergencyContacts;
+  late final pulumi.Output<List<ProactiveEngagementEmergencyContact>> emergencyContacts;
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
   late final pulumi.Output<bool> enabled;
 
@@ -466,9 +467,9 @@ class ProactiveEngagement extends pulumi.CustomResource {
           'aws:shield/proactiveEngagement:ProactiveEngagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    emergencyContacts = registerOutput<List<Map<String, dynamic>>>('emergencyContacts');
+    emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(guardedValue, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');
   }
 
@@ -477,11 +478,12 @@ class ProactiveEngagement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProactiveEngagementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProactiveEngagement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -495,7 +497,20 @@ class ProactiveEngagement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    emergencyContacts = registerOutput<List<Map<String, dynamic>>>('emergencyContacts');
+    emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(guardedValue, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool>('enabled');
+  }
+
+  /// Creates a typed reference to an existing [ProactiveEngagement] resource.
+  ProactiveEngagement.reference(String urn)
+    : super(
+        'aws:shield/proactiveEngagement:ProactiveEngagement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(guardedValue, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');
   }
 }

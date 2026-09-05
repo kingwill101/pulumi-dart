@@ -155,8 +155,8 @@ import 'data_export_rule_state.dart';
 /// 		_, err = loganalytics.NewDataExportRule(ctx, "example", &loganalytics.DataExportRuleArgs{
 /// 			Name:                  pulumi.String("dataExport1"),
 /// 			ResourceGroupName:     example.Name,
-/// 			WorkspaceResourceId:   exampleAnalyticsWorkspace.ID(),
-/// 			DestinationResourceId: exampleAccount.ID(),
+/// 			WorkspaceResourceId:   exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			DestinationResourceId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			TableNames: pulumi.StringArray{
 /// 				pulumi.String("Heartbeat"),
 /// 			},
@@ -346,14 +346,14 @@ class DataExportRule extends pulumi.CustomResource {
           'azure:loganalytics/dataExportRule:DataExportRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     destinationResourceId = registerOutput<String>('destinationResourceId');
     enabled = registerOutput<bool?>('enabled');
     exportRuleId = registerOutput<String>('exportRuleId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tableNames = registerOutput<List<String>>('tableNames');
+    tableNames = registerOutput<List<String>>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 
@@ -362,11 +362,12 @@ class DataExportRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataExportRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataExportRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -385,7 +386,25 @@ class DataExportRule extends pulumi.CustomResource {
     exportRuleId = registerOutput<String>('exportRuleId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tableNames = registerOutput<List<String>>('tableNames');
+    tableNames = registerOutput<List<String>>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
+  }
+
+  /// Creates a typed reference to an existing [DataExportRule] resource.
+  DataExportRule.reference(String urn)
+    : super(
+        'azure:loganalytics/dataExportRule:DataExportRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinationResourceId = registerOutput<String>('destinationResourceId');
+    enabled = registerOutput<bool?>('enabled');
+    exportRuleId = registerOutput<String>('exportRuleId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tableNames = registerOutput<List<String>>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 }

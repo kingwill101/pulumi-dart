@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pim_get_role_assignments_get_role_assignments_args_doc}
 class GetRoleAssignmentsArgs {
   /// Whether to limit the result exactly at the specified scope and not above or below it. Defaults to `false`.
-  final pulumi.Input<bool>? limitAtScope;
+  final pulumi.Input<bool?>? limitAtScope;
   /// The principal ID to filter the list of Role Assignments against.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The scope at which to list Role Assignments.
   final pulumi.Input<String> scope;
   /// The tenant ID for cross-tenant requests.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [GetRoleAssignmentsArgs].
   /// [limitAtScope] Whether to limit the result exactly at the specified scope and not above or below it. Defaults to `false`.

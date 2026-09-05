@@ -10,14 +10,14 @@ class GetDedicatedIpPoolArgs {
   /// Name of the dedicated IP pool.
   final pulumi.Input<String> poolName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// A map of tags attached to the pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  /// Map of tags attached to the pool.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDedicatedIpPoolArgs].
   /// [poolName] Name of the dedicated IP pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags attached to the pool.
+  /// [tags] Map of tags attached to the pool.
   const GetDedicatedIpPoolArgs({
     required this.poolName,
     this.region,

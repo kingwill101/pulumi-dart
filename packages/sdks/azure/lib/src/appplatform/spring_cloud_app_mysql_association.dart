@@ -208,8 +208,8 @@ import 'spring_cloud_app_mysql_association_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudAppMysqlAssociation(ctx, "example", &appplatform.SpringCloudAppMysqlAssociationArgs{
 /// 			Name:             pulumi.String("example-bind"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
-/// 			MysqlServerId:    exampleFlexibleServer.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
+/// 			MysqlServerId:    exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			DatabaseName:     exampleFlexibleDatabase.Name,
 /// 			Username:         exampleFlexibleServer.AdministratorLogin,
 /// 			Password:         exampleFlexibleServer.AdministratorLoginPassword,
@@ -434,12 +434,13 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     databaseName = registerOutput<String>('databaseName');
     mysqlServerId = registerOutput<String>('mysqlServerId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     springCloudAppId = registerOutput<String>('springCloudAppId');
     username = registerOutput<String>('username');
   }
@@ -449,11 +450,12 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudAppMysqlAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudAppMysqlAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -470,7 +472,25 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
     databaseName = registerOutput<String>('databaseName');
     mysqlServerId = registerOutput<String>('mysqlServerId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudAppMysqlAssociation] resource.
+  SpringCloudAppMysqlAssociation.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    databaseName = registerOutput<String>('databaseName');
+    mysqlServerId = registerOutput<String>('mysqlServerId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
     springCloudAppId = registerOutput<String>('springCloudAppId');
     username = registerOutput<String>('username');
   }

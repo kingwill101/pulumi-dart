@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceInitialReplicaSet {
   /// A list of subnet IP addresses for the domain controllers in the initial replica set, typically two.
-  final pulumi.Input<List<String>>? domainControllerIpAddresses;
+  final pulumi.Input<List<String>?>? domainControllerIpAddresses;
   /// The publicly routable IP address for the domain controllers in the initial replica set.
-  final pulumi.Input<String>? externalAccessIpAddress;
+  final pulumi.Input<String?>? externalAccessIpAddress;
   /// A unique ID for the replica set.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The current service status for the initial replica set.
-  final pulumi.Input<String>? serviceStatus;
+  final pulumi.Input<String?>? serviceStatus;
   /// The ID of the subnet in which to place the initial replica set. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 

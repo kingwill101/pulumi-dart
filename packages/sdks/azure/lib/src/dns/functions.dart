@@ -178,6 +178,17 @@ Future<GetAAAARecordResult> getAAAARecord(
   return GetAAAARecordResult.fromMap(result);
 }
 
+pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
+  GetAAAARecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getAAAARecord:getAAAARecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAAAARecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS A Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -332,6 +343,17 @@ Future<GetARecordResult> getARecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetARecordResult.fromMap(result);
+}
+
+pulumi.Output<GetARecordResult> getARecordOutput(
+  GetARecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getARecord:getARecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetARecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing DNS CAA Record within Azure DNS.
@@ -490,6 +512,17 @@ Future<GetCAARecordResult> getCAARecord(
   return GetCAARecordResult.fromMap(result);
 }
 
+pulumi.Output<GetCAARecordResult> getCAARecordOutput(
+  GetCAARecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getCAARecord:getCAARecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCAARecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS CNAME Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -644,6 +677,17 @@ Future<GetCnameRecordResult> getCnameRecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCnameRecordResult.fromMap(result);
+}
+
+pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
+  GetCnameRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getCnameRecord:getCnameRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCnameRecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing DNS MX Record within Azure DNS.
@@ -802,6 +846,17 @@ Future<GetMxRecordResult> getMxRecord(
   return GetMxRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetMxRecordResult> getMxRecordOutput(
+  GetMxRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getMxRecord:getMxRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMxRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS NS Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -956,6 +1011,17 @@ Future<GetNsRecordResult> getNsRecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNsRecordResult.fromMap(result);
+}
+
+pulumi.Output<GetNsRecordResult> getNsRecordOutput(
+  GetNsRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getNsRecord:getNsRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNsRecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing DNS PTR Record within Azure DNS.
@@ -1114,6 +1180,17 @@ Future<GetPtrRecordResult> getPtrRecord(
   return GetPtrRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
+  GetPtrRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getPtrRecord:getPtrRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPtrRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS SOA Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -1261,6 +1338,17 @@ Future<GetSoaRecordResult> getSoaRecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSoaRecordResult.fromMap(result);
+}
+
+pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
+  GetSoaRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getSoaRecord:getSoaRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSoaRecordResult.fromMap);
 }
 
 /// Use this data source to access information about an existing DNS SRV Record within Azure DNS.
@@ -1419,6 +1507,17 @@ Future<GetSrvRecordResult> getSrvRecord(
   return GetSrvRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
+  GetSrvRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getSrvRecord:getSrvRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSrvRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS TXT Record within Azure DNS.
 ///
 /// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
@@ -1575,6 +1674,17 @@ Future<GetTxtRecordResult> getTxtRecord(
   return GetTxtRecordResult.fromMap(result);
 }
 
+pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
+  GetTxtRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getTxtRecord:getTxtRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTxtRecordResult.fromMap);
+}
+
 /// Use this data source to access information about an existing DNS Zone.
 ///
 /// ## Example Usage
@@ -1720,4 +1830,15 @@ Future<GetZoneResult> getZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneResult> getZoneOutput(
+  GetZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dns/getZone:getZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneResult.fromMap);
 }

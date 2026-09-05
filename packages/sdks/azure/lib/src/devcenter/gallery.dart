@@ -155,7 +155,7 @@ import 'gallery_state.dart';
 /// 			Identity: &devcenter.DevCenterIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					testUserAssignedIdentity.ID(),
+/// 					testUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -172,7 +172,7 @@ import 'gallery_state.dart';
 /// 		}
 /// 		_, err = devcenter.NewGallery(ctx, "example", &devcenter.GalleryArgs{
 /// 			DevCenterId:     pulumi.Any(exampleAzurermDevCenter.Id),
-/// 			SharedGalleryId: exampleSharedImageGallery.ID(),
+/// 			SharedGalleryId: exampleSharedImageGallery.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -366,7 +366,7 @@ class Gallery extends pulumi.CustomResource {
           'azure:devcenter/gallery:Gallery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
@@ -378,11 +378,12 @@ class Gallery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GalleryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Gallery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,6 +397,20 @@ class Gallery extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    devCenterId = registerOutput<String>('devCenterId');
+    this.name = registerOutput<String>('name');
+    sharedGalleryId = registerOutput<String>('sharedGalleryId');
+  }
+
+  /// Creates a typed reference to an existing [Gallery] resource.
+  Gallery.reference(String urn)
+    : super(
+        'azure:devcenter/gallery:Gallery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     sharedGalleryId = registerOutput<String>('sharedGalleryId');

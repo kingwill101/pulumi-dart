@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTablePartitionKey {
   /// Free-form text comment.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Name of the Partition Key.
   final pulumi.Input<String> name;
   /// Map of key-value pairs.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Datatype of data in the Partition Key.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CatalogTablePartitionKey].
   /// [comment] Free-form text comment.

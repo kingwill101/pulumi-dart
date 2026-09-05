@@ -15,16 +15,6 @@ import 'vpc_connection_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const vpcConnectionRole = new aws.iam.Role("vpc_connection_role", {
-///     assumeRolePolicy: JSON.stringify({
-///         Version: "2012-10-17",
-///         Statement: [{
-///             Effect: "Allow",
-///             Action: "sts:AssumeRole",
-///             Principal: {
-///                 Service: "quicksight.amazonaws.com",
-///             },
-///         }],
-///     }),
 ///     inlinePolicies: [{
 ///         name: "QuickSightVPCConnectionRolePolicy",
 ///         policy: JSON.stringify({
@@ -42,6 +32,16 @@ import 'vpc_connection_timeouts.dart';
 ///             }],
 ///         }),
 ///     }],
+///     assumeRolePolicy: JSON.stringify({
+///         Version: "2012-10-17",
+///         Statement: [{
+///             Effect: "Allow",
+///             Action: "sts:AssumeRole",
+///             Principal: {
+///                 Service: "quicksight.amazonaws.com",
+///             },
+///         }],
+///     }),
 /// });
 /// const example = new aws.quicksight.VpcConnection("example", {
 ///     vpcConnectionId: "example-connection-id",
@@ -60,16 +60,6 @@ import 'vpc_connection_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// vpc_connection_role = aws.iam.Role("vpc_connection_role",
-///     assume_role_policy=json.dumps({
-///         "Version": "2012-10-17",
-///         "Statement": [{
-///             "Effect": "Allow",
-///             "Action": "sts:AssumeRole",
-///             "Principal": {
-///                 "Service": "quicksight.amazonaws.com",
-///             },
-///         }],
-///     }),
 ///     inline_policies=[{
 ///         "name": "QuickSightVPCConnectionRolePolicy",
 ///         "policy": json.dumps({
@@ -86,7 +76,17 @@ import 'vpc_connection_timeouts.dart';
 ///                 "Resource": ["*"],
 ///             }],
 ///         }),
-///     }])
+///     }],
+///     assume_role_policy=json.dumps({
+///         "Version": "2012-10-17",
+///         "Statement": [{
+///             "Effect": "Allow",
+///             "Action": "sts:AssumeRole",
+///             "Principal": {
+///                 "Service": "quicksight.amazonaws.com",
+///             },
+///         }],
+///     }))
 /// example = aws.quicksight.VpcConnection("example",
 ///     vpc_connection_id="example-connection-id",
 ///     name="Example Connection",
@@ -108,22 +108,6 @@ import 'vpc_connection_timeouts.dart';
 /// {
 ///     var vpcConnectionRole = new Aws.Iam.Role("vpc_connection_role", new()
 ///     {
-///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
-///         {
-///             ["Version"] = "2012-10-17",
-///             ["Statement"] = new[]
-///             {
-///                 new Dictionary<string, object?>
-///                 {
-///                     ["Effect"] = "Allow",
-///                     ["Action"] = "sts:AssumeRole",
-///                     ["Principal"] = new Dictionary<string, object?>
-///                     {
-///                         ["Service"] = "quicksight.amazonaws.com",
-///                     },
-///                 },
-///             },
-///         }),
 ///         InlinePolicies = new[]
 ///         {
 ///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
@@ -154,6 +138,22 @@ import 'vpc_connection_timeouts.dart';
 ///                 }),
 ///             },
 ///         },
+///         AssumeRolePolicy = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///             ["Version"] = "2012-10-17",
+///             ["Statement"] = new[]
+///             {
+///                 new Dictionary<string, object?>
+///                 {
+///                     ["Effect"] = "Allow",
+///                     ["Action"] = "sts:AssumeRole",
+///                     ["Principal"] = new Dictionary<string, object?>
+///                     {
+///                         ["Service"] = "quicksight.amazonaws.com",
+///                     },
+///                 },
+///             },
+///         }),
 ///     });
 ///
 ///     var example = new Aws.Quicksight.VpcConnection("example", new()
@@ -192,22 +192,6 @@ import 'vpc_connection_timeouts.dart';
 /// 			"Statement": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"Effect": "Allow",
-/// 					"Action": "sts:AssumeRole",
-/// 					"Principal": map[string]string{
-/// 						"Service": "quicksight.amazonaws.com",
-/// 					},
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-/// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
-/// 				map[string]interface{}{
-/// 					"Effect": "Allow",
 /// 					"Action": []string{
 /// 						"ec2:CreateNetworkInterface",
 /// 						"ec2:ModifyNetworkInterfaceAttribute",
@@ -224,15 +208,31 @@ import 'vpc_connection_timeouts.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 			"Version": "2012-10-17",
+/// 			"Statement": []map[string]interface{}{
+/// 				map[string]interface{}{
+/// 					"Effect": "Allow",
+/// 					"Action": "sts:AssumeRole",
+/// 					"Principal": map[string]string{
+/// 						"Service": "quicksight.amazonaws.com",
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		json1 := string(tmpJSON1)
 /// 		vpcConnectionRole, err := iam.NewRole(ctx, "vpc_connection_role", &iam.RoleArgs{
-/// 			AssumeRolePolicy: pulumi.String(json0),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name:   pulumi.String("QuickSightVPCConnectionRolePolicy"),
-/// 					Policy: pulumi.String(json1),
+/// 					Policy: pulumi.String(json0),
 /// 				},
 /// 			},
+/// 			AssumeRolePolicy: pulumi.String(json1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -266,16 +266,6 @@ import 'vpc_connection_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "vpc_connection_role" {
-///   assume_role_policy = jsonencode({
-///     "Version" = "2012-10-17"
-///     "Statement" = [{
-///       "Effect" = "Allow"
-///       "Action" = "sts:AssumeRole"
-///       "Principal" = {
-///         "Service" = "quicksight.amazonaws.com"
-///       }
-///     }]
-///   })
 ///   inline_policies {
 ///     name = "QuickSightVPCConnectionRolePolicy"
 ///     policy = jsonencode({
@@ -287,6 +277,16 @@ import 'vpc_connection_timeouts.dart';
 ///       }]
 ///     })
 ///   }
+///   assume_role_policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Effect" = "Allow"
+///       "Action" = "sts:AssumeRole"
+///       "Principal" = {
+///         "Service" = "quicksight.amazonaws.com"
+///       }
+///     }]
+///   })
 /// }
 /// resource "aws_quicksight_vpcconnection" "example" {
 ///   vpc_connection_id  = "example-connection-id"
@@ -322,17 +322,6 @@ import 'vpc_connection_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var vpcConnectionRole = new Role("vpcConnectionRole", RoleArgs.builder()
-///             .assumeRolePolicy(serializeJson(
-///                 jsonObject(
-///                     jsonProperty("Version", "2012-10-17"),
-///                     jsonProperty("Statement", jsonArray(jsonObject(
-///                         jsonProperty("Effect", "Allow"),
-///                         jsonProperty("Action", "sts:AssumeRole"),
-///                         jsonProperty("Principal", jsonObject(
-///                             jsonProperty("Service", "quicksight.amazonaws.com")
-///                         ))
-///                     )))
-///                 )))
 ///             .inlinePolicies(RoleInlinePolicyArgs.builder()
 ///                 .name("QuickSightVPCConnectionRolePolicy")
 ///                 .policy(serializeJson(
@@ -351,6 +340,17 @@ import 'vpc_connection_timeouts.dart';
 ///                         )))
 ///                     )))
 ///                 .build())
+///             .assumeRolePolicy(serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Effect", "Allow"),
+///                         jsonProperty("Action", "sts:AssumeRole"),
+///                         jsonProperty("Principal", jsonObject(
+///                             jsonProperty("Service", "quicksight.amazonaws.com")
+///                         ))
+///                     )))
+///                 )))
 ///             .build());
 ///
 ///         var example = new VpcConnection("example", VpcConnectionArgs.builder()
@@ -372,14 +372,6 @@ import 'vpc_connection_timeouts.dart';
 ///     type: aws:iam:Role
 ///     name: vpc_connection_role
 ///     properties:
-///       assumeRolePolicy:
-///         fn::toJSON:
-///           Version: 2012-10-17
-///           Statement:
-///             - Effect: Allow
-///               Action: sts:AssumeRole
-///               Principal:
-///                 Service: quicksight.amazonaws.com
 ///       inlinePolicies:
 ///         - name: QuickSightVPCConnectionRolePolicy
 ///           policy:
@@ -395,6 +387,14 @@ import 'vpc_connection_timeouts.dart';
 ///                     - ec2:DescribeSecurityGroups
 ///                   Resource:
 ///                     - '*'
+///       assumeRolePolicy:
+///         fn::toJSON:
+///           Version: 2012-10-17
+///           Statement:
+///             - Effect: Allow
+///               Action: sts:AssumeRole
+///               Principal:
+///                 Service: quicksight.amazonaws.com
 ///   example:
 ///     type: aws:quicksight:VpcConnection
 ///     properties:
@@ -457,19 +457,19 @@ class VpcConnection extends pulumi.CustomResource {
           'aws:quicksight/vpcConnection:VpcConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityStatus = registerOutput<String>('availabilityStatus');
     awsAccountId = registerOutput<String>('awsAccountId');
-    dnsResolvers = registerOutput<List<String>?>('dnsResolvers');
+    dnsResolvers = registerOutput<List<String>?>('dnsResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcConnectionId = registerOutput<String>('vpcConnectionId');
   }
@@ -479,11 +479,12 @@ class VpcConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -500,14 +501,38 @@ class VpcConnection extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     availabilityStatus = registerOutput<String>('availabilityStatus');
     awsAccountId = registerOutput<String>('awsAccountId');
-    dnsResolvers = registerOutput<List<String>?>('dnsResolvers');
+    dnsResolvers = registerOutput<List<String>?>('dnsResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcConnectionId = registerOutput<String>('vpcConnectionId');
+  }
+
+  /// Creates a typed reference to an existing [VpcConnection] resource.
+  VpcConnection.reference(String urn)
+    : super(
+        'aws:quicksight/vpcConnection:VpcConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityStatus = registerOutput<String>('availabilityStatus');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    dnsResolvers = registerOutput<List<String>?>('dnsResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcConnectionId = registerOutput<String>('vpcConnectionId');
   }

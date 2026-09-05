@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataSourceWindowsPerformanceCounter resources.
 class DataSourceWindowsPerformanceCounterState {
   /// The friendly name of the performance counter.
-  final pulumi.Input<String>? counterName;
+  final pulumi.Input<String?>? counterName;
   /// The name of the virtual machine instance to which the Windows Performance Counter DataSource be applied. Specify a `*` will apply to all instances.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// The time of sample interval in seconds. Supports values between 10 and 2147483647.
-  final pulumi.Input<int>? intervalSeconds;
+  final pulumi.Input<int?>? intervalSeconds;
   /// The Name which should be used for this Log Analytics Windows Performance Counter DataSource. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The object name of the Log Analytics Windows Performance Counter DataSource.
-  final pulumi.Input<String>? objectName;
+  final pulumi.Input<String?>? objectName;
   /// The name of the Resource Group where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the Log Analytics Workspace where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [DataSourceWindowsPerformanceCounterState].
   /// [counterName] The friendly name of the performance counter.
@@ -53,7 +53,7 @@ class DataSourceWindowsPerformanceCounterState {
     return DataSourceWindowsPerformanceCounterState(
       counterName: (() { final guardedValue = map['counterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intervalSeconds: (() { final guardedValue = map['intervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalSeconds: (() { final guardedValue = map['intervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       objectName: (() { final guardedValue = map['objectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -17,7 +17,6 @@ import 'app_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.pinpoint.App("example", {
-///     name: "test-app",
 ///     limits: {
 ///         maximumDuration: 600,
 ///     },
@@ -25,6 +24,7 @@ import 'app_state.dart';
 ///         start: "00:00",
 ///         end: "06:00",
 ///     },
+///     name: "test-app",
 /// });
 /// ```
 /// ```python
@@ -32,14 +32,14 @@ import 'app_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.pinpoint.App("example",
-///     name="test-app",
 ///     limits={
 ///         "maximum_duration": 600,
 ///     },
 ///     quiet_time={
 ///         "start": "00:00",
 ///         "end": "06:00",
-///     })
+///     },
+///     name="test-app")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,7 +51,6 @@ import 'app_state.dart';
 /// {
 ///     var example = new Aws.Pinpoint.App("example", new()
 ///     {
-///         Name = "test-app",
 ///         Limits = new Aws.Pinpoint.Inputs.AppLimitsArgs
 ///         {
 ///             MaximumDuration = 600,
@@ -61,6 +60,7 @@ import 'app_state.dart';
 ///             Start = "00:00",
 ///             End = "06:00",
 ///         },
+///         Name = "test-app",
 ///     });
 ///
 /// });
@@ -76,7 +76,6 @@ import 'app_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pinpoint.NewApp(ctx, "example", &pinpoint.AppArgs{
-/// 			Name: pulumi.String("test-app"),
 /// 			Limits: &pinpoint.AppLimitsArgs{
 /// 				MaximumDuration: pulumi.Int(600),
 /// 			},
@@ -84,6 +83,7 @@ import 'app_state.dart';
 /// 				Start: pulumi.String("00:00"),
 /// 				End:   pulumi.String("06:00"),
 /// 			},
+/// 			Name: pulumi.String("test-app"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -102,7 +102,6 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "aws_pinpoint_app" "example" {
-///   name = "test-app"
 ///   limits = {
 ///     maximum_duration = 600
 ///   }
@@ -110,6 +109,7 @@ import 'app_state.dart';
 ///     start = "00:00"
 ///     end   = "06:00"
 ///   }
+///   name = "test-app"
 /// }
 /// ```
 /// ```java
@@ -136,7 +136,6 @@ import 'app_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
-///             .name("test-app")
 ///             .limits(AppLimitsArgs.builder()
 ///                 .maximumDuration(600)
 ///                 .build())
@@ -144,6 +143,7 @@ import 'app_state.dart';
 ///                 .start("00:00")
 ///                 .end("06:00")
 ///                 .build())
+///             .name("test-app")
 ///             .build());
 ///
 ///     }
@@ -154,12 +154,12 @@ import 'app_state.dart';
 ///   example:
 ///     type: aws:pinpoint:App
 ///     properties:
-///       name: test-app
 ///       limits:
 ///         maximumDuration: 600
 ///       quietTime:
 ///         start: 00:00
 ///         end: 06:00
+///       name: test-app
 /// ```
 ///
 ///
@@ -173,7 +173,7 @@ import 'app_state.dart';
 class App extends pulumi.CustomResource {
   /// Application ID of the End User Messaging App.
   late final pulumi.Output<String> applicationId;
-  /// Amazon Resource Name (ARN) of the PinPoint Application.
+  /// ARN of the PinPoint Application.
   /// * `campaign_hook[0].lambda_function_name` - Lambda function name or ARN to be called for delivery.
   /// * `campaign_hook[0].mode` - What mode Lambda should be invoked in.
   /// * `campaign_hook[0].web_url` - Web URL to call for hook.
@@ -213,7 +213,7 @@ class App extends pulumi.CustomResource {
           'aws:pinpoint/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
@@ -223,8 +223,8 @@ class App extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     quietTime = registerOutput<AppQuietTime?>('quietTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppQuietTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
@@ -232,11 +232,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,7 +259,28 @@ class App extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     quietTime = registerOutput<AppQuietTime?>('quietTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppQuietTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'aws:pinpoint/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    campaignHook = registerOutput<AppCampaignHook?>('campaignHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppCampaignHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    limits = registerOutput<AppLimits?>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    quietTime = registerOutput<AppQuietTime?>('quietTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppQuietTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

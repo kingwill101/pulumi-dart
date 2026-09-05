@@ -10,33 +10,33 @@ import 'trigger_schedule_schedule.dart';
 /// {@macro pulumi_datafactory_trigger_schedule_trigger_schedule_args_doc}
 class TriggerScheduleArgs {
   /// Specifies if the Data Factory Schedule Trigger is activated. Defaults to `true`.
-  final pulumi.Input<bool>? activated;
+  final pulumi.Input<bool?>? activated;
   /// List of tags that can be used for describing the Data Factory Schedule Trigger.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The Schedule Trigger's description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The time the Schedule Trigger should end. The time will be represented in UTC.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The trigger frequency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The interval for how often the trigger occurs. This defaults to `1`.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Data Factory Pipeline name that the trigger will act on.
-  final pulumi.Input<String>? pipelineName;
+  final pulumi.Input<String?>? pipelineName;
   /// The pipeline parameters that the trigger will act upon.
-  final pulumi.Input<Map<String, String>>? pipelineParameters;
+  final pulumi.Input<Map<String, String>?>? pipelineParameters;
   /// A `pipeline` block as defined below.
-  final pulumi.Input<List<TriggerSchedulePipeline>>? pipelines;
+  final pulumi.Input<List<TriggerSchedulePipeline>?>? pipelines;
   /// A `schedule` block as defined below, which further specifies the recurrence schedule for the trigger. A schedule is capable of limiting or increasing the number of trigger executions specified by the `frequency` and `interval` properties.
-  final pulumi.Input<TriggerScheduleSchedule>? schedule;
+  final pulumi.Input<TriggerScheduleSchedule?>? schedule;
   /// The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The timezone of the start/end time.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [TriggerScheduleArgs].
   /// [activated] Specifies if the Data Factory Schedule Trigger is activated. Defaults to `true`.
@@ -97,7 +97,7 @@ class TriggerScheduleArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineName: (() { final guardedValue = map['pipelineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineParameters: (() { final guardedValue = map['pipelineParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

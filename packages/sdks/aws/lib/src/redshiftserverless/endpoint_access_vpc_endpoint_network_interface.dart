@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointAccessVpcEndpointNetworkInterface {
   /// The availability Zone.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The unique identifier of the network interface.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// The IPv4 address of the network interface within the subnet.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The unique identifier of the subnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [EndpointAccessVpcEndpointNetworkInterface].
   /// [availabilityZone] The availability Zone.

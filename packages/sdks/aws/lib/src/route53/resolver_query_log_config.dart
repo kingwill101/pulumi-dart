@@ -141,7 +141,7 @@ import 'resolver_query_log_config_state.dart';
 /// $ pulumi import aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig example rqlc-92edc3b1838248bf
 /// ```
 class ResolverQueryLogConfig extends pulumi.CustomResource {
-  /// The ARN (Amazon Resource Name) of the Route 53 Resolver query logging configuration.
+  /// ARN of the Route 53 Resolver query logging configuration.
   late final pulumi.Output<String> arn;
   /// The ARN of the resource that you want Route 53 Resolver to send query logs.
   /// You can send query logs to an S3 bucket, a CloudWatch Logs log group, or a Kinesis Data Firehose delivery stream.
@@ -173,7 +173,7 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
           'aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
@@ -181,8 +181,8 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResolverQueryLogConfig] resource's state with the given [name] and [id].
@@ -190,11 +190,12 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverQueryLogConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverQueryLogConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,7 +215,26 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverQueryLogConfig] resource.
+  ResolverQueryLogConfig.reference(String urn)
+    : super(
+        'aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationArn = registerOutput<String>('destinationArn');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

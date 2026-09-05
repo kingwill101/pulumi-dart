@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GroupMembership resources.
 class GroupMembershipState {
   /// The IAM Group name to attach the list of `users` to
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The name to identify the Group Membership
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of IAM User names to associate with the Group
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [GroupMembershipState].
   /// [group] The IAM Group name to attach the list of `users` to

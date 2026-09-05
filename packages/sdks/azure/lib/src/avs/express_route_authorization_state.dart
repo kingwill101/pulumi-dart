@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ExpressRouteAuthorization resources.
 class ExpressRouteAuthorizationState {
   /// The ID of the Azure VMware Solution ExpressRoute Circuit Authorization.
-  final pulumi.Input<String>? expressRouteAuthorizationId;
+  final pulumi.Input<String?>? expressRouteAuthorizationId;
   /// The key of the Azure VMware Solution ExpressRoute Circuit Authorization.
-  final pulumi.Input<String>? expressRouteAuthorizationKey;
+  final pulumi.Input<String?>? expressRouteAuthorizationKey;
   /// The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
-  final pulumi.Input<String>? privateCloudId;
+  final pulumi.Input<String?>? privateCloudId;
 
   /// Creates a new [ExpressRouteAuthorizationState].
   /// [expressRouteAuthorizationId] The ID of the Azure VMware Solution ExpressRoute Circuit Authorization.

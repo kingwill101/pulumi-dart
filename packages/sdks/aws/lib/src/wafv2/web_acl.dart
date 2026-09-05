@@ -3,8 +3,10 @@ import 'web_acl_args.dart';
 import 'web_acl_association_config.dart';
 import 'web_acl_captcha_config.dart';
 import 'web_acl_challenge_config.dart';
+import 'web_acl_custom_response_body.dart';
 import 'web_acl_data_protection_config.dart';
 import 'web_acl_default_action.dart';
+import 'web_acl_rule.dart';
 import 'web_acl_state.dart';
 import 'web_acl_visibility_config.dart';
 
@@ -35,7 +37,7 @@ class WebAcl extends pulumi.CustomResource {
   /// Specifies how AWS WAF should handle Challenge evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challengeConfig` below for details.
   late final pulumi.Output<WebAclChallengeConfig?> challengeConfig;
   /// Defines custom response bodies that can be referenced by `customResponse` actions. See `customResponseBody` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customResponseBodies;
+  late final pulumi.Output<List<WebAclCustomResponseBody>?> customResponseBodies;
   /// Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `dataProtectionConfig` below for details.
   late final pulumi.Output<WebAclDataProtectionConfig?> dataProtectionConfig;
   /// Action to perform if none of the `rules` contained in the WebACL match. See `defaultAction` below for details.
@@ -52,7 +54,7 @@ class WebAcl extends pulumi.CustomResource {
   /// Raw JSON string to allow more than three nested statements. Conflicts with `rule` attribute. This is for advanced use cases where more than 3 levels of nested statements are required. **There is no drift detection at this time**. If you use this attribute instead of `rule`, you will be foregoing drift detection. Additionally, importing an existing web ACL into a configuration with `ruleJson` set will result in a one time in-place update as the remote rule configuration is initially written to the `rule` attribute. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_CreateWebACL.html) for the JSON structure.
   late final pulumi.Output<String?> ruleJson;
   /// **`rule` blocks in this resource have several known limitations.** Consider using `aws.wafv2.WebAclRule` to manage rules as separate resources instead. Rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See `rule` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<WebAclRule>?> rules;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
   /// Map of key-value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -76,7 +78,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:wafv2/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationIntegrationUrl = registerOutput<String>('applicationIntegrationUrl');
     arn = registerOutput<String>('arn');
@@ -84,7 +86,7 @@ class WebAcl extends pulumi.CustomResource {
     capacity = registerOutput<int>('capacity');
     captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     challengeConfig = registerOutput<WebAclChallengeConfig?>('challengeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customResponseBodies = registerOutput<List<Map<String, dynamic>>?>('customResponseBodies');
+    customResponseBodies = registerOutput<List<WebAclCustomResponseBody>?>('customResponseBodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclCustomResponseBody>(guardedValue, (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>())); });
     dataProtectionConfig = registerOutput<WebAclDataProtectionConfig?>('dataProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDataProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
@@ -93,11 +95,11 @@ class WebAcl extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     ruleJson = registerOutput<String?>('ruleJson');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tokenDomains = registerOutput<List<String>?>('tokenDomains');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tokenDomains = registerOutput<List<String>?>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     visibilityConfig = registerOutput<WebAclVisibilityConfig>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -106,11 +108,12 @@ class WebAcl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAcl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -130,7 +133,7 @@ class WebAcl extends pulumi.CustomResource {
     capacity = registerOutput<int>('capacity');
     captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     challengeConfig = registerOutput<WebAclChallengeConfig?>('challengeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customResponseBodies = registerOutput<List<Map<String, dynamic>>?>('customResponseBodies');
+    customResponseBodies = registerOutput<List<WebAclCustomResponseBody>?>('customResponseBodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclCustomResponseBody>(guardedValue, (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>())); });
     dataProtectionConfig = registerOutput<WebAclDataProtectionConfig?>('dataProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDataProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
@@ -139,11 +142,43 @@ class WebAcl extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     ruleJson = registerOutput<String?>('ruleJson');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tokenDomains = registerOutput<List<String>?>('tokenDomains');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tokenDomains = registerOutput<List<String>?>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    visibilityConfig = registerOutput<WebAclVisibilityConfig>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [WebAcl] resource.
+  WebAcl.reference(String urn)
+    : super(
+        'aws:wafv2/webAcl:WebAcl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationIntegrationUrl = registerOutput<String>('applicationIntegrationUrl');
+    arn = registerOutput<String>('arn');
+    associationConfig = registerOutput<WebAclAssociationConfig?>('associationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclAssociationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacity = registerOutput<int>('capacity');
+    captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    challengeConfig = registerOutput<WebAclChallengeConfig?>('challengeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customResponseBodies = registerOutput<List<WebAclCustomResponseBody>?>('customResponseBodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclCustomResponseBody>(guardedValue, (value) => WebAclCustomResponseBody.fromMap((value as Map).cast<String, dynamic>())); });
+    dataProtectionConfig = registerOutput<WebAclDataProtectionConfig?>('dataProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDataProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    lockToken = registerOutput<String>('lockToken');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    ruleJson = registerOutput<String?>('ruleJson');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tokenDomains = registerOutput<List<String>?>('tokenDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     visibilityConfig = registerOutput<WebAclVisibilityConfig>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

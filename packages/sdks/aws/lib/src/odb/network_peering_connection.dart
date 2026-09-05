@@ -199,7 +199,7 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
           'aws:odb/networkPeeringConnection:NetworkPeeringConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -208,14 +208,14 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     odbNetworkId = registerOutput<String>('odbNetworkId');
     odbPeeringConnectionType = registerOutput<String>('odbPeeringConnectionType');
     peerNetworkArn = registerOutput<String>('peerNetworkArn');
-    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs');
+    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peerNetworkId = registerOutput<String>('peerNetworkId');
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPeeringConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -224,11 +224,12 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkPeeringConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkPeeringConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,14 +250,41 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     odbNetworkId = registerOutput<String>('odbNetworkId');
     odbPeeringConnectionType = registerOutput<String>('odbPeeringConnectionType');
     peerNetworkArn = registerOutput<String>('peerNetworkArn');
-    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs');
+    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peerNetworkId = registerOutput<String>('peerNetworkId');
     percentProgress = registerOutput<double>('percentProgress');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPeeringConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkPeeringConnection] resource.
+  NetworkPeeringConnection.reference(String urn)
+    : super(
+        'aws:odb/networkPeeringConnection:NetworkPeeringConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    displayName = registerOutput<String>('displayName');
+    odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    odbNetworkId = registerOutput<String>('odbNetworkId');
+    odbPeeringConnectionType = registerOutput<String>('odbPeeringConnectionType');
+    peerNetworkArn = registerOutput<String>('peerNetworkArn');
+    peerNetworkCidrs = registerOutput<List<String>>('peerNetworkCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    peerNetworkId = registerOutput<String>('peerNetworkId');
+    percentProgress = registerOutput<double>('percentProgress');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPeeringConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

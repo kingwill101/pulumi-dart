@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LinkAssociation resources.
 class LinkAssociationState {
   /// ID of the device.
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// ID of the global network.
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// ID of the link.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
 
   /// Creates a new [LinkAssociationState].
   /// [deviceId] ID of the device.

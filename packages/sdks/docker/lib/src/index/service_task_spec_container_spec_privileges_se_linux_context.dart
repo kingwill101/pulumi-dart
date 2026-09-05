@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext {
   /// Disable SELinux
-  final pulumi.Input<bool>? disable;
+  final pulumi.Input<bool?>? disable;
   /// SELinux level label
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// SELinux role label
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// SELinux type label
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// SELinux user label
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext].
   /// [disable] Disable SELinux

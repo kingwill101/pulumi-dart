@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogCatalogPropertiesIcebergOptimizationProperties {
   /// Map of key-value pairs for compaction settings.
-  final pulumi.Input<Map<String, String>>? compaction;
+  final pulumi.Input<Map<String, String>?>? compaction;
   /// Map of key-value pairs for orphan file deletion settings.
-  final pulumi.Input<Map<String, String>>? orphanFileDeletion;
+  final pulumi.Input<Map<String, String>?>? orphanFileDeletion;
   /// Map of key-value pairs for retention settings.
-  final pulumi.Input<Map<String, String>>? retention;
+  final pulumi.Input<Map<String, String>?>? retention;
   /// ARN of the IAM role for Iceberg optimization.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [CatalogCatalogPropertiesIcebergOptimizationProperties].
   /// [compaction] Map of key-value pairs for compaction settings.

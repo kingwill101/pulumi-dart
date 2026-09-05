@@ -7,7 +7,7 @@ class StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExport
   /// Whether S3 Storage Lens export to S3 tables is enabled.
   final pulumi.Input<bool> enabled;
   /// Encryption of the metrics exports in this S3 tables bucket. See `encryption` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportStorageLensTableDestinationEncryption>? encryption;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportStorageLensTableDestinationEncryption?>? encryption;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportStorageLensTableDestination].
   /// [enabled] Whether S3 Storage Lens export to S3 tables is enabled.

@@ -69,7 +69,7 @@ class GetBackupsBackupSummary {
       backupCreationDateTime: pulumi.Input.fromValue(map['backupCreationDateTime'] as String),
       backupExpiryDateTime: pulumi.Input.fromValue(map['backupExpiryDateTime'] as String),
       backupName: pulumi.Input.fromValue(map['backupName'] as String),
-      backupSizeBytes: pulumi.Input.fromValue(map['backupSizeBytes'] as int),
+      backupSizeBytes: pulumi.Input.fromValue((map['backupSizeBytes'] as num).toInt()),
       backupStatus: pulumi.Input.fromValue(map['backupStatus'] as String),
       backupType: pulumi.Input.fromValue(map['backupType'] as String),
       tableArn: pulumi.Input.fromValue(map['tableArn'] as String),

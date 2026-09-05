@@ -29,8 +29,8 @@ class ScheduledQueryRulesAlertV2CriteriaFailingPeriods {
 
   factory ScheduledQueryRulesAlertV2CriteriaFailingPeriods.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2CriteriaFailingPeriods(
-      minimumFailingPeriodsToTriggerAlert: pulumi.Input.fromValue(map['minimumFailingPeriodsToTriggerAlert'] as int),
-      numberOfEvaluationPeriods: pulumi.Input.fromValue(map['numberOfEvaluationPeriods'] as int),
+      minimumFailingPeriodsToTriggerAlert: pulumi.Input.fromValue((map['minimumFailingPeriodsToTriggerAlert'] as num).toInt()),
+      numberOfEvaluationPeriods: pulumi.Input.fromValue((map['numberOfEvaluationPeriods'] as num).toInt()),
     );
   }
 }

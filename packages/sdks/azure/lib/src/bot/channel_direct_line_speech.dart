@@ -348,11 +348,12 @@ class ChannelDirectLineSpeech extends pulumi.CustomResource {
           'azure:bot/channelDirectLineSpeech:ChannelDirectLineSpeech',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['cognitiveServiceAccessKey'],
         ) {
     botName = registerOutput<String>('botName');
     cognitiveAccountId = registerOutput<String?>('cognitiveAccountId');
-    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey');
+    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey', isSecret: true);
     cognitiveServiceLocation = registerOutput<String?>('cognitiveServiceLocation');
     customSpeechModelId = registerOutput<String?>('customSpeechModelId');
     customVoiceDeploymentId = registerOutput<String?>('customVoiceDeploymentId');
@@ -365,11 +366,12 @@ class ChannelDirectLineSpeech extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelDirectLineSpeechState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelDirectLineSpeech._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -385,7 +387,27 @@ class ChannelDirectLineSpeech extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     cognitiveAccountId = registerOutput<String?>('cognitiveAccountId');
-    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey');
+    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey', isSecret: true);
+    cognitiveServiceLocation = registerOutput<String?>('cognitiveServiceLocation');
+    customSpeechModelId = registerOutput<String?>('customSpeechModelId');
+    customVoiceDeploymentId = registerOutput<String?>('customVoiceDeploymentId');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ChannelDirectLineSpeech] resource.
+  ChannelDirectLineSpeech.reference(String urn)
+    : super(
+        'azure:bot/channelDirectLineSpeech:ChannelDirectLineSpeech',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['cognitiveServiceAccessKey'],
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    cognitiveAccountId = registerOutput<String?>('cognitiveAccountId');
+    cognitiveServiceAccessKey = registerOutput<String?>('cognitiveServiceAccessKey', isSecret: true);
     cognitiveServiceLocation = registerOutput<String?>('cognitiveServiceLocation');
     customSpeechModelId = registerOutput<String?>('customSpeechModelId');
     customVoiceDeploymentId = registerOutput<String?>('customVoiceDeploymentId');

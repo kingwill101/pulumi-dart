@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
+import 'endpoint_custom_dns_config.dart';
+import 'endpoint_ip_configuration.dart';
+import 'endpoint_network_interface.dart';
+import 'endpoint_private_dns_zone_config.dart';
 import 'endpoint_private_dns_zone_group.dart';
 import 'endpoint_private_service_connection.dart';
 import 'endpoint_state.dart';
@@ -323,7 +327,7 @@ import 'endpoint_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              examplePublicIp.Name,
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -338,13 +342,13 @@ import 'endpoint_state.dart';
 /// 				&privatedns.LinkServiceNatIpConfigurationArgs{
 /// 					Name:     examplePublicIp.Name,
 /// 					Primary:  pulumi.Bool(true),
-/// 					SubnetId: service.ID(),
+/// 					SubnetId: service.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
-/// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
+/// 				exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
 /// 					return frontendIpConfigurations[0].Id, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -354,10 +358,10 @@ import 'endpoint_state.dart';
 /// 			Name:              pulumi.String("example-endpoint"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			SubnetId:          endpoint.ID(),
+/// 			SubnetId:          endpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateServiceConnection: &privatelink.EndpointPrivateServiceConnectionArgs{
 /// 				Name:                        pulumi.String("example-privateserviceconnection"),
-/// 				PrivateConnectionResourceId: exampleLinkService.ID(),
+/// 				PrivateConnectionResourceId: exampleLinkService.ID().ToIDOutput().ToStringOutput(),
 /// 				IsManualConnection:          pulumi.Bool(false),
 /// 			},
 /// 		})
@@ -1167,10 +1171,10 @@ import 'endpoint_state.dart';
 /// 			Name:              pulumi.String("example-endpoint"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateServiceConnection: &privatelink.EndpointPrivateServiceConnectionArgs{
 /// 				Name:                        pulumi.String("example-privateserviceconnection"),
-/// 				PrivateConnectionResourceId: exampleAccount.ID(),
+/// 				PrivateConnectionResourceId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 				SubresourceNames: pulumi.StringArray{
 /// 					pulumi.String("blob"),
 /// 				},
@@ -1179,7 +1183,7 @@ import 'endpoint_state.dart';
 /// 			PrivateDnsZoneGroup: &privatelink.EndpointPrivateDnsZoneGroupArgs{
 /// 				Name: pulumi.String("example-dns-zone-group"),
 /// 				PrivateDnsZoneIds: pulumi.StringArray{
-/// 					exampleZone.ID(),
+/// 					exampleZone.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1190,7 +1194,7 @@ import 'endpoint_state.dart';
 /// 			Name:               pulumi.String("example-link"),
 /// 			ResourceGroupName:  example.Name,
 /// 			PrivateDnsZoneName: exampleZone.Name,
-/// 			VirtualNetworkId:   exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:   exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1448,19 +1452,21 @@ import 'endpoint_state.dart';
 /// ```
 class Endpoint extends pulumi.CustomResource {
   /// A `customDnsConfigs` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> customDnsConfigs;
+  late final pulumi.Output<List<EndpointCustomDnsConfig>> customDnsConfigs;
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> customNetworkInterfaceName;
+  /// Specifies the Edge Zone within the Azure Region where this Private Endpoint should exist. Changing this forces a new resource to be created.
+  late final pulumi.Output<String?> edgeZone;
   /// One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+  late final pulumi.Output<List<EndpointIpConfiguration>?> ipConfigurations;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A `networkInterface` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<EndpointNetworkInterface>> networkInterfaces;
   /// A `privateDnsZoneConfigs` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateDnsZoneConfigs;
+  late final pulumi.Output<List<EndpointPrivateDnsZoneConfig>> privateDnsZoneConfigs;
   /// A `privateDnsZoneGroup` block as defined below.
   late final pulumi.Output<EndpointPrivateDnsZoneGroup?> privateDnsZoneGroup;
   /// A `privateServiceConnection` block as defined below.
@@ -1484,20 +1490,21 @@ class Endpoint extends pulumi.CustomResource {
           'azure:privatelink/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    customDnsConfigs = registerOutput<List<Map<String, dynamic>>>('customDnsConfigs');
+    customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointCustomDnsConfig>(guardedValue, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
+    edgeZone = registerOutput<String?>('edgeZone');
+    ipConfigurations = registerOutput<List<EndpointIpConfiguration>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointIpConfiguration>(guardedValue, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
-    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>>('privateDnsZoneConfigs');
+    networkInterfaces = registerOutput<List<EndpointNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointNetworkInterface>(guardedValue, (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDnsZoneConfigs = registerOutput<List<EndpointPrivateDnsZoneConfig>>('privateDnsZoneConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPrivateDnsZoneConfig>(guardedValue, (value) => EndpointPrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>())); });
     privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>('privateDnsZoneGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateDnsZoneGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>('privateServiceConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateServiceConnection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Endpoint] resource's state with the given [name] and [id].
@@ -1505,11 +1512,12 @@ class Endpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Endpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1523,17 +1531,42 @@ class Endpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    customDnsConfigs = registerOutput<List<Map<String, dynamic>>>('customDnsConfigs');
+    customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointCustomDnsConfig>(guardedValue, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
+    edgeZone = registerOutput<String?>('edgeZone');
+    ipConfigurations = registerOutput<List<EndpointIpConfiguration>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointIpConfiguration>(guardedValue, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
-    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>>('privateDnsZoneConfigs');
+    networkInterfaces = registerOutput<List<EndpointNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointNetworkInterface>(guardedValue, (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDnsZoneConfigs = registerOutput<List<EndpointPrivateDnsZoneConfig>>('privateDnsZoneConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPrivateDnsZoneConfig>(guardedValue, (value) => EndpointPrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>())); });
     privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>('privateDnsZoneGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateDnsZoneGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>('privateServiceConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateServiceConnection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'azure:privatelink/endpoint:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointCustomDnsConfig>(guardedValue, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
+    edgeZone = registerOutput<String?>('edgeZone');
+    ipConfigurations = registerOutput<List<EndpointIpConfiguration>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointIpConfiguration>(guardedValue, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<EndpointNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointNetworkInterface>(guardedValue, (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDnsZoneConfigs = registerOutput<List<EndpointPrivateDnsZoneConfig>>('privateDnsZoneConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPrivateDnsZoneConfig>(guardedValue, (value) => EndpointPrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>('privateDnsZoneGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateDnsZoneGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>('privateServiceConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPrivateServiceConnection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

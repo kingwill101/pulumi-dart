@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TargetGroupAttachment resources.
 class TargetGroupAttachmentState {
   /// The Availability Zone where the IP address of the target is to be registered. If the private IP address is outside of the VPC scope, this value must be set to `all`.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The port on which targets receive traffic.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Server ID for the targets, consisting of the 0x prefix followed by 16 hexadecimal characters. The value must be unique at the listener level. Required if `aws.lb.TargetGroup` protocol is `QUIC` or `TCP_QUIC`. Not valid with other protocols. Forces replacement if modified.
-  final pulumi.Input<String>? quicServerId;
+  final pulumi.Input<String?>? quicServerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the target group with which to register targets.
-  final pulumi.Input<String>? targetGroupArn;
+  final pulumi.Input<String?>? targetGroupArn;
   /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is `ip`, specify an IP address. If the target type is `lambda`, specify the Lambda function ARN. If the target type is `alb`, specify the ALB ARN.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [TargetGroupAttachmentState].
   /// [availabilityZone] The Availability Zone where the IP address of the target is to be registered. If the private IP address is outside of the VPC scope, this value must be set to `all`.
@@ -49,7 +49,7 @@ class TargetGroupAttachmentState {
   factory TargetGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentState(
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       quicServerId: (() { final guardedValue = map['quicServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetGroupArn: (() { final guardedValue = map['targetGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

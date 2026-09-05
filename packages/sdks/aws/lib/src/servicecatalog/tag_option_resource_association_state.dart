@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TagOptionResourceAssociation resources.
 class TagOptionResourceAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the resource.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Creation time of the resource.
-  final pulumi.Input<String>? resourceCreatedTime;
+  final pulumi.Input<String?>? resourceCreatedTime;
   /// Description of the resource.
-  final pulumi.Input<String>? resourceDescription;
+  final pulumi.Input<String?>? resourceDescription;
   /// Resource identifier.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Description of the resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Tag Option identifier.
-  final pulumi.Input<String>? tagOptionId;
+  final pulumi.Input<String?>? tagOptionId;
 
   /// Creates a new [TagOptionResourceAssociationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

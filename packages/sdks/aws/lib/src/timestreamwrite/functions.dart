@@ -124,6 +124,17 @@ Future<GetDatabaseResult> getDatabase(
   return GetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:timestreamwrite/getDatabase:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
+}
+
 /// Data source for managing an AWS Timestream Write Table.
 ///
 /// ## Example Usage
@@ -249,4 +260,15 @@ Future<GetTableResult> getTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:timestreamwrite/getTable:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
 }

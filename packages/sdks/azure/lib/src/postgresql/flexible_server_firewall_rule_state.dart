@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FlexibleServerFirewallRule resources.
 class FlexibleServerFirewallRuleState {
   /// The IPv4 Address defining the end of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// The name which should be used for this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// The IPv4 Address defining the start of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
 
   /// Creates a new [FlexibleServerFirewallRuleState].
   /// [endIpAddress] The IPv4 Address defining the end of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.

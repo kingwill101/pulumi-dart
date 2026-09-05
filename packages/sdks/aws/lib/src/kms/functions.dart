@@ -134,6 +134,17 @@ Future<GetAliasResult> getAlias(
   return GetAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetAliasResult> getAliasOutput(
+  GetAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getAlias:getAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAliasResult.fromMap);
+}
+
 /// The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
 /// by using an AWS KMS customer master key. The value returned by this data source
 /// changes every apply. For a stable ciphertext value, see the `aws.kms.Ciphertext`
@@ -319,6 +330,17 @@ Future<GetCipherTextResult> getCipherText(
   return GetCipherTextResult.fromMap(result);
 }
 
+pulumi.Output<GetCipherTextResult> getCipherTextOutput(
+  GetCipherTextArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getCipherText:getCipherText',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCipherTextResult.fromMap);
+}
+
 /// Use this data source to get the metadata KMS custom key store.
 /// By using this data source, you can reference KMS custom key store
 /// without having to hard code the ID as input.
@@ -437,6 +459,17 @@ Future<GetCustomKeyStoreResult> getCustomKeyStore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomKeyStoreResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomKeyStoreResult> getCustomKeyStoreOutput(
+  GetCustomKeyStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getCustomKeyStore:getCustomKeyStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomKeyStoreResult.fromMap);
 }
 
 /// Use this data source to get detailed information about
@@ -641,6 +674,17 @@ Future<GetKeyResult> getKey(
   return GetKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getKey:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
+}
+
 /// Use this data source to get the public key about the specified KMS Key with flexible key id input. This can be useful to reference key alias without having to hard code the ARN as input.
 ///
 /// ## Example Usage
@@ -840,6 +884,17 @@ Future<GetPublicKeyResult> getPublicKey(
   return GetPublicKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicKeyResult> getPublicKeyOutput(
+  GetPublicKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getPublicKey:getPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicKeyResult.fromMap);
+}
+
 /// &gt; **WARNING:** This data source's functionality was removed in version 2.0.0 of the AWS Provider. You can migrate existing configurations to the `aws.kms.getSecrets` data source following instructions available in the Version 2 Upgrade Guide. This data source will be removed in a future version.
 /// [args] Arguments passed to this invoke. {@macro pulumi_kms_get_secret_get_secret_args_doc}
 /// [options] Invoke options controlling this call.
@@ -854,6 +909,17 @@ Future<GetSecretResult> getSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getSecret:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
 }
 
 /// Decrypt multiple secrets from data encrypted with the AWS KMS service.
@@ -887,4 +953,15 @@ Future<GetSecretsResult> getSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretsResult> getSecretsOutput(
+  GetSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kms/getSecrets:getSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsResult.fromMap);
 }

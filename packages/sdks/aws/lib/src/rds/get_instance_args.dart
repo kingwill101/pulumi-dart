@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rds_get_instance_get_instance_args_doc}
 class GetInstanceArgs {
   /// Name of the RDS instance.
-  final pulumi.Input<String>? dbInstanceIdentifier;
+  final pulumi.Input<String?>? dbInstanceIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetInstanceArgs].
   /// [dbInstanceIdentifier] Name of the RDS instance.

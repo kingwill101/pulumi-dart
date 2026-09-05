@@ -6,11 +6,11 @@ import 'channel_encoder_settings_output_group_output_group_settings_archive_grou
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
   /// Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings>? archiveCdnSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings?>? archiveCdnSettings;
   /// A director and base filename where archive files should be written. See Destination for more details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination> destination;
   /// Number of seconds to write to archive file before closing and starting a new one.
-  final pulumi.Input<int>? rolloverInterval;
+  final pulumi.Input<int?>? rolloverInterval;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting].
   /// [archiveCdnSettings] Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
@@ -34,7 +34,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
       archiveCdnSettings: (() { final guardedValue = map['archiveCdnSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
-      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

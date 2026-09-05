@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainConfigurationAuthorizerConfig {
   /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
-  final pulumi.Input<bool>? allowAuthorizerOverride;
+  final pulumi.Input<bool?>? allowAuthorizerOverride;
   /// The name of the authorization service for a domain configuration.
-  final pulumi.Input<String>? defaultAuthorizerName;
+  final pulumi.Input<String?>? defaultAuthorizerName;
 
   /// Creates a new [DomainConfigurationAuthorizerConfig].
   /// [allowAuthorizerOverride] A Boolean that specifies whether the domain configuration's authorization service can be overridden.

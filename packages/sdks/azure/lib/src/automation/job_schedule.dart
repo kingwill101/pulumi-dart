@@ -206,11 +206,11 @@ class JobSchedule extends pulumi.CustomResource {
           'azure:automation/jobSchedule:JobSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     jobScheduleId = registerOutput<String>('jobScheduleId');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     runOn = registerOutput<String?>('runOn');
@@ -223,11 +223,12 @@ class JobSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -243,7 +244,26 @@ class JobSchedule extends pulumi.CustomResource {
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     jobScheduleId = registerOutput<String>('jobScheduleId');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    runOn = registerOutput<String?>('runOn');
+    runbookName = registerOutput<String>('runbookName');
+    scheduleName = registerOutput<String>('scheduleName');
+  }
+
+  /// Creates a typed reference to an existing [JobSchedule] resource.
+  JobSchedule.reference(String urn)
+    : super(
+        'azure:automation/jobSchedule:JobSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    jobScheduleId = registerOutput<String>('jobScheduleId');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     runOn = registerOutput<String?>('runOn');

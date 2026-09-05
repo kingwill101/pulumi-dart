@@ -8,9 +8,9 @@ class HubEventListener {
   /// Specifies the event hub namespace name to receive the events.
   final pulumi.Input<String> eventhubNamespaceName;
   /// Specifies the list of system events. Supported values are `connected` and `disconnected`.
-  final pulumi.Input<List<String>>? systemEventNameFilters;
+  final pulumi.Input<List<String>?>? systemEventNameFilters;
   /// Specifies the list of matching user event names. `["*"]` can be used to match all events.
-  final pulumi.Input<List<String>>? userEventNameFilters;
+  final pulumi.Input<List<String>?>? userEventNameFilters;
 
   /// Creates a new [HubEventListener].
   /// [eventhubName] Specifies the event hub name to receive the events.

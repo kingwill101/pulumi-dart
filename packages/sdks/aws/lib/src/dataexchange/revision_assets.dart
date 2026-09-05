@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'revision_assets_args.dart';
+import 'revision_assets_asset.dart';
 import 'revision_assets_state.dart';
 import 'revision_assets_timeouts.dart';
 
@@ -17,7 +18,6 @@ import 'revision_assets_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dataexchange.RevisionAssets("example", {
-///     dataSetId: "example-data-set-id",
 ///     assets: [{
 ///         createS3DataAccessFromS3Bucket: {
 ///             assetSource: {
@@ -25,6 +25,7 @@ import 'revision_assets_timeouts.dart';
 ///             },
 ///         },
 ///     }],
+///     dataSetId: "example-data-set-id",
 ///     tags: {
 ///         Environment: "Production",
 ///     },
@@ -35,7 +36,6 @@ import 'revision_assets_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dataexchange.RevisionAssets("example",
-///     data_set_id="example-data-set-id",
 ///     assets=[{
 ///         "create_s3_data_access_from_s3_bucket": {
 ///             "asset_source": {
@@ -43,6 +43,7 @@ import 'revision_assets_timeouts.dart';
 ///             },
 ///         },
 ///     }],
+///     data_set_id="example-data-set-id",
 ///     tags={
 ///         "Environment": "Production",
 ///     })
@@ -57,7 +58,6 @@ import 'revision_assets_timeouts.dart';
 /// {
 ///     var example = new Aws.DataExchange.RevisionAssets("example", new()
 ///     {
-///         DataSetId = "example-data-set-id",
 ///         Assets = new[]
 ///         {
 ///             new Aws.DataExchange.Inputs.RevisionAssetsAssetArgs
@@ -71,6 +71,7 @@ import 'revision_assets_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         DataSetId = "example-data-set-id",
 ///         Tags =
 ///         {
 ///             { "Environment", "Production" },
@@ -90,7 +91,6 @@ import 'revision_assets_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataexchange.NewRevisionAssets(ctx, "example", &dataexchange.RevisionAssetsArgs{
-/// 			DataSetId: pulumi.String("example-data-set-id"),
 /// 			Assets: dataexchange.RevisionAssetsAssetArray{
 /// 				&dataexchange.RevisionAssetsAssetArgs{
 /// 					CreateS3DataAccessFromS3Bucket: &dataexchange.RevisionAssetsAssetCreateS3DataAccessFromS3BucketArgs{
@@ -100,6 +100,7 @@ import 'revision_assets_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			DataSetId: pulumi.String("example-data-set-id"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Production"),
 /// 			},
@@ -121,7 +122,6 @@ import 'revision_assets_timeouts.dart';
 /// }
 ///
 /// resource "aws_dataexchange_revisionassets" "example" {
-///   data_set_id = "example-data-set-id"
 ///   assets {
 ///     create_s3_data_access_from_s3_bucket = {
 ///       asset_source = {
@@ -129,6 +129,7 @@ import 'revision_assets_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   data_set_id = "example-data-set-id"
 ///   tags = {
 ///     "Environment" = "Production"
 ///   }
@@ -159,7 +160,6 @@ import 'revision_assets_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RevisionAssets("example", RevisionAssetsArgs.builder()
-///             .dataSetId("example-data-set-id")
 ///             .assets(RevisionAssetsAssetArgs.builder()
 ///                 .createS3DataAccessFromS3Bucket(RevisionAssetsAssetCreateS3DataAccessFromS3BucketArgs.builder()
 ///                     .assetSource(RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceArgs.builder()
@@ -167,6 +167,7 @@ import 'revision_assets_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .dataSetId("example-data-set-id")
 ///             .tags(Map.of("Environment", "Production"))
 ///             .build());
 ///
@@ -178,11 +179,11 @@ import 'revision_assets_timeouts.dart';
 ///   example:
 ///     type: aws:dataexchange:RevisionAssets
 ///     properties:
-///       dataSetId: example-data-set-id
 ///       assets:
 ///         - createS3DataAccessFromS3Bucket:
 ///             assetSource:
 ///               bucket: example-bucket
+///       dataSetId: example-data-set-id
 ///       tags:
 ///         Environment: Production
 /// ```
@@ -192,7 +193,7 @@ class RevisionAssets extends pulumi.CustomResource {
   /// A block to define the asset associated with the revision. See Asset for more details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> assets;
+  late final pulumi.Output<List<RevisionAssetsAsset>?> assets;
   /// A comment for the revision. Maximum length is 16,348 characters.
   late final pulumi.Output<String?> comment;
   /// The timestamp when the revision was created, in RFC3339 format.
@@ -223,18 +224,18 @@ class RevisionAssets extends pulumi.CustomResource {
           'aws:dataexchange/revisionAssets:RevisionAssets',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    assets = registerOutput<List<Map<String, dynamic>>?>('assets');
+    assets = registerOutput<List<RevisionAssetsAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RevisionAssetsAsset>(guardedValue, (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>())); });
     comment = registerOutput<String?>('comment');
     createdAt = registerOutput<String>('createdAt');
     dataSetId = registerOutput<String>('dataSetId');
     finalized = registerOutput<bool>('finalized');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevisionAssetsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -244,11 +245,12 @@ class RevisionAssets extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RevisionAssetsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RevisionAssets._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,15 +265,38 @@ class RevisionAssets extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    assets = registerOutput<List<Map<String, dynamic>>?>('assets');
+    assets = registerOutput<List<RevisionAssetsAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RevisionAssetsAsset>(guardedValue, (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>())); });
     comment = registerOutput<String?>('comment');
     createdAt = registerOutput<String>('createdAt');
     dataSetId = registerOutput<String>('dataSetId');
     finalized = registerOutput<bool>('finalized');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevisionAssetsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [RevisionAssets] resource.
+  RevisionAssets.reference(String urn)
+    : super(
+        'aws:dataexchange/revisionAssets:RevisionAssets',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assets = registerOutput<List<RevisionAssetsAsset>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RevisionAssetsAsset>(guardedValue, (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>())); });
+    comment = registerOutput<String?>('comment');
+    createdAt = registerOutput<String>('createdAt');
+    dataSetId = registerOutput<String>('dataSetId');
+    finalized = registerOutput<bool>('finalized');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevisionAssetsTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }

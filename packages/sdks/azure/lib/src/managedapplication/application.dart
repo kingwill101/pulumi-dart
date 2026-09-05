@@ -257,17 +257,17 @@ import 'application_state.dart';
 /// ResourceGroupName: example.Name,
 /// Kind: pulumi.String("ServiceCatalog"),
 /// ManagedResourceGroupName: pulumi.String("infrastructureGroup"),
-/// ApplicationDefinitionId: exampleDefinition.ID(),
+/// ApplicationDefinitionId: exampleDefinition.ID().ToIDOutput().ToStringOutput(),
 /// ParameterValues: example.Location.ApplyT(func(location string) (pulumi.String, error) {
 /// var _zero pulumi.String
-/// tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// "location": map[string]interface{}{
+/// tmpJSON0, err := json.Marshal(map[string]map[string]string{
+/// "location": map[string]string{
 /// "value": location,
 /// },
-/// "storageAccountNamePrefix": map[string]interface{}{
+/// "storageAccountNamePrefix": map[string]string{
 /// "value": "storeNamePrefix",
 /// },
-/// "storageAccountType": map[string]interface{}{
+/// "storageAccountType": map[string]string{
 /// "value": "Standard_LRS",
 /// },
 /// })
@@ -477,18 +477,18 @@ class Application extends pulumi.CustomResource {
           'azure:managedapplication/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<Map<String, String>>('outputs');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     parameterValues = registerOutput<String>('parameterValues');
     plan = registerOutput<ApplicationPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -496,11 +496,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -519,10 +520,31 @@ class Application extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     this.name = registerOutput<String>('name');
-    outputs = registerOutput<Map<String, String>>('outputs');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     parameterValues = registerOutput<String>('parameterValues');
     plan = registerOutput<ApplicationPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure:managedapplication/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    this.name = registerOutput<String>('name');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    parameterValues = registerOutput<String>('parameterValues');
+    plan = registerOutput<ApplicationPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -226,7 +226,7 @@ class Lab extends pulumi.CustomResource {
           'azure:devtest/lab:Lab',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     artifactsStorageAccountId = registerOutput<String>('artifactsStorageAccountId');
     defaultPremiumStorageAccountId = registerOutput<String>('defaultPremiumStorageAccountId');
@@ -236,7 +236,7 @@ class Lab extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     premiumDataDiskStorageAccountId = registerOutput<String>('premiumDataDiskStorageAccountId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 
@@ -245,11 +245,12 @@ class Lab extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LabState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Lab._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -271,7 +272,28 @@ class Lab extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     premiumDataDiskStorageAccountId = registerOutput<String>('premiumDataDiskStorageAccountId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [Lab] resource.
+  Lab.reference(String urn)
+    : super(
+        'azure:devtest/lab:Lab',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    artifactsStorageAccountId = registerOutput<String>('artifactsStorageAccountId');
+    defaultPremiumStorageAccountId = registerOutput<String>('defaultPremiumStorageAccountId');
+    defaultStorageAccountId = registerOutput<String>('defaultStorageAccountId');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    premiumDataDiskStorageAccountId = registerOutput<String>('premiumDataDiskStorageAccountId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

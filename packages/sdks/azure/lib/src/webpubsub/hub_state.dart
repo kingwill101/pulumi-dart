@@ -8,19 +8,19 @@ import 'hub_event_listener.dart';
 class HubState {
   /// Is anonymous connections are allowed for this hub? Defaults to `false`.
   /// Possible values are `true`, `false`.
-  final pulumi.Input<bool>? anonymousConnectionsEnabled;
+  final pulumi.Input<bool?>? anonymousConnectionsEnabled;
   /// An `eventHandler` block as defined below.
   ///
   /// &gt; **Note:** User can change the order of `eventHandler` to change the priority accordingly.
-  final pulumi.Input<List<HubEventHandler>>? eventHandlers;
+  final pulumi.Input<List<HubEventHandler>?>? eventHandlers;
   /// An `eventListener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
-  final pulumi.Input<List<HubEventListener>>? eventListeners;
+  final pulumi.Input<List<HubEventListener>?>? eventListeners;
   /// The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webPubsubId;
+  final pulumi.Input<String?>? webPubsubId;
 
   /// Creates a new [HubState].
   /// [anonymousConnectionsEnabled] Is anonymous connections are allowed for this hub? Defaults to `false`.

@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_neptune_get_orderable_db_instance_get_orderable_db_instance_args_doc}
 class GetOrderableDbInstanceArgs {
   /// DB engine. (Default: `neptune`)
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Version of the DB engine. For example, `1.0.1.0`, `1.0.1.2`, `1.0.2.2`, and `1.0.3.0`.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// DB instance class. Examples of classes are `db.r5.large`, `db.r5.xlarge`, `db.r4.large`, `db.r5.4xlarge`, `db.r5.12xlarge`, `db.r4.xlarge`, and `db.t3.medium`.
-  final pulumi.Input<String>? instanceClass;
+  final pulumi.Input<String?>? instanceClass;
   /// License model. (Default: `amazon-license`)
-  final pulumi.Input<String>? licenseModel;
+  final pulumi.Input<String?>? licenseModel;
   /// Ordered list of preferred Neptune DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
-  final pulumi.Input<List<String>>? preferredInstanceClasses;
+  final pulumi.Input<List<String>?>? preferredInstanceClasses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Enable to show only VPC offerings.
-  final pulumi.Input<bool>? vpc;
+  final pulumi.Input<bool?>? vpc;
 
   /// Creates a new [GetOrderableDbInstanceArgs].
   /// [engine] DB engine. (Default: `neptune`)

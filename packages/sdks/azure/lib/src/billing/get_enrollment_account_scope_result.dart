@@ -3,34 +3,34 @@
 
 /// Result data returned by getEnrollmentAccountScope.
 class GetEnrollmentAccountScopeResult {
-  final String billingAccountName;
-  final String enrollmentAccountName;
+  final String? billingAccountName;
+  final String? enrollmentAccountName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
 
   /// Creates a new [GetEnrollmentAccountScopeResult].
-  /// [billingAccountName] Required.
-  /// [enrollmentAccountName] Required.
+  /// [billingAccountName] Optional.
+  /// [enrollmentAccountName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   const GetEnrollmentAccountScopeResult({
-    required this.billingAccountName,
-    required this.enrollmentAccountName,
-    required this.id,
+    this.billingAccountName,
+    this.enrollmentAccountName,
+    this.id,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'billingAccountName': billingAccountName,
-      'enrollmentAccountName': enrollmentAccountName,
-      'id': id,
+      'billingAccountName': ?billingAccountName,
+      'enrollmentAccountName': ?enrollmentAccountName,
+      'id': ?id,
     };
   }
 
   factory GetEnrollmentAccountScopeResult.fromMap(Map<String, dynamic> map) {
     return GetEnrollmentAccountScopeResult(
-      billingAccountName: map['billingAccountName'] as String,
-      enrollmentAccountName: map['enrollmentAccountName'] as String,
-      id: map['id'] as String,
+      billingAccountName: (() { final guardedValue = map['billingAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enrollmentAccountName: (() { final guardedValue = map['enrollmentAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

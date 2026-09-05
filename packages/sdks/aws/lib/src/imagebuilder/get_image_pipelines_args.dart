@@ -9,9 +9,9 @@ import 'get_image_pipelines_filter.dart';
 /// {@macro pulumi_imagebuilder_get_image_pipelines_get_image_pipelines_args_doc}
 class GetImagePipelinesArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetImagePipelinesFilter>>? filters;
+  final pulumi.Input<List<GetImagePipelinesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetImagePipelinesArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

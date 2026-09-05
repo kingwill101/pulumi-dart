@@ -8,38 +8,38 @@ import 'get_connection_vgw_telemetry.dart';
 /// Result data returned by getConnection.
 class GetConnectionResult {
   /// Category of the VPN connection. A value of VPN indicates an AWS VPN connection. A value of VPN-Classic indicates an AWS Classic VPN connection.
-  final String category;
+  final String? category;
   /// ARN of the core network.
-  final String coreNetworkArn;
+  final String? coreNetworkArn;
   /// ARN of the core network attachment.
-  final String coreNetworkAttachmentArn;
+  final String? coreNetworkAttachmentArn;
   /// Configuration information for the VPN connection's customer gateway (in the native XML format).
-  final String customerGatewayConfiguration;
+  final String? customerGatewayConfiguration;
   /// ID of the customer gateway at your end of the VPN connection.
-  final String customerGatewayId;
+  final String? customerGatewayId;
   final List<GetConnectionFilter>? filters;
   /// Current state of the gateway association.
-  final String gatewayAssociationState;
+  final String? gatewayAssociationState;
   /// (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
-  final String preSharedKeyArn;
-  final String region;
+  final String? preSharedKeyArn;
+  final String? region;
   /// List of static routes associated with the VPN connection.
-  final List<GetConnectionRoute> routes;
+  final List<GetConnectionRoute>? routes;
   /// Current state of the VPN connection.
-  final String state;
+  final String? state;
   /// Tags associated to the VPN Connection.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// ID of a transit gateway associated with the VPN connection.
-  final String transitGatewayId;
+  final String? transitGatewayId;
   /// Type of VPN connection. Currently the only supported type is ipsec.1.
-  final String type;
+  final String? type;
   /// List of objects containing information about the VPN tunnel.
-  final List<GetConnectionVgwTelemetry> vgwTelemetries;
+  final List<GetConnectionVgwTelemetry>? vgwTelemetries;
   /// ID of a VPN concentrator associated with the VPN connection.
-  final String vpnConcentratorId;
-  final String vpnConnectionId;
+  final String? vpnConcentratorId;
+  final String? vpnConnectionId;
   /// ID of a virtual private gateway associated with the VPN connection.
-  final String vpnGatewayId;
+  final String? vpnGatewayId;
 
   /// Creates a new [GetConnectionResult].
   /// [category] Category of the VPN connection. A value of VPN indicates an AWS VPN connection. A value of VPN-Classic indicates an AWS Classic VPN connection.
@@ -50,7 +50,7 @@ class GetConnectionResult {
   /// [filters] Optional.
   /// [gatewayAssociationState] Current state of the gateway association.
   /// [preSharedKeyArn] (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
-  /// [region] Required.
+  /// [region] Optional.
   /// [routes] List of static routes associated with the VPN connection.
   /// [state] Current state of the VPN connection.
   /// [tags] Tags associated to the VPN Connection.
@@ -58,72 +58,72 @@ class GetConnectionResult {
   /// [type] Type of VPN connection. Currently the only supported type is ipsec.1.
   /// [vgwTelemetries] List of objects containing information about the VPN tunnel.
   /// [vpnConcentratorId] ID of a VPN concentrator associated with the VPN connection.
-  /// [vpnConnectionId] Required.
+  /// [vpnConnectionId] Optional.
   /// [vpnGatewayId] ID of a virtual private gateway associated with the VPN connection.
   const GetConnectionResult({
-    required this.category,
-    required this.coreNetworkArn,
-    required this.coreNetworkAttachmentArn,
-    required this.customerGatewayConfiguration,
-    required this.customerGatewayId,
+    this.category,
+    this.coreNetworkArn,
+    this.coreNetworkAttachmentArn,
+    this.customerGatewayConfiguration,
+    this.customerGatewayId,
     this.filters,
-    required this.gatewayAssociationState,
-    required this.preSharedKeyArn,
-    required this.region,
-    required this.routes,
-    required this.state,
-    required this.tags,
-    required this.transitGatewayId,
-    required this.type,
-    required this.vgwTelemetries,
-    required this.vpnConcentratorId,
-    required this.vpnConnectionId,
-    required this.vpnGatewayId,
+    this.gatewayAssociationState,
+    this.preSharedKeyArn,
+    this.region,
+    this.routes,
+    this.state,
+    this.tags,
+    this.transitGatewayId,
+    this.type,
+    this.vgwTelemetries,
+    this.vpnConcentratorId,
+    this.vpnConnectionId,
+    this.vpnGatewayId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'category': category,
-      'coreNetworkArn': coreNetworkArn,
-      'coreNetworkAttachmentArn': coreNetworkAttachmentArn,
-      'customerGatewayConfiguration': customerGatewayConfiguration,
-      'customerGatewayId': customerGatewayId,
+      'category': ?category,
+      'coreNetworkArn': ?coreNetworkArn,
+      'coreNetworkAttachmentArn': ?coreNetworkAttachmentArn,
+      'customerGatewayConfiguration': ?customerGatewayConfiguration,
+      'customerGatewayId': ?customerGatewayId,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectionFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'gatewayAssociationState': gatewayAssociationState,
-      'preSharedKeyArn': preSharedKeyArn,
-      'region': region,
-      'routes': pulumi.Input.encodeList<GetConnectionRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
-      'state': state,
-      'tags': tags,
-      'transitGatewayId': transitGatewayId,
-      'type': type,
-      'vgwTelemetries': pulumi.Input.encodeList<GetConnectionVgwTelemetry, Map<String, dynamic>>(vgwTelemetries, (value) => value.toMap()),
-      'vpnConcentratorId': vpnConcentratorId,
-      'vpnConnectionId': vpnConnectionId,
-      'vpnGatewayId': vpnGatewayId,
+      'gatewayAssociationState': ?gatewayAssociationState,
+      'preSharedKeyArn': ?preSharedKeyArn,
+      'region': ?region,
+      'routes': ?(() { final guardedValue = routes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectionRoute, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'state': ?state,
+      'tags': ?tags,
+      'transitGatewayId': ?transitGatewayId,
+      'type': ?type,
+      'vgwTelemetries': ?(() { final guardedValue = vgwTelemetries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectionVgwTelemetry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'vpnConcentratorId': ?vpnConcentratorId,
+      'vpnConnectionId': ?vpnConnectionId,
+      'vpnGatewayId': ?vpnGatewayId,
     };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
-      category: map['category'] as String,
-      coreNetworkArn: map['coreNetworkArn'] as String,
-      coreNetworkAttachmentArn: map['coreNetworkAttachmentArn'] as String,
-      customerGatewayConfiguration: map['customerGatewayConfiguration'] as String,
-      customerGatewayId: map['customerGatewayId'] as String,
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      coreNetworkAttachmentArn: (() { final guardedValue = map['coreNetworkAttachmentArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerGatewayConfiguration: (() { final guardedValue = map['customerGatewayConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerGatewayId: (() { final guardedValue = map['customerGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectionFilter>(guardedValue, (value) => GetConnectionFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      gatewayAssociationState: map['gatewayAssociationState'] as String,
-      preSharedKeyArn: map['preSharedKeyArn'] as String,
-      region: map['region'] as String,
-      routes: pulumi.Input.decodeList<GetConnectionRoute>(map['routes']!, (value) => GetConnectionRoute.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayId: map['transitGatewayId'] as String,
-      type: map['type'] as String,
-      vgwTelemetries: pulumi.Input.decodeList<GetConnectionVgwTelemetry>(map['vgwTelemetries']!, (value) => GetConnectionVgwTelemetry.fromMap((value as Map).cast<String, dynamic>())),
-      vpnConcentratorId: map['vpnConcentratorId'] as String,
-      vpnConnectionId: map['vpnConnectionId'] as String,
-      vpnGatewayId: map['vpnGatewayId'] as String,
+      gatewayAssociationState: (() { final guardedValue = map['gatewayAssociationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      preSharedKeyArn: (() { final guardedValue = map['preSharedKeyArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectionRoute>(guardedValue, (value) => GetConnectionRoute.fromMap((value as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vgwTelemetries: (() { final guardedValue = map['vgwTelemetries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectionVgwTelemetry>(guardedValue, (value) => GetConnectionVgwTelemetry.fromMap((value as Map).cast<String, dynamic>())); })(),
+      vpnConcentratorId: (() { final guardedValue = map['vpnConcentratorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpnConnectionId: (() { final guardedValue = map['vpnConnectionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpnGatewayId: (() { final guardedValue = map['vpnGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

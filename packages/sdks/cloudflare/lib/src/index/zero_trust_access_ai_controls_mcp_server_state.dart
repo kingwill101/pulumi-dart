@@ -11,64 +11,76 @@ class ZeroTrustAccessAiControlsMcpServerState {
   final pulumi.Input<String?>? accountId;
   /// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
   final pulumi.Input<ZeroTrustAccessAiControlsMcpServerAuthConfigSummary?>? authConfigSummary;
+  /// Static credential for the upstream MCP server. For authType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
   final pulumi.Input<String?>? authCredentials;
+  /// Authentication method used to connect to the upstream MCP server.
   /// Available values: "oauth", "bearer", "unauthenticated".
   final pulumi.Input<String?>? authType;
+  /// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+  /// Available values: "notRequired", "required", "connected", "stale", "manual".
+  final pulumi.Input<String?>? authenticationStatus;
   /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
   final pulumi.Input<String?>? clientSecret;
   final pulumi.Input<String?>? createdAt;
   final pulumi.Input<String?>? createdBy;
+  /// Optional description of the MCP server.
   final pulumi.Input<String?>? description;
   final pulumi.Input<String?>? error;
   final pulumi.Input<ZeroTrustAccessAiControlsMcpServerErrorDetails?>? errorDetails;
+  /// URL of the upstream MCP endpoint.
   final pulumi.Input<String?>? hostname;
-  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
   final pulumi.Input<bool?>? isSharedOauthCallbackEnabled;
   final pulumi.Input<String?>? lastSuccessfulSync;
   final pulumi.Input<String?>? lastSynced;
   final pulumi.Input<String?>? modifiedAt;
   final pulumi.Input<String?>? modifiedBy;
+  /// Display name for the MCP server.
   final pulumi.Input<String?>? name;
   final pulumi.Input<List<Map<String, String>>?>? prompts;
-  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+  /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   final pulumi.Input<bool?>? secureWebGateway;
   final pulumi.Input<String?>? status;
   final pulumi.Input<List<Map<String, String>>?>? tools;
+  /// Server-wide prompt capability overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>?>? updatedPrompts;
+  /// Server-wide tool capability overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>?>? updatedTools;
-  /// server id
+  /// Unique identifier for the MCP server.
   final pulumi.Input<String?>? zeroTrustAccessAiControlsMcpServerId;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpServerState].
   /// [accountId] Optional.
   /// [authConfigSummary] Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
-  /// [authCredentials] Optional.
-  /// [authType] Available values: "oauth", "bearer", "unauthenticated".
+  /// [authCredentials] Static credential for the upstream MCP server. For authType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
+  /// [authType] Authentication method used to connect to the upstream MCP server.
+  /// [authenticationStatus] Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
   /// [clientSecret] Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
   /// [createdAt] Optional.
   /// [createdBy] Optional.
-  /// [description] Optional.
+  /// [description] Optional description of the MCP server.
   /// [error] Optional.
   /// [errorDetails] Optional.
-  /// [hostname] Optional.
-  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  /// [hostname] URL of the upstream MCP endpoint.
+  /// [isSharedOauthCallbackEnabled] When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
   /// [lastSuccessfulSync] Optional.
   /// [lastSynced] Optional.
   /// [modifiedAt] Optional.
   /// [modifiedBy] Optional.
-  /// [name] Optional.
+  /// [name] Display name for the MCP server.
   /// [prompts] Optional.
-  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+  /// [secureWebGateway] Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
   /// [status] Optional.
   /// [tools] Optional.
-  /// [updatedPrompts] Optional.
-  /// [updatedTools] Optional.
-  /// [zeroTrustAccessAiControlsMcpServerId] server id
+  /// [updatedPrompts] Server-wide prompt capability overrides.
+  /// [updatedTools] Server-wide tool capability overrides.
+  /// [zeroTrustAccessAiControlsMcpServerId] Unique identifier for the MCP server.
   const ZeroTrustAccessAiControlsMcpServerState({
     this.accountId,
     this.authConfigSummary,
     this.authCredentials,
     this.authType,
+    this.authenticationStatus,
     this.clientSecret,
     this.createdAt,
     this.createdBy,
@@ -97,6 +109,7 @@ class ZeroTrustAccessAiControlsMcpServerState {
       'authConfigSummary': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessAiControlsMcpServerAuthConfigSummary, Map<String, dynamic>>(authConfigSummary, (value) => value.toMap()),
       'authCredentials': ?authCredentials,
       'authType': ?authType,
+      'authenticationStatus': ?authenticationStatus,
       'clientSecret': ?clientSecret,
       'createdAt': ?createdAt,
       'createdBy': ?createdBy,
@@ -126,6 +139,7 @@ class ZeroTrustAccessAiControlsMcpServerState {
       authConfigSummary: (() { final guardedValue = map['authConfigSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessAiControlsMcpServerAuthConfigSummary.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       authCredentials: (() { final guardedValue = map['authCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationStatus: (() { final guardedValue = map['authenticationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

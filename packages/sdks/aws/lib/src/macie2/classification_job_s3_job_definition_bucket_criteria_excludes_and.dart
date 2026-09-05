@@ -6,9 +6,9 @@ import 'classification_job_s3_job_definition_bucket_criteria_excludes_and_tag_cr
 
 class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd {
   /// A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion>? simpleCriterion;
+  final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndSimpleCriterion?>? simpleCriterion;
   /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 buckets from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion>? tagCriterion;
+  final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterion?>? tagCriterion;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd].
   /// [simpleCriterion] A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)

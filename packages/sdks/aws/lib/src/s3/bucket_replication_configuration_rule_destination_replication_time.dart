@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationConfigurationRuleDestinationReplicationTime {
   /// Threshold within which objects are to be replicated. The only valid value is `15`.
-  final pulumi.Input<int>? minutes;
+  final pulumi.Input<int?>? minutes;
   /// Status of RTC. Either `Enabled` or `Disabled`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [BucketReplicationConfigurationRuleDestinationReplicationTime].
   /// [minutes] Threshold within which objects are to be replicated. The only valid value is `15`.
@@ -25,7 +25,7 @@ class BucketReplicationConfigurationRuleDestinationReplicationTime {
 
   factory BucketReplicationConfigurationRuleDestinationReplicationTime.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleDestinationReplicationTime(
-      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -109,7 +109,7 @@ import 'federated_identity_credential_state.dart';
 /// 			Name:                   pulumi.String("example"),
 /// 			Audience:               pulumi.String("foo"),
 /// 			Issuer:                 pulumi.String("https://foo"),
-/// 			UserAssignedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 			UserAssignedIdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			Subject:                pulumi.String("foo"),
 /// 		})
 /// 		if err != nil {
@@ -258,7 +258,7 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
           'azure:armmsi/federatedIdentityCredential:FederatedIdentityCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     audience = registerOutput<String>('audience');
     issuer = registerOutput<String>('issuer');
@@ -274,11 +274,12 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FederatedIdentityCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FederatedIdentityCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,6 +293,24 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    audience = registerOutput<String>('audience');
+    issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    parentId = registerOutput<String>('parentId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    userAssignedIdentityId = registerOutput<String>('userAssignedIdentityId');
+  }
+
+  /// Creates a typed reference to an existing [FederatedIdentityCredential] resource.
+  FederatedIdentityCredential.reference(String urn)
+    : super(
+        'azure:armmsi/federatedIdentityCredential:FederatedIdentityCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     audience = registerOutput<String>('audience');
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');

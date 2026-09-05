@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Tag resources.
 class TagState {
   /// Name of the source image.
-  final pulumi.Input<String>? sourceImage;
+  final pulumi.Input<String?>? sourceImage;
   /// ImageID of the source image in the format of `sha256:&lt;&lt;ID&gt;&gt;`
-  final pulumi.Input<String>? sourceImageId;
+  final pulumi.Input<String?>? sourceImageId;
   /// List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
-  final pulumi.Input<List<String>>? tagTriggers;
+  final pulumi.Input<List<String>?>? tagTriggers;
   /// Name of the target image.
-  final pulumi.Input<String>? targetImage;
+  final pulumi.Input<String?>? targetImage;
 
   /// Creates a new [TagState].
   /// [sourceImage] Name of the source image.

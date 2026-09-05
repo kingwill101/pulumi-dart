@@ -169,7 +169,7 @@ class User extends pulumi.CustomResource {
           'aws:appstream/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
@@ -187,11 +187,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -205,6 +206,26 @@ class User extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    authenticationType = registerOutput<String>('authenticationType');
+    createdTime = registerOutput<String>('createdTime');
+    enabled = registerOutput<bool?>('enabled');
+    firstName = registerOutput<String?>('firstName');
+    lastName = registerOutput<String?>('lastName');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:appstream/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');
     createdTime = registerOutput<String>('createdTime');

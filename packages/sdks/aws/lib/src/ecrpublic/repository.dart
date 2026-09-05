@@ -16,7 +16,6 @@ import 'repository_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const foo = new aws.ecrpublic.Repository("foo", {
-///     repositoryName: "bar",
 ///     catalogData: {
 ///         aboutText: "About Text",
 ///         architectures: ["ARM"],
@@ -27,6 +26,7 @@ import 'repository_state.dart';
 ///         operatingSystems: ["Linux"],
 ///         usageText: "Usage Text",
 ///     },
+///     repositoryName: "bar",
 ///     tags: {
 ///         env: "production",
 ///     },
@@ -38,7 +38,6 @@ import 'repository_state.dart';
 /// import pulumi_std as std
 ///
 /// foo = aws.ecrpublic.Repository("foo",
-///     repository_name="bar",
 ///     catalog_data={
 ///         "about_text": "About Text",
 ///         "architectures": ["ARM"],
@@ -47,6 +46,7 @@ import 'repository_state.dart';
 ///         "operating_systems": ["Linux"],
 ///         "usage_text": "Usage Text",
 ///     },
+///     repository_name="bar",
 ///     tags={
 ///         "env": "production",
 ///     })
@@ -62,7 +62,6 @@ import 'repository_state.dart';
 /// {
 ///     var foo = new Aws.EcrPublic.Repository("foo", new()
 ///     {
-///         RepositoryName = "bar",
 ///         CatalogData = new Aws.EcrPublic.Inputs.RepositoryCatalogDataArgs
 ///         {
 ///             AboutText = "About Text",
@@ -81,6 +80,7 @@ import 'repository_state.dart';
 ///             },
 ///             UsageText = "Usage Text",
 ///         },
+///         RepositoryName = "bar",
 ///         Tags =
 ///         {
 ///             { "env", "production" },
@@ -107,7 +107,6 @@ import 'repository_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecrpublic.NewRepository(ctx, "foo", &ecrpublic.RepositoryArgs{
-/// 			RepositoryName: pulumi.String("bar"),
 /// 			CatalogData: &ecrpublic.RepositoryCatalogDataArgs{
 /// 				AboutText: pulumi.String("About Text"),
 /// 				Architectures: pulumi.StringArray{
@@ -120,6 +119,7 @@ import 'repository_state.dart';
 /// 				},
 /// 				UsageText: pulumi.String("Usage Text"),
 /// 			},
+/// 			RepositoryName: pulumi.String("bar"),
 /// 			Tags: pulumi.StringMap{
 /// 				"env": pulumi.String("production"),
 /// 			},
@@ -144,7 +144,6 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "aws_ecrpublic_repository" "foo" {
-///   repository_name = "bar"
 ///   catalog_data = {
 ///     about_text        = "About Text"
 ///     architectures     = ["ARM"]
@@ -153,6 +152,7 @@ import 'repository_state.dart';
 ///     operating_systems = ["Linux"]
 ///     usage_text        = "Usage Text"
 ///   }
+///   repository_name = "bar"
 ///   tags = {
 ///     "env" = "production"
 ///   }
@@ -183,7 +183,6 @@ import 'repository_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new Repository("foo", RepositoryArgs.builder()
-///             .repositoryName("bar")
 ///             .catalogData(RepositoryCatalogDataArgs.builder()
 ///                 .aboutText("About Text")
 ///                 .architectures("ARM")
@@ -194,6 +193,7 @@ import 'repository_state.dart';
 ///                 .operatingSystems("Linux")
 ///                 .usageText("Usage Text")
 ///                 .build())
+///             .repositoryName("bar")
 ///             .tags(Map.of("env", "production"))
 ///             .build());
 ///
@@ -205,7 +205,6 @@ import 'repository_state.dart';
 ///   foo:
 ///     type: aws:ecrpublic:Repository
 ///     properties:
-///       repositoryName: bar
 ///       catalogData:
 ///         aboutText: About Text
 ///         architectures:
@@ -220,6 +219,7 @@ import 'repository_state.dart';
 ///         operatingSystems:
 ///           - Linux
 ///         usageText: Usage Text
+///       repositoryName: bar
 ///       tags:
 ///         env: production
 /// ```
@@ -263,7 +263,7 @@ class Repository extends pulumi.CustomResource {
           'aws:ecrpublic/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogData = registerOutput<RepositoryCatalogData?>('catalogData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryCatalogData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -272,8 +272,8 @@ class Repository extends pulumi.CustomResource {
     registryId = registerOutput<String>('registryId');
     repositoryName = registerOutput<String>('repositoryName');
     repositoryUri = registerOutput<String>('repositoryUri');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -281,11 +281,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,7 +307,27 @@ class Repository extends pulumi.CustomResource {
     registryId = registerOutput<String>('registryId');
     repositoryName = registerOutput<String>('repositoryName');
     repositoryUri = registerOutput<String>('repositoryUri');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'aws:ecrpublic/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    catalogData = registerOutput<RepositoryCatalogData?>('catalogData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryCatalogData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryName = registerOutput<String>('repositoryName');
+    repositoryUri = registerOutput<String>('repositoryUri');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -5,7 +5,7 @@ import 'virtual_node_spec_logging_access_log_file_format.dart';
 
 class VirtualNodeSpecLoggingAccessLogFile {
   /// Format for the logs. See `spec.logging.access_log.file.format` Block for details.
-  final pulumi.Input<VirtualNodeSpecLoggingAccessLogFileFormat>? format;
+  final pulumi.Input<VirtualNodeSpecLoggingAccessLogFileFormat?>? format;
   /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> path;
 

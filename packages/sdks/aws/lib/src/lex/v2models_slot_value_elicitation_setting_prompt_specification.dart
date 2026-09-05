@@ -5,11 +5,11 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_message_gro
 import 'v2models_slot_value_elicitation_setting_prompt_specification_prompt_attempts_specification.dart';
 
 class V2modelsSlotValueElicitationSettingPromptSpecification {
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   final pulumi.Input<int> maxRetries;
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>>? messageGroups;
-  final pulumi.Input<String>? messageSelectionStrategy;
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>>? promptAttemptsSpecifications;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>?>? messageGroups;
+  final pulumi.Input<String?>? messageSelectionStrategy;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>?>? promptAttemptsSpecifications;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecification].
   /// [allowInterrupt] Optional.
@@ -38,7 +38,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecification {
   factory V2modelsSlotValueElicitationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecification(
       allowInterrupt: (() { final guardedValue = map['allowInterrupt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
       messageGroups: (() { final guardedValue = map['messageGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>(guardedValue, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       messageSelectionStrategy: (() { final guardedValue = map['messageSelectionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       promptAttemptsSpecifications: (() { final guardedValue = map['promptAttemptsSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(guardedValue, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),

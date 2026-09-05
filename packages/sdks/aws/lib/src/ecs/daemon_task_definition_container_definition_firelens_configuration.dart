@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionFirelensConfiguration {
   /// Options to use when configuring the log router.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// Log router to use. Valid values: `fluentd`, `fluentbit`.
   final pulumi.Input<String> type;
 

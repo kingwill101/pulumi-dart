@@ -6,7 +6,7 @@ class VirtualNetworkGatewayNatRuleInternalMapping {
   /// The string CIDR representing the address space for the Virtual Network Gateway Nat Rule internal mapping.
   final pulumi.Input<String> addressSpace;
   /// The single port range for the Virtual Network Gateway Nat Rule internal mapping.
-  final pulumi.Input<String>? portRange;
+  final pulumi.Input<String?>? portRange;
 
   /// Creates a new [VirtualNetworkGatewayNatRuleInternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the Virtual Network Gateway Nat Rule internal mapping.

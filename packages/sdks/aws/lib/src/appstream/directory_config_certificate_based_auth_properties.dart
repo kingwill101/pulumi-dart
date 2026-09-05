@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryConfigCertificateBasedAuthProperties {
   /// ARN of the AWS Certificate Manager Private CA resource.
-  final pulumi.Input<String>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateAuthorityArn;
   /// Status of the certificate-based authentication properties. Valid values - ["DISABLED", "ENABLED", "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK"].
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DirectoryConfigCertificateBasedAuthProperties].
   /// [certificateAuthorityArn] ARN of the AWS Certificate Manager Private CA resource.

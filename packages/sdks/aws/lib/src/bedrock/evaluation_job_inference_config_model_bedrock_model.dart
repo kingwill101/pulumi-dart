@@ -5,11 +5,11 @@ import 'evaluation_job_inference_config_model_bedrock_model_performance_config.d
 
 class EvaluationJobInferenceConfigModelBedrockModel {
   /// JSON-formatted string of inference parameters for the model.
-  final pulumi.Input<String>? inferenceParams;
+  final pulumi.Input<String?>? inferenceParams;
   /// Identifier of the Amazon Bedrock model, or inference profile, used for inference.
   final pulumi.Input<String> modelIdentifier;
   /// Model's performance settings. See `performanceConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigModelBedrockModelPerformanceConfig>? performanceConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigModelBedrockModelPerformanceConfig?>? performanceConfig;
 
   /// Creates a new [EvaluationJobInferenceConfigModelBedrockModel].
   /// [inferenceParams] JSON-formatted string of inference parameters for the model.

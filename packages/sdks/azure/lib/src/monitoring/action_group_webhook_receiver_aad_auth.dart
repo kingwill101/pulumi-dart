@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActionGroupWebhookReceiverAadAuth {
   /// The identifier URI for AAD auth.
-  final pulumi.Input<String>? identifierUri;
+  final pulumi.Input<String?>? identifierUri;
   /// The webhook application object Id for AAD auth.
   final pulumi.Input<String> objectId;
   /// The tenant id for AAD auth.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ActionGroupWebhookReceiverAadAuth].
   /// [identifierUri] The identifier URI for AAD auth.

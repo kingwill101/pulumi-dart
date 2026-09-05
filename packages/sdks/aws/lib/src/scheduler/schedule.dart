@@ -20,16 +20,16 @@ import 'schedule_target.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.scheduler.Schedule("example", {
-///     name: "my-schedule",
-///     groupName: "default",
 ///     flexibleTimeWindow: {
 ///         mode: "OFF",
 ///     },
-///     scheduleExpression: "rate(1 hours)",
 ///     target: {
 ///         arn: exampleAwsSqsQueue.arn,
 ///         roleArn: exampleAwsIamRole.arn,
 ///     },
+///     name: "my-schedule",
+///     groupName: "default",
+///     scheduleExpression: "rate(1 hours)",
 /// });
 /// ```
 /// ```python
@@ -37,16 +37,16 @@ import 'schedule_target.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.scheduler.Schedule("example",
-///     name="my-schedule",
-///     group_name="default",
 ///     flexible_time_window={
 ///         "mode": "OFF",
 ///     },
-///     schedule_expression="rate(1 hours)",
 ///     target={
 ///         "arn": example_aws_sqs_queue["arn"],
 ///         "role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     name="my-schedule",
+///     group_name="default",
+///     schedule_expression="rate(1 hours)")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,18 +58,18 @@ import 'schedule_target.dart';
 /// {
 ///     var example = new Aws.Scheduler.Schedule("example", new()
 ///     {
-///         Name = "my-schedule",
-///         GroupName = "default",
 ///         FlexibleTimeWindow = new Aws.Scheduler.Inputs.ScheduleFlexibleTimeWindowArgs
 ///         {
 ///             Mode = "OFF",
 ///         },
-///         ScheduleExpression = "rate(1 hours)",
 ///         Target = new Aws.Scheduler.Inputs.ScheduleTargetArgs
 ///         {
 ///             Arn = exampleAwsSqsQueue.Arn,
 ///             RoleArn = exampleAwsIamRole.Arn,
 ///         },
+///         Name = "my-schedule",
+///         GroupName = "default",
+///         ScheduleExpression = "rate(1 hours)",
 ///     });
 ///
 /// });
@@ -85,16 +85,16 @@ import 'schedule_target.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := scheduler.NewSchedule(ctx, "example", &scheduler.ScheduleArgs{
-/// 			Name:      pulumi.String("my-schedule"),
-/// 			GroupName: pulumi.String("default"),
 /// 			FlexibleTimeWindow: &scheduler.ScheduleFlexibleTimeWindowArgs{
 /// 				Mode: pulumi.String("OFF"),
 /// 			},
-/// 			ScheduleExpression: pulumi.String("rate(1 hours)"),
 /// 			Target: &scheduler.ScheduleTargetArgs{
 /// 				Arn:     pulumi.Any(exampleAwsSqsQueue.Arn),
 /// 				RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
+/// 			Name:               pulumi.String("my-schedule"),
+/// 			GroupName:          pulumi.String("default"),
+/// 			ScheduleExpression: pulumi.String("rate(1 hours)"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,16 +113,16 @@ import 'schedule_target.dart';
 /// }
 ///
 /// resource "aws_scheduler_schedule" "example" {
-///   name       = "my-schedule"
-///   group_name = "default"
 ///   flexible_time_window = {
 ///     mode = "OFF"
 ///   }
-///   schedule_expression = "rate(1 hours)"
 ///   target = {
 ///     arn      = exampleAwsSqsQueue.arn
 ///     role_arn = exampleAwsIamRole.arn
 ///   }
+///   name                = "my-schedule"
+///   group_name          = "default"
+///   schedule_expression = "rate(1 hours)"
 /// }
 /// ```
 /// ```java
@@ -149,16 +149,16 @@ import 'schedule_target.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Schedule("example", ScheduleArgs.builder()
-///             .name("my-schedule")
-///             .groupName("default")
 ///             .flexibleTimeWindow(ScheduleFlexibleTimeWindowArgs.builder()
 ///                 .mode("OFF")
 ///                 .build())
-///             .scheduleExpression("rate(1 hours)")
 ///             .target(ScheduleTargetArgs.builder()
 ///                 .arn(exampleAwsSqsQueue.arn())
 ///                 .roleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .name("my-schedule")
+///             .groupName("default")
+///             .scheduleExpression("rate(1 hours)")
 ///             .build());
 ///
 ///     }
@@ -169,14 +169,14 @@ import 'schedule_target.dart';
 ///   example:
 ///     type: aws:scheduler:Schedule
 ///     properties:
-///       name: my-schedule
-///       groupName: default
 ///       flexibleTimeWindow:
 ///         mode: OFF
-///       scheduleExpression: rate(1 hours)
 ///       target:
 ///         arn: ${exampleAwsSqsQueue.arn}
 ///         roleArn: ${exampleAwsIamRole.arn}
+///       name: my-schedule
+///       groupName: default
+///       scheduleExpression: rate(1 hours)
 /// ```
 ///
 ///
@@ -189,11 +189,9 @@ import 'schedule_target.dart';
 ///
 /// const example = new aws.sqs.Queue("example", {});
 /// const exampleSchedule = new aws.scheduler.Schedule("example", {
-///     name: "my-schedule",
 ///     flexibleTimeWindow: {
 ///         mode: "OFF",
 ///     },
-///     scheduleExpression: "rate(1 hours)",
 ///     target: {
 ///         arn: "arn:aws:scheduler:::aws-sdk:sqs:sendMessage",
 ///         roleArn: exampleAwsIamRole.arn,
@@ -202,6 +200,8 @@ import 'schedule_target.dart';
 ///             QueueUrl: example.url,
 ///         }),
 ///     },
+///     name: "my-schedule",
+///     scheduleExpression: "rate(1 hours)",
 /// });
 /// ```
 /// ```python
@@ -211,11 +211,9 @@ import 'schedule_target.dart';
 ///
 /// example = aws.sqs.Queue("example")
 /// example_schedule = aws.scheduler.Schedule("example",
-///     name="my-schedule",
 ///     flexible_time_window={
 ///         "mode": "OFF",
 ///     },
-///     schedule_expression="rate(1 hours)",
 ///     target={
 ///         "arn": "arn:aws:scheduler:::aws-sdk:sqs:sendMessage",
 ///         "role_arn": example_aws_iam_role["arn"],
@@ -223,7 +221,9 @@ import 'schedule_target.dart';
 ///             "MessageBody": "Greetings, programs!",
 ///             "QueueUrl": example.url,
 ///         }),
-///     })
+///     },
+///     name="my-schedule",
+///     schedule_expression="rate(1 hours)")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -238,12 +238,10 @@ import 'schedule_target.dart';
 ///
 ///     var exampleSchedule = new Aws.Scheduler.Schedule("example", new()
 ///     {
-///         Name = "my-schedule",
 ///         FlexibleTimeWindow = new Aws.Scheduler.Inputs.ScheduleFlexibleTimeWindowArgs
 ///         {
 ///             Mode = "OFF",
 ///         },
-///         ScheduleExpression = "rate(1 hours)",
 ///         Target = new Aws.Scheduler.Inputs.ScheduleTargetArgs
 ///         {
 ///             Arn = "arn:aws:scheduler:::aws-sdk:sqs:sendMessage",
@@ -254,6 +252,8 @@ import 'schedule_target.dart';
 ///                 ["QueueUrl"] = example.Url,
 ///             })),
 ///         },
+///         Name = "my-schedule",
+///         ScheduleExpression = "rate(1 hours)",
 ///     });
 ///
 /// });
@@ -276,11 +276,9 @@ import 'schedule_target.dart';
 /// 			return err
 /// 		}
 /// 		_, err = scheduler.NewSchedule(ctx, "example", &scheduler.ScheduleArgs{
-/// 			Name: pulumi.String("my-schedule"),
 /// 			FlexibleTimeWindow: &scheduler.ScheduleFlexibleTimeWindowArgs{
 /// 				Mode: pulumi.String("OFF"),
 /// 			},
-/// 			ScheduleExpression: pulumi.String("rate(1 hours)"),
 /// 			Target: &scheduler.ScheduleTargetArgs{
 /// 				Arn:     pulumi.String("arn:aws:scheduler:::aws-sdk:sqs:sendMessage"),
 /// 				RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
@@ -297,6 +295,8 @@ import 'schedule_target.dart';
 /// 					return pulumi.String(json0), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			Name:               pulumi.String("my-schedule"),
+/// 			ScheduleExpression: pulumi.String("rate(1 hours)"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -317,11 +317,9 @@ import 'schedule_target.dart';
 /// resource "aws_sqs_queue" "example" {
 /// }
 /// resource "aws_scheduler_schedule" "example" {
-///   name = "my-schedule"
 ///   flexible_time_window = {
 ///     mode = "OFF"
 ///   }
-///   schedule_expression = "rate(1 hours)"
 ///   target = {
 ///     arn      = "arn:aws:scheduler:::aws-sdk:sqs:sendMessage"
 ///     role_arn = exampleAwsIamRole.arn
@@ -330,6 +328,8 @@ import 'schedule_target.dart';
 ///       "QueueUrl"    = aws_sqs_queue.example.url
 ///     })
 ///   }
+///   name                = "my-schedule"
+///   schedule_expression = "rate(1 hours)"
 /// }
 /// ```
 /// ```java
@@ -360,11 +360,9 @@ import 'schedule_target.dart';
 ///         var example = new Queue("example");
 ///
 ///         var exampleSchedule = new Schedule("exampleSchedule", ScheduleArgs.builder()
-///             .name("my-schedule")
 ///             .flexibleTimeWindow(ScheduleFlexibleTimeWindowArgs.builder()
 ///                 .mode("OFF")
 ///                 .build())
-///             .scheduleExpression("rate(1 hours)")
 ///             .target(ScheduleTargetArgs.builder()
 ///                 .arn("arn:aws:scheduler:::aws-sdk:sqs:sendMessage")
 ///                 .roleArn(exampleAwsIamRole.arn())
@@ -374,6 +372,8 @@ import 'schedule_target.dart';
 ///                         jsonProperty("QueueUrl", _url)
 ///                     ))))
 ///                 .build())
+///             .name("my-schedule")
+///             .scheduleExpression("rate(1 hours)")
 ///             .build());
 ///
 ///     }
@@ -387,10 +387,8 @@ import 'schedule_target.dart';
 ///     type: aws:scheduler:Schedule
 ///     name: example
 ///     properties:
-///       name: my-schedule
 ///       flexibleTimeWindow:
 ///         mode: OFF
-///       scheduleExpression: rate(1 hours)
 ///       target:
 ///         arn: arn:aws:scheduler:::aws-sdk:sqs:sendMessage
 ///         roleArn: ${exampleAwsIamRole.arn}
@@ -398,6 +396,8 @@ import 'schedule_target.dart';
 ///           fn::toJSON:
 ///             MessageBody: Greetings, programs!
 ///             QueueUrl: ${example.url}
+///       name: my-schedule
+///       scheduleExpression: rate(1 hours)
 /// ```
 ///
 ///
@@ -467,7 +467,7 @@ class Schedule extends pulumi.CustomResource {
           'aws:scheduler/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
     arn = registerOutput<String>('arn');
@@ -491,11 +491,12 @@ class Schedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -523,6 +524,32 @@ class Schedule extends pulumi.CustomResource {
     scheduleExpressionTimezone = registerOutput<String?>('scheduleExpressionTimezone');
     startDate = registerOutput<String?>('startDate');
     this.state = registerOutput<String?>('state');
+    target = registerOutput<ScheduleTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'aws:scheduler/schedule:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endDate = registerOutput<String?>('endDate');
+    flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>('flexibleTimeWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleFlexibleTimeWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupName = registerOutput<String>('groupName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleExpressionTimezone = registerOutput<String?>('scheduleExpressionTimezone');
+    startDate = registerOutput<String?>('startDate');
+    state = registerOutput<String?>('state');
     target = registerOutput<ScheduleTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

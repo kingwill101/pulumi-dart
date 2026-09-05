@@ -20,6 +20,7 @@ class AiGatewayState {
   final pulumi.Input<AiGatewayDlp?>? dlp;
   final pulumi.Input<AiGatewayGuardrails?>? guardrails;
   final pulumi.Input<bool?>? isDefault;
+  final pulumi.Input<bool?>? logClassification;
   final pulumi.Input<int?>? logManagement;
   /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
   final pulumi.Input<String?>? logManagementStrategy;
@@ -41,8 +42,8 @@ class AiGatewayState {
   final pulumi.Input<AiGatewaySpendLimits?>? spendLimits;
   final pulumi.Input<String?>? storeId;
   final pulumi.Input<AiGatewayStripe?>? stripe;
-  /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-  /// Available values: "postpaid".
+  /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+  /// Available values: "postpaid", "unified".
   final pulumi.Input<String?>? workersAiBillingMode;
   final pulumi.Input<bool?>? zdr;
 
@@ -57,6 +58,7 @@ class AiGatewayState {
   /// [dlp] Optional.
   /// [guardrails] Optional.
   /// [isDefault] Optional.
+  /// [logClassification] Optional.
   /// [logManagement] Optional.
   /// [logManagementStrategy] Available values: "STOP*INSERTING", "DELETE*OLDEST".
   /// [logpush] Optional.
@@ -72,7 +74,7 @@ class AiGatewayState {
   /// [spendLimits] Optional.
   /// [storeId] Optional.
   /// [stripe] Optional.
-  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
+  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Optional.
   const AiGatewayState({
     this.accountId,
@@ -85,6 +87,7 @@ class AiGatewayState {
     this.dlp,
     this.guardrails,
     this.isDefault,
+    this.logClassification,
     this.logManagement,
     this.logManagementStrategy,
     this.logpush,
@@ -116,6 +119,7 @@ class AiGatewayState {
       'dlp': ?pulumi.Input.mapOptionalInputValue<AiGatewayDlp, Map<String, dynamic>>(dlp, (value) => value.toMap()),
       'guardrails': ?pulumi.Input.mapOptionalInputValue<AiGatewayGuardrails, Map<String, dynamic>>(guardrails, (value) => value.toMap()),
       'isDefault': ?isDefault,
+      'logClassification': ?logClassification,
       'logManagement': ?logManagement,
       'logManagementStrategy': ?logManagementStrategy,
       'logpush': ?logpush,
@@ -148,6 +152,7 @@ class AiGatewayState {
       dlp: (() { final guardedValue = map['dlp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      logClassification: (() { final guardedValue = map['logClassification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       logManagementStrategy: (() { final guardedValue = map['logManagementStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

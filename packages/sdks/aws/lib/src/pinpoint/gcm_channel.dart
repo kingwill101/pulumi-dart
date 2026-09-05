@@ -38,14 +38,15 @@ class GcmChannel extends pulumi.CustomResource {
           'aws:pinpoint/gcmChannel:GcmChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['apiKey', 'serviceJson'],
         ) {
-    apiKey = registerOutput<String?>('apiKey');
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
     applicationId = registerOutput<String>('applicationId');
     defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
-    serviceJson = registerOutput<String?>('serviceJson');
+    serviceJson = registerOutput<String?>('serviceJson', isSecret: true);
   }
 
   /// Gets an existing [GcmChannel] resource's state with the given [name] and [id].
@@ -53,11 +54,12 @@ class GcmChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GcmChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GcmChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -71,11 +73,29 @@ class GcmChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String?>('apiKey');
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
     applicationId = registerOutput<String>('applicationId');
     defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
-    serviceJson = registerOutput<String?>('serviceJson');
+    serviceJson = registerOutput<String?>('serviceJson', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [GcmChannel] resource.
+  GcmChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/gcmChannel:GcmChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey', 'serviceJson'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String?>('apiKey', isSecret: true);
+    applicationId = registerOutput<String>('applicationId');
+    defaultAuthenticationMethod = registerOutput<String?>('defaultAuthenticationMethod');
+    enabled = registerOutput<bool?>('enabled');
+    region = registerOutput<String>('region');
+    serviceJson = registerOutput<String?>('serviceJson', isSecret: true);
   }
 }

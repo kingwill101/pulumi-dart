@@ -4,19 +4,19 @@
 /// Result data returned by getDatasetDataLakeGen2.
 class GetDatasetDataLakeGen2Result {
   /// The name of the Data Share Dataset.
-  final String displayName;
+  final String? displayName;
   /// The path of the file in the data lake file system to be shared with the receiver.
-  final String filePath;
+  final String? filePath;
   /// The name of the data lake file system to be shared with the receiver.
-  final String fileSystemName;
+  final String? fileSystemName;
   /// The folder path in the data lake file system to be shared with the receiver.
-  final String folderPath;
+  final String? folderPath;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String shareId;
+  final String? id;
+  final String? name;
+  final String? shareId;
   /// The resource ID of the storage account of the data lake file system to be shared with the receiver.
-  final String storageAccountId;
+  final String? storageAccountId;
 
   /// Creates a new [GetDatasetDataLakeGen2Result].
   /// [displayName] The name of the Data Share Dataset.
@@ -24,43 +24,43 @@ class GetDatasetDataLakeGen2Result {
   /// [fileSystemName] The name of the data lake file system to be shared with the receiver.
   /// [folderPath] The folder path in the data lake file system to be shared with the receiver.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [shareId] Required.
+  /// [name] Optional.
+  /// [shareId] Optional.
   /// [storageAccountId] The resource ID of the storage account of the data lake file system to be shared with the receiver.
   const GetDatasetDataLakeGen2Result({
-    required this.displayName,
-    required this.filePath,
-    required this.fileSystemName,
-    required this.folderPath,
-    required this.id,
-    required this.name,
-    required this.shareId,
-    required this.storageAccountId,
+    this.displayName,
+    this.filePath,
+    this.fileSystemName,
+    this.folderPath,
+    this.id,
+    this.name,
+    this.shareId,
+    this.storageAccountId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'filePath': filePath,
-      'fileSystemName': fileSystemName,
-      'folderPath': folderPath,
-      'id': id,
-      'name': name,
-      'shareId': shareId,
-      'storageAccountId': storageAccountId,
+      'displayName': ?displayName,
+      'filePath': ?filePath,
+      'fileSystemName': ?fileSystemName,
+      'folderPath': ?folderPath,
+      'id': ?id,
+      'name': ?name,
+      'shareId': ?shareId,
+      'storageAccountId': ?storageAccountId,
     };
   }
 
   factory GetDatasetDataLakeGen2Result.fromMap(Map<String, dynamic> map) {
     return GetDatasetDataLakeGen2Result(
-      displayName: map['displayName'] as String,
-      filePath: map['filePath'] as String,
-      fileSystemName: map['fileSystemName'] as String,
-      folderPath: map['folderPath'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      shareId: map['shareId'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filePath: (() { final guardedValue = map['filePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fileSystemName: (() { final guardedValue = map['fileSystemName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

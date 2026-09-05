@@ -10,57 +10,57 @@ import 'managed_instance_identity.dart';
 /// {@macro pulumi_mssql_managed_instance_managed_instance_args_doc}
 class ManagedInstanceArgs {
   /// The administrator login name for the new SQL Managed Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? administratorLogin;
+  final pulumi.Input<String?>? administratorLogin;
   /// The password associated with the `administratorLogin` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx)
   ///
   /// &gt; **Note:** Unless `azure_active_directory_administrator.azuread_authentication_only_enabled` is set to `true`, `administratorLogin` and `administratorLoginPassword` are required.
-  final pulumi.Input<String>? administratorLoginPassword;
+  final pulumi.Input<String?>? administratorLoginPassword;
   /// An `azureActiveDirectoryAdministrator` block as defined below.
-  final pulumi.Input<ManagedInstanceAzureActiveDirectoryAdministrator>? azureActiveDirectoryAdministrator;
+  final pulumi.Input<ManagedInstanceAzureActiveDirectoryAdministrator?>? azureActiveDirectoryAdministrator;
   /// Specifies how the SQL Managed Instance will be collated. Defaults to `SQL_Latin1_General_CP1_CI_AS`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Specifies the internal format of the SQL Managed Instance databases specific to the SQL engine version. Possible values are `AlwaysUpToDate` and `SQLServer2022`. Defaults to `SQLServer2022`.
   ///
   /// &gt; **Note:** Changing `databaseFormat` from `AlwaysUpToDate` to `SQLServer2022` forces a new SQL Managed Instance to be created.
-  final pulumi.Input<String>? databaseFormat;
+  final pulumi.Input<String?>? databaseFormat;
   /// The ID of the SQL Managed Instance which will share the DNS zone. This is a prerequisite for creating an `azurermSqlManagedInstanceFailoverGroup`. Setting this after creation forces a new resource to be created.
-  final pulumi.Input<String>? dnsZonePartnerId;
+  final pulumi.Input<String?>? dnsZonePartnerId;
   /// Specifies whether the SQL Managed Instance should use the Next-gen General Purpose service tier. Defaults to `false`.
   ///
   /// &gt; **Note:** The `generalPurposeV2Enabled` property can only be set to `true` when using a General Purpose (`GP_*`) SKU.
-  final pulumi.Input<bool>? generalPurposeV2Enabled;
+  final pulumi.Input<bool?>? generalPurposeV2Enabled;
   /// Specifies the hybrid secondary usage for disaster recovery of the SQL Managed Instance. Possible values are `Active` and `Passive`. Defaults to `Active`.
-  final pulumi.Input<String>? hybridSecondaryUsage;
+  final pulumi.Input<String?>? hybridSecondaryUsage;
   /// An `identity` block as defined below.
-  final pulumi.Input<ManagedInstanceIdentity>? identity;
+  final pulumi.Input<ManagedInstanceIdentity?>? identity;
   /// What type of license the Managed Instance will use. Possible values are `LicenseIncluded` and `BasePrice`.
   final pulumi.Input<String> licenseType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Public Maintenance Configuration window to apply to the SQL Managed Instance. Valid values include `SQL_Default` or an Azure Location in the format `SQL_{Location}_MI_{Size}`(for example `SQL_EastUS_MI_1`). Defaults to `SQL_Default`.
-  final pulumi.Input<String>? maintenanceConfigurationName;
+  final pulumi.Input<String?>? maintenanceConfigurationName;
   /// The Minimum TLS Version. Default value is `1.2` Valid values include `1.0`, `1.1`, `1.2`.
   ///
   /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// The name of the SQL Managed Instance. This needs to be globally unique within Azure. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies how the SQL Managed Instance will be accessed. Defaults to `Default`. Possible values are `Default`, `Proxy`, and `Redirect`.
-  final pulumi.Input<String>? proxyOverride;
+  final pulumi.Input<String?>? proxyOverride;
   /// Is the public data endpoint enabled? Defaults to `false`.
-  final pulumi.Input<bool>? publicDataEndpointEnabled;
+  final pulumi.Input<bool?>? publicDataEndpointEnabled;
   /// The name of the resource group in which to create the SQL Managed Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The service principal type. The only possible value is `SystemAssigned`.
-  final pulumi.Input<String>? servicePrincipalType;
+  final pulumi.Input<String?>? servicePrincipalType;
   /// Specifies the SKU Name for the SQL Managed Instance. Possible values are `GP_Gen4`, `GP_Gen5`, `GP_Gen8IM`, `GP_Gen8IH`, `BC_Gen4`, `BC_Gen5`, `BC_Gen8IM` or `BC_Gen8IH`.
   final pulumi.Input<String> skuName;
   /// Specifies the storage account type used to store backups for this database. Possible values are `GRS`, `GZRS`, `LRS`, and `ZRS`. Defaults to `GRS`.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
   /// The storage IOPS for the SQL Managed Instance. Possible values are between `300` and `80000`. This can only be specified when `generalPurposeV2Enabled` is `true`.
   ///
   /// &gt; **Note:** The effective maximum value for `storageIops` depends on the selected `skuName` and `vcores`. Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
-  final pulumi.Input<int>? storageIops;
+  final pulumi.Input<int?>? storageIops;
   /// Maximum storage space for the SQL Managed instance. This should be a multiple of 32 (GB).
   ///
   /// &gt; **Note:** The maximum storage size varies depending on the service tier and hardware generation. For General Purpose Next-gen instances, the maximum is 32,768 GB (32 TB), while Business Critical instances support up to 16,384 GB (16 TB). Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
@@ -68,15 +68,15 @@ class ManagedInstanceArgs {
   /// The subnet resource id that the SQL Managed Instance will be associated with.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The TimeZone ID that the SQL Managed Instance will be operating in. Defaults to `UTC`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timezoneId;
+  final pulumi.Input<String?>? timezoneId;
   /// Number of cores that should be assigned to the SQL Managed Instance. Values can be `8`, `16`, or `24` for Gen4 SKUs, or `4`, `6`, `8`, `10`, `12`, `16`, `20`, `24`, `32`, `40`, `48`, `56`, `64`, `80`, `96` or `128` for Gen5 SKUs.
   final pulumi.Input<int> vcores;
   /// Specifies whether the SQL Managed Instance is zone redundant. Defaults to `false`.
   ///
   /// &gt; **Note:** `zoneRedundantEnabled` cannot be specified when `generalPurposeV2Enabled` is `true` because zone redundancy is not available for the Next-gen General Purpose service tier.)
-  final pulumi.Input<bool>? zoneRedundantEnabled;
+  final pulumi.Input<bool?>? zoneRedundantEnabled;
 
   /// Creates a new [ManagedInstanceArgs].
   /// [administratorLogin] The administrator login name for the new SQL Managed Instance. Changing this forces a new resource to be created.
@@ -190,12 +190,12 @@ class ManagedInstanceArgs {
       servicePrincipalType: (() { final guardedValue = map['servicePrincipalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageIops: (() { final guardedValue = map['storageIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      storageSizeInGb: pulumi.Input.fromValue(map['storageSizeInGb'] as int),
+      storageIops: (() { final guardedValue = map['storageIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      storageSizeInGb: pulumi.Input.fromValue((map['storageSizeInGb'] as num).toInt()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timezoneId: (() { final guardedValue = map['timezoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vcores: pulumi.Input.fromValue(map['vcores'] as int),
+      vcores: pulumi.Input.fromValue((map['vcores'] as num).toInt()),
       zoneRedundantEnabled: (() { final guardedValue = map['zoneRedundantEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

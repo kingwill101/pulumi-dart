@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TransitGatewayConnectPeerAssociation resources.
 class TransitGatewayConnectPeerAssociationState {
   /// ID of the device.
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// ID of the global network.
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// ID of the link.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayConnectPeerArn;
+  final pulumi.Input<String?>? transitGatewayConnectPeerArn;
 
   /// Creates a new [TransitGatewayConnectPeerAssociationState].
   /// [deviceId] ID of the device.

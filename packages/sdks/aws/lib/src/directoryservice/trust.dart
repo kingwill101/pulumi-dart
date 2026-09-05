@@ -587,9 +587,9 @@ class Trust extends pulumi.CustomResource {
           'aws:directoryservice/trust:Trust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs');
+    conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdDateTime = registerOutput<String>('createdDateTime');
     deleteAssociatedConditionalForwarder = registerOutput<bool>('deleteAssociatedConditionalForwarder');
     directoryId = registerOutput<String>('directoryId');
@@ -610,11 +610,12 @@ class Trust extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Trust._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -628,7 +629,32 @@ class Trust extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs');
+    conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdDateTime = registerOutput<String>('createdDateTime');
+    deleteAssociatedConditionalForwarder = registerOutput<bool>('deleteAssociatedConditionalForwarder');
+    directoryId = registerOutput<String>('directoryId');
+    lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
+    region = registerOutput<String>('region');
+    remoteDomainName = registerOutput<String>('remoteDomainName');
+    selectiveAuth = registerOutput<String>('selectiveAuth');
+    stateLastUpdatedDateTime = registerOutput<String>('stateLastUpdatedDateTime');
+    trustDirection = registerOutput<String>('trustDirection');
+    trustPassword = registerOutput<String>('trustPassword');
+    trustState = registerOutput<String>('trustState');
+    trustStateReason = registerOutput<String>('trustStateReason');
+    trustType = registerOutput<String>('trustType');
+  }
+
+  /// Creates a typed reference to an existing [Trust] resource.
+  Trust.reference(String urn)
+    : super(
+        'aws:directoryservice/trust:Trust',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdDateTime = registerOutput<String>('createdDateTime');
     deleteAssociatedConditionalForwarder = registerOutput<bool>('deleteAssociatedConditionalForwarder');
     directoryId = registerOutput<String>('directoryId');

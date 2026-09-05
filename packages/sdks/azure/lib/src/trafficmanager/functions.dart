@@ -143,3 +143,14 @@ Future<GetGeographicalLocationResult> getGeographicalLocation(
   );
   return GetGeographicalLocationResult.fromMap(result);
 }
+
+pulumi.Output<GetGeographicalLocationResult> getGeographicalLocationOutput(
+  GetGeographicalLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:trafficmanager/getGeographicalLocation:getGeographicalLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGeographicalLocationResult.fromMap);
+}

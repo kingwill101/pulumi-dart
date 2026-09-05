@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayConnectionRoutingPropagatedRouteTable {
   /// A list of labels to assign to this route table.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// A list of Route Table IDs to associated with this VPN Gateway Connection.
   final pulumi.Input<List<String>> routeTableIds;
 

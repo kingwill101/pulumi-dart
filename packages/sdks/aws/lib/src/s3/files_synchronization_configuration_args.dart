@@ -10,17 +10,17 @@ import 'files_synchronization_configuration_import_data_rule.dart';
 /// {@macro pulumi_s3_files_synchronization_configuration_files_synchronization_configuration_args_doc}
 class FilesSynchronizationConfigurationArgs {
   /// Expiration data rule configuration. See `expirationDataRule` below.
-  final pulumi.Input<List<FilesSynchronizationConfigurationExpirationDataRule>>? expirationDataRules;
+  final pulumi.Input<List<FilesSynchronizationConfigurationExpirationDataRule>?>? expirationDataRules;
   /// File system ID. Changing this value forces replacement.
   final pulumi.Input<String> fileSystemId;
   /// One or more import data rules. See `importDataRule` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<FilesSynchronizationConfigurationImportDataRule>>? importDataRules;
+  final pulumi.Input<List<FilesSynchronizationConfigurationImportDataRule>?>? importDataRules;
   /// Latest synchronization configuration version number.
-  final pulumi.Input<int>? latestVersionNumber;
+  final pulumi.Input<int?>? latestVersionNumber;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FilesSynchronizationConfigurationArgs].
   /// [expirationDataRules] Expiration data rule configuration. See `expirationDataRule` below.
@@ -51,7 +51,7 @@ class FilesSynchronizationConfigurationArgs {
       expirationDataRules: (() { final guardedValue = map['expirationDataRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
       importDataRules: (() { final guardedValue = map['importDataRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilesSynchronizationConfigurationImportDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationImportDataRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      latestVersionNumber: (() { final guardedValue = map['latestVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      latestVersionNumber: (() { final guardedValue = map['latestVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

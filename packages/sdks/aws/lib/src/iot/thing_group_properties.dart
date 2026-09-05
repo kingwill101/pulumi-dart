@@ -5,9 +5,9 @@ import 'thing_group_properties_attribute_payload.dart';
 
 class ThingGroupProperties {
   /// The Thing Group attributes. Defined below.
-  final pulumi.Input<ThingGroupPropertiesAttributePayload>? attributePayload;
+  final pulumi.Input<ThingGroupPropertiesAttributePayload?>? attributePayload;
   /// A description of the Thing Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [ThingGroupProperties].
   /// [attributePayload] The Thing Group attributes. Defined below.

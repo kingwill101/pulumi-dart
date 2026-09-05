@@ -5,15 +5,15 @@ import 'channel_encoder_settings_video_description_codec_settings_h265_settings_
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings {
   /// Sets the colorspace metadata to be passed through.
-  final pulumi.Input<Map<String, dynamic>>? colorSpacePassthroughSettings;
+  final pulumi.Input<Map<String, dynamic>?>? colorSpacePassthroughSettings;
   /// Set the colorspace to Dolby Vision81.
-  final pulumi.Input<Map<String, dynamic>>? dolbyVision81Settings;
+  final pulumi.Input<Map<String, dynamic>?>? dolbyVision81Settings;
   /// Set the colorspace to be HDR10. See H265 HDR10 Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings>? hdr10Settings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings?>? hdr10Settings;
   /// Set the colorspace to Rec. 601.
-  final pulumi.Input<Map<String, dynamic>>? rec601Settings;
+  final pulumi.Input<Map<String, dynamic>?>? rec601Settings;
   /// Set the colorspace to Rec. 709.
-  final pulumi.Input<Map<String, dynamic>>? rec709Settings;
+  final pulumi.Input<Map<String, dynamic>?>? rec709Settings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings].
   /// [colorSpacePassthroughSettings] Sets the colorspace metadata to be passed through.

@@ -9,15 +9,15 @@ import 'web_acl_association_config_request_body_verified_access_instance.dart';
 
 class WebAclAssociationConfigRequestBody {
   /// Customizes the request body that your protected Amazon API Gateway REST APIs forward to AWS WAF for inspection. Applicable only when `scope` is set to `CLOUDFRONT`. See `apiGateway` below for details.
-  final pulumi.Input<WebAclAssociationConfigRequestBodyApiGateway>? apiGateway;
+  final pulumi.Input<WebAclAssociationConfigRequestBodyApiGateway?>? apiGateway;
   /// Customizes the request body that your protected Amazon App Runner services forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `appRunnerService` below for details.
-  final pulumi.Input<WebAclAssociationConfigRequestBodyAppRunnerService>? appRunnerService;
+  final pulumi.Input<WebAclAssociationConfigRequestBodyAppRunnerService?>? appRunnerService;
   /// Customizes the request body that your protected Amazon CloudFront distributions forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cloudfront` below for details.
-  final pulumi.Input<WebAclAssociationConfigRequestBodyCloudfront>? cloudfront;
+  final pulumi.Input<WebAclAssociationConfigRequestBodyCloudfront?>? cloudfront;
   /// Customizes the request body that your protected Amazon Cognito user pools forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cognitoUserPool` below for details.
-  final pulumi.Input<WebAclAssociationConfigRequestBodyCognitoUserPool>? cognitoUserPool;
+  final pulumi.Input<WebAclAssociationConfigRequestBodyCognitoUserPool?>? cognitoUserPool;
   /// Customizes the request body that your protected AWS Verfied Access instances forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `verifiedAccessInstance` below for details.
-  final pulumi.Input<WebAclAssociationConfigRequestBodyVerifiedAccessInstance>? verifiedAccessInstance;
+  final pulumi.Input<WebAclAssociationConfigRequestBodyVerifiedAccessInstance?>? verifiedAccessInstance;
 
   /// Creates a new [WebAclAssociationConfigRequestBody].
   /// [apiGateway] Customizes the request body that your protected Amazon API Gateway REST APIs forward to AWS WAF for inspection. Applicable only when `scope` is set to `CLOUDFRONT`. See `apiGateway` below for details.

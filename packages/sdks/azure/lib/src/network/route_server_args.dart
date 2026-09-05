@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_route_server_route_server_args_doc}
 class RouteServerArgs {
   /// Whether to enable route exchange between Azure Route Server and the gateway(s).
-  final pulumi.Input<bool>? branchToBranchTrafficEnabled;
+  final pulumi.Input<bool?>? branchToBranchTrafficEnabled;
   /// The hub routing preference. Valid values are `ASPath`, `ExpressRoute` or `VpnGateway`. Defaults to `ExpressRoute`.
-  final pulumi.Input<String>? hubRoutingPreference;
+  final pulumi.Input<String?>? hubRoutingPreference;
   /// Specifies the supported Azure location where the Route Server should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Route Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Public IP Address. This option is required since September 1st 2021. Changing this forces a new resource to be created.
   final pulumi.Input<String> publicIpAddressId;
   /// Specifies the name of the Resource Group where the Route Server should exist. Changing this forces a new resource to be created.
@@ -26,7 +26,7 @@ class RouteServerArgs {
   /// &gt; **Note:** Azure Route Server requires a dedicated subnet named RouteServerSubnet. The subnet size has to be at least /27 or short prefix (such as /26 or /25) and cannot be attached to any security group, otherwise, you'll receive an error message when deploying the Route Server.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RouteServerArgs].
   /// [branchToBranchTrafficEnabled] Whether to enable route exchange between Azure Route Server and the gateway(s).

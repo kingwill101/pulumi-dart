@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudVmClusterFileSystemConfiguration {
   /// The mount path of the file system.
-  final pulumi.Input<String>? mountPoint;
+  final pulumi.Input<String?>? mountPoint;
   /// The size of the virtual machine's file system.
-  final pulumi.Input<int>? sizeInGb;
+  final pulumi.Input<int?>? sizeInGb;
 
   /// Creates a new [CloudVmClusterFileSystemConfiguration].
   /// [mountPoint] The mount path of the file system.
@@ -26,7 +26,7 @@ class CloudVmClusterFileSystemConfiguration {
   factory CloudVmClusterFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterFileSystemConfiguration(
       mountPoint: (() { final guardedValue = map['mountPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGb: (() { final guardedValue = map['sizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeInGb: (() { final guardedValue = map['sizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -6,13 +6,13 @@ class RestoreTestingPlanRecoveryPointSelection {
   /// Specifies the algorithm used for selecting recovery points. Valid values are "RANDOM_WITHIN_WINDOW" and "LATEST_WITHIN_WINDOW".
   final pulumi.Input<String> algorithm;
   /// Specifies the backup vaults to exclude from the recovery point selection. Each value must be a valid AWS ARN for a backup vault or "*" to exclude all backup vaults.
-  final pulumi.Input<List<String>>? excludeVaults;
+  final pulumi.Input<List<String>?>? excludeVaults;
   /// Specifies the backup vaults to include in the recovery point selection. Each value must be a valid AWS ARN for a backup vault or "*" to include all backup vaults.
   final pulumi.Input<List<String>> includeVaults;
   /// Specifies the types of recovery points to include in the selection. Valid values are "CONTINUOUS" and "SNAPSHOT".
   final pulumi.Input<List<String>> recoveryPointTypes;
   /// Specifies the number of days within which the recovery points should be selected. Must be a value between 1 and 365.
-  final pulumi.Input<int>? selectionWindowDays;
+  final pulumi.Input<int?>? selectionWindowDays;
 
   /// Creates a new [RestoreTestingPlanRecoveryPointSelection].
   /// [algorithm] Specifies the algorithm used for selecting recovery points. Valid values are "RANDOM_WITHIN_WINDOW" and "LATEST_WITHIN_WINDOW".
@@ -44,7 +44,7 @@ class RestoreTestingPlanRecoveryPointSelection {
       excludeVaults: (() { final guardedValue = map['excludeVaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       includeVaults: pulumi.Input.fromValue((map['includeVaults'] as List).cast<String>()),
       recoveryPointTypes: pulumi.Input.fromValue((map['recoveryPointTypes'] as List).cast<String>()),
-      selectionWindowDays: (() { final guardedValue = map['selectionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      selectionWindowDays: (() { final guardedValue = map['selectionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -619,7 +619,7 @@ import 'finding_aggregator_state.dart';
 /// $ pulumi import aws:securityhub/findingAggregator:FindingAggregator example arn:aws:securityhub:eu-west-1:123456789012:finding-aggregator/abcd1234-abcd-1234-1234-abcdef123456
 /// ```
 class FindingAggregator extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Security Hub finding aggregator.
+  /// ARN of the Security Hub finding aggregator.
   late final pulumi.Output<String> arn;
   /// Indicates whether to aggregate findings from all of the available Regions or from a specified list. The options are `ALL_REGIONS`, `ALL_REGIONS_EXCEPT_SPECIFIED`, `SPECIFIED_REGIONS` or `NO_REGIONS`. When `ALL_REGIONS` or `ALL_REGIONS_EXCEPT_SPECIFIED` are used, Security Hub will automatically aggregate findings from new Regions as Security Hub supports them and you opt into them.
   late final pulumi.Output<String> linkingMode;
@@ -640,12 +640,12 @@ class FindingAggregator extends pulumi.CustomResource {
           'aws:securityhub/findingAggregator:FindingAggregator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     linkingMode = registerOutput<String>('linkingMode');
     region = registerOutput<String>('region');
-    specifiedRegions = registerOutput<List<String>?>('specifiedRegions');
+    specifiedRegions = registerOutput<List<String>?>('specifiedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [FindingAggregator] resource's state with the given [name] and [id].
@@ -653,11 +653,12 @@ class FindingAggregator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FindingAggregatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FindingAggregator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -674,6 +675,21 @@ class FindingAggregator extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     linkingMode = registerOutput<String>('linkingMode');
     region = registerOutput<String>('region');
-    specifiedRegions = registerOutput<List<String>?>('specifiedRegions');
+    specifiedRegions = registerOutput<List<String>?>('specifiedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FindingAggregator] resource.
+  FindingAggregator.reference(String urn)
+    : super(
+        'aws:securityhub/findingAggregator:FindingAggregator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    linkingMode = registerOutput<String>('linkingMode');
+    region = registerOutput<String>('region');
+    specifiedRegions = registerOutput<List<String>?>('specifiedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,7 +5,7 @@ import 'policy_managed_rules_exclusion_excluded_rule_set.dart';
 
 class PolicyManagedRulesExclusion {
   /// One or more `excludedRuleSet` block defined below.
-  final pulumi.Input<PolicyManagedRulesExclusionExcludedRuleSet>? excludedRuleSet;
+  final pulumi.Input<PolicyManagedRulesExclusionExcludedRuleSet?>? excludedRuleSet;
   /// The name of the Match Variable. Possible values: `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames`, `RequestHeaderValues`.
   final pulumi.Input<String> matchVariable;
   /// Describes field of the matchVariable collection.

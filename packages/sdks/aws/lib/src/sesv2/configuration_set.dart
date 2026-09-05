@@ -20,7 +20,6 @@ import 'configuration_set_vdm_options.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sesv2.ConfigurationSet("example", {
-///     configurationSetName: "example",
 ///     deliveryOptions: {
 ///         maxDeliverySeconds: 300,
 ///         tlsPolicy: "REQUIRE",
@@ -41,6 +40,7 @@ import 'configuration_set_vdm_options.dart';
 ///         customRedirectDomain: "example.com",
 ///         httpsPolicy: "REQUIRE",
 ///     },
+///     configurationSetName: "example",
 /// });
 /// ```
 /// ```python
@@ -48,7 +48,6 @@ import 'configuration_set_vdm_options.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sesv2.ConfigurationSet("example",
-///     configuration_set_name="example",
 ///     delivery_options={
 ///         "max_delivery_seconds": 300,
 ///         "tls_policy": "REQUIRE",
@@ -68,7 +67,8 @@ import 'configuration_set_vdm_options.dart';
 ///     tracking_options={
 ///         "custom_redirect_domain": "example.com",
 ///         "https_policy": "REQUIRE",
-///     })
+///     },
+///     configuration_set_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -80,7 +80,6 @@ import 'configuration_set_vdm_options.dart';
 /// {
 ///     var example = new Aws.SesV2.ConfigurationSet("example", new()
 ///     {
-///         ConfigurationSetName = "example",
 ///         DeliveryOptions = new Aws.SesV2.Inputs.ConfigurationSetDeliveryOptionsArgs
 ///         {
 ///             MaxDeliverySeconds = 300,
@@ -107,6 +106,7 @@ import 'configuration_set_vdm_options.dart';
 ///             CustomRedirectDomain = "example.com",
 ///             HttpsPolicy = "REQUIRE",
 ///         },
+///         ConfigurationSetName = "example",
 ///     });
 ///
 /// });
@@ -122,7 +122,6 @@ import 'configuration_set_vdm_options.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sesv2.NewConfigurationSet(ctx, "example", &sesv2.ConfigurationSetArgs{
-/// 			ConfigurationSetName: pulumi.String("example"),
 /// 			DeliveryOptions: &sesv2.ConfigurationSetDeliveryOptionsArgs{
 /// 				MaxDeliverySeconds: pulumi.Int(300),
 /// 				TlsPolicy:          pulumi.String("REQUIRE"),
@@ -143,6 +142,7 @@ import 'configuration_set_vdm_options.dart';
 /// 				CustomRedirectDomain: pulumi.String("example.com"),
 /// 				HttpsPolicy:          pulumi.String("REQUIRE"),
 /// 			},
+/// 			ConfigurationSetName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,7 +161,6 @@ import 'configuration_set_vdm_options.dart';
 /// }
 ///
 /// resource "aws_sesv2_configurationset" "example" {
-///   configuration_set_name = "example"
 ///   delivery_options = {
 ///     max_delivery_seconds = 300
 ///     tls_policy           = "REQUIRE"
@@ -179,6 +178,7 @@ import 'configuration_set_vdm_options.dart';
 ///     custom_redirect_domain = "example.com"
 ///     https_policy           = "REQUIRE"
 ///   }
+///   configuration_set_name = "example"
 /// }
 /// ```
 /// ```java
@@ -208,7 +208,6 @@ import 'configuration_set_vdm_options.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConfigurationSet("example", ConfigurationSetArgs.builder()
-///             .configurationSetName("example")
 ///             .deliveryOptions(ConfigurationSetDeliveryOptionsArgs.builder()
 ///                 .maxDeliverySeconds(300)
 ///                 .tlsPolicy("REQUIRE")
@@ -228,6 +227,7 @@ import 'configuration_set_vdm_options.dart';
 ///                 .customRedirectDomain("example.com")
 ///                 .httpsPolicy("REQUIRE")
 ///                 .build())
+///             .configurationSetName("example")
 ///             .build());
 ///
 ///     }
@@ -238,7 +238,6 @@ import 'configuration_set_vdm_options.dart';
 ///   example:
 ///     type: aws:sesv2:ConfigurationSet
 ///     properties:
-///       configurationSetName: example
 ///       deliveryOptions:
 ///         maxDeliverySeconds: 300
 ///         tlsPolicy: REQUIRE
@@ -253,6 +252,7 @@ import 'configuration_set_vdm_options.dart';
 ///       trackingOptions:
 ///         customRedirectDomain: example.com
 ///         httpsPolicy: REQUIRE
+///       configurationSetName: example
 /// ```
 ///
 ///
@@ -266,24 +266,24 @@ import 'configuration_set_vdm_options.dart';
 class ConfigurationSet extends pulumi.CustomResource {
   /// ARN of the Configuration Set.
   late final pulumi.Output<String> arn;
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   late final pulumi.Output<String> configurationSetName;
-  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
+  /// Object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
   late final pulumi.Output<ConfigurationSetDeliveryOptions?> deliveryOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
+  /// Object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
   late final pulumi.Output<ConfigurationSetReputationOptions> reputationOptions;
-  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
+  /// Object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
   late final pulumi.Output<ConfigurationSetSendingOptions> sendingOptions;
-  /// An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
+  /// Object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
   late final pulumi.Output<ConfigurationSetSuppressionOptions?> suppressionOptions;
-  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
+  /// Object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
   late final pulumi.Output<ConfigurationSetTrackingOptions?> trackingOptions;
-  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
+  /// Object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
   late final pulumi.Output<ConfigurationSetVdmOptions?> vdmOptions;
 
   /// Creates a new [ConfigurationSet].
@@ -298,7 +298,7 @@ class ConfigurationSet extends pulumi.CustomResource {
           'aws:sesv2/configurationSet:ConfigurationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String>('configurationSetName');
@@ -307,8 +307,8 @@ class ConfigurationSet extends pulumi.CustomResource {
     reputationOptions = registerOutput<ConfigurationSetReputationOptions>('reputationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetReputationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sendingOptions = registerOutput<ConfigurationSetSendingOptions>('sendingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSendingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     suppressionOptions = registerOutput<ConfigurationSetSuppressionOptions?>('suppressionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSuppressionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>('trackingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetTrackingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetVdmOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -318,11 +318,12 @@ class ConfigurationSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,8 +344,30 @@ class ConfigurationSet extends pulumi.CustomResource {
     reputationOptions = registerOutput<ConfigurationSetReputationOptions>('reputationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetReputationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sendingOptions = registerOutput<ConfigurationSetSendingOptions>('sendingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSendingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     suppressionOptions = registerOutput<ConfigurationSetSuppressionOptions?>('suppressionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSuppressionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>('trackingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetTrackingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetVdmOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationSet] resource.
+  ConfigurationSet.reference(String urn)
+    : super(
+        'aws:sesv2/configurationSet:ConfigurationSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configurationSetName = registerOutput<String>('configurationSetName');
+    deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetDeliveryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    reputationOptions = registerOutput<ConfigurationSetReputationOptions>('reputationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetReputationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sendingOptions = registerOutput<ConfigurationSetSendingOptions>('sendingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSendingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suppressionOptions = registerOutput<ConfigurationSetSuppressionOptions?>('suppressionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetSuppressionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>('trackingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetTrackingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetVdmOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

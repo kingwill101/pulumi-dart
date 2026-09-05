@@ -155,7 +155,7 @@ class ResolverRuleAssociation extends pulumi.CustomResource {
           'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -168,11 +168,12 @@ class ResolverRuleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverRuleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverRuleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -186,6 +187,21 @@ class ResolverRuleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resolverRuleId = registerOutput<String>('resolverRuleId');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [ResolverRuleAssociation] resource.
+  ResolverRuleAssociation.reference(String urn)
+    : super(
+        'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resolverRuleId = registerOutput<String>('resolverRuleId');

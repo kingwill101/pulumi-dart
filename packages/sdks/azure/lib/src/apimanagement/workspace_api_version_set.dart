@@ -134,7 +134,7 @@ import 'workspace_api_version_set_state.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("Example Workspace"),
 /// 			Description:     pulumi.String("Example workspace for development"),
 /// 		})
@@ -143,7 +143,7 @@ import 'workspace_api_version_set_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewWorkspaceApiVersionSet(ctx, "example", &apimanagement.WorkspaceApiVersionSetArgs{
 /// 			Name:                     pulumi.String("example-version-set"),
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:              pulumi.String("Example API Version Set"),
 /// 			VersioningScheme:         pulumi.String("Segment"),
 /// 		})
@@ -324,7 +324,7 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
           'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
@@ -340,11 +340,12 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceApiVersionSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceApiVersionSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,6 +359,24 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceApiVersionSet] resource.
+  WorkspaceApiVersionSet.reference(String urn)
+    : super(
+        'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

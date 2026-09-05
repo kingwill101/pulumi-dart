@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'table_acl.dart';
 import 'table_args.dart';
 import 'table_state.dart';
 
@@ -221,7 +222,7 @@ import 'table_state.dart';
 /// ```
 class Table extends pulumi.CustomResource {
   /// One or more `acl` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> acls;
+  late final pulumi.Output<List<TableAcl>?> acls;
   /// The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The Resource Manager ID of this Storage Table.
@@ -245,9 +246,9 @@ class Table extends pulumi.CustomResource {
           'azure:storage/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    acls = registerOutput<List<TableAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAcl>(guardedValue, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
@@ -259,11 +260,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,7 +279,23 @@ class Table extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    acls = registerOutput<List<TableAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAcl>(guardedValue, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'azure:storage/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acls = registerOutput<List<TableAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAcl>(guardedValue, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');

@@ -20,7 +20,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage(
-      sizeInGib: pulumi.Input.fromValue(map['sizeInGib'] as int),
+      sizeInGib: pulumi.Input.fromValue((map['sizeInGib'] as num).toInt()),
     );
   }
 }

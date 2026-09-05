@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationInstallPatchesWindow {
   /// List of Classification category of patches to be patched. Possible values are `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.
-  final pulumi.Input<List<String>>? classificationsToIncludes;
+  final pulumi.Input<List<String>?>? classificationsToIncludes;
   /// List of KB numbers to be excluded from patching.
-  final pulumi.Input<List<String>>? kbNumbersToExcludes;
+  final pulumi.Input<List<String>?>? kbNumbersToExcludes;
   /// List of KB numbers to be included for patching.
-  final pulumi.Input<List<String>>? kbNumbersToIncludes;
+  final pulumi.Input<List<String>?>? kbNumbersToIncludes;
 
   /// Creates a new [ConfigurationInstallPatchesWindow].
   /// [classificationsToIncludes] List of Classification category of patches to be patched. Possible values are `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.

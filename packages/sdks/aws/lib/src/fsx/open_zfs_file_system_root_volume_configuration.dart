@@ -6,17 +6,17 @@ import 'open_zfs_file_system_root_volume_configuration_user_and_group_quota.dart
 
 class OpenZfsFileSystemRootVolumeConfiguration {
   /// Whether tags for the file system should be copied to snapshots. Default value is false.
-  final pulumi.Input<bool>? copyTagsToSnapshots;
+  final pulumi.Input<bool?>? copyTagsToSnapshots;
   /// Method used to compress the data on the volume. Valid values are `LZ4`, `NONE` or `ZSTD`. Child volumes that don't specify compression option will inherit from parent volume. This option on file system applies to the root volume.
-  final pulumi.Input<String>? dataCompressionType;
+  final pulumi.Input<String?>? dataCompressionType;
   /// NFS export configuration for the root volume. Exactly 1 item. See `nfsExports` Block for details.
-  final pulumi.Input<OpenZfsFileSystemRootVolumeConfigurationNfsExports>? nfsExports;
+  final pulumi.Input<OpenZfsFileSystemRootVolumeConfigurationNfsExports?>? nfsExports;
   /// specifies whether the volume is read-only. Default is false.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Record size of an OpenZFS root volume, in kibibytes (KiB). Valid values are `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, or `1024` KiB. Default is `128` KiB.
-  final pulumi.Input<int>? recordSizeKib;
+  final pulumi.Input<int?>? recordSizeKib;
   /// Specify how much storage users or groups can use on the volume. Maximum of 100 items. See `userAndGroupQuotas` Block for details.
-  final pulumi.Input<List<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>>? userAndGroupQuotas;
+  final pulumi.Input<List<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>?>? userAndGroupQuotas;
 
   /// Creates a new [OpenZfsFileSystemRootVolumeConfiguration].
   /// [copyTagsToSnapshots] Whether tags for the file system should be copied to snapshots. Default value is false.
@@ -51,7 +51,7 @@ class OpenZfsFileSystemRootVolumeConfiguration {
       dataCompressionType: (() { final guardedValue = map['dataCompressionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nfsExports: (() { final guardedValue = map['nfsExports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       userAndGroupQuotas: (() { final guardedValue = map['userAndGroupQuotas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>(guardedValue, (value) => OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

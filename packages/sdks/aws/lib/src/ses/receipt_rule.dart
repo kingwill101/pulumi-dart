@@ -1,6 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'receipt_rule_add_header_action.dart';
 import 'receipt_rule_args.dart';
+import 'receipt_rule_bounce_action.dart';
+import 'receipt_rule_lambda_action.dart';
+import 'receipt_rule_s3_action.dart';
+import 'receipt_rule_sns_action.dart';
 import 'receipt_rule_state.dart';
+import 'receipt_rule_stop_action.dart';
+import 'receipt_rule_workmail_action.dart';
 
 /// Provides an SES receipt rule resource
 ///
@@ -13,11 +20,6 @@ import 'receipt_rule_state.dart';
 ///
 /// // Add a header to the email and store it in S3
 /// const store = new aws.ses.ReceiptRule("store", {
-///     name: "store",
-///     ruleSetName: "default-rule-set",
-///     recipients: ["karen@example.com"],
-///     enabled: true,
-///     scanEnabled: true,
 ///     addHeaderActions: [{
 ///         headerName: "Custom-Header",
 ///         headerValue: "Added by SES",
@@ -27,6 +29,11 @@ import 'receipt_rule_state.dart';
 ///         bucketName: "emails",
 ///         position: 2,
 ///     }],
+///     name: "store",
+///     ruleSetName: "default-rule-set",
+///     recipients: ["karen@example.com"],
+///     enabled: true,
+///     scanEnabled: true,
 /// });
 /// ```
 /// ```python
@@ -35,11 +42,6 @@ import 'receipt_rule_state.dart';
 ///
 /// # Add a header to the email and store it in S3
 /// store = aws.ses.ReceiptRule("store",
-///     name="store",
-///     rule_set_name="default-rule-set",
-///     recipients=["karen@example.com"],
-///     enabled=True,
-///     scan_enabled=True,
 ///     add_header_actions=[{
 ///         "header_name": "Custom-Header",
 ///         "header_value": "Added by SES",
@@ -48,7 +50,12 @@ import 'receipt_rule_state.dart';
 ///     s3_actions=[{
 ///         "bucket_name": "emails",
 ///         "position": 2,
-///     }])
+///     }],
+///     name="store",
+///     rule_set_name="default-rule-set",
+///     recipients=["karen@example.com"],
+///     enabled=True,
+///     scan_enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,14 +68,6 @@ import 'receipt_rule_state.dart';
 ///     // Add a header to the email and store it in S3
 ///     var store = new Aws.Ses.ReceiptRule("store", new()
 ///     {
-///         Name = "store",
-///         RuleSetName = "default-rule-set",
-///         Recipients = new[]
-///         {
-///             "karen@example.com",
-///         },
-///         Enabled = true,
-///         ScanEnabled = true,
 ///         AddHeaderActions = new[]
 ///         {
 ///             new Aws.Ses.Inputs.ReceiptRuleAddHeaderActionArgs
@@ -86,6 +85,14 @@ import 'receipt_rule_state.dart';
 ///                 Position = 2,
 ///             },
 ///         },
+///         Name = "store",
+///         RuleSetName = "default-rule-set",
+///         Recipients = new[]
+///         {
+///             "karen@example.com",
+///         },
+///         Enabled = true,
+///         ScanEnabled = true,
 ///     });
 ///
 /// });
@@ -102,13 +109,6 @@ import 'receipt_rule_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Add a header to the email and store it in S3
 /// 		_, err := ses.NewReceiptRule(ctx, "store", &ses.ReceiptRuleArgs{
-/// 			Name:        pulumi.String("store"),
-/// 			RuleSetName: pulumi.String("default-rule-set"),
-/// 			Recipients: pulumi.StringArray{
-/// 				pulumi.String("karen@example.com"),
-/// 			},
-/// 			Enabled:     pulumi.Bool(true),
-/// 			ScanEnabled: pulumi.Bool(true),
 /// 			AddHeaderActions: ses.ReceiptRuleAddHeaderActionArray{
 /// 				&ses.ReceiptRuleAddHeaderActionArgs{
 /// 					HeaderName:  pulumi.String("Custom-Header"),
@@ -122,6 +122,13 @@ import 'receipt_rule_state.dart';
 /// 					Position:   pulumi.Int(2),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("store"),
+/// 			RuleSetName: pulumi.String("default-rule-set"),
+/// 			Recipients: pulumi.StringArray{
+/// 				pulumi.String("karen@example.com"),
+/// 			},
+/// 			Enabled:     pulumi.Bool(true),
+/// 			ScanEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -141,11 +148,6 @@ import 'receipt_rule_state.dart';
 ///
 /// # Add a header to the email and store it in S3
 /// resource "aws_ses_receiptrule" "store" {
-///   name          = "store"
-///   rule_set_name = "default-rule-set"
-///   recipients    = ["karen@example.com"]
-///   enabled       = true
-///   scan_enabled  = true
 ///   add_header_actions {
 ///     header_name  = "Custom-Header"
 ///     header_value = "Added by SES"
@@ -155,6 +157,11 @@ import 'receipt_rule_state.dart';
 ///     bucket_name = "emails"
 ///     position    = 2
 ///   }
+///   name          = "store"
+///   rule_set_name = "default-rule-set"
+///   recipients    = ["karen@example.com"]
+///   enabled       = true
+///   scan_enabled  = true
 /// }
 /// ```
 /// ```java
@@ -182,11 +189,6 @@ import 'receipt_rule_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Add a header to the email and store it in S3
 ///         var store = new ReceiptRule("store", ReceiptRuleArgs.builder()
-///             .name("store")
-///             .ruleSetName("default-rule-set")
-///             .recipients("karen@example.com")
-///             .enabled(true)
-///             .scanEnabled(true)
 ///             .addHeaderActions(ReceiptRuleAddHeaderActionArgs.builder()
 ///                 .headerName("Custom-Header")
 ///                 .headerValue("Added by SES")
@@ -196,6 +198,11 @@ import 'receipt_rule_state.dart';
 ///                 .bucketName("emails")
 ///                 .position(2)
 ///                 .build())
+///             .name("store")
+///             .ruleSetName("default-rule-set")
+///             .recipients("karen@example.com")
+///             .enabled(true)
+///             .scanEnabled(true)
 ///             .build());
 ///
 ///     }
@@ -207,12 +214,6 @@ import 'receipt_rule_state.dart';
 ///   store:
 ///     type: aws:ses:ReceiptRule
 ///     properties:
-///       name: store
-///       ruleSetName: default-rule-set
-///       recipients:
-///         - karen@example.com
-///       enabled: true
-///       scanEnabled: true
 ///       addHeaderActions:
 ///         - headerName: Custom-Header
 ///           headerValue: Added by SES
@@ -220,6 +221,12 @@ import 'receipt_rule_state.dart';
 ///       s3Actions:
 ///         - bucketName: emails
 ///           position: 2
+///       name: store
+///       ruleSetName: default-rule-set
+///       recipients:
+///         - karen@example.com
+///       enabled: true
+///       scanEnabled: true
 /// ```
 ///
 ///
@@ -231,38 +238,40 @@ import 'receipt_rule_state.dart';
 /// $ pulumi import aws:ses/receiptRule:ReceiptRule my_rule my_rule_set:my_rule
 /// ```
 class ReceiptRule extends pulumi.CustomResource {
-  /// A list of Add Header Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> addHeaderActions;
-  /// The name of the rule to place this rule after
+  /// Configuration block for adding a header to received emails. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleAddHeaderAction>?> addHeaderActions;
+  /// Name of the rule to place this rule after.
   late final pulumi.Output<String?> after;
-  /// The SES receipt rule ARN.
+  /// SES receipt rule ARN.
   late final pulumi.Output<String> arn;
-  /// A list of Bounce Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> bounceActions;
-  /// If true, the rule will be enabled
+  /// Configuration block for rejecting received emails. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleBounceAction>?> bounceActions;
+  /// If true, the rule will be enabled.
   late final pulumi.Output<bool?> enabled;
-  /// A list of Lambda Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lambdaActions;
-  /// The name of the rule
+  /// Configuration block for calling an AWS Lambda function. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleLambdaAction>?> lambdaActions;
+  /// Name of the rule.
   late final pulumi.Output<String> name;
-  /// A list of email addresses
+  /// List of email addresses.
   late final pulumi.Output<List<String>?> recipients;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The name of the rule set
+  /// Name of the rule set.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> ruleSetName;
-  /// A list of S3 Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> s3Actions;
-  /// If true, incoming emails will be scanned for spam and viruses
+  /// Configuration block for storing received emails in an S3 bucket. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleS3Action>?> s3Actions;
+  /// If true, incoming emails will be scanned for spam and viruses.
   late final pulumi.Output<bool?> scanEnabled;
-  /// A list of SNS Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> snsActions;
-  /// A list of Stop Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> stopActions;
-  /// `Require` or `Optional`
+  /// Configuration block for publishing to an SNS topic. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleSnsAction>?> snsActions;
+  /// Configuration block for terminating the evaluation of the receipt rule set. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleStopAction>?> stopActions;
+  /// `Require` or `Optional`.
   late final pulumi.Output<String> tlsPolicy;
-  /// A list of WorkMail Action blocks. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> workmailActions;
+  /// Configuration block for calling Amazon WorkMail. Detailed below.
+  late final pulumi.Output<List<ReceiptRuleWorkmailAction>?> workmailActions;
 
   /// Creates a new [ReceiptRule].
   /// [name] The Pulumi resource name.
@@ -276,24 +285,24 @@ class ReceiptRule extends pulumi.CustomResource {
           'aws:ses/receiptRule:ReceiptRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>('addHeaderActions');
+    addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(guardedValue, (value) => ReceiptRuleAddHeaderAction.fromMap((value as Map).cast<String, dynamic>())); });
     after = registerOutput<String?>('after');
     arn = registerOutput<String>('arn');
-    bounceActions = registerOutput<List<Map<String, dynamic>>?>('bounceActions');
+    bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleBounceAction>(guardedValue, (value) => ReceiptRuleBounceAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    lambdaActions = registerOutput<List<Map<String, dynamic>>?>('lambdaActions');
+    lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleLambdaAction>(guardedValue, (value) => ReceiptRuleLambdaAction.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    recipients = registerOutput<List<String>?>('recipients');
+    recipients = registerOutput<List<String>?>('recipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');
-    s3Actions = registerOutput<List<Map<String, dynamic>>?>('s3Actions');
+    s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleS3Action>(guardedValue, (value) => ReceiptRuleS3Action.fromMap((value as Map).cast<String, dynamic>())); });
     scanEnabled = registerOutput<bool?>('scanEnabled');
-    snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
-    stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
+    snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleSnsAction>(guardedValue, (value) => ReceiptRuleSnsAction.fromMap((value as Map).cast<String, dynamic>())); });
+    stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleStopAction>(guardedValue, (value) => ReceiptRuleStopAction.fromMap((value as Map).cast<String, dynamic>())); });
     tlsPolicy = registerOutput<String>('tlsPolicy');
-    workmailActions = registerOutput<List<Map<String, dynamic>>?>('workmailActions');
+    workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleWorkmailAction>(guardedValue, (value) => ReceiptRuleWorkmailAction.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ReceiptRule] resource's state with the given [name] and [id].
@@ -301,11 +310,12 @@ class ReceiptRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReceiptRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReceiptRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -319,21 +329,48 @@ class ReceiptRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>('addHeaderActions');
+    addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(guardedValue, (value) => ReceiptRuleAddHeaderAction.fromMap((value as Map).cast<String, dynamic>())); });
     after = registerOutput<String?>('after');
     arn = registerOutput<String>('arn');
-    bounceActions = registerOutput<List<Map<String, dynamic>>?>('bounceActions');
+    bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleBounceAction>(guardedValue, (value) => ReceiptRuleBounceAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    lambdaActions = registerOutput<List<Map<String, dynamic>>?>('lambdaActions');
+    lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleLambdaAction>(guardedValue, (value) => ReceiptRuleLambdaAction.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    recipients = registerOutput<List<String>?>('recipients');
+    recipients = registerOutput<List<String>?>('recipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');
-    s3Actions = registerOutput<List<Map<String, dynamic>>?>('s3Actions');
+    s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleS3Action>(guardedValue, (value) => ReceiptRuleS3Action.fromMap((value as Map).cast<String, dynamic>())); });
     scanEnabled = registerOutput<bool?>('scanEnabled');
-    snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
-    stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
+    snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleSnsAction>(guardedValue, (value) => ReceiptRuleSnsAction.fromMap((value as Map).cast<String, dynamic>())); });
+    stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleStopAction>(guardedValue, (value) => ReceiptRuleStopAction.fromMap((value as Map).cast<String, dynamic>())); });
     tlsPolicy = registerOutput<String>('tlsPolicy');
-    workmailActions = registerOutput<List<Map<String, dynamic>>?>('workmailActions');
+    workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleWorkmailAction>(guardedValue, (value) => ReceiptRuleWorkmailAction.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ReceiptRule] resource.
+  ReceiptRule.reference(String urn)
+    : super(
+        'aws:ses/receiptRule:ReceiptRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleAddHeaderAction>(guardedValue, (value) => ReceiptRuleAddHeaderAction.fromMap((value as Map).cast<String, dynamic>())); });
+    after = registerOutput<String?>('after');
+    arn = registerOutput<String>('arn');
+    bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleBounceAction>(guardedValue, (value) => ReceiptRuleBounceAction.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleLambdaAction>(guardedValue, (value) => ReceiptRuleLambdaAction.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    recipients = registerOutput<List<String>?>('recipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
+    s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleS3Action>(guardedValue, (value) => ReceiptRuleS3Action.fromMap((value as Map).cast<String, dynamic>())); });
+    scanEnabled = registerOutput<bool?>('scanEnabled');
+    snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleSnsAction>(guardedValue, (value) => ReceiptRuleSnsAction.fromMap((value as Map).cast<String, dynamic>())); });
+    stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleStopAction>(guardedValue, (value) => ReceiptRuleStopAction.fromMap((value as Map).cast<String, dynamic>())); });
+    tlsPolicy = registerOutput<String>('tlsPolicy');
+    workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReceiptRuleWorkmailAction>(guardedValue, (value) => ReceiptRuleWorkmailAction.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

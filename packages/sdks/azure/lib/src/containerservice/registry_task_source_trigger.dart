@@ -5,11 +5,11 @@ import 'registry_task_source_trigger_authentication.dart';
 
 class RegistryTaskSourceTrigger {
   /// A `authentication` block as defined above.
-  final pulumi.Input<RegistryTaskSourceTriggerAuthentication>? authentication;
+  final pulumi.Input<RegistryTaskSourceTriggerAuthentication?>? authentication;
   /// The branch name of the source code.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Should the trigger be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies a list of source events corresponding to the trigger. Possible values are `commit` and `pullrequest`.
   final pulumi.Input<List<String>> events;
   /// The name which should be used for this trigger.

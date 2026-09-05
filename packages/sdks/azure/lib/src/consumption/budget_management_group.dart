@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_management_group_args.dart';
 import 'budget_management_group_filter.dart';
+import 'budget_management_group_notification.dart';
 import 'budget_management_group_state.dart';
 import 'budget_management_group_time_period.dart';
 
@@ -228,7 +229,7 @@ import 'budget_management_group_time_period.dart';
 /// 		}
 /// 		_, err = consumption.NewBudgetManagementGroup(ctx, "example", &consumption.BudgetManagementGroupArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			ManagementGroupId: example.ID(),
+/// 			ManagementGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Amount:            pulumi.Float64(1000),
 /// 			TimeGrain:         pulumi.String("Monthly"),
 /// 			TimePeriod: &consumption.BudgetManagementGroupTimePeriodArgs{
@@ -492,7 +493,7 @@ class BudgetManagementGroup extends pulumi.CustomResource {
   /// The name which should be used for this Management Group Consumption Budget. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `notification` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> notifications;
+  late final pulumi.Output<List<BudgetManagementGroupNotification>> notifications;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
   /// A `timePeriod` block as defined below.
@@ -510,14 +511,14 @@ class BudgetManagementGroup extends pulumi.CustomResource {
           'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
     filter = registerOutput<BudgetManagementGroupFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    notifications = registerOutput<List<BudgetManagementGroupNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetManagementGroupNotification>(guardedValue, (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>())); });
     timeGrain = registerOutput<String?>('timeGrain');
     timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -527,11 +528,12 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BudgetManagementGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BudgetManagementGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -550,7 +552,26 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     filter = registerOutput<BudgetManagementGroupFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    notifications = registerOutput<List<BudgetManagementGroupNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetManagementGroupNotification>(guardedValue, (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>())); });
+    timeGrain = registerOutput<String?>('timeGrain');
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BudgetManagementGroup] resource.
+  BudgetManagementGroup.reference(String urn)
+    : super(
+        'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amount = registerOutput<double>('amount');
+    etag = registerOutput<String>('etag');
+    filter = registerOutput<BudgetManagementGroupFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managementGroupId = registerOutput<String>('managementGroupId');
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<List<BudgetManagementGroupNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BudgetManagementGroupNotification>(guardedValue, (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>())); });
     timeGrain = registerOutput<String?>('timeGrain');
     timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetManagementGroupTimePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

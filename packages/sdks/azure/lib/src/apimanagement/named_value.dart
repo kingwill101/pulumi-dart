@@ -285,15 +285,16 @@ class NamedValue extends pulumi.CustomResource {
           'azure:apimanagement/namedValue:NamedValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     secret = registerOutput<bool?>('secret');
-    tags = registerOutput<List<String>?>('tags');
-    value = registerOutput<String?>('value');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
     valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -302,11 +303,12 @@ class NamedValue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamedValueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamedValue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,8 +327,28 @@ class NamedValue extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     secret = registerOutput<bool?>('secret');
-    tags = registerOutput<List<String>?>('tags');
-    value = registerOutput<String?>('value');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
+    valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NamedValue] resource.
+  NamedValue.reference(String urn)
+    : super(
+        'azure:apimanagement/namedValue:NamedValue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
     valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -6,10 +6,10 @@ import 'application_layer_automatic_response_timeouts.dart';
 /// Input properties used for looking up and filtering ApplicationLayerAutomaticResponse resources.
 class ApplicationLayerAutomaticResponseState {
   /// One of `COUNT` or `BLOCK`
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
-  final pulumi.Input<String>? resourceArn;
-  final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts>? timeouts;
+  final pulumi.Input<String?>? resourceArn;
+  final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationLayerAutomaticResponseState].
   /// [action] One of `COUNT` or `BLOCK`

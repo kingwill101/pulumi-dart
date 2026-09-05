@@ -7,19 +7,19 @@ import 'deployment_sku.dart';
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
   /// The ID of the Cognitive Services Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cognitiveAccountId;
+  final pulumi.Input<String?>? cognitiveAccountId;
   /// Whether dynamic throttling is enabled.
-  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<bool?>? dynamicThrottlingEnabled;
   /// A `model` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<DeploymentModel>? model;
+  final pulumi.Input<DeploymentModel?>? model;
   /// The name of the Cognitive Services Account Deployment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of RAI policy.
-  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<String?>? raiPolicyName;
   /// A `sku` block as defined below.
-  final pulumi.Input<DeploymentSku>? sku;
+  final pulumi.Input<DeploymentSku?>? sku;
   /// Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
-  final pulumi.Input<String>? versionUpgradeOption;
+  final pulumi.Input<String?>? versionUpgradeOption;
 
   /// Creates a new [DeploymentState].
   /// [cognitiveAccountId] The ID of the Cognitive Services Account. Changing this forces a new resource to be created.

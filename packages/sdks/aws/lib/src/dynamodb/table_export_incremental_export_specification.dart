@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableExportIncrementalExportSpecification {
-  final pulumi.Input<String>? exportFromTime;
-  final pulumi.Input<String>? exportToTime;
-  final pulumi.Input<String>? exportViewType;
+  final pulumi.Input<String?>? exportFromTime;
+  final pulumi.Input<String?>? exportToTime;
+  final pulumi.Input<String?>? exportViewType;
 
   /// Creates a new [TableExportIncrementalExportSpecification].
   /// [exportFromTime] Optional.

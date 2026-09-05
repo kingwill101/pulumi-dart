@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionLabelNameCondition {
   /// Label name to match (alphanumeric, underscores, hyphens, and colons; up to 1024 characters).
-  final pulumi.Input<String>? labelName;
+  final pulumi.Input<String?>? labelName;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationWafLoggingParametersLoggingFilterFilterConditionLabelNameCondition].
   /// [labelName] Label name to match (alphanumeric, underscores, hyphens, and colons; up to 1024 characters).

@@ -154,7 +154,7 @@ import 'database_extended_auditing_policy_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:     pulumi.String("example-db"),
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -170,7 +170,7 @@ import 'database_extended_auditing_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewDatabaseExtendedAuditingPolicy(ctx, "example", &mssql.DatabaseExtendedAuditingPolicyArgs{
-/// 			DatabaseId:                         exampleDatabase.ID(),
+/// 			DatabaseId:                         exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageEndpoint:                    exampleAccount.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey:            exampleAccount.PrimaryAccessKey,
 /// 			StorageAccountAccessKeyIsSecondary: pulumi.Bool(false),
@@ -381,13 +381,14 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     databaseId = registerOutput<String>('databaseId');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
@@ -397,11 +398,12 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseExtendedAuditingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseExtendedAuditingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -419,7 +421,26 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseExtendedAuditingPolicy] resource.
+  DatabaseExtendedAuditingPolicy.reference(String urn)
+    : super(
+        'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    databaseId = registerOutput<String>('databaseId');
+    enabled = registerOutput<bool?>('enabled');
+    logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }

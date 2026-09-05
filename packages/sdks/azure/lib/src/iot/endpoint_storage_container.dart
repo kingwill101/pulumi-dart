@@ -194,7 +194,7 @@ import 'endpoint_storage_container_state.dart';
 /// 		}
 /// 		_, err = iot.NewEndpointStorageContainer(ctx, "example", &iot.EndpointStorageContainerArgs{
 /// 			ResourceGroupName:       example.Name,
-/// 			IothubId:                exampleIoTHub.ID(),
+/// 			IothubId:                exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                    pulumi.String("acctest"),
 /// 			ContainerName:           pulumi.String("acctestcont"),
 /// 			ConnectionString:        exampleAccount.PrimaryBlobConnectionString,
@@ -430,11 +430,12 @@ class EndpointStorageContainer extends pulumi.CustomResource {
           'azure:iot/endpointStorageContainer:EndpointStorageContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
     batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     containerName = registerOutput<String>('containerName');
     encoding = registerOutput<String?>('encoding');
     endpointUri = registerOutput<String?>('endpointUri');
@@ -452,11 +453,12 @@ class EndpointStorageContainer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointStorageContainerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointStorageContainer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -472,7 +474,32 @@ class EndpointStorageContainer extends pulumi.CustomResource {
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
     batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    containerName = registerOutput<String>('containerName');
+    encoding = registerOutput<String?>('encoding');
+    endpointUri = registerOutput<String?>('endpointUri');
+    fileNameFormat = registerOutput<String?>('fileNameFormat');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    maxChunkSizeInBytes = registerOutput<int?>('maxChunkSizeInBytes');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [EndpointStorageContainer] resource.
+  EndpointStorageContainer.reference(String urn)
+    : super(
+        'azure:iot/endpointStorageContainer:EndpointStorageContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     containerName = registerOutput<String>('containerName');
     encoding = registerOutput<String?>('encoding');
     endpointUri = registerOutput<String?>('endpointUri');

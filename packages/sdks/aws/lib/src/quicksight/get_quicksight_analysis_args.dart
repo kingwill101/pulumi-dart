@@ -10,10 +10,10 @@ class GetQuicksightAnalysisArgs {
   /// Identifier for the analysis.
   final pulumi.Input<String> analysisId;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetQuicksightAnalysisArgs].
   /// [analysisId] Identifier for the analysis.

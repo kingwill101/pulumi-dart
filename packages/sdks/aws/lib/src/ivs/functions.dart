@@ -121,3 +121,14 @@ Future<GetStreamKeyResult> getStreamKey(
   );
   return GetStreamKeyResult.fromMap(result);
 }
+
+pulumi.Output<GetStreamKeyResult> getStreamKeyOutput(
+  GetStreamKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ivs/getStreamKey:getStreamKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamKeyResult.fromMap);
+}

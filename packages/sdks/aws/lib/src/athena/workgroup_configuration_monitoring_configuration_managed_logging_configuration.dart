@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
   /// Boolean whether managed log persistence is enabled for the workgroup.
   final pulumi.Input<bool> enabled;
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration].
   /// [enabled] Boolean whether managed log persistence is enabled for the workgroup.

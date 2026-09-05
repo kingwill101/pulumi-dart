@@ -6,7 +6,7 @@ class PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable {
   /// The list of Virtual Hub Route Table resource id which the routes will be propagated to.
   final pulumi.Input<List<String>> ids;
   /// The list of labels to logically group Virtual Hub Route Tables which the routes will be propagated to.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable].
   /// [ids] The list of Virtual Hub Route Table resource id which the routes will be propagated to.

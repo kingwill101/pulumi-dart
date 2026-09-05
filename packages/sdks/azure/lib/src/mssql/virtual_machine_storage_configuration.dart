@@ -7,17 +7,17 @@ import 'virtual_machine_storage_configuration_temp_db_settings.dart';
 
 class VirtualMachineStorageConfiguration {
   /// A `storageSettings` block as defined below.
-  final pulumi.Input<VirtualMachineStorageConfigurationDataSettings>? dataSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationDataSettings?>? dataSettings;
   /// The type of disk configuration to apply to the SQL Server. Valid values include `NEW`, `EXTEND`, or `ADD`.
   final pulumi.Input<String> diskType;
   /// A `storageSettings` block as defined below.
-  final pulumi.Input<VirtualMachineStorageConfigurationLogSettings>? logSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationLogSettings?>? logSettings;
   /// The type of storage workload. Valid values include `GENERAL`, `OLTP`, or `DW`.
   final pulumi.Input<String> storageWorkloadType;
   /// Specifies whether to set system databases (except tempDb) location to newly created data storage. Possible values are `true` and `false`. Defaults to `false`.
-  final pulumi.Input<bool>? systemDbOnDataDiskEnabled;
+  final pulumi.Input<bool?>? systemDbOnDataDiskEnabled;
   /// An `tempDbSettings` block as defined below.
-  final pulumi.Input<VirtualMachineStorageConfigurationTempDbSettings>? tempDbSettings;
+  final pulumi.Input<VirtualMachineStorageConfigurationTempDbSettings?>? tempDbSettings;
 
   /// Creates a new [VirtualMachineStorageConfiguration].
   /// [dataSettings] A `storageSettings` block as defined below.

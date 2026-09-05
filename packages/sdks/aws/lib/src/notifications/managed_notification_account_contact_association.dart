@@ -141,7 +141,7 @@ class ManagedNotificationAccountContactAssociation extends pulumi.CustomResource
           'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     contactIdentifier = registerOutput<String>('contactIdentifier');
     managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');
@@ -152,11 +152,12 @@ class ManagedNotificationAccountContactAssociation extends pulumi.CustomResource
     String name,
     pulumi.Input<String> id, {
     ManagedNotificationAccountContactAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedNotificationAccountContactAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -170,6 +171,19 @@ class ManagedNotificationAccountContactAssociation extends pulumi.CustomResource
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    contactIdentifier = registerOutput<String>('contactIdentifier');
+    managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');
+  }
+
+  /// Creates a typed reference to an existing [ManagedNotificationAccountContactAssociation] resource.
+  ManagedNotificationAccountContactAssociation.reference(String urn)
+    : super(
+        'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     contactIdentifier = registerOutput<String>('contactIdentifier');
     managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');
   }

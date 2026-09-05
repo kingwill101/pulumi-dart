@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpnConcentrator resources.
 class VpnConcentratorState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the transit gateway attachment created for the VPN concentrator.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// ID of the transit gateway to attach the VPN concentrator to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// Type of VPN concentrator. Valid value: `ipsec.1`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// ID of the VPN Concentrator.
-  final pulumi.Input<String>? vpnConcentratorId;
+  final pulumi.Input<String?>? vpnConcentratorId;
 
   /// Creates a new [VpnConcentratorState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

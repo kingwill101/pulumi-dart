@@ -10,9 +10,9 @@ class LogStreamArgs {
   /// The name of the log group under which the log stream is to be created.
   final pulumi.Input<String> logGroupName;
   /// The name of the log stream. Must not be longer than 512 characters and must not contain `:`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LogStreamArgs].
   /// [logGroupName] The name of the log group under which the log stream is to be created.

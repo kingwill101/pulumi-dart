@@ -261,14 +261,14 @@ class RegistryAgentPool extends pulumi.CustomResource {
           'azure:containerservice/registryAgentPool:RegistryAgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     instanceCount = registerOutput<int?>('instanceCount');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
   }
@@ -278,11 +278,12 @@ class RegistryAgentPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryAgentPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryAgentPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -301,7 +302,26 @@ class RegistryAgentPool extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String?>('tier');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+  }
+
+  /// Creates a typed reference to an existing [RegistryAgentPool] resource.
+  RegistryAgentPool.reference(String urn)
+    : super(
+        'azure:containerservice/registryAgentPool:RegistryAgentPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerRegistryName = registerOutput<String>('containerRegistryName');
+    instanceCount = registerOutput<int?>('instanceCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
   }

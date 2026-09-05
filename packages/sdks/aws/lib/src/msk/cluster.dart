@@ -51,11 +51,11 @@ import 'cluster_state.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["firehose.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -64,32 +64,31 @@ import 'cluster_state.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-msk-broker-logs-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
 ///         roleArn: firehoseRole.arn,
 ///         bucketArn: bucket.arn,
 ///     },
+///     name: "kinesis-firehose-msk-broker-logs-stream",
+///     destination: "extended_s3",
 ///     tags: {
 ///         LogDeliveryEnabled: "placeholder",
 ///     },
+/// }, {
+///     ignoreChanges: ["tags[\"LogDeliveryEnabled\"]"],
 /// });
 /// const example = new aws.msk.Cluster("example", {
-///     clusterName: "example",
-///     kafkaVersion: "3.8.x",
-///     numberOfBrokerNodes: 3,
 ///     brokerNodeGroupInfo: {
+///         storageInfo: {
+///             ebsStorageInfo: {
+///                 volumeSize: 1000,
+///             },
+///         },
 ///         instanceType: "kafka.m5.large",
 ///         clientSubnets: [
 ///             subnetAz1.id,
 ///             subnetAz2.id,
 ///             subnetAz3.id,
 ///         ],
-///         storageInfo: {
-///             ebsStorageInfo: {
-///                 volumeSize: 1000,
-///             },
-///         },
 ///         securityGroups: [sg.id],
 ///     },
 ///     encryptionInfo: {
@@ -122,6 +121,9 @@ import 'cluster_state.dart';
 ///             },
 ///         },
 ///     },
+///     clusterName: "example",
+///     kafkaVersion: "3.8.x",
+///     numberOfBrokerNodes: 3,
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -155,42 +157,40 @@ import 'cluster_state.dart';
 ///     bucket=bucket.id,
 ///     acl="private")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["firehose.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// firehose_role = aws.iam.Role("firehose_role",
 ///     name="firehose_test_role",
 ///     assume_role_policy=assume_role.json)
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-msk-broker-logs-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
 ///         "role_arn": firehose_role.arn,
 ///         "bucket_arn": bucket.arn,
 ///     },
+///     name="kinesis-firehose-msk-broker-logs-stream",
+///     destination="extended_s3",
 ///     tags={
 ///         "LogDeliveryEnabled": "placeholder",
-///     })
+///     },
+///     opts = pulumi.ResourceOptions(ignore_changes=["tags[\"LogDeliveryEnabled\"]"]))
 /// example = aws.msk.Cluster("example",
-///     cluster_name="example",
-///     kafka_version="3.8.x",
-///     number_of_broker_nodes=3,
 ///     broker_node_group_info={
+///         "storage_info": {
+///             "ebs_storage_info": {
+///                 "volume_size": 1000,
+///             },
+///         },
 ///         "instance_type": "kafka.m5.large",
 ///         "client_subnets": [
 ///             subnet_az1.id,
 ///             subnet_az2.id,
 ///             subnet_az3.id,
 ///         ],
-///         "storage_info": {
-///             "ebs_storage_info": {
-///                 "volume_size": 1000,
-///             },
-///         },
 ///         "security_groups": [sg.id],
 ///     },
 ///     encryption_info={
@@ -223,6 +223,9 @@ import 'cluster_state.dart';
 ///             },
 ///         },
 ///     },
+///     cluster_name="example",
+///     kafka_version="3.8.x",
+///     number_of_broker_nodes=3,
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -300,7 +303,6 @@ import 'cluster_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -312,6 +314,7 @@ import 'cluster_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -328,39 +331,42 @@ import 'cluster_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-msk-broker-logs-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
 ///             RoleArn = firehoseRole.Arn,
 ///             BucketArn = bucket.Arn,
 ///         },
+///         Name = "kinesis-firehose-msk-broker-logs-stream",
+///         Destination = "extended_s3",
 ///         Tags =
 ///         {
 ///             { "LogDeliveryEnabled", "placeholder" },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tags[\"LogDeliveryEnabled\"]",
 ///         },
 ///     });
 ///
 ///     var example = new Aws.Msk.Cluster("example", new()
 ///     {
-///         ClusterName = "example",
-///         KafkaVersion = "3.8.x",
-///         NumberOfBrokerNodes = 3,
 ///         BrokerNodeGroupInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoArgs
 ///         {
-///             InstanceType = "kafka.m5.large",
-///             ClientSubnets = new[]
-///             {
-///                 subnetAz1.Id,
-///                 subnetAz2.Id,
-///                 subnetAz3.Id,
-///             },
 ///             StorageInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoStorageInfoArgs
 ///             {
 ///                 EbsStorageInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs
 ///                 {
 ///                     VolumeSize = 1000,
 ///                 },
+///             },
+///             InstanceType = "kafka.m5.large",
+///             ClientSubnets = new[]
+///             {
+///                 subnetAz1.Id,
+///                 subnetAz2.Id,
+///                 subnetAz3.Id,
 ///             },
 ///             SecurityGroups = new[]
 ///             {
@@ -407,6 +413,9 @@ import 'cluster_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ClusterName = "example",
+///         KafkaVersion = "3.8.x",
+///         NumberOfBrokerNodes = 3,
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -507,7 +516,6 @@ import 'cluster_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -516,6 +524,7 @@ import 'cluster_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -533,34 +542,33 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		testStream, err := kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-msk-broker-logs-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
 /// 				RoleArn:   firehoseRole.Arn,
 /// 				BucketArn: bucket.Arn,
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-msk-broker-logs-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 			Tags: pulumi.StringMap{
 /// 				"LogDeliveryEnabled": pulumi.String("placeholder"),
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"tags[\"LogDeliveryEnabled\"]",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example, err := msk.NewCluster(ctx, "example", &msk.ClusterArgs{
-/// 			ClusterName:         pulumi.String("example"),
-/// 			KafkaVersion:        pulumi.String("3.8.x"),
-/// 			NumberOfBrokerNodes: pulumi.Int(3),
 /// 			BrokerNodeGroupInfo: &msk.ClusterBrokerNodeGroupInfoArgs{
+/// 				StorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoArgs{
+/// 					EbsStorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs{
+/// 						VolumeSize: pulumi.Int(1000),
+/// 					},
+/// 				},
 /// 				InstanceType: pulumi.String("kafka.m5.large"),
 /// 				ClientSubnets: pulumi.StringArray{
 /// 					subnetAz1.ID().ToIDOutput().ToStringOutput(),
 /// 					subnetAz2.ID().ToIDOutput().ToStringOutput(),
 /// 					subnetAz3.ID().ToIDOutput().ToStringOutput(),
-/// 				},
-/// 				StorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoArgs{
-/// 					EbsStorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs{
-/// 						VolumeSize: pulumi.Int(1000),
-/// 					},
 /// 				},
 /// 				SecurityGroups: pulumi.StringArray{
 /// 					sg.ID().ToIDOutput().ToStringOutput(),
@@ -596,6 +604,9 @@ import 'cluster_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ClusterName:         pulumi.String("example"),
+/// 			KafkaVersion:        pulumi.String("3.8.x"),
+/// 			NumberOfBrokerNodes: pulumi.Int(3),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -623,11 +634,11 @@ import 'cluster_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -671,28 +682,28 @@ import 'cluster_state.dart';
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-msk-broker-logs-stream"
-///   destination = "extended_s3"
+///   lifecycle {
+///     ignore_changes = [tags["LogDeliveryEnabled"]]
+///   }
 ///   extended_s3_configuration = {
 ///     role_arn   = aws_iam_role.firehose_role.arn
 ///     bucket_arn = aws_s3_bucket.bucket.arn
 ///   }
+///   name        = "kinesis-firehose-msk-broker-logs-stream"
+///   destination = "extended_s3"
 ///   tags = {
 ///     "LogDeliveryEnabled" = "placeholder"
 ///   }
 /// }
 /// resource "aws_msk_cluster" "example" {
-///   cluster_name           = "example"
-///   kafka_version          = "3.8.x"
-///   number_of_broker_nodes = 3
 ///   broker_node_group_info = {
-///     instance_type  = "kafka.m5.large"
-///     client_subnets = [aws_ec2_subnet.subnet_az1.id, aws_ec2_subnet.subnet_az2.id, aws_ec2_subnet.subnet_az3.id]
 ///     storage_info = {
 ///       ebs_storage_info = {
 ///         volume_size = 1000
 ///       }
 ///     }
+///     instance_type   = "kafka.m5.large"
+///     client_subnets  = [aws_ec2_subnet.subnet_az1.id, aws_ec2_subnet.subnet_az2.id, aws_ec2_subnet.subnet_az3.id]
 ///     security_groups = [aws_ec2_securitygroup.sg.id]
 ///   }
 ///   encryption_info = {
@@ -725,6 +736,9 @@ import 'cluster_state.dart';
 ///       }
 ///     }
 ///   }
+///   cluster_name           = "example"
+///   kafka_version          = "3.8.x"
+///   number_of_broker_nodes = 3
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -782,6 +796,7 @@ import 'cluster_state.dart';
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsFirehoseArgs;
 /// import com.pulumi.aws.msk.inputs.ClusterLoggingInfoBrokerLogsS3Args;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -844,11 +859,11 @@ import 'cluster_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("firehose.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -859,30 +874,29 @@ import 'cluster_state.dart';
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-msk-broker-logs-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
 ///                 .roleArn(firehoseRole.arn())
 ///                 .bucketArn(bucket.arn())
 ///                 .build())
+///             .name("kinesis-firehose-msk-broker-logs-stream")
+///             .destination("extended_s3")
 ///             .tags(Map.of("LogDeliveryEnabled", "placeholder"))
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("tags[\"LogDeliveryEnabled\"]")
+///                 .build());
 ///
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .clusterName("example")
-///             .kafkaVersion("3.8.x")
-///             .numberOfBrokerNodes(3)
 ///             .brokerNodeGroupInfo(ClusterBrokerNodeGroupInfoArgs.builder()
-///                 .instanceType("kafka.m5.large")
-///                 .clientSubnets(
-///                     subnetAz1.id(),
-///                     subnetAz2.id(),
-///                     subnetAz3.id())
 ///                 .storageInfo(ClusterBrokerNodeGroupInfoStorageInfoArgs.builder()
 ///                     .ebsStorageInfo(ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs.builder()
 ///                         .volumeSize(1000)
 ///                         .build())
 ///                     .build())
+///                 .instanceType("kafka.m5.large")
+///                 .clientSubnets(
+///                     subnetAz1.id(),
+///                     subnetAz2.id(),
+///                     subnetAz3.id())
 ///                 .securityGroups(sg.id())
 ///                 .build())
 ///             .encryptionInfo(ClusterEncryptionInfoArgs.builder()
@@ -915,6 +929,9 @@ import 'cluster_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .clusterName("example")
+///             .kafkaVersion("3.8.x")
+///             .numberOfBrokerNodes(3)
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -982,28 +999,28 @@ import 'cluster_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-msk-broker-logs-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
 ///         roleArn: ${firehoseRole.arn}
 ///         bucketArn: ${bucket.arn}
+///       name: kinesis-firehose-msk-broker-logs-stream
+///       destination: extended_s3
 ///       tags:
 ///         LogDeliveryEnabled: placeholder
+///     options:
+///       ignoreChanges:
+///         - tags.LogDeliveryEnabled
 ///   example:
 ///     type: aws:msk:Cluster
 ///     properties:
-///       clusterName: example
-///       kafkaVersion: 3.8.x
-///       numberOfBrokerNodes: 3
 ///       brokerNodeGroupInfo:
+///         storageInfo:
+///           ebsStorageInfo:
+///             volumeSize: 1000
 ///         instanceType: kafka.m5.large
 ///         clientSubnets:
 ///           - ${subnetAz1.id}
 ///           - ${subnetAz2.id}
 ///           - ${subnetAz3.id}
-///         storageInfo:
-///           ebsStorageInfo:
-///             volumeSize: 1000
 ///         securityGroups:
 ///           - ${sg.id}
 ///       encryptionInfo:
@@ -1026,6 +1043,9 @@ import 'cluster_state.dart';
 ///             enabled: true
 ///             bucket: ${bucket.id}
 ///             prefix: logs/msk-
+///       clusterName: example
+///       kafkaVersion: 3.8.x
+///       numberOfBrokerNodes: 3
 ///       tags:
 ///         foo: bar
 /// variables:
@@ -1039,11 +1059,11 @@ import 'cluster_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - firehose.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// outputs:
@@ -1060,16 +1080,7 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.msk.Cluster("example", {
-///     clusterName: "example",
-///     kafkaVersion: "3.8.x",
-///     numberOfBrokerNodes: 3,
 ///     brokerNodeGroupInfo: {
-///         instanceType: "kafka.m5.4xlarge",
-///         clientSubnets: [
-///             subnetAz1.id,
-///             subnetAz2.id,
-///             subnetAz3.id,
-///         ],
 ///         storageInfo: {
 ///             ebsStorageInfo: {
 ///                 provisionedThroughput: {
@@ -1079,8 +1090,17 @@ import 'cluster_state.dart';
 ///                 volumeSize: 1000,
 ///             },
 ///         },
+///         instanceType: "kafka.m5.4xlarge",
+///         clientSubnets: [
+///             subnetAz1.id,
+///             subnetAz2.id,
+///             subnetAz3.id,
+///         ],
 ///         securityGroups: [sg.id],
 ///     },
+///     clusterName: "example",
+///     kafkaVersion: "3.8.x",
+///     numberOfBrokerNodes: 3,
 /// });
 /// ```
 /// ```python
@@ -1088,16 +1108,7 @@ import 'cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.msk.Cluster("example",
-///     cluster_name="example",
-///     kafka_version="3.8.x",
-///     number_of_broker_nodes=3,
 ///     broker_node_group_info={
-///         "instance_type": "kafka.m5.4xlarge",
-///         "client_subnets": [
-///             subnet_az1["id"],
-///             subnet_az2["id"],
-///             subnet_az3["id"],
-///         ],
 ///         "storage_info": {
 ///             "ebs_storage_info": {
 ///                 "provisioned_throughput": {
@@ -1107,8 +1118,17 @@ import 'cluster_state.dart';
 ///                 "volume_size": 1000,
 ///             },
 ///         },
+///         "instance_type": "kafka.m5.4xlarge",
+///         "client_subnets": [
+///             subnet_az1["id"],
+///             subnet_az2["id"],
+///             subnet_az3["id"],
+///         ],
 ///         "security_groups": [sg["id"]],
-///     })
+///     },
+///     cluster_name="example",
+///     kafka_version="3.8.x",
+///     number_of_broker_nodes=3)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1120,18 +1140,8 @@ import 'cluster_state.dart';
 /// {
 ///     var example = new Aws.Msk.Cluster("example", new()
 ///     {
-///         ClusterName = "example",
-///         KafkaVersion = "3.8.x",
-///         NumberOfBrokerNodes = 3,
 ///         BrokerNodeGroupInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoArgs
 ///         {
-///             InstanceType = "kafka.m5.4xlarge",
-///             ClientSubnets = new[]
-///             {
-///                 subnetAz1.Id,
-///                 subnetAz2.Id,
-///                 subnetAz3.Id,
-///             },
 ///             StorageInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoStorageInfoArgs
 ///             {
 ///                 EbsStorageInfo = new Aws.Msk.Inputs.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs
@@ -1144,11 +1154,21 @@ import 'cluster_state.dart';
 ///                     VolumeSize = 1000,
 ///                 },
 ///             },
+///             InstanceType = "kafka.m5.4xlarge",
+///             ClientSubnets = new[]
+///             {
+///                 subnetAz1.Id,
+///                 subnetAz2.Id,
+///                 subnetAz3.Id,
+///             },
 ///             SecurityGroups = new[]
 ///             {
 ///                 sg.Id,
 ///             },
 ///         },
+///         ClusterName = "example",
+///         KafkaVersion = "3.8.x",
+///         NumberOfBrokerNodes = 3,
 ///     });
 ///
 /// });
@@ -1164,16 +1184,7 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := msk.NewCluster(ctx, "example", &msk.ClusterArgs{
-/// 			ClusterName:         pulumi.String("example"),
-/// 			KafkaVersion:        pulumi.String("3.8.x"),
-/// 			NumberOfBrokerNodes: pulumi.Int(3),
 /// 			BrokerNodeGroupInfo: &msk.ClusterBrokerNodeGroupInfoArgs{
-/// 				InstanceType: pulumi.String("kafka.m5.4xlarge"),
-/// 				ClientSubnets: pulumi.StringArray{
-/// 					subnetAz1.Id,
-/// 					subnetAz2.Id,
-/// 					subnetAz3.Id,
-/// 				},
 /// 				StorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoArgs{
 /// 					EbsStorageInfo: &msk.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs{
 /// 						ProvisionedThroughput: &msk.ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughputArgs{
@@ -1183,10 +1194,19 @@ import 'cluster_state.dart';
 /// 						VolumeSize: pulumi.Int(1000),
 /// 					},
 /// 				},
+/// 				InstanceType: pulumi.String("kafka.m5.4xlarge"),
+/// 				ClientSubnets: pulumi.StringArray{
+/// 					subnetAz1.Id,
+/// 					subnetAz2.Id,
+/// 					subnetAz3.Id,
+/// 				},
 /// 				SecurityGroups: pulumi.StringArray{
 /// 					sg.Id,
 /// 				},
 /// 			},
+/// 			ClusterName:         pulumi.String("example"),
+/// 			KafkaVersion:        pulumi.String("3.8.x"),
+/// 			NumberOfBrokerNodes: pulumi.Int(3),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1205,12 +1225,7 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_msk_cluster" "example" {
-///   cluster_name           = "example"
-///   kafka_version          = "3.8.x"
-///   number_of_broker_nodes = 3
 ///   broker_node_group_info = {
-///     instance_type  = "kafka.m5.4xlarge"
-///     client_subnets = [subnetAz1.id, subnetAz2.id, subnetAz3.id]
 ///     storage_info = {
 ///       ebs_storage_info = {
 ///         provisioned_throughput = {
@@ -1220,8 +1235,13 @@ import 'cluster_state.dart';
 ///         volume_size = 1000
 ///       }
 ///     }
+///     instance_type   = "kafka.m5.4xlarge"
+///     client_subnets  = [subnetAz1.id, subnetAz2.id, subnetAz3.id]
 ///     security_groups = [sg.id]
 ///   }
+///   cluster_name           = "example"
+///   kafka_version          = "3.8.x"
+///   number_of_broker_nodes = 3
 /// }
 /// ```
 /// ```java
@@ -1250,15 +1270,7 @@ import 'cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .clusterName("example")
-///             .kafkaVersion("3.8.x")
-///             .numberOfBrokerNodes(3)
 ///             .brokerNodeGroupInfo(ClusterBrokerNodeGroupInfoArgs.builder()
-///                 .instanceType("kafka.m5.4xlarge")
-///                 .clientSubnets(
-///                     subnetAz1.id(),
-///                     subnetAz2.id(),
-///                     subnetAz3.id())
 ///                 .storageInfo(ClusterBrokerNodeGroupInfoStorageInfoArgs.builder()
 ///                     .ebsStorageInfo(ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoArgs.builder()
 ///                         .provisionedThroughput(ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughputArgs.builder()
@@ -1268,8 +1280,16 @@ import 'cluster_state.dart';
 ///                         .volumeSize(1000)
 ///                         .build())
 ///                     .build())
+///                 .instanceType("kafka.m5.4xlarge")
+///                 .clientSubnets(
+///                     subnetAz1.id(),
+///                     subnetAz2.id(),
+///                     subnetAz3.id())
 ///                 .securityGroups(sg.id())
 ///                 .build())
+///             .clusterName("example")
+///             .kafkaVersion("3.8.x")
+///             .numberOfBrokerNodes(3)
 ///             .build());
 ///
 ///     }
@@ -1280,23 +1300,23 @@ import 'cluster_state.dart';
 ///   example:
 ///     type: aws:msk:Cluster
 ///     properties:
-///       clusterName: example
-///       kafkaVersion: 3.8.x
-///       numberOfBrokerNodes: 3
 ///       brokerNodeGroupInfo:
-///         instanceType: kafka.m5.4xlarge
-///         clientSubnets:
-///           - ${subnetAz1.id}
-///           - ${subnetAz2.id}
-///           - ${subnetAz3.id}
 ///         storageInfo:
 ///           ebsStorageInfo:
 ///             provisionedThroughput:
 ///               enabled: true
 ///               volumeThroughput: 250
 ///             volumeSize: 1000
+///         instanceType: kafka.m5.4xlarge
+///         clientSubnets:
+///           - ${subnetAz1.id}
+///           - ${subnetAz2.id}
+///           - ${subnetAz3.id}
 ///         securityGroups:
 ///           - ${sg.id}
+///       clusterName: example
+///       kafkaVersion: 3.8.x
+///       numberOfBrokerNodes: 3
 /// ```
 ///
 ///
@@ -1306,7 +1326,7 @@ import 'cluster_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the MSK cluster.
+/// - `arn` (String) ARN of the MSK cluster.
 ///
 ///
 /// Using `pulumi import`, import MSK cluster using the cluster ARN. For example:
@@ -1315,7 +1335,7 @@ import 'cluster_state.dart';
 /// $ pulumi import aws:msk/cluster:Cluster example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
 /// ```
 class Cluster extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the MSK cluster.
+  /// ARN of the MSK cluster.
   late final pulumi.Output<String> arn;
   /// Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster. Contains a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The resource sorts values alphabetically. AWS may not always return all endpoints so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> bootstrapBrokers;
@@ -1398,7 +1418,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:msk/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
@@ -1431,8 +1451,8 @@ class Cluster extends pulumi.CustomResource {
     rebalancing = registerOutput<ClusterRebalancing>('rebalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zookeeperConnectString = registerOutput<String>('zookeeperConnectString');
     zookeeperConnectStringTls = registerOutput<String>('zookeeperConnectStringTls');
   }
@@ -1442,11 +1462,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1491,8 +1512,54 @@ class Cluster extends pulumi.CustomResource {
     rebalancing = registerOutput<ClusterRebalancing>('rebalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zookeeperConnectString = registerOutput<String>('zookeeperConnectString');
+    zookeeperConnectStringTls = registerOutput<String>('zookeeperConnectStringTls');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:msk/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
+    bootstrapBrokersIpv6 = registerOutput<String>('bootstrapBrokersIpv6');
+    bootstrapBrokersPublicSaslIam = registerOutput<String>('bootstrapBrokersPublicSaslIam');
+    bootstrapBrokersPublicSaslScram = registerOutput<String>('bootstrapBrokersPublicSaslScram');
+    bootstrapBrokersPublicTls = registerOutput<String>('bootstrapBrokersPublicTls');
+    bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');
+    bootstrapBrokersSaslIamIpv6 = registerOutput<String>('bootstrapBrokersSaslIamIpv6');
+    bootstrapBrokersSaslScram = registerOutput<String>('bootstrapBrokersSaslScram');
+    bootstrapBrokersSaslScramIpv6 = registerOutput<String>('bootstrapBrokersSaslScramIpv6');
+    bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
+    bootstrapBrokersTlsIpv6 = registerOutput<String>('bootstrapBrokersTlsIpv6');
+    bootstrapBrokersVpcConnectivitySaslIam = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
+    bootstrapBrokersVpcConnectivitySaslScram = registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
+    bootstrapBrokersVpcConnectivityTls = registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
+    brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>('brokerNodeGroupInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerNodeGroupInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAuthentication = registerOutput<ClusterClientAuthentication?>('clientAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClientAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    configurationInfo = registerOutput<ClusterConfigurationInfo?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentVersion = registerOutput<String>('currentVersion');
+    customerActionStatus = registerOutput<String>('customerActionStatus');
+    encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
+    kafkaVersion = registerOutput<String>('kafkaVersion');
+    loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
+    openMonitoring = registerOutput<ClusterOpenMonitoring?>('openMonitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rebalancing = registerOutput<ClusterRebalancing>('rebalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    storageMode = registerOutput<String>('storageMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zookeeperConnectString = registerOutput<String>('zookeeperConnectString');
     zookeeperConnectStringTls = registerOutput<String>('zookeeperConnectStringTls');
   }

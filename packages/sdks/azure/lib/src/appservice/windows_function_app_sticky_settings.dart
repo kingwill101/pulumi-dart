@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppStickySettings {
   /// A list of `appSetting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
-  final pulumi.Input<List<String>>? appSettingNames;
+  final pulumi.Input<List<String>?>? appSettingNames;
   /// A list of `connectionString` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
-  final pulumi.Input<List<String>>? connectionStringNames;
+  final pulumi.Input<List<String>?>? connectionStringNames;
 
   /// Creates a new [WindowsFunctionAppStickySettings].
   /// [appSettingNames] A list of `appSetting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.

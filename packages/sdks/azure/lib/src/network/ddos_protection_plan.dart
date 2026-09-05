@@ -201,13 +201,13 @@ class DdosProtectionPlan extends pulumi.CustomResource {
           'azure:network/ddosProtectionPlan:DdosProtectionPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DdosProtectionPlan] resource's state with the given [name] and [id].
@@ -215,11 +215,12 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DdosProtectionPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DdosProtectionPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,7 +237,23 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DdosProtectionPlan] resource.
+  DdosProtectionPlan.reference(String urn)
+    : super(
+        'azure:network/ddosProtectionPlan:DdosProtectionPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

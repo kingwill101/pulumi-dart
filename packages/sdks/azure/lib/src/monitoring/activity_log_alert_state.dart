@@ -7,23 +7,23 @@ import 'activity_log_alert_criteria.dart';
 /// Input properties used for looking up and filtering ActivityLogAlert resources.
 class ActivityLogAlertState {
   /// One or more `action` blocks as defined below.
-  final pulumi.Input<List<ActivityLogAlertAction>>? actions;
+  final pulumi.Input<List<ActivityLogAlertAction>?>? actions;
   /// A `criteria` block as defined below.
-  final pulumi.Input<ActivityLogAlertCriteria>? criteria;
+  final pulumi.Input<ActivityLogAlertCriteria?>? criteria;
   /// The description of this activity log alert.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Should this Activity Log Alert be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The Azure Region where the activity log alert rule should exist. Possible values are `global`, `westeurope`, `northeurope`, and `eastus2euap`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the activity log alert. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the activity log alert instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Scope at which the Activity Log should be applied. A list of strings which could be a resource group , or a subscription, or a resource ID (such as a Storage Account).
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ActivityLogAlertState].
   /// [actions] One or more `action` blocks as defined below.

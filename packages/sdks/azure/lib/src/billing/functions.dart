@@ -145,6 +145,17 @@ Future<GetEnrollmentAccountScopeResult> getEnrollmentAccountScope(
   return GetEnrollmentAccountScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetEnrollmentAccountScopeResult> getEnrollmentAccountScopeOutput(
+  GetEnrollmentAccountScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:billing/getEnrollmentAccountScope:getEnrollmentAccountScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnrollmentAccountScopeResult.fromMap);
+}
+
 /// Use this data source to access an ID for your MCA Account billing scope.
 ///
 /// ## Example Usage
@@ -291,6 +302,17 @@ Future<GetMcaAccountScopeResult> getMcaAccountScope(
   return GetMcaAccountScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetMcaAccountScopeResult> getMcaAccountScopeOutput(
+  GetMcaAccountScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:billing/getMcaAccountScope:getMcaAccountScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMcaAccountScopeResult.fromMap);
+}
+
 /// Use this data source to access an ID for your MPA Account billing scope.
 ///
 /// ## Example Usage
@@ -428,4 +450,15 @@ Future<GetMpaAccountScopeResult> getMpaAccountScope(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMpaAccountScopeResult.fromMap(result);
+}
+
+pulumi.Output<GetMpaAccountScopeResult> getMpaAccountScopeOutput(
+  GetMpaAccountScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:billing/getMpaAccountScope:getMpaAccountScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMpaAccountScopeResult.fromMap);
 }

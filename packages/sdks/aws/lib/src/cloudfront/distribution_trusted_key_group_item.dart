@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTrustedKeyGroupItem {
   /// ID of the key group that contains the public keys.
-  final pulumi.Input<String>? keyGroupId;
+  final pulumi.Input<String?>? keyGroupId;
   /// Set of active CloudFront key pairs associated with the signer account
-  final pulumi.Input<List<String>>? keyPairIds;
+  final pulumi.Input<List<String>?>? keyPairIds;
 
   /// Creates a new [DistributionTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer.dart';
 
 class AgentcoreRegistryAuthorizerConfiguration {
-  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
+  final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer?>? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfiguration].
   /// [customJwtAuthorizer] Optional.

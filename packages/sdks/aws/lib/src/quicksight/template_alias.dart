@@ -133,7 +133,7 @@ import 'template_alias_state.dart';
 class TemplateAlias extends pulumi.CustomResource {
   /// Display name of the template alias.
   late final pulumi.Output<String> aliasName;
-  /// Amazon Resource Name (ARN) of the template alias.
+  /// ARN of the template alias.
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
@@ -158,7 +158,7 @@ class TemplateAlias extends pulumi.CustomResource {
           'aws:quicksight/templateAlias:TemplateAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aliasName = registerOutput<String>('aliasName');
     arn = registerOutput<String>('arn');
@@ -173,11 +173,12 @@ class TemplateAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TemplateAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TemplateAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,23 @@ class TemplateAlias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aliasName = registerOutput<String>('aliasName');
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    region = registerOutput<String>('region');
+    templateId = registerOutput<String>('templateId');
+    templateVersionNumber = registerOutput<int>('templateVersionNumber');
+  }
+
+  /// Creates a typed reference to an existing [TemplateAlias] resource.
+  TemplateAlias.reference(String urn)
+    : super(
+        'aws:quicksight/templateAlias:TemplateAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aliasName = registerOutput<String>('aliasName');
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

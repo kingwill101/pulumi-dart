@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCollectionRuleDataSourcesDataImportEventHubDataSource {
   /// The Event Hub consumer group name.
-  final pulumi.Input<String>? consumerGroup;
+  final pulumi.Input<String?>? consumerGroup;
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   final pulumi.Input<String> name;
   /// The stream to collect from Event Hub. Possible value should be a custom stream name.

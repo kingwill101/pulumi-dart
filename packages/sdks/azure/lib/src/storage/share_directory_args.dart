@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_share_directory_share_directory_args_doc}
 class ShareDirectoryArgs {
   /// A mapping of metadata to assign to this Directory.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name (or path) of the Directory that should be created within this File Share. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? storageShareId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? storageShareId;
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageShareUrl;
+  final pulumi.Input<String?>? storageShareUrl;
 
   /// Creates a new [ShareDirectoryArgs].
   /// [metadata] A mapping of metadata to assign to this Directory.

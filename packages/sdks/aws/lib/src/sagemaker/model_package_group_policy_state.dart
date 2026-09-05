@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ModelPackageGroupPolicy resources.
 class ModelPackageGroupPolicyState {
   /// The name of the model package group.
-  final pulumi.Input<String>? modelPackageGroupName;
+  final pulumi.Input<String?>? modelPackageGroupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? resourcePolicy;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? resourcePolicy;
 
   /// Creates a new [ModelPackageGroupPolicyState].
   /// [modelPackageGroupName] The name of the model package group.

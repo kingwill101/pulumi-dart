@@ -6,28 +6,28 @@ import 'route_server_endpoint_timeouts.dart';
 /// Input properties used for looking up and filtering RouteServerEndpoint resources.
 class RouteServerEndpointState {
   /// The ARN of the route server endpoint.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The IP address of the Elastic network interface for the endpoint.
-  final pulumi.Input<String>? eniAddress;
+  final pulumi.Input<String?>? eniAddress;
   /// The ID of the Elastic network interface for the endpoint.
-  final pulumi.Input<String>? eniId;
+  final pulumi.Input<String?>? eniId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifier of the route server endpoint.
-  final pulumi.Input<String>? routeServerEndpointId;
+  final pulumi.Input<String?>? routeServerEndpointId;
   /// The ID of the route server for which to create an endpoint.
-  final pulumi.Input<String>? routeServerId;
+  final pulumi.Input<String?>? routeServerId;
   /// The ID of the subnet in which to create the route server endpoint.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<RouteServerEndpointTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<RouteServerEndpointTimeouts?>? timeouts;
   /// The ID of the VPC containing the endpoint.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [RouteServerEndpointState].
   /// [arn] The ARN of the route server endpoint.

@@ -10,19 +10,19 @@ import 'server_identity.dart';
 /// {@macro pulumi_fluidrelay_server_server_args_doc}
 class ServerArgs {
   /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ServerCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<ServerCustomerManagedKey?>? customerManagedKey;
   /// An `identity` block as defined below.
-  final pulumi.Input<ServerIdentity>? identity;
+  final pulumi.Input<ServerIdentity?>? identity;
   /// The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Fluid Relay Server. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? storageSku;
+  final pulumi.Input<String?>? storageSku;
   /// A mapping of tags which should be assigned to the Fluid Relay Server.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServerArgs].
   /// [customerManagedKey] A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.

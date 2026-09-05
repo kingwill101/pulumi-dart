@@ -11,18 +11,18 @@ import 'channel_encoder_settings_output_group_output_output_settings_udp_output_
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettings {
   /// Archive output settings. See Archive Output Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings>? archiveOutputSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings>? frameCaptureOutputSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings>? hlsOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings?>? archiveOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings?>? frameCaptureOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings?>? hlsOutputSettings;
   /// Media package output settings. This can be set as an empty block.
-  final pulumi.Input<Map<String, dynamic>>? mediaPackageOutputSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings>? msSmoothOutputSettings;
+  final pulumi.Input<Map<String, dynamic>?>? mediaPackageOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings?>? msSmoothOutputSettings;
   /// Multiplex output settings. See Multiplex Output Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings>? multiplexOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings?>? multiplexOutputSettings;
   /// RTMP output settings. See RTMP Output Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings>? rtmpOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings?>? rtmpOutputSettings;
   /// UDP output settings. See UDP Output Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings>? udpOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings?>? udpOutputSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettings].
   /// [archiveOutputSettings] Archive output settings. See Archive Output Settings for more details.

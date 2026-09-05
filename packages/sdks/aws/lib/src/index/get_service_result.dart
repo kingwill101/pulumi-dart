@@ -3,59 +3,59 @@
 
 /// Result data returned by getService.
 class GetServiceResult {
-  final String dnsName;
-  final String id;
-  final String partition;
-  final String region;
-  final String reverseDnsName;
-  final String reverseDnsPrefix;
-  final String serviceId;
+  final String? dnsName;
+  final String? id;
+  final String? partition;
+  final String? region;
+  final String? reverseDnsName;
+  final String? reverseDnsPrefix;
+  final String? serviceId;
   /// Whether the service is supported in the region's partition. New services may not be listed immediately as supported.
-  final bool supported;
+  final bool? supported;
 
   /// Creates a new [GetServiceResult].
-  /// [dnsName] Required.
-  /// [id] Required.
-  /// [partition] Required.
-  /// [region] Required.
-  /// [reverseDnsName] Required.
-  /// [reverseDnsPrefix] Required.
-  /// [serviceId] Required.
+  /// [dnsName] Optional.
+  /// [id] Optional.
+  /// [partition] Optional.
+  /// [region] Optional.
+  /// [reverseDnsName] Optional.
+  /// [reverseDnsPrefix] Optional.
+  /// [serviceId] Optional.
   /// [supported] Whether the service is supported in the region's partition. New services may not be listed immediately as supported.
   const GetServiceResult({
-    required this.dnsName,
-    required this.id,
-    required this.partition,
-    required this.region,
-    required this.reverseDnsName,
-    required this.reverseDnsPrefix,
-    required this.serviceId,
-    required this.supported,
+    this.dnsName,
+    this.id,
+    this.partition,
+    this.region,
+    this.reverseDnsName,
+    this.reverseDnsPrefix,
+    this.serviceId,
+    this.supported,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsName': dnsName,
-      'id': id,
-      'partition': partition,
-      'region': region,
-      'reverseDnsName': reverseDnsName,
-      'reverseDnsPrefix': reverseDnsPrefix,
-      'serviceId': serviceId,
-      'supported': supported,
+      'dnsName': ?dnsName,
+      'id': ?id,
+      'partition': ?partition,
+      'region': ?region,
+      'reverseDnsName': ?reverseDnsName,
+      'reverseDnsPrefix': ?reverseDnsPrefix,
+      'serviceId': ?serviceId,
+      'supported': ?supported,
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      dnsName: map['dnsName'] as String,
-      id: map['id'] as String,
-      partition: map['partition'] as String,
-      region: map['region'] as String,
-      reverseDnsName: map['reverseDnsName'] as String,
-      reverseDnsPrefix: map['reverseDnsPrefix'] as String,
-      serviceId: map['serviceId'] as String,
-      supported: map['supported'] as bool,
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reverseDnsName: (() { final guardedValue = map['reverseDnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reverseDnsPrefix: (() { final guardedValue = map['reverseDnsPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supported: (() { final guardedValue = map['supported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

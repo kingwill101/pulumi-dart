@@ -6,7 +6,7 @@ class HadoopClusterSecurityProfile {
   /// The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> aaddsResourceId;
   /// A list of the distinguished names for the cluster user groups. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? clusterUsersGroupDns;
+  final pulumi.Input<List<String>?>? clusterUsersGroupDns;
   /// The name of the Azure Active Directory Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainName;
   /// The user password of the Azure Active Directory Domain. Changing this forces a new resource to be created.

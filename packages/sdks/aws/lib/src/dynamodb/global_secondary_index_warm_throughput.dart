@@ -25,8 +25,8 @@ class GlobalSecondaryIndexWarmThroughput {
 
   factory GlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: pulumi.Input.fromValue(map['readUnitsPerSecond'] as int),
-      writeUnitsPerSecond: pulumi.Input.fromValue(map['writeUnitsPerSecond'] as int),
+      readUnitsPerSecond: pulumi.Input.fromValue((map['readUnitsPerSecond'] as num).toInt()),
+      writeUnitsPerSecond: pulumi.Input.fromValue((map['writeUnitsPerSecond'] as num).toInt()),
     );
   }
 }

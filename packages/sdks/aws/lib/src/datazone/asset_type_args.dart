@@ -10,20 +10,20 @@ import 'asset_type_timeouts.dart';
 /// {@macro pulumi_datazone_asset_type_asset_type_args_doc}
 class AssetTypeArgs {
   /// The description of the custom asset type.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
   final pulumi.Input<String> domainIdentifier;
   /// The metadata forms that are to be attached to the custom asset type.
-  final pulumi.Input<List<AssetTypeFormsInput>>? formsInputs;
+  final pulumi.Input<List<AssetTypeFormsInput>?>? formsInputs;
   /// The name of the custom asset type.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> owningProjectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<AssetTypeTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AssetTypeTimeouts?>? timeouts;
 
   /// Creates a new [AssetTypeArgs].
   /// [description] The description of the custom asset type.

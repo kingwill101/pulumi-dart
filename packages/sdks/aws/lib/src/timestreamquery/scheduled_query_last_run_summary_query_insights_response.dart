@@ -6,15 +6,15 @@ import 'scheduled_query_last_run_summary_query_insights_response_query_temporal_
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponse {
   /// Size of query result set in bytes. You can use this data to validate if the result set has changed as part of the query tuning exercise.
-  final pulumi.Input<int>? outputBytes;
+  final pulumi.Input<int?>? outputBytes;
   /// Total number of rows returned as part of the query result set. You can use this data to validate if the number of rows in the result set have changed as part of the query tuning exercise.
-  final pulumi.Input<int>? outputRows;
+  final pulumi.Input<int?>? outputRows;
   /// Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>>? querySpatialCoverages;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>?>? querySpatialCoverages;
   /// Number of tables in the query.
-  final pulumi.Input<int>? queryTableCount;
+  final pulumi.Input<int?>? queryTableCount;
   /// Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>>? queryTemporalRanges;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>?>? queryTemporalRanges;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponse].
   /// [outputBytes] Size of query result set in bytes. You can use this data to validate if the result set has changed as part of the query tuning exercise.
@@ -42,10 +42,10 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponse(
-      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       querySpatialCoverages: (() { final guardedValue = map['querySpatialCoverages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       queryTemporalRanges: (() { final guardedValue = map['queryTemporalRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

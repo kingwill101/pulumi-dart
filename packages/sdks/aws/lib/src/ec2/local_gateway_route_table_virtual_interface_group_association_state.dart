@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LocalGatewayRouteTableVirtualInterfaceGroupAssociation resources.
 class LocalGatewayRouteTableVirtualInterfaceGroupAssociationState {
   /// Identifier of the EC2 Local Gateway.
-  final pulumi.Input<String>? localGatewayId;
-  /// Amazon Resource Name (ARN) of the EC2 Local Gateway Route Table.
-  final pulumi.Input<String>? localGatewayRouteTableArn;
+  final pulumi.Input<String?>? localGatewayId;
+  /// ARN of the EC2 Local Gateway Route Table.
+  final pulumi.Input<String?>? localGatewayRouteTableArn;
   /// Identifier of EC2 Local Gateway Route Table.
-  final pulumi.Input<String>? localGatewayRouteTableId;
+  final pulumi.Input<String?>? localGatewayRouteTableId;
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? localGatewayVirtualInterfaceGroupId;
+  final pulumi.Input<String?>? localGatewayVirtualInterfaceGroupId;
   /// Identifier of the AWS account that owns the EC2 Local Gateway Virtual Interface Group Association.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the EC2 Local Gateway Route Table Virtual Interface Group Association.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [LocalGatewayRouteTableVirtualInterfaceGroupAssociationState].
   /// [localGatewayId] Identifier of the EC2 Local Gateway.
-  /// [localGatewayRouteTableArn] Amazon Resource Name (ARN) of the EC2 Local Gateway Route Table.
+  /// [localGatewayRouteTableArn] ARN of the EC2 Local Gateway Route Table.
   /// [localGatewayRouteTableId] Identifier of EC2 Local Gateway Route Table.
   /// [localGatewayVirtualInterfaceGroupId] Identifier of EC2 Local Gateway Virtual Interface Group.
   /// [ownerId] Identifier of the AWS account that owns the EC2 Local Gateway Virtual Interface Group Association.

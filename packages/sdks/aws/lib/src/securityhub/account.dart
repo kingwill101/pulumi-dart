@@ -128,7 +128,7 @@ class Account extends pulumi.CustomResource {
           'aws:securityhub/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoEnableControls = registerOutput<bool?>('autoEnableControls');
@@ -142,11 +142,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -160,6 +161,22 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    autoEnableControls = registerOutput<bool?>('autoEnableControls');
+    controlFindingGenerator = registerOutput<String>('controlFindingGenerator');
+    enableDefaultStandards = registerOutput<bool?>('enableDefaultStandards');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'aws:securityhub/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     autoEnableControls = registerOutput<bool?>('autoEnableControls');
     controlFindingGenerator = registerOutput<String>('controlFindingGenerator');

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_setting_args.dart';
+import 'diagnostic_setting_enabled_log.dart';
+import 'diagnostic_setting_enabled_metric.dart';
+import 'diagnostic_setting_metric.dart';
 import 'diagnostic_setting_state.dart';
 
 /// Manages a Diagnostic Setting for an existing Resource.
@@ -27,6 +30,7 @@ import 'diagnostic_setting_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
 ///     purgeProtectionEnabled: false,
@@ -62,6 +66,7 @@ import 'diagnostic_setting_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
 ///     purge_protection_enabled=False,
@@ -107,6 +112,7 @@ import 'diagnostic_setting_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
 ///         PurgeProtectionEnabled = false,
@@ -171,21 +177,22 @@ import 'diagnostic_setting_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
-/// 			PurgeProtectionEnabled:  pulumi.Bool(false),
-/// 			SkuName:                 pulumi.String("standard"),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(false),
+/// 			SkuName:                  pulumi.String("standard"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = monitoring.NewDiagnosticSetting(ctx, "example", &monitoring.DiagnosticSettingArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			TargetResourceId: exampleKeyVault.ID(),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			TargetResourceId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			EnabledLogs: monitoring.DiagnosticSettingEnabledLogArray{
 /// 				&monitoring.DiagnosticSettingEnabledLogArgs{
 /// 					Category: pulumi.String("AuditEvent"),
@@ -231,6 +238,7 @@ import 'diagnostic_setting_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days = 7
 ///   purge_protection_enabled   = false
@@ -297,6 +305,7 @@ import 'diagnostic_setting_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
 ///             .purgeProtectionEnabled(false)
@@ -341,6 +350,7 @@ import 'diagnostic_setting_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
 ///       purgeProtectionEnabled: false
@@ -384,11 +394,11 @@ class DiagnosticSetting extends pulumi.CustomResource {
   /// One or more `enabledLog` blocks as defined below.
   ///
   /// &gt; **Note:** At least one `enabledLog` or `enabledMetric` block must be specified. At least one type of Log or Metric must be enabled.
-  late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
+  late final pulumi.Output<List<DiagnosticSettingEnabledLog>?> enabledLogs;
   /// One or more `enabledMetric` blocks as defined below.
   ///
   /// &gt; **Note:** At least one `enabledLog` or `enabledMetric` block must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>> enabledMetrics;
+  late final pulumi.Output<List<DiagnosticSettingEnabledMetric>> enabledMetrics;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data.
   ///
   /// &gt; **NOTE:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
@@ -407,7 +417,7 @@ class DiagnosticSetting extends pulumi.CustomResource {
   ///
   /// &gt; **NOTE:** At least one of `eventhubAuthorizationRuleId`, `logAnalyticsWorkspaceId`, `partnerSolutionId` and `storageAccountId` must be specified.
   late final pulumi.Output<String?> logAnalyticsWorkspaceId;
-  late final pulumi.Output<List<Map<String, dynamic>>> metrics;
+  late final pulumi.Output<List<DiagnosticSettingMetric>> metrics;
   /// Specifies the name of the Diagnostic Setting. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** If the name is set to 'service' it will not be possible to fully delete the diagnostic setting. This is due to legacy API support.
@@ -435,15 +445,15 @@ class DiagnosticSetting extends pulumi.CustomResource {
           'azure:monitoring/diagnosticSetting:DiagnosticSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
-    enabledMetrics = registerOutput<List<Map<String, dynamic>>>('enabledMetrics');
+    enabledLogs = registerOutput<List<DiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(guardedValue, (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
+    enabledMetrics = registerOutput<List<DiagnosticSettingEnabledMetric>>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(guardedValue, (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>())); });
     eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
     logAnalyticsDestinationType = registerOutput<String>('logAnalyticsDestinationType');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
-    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
+    metrics = registerOutput<List<DiagnosticSettingMetric>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingMetric>(guardedValue, (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     partnerSolutionId = registerOutput<String?>('partnerSolutionId');
     storageAccountId = registerOutput<String?>('storageAccountId');
@@ -455,11 +465,12 @@ class DiagnosticSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiagnosticSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiagnosticSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -473,13 +484,35 @@ class DiagnosticSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
-    enabledMetrics = registerOutput<List<Map<String, dynamic>>>('enabledMetrics');
+    enabledLogs = registerOutput<List<DiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(guardedValue, (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
+    enabledMetrics = registerOutput<List<DiagnosticSettingEnabledMetric>>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(guardedValue, (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>())); });
     eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
     logAnalyticsDestinationType = registerOutput<String>('logAnalyticsDestinationType');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
-    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
+    metrics = registerOutput<List<DiagnosticSettingMetric>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingMetric>(guardedValue, (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    partnerSolutionId = registerOutput<String?>('partnerSolutionId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [DiagnosticSetting] resource.
+  DiagnosticSetting.reference(String urn)
+    : super(
+        'azure:monitoring/diagnosticSetting:DiagnosticSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabledLogs = registerOutput<List<DiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(guardedValue, (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
+    enabledMetrics = registerOutput<List<DiagnosticSettingEnabledMetric>>('enabledMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(guardedValue, (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
+    eventhubName = registerOutput<String?>('eventhubName');
+    logAnalyticsDestinationType = registerOutput<String>('logAnalyticsDestinationType');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+    metrics = registerOutput<List<DiagnosticSettingMetric>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticSettingMetric>(guardedValue, (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     partnerSolutionId = registerOutput<String?>('partnerSolutionId');
     storageAccountId = registerOutput<String?>('storageAccountId');

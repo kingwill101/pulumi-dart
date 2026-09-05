@@ -121,3 +121,14 @@ Future<GetInputResult> getInput(
   );
   return GetInputResult.fromMap(result);
 }
+
+pulumi.Output<GetInputResult> getInputOutput(
+  GetInputArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:medialive/getInput:getInput',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInputResult.fromMap);
+}

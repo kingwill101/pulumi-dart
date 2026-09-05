@@ -9,19 +9,19 @@ import 'framework_control_set.dart';
 /// {@macro pulumi_auditmanager_framework_framework_args_doc}
 class FrameworkArgs {
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
-  final pulumi.Input<String>? complianceType;
+  final pulumi.Input<String?>? complianceType;
   /// Configuration block(s) for the control sets that are associated with the framework. See `controlSets` Block below for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<FrameworkControlSet>>? controlSets;
+  final pulumi.Input<List<FrameworkControlSet>?>? controlSets;
   /// Description of the framework.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the framework.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the framework. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrameworkArgs].
   /// [complianceType] Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.

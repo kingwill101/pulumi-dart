@@ -6,19 +6,19 @@ import 'thing_type_properties.dart';
 /// Input properties used for looking up and filtering ThingType resources.
 class ThingTypeState {
   /// The ARN of the created AWS IoT Thing Type.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-  final pulumi.Input<bool>? deprecated;
+  final pulumi.Input<bool?>? deprecated;
   /// The name of the thing type.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// , Configuration block that can contain the following properties of the thing type:
-  final pulumi.Input<ThingTypeProperties>? properties;
+  final pulumi.Input<ThingTypeProperties?>? properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ThingTypeState].
   /// [arn] The ARN of the created AWS IoT Thing Type.

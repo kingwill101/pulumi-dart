@@ -157,7 +157,7 @@ class Agreement extends pulumi.CustomResource {
           'azure:marketplace/agreement:Agreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     licenseTextLink = registerOutput<String>('licenseTextLink');
     offer = registerOutput<String>('offer');
@@ -171,11 +171,12 @@ class Agreement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgreementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Agreement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,6 +190,22 @@ class Agreement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    licenseTextLink = registerOutput<String>('licenseTextLink');
+    offer = registerOutput<String>('offer');
+    plan = registerOutput<String>('plan');
+    privacyPolicyLink = registerOutput<String>('privacyPolicyLink');
+    publisher = registerOutput<String>('publisher');
+  }
+
+  /// Creates a typed reference to an existing [Agreement] resource.
+  Agreement.reference(String urn)
+    : super(
+        'azure:marketplace/agreement:Agreement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     licenseTextLink = registerOutput<String>('licenseTextLink');
     offer = registerOutput<String>('offer');
     plan = registerOutput<String>('plan');

@@ -30,9 +30,9 @@ class GetFrontdoorOriginGroupLoadBalancing {
 
   factory GetFrontdoorOriginGroupLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupLoadBalancing(
-      additionalLatencyInMilliseconds: pulumi.Input.fromValue(map['additionalLatencyInMilliseconds'] as int),
-      sampleSize: pulumi.Input.fromValue(map['sampleSize'] as int),
-      successfulSamplesRequired: pulumi.Input.fromValue(map['successfulSamplesRequired'] as int),
+      additionalLatencyInMilliseconds: pulumi.Input.fromValue((map['additionalLatencyInMilliseconds'] as num).toInt()),
+      sampleSize: pulumi.Input.fromValue((map['sampleSize'] as num).toInt()),
+      successfulSamplesRequired: pulumi.Input.fromValue((map['successfulSamplesRequired'] as num).toInt()),
     );
   }
 }

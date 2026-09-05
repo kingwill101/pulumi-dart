@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcAttachmentOptions {
   /// Whether to enable appliance mode support. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
-  final pulumi.Input<bool>? applianceModeSupport;
+  final pulumi.Input<bool?>? applianceModeSupport;
   /// Whether to enable DNS support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
-  final pulumi.Input<bool>? dnsSupport;
+  final pulumi.Input<bool?>? dnsSupport;
   /// Whether to enable IPv6 support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
-  final pulumi.Input<bool>? ipv6Support;
+  final pulumi.Input<bool?>? ipv6Support;
   /// Whether to enable security group referencing support for this VPC attachment. The default is `true`. However, at the core network policy-level the default is set to `false`. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
-  final pulumi.Input<bool>? securityGroupReferencingSupport;
+  final pulumi.Input<bool?>? securityGroupReferencingSupport;
 
   /// Creates a new [VpcAttachmentOptions].
   /// [applianceModeSupport] Whether to enable appliance mode support. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. If the VPC attachment is pending acceptance, changing this value will recreate the resource.

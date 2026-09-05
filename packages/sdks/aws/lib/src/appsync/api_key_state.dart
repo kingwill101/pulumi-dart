@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApiKey resources.
 class ApiKeyState {
   /// ID of the associated AppSync API
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// ID of the API key.
-  final pulumi.Input<String>? apiKeyId;
+  final pulumi.Input<String?>? apiKeyId;
   /// API key description. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
-  final pulumi.Input<String>? expires;
+  final pulumi.Input<String?>? expires;
   /// API key
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ApiKeyState].
   /// [apiId] ID of the associated AppSync API
@@ -24,14 +24,14 @@ class ApiKeyState {
   /// [expires] RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   /// [key] API key
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  const ApiKeyState({
+  ApiKeyState({
     this.apiId,
     this.apiKeyId,
-    this.description,
+    pulumi.Input<String?>? description,
     this.expires,
     this.key,
     this.region,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

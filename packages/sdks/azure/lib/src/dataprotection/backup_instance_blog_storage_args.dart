@@ -10,13 +10,13 @@ class BackupInstanceBlogStorageArgs {
   /// The ID of the Backup Policy.
   final pulumi.Input<String> backupPolicyId;
   /// The location of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Blob Storage. Changing this forces a new Backup Instance Blob Storage to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of the container names of the source Storage Account.
   ///
   /// &gt; **Note:** The `storageAccountContainerNames` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storageAccountContainerNames` will force a new resource to be created since it can't be removed once specified.
-  final pulumi.Input<List<String>>? storageAccountContainerNames;
+  final pulumi.Input<List<String>?>? storageAccountContainerNames;
   /// The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   final pulumi.Input<String> storageAccountId;
   /// The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.

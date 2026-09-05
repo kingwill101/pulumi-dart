@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResourceShareAccepter resources.
 class ResourceShareAccepterState {
   /// ARN of the resource share invitation.
-  final pulumi.Input<String>? invitationArn;
+  final pulumi.Input<String?>? invitationArn;
   /// Account ID of the receiver account which accepts the invitation.
-  final pulumi.Input<String>? receiverAccountId;
+  final pulumi.Input<String?>? receiverAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of the resource ARNs shared via the resource share.
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
   /// Account ID of the sender account which submits the invitation.
-  final pulumi.Input<String>? senderAccountId;
+  final pulumi.Input<String?>? senderAccountId;
   /// ARN of the resource share.
-  final pulumi.Input<String>? shareArn;
+  final pulumi.Input<String?>? shareArn;
   /// ID of the resource share as displayed in the console.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// Name of the resource share.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// Status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ResourceShareAccepterState].
   /// [invitationArn] ARN of the resource share invitation.

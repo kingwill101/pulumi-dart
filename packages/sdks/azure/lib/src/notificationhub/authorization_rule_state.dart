@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AuthorizationRule resources.
 class AuthorizationRuleState {
   /// Does this Authorization Rule have Listen access to the Notification Hub? Defaults to `false`.
-  final pulumi.Input<bool>? listen;
+  final pulumi.Input<bool?>? listen;
   /// Does this Authorization Rule have Manage access to the Notification Hub? Defaults to `false`.
   ///
   /// &gt; **Note:** If `manage` is set to `true` then both `send` and `listen` must also be set to `true`.
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? manage;
   /// The name to use for this Authorization Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Notification Hub Namespace in which the Notification Hub exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The name of the Notification Hub for which the Authorization Rule should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? notificationHubName;
+  final pulumi.Input<String?>? notificationHubName;
   /// The Primary Access Key associated with this Authorization Rule.
-  final pulumi.Input<String>? primaryAccessKey;
+  final pulumi.Input<String?>? primaryAccessKey;
   /// The Primary Connetion String associated with this Authorization Rule.
-  final pulumi.Input<String>? primaryConnectionString;
+  final pulumi.Input<String?>? primaryConnectionString;
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Secondary Access Key associated with this Authorization Rule.
-  final pulumi.Input<String>? secondaryAccessKey;
+  final pulumi.Input<String?>? secondaryAccessKey;
   /// The Secondary Connetion String associated with this Authorization Rule.
-  final pulumi.Input<String>? secondaryConnectionString;
+  final pulumi.Input<String?>? secondaryConnectionString;
   /// Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [AuthorizationRuleState].
   /// [listen] Does this Authorization Rule have Listen access to the Notification Hub? Defaults to `false`.

@@ -4,44 +4,44 @@
 /// Result data returned by getRegion.
 class GetRegionResult {
   /// Region's description in this format: "Location (Region name)".
-  final String description;
-  final String endpoint;
+  final String? description;
+  final String? endpoint;
   /// (**Deprecated**) Region's name (e.g. `us-east-1`).
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
 
   /// Creates a new [GetRegionResult].
   /// [description] Region's description in this format: "Location (Region name)".
-  /// [endpoint] Required.
+  /// [endpoint] Optional.
   /// [id] (**Deprecated**) Region's name (e.g. `us-east-1`).
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   const GetRegionResult({
-    required this.description,
-    required this.endpoint,
-    required this.id,
-    required this.name,
-    required this.region,
+    this.description,
+    this.endpoint,
+    this.id,
+    this.name,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'endpoint': endpoint,
-      'id': id,
-      'name': name,
-      'region': region,
+      'description': ?description,
+      'endpoint': ?endpoint,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
     };
   }
 
   factory GetRegionResult.fromMap(Map<String, dynamic> map) {
     return GetRegionResult(
-      description: map['description'] as String,
-      endpoint: map['endpoint'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

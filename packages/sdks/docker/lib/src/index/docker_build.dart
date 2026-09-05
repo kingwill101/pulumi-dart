@@ -7,23 +7,23 @@ import 'cache_from.dart';
 /// The Docker build context
 class DockerBuild {
   /// Custom host-to-IP mappings to use while building (format: "host:ip")
-  final pulumi.Input<List<String>>? addHosts;
+  final pulumi.Input<List<String>?>? addHosts;
   /// An optional map of named build-time argument variables to set during the Docker build. This flag allows you to pass build-time variables that can be accessed like environment variables inside the RUN instruction.
-  final pulumi.Input<Map<String, String>>? args;
+  final pulumi.Input<Map<String, String>?>? args;
   /// The version of the Docker builder.
-  final pulumi.Input<BuilderVersion>? builderVersion;
+  final pulumi.Input<BuilderVersion?>? builderVersion;
   /// A list of image names to use as build cache. Images provided must have a cache manifest. Must provide authentication to cache registry.
-  final pulumi.Input<CacheFrom>? cacheFrom;
+  final pulumi.Input<CacheFrom?>? cacheFrom;
   /// The path to the build context to use.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The path to the Dockerfile to use.
-  final pulumi.Input<String>? dockerfile;
+  final pulumi.Input<String?>? dockerfile;
   /// Set the networking mode for RUN instructions
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The architecture of the platform you want to build this image for, e.g. `linux/arm64`.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// The target of the Dockerfile to build
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [DockerBuild].
   /// [addHosts] Custom host-to-IP mappings to use while building (format: "host:ip")

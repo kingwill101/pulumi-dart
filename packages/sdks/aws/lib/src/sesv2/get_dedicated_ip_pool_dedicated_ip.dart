@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedIpPoolDedicatedIp {
   /// IPv4 address.
   final pulumi.Input<String> ip;
-  /// Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
+  /// How complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   final pulumi.Input<int> warmupPercentage;
-  /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
+  /// Warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
   final pulumi.Input<String> warmupStatus;
 
   /// Creates a new [GetDedicatedIpPoolDedicatedIp].
   /// [ip] IPv4 address.
-  /// [warmupPercentage] Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
-  /// [warmupStatus] The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
+  /// [warmupPercentage] How complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
+  /// [warmupStatus] Warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
   const GetDedicatedIpPoolDedicatedIp({
     required this.ip,
     required this.warmupPercentage,
@@ -31,7 +31,7 @@ class GetDedicatedIpPoolDedicatedIp {
   factory GetDedicatedIpPoolDedicatedIp.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolDedicatedIp(
       ip: pulumi.Input.fromValue(map['ip'] as String),
-      warmupPercentage: pulumi.Input.fromValue(map['warmupPercentage'] as int),
+      warmupPercentage: pulumi.Input.fromValue((map['warmupPercentage'] as num).toInt()),
       warmupStatus: pulumi.Input.fromValue(map['warmupStatus'] as String),
     );
   }

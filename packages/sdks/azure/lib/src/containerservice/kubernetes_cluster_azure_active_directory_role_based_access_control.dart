@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl {
   /// A list of Object IDs of Azure Active Directory Groups which should have Admin Role on the Cluster.
-  final pulumi.Input<List<String>>? adminGroupObjectIds;
+  final pulumi.Input<List<String>?>? adminGroupObjectIds;
   /// Is Role Based Access Control based on Azure AD enabled?
-  final pulumi.Input<bool>? azureRbacEnabled;
+  final pulumi.Input<bool?>? azureRbacEnabled;
   /// The Tenant ID used for Azure Active Directory Application. If this isn't specified the Tenant ID of the current Subscription is used.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl].
   /// [adminGroupObjectIds] A list of Object IDs of Azure Active Directory Groups which should have Admin Role on the Cluster.

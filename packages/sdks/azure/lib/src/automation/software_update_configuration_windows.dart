@@ -6,11 +6,11 @@ class SoftwareUpdateConfigurationWindows {
   /// Specifies the list of update classification. Possible values are `Unclassified`, `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.
   final pulumi.Input<List<String>> classificationsIncludeds;
   /// Specifies a list of knowledge base numbers excluded.
-  final pulumi.Input<List<String>>? excludedKnowledgeBaseNumbers;
+  final pulumi.Input<List<String>?>? excludedKnowledgeBaseNumbers;
   /// Specifies a list of knowledge base numbers included.
-  final pulumi.Input<List<String>>? includedKnowledgeBaseNumbers;
+  final pulumi.Input<List<String>?>? includedKnowledgeBaseNumbers;
   /// Specifies the reboot settings after software update, possible values are `IfRequired`, `Never`, `RebootOnly` and `Always`. Defaults to `IfRequired`.
-  final pulumi.Input<String>? reboot;
+  final pulumi.Input<String?>? reboot;
 
   /// Creates a new [SoftwareUpdateConfigurationWindows].
   /// [classificationsIncludeds] Specifies the list of update classification. Possible values are `Unclassified`, `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.

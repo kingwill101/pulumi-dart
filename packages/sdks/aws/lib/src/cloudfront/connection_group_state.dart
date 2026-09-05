@@ -6,31 +6,31 @@ import 'connection_group_timeouts.dart';
 /// Input properties used for looking up and filtering ConnectionGroup resources.
 class ConnectionGroupState {
   /// ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
-  final pulumi.Input<String>? anycastIpListId;
+  final pulumi.Input<String?>? anycastIpListId;
   /// ARN of the connection group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether the connection group is enabled. Default is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Current version of the connection group.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
-  final pulumi.Input<bool>? ipv6Enabled;
+  final pulumi.Input<bool?>? ipv6Enabled;
   /// Whether the connection group is the default connection group for the distribution tenants.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// Date and time when the connection group was last modified.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// Name of the connection group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.
-  final pulumi.Input<String>? routingEndpoint;
+  final pulumi.Input<String?>? routingEndpoint;
   /// Current status of the connection group.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
-  final pulumi.Input<bool>? waitForDeployment;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ConnectionGroupTimeouts?>? timeouts;
+  final pulumi.Input<bool?>? waitForDeployment;
 
   /// Creates a new [ConnectionGroupState].
   /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument

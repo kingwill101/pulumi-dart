@@ -7,11 +7,11 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema {
   /// List of field definitions that make up the table schema. See `schema.fields` below.
   final pulumi.Input<List<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField>> fields;
   /// List of field identifiers that uniquely identify records in the table, used for row-level operations and deduplication.
-  final pulumi.Input<List<int>>? identifierFieldIds;
+  final pulumi.Input<List<int>?>? identifierFieldIds;
   /// Unique identifier for this schema version within the Iceberg table's schema evolution history.
-  final pulumi.Input<int>? schemaId;
+  final pulumi.Input<int?>? schemaId;
   /// Data type definition for this field as a JSON string, specifying the structure and format of the data it contains. Examples: `"long"`, `"string"`, `"timestamp"`, `"decimal(10,2)"`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema].
   /// [fields] List of field definitions that make up the table schema. See `schema.fields` below.
@@ -38,7 +38,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField.fromMap((value as Map).cast<String, dynamic>()))),
       identifierFieldIds: (() { final guardedValue = map['identifierFieldIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

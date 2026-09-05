@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plugin_args.dart';
+import 'plugin_grant_permission.dart';
 import 'plugin_state.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
@@ -27,7 +28,7 @@ class Plugin extends pulumi.CustomResource {
   /// If true, grant all permissions necessary to run the plugin
   late final pulumi.Output<bool?> grantAllPermissions;
   /// Grant specific permissions only
-  late final pulumi.Output<List<Map<String, dynamic>>?> grantPermissions;
+  late final pulumi.Output<List<PluginGrantPermission>?> grantPermissions;
   /// Docker Plugin name
   late final pulumi.Output<String> name;
   /// Docker Plugin Reference
@@ -45,16 +46,16 @@ class Plugin extends pulumi.CustomResource {
           'docker:index/plugin:Plugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     enableTimeout = registerOutput<int?>('enableTimeout');
     enabled = registerOutput<bool?>('enabled');
-    envs = registerOutput<List<String>>('envs');
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     forceDisable = registerOutput<bool?>('forceDisable');
     grantAllPermissions = registerOutput<bool?>('grantAllPermissions');
-    grantPermissions = registerOutput<List<Map<String, dynamic>>?>('grantPermissions');
+    grantPermissions = registerOutput<List<PluginGrantPermission>?>('grantPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginGrantPermission>(guardedValue, (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     pluginReference = registerOutput<String>('pluginReference');
   }
@@ -64,11 +65,12 @@ class Plugin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PluginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plugin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -85,11 +87,32 @@ class Plugin extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     enableTimeout = registerOutput<int?>('enableTimeout');
     enabled = registerOutput<bool?>('enabled');
-    envs = registerOutput<List<String>>('envs');
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     forceDisable = registerOutput<bool?>('forceDisable');
     grantAllPermissions = registerOutput<bool?>('grantAllPermissions');
-    grantPermissions = registerOutput<List<Map<String, dynamic>>?>('grantPermissions');
+    grantPermissions = registerOutput<List<PluginGrantPermission>?>('grantPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginGrantPermission>(guardedValue, (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    pluginReference = registerOutput<String>('pluginReference');
+  }
+
+  /// Creates a typed reference to an existing [Plugin] resource.
+  Plugin.reference(String urn)
+    : super(
+        'docker:index/plugin:Plugin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    enableTimeout = registerOutput<int?>('enableTimeout');
+    enabled = registerOutput<bool?>('enabled');
+    envs = registerOutput<List<String>>('envs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    forceDisable = registerOutput<bool?>('forceDisable');
+    grantAllPermissions = registerOutput<bool?>('grantAllPermissions');
+    grantPermissions = registerOutput<List<PluginGrantPermission>?>('grantPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginGrantPermission>(guardedValue, (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     pluginReference = registerOutput<String>('pluginReference');
   }

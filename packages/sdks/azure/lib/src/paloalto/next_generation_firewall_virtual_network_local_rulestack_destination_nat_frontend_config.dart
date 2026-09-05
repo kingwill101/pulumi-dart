@@ -27,7 +27,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendCo
 
   factory NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNatFrontendConfig(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       publicIpAddressId: pulumi.Input.fromValue(map['publicIpAddressId'] as String),
     );
   }

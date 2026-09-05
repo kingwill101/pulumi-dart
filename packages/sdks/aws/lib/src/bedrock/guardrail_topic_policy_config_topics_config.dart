@@ -6,7 +6,7 @@ class GuardrailTopicPolicyConfigTopicsConfig {
   /// Definition of topic in topic policy.
   final pulumi.Input<String> definition;
   /// List of text examples.
-  final pulumi.Input<List<String>>? examples;
+  final pulumi.Input<List<String>?>? examples;
   /// Name of topic in topic policy.
   final pulumi.Input<String> name;
   /// Type of topic in a policy.

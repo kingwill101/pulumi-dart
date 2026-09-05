@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserSettingsToolbarConfiguration {
   /// List of toolbar items to be hidden.
-  final pulumi.Input<List<String>>? hiddenToolbarItems;
+  final pulumi.Input<List<String>?>? hiddenToolbarItems;
   /// Maximum display resolution that is allowed for the session.
-  final pulumi.Input<String>? maxDisplayResolution;
+  final pulumi.Input<String?>? maxDisplayResolution;
   /// Type of toolbar displayed during the session.
-  final pulumi.Input<String>? toolbarType;
+  final pulumi.Input<String?>? toolbarType;
   /// Visual mode of the toolbar.
-  final pulumi.Input<String>? visualMode;
+  final pulumi.Input<String?>? visualMode;
 
   /// Creates a new [UserSettingsToolbarConfiguration].
   /// [hiddenToolbarItems] List of toolbar items to be hidden.

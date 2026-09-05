@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubRoute {
   /// The condition that is evaluated to apply the routing rule. Defaults to `true`. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Used to specify whether a route is enabled.
   final pulumi.Input<bool> enabled;
   /// The list of endpoints to which messages that satisfy the condition are routed.

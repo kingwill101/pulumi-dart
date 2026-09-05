@@ -409,7 +409,7 @@ import 'account_static_website.dart';
 /// 					pulumi.String("100.0.0.1"),
 /// 				},
 /// 				VirtualNetworkSubnetIds: pulumi.StringArray{
-/// 					exampleSubnet.ID(),
+/// 					exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -866,7 +866,8 @@ class Account extends pulumi.CustomResource {
           'azure:storage/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryBlobConnectionString', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryBlobConnectionString', 'secondaryConnectionString'],
         ) {
     accessTier = registerOutput<String>('accessTier');
     accountKind = registerOutput<String?>('accountKind');
@@ -894,15 +895,15 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRules = registerOutput<AccountNetworkRules>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString', isSecret: true);
     primaryBlobEndpoint = registerOutput<String>('primaryBlobEndpoint');
     primaryBlobHost = registerOutput<String>('primaryBlobHost');
     primaryBlobInternetEndpoint = registerOutput<String>('primaryBlobInternetEndpoint');
     primaryBlobInternetHost = registerOutput<String>('primaryBlobInternetHost');
     primaryBlobMicrosoftEndpoint = registerOutput<String>('primaryBlobMicrosoftEndpoint');
     primaryBlobMicrosoftHost = registerOutput<String>('primaryBlobMicrosoftHost');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     primaryDfsEndpoint = registerOutput<String>('primaryDfsEndpoint');
     primaryDfsHost = registerOutput<String>('primaryDfsHost');
     primaryDfsInternetEndpoint = registerOutput<String>('primaryDfsInternetEndpoint');
@@ -937,15 +938,15 @@ class Account extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routing = registerOutput<AccountRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString', isSecret: true);
     secondaryBlobEndpoint = registerOutput<String>('secondaryBlobEndpoint');
     secondaryBlobHost = registerOutput<String>('secondaryBlobHost');
     secondaryBlobInternetEndpoint = registerOutput<String>('secondaryBlobInternetEndpoint');
     secondaryBlobInternetHost = registerOutput<String>('secondaryBlobInternetHost');
     secondaryBlobMicrosoftEndpoint = registerOutput<String>('secondaryBlobMicrosoftEndpoint');
     secondaryBlobMicrosoftHost = registerOutput<String>('secondaryBlobMicrosoftHost');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     secondaryDfsEndpoint = registerOutput<String>('secondaryDfsEndpoint');
     secondaryDfsHost = registerOutput<String>('secondaryDfsHost');
     secondaryDfsInternetEndpoint = registerOutput<String>('secondaryDfsInternetEndpoint');
@@ -978,7 +979,7 @@ class Account extends pulumi.CustomResource {
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
     staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStaticWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -986,11 +987,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1030,15 +1032,15 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRules = registerOutput<AccountNetworkRules>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString', isSecret: true);
     primaryBlobEndpoint = registerOutput<String>('primaryBlobEndpoint');
     primaryBlobHost = registerOutput<String>('primaryBlobHost');
     primaryBlobInternetEndpoint = registerOutput<String>('primaryBlobInternetEndpoint');
     primaryBlobInternetHost = registerOutput<String>('primaryBlobInternetHost');
     primaryBlobMicrosoftEndpoint = registerOutput<String>('primaryBlobMicrosoftEndpoint');
     primaryBlobMicrosoftHost = registerOutput<String>('primaryBlobMicrosoftHost');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     primaryDfsEndpoint = registerOutput<String>('primaryDfsEndpoint');
     primaryDfsHost = registerOutput<String>('primaryDfsHost');
     primaryDfsInternetEndpoint = registerOutput<String>('primaryDfsInternetEndpoint');
@@ -1073,15 +1075,15 @@ class Account extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routing = registerOutput<AccountRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString', isSecret: true);
     secondaryBlobEndpoint = registerOutput<String>('secondaryBlobEndpoint');
     secondaryBlobHost = registerOutput<String>('secondaryBlobHost');
     secondaryBlobInternetEndpoint = registerOutput<String>('secondaryBlobInternetEndpoint');
     secondaryBlobInternetHost = registerOutput<String>('secondaryBlobInternetHost');
     secondaryBlobMicrosoftEndpoint = registerOutput<String>('secondaryBlobMicrosoftEndpoint');
     secondaryBlobMicrosoftHost = registerOutput<String>('secondaryBlobMicrosoftHost');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     secondaryDfsEndpoint = registerOutput<String>('secondaryDfsEndpoint');
     secondaryDfsHost = registerOutput<String>('secondaryDfsHost');
     secondaryDfsInternetEndpoint = registerOutput<String>('secondaryDfsInternetEndpoint');
@@ -1114,6 +1116,129 @@ class Account extends pulumi.CustomResource {
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
     staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStaticWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:storage/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryBlobConnectionString', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryBlobConnectionString', 'secondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<String>('accessTier');
+    accountKind = registerOutput<String?>('accountKind');
+    accountReplicationType = registerOutput<String>('accountReplicationType');
+    accountTier = registerOutput<String>('accountTier');
+    allowNestedItemsToBePublic = registerOutput<bool?>('allowNestedItemsToBePublic');
+    allowedCopyScope = registerOutput<String?>('allowedCopyScope');
+    azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>('azureFilesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountAzureFilesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blobProperties = registerOutput<AccountBlobProperties>('blobProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBlobProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    crossTenantReplicationEnabled = registerOutput<bool?>('crossTenantReplicationEnabled');
+    customDomain = registerOutput<AccountCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultToOauthAuthentication = registerOutput<bool?>('defaultToOauthAuthentication');
+    dnsEndpointType = registerOutput<String?>('dnsEndpointType');
+    edgeZone = registerOutput<String?>('edgeZone');
+    httpsTrafficOnlyEnabled = registerOutput<bool?>('httpsTrafficOnlyEnabled');
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>('immutabilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountImmutabilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
+    isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
+    largeFileShareEnabled = registerOutput<bool>('largeFileShareEnabled');
+    localUserEnabled = registerOutput<bool?>('localUserEnabled');
+    location = registerOutput<String>('location');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    networkRules = registerOutput<AccountNetworkRules>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryBlobConnectionString = registerOutput<String>('primaryBlobConnectionString', isSecret: true);
+    primaryBlobEndpoint = registerOutput<String>('primaryBlobEndpoint');
+    primaryBlobHost = registerOutput<String>('primaryBlobHost');
+    primaryBlobInternetEndpoint = registerOutput<String>('primaryBlobInternetEndpoint');
+    primaryBlobInternetHost = registerOutput<String>('primaryBlobInternetHost');
+    primaryBlobMicrosoftEndpoint = registerOutput<String>('primaryBlobMicrosoftEndpoint');
+    primaryBlobMicrosoftHost = registerOutput<String>('primaryBlobMicrosoftHost');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryDfsEndpoint = registerOutput<String>('primaryDfsEndpoint');
+    primaryDfsHost = registerOutput<String>('primaryDfsHost');
+    primaryDfsInternetEndpoint = registerOutput<String>('primaryDfsInternetEndpoint');
+    primaryDfsInternetHost = registerOutput<String>('primaryDfsInternetHost');
+    primaryDfsMicrosoftEndpoint = registerOutput<String>('primaryDfsMicrosoftEndpoint');
+    primaryDfsMicrosoftHost = registerOutput<String>('primaryDfsMicrosoftHost');
+    primaryFileEndpoint = registerOutput<String>('primaryFileEndpoint');
+    primaryFileHost = registerOutput<String>('primaryFileHost');
+    primaryFileInternetEndpoint = registerOutput<String>('primaryFileInternetEndpoint');
+    primaryFileInternetHost = registerOutput<String>('primaryFileInternetHost');
+    primaryFileMicrosoftEndpoint = registerOutput<String>('primaryFileMicrosoftEndpoint');
+    primaryFileMicrosoftHost = registerOutput<String>('primaryFileMicrosoftHost');
+    primaryLocation = registerOutput<String>('primaryLocation');
+    primaryQueueEndpoint = registerOutput<String>('primaryQueueEndpoint');
+    primaryQueueHost = registerOutput<String>('primaryQueueHost');
+    primaryQueueMicrosoftEndpoint = registerOutput<String>('primaryQueueMicrosoftEndpoint');
+    primaryQueueMicrosoftHost = registerOutput<String>('primaryQueueMicrosoftHost');
+    primaryTableEndpoint = registerOutput<String>('primaryTableEndpoint');
+    primaryTableHost = registerOutput<String>('primaryTableHost');
+    primaryTableMicrosoftEndpoint = registerOutput<String>('primaryTableMicrosoftEndpoint');
+    primaryTableMicrosoftHost = registerOutput<String>('primaryTableMicrosoftHost');
+    primaryWebEndpoint = registerOutput<String>('primaryWebEndpoint');
+    primaryWebHost = registerOutput<String>('primaryWebHost');
+    primaryWebInternetEndpoint = registerOutput<String>('primaryWebInternetEndpoint');
+    primaryWebInternetHost = registerOutput<String>('primaryWebInternetHost');
+    primaryWebMicrosoftEndpoint = registerOutput<String>('primaryWebMicrosoftEndpoint');
+    primaryWebMicrosoftHost = registerOutput<String>('primaryWebMicrosoftHost');
+    provisionedBillingModelVersion = registerOutput<String?>('provisionedBillingModelVersion');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    queueEncryptionKeyType = registerOutput<String?>('queueEncryptionKeyType');
+    queueProperties = registerOutput<AccountQueueProperties>('queueProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueueProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routing = registerOutput<AccountRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryBlobConnectionString = registerOutput<String>('secondaryBlobConnectionString', isSecret: true);
+    secondaryBlobEndpoint = registerOutput<String>('secondaryBlobEndpoint');
+    secondaryBlobHost = registerOutput<String>('secondaryBlobHost');
+    secondaryBlobInternetEndpoint = registerOutput<String>('secondaryBlobInternetEndpoint');
+    secondaryBlobInternetHost = registerOutput<String>('secondaryBlobInternetHost');
+    secondaryBlobMicrosoftEndpoint = registerOutput<String>('secondaryBlobMicrosoftEndpoint');
+    secondaryBlobMicrosoftHost = registerOutput<String>('secondaryBlobMicrosoftHost');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryDfsEndpoint = registerOutput<String>('secondaryDfsEndpoint');
+    secondaryDfsHost = registerOutput<String>('secondaryDfsHost');
+    secondaryDfsInternetEndpoint = registerOutput<String>('secondaryDfsInternetEndpoint');
+    secondaryDfsInternetHost = registerOutput<String>('secondaryDfsInternetHost');
+    secondaryDfsMicrosoftEndpoint = registerOutput<String>('secondaryDfsMicrosoftEndpoint');
+    secondaryDfsMicrosoftHost = registerOutput<String>('secondaryDfsMicrosoftHost');
+    secondaryFileEndpoint = registerOutput<String>('secondaryFileEndpoint');
+    secondaryFileHost = registerOutput<String>('secondaryFileHost');
+    secondaryFileInternetEndpoint = registerOutput<String>('secondaryFileInternetEndpoint');
+    secondaryFileInternetHost = registerOutput<String>('secondaryFileInternetHost');
+    secondaryFileMicrosoftEndpoint = registerOutput<String>('secondaryFileMicrosoftEndpoint');
+    secondaryFileMicrosoftHost = registerOutput<String>('secondaryFileMicrosoftHost');
+    secondaryLocation = registerOutput<String>('secondaryLocation');
+    secondaryQueueEndpoint = registerOutput<String>('secondaryQueueEndpoint');
+    secondaryQueueHost = registerOutput<String>('secondaryQueueHost');
+    secondaryQueueMicrosoftEndpoint = registerOutput<String>('secondaryQueueMicrosoftEndpoint');
+    secondaryQueueMicrosoftHost = registerOutput<String>('secondaryQueueMicrosoftHost');
+    secondaryTableEndpoint = registerOutput<String>('secondaryTableEndpoint');
+    secondaryTableHost = registerOutput<String>('secondaryTableHost');
+    secondaryTableMicrosoftEndpoint = registerOutput<String>('secondaryTableMicrosoftEndpoint');
+    secondaryTableMicrosoftHost = registerOutput<String>('secondaryTableMicrosoftHost');
+    secondaryWebEndpoint = registerOutput<String>('secondaryWebEndpoint');
+    secondaryWebHost = registerOutput<String>('secondaryWebHost');
+    secondaryWebInternetEndpoint = registerOutput<String>('secondaryWebInternetEndpoint');
+    secondaryWebInternetHost = registerOutput<String>('secondaryWebInternetHost');
+    secondaryWebMicrosoftEndpoint = registerOutput<String>('secondaryWebMicrosoftEndpoint');
+    secondaryWebMicrosoftHost = registerOutput<String>('secondaryWebMicrosoftHost');
+    sftpEnabled = registerOutput<bool?>('sftpEnabled');
+    shareProperties = registerOutput<AccountShareProperties>('shareProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountShareProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
+    staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountStaticWebsite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

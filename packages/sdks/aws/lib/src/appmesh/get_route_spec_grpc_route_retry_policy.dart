@@ -38,7 +38,7 @@ class GetRouteSpecGrpcRouteRetryPolicy {
     return GetRouteSpecGrpcRouteRetryPolicy(
       grpcRetryEvents: pulumi.Input.fromValue((map['grpcRetryEvents'] as List).cast<String>()),
       httpRetryEvents: pulumi.Input.fromValue((map['httpRetryEvents'] as List).cast<String>()),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
       perRetryTimeouts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout>(map['perRetryTimeouts']!, (value) => GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap((value as Map).cast<String, dynamic>()))),
       tcpRetryEvents: pulumi.Input.fromValue((map['tcpRetryEvents'] as List).cast<String>()),
     );

@@ -6,20 +6,20 @@ import 'package_package_source.dart';
 /// Input properties used for looking up and filtering Package resources.
 class PackageState {
   /// The current version of the package.
-  final pulumi.Input<String>? availablePackageVersion;
+  final pulumi.Input<String?>? availablePackageVersion;
   /// Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// Description of the package.
-  final pulumi.Input<String>? packageDescription;
-  final pulumi.Input<String>? packageId;
+  final pulumi.Input<String?>? packageDescription;
+  final pulumi.Input<String?>? packageId;
   /// Unique name for the package.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Configuration block for the package source options.
-  final pulumi.Input<PackagePackageSource>? packageSource;
+  final pulumi.Input<PackagePackageSource?>? packageSource;
   /// The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PackageState].
   /// [availablePackageVersion] The current version of the package.

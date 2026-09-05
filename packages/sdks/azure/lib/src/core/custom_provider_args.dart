@@ -11,19 +11,19 @@ import 'custom_provider_validation.dart';
 /// {@macro pulumi_core_custom_provider_custom_provider_args_doc}
 class CustomProviderArgs {
   /// Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.
-  final pulumi.Input<List<CustomProviderAction>>? actions;
+  final pulumi.Input<List<CustomProviderAction>?>? actions;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Custom Provider. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Any number of `resourceType` block as defined below. One of `resourceType` or `action` must be specified.
-  final pulumi.Input<List<CustomProviderResourceType>>? resourceTypes;
+  final pulumi.Input<List<CustomProviderResourceType>?>? resourceTypes;
   /// A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Any number of `validation` block as defined below.
-  final pulumi.Input<List<CustomProviderValidation>>? validations;
+  final pulumi.Input<List<CustomProviderValidation>?>? validations;
 
   /// Creates a new [CustomProviderArgs].
   /// [actions] Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.

@@ -6,25 +6,25 @@ import 'backend_address_pool_tunnel_interface.dart';
 /// Input properties used for looking up and filtering BackendAddressPool resources.
 class BackendAddressPoolState {
   /// The Backend IP Configurations associated with this Backend Address Pool.
-  final pulumi.Input<List<String>>? backendIpConfigurations;
+  final pulumi.Input<List<String>?>? backendIpConfigurations;
   /// An array of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool.
-  final pulumi.Input<List<String>>? inboundNatRules;
+  final pulumi.Input<List<String>?>? inboundNatRules;
   /// The Load Balancing Rules associated with this Backend Address Pool.
-  final pulumi.Input<List<String>>? loadBalancingRules;
+  final pulumi.Input<List<String>?>? loadBalancingRules;
   /// The ID of the Load Balancer in which to create the Backend Address Pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? loadbalancerId;
+  final pulumi.Input<String?>? loadbalancerId;
   /// Specifies the name of the Backend Address Pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An array of the Load Balancing Outbound Rules associated with this Backend Address Pool.
-  final pulumi.Input<List<String>>? outboundRules;
+  final pulumi.Input<List<String>?>? outboundRules;
   /// The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtualNetworkId`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `synchronousMode` can set only for Load Balancer with `Standard` SKU.
-  final pulumi.Input<String>? synchronousMode;
+  final pulumi.Input<String?>? synchronousMode;
   /// One or more `tunnelInterface` blocks as defined below.
-  final pulumi.Input<List<BackendAddressPoolTunnelInterface>>? tunnelInterfaces;
+  final pulumi.Input<List<BackendAddressPoolTunnelInterface>?>? tunnelInterfaces;
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [BackendAddressPoolState].
   /// [backendIpConfigurations] The Backend IP Configurations associated with this Backend Address Pool.

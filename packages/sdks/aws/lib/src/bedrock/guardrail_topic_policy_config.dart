@@ -6,9 +6,9 @@ import 'guardrail_topic_policy_config_topics_config.dart';
 
 class GuardrailTopicPolicyConfig {
   /// Configuration block for the topic policy tier. See Tier Config for more information.
-  final pulumi.Input<List<GuardrailTopicPolicyConfigTierConfig>>? tierConfigs;
+  final pulumi.Input<List<GuardrailTopicPolicyConfigTierConfig>?>? tierConfigs;
   /// List of topic configs in topic policy. See Topics Config for more information.
-  final pulumi.Input<List<GuardrailTopicPolicyConfigTopicsConfig>>? topicsConfigs;
+  final pulumi.Input<List<GuardrailTopicPolicyConfigTopicsConfig>?>? topicsConfigs;
 
   /// Creates a new [GuardrailTopicPolicyConfig].
   /// [tierConfigs] Configuration block for the topic policy tier. See Tier Config for more information.

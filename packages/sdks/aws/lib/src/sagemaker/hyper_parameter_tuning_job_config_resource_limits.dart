@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobConfigResourceLimits {
   /// Maximum total training jobs.
-  final pulumi.Input<int>? maxNumberOfTrainingJobs;
+  final pulumi.Input<int?>? maxNumberOfTrainingJobs;
   /// Maximum parallel training jobs.
   final pulumi.Input<int> maxParallelTrainingJobs;
   /// Maximum total runtime in seconds.
-  final pulumi.Input<int>? maxRuntimeInSeconds;
+  final pulumi.Input<int?>? maxRuntimeInSeconds;
 
   /// Creates a new [HyperParameterTuningJobConfigResourceLimits].
   /// [maxNumberOfTrainingJobs] Maximum total training jobs.
@@ -30,9 +30,9 @@ class HyperParameterTuningJobConfigResourceLimits {
 
   factory HyperParameterTuningJobConfigResourceLimits.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobConfigResourceLimits(
-      maxNumberOfTrainingJobs: (() { final guardedValue = map['maxNumberOfTrainingJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxParallelTrainingJobs: pulumi.Input.fromValue(map['maxParallelTrainingJobs'] as int),
-      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNumberOfTrainingJobs: (() { final guardedValue = map['maxNumberOfTrainingJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxParallelTrainingJobs: pulumi.Input.fromValue((map['maxParallelTrainingJobs'] as num).toInt()),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

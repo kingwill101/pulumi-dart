@@ -8,31 +8,31 @@ import 'rule_retention_period.dart';
 
 /// Input properties used for looking up and filtering Rule resources.
 class RuleState {
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Retention rule description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
-  final pulumi.Input<List<RuleExcludeResourceTag>>? excludeResourceTags;
+  final pulumi.Input<List<RuleExcludeResourceTag>?>? excludeResourceTags;
   /// Information about the retention rule lock configuration. See `lockConfiguration` below.
-  final pulumi.Input<RuleLockConfiguration>? lockConfiguration;
+  final pulumi.Input<RuleLockConfiguration?>? lockConfiguration;
   /// (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
-  final pulumi.Input<String>? lockEndTime;
+  final pulumi.Input<String?>? lockEndTime;
   /// (Optional) Lock state of the retention rules to list. Only retention rules with the specified lock state are returned. Valid values are `locked`, `pendingUnlock`, `unlocked`.
-  final pulumi.Input<String>? lockState;
+  final pulumi.Input<String?>? lockState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
-  final pulumi.Input<List<RuleResourceTag>>? resourceTags;
+  final pulumi.Input<List<RuleResourceTag>?>? resourceTags;
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<RuleRetentionPeriod>? retentionPeriod;
+  final pulumi.Input<RuleRetentionPeriod?>? retentionPeriod;
   /// (String) State of the retention rule. Only retention rules that are in the `available` state retain resources. Valid values include `pending` and `available`.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RuleState].
   /// [arn] Optional.

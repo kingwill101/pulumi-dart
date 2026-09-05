@@ -10,9 +10,9 @@ class TemplateAliasArgs {
   /// Display name of the template alias.
   final pulumi.Input<String> aliasName;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the template.
   final pulumi.Input<String> templateId;
   /// Version number of the template.
@@ -50,7 +50,7 @@ class TemplateAliasArgs {
       awsAccountId: (() { final guardedValue = map['awsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       templateId: pulumi.Input.fromValue(map['templateId'] as String),
-      templateVersionNumber: pulumi.Input.fromValue(map['templateVersionNumber'] as int),
+      templateVersionNumber: pulumi.Input.fromValue((map['templateVersionNumber'] as num).toInt()),
     );
   }
 }

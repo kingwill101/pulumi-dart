@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_ipam_args.dart';
+import 'vpc_ipam_operating_region.dart';
 import 'vpc_ipam_state.dart';
 
 /// Provides an IPAM resource.
@@ -15,10 +16,10 @@ import 'vpc_ipam_state.dart';
 ///
 /// const current = aws.getRegion({});
 /// const main = new aws.ec2.VpcIpam("main", {
-///     description: "My IPAM",
 ///     operatingRegions: [{
 ///         regionName: current.then(current => current.region),
 ///     }],
+///     description: "My IPAM",
 ///     tags: {
 ///         Test: "Main",
 ///     },
@@ -30,10 +31,10 @@ import 'vpc_ipam_state.dart';
 ///
 /// current = aws.get_region()
 /// main = aws.ec2.VpcIpam("main",
-///     description="My IPAM",
 ///     operating_regions=[{
 ///         "region_name": current.region,
 ///     }],
+///     description="My IPAM",
 ///     tags={
 ///         "Test": "Main",
 ///     })
@@ -50,7 +51,6 @@ import 'vpc_ipam_state.dart';
 ///
 ///     var main = new Aws.Ec2.VpcIpam("main", new()
 ///     {
-///         Description = "My IPAM",
 ///         OperatingRegions = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.VpcIpamOperatingRegionArgs
@@ -58,6 +58,7 @@ import 'vpc_ipam_state.dart';
 ///                 RegionName = current.Apply(getRegionResult => getRegionResult.Region),
 ///             },
 ///         },
+///         Description = "My IPAM",
 ///         Tags =
 ///         {
 ///             { "Test", "Main" },
@@ -82,12 +83,12 @@ import 'vpc_ipam_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpam(ctx, "main", &ec2.VpcIpamArgs{
-/// 			Description: pulumi.String("My IPAM"),
 /// 			OperatingRegions: ec2.VpcIpamOperatingRegionArray{
 /// 				&ec2.VpcIpamOperatingRegionArgs{
 /// 					RegionName: pulumi.String(current.Region),
 /// 				},
 /// 			},
+/// 			Description: pulumi.String("My IPAM"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Test": pulumi.String("Main"),
 /// 			},
@@ -112,10 +113,10 @@ import 'vpc_ipam_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpcipam" "main" {
-///   description = "My IPAM"
 ///   operating_regions {
 ///     region_name = data.aws_getregion.current.region
 ///   }
+///   description = "My IPAM"
 ///   tags = {
 ///     "Test" = "Main"
 ///   }
@@ -149,10 +150,10 @@ import 'vpc_ipam_state.dart';
 ///             .build());
 ///
 ///         var main = new VpcIpam("main", VpcIpamArgs.builder()
-///             .description("My IPAM")
 ///             .operatingRegions(VpcIpamOperatingRegionArgs.builder()
 ///                 .regionName(current.region())
 ///                 .build())
+///             .description("My IPAM")
 ///             .tags(Map.of("Test", "Main"))
 ///             .build());
 ///
@@ -164,9 +165,9 @@ import 'vpc_ipam_state.dart';
 ///   main:
 ///     type: aws:ec2:VpcIpam
 ///     properties:
-///       description: My IPAM
 ///       operatingRegions:
 ///         - regionName: ${current.region}
+///       description: My IPAM
 ///       tags:
 ///         Test: Main
 /// variables:
@@ -201,9 +202,9 @@ import 'vpc_ipam_state.dart';
 ///     input: invoke.result,
 /// })).then(invoke => invoke.result);
 /// const main = new aws.ec2.VpcIpam("main", {
-///     operatingRegions: allIpamRegions.map((v, k) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
-///         regionName: entry.value,
-///     }))),
+///     operatingRegions: .map(entry => ({
+///         regionName: entry,
+///     })),
 ///     description: "multi region ipam",
 /// });
 /// ```
@@ -226,9 +227,9 @@ import 'vpc_ipam_state.dart';
 ///     ipam_regions,
 /// ]).result).result
 /// main = aws.ec2.VpcIpam("main",
-///     operating_regions=[{"key": k, "value": v} for k, v in sorted(all_ipam_regions.items())].apply(lambda entries: [aws.ec2.VpcIpamOperatingRegionArgs(
-///         region_name=entry["value"],
-///     ) for entry in entries]),
+///     operating_regions=[{
+///         "region_name": entry,
+///     } for entry in all_ipam_regions],
 ///     description="multi region ipam")
 /// ```
 /// ```csharp
@@ -266,13 +267,13 @@ import 'vpc_ipam_state.dart';
 ///
 ///     var main = new Aws.Ec2.VpcIpam("main", new()
 ///     {
-///         OperatingRegions = .Apply(entries => entries.Select(entry =>
+///         OperatingRegions = .Select(entry =>
 ///         {
-///             return
+///             return new Aws.Ec2.Inputs.VpcIpamOperatingRegionArgs
 ///             {
-///                 { "regionName", entry.Value },
+///                 RegionName = entry,
 ///             };
-///         }).ToList()),
+///         }).ToList(),
 ///         Description = "multi region ipam",
 ///     });
 ///
@@ -298,9 +299,9 @@ import 'vpc_ipam_state.dart';
 ///
 /// resource "aws_ec2_vpcipam" "main" {
 ///   dynamic "operating_regions" {
-///     for_each = entries(local.allIpamRegions)
+///     for_each = local.allIpamRegions
 ///     content {
-///       region_name = operating_regions.value.value
+///       region_name = operating_regions.value
 ///     }
 ///   }
 ///   description = "multi region ipam"
@@ -324,7 +325,7 @@ import 'vpc_ipam_state.dart';
 /// $ pulumi import aws:ec2/vpcIpam:VpcIpam example ipam-0178368ad2146a492
 /// ```
 class VpcIpam extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of IPAM
+  /// ARN of IPAM
   late final pulumi.Output<String> arn;
   /// Enables you to quickly delete an IPAM, private scopes, pools in private scopes, and any allocations in the pools in private scopes.
   late final pulumi.Output<bool?> cascade;
@@ -339,7 +340,7 @@ class VpcIpam extends pulumi.CustomResource {
   /// AWS account that is charged for active IP addresses managed in IPAM. Valid values are `ipam-owner` (default) and `resource-owner`.
   late final pulumi.Output<String> meteredAccount;
   /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. You **must** set your provider block region as an operating_region.
-  late final pulumi.Output<List<Map<String, dynamic>>> operatingRegions;
+  late final pulumi.Output<List<VpcIpamOperatingRegion>> operatingRegions;
   /// The ID of the IPAM's private scope. A scope is a top-level container in IPAM. Each scope represents an IP-independent network. Scopes enable you to represent networks where you have overlapping IP space. When you create an IPAM, IPAM automatically creates two scopes: public and private. The private scope is intended for private IP space. The public scope is intended for all internet-routable IP space.
   late final pulumi.Output<String> privateDefaultScopeId;
   /// The ID of the IPAM's public scope. A scope is a top-level container in IPAM. Each scope represents an IP-independent network. Scopes enable you to represent networks where you have overlapping IP space. When you create an IPAM, IPAM automatically creates two scopes: public and private. The private scope is intended for private
@@ -368,7 +369,7 @@ class VpcIpam extends pulumi.CustomResource {
           'aws:ec2/vpcIpam:VpcIpam',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cascade = registerOutput<bool?>('cascade');
@@ -377,13 +378,13 @@ class VpcIpam extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
     meteredAccount = registerOutput<String>('meteredAccount');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
+    operatingRegions = registerOutput<List<VpcIpamOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamOperatingRegion>(guardedValue, (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
     privateDefaultScopeId = registerOutput<String>('privateDefaultScopeId');
     publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
     region = registerOutput<String>('region');
     scopeCount = registerOutput<int>('scopeCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
   }
 
@@ -392,11 +393,12 @@ class VpcIpam extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpam._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -417,13 +419,39 @@ class VpcIpam extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
     meteredAccount = registerOutput<String>('meteredAccount');
-    operatingRegions = registerOutput<List<Map<String, dynamic>>>('operatingRegions');
+    operatingRegions = registerOutput<List<VpcIpamOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamOperatingRegion>(guardedValue, (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
     privateDefaultScopeId = registerOutput<String>('privateDefaultScopeId');
     publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
     region = registerOutput<String>('region');
     scopeCount = registerOutput<int>('scopeCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String?>('tier');
+  }
+
+  /// Creates a typed reference to an existing [VpcIpam] resource.
+  VpcIpam.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpam:VpcIpam',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cascade = registerOutput<bool?>('cascade');
+    defaultResourceDiscoveryAssociationId = registerOutput<String>('defaultResourceDiscoveryAssociationId');
+    defaultResourceDiscoveryId = registerOutput<String>('defaultResourceDiscoveryId');
+    description = registerOutput<String?>('description');
+    enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
+    meteredAccount = registerOutput<String>('meteredAccount');
+    operatingRegions = registerOutput<List<VpcIpamOperatingRegion>>('operatingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcIpamOperatingRegion>(guardedValue, (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDefaultScopeId = registerOutput<String>('privateDefaultScopeId');
+    publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
+    region = registerOutput<String>('region');
+    scopeCount = registerOutput<int>('scopeCount');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
   }
 }

@@ -218,11 +218,11 @@ import 'organization_configuration_state.dart';
 ///     dependsOn: [example],
 /// });
 /// const exampleOrganizationConfiguration = new aws.securityhub.OrganizationConfiguration("example", {
-///     autoEnable: false,
-///     autoEnableStandards: "NONE",
 ///     organizationConfiguration: {
 ///         configurationType: "CENTRAL",
 ///     },
+///     autoEnable: false,
+///     autoEnableStandards: "NONE",
 /// }, {
 ///     dependsOn: [exampleFindingAggregator],
 /// });
@@ -236,11 +236,11 @@ import 'organization_configuration_state.dart';
 /// example_finding_aggregator = aws.securityhub.FindingAggregator("example", linking_mode="ALL_REGIONS",
 /// opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_organization_configuration = aws.securityhub.OrganizationConfiguration("example",
-///     auto_enable=False,
-///     auto_enable_standards="NONE",
 ///     organization_configuration={
 ///         "configuration_type": "CENTRAL",
 ///     },
+///     auto_enable=False,
+///     auto_enable_standards="NONE",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_finding_aggregator]))
 /// ```
 /// ```csharp
@@ -275,12 +275,12 @@ import 'organization_configuration_state.dart';
 ///
 ///     var exampleOrganizationConfiguration = new Aws.SecurityHub.OrganizationConfiguration("example", new()
 ///     {
-///         AutoEnable = false,
-///         AutoEnableStandards = "NONE",
 ///         OrganizationConfigurationDetails = new Aws.SecurityHub.Inputs.OrganizationConfigurationOrganizationConfigurationArgs
 ///         {
 ///             ConfigurationType = "CENTRAL",
 ///         },
+///         AutoEnable = false,
+///         AutoEnableStandards = "NONE",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -318,11 +318,11 @@ import 'organization_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewOrganizationConfiguration(ctx, "example", &securityhub.OrganizationConfigurationArgs{
-/// 			AutoEnable:          pulumi.Bool(false),
-/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 			OrganizationConfiguration: &securityhub.OrganizationConfigurationOrganizationConfigurationArgs{
 /// 				ConfigurationType: pulumi.String("CENTRAL"),
 /// 			},
+/// 			AutoEnable:          pulumi.Bool(false),
+/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleFindingAggregator,
 /// 		}))
@@ -351,12 +351,12 @@ import 'organization_configuration_state.dart';
 ///   linking_mode = "ALL_REGIONS"
 /// }
 /// resource "aws_securityhub_organizationconfiguration" "example" {
-///   depends_on            = [aws_securityhub_findingaggregator.example]
-///   auto_enable           = false
-///   auto_enable_standards = "NONE"
+///   depends_on = [aws_securityhub_findingaggregator.example]
 ///   organization_configuration = {
 ///     configuration_type = "CENTRAL"
 ///   }
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
 /// }
 /// ```
 /// ```java
@@ -399,11 +399,11 @@ import 'organization_configuration_state.dart';
 ///                 .build());
 ///
 ///         var exampleOrganizationConfiguration = new OrganizationConfiguration("exampleOrganizationConfiguration", OrganizationConfigurationArgs.builder()
-///             .autoEnable(false)
-///             .autoEnableStandards("NONE")
 ///             .organizationConfiguration(OrganizationConfigurationOrganizationConfigurationArgs.builder()
 ///                 .configurationType("CENTRAL")
 ///                 .build())
+///             .autoEnable(false)
+///             .autoEnableStandards("NONE")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleFindingAggregator)
 ///                 .build());
@@ -432,10 +432,10 @@ import 'organization_configuration_state.dart';
 ///     type: aws:securityhub:OrganizationConfiguration
 ///     name: example
 ///     properties:
-///       autoEnable: false
-///       autoEnableStandards: NONE
 ///       organizationConfiguration:
 ///         configurationType: CENTRAL
+///       autoEnable: false
+///       autoEnableStandards: NONE
 ///     options:
 ///       dependsOn:
 ///         - ${exampleFindingAggregator}
@@ -471,7 +471,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoEnable = registerOutput<bool>('autoEnable');
     autoEnableStandards = registerOutput<String>('autoEnableStandards');
@@ -484,11 +484,12 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -502,6 +503,21 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoEnable = registerOutput<bool>('autoEnable');
+    autoEnableStandards = registerOutput<String>('autoEnableStandards');
+    organizationConfiguration = registerOutput<OrganizationConfigurationOrganizationConfiguration>('organizationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationOrganizationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationConfiguration] resource.
+  OrganizationConfiguration.reference(String urn)
+    : super(
+        'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoEnable = registerOutput<bool>('autoEnable');
     autoEnableStandards = registerOutput<String>('autoEnableStandards');
     organizationConfiguration = registerOutput<OrganizationConfigurationOrganizationConfiguration>('organizationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationOrganizationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

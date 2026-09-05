@@ -7,19 +7,19 @@ import 'active_role_assignment_ticket.dart';
 /// Input properties used for looking up and filtering ActiveRoleAssignment resources.
 class ActiveRoleAssignmentState {
   /// The justification for the role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// Object ID of the principal for this role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Type of principal to which the role will be assigned.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// The role definition ID for this role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// A `schedule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ActiveRoleAssignmentSchedule>? schedule;
+  final pulumi.Input<ActiveRoleAssignmentSchedule?>? schedule;
   /// The scope for this role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// A `ticket` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ActiveRoleAssignmentTicket>? ticket;
+  final pulumi.Input<ActiveRoleAssignmentTicket?>? ticket;
 
   /// Creates a new [ActiveRoleAssignmentState].
   /// [justification] The justification for the role assignment. Changing this forces a new resource to be created.

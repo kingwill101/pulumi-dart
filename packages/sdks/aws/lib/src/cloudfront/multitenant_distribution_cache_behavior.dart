@@ -10,27 +10,27 @@ class MultitenantDistributionCacheBehavior {
   /// Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
   final pulumi.Input<MultitenantDistributionCacheBehaviorAllowedMethods> allowedMethods;
   /// Unique identifier of the cache policy that is attached to the cache behavior.
-  final pulumi.Input<String>? cachePolicyId;
+  final pulumi.Input<String?>? cachePolicyId;
   /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header. Default: `false`.
-  final pulumi.Input<bool>? compress;
+  final pulumi.Input<bool?>? compress;
   /// Field level encryption configuration ID.
-  final pulumi.Input<String>? fieldLevelEncryptionId;
+  final pulumi.Input<String?>? fieldLevelEncryptionId;
   /// Configuration block for CloudFront Functions associations. See Function Association below.
-  final pulumi.Input<List<MultitenantDistributionCacheBehaviorFunctionAssociation>>? functionAssociations;
+  final pulumi.Input<List<MultitenantDistributionCacheBehaviorFunctionAssociation>?>? functionAssociations;
   /// Configuration block for Lambda@Edge associations. See Lambda Function Association below.
-  final pulumi.Input<List<MultitenantDistributionCacheBehaviorLambdaFunctionAssociation>>? lambdaFunctionAssociations;
+  final pulumi.Input<List<MultitenantDistributionCacheBehaviorLambdaFunctionAssociation>?>? lambdaFunctionAssociations;
   /// Unique identifier of the origin request policy that is attached to the behavior.
-  final pulumi.Input<String>? originRequestPolicyId;
+  final pulumi.Input<String?>? originRequestPolicyId;
   /// Pattern that specifies which requests you want this cache behavior to apply to.
   final pulumi.Input<String> pathPattern;
   /// ARN of the real-time log configuration that is attached to this cache behavior.
-  final pulumi.Input<String>? realtimeLogConfigArn;
+  final pulumi.Input<String?>? realtimeLogConfigArn;
   /// Identifier for a response headers policy.
-  final pulumi.Input<String>? responseHeadersPolicyId;
+  final pulumi.Input<String?>? responseHeadersPolicyId;
   /// Value of ID for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.
   final pulumi.Input<String> targetOriginId;
   /// List of key group IDs that CloudFront can use to validate signed URLs or signed cookies.
-  final pulumi.Input<MultitenantDistributionCacheBehaviorTrustedKeyGroups>? trustedKeyGroups;
+  final pulumi.Input<MultitenantDistributionCacheBehaviorTrustedKeyGroups?>? trustedKeyGroups;
   /// Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. One of `allow-all`, `https-only`, or `redirect-to-https`.
   final pulumi.Input<String> viewerProtocolPolicy;
 

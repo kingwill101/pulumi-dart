@@ -6,15 +6,15 @@ class EventTargetRedshiftTarget {
   /// The name of the database.
   final pulumi.Input<String> database;
   /// The database user name.
-  final pulumi.Input<String>? dbUser;
+  final pulumi.Input<String?>? dbUser;
   /// The name or ARN of the secret that enables access to the database.
-  final pulumi.Input<String>? secretsManagerArn;
+  final pulumi.Input<String?>? secretsManagerArn;
   /// The SQL statement text to run.
-  final pulumi.Input<String>? sql;
+  final pulumi.Input<String?>? sql;
   /// The name of the SQL statement.
-  final pulumi.Input<String>? statementName;
+  final pulumi.Input<String?>? statementName;
   /// Indicates whether to send an event back to EventBridge after the SQL statement runs.
-  final pulumi.Input<bool>? withEvent;
+  final pulumi.Input<bool?>? withEvent;
 
   /// Creates a new [EventTargetRedshiftTarget].
   /// [database] The name of the database.

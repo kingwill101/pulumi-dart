@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'trail_advanced_event_selector.dart';
 import 'trail_args.dart';
+import 'trail_event_selector.dart';
+import 'trail_insight_selector.dart';
 import 'trail_state.dart';
 
 /// Provides a CloudTrail resource.
@@ -30,29 +33,21 @@ import 'trail_state.dart';
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
-///             sid: "AWSCloudTrailAclCheck",
-///             effect: "Allow",
-///             principals: [{
-///                 type: "Service",
-///                 identifiers: ["cloudtrail.amazonaws.com"],
-///             }],
-///             actions: ["s3:GetBucketAcl"],
-///             resources: [exampleBucket.arn],
 ///             conditions: [{
 ///                 test: "StringEquals",
 ///                 variable: "aws:SourceArn",
 ///                 values: [Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => `arn:${currentGetPartition.partition}:cloudtrail:${currentGetRegion.region}:${current.accountId}:trail/example`)],
 ///             }],
-///         },
-///         {
-///             sid: "AWSCloudTrailWrite",
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["cloudtrail.amazonaws.com"],
 ///             }],
-///             actions: ["s3:PutObject"],
-///             resources: [pulumi.all([exampleBucket.arn, current]).apply(([arn, current]) => `${arn}/prefix/AWSLogs/${current.accountId}/*`)],
+///             sid: "AWSCloudTrailAclCheck",
+///             effect: "Allow",
+///             actions: ["s3:GetBucketAcl"],
+///             resources: [exampleBucket.arn],
+///         },
+///         {
 ///             conditions: [
 ///                 {
 ///                     test: "StringEquals",
@@ -65,6 +60,14 @@ import 'trail_state.dart';
 ///                     values: [Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => `arn:${currentGetPartition.partition}:cloudtrail:${currentGetRegion.region}:${current.accountId}:trail/example`)],
 ///                 },
 ///             ],
+///             principals: [{
+///                 type: "Service",
+///                 identifiers: ["cloudtrail.amazonaws.com"],
+///             }],
+///             sid: "AWSCloudTrailWrite",
+///             effect: "Allow",
+///             actions: ["s3:PutObject"],
+///             resources: [pulumi.all([exampleBucket.arn, current]).apply(([arn, current]) => `${arn}/prefix/AWSLogs/${current.accountId}/*`)],
 ///         },
 ///     ],
 /// });
@@ -93,29 +96,21 @@ import 'trail_state.dart';
 /// current_get_region = aws.get_region()
 /// example = aws.iam.get_policy_document_output(statements=[
 ///     {
-///         "sid": "AWSCloudTrailAclCheck",
-///         "effect": "Allow",
-///         "principals": [{
-///             "type": "Service",
-///             "identifiers": ["cloudtrail.amazonaws.com"],
-///         }],
-///         "actions": ["s3:GetBucketAcl"],
-///         "resources": [example_bucket.arn],
 ///         "conditions": [{
 ///             "test": "StringEquals",
 ///             "variable": "aws:SourceArn",
 ///             "values": [f"arn:{current_get_partition.partition}:cloudtrail:{current_get_region.region}:{current.account_id}:trail/example"],
 ///         }],
-///     },
-///     {
-///         "sid": "AWSCloudTrailWrite",
-///         "effect": "Allow",
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["cloudtrail.amazonaws.com"],
 ///         }],
-///         "actions": ["s3:PutObject"],
-///         "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/prefix/AWSLogs/{current.account_id}/*")],
+///         "sid": "AWSCloudTrailAclCheck",
+///         "effect": "Allow",
+///         "actions": ["s3:GetBucketAcl"],
+///         "resources": [example_bucket.arn],
+///     },
+///     {
 ///         "conditions": [
 ///             {
 ///                 "test": "StringEquals",
@@ -128,6 +123,14 @@ import 'trail_state.dart';
 ///                 "values": [f"arn:{current_get_partition.partition}:cloudtrail:{current_get_region.region}:{current.account_id}:trail/example"],
 ///             },
 ///         ],
+///         "principals": [{
+///             "type": "Service",
+///             "identifiers": ["cloudtrail.amazonaws.com"],
+///         }],
+///         "sid": "AWSCloudTrailWrite",
+///         "effect": "Allow",
+///         "actions": ["s3:PutObject"],
+///         "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/prefix/AWSLogs/{current.account_id}/*")],
 ///     },
 /// ])
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
@@ -166,27 +169,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AWSCloudTrailAclCheck",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "cloudtrail.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "s3:GetBucketAcl",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     exampleBucket.Arn,
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -199,11 +181,6 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
-///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-///             {
-///                 Sid = "AWSCloudTrailWrite",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -215,14 +192,19 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AWSCloudTrailAclCheck",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
-///                     "s3:PutObject",
+///                     "s3:GetBucketAcl",
 ///                 },
 ///                 Resources = new[]
 ///                 {
-///                     $"{exampleBucket.Arn}/prefix/AWSLogs/{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}/*",
+///                     exampleBucket.Arn,
 ///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -243,6 +225,27 @@ import 'trail_state.dart';
 ///                             $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:cloudtrail:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:trail/example",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "cloudtrail.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Sid = "AWSCloudTrailWrite",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "s3:PutObject",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{exampleBucket.Arn}/prefix/AWSLogs/{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}/*",
 ///                 },
 ///             },
 ///         },
@@ -307,22 +310,6 @@ import 'trail_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("AWSCloudTrailAclCheck"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("cloudtrail.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("s3:GetBucketAcl"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleBucket.Arn,
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -332,10 +319,6 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 				},
-/// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("AWSCloudTrailWrite"),
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -344,14 +327,16 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.String("AWSCloudTrailAclCheck"),
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("s3:PutObject"),
+/// 						pulumi.String("s3:GetBucketAcl"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
-/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
-/// 							return fmt.Sprintf("%v/prefix/AWSLogs/%v/*", arn, current.AccountId), nil
-/// 						}).(pulumi.StringOutput),
+/// 						exampleBucket.Arn,
 /// 					},
+/// 				},
+/// 				&iam.GetPolicyDocumentStatementArgs{
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -367,6 +352,24 @@ import 'trail_state.dart';
 /// 								pulumi.Sprintf("arn:%v:cloudtrail:%v:%v:trail/example", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("cloudtrail.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.String("AWSCloudTrailWrite"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/prefix/AWSLogs/%v/*", arn, current.AccountId), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
 /// 				},
 /// 			},
@@ -404,29 +407,21 @@ import 'trail_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "AWSCloudTrailAclCheck"
-///     effect = "Allow"
-///     principals {
-///       type        = "Service"
-///       identifiers = ["cloudtrail.amazonaws.com"]
-///     }
-///     actions   = ["s3:GetBucketAcl"]
-///     resources = [aws_s3_bucket.example.arn]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceArn"
 ///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
 ///     }
-///   }
-///   statements {
-///     sid    = "AWSCloudTrailWrite"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["cloudtrail.amazonaws.com"]
 ///     }
-///     actions   = ["s3:PutObject"]
-///     resources = ["${aws_s3_bucket.example.arn}/prefix/AWSLogs/${data.aws_getcalleridentity.current.account_id}/*"]
+///     sid       = "AWSCloudTrailAclCheck"
+///     effect    = "Allow"
+///     actions   = ["s3:GetBucketAcl"]
+///     resources = [aws_s3_bucket.example.arn]
+///   }
+///   statements {
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
@@ -437,6 +432,14 @@ import 'trail_state.dart';
 ///       variable = "aws:SourceArn"
 ///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:cloudtrail:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:trail/example"]
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["cloudtrail.amazonaws.com"]
+///     }
+///     sid       = "AWSCloudTrailWrite"
+///     effect    = "Allow"
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/prefix/AWSLogs/${data.aws_getcalleridentity.current.account_id}/*"]
 ///   }
 /// }
 /// data "aws_getcalleridentity" "current" {
@@ -477,8 +480,8 @@ import 'trail_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.cloudtrail.Trail;
@@ -514,29 +517,21 @@ import 'trail_state.dart';
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("AWSCloudTrailAclCheck")
-///                     .effect("Allow")
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("Service")
-///                         .identifiers("cloudtrail.amazonaws.com")
-///                         .build())
-///                     .actions("s3:GetBucketAcl")
-///                     .resources(exampleBucket.arn())
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .variable("aws:SourceArn")
 ///                         .values(String.format("arn:%s:cloudtrail:%s:%s:trail/example", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                         .build())
-///                     .build(),
-///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("AWSCloudTrailWrite")
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("cloudtrail.amazonaws.com")
 ///                         .build())
-///                     .actions("s3:PutObject")
-///                     .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/prefix/AWSLogs/%s/*", _arn,current.accountId())))
+///                     .sid("AWSCloudTrailAclCheck")
+///                     .effect("Allow")
+///                     .actions("s3:GetBucketAcl")
+///                     .resources(exampleBucket.arn())
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .conditions(
 ///                         GetPolicyDocumentStatementConditionArgs.builder()
 ///                             .test("StringEquals")
@@ -548,6 +543,14 @@ import 'trail_state.dart';
 ///                             .variable("aws:SourceArn")
 ///                             .values(String.format("arn:%s:cloudtrail:%s:%s:trail/example", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                             .build())
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("Service")
+///                         .identifiers("cloudtrail.amazonaws.com")
+///                         .build())
+///                     .sid("AWSCloudTrailWrite")
+///                     .effect("Allow")
+///                     .actions("s3:PutObject")
+///                     .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/prefix/AWSLogs/%s/*", _arn,current.accountId())))
 ///                     .build())
 ///             .build());
 ///
@@ -599,32 +602,22 @@ import 'trail_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: AWSCloudTrailAclCheck
-///             effect: Allow
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - cloudtrail.amazonaws.com
-///             actions:
-///               - s3:GetBucketAcl
-///             resources:
-///               - ${exampleBucket.arn}
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - arn:${currentGetPartition.partition}:cloudtrail:${currentGetRegion.region}:${current.accountId}:trail/example
-///           - sid: AWSCloudTrailWrite
-///             effect: Allow
 ///             principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - cloudtrail.amazonaws.com
+///             sid: AWSCloudTrailAclCheck
+///             effect: Allow
 ///             actions:
-///               - s3:PutObject
+///               - s3:GetBucketAcl
 ///             resources:
-///               - ${exampleBucket.arn}/prefix/AWSLogs/${current.accountId}/*
-///             conditions:
+///               - ${exampleBucket.arn}
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: s3:x-amz-acl
 ///                 values:
@@ -633,6 +626,16 @@ import 'trail_state.dart';
 ///                 variable: aws:SourceArn
 ///                 values:
 ///                   - arn:${currentGetPartition.partition}:cloudtrail:${currentGetRegion.region}:${current.accountId}:trail/example
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - cloudtrail.amazonaws.com
+///             sid: AWSCloudTrailWrite
+///             effect: Allow
+///             actions:
+///               - s3:PutObject
+///             resources:
+///               - ${exampleBucket.arn}/prefix/AWSLogs/${current.accountId}/*
 ///   current:
 ///     fn::invoke:
 ///       function: aws:getCallerIdentity
@@ -663,12 +666,12 @@ import 'trail_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudtrail.Trail("example", {eventSelectors: [{
-///     readWriteType: "All",
-///     includeManagementEvents: true,
 ///     dataResources: [{
 ///         type: "AWS::Lambda::Function",
 ///         values: ["arn:aws:lambda"],
 ///     }],
+///     readWriteType: "All",
+///     includeManagementEvents: true,
 /// }]});
 /// ```
 /// ```python
@@ -676,12 +679,12 @@ import 'trail_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudtrail.Trail("example", event_selectors=[{
-///     "read_write_type": "All",
-///     "include_management_events": True,
 ///     "data_resources": [{
 ///         "type": "AWS::Lambda::Function",
 ///         "values": ["arn:aws:lambda"],
 ///     }],
+///     "read_write_type": "All",
+///     "include_management_events": True,
 /// }])
 /// ```
 /// ```csharp
@@ -698,8 +701,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.TrailEventSelectorArgs
 ///             {
-///                 ReadWriteType = "All",
-///                 IncludeManagementEvents = true,
 ///                 DataResources = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailEventSelectorDataResourceArgs
@@ -711,6 +712,8 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ReadWriteType = "All",
+///                 IncludeManagementEvents = true,
 ///             },
 ///         },
 ///     });
@@ -730,8 +733,6 @@ import 'trail_state.dart';
 /// 		_, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 /// 				&cloudtrail.TrailEventSelectorArgs{
-/// 					ReadWriteType:           pulumi.String("All"),
-/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
 /// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
 /// 							Type: pulumi.String("AWS::Lambda::Function"),
@@ -740,6 +741,8 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ReadWriteType:           pulumi.String("All"),
+/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 		})
@@ -761,12 +764,12 @@ import 'trail_state.dart';
 ///
 /// resource "aws_cloudtrail_trail" "example" {
 ///   event_selectors {
-///     read_write_type           = "All"
-///     include_management_events = true
 ///     data_resources {
 ///       type   = "AWS::Lambda::Function"
 ///       values = ["arn:aws:lambda"]
 ///     }
+///     read_write_type           = "All"
+///     include_management_events = true
 ///   }
 /// }
 /// ```
@@ -795,12 +798,12 @@ import 'trail_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Trail("example", TrailArgs.builder()
 ///             .eventSelectors(TrailEventSelectorArgs.builder()
-///                 .readWriteType("All")
-///                 .includeManagementEvents(true)
 ///                 .dataResources(TrailEventSelectorDataResourceArgs.builder()
 ///                     .type("AWS::Lambda::Function")
 ///                     .values("arn:aws:lambda")
 ///                     .build())
+///                 .readWriteType("All")
+///                 .includeManagementEvents(true)
 ///                 .build())
 ///             .build());
 ///
@@ -813,12 +816,12 @@ import 'trail_state.dart';
 ///     type: aws:cloudtrail:Trail
 ///     properties:
 ///       eventSelectors:
-///         - readWriteType: All
-///           includeManagementEvents: true
-///           dataResources:
+///         - dataResources:
 ///             - type: AWS::Lambda::Function
 ///               values:
 ///                 - arn:aws:lambda
+///           readWriteType: All
+///           includeManagementEvents: true
 /// ```
 ///
 ///
@@ -830,12 +833,12 @@ import 'trail_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudtrail.Trail("example", {eventSelectors: [{
-///     readWriteType: "All",
-///     includeManagementEvents: true,
 ///     dataResources: [{
 ///         type: "AWS::S3::Object",
 ///         values: ["arn:aws:s3"],
 ///     }],
+///     readWriteType: "All",
+///     includeManagementEvents: true,
 /// }]});
 /// ```
 /// ```python
@@ -843,12 +846,12 @@ import 'trail_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudtrail.Trail("example", event_selectors=[{
-///     "read_write_type": "All",
-///     "include_management_events": True,
 ///     "data_resources": [{
 ///         "type": "AWS::S3::Object",
 ///         "values": ["arn:aws:s3"],
 ///     }],
+///     "read_write_type": "All",
+///     "include_management_events": True,
 /// }])
 /// ```
 /// ```csharp
@@ -865,8 +868,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.TrailEventSelectorArgs
 ///             {
-///                 ReadWriteType = "All",
-///                 IncludeManagementEvents = true,
 ///                 DataResources = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailEventSelectorDataResourceArgs
@@ -878,6 +879,8 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ReadWriteType = "All",
+///                 IncludeManagementEvents = true,
 ///             },
 ///         },
 ///     });
@@ -897,8 +900,6 @@ import 'trail_state.dart';
 /// 		_, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 /// 				&cloudtrail.TrailEventSelectorArgs{
-/// 					ReadWriteType:           pulumi.String("All"),
-/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
 /// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
 /// 							Type: pulumi.String("AWS::S3::Object"),
@@ -907,6 +908,8 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ReadWriteType:           pulumi.String("All"),
+/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 		})
@@ -928,12 +931,12 @@ import 'trail_state.dart';
 ///
 /// resource "aws_cloudtrail_trail" "example" {
 ///   event_selectors {
-///     read_write_type           = "All"
-///     include_management_events = true
 ///     data_resources {
 ///       type   = "AWS::S3::Object"
 ///       values = ["arn:aws:s3"]
 ///     }
+///     read_write_type           = "All"
+///     include_management_events = true
 ///   }
 /// }
 /// ```
@@ -962,12 +965,12 @@ import 'trail_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Trail("example", TrailArgs.builder()
 ///             .eventSelectors(TrailEventSelectorArgs.builder()
-///                 .readWriteType("All")
-///                 .includeManagementEvents(true)
 ///                 .dataResources(TrailEventSelectorDataResourceArgs.builder()
 ///                     .type("AWS::S3::Object")
 ///                     .values("arn:aws:s3")
 ///                     .build())
+///                 .readWriteType("All")
+///                 .includeManagementEvents(true)
 ///                 .build())
 ///             .build());
 ///
@@ -980,12 +983,12 @@ import 'trail_state.dart';
 ///     type: aws:cloudtrail:Trail
 ///     properties:
 ///       eventSelectors:
-///         - readWriteType: All
-///           includeManagementEvents: true
-///           dataResources:
+///         - dataResources:
 ///             - type: AWS::S3::Object
 ///               values:
 ///                 - arn:aws:s3
+///           readWriteType: All
+///           includeManagementEvents: true
 /// ```
 ///
 ///
@@ -1000,12 +1003,12 @@ import 'trail_state.dart';
 ///     bucket: "important-bucket",
 /// });
 /// const example = new aws.cloudtrail.Trail("example", {eventSelectors: [{
-///     readWriteType: "All",
-///     includeManagementEvents: true,
 ///     dataResources: [{
 ///         type: "AWS::S3::Object",
 ///         values: [important_bucket.then(important_bucket => `${important_bucket.arn}/`)],
 ///     }],
+///     readWriteType: "All",
+///     includeManagementEvents: true,
 /// }]});
 /// ```
 /// ```python
@@ -1014,12 +1017,12 @@ import 'trail_state.dart';
 ///
 /// important_bucket = aws.s3.get_bucket(bucket="important-bucket")
 /// example = aws.cloudtrail.Trail("example", event_selectors=[{
-///     "read_write_type": "All",
-///     "include_management_events": True,
 ///     "data_resources": [{
 ///         "type": "AWS::S3::Object",
 ///         "values": [f"{important_bucket.arn}/"],
 ///     }],
+///     "read_write_type": "All",
+///     "include_management_events": True,
 /// }])
 /// ```
 /// ```csharp
@@ -1041,8 +1044,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.TrailEventSelectorArgs
 ///             {
-///                 ReadWriteType = "All",
-///                 IncludeManagementEvents = true,
 ///                 DataResources = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailEventSelectorDataResourceArgs
@@ -1054,6 +1055,8 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ReadWriteType = "All",
+///                 IncludeManagementEvents = true,
 ///             },
 ///         },
 ///     });
@@ -1080,8 +1083,6 @@ import 'trail_state.dart';
 /// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 /// 				&cloudtrail.TrailEventSelectorArgs{
-/// 					ReadWriteType:           pulumi.String("All"),
-/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
 /// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
 /// 							Type: pulumi.String("AWS::S3::Object"),
@@ -1090,6 +1091,8 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ReadWriteType:           pulumi.String("All"),
+/// 					IncludeManagementEvents: pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 		})
@@ -1115,12 +1118,12 @@ import 'trail_state.dart';
 ///
 /// resource "aws_cloudtrail_trail" "example" {
 ///   event_selectors {
-///     read_write_type           = "All"
-///     include_management_events = true
 ///     data_resources {
 ///       type   = "AWS::S3::Object"
 ///       values = ["${data.aws_s3_getbucket.important-bucket.arn}/"]
 ///     }
+///     read_write_type           = "All"
+///     include_management_events = true
 ///   }
 /// }
 /// ```
@@ -1155,12 +1158,12 @@ import 'trail_state.dart';
 ///
 ///         var example = new Trail("example", TrailArgs.builder()
 ///             .eventSelectors(TrailEventSelectorArgs.builder()
-///                 .readWriteType("All")
-///                 .includeManagementEvents(true)
 ///                 .dataResources(TrailEventSelectorDataResourceArgs.builder()
 ///                     .type("AWS::S3::Object")
 ///                     .values(String.format("%s/", important_bucket.arn()))
 ///                     .build())
+///                 .readWriteType("All")
+///                 .includeManagementEvents(true)
 ///                 .build())
 ///             .build());
 ///
@@ -1173,12 +1176,12 @@ import 'trail_state.dart';
 ///     type: aws:cloudtrail:Trail
 ///     properties:
 ///       eventSelectors:
-///         - readWriteType: All
-///           includeManagementEvents: true
-///           dataResources:
+///         - dataResources:
 ///             - type: AWS::S3::Object
 ///               values:
 ///                 - ${["important-bucket"].arn}/
+///           readWriteType: All
+///           includeManagementEvents: true
 /// variables:
 ///   important-bucket:
 ///     fn::invoke:
@@ -1203,7 +1206,6 @@ import 'trail_state.dart';
 /// });
 /// const example = new aws.cloudtrail.Trail("example", {advancedEventSelectors: [
 ///     {
-///         name: "Log all S3 objects events except for two S3 buckets",
 ///         fieldSelectors: [
 ///             {
 ///                 field: "eventCategory",
@@ -1221,13 +1223,14 @@ import 'trail_state.dart';
 ///                 equals: ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         name: "Log all S3 objects events except for two S3 buckets",
 ///     },
 ///     {
-///         name: "Log readOnly and writeOnly management events",
 ///         fieldSelectors: [{
 ///             field: "eventCategory",
 ///             equals: ["Management"],
 ///         }],
+///         name: "Log readOnly and writeOnly management events",
 ///     },
 /// ]});
 /// ```
@@ -1239,7 +1242,6 @@ import 'trail_state.dart';
 /// not_important_bucket_2 = aws.s3.get_bucket(bucket="not-important-bucket-2")
 /// example = aws.cloudtrail.Trail("example", advanced_event_selectors=[
 ///     {
-///         "name": "Log all S3 objects events except for two S3 buckets",
 ///         "field_selectors": [
 ///             {
 ///                 "field": "eventCategory",
@@ -1257,13 +1259,14 @@ import 'trail_state.dart';
 ///                 "equals": ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         "name": "Log all S3 objects events except for two S3 buckets",
 ///     },
 ///     {
-///         "name": "Log readOnly and writeOnly management events",
 ///         "field_selectors": [{
 ///             "field": "eventCategory",
 ///             "equals": ["Management"],
 ///         }],
+///         "name": "Log readOnly and writeOnly management events",
 ///     },
 /// ])
 /// ```
@@ -1291,7 +1294,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorArgs
 ///             {
-///                 Name = "Log all S3 objects events except for two S3 buckets",
 ///                 FieldSelectors = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorFieldSelectorArgs
@@ -1320,10 +1322,10 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Log all S3 objects events except for two S3 buckets",
 ///             },
 ///             new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorArgs
 ///             {
-///                 Name = "Log readOnly and writeOnly management events",
 ///                 FieldSelectors = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorFieldSelectorArgs
@@ -1335,6 +1337,7 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Log readOnly and writeOnly management events",
 ///             },
 ///         },
 ///     });
@@ -1367,7 +1370,6 @@ import 'trail_state.dart';
 /// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			AdvancedEventSelectors: cloudtrail.TrailAdvancedEventSelectorArray{
 /// 				&cloudtrail.TrailAdvancedEventSelectorArgs{
-/// 					Name: pulumi.String("Log all S3 objects events except for two S3 buckets"),
 /// 					FieldSelectors: cloudtrail.TrailAdvancedEventSelectorFieldSelectorArray{
 /// 						&cloudtrail.TrailAdvancedEventSelectorFieldSelectorArgs{
 /// 							Field: pulumi.String("eventCategory"),
@@ -1389,9 +1391,9 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Log all S3 objects events except for two S3 buckets"),
 /// 				},
 /// 				&cloudtrail.TrailAdvancedEventSelectorArgs{
-/// 					Name: pulumi.String("Log readOnly and writeOnly management events"),
 /// 					FieldSelectors: cloudtrail.TrailAdvancedEventSelectorFieldSelectorArray{
 /// 						&cloudtrail.TrailAdvancedEventSelectorFieldSelectorArgs{
 /// 							Field: pulumi.String("eventCategory"),
@@ -1400,6 +1402,7 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Log readOnly and writeOnly management events"),
 /// 				},
 /// 			},
 /// 		})
@@ -1428,7 +1431,6 @@ import 'trail_state.dart';
 ///
 /// resource "aws_cloudtrail_trail" "example" {
 ///   advanced_event_selectors {
-///     name = "Log all S3 objects events except for two S3 buckets"
 ///     field_selectors {
 ///       field  = "eventCategory"
 ///       equals = ["Data"]
@@ -1441,13 +1443,14 @@ import 'trail_state.dart';
 ///       field  = "resources.type"
 ///       equals = ["AWS::S3::Object"]
 ///     }
+///     name = "Log all S3 objects events except for two S3 buckets"
 ///   }
 ///   advanced_event_selectors {
-///     name = "Log readOnly and writeOnly management events"
 ///     field_selectors {
 ///       field  = "eventCategory"
 ///       equals = ["Management"]
 ///     }
+///     name = "Log readOnly and writeOnly management events"
 ///   }
 /// }
 /// ```
@@ -1487,7 +1490,6 @@ import 'trail_state.dart';
 ///         var example = new Trail("example", TrailArgs.builder()
 ///             .advancedEventSelectors(
 ///                 TrailAdvancedEventSelectorArgs.builder()
-///                     .name("Log all S3 objects events except for two S3 buckets")
 ///                     .fieldSelectors(
 ///                         TrailAdvancedEventSelectorFieldSelectorArgs.builder()
 ///                             .field("eventCategory")
@@ -1503,13 +1505,14 @@ import 'trail_state.dart';
 ///                             .field("resources.type")
 ///                             .equals("AWS::S3::Object")
 ///                             .build())
+///                     .name("Log all S3 objects events except for two S3 buckets")
 ///                     .build(),
 ///                 TrailAdvancedEventSelectorArgs.builder()
-///                     .name("Log readOnly and writeOnly management events")
 ///                     .fieldSelectors(TrailAdvancedEventSelectorFieldSelectorArgs.builder()
 ///                         .field("eventCategory")
 ///                         .equals("Management")
 ///                         .build())
+///                     .name("Log readOnly and writeOnly management events")
 ///                     .build())
 ///             .build());
 ///
@@ -1522,8 +1525,7 @@ import 'trail_state.dart';
 ///     type: aws:cloudtrail:Trail
 ///     properties:
 ///       advancedEventSelectors:
-///         - name: Log all S3 objects events except for two S3 buckets
-///           fieldSelectors:
+///         - fieldSelectors:
 ///             - field: eventCategory
 ///               equals:
 ///                 - Data
@@ -1534,11 +1536,12 @@ import 'trail_state.dart';
 ///             - field: resources.type
 ///               equals:
 ///                 - AWS::S3::Object
-///         - name: Log readOnly and writeOnly management events
-///           fieldSelectors:
+///           name: Log all S3 objects events except for two S3 buckets
+///         - fieldSelectors:
 ///             - field: eventCategory
 ///               equals:
 ///                 - Management
+///           name: Log readOnly and writeOnly management events
 /// variables:
 ///   not-important-bucket-1:
 ///     fn::invoke:
@@ -1571,7 +1574,6 @@ import 'trail_state.dart';
 /// });
 /// const example = new aws.cloudtrail.Trail("example", {advancedEventSelectors: [
 ///     {
-///         name: "Log PutObject and DeleteObject events for two S3 buckets",
 ///         fieldSelectors: [
 ///             {
 ///                 field: "eventCategory",
@@ -1600,9 +1602,9 @@ import 'trail_state.dart';
 ///                 equals: ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         name: "Log PutObject and DeleteObject events for two S3 buckets",
 ///     },
 ///     {
-///         name: "Log Delete* events for one S3 bucket",
 ///         fieldSelectors: [
 ///             {
 ///                 field: "eventCategory",
@@ -1625,6 +1627,7 @@ import 'trail_state.dart';
 ///                 equals: ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         name: "Log Delete* events for one S3 bucket",
 ///     },
 /// ]});
 /// ```
@@ -1637,7 +1640,6 @@ import 'trail_state.dart';
 /// important_bucket_3 = aws.s3.get_bucket(bucket="important-bucket-3")
 /// example = aws.cloudtrail.Trail("example", advanced_event_selectors=[
 ///     {
-///         "name": "Log PutObject and DeleteObject events for two S3 buckets",
 ///         "field_selectors": [
 ///             {
 ///                 "field": "eventCategory",
@@ -1666,9 +1668,9 @@ import 'trail_state.dart';
 ///                 "equals": ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         "name": "Log PutObject and DeleteObject events for two S3 buckets",
 ///     },
 ///     {
-///         "name": "Log Delete* events for one S3 bucket",
 ///         "field_selectors": [
 ///             {
 ///                 "field": "eventCategory",
@@ -1691,6 +1693,7 @@ import 'trail_state.dart';
 ///                 "equals": ["AWS::S3::Object"],
 ///             },
 ///         ],
+///         "name": "Log Delete* events for one S3 bucket",
 ///     },
 /// ])
 /// ```
@@ -1723,7 +1726,6 @@ import 'trail_state.dart';
 ///         {
 ///             new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorArgs
 ///             {
-///                 Name = "Log PutObject and DeleteObject events for two S3 buckets",
 ///                 FieldSelectors = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorFieldSelectorArgs
@@ -1769,10 +1771,10 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Log PutObject and DeleteObject events for two S3 buckets",
 ///             },
 ///             new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorArgs
 ///             {
-///                 Name = "Log Delete* events for one S3 bucket",
 ///                 FieldSelectors = new[]
 ///                 {
 ///                     new Aws.CloudTrail.Inputs.TrailAdvancedEventSelectorFieldSelectorArgs
@@ -1816,6 +1818,7 @@ import 'trail_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Log Delete* events for one S3 bucket",
 ///             },
 ///         },
 ///     });
@@ -1854,7 +1857,6 @@ import 'trail_state.dart';
 /// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 /// 			AdvancedEventSelectors: cloudtrail.TrailAdvancedEventSelectorArray{
 /// 				&cloudtrail.TrailAdvancedEventSelectorArgs{
-/// 					Name: pulumi.String("Log PutObject and DeleteObject events for two S3 buckets"),
 /// 					FieldSelectors: cloudtrail.TrailAdvancedEventSelectorFieldSelectorArray{
 /// 						&cloudtrail.TrailAdvancedEventSelectorFieldSelectorArgs{
 /// 							Field: pulumi.String("eventCategory"),
@@ -1889,9 +1891,9 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Log PutObject and DeleteObject events for two S3 buckets"),
 /// 				},
 /// 				&cloudtrail.TrailAdvancedEventSelectorArgs{
-/// 					Name: pulumi.String("Log Delete* events for one S3 bucket"),
 /// 					FieldSelectors: cloudtrail.TrailAdvancedEventSelectorFieldSelectorArray{
 /// 						&cloudtrail.TrailAdvancedEventSelectorFieldSelectorArgs{
 /// 							Field: pulumi.String("eventCategory"),
@@ -1924,6 +1926,7 @@ import 'trail_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Log Delete* events for one S3 bucket"),
 /// 				},
 /// 			},
 /// 		})
@@ -1955,7 +1958,6 @@ import 'trail_state.dart';
 ///
 /// resource "aws_cloudtrail_trail" "example" {
 ///   advanced_event_selectors {
-///     name = "Log PutObject and DeleteObject events for two S3 buckets"
 ///     field_selectors {
 ///       field  = "eventCategory"
 ///       equals = ["Data"]
@@ -1976,9 +1978,9 @@ import 'trail_state.dart';
 ///       field  = "resources.type"
 ///       equals = ["AWS::S3::Object"]
 ///     }
+///     name = "Log PutObject and DeleteObject events for two S3 buckets"
 ///   }
 ///   advanced_event_selectors {
-///     name = "Log Delete* events for one S3 bucket"
 ///     field_selectors {
 ///       field  = "eventCategory"
 ///       equals = ["Data"]
@@ -1999,6 +2001,7 @@ import 'trail_state.dart';
 ///       field  = "resources.type"
 ///       equals = ["AWS::S3::Object"]
 ///     }
+///     name = "Log Delete* events for one S3 bucket"
 ///   }
 /// }
 /// ```
@@ -2042,7 +2045,6 @@ import 'trail_state.dart';
 ///         var example = new Trail("example", TrailArgs.builder()
 ///             .advancedEventSelectors(
 ///                 TrailAdvancedEventSelectorArgs.builder()
-///                     .name("Log PutObject and DeleteObject events for two S3 buckets")
 ///                     .fieldSelectors(
 ///                         TrailAdvancedEventSelectorFieldSelectorArgs.builder()
 ///                             .field("eventCategory")
@@ -2068,9 +2070,9 @@ import 'trail_state.dart';
 ///                             .field("resources.type")
 ///                             .equals("AWS::S3::Object")
 ///                             .build())
+///                     .name("Log PutObject and DeleteObject events for two S3 buckets")
 ///                     .build(),
 ///                 TrailAdvancedEventSelectorArgs.builder()
-///                     .name("Log Delete* events for one S3 bucket")
 ///                     .fieldSelectors(
 ///                         TrailAdvancedEventSelectorFieldSelectorArgs.builder()
 ///                             .field("eventCategory")
@@ -2092,6 +2094,7 @@ import 'trail_state.dart';
 ///                             .field("resources.type")
 ///                             .equals("AWS::S3::Object")
 ///                             .build())
+///                     .name("Log Delete* events for one S3 bucket")
 ///                     .build())
 ///             .build());
 ///
@@ -2104,8 +2107,7 @@ import 'trail_state.dart';
 ///     type: aws:cloudtrail:Trail
 ///     properties:
 ///       advancedEventSelectors:
-///         - name: Log PutObject and DeleteObject events for two S3 buckets
-///           fieldSelectors:
+///         - fieldSelectors:
 ///             - field: eventCategory
 ///               equals:
 ///                 - Data
@@ -2123,8 +2125,8 @@ import 'trail_state.dart';
 ///             - field: resources.type
 ///               equals:
 ///                 - AWS::S3::Object
-///         - name: Log Delete* events for one S3 bucket
-///           fieldSelectors:
+///           name: Log PutObject and DeleteObject events for two S3 buckets
+///         - fieldSelectors:
 ///             - field: eventCategory
 ///               equals:
 ///                 - Data
@@ -2140,6 +2142,7 @@ import 'trail_state.dart';
 ///             - field: resources.type
 ///               equals:
 ///                 - AWS::S3::Object
+///           name: Log Delete* events for one S3 bucket
 /// variables:
 ///   important-bucket-1:
 ///     fn::invoke:
@@ -2297,7 +2300,7 @@ import 'trail_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CloudTrail trail.
+/// - `arn` (String) ARN of the CloudTrail trail.
 ///
 ///
 /// Using `pulumi import`, import Cloudtrails using the `arn`. For example:
@@ -2307,7 +2310,7 @@ import 'trail_state.dart';
 /// ```
 class Trail extends pulumi.CustomResource {
   /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `eventSelector`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> advancedEventSelectors;
+  late final pulumi.Output<List<TrailAdvancedEventSelector>?> advancedEventSelectors;
   /// ARN of the trail.
   late final pulumi.Output<String> arn;
   /// Log group name using an ARN that represents the log group to which CloudTrail logs will be delivered. Note that CloudTrail requires the Log Stream wildcard.
@@ -2319,13 +2322,13 @@ class Trail extends pulumi.CustomResource {
   /// Enables logging for the trail. When set to `true`, logging is started by calling the [`StartLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html) API. When set to `false`, logging is stopped by calling the [`StopLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html) API. Defaults to `true`.
   late final pulumi.Output<bool?> enableLogging;
   /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advancedEventSelector`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eventSelectors;
+  late final pulumi.Output<List<TrailEventSelector>?> eventSelectors;
   /// Region in which the trail was created.
   late final pulumi.Output<String> homeRegion;
   /// Whether the trail is publishing events from global services such as IAM to the log files. Defaults to `true`.
   late final pulumi.Output<bool?> includeGlobalServiceEvents;
   /// Configuration block for identifying unusual operational activity. See details below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> insightSelectors;
+  late final pulumi.Output<List<TrailInsightSelector>?> insightSelectors;
   /// Whether the trail is created in the current region or in all regions. Defaults to `false`.
   late final pulumi.Output<bool?> isMultiRegionTrail;
   /// Whether the trail is an AWS Organizations trail. Organization trails log events for the master account and all member accounts. Can only be created in the organization master account. Defaults to `false`.
@@ -2363,18 +2366,18 @@ class Trail extends pulumi.CustomResource {
           'aws:cloudtrail/trail:Trail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    advancedEventSelectors = registerOutput<List<Map<String, dynamic>>?>('advancedEventSelectors');
+    advancedEventSelectors = registerOutput<List<TrailAdvancedEventSelector>?>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailAdvancedEventSelector>(guardedValue, (value) => TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     cloudWatchLogsGroupArn = registerOutput<String?>('cloudWatchLogsGroupArn');
     cloudWatchLogsRoleArn = registerOutput<String?>('cloudWatchLogsRoleArn');
     enableLogFileValidation = registerOutput<bool?>('enableLogFileValidation');
     enableLogging = registerOutput<bool?>('enableLogging');
-    eventSelectors = registerOutput<List<Map<String, dynamic>>?>('eventSelectors');
+    eventSelectors = registerOutput<List<TrailEventSelector>?>('eventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailEventSelector>(guardedValue, (value) => TrailEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     homeRegion = registerOutput<String>('homeRegion');
     includeGlobalServiceEvents = registerOutput<bool?>('includeGlobalServiceEvents');
-    insightSelectors = registerOutput<List<Map<String, dynamic>>?>('insightSelectors');
+    insightSelectors = registerOutput<List<TrailInsightSelector>?>('insightSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailInsightSelector>(guardedValue, (value) => TrailInsightSelector.fromMap((value as Map).cast<String, dynamic>())); });
     isMultiRegionTrail = registerOutput<bool?>('isMultiRegionTrail');
     isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -2384,8 +2387,8 @@ class Trail extends pulumi.CustomResource {
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
     snsTopicArn = registerOutput<String>('snsTopicArn');
     snsTopicName = registerOutput<String?>('snsTopicName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Trail] resource's state with the given [name] and [id].
@@ -2393,11 +2396,12 @@ class Trail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Trail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2411,16 +2415,16 @@ class Trail extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    advancedEventSelectors = registerOutput<List<Map<String, dynamic>>?>('advancedEventSelectors');
+    advancedEventSelectors = registerOutput<List<TrailAdvancedEventSelector>?>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailAdvancedEventSelector>(guardedValue, (value) => TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     cloudWatchLogsGroupArn = registerOutput<String?>('cloudWatchLogsGroupArn');
     cloudWatchLogsRoleArn = registerOutput<String?>('cloudWatchLogsRoleArn');
     enableLogFileValidation = registerOutput<bool?>('enableLogFileValidation');
     enableLogging = registerOutput<bool?>('enableLogging');
-    eventSelectors = registerOutput<List<Map<String, dynamic>>?>('eventSelectors');
+    eventSelectors = registerOutput<List<TrailEventSelector>?>('eventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailEventSelector>(guardedValue, (value) => TrailEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
     homeRegion = registerOutput<String>('homeRegion');
     includeGlobalServiceEvents = registerOutput<bool?>('includeGlobalServiceEvents');
-    insightSelectors = registerOutput<List<Map<String, dynamic>>?>('insightSelectors');
+    insightSelectors = registerOutput<List<TrailInsightSelector>?>('insightSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailInsightSelector>(guardedValue, (value) => TrailInsightSelector.fromMap((value as Map).cast<String, dynamic>())); });
     isMultiRegionTrail = registerOutput<bool?>('isMultiRegionTrail');
     isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -2430,7 +2434,39 @@ class Trail extends pulumi.CustomResource {
     s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
     snsTopicArn = registerOutput<String>('snsTopicArn');
     snsTopicName = registerOutput<String?>('snsTopicName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Trail] resource.
+  Trail.reference(String urn)
+    : super(
+        'aws:cloudtrail/trail:Trail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedEventSelectors = registerOutput<List<TrailAdvancedEventSelector>?>('advancedEventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailAdvancedEventSelector>(guardedValue, (value) => TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    cloudWatchLogsGroupArn = registerOutput<String?>('cloudWatchLogsGroupArn');
+    cloudWatchLogsRoleArn = registerOutput<String?>('cloudWatchLogsRoleArn');
+    enableLogFileValidation = registerOutput<bool?>('enableLogFileValidation');
+    enableLogging = registerOutput<bool?>('enableLogging');
+    eventSelectors = registerOutput<List<TrailEventSelector>?>('eventSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailEventSelector>(guardedValue, (value) => TrailEventSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    homeRegion = registerOutput<String>('homeRegion');
+    includeGlobalServiceEvents = registerOutput<bool?>('includeGlobalServiceEvents');
+    insightSelectors = registerOutput<List<TrailInsightSelector>?>('insightSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrailInsightSelector>(guardedValue, (value) => TrailInsightSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    isMultiRegionTrail = registerOutput<bool?>('isMultiRegionTrail');
+    isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    s3BucketName = registerOutput<String>('s3BucketName');
+    s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
+    snsTopicArn = registerOutput<String>('snsTopicArn');
+    snsTopicName = registerOutput<String?>('snsTopicName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

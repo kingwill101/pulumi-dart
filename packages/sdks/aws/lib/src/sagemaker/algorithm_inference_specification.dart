@@ -7,13 +7,13 @@ class AlgorithmInferenceSpecification {
   /// List of container definitions for inference.
   final pulumi.Input<List<AlgorithmInferenceSpecificationContainer>> containers;
   /// Supported MIME types for inference requests.
-  final pulumi.Input<List<String>>? supportedContentTypes;
+  final pulumi.Input<List<String>?>? supportedContentTypes;
   /// Instance types supported for real-time inference.
-  final pulumi.Input<List<String>>? supportedRealtimeInferenceInstanceTypes;
+  final pulumi.Input<List<String>?>? supportedRealtimeInferenceInstanceTypes;
   /// Supported MIME types for inference responses.
-  final pulumi.Input<List<String>>? supportedResponseMimeTypes;
+  final pulumi.Input<List<String>?>? supportedResponseMimeTypes;
   /// Instance types supported for batch transform.
-  final pulumi.Input<List<String>>? supportedTransformInstanceTypes;
+  final pulumi.Input<List<String>?>? supportedTransformInstanceTypes;
 
   /// Creates a new [AlgorithmInferenceSpecification].
   /// [containers] List of container definitions for inference.

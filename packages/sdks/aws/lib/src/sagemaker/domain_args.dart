@@ -12,32 +12,32 @@ import 'domain_retention_policy.dart';
 /// {@macro pulumi_sagemaker_domain_domain_args_doc}
 class DomainArgs {
   /// Specifies the VPC used for non-EFS traffic. The default value is `PublicInternetOnly`. Valid values are `PublicInternetOnly` and `VpcOnly`.
-  final pulumi.Input<String>? appNetworkAccessType;
+  final pulumi.Input<String?>? appNetworkAccessType;
   /// The entity that creates and manages the required security groups for inter-app communication in `VPCOnly` mode. Valid values are `Service` and `Customer`.
-  final pulumi.Input<String>? appSecurityGroupManagement;
+  final pulumi.Input<String?>? appSecurityGroupManagement;
   /// The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
   final pulumi.Input<String> authMode;
   /// The default space settings. See `defaultSpaceSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettings>? defaultSpaceSettings;
+  final pulumi.Input<DomainDefaultSpaceSettings?>? defaultSpaceSettings;
   /// The default user settings. See `defaultUserSettings` Block below.
   final pulumi.Input<DomainDefaultUserSettings> defaultUserSettings;
   /// The domain name.
   final pulumi.Input<String> domainName;
   /// The domain settings. See `domainSettings` Block below.
-  final pulumi.Input<DomainDomainSettings>? domainSettings;
+  final pulumi.Input<DomainDomainSettings?>? domainSettings;
   /// The AWS KMS customer managed CMK used to encrypt the EFS volume attached to the domain.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retentionPolicy` Block below.
-  final pulumi.Input<DomainRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<DomainRetentionPolicy?>? retentionPolicy;
   /// The VPC subnets that Studio uses for communication.
   final pulumi.Input<List<String>> subnetIds;
   /// Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? tagPropagation;
+  final pulumi.Input<String?>? tagPropagation;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  /// The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
+  final pulumi.Input<Map<String, String>?>? tags;
+  /// ID of the VPC that Studio uses for communication.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> vpcId;
@@ -56,7 +56,7 @@ class DomainArgs {
   /// [subnetIds] The VPC subnets that Studio uses for communication.
   /// [tagPropagation] Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [vpcId] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
+  /// [vpcId] ID of the VPC that Studio uses for communication.
   const DomainArgs({
     this.appNetworkAccessType,
     this.appSecurityGroupManagement,

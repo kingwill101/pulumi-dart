@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateCloudManagementCluster {
   /// A list of hosts in the management cluster.
-  final pulumi.Input<List<String>>? hosts;
+  final pulumi.Input<List<String>?>? hosts;
   /// The ID of the management cluster.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// The size of the management cluster. This field can not updated with `internetConnectionEnabled` together.
   final pulumi.Input<int> size;
 
@@ -31,8 +31,8 @@ class PrivateCloudManagementCluster {
   factory PrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementCluster(
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

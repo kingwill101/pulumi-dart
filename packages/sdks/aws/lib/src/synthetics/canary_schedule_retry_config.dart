@@ -20,7 +20,7 @@ class CanaryScheduleRetryConfig {
 
   factory CanaryScheduleRetryConfig.fromMap(Map<String, dynamic> map) {
     return CanaryScheduleRetryConfig(
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
     );
   }
 }

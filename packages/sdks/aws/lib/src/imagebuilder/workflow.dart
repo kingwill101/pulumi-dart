@@ -295,7 +295,7 @@ import 'workflow_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder workflow.
+/// - `arn` (String) ARN of the Image Builder workflow.
 ///
 ///
 /// Using `pulumi import`, import EC2 Image Builder Workflow using the `arn`. For example:
@@ -306,7 +306,7 @@ import 'workflow_state.dart';
 ///
 /// Certain resource arguments, such as `uri`, cannot be read via the API and imported into Terraform. Terraform will display a difference for these arguments the first run after import if declared in the Terraform configuration for an imported resource.
 class Workflow extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the workflow.
+  /// ARN of the workflow.
   late final pulumi.Output<String> arn;
   /// Change description of the workflow.
   late final pulumi.Output<String?> changeDescription;
@@ -316,7 +316,7 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> dateCreated;
   /// Description of the workflow.
   late final pulumi.Output<String?> description;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
+  /// ARN of the KMS Key used to encrypt the workflow.
   late final pulumi.Output<String?> kmsKeyId;
   /// Name of the workflow.
   late final pulumi.Output<String> name;
@@ -348,7 +348,7 @@ class Workflow extends pulumi.CustomResource {
           'aws:imagebuilder/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     changeDescription = registerOutput<String?>('changeDescription');
@@ -359,8 +359,8 @@ class Workflow extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
     version = registerOutput<String>('version');
@@ -371,11 +371,12 @@ class Workflow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkflowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workflow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -398,8 +399,33 @@ class Workflow extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uri = registerOutput<String?>('uri');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'aws:imagebuilder/workflow:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    changeDescription = registerOutput<String?>('changeDescription');
+    data = registerOutput<String>('data');
+    dateCreated = registerOutput<String>('dateCreated');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
     version = registerOutput<String>('version');

@@ -9,11 +9,11 @@ class DomainAutoTuneOptions {
   /// Configuration block for Auto-Tune maintenance windows. Can be specified multiple times for each maintenance window. Detailed below.
   ///
   /// **NOTE:** Maintenance windows are deprecated and have been replaced with [off-peak windows](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/off-peak.html). Consequently, `maintenanceSchedule` configuration blocks cannot be specified when `useOffPeakWindow` is set to `true`.
-  final pulumi.Input<List<DomainAutoTuneOptionsMaintenanceSchedule>>? maintenanceSchedules;
+  final pulumi.Input<List<DomainAutoTuneOptionsMaintenanceSchedule>?>? maintenanceSchedules;
   /// Whether to roll back to default Auto-Tune settings when disabling Auto-Tune. Valid values: `DEFAULT_ROLLBACK` or `NO_ROLLBACK`.
-  final pulumi.Input<String>? rollbackOnDisable;
+  final pulumi.Input<String?>? rollbackOnDisable;
   /// Whether to schedule Auto-Tune optimizations that require blue/green deployments during the domain's configured daily off-peak window. Defaults to `false`.
-  final pulumi.Input<bool>? useOffPeakWindow;
+  final pulumi.Input<bool?>? useOffPeakWindow;
 
   /// Creates a new [DomainAutoTuneOptions].
   /// [desiredState] Auto-Tune desired state for the domain. Valid values: `ENABLED` or `DISABLED`.

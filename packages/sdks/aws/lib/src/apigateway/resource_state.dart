@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Resource resources.
 class ResourceState {
   /// ID of the parent API resource
-  final pulumi.Input<String>? parentId;
+  final pulumi.Input<String?>? parentId;
   /// Complete path for this API resource, including all parent paths.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Last path segment of this API resource.
-  final pulumi.Input<String>? pathPart;
+  final pulumi.Input<String?>? pathPart;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the associated REST API
-  final pulumi.Input<String>? restApi;
+  final pulumi.Input<dynamic>? restApi;
 
   /// Creates a new [ResourceState].
   /// [parentId] ID of the parent API resource
@@ -45,7 +45,7 @@ class ResourceState {
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathPart: (() { final guardedValue = map['pathPart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

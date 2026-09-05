@@ -12,14 +12,14 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const lb = new aws.elb.LoadBalancer("lb", {
-///     name: "test-lb",
-///     availabilityZones: ["us-east-1a"],
 ///     listeners: [{
 ///         instancePort: 8000,
 ///         instanceProtocol: "http",
 ///         lbPort: 80,
 ///         lbProtocol: "http",
 ///     }],
+///     name: "test-lb",
+///     availabilityZones: ["us-east-1a"],
 /// });
 /// const foo = new aws.elb.LoadBalancerCookieStickinessPolicy("foo", {
 ///     name: "foo-policy",
@@ -33,14 +33,14 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// lb = aws.elb.LoadBalancer("lb",
-///     name="test-lb",
-///     availability_zones=["us-east-1a"],
 ///     listeners=[{
 ///         "instance_port": 8000,
 ///         "instance_protocol": "http",
 ///         "lb_port": 80,
 ///         "lb_protocol": "http",
-///     }])
+///     }],
+///     name="test-lb",
+///     availability_zones=["us-east-1a"])
 /// foo = aws.elb.LoadBalancerCookieStickinessPolicy("foo",
 ///     name="foo-policy",
 ///     load_balancer=lb.id,
@@ -57,11 +57,6 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// {
 ///     var lb = new Aws.Elb.LoadBalancer("lb", new()
 ///     {
-///         Name = "test-lb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
 ///         Listeners = new[]
 ///         {
 ///             new Aws.Elb.Inputs.LoadBalancerListenerArgs
@@ -71,6 +66,11 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 ///                 LbPort = 80,
 ///                 LbProtocol = "http",
 ///             },
+///         },
+///         Name = "test-lb",
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
 ///         },
 ///     });
 ///
@@ -95,10 +95,6 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		lb, err := elb.NewLoadBalancer(ctx, "lb", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("test-lb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
 /// 					InstancePort:     pulumi.Int(8000),
@@ -106,6 +102,10 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// 					LbPort:           pulumi.Int(80),
 /// 					LbProtocol:       pulumi.String("http"),
 /// 				},
+/// 			},
+/// 			Name: pulumi.String("test-lb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -134,14 +134,14 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 /// }
 ///
 /// resource "aws_elb_loadbalancer" "lb" {
-///   name               = "test-lb"
-///   availability_zones = ["us-east-1a"]
 ///   listeners {
 ///     instance_port     = 8000
 ///     instance_protocol = "http"
 ///     lb_port           = 80
 ///     lb_protocol       = "http"
 ///   }
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
 /// }
 /// resource "aws_elb_loadbalancercookiestickinesspolicy" "foo" {
 ///   name                     = "foo-policy"
@@ -175,14 +175,14 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var lb = new LoadBalancer("lb", LoadBalancerArgs.builder()
-///             .name("test-lb")
-///             .availabilityZones("us-east-1a")
 ///             .listeners(LoadBalancerListenerArgs.builder()
 ///                 .instancePort(8000)
 ///                 .instanceProtocol("http")
 ///                 .lbPort(80)
 ///                 .lbProtocol("http")
 ///                 .build())
+///             .name("test-lb")
+///             .availabilityZones("us-east-1a")
 ///             .build());
 ///
 ///         var foo = new LoadBalancerCookieStickinessPolicy("foo", LoadBalancerCookieStickinessPolicyArgs.builder()
@@ -200,14 +200,14 @@ import 'load_balancer_cookie_stickiness_policy_state.dart';
 ///   lb:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: test-lb
-///       availabilityZones:
-///         - us-east-1a
 ///       listeners:
 ///         - instancePort: 8000
 ///           instanceProtocol: http
 ///           lbPort: 80
 ///           lbProtocol: http
+///       name: test-lb
+///       availabilityZones:
+///         - us-east-1a
 ///   foo:
 ///     type: aws:elb:LoadBalancerCookieStickinessPolicy
 ///     properties:
@@ -244,7 +244,7 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
           'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
     lbPort = registerOutput<int>('lbPort');
@@ -258,11 +258,12 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerCookieStickinessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancerCookieStickinessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,6 +277,22 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancerCookieStickinessPolicy] resource.
+  LoadBalancerCookieStickinessPolicy.reference(String urn)
+    : super(
+        'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
     lbPort = registerOutput<int>('lbPort');
     loadBalancer = registerOutput<String>('loadBalancer');

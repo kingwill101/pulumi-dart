@@ -9,7 +9,7 @@ import 'v2_input_source_resource_configuration.dart';
 /// {@macro pulumi_resiliencehub_v2_input_source_v2_input_source_args_doc}
 class V2InputSourceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource configuration for an input source. See `resourceConfiguration` Block below.
   final pulumi.Input<V2InputSourceResourceConfiguration> resourceConfiguration;
   /// ARN of the service this input source belongs to.

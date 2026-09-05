@@ -6,7 +6,7 @@ class CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference {
   /// Name of the customer managed IAM Policy to be attached.
   final pulumi.Input<String> name;
   /// The path to the IAM policy to be attached. The default is `/`. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names) for more information.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference].
   /// [name] Name of the customer managed IAM Policy to be attached.

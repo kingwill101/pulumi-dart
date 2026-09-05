@@ -30,9 +30,9 @@ class RemoteImageBuildUlimit {
 
   factory RemoteImageBuildUlimit.fromMap(Map<String, dynamic> map) {
     return RemoteImageBuildUlimit(
-      hard: pulumi.Input.fromValue(map['hard'] as int),
+      hard: pulumi.Input.fromValue((map['hard'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      soft: pulumi.Input.fromValue(map['soft'] as int),
+      soft: pulumi.Input.fromValue((map['soft'] as num).toInt()),
     );
   }
 }

@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IntegrationRuntimeRule resources.
 class IntegrationRuntimeRuleState {
   /// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as `false`. Defaults to `true`.
-  final pulumi.Input<bool>? cleanupEnabled;
+  final pulumi.Input<bool?>? cleanupEnabled;
   /// Compute type of the cluster which will execute data flow job. Valid values are `General`, `ComputeOptimized` and `MemoryOptimized`. Defaults to `General`.
-  final pulumi.Input<String>? computeType;
+  final pulumi.Input<String?>? computeType;
   /// Core count of the cluster which will execute data flow job. Valid values are `8`, `16`, `32`, `48`, `80`, `144` and `272`. Defaults to `8`.
-  final pulumi.Input<int>? coreCount;
+  final pulumi.Input<int?>? coreCount;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The time to live in minutes for the interactive authoring feature, setting this enables interactive authoring. Possible values are `10`, `30`, `60`, and `120`.
   ///
   /// &gt; **Note:** `interactiveAuthoringTimeToLiveInMinutes` can only be set when `virtualNetworkEnabled` is `true`.
-  final pulumi.Input<int>? interactiveAuthoringTimeToLiveInMinutes;
+  final pulumi.Input<int?>? interactiveAuthoringTimeToLiveInMinutes;
   /// Specifies the supported Azure location where the resource exists. Use `AutoResolve` to create an auto-resolve integration runtime. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
-  final pulumi.Input<int>? timeToLiveMin;
+  final pulumi.Input<int?>? timeToLiveMin;
   /// Is Integration Runtime compute provisioned within Managed Virtual Network? Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? virtualNetworkEnabled;
+  final pulumi.Input<bool?>? virtualNetworkEnabled;
 
   /// Creates a new [IntegrationRuntimeRuleState].
   /// [cleanupEnabled] Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as `false`. Defaults to `true`.
@@ -70,13 +70,13 @@ class IntegrationRuntimeRuleState {
     return IntegrationRuntimeRuleState(
       cleanupEnabled: (() { final guardedValue = map['cleanupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dataFactoryId: (() { final guardedValue = map['dataFactoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interactiveAuthoringTimeToLiveInMinutes: (() { final guardedValue = map['interactiveAuthoringTimeToLiveInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interactiveAuthoringTimeToLiveInMinutes: (() { final guardedValue = map['interactiveAuthoringTimeToLiveInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeToLiveMin: (() { final guardedValue = map['timeToLiveMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeToLiveMin: (() { final guardedValue = map['timeToLiveMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       virtualNetworkEnabled: (() { final guardedValue = map['virtualNetworkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

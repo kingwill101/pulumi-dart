@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolWebAuthnConfiguration {
   /// The authentication domain that passkeys providers use as a relying party.
-  final pulumi.Input<String>? relyingPartyId;
+  final pulumi.Input<String?>? relyingPartyId;
   /// If your user pool should require a passkey. Must be one of `required` or `preferred`.
-  final pulumi.Input<String>? userVerification;
+  final pulumi.Input<String?>? userVerification;
 
   /// Creates a new [UserPoolWebAuthnConfiguration].
   /// [relyingPartyId] The authentication domain that passkeys providers use as a relying party.

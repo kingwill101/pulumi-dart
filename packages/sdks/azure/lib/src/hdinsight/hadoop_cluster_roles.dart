@@ -8,7 +8,7 @@ import 'hadoop_cluster_roles_zookeeper_node.dart';
 
 class HadoopClusterRoles {
   /// A `edgeNode` block as defined below.
-  final pulumi.Input<HadoopClusterRolesEdgeNode>? edgeNode;
+  final pulumi.Input<HadoopClusterRolesEdgeNode?>? edgeNode;
   /// A `headNode` block as defined above.
   final pulumi.Input<HadoopClusterRolesHeadNode> headNode;
   /// A `workerNode` block as defined below.

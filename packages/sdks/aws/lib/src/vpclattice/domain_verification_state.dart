@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DomainVerification resources.
 class DomainVerificationState {
-  /// Amazon Resource Name (ARN) of the domain verification.
-  final pulumi.Input<String>? arn;
+  /// ARN of the domain verification.
+  final pulumi.Input<String?>? arn;
   /// Date and time that the domain verification was created, in ISO-8601 format.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Domain name to verify ownership for.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Date and time that the domain was last successfully verified, in ISO-8601 format.
-  final pulumi.Input<String>? lastVerifiedTime;
+  final pulumi.Input<String?>? lastVerifiedTime;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current status of the domain verification process. Valid values: `VERIFIED`, `PENDING`, `VERIFICATION_TIMED_OUT`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Name of the TXT record that must be created for domain verification.
-  final pulumi.Input<String>? txtRecordName;
+  final pulumi.Input<String?>? txtRecordName;
   /// Value that must be added to the TXT record for domain verification.
-  final pulumi.Input<String>? txtRecordValue;
+  final pulumi.Input<String?>? txtRecordValue;
 
   /// Creates a new [DomainVerificationState].
-  /// [arn] Amazon Resource Name (ARN) of the domain verification.
+  /// [arn] ARN of the domain verification.
   /// [createdAt] Date and time that the domain verification was created, in ISO-8601 format.
   /// [domainName] Domain name to verify ownership for.
   /// [lastVerifiedTime] Date and time that the domain was last successfully verified, in ISO-8601 format.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_account_get_primary_contact_get_primary_contact_args_doc}
 class GetPrimaryContactArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
 
   /// Creates a new [GetPrimaryContactArgs].
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.

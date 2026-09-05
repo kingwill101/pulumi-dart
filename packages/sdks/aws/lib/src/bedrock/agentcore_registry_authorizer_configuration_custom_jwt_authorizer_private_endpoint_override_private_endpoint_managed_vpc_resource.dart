@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource {
   final pulumi.Input<String> endpointIpAddressType;
-  final pulumi.Input<String>? routingDomain;
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<String?>? routingDomain;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   final pulumi.Input<List<String>> subnetIds;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<String> vpcIdentifier;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource].

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteMapRuleMatchCriterion {
   /// A list of AS paths which this criterion matches.
-  final pulumi.Input<List<String>>? asPaths;
+  final pulumi.Input<List<String>?>? asPaths;
   /// A list of BGP communities which this criterion matches.
-  final pulumi.Input<List<String>>? communities;
+  final pulumi.Input<List<String>?>? communities;
   /// The match condition to apply the rule of the Route Map. Possible values are `Contains`, `Equals`, `NotContains`, `NotEquals` and `Unknown`.
   final pulumi.Input<String> matchCondition;
   /// A list of route prefixes which this criterion matches.
-  final pulumi.Input<List<String>>? routePrefixes;
+  final pulumi.Input<List<String>?>? routePrefixes;
 
   /// Creates a new [RouteMapRuleMatchCriterion].
   /// [asPaths] A list of AS paths which this criterion matches.

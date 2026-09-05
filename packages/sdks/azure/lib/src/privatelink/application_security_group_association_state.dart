@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationSecurityGroupAssociation resources.
 class ApplicationSecurityGroupAssociationState {
   /// The id of application security group to associate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationSecurityGroupId;
+  final pulumi.Input<String?>? applicationSecurityGroupId;
   /// The id of private endpoint to associate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateEndpointId;
+  final pulumi.Input<String?>? privateEndpointId;
 
   /// Creates a new [ApplicationSecurityGroupAssociationState].
   /// [applicationSecurityGroupId] The id of application security group to associate. Changing this forces a new resource to be created.

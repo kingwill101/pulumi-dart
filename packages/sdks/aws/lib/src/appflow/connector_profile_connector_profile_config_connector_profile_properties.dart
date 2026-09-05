@@ -17,41 +17,41 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileProperties {
   /// Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.
-  final pulumi.Input<Map<String, dynamic>>? amplitude;
+  final pulumi.Input<Map<String, dynamic>?>? amplitude;
   /// Connector-specific profile properties required when using the custom connector. See `connector_profile_config.connector_profile_properties.custom_connector` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector>? customConnector;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector?>? customConnector;
   /// Connector-specific properties required when using Datadog. See `connector_profile_config.connector_profile_properties.datadog` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog>? datadog;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog?>? datadog;
   /// Connector-specific properties required when using Dynatrace. See `connector_profile_config.connector_profile_properties.dynatrace` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace>? dynatrace;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace?>? dynatrace;
   /// Connector-specific credentials required when using Google Analytics. See `connector_profile_config.connector_profile_credentials.google_analytics` Block for details.
-  final pulumi.Input<Map<String, dynamic>>? googleAnalytics;
+  final pulumi.Input<Map<String, dynamic>?>? googleAnalytics;
   /// Connector-specific credentials required when using Amazon Honeycode. See `connector_profile_config.connector_profile_credentials.honeycode` Block for details.
-  final pulumi.Input<Map<String, dynamic>>? honeycode;
+  final pulumi.Input<Map<String, dynamic>?>? honeycode;
   /// Connector-specific properties required when using Infor Nexus. See `connector_profile_config.connector_profile_properties.infor_nexus` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus>? inforNexus;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus?>? inforNexus;
   /// Connector-specific properties required when using Marketo. See `connector_profile_config.connector_profile_properties.marketo` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo>? marketo;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo?>? marketo;
   /// Connector-specific properties required when using Amazon Redshift. See `connector_profile_config.connector_profile_properties.redshift` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift>? redshift;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift?>? redshift;
   /// Connector-specific properties required when using Salesforce. See `connector_profile_config.connector_profile_properties.salesforce` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce>? salesforce;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce?>? salesforce;
   /// Connector-specific properties required when using SAPOData. See `connector_profile_config.connector_profile_properties.sapo_data` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData>? sapoData;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData?>? sapoData;
   /// Connector-specific properties required when using ServiceNow. See `connector_profile_config.connector_profile_properties.service_now` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow>? serviceNow;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesServiceNow?>? serviceNow;
   /// Connector-specific credentials required when using Singular. See `connector_profile_config.connector_profile_credentials.singular` Block for details.
-  final pulumi.Input<Map<String, dynamic>>? singular;
+  final pulumi.Input<Map<String, dynamic>?>? singular;
   /// Connector-specific properties required when using Slack. See `connector_profile_config.connector_profile_properties.slack` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack>? slack;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack?>? slack;
   /// Connector-specific properties required when using Snowflake. See `connector_profile_config.connector_profile_properties.snowflake` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake>? snowflake;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake?>? snowflake;
   /// Connector-specific credentials required when using Trend Micro. See `connector_profile_config.connector_profile_credentials.trendmicro` Block for details.
-  final pulumi.Input<Map<String, dynamic>>? trendmicro;
+  final pulumi.Input<Map<String, dynamic>?>? trendmicro;
   /// Connector-specific properties required when using Veeva. See `connector_profile_config.connector_profile_properties.veeva` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva>? veeva;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva?>? veeva;
   /// Connector-specific properties required when using Zendesk. See `connector_profile_config.connector_profile_properties.zendesk` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk>? zendesk;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk?>? zendesk;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileProperties].
   /// [amplitude] Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.

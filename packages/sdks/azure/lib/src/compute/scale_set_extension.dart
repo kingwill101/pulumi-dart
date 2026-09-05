@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetExtension {
   /// Specifies whether or not to use the latest minor version available.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// Specifies the name of the extension.
   final pulumi.Input<String> name;
   /// The protectedSettings passed to the extension, like settings, these are specified as a JSON object in a string.
-  final pulumi.Input<String>? protectedSettings;
+  final pulumi.Input<String?>? protectedSettings;
   /// Specifies a dependency array of extensions required to be executed before, the array stores the name of each extension.
-  final pulumi.Input<List<String>>? provisionAfterExtensions;
+  final pulumi.Input<List<String>?>? provisionAfterExtensions;
   /// The publisher of the extension, available publishers can be found by using the Azure CLI.
   final pulumi.Input<String> publisher;
   /// The settings passed to the extension, these are specified as a JSON object in a string.
-  final pulumi.Input<String>? settings;
+  final pulumi.Input<String?>? settings;
   /// The type of extension, available types for a publisher can be found using the Azure CLI.
   final pulumi.Input<String> type;
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.

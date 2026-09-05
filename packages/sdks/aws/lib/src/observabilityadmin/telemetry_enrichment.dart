@@ -136,7 +136,7 @@ class TelemetryEnrichment extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryEnrichment:TelemetryEnrichment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsResourceExplorerManagedViewArn = registerOutput<String>('awsResourceExplorerManagedViewArn');
     region = registerOutput<String>('region');
@@ -148,11 +148,12 @@ class TelemetryEnrichment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TelemetryEnrichmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TelemetryEnrichment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -166,6 +167,20 @@ class TelemetryEnrichment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsResourceExplorerManagedViewArn = registerOutput<String>('awsResourceExplorerManagedViewArn');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<TelemetryEnrichmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEnrichmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TelemetryEnrichment] resource.
+  TelemetryEnrichment.reference(String urn)
+    : super(
+        'aws:observabilityadmin/telemetryEnrichment:TelemetryEnrichment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsResourceExplorerManagedViewArn = registerOutput<String>('awsResourceExplorerManagedViewArn');
     region = registerOutput<String>('region');
     timeouts = registerOutput<TelemetryEnrichmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryEnrichmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

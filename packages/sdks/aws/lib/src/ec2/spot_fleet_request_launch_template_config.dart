@@ -8,7 +8,7 @@ class SpotFleetRequestLaunchTemplateConfig {
   /// Launch template specification. See Launch Template Specification below for more details.
   final pulumi.Input<SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification> launchTemplateSpecification;
   /// One or more override configurations. See Overrides below for more details.
-  final pulumi.Input<List<SpotFleetRequestLaunchTemplateConfigOverride>>? overrides;
+  final pulumi.Input<List<SpotFleetRequestLaunchTemplateConfigOverride>?>? overrides;
 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfig].
   /// [launchTemplateSpecification] Launch template specification. See Launch Template Specification below for more details.

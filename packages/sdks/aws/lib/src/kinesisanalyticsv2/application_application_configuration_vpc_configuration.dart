@@ -7,8 +7,8 @@ class ApplicationApplicationConfigurationVpcConfiguration {
   final pulumi.Input<List<String>> securityGroupIds;
   /// The Subnet IDs used by the VPC configuration.
   final pulumi.Input<List<String>> subnetIds;
-  final pulumi.Input<String>? vpcConfigurationId;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcConfigurationId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ApplicationApplicationConfigurationVpcConfiguration].
   /// [securityGroupIds] The Security Group IDs used by the VPC configuration.

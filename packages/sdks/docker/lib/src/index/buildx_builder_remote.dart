@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderRemote {
   /// Absolute path to the TLS certificate authority used for validation.
-  final pulumi.Input<String>? cacert;
+  final pulumi.Input<String?>? cacert;
   /// Absolute path to the TLS client certificate to present to buildkitd.
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// Automatically load images to the Docker Engine image store. Defaults to `false`
-  final pulumi.Input<bool>? defaultLoad;
+  final pulumi.Input<bool?>? defaultLoad;
   /// Sets the TLS client key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// TLS server name used in requests.
-  final pulumi.Input<String>? servername;
+  final pulumi.Input<String?>? servername;
 
   /// Creates a new [BuildxBuilderRemote].
   /// [cacert] Absolute path to the TLS certificate authority used for validation.

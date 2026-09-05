@@ -10,7 +10,7 @@ class GetRoleArgs {
   /// Friendly IAM role name to match.
   final pulumi.Input<String> name;
   /// Tags attached to the role.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetRoleArgs].
   /// [name] Friendly IAM role name to match.

@@ -6,12 +6,12 @@ import 'telemetry_evaluation_timeouts.dart';
 /// Input properties used for looking up and filtering TelemetryEvaluation resources.
 class TelemetryEvaluationState {
   /// Reason for the failure status. Only populated if `status` is `FAILED_START` or `FAILED_STOP`.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Onboarding status of the telemetry config feature. Valid values: `NOT_STARTED`, `STARTING`, `FAILED_START`, `RUNNING`, `STOPPING`, `FAILED_STOP`, `STOPPED`.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<TelemetryEvaluationTimeouts>? timeouts;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<TelemetryEvaluationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEvaluationState].
   /// [failureReason] Reason for the failure status. Only populated if `status` is `FAILED_START` or `FAILED_STOP`.

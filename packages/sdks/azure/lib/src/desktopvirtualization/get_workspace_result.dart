@@ -4,63 +4,63 @@
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The description for the Virtual Desktop Workspace.
-  final String description;
+  final String? description;
   /// The friendly name for the Virtual Desktop Workspace.
-  final String friendlyName;
+  final String? friendlyName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Virtual Desktop Workspace exists.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// Is public network access enabled?
-  final bool publicNetworkAccessEnabled;
-  final String resourceGroupName;
+  final bool? publicNetworkAccessEnabled;
+  final String? resourceGroupName;
   /// A mapping of tags assigned to the Virtual Desktop Workspace.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetWorkspaceResult].
   /// [description] The description for the Virtual Desktop Workspace.
   /// [friendlyName] The friendly name for the Virtual Desktop Workspace.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Virtual Desktop Workspace exists.
-  /// [name] Required.
+  /// [name] Optional.
   /// [publicNetworkAccessEnabled] Is public network access enabled?
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags assigned to the Virtual Desktop Workspace.
   const GetWorkspaceResult({
-    required this.description,
-    required this.friendlyName,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.publicNetworkAccessEnabled,
-    required this.resourceGroupName,
-    required this.tags,
+    this.description,
+    this.friendlyName,
+    this.id,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'friendlyName': friendlyName,
-      'id': id,
-      'location': location,
-      'name': name,
-      'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
+      'description': ?description,
+      'friendlyName': ?friendlyName,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
     };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      description: map['description'] as String,
-      friendlyName: map['friendlyName'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

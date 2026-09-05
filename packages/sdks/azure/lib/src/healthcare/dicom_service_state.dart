@@ -10,30 +10,30 @@ import 'dicom_service_storage.dart';
 /// Input properties used for looking up and filtering DicomService resources.
 class DicomServiceState {
   /// The `authentication` block as defined below.
-  final pulumi.Input<List<DicomServiceAuthentication>>? authentications;
+  final pulumi.Input<List<DicomServiceAuthentication>?>? authentications;
   /// A `cors` block as defined below.
-  final pulumi.Input<DicomServiceCors>? cors;
+  final pulumi.Input<DicomServiceCors?>? cors;
   /// If data partitions are enabled or not. Defaults to `false`. Changing this forces a new Healthcare DICOM Service to be created.
-  final pulumi.Input<bool>? dataPartitionsEnabled;
+  final pulumi.Input<bool?>? dataPartitionsEnabled;
   /// The URL of the key to use for encryption as part of the customer-managed key encryption settings. For more details, refer to the [Azure Customer-Managed Keys Overview](https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview).
-  final pulumi.Input<String>? encryptionKeyUrl;
+  final pulumi.Input<String?>? encryptionKeyUrl;
   /// An `identity` block as defined below.
-  final pulumi.Input<DicomServiceIdentity>? identity;
+  final pulumi.Input<DicomServiceIdentity?>? identity;
   /// Specifies the Azure Region where the Healthcare DICOM Service should be created. Changing this forces a new Healthcare DICOM Service to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<DicomServicePrivateEndpoint>>? privateEndpoints;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<DicomServicePrivateEndpoint>?>? privateEndpoints;
   /// Whether to enabled public networks when data plane traffic coming from public networks while private endpoint is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The url of the Healthcare DICOM Services.
-  final pulumi.Input<String>? serviceUrl;
+  final pulumi.Input<String?>? serviceUrl;
   /// A `storage` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<DicomServiceStorage>? storage;
+  final pulumi.Input<DicomServiceStorage?>? storage;
   /// A mapping of tags to assign to the Healthcare DICOM Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the ID of the Healthcare Workspace where the Healthcare DICOM Service should exist. Changing this forces a new Healthcare DICOM Service to be created.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [DicomServiceState].
   /// [authentications] The `authentication` block as defined below.

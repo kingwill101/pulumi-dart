@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// The name of the Glue table catalog.
-  final pulumi.Input<String>? catalog;
+  final pulumi.Input<String?>? catalog;
   /// The name of the Glue table database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name of the Glue table.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [FeatureGroupOfflineStoreConfigDataCatalogConfig].
   /// [catalog] The name of the Glue table catalog.

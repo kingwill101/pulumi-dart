@@ -11,7 +11,7 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfiguration {
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping> fieldMapping;
   /// Namespace to be used to write new data to your database.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationPineconeConfiguration].
   /// [connectionString] Endpoint URL for your index management page.

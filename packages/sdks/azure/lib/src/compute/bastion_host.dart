@@ -198,8 +198,8 @@ import 'bastion_host_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			IpConfiguration: &compute.BastionHostIpConfigurationArgs{
 /// 				Name:              pulumi.String("configuration"),
-/// 				SubnetId:          exampleSubnet.ID(),
-/// 				PublicIpAddressId: examplePublicIp.ID(),
+/// 				SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -451,7 +451,7 @@ class BastionHost extends pulumi.CustomResource {
           'azure:compute/bastionHost:BastionHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
     dnsName = registerOutput<String>('dnsName');
@@ -467,10 +467,10 @@ class BastionHost extends pulumi.CustomResource {
     sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
     shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [BastionHost] resource's state with the given [name] and [id].
@@ -478,11 +478,12 @@ class BastionHost extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BastionHostState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BastionHost._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -510,9 +511,38 @@ class BastionHost extends pulumi.CustomResource {
     sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
     shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BastionHost] resource.
+  BastionHost.reference(String urn)
+    : super(
+        'azure:compute/bastionHost:BastionHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    copyPasteEnabled = registerOutput<bool?>('copyPasteEnabled');
+    dnsName = registerOutput<String>('dnsName');
+    fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
+    ipConfiguration = registerOutput<BastionHostIpConfiguration?>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BastionHostIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateOnlyEnabled = registerOutput<bool>('privateOnlyEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scaleUnits = registerOutput<int?>('scaleUnits');
+    sessionRecordingEnabled = registerOutput<bool?>('sessionRecordingEnabled');
+    shareableLinkEnabled = registerOutput<bool?>('shareableLinkEnabled');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tunnelingEnabled = registerOutput<bool?>('tunnelingEnabled');
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -331,7 +331,7 @@ import 'kx_user_state.dart';
 /// $ pulumi import aws:finspace/kxUser:KxUser example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-user
 /// ```
 class KxUser extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX user.
+  /// ARN identifier of the KX user.
   late final pulumi.Output<String> arn;
   /// Unique identifier for the KX environment.
   late final pulumi.Output<String> environmentId;
@@ -360,15 +360,15 @@ class KxUser extends pulumi.CustomResource {
           'aws:finspace/kxUser:KxUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     environmentId = registerOutput<String>('environmentId');
     iamRole = registerOutput<String>('iamRole');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [KxUser] resource's state with the given [name] and [id].
@@ -376,11 +376,12 @@ class KxUser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxUserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxUser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,7 +400,25 @@ class KxUser extends pulumi.CustomResource {
     iamRole = registerOutput<String>('iamRole');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KxUser] resource.
+  KxUser.reference(String urn)
+    : super(
+        'aws:finspace/kxUser:KxUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    environmentId = registerOutput<String>('environmentId');
+    iamRole = registerOutput<String>('iamRole');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -252,13 +252,13 @@ class CnameRecord extends pulumi.CustomResource {
           'azure:privatedns/cnameRecord:CnameRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
     record = registerOutput<String>('record');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }
@@ -268,11 +268,12 @@ class CnameRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CnameRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CnameRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,7 +291,25 @@ class CnameRecord extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     record = registerOutput<String>('record');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [CnameRecord] resource.
+  CnameRecord.reference(String urn)
+    : super(
+        'azure:privatedns/cnameRecord:CnameRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    record = registerOutput<String>('record');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }

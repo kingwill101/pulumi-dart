@@ -23,6 +23,7 @@ import 'disk_encryption_set_state.dart';
 ///     name: "des-example-keyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     enabledForDiskEncryption: true,
@@ -72,8 +73,8 @@ import 'disk_encryption_set_state.dart';
 /// });
 /// const example_disk = new azure.keyvault.AccessPolicy("example-disk", {
 ///     keyVaultId: exampleKeyVault.id,
-///     tenantId: exampleDiskEncryptionSet.identity.apply(identity => identity.tenantId),
-///     objectId: exampleDiskEncryptionSet.identity.apply(identity => identity.principalId),
+///     tenantId: exampleDiskEncryptionSet.identity.tenantId,
+///     objectId: exampleDiskEncryptionSet.identity.principalId,
 ///     keyPermissions: [
 ///         "Create",
 ///         "Delete",
@@ -89,7 +90,7 @@ import 'disk_encryption_set_state.dart';
 /// const example_diskAssignment = new azure.authorization.Assignment("example-disk", {
 ///     scope: exampleKeyVault.id,
 ///     roleDefinitionName: "Key Vault Crypto Service Encryption User",
-///     principalId: exampleDiskEncryptionSet.identity.apply(identity => identity.principalId),
+///     principalId: exampleDiskEncryptionSet.identity.principalId,
 /// });
 /// ```
 /// ```python
@@ -104,6 +105,7 @@ import 'disk_encryption_set_state.dart';
 ///     name="des-example-keyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     enabled_for_disk_encryption=True,
@@ -187,6 +189,7 @@ import 'disk_encryption_set_state.dart';
 ///         Name = "des-example-keyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         EnabledForDiskEncryption = true,
@@ -304,6 +307,7 @@ import 'disk_encryption_set_state.dart';
 /// 			Name:                     pulumi.String("des-example-keyvault"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SkuName:                  pulumi.String("premium"),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
@@ -313,7 +317,7 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		example_user, err := keyvault.NewAccessPolicy(ctx, "example-user", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -334,7 +338,7 @@ import 'disk_encryption_set_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("des-example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -355,7 +359,7 @@ import 'disk_encryption_set_state.dart';
 /// 			Name:              pulumi.String("des"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			KeyVaultKeyId:     exampleKey.ID(),
+/// 			KeyVaultKeyId:     exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &compute.DiskEncryptionSetIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -364,13 +368,9 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example-disk", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleDiskEncryptionSet.Identity.TenantId(),
+/// 			ObjectId:   exampleDiskEncryptionSet.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
 /// 				pulumi.String("Delete"),
@@ -387,11 +387,9 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example-disk", &authorization.AssignmentArgs{
-/// 			Scope:              exampleKeyVault.ID(),
+/// 			Scope:              exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Crypto Service Encryption User"),
-/// 			PrincipalId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleDiskEncryptionSet.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -420,6 +418,7 @@ import 'disk_encryption_set_state.dart';
 ///   name                        = "des-example-keyvault"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                    = "premium"
 ///   enabled_for_disk_encryption = true
@@ -505,6 +504,7 @@ import 'disk_encryption_set_state.dart';
 ///             .name("des-example-keyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .enabledForDiskEncryption(true)
@@ -593,6 +593,7 @@ import 'disk_encryption_set_state.dart';
 ///       name: des-example-keyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       enabledForDiskEncryption: true
@@ -690,6 +691,7 @@ import 'disk_encryption_set_state.dart';
 ///     name: "des-example-keyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     enabledForDiskEncryption: true,
@@ -740,8 +742,8 @@ import 'disk_encryption_set_state.dart';
 /// });
 /// const example_disk = new azure.keyvault.AccessPolicy("example-disk", {
 ///     keyVaultId: exampleKeyVault.id,
-///     tenantId: exampleDiskEncryptionSet.identity.apply(identity => identity.tenantId),
-///     objectId: exampleDiskEncryptionSet.identity.apply(identity => identity.principalId),
+///     tenantId: exampleDiskEncryptionSet.identity.tenantId,
+///     objectId: exampleDiskEncryptionSet.identity.principalId,
 ///     keyPermissions: [
 ///         "Create",
 ///         "Delete",
@@ -757,7 +759,7 @@ import 'disk_encryption_set_state.dart';
 /// const example_diskAssignment = new azure.authorization.Assignment("example-disk", {
 ///     scope: exampleKeyVault.id,
 ///     roleDefinitionName: "Key Vault Crypto Service Encryption User",
-///     principalId: exampleDiskEncryptionSet.identity.apply(identity => identity.principalId),
+///     principalId: exampleDiskEncryptionSet.identity.principalId,
 /// });
 /// ```
 /// ```python
@@ -772,6 +774,7 @@ import 'disk_encryption_set_state.dart';
 ///     name="des-example-keyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     enabled_for_disk_encryption=True,
@@ -856,6 +859,7 @@ import 'disk_encryption_set_state.dart';
 ///         Name = "des-example-keyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         EnabledForDiskEncryption = true,
@@ -974,6 +978,7 @@ import 'disk_encryption_set_state.dart';
 /// 			Name:                     pulumi.String("des-example-keyvault"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SkuName:                  pulumi.String("premium"),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
@@ -983,7 +988,7 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		example_user, err := keyvault.NewAccessPolicy(ctx, "example-user", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -1004,7 +1009,7 @@ import 'disk_encryption_set_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("des-example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -1035,13 +1040,9 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example-disk", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleDiskEncryptionSet.Identity.TenantId(),
+/// 			ObjectId:   exampleDiskEncryptionSet.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
 /// 				pulumi.String("Delete"),
@@ -1058,11 +1059,9 @@ import 'disk_encryption_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example-disk", &authorization.AssignmentArgs{
-/// 			Scope:              exampleKeyVault.ID(),
+/// 			Scope:              exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Crypto Service Encryption User"),
-/// 			PrincipalId: pulumi.String(exampleDiskEncryptionSet.Identity.ApplyT(func(identity compute.DiskEncryptionSetIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleDiskEncryptionSet.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1091,6 +1090,7 @@ import 'disk_encryption_set_state.dart';
 ///   name                        = "des-example-keyvault"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                    = "premium"
 ///   enabled_for_disk_encryption = true
@@ -1177,6 +1177,7 @@ import 'disk_encryption_set_state.dart';
 ///             .name("des-example-keyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .enabledForDiskEncryption(true)
@@ -1266,6 +1267,7 @@ import 'disk_encryption_set_state.dart';
 ///       name: des-example-keyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       enabledForDiskEncryption: true
@@ -1408,7 +1410,7 @@ class DiskEncryptionSet extends pulumi.CustomResource {
           'azure:compute/diskEncryptionSet:DiskEncryptionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
     encryptionType = registerOutput<String?>('encryptionType');
@@ -1420,7 +1422,7 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DiskEncryptionSet] resource's state with the given [name] and [id].
@@ -1428,11 +1430,12 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiskEncryptionSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiskEncryptionSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1456,6 +1459,28 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DiskEncryptionSet] resource.
+  DiskEncryptionSet.reference(String urn)
+    : super(
+        'azure:compute/diskEncryptionSet:DiskEncryptionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
+    encryptionType = registerOutput<String?>('encryptionType');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    identity = registerOutput<DiskEncryptionSetIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

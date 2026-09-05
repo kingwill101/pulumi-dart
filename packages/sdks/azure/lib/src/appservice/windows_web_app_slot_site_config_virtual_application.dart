@@ -9,7 +9,7 @@ class WindowsWebAppSlotSiteConfigVirtualApplication {
   /// Should pre-loading be enabled.
   final pulumi.Input<bool> preload;
   /// One or more `virtualDirectory` blocks as defined below.
-  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>>? virtualDirectories;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory>?>? virtualDirectories;
   /// The Virtual Path for the Virtual Application.
   final pulumi.Input<String> virtualPath;
 

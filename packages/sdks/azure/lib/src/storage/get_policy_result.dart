@@ -6,34 +6,34 @@ import 'get_policy_rule.dart';
 /// Result data returned by getPolicy.
 class GetPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// supports the following:
-  final List<GetPolicyRule> rules;
-  final String storageAccountId;
+  final List<GetPolicyRule>? rules;
+  final String? storageAccountId;
 
   /// Creates a new [GetPolicyResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [rules] supports the following:
-  /// [storageAccountId] Required.
+  /// [storageAccountId] Optional.
   const GetPolicyResult({
-    required this.id,
-    required this.rules,
-    required this.storageAccountId,
+    this.id,
+    this.rules,
+    this.storageAccountId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'rules': pulumi.Input.encodeList<GetPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'storageAccountId': storageAccountId,
+      'id': ?id,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPolicyRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'storageAccountId': ?storageAccountId,
     };
   }
 
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
-      id: map['id'] as String,
-      rules: pulumi.Input.decodeList<GetPolicyRule>(map['rules']!, (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccountId: map['storageAccountId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPolicyRule>(guardedValue, (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

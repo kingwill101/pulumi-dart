@@ -7,40 +7,40 @@ import 'listener_rule_match.dart';
 /// Input properties used for looking up and filtering ListenerRule resources.
 class ListenerRuleState {
   /// Action for the listener rule. See `action` Block for details.
-  final pulumi.Input<ListenerRuleAction>? action;
+  final pulumi.Input<ListenerRuleAction?>? action;
   /// ARN for the listener rule.
-  final pulumi.Input<String>? arn;
-  /// ID or Amazon Resource Name (ARN) of the listener.
-  final pulumi.Input<String>? listenerIdentifier;
+  final pulumi.Input<String?>? arn;
+  /// ID or ARN of the listener.
+  final pulumi.Input<String?>? listenerIdentifier;
   /// Rule match. See `match` Block for details.
-  final pulumi.Input<ListenerRuleMatch>? match;
+  final pulumi.Input<ListenerRuleMatch?>? match;
   /// Name of the rule. Must be unique within the listener. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Unique identifier for the listener rule.
-  final pulumi.Input<String>? ruleId;
-  /// ID or Amazon Resource Name (ARN) of the service.
+  final pulumi.Input<String?>? ruleId;
+  /// ID or ARN of the service.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? serviceIdentifier;
+  final pulumi.Input<String?>? serviceIdentifier;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ListenerRuleState].
   /// [action] Action for the listener rule. See `action` Block for details.
   /// [arn] ARN for the listener rule.
-  /// [listenerIdentifier] ID or Amazon Resource Name (ARN) of the listener.
+  /// [listenerIdentifier] ID or ARN of the listener.
   /// [match] Rule match. See `match` Block for details.
   /// [name] Name of the rule. Must be unique within the listener. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   /// [priority] Priority assigned to the rule. Each rule for a specific listener must have a unique priority. The lower the priority number the higher the priority.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleId] Unique identifier for the listener rule.
-  /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service.
+  /// [serviceIdentifier] ID or ARN of the service.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ListenerRuleState({
@@ -80,7 +80,7 @@ class ListenerRuleState {
       listenerIdentifier: (() { final guardedValue = map['listenerIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       match: (() { final guardedValue = map['match']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceIdentifier: (() { final guardedValue = map['serviceIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

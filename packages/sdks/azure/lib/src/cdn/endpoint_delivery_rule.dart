@@ -24,49 +24,49 @@ import 'endpoint_delivery_rule_url_rewrite_action.dart';
 
 class EndpointDeliveryRule {
   /// A `cacheExpirationAction` block as defined above.
-  final pulumi.Input<EndpointDeliveryRuleCacheExpirationAction>? cacheExpirationAction;
+  final pulumi.Input<EndpointDeliveryRuleCacheExpirationAction?>? cacheExpirationAction;
   /// A `cacheKeyQueryStringAction` block as defined above.
-  final pulumi.Input<EndpointDeliveryRuleCacheKeyQueryStringAction>? cacheKeyQueryStringAction;
+  final pulumi.Input<EndpointDeliveryRuleCacheKeyQueryStringAction?>? cacheKeyQueryStringAction;
   /// A `cookiesCondition` block as defined above.
-  final pulumi.Input<List<EndpointDeliveryRuleCookiesCondition>>? cookiesConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleCookiesCondition>?>? cookiesConditions;
   /// A `deviceCondition` block as defined below.
-  final pulumi.Input<EndpointDeliveryRuleDeviceCondition>? deviceCondition;
+  final pulumi.Input<EndpointDeliveryRuleDeviceCondition?>? deviceCondition;
   /// A `httpVersionCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleHttpVersionCondition>>? httpVersionConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleHttpVersionCondition>?>? httpVersionConditions;
   /// A `modifyRequestHeaderAction` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleModifyRequestHeaderAction>>? modifyRequestHeaderActions;
+  final pulumi.Input<List<EndpointDeliveryRuleModifyRequestHeaderAction>?>? modifyRequestHeaderActions;
   /// A `modifyResponseHeaderAction` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleModifyResponseHeaderAction>>? modifyResponseHeaderActions;
+  final pulumi.Input<List<EndpointDeliveryRuleModifyResponseHeaderAction>?>? modifyResponseHeaderActions;
   /// The Name which should be used for this Delivery Rule.
   final pulumi.Input<String> name;
   /// The order used for this rule. The order values should be sequential and begin at `1`.
   final pulumi.Input<int> order;
   /// A `postArgCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRulePostArgCondition>>? postArgConditions;
+  final pulumi.Input<List<EndpointDeliveryRulePostArgCondition>?>? postArgConditions;
   /// A `queryStringCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleQueryStringCondition>>? queryStringConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleQueryStringCondition>?>? queryStringConditions;
   /// A `remoteAddressCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleRemoteAddressCondition>>? remoteAddressConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRemoteAddressCondition>?>? remoteAddressConditions;
   /// A `requestBodyCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleRequestBodyCondition>>? requestBodyConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestBodyCondition>?>? requestBodyConditions;
   /// A `requestHeaderCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleRequestHeaderCondition>>? requestHeaderConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestHeaderCondition>?>? requestHeaderConditions;
   /// A `requestMethodCondition` block as defined below.
-  final pulumi.Input<EndpointDeliveryRuleRequestMethodCondition>? requestMethodCondition;
+  final pulumi.Input<EndpointDeliveryRuleRequestMethodCondition?>? requestMethodCondition;
   /// A `requestSchemeCondition` block as defined below.
-  final pulumi.Input<EndpointDeliveryRuleRequestSchemeCondition>? requestSchemeCondition;
+  final pulumi.Input<EndpointDeliveryRuleRequestSchemeCondition?>? requestSchemeCondition;
   /// A `requestUriCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleRequestUriCondition>>? requestUriConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleRequestUriCondition>?>? requestUriConditions;
   /// A `urlFileExtensionCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleUrlFileExtensionCondition>>? urlFileExtensionConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlFileExtensionCondition>?>? urlFileExtensionConditions;
   /// A `urlFileNameCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleUrlFileNameCondition>>? urlFileNameConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlFileNameCondition>?>? urlFileNameConditions;
   /// A `urlPathCondition` block as defined below.
-  final pulumi.Input<List<EndpointDeliveryRuleUrlPathCondition>>? urlPathConditions;
+  final pulumi.Input<List<EndpointDeliveryRuleUrlPathCondition>?>? urlPathConditions;
   /// A `urlRedirectAction` block as defined below.
-  final pulumi.Input<EndpointDeliveryRuleUrlRedirectAction>? urlRedirectAction;
+  final pulumi.Input<EndpointDeliveryRuleUrlRedirectAction?>? urlRedirectAction;
   /// A `urlRewriteAction` block as defined below.
-  final pulumi.Input<EndpointDeliveryRuleUrlRewriteAction>? urlRewriteAction;
+  final pulumi.Input<EndpointDeliveryRuleUrlRewriteAction?>? urlRewriteAction;
 
   /// Creates a new [EndpointDeliveryRule].
   /// [cacheExpirationAction] A `cacheExpirationAction` block as defined above.
@@ -153,7 +153,7 @@ class EndpointDeliveryRule {
       modifyRequestHeaderActions: (() { final guardedValue = map['modifyRequestHeaderActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointDeliveryRuleModifyRequestHeaderAction>(guardedValue, (value) => EndpointDeliveryRuleModifyRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       modifyResponseHeaderActions: (() { final guardedValue = map['modifyResponseHeaderActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointDeliveryRuleModifyResponseHeaderAction>(guardedValue, (value) => EndpointDeliveryRuleModifyResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
       postArgConditions: (() { final guardedValue = map['postArgConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointDeliveryRulePostArgCondition>(guardedValue, (value) => EndpointDeliveryRulePostArgCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       queryStringConditions: (() { final guardedValue = map['queryStringConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointDeliveryRuleQueryStringCondition>(guardedValue, (value) => EndpointDeliveryRuleQueryStringCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       remoteAddressConditions: (() { final guardedValue = map['remoteAddressConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointDeliveryRuleRemoteAddressCondition>(guardedValue, (value) => EndpointDeliveryRuleRemoteAddressCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ChannelDirectLineSpeech resources.
 class ChannelDirectLineSpeechState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The ID of the Cognitive Account this Bot Channel should be associated with. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
   ///
   /// &gt; **Note:** Once added, `cognitiveAccountId` cannot be removed, doing so forces a new resource to be created.
-  final pulumi.Input<String>? cognitiveAccountId;
+  final pulumi.Input<String?>? cognitiveAccountId;
   /// The access key to access the Cognitive Service. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
-  final pulumi.Input<String>? cognitiveServiceAccessKey;
+  final pulumi.Input<String?>? cognitiveServiceAccessKey;
   /// Specifies the supported Azure location where the Cognitive Service resource exists. Either `cognitiveAccountId` or both `cognitiveServiceAccessKey` and `cognitiveServiceLocation` must be specified.
-  final pulumi.Input<String>? cognitiveServiceLocation;
+  final pulumi.Input<String?>? cognitiveServiceLocation;
   /// The custom speech model id for the Direct Line Speech Channel.
-  final pulumi.Input<String>? customSpeechModelId;
+  final pulumi.Input<String?>? customSpeechModelId;
   /// The custom voice deployment id for the Direct Line Speech Channel.
-  final pulumi.Input<String>? customVoiceDeploymentId;
+  final pulumi.Input<String?>? customVoiceDeploymentId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group where the Direct Line Speech Channel should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ChannelDirectLineSpeechState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

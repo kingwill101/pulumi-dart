@@ -6,7 +6,7 @@ class ApplicationRuntimeConfiguration {
   /// The classification within a configuration.
   final pulumi.Input<String> classification;
   /// A set of properties specified within a configuration classification.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [ApplicationRuntimeConfiguration].
   /// [classification] The classification within a configuration.

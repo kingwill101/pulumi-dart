@@ -5,11 +5,11 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
   /// A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabledControlIdentifiers`.
-  final pulumi.Input<List<String>>? disabledControlIdentifiers;
+  final pulumi.Input<List<String>?>? disabledControlIdentifiers;
   /// A list of security controls that are enabled in the configuration policy. Security Hub disables all other controls (including newly released controls) other than the listed controls. Conflicts with `disabledControlIdentifiers`.
-  final pulumi.Input<List<String>>? enabledControlIdentifiers;
+  final pulumi.Input<List<String>?>? enabledControlIdentifiers;
   /// A list of control parameter customizations that are included in a configuration policy. Include multiple blocks to define multiple control custom parameters. See below.
-  final pulumi.Input<List<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>>? securityControlCustomParameters;
+  final pulumi.Input<List<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>?>? securityControlCustomParameters;
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration].
   /// [disabledControlIdentifiers] A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabledControlIdentifiers`.

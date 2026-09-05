@@ -6,15 +6,15 @@ import 'account_identity.dart';
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<AccountIdentity>? identity;
+  final pulumi.Input<AccountIdentity?>? identity;
   /// The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Data Share Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountState].
   /// [identity] An `identity` block as defined below. Changing this forces a new resource to be created.

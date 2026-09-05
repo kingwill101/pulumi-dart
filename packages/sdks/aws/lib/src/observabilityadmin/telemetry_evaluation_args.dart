@@ -9,8 +9,8 @@ import 'telemetry_evaluation_timeouts.dart';
 /// {@macro pulumi_observabilityadmin_telemetry_evaluation_telemetry_evaluation_args_doc}
 class TelemetryEvaluationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<TelemetryEvaluationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<TelemetryEvaluationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEvaluationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

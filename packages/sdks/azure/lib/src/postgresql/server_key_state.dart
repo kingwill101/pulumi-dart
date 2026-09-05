@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServerKey resources.
 class ServerKeyState {
   /// The URL to a Key Vault Key.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
 
   /// Creates a new [ServerKeyState].
   /// [keyVaultKeyId] The URL to a Key Vault Key.

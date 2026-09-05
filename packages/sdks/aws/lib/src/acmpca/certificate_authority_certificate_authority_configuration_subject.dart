@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateAuthorityCertificateAuthorityConfigurationSubject {
   /// Fully qualified domain name (FQDN) associated with the certificate subject. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// Two digit code that specifies the country in which the certificate subject located. Must be less than or equal to 2 characters in length.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// Disambiguating information for the certificate subject. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? distinguishedNameQualifier;
+  final pulumi.Input<String?>? distinguishedNameQualifier;
   /// Typically a qualifier appended to the name of an individual. Examples include Jr. for junior, Sr. for senior, and III for third. Must be less than or equal to 3 characters in length.
-  final pulumi.Input<String>? generationQualifier;
+  final pulumi.Input<String?>? generationQualifier;
   /// First name. Must be less than or equal to 16 characters in length.
-  final pulumi.Input<String>? givenName;
+  final pulumi.Input<String?>? givenName;
   /// Concatenation that typically contains the first letter of the `givenName`, the first letter of the middle name if one exists, and the first letter of the `surname`. Must be less than or equal to 5 characters in length.
-  final pulumi.Input<String>? initials;
+  final pulumi.Input<String?>? initials;
   /// Locality (such as a city or town) in which the certificate subject is located. Must be less than or equal to 128 characters in length.
-  final pulumi.Input<String>? locality;
+  final pulumi.Input<String?>? locality;
   /// Legal name of the organization with which the certificate subject is affiliated. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// Subdivision or unit of the organization (such as sales or finance) with which the certificate subject is affiliated. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// Typically a shortened version of a longer `givenName`. For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth, Liz, or Eliza. Must be less than or equal to 128 characters in length.
-  final pulumi.Input<String>? pseudonym;
+  final pulumi.Input<String?>? pseudonym;
   /// State in which the subject of the certificate is located. Must be less than or equal to 128 characters in length.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Family name. In the US and the UK for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first. Must be less than or equal to 40 characters in length.
-  final pulumi.Input<String>? surname;
+  final pulumi.Input<String?>? surname;
   /// Title such as Mr. or Ms. which is pre-pended to the name to refer formally to the certificate subject. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [CertificateAuthorityCertificateAuthorityConfigurationSubject].
   /// [commonName] Fully qualified domain name (FQDN) associated with the certificate subject. Must be less than or equal to 64 characters in length.

@@ -20,43 +20,43 @@ import 'plan_workflow_step_parallel_config_step_route53_health_check_config.dart
 
 class PlanWorkflowStepParallelConfigStep {
   /// Configuration for ARC routing control. See `arcRoutingControlConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepArcRoutingControlConfig>>? arcRoutingControlConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepArcRoutingControlConfig>?>? arcRoutingControlConfigs;
   /// Configuration for Aurora provisioned scaling. See `auroraProvisionedScalingConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepAuroraProvisionedScalingConfig>>? auroraProvisionedScalingConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepAuroraProvisionedScalingConfig>?>? auroraProvisionedScalingConfigs;
   /// Configuration for Aurora Serverless scaling. See `auroraServerlessScalingConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepAuroraServerlessScalingConfig>>? auroraServerlessScalingConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepAuroraServerlessScalingConfig>?>? auroraServerlessScalingConfigs;
   /// Configuration for Lambda function execution. See `customActionLambdaConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig>>? customActionLambdaConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig>?>? customActionLambdaConfigs;
   /// Description of the step.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration for DocumentDB global cluster operations. See `documentDbConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfig>>? documentDbConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfig>?>? documentDbConfigs;
   /// Configuration for EC2 Auto Scaling group capacity increase. See `ec2AsgCapacityIncreaseConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig>>? ec2AsgCapacityIncreaseConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig>?>? ec2AsgCapacityIncreaseConfigs;
   /// Configuration for ECS service capacity increase. See `ecsCapacityIncreaseConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig>>? ecsCapacityIncreaseConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig>?>? ecsCapacityIncreaseConfigs;
   /// Configuration for EKS resource scaling. See `eksResourceScalingConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfig>>? eksResourceScalingConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepEksResourceScalingConfig>?>? eksResourceScalingConfigs;
   /// Configuration for manual approval steps. See `executionApprovalConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepExecutionApprovalConfig>>? executionApprovalConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepExecutionApprovalConfig>?>? executionApprovalConfigs;
   /// Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `Route53HealthCheck`.
   final pulumi.Input<String> executionBlockType;
   /// Configuration for Aurora Global Database operations. See `globalAuroraConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepGlobalAuroraConfig>>? globalAuroraConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepGlobalAuroraConfig>?>? globalAuroraConfigs;
   /// Configuration for Lambda event source mapping operations. See `lambdaEventSourceMappingConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfig>>? lambdaEventSourceMappingConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfig>?>? lambdaEventSourceMappingConfigs;
   /// Name of the step.
   final pulumi.Input<String> name;
   /// Configuration for Neptune global database operations. See `neptuneGlobalDatabaseConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfig>>? neptuneGlobalDatabaseConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfig>?>? neptuneGlobalDatabaseConfigs;
   /// Configuration for creating cross-region RDS read replicas. See `rdsCreateCrossRegionReadReplicaConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig>>? rdsCreateCrossRegionReadReplicaConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig>?>? rdsCreateCrossRegionReadReplicaConfigs;
   /// Configuration for promoting RDS read replicas. See `rdsPromoteReadReplicaConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfig>>? rdsPromoteReadReplicaConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRdsPromoteReadReplicaConfig>?>? rdsPromoteReadReplicaConfigs;
   /// Configuration for executing a nested region switch plan. See `regionSwitchPlanConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig>>? regionSwitchPlanConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig>?>? regionSwitchPlanConfigs;
   /// Configuration for Route53 health check operations. See `route53HealthCheckConfig` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig>>? route53HealthCheckConfigs;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig>?>? route53HealthCheckConfigs;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStep].
   /// [arcRoutingControlConfigs] Configuration for ARC routing control. See `arcRoutingControlConfig` Block for details.

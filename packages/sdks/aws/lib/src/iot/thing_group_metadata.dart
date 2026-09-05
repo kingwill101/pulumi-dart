@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'thing_group_metadata_root_to_parent_group.dart';
 
 class ThingGroupMetadata {
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// The name of the parent Thing Group.
-  final pulumi.Input<String>? parentGroupName;
-  final pulumi.Input<List<ThingGroupMetadataRootToParentGroup>>? rootToParentGroups;
+  final pulumi.Input<String?>? parentGroupName;
+  final pulumi.Input<List<ThingGroupMetadataRootToParentGroup>?>? rootToParentGroups;
 
   /// Creates a new [ThingGroupMetadata].
   /// [creationDate] Optional.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdcApplicationAuthorizedTokenIssuer {
   /// List of audiences for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
-  final pulumi.Input<List<String>>? authorizedAudiencesLists;
+  final pulumi.Input<List<String>?>? authorizedAudiencesLists;
   /// ARN for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
-  final pulumi.Input<String>? trustedTokenIssuerArn;
+  final pulumi.Input<String?>? trustedTokenIssuerArn;
 
   /// Creates a new [IdcApplicationAuthorizedTokenIssuer].
   /// [authorizedAudiencesLists] List of audiences for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.

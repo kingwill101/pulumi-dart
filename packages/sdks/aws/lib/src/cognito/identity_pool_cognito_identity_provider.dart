@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityPoolCognitoIdentityProvider {
   /// The client ID for the Amazon Cognito Identity User Pool.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The provider name for an Amazon Cognito Identity User Pool.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// Whether server-side token validation is enabled for the identity provider’s token or not.
-  final pulumi.Input<bool>? serverSideTokenCheck;
+  final pulumi.Input<bool?>? serverSideTokenCheck;
 
   /// Creates a new [IdentityPoolCognitoIdentityProvider].
   /// [clientId] The client ID for the Amazon Cognito Identity User Pool.

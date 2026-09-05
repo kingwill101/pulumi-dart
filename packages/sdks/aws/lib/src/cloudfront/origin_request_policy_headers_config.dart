@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_request_policy_headers_config_headers.dart';
 
 class OriginRequestPolicyHeadersConfig {
-  final pulumi.Input<String>? headerBehavior;
-  final pulumi.Input<OriginRequestPolicyHeadersConfigHeaders>? headers;
+  final pulumi.Input<String?>? headerBehavior;
+  final pulumi.Input<OriginRequestPolicyHeadersConfigHeaders?>? headers;
 
   /// Creates a new [OriginRequestPolicyHeadersConfig].
   /// [headerBehavior] Optional.

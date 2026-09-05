@@ -6,12 +6,12 @@ import 'get_bucket_replication_configuration_rule_destination_metric_event_thres
 class GetBucketReplicationConfigurationRuleDestinationMetric {
   /// Configuration block that specifies the time threshold for emitting the `s3:Replication:OperationMissedThreshold` event. See `eventThreshold` Block below.
   final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>> eventThresholds;
-  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetric].
   /// [eventThresholds] Configuration block that specifies the time threshold for emitting the `s3:Replication:OperationMissedThreshold` event. See `eventThreshold` Block below.
-  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   const GetBucketReplicationConfigurationRuleDestinationMetric({
     required this.eventThresholds,
     required this.status,

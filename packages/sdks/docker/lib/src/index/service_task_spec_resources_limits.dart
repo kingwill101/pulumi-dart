@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecResourcesLimits {
   /// The amount of memory in bytes the container allocates
-  final pulumi.Input<int>? memoryBytes;
+  final pulumi.Input<int?>? memoryBytes;
   /// CPU shares in units of `1/1e9` (or `10^-9`) of the CPU. Should be at least `1000000`
-  final pulumi.Input<int>? nanoCpus;
+  final pulumi.Input<int?>? nanoCpus;
 
   /// Creates a new [ServiceTaskSpecResourcesLimits].
   /// [memoryBytes] The amount of memory in bytes the container allocates
@@ -25,8 +25,8 @@ class ServiceTaskSpecResourcesLimits {
 
   factory ServiceTaskSpecResourcesLimits.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesLimits(
-      memoryBytes: (() { final guardedValue = map['memoryBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nanoCpus: (() { final guardedValue = map['nanoCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memoryBytes: (() { final guardedValue = map['memoryBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nanoCpus: (() { final guardedValue = map['nanoCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

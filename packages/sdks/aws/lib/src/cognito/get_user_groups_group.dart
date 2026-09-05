@@ -37,7 +37,7 @@ class GetUserGroupsGroup {
     return GetUserGroupsGroup(
       description: pulumi.Input.fromValue(map['description'] as String),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      precedence: pulumi.Input.fromValue(map['precedence'] as int),
+      precedence: pulumi.Input.fromValue((map['precedence'] as num).toInt()),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }

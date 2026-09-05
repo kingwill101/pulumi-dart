@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_args.dart';
+import 'listener_port_range.dart';
 import 'listener_state.dart';
 
 /// Provides a Global Accelerator listener.
@@ -12,23 +13,23 @@ import 'listener_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.globalaccelerator.Accelerator("example", {
-///     name: "Example",
-///     ipAddressType: "IPV4",
-///     enabled: true,
 ///     attributes: {
 ///         flowLogsEnabled: true,
 ///         flowLogsS3Bucket: "example-bucket",
 ///         flowLogsS3Prefix: "flow-logs/",
 ///     },
+///     name: "Example",
+///     ipAddressType: "IPV4",
+///     enabled: true,
 /// });
 /// const exampleListener = new aws.globalaccelerator.Listener("example", {
-///     acceleratorArn: example.arn,
-///     clientAffinity: "SOURCE_IP",
-///     protocol: "TCP",
 ///     portRanges: [{
 ///         fromPort: 80,
 ///         toPort: 80,
 ///     }],
+///     acceleratorArn: example.arn,
+///     clientAffinity: "SOURCE_IP",
+///     protocol: "TCP",
 /// });
 /// ```
 /// ```python
@@ -36,22 +37,22 @@ import 'listener_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.globalaccelerator.Accelerator("example",
-///     name="Example",
-///     ip_address_type="IPV4",
-///     enabled=True,
 ///     attributes={
 ///         "flow_logs_enabled": True,
 ///         "flow_logs_s3_bucket": "example-bucket",
 ///         "flow_logs_s3_prefix": "flow-logs/",
-///     })
+///     },
+///     name="Example",
+///     ip_address_type="IPV4",
+///     enabled=True)
 /// example_listener = aws.globalaccelerator.Listener("example",
-///     accelerator_arn=example.arn,
-///     client_affinity="SOURCE_IP",
-///     protocol="TCP",
 ///     port_ranges=[{
 ///         "from_port": 80,
 ///         "to_port": 80,
-///     }])
+///     }],
+///     accelerator_arn=example.arn,
+///     client_affinity="SOURCE_IP",
+///     protocol="TCP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -63,22 +64,19 @@ import 'listener_state.dart';
 /// {
 ///     var example = new Aws.GlobalAccelerator.Accelerator("example", new()
 ///     {
-///         Name = "Example",
-///         IpAddressType = "IPV4",
-///         Enabled = true,
 ///         Attributes = new Aws.GlobalAccelerator.Inputs.AcceleratorAttributesArgs
 ///         {
 ///             FlowLogsEnabled = true,
 ///             FlowLogsS3Bucket = "example-bucket",
 ///             FlowLogsS3Prefix = "flow-logs/",
 ///         },
+///         Name = "Example",
+///         IpAddressType = "IPV4",
+///         Enabled = true,
 ///     });
 ///
 ///     var exampleListener = new Aws.GlobalAccelerator.Listener("example", new()
 ///     {
-///         AcceleratorArn = example.Arn,
-///         ClientAffinity = "SOURCE_IP",
-///         Protocol = "TCP",
 ///         PortRanges = new[]
 ///         {
 ///             new Aws.GlobalAccelerator.Inputs.ListenerPortRangeArgs
@@ -87,6 +85,9 @@ import 'listener_state.dart';
 ///                 ToPort = 80,
 ///             },
 ///         },
+///         AcceleratorArn = example.Arn,
+///         ClientAffinity = "SOURCE_IP",
+///         Protocol = "TCP",
 ///     });
 ///
 /// });
@@ -102,28 +103,28 @@ import 'listener_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := globalaccelerator.NewAccelerator(ctx, "example", &globalaccelerator.AcceleratorArgs{
-/// 			Name:          pulumi.String("Example"),
-/// 			IpAddressType: pulumi.String("IPV4"),
-/// 			Enabled:       pulumi.Bool(true),
 /// 			Attributes: &globalaccelerator.AcceleratorAttributesArgs{
 /// 				FlowLogsEnabled:  pulumi.Bool(true),
 /// 				FlowLogsS3Bucket: pulumi.String("example-bucket"),
 /// 				FlowLogsS3Prefix: pulumi.String("flow-logs/"),
 /// 			},
+/// 			Name:          pulumi.String("Example"),
+/// 			IpAddressType: pulumi.String("IPV4"),
+/// 			Enabled:       pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = globalaccelerator.NewListener(ctx, "example", &globalaccelerator.ListenerArgs{
-/// 			AcceleratorArn: example.Arn,
-/// 			ClientAffinity: pulumi.String("SOURCE_IP"),
-/// 			Protocol:       pulumi.String("TCP"),
 /// 			PortRanges: globalaccelerator.ListenerPortRangeArray{
 /// 				&globalaccelerator.ListenerPortRangeArgs{
 /// 					FromPort: pulumi.Int(80),
 /// 					ToPort:   pulumi.Int(80),
 /// 				},
 /// 			},
+/// 			AcceleratorArn: example.Arn,
+/// 			ClientAffinity: pulumi.String("SOURCE_IP"),
+/// 			Protocol:       pulumi.String("TCP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,23 +143,23 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_accelerator" "example" {
-///   name            = "Example"
-///   ip_address_type = "IPV4"
-///   enabled         = true
 ///   attributes = {
 ///     flow_logs_enabled   = true
 ///     flow_logs_s3_bucket = "example-bucket"
 ///     flow_logs_s3_prefix = "flow-logs/"
 ///   }
+///   name            = "Example"
+///   ip_address_type = "IPV4"
+///   enabled         = true
 /// }
 /// resource "aws_globalaccelerator_listener" "example" {
-///   accelerator_arn = aws_globalaccelerator_accelerator.example.arn
-///   client_affinity = "SOURCE_IP"
-///   protocol        = "TCP"
 ///   port_ranges {
 ///     from_port = 80
 ///     to_port   = 80
 ///   }
+///   accelerator_arn = aws_globalaccelerator_accelerator.example.arn
+///   client_affinity = "SOURCE_IP"
+///   protocol        = "TCP"
 /// }
 /// ```
 /// ```java
@@ -187,24 +188,24 @@ import 'listener_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Accelerator("example", AcceleratorArgs.builder()
-///             .name("Example")
-///             .ipAddressType("IPV4")
-///             .enabled(true)
 ///             .attributes(AcceleratorAttributesArgs.builder()
 ///                 .flowLogsEnabled(true)
 ///                 .flowLogsS3Bucket("example-bucket")
 ///                 .flowLogsS3Prefix("flow-logs/")
 ///                 .build())
+///             .name("Example")
+///             .ipAddressType("IPV4")
+///             .enabled(true)
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
-///             .acceleratorArn(example.arn())
-///             .clientAffinity("SOURCE_IP")
-///             .protocol("TCP")
 ///             .portRanges(ListenerPortRangeArgs.builder()
 ///                 .fromPort(80)
 ///                 .toPort(80)
 ///                 .build())
+///             .acceleratorArn(example.arn())
+///             .clientAffinity("SOURCE_IP")
+///             .protocol("TCP")
 ///             .build());
 ///
 ///     }
@@ -215,23 +216,23 @@ import 'listener_state.dart';
 ///   example:
 ///     type: aws:globalaccelerator:Accelerator
 ///     properties:
-///       name: Example
-///       ipAddressType: IPV4
-///       enabled: true
 ///       attributes:
 ///         flowLogsEnabled: true
 ///         flowLogsS3Bucket: example-bucket
 ///         flowLogsS3Prefix: flow-logs/
+///       name: Example
+///       ipAddressType: IPV4
+///       enabled: true
 ///   exampleListener:
 ///     type: aws:globalaccelerator:Listener
 ///     name: example
 ///     properties:
-///       acceleratorArn: ${example.arn}
-///       clientAffinity: SOURCE_IP
-///       protocol: TCP
 ///       portRanges:
 ///         - fromPort: 80
 ///           toPort: 80
+///       acceleratorArn: ${example.arn}
+///       clientAffinity: SOURCE_IP
+///       protocol: TCP
 /// ```
 ///
 ///
@@ -241,7 +242,7 @@ import 'listener_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Global Accelerator listener.
+/// - `arn` (String) ARN of the Global Accelerator listener.
 ///
 ///
 /// Using `pulumi import`, import Global Accelerator listeners using the `id`. For example:
@@ -250,14 +251,14 @@ import 'listener_state.dart';
 /// $ pulumi import aws:globalaccelerator/listener:Listener example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/listener/xxxxxxxx
 /// ```
 class Listener extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of your accelerator.
+  /// ARN of your accelerator.
   late final pulumi.Output<String> acceleratorArn;
-  /// The Amazon Resource Name (ARN) of the listener.
+  /// ARN of the listener.
   late final pulumi.Output<String> arn;
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   late final pulumi.Output<String?> clientAffinity;
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> portRanges;
+  late final pulumi.Output<List<ListenerPortRange>> portRanges;
   /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   late final pulumi.Output<String> protocol;
 
@@ -273,12 +274,12 @@ class Listener extends pulumi.CustomResource {
           'aws:globalaccelerator/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');
     clientAffinity = registerOutput<String?>('clientAffinity');
-    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
+    portRanges = registerOutput<List<ListenerPortRange>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListenerPortRange>(guardedValue, (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>())); });
     protocol = registerOutput<String>('protocol');
   }
 
@@ -287,11 +288,12 @@ class Listener extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ListenerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Listener._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,7 +310,23 @@ class Listener extends pulumi.CustomResource {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');
     clientAffinity = registerOutput<String?>('clientAffinity');
-    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
+    portRanges = registerOutput<List<ListenerPortRange>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListenerPortRange>(guardedValue, (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>())); });
+    protocol = registerOutput<String>('protocol');
+  }
+
+  /// Creates a typed reference to an existing [Listener] resource.
+  Listener.reference(String urn)
+    : super(
+        'aws:globalaccelerator/listener:Listener',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorArn = registerOutput<String>('acceleratorArn');
+    arn = registerOutput<String>('arn');
+    clientAffinity = registerOutput<String?>('clientAffinity');
+    portRanges = registerOutput<List<ListenerPortRange>>('portRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListenerPortRange>(guardedValue, (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>())); });
     protocol = registerOutput<String>('protocol');
   }
 }

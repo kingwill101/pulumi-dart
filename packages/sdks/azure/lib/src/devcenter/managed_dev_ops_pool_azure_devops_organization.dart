@@ -8,7 +8,7 @@ class ManagedDevOpsPoolAzureDevopsOrganization {
   /// One or more `organization` blocks as defined below.
   final pulumi.Input<List<ManagedDevOpsPoolAzureDevopsOrganizationOrganization>> organizations;
   /// A `permission` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ManagedDevOpsPoolAzureDevopsOrganizationPermission>? permission;
+  final pulumi.Input<ManagedDevOpsPoolAzureDevopsOrganizationPermission?>? permission;
 
   /// Creates a new [ManagedDevOpsPoolAzureDevopsOrganization].
   /// [organizations] One or more `organization` blocks as defined below.

@@ -9,19 +9,19 @@ import 'network_manager_scope.dart';
 /// {@macro pulumi_network_network_manager_network_manager_args_doc}
 class NetworkManagerArgs {
   /// A description of the Network Manager.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the Azure Region where the Network Manager should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Network Manager. Changing this forces a new Network Manager to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Network Manager should exist. Changing this forces a new Network Manager to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `scope` block as defined below.
   final pulumi.Input<NetworkManagerScope> scope;
   /// A list of configuration deployment types. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`, which specify whether Connectivity Configuration, Security Admin Configuration or Routing Configuration are allowed for the Network Manager.
-  final pulumi.Input<List<String>>? scopeAccesses;
+  final pulumi.Input<List<String>?>? scopeAccesses;
   /// A mapping of tags which should be assigned to the Network Manager.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkManagerArgs].
   /// [description] A description of the Network Manager.

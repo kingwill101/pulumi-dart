@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficPolicyDocumentRuleGeoProximityLocation {
   /// Specify a value for `bias` if you want to route more traffic to an endpoint from nearby endpoints (positive values) or route less traffic to an endpoint (negative values).
-  final pulumi.Input<String>? bias;
+  final pulumi.Input<String?>? bias;
   /// References to an endpoint.
-  final pulumi.Input<String>? endpointReference;
+  final pulumi.Input<String?>? endpointReference;
   /// Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
-  final pulumi.Input<bool>? evaluateTargetHealth;
+  final pulumi.Input<bool?>? evaluateTargetHealth;
   /// If you want to associate a health check with the endpoint or rule.
-  final pulumi.Input<String>? healthCheck;
+  final pulumi.Input<String?>? healthCheck;
   /// Represents the location south (negative) or north (positive) of the equator. Valid values are -90 degrees to 90 degrees.
-  final pulumi.Input<String>? latitude;
+  final pulumi.Input<String?>? latitude;
   /// Represents the location west (negative) or east (positive) of the prime meridian. Valid values are -180 degrees to 180 degrees.
-  final pulumi.Input<String>? longitude;
+  final pulumi.Input<String?>? longitude;
   /// If your endpoint is an AWS resource, specify the AWS Region that you created the resource in.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// References to a rule.
-  final pulumi.Input<String>? ruleReference;
+  final pulumi.Input<String?>? ruleReference;
 
   /// Creates a new [GetTrafficPolicyDocumentRuleGeoProximityLocation].
   /// [bias] Specify a value for `bias` if you want to route more traffic to an endpoint from nearby endpoints (positive values) or route less traffic to an endpoint (negative values).

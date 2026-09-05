@@ -20,11 +20,11 @@ import 'delivery_channel_state.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["config.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -66,11 +66,11 @@ import 'delivery_channel_state.dart';
 ///     bucket="example-awsconfig",
 ///     force_destroy=True)
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["config.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// r = aws.iam.Role("r",
@@ -116,7 +116,6 @@ import 'delivery_channel_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -128,6 +127,7 @@ import 'delivery_channel_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -213,7 +213,6 @@ import 'delivery_channel_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -222,6 +221,7 @@ import 'delivery_channel_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -293,11 +293,11 @@ import 'delivery_channel_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -373,11 +373,11 @@ import 'delivery_channel_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("config.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -457,11 +457,11 @@ import 'delivery_channel_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - config.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   p:
@@ -525,7 +525,7 @@ class DeliveryChannel extends pulumi.CustomResource {
           'aws:cfg/deliveryChannel:DeliveryChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -541,11 +541,12 @@ class DeliveryChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeliveryChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeliveryChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -559,6 +560,24 @@ class DeliveryChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    s3BucketName = registerOutput<String>('s3BucketName');
+    s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
+    s3KmsKeyArn = registerOutput<String?>('s3KmsKeyArn');
+    snapshotDeliveryProperties = registerOutput<DeliveryChannelSnapshotDeliveryProperties?>('snapshotDeliveryProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryChannelSnapshotDeliveryProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snsTopicArn = registerOutput<String?>('snsTopicArn');
+  }
+
+  /// Creates a typed reference to an existing [DeliveryChannel] resource.
+  DeliveryChannel.reference(String urn)
+    : super(
+        'aws:cfg/deliveryChannel:DeliveryChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     s3BucketName = registerOutput<String>('s3BucketName');

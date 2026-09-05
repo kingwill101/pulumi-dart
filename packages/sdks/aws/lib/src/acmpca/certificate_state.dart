@@ -6,26 +6,26 @@ import 'certificate_validity.dart';
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates
-  final pulumi.Input<String>? apiPassthrough;
+  final pulumi.Input<String?>? apiPassthrough;
   /// ARN of the certificate.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// PEM-encoded certificate value.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// ARN of the certificate authority.
-  final pulumi.Input<String>? certificateAuthorityArn;
+  final pulumi.Input<String?>? certificateAuthorityArn;
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA.
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// Certificate Signing Request in PEM format.
-  final pulumi.Input<String>? certificateSigningRequest;
+  final pulumi.Input<String?>? certificateSigningRequest;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
-  final pulumi.Input<String>? signingAlgorithm;
+  final pulumi.Input<String?>? signingAlgorithm;
   /// Template to use when issuing a certificate.
   /// See [ACM PCA Documentation](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html) for more information.
-  final pulumi.Input<String>? templateArn;
+  final pulumi.Input<String?>? templateArn;
   /// Configures end of the validity period for the certificate. See validity block below.
-  final pulumi.Input<CertificateValidity>? validity;
+  final pulumi.Input<CertificateValidity?>? validity;
 
   /// Creates a new [CertificateState].
   /// [apiPassthrough] Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates

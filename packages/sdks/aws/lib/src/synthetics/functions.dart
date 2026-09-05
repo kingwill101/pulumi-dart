@@ -241,6 +241,17 @@ Future<GetRuntimeVersionResult> getRuntimeVersion(
   return GetRuntimeVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRuntimeVersionResult> getRuntimeVersionOutput(
+  GetRuntimeVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:synthetics/getRuntimeVersion:getRuntimeVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeVersionResult.fromMap);
+}
+
 /// Data source for managing an AWS CloudWatch Synthetics Runtime Versions.
 ///
 /// ## Example Usage
@@ -349,4 +360,15 @@ Future<GetRuntimeVersionsResult> getRuntimeVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuntimeVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetRuntimeVersionsResult> getRuntimeVersionsOutput(
+  GetRuntimeVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:synthetics/getRuntimeVersions:getRuntimeVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeVersionsResult.fromMap);
 }

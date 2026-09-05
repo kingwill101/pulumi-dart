@@ -12,25 +12,25 @@ class MongoCollectionArgs {
   /// The name of the Cosmos DB Account in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
   /// The default time to live of Analytical Storage for this Mongo Collection. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
-  final pulumi.Input<int>? analyticalStorageTtl;
+  final pulumi.Input<int?>? analyticalStorageTtl;
   /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
-  final pulumi.Input<MongoCollectionAutoscaleSettings>? autoscaleSettings;
+  final pulumi.Input<MongoCollectionAutoscaleSettings?>? autoscaleSettings;
   /// The name of the Cosmos DB Mongo Database in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// The default Time To Live in seconds. If the value is `-1`, items are not automatically expired.
-  final pulumi.Input<int>? defaultTtlSeconds;
+  final pulumi.Input<int?>? defaultTtlSeconds;
   /// One or more `index` blocks as defined below.
-  final pulumi.Input<List<MongoCollectionIndex>>? indices;
+  final pulumi.Input<List<MongoCollectionIndex>?>? indices;
   /// Specifies the name of the Cosmos DB Mongo Collection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? shardKey;
+  final pulumi.Input<String?>? shardKey;
   /// The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
 
   /// Creates a new [MongoCollectionArgs].
   /// [accountName] The name of the Cosmos DB Account in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
@@ -74,15 +74,15 @@ class MongoCollectionArgs {
   factory MongoCollectionArgs.fromMap(Map<String, dynamic> map) {
     return MongoCollectionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoCollectionAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      defaultTtlSeconds: (() { final guardedValue = map['defaultTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultTtlSeconds: (() { final guardedValue = map['defaultTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       indices: (() { final guardedValue = map['indices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MongoCollectionIndex>(guardedValue, (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shardKey: (() { final guardedValue = map['shardKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

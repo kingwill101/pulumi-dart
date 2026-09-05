@@ -140,7 +140,7 @@ import 'sql_trigger_state.dart';
 /// 		}
 /// 		_, err = cosmosdb.NewSqlTrigger(ctx, "example", &cosmosdb.SqlTriggerArgs{
 /// 			Name:        pulumi.String("test-trigger"),
-/// 			ContainerId: exampleSqlContainer.ID(),
+/// 			ContainerId: exampleSqlContainer.ID().ToIDOutput().ToStringOutput(),
 /// 			Body:        pulumi.String("function trigger(){}"),
 /// 			Operation:   pulumi.String("Delete"),
 /// 			Type:        pulumi.String("Post"),
@@ -321,7 +321,7 @@ class SqlTrigger extends pulumi.CustomResource {
           'azure:cosmosdb/sqlTrigger:SqlTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     containerId = registerOutput<String>('containerId');
@@ -335,11 +335,12 @@ class SqlTrigger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlTriggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlTrigger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -353,6 +354,22 @@ class SqlTrigger extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
+    this.name = registerOutput<String>('name');
+    operation = registerOutput<String>('operation');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SqlTrigger] resource.
+  SqlTrigger.reference(String urn)
+    : super(
+        'azure:cosmosdb/sqlTrigger:SqlTrigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     body = registerOutput<String>('body');
     containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');

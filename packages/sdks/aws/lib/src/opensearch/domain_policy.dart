@@ -17,18 +17,18 @@ import 'domain_policy_state.dart';
 /// });
 /// const main = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         actions: ["es:*"],
-///         resources: [pulumi.interpolate`${example.arn}/*`],
 ///         conditions: [{
 ///             test: "IpAddress",
 ///             variable: "aws:SourceIp",
 ///             values: ["127.0.0.1/32"],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         effect: "Allow",
+///         actions: ["es:*"],
+///         resources: [pulumi.interpolate`${example.arn}/*`],
 ///     }],
 /// });
 /// const mainDomainPolicy = new aws.opensearch.DomainPolicy("main", {
@@ -44,18 +44,18 @@ import 'domain_policy_state.dart';
 ///     domain_name="tf-test",
 ///     engine_version="OpenSearch_1.1")
 /// main = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": ["es:*"],
-///     "resources": [example.arn.apply(lambda arn: f"{arn}/*")],
 ///     "conditions": [{
 ///         "test": "IpAddress",
 ///         "variable": "aws:SourceIp",
 ///         "values": ["127.0.0.1/32"],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["es:*"],
+///     "resources": [example.arn.apply(lambda arn: f"{arn}/*")],
 /// }])
 /// main_domain_policy = aws.opensearch.DomainPolicy("main",
 ///     domain_name=example.domain_name,
@@ -81,26 +81,6 @@ import 'domain_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "*",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "es:*",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{example.Arn}/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -112,6 +92,26 @@ import 'domain_policy_state.dart';
 ///                             "127.0.0.1/32",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "*",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "es:*",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{example.Arn}/*",
 ///                 },
 ///             },
 ///         },
@@ -148,23 +148,6 @@ import 'domain_policy_state.dart';
 /// 		main := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("*"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("es:*"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						example.Arn.ApplyT(func(arn string) (string, error) {
-/// 							return fmt.Sprintf("%v/*", arn), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("IpAddress"),
@@ -173,6 +156,23 @@ import 'domain_policy_state.dart';
 /// 								pulumi.String("127.0.0.1/32"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("*"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("es:*"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						example.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", arn), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
 /// 				},
 /// 			},
@@ -199,18 +199,18 @@ import 'domain_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "main" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["es:*"]
-///     resources = ["${aws_opensearch_domain.example.arn}/*"]
 ///     conditions {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["127.0.0.1/32"]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["es:*"]
+///     resources = ["${aws_opensearch_domain.example.arn}/*"]
 ///   }
 /// }
 ///
@@ -234,8 +234,8 @@ import 'domain_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.opensearch.DomainPolicy;
 /// import com.pulumi.aws.opensearch.DomainPolicyArgs;
 /// import java.util.ArrayList;
@@ -258,18 +258,18 @@ import 'domain_policy_state.dart';
 ///
 ///         final var main = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions("es:*")
-///                 .resources(example.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("IpAddress")
 ///                     .variable("aws:SourceIp")
 ///                     .values("127.0.0.1/32")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("es:*")
+///                 .resources(example.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .build())
 ///             .build());
 ///
@@ -300,20 +300,20 @@ import 'domain_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - es:*
-///             resources:
-///               - ${example.arn}/*
-///             conditions:
+///           - conditions:
 ///               - test: IpAddress
 ///                 variable: aws:SourceIp
 ///                 values:
 ///                   - 127.0.0.1/32
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             effect: Allow
+///             actions:
+///               - es:*
+///             resources:
+///               - ${example.arn}/*
 /// ```
 ///
 ///
@@ -344,7 +344,7 @@ class DomainPolicy extends pulumi.CustomResource {
           'aws:opensearch/domainPolicy:DomainPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
@@ -356,11 +356,12 @@ class DomainPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,6 +375,20 @@ class DomainPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicies = registerOutput<String>('accessPolicies');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DomainPolicy] resource.
+  DomainPolicy.reference(String urn)
+    : super(
+        'aws:opensearch/domainPolicy:DomainPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

@@ -14,7 +14,7 @@ class OrganizationArgs {
   /// The ID of the organization. Changing this forces a new resource to be created.
   final pulumi.Input<String> organizationId;
   /// The `organizationId` of the parent organization. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? parentOrganizationId;
+  final pulumi.Input<String?>? parentOrganizationId;
 
   /// Creates a new [OrganizationArgs].
   /// [displayName] Custom `displayName` for the organization.

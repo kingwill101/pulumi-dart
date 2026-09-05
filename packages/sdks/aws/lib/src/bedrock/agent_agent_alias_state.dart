@@ -7,26 +7,26 @@ import 'agent_agent_alias_timeouts.dart';
 /// Input properties used for looking up and filtering AgentAgentAlias resources.
 class AgentAgentAliasState {
   /// ARN of the alias.
-  final pulumi.Input<String>? agentAliasArn;
+  final pulumi.Input<String?>? agentAliasArn;
   /// Unique identifier of the alias.
-  final pulumi.Input<String>? agentAliasId;
+  final pulumi.Input<String?>? agentAliasId;
   /// Name of the alias.
-  final pulumi.Input<String>? agentAliasName;
+  final pulumi.Input<String?>? agentAliasName;
   /// Identifier of the agent to create an alias for.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Details about the routing configuration of the alias. See `routingConfiguration` Block for details.
-  final pulumi.Input<List<AgentAgentAliasRoutingConfiguration>>? routingConfigurations;
+  final pulumi.Input<List<AgentAgentAliasRoutingConfiguration>?>? routingConfigurations;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentAgentAliasTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentAgentAliasTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentAliasState].
   /// [agentAliasArn] ARN of the alias.

@@ -257,7 +257,7 @@ class CostAllocationTag extends pulumi.CustomResource {
           'aws:costexplorer/costAllocationTag:CostAllocationTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     status = registerOutput<String>('status');
     tagKey = registerOutput<String>('tagKey');
@@ -269,11 +269,12 @@ class CostAllocationTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CostAllocationTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CostAllocationTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,6 +288,20 @@ class CostAllocationTag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    status = registerOutput<String>('status');
+    tagKey = registerOutput<String>('tagKey');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CostAllocationTag] resource.
+  CostAllocationTag.reference(String urn)
+    : super(
+        'aws:costexplorer/costAllocationTag:CostAllocationTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     status = registerOutput<String>('status');
     tagKey = registerOutput<String>('tagKey');
     type = registerOutput<String>('type');

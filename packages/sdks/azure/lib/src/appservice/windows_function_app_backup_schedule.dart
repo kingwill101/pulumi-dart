@@ -10,13 +10,13 @@ class WindowsFunctionAppBackupSchedule {
   /// The unit of time for how often the backup should take place. Possible values include: `Day` and `Hour`.
   final pulumi.Input<String> frequencyUnit;
   /// Should the service keep at least one backup, regardless of age of backup. Defaults to `false`.
-  final pulumi.Input<bool>? keepAtLeastOneBackup;
+  final pulumi.Input<bool?>? keepAtLeastOneBackup;
   /// The time the backup was last attempted.
-  final pulumi.Input<String>? lastExecutionTime;
+  final pulumi.Input<String?>? lastExecutionTime;
   /// After how many days backups should be deleted. Defaults to `30`.
-  final pulumi.Input<int>? retentionPeriodDays;
+  final pulumi.Input<int?>? retentionPeriodDays;
   /// When the schedule should start working in RFC-3339 format.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [WindowsFunctionAppBackupSchedule].
   /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequencyUnit` should be set to `Day`).
@@ -47,11 +47,11 @@ class WindowsFunctionAppBackupSchedule {
 
   factory WindowsFunctionAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
+      frequencyInterval: pulumi.Input.fromValue((map['frequencyInterval'] as num).toInt()),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
       keepAtLeastOneBackup: (() { final guardedValue = map['keepAtLeastOneBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastExecutionTime: (() { final guardedValue = map['lastExecutionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

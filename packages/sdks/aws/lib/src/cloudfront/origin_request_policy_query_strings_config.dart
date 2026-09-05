@@ -5,7 +5,7 @@ import 'origin_request_policy_query_strings_config_query_strings.dart';
 
 class OriginRequestPolicyQueryStringsConfig {
   final pulumi.Input<String> queryStringBehavior;
-  final pulumi.Input<OriginRequestPolicyQueryStringsConfigQueryStrings>? queryStrings;
+  final pulumi.Input<OriginRequestPolicyQueryStringsConfigQueryStrings?>? queryStrings;
 
   /// Creates a new [OriginRequestPolicyQueryStringsConfig].
   /// [queryStringBehavior] Required.

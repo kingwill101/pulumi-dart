@@ -7,11 +7,11 @@ import 'risk_configuration_account_takeover_risk_configuration_actions_medium_ac
 
 class RiskConfigurationAccountTakeoverRiskConfigurationActions {
   /// Action to take for a high risk. See action block below.
-  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction>? highAction;
+  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction?>? highAction;
   /// Action to take for a low risk. See action block below.
-  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction>? lowAction;
+  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction?>? lowAction;
   /// Action to take for a medium risk. See action block below.
-  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction>? mediumAction;
+  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction?>? mediumAction;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationActions].
   /// [highAction] Action to take for a high risk. See action block below.

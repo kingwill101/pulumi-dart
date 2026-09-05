@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_args.dart';
 import 'channel_cdi_input_specification.dart';
+import 'channel_destination.dart';
 import 'channel_encoder_settings.dart';
+import 'channel_input_attachment.dart';
 import 'channel_input_specification.dart';
 import 'channel_maintenance.dart';
 import 'channel_state.dart';
@@ -19,29 +21,11 @@ import 'channel_vpc.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.medialive.Channel("example", {
-///     name: "example-channel",
-///     channelClass: "STANDARD",
-///     roleArn: exampleAwsIamRole.arn,
 ///     inputSpecification: {
 ///         codec: "AVC",
 ///         inputResolution: "HD",
 ///         maximumBitrate: "MAX_20_MBPS",
 ///     },
-///     inputAttachments: [{
-///         inputAttachmentName: "example-input",
-///         inputId: exampleAwsMedialiveInput.id,
-///     }],
-///     destinations: [{
-///         id: "destination",
-///         settings: [
-///             {
-///                 url: `s3://${main.id}/test1`,
-///             },
-///             {
-///                 url: `s3://${main2.id}/test2`,
-///             },
-///         ],
-///     }],
 ///     encoderSettings: {
 ///         timecodeConfig: {
 ///             source: "EMBEDDED",
@@ -49,9 +33,6 @@ import 'channel_vpc.dart';
 ///         audioDescriptions: [{
 ///             audioSelectorName: "example audio selector",
 ///             name: "audio-selector",
-///         }],
-///         videoDescriptions: [{
-///             name: "example-video",
 ///         }],
 ///         outputGroups: [{
 ///             outputGroupSettings: {
@@ -62,13 +43,8 @@ import 'channel_vpc.dart';
 ///                 }],
 ///             },
 ///             outputs: [{
-///                 outputName: "example-name",
-///                 videoDescriptionName: "example-video",
-///                 audioDescriptionNames: ["audio-selector"],
 ///                 outputSettings: {
 ///                     archiveOutputSettings: {
-///                         nameModifier: "_1",
-///                         extension: "m2ts",
 ///                         containerSettings: {
 ///                             m2tsSettings: {
 ///                                 audioBufferModel: "ATSC",
@@ -76,11 +52,37 @@ import 'channel_vpc.dart';
 ///                                 rateMode: "CBR",
 ///                             },
 ///                         },
+///                         nameModifier: "_1",
+///                         extension: "m2ts",
 ///                     },
 ///                 },
+///                 outputName: "example-name",
+///                 videoDescriptionName: "example-video",
+///                 audioDescriptionNames: ["audio-selector"],
 ///             }],
 ///         }],
+///         videoDescriptions: [{
+///             name: "example-video",
+///         }],
 ///     },
+///     destinations: [{
+///         settings: [
+///             {
+///                 url: `s3://${main.id}/test1`,
+///             },
+///             {
+///                 url: `s3://${main2.id}/test2`,
+///             },
+///         ],
+///         id: "destination",
+///     }],
+///     inputAttachments: [{
+///         inputAttachmentName: "example-input",
+///         inputId: exampleAwsMedialiveInput.id,
+///     }],
+///     name: "example-channel",
+///     channelClass: "STANDARD",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -88,29 +90,11 @@ import 'channel_vpc.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.medialive.Channel("example",
-///     name="example-channel",
-///     channel_class="STANDARD",
-///     role_arn=example_aws_iam_role["arn"],
 ///     input_specification={
 ///         "codec": "AVC",
 ///         "input_resolution": "HD",
 ///         "maximum_bitrate": "MAX_20_MBPS",
 ///     },
-///     input_attachments=[{
-///         "input_attachment_name": "example-input",
-///         "input_id": example_aws_medialive_input["id"],
-///     }],
-///     destinations=[{
-///         "id": "destination",
-///         "settings": [
-///             {
-///                 "url": f"s3://{main['id']}/test1",
-///             },
-///             {
-///                 "url": f"s3://{main2['id']}/test2",
-///             },
-///         ],
-///     }],
 ///     encoder_settings={
 ///         "timecode_config": {
 ///             "source": "EMBEDDED",
@@ -118,9 +102,6 @@ import 'channel_vpc.dart';
 ///         "audio_descriptions": [{
 ///             "audio_selector_name": "example audio selector",
 ///             "name": "audio-selector",
-///         }],
-///         "video_descriptions": [{
-///             "name": "example-video",
 ///         }],
 ///         "output_groups": [{
 ///             "output_group_settings": {
@@ -131,13 +112,8 @@ import 'channel_vpc.dart';
 ///                 }],
 ///             },
 ///             "outputs": [{
-///                 "output_name": "example-name",
-///                 "video_description_name": "example-video",
-///                 "audio_description_names": ["audio-selector"],
 ///                 "output_settings": {
 ///                     "archive_output_settings": {
-///                         "name_modifier": "_1",
-///                         "extension": "m2ts",
 ///                         "container_settings": {
 ///                             "m2ts_settings": {
 ///                                 "audio_buffer_model": "ATSC",
@@ -145,11 +121,37 @@ import 'channel_vpc.dart';
 ///                                 "rate_mode": "CBR",
 ///                             },
 ///                         },
+///                         "name_modifier": "_1",
+///                         "extension": "m2ts",
 ///                     },
 ///                 },
+///                 "output_name": "example-name",
+///                 "video_description_name": "example-video",
+///                 "audio_description_names": ["audio-selector"],
 ///             }],
 ///         }],
-///     })
+///         "video_descriptions": [{
+///             "name": "example-video",
+///         }],
+///     },
+///     destinations=[{
+///         "settings": [
+///             {
+///                 "url": f"s3://{main['id']}/test1",
+///             },
+///             {
+///                 "url": f"s3://{main2['id']}/test2",
+///             },
+///         ],
+///         "id": "destination",
+///     }],
+///     input_attachments=[{
+///         "input_attachment_name": "example-input",
+///         "input_id": example_aws_medialive_input["id"],
+///     }],
+///     name="example-channel",
+///     channel_class="STANDARD",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -161,40 +163,11 @@ import 'channel_vpc.dart';
 /// {
 ///     var example = new Aws.MediaLive.Channel("example", new()
 ///     {
-///         Name = "example-channel",
-///         ChannelClass = "STANDARD",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         InputSpecification = new Aws.MediaLive.Inputs.ChannelInputSpecificationArgs
 ///         {
 ///             Codec = "AVC",
 ///             InputResolution = "HD",
 ///             MaximumBitrate = "MAX_20_MBPS",
-///         },
-///         InputAttachments = new[]
-///         {
-///             new Aws.MediaLive.Inputs.ChannelInputAttachmentArgs
-///             {
-///                 InputAttachmentName = "example-input",
-///                 InputId = exampleAwsMedialiveInput.Id,
-///             },
-///         },
-///         Destinations = new[]
-///         {
-///             new Aws.MediaLive.Inputs.ChannelDestinationArgs
-///             {
-///                 Id = "destination",
-///                 Settings = new[]
-///                 {
-///                     new Aws.MediaLive.Inputs.ChannelDestinationSettingArgs
-///                     {
-///                         Url = $"s3://{main.Id}/test1",
-///                     },
-///                     new Aws.MediaLive.Inputs.ChannelDestinationSettingArgs
-///                     {
-///                         Url = $"s3://{main2.Id}/test2",
-///                     },
-///                 },
-///             },
 ///         },
 ///         EncoderSettings = new Aws.MediaLive.Inputs.ChannelEncoderSettingsArgs
 ///         {
@@ -208,13 +181,6 @@ import 'channel_vpc.dart';
 ///                 {
 ///                     AudioSelectorName = "example audio selector",
 ///                     Name = "audio-selector",
-///                 },
-///             },
-///             VideoDescriptions = new[]
-///             {
-///                 new Aws.MediaLive.Inputs.ChannelEncoderSettingsVideoDescriptionArgs
-///                 {
-///                     Name = "example-video",
 ///                 },
 ///             },
 ///             OutputGroups = new[]
@@ -238,18 +204,10 @@ import 'channel_vpc.dart';
 ///                     {
 ///                         new Aws.MediaLive.Inputs.ChannelEncoderSettingsOutputGroupOutputArgs
 ///                         {
-///                             OutputName = "example-name",
-///                             VideoDescriptionName = "example-video",
-///                             AudioDescriptionNames = new[]
-///                             {
-///                                 "audio-selector",
-///                             },
 ///                             OutputSettings = new Aws.MediaLive.Inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArgs
 ///                             {
 ///                                 ArchiveOutputSettings = new Aws.MediaLive.Inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsArgs
 ///                                 {
-///                                     NameModifier = "_1",
-///                                     Extension = "m2ts",
 ///                                     ContainerSettings = new Aws.MediaLive.Inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsArgs
 ///                                     {
 ///                                         M2tsSettings = new Aws.MediaLive.Inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsArgs
@@ -259,13 +217,57 @@ import 'channel_vpc.dart';
 ///                                             RateMode = "CBR",
 ///                                         },
 ///                                     },
+///                                     NameModifier = "_1",
+///                                     Extension = "m2ts",
 ///                                 },
+///                             },
+///                             OutputName = "example-name",
+///                             VideoDescriptionName = "example-video",
+///                             AudioDescriptionNames = new[]
+///                             {
+///                                 "audio-selector",
 ///                             },
 ///                         },
 ///                     },
 ///                 },
 ///             },
+///             VideoDescriptions = new[]
+///             {
+///                 new Aws.MediaLive.Inputs.ChannelEncoderSettingsVideoDescriptionArgs
+///                 {
+///                     Name = "example-video",
+///                 },
+///             },
 ///         },
+///         Destinations = new[]
+///         {
+///             new Aws.MediaLive.Inputs.ChannelDestinationArgs
+///             {
+///                 Settings = new[]
+///                 {
+///                     new Aws.MediaLive.Inputs.ChannelDestinationSettingArgs
+///                     {
+///                         Url = $"s3://{main.Id}/test1",
+///                     },
+///                     new Aws.MediaLive.Inputs.ChannelDestinationSettingArgs
+///                     {
+///                         Url = $"s3://{main2.Id}/test2",
+///                     },
+///                 },
+///                 Id = "destination",
+///             },
+///         },
+///         InputAttachments = new[]
+///         {
+///             new Aws.MediaLive.Inputs.ChannelInputAttachmentArgs
+///             {
+///                 InputAttachmentName = "example-input",
+///                 InputId = exampleAwsMedialiveInput.Id,
+///             },
+///         },
+///         Name = "example-channel",
+///         ChannelClass = "STANDARD",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -281,32 +283,10 @@ import 'channel_vpc.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := medialive.NewChannel(ctx, "example", &medialive.ChannelArgs{
-/// 			Name:         pulumi.String("example-channel"),
-/// 			ChannelClass: pulumi.String("STANDARD"),
-/// 			RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 			InputSpecification: &medialive.ChannelInputSpecificationArgs{
 /// 				Codec:           pulumi.String("AVC"),
 /// 				InputResolution: pulumi.String("HD"),
 /// 				MaximumBitrate:  pulumi.String("MAX_20_MBPS"),
-/// 			},
-/// 			InputAttachments: medialive.ChannelInputAttachmentArray{
-/// 				&medialive.ChannelInputAttachmentArgs{
-/// 					InputAttachmentName: pulumi.String("example-input"),
-/// 					InputId:             pulumi.Any(exampleAwsMedialiveInput.Id),
-/// 				},
-/// 			},
-/// 			Destinations: medialive.ChannelDestinationArray{
-/// 				&medialive.ChannelDestinationArgs{
-/// 					Id: pulumi.String("destination"),
-/// 					Settings: medialive.ChannelDestinationSettingArray{
-/// 						&medialive.ChannelDestinationSettingArgs{
-/// 							Url: pulumi.Sprintf("s3://%v/test1", main.Id),
-/// 						},
-/// 						&medialive.ChannelDestinationSettingArgs{
-/// 							Url: pulumi.Sprintf("s3://%v/test2", main2.Id),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
 /// 			EncoderSettings: &medialive.ChannelEncoderSettingsArgs{
 /// 				TimecodeConfig: &medialive.ChannelEncoderSettingsTimecodeConfigArgs{
@@ -316,11 +296,6 @@ import 'channel_vpc.dart';
 /// 					&medialive.ChannelEncoderSettingsAudioDescriptionArgs{
 /// 						AudioSelectorName: pulumi.String("example audio selector"),
 /// 						Name:              pulumi.String("audio-selector"),
-/// 					},
-/// 				},
-/// 				VideoDescriptions: medialive.ChannelEncoderSettingsVideoDescriptionArray{
-/// 					&medialive.ChannelEncoderSettingsVideoDescriptionArgs{
-/// 						Name: pulumi.String("example-video"),
 /// 					},
 /// 				},
 /// 				OutputGroups: medialive.ChannelEncoderSettingsOutputGroupArray{
@@ -336,15 +311,8 @@ import 'channel_vpc.dart';
 /// 						},
 /// 						Outputs: medialive.ChannelEncoderSettingsOutputGroupOutputTypeArray{
 /// 							&medialive.ChannelEncoderSettingsOutputGroupOutputTypeArgs{
-/// 								OutputName:           pulumi.String("example-name"),
-/// 								VideoDescriptionName: pulumi.String("example-video"),
-/// 								AudioDescriptionNames: pulumi.StringArray{
-/// 									pulumi.String("audio-selector"),
-/// 								},
 /// 								OutputSettings: &medialive.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArgs{
 /// 									ArchiveOutputSettings: &medialive.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsArgs{
-/// 										NameModifier: pulumi.String("_1"),
-/// 										Extension:    pulumi.String("m2ts"),
 /// 										ContainerSettings: &medialive.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsArgs{
 /// 											M2tsSettings: &medialive.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsArgs{
 /// 												AudioBufferModel: pulumi.String("ATSC"),
@@ -352,13 +320,47 @@ import 'channel_vpc.dart';
 /// 												RateMode:         pulumi.String("CBR"),
 /// 											},
 /// 										},
+/// 										NameModifier: pulumi.String("_1"),
+/// 										Extension:    pulumi.String("m2ts"),
 /// 									},
+/// 								},
+/// 								OutputName:           pulumi.String("example-name"),
+/// 								VideoDescriptionName: pulumi.String("example-video"),
+/// 								AudioDescriptionNames: pulumi.StringArray{
+/// 									pulumi.String("audio-selector"),
 /// 								},
 /// 							},
 /// 						},
 /// 					},
 /// 				},
+/// 				VideoDescriptions: medialive.ChannelEncoderSettingsVideoDescriptionArray{
+/// 					&medialive.ChannelEncoderSettingsVideoDescriptionArgs{
+/// 						Name: pulumi.String("example-video"),
+/// 					},
+/// 				},
 /// 			},
+/// 			Destinations: medialive.ChannelDestinationArray{
+/// 				&medialive.ChannelDestinationArgs{
+/// 					Settings: medialive.ChannelDestinationSettingArray{
+/// 						&medialive.ChannelDestinationSettingArgs{
+/// 							Url: pulumi.Sprintf("s3://%v/test1", main.Id),
+/// 						},
+/// 						&medialive.ChannelDestinationSettingArgs{
+/// 							Url: pulumi.Sprintf("s3://%v/test2", main2.Id),
+/// 						},
+/// 					},
+/// 					Id: pulumi.String("destination"),
+/// 				},
+/// 			},
+/// 			InputAttachments: medialive.ChannelInputAttachmentArray{
+/// 				&medialive.ChannelInputAttachmentArgs{
+/// 					InputAttachmentName: pulumi.String("example-input"),
+/// 					InputId:             pulumi.Any(exampleAwsMedialiveInput.Id),
+/// 				},
+/// 			},
+/// 			Name:         pulumi.String("example-channel"),
+/// 			ChannelClass: pulumi.String("STANDARD"),
+/// 			RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -377,26 +379,10 @@ import 'channel_vpc.dart';
 /// }
 ///
 /// resource "aws_medialive_channel" "example" {
-///   name          = "example-channel"
-///   channel_class = "STANDARD"
-///   role_arn      = exampleAwsIamRole.arn
 ///   input_specification = {
 ///     codec            = "AVC"
 ///     input_resolution = "HD"
 ///     maximum_bitrate  = "MAX_20_MBPS"
-///   }
-///   input_attachments {
-///     input_attachment_name = "example-input"
-///     input_id              = exampleAwsMedialiveInput.id
-///   }
-///   destinations {
-///     id = "destination"
-///     settings {
-///       url ="s3://${main.id}/test1"
-///     }
-///     settings {
-///       url ="s3://${main2.id}/test2"
-///     }
 ///   }
 ///   encoder_settings = {
 ///     timecode_config = {
@@ -405,9 +391,6 @@ import 'channel_vpc.dart';
 ///     audio_descriptions = [{
 ///       "audioSelectorName" = "example audio selector"
 ///       "name"              = "audio-selector"
-///     }]
-///     video_descriptions = [{
-///       "name" = "example-video"
 ///     }]
 ///     output_groups = [{
 ///       "outputGroupSettings" = {
@@ -418,13 +401,8 @@ import 'channel_vpc.dart';
 ///         }]
 ///       }
 ///       "outputs" = [{
-///         "outputName"            = "example-name"
-///         "videoDescriptionName"  = "example-video"
-///         "audioDescriptionNames" = ["audio-selector"]
 ///         "outputSettings" = {
 ///           "archiveOutputSettings" = {
-///             "nameModifier" = "_1"
-///             "extension"    = "m2ts"
 ///             "containerSettings" = {
 ///               "m2tsSettings" = {
 ///                 "audioBufferModel" = "ATSC"
@@ -432,11 +410,35 @@ import 'channel_vpc.dart';
 ///                 "rateMode"         = "CBR"
 ///               }
 ///             }
+///             "nameModifier" = "_1"
+///             "extension"    = "m2ts"
 ///           }
 ///         }
+///         "outputName"            = "example-name"
+///         "videoDescriptionName"  = "example-video"
+///         "audioDescriptionNames" = ["audio-selector"]
 ///       }]
 ///     }]
+///     video_descriptions = [{
+///       "name" = "example-video"
+///     }]
 ///   }
+///   destinations {
+///     settings {
+///       url ="s3://${main.id}/test1"
+///     }
+///     settings {
+///       url ="s3://${main2.id}/test2"
+///     }
+///     id = "destination"
+///   }
+///   input_attachments {
+///     input_attachment_name = "example-input"
+///     input_id              = exampleAwsMedialiveInput.id
+///   }
+///   name          = "example-channel"
+///   channel_class = "STANDARD"
+///   role_arn      = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -448,13 +450,9 @@ import 'channel_vpc.dart';
 /// import com.pulumi.aws.medialive.Channel;
 /// import com.pulumi.aws.medialive.ChannelArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelInputSpecificationArgs;
-/// import com.pulumi.aws.medialive.inputs.ChannelInputAttachmentArgs;
-/// import com.pulumi.aws.medialive.inputs.ChannelDestinationArgs;
-/// import com.pulumi.aws.medialive.inputs.ChannelDestinationSettingArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsTimecodeConfigArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsAudioDescriptionArgs;
-/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsVideoDescriptionArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputGroupSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArgs;
@@ -464,6 +462,10 @@ import 'channel_vpc.dart';
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsArgs;
 /// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelEncoderSettingsVideoDescriptionArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelDestinationArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelDestinationSettingArgs;
+/// import com.pulumi.aws.medialive.inputs.ChannelInputAttachmentArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -478,27 +480,10 @@ import 'channel_vpc.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Channel("example", ChannelArgs.builder()
-///             .name("example-channel")
-///             .channelClass("STANDARD")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .inputSpecification(ChannelInputSpecificationArgs.builder()
 ///                 .codec("AVC")
 ///                 .inputResolution("HD")
 ///                 .maximumBitrate("MAX_20_MBPS")
-///                 .build())
-///             .inputAttachments(ChannelInputAttachmentArgs.builder()
-///                 .inputAttachmentName("example-input")
-///                 .inputId(exampleAwsMedialiveInput.id())
-///                 .build())
-///             .destinations(ChannelDestinationArgs.builder()
-///                 .id("destination")
-///                 .settings(
-///                     ChannelDestinationSettingArgs.builder()
-///                         .url(String.format("s3://%s/test1", main.id()))
-///                         .build(),
-///                     ChannelDestinationSettingArgs.builder()
-///                         .url(String.format("s3://%s/test2", main2.id()))
-///                         .build())
 ///                 .build())
 ///             .encoderSettings(ChannelEncoderSettingsArgs.builder()
 ///                 .timecodeConfig(ChannelEncoderSettingsTimecodeConfigArgs.builder()
@@ -507,9 +492,6 @@ import 'channel_vpc.dart';
 ///                 .audioDescriptions(ChannelEncoderSettingsAudioDescriptionArgs.builder()
 ///                     .audioSelectorName("example audio selector")
 ///                     .name("audio-selector")
-///                     .build())
-///                 .videoDescriptions(ChannelEncoderSettingsVideoDescriptionArgs.builder()
-///                     .name("example-video")
 ///                     .build())
 ///                 .outputGroups(ChannelEncoderSettingsOutputGroupArgs.builder()
 ///                     .outputGroupSettings(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArgs.builder()
@@ -520,13 +502,8 @@ import 'channel_vpc.dart';
 ///                             .build())
 ///                         .build())
 ///                     .outputs(ChannelEncoderSettingsOutputGroupOutputArgs.builder()
-///                         .outputName("example-name")
-///                         .videoDescriptionName("example-video")
-///                         .audioDescriptionNames("audio-selector")
 ///                         .outputSettings(ChannelEncoderSettingsOutputGroupOutputOutputSettingsArgs.builder()
 ///                             .archiveOutputSettings(ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsArgs.builder()
-///                                 .nameModifier("_1")
-///                                 .extension("m2ts")
 ///                                 .containerSettings(ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsArgs.builder()
 ///                                     .m2tsSettings(ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsArgs.builder()
 ///                                         .audioBufferModel("ATSC")
@@ -534,11 +511,36 @@ import 'channel_vpc.dart';
 ///                                         .rateMode("CBR")
 ///                                         .build())
 ///                                     .build())
+///                                 .nameModifier("_1")
+///                                 .extension("m2ts")
 ///                                 .build())
 ///                             .build())
+///                         .outputName("example-name")
+///                         .videoDescriptionName("example-video")
+///                         .audioDescriptionNames("audio-selector")
 ///                         .build())
 ///                     .build())
+///                 .videoDescriptions(ChannelEncoderSettingsVideoDescriptionArgs.builder()
+///                     .name("example-video")
+///                     .build())
 ///                 .build())
+///             .destinations(ChannelDestinationArgs.builder()
+///                 .settings(
+///                     ChannelDestinationSettingArgs.builder()
+///                         .url(String.format("s3://%s/test1", main.id()))
+///                         .build(),
+///                     ChannelDestinationSettingArgs.builder()
+///                         .url(String.format("s3://%s/test2", main2.id()))
+///                         .build())
+///                 .id("destination")
+///                 .build())
+///             .inputAttachments(ChannelInputAttachmentArgs.builder()
+///                 .inputAttachmentName("example-input")
+///                 .inputId(exampleAwsMedialiveInput.id())
+///                 .build())
+///             .name("example-channel")
+///             .channelClass("STANDARD")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -549,48 +551,48 @@ import 'channel_vpc.dart';
 ///   example:
 ///     type: aws:medialive:Channel
 ///     properties:
-///       name: example-channel
-///       channelClass: STANDARD
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       inputSpecification:
 ///         codec: AVC
 ///         inputResolution: HD
 ///         maximumBitrate: MAX_20_MBPS
-///       inputAttachments:
-///         - inputAttachmentName: example-input
-///           inputId: ${exampleAwsMedialiveInput.id}
-///       destinations:
-///         - id: destination
-///           settings:
-///             - url: s3://${main.id}/test1
-///             - url: s3://${main2.id}/test2
 ///       encoderSettings:
 ///         timecodeConfig:
 ///           source: EMBEDDED
 ///         audioDescriptions:
 ///           - audioSelectorName: example audio selector
 ///             name: audio-selector
-///         videoDescriptions:
-///           - name: example-video
 ///         outputGroups:
 ///           - outputGroupSettings:
 ///               archiveGroupSettings:
 ///                 - destination:
 ///                     destinationRefId: destination
 ///             outputs:
-///               - outputName: example-name
-///                 videoDescriptionName: example-video
-///                 audioDescriptionNames:
-///                   - audio-selector
-///                 outputSettings:
+///               - outputSettings:
 ///                   archiveOutputSettings:
-///                     nameModifier: _1
-///                     extension: m2ts
 ///                     containerSettings:
 ///                       m2tsSettings:
 ///                         audioBufferModel: ATSC
 ///                         bufferModel: MULTIPLEX
 ///                         rateMode: CBR
+///                     nameModifier: _1
+///                     extension: m2ts
+///                 outputName: example-name
+///                 videoDescriptionName: example-video
+///                 audioDescriptionNames:
+///                   - audio-selector
+///         videoDescriptions:
+///           - name: example-video
+///       destinations:
+///         - settings:
+///             - url: s3://${main.id}/test1
+///             - url: s3://${main2.id}/test2
+///           id: destination
+///       inputAttachments:
+///         - inputAttachmentName: example-input
+///           inputId: ${exampleAwsMedialiveInput.id}
+///       name: example-channel
+///       channelClass: STANDARD
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -623,11 +625,11 @@ class Channel extends pulumi.CustomResource {
   /// ID of the Channel.
   late final pulumi.Output<String> channelId;
   /// Destinations for channel. See Destinations for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+  late final pulumi.Output<List<ChannelDestination>> destinations;
   /// Encoder settings. See Encoder Settings for more details.
   late final pulumi.Output<ChannelEncoderSettings> encoderSettings;
   /// Input attachments for the channel. See Input Attachments for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> inputAttachments;
+  late final pulumi.Output<List<ChannelInputAttachment>> inputAttachments;
   /// Specification of network and file inputs for the channel.
   late final pulumi.Output<ChannelInputSpecification> inputSpecification;
   /// The log level to write to Cloudwatch logs.
@@ -662,15 +664,15 @@ class Channel extends pulumi.CustomResource {
           'aws:medialive/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelCdiInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     channelClass = registerOutput<String>('channelClass');
     channelId = registerOutput<String>('channelId');
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<ChannelDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelDestination>(guardedValue, (value) => ChannelDestination.fromMap((value as Map).cast<String, dynamic>())); });
     encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelEncoderSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputAttachments = registerOutput<List<Map<String, dynamic>>>('inputAttachments');
+    inputAttachments = registerOutput<List<ChannelInputAttachment>>('inputAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelInputAttachment>(guardedValue, (value) => ChannelInputAttachment.fromMap((value as Map).cast<String, dynamic>())); });
     inputSpecification = registerOutput<ChannelInputSpecification>('inputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logLevel = registerOutput<String>('logLevel');
     maintenance = registerOutput<ChannelMaintenance>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -678,8 +680,8 @@ class Channel extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     startChannel = registerOutput<bool?>('startChannel');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpc = registerOutput<ChannelVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -688,11 +690,12 @@ class Channel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Channel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -710,9 +713,9 @@ class Channel extends pulumi.CustomResource {
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelCdiInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     channelClass = registerOutput<String>('channelClass');
     channelId = registerOutput<String>('channelId');
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<ChannelDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelDestination>(guardedValue, (value) => ChannelDestination.fromMap((value as Map).cast<String, dynamic>())); });
     encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelEncoderSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputAttachments = registerOutput<List<Map<String, dynamic>>>('inputAttachments');
+    inputAttachments = registerOutput<List<ChannelInputAttachment>>('inputAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelInputAttachment>(guardedValue, (value) => ChannelInputAttachment.fromMap((value as Map).cast<String, dynamic>())); });
     inputSpecification = registerOutput<ChannelInputSpecification>('inputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logLevel = registerOutput<String>('logLevel');
     maintenance = registerOutput<ChannelMaintenance>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -720,8 +723,36 @@ class Channel extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     startChannel = registerOutput<bool?>('startChannel');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpc = registerOutput<ChannelVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'aws:medialive/channel:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelCdiInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    channelClass = registerOutput<String>('channelClass');
+    channelId = registerOutput<String>('channelId');
+    destinations = registerOutput<List<ChannelDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelDestination>(guardedValue, (value) => ChannelDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelEncoderSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputAttachments = registerOutput<List<ChannelInputAttachment>>('inputAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelInputAttachment>(guardedValue, (value) => ChannelInputAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    inputSpecification = registerOutput<ChannelInputSpecification>('inputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logLevel = registerOutput<String>('logLevel');
+    maintenance = registerOutput<ChannelMaintenance>('maintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelMaintenance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    startChannel = registerOutput<bool?>('startChannel');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpc = registerOutput<ChannelVpc?>('vpc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelVpc.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

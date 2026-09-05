@@ -9,15 +9,15 @@ import 'rule_set_rule.dart';
 /// {@macro pulumi_mailmanager_rule_set_rule_set_args_doc}
 class RuleSetArgs {
   /// Name of the rule set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource is managed.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more rules that define filtering and action logic. Up to 40 rules are supported. See `rule` Block.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<RuleSetRule>>? rules;
+  final pulumi.Input<List<RuleSetRule>?>? rules;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RuleSetArgs].
   /// [name] Name of the rule set.

@@ -3,16 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
+  /// Custom name exposed for the capability.
   final pulumi.Input<String?>? alias;
+  /// Custom description exposed for the capability.
   final pulumi.Input<String?>? description;
+  /// Whether the capability is available through the MCP server.
   final pulumi.Input<bool?>? enabled;
+  /// Name of the tool or prompt capability to override.
   final pulumi.Input<String> name;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpServerUpdatedPrompt].
-  /// [alias] Optional.
-  /// [description] Optional.
-  /// [enabled] Optional.
-  /// [name] Required.
+  /// [alias] Custom name exposed for the capability.
+  /// [description] Custom description exposed for the capability.
+  /// [enabled] Whether the capability is available through the MCP server.
+  /// [name] Name of the tool or prompt capability to override.
   const ZeroTrustAccessAiControlsMcpServerUpdatedPrompt({
     this.alias,
     this.description,

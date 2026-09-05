@@ -11,13 +11,13 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
   /// Client number for the client creating the connection.
   final pulumi.Input<String> clientNumber;
   /// Logon language of the SAPOData instance.
-  final pulumi.Input<String>? logonLanguage;
+  final pulumi.Input<String?>? logonLanguage;
   /// SAPOData OAuth properties required for OAuth type authentication. See `connector_profile_config.connector_profile_properties.sapo_data.oauth_properties` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties>? oauthProperties;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties?>? oauthProperties;
   /// Port number of the SAPOData instance.
   final pulumi.Input<int> portNumber;
   /// Snowflake Private Link service name to be used for private data transfers.
-  final pulumi.Input<String>? privateLinkServiceName;
+  final pulumi.Input<String?>? privateLinkServiceName;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData].
   /// [applicationHostUrl] Location of the SAPOData resource.
@@ -56,7 +56,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
       clientNumber: pulumi.Input.fromValue(map['clientNumber'] as String),
       logonLanguage: (() { final guardedValue = map['logonLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oauthProperties: (() { final guardedValue = map['oauthProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      portNumber: pulumi.Input.fromValue(map['portNumber'] as int),
+      portNumber: pulumi.Input.fromValue((map['portNumber'] as num).toInt()),
       privateLinkServiceName: (() { final guardedValue = map['privateLinkServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

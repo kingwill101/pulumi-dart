@@ -64,7 +64,7 @@ class GetAppTemplateInitContainer {
     return GetAppTemplateInitContainer(
       args: pulumi.Input.fromValue((map['args'] as List).cast<String>()),
       commands: pulumi.Input.fromValue((map['commands'] as List).cast<String>()),
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
       envs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateInitContainerEnv>(map['envs']!, (value) => GetAppTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))),
       ephemeralStorage: pulumi.Input.fromValue(map['ephemeralStorage'] as String),
       image: pulumi.Input.fromValue(map['image'] as String),

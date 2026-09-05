@@ -6,15 +6,15 @@ import 'user_role.dart';
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? identityProviderType;
+  final pulumi.Input<String?>? identityProviderType;
   /// The ID of the Mongo Cluster where the User should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? mongoClusterId;
+  final pulumi.Input<String?>? mongoClusterId;
   /// The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<UserRole>>? roles;
+  final pulumi.Input<List<UserRole>?>? roles;
 
   /// Creates a new [UserState].
   /// [identityProviderType] The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.

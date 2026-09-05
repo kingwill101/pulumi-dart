@@ -22,25 +22,25 @@ import 'topic_rule_error_action_step_functions.dart';
 import 'topic_rule_error_action_timestream.dart';
 
 class TopicRuleErrorAction {
-  final pulumi.Input<TopicRuleErrorActionCloudwatchAlarm>? cloudwatchAlarm;
-  final pulumi.Input<TopicRuleErrorActionCloudwatchLogs>? cloudwatchLogs;
-  final pulumi.Input<TopicRuleErrorActionCloudwatchMetric>? cloudwatchMetric;
-  final pulumi.Input<TopicRuleErrorActionDynamodb>? dynamodb;
-  final pulumi.Input<TopicRuleErrorActionDynamodbv2>? dynamodbv2;
-  final pulumi.Input<TopicRuleErrorActionElasticsearch>? elasticsearch;
-  final pulumi.Input<TopicRuleErrorActionFirehose>? firehose;
-  final pulumi.Input<TopicRuleErrorActionHttp>? http;
-  final pulumi.Input<TopicRuleErrorActionIotAnalytics>? iotAnalytics;
-  final pulumi.Input<TopicRuleErrorActionIotEvents>? iotEvents;
-  final pulumi.Input<TopicRuleErrorActionKafka>? kafka;
-  final pulumi.Input<TopicRuleErrorActionKinesis>? kinesis;
-  final pulumi.Input<TopicRuleErrorActionLambda>? lambda;
-  final pulumi.Input<TopicRuleErrorActionRepublish>? republish;
-  final pulumi.Input<TopicRuleErrorActionS3>? s3;
-  final pulumi.Input<TopicRuleErrorActionSns>? sns;
-  final pulumi.Input<TopicRuleErrorActionSqs>? sqs;
-  final pulumi.Input<TopicRuleErrorActionStepFunctions>? stepFunctions;
-  final pulumi.Input<TopicRuleErrorActionTimestream>? timestream;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchAlarm?>? cloudwatchAlarm;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchLogs?>? cloudwatchLogs;
+  final pulumi.Input<TopicRuleErrorActionCloudwatchMetric?>? cloudwatchMetric;
+  final pulumi.Input<TopicRuleErrorActionDynamodb?>? dynamodb;
+  final pulumi.Input<TopicRuleErrorActionDynamodbv2?>? dynamodbv2;
+  final pulumi.Input<TopicRuleErrorActionElasticsearch?>? elasticsearch;
+  final pulumi.Input<TopicRuleErrorActionFirehose?>? firehose;
+  final pulumi.Input<TopicRuleErrorActionHttp?>? http;
+  final pulumi.Input<TopicRuleErrorActionIotAnalytics?>? iotAnalytics;
+  final pulumi.Input<TopicRuleErrorActionIotEvents?>? iotEvents;
+  final pulumi.Input<TopicRuleErrorActionKafka?>? kafka;
+  final pulumi.Input<TopicRuleErrorActionKinesis?>? kinesis;
+  final pulumi.Input<TopicRuleErrorActionLambda?>? lambda;
+  final pulumi.Input<TopicRuleErrorActionRepublish?>? republish;
+  final pulumi.Input<TopicRuleErrorActionS3?>? s3;
+  final pulumi.Input<TopicRuleErrorActionSns?>? sns;
+  final pulumi.Input<TopicRuleErrorActionSqs?>? sqs;
+  final pulumi.Input<TopicRuleErrorActionStepFunctions?>? stepFunctions;
+  final pulumi.Input<TopicRuleErrorActionTimestream?>? timestream;
 
   /// Creates a new [TopicRuleErrorAction].
   /// [cloudwatchAlarm] Optional.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_server_args.dart';
+import 'resource_server_scope.dart';
 import 'resource_server_state.dart';
 
 /// Provides a Cognito Resource Server.
@@ -158,12 +159,12 @@ import 'resource_server_state.dart';
 ///
 /// const pool = new aws.cognito.UserPool("pool", {name: "pool"});
 /// const resource = new aws.cognito.ResourceServer("resource", {
-///     identifier: "https://example.com",
-///     name: "example",
 ///     scopes: [{
 ///         scopeName: "sample-scope",
 ///         scopeDescription: "a Sample Scope Description",
 ///     }],
+///     identifier: "https://example.com",
+///     name: "example",
 ///     userPoolId: pool.id,
 /// });
 /// ```
@@ -173,12 +174,12 @@ import 'resource_server_state.dart';
 ///
 /// pool = aws.cognito.UserPool("pool", name="pool")
 /// resource = aws.cognito.ResourceServer("resource",
-///     identifier="https://example.com",
-///     name="example",
 ///     scopes=[{
 ///         "scope_name": "sample-scope",
 ///         "scope_description": "a Sample Scope Description",
 ///     }],
+///     identifier="https://example.com",
+///     name="example",
 ///     user_pool_id=pool.id)
 /// ```
 /// ```csharp
@@ -196,8 +197,6 @@ import 'resource_server_state.dart';
 ///
 ///     var resource = new Aws.Cognito.ResourceServer("resource", new()
 ///     {
-///         Identifier = "https://example.com",
-///         Name = "example",
 ///         Scopes = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.ResourceServerScopeArgs
@@ -206,6 +205,8 @@ import 'resource_server_state.dart';
 ///                 ScopeDescription = "a Sample Scope Description",
 ///             },
 ///         },
+///         Identifier = "https://example.com",
+///         Name = "example",
 ///         UserPoolId = pool.Id,
 ///     });
 ///
@@ -228,14 +229,14 @@ import 'resource_server_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewResourceServer(ctx, "resource", &cognito.ResourceServerArgs{
-/// 			Identifier: pulumi.String("https://example.com"),
-/// 			Name:       pulumi.String("example"),
 /// 			Scopes: cognito.ResourceServerScopeArray{
 /// 				&cognito.ResourceServerScopeArgs{
 /// 					ScopeName:        pulumi.String("sample-scope"),
 /// 					ScopeDescription: pulumi.String("a Sample Scope Description"),
 /// 				},
 /// 			},
+/// 			Identifier: pulumi.String("https://example.com"),
+/// 			Name:       pulumi.String("example"),
 /// 			UserPoolId: pool.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -258,12 +259,12 @@ import 'resource_server_state.dart';
 ///   name = "pool"
 /// }
 /// resource "aws_cognito_resourceserver" "resource" {
-///   identifier = "https://example.com"
-///   name       = "example"
 ///   scopes {
 ///     scope_name        = "sample-scope"
 ///     scope_description = "a Sample Scope Description"
 ///   }
+///   identifier   = "https://example.com"
+///   name         = "example"
 ///   user_pool_id = aws_cognito_userpool.pool.id
 /// }
 /// ```
@@ -296,12 +297,12 @@ import 'resource_server_state.dart';
 ///             .build());
 ///
 ///         var resource = new ResourceServer("resource", ResourceServerArgs.builder()
-///             .identifier("https://example.com")
-///             .name("example")
 ///             .scopes(ResourceServerScopeArgs.builder()
 ///                 .scopeName("sample-scope")
 ///                 .scopeDescription("a Sample Scope Description")
 ///                 .build())
+///             .identifier("https://example.com")
+///             .name("example")
 ///             .userPoolId(pool.id())
 ///             .build());
 ///
@@ -317,11 +318,11 @@ import 'resource_server_state.dart';
 ///   resource:
 ///     type: aws:cognito:ResourceServer
 ///     properties:
-///       identifier: https://example.com
-///       name: example
 ///       scopes:
 ///         - scopeName: sample-scope
 ///           scopeDescription: a Sample Scope Description
+///       identifier: https://example.com
+///       name: example
 ///       userPoolId: ${pool.id}
 /// ```
 ///
@@ -343,7 +344,7 @@ class ResourceServer extends pulumi.CustomResource {
   /// A list of all scopes configured for this resource server in the format identifier/scope_name.
   late final pulumi.Output<List<String>> scopeIdentifiers;
   /// A list of Authorization Scope.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
+  late final pulumi.Output<List<ResourceServerScope>?> scopes;
   /// User pool the client belongs to.
   late final pulumi.Output<String> userPoolId;
 
@@ -359,13 +360,13 @@ class ResourceServer extends pulumi.CustomResource {
           'aws:cognito/resourceServer:ResourceServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
-    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopes = registerOutput<List<ResourceServerScope>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceServerScope>(guardedValue, (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>())); });
     userPoolId = registerOutput<String>('userPoolId');
   }
 
@@ -374,11 +375,12 @@ class ResourceServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -395,8 +397,25 @@ class ResourceServer extends pulumi.CustomResource {
     identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
-    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopes = registerOutput<List<ResourceServerScope>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceServerScope>(guardedValue, (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>())); });
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceServer] resource.
+  ResourceServer.reference(String urn)
+    : super(
+        'aws:cognito/resourceServer:ResourceServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identifier = registerOutput<String>('identifier');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopes = registerOutput<List<ResourceServerScope>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceServerScope>(guardedValue, (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>())); });
     userPoolId = registerOutput<String>('userPoolId');
   }
 }

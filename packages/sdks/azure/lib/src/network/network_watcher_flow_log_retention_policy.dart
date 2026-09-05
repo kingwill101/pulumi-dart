@@ -25,7 +25,7 @@ class NetworkWatcherFlowLogRetentionPolicy {
 
   factory NetworkWatcherFlowLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogRetentionPolicy(
-      days: pulumi.Input.fromValue(map['days'] as int),
+      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

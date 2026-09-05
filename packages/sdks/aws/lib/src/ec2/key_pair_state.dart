@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering KeyPair resources.
 class KeyPairState {
   /// The key pair ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The MD5 public key fingerprint as specified in section 4 of RFC 4716.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The name for the key pair. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `keyName`. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
-  final pulumi.Input<String>? keyNamePrefix;
+  final pulumi.Input<String?>? keyNamePrefix;
   /// The key pair ID.
-  final pulumi.Input<String>? keyPairId;
+  final pulumi.Input<String?>? keyPairId;
   /// The type of key pair.
-  final pulumi.Input<String>? keyType;
+  final pulumi.Input<String?>? keyType;
   /// The public key material.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [KeyPairState].
   /// [arn] The key pair ARN.

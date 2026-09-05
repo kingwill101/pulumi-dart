@@ -6,9 +6,9 @@ import 'agentcore_agent_runtime_agent_runtime_artifact_container_configuration.d
 
 class AgentcoreAgentRuntimeAgentRuntimeArtifact {
   /// Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `codeConfiguration` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration>? codeConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration?>? codeConfiguration;
   /// Container configuration block for the agent artifact. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `containerConfiguration` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration?>? containerConfiguration;
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifact].
   /// [codeConfiguration] Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `codeConfiguration` or `containerConfiguration` must be specified. See `codeConfiguration` below.

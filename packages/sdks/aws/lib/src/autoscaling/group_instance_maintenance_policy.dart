@@ -25,8 +25,8 @@ class GroupInstanceMaintenancePolicy {
 
   factory GroupInstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GroupInstanceMaintenancePolicy(
-      maxHealthyPercentage: pulumi.Input.fromValue(map['maxHealthyPercentage'] as int),
-      minHealthyPercentage: pulumi.Input.fromValue(map['minHealthyPercentage'] as int),
+      maxHealthyPercentage: pulumi.Input.fromValue((map['maxHealthyPercentage'] as num).toInt()),
+      minHealthyPercentage: pulumi.Input.fromValue((map['minHealthyPercentage'] as num).toInt()),
     );
   }
 }

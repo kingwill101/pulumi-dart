@@ -254,7 +254,7 @@ class LoadTest extends pulumi.CustomResource {
           'azure:loadtest/loadTest:LoadTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataPlaneUri = registerOutput<String>('dataPlaneUri');
     description = registerOutput<String?>('description');
@@ -263,7 +263,7 @@ class LoadTest extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LoadTest] resource's state with the given [name] and [id].
@@ -271,11 +271,12 @@ class LoadTest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadTestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadTest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,6 +297,25 @@ class LoadTest extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LoadTest] resource.
+  LoadTest.reference(String urn)
+    : super(
+        'azure:loadtest/loadTest:LoadTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataPlaneUri = registerOutput<String>('dataPlaneUri');
+    description = registerOutput<String?>('description');
+    encryption = registerOutput<LoadTestEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<LoadTestIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadTestIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

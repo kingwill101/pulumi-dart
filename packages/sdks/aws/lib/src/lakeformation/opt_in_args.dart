@@ -11,13 +11,13 @@ import 'opt_in_resource_data.dart';
 /// {@macro pulumi_lakeformation_opt_in_opt_in_args_doc}
 class OptInArgs {
   /// Lake Formation condition, which applies to permissions and opt-ins that contain an expression. See `condition` Block for more details.
-  final pulumi.Input<List<OptInCondition>>? conditions;
+  final pulumi.Input<List<OptInCondition>?>? conditions;
   /// Lake Formation principal. Supported principals are IAM users or IAM roles. See `principal` Block for more details.
   final pulumi.Input<List<OptInPrincipal>> principals;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Structure for the resource. See `resourceData` Block for more details.
-  final pulumi.Input<List<OptInResourceData>>? resourceDatas;
+  final pulumi.Input<List<OptInResourceData>?>? resourceDatas;
 
   /// Creates a new [OptInArgs].
   /// [conditions] Lake Formation condition, which applies to permissions and opt-ins that contain an expression. See `condition` Block for more details.

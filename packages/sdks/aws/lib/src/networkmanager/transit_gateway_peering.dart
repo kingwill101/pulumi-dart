@@ -188,7 +188,7 @@ class TransitGatewayPeering extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
@@ -197,8 +197,8 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     peeringType = registerOutput<String>('peeringType');
     resourceArn = registerOutput<String>('resourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
     transitGatewayPeeringAttachmentId = registerOutput<String>('transitGatewayPeeringAttachmentId');
   }
@@ -208,11 +208,12 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransitGatewayPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransitGatewayPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,8 +234,30 @@ class TransitGatewayPeering extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     peeringType = registerOutput<String>('peeringType');
     resourceArn = registerOutput<String>('resourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayArn = registerOutput<String>('transitGatewayArn');
+    transitGatewayPeeringAttachmentId = registerOutput<String>('transitGatewayPeeringAttachmentId');
+  }
+
+  /// Creates a typed reference to an existing [TransitGatewayPeering] resource.
+  TransitGatewayPeering.reference(String urn)
+    : super(
+        'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    peeringType = registerOutput<String>('peeringType');
+    resourceArn = registerOutput<String>('resourceArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
     transitGatewayPeeringAttachmentId = registerOutput<String>('transitGatewayPeeringAttachmentId');
   }

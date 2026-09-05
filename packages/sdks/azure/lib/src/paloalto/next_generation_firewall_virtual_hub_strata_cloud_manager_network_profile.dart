@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile {
   /// A list of Public IP IDs to use for Egress NAT.
-  final pulumi.Input<List<String>>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>?>? egressNatIpAddressIds;
   /// A list of Egress NAT IP addresses.
-  final pulumi.Input<List<String>>? egressNatIpAddresses;
+  final pulumi.Input<List<String>?>? egressNatIpAddresses;
   /// The IP of trusted subnet for UDR.
-  final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
+  final pulumi.Input<String?>? ipOfTrustForUserDefinedRoutes;
   /// The ID of the Palo Alto Network Virtual Appliance in the VHub. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   final pulumi.Input<String> networkVirtualApplianceId;
   /// A list of Public IP IDs to use for this Next Generation Firewall.
   final pulumi.Input<List<String>> publicIpAddressIds;
   /// A list of public IPs associated with this Next Generation Firewall.
-  final pulumi.Input<List<String>>? publicIpAddresses;
+  final pulumi.Input<List<String>?>? publicIpAddresses;
   /// A list of trusted ranges to use for the Network.
-  final pulumi.Input<List<String>>? trustedAddressRanges;
+  final pulumi.Input<List<String>?>? trustedAddressRanges;
   /// The ID of trusted subnet.
-  final pulumi.Input<String>? trustedSubnetId;
+  final pulumi.Input<String?>? trustedSubnetId;
   /// The ID of untrusted subnet.
-  final pulumi.Input<String>? untrustedSubnetId;
+  final pulumi.Input<String?>? untrustedSubnetId;
   /// The ID of the Virtual Hub this Next Generation Firewall will be deployed in. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
   final pulumi.Input<String> virtualHubId;
 

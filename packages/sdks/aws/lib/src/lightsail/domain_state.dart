@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// ARN of the Lightsail domain.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the Lightsail domain to manage.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainState].
   /// [arn] ARN of the Lightsail domain.

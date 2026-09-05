@@ -4,40 +4,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DefaultSubnet resources.
 class DefaultSubnetState {
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<bool>? assignIpv6AddressOnCreation;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<bool?>? assignIpv6AddressOnCreation;
   /// is required
   /// * The `availabilityZoneId`, `cidrBlock` and `vpcId` arguments become computed attributes
   /// * The default value for `mapPublicIpOnLaunch` is `true`
   ///
   /// This resource supports the following additional arguments:
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The AZ ID of the subnet
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// The IPv4 CIDR block assigned to the subnet
-  final pulumi.Input<String>? cidrBlock;
-  final pulumi.Input<String>? customerOwnedIpv4Pool;
-  final pulumi.Input<bool>? enableDns64;
-  final pulumi.Input<int>? enableLniAtDeviceIndex;
-  final pulumi.Input<bool>? enableResourceNameDnsARecordOnLaunch;
-  final pulumi.Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
-  final pulumi.Input<bool>? existingDefaultSubnet;
+  final pulumi.Input<String?>? cidrBlock;
+  final pulumi.Input<String?>? customerOwnedIpv4Pool;
+  final pulumi.Input<bool?>? enableDns64;
+  final pulumi.Input<int?>? enableLniAtDeviceIndex;
+  final pulumi.Input<bool?>? enableResourceNameDnsARecordOnLaunch;
+  final pulumi.Input<bool?>? enableResourceNameDnsAaaaRecordOnLaunch;
+  final pulumi.Input<bool?>? existingDefaultSubnet;
   /// Whether destroying the resource deletes the default subnet. Default: `false`
-  final pulumi.Input<bool>? forceDestroy;
-  final pulumi.Input<String>? ipv6CidrBlock;
-  final pulumi.Input<String>? ipv6CidrBlockAssociationId;
-  final pulumi.Input<bool>? ipv6Native;
-  final pulumi.Input<bool>? mapCustomerOwnedIpOnLaunch;
-  final pulumi.Input<bool>? mapPublicIpOnLaunch;
-  final pulumi.Input<String>? outpostArn;
-  final pulumi.Input<String>? ownerId;
-  final pulumi.Input<String>? privateDnsHostnameTypeOnLaunch;
+  final pulumi.Input<bool?>? forceDestroy;
+  final pulumi.Input<String?>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlockAssociationId;
+  final pulumi.Input<bool?>? ipv6Native;
+  final pulumi.Input<bool?>? mapCustomerOwnedIpOnLaunch;
+  final pulumi.Input<bool?>? mapPublicIpOnLaunch;
+  final pulumi.Input<String?>? outpostArn;
+  final pulumi.Input<String?>? ownerId;
+  final pulumi.Input<String?>? privateDnsHostnameTypeOnLaunch;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The ID of the VPC the subnet is in
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [DefaultSubnetState].
   /// [arn] Optional.
@@ -129,7 +129,7 @@ class DefaultSubnetState {
       cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerOwnedIpv4Pool: (() { final guardedValue = map['customerOwnedIpv4Pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableDns64: (() { final guardedValue = map['enableDns64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      enableLniAtDeviceIndex: (() { final guardedValue = map['enableLniAtDeviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      enableLniAtDeviceIndex: (() { final guardedValue = map['enableLniAtDeviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enableResourceNameDnsARecordOnLaunch: (() { final guardedValue = map['enableResourceNameDnsARecordOnLaunch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableResourceNameDnsAaaaRecordOnLaunch: (() { final guardedValue = map['enableResourceNameDnsAaaaRecordOnLaunch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       existingDefaultSubnet: (() { final guardedValue = map['existingDefaultSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_args.dart';
+import 'model_container.dart';
 import 'model_inference_execution_config.dart';
 import 'model_primary_container.dart';
 import 'model_state.dart';
@@ -18,11 +19,11 @@ import 'model_vpc_config.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["sagemaker.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const exampleRole = new aws.iam.Role("example", {assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json)});
@@ -30,11 +31,11 @@ import 'model_vpc_config.dart';
 ///     repositoryName: "kmeans",
 /// });
 /// const example = new aws.sagemaker.Model("example", {
-///     name: "my-model",
-///     executionRoleArn: exampleRole.arn,
 ///     primaryContainer: {
 ///         image: test.then(test => test.registryPath),
 ///     },
+///     name: "my-model",
+///     executionRoleArn: exampleRole.arn,
 /// });
 /// ```
 /// ```python
@@ -42,20 +43,20 @@ import 'model_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["sagemaker.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example", assume_role_policy=assume_role.json)
 /// test = aws.sagemaker.get_prebuilt_ecr_image(repository_name="kmeans")
 /// example = aws.sagemaker.Model("example",
-///     name="my-model",
-///     execution_role_arn=example_role.arn,
 ///     primary_container={
 ///         "image": test.registry_path,
-///     })
+///     },
+///     name="my-model",
+///     execution_role_arn=example_role.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -71,10 +72,6 @@ import 'model_vpc_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -85,6 +82,10 @@ import 'model_vpc_config.dart';
 ///                             "sagemaker.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -102,12 +103,12 @@ import 'model_vpc_config.dart';
 ///
 ///     var example = new Aws.Sagemaker.Model("example", new()
 ///     {
-///         Name = "my-model",
-///         ExecutionRoleArn = exampleRole.Arn,
 ///         PrimaryContainer = new Aws.Sagemaker.Inputs.ModelPrimaryContainerArgs
 ///         {
 ///             Image = test.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
 ///         },
+///         Name = "my-model",
+///         ExecutionRoleArn = exampleRole.Arn,
 ///     });
 ///
 /// });
@@ -126,9 +127,6 @@ import 'model_vpc_config.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -136,6 +134,9 @@ import 'model_vpc_config.dart';
 /// 								"sagemaker.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -156,11 +157,11 @@ import 'model_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewModel(ctx, "example", &sagemaker.ModelArgs{
-/// 			Name:             pulumi.String("my-model"),
-/// 			ExecutionRoleArn: exampleRole.Arn,
 /// 			PrimaryContainer: &sagemaker.ModelPrimaryContainerArgs{
 /// 				Image: pulumi.String(test.RegistryPath),
 /// 			},
+/// 			Name:             pulumi.String("my-model"),
+/// 			ExecutionRoleArn: exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -180,11 +181,11 @@ import 'model_vpc_config.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["sagemaker.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_sagemaker_getprebuiltecrimage" "test" {
@@ -192,11 +193,11 @@ import 'model_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_model" "example" {
-///   name               = "my-model"
-///   execution_role_arn = aws_iam_role.example.arn
 ///   primary_container = {
 ///     image = data.aws_sagemaker_getprebuiltecrimage.test.registry_path
 ///   }
+///   name               = "my-model"
+///   execution_role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
@@ -234,11 +235,11 @@ import 'model_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("sagemaker.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -251,11 +252,11 @@ import 'model_vpc_config.dart';
 ///             .build());
 ///
 ///         var example = new Model("example", ModelArgs.builder()
-///             .name("my-model")
-///             .executionRoleArn(exampleRole.arn())
 ///             .primaryContainer(ModelPrimaryContainerArgs.builder()
 ///                 .image(test.registryPath())
 ///                 .build())
+///             .name("my-model")
+///             .executionRoleArn(exampleRole.arn())
 ///             .build());
 ///
 ///     }
@@ -266,10 +267,10 @@ import 'model_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:Model
 ///     properties:
-///       name: my-model
-///       executionRoleArn: ${exampleRole.arn}
 ///       primaryContainer:
 ///         image: ${test.registryPath}
+///       name: my-model
+///       executionRoleArn: ${exampleRole.arn}
 ///   exampleRole:
 ///     type: aws:iam:Role
 ///     name: example
@@ -281,12 +282,12 @@ import 'model_vpc_config.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - sagemaker.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 ///   test:
 ///     fn::invoke:
 ///       function: aws:sagemaker:getPrebuiltEcrImage
@@ -303,10 +304,10 @@ import 'model_vpc_config.dart';
 /// $ pulumi import aws:sagemaker/model:Model example model-foo
 /// ```
 class Model extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) assigned by AWS to this model.
+  /// ARN assigned by AWS to this model.
   late final pulumi.Output<String> arn;
   /// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> containers;
+  late final pulumi.Output<List<ModelContainer>?> containers;
   /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
   late final pulumi.Output<bool?> enableNetworkIsolation;
   /// A role that SageMaker AI can assume to access model artifacts and docker images for deployment.
@@ -338,18 +339,18 @@ class Model extends pulumi.CustomResource {
           'aws:sagemaker/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    containers = registerOutput<List<Map<String, dynamic>>?>('containers');
+    containers = registerOutput<List<ModelContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelContainer>(guardedValue, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>())); });
     enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>('inferenceExecutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelInferenceExecutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     primaryContainer = registerOutput<ModelPrimaryContainer?>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelPrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -358,11 +359,12 @@ class Model extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Model._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -377,15 +379,37 @@ class Model extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    containers = registerOutput<List<Map<String, dynamic>>?>('containers');
+    containers = registerOutput<List<ModelContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelContainer>(guardedValue, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>())); });
     enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>('inferenceExecutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelInferenceExecutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     primaryContainer = registerOutput<ModelPrimaryContainer?>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelPrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Model] resource.
+  Model.reference(String urn)
+    : super(
+        'aws:sagemaker/model:Model',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    containers = registerOutput<List<ModelContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelContainer>(guardedValue, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>())); });
+    enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>('inferenceExecutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelInferenceExecutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    primaryContainer = registerOutput<ModelPrimaryContainer?>('primaryContainer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelPrimaryContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -12,11 +12,11 @@ class GetOutpostInstanceTypeArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
   /// Desired instance type. Conflicts with `preferredInstanceTypes`.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instanceType`.
-  final pulumi.Input<List<String>>? preferredInstanceTypes;
+  final pulumi.Input<List<String>?>? preferredInstanceTypes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetOutpostInstanceTypeArgs].
   /// [arn] Outpost ARN.

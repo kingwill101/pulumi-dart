@@ -4,28 +4,28 @@
 /// Result data returned by getClusters.
 class GetClustersResult {
   /// List of ECS cluster ARNs associated with the account.
-  final List<String> clusterArns;
-  final String region;
+  final List<String>? clusterArns;
+  final String? region;
 
   /// Creates a new [GetClustersResult].
   /// [clusterArns] List of ECS cluster ARNs associated with the account.
-  /// [region] Required.
+  /// [region] Optional.
   const GetClustersResult({
-    required this.clusterArns,
-    required this.region,
+    this.clusterArns,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterArns': clusterArns,
-      'region': region,
+      'clusterArns': ?clusterArns,
+      'region': ?region,
     };
   }
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterArns: (map['clusterArns'] as List).cast<String>(),
-      region: map['region'] as String,
+      clusterArns: (() { final guardedValue = map['clusterArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupLaunchTemplate {
   /// ID of the launch template. Conflicts with `name`.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the launch template. Conflicts with `id`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GroupLaunchTemplate].
   /// [id] ID of the launch template. Conflicts with `name`.

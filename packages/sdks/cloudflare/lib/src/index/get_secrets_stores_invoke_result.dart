@@ -5,6 +5,7 @@ import 'get_secrets_stores_result.dart';
 
 /// Result data returned by getSecretsStores.
 class GetSecretsStoresInvokeResult {
+  /// Account Identifier.
   final String? accountId;
   /// Direction to sort objects.
   /// Available values: "asc", "desc".
@@ -18,7 +19,7 @@ class GetSecretsStoresInvokeResult {
   final List<GetSecretsStoresResult>? results;
 
   /// Creates a new [GetSecretsStoresInvokeResult].
-  /// [accountId] Optional.
+  /// [accountId] Account Identifier.
   /// [direction] Direction to sort objects.
   /// [maxItems] Max items to fetch, default: 1000
   /// [order] Order stores by values in the given field.

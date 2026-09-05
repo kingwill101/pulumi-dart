@@ -15,15 +15,15 @@ import 'product_group_state.dart';
 ///     name: "example-api",
 ///     resourceGroupName: "example-resources",
 /// });
-/// const exampleGetProduct = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getProduct({
+/// const exampleGetProduct = example.then(example => azure.apimanagement.getProduct({
 ///     productId: "my-product",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 /// }));
-/// const exampleGetGroup = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getGroup({
+/// const exampleGetGroup = example.then(example => azure.apimanagement.getGroup({
 ///     name: "my-group",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 /// }));
 /// const exampleProductGroup = new azure.apimanagement.ProductGroup("example", {
 ///     productId: exampleGetProduct.then(exampleGetProduct => exampleGetProduct.productId),
@@ -287,7 +287,7 @@ class ProductGroup extends pulumi.CustomResource {
           'azure:apimanagement/productGroup:ProductGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
@@ -300,11 +300,12 @@ class ProductGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,6 +319,21 @@ class ProductGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    groupName = registerOutput<String>('groupName');
+    productId = registerOutput<String>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ProductGroup] resource.
+  ProductGroup.reference(String urn)
+    : super(
+        'azure:apimanagement/productGroup:ProductGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     productId = registerOutput<String>('productId');

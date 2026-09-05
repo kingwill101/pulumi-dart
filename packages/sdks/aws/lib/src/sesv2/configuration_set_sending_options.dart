@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetSendingOptions {
   /// If `true`, email sending is enabled for the configuration set. If `false`, email sending is disabled for the configuration set.
-  final pulumi.Input<bool>? sendingEnabled;
+  final pulumi.Input<bool?>? sendingEnabled;
 
   /// Creates a new [ConfigurationSetSendingOptions].
   /// [sendingEnabled] If `true`, email sending is enabled for the configuration set. If `false`, email sending is disabled for the configuration set.

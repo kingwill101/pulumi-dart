@@ -5,19 +5,23 @@ import 'zero_trust_access_ai_controls_mcp_portal_server_updated_prompt.dart';
 import 'zero_trust_access_ai_controls_mcp_portal_server_updated_tool.dart';
 
 class ZeroTrustAccessAiControlsMcpPortalServer {
+  /// Disable this server by default for clients connecting through the portal.
   final pulumi.Input<bool?>? defaultDisabled;
+  /// Use end-user OAuth credentials when connecting this server to the portal.
   final pulumi.Input<bool?>? onBehalf;
-  /// server id
+  /// Unique identifier for the MCP server.
   final pulumi.Input<String> serverId;
+  /// Portal-specific prompt overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt>?>? updatedPrompts;
+  /// Portal-specific tool overrides.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool>?>? updatedTools;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpPortalServer].
-  /// [defaultDisabled] Optional.
-  /// [onBehalf] Optional.
-  /// [serverId] server id
-  /// [updatedPrompts] Optional.
-  /// [updatedTools] Optional.
+  /// [defaultDisabled] Disable this server by default for clients connecting through the portal.
+  /// [onBehalf] Use end-user OAuth credentials when connecting this server to the portal.
+  /// [serverId] Unique identifier for the MCP server.
+  /// [updatedPrompts] Portal-specific prompt overrides.
+  /// [updatedTools] Portal-specific tool overrides.
   const ZeroTrustAccessAiControlsMcpPortalServer({
     this.defaultDisabled,
     this.onBehalf,

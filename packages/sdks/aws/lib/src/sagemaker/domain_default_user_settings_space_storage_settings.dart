@@ -5,7 +5,7 @@ import 'domain_default_user_settings_space_storage_settings_default_ebs_storage_
 
 class DomainDefaultUserSettingsSpaceStorageSettings {
   /// The default EBS storage settings for a private space. See `defaultEbsStorageSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings>? defaultEbsStorageSettings;
+  final pulumi.Input<DomainDefaultUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings?>? defaultEbsStorageSettings;
 
   /// Creates a new [DomainDefaultUserSettingsSpaceStorageSettings].
   /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See `defaultEbsStorageSettings` Block below.

@@ -115,12 +115,12 @@ import 'mesh_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const simple = new aws.appmesh.Mesh("simple", {
-///     name: "simpleapp",
 ///     spec: {
 ///         egressFilter: {
 ///             type: "ALLOW_ALL",
 ///         },
 ///     },
+///     name: "simpleapp",
 /// });
 /// ```
 /// ```python
@@ -128,12 +128,12 @@ import 'mesh_state.dart';
 /// import pulumi_aws as aws
 ///
 /// simple = aws.appmesh.Mesh("simple",
-///     name="simpleapp",
 ///     spec={
 ///         "egress_filter": {
 ///             "type": "ALLOW_ALL",
 ///         },
-///     })
+///     },
+///     name="simpleapp")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -145,7 +145,6 @@ import 'mesh_state.dart';
 /// {
 ///     var simple = new Aws.AppMesh.Mesh("simple", new()
 ///     {
-///         Name = "simpleapp",
 ///         Spec = new Aws.AppMesh.Inputs.MeshSpecArgs
 ///         {
 ///             EgressFilter = new Aws.AppMesh.Inputs.MeshSpecEgressFilterArgs
@@ -153,6 +152,7 @@ import 'mesh_state.dart';
 ///                 Type = "ALLOW_ALL",
 ///             },
 ///         },
+///         Name = "simpleapp",
 ///     });
 ///
 /// });
@@ -168,12 +168,12 @@ import 'mesh_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewMesh(ctx, "simple", &appmesh.MeshArgs{
-/// 			Name: pulumi.String("simpleapp"),
 /// 			Spec: &appmesh.MeshSpecArgs{
 /// 				EgressFilter: &appmesh.MeshSpecEgressFilterArgs{
 /// 					Type: pulumi.String("ALLOW_ALL"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("simpleapp"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -192,12 +192,12 @@ import 'mesh_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_mesh" "simple" {
-///   name = "simpleapp"
 ///   spec = {
 ///     egress_filter = {
 ///       type = "ALLOW_ALL"
 ///     }
 ///   }
+///   name = "simpleapp"
 /// }
 /// ```
 /// ```java
@@ -224,12 +224,12 @@ import 'mesh_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var simple = new Mesh("simple", MeshArgs.builder()
-///             .name("simpleapp")
 ///             .spec(MeshSpecArgs.builder()
 ///                 .egressFilter(MeshSpecEgressFilterArgs.builder()
 ///                     .type("ALLOW_ALL")
 ///                     .build())
 ///                 .build())
+///             .name("simpleapp")
 ///             .build());
 ///
 ///     }
@@ -240,10 +240,10 @@ import 'mesh_state.dart';
 ///   simple:
 ///     type: aws:appmesh:Mesh
 ///     properties:
-///       name: simpleapp
 ///       spec:
 ///         egressFilter:
 ///           type: ALLOW_ALL
+///       name: simpleapp
 /// ```
 ///
 ///
@@ -288,7 +288,7 @@ class Mesh extends pulumi.CustomResource {
           'aws:appmesh/mesh:Mesh',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -298,8 +298,8 @@ class Mesh extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<MeshSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MeshSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Mesh] resource's state with the given [name] and [id].
@@ -307,11 +307,12 @@ class Mesh extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MeshState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Mesh._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +334,28 @@ class Mesh extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<MeshSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MeshSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Mesh] resource.
+  Mesh.reference(String urn)
+    : super(
+        'aws:appmesh/mesh:Mesh',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<MeshSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MeshSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

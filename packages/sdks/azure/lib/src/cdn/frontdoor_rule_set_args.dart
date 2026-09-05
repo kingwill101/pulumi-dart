@@ -10,7 +10,7 @@ class FrontdoorRuleSetArgs {
   /// The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.
   final pulumi.Input<String> cdnFrontdoorProfileId;
   /// The name which should be used for this Front Door Rule Set. Changing this forces a new Front Door Rule Set to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FrontdoorRuleSetArgs].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.

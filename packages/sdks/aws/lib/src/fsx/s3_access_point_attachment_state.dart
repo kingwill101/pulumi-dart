@@ -8,22 +8,22 @@ import 's3_access_point_attachment_timeouts.dart';
 /// Input properties used for looking up and filtering S3AccessPointAttachment resources.
 class S3AccessPointAttachmentState {
   /// Name of the S3 access point.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfsConfiguration` Block for details.
-  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration>? openzfsConfiguration;
+  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration?>? openzfsConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// S3 access point configuration. See `s3AccessPoint` Block for details.
-  final pulumi.Input<S3AccessPointAttachmentS3AccessPoint>? s3AccessPoint;
+  final pulumi.Input<S3AccessPointAttachmentS3AccessPoint?>? s3AccessPoint;
   /// S3 access point's alias.
-  final pulumi.Input<String>? s3AccessPointAlias;
+  final pulumi.Input<String?>? s3AccessPointAlias;
   /// S3 access point's ARN.
-  final pulumi.Input<String>? s3AccessPointArn;
-  final pulumi.Input<S3AccessPointAttachmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? s3AccessPointArn;
+  final pulumi.Input<S3AccessPointAttachmentTimeouts?>? timeouts;
   /// Type of S3 access point. Valid values: `OpenZFS`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [S3AccessPointAttachmentState].
   /// [name] Name of the S3 access point.

@@ -11,32 +11,32 @@ class TeamsChannelConfigurationArgs {
   /// ID of the Microsoft Teams channel.
   final pulumi.Input<String> channelId;
   /// Name of the Microsoft Teams channel.
-  final pulumi.Input<String>? channelName;
+  final pulumi.Input<String?>? channelName;
   /// Name of the Microsoft Teams channel configuration.
   final pulumi.Input<String> configurationName;
   /// List of IAM policy ARNs that are applied as channel guardrails. The AWS managed `AdministratorAccess` policy is applied by default if this is not set.
-  final pulumi.Input<List<String>>? guardrailPolicyArns;
+  final pulumi.Input<List<String>?>? guardrailPolicyArns;
   /// ARN of the IAM role that defines the permissions for AWS Chatbot. This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role.
   final pulumi.Input<String> iamRoleArn;
   /// Logging levels include `ERROR`, `INFO`, or `NONE`.
-  final pulumi.Input<String>? loggingLevel;
+  final pulumi.Input<String?>? loggingLevel;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARNs of the SNS topics that deliver notifications to AWS Chatbot.
-  final pulumi.Input<List<String>>? snsTopicArns;
+  final pulumi.Input<List<String>?>? snsTopicArns;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.
   final pulumi.Input<String> teamId;
   /// Name of the Microsoft Teams team.
-  final pulumi.Input<String>? teamName;
+  final pulumi.Input<String?>? teamName;
   /// ID of the Microsoft Teams tenant.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> tenantId;
-  final pulumi.Input<TeamsChannelConfigurationTimeouts>? timeouts;
+  final pulumi.Input<TeamsChannelConfigurationTimeouts?>? timeouts;
   /// Enables use of a user role requirement in your chat configuration.
-  final pulumi.Input<bool>? userAuthorizationRequired;
+  final pulumi.Input<bool?>? userAuthorizationRequired;
 
   /// Creates a new [TeamsChannelConfigurationArgs].
   /// [channelId] ID of the Microsoft Teams channel.

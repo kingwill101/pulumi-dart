@@ -5,39 +5,39 @@ import 'application_gateway_http_listener_custom_error_configuration.dart';
 
 class ApplicationGatewayHttpListener {
   /// One or more `customErrorConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayHttpListenerCustomErrorConfiguration>>? customErrorConfigurations;
+  final pulumi.Input<List<ApplicationGatewayHttpListenerCustomErrorConfiguration>?>? customErrorConfigurations;
   /// The ID of the Web Application Firewall Policy which should be used for this HTTP Listener.
-  final pulumi.Input<String>? firewallPolicyId;
+  final pulumi.Input<String?>? firewallPolicyId;
   /// The ID of the associated Frontend Configuration.
-  final pulumi.Input<String>? frontendIpConfigurationId;
+  final pulumi.Input<String?>? frontendIpConfigurationId;
   /// The Name of the Frontend IP Configuration used for this HTTP Listener.
   final pulumi.Input<String> frontendIpConfigurationName;
   /// The ID of the associated Frontend Port.
-  final pulumi.Input<String>? frontendPortId;
+  final pulumi.Input<String?>? frontendPortId;
   /// The Name of the Frontend Port use for this HTTP Listener.
   final pulumi.Input<String> frontendPortName;
   /// The Hostname which should be used for this HTTP Listener. Setting this value changes Listener Type to 'Multi site'.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// A list of Hostname(s) should be used for this HTTP Listener. It allows special wildcard characters.
   ///
   /// &gt; **Note:** The `hostNames` and `hostName` are mutually exclusive and cannot both be set.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the HTTP Listener.
   final pulumi.Input<String> name;
   /// The Protocol to use for this HTTP Listener. Possible values are `Http` and `Https`.
   final pulumi.Input<String> protocol;
   /// Should Server Name Indication be Required? Defaults to `false`.
-  final pulumi.Input<bool>? requireSni;
+  final pulumi.Input<bool?>? requireSni;
   /// The ID of the associated SSL Certificate.
-  final pulumi.Input<String>? sslCertificateId;
+  final pulumi.Input<String?>? sslCertificateId;
   /// The name of the associated SSL Certificate which should be used for this HTTP Listener.
-  final pulumi.Input<String>? sslCertificateName;
+  final pulumi.Input<String?>? sslCertificateName;
   /// The ID of the associated SSL Profile.
-  final pulumi.Input<String>? sslProfileId;
+  final pulumi.Input<String?>? sslProfileId;
   /// The name of the associated SSL Profile which should be used for this HTTP Listener.
-  final pulumi.Input<String>? sslProfileName;
+  final pulumi.Input<String?>? sslProfileName;
 
   /// Creates a new [ApplicationGatewayHttpListener].
   /// [customErrorConfigurations] One or more `customErrorConfiguration` blocks as defined below.

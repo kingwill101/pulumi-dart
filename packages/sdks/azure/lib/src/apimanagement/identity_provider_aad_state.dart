@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityProviderAad resources.
 class IdentityProviderAadState {
   /// List of allowed AAD Tenants.
-  final pulumi.Input<List<String>>? allowedTenants;
+  final pulumi.Input<List<String>?>? allowedTenants;
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// Client Id of the Application in the AAD Identity Provider.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client library to be used in the AAD Identity Provider.
-  final pulumi.Input<String>? clientLibrary;
+  final pulumi.Input<String?>? clientLibrary;
   /// Client secret of the Application in the AAD Identity Provider.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The AAD Tenant to use instead of Common when logging into Active Directory.
-  final pulumi.Input<String>? signinTenant;
+  final pulumi.Input<String?>? signinTenant;
 
   /// Creates a new [IdentityProviderAadState].
   /// [allowedTenants] List of allowed AAD Tenants.

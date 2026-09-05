@@ -6,7 +6,7 @@ class ClusterCertificate {
   /// The Thumbprint of the Certificate.
   final pulumi.Input<String> thumbprint;
   /// The Secondary Thumbprint of the Certificate.
-  final pulumi.Input<String>? thumbprintSecondary;
+  final pulumi.Input<String?>? thumbprintSecondary;
   /// The X509 Store where the Certificate Exists, such as `My`.
   final pulumi.Input<String> x509StoreName;
 

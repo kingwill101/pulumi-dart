@@ -9,11 +9,11 @@ import 'email_template_email_template.dart';
 /// {@macro pulumi_pinpoint_email_template_email_template_args_doc}
 class EmailTemplateArgs {
   /// Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
-  final pulumi.Input<List<EmailTemplateEmailTemplate>>? emailTemplates;
+  final pulumi.Input<List<EmailTemplateEmailTemplate>?>? emailTemplates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
   final pulumi.Input<String> templateName;
 

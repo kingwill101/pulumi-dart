@@ -10,40 +10,40 @@ import 'v2models_slot_type_value_selection_setting.dart';
 /// Input properties used for looking up and filtering V2modelsSlotType resources.
 class V2modelsSlotTypeState {
   /// Identifier of the bot associated with this slot type.
-  final pulumi.Input<String>? botId;
+  final pulumi.Input<String?>? botId;
   /// Version of the bot associated with this slot type.
-  final pulumi.Input<String>? botVersion;
+  final pulumi.Input<String?>? botVersion;
   /// Specifications for a composite slot type.
   /// See `compositeSlotTypeSetting` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSetting>>? compositeSlotTypeSettings;
+  final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>? compositeSlotTypeSettings;
   /// Description of the slot type.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type of external information used to create the slot type.
   /// See `externalSourceSetting` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeExternalSourceSetting>>? externalSourceSettings;
+  final pulumi.Input<List<V2modelsSlotTypeExternalSourceSetting>?>? externalSourceSettings;
   /// Identifier of the language and locale where this slot type is used.
   /// All of the bots, slot types, and slots used by the intent must have the same locale.
-  final pulumi.Input<String>? localeId;
+  final pulumi.Input<String?>? localeId;
   /// Name of the slot type.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Built-in slot type used as a parent of this slot type.
   /// When you define a parent slot type, the new slot type has the configuration of the parent slot type.
   /// Only `AMAZON.AlphaNumeric` is supported.
-  final pulumi.Input<String>? parentSlotTypeSignature;
+  final pulumi.Input<String?>? parentSlotTypeSignature;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Unique identifier for the slot type.
-  final pulumi.Input<String>? slotTypeId;
+  final pulumi.Input<String?>? slotTypeId;
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
   /// See `slotTypeValues` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValue>>? slotTypeValues;
-  final pulumi.Input<V2modelsSlotTypeTimeouts>? timeouts;
+  final pulumi.Input<List<V2modelsSlotTypeSlotTypeValue>?>? slotTypeValues;
+  final pulumi.Input<V2modelsSlotTypeTimeouts?>? timeouts;
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
   /// See `valueSelectionSetting` argument reference below.
-  final pulumi.Input<V2modelsSlotTypeValueSelectionSetting>? valueSelectionSetting;
+  final pulumi.Input<V2modelsSlotTypeValueSelectionSetting?>? valueSelectionSetting;
 
   /// Creates a new [V2modelsSlotTypeState].
   /// [botId] Identifier of the bot associated with this slot type.

@@ -9,15 +9,15 @@ import 'managed_login_branding_asset.dart';
 /// {@macro pulumi_cognito_managed_login_branding_managed_login_branding_args_doc}
 class ManagedLoginBrandingArgs {
   /// Image files to apply to roles like backgrounds, logos, and icons. See details below.
-  final pulumi.Input<List<ManagedLoginBrandingAsset>>? assets;
+  final pulumi.Input<List<ManagedLoginBrandingAsset>?>? assets;
   /// App client that the branding style is for.
   final pulumi.Input<String> clientId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// JSON document with the the settings to apply to the style.
-  final pulumi.Input<String>? settings;
+  final pulumi.Input<String?>? settings;
   /// When `true`, applies the default branding style options.
-  final pulumi.Input<bool>? useCognitoProvidedValues;
+  final pulumi.Input<bool?>? useCognitoProvidedValues;
   /// User pool the client belongs to.
   ///
   /// The following arguments are optional:

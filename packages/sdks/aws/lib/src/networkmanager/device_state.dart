@@ -7,31 +7,31 @@ import 'device_location.dart';
 /// Input properties used for looking up and filtering Device resources.
 class DeviceState {
   /// ARN of the device.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS location of the device. Documented below.
-  final pulumi.Input<DeviceAwsLocation>? awsLocation;
+  final pulumi.Input<DeviceAwsLocation?>? awsLocation;
   /// Description of the device.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the global network.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// Location of the device. Documented below.
-  final pulumi.Input<DeviceLocation>? location;
+  final pulumi.Input<DeviceLocation?>? location;
   /// Model of device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Serial number of the device.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// ID of the site.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// Key-value tags for the device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of device.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Vendor of the device.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [DeviceState].
   /// [arn] ARN of the device.

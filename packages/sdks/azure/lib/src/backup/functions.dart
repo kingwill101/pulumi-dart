@@ -136,6 +136,17 @@ Future<GetPolicyFileshareResult> getPolicyFileshare(
   return GetPolicyFileshareResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyFileshareResult> getPolicyFileshareOutput(
+  GetPolicyFileshareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:backup/getPolicyFileshare:getPolicyFileshare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyFileshareResult.fromMap);
+}
+
 /// Use this data source to access information about an existing VM Backup Policy.
 ///
 /// ## Example Usage
@@ -266,4 +277,15 @@ Future<GetPolicyVMResult> getPolicyVM(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyVMResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyVMResult> getPolicyVMOutput(
+  GetPolicyVMArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:backup/getPolicyVM:getPolicyVM',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyVMResult.fromMap);
 }

@@ -200,7 +200,7 @@ class Member extends pulumi.CustomResource {
           'aws:securityhub/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     email = registerOutput<String?>('email');
@@ -215,11 +215,12 @@ class Member extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Member._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,23 @@ class Member extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    email = registerOutput<String?>('email');
+    invite = registerOutput<bool?>('invite');
+    masterId = registerOutput<String>('masterId');
+    memberStatus = registerOutput<String>('memberStatus');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Member] resource.
+  Member.reference(String urn)
+    : super(
+        'aws:securityhub/member:Member',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     email = registerOutput<String?>('email');
     invite = registerOutput<bool?>('invite');

@@ -1355,13 +1355,13 @@ import 'scraper_timeouts.dart';
 ///             workspaceArn: exampleAwsPrometheusWorkspace.arn,
 ///         },
 ///     },
-///     scrapeConfiguration: example.then(example => example.configuration),
 ///     source: {
 ///         eks: {
 ///             clusterArn: exampleAwsEksCluster.arn,
 ///             subnetIds: exampleAwsEksCluster.vpcConfig[0].subnetIds,
 ///         },
 ///     },
+///     scrapeConfiguration: example.then(example => example.configuration),
 /// });
 /// ```
 /// ```python
@@ -1375,13 +1375,13 @@ import 'scraper_timeouts.dart';
 ///             "workspace_arn": example_aws_prometheus_workspace["arn"],
 ///         },
 ///     },
-///     scrape_configuration=example.configuration,
 ///     source={
 ///         "eks": {
 ///             "cluster_arn": example_aws_eks_cluster["arn"],
 ///             "subnet_ids": example_aws_eks_cluster["vpcConfig"][0]["subnetIds"],
 ///         },
-///     })
+///     },
+///     scrape_configuration=example.configuration)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1402,7 +1402,6 @@ import 'scraper_timeouts.dart';
 ///                 WorkspaceArn = exampleAwsPrometheusWorkspace.Arn,
 ///             },
 ///         },
-///         ScrapeConfiguration = example.Apply(getDefaultScraperConfigurationResult => getDefaultScraperConfigurationResult.Configuration),
 ///         Source = new Aws.Amp.Inputs.ScraperSourceArgs
 ///         {
 ///             Eks = new Aws.Amp.Inputs.ScraperSourceEksArgs
@@ -1411,6 +1410,7 @@ import 'scraper_timeouts.dart';
 ///                 SubnetIds = exampleAwsEksCluster.VpcConfig[0].SubnetIds,
 ///             },
 ///         },
+///         ScrapeConfiguration = example.Apply(getDefaultScraperConfigurationResult => getDefaultScraperConfigurationResult.Configuration),
 ///     });
 ///
 /// });
@@ -1435,13 +1435,13 @@ import 'scraper_timeouts.dart';
 /// 					WorkspaceArn: pulumi.Any(exampleAwsPrometheusWorkspace.Arn),
 /// 				},
 /// 			},
-/// 			ScrapeConfiguration: pulumi.String(example.Configuration),
 /// 			Source: &amp.ScraperSourceArgs{
 /// 				Eks: &amp.ScraperSourceEksArgs{
 /// 					ClusterArn: pulumi.Any(exampleAwsEksCluster.Arn),
 /// 					SubnetIds:  pulumi.Any(exampleAwsEksCluster.VpcConfig[0].SubnetIds),
 /// 				},
 /// 			},
+/// 			ScrapeConfiguration: pulumi.String(example.Configuration),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1468,13 +1468,13 @@ import 'scraper_timeouts.dart';
 ///       workspace_arn = exampleAwsPrometheusWorkspace.arn
 ///     }
 ///   }
-///   scrape_configuration = data.aws_amp_getdefaultscraperconfiguration.example.configuration
 ///   source = {
 ///     eks = {
 ///       cluster_arn = exampleAwsEksCluster.arn
 ///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
 ///     }
 ///   }
+///   scrape_configuration = data.aws_amp_getdefaultscraperconfiguration.example.configuration
 /// }
 /// ```
 /// ```java
@@ -1513,13 +1513,13 @@ import 'scraper_timeouts.dart';
 ///                     .workspaceArn(exampleAwsPrometheusWorkspace.arn())
 ///                     .build())
 ///                 .build())
-///             .scrapeConfiguration(example.configuration())
 ///             .source(ScraperSourceArgs.builder()
 ///                 .eks(ScraperSourceEksArgs.builder()
 ///                     .clusterArn(exampleAwsEksCluster.arn())
 ///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
 ///                     .build())
 ///                 .build())
+///             .scrapeConfiguration(example.configuration())
 ///             .build());
 ///
 ///     }
@@ -1534,11 +1534,11 @@ import 'scraper_timeouts.dart';
 ///       destination:
 ///         amp:
 ///           workspaceArn: ${exampleAwsPrometheusWorkspace.arn}
-///       scrapeConfiguration: ${example.configuration}
 ///       source:
 ///         eks:
 ///           clusterArn: ${exampleAwsEksCluster.arn}
 ///           subnetIds: ${exampleAwsEksCluster.vpcConfig[0].subnetIds}
+///       scrapeConfiguration: ${example.configuration}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -1572,12 +1572,12 @@ import 'scraper_timeouts.dart';
 ///             subnetIds: exampleAwsEksCluster.vpcConfig[0].subnetIds,
 ///         },
 ///     },
-///     scrapeConfiguration: "...",
 ///     destination: {
 ///         amp: {
 ///             workspaceArn: example.arn,
 ///         },
 ///     },
+///     scrapeConfiguration: "...",
 /// });
 /// ```
 /// ```python
@@ -1595,12 +1595,12 @@ import 'scraper_timeouts.dart';
 ///             "subnet_ids": example_aws_eks_cluster["vpcConfig"][0]["subnetIds"],
 ///         },
 ///     },
-///     scrape_configuration="...",
 ///     destination={
 ///         "amp": {
 ///             "workspace_arn": example.arn,
 ///         },
-///     })
+///     },
+///     scrape_configuration="...")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1633,7 +1633,6 @@ import 'scraper_timeouts.dart';
 ///                 SubnetIds = exampleAwsEksCluster.VpcConfig[0].SubnetIds,
 ///             },
 ///         },
-///         ScrapeConfiguration = "...",
 ///         Destination = new Aws.Amp.Inputs.ScraperDestinationArgs
 ///         {
 ///             Amp = new Aws.Amp.Inputs.ScraperDestinationAmpArgs
@@ -1641,6 +1640,7 @@ import 'scraper_timeouts.dart';
 ///                 WorkspaceArn = example.Arn,
 ///             },
 ///         },
+///         ScrapeConfiguration = "...",
 ///     });
 ///
 /// });
@@ -1677,12 +1677,12 @@ import 'scraper_timeouts.dart';
 /// 					SubnetIds:  pulumi.Any(exampleAwsEksCluster.VpcConfig[0].SubnetIds),
 /// 				},
 /// 			},
-/// 			ScrapeConfiguration: pulumi.String("..."),
 /// 			Destination: &amp.ScraperDestinationArgs{
 /// 				Amp: &amp.ScraperDestinationAmpArgs{
 /// 					WorkspaceArn: example.Arn,
 /// 				},
 /// 			},
+/// 			ScrapeConfiguration: pulumi.String("..."),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1716,12 +1716,12 @@ import 'scraper_timeouts.dart';
 ///       subnet_ids  = exampleAwsEksCluster.vpcConfig[0].subnetIds
 ///     }
 ///   }
-///   scrape_configuration = "..."
 ///   destination = {
 ///     amp = {
 ///       workspace_arn = aws_amp_workspace.example.arn
 ///     }
 ///   }
+///   scrape_configuration = "..."
 /// }
 /// ```
 /// ```java
@@ -1768,12 +1768,12 @@ import 'scraper_timeouts.dart';
 ///                     .subnetIds(exampleAwsEksCluster.vpcConfig()[0].subnetIds())
 ///                     .build())
 ///                 .build())
-///             .scrapeConfiguration("...")
 ///             .destination(ScraperDestinationArgs.builder()
 ///                 .amp(ScraperDestinationAmpArgs.builder()
 ///                     .workspaceArn(example.arn())
 ///                     .build())
 ///                 .build())
+///             .scrapeConfiguration("...")
 ///             .build());
 ///
 ///     }
@@ -1794,10 +1794,10 @@ import 'scraper_timeouts.dart';
 ///         eks:
 ///           clusterArn: ${exampleAwsEksCluster.arn}
 ///           subnetIds: ${exampleAwsEksCluster.vpcConfig[0].subnetIds}
-///       scrapeConfiguration: '...'
 ///       destination:
 ///         amp:
 ///           workspaceArn: ${example.arn}
+///       scrapeConfiguration: '...'
 /// variables:
 ///   this:
 ///     fn::invoke:
@@ -2092,7 +2092,7 @@ class Scraper extends pulumi.CustomResource {
           'aws:amp/scraper:Scraper',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
@@ -2103,8 +2103,8 @@ class Scraper extends pulumi.CustomResource {
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
     source = registerOutput<ScraperSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ScraperTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -2113,11 +2113,12 @@ class Scraper extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScraperState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Scraper._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2140,8 +2141,31 @@ class Scraper extends pulumi.CustomResource {
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
     source = registerOutput<ScraperSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ScraperTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Scraper] resource.
+  Scraper.reference(String urn)
+    : super(
+        'aws:amp/scraper:Scraper',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String?>('alias');
+    arn = registerOutput<String>('arn');
+    destination = registerOutput<ScraperDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exporter = registerOutput<ScraperExporter?>('exporter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperExporter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperRoleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
+    source = registerOutput<ScraperSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ScraperTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScraperTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

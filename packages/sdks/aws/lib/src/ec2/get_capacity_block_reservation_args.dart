@@ -9,11 +9,11 @@ import 'get_capacity_block_reservation_filter.dart';
 /// {@macro pulumi_ec2_get_capacity_block_reservation_get_capacity_block_reservation_args_doc}
 class GetCapacityBlockReservationArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetCapacityBlockReservationFilter>>? filters;
+  final pulumi.Input<List<GetCapacityBlockReservationFilter>?>? filters;
   /// ID of the Capacity Block reservation to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetCapacityBlockReservationArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_bgp_connection_bgp_connection_args_doc}
 class BgpConnectionArgs {
   /// The name which should be used for this Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The peer autonomous system number for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
   final pulumi.Input<int> peerAsn;
   /// The peer IP address for the Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
@@ -16,7 +16,7 @@ class BgpConnectionArgs {
   /// The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualHubId;
   /// The ID of virtual network connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualNetworkConnectionId;
+  final pulumi.Input<String?>? virtualNetworkConnectionId;
 
   /// Creates a new [BgpConnectionArgs].
   /// [name] The name which should be used for this Virtual Hub Bgp Connection. Changing this forces a new resource to be created.
@@ -45,7 +45,7 @@ class BgpConnectionArgs {
   factory BgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return BgpConnectionArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
+      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
       peerIp: pulumi.Input.fromValue(map['peerIp'] as String),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
       virtualNetworkConnectionId: (() { final guardedValue = map['virtualNetworkConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

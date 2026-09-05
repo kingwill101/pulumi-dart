@@ -5,7 +5,7 @@ import 'continuous_deployment_policy_traffic_config_single_weight_config_session
 
 class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig {
   /// Session stickiness provides the ability to define multiple requests from a single viewer as a single session. This prevents the potentially inconsistent experience of sending some of a given user's requests to the staging distribution, while others are sent to the primary distribution. Define the session duration using TTL values. See `sessionStickinessConfig`.
-  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig>? sessionStickinessConfig;
+  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig?>? sessionStickinessConfig;
   /// The percentage of traffic to send to a staging distribution, expressed as a decimal number between `0` and `.15`.
   final pulumi.Input<double> weight;
 
@@ -27,7 +27,7 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig {
   factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig(
       sessionStickinessConfig: (() { final guardedValue = map['sessionStickinessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      weight: pulumi.Input.fromValue(map['weight'] as double),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toDouble()),
     );
   }
 }

@@ -10,9 +10,9 @@ class GetIndexArgs {
   /// Returns information on a specific Index by id.
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Metadata that helps organize the Indices you create.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetIndexArgs].
   /// [id] Returns information on a specific Index by id.

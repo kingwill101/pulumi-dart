@@ -7,11 +7,11 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
   /// Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
   final pulumi.Input<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric> metric;
   /// The period of the metric in seconds.
-  final pulumi.Input<int>? period;
+  final pulumi.Input<int?>? period;
   /// Statistic of the metrics to return.
   final pulumi.Input<String> stat;
   /// Unit of the metrics to return.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat].
   /// [metric] Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
@@ -37,7 +37,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
   factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat(
       metric: pulumi.Input.fromValue(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())),
-      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       stat: pulumi.Input.fromValue(map['stat'] as String),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeRequestHeaderConfiguration {
   /// A list of HTTP request headers that are allowed to be passed through to the runtime.
-  final pulumi.Input<List<String>>? requestHeaderAllowlists;
+  final pulumi.Input<List<String>?>? requestHeaderAllowlists;
 
   /// Creates a new [AgentcoreAgentRuntimeRequestHeaderConfiguration].
   /// [requestHeaderAllowlists] A list of HTTP request headers that are allowed to be passed through to the runtime.

@@ -6,13 +6,13 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
   /// Encryption configuration for the journal table. See `encryptionConfiguration` Block for details.
-  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration?>? encryptionConfiguration;
   /// Journal table record expiration settings. See `recordExpiration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration> recordExpiration;
   /// Journal table ARN.
-  final pulumi.Input<String>? tableArn;
+  final pulumi.Input<String?>? tableArn;
   /// Journal table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration].
   /// [encryptionConfiguration] Encryption configuration for the journal table. See `encryptionConfiguration` Block for details.

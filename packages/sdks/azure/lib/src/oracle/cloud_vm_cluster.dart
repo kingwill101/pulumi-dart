@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_vm_cluster_args.dart';
 import 'cloud_vm_cluster_data_collection_options.dart';
+import 'cloud_vm_cluster_file_system_configuration.dart';
 import 'cloud_vm_cluster_state.dart';
 
 /// Manages a Cloud VM Cluster.
@@ -357,7 +358,7 @@ class CloudVmCluster extends pulumi.CustomResource {
   /// The name of the OCI Private DNS Zone to be associated with the Cloud VM Cluster. This is required for specifying your own private domain name. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> domain;
   /// A `fileSystemConfiguration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> fileSystemConfigurations;
+  late final pulumi.Output<List<CloudVmClusterFileSystemConfiguration>?> fileSystemConfigurations;
   /// A valid Oracle Grid Infrastructure (GI) software version. Changing this forces a new Cloud VM Cluster to be created.
   late final pulumi.Output<String> giVersion;
   /// The hostname for the Cloud VM Cluster without suffix. Changing this forces a new Cloud VM Cluster to be created.
@@ -411,7 +412,7 @@ class CloudVmCluster extends pulumi.CustomResource {
           'azure:oracle/cloudVmCluster:CloudVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
     cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
@@ -421,10 +422,10 @@ class CloudVmCluster extends pulumi.CustomResource {
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
-    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('fileSystemConfigurations');
+    fileSystemConfigurations = registerOutput<List<CloudVmClusterFileSystemConfiguration>?>('fileSystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterFileSystemConfiguration>(guardedValue, (value) => CloudVmClusterFileSystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     giVersion = registerOutput<String>('giVersion');
     hostname = registerOutput<String>('hostname');
     hostnameActual = registerOutput<String>('hostnameActual');
@@ -438,10 +439,10 @@ class CloudVmCluster extends pulumi.CustomResource {
     scanListenerPortTcp = registerOutput<int?>('scanListenerPortTcp');
     scanListenerPortTcpSsl = registerOutput<int?>('scanListenerPortTcpSsl');
     sparseDiskgroupEnabled = registerOutput<bool>('sparseDiskgroupEnabled');
-    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
     systemVersion = registerOutput<String>('systemVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
     zoneId = registerOutput<String>('zoneId');
@@ -452,11 +453,12 @@ class CloudVmCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudVmClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudVmCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -478,10 +480,10 @@ class CloudVmCluster extends pulumi.CustomResource {
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
-    fileSystemConfigurations = registerOutput<List<Map<String, dynamic>>?>('fileSystemConfigurations');
+    fileSystemConfigurations = registerOutput<List<CloudVmClusterFileSystemConfiguration>?>('fileSystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterFileSystemConfiguration>(guardedValue, (value) => CloudVmClusterFileSystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     giVersion = registerOutput<String>('giVersion');
     hostname = registerOutput<String>('hostname');
     hostnameActual = registerOutput<String>('hostnameActual');
@@ -495,10 +497,53 @@ class CloudVmCluster extends pulumi.CustomResource {
     scanListenerPortTcp = registerOutput<int?>('scanListenerPortTcp');
     scanListenerPortTcpSsl = registerOutput<int?>('scanListenerPortTcpSsl');
     sparseDiskgroupEnabled = registerOutput<bool>('sparseDiskgroupEnabled');
-    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
     systemVersion = registerOutput<String>('systemVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String>('timeZone');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [CloudVmCluster] resource.
+  CloudVmCluster.reference(String urn)
+    : super(
+        'azure:oracle/cloudVmCluster:CloudVmCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
+    clusterName = registerOutput<String>('clusterName');
+    cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>('dataCollectionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudVmClusterDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
+    dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    domain = registerOutput<String>('domain');
+    fileSystemConfigurations = registerOutput<List<CloudVmClusterFileSystemConfiguration>?>('fileSystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudVmClusterFileSystemConfiguration>(guardedValue, (value) => CloudVmClusterFileSystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    giVersion = registerOutput<String>('giVersion');
+    hostname = registerOutput<String>('hostname');
+    hostnameActual = registerOutput<String>('hostnameActual');
+    licenseModel = registerOutput<String>('licenseModel');
+    localBackupEnabled = registerOutput<bool>('localBackupEnabled');
+    location = registerOutput<String>('location');
+    memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    this.name = registerOutput<String>('name');
+    ocid = registerOutput<String>('ocid');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scanListenerPortTcp = registerOutput<int?>('scanListenerPortTcp');
+    scanListenerPortTcpSsl = registerOutput<int?>('scanListenerPortTcpSsl');
+    sparseDiskgroupEnabled = registerOutput<bool>('sparseDiskgroupEnabled');
+    sshPublicKeys = registerOutput<List<String>>('sshPublicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetId = registerOutput<String>('subnetId');
+    systemVersion = registerOutput<String>('systemVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
     zoneId = registerOutput<String>('zoneId');

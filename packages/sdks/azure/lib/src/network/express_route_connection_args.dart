@@ -9,23 +9,23 @@ import 'express_route_connection_routing.dart';
 /// {@macro pulumi_network_express_route_connection_express_route_connection_args_doc}
 class ExpressRouteConnectionArgs {
   /// The authorization key to establish the Express Route Connection.
-  final pulumi.Input<String>? authorizationKey;
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<String?>? authorizationKey;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String> expressRouteCircuitPeeringId;
   /// Specified whether Fast Path is enabled for Virtual Wan Firewall Hub. Defaults to `false`.
-  final pulumi.Input<bool>? expressRouteGatewayBypassEnabled;
+  final pulumi.Input<bool?>? expressRouteGatewayBypassEnabled;
   /// The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String> expressRouteGatewayId;
   /// Is Internet security enabled for this Express Route Connection? Defaults to `false`.
-  final pulumi.Input<bool>? internetSecurityEnabled;
+  final pulumi.Input<bool?>? internetSecurityEnabled;
   /// The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<bool>? privateLinkFastPathEnabled;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<bool?>? privateLinkFastPathEnabled;
   /// A `routing` block as defined below.
-  final pulumi.Input<ExpressRouteConnectionRouting>? routing;
+  final pulumi.Input<ExpressRouteConnectionRouting?>? routing;
   /// The routing weight associated to the Express Route Connection. Possible value is between `0` and `32000`. Defaults to `0`.
-  final pulumi.Input<int>? routingWeight;
+  final pulumi.Input<int?>? routingWeight;
 
   /// Creates a new [ExpressRouteConnectionArgs].
   /// [authorizationKey] The authorization key to establish the Express Route Connection.
@@ -77,7 +77,7 @@ class ExpressRouteConnectionArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkFastPathEnabled: (() { final guardedValue = map['privateLinkFastPathEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       routing: (() { final guardedValue = map['routing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

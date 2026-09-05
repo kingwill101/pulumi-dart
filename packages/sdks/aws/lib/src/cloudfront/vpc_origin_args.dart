@@ -10,8 +10,8 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// {@macro pulumi_cloudfront_vpc_origin_vpc_origin_args_doc}
 class VpcOriginArgs {
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<VpcOriginTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<VpcOriginTimeouts?>? timeouts;
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:

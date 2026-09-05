@@ -10,7 +10,7 @@ class SqlRoleAssignmentArgs {
   /// The name of the Cosmos DB Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
   /// The GUID as the name of the Cosmos DB SQL Role Assignment - one will be generated if not specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Principal (Client) in Azure Active Directory. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
   /// The name of the Resource Group in which the Cosmos DB SQL Role Assignment is created. Changing this forces a new resource to be created.

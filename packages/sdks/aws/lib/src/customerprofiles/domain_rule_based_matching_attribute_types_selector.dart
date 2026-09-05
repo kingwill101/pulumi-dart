@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainRuleBasedMatchingAttributeTypesSelector {
   /// The `Address` type. You can choose from `Address`, `BusinessAddress`, `MaillingAddress`, and `ShippingAddress`.
-  final pulumi.Input<List<String>>? addresses;
+  final pulumi.Input<List<String>?>? addresses;
   /// Configures the `AttributeMatchingModel`, you can either choose `ONE_TO_ONE` or `MANY_TO_MANY`.
   final pulumi.Input<String> attributeMatchingModel;
   /// The `Email` type. You can choose from `EmailAddress`, `BusinessEmailAddress` and `PersonalEmailAddress`.
-  final pulumi.Input<List<String>>? emailAddresses;
+  final pulumi.Input<List<String>?>? emailAddresses;
   /// The `PhoneNumber` type. You can choose from `PhoneNumber`, `HomePhoneNumber`, and `MobilePhoneNumber`.
-  final pulumi.Input<List<String>>? phoneNumbers;
+  final pulumi.Input<List<String>?>? phoneNumbers;
 
   /// Creates a new [DomainRuleBasedMatchingAttributeTypesSelector].
   /// [addresses] The `Address` type. You can choose from `Address`, `BusinessAddress`, `MaillingAddress`, and `ShippingAddress`.

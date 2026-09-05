@@ -68,7 +68,7 @@ class GetApplicationGatewayRoutingRule {
       listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
       listenerName: pulumi.Input.fromValue(map['listenerName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

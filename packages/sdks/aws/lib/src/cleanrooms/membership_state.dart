@@ -7,35 +7,35 @@ import 'membership_payment_configuration.dart';
 /// Input properties used for looking up and filtering Membership resources.
 class MembershipState {
   /// The ARN of the membership.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ARN of the joined collaboration.
-  final pulumi.Input<String>? collaborationArn;
+  final pulumi.Input<String?>? collaborationArn;
   /// The account ID of the collaboration's creator.
-  final pulumi.Input<String>? collaborationCreatorAccountId;
+  final pulumi.Input<String?>? collaborationCreatorAccountId;
   /// The display name of the collaboration's creator.
-  final pulumi.Input<String>? collaborationCreatorDisplayName;
+  final pulumi.Input<String?>? collaborationCreatorDisplayName;
   /// The ID of the collaboration to which the member was invited.
-  final pulumi.Input<String>? collaborationId;
+  final pulumi.Input<String?>? collaborationId;
   /// The name of the joined collaboration.
-  final pulumi.Input<String>? collaborationName;
+  final pulumi.Input<String?>? collaborationName;
   /// The date and time the membership was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The default configuration for a query result.
-  final pulumi.Input<MembershipDefaultResultConfiguration>? defaultResultConfiguration;
+  final pulumi.Input<MembershipDefaultResultConfiguration?>? defaultResultConfiguration;
   /// The list of abilities for the invited member.
-  final pulumi.Input<List<String>>? memberAbilities;
-  final pulumi.Input<MembershipPaymentConfiguration>? paymentConfiguration;
+  final pulumi.Input<List<String>?>? memberAbilities;
+  final pulumi.Input<MembershipPaymentConfiguration?>? paymentConfiguration;
   /// An indicator as to whether query logging has been enabled or disabled for the membership.
-  final pulumi.Input<String>? queryLogStatus;
+  final pulumi.Input<String?>? queryLogStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The status of the membership.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key value pairs which tag the membership.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The date and time the membership was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [MembershipState].
   /// [arn] The ARN of the membership.

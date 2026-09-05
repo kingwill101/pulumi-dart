@@ -4,39 +4,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering LocationFsxWindows resources.
 class LocationFsxWindowsState {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
-  final pulumi.Input<String>? arn;
+  /// ARN of the DataSync Location.
+  final pulumi.Input<String?>? arn;
   /// The time that the FSx for Windows location was created.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// The name of the Windows domain that the FSx for Windows server belongs to.
-  final pulumi.Input<String>? domain;
-  /// The Amazon Resource Name (ARN) for the FSx for Windows file system.
-  final pulumi.Input<String>? fsxFilesystemArn;
+  final pulumi.Input<String?>? domain;
+  /// ARN for the FSx for Windows file system.
+  final pulumi.Input<String?>? fsxFilesystemArn;
   /// The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
-  final pulumi.Input<List<String>>? securityGroupArns;
+  final pulumi.Input<String?>? region;
+  /// ARNs of the security groups that are to use to configure the FSx for Windows file system.
+  final pulumi.Input<List<String>?>? securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
-  final pulumi.Input<String>? subdirectory;
+  final pulumi.Input<String?>? subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The URL of the FSx for Windows location that was described.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// The user who has the permissions to access files and folders in the FSx for Windows file system.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [LocationFsxWindowsState].
-  /// [arn] Amazon Resource Name (ARN) of the DataSync Location.
+  /// [arn] ARN of the DataSync Location.
   /// [creationTime] The time that the FSx for Windows location was created.
   /// [domain] The name of the Windows domain that the FSx for Windows server belongs to.
-  /// [fsxFilesystemArn] The Amazon Resource Name (ARN) for the FSx for Windows file system.
+  /// [fsxFilesystemArn] ARN for the FSx for Windows file system.
   /// [password] The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
+  /// [securityGroupArns] ARNs of the security groups that are to use to configure the FSx for Windows file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

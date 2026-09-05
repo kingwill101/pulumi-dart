@@ -12,21 +12,21 @@ import 'pipe_source_parameters_sqs_queue_parameters.dart';
 
 class PipeSourceParameters {
   /// The parameters for using an Active MQ broker as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersActivemqBrokerParameters>? activemqBrokerParameters;
+  final pulumi.Input<PipeSourceParametersActivemqBrokerParameters?>? activemqBrokerParameters;
   /// The parameters for using a DynamoDB stream as a source.  Detailed below.
-  final pulumi.Input<PipeSourceParametersDynamodbStreamParameters>? dynamodbStreamParameters;
+  final pulumi.Input<PipeSourceParametersDynamodbStreamParameters?>? dynamodbStreamParameters;
   /// The collection of event patterns used to [filter events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-filtering.html). Detailed below.
-  final pulumi.Input<PipeSourceParametersFilterCriteria>? filterCriteria;
+  final pulumi.Input<PipeSourceParametersFilterCriteria?>? filterCriteria;
   /// The parameters for using a Kinesis stream as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersKinesisStreamParameters>? kinesisStreamParameters;
+  final pulumi.Input<PipeSourceParametersKinesisStreamParameters?>? kinesisStreamParameters;
   /// The parameters for using an MSK stream as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParameters>? managedStreamingKafkaParameters;
+  final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParameters?>? managedStreamingKafkaParameters;
   /// The parameters for using a Rabbit MQ broker as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersRabbitmqBrokerParameters>? rabbitmqBrokerParameters;
+  final pulumi.Input<PipeSourceParametersRabbitmqBrokerParameters?>? rabbitmqBrokerParameters;
   /// The parameters for using a self-managed Apache Kafka stream as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersSelfManagedKafkaParameters>? selfManagedKafkaParameters;
+  final pulumi.Input<PipeSourceParametersSelfManagedKafkaParameters?>? selfManagedKafkaParameters;
   /// The parameters for using a Amazon SQS stream as a source. Detailed below.
-  final pulumi.Input<PipeSourceParametersSqsQueueParameters>? sqsQueueParameters;
+  final pulumi.Input<PipeSourceParametersSqsQueueParameters?>? sqsQueueParameters;
 
   /// Creates a new [PipeSourceParameters].
   /// [activemqBrokerParameters] The parameters for using an Active MQ broker as a source. Detailed below.

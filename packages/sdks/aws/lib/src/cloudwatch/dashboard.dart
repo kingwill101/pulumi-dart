@@ -365,7 +365,7 @@ import 'dashboard_state.dart';
 /// $ pulumi import aws:cloudwatch/dashboard:Dashboard example example-dashboard
 /// ```
 class Dashboard extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the dashboard.
+  /// ARN of the dashboard.
   late final pulumi.Output<String> dashboardArn;
   /// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
   late final pulumi.Output<String> dashboardBody;
@@ -386,7 +386,7 @@ class Dashboard extends pulumi.CustomResource {
           'aws:cloudwatch/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dashboardArn = registerOutput<String>('dashboardArn');
     dashboardBody = registerOutput<String>('dashboardBody');
@@ -399,11 +399,12 @@ class Dashboard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DashboardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Dashboard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -417,6 +418,21 @@ class Dashboard extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dashboardArn = registerOutput<String>('dashboardArn');
+    dashboardBody = registerOutput<String>('dashboardBody');
+    dashboardName = registerOutput<String>('dashboardName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Dashboard] resource.
+  Dashboard.reference(String urn)
+    : super(
+        'aws:cloudwatch/dashboard:Dashboard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dashboardArn = registerOutput<String>('dashboardArn');
     dashboardBody = registerOutput<String>('dashboardBody');
     dashboardName = registerOutput<String>('dashboardName');

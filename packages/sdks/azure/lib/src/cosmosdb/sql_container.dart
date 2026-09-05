@@ -4,6 +4,7 @@ import 'sql_container_autoscale_settings.dart';
 import 'sql_container_conflict_resolution_policy.dart';
 import 'sql_container_indexing_policy.dart';
 import 'sql_container_state.dart';
+import 'sql_container_unique_key.dart';
 
 /// Manages a SQL Container within a Cosmos DB Account.
 ///
@@ -431,7 +432,7 @@ class SqlContainer extends pulumi.CustomResource {
   /// The throughput of SQL container (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon container creation otherwise it cannot be updated without a manual resource destroy-apply.
   late final pulumi.Output<int> throughput;
   /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
+  late final pulumi.Output<List<SqlContainerUniqueKey>?> uniqueKeys;
 
   /// Creates a new [SqlContainer].
   /// [name] The Pulumi resource name.
@@ -445,7 +446,7 @@ class SqlContainer extends pulumi.CustomResource {
           'azure:cosmosdb/sqlContainer:SqlContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
@@ -456,11 +457,11 @@ class SqlContainer extends pulumi.CustomResource {
     indexingPolicy = registerOutput<SqlContainerIndexingPolicy>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerIndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');
-    partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths');
+    partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
-    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
+    uniqueKeys = registerOutput<List<SqlContainerUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlContainerUniqueKey>(guardedValue, (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [SqlContainer] resource's state with the given [name] and [id].
@@ -468,11 +469,12 @@ class SqlContainer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlContainerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlContainer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -495,10 +497,35 @@ class SqlContainer extends pulumi.CustomResource {
     indexingPolicy = registerOutput<SqlContainerIndexingPolicy>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerIndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');
-    partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths');
+    partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
-    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
+    uniqueKeys = registerOutput<List<SqlContainerUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlContainerUniqueKey>(guardedValue, (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SqlContainer] resource.
+  SqlContainer.reference(String urn)
+    : super(
+        'azure:cosmosdb/sqlContainer:SqlContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<SqlContainerConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    indexingPolicy = registerOutput<SqlContainerIndexingPolicy>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerIndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    partitionKeyKind = registerOutput<String?>('partitionKeyKind');
+    partitionKeyPaths = registerOutput<List<String>>('partitionKeyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    throughput = registerOutput<int>('throughput');
+    uniqueKeys = registerOutput<List<SqlContainerUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SqlContainerUniqueKey>(guardedValue, (value) => SqlContainerUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

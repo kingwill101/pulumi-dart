@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogTransformerTransformerConfigMoveKeyEntry {
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
-  final pulumi.Input<bool>? overwriteIfExists;
+  final pulumi.Input<bool?>? overwriteIfExists;
   /// Specifies the key to modify.
   final pulumi.Input<String> source;
   /// Specifies the key to move to.

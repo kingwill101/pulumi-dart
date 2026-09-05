@@ -10,17 +10,17 @@ class BucketNotificationState {
   /// Name of the bucket for notification configuration.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
-  final pulumi.Input<bool>? eventbridge;
+  final pulumi.Input<bool?>? eventbridge;
   /// Notification configuration to a Lambda Function. See below.
-  final pulumi.Input<List<BucketNotificationLambdaFunction>>? lambdaFunctions;
+  final pulumi.Input<List<BucketNotificationLambdaFunction>?>? lambdaFunctions;
   /// Notification configuration to SQS Queue. See below.
-  final pulumi.Input<List<BucketNotificationQueue>>? queues;
+  final pulumi.Input<List<BucketNotificationQueue>?>? queues;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Notification configuration to SNS Topic. See below.
-  final pulumi.Input<List<BucketNotificationTopic>>? topics;
+  final pulumi.Input<List<BucketNotificationTopic>?>? topics;
 
   /// Creates a new [BucketNotificationState].
   /// [bucket] Name of the bucket for notification configuration.

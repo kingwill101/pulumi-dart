@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationPortalOptionsSignInOptions {
   /// URL that accepts authentication requests for an application.
-  final pulumi.Input<String>? applicationUrl;
+  final pulumi.Input<String?>? applicationUrl;
   /// Determines how IAM Identity Center navigates the user to the target application.
   /// Valid values are `APPLICATION` and `IDENTITY_CENTER`.
   /// If `APPLICATION` is set, IAM Identity Center redirects the customer to the configured `applicationUrl`.

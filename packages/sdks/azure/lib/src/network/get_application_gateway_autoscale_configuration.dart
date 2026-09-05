@@ -25,8 +25,8 @@ class GetApplicationGatewayAutoscaleConfiguration {
 
   factory GetApplicationGatewayAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayAutoscaleConfiguration(
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toInt()),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toInt()),
     );
   }
 }

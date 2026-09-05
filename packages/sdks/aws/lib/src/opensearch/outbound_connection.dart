@@ -19,8 +19,6 @@ import 'outbound_connection_state.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetRegion = aws.getRegion({});
 /// const foo = new aws.opensearch.OutboundConnection("foo", {
-///     connectionAlias: "outbound_connection",
-///     connectionMode: "DIRECT",
 ///     localDomainInfo: {
 ///         ownerId: current.then(current => current.accountId),
 ///         region: currentGetRegion.then(currentGetRegion => currentGetRegion.region),
@@ -31,6 +29,8 @@ import 'outbound_connection_state.dart';
 ///         region: currentGetRegion.then(currentGetRegion => currentGetRegion.region),
 ///         domainName: remoteDomain.domainName,
 ///     },
+///     connectionAlias: "outbound_connection",
+///     connectionMode: "DIRECT",
 /// });
 /// ```
 /// ```python
@@ -40,8 +40,6 @@ import 'outbound_connection_state.dart';
 /// current = aws.get_caller_identity()
 /// current_get_region = aws.get_region()
 /// foo = aws.opensearch.OutboundConnection("foo",
-///     connection_alias="outbound_connection",
-///     connection_mode="DIRECT",
 ///     local_domain_info={
 ///         "owner_id": current.account_id,
 ///         "region": current_get_region.region,
@@ -51,7 +49,9 @@ import 'outbound_connection_state.dart';
 ///         "owner_id": current.account_id,
 ///         "region": current_get_region.region,
 ///         "domain_name": remote_domain["domainName"],
-///     })
+///     },
+///     connection_alias="outbound_connection",
+///     connection_mode="DIRECT")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,8 +67,6 @@ import 'outbound_connection_state.dart';
 ///
 ///     var foo = new Aws.OpenSearch.OutboundConnection("foo", new()
 ///     {
-///         ConnectionAlias = "outbound_connection",
-///         ConnectionMode = "DIRECT",
 ///         LocalDomainInfo = new Aws.OpenSearch.Inputs.OutboundConnectionLocalDomainInfoArgs
 ///         {
 ///             OwnerId = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
@@ -81,6 +79,8 @@ import 'outbound_connection_state.dart';
 ///             Region = currentGetRegion.Apply(getRegionResult => getRegionResult.Region),
 ///             DomainName = remoteDomain.DomainName,
 ///         },
+///         ConnectionAlias = "outbound_connection",
+///         ConnectionMode = "DIRECT",
 ///     });
 ///
 /// });
@@ -105,8 +105,6 @@ import 'outbound_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewOutboundConnection(ctx, "foo", &opensearch.OutboundConnectionArgs{
-/// 			ConnectionAlias: pulumi.String("outbound_connection"),
-/// 			ConnectionMode:  pulumi.String("DIRECT"),
 /// 			LocalDomainInfo: &opensearch.OutboundConnectionLocalDomainInfoArgs{
 /// 				OwnerId:    pulumi.String(current.AccountId),
 /// 				Region:     pulumi.String(currentGetRegion.Region),
@@ -117,6 +115,8 @@ import 'outbound_connection_state.dart';
 /// 				Region:     pulumi.String(currentGetRegion.Region),
 /// 				DomainName: pulumi.Any(remoteDomain.DomainName),
 /// 			},
+/// 			ConnectionAlias: pulumi.String("outbound_connection"),
+/// 			ConnectionMode:  pulumi.String("DIRECT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -140,8 +140,6 @@ import 'outbound_connection_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_outboundconnection" "foo" {
-///   connection_alias = "outbound_connection"
-///   connection_mode  = "DIRECT"
 ///   local_domain_info = {
 ///     owner_id    = data.aws_getcalleridentity.current.account_id
 ///     region      = data.aws_getregion.currentGetRegion.region
@@ -152,6 +150,8 @@ import 'outbound_connection_state.dart';
 ///     region      = data.aws_getregion.currentGetRegion.region
 ///     domain_name = remoteDomain.domainName
 ///   }
+///   connection_alias = "outbound_connection"
+///   connection_mode  = "DIRECT"
 /// }
 /// ```
 /// ```java
@@ -187,8 +187,6 @@ import 'outbound_connection_state.dart';
 ///             .build());
 ///
 ///         var foo = new OutboundConnection("foo", OutboundConnectionArgs.builder()
-///             .connectionAlias("outbound_connection")
-///             .connectionMode("DIRECT")
 ///             .localDomainInfo(OutboundConnectionLocalDomainInfoArgs.builder()
 ///                 .ownerId(current.accountId())
 ///                 .region(currentGetRegion.region())
@@ -199,6 +197,8 @@ import 'outbound_connection_state.dart';
 ///                 .region(currentGetRegion.region())
 ///                 .domainName(remoteDomain.domainName())
 ///                 .build())
+///             .connectionAlias("outbound_connection")
+///             .connectionMode("DIRECT")
 ///             .build());
 ///
 ///     }
@@ -209,8 +209,6 @@ import 'outbound_connection_state.dart';
 ///   foo:
 ///     type: aws:opensearch:OutboundConnection
 ///     properties:
-///       connectionAlias: outbound_connection
-///       connectionMode: DIRECT
 ///       localDomainInfo:
 ///         ownerId: ${current.accountId}
 ///         region: ${currentGetRegion.region}
@@ -219,6 +217,8 @@ import 'outbound_connection_state.dart';
 ///         ownerId: ${current.accountId}
 ///         region: ${currentGetRegion.region}
 ///         domainName: ${remoteDomain.domainName}
+///       connectionAlias: outbound_connection
+///       connectionMode: DIRECT
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -268,7 +268,7 @@ class OutboundConnection extends pulumi.CustomResource {
           'aws:opensearch/outboundConnection:OutboundConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptConnection = registerOutput<bool?>('acceptConnection');
     connectionAlias = registerOutput<String>('connectionAlias');
@@ -285,11 +285,12 @@ class OutboundConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutboundConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutboundConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,6 +304,25 @@ class OutboundConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptConnection = registerOutput<bool?>('acceptConnection');
+    connectionAlias = registerOutput<String>('connectionAlias');
+    connectionMode = registerOutput<String>('connectionMode');
+    connectionProperties = registerOutput<OutboundConnectionConnectionProperties>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionStatus = registerOutput<String>('connectionStatus');
+    localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>('localDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionLocalDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>('remoteDomainInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundConnectionRemoteDomainInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [OutboundConnection] resource.
+  OutboundConnection.reference(String urn)
+    : super(
+        'aws:opensearch/outboundConnection:OutboundConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptConnection = registerOutput<bool?>('acceptConnection');
     connectionAlias = registerOutput<String>('connectionAlias');
     connectionMode = registerOutput<String>('connectionMode');

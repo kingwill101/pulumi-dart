@@ -6,33 +6,33 @@ import 'rule_group_rule_group.dart';
 
 /// Input properties used for looking up and filtering RuleGroup resources.
 class RuleGroupState {
-  /// The Amazon Resource Name (ARN) that identifies the rule group.
-  final pulumi.Input<String>? arn;
+  /// ARN that identifies the rule group.
+  final pulumi.Input<String?>? arn;
   /// The maximum number of operating resources that this rule group can use. For a stateless rule group, the capacity required is the sum of the capacity requirements of the individual rules. For a stateful rule group, the minimum capacity required is the number of individual rules.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// A friendly description of the rule group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  final pulumi.Input<RuleGroupEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<RuleGroupEncryptionConfiguration?>? encryptionConfiguration;
   /// A friendly name of the rule group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
-  final pulumi.Input<RuleGroupRuleGroup>? ruleGroup;
+  final pulumi.Input<RuleGroupRuleGroup?>? ruleGroup;
   /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `ruleGroup` is specified.
-  final pulumi.Input<String>? rules;
+  final pulumi.Input<String?>? rules;
   /// A map of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A string token used when updating the rule group.
-  final pulumi.Input<String>? updateToken;
+  final pulumi.Input<String?>? updateToken;
 
   /// Creates a new [RuleGroupState].
-  /// [arn] The Amazon Resource Name (ARN) that identifies the rule group.
+  /// [arn] ARN that identifies the rule group.
   /// [capacity] The maximum number of operating resources that this rule group can use. For a stateless rule group, the capacity required is the sum of the capacity requirements of the individual rules. For a stateful rule group, the minimum capacity required is the number of individual rules.
   /// [description] A friendly description of the rule group.
   /// [encryptionConfiguration] KMS encryption configuration settings. See Encryption Configuration below for details.
@@ -79,7 +79,7 @@ class RuleGroupState {
   factory RuleGroupState.fromMap(Map<String, dynamic> map) {
     return RuleGroupState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

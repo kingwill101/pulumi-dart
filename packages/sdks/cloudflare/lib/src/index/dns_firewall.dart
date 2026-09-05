@@ -299,7 +299,7 @@ class DnsFirewall extends pulumi.CustomResource {
           'cloudflare:index/dnsFirewall:DnsFirewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     attackMitigation = registerOutput<DnsFirewallAttackMitigation>('attackMitigation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsFirewallAttackMitigation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

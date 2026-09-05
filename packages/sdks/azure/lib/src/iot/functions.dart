@@ -141,6 +141,17 @@ Future<GetDpsResult> getDps(
   return GetDpsResult.fromMap(result);
 }
 
+pulumi.Output<GetDpsResult> getDpsOutput(
+  GetDpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:iot/getDps:getDps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDpsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing IotHub Device Provisioning Service Shared Access Policy
 ///
 /// ## Example Usage
@@ -279,6 +290,17 @@ Future<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDpsSharedAccessPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicyOutput(
+  GetDpsSharedAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:iot/getDpsSharedAccessPolicy:getDpsSharedAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDpsSharedAccessPolicyResult.fromMap);
 }
 
 /// Use this data source to access information about an existing IoTHub.
@@ -420,6 +442,17 @@ Future<GetIotHubResult> getIotHub(
   return GetIotHubResult.fromMap(result);
 }
 
+pulumi.Output<GetIotHubResult> getIotHubOutput(
+  GetIotHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:iot/getIotHub:getIotHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotHubResult.fromMap);
+}
+
 /// Use this data source to access information about an existing IotHub Shared Access Policy
 ///
 /// ## Example Usage
@@ -550,4 +583,15 @@ Future<GetSharedAccessPolicyResult> getSharedAccessPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedAccessPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedAccessPolicyResult> getSharedAccessPolicyOutput(
+  GetSharedAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:iot/getSharedAccessPolicy:getSharedAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedAccessPolicyResult.fromMap);
 }

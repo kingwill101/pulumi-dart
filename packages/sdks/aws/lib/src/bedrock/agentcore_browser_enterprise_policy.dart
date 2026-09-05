@@ -7,7 +7,7 @@ class AgentcoreBrowserEnterprisePolicy {
   /// Location of the enterprise policy file. See `location` below.
   final pulumi.Input<AgentcoreBrowserEnterprisePolicyLocation> location;
   /// Type of browser enterprise policy. Valid values: `MANAGED`, `RECOMMENDED`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AgentcoreBrowserEnterprisePolicy].
   /// [location] Location of the enterprise policy file. See `location` below.

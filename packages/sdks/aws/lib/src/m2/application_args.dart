@@ -12,22 +12,22 @@ class ApplicationArgs {
   /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
   final pulumi.Input<ApplicationDefinition> definition;
   /// Description of the application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Engine type must be `microfocus | bluage`.
   final pulumi.Input<String> engineType;
   /// KMS Key to use for the Application.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Unique identifier of the application.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of role for application to use to access AWS resources.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ApplicationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationArgs].
   /// [definition] The application definition for this application. You can specify either inline JSON or an S3 bucket location.

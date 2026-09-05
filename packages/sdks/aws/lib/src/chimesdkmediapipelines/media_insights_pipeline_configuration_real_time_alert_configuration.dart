@@ -5,7 +5,7 @@ import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
   /// Disables real time alert rules.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Collection of real time alert rules
   final pulumi.Input<List<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>> rules;
 

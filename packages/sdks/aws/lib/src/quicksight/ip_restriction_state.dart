@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IpRestriction resources.
 class IpRestrictionState {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Whether IP rules are turned on.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Map of allowed IPv4 CIDR ranges and descriptions.
-  final pulumi.Input<Map<String, String>>? ipRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>?>? ipRestrictionRuleMap;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of allowed VPC endpoint IDs and descriptions.
-  final pulumi.Input<Map<String, String>>? vpcEndpointIdRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>?>? vpcEndpointIdRestrictionRuleMap;
   /// Map of VPC IDs and descriptions. Traffic from all VPC endpoints that are present in the specified VPC is allowed.
-  final pulumi.Input<Map<String, String>>? vpcIdRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>?>? vpcIdRestrictionRuleMap;
 
   /// Creates a new [IpRestrictionState].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

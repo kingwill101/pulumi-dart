@@ -26,7 +26,7 @@ class GetResolverForwardingRuleTargetDnsServer {
   factory GetResolverForwardingRuleTargetDnsServer.fromMap(Map<String, dynamic> map) {
     return GetResolverForwardingRuleTargetDnsServer(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

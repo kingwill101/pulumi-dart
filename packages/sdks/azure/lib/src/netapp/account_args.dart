@@ -10,17 +10,17 @@ import 'account_identity.dart';
 /// {@macro pulumi_netapp_account_account_args_doc}
 class AccountArgs {
   /// A `activeDirectory` block as defined below.
-  final pulumi.Input<AccountActiveDirectory>? activeDirectory;
+  final pulumi.Input<AccountActiveDirectory?>? activeDirectory;
   /// The `identity` block where it is used when customer managed keys based encryption will be enabled as defined below.
-  final pulumi.Input<AccountIdentity>? identity;
+  final pulumi.Input<AccountIdentity?>? identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the NetApp Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [activeDirectory] A `activeDirectory` block as defined below.

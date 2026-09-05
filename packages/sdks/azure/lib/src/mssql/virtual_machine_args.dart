@@ -15,37 +15,37 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 /// {@macro pulumi_mssql_virtual_machine_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// An `assessment` block as defined below.
-  final pulumi.Input<VirtualMachineAssessment>? assessment;
+  final pulumi.Input<VirtualMachineAssessment?>? assessment;
   /// An `autoBackup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
-  final pulumi.Input<VirtualMachineAutoBackup>? autoBackup;
+  final pulumi.Input<VirtualMachineAutoBackup?>? autoBackup;
   /// An `autoPatching` block as defined below.
-  final pulumi.Input<VirtualMachineAutoPatching>? autoPatching;
+  final pulumi.Input<VirtualMachineAutoPatching?>? autoPatching;
   /// An `keyVaultCredential` block as defined below.
-  final pulumi.Input<VirtualMachineKeyVaultCredential>? keyVaultCredential;
+  final pulumi.Input<VirtualMachineKeyVaultCredential?>? keyVaultCredential;
   /// Should R Services be enabled?
-  final pulumi.Input<bool>? rServicesEnabled;
+  final pulumi.Input<bool?>? rServicesEnabled;
   /// The SQL Server port. Defaults to `1433`.
-  final pulumi.Input<int>? sqlConnectivityPort;
+  final pulumi.Input<int?>? sqlConnectivityPort;
   /// The connectivity type used for this SQL Server. Possible values are `LOCAL`, `PRIVATE` and `PUBLIC`. Defaults to `PRIVATE`.
-  final pulumi.Input<String>? sqlConnectivityType;
+  final pulumi.Input<String?>? sqlConnectivityType;
   /// The SQL Server sysadmin login password.
-  final pulumi.Input<String>? sqlConnectivityUpdatePassword;
+  final pulumi.Input<String?>? sqlConnectivityUpdatePassword;
   /// The SQL Server sysadmin login to create.
-  final pulumi.Input<String>? sqlConnectivityUpdateUsername;
+  final pulumi.Input<String?>? sqlConnectivityUpdateUsername;
   /// A `sqlInstance` block as defined below.
-  final pulumi.Input<VirtualMachineSqlInstance>? sqlInstance;
+  final pulumi.Input<VirtualMachineSqlInstance?>? sqlInstance;
   /// The SQL Server license type. Possible values are `AHUB` (Azure Hybrid Benefit), `DR` (Disaster Recovery), and `PAYG` (Pay-As-You-Go). Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sqlLicenseType;
+  final pulumi.Input<String?>? sqlLicenseType;
   /// The ID of the SQL Virtual Machine Group that the SQL Virtual Machine belongs to.
-  final pulumi.Input<String>? sqlVirtualMachineGroupId;
+  final pulumi.Input<String?>? sqlVirtualMachineGroupId;
   /// An `storageConfiguration` block as defined below.
-  final pulumi.Input<VirtualMachineStorageConfiguration>? storageConfiguration;
+  final pulumi.Input<VirtualMachineStorageConfiguration?>? storageConfiguration;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineId;
   /// A `wsfcDomainCredential` block as defined below
-  final pulumi.Input<VirtualMachineWsfcDomainCredential>? wsfcDomainCredential;
+  final pulumi.Input<VirtualMachineWsfcDomainCredential?>? wsfcDomainCredential;
 
   /// Creates a new [VirtualMachineArgs].
   /// [assessment] An `assessment` block as defined below.
@@ -111,7 +111,7 @@ class VirtualMachineArgs {
       autoPatching: (() { final guardedValue = map['autoPatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineAutoPatching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultCredential: (() { final guardedValue = map['keyVaultCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineKeyVaultCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rServicesEnabled: (() { final guardedValue = map['rServicesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      sqlConnectivityPort: (() { final guardedValue = map['sqlConnectivityPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sqlConnectivityPort: (() { final guardedValue = map['sqlConnectivityPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sqlConnectivityType: (() { final guardedValue = map['sqlConnectivityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlConnectivityUpdatePassword: (() { final guardedValue = map['sqlConnectivityUpdatePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlConnectivityUpdateUsername: (() { final guardedValue = map['sqlConnectivityUpdateUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

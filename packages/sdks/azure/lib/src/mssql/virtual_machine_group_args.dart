@@ -9,9 +9,9 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 /// {@macro pulumi_mssql_virtual_machine_group_virtual_machine_group_args_doc}
 class VirtualMachineGroupArgs {
   /// The Azure Region where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for the Microsoft SQL Virtual Machine Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The offer type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Changing this forces a new resource to be created.
@@ -19,7 +19,7 @@ class VirtualMachineGroupArgs {
   /// The sku type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Possible values are `Developer` and `Enterprise`.
   final pulumi.Input<String> sqlImageSku;
   /// A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `wsfcDomainProfile` block as defined below.
   final pulumi.Input<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile;
 

@@ -36,9 +36,9 @@ class ExpressGatewayServiceScalingTarget {
   factory ExpressGatewayServiceScalingTarget.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceScalingTarget(
       autoScalingMetric: pulumi.Input.fromValue(map['autoScalingMetric'] as String),
-      autoScalingTargetValue: pulumi.Input.fromValue(map['autoScalingTargetValue'] as int),
-      maxTaskCount: pulumi.Input.fromValue(map['maxTaskCount'] as int),
-      minTaskCount: pulumi.Input.fromValue(map['minTaskCount'] as int),
+      autoScalingTargetValue: pulumi.Input.fromValue((map['autoScalingTargetValue'] as num).toInt()),
+      maxTaskCount: pulumi.Input.fromValue((map['maxTaskCount'] as num).toInt()),
+      minTaskCount: pulumi.Input.fromValue((map['minTaskCount'] as num).toInt()),
     );
   }
 }

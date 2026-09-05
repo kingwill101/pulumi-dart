@@ -26,7 +26,7 @@ class HostPoolScheduledAgentUpdatesSchedule {
   factory HostPoolScheduledAgentUpdatesSchedule.fromMap(Map<String, dynamic> map) {
     return HostPoolScheduledAgentUpdatesSchedule(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
+      hourOfDay: pulumi.Input.fromValue((map['hourOfDay'] as num).toInt()),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_args.dart';
 import 'data_source_credentials.dart';
 import 'data_source_parameters.dart';
+import 'data_source_permission.dart';
 import 'data_source_ssl_properties.dart';
 import 'data_source_state.dart';
 import 'data_source_vpc_connection_properties.dart';
@@ -18,8 +19,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _default = new aws.quicksight.DataSource("default", {
-///     dataSourceId: "example-id",
-///     name: "My Cool Data in S3",
 ///     parameters: {
 ///         s3: {
 ///             manifestFileLocation: {
@@ -28,6 +27,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///             },
 ///         },
 ///     },
+///     dataSourceId: "example-id",
+///     name: "My Cool Data in S3",
 ///     type: "S3",
 /// });
 /// ```
@@ -36,8 +37,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// import pulumi_aws as aws
 ///
 /// default = aws.quicksight.DataSource("default",
-///     data_source_id="example-id",
-///     name="My Cool Data in S3",
 ///     parameters={
 ///         "s3": {
 ///             "manifest_file_location": {
@@ -46,6 +45,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///             },
 ///         },
 ///     },
+///     data_source_id="example-id",
+///     name="My Cool Data in S3",
 ///     type="S3")
 /// ```
 /// ```csharp
@@ -58,8 +59,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// {
 ///     var @default = new Aws.Quicksight.DataSource("default", new()
 ///     {
-///         DataSourceId = "example-id",
-///         Name = "My Cool Data in S3",
 ///         Parameters = new Aws.Quicksight.Inputs.DataSourceParametersArgs
 ///         {
 ///             S3 = new Aws.Quicksight.Inputs.DataSourceParametersS3Args
@@ -71,6 +70,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///                 },
 ///             },
 ///         },
+///         DataSourceId = "example-id",
+///         Name = "My Cool Data in S3",
 ///         Type = "S3",
 ///     });
 ///
@@ -87,8 +88,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewDataSource(ctx, "default", &quicksight.DataSourceArgs{
-/// 			DataSourceId: pulumi.String("example-id"),
-/// 			Name:         pulumi.String("My Cool Data in S3"),
 /// 			Parameters: &quicksight.DataSourceParametersArgs{
 /// 				S3: &quicksight.DataSourceParametersS3Args{
 /// 					ManifestFileLocation: &quicksight.DataSourceParametersS3ManifestFileLocationArgs{
@@ -97,7 +96,9 @@ import 'data_source_vpc_connection_properties.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Type: pulumi.String("S3"),
+/// 			DataSourceId: pulumi.String("example-id"),
+/// 			Name:         pulumi.String("My Cool Data in S3"),
+/// 			Type:         pulumi.String("S3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,8 +117,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// }
 ///
 /// resource "aws_quicksight_datasource" "default" {
-///   data_source_id = "example-id"
-///   name           = "My Cool Data in S3"
 ///   parameters = {
 ///     s3 = {
 ///       manifest_file_location = {
@@ -126,7 +125,9 @@ import 'data_source_vpc_connection_properties.dart';
 ///       }
 ///     }
 ///   }
-///   type = "S3"
+///   data_source_id = "example-id"
+///   name           = "My Cool Data in S3"
+///   type           = "S3"
 /// }
 /// ```
 /// ```java
@@ -154,8 +155,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new DataSource("default", DataSourceArgs.builder()
-///             .dataSourceId("example-id")
-///             .name("My Cool Data in S3")
 ///             .parameters(DataSourceParametersArgs.builder()
 ///                 .s3(DataSourceParametersS3Args.builder()
 ///                     .manifestFileLocation(DataSourceParametersS3ManifestFileLocationArgs.builder()
@@ -164,6 +163,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .dataSourceId("example-id")
+///             .name("My Cool Data in S3")
 ///             .type("S3")
 ///             .build());
 ///
@@ -175,13 +176,13 @@ import 'data_source_vpc_connection_properties.dart';
 ///   default:
 ///     type: aws:quicksight:DataSource
 ///     properties:
-///       dataSourceId: example-id
-///       name: My Cool Data in S3
 ///       parameters:
 ///         s3:
 ///           manifestFileLocation:
 ///             bucket: my-bucket
 ///             key: path/to/manifest.json
+///       dataSourceId: example-id
+///       name: My Cool Data in S3
 ///       type: S3
 /// ```
 ///
@@ -254,8 +255,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///     role: exampleRole.name,
 /// });
 /// const exampleDataSource = new aws.quicksight.DataSource("example", {
-///     dataSourceId: "example-id",
-///     name: "manifest in S3",
 ///     parameters: {
 ///         s3: {
 ///             manifestFileLocation: {
@@ -265,6 +264,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///             roleArn: exampleRole.arn,
 ///         },
 ///     },
+///     dataSourceId: "example-id",
+///     name: "manifest in S3",
 ///     type: "S3",
 /// });
 /// ```
@@ -334,8 +335,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///     policy_arn=example_policy.arn,
 ///     role=example_role.name)
 /// example_data_source = aws.quicksight.DataSource("example",
-///     data_source_id="example-id",
-///     name="manifest in S3",
 ///     parameters={
 ///         "s3": {
 ///             "manifest_file_location": {
@@ -345,6 +344,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///             "role_arn": example_role.arn,
 ///         },
 ///     },
+///     data_source_id="example-id",
+///     name="manifest in S3",
 ///     type="S3")
 /// ```
 /// ```csharp
@@ -468,8 +469,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///
 ///     var exampleDataSource = new Aws.Quicksight.DataSource("example", new()
 ///     {
-///         DataSourceId = "example-id",
-///         Name = "manifest in S3",
 ///         Parameters = new Aws.Quicksight.Inputs.DataSourceParametersArgs
 ///         {
 ///             S3 = new Aws.Quicksight.Inputs.DataSourceParametersS3Args
@@ -482,6 +481,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///                 RoleArn = exampleRole.Arn,
 ///             },
 ///         },
+///         DataSourceId = "example-id",
+///         Name = "manifest in S3",
 ///         Type = "S3",
 ///     });
 ///
@@ -621,8 +622,6 @@ import 'data_source_vpc_connection_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = quicksight.NewDataSource(ctx, "example", &quicksight.DataSourceArgs{
-/// 			DataSourceId: pulumi.String("example-id"),
-/// 			Name:         pulumi.String("manifest in S3"),
 /// 			Parameters: &quicksight.DataSourceParametersArgs{
 /// 				S3: &quicksight.DataSourceParametersS3Args{
 /// 					ManifestFileLocation: &quicksight.DataSourceParametersS3ManifestFileLocationArgs{
@@ -632,7 +631,9 @@ import 'data_source_vpc_connection_properties.dart';
 /// 					RoleArn: exampleRole.Arn,
 /// 				},
 /// 			},
-/// 			Type: pulumi.String("S3"),
+/// 			DataSourceId: pulumi.String("example-id"),
+/// 			Name:         pulumi.String("manifest in S3"),
+/// 			Type:         pulumi.String("S3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -713,8 +714,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///   role       = aws_iam_role.example.name
 /// }
 /// resource "aws_quicksight_datasource" "example" {
-///   data_source_id = "example-id"
-///   name           = "manifest in S3"
 ///   parameters = {
 ///     s3 = {
 ///       manifest_file_location = {
@@ -724,7 +723,9 @@ import 'data_source_vpc_connection_properties.dart';
 ///       role_arn = aws_iam_role.example.arn
 ///     }
 ///   }
-///   type = "S3"
+///   data_source_id = "example-id"
+///   name           = "manifest in S3"
+///   type           = "S3"
 /// }
 /// ```
 /// ```java
@@ -844,8 +845,6 @@ import 'data_source_vpc_connection_properties.dart';
 ///             .build());
 ///
 ///         var exampleDataSource = new DataSource("exampleDataSource", DataSourceArgs.builder()
-///             .dataSourceId("example-id")
-///             .name("manifest in S3")
 ///             .parameters(DataSourceParametersArgs.builder()
 ///                 .s3(DataSourceParametersS3Args.builder()
 ///                     .manifestFileLocation(DataSourceParametersS3ManifestFileLocationArgs.builder()
@@ -855,6 +854,8 @@ import 'data_source_vpc_connection_properties.dart';
 ///                     .roleArn(exampleRole.arn())
 ///                     .build())
 ///                 .build())
+///             .dataSourceId("example-id")
+///             .name("manifest in S3")
 ///             .type("S3")
 ///             .build());
 ///
@@ -925,14 +926,14 @@ import 'data_source_vpc_connection_properties.dart';
 ///     type: aws:quicksight:DataSource
 ///     name: example
 ///     properties:
-///       dataSourceId: example-id
-///       name: manifest in S3
 ///       parameters:
 ///         s3:
 ///           manifestFileLocation:
 ///             bucket: ${example.bucket}
 ///             key: ${exampleBucketObjectv2.key}
 ///           roleArn: ${exampleRole.arn}
+///       dataSourceId: example-id
+///       name: manifest in S3
 ///       type: S3
 /// variables:
 ///   current:
@@ -958,7 +959,7 @@ import 'data_source_vpc_connection_properties.dart';
 /// $ pulumi import aws:quicksight/dataSource:DataSource example 123456789123/my-data-source-id
 /// ```
 class DataSource extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the data source
+  /// ARN of the data source
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
@@ -971,7 +972,7 @@ class DataSource extends pulumi.CustomResource {
   /// The parameters used to connect to this data source (exactly one).
   late final pulumi.Output<DataSourceParameters> parameters;
   /// A set of resource permissions on the data source. Maximum of 64 items. See Permission below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<DataSourcePermission>?> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your underlying source. See SSL Properties below for more details.
@@ -999,7 +1000,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:quicksight/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
@@ -1007,11 +1008,11 @@ class DataSource extends pulumi.CustomResource {
     dataSourceId = registerOutput<String>('dataSourceId');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<DataSourceParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<DataSourcePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataSourcePermission>(guardedValue, (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     sslProperties = registerOutput<DataSourceSslProperties>('sslProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceSslProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vpcConnectionProperties = registerOutput<DataSourceVpcConnectionProperties?>('vpcConnectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceVpcConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1021,11 +1022,12 @@ class DataSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1045,11 +1047,35 @@ class DataSource extends pulumi.CustomResource {
     dataSourceId = registerOutput<String>('dataSourceId');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<DataSourceParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<DataSourcePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataSourcePermission>(guardedValue, (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     sslProperties = registerOutput<DataSourceSslProperties>('sslProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceSslProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vpcConnectionProperties = registerOutput<DataSourceVpcConnectionProperties?>('vpcConnectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceVpcConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DataSource] resource.
+  DataSource.reference(String urn)
+    : super(
+        'aws:quicksight/dataSource:DataSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    credentials = registerOutput<DataSourceCredentials?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataSourceId = registerOutput<String>('dataSourceId');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<DataSourceParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    permissions = registerOutput<List<DataSourcePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataSourcePermission>(guardedValue, (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    sslProperties = registerOutput<DataSourceSslProperties>('sslProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceSslProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vpcConnectionProperties = registerOutput<DataSourceVpcConnectionProperties?>('vpcConnectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceVpcConnectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

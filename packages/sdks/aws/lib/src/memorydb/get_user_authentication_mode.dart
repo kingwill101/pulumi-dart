@@ -25,7 +25,7 @@ class GetUserAuthenticationMode {
 
   factory GetUserAuthenticationMode.fromMap(Map<String, dynamic> map) {
     return GetUserAuthenticationMode(
-      passwordCount: pulumi.Input.fromValue(map['passwordCount'] as int),
+      passwordCount: pulumi.Input.fromValue((map['passwordCount'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -5,7 +5,7 @@ import 'canary_artifact_config_s3_encryption.dart';
 
 class CanaryArtifactConfig {
   /// Configuration of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3. See S3 Encryption.
-  final pulumi.Input<CanaryArtifactConfigS3Encryption>? s3Encryption;
+  final pulumi.Input<CanaryArtifactConfigS3Encryption?>? s3Encryption;
 
   /// Creates a new [CanaryArtifactConfig].
   /// [s3Encryption] Configuration of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3. See S3 Encryption.

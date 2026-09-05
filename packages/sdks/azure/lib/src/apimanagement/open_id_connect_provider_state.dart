@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OpenIdConnectProvider resources.
 class OpenIdConnectProviderState {
   /// The name of the API Management Service in which this OpenID Connect Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The Client ID used for the Client Application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Client Secret used for the Client Application.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// A description of this OpenID Connect Provider.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A user-friendly name for this OpenID Connect Provider.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The URI of the Metadata endpoint.
-  final pulumi.Input<String>? metadataEndpoint;
+  final pulumi.Input<String?>? metadataEndpoint;
   /// the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [OpenIdConnectProviderState].
   /// [apiManagementName] The name of the API Management Service in which this OpenID Connect Provider should be created. Changing this forces a new resource to be created.

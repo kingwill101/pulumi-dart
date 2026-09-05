@@ -6,11 +6,11 @@ import 'resource_data_sync_s3_destination.dart';
 /// Input properties used for looking up and filtering ResourceDataSync resources.
 class ResourceDataSyncState {
   /// Name for the configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Amazon S3 configuration details for the sync.
-  final pulumi.Input<ResourceDataSyncS3Destination>? s3Destination;
+  final pulumi.Input<ResourceDataSyncS3Destination?>? s3Destination;
 
   /// Creates a new [ResourceDataSyncState].
   /// [name] Name for the configuration.

@@ -119,3 +119,14 @@ Future<GetDirectoryResult> getDirectory(
   );
   return GetDirectoryResult.fromMap(result);
 }
+
+pulumi.Output<GetDirectoryResult> getDirectoryOutput(
+  GetDirectoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:directoryservice/getDirectory:getDirectory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectoryResult.fromMap);
+}

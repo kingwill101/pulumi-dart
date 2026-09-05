@@ -26,7 +26,7 @@ class GetSchedulingPolicyFairSharePolicyShareDistribution {
   factory GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap(Map<String, dynamic> map) {
     return GetSchedulingPolicyFairSharePolicyShareDistribution(
       shareIdentifier: pulumi.Input.fromValue(map['shareIdentifier'] as String),
-      weightFactor: pulumi.Input.fromValue(map['weightFactor'] as double),
+      weightFactor: pulumi.Input.fromValue((map['weightFactor'] as num).toDouble()),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'domain_default_space_settings_custom_file_system_config_efs_file_system_
 
 class DomainDefaultSpaceSettingsCustomFileSystemConfig {
   /// The default EBS storage settings for a private space. See `efsFileSystemConfig` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig>? efsFileSystemConfig;
+  final pulumi.Input<DomainDefaultSpaceSettingsCustomFileSystemConfigEfsFileSystemConfig?>? efsFileSystemConfig;
 
   /// Creates a new [DomainDefaultSpaceSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfig] The default EBS storage settings for a private space. See `efsFileSystemConfig` Block below.

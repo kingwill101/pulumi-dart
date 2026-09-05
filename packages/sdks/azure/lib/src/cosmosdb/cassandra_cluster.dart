@@ -62,21 +62,22 @@ class CassandraCluster extends pulumi.CustomResource {
           'azure:cosmosdb/cassandraCluster:CassandraCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['defaultAdminPassword'],
         ) {
     authenticationMethod = registerOutput<String?>('authenticationMethod');
-    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems');
-    defaultAdminPassword = registerOutput<String>('defaultAdminPassword');
+    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultAdminPassword = registerOutput<String>('defaultAdminPassword', isSecret: true);
     delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
-    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems');
-    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses');
+    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
     identity = registerOutput<CassandraClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 
@@ -85,11 +86,12 @@ class CassandraCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CassandraClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CassandraCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -104,18 +106,44 @@ class CassandraCluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationMethod = registerOutput<String?>('authenticationMethod');
-    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems');
-    defaultAdminPassword = registerOutput<String>('defaultAdminPassword');
+    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultAdminPassword = registerOutput<String>('defaultAdminPassword', isSecret: true);
     delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
-    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems');
-    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses');
+    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
     identity = registerOutput<CassandraClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [CassandraCluster] resource.
+  CassandraCluster.reference(String urn)
+    : super(
+        'azure:cosmosdb/cassandraCluster:CassandraCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['defaultAdminPassword'],
+        isResourceReference: true,
+      ) {
+    authenticationMethod = registerOutput<String?>('authenticationMethod');
+    clientCertificatePems = registerOutput<List<String>?>('clientCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultAdminPassword = registerOutput<String>('defaultAdminPassword', isSecret: true);
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
+    externalGossipCertificatePems = registerOutput<List<String>?>('externalGossipCertificatePems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    externalSeedNodeIpAddresses = registerOutput<List<String>?>('externalSeedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
+    identity = registerOutput<CassandraClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    repairEnabled = registerOutput<bool?>('repairEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 }

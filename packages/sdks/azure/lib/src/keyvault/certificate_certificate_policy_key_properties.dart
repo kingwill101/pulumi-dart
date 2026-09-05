@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificatePolicyKeyProperties {
   /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`.
-  final pulumi.Input<String>? curve;
+  final pulumi.Input<String?>? curve;
   /// Is this certificate exportable?
   final pulumi.Input<bool> exportable;
   /// The size of the key used in the certificate. Possible values include `2048`, `3072`, and `4096` for `RSA` keys, or `256`, `384`, and `521` for `EC` keys. This property is required when using RSA keys.
-  final pulumi.Input<int>? keySize;
+  final pulumi.Input<int?>? keySize;
   /// Specifies the type of key. Possible values are `EC`, `EC-HSM`, `RSA`, `RSA-HSM` and `oct`.
   final pulumi.Input<String> keyType;
   /// Is the key reusable?
@@ -42,7 +42,7 @@ class CertificateCertificatePolicyKeyProperties {
     return CertificateCertificatePolicyKeyProperties(
       curve: (() { final guardedValue = map['curve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportable: pulumi.Input.fromValue(map['exportable'] as bool),
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       reuseKey: pulumi.Input.fromValue(map['reuseKey'] as bool),
     );

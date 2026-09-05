@@ -11,28 +11,28 @@ class IntegrationArgs {
   /// Set of non-secret key–value pairs that contains additional contextual information about the data.
   /// For more information, see the [User Guide](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
   /// You can only include this parameter if you specify the `kmsKeyId` parameter.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// Description of the integration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the integration.
   final pulumi.Input<String> integrationName;
   /// KMS key identifier for the key to use to encrypt the integration.
   /// If you don't specify an encryption key, Redshift uses a default AWS owned key.
   /// You can only include this parameter if `sourceArn` references a DynamoDB table.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the database to use as the source for replication. You can specify a DynamoDB table or an S3 bucket.
   final pulumi.Input<String> sourceArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/redshift/create-integration.html).
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ARN of the Redshift data warehouse to use as the target for replication.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> targetArn;
-  final pulumi.Input<IntegrationTimeouts>? timeouts;
+  final pulumi.Input<IntegrationTimeouts?>? timeouts;
 
   /// Creates a new [IntegrationArgs].
   /// [additionalEncryptionContext] Set of non-secret key–value pairs that contains additional contextual information about the data.

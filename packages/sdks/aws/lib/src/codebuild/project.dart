@@ -4,7 +4,11 @@ import 'project_artifacts.dart';
 import 'project_build_batch_config.dart';
 import 'project_cache.dart';
 import 'project_environment.dart';
+import 'project_file_system_location.dart';
 import 'project_logs_config.dart';
+import 'project_secondary_artifact.dart';
+import 'project_secondary_source.dart';
+import 'project_secondary_source_version.dart';
 import 'project_source.dart';
 import 'project_state.dart';
 import 'project_vpc_config.dart';
@@ -29,11 +33,11 @@ import 'project_vpc_config.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["codebuild.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -66,9 +70,6 @@ import 'project_vpc_config.dart';
 ///             resources: ["*"],
 ///         },
 ///         {
-///             effect: "Allow",
-///             actions: ["ec2:CreateNetworkInterfacePermission"],
-///             resources: ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"],
 ///             conditions: [
 ///                 {
 ///                     test: "StringEquals",
@@ -84,6 +85,9 @@ import 'project_vpc_config.dart';
 ///                     values: ["codebuild.amazonaws.com"],
 ///                 },
 ///             ],
+///             effect: "Allow",
+///             actions: ["ec2:CreateNetworkInterfacePermission"],
+///             resources: ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"],
 ///         },
 ///         {
 ///             effect: "Allow",
@@ -108,10 +112,6 @@ import 'project_vpc_config.dart';
 ///     policy: example.json,
 /// });
 /// const exampleProject = new aws.codebuild.Project("example", {
-///     name: "test-project",
-///     description: "test_codebuild_project",
-///     buildTimeout: 5,
-///     serviceRole: exampleRole.arn,
 ///     artifacts: {
 ///         type: "NO_ARTIFACTS",
 ///     },
@@ -120,11 +120,6 @@ import 'project_vpc_config.dart';
 ///         location: exampleBucket.bucket,
 ///     },
 ///     environment: {
-///         computeType: "BUILD_GENERAL1_SMALL",
-///         image: "aws/codebuild/amazonlinux-x86_64-standard:6.0",
-///         type: "LINUX_CONTAINER",
-///         imagePullCredentialsType: "CODEBUILD",
-///         hostKernel: "LINUX_KERNEL_6",
 ///         environmentVariables: [
 ///             {
 ///                 name: "SOME_KEY1",
@@ -136,6 +131,11 @@ import 'project_vpc_config.dart';
 ///                 type: "PARAMETER_STORE",
 ///             },
 ///         ],
+///         computeType: "BUILD_GENERAL1_SMALL",
+///         image: "aws/codebuild/amazonlinux-x86_64-standard:6.0",
+///         type: "LINUX_CONTAINER",
+///         imagePullCredentialsType: "CODEBUILD",
+///         hostKernel: "LINUX_KERNEL_6",
 ///     },
 ///     logsConfig: {
 ///         cloudwatchLogs: {
@@ -148,14 +148,13 @@ import 'project_vpc_config.dart';
 ///         },
 ///     },
 ///     source: {
-///         type: "GITHUB",
-///         location: "https://github.com/mitchellh/packer.git",
-///         gitCloneDepth: 1,
 ///         gitSubmodulesConfig: {
 ///             fetchSubmodules: true,
 ///         },
+///         type: "GITHUB",
+///         location: "https://github.com/mitchellh/packer.git",
+///         gitCloneDepth: 1,
 ///     },
-///     sourceVersion: "master",
 ///     vpcConfig: {
 ///         vpcId: exampleAwsVpc.id,
 ///         subnets: [
@@ -167,16 +166,16 @@ import 'project_vpc_config.dart';
 ///             example2AwsSecurityGroup.id,
 ///         ],
 ///     },
+///     name: "test-project",
+///     description: "test_codebuild_project",
+///     buildTimeout: 5,
+///     serviceRole: exampleRole.arn,
+///     sourceVersion: "master",
 ///     tags: {
 ///         Environment: "Test",
 ///     },
 /// });
 /// const project_with_cache = new aws.codebuild.Project("project-with-cache", {
-///     name: "test-project-cache",
-///     description: "test_codebuild_project_cache",
-///     buildTimeout: 5,
-///     queuedTimeout: 5,
-///     serviceRole: exampleRole.arn,
 ///     artifacts: {
 ///         type: "NO_ARTIFACTS",
 ///     },
@@ -188,28 +187,30 @@ import 'project_vpc_config.dart';
 ///         ],
 ///     },
 ///     environment: {
-///         computeType: "BUILD_GENERAL1_SMALL",
-///         image: "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
-///         type: "LINUX_CONTAINER",
-///         imagePullCredentialsType: "CODEBUILD",
 ///         environmentVariables: [{
 ///             name: "SOME_KEY1",
 ///             value: "SOME_VALUE1",
 ///         }],
+///         computeType: "BUILD_GENERAL1_SMALL",
+///         image: "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+///         type: "LINUX_CONTAINER",
+///         imagePullCredentialsType: "CODEBUILD",
 ///     },
 ///     source: {
 ///         type: "GITHUB",
 ///         location: "https://github.com/mitchellh/packer.git",
 ///         gitCloneDepth: 1,
 ///     },
+///     name: "test-project-cache",
+///     description: "test_codebuild_project_cache",
+///     buildTimeout: 5,
+///     queuedTimeout: 5,
+///     serviceRole: exampleRole.arn,
 ///     tags: {
 ///         Environment: "Test",
 ///     },
 /// });
 /// const project_using_github_app = new aws.codebuild.Project("project-using-github-app", {
-///     name: "project-using-github-app",
-///     description: "gets_source_from_github_via_the_github_app",
-///     serviceRole: exampleRole.arn,
 ///     artifacts: {
 ///         type: "NO_ARTIFACTS",
 ///     },
@@ -220,13 +221,16 @@ import 'project_vpc_config.dart';
 ///         imagePullCredentialsType: "CODEBUILD",
 ///     },
 ///     source: {
-///         type: "GITHUB",
-///         location: "https://github.com/example/example.git",
 ///         auth: {
 ///             type: "CODECONNECTIONS",
 ///             resource: "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string",
 ///         },
+///         type: "GITHUB",
+///         location: "https://github.com/example/example.git",
 ///     },
+///     name: "project-using-github-app",
+///     description: "gets_source_from_github_via_the_github_app",
+///     serviceRole: exampleRole.arn,
 /// });
 /// ```
 /// ```python
@@ -238,11 +242,11 @@ import 'project_vpc_config.dart';
 ///     bucket=example_bucket.id,
 ///     acl="private")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["codebuild.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -272,9 +276,6 @@ import 'project_vpc_config.dart';
 ///         "resources": ["*"],
 ///     },
 ///     {
-///         "effect": "Allow",
-///         "actions": ["ec2:CreateNetworkInterfacePermission"],
-///         "resources": ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"],
 ///         "conditions": [
 ///             {
 ///                 "test": "StringEquals",
@@ -290,6 +291,9 @@ import 'project_vpc_config.dart';
 ///                 "values": ["codebuild.amazonaws.com"],
 ///             },
 ///         ],
+///         "effect": "Allow",
+///         "actions": ["ec2:CreateNetworkInterfacePermission"],
+///         "resources": ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"],
 ///     },
 ///     {
 ///         "effect": "Allow",
@@ -312,10 +316,6 @@ import 'project_vpc_config.dart';
 ///     role=example_role.name,
 ///     policy=example.json)
 /// example_project = aws.codebuild.Project("example",
-///     name="test-project",
-///     description="test_codebuild_project",
-///     build_timeout=5,
-///     service_role=example_role.arn,
 ///     artifacts={
 ///         "type": "NO_ARTIFACTS",
 ///     },
@@ -324,11 +324,6 @@ import 'project_vpc_config.dart';
 ///         "location": example_bucket.bucket,
 ///     },
 ///     environment={
-///         "compute_type": "BUILD_GENERAL1_SMALL",
-///         "image": "aws/codebuild/amazonlinux-x86_64-standard:6.0",
-///         "type": "LINUX_CONTAINER",
-///         "image_pull_credentials_type": "CODEBUILD",
-///         "host_kernel": "LINUX_KERNEL_6",
 ///         "environment_variables": [
 ///             {
 ///                 "name": "SOME_KEY1",
@@ -340,6 +335,11 @@ import 'project_vpc_config.dart';
 ///                 "type": "PARAMETER_STORE",
 ///             },
 ///         ],
+///         "compute_type": "BUILD_GENERAL1_SMALL",
+///         "image": "aws/codebuild/amazonlinux-x86_64-standard:6.0",
+///         "type": "LINUX_CONTAINER",
+///         "image_pull_credentials_type": "CODEBUILD",
+///         "host_kernel": "LINUX_KERNEL_6",
 ///     },
 ///     logs_config={
 ///         "cloudwatch_logs": {
@@ -352,14 +352,13 @@ import 'project_vpc_config.dart';
 ///         },
 ///     },
 ///     source={
-///         "type": "GITHUB",
-///         "location": "https://github.com/mitchellh/packer.git",
-///         "git_clone_depth": 1,
 ///         "git_submodules_config": {
 ///             "fetch_submodules": True,
 ///         },
+///         "type": "GITHUB",
+///         "location": "https://github.com/mitchellh/packer.git",
+///         "git_clone_depth": 1,
 ///     },
-///     source_version="master",
 ///     vpc_config={
 ///         "vpc_id": example_aws_vpc["id"],
 ///         "subnets": [
@@ -371,15 +370,15 @@ import 'project_vpc_config.dart';
 ///             example2_aws_security_group["id"],
 ///         ],
 ///     },
+///     name="test-project",
+///     description="test_codebuild_project",
+///     build_timeout=5,
+///     service_role=example_role.arn,
+///     source_version="master",
 ///     tags={
 ///         "Environment": "Test",
 ///     })
 /// project_with_cache = aws.codebuild.Project("project-with-cache",
-///     name="test-project-cache",
-///     description="test_codebuild_project_cache",
-///     build_timeout=5,
-///     queued_timeout=5,
-///     service_role=example_role.arn,
 ///     artifacts={
 ///         "type": "NO_ARTIFACTS",
 ///     },
@@ -391,27 +390,29 @@ import 'project_vpc_config.dart';
 ///         ],
 ///     },
 ///     environment={
-///         "compute_type": "BUILD_GENERAL1_SMALL",
-///         "image": "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
-///         "type": "LINUX_CONTAINER",
-///         "image_pull_credentials_type": "CODEBUILD",
 ///         "environment_variables": [{
 ///             "name": "SOME_KEY1",
 ///             "value": "SOME_VALUE1",
 ///         }],
+///         "compute_type": "BUILD_GENERAL1_SMALL",
+///         "image": "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+///         "type": "LINUX_CONTAINER",
+///         "image_pull_credentials_type": "CODEBUILD",
 ///     },
 ///     source={
 ///         "type": "GITHUB",
 ///         "location": "https://github.com/mitchellh/packer.git",
 ///         "git_clone_depth": 1,
 ///     },
+///     name="test-project-cache",
+///     description="test_codebuild_project_cache",
+///     build_timeout=5,
+///     queued_timeout=5,
+///     service_role=example_role.arn,
 ///     tags={
 ///         "Environment": "Test",
 ///     })
 /// project_using_github_app = aws.codebuild.Project("project-using-github-app",
-///     name="project-using-github-app",
-///     description="gets_source_from_github_via_the_github_app",
-///     service_role=example_role.arn,
 ///     artifacts={
 ///         "type": "NO_ARTIFACTS",
 ///     },
@@ -422,13 +423,16 @@ import 'project_vpc_config.dart';
 ///         "image_pull_credentials_type": "CODEBUILD",
 ///     },
 ///     source={
-///         "type": "GITHUB",
-///         "location": "https://github.com/example/example.git",
 ///         "auth": {
 ///             "type": "CODECONNECTIONS",
 ///             "resource": "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string",
 ///         },
-///     })
+///         "type": "GITHUB",
+///         "location": "https://github.com/example/example.git",
+///     },
+///     name="project-using-github-app",
+///     description="gets_source_from_github_via_the_github_app",
+///     service_role=example_role.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -455,7 +459,6 @@ import 'project_vpc_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -467,6 +470,7 @@ import 'project_vpc_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -519,15 +523,6 @@ import 'project_vpc_config.dart';
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "ec2:CreateNetworkInterfacePermission",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:ec2:us-east-1:123456789012:network-interface/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -549,6 +544,15 @@ import 'project_vpc_config.dart';
 ///                             "codebuild.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "ec2:CreateNetworkInterfacePermission",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:ec2:us-east-1:123456789012:network-interface/*",
 ///                 },
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -588,10 +592,6 @@ import 'project_vpc_config.dart';
 ///
 ///     var exampleProject = new Aws.CodeBuild.Project("example", new()
 ///     {
-///         Name = "test-project",
-///         Description = "test_codebuild_project",
-///         BuildTimeout = 5,
-///         ServiceRole = exampleRole.Arn,
 ///         Artifacts = new Aws.CodeBuild.Inputs.ProjectArtifactsArgs
 ///         {
 ///             Type = "NO_ARTIFACTS",
@@ -603,11 +603,6 @@ import 'project_vpc_config.dart';
 ///         },
 ///         Environment = new Aws.CodeBuild.Inputs.ProjectEnvironmentArgs
 ///         {
-///             ComputeType = "BUILD_GENERAL1_SMALL",
-///             Image = "aws/codebuild/amazonlinux-x86_64-standard:6.0",
-///             Type = "LINUX_CONTAINER",
-///             ImagePullCredentialsType = "CODEBUILD",
-///             HostKernel = "LINUX_KERNEL_6",
 ///             EnvironmentVariables = new[]
 ///             {
 ///                 new Aws.CodeBuild.Inputs.ProjectEnvironmentEnvironmentVariableArgs
@@ -622,6 +617,11 @@ import 'project_vpc_config.dart';
 ///                     Type = "PARAMETER_STORE",
 ///                 },
 ///             },
+///             ComputeType = "BUILD_GENERAL1_SMALL",
+///             Image = "aws/codebuild/amazonlinux-x86_64-standard:6.0",
+///             Type = "LINUX_CONTAINER",
+///             ImagePullCredentialsType = "CODEBUILD",
+///             HostKernel = "LINUX_KERNEL_6",
 ///         },
 ///         LogsConfig = new Aws.CodeBuild.Inputs.ProjectLogsConfigArgs
 ///         {
@@ -638,15 +638,14 @@ import 'project_vpc_config.dart';
 ///         },
 ///         Source = new Aws.CodeBuild.Inputs.ProjectSourceArgs
 ///         {
-///             Type = "GITHUB",
-///             Location = "https://github.com/mitchellh/packer.git",
-///             GitCloneDepth = 1,
 ///             GitSubmodulesConfig = new Aws.CodeBuild.Inputs.ProjectSourceGitSubmodulesConfigArgs
 ///             {
 ///                 FetchSubmodules = true,
 ///             },
+///             Type = "GITHUB",
+///             Location = "https://github.com/mitchellh/packer.git",
+///             GitCloneDepth = 1,
 ///         },
-///         SourceVersion = "master",
 ///         VpcConfig = new Aws.CodeBuild.Inputs.ProjectVpcConfigArgs
 ///         {
 ///             VpcId = exampleAwsVpc.Id,
@@ -661,6 +660,11 @@ import 'project_vpc_config.dart';
 ///                 example2AwsSecurityGroup.Id,
 ///             },
 ///         },
+///         Name = "test-project",
+///         Description = "test_codebuild_project",
+///         BuildTimeout = 5,
+///         ServiceRole = exampleRole.Arn,
+///         SourceVersion = "master",
 ///         Tags =
 ///         {
 ///             { "Environment", "Test" },
@@ -669,11 +673,6 @@ import 'project_vpc_config.dart';
 ///
 ///     var project_with_cache = new Aws.CodeBuild.Project("project-with-cache", new()
 ///     {
-///         Name = "test-project-cache",
-///         Description = "test_codebuild_project_cache",
-///         BuildTimeout = 5,
-///         QueuedTimeout = 5,
-///         ServiceRole = exampleRole.Arn,
 ///         Artifacts = new Aws.CodeBuild.Inputs.ProjectArtifactsArgs
 ///         {
 ///             Type = "NO_ARTIFACTS",
@@ -689,10 +688,6 @@ import 'project_vpc_config.dart';
 ///         },
 ///         Environment = new Aws.CodeBuild.Inputs.ProjectEnvironmentArgs
 ///         {
-///             ComputeType = "BUILD_GENERAL1_SMALL",
-///             Image = "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
-///             Type = "LINUX_CONTAINER",
-///             ImagePullCredentialsType = "CODEBUILD",
 ///             EnvironmentVariables = new[]
 ///             {
 ///                 new Aws.CodeBuild.Inputs.ProjectEnvironmentEnvironmentVariableArgs
@@ -701,6 +696,10 @@ import 'project_vpc_config.dart';
 ///                     Value = "SOME_VALUE1",
 ///                 },
 ///             },
+///             ComputeType = "BUILD_GENERAL1_SMALL",
+///             Image = "aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+///             Type = "LINUX_CONTAINER",
+///             ImagePullCredentialsType = "CODEBUILD",
 ///         },
 ///         Source = new Aws.CodeBuild.Inputs.ProjectSourceArgs
 ///         {
@@ -708,6 +707,11 @@ import 'project_vpc_config.dart';
 ///             Location = "https://github.com/mitchellh/packer.git",
 ///             GitCloneDepth = 1,
 ///         },
+///         Name = "test-project-cache",
+///         Description = "test_codebuild_project_cache",
+///         BuildTimeout = 5,
+///         QueuedTimeout = 5,
+///         ServiceRole = exampleRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Environment", "Test" },
@@ -716,9 +720,6 @@ import 'project_vpc_config.dart';
 ///
 ///     var project_using_github_app = new Aws.CodeBuild.Project("project-using-github-app", new()
 ///     {
-///         Name = "project-using-github-app",
-///         Description = "gets_source_from_github_via_the_github_app",
-///         ServiceRole = exampleRole.Arn,
 ///         Artifacts = new Aws.CodeBuild.Inputs.ProjectArtifactsArgs
 ///         {
 ///             Type = "NO_ARTIFACTS",
@@ -732,14 +733,17 @@ import 'project_vpc_config.dart';
 ///         },
 ///         Source = new Aws.CodeBuild.Inputs.ProjectSourceArgs
 ///         {
-///             Type = "GITHUB",
-///             Location = "https://github.com/example/example.git",
 ///             Auth = new Aws.CodeBuild.Inputs.ProjectSourceAuthArgs
 ///             {
 ///                 Type = "CODECONNECTIONS",
 ///                 Resource = "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string",
 ///             },
+///             Type = "GITHUB",
+///             Location = "https://github.com/example/example.git",
 ///         },
+///         Name = "project-using-github-app",
+///         Description = "gets_source_from_github_via_the_github_app",
+///         ServiceRole = exampleRole.Arn,
 ///     });
 ///
 /// });
@@ -774,7 +778,6 @@ import 'project_vpc_config.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -783,6 +786,7 @@ import 'project_vpc_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -828,13 +832,6 @@ import 'project_vpc_config.dart';
 /// 					},
 /// 				},
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("ec2:CreateNetworkInterfacePermission"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						pulumi.String("arn:aws:ec2:us-east-1:123456789012:network-interface/*"),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -851,6 +848,13 @@ import 'project_vpc_config.dart';
 /// 								pulumi.String("codebuild.amazonaws.com"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("ec2:CreateNetworkInterfacePermission"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						pulumi.String("arn:aws:ec2:us-east-1:123456789012:network-interface/*"),
 /// 					},
 /// 				},
 /// 				&iam.GetPolicyDocumentStatementArgs{
@@ -885,10 +889,6 @@ import 'project_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codebuild.NewProject(ctx, "example", &codebuild.ProjectArgs{
-/// 			Name:         pulumi.String("test-project"),
-/// 			Description:  pulumi.String("test_codebuild_project"),
-/// 			BuildTimeout: pulumi.Int(5),
-/// 			ServiceRole:  exampleRole.Arn,
 /// 			Artifacts: &codebuild.ProjectArtifactsArgs{
 /// 				Type: pulumi.String("NO_ARTIFACTS"),
 /// 			},
@@ -897,11 +897,6 @@ import 'project_vpc_config.dart';
 /// 				Location: exampleBucket.Bucket,
 /// 			},
 /// 			Environment: &codebuild.ProjectEnvironmentArgs{
-/// 				ComputeType:              pulumi.String("BUILD_GENERAL1_SMALL"),
-/// 				Image:                    pulumi.String("aws/codebuild/amazonlinux-x86_64-standard:6.0"),
-/// 				Type:                     pulumi.String("LINUX_CONTAINER"),
-/// 				ImagePullCredentialsType: pulumi.String("CODEBUILD"),
-/// 				HostKernel:               pulumi.String("LINUX_KERNEL_6"),
 /// 				EnvironmentVariables: codebuild.ProjectEnvironmentEnvironmentVariableArray{
 /// 					&codebuild.ProjectEnvironmentEnvironmentVariableArgs{
 /// 						Name:  pulumi.String("SOME_KEY1"),
@@ -913,6 +908,11 @@ import 'project_vpc_config.dart';
 /// 						Type:  pulumi.String("PARAMETER_STORE"),
 /// 					},
 /// 				},
+/// 				ComputeType:              pulumi.String("BUILD_GENERAL1_SMALL"),
+/// 				Image:                    pulumi.String("aws/codebuild/amazonlinux-x86_64-standard:6.0"),
+/// 				Type:                     pulumi.String("LINUX_CONTAINER"),
+/// 				ImagePullCredentialsType: pulumi.String("CODEBUILD"),
+/// 				HostKernel:               pulumi.String("LINUX_KERNEL_6"),
 /// 			},
 /// 			LogsConfig: &codebuild.ProjectLogsConfigArgs{
 /// 				CloudwatchLogs: &codebuild.ProjectLogsConfigCloudwatchLogsArgs{
@@ -927,14 +927,13 @@ import 'project_vpc_config.dart';
 /// 				},
 /// 			},
 /// 			Source: &codebuild.ProjectSourceArgs{
-/// 				Type:          pulumi.String("GITHUB"),
-/// 				Location:      pulumi.String("https://github.com/mitchellh/packer.git"),
-/// 				GitCloneDepth: pulumi.Int(1),
 /// 				GitSubmodulesConfig: &codebuild.ProjectSourceGitSubmodulesConfigArgs{
 /// 					FetchSubmodules: pulumi.Bool(true),
 /// 				},
+/// 				Type:          pulumi.String("GITHUB"),
+/// 				Location:      pulumi.String("https://github.com/mitchellh/packer.git"),
+/// 				GitCloneDepth: pulumi.Int(1),
 /// 			},
-/// 			SourceVersion: pulumi.String("master"),
 /// 			VpcConfig: &codebuild.ProjectVpcConfigArgs{
 /// 				VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// 				Subnets: pulumi.StringArray{
@@ -946,6 +945,11 @@ import 'project_vpc_config.dart';
 /// 					example2AwsSecurityGroup.Id,
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("test-project"),
+/// 			Description:   pulumi.String("test_codebuild_project"),
+/// 			BuildTimeout:  pulumi.Int(5),
+/// 			ServiceRole:   exampleRole.Arn,
+/// 			SourceVersion: pulumi.String("master"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Test"),
 /// 			},
@@ -954,11 +958,6 @@ import 'project_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codebuild.NewProject(ctx, "project-with-cache", &codebuild.ProjectArgs{
-/// 			Name:          pulumi.String("test-project-cache"),
-/// 			Description:   pulumi.String("test_codebuild_project_cache"),
-/// 			BuildTimeout:  pulumi.Int(5),
-/// 			QueuedTimeout: pulumi.Int(5),
-/// 			ServiceRole:   exampleRole.Arn,
 /// 			Artifacts: &codebuild.ProjectArtifactsArgs{
 /// 				Type: pulumi.String("NO_ARTIFACTS"),
 /// 			},
@@ -970,22 +969,27 @@ import 'project_vpc_config.dart';
 /// 				},
 /// 			},
 /// 			Environment: &codebuild.ProjectEnvironmentArgs{
-/// 				ComputeType:              pulumi.String("BUILD_GENERAL1_SMALL"),
-/// 				Image:                    pulumi.String("aws/codebuild/amazonlinux2-x86_64-standard:4.0"),
-/// 				Type:                     pulumi.String("LINUX_CONTAINER"),
-/// 				ImagePullCredentialsType: pulumi.String("CODEBUILD"),
 /// 				EnvironmentVariables: codebuild.ProjectEnvironmentEnvironmentVariableArray{
 /// 					&codebuild.ProjectEnvironmentEnvironmentVariableArgs{
 /// 						Name:  pulumi.String("SOME_KEY1"),
 /// 						Value: pulumi.String("SOME_VALUE1"),
 /// 					},
 /// 				},
+/// 				ComputeType:              pulumi.String("BUILD_GENERAL1_SMALL"),
+/// 				Image:                    pulumi.String("aws/codebuild/amazonlinux2-x86_64-standard:4.0"),
+/// 				Type:                     pulumi.String("LINUX_CONTAINER"),
+/// 				ImagePullCredentialsType: pulumi.String("CODEBUILD"),
 /// 			},
 /// 			Source: &codebuild.ProjectSourceArgs{
 /// 				Type:          pulumi.String("GITHUB"),
 /// 				Location:      pulumi.String("https://github.com/mitchellh/packer.git"),
 /// 				GitCloneDepth: pulumi.Int(1),
 /// 			},
+/// 			Name:          pulumi.String("test-project-cache"),
+/// 			Description:   pulumi.String("test_codebuild_project_cache"),
+/// 			BuildTimeout:  pulumi.Int(5),
+/// 			QueuedTimeout: pulumi.Int(5),
+/// 			ServiceRole:   exampleRole.Arn,
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Test"),
 /// 			},
@@ -994,9 +998,6 @@ import 'project_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codebuild.NewProject(ctx, "project-using-github-app", &codebuild.ProjectArgs{
-/// 			Name:        pulumi.String("project-using-github-app"),
-/// 			Description: pulumi.String("gets_source_from_github_via_the_github_app"),
-/// 			ServiceRole: exampleRole.Arn,
 /// 			Artifacts: &codebuild.ProjectArtifactsArgs{
 /// 				Type: pulumi.String("NO_ARTIFACTS"),
 /// 			},
@@ -1007,13 +1008,16 @@ import 'project_vpc_config.dart';
 /// 				ImagePullCredentialsType: pulumi.String("CODEBUILD"),
 /// 			},
 /// 			Source: &codebuild.ProjectSourceArgs{
-/// 				Type:     pulumi.String("GITHUB"),
-/// 				Location: pulumi.String("https://github.com/example/example.git"),
 /// 				Auth: &codebuild.ProjectSourceAuthArgs{
 /// 					Type:     pulumi.String("CODECONNECTIONS"),
 /// 					Resource: pulumi.String("arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string"),
 /// 				},
+/// 				Type:     pulumi.String("GITHUB"),
+/// 				Location: pulumi.String("https://github.com/example/example.git"),
 /// 			},
+/// 			Name:        pulumi.String("project-using-github-app"),
+/// 			Description: pulumi.String("gets_source_from_github_via_the_github_app"),
+/// 			ServiceRole: exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1033,11 +1037,11 @@ import 'project_vpc_config.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codebuild.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1053,9 +1057,6 @@ import 'project_vpc_config.dart';
 ///     resources = ["*"]
 ///   }
 ///   statements {
-///     effect    = "Allow"
-///     actions   = ["ec2:CreateNetworkInterfacePermission"]
-///     resources = ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "ec2:Subnet"
@@ -1066,6 +1067,9 @@ import 'project_vpc_config.dart';
 ///       variable = "ec2:AuthorizedService"
 ///       values   = ["codebuild.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
+///     actions   = ["ec2:CreateNetworkInterfacePermission"]
+///     resources = ["arn:aws:ec2:us-east-1:123456789012:network-interface/*"]
 ///   }
 ///   statements {
 ///     effect    = "Allow"
@@ -1095,10 +1099,6 @@ import 'project_vpc_config.dart';
 ///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// resource "aws_codebuild_project" "example" {
-///   name          = "test-project"
-///   description   = "test_codebuild_project"
-///   build_timeout = 5
-///   service_role  = aws_iam_role.example.arn
 ///   artifacts = {
 ///     type = "NO_ARTIFACTS"
 ///   }
@@ -1107,11 +1107,6 @@ import 'project_vpc_config.dart';
 ///     location = aws_s3_bucket.example.bucket
 ///   }
 ///   environment = {
-///     compute_type                = "BUILD_GENERAL1_SMALL"
-///     image                       = "aws/codebuild/amazonlinux-x86_64-standard:6.0"
-///     type                        = "LINUX_CONTAINER"
-///     image_pull_credentials_type = "CODEBUILD"
-///     host_kernel                 = "LINUX_KERNEL_6"
 ///     environment_variables = [{
 ///       "name"  = "SOME_KEY1"
 ///       "value" = "SOME_VALUE1"
@@ -1120,6 +1115,11 @@ import 'project_vpc_config.dart';
 ///       "value" = "SOME_VALUE2"
 ///       "type"  = "PARAMETER_STORE"
 ///     }]
+///     compute_type                = "BUILD_GENERAL1_SMALL"
+///     image                       = "aws/codebuild/amazonlinux-x86_64-standard:6.0"
+///     type                        = "LINUX_CONTAINER"
+///     image_pull_credentials_type = "CODEBUILD"
+///     host_kernel                 = "LINUX_KERNEL_6"
 ///   }
 ///   logs_config = {
 ///     cloudwatch_logs = {
@@ -1132,29 +1132,28 @@ import 'project_vpc_config.dart';
 ///     }
 ///   }
 ///   source = {
-///     type            = "GITHUB"
-///     location        = "https://github.com/mitchellh/packer.git"
-///     git_clone_depth = 1
 ///     git_submodules_config = {
 ///       fetch_submodules = true
 ///     }
+///     type            = "GITHUB"
+///     location        = "https://github.com/mitchellh/packer.git"
+///     git_clone_depth = 1
 ///   }
-///   source_version = "master"
 ///   vpc_config = {
 ///     vpc_id             = exampleAwsVpc.id
 ///     subnets            = [example1.id, example2.id]
 ///     security_group_ids = [example1AwsSecurityGroup.id, example2AwsSecurityGroup.id]
 ///   }
+///   name           = "test-project"
+///   description    = "test_codebuild_project"
+///   build_timeout  = 5
+///   service_role   = aws_iam_role.example.arn
+///   source_version = "master"
 ///   tags = {
 ///     "Environment" = "Test"
 ///   }
 /// }
 /// resource "aws_codebuild_project" "project-with-cache" {
-///   name           = "test-project-cache"
-///   description    = "test_codebuild_project_cache"
-///   build_timeout  = 5
-///   queued_timeout = 5
-///   service_role   = aws_iam_role.example.arn
 ///   artifacts = {
 ///     type = "NO_ARTIFACTS"
 ///   }
@@ -1163,28 +1162,30 @@ import 'project_vpc_config.dart';
 ///     modes = ["LOCAL_DOCKER_LAYER_CACHE", "LOCAL_SOURCE_CACHE"]
 ///   }
 ///   environment = {
-///     compute_type                = "BUILD_GENERAL1_SMALL"
-///     image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
-///     type                        = "LINUX_CONTAINER"
-///     image_pull_credentials_type = "CODEBUILD"
 ///     environment_variables = [{
 ///       "name"  = "SOME_KEY1"
 ///       "value" = "SOME_VALUE1"
 ///     }]
+///     compute_type                = "BUILD_GENERAL1_SMALL"
+///     image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
+///     type                        = "LINUX_CONTAINER"
+///     image_pull_credentials_type = "CODEBUILD"
 ///   }
 ///   source = {
 ///     type            = "GITHUB"
 ///     location        = "https://github.com/mitchellh/packer.git"
 ///     git_clone_depth = 1
 ///   }
+///   name           = "test-project-cache"
+///   description    = "test_codebuild_project_cache"
+///   build_timeout  = 5
+///   queued_timeout = 5
+///   service_role   = aws_iam_role.example.arn
 ///   tags = {
 ///     "Environment" = "Test"
 ///   }
 /// }
 /// resource "aws_codebuild_project" "project-using-github-app" {
-///   name         = "project-using-github-app"
-///   description  = "gets_source_from_github_via_the_github_app"
-///   service_role = aws_iam_role.example.arn
 ///   artifacts = {
 ///     type = "NO_ARTIFACTS"
 ///   }
@@ -1195,13 +1196,16 @@ import 'project_vpc_config.dart';
 ///     image_pull_credentials_type = "CODEBUILD"
 ///   }
 ///   source = {
-///     type     = "GITHUB"
-///     location = "https://github.com/example/example.git"
 ///     auth = {
 ///       type     = "CODECONNECTIONS"
 ///       resource = "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string"
 ///     }
+///     type     = "GITHUB"
+///     location = "https://github.com/example/example.git"
 ///   }
+///   name         = "project-using-github-app"
+///   description  = "gets_source_from_github_via_the_github_app"
+///   service_role = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -1260,11 +1264,11 @@ import 'project_vpc_config.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("codebuild.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1297,9 +1301,6 @@ import 'project_vpc_config.dart';
 ///                     .resources("*")
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .effect("Allow")
-///                     .actions("ec2:CreateNetworkInterfacePermission")
-///                     .resources("arn:aws:ec2:us-east-1:123456789012:network-interface/*")
 ///                     .conditions(
 ///                         GetPolicyDocumentStatementConditionArgs.builder()
 ///                             .test("StringEquals")
@@ -1313,6 +1314,9 @@ import 'project_vpc_config.dart';
 ///                             .variable("ec2:AuthorizedService")
 ///                             .values("codebuild.amazonaws.com")
 ///                             .build())
+///                     .effect("Allow")
+///                     .actions("ec2:CreateNetworkInterfacePermission")
+///                     .resources("arn:aws:ec2:us-east-1:123456789012:network-interface/*")
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .effect("Allow")
@@ -1336,10 +1340,6 @@ import 'project_vpc_config.dart';
 ///             .build());
 ///
 ///         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
-///             .name("test-project")
-///             .description("test_codebuild_project")
-///             .buildTimeout(5)
-///             .serviceRole(exampleRole.arn())
 ///             .artifacts(ProjectArtifactsArgs.builder()
 ///                 .type("NO_ARTIFACTS")
 ///                 .build())
@@ -1348,11 +1348,6 @@ import 'project_vpc_config.dart';
 ///                 .location(exampleBucket.bucket())
 ///                 .build())
 ///             .environment(ProjectEnvironmentArgs.builder()
-///                 .computeType("BUILD_GENERAL1_SMALL")
-///                 .image("aws/codebuild/amazonlinux-x86_64-standard:6.0")
-///                 .type("LINUX_CONTAINER")
-///                 .imagePullCredentialsType("CODEBUILD")
-///                 .hostKernel("LINUX_KERNEL_6")
 ///                 .environmentVariables(
 ///                     ProjectEnvironmentEnvironmentVariableArgs.builder()
 ///                         .name("SOME_KEY1")
@@ -1363,6 +1358,11 @@ import 'project_vpc_config.dart';
 ///                         .value("SOME_VALUE2")
 ///                         .type("PARAMETER_STORE")
 ///                         .build())
+///                 .computeType("BUILD_GENERAL1_SMALL")
+///                 .image("aws/codebuild/amazonlinux-x86_64-standard:6.0")
+///                 .type("LINUX_CONTAINER")
+///                 .imagePullCredentialsType("CODEBUILD")
+///                 .hostKernel("LINUX_KERNEL_6")
 ///                 .build())
 ///             .logsConfig(ProjectLogsConfigArgs.builder()
 ///                 .cloudwatchLogs(ProjectLogsConfigCloudwatchLogsArgs.builder()
@@ -1375,14 +1375,13 @@ import 'project_vpc_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .source(ProjectSourceArgs.builder()
-///                 .type("GITHUB")
-///                 .location("https://github.com/mitchellh/packer.git")
-///                 .gitCloneDepth(1)
 ///                 .gitSubmodulesConfig(ProjectSourceGitSubmodulesConfigArgs.builder()
 ///                     .fetchSubmodules(true)
 ///                     .build())
+///                 .type("GITHUB")
+///                 .location("https://github.com/mitchellh/packer.git")
+///                 .gitCloneDepth(1)
 ///                 .build())
-///             .sourceVersion("master")
 ///             .vpcConfig(ProjectVpcConfigArgs.builder()
 ///                 .vpcId(exampleAwsVpc.id())
 ///                 .subnets(
@@ -1392,15 +1391,15 @@ import 'project_vpc_config.dart';
 ///                     example1AwsSecurityGroup.id(),
 ///                     example2AwsSecurityGroup.id())
 ///                 .build())
+///             .name("test-project")
+///             .description("test_codebuild_project")
+///             .buildTimeout(5)
+///             .serviceRole(exampleRole.arn())
+///             .sourceVersion("master")
 ///             .tags(Map.of("Environment", "Test"))
 ///             .build());
 ///
 ///         var project_with_cache = new Project("project-with-cache", ProjectArgs.builder()
-///             .name("test-project-cache")
-///             .description("test_codebuild_project_cache")
-///             .buildTimeout(5)
-///             .queuedTimeout(5)
-///             .serviceRole(exampleRole.arn())
 ///             .artifacts(ProjectArtifactsArgs.builder()
 ///                 .type("NO_ARTIFACTS")
 ///                 .build())
@@ -1411,27 +1410,29 @@ import 'project_vpc_config.dart';
 ///                     "LOCAL_SOURCE_CACHE")
 ///                 .build())
 ///             .environment(ProjectEnvironmentArgs.builder()
-///                 .computeType("BUILD_GENERAL1_SMALL")
-///                 .image("aws/codebuild/amazonlinux2-x86_64-standard:4.0")
-///                 .type("LINUX_CONTAINER")
-///                 .imagePullCredentialsType("CODEBUILD")
 ///                 .environmentVariables(ProjectEnvironmentEnvironmentVariableArgs.builder()
 ///                     .name("SOME_KEY1")
 ///                     .value("SOME_VALUE1")
 ///                     .build())
+///                 .computeType("BUILD_GENERAL1_SMALL")
+///                 .image("aws/codebuild/amazonlinux2-x86_64-standard:4.0")
+///                 .type("LINUX_CONTAINER")
+///                 .imagePullCredentialsType("CODEBUILD")
 ///                 .build())
 ///             .source(ProjectSourceArgs.builder()
 ///                 .type("GITHUB")
 ///                 .location("https://github.com/mitchellh/packer.git")
 ///                 .gitCloneDepth(1)
 ///                 .build())
+///             .name("test-project-cache")
+///             .description("test_codebuild_project_cache")
+///             .buildTimeout(5)
+///             .queuedTimeout(5)
+///             .serviceRole(exampleRole.arn())
 ///             .tags(Map.of("Environment", "Test"))
 ///             .build());
 ///
 ///         var project_using_github_app = new Project("project-using-github-app", ProjectArgs.builder()
-///             .name("project-using-github-app")
-///             .description("gets_source_from_github_via_the_github_app")
-///             .serviceRole(exampleRole.arn())
 ///             .artifacts(ProjectArtifactsArgs.builder()
 ///                 .type("NO_ARTIFACTS")
 ///                 .build())
@@ -1442,13 +1443,16 @@ import 'project_vpc_config.dart';
 ///                 .imagePullCredentialsType("CODEBUILD")
 ///                 .build())
 ///             .source(ProjectSourceArgs.builder()
-///                 .type("GITHUB")
-///                 .location("https://github.com/example/example.git")
 ///                 .auth(ProjectSourceAuthArgs.builder()
 ///                     .type("CODECONNECTIONS")
 ///                     .resource("arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string")
 ///                     .build())
+///                 .type("GITHUB")
+///                 .location("https://github.com/example/example.git")
 ///                 .build())
+///             .name("project-using-github-app")
+///             .description("gets_source_from_github_via_the_github_app")
+///             .serviceRole(exampleRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1483,27 +1487,23 @@ import 'project_vpc_config.dart';
 ///     type: aws:codebuild:Project
 ///     name: example
 ///     properties:
-///       name: test-project
-///       description: test_codebuild_project
-///       buildTimeout: 5
-///       serviceRole: ${exampleRole.arn}
 ///       artifacts:
 ///         type: NO_ARTIFACTS
 ///       cache:
 ///         type: S3
 ///         location: ${exampleBucket.bucket}
 ///       environment:
-///         computeType: BUILD_GENERAL1_SMALL
-///         image: aws/codebuild/amazonlinux-x86_64-standard:6.0
-///         type: LINUX_CONTAINER
-///         imagePullCredentialsType: CODEBUILD
-///         hostKernel: LINUX_KERNEL_6
 ///         environmentVariables:
 ///           - name: SOME_KEY1
 ///             value: SOME_VALUE1
 ///           - name: SOME_KEY2
 ///             value: SOME_VALUE2
 ///             type: PARAMETER_STORE
+///         computeType: BUILD_GENERAL1_SMALL
+///         image: aws/codebuild/amazonlinux-x86_64-standard:6.0
+///         type: LINUX_CONTAINER
+///         imagePullCredentialsType: CODEBUILD
+///         hostKernel: LINUX_KERNEL_6
 ///       logsConfig:
 ///         cloudwatchLogs:
 ///           groupName: log-group
@@ -1512,12 +1512,11 @@ import 'project_vpc_config.dart';
 ///           status: ENABLED
 ///           location: ${exampleBucket.id}/build-log
 ///       source:
+///         gitSubmodulesConfig:
+///           fetchSubmodules: true
 ///         type: GITHUB
 ///         location: https://github.com/mitchellh/packer.git
 ///         gitCloneDepth: 1
-///         gitSubmodulesConfig:
-///           fetchSubmodules: true
-///       sourceVersion: master
 ///       vpcConfig:
 ///         vpcId: ${exampleAwsVpc.id}
 ///         subnets:
@@ -1526,16 +1525,16 @@ import 'project_vpc_config.dart';
 ///         securityGroupIds:
 ///           - ${example1AwsSecurityGroup.id}
 ///           - ${example2AwsSecurityGroup.id}
+///       name: test-project
+///       description: test_codebuild_project
+///       buildTimeout: 5
+///       serviceRole: ${exampleRole.arn}
+///       sourceVersion: master
 ///       tags:
 ///         Environment: Test
 ///   project-with-cache:
 ///     type: aws:codebuild:Project
 ///     properties:
-///       name: test-project-cache
-///       description: test_codebuild_project_cache
-///       buildTimeout: 5
-///       queuedTimeout: 5
-///       serviceRole: ${exampleRole.arn}
 ///       artifacts:
 ///         type: NO_ARTIFACTS
 ///       cache:
@@ -1544,25 +1543,27 @@ import 'project_vpc_config.dart';
 ///           - LOCAL_DOCKER_LAYER_CACHE
 ///           - LOCAL_SOURCE_CACHE
 ///       environment:
+///         environmentVariables:
+///           - name: SOME_KEY1
+///             value: SOME_VALUE1
 ///         computeType: BUILD_GENERAL1_SMALL
 ///         image: aws/codebuild/amazonlinux2-x86_64-standard:4.0
 ///         type: LINUX_CONTAINER
 ///         imagePullCredentialsType: CODEBUILD
-///         environmentVariables:
-///           - name: SOME_KEY1
-///             value: SOME_VALUE1
 ///       source:
 ///         type: GITHUB
 ///         location: https://github.com/mitchellh/packer.git
 ///         gitCloneDepth: 1
+///       name: test-project-cache
+///       description: test_codebuild_project_cache
+///       buildTimeout: 5
+///       queuedTimeout: 5
+///       serviceRole: ${exampleRole.arn}
 ///       tags:
 ///         Environment: Test
 ///   project-using-github-app:
 ///     type: aws:codebuild:Project
 ///     properties:
-///       name: project-using-github-app
-///       description: gets_source_from_github_via_the_github_app
-///       serviceRole: ${exampleRole.arn}
 ///       artifacts:
 ///         type: NO_ARTIFACTS
 ///       environment:
@@ -1571,22 +1572,25 @@ import 'project_vpc_config.dart';
 ///         type: LINUX_CONTAINER
 ///         imagePullCredentialsType: CODEBUILD
 ///       source:
-///         type: GITHUB
-///         location: https://github.com/example/example.git
 ///         auth:
 ///           type: CODECONNECTIONS
 ///           resource: arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string
+///         type: GITHUB
+///         location: https://github.com/example/example.git
+///       name: project-using-github-app
+///       description: gets_source_from_github_via_the_github_app
+///       serviceRole: ${exampleRole.arn}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - codebuild.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   example:
@@ -1612,12 +1616,7 @@ import 'project_vpc_config.dart';
 ///               - ec2:DescribeVpcs
 ///             resources:
 ///               - '*'
-///           - effect: Allow
-///             actions:
-///               - ec2:CreateNetworkInterfacePermission
-///             resources:
-///               - arn:aws:ec2:us-east-1:123456789012:network-interface/*
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: ec2:Subnet
 ///                 values:
@@ -1627,6 +1626,11 @@ import 'project_vpc_config.dart';
 ///                 variable: ec2:AuthorizedService
 ///                 values:
 ///                   - codebuild.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - ec2:CreateNetworkInterfacePermission
+///             resources:
+///               - arn:aws:ec2:us-east-1:123456789012:network-interface/*
 ///           - effect: Allow
 ///             actions:
 ///               - s3:*
@@ -1653,7 +1657,7 @@ import 'project_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeBuild project.
+/// - `arn` (String) ARN of the CodeBuild project.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Project using the `name`. For example:
@@ -1687,14 +1691,14 @@ class Project extends pulumi.CustomResource {
   late final pulumi.Output<int?> concurrentBuildLimit;
   /// Short description of the project.
   late final pulumi.Output<String> description;
-  /// AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting
+  /// KMS customer master key (CMK) to be used for encrypting
   /// the build project's build output artifacts.
   late final pulumi.Output<String> encryptionKey;
   /// Configuration block. Detailed below.
   late final pulumi.Output<ProjectEnvironment> environment;
   /// A set of file system locations to mount inside the build. File system locations
   /// are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> fileSystemLocations;
+  late final pulumi.Output<List<ProjectFileSystemLocation>?> fileSystemLocations;
   /// Configuration block. Detailed below.
   late final pulumi.Output<ProjectLogsConfig?> logsConfig;
   /// Project's name.
@@ -1714,12 +1718,12 @@ class Project extends pulumi.CustomResource {
   /// `projectVisibility` is `PUBLIC_READ`.
   late final pulumi.Output<String?> resourceAccessRole;
   /// Configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secondaryArtifacts;
+  late final pulumi.Output<List<ProjectSecondaryArtifact>?> secondaryArtifacts;
   /// Configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secondarySourceVersions;
+  late final pulumi.Output<List<ProjectSecondarySourceVersion>?> secondarySourceVersions;
   /// Configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secondarySources;
-  /// Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
+  late final pulumi.Output<List<ProjectSecondarySource>?> secondarySources;
+  /// ARN of the AWS Identity and Access Management (IAM) role that
   /// enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
   late final pulumi.Output<String> serviceRole;
   /// Configuration block. Detailed below.
@@ -1751,7 +1755,7 @@ class Project extends pulumi.CustomResource {
           'aws:codebuild/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifacts = registerOutput<ProjectArtifacts>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectArtifacts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1765,7 +1769,7 @@ class Project extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     encryptionKey = registerOutput<String>('encryptionKey');
     environment = registerOutput<ProjectEnvironment>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    fileSystemLocations = registerOutput<List<Map<String, dynamic>>?>('fileSystemLocations');
+    fileSystemLocations = registerOutput<List<ProjectFileSystemLocation>?>('fileSystemLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFileSystemLocation>(guardedValue, (value) => ProjectFileSystemLocation.fromMap((value as Map).cast<String, dynamic>())); });
     logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     projectVisibility = registerOutput<String?>('projectVisibility');
@@ -1773,14 +1777,14 @@ class Project extends pulumi.CustomResource {
     queuedTimeout = registerOutput<int?>('queuedTimeout');
     region = registerOutput<String>('region');
     resourceAccessRole = registerOutput<String?>('resourceAccessRole');
-    secondaryArtifacts = registerOutput<List<Map<String, dynamic>>?>('secondaryArtifacts');
-    secondarySourceVersions = registerOutput<List<Map<String, dynamic>>?>('secondarySourceVersions');
-    secondarySources = registerOutput<List<Map<String, dynamic>>?>('secondarySources');
+    secondaryArtifacts = registerOutput<List<ProjectSecondaryArtifact>?>('secondaryArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondaryArtifact>(guardedValue, (value) => ProjectSecondaryArtifact.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySourceVersions = registerOutput<List<ProjectSecondarySourceVersion>?>('secondarySourceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySourceVersion>(guardedValue, (value) => ProjectSecondarySourceVersion.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySources = registerOutput<List<ProjectSecondarySource>?>('secondarySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySource>(guardedValue, (value) => ProjectSecondarySource.fromMap((value as Map).cast<String, dynamic>())); });
     serviceRole = registerOutput<String>('serviceRole');
     source = registerOutput<ProjectSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceVersion = registerOutput<String?>('sourceVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1789,11 +1793,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1819,7 +1824,7 @@ class Project extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     encryptionKey = registerOutput<String>('encryptionKey');
     environment = registerOutput<ProjectEnvironment>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    fileSystemLocations = registerOutput<List<Map<String, dynamic>>?>('fileSystemLocations');
+    fileSystemLocations = registerOutput<List<ProjectFileSystemLocation>?>('fileSystemLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFileSystemLocation>(guardedValue, (value) => ProjectFileSystemLocation.fromMap((value as Map).cast<String, dynamic>())); });
     logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     projectVisibility = registerOutput<String?>('projectVisibility');
@@ -1827,14 +1832,54 @@ class Project extends pulumi.CustomResource {
     queuedTimeout = registerOutput<int?>('queuedTimeout');
     region = registerOutput<String>('region');
     resourceAccessRole = registerOutput<String?>('resourceAccessRole');
-    secondaryArtifacts = registerOutput<List<Map<String, dynamic>>?>('secondaryArtifacts');
-    secondarySourceVersions = registerOutput<List<Map<String, dynamic>>?>('secondarySourceVersions');
-    secondarySources = registerOutput<List<Map<String, dynamic>>?>('secondarySources');
+    secondaryArtifacts = registerOutput<List<ProjectSecondaryArtifact>?>('secondaryArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondaryArtifact>(guardedValue, (value) => ProjectSecondaryArtifact.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySourceVersions = registerOutput<List<ProjectSecondarySourceVersion>?>('secondarySourceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySourceVersion>(guardedValue, (value) => ProjectSecondarySourceVersion.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySources = registerOutput<List<ProjectSecondarySource>?>('secondarySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySource>(guardedValue, (value) => ProjectSecondarySource.fromMap((value as Map).cast<String, dynamic>())); });
     serviceRole = registerOutput<String>('serviceRole');
     source = registerOutput<ProjectSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceVersion = registerOutput<String?>('sourceVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'aws:codebuild/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    artifacts = registerOutput<ProjectArtifacts>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectArtifacts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoRetryLimit = registerOutput<int>('autoRetryLimit');
+    badgeEnabled = registerOutput<bool?>('badgeEnabled');
+    badgeUrl = registerOutput<String>('badgeUrl');
+    buildBatchConfig = registerOutput<ProjectBuildBatchConfig?>('buildBatchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBuildBatchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildTimeout = registerOutput<int?>('buildTimeout');
+    cache = registerOutput<ProjectCache?>('cache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    concurrentBuildLimit = registerOutput<int?>('concurrentBuildLimit');
+    description = registerOutput<String>('description');
+    encryptionKey = registerOutput<String>('encryptionKey');
+    environment = registerOutput<ProjectEnvironment>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileSystemLocations = registerOutput<List<ProjectFileSystemLocation>?>('fileSystemLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectFileSystemLocation>(guardedValue, (value) => ProjectFileSystemLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    projectVisibility = registerOutput<String?>('projectVisibility');
+    publicProjectAlias = registerOutput<String>('publicProjectAlias');
+    queuedTimeout = registerOutput<int?>('queuedTimeout');
+    region = registerOutput<String>('region');
+    resourceAccessRole = registerOutput<String?>('resourceAccessRole');
+    secondaryArtifacts = registerOutput<List<ProjectSecondaryArtifact>?>('secondaryArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondaryArtifact>(guardedValue, (value) => ProjectSecondaryArtifact.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySourceVersions = registerOutput<List<ProjectSecondarySourceVersion>?>('secondarySourceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySourceVersion>(guardedValue, (value) => ProjectSecondarySourceVersion.fromMap((value as Map).cast<String, dynamic>())); });
+    secondarySources = registerOutput<List<ProjectSecondarySource>?>('secondarySources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSecondarySource>(guardedValue, (value) => ProjectSecondarySource.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceRole = registerOutput<String>('serviceRole');
+    source = registerOutput<ProjectSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceVersion = registerOutput<String?>('sourceVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

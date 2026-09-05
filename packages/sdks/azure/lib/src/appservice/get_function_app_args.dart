@@ -11,7 +11,7 @@ class GetFunctionAppArgs {
   final pulumi.Input<String> name;
   /// The name of the Resource Group where the Function App exists.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetFunctionAppArgs].
   /// [name] The name of the Function App resource.

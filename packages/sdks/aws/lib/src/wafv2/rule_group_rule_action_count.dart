@@ -5,7 +5,7 @@ import 'rule_group_rule_action_count_custom_request_handling.dart';
 
 class RuleGroupRuleActionCount {
   /// Defines custom handling for the web request. See Custom Request Handling below for details.
-  final pulumi.Input<RuleGroupRuleActionCountCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<RuleGroupRuleActionCountCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [RuleGroupRuleActionCount].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.

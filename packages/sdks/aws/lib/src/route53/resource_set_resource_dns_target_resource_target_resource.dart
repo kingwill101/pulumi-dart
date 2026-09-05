@@ -6,9 +6,9 @@ import 'resource_set_resource_dns_target_resource_target_resource_r53_resource.d
 
 class ResourceSetResourceDnsTargetResourceTargetResource {
   /// NLB resource a DNS Target Resource points to. Required if `r53Resource` is not set.
-  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceNlbResource>? nlbResource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceNlbResource?>? nlbResource;
   /// Route53 resource a DNS Target Resource record points to.
-  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceR53Resource>? r53Resource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResourceR53Resource?>? r53Resource;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResource].
   /// [nlbResource] NLB resource a DNS Target Resource points to. Required if `r53Resource` is not set.

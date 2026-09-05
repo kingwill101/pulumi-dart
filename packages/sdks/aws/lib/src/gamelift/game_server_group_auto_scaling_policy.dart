@@ -8,7 +8,7 @@ class GameServerGroupAutoScalingPolicy {
   /// new game server processes and register with GameLift FleetIQ.
   /// Specifying a warm-up time can be useful, particularly with game servers that take a long time to start up,
   /// because it avoids prematurely starting new instances. Defaults to `60`.
-  final pulumi.Input<int>? estimatedInstanceWarmup;
+  final pulumi.Input<int?>? estimatedInstanceWarmup;
   final pulumi.Input<GameServerGroupAutoScalingPolicyTargetTrackingConfiguration> targetTrackingConfiguration;
 
   /// Creates a new [GameServerGroupAutoScalingPolicy].
@@ -28,7 +28,7 @@ class GameServerGroupAutoScalingPolicy {
 
   factory GameServerGroupAutoScalingPolicy.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicy(
-      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       targetTrackingConfiguration: pulumi.Input.fromValue(GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration']! as Map).cast<String, dynamic>())),
     );
   }

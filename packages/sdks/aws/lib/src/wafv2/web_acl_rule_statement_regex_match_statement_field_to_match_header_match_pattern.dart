@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern {
-  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<Map<String, dynamic>?>? all;
   /// List of header names to exclude from inspection.
-  final pulumi.Input<List<String>>? excludedHeaders;
+  final pulumi.Input<List<String>?>? excludedHeaders;
   /// List of header names to inspect.
-  final pulumi.Input<List<String>>? includedHeaders;
+  final pulumi.Input<List<String>?>? includedHeaders;
 
   /// Creates a new [WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern].
   /// [all] Optional.

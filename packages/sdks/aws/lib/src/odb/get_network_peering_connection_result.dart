@@ -3,94 +3,94 @@
 
 /// Result data returned by getNetworkPeeringConnection.
 class GetNetworkPeeringConnectionResult {
-  /// Amazon Resource Name (ARN) for the  ODB network peering connection.
-  final String arn;
+  /// ARN for the  ODB network peering connection.
+  final String? arn;
   /// Created time of the ODB network peering connection.
-  final String createdAt;
+  final String? createdAt;
   /// Display name of the ODB network peering connection.
-  final String displayName;
-  final String id;
+  final String? displayName;
+  final String? id;
   /// ARN of the ODB network peering connection.
-  final String odbNetworkArn;
+  final String? odbNetworkArn;
   /// Type of the ODB peering connection.
-  final String odbPeeringConnectionType;
+  final String? odbPeeringConnectionType;
   /// ARN of the peer network peering connection.
-  final String peerNetworkArn;
+  final String? peerNetworkArn;
   /// Set of peer network cidrs.
-  final List<String> peerNetworkCidrs;
+  final List<String>? peerNetworkCidrs;
   /// Progress of the ODB network peering connection.
-  final double percentProgress;
-  final String region;
+  final double? percentProgress;
+  final String? region;
   /// Status of the ODB network peering connection.
-  final String status;
+  final String? status;
   /// Status of the ODB network peering connection.
-  final String statusReason;
+  final String? statusReason;
   /// Tags applied to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetNetworkPeeringConnectionResult].
-  /// [arn] Amazon Resource Name (ARN) for the  ODB network peering connection.
+  /// [arn] ARN for the  ODB network peering connection.
   /// [createdAt] Created time of the ODB network peering connection.
   /// [displayName] Display name of the ODB network peering connection.
-  /// [id] Required.
+  /// [id] Optional.
   /// [odbNetworkArn] ARN of the ODB network peering connection.
   /// [odbPeeringConnectionType] Type of the ODB peering connection.
   /// [peerNetworkArn] ARN of the peer network peering connection.
   /// [peerNetworkCidrs] Set of peer network cidrs.
   /// [percentProgress] Progress of the ODB network peering connection.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Status of the ODB network peering connection.
   /// [statusReason] Status of the ODB network peering connection.
   /// [tags] Tags applied to the resource.
   const GetNetworkPeeringConnectionResult({
-    required this.arn,
-    required this.createdAt,
-    required this.displayName,
-    required this.id,
-    required this.odbNetworkArn,
-    required this.odbPeeringConnectionType,
-    required this.peerNetworkArn,
-    required this.peerNetworkCidrs,
-    required this.percentProgress,
-    required this.region,
-    required this.status,
-    required this.statusReason,
-    required this.tags,
+    this.arn,
+    this.createdAt,
+    this.displayName,
+    this.id,
+    this.odbNetworkArn,
+    this.odbPeeringConnectionType,
+    this.peerNetworkArn,
+    this.peerNetworkCidrs,
+    this.percentProgress,
+    this.region,
+    this.status,
+    this.statusReason,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'createdAt': createdAt,
-      'displayName': displayName,
-      'id': id,
-      'odbNetworkArn': odbNetworkArn,
-      'odbPeeringConnectionType': odbPeeringConnectionType,
-      'peerNetworkArn': peerNetworkArn,
-      'peerNetworkCidrs': peerNetworkCidrs,
-      'percentProgress': percentProgress,
-      'region': region,
-      'status': status,
-      'statusReason': statusReason,
-      'tags': tags,
+      'arn': ?arn,
+      'createdAt': ?createdAt,
+      'displayName': ?displayName,
+      'id': ?id,
+      'odbNetworkArn': ?odbNetworkArn,
+      'odbPeeringConnectionType': ?odbPeeringConnectionType,
+      'peerNetworkArn': ?peerNetworkArn,
+      'peerNetworkCidrs': ?peerNetworkCidrs,
+      'percentProgress': ?percentProgress,
+      'region': ?region,
+      'status': ?status,
+      'statusReason': ?statusReason,
+      'tags': ?tags,
     };
   }
 
   factory GetNetworkPeeringConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionResult(
-      arn: map['arn'] as String,
-      createdAt: map['createdAt'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      odbNetworkArn: map['odbNetworkArn'] as String,
-      odbPeeringConnectionType: map['odbPeeringConnectionType'] as String,
-      peerNetworkArn: map['peerNetworkArn'] as String,
-      peerNetworkCidrs: (map['peerNetworkCidrs'] as List).cast<String>(),
-      percentProgress: map['percentProgress'] as double,
-      region: map['region'] as String,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbNetworkArn: (() { final guardedValue = map['odbNetworkArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbPeeringConnectionType: (() { final guardedValue = map['odbPeeringConnectionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerNetworkArn: (() { final guardedValue = map['peerNetworkArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerNetworkCidrs: (() { final guardedValue = map['peerNetworkCidrs']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

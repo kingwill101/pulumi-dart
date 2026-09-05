@@ -7,13 +7,13 @@ import 'service_network_acl_public_network.dart';
 /// Input properties used for looking up and filtering ServiceNetworkAcl resources.
 class ServiceNetworkAclState {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// A `privateEndpoint` block as defined below.
-  final pulumi.Input<List<ServiceNetworkAclPrivateEndpoint>>? privateEndpoints;
+  final pulumi.Input<List<ServiceNetworkAclPrivateEndpoint>?>? privateEndpoints;
   /// A `publicNetwork` block as defined below.
-  final pulumi.Input<ServiceNetworkAclPublicNetwork>? publicNetwork;
+  final pulumi.Input<ServiceNetworkAclPublicNetwork?>? publicNetwork;
   /// The ID of the SignalR service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? signalrServiceId;
+  final pulumi.Input<String?>? signalrServiceId;
 
   /// Creates a new [ServiceNetworkAclState].
   /// [defaultAction] The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.

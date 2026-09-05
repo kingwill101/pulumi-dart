@@ -5,21 +5,21 @@ import 'human_task_uiui_template.dart';
 
 /// Input properties used for looking up and filtering HumanTaskUI resources.
 class HumanTaskUIState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Human Task UI.
-  final pulumi.Input<String>? arn;
+  /// ARN assigned by AWS to this Human Task UI.
+  final pulumi.Input<String?>? arn;
   /// The name of the Human Task UI.
-  final pulumi.Input<String>? humanTaskUiName;
+  final pulumi.Input<String?>? humanTaskUiName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The Liquid template for the worker user interface. See UI Template below.
-  final pulumi.Input<HumanTaskUIUiTemplate>? uiTemplate;
+  final pulumi.Input<HumanTaskUIUiTemplate?>? uiTemplate;
 
   /// Creates a new [HumanTaskUIState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Human Task UI.
+  /// [arn] ARN assigned by AWS to this Human Task UI.
   /// [humanTaskUiName] The name of the Human Task UI.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

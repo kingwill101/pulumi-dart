@@ -12,17 +12,17 @@ class DscConfigurationArgs {
   /// The PowerShell DSC Configuration script.
   final pulumi.Input<String> contentEmbedded;
   /// Description to go with DSC Configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Must be the same location as the Automation Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Verbose log option.
-  final pulumi.Input<bool>? logVerbose;
+  final pulumi.Input<bool?>? logVerbose;
   /// Specifies the name of the DSC Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the DSC Configuration is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DscConfigurationArgs].
   /// [automationAccountName] The name of the automation account in which the DSC Configuration is created. Changing this forces a new resource to be created.

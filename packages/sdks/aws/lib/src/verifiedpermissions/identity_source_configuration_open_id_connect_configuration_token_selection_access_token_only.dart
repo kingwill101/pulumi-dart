@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly {
   /// The access token aud claim values that you want to accept in your policy store.
-  final pulumi.Input<List<String>>? audiences;
+  final pulumi.Input<List<String>?>? audiences;
   /// The claim that determines the principal in OIDC access tokens.
-  final pulumi.Input<String>? principalIdClaim;
+  final pulumi.Input<String?>? principalIdClaim;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly].
   /// [audiences] The access token aud claim values that you want to accept in your policy store.

@@ -131,6 +131,17 @@ Future<GetAgentAgentVersionsResult> getAgentAgentVersions(
   return GetAgentAgentVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
+  GetAgentAgentVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getAgentAgentVersions:getAgentAgentVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentAgentVersionsResult.fromMap);
+}
+
 /// Returns properties of a specific Amazon Bedrock custom model.
 ///
 /// ## Example Usage
@@ -249,6 +260,17 @@ Future<GetCustomModelResult> getCustomModel(
   return GetCustomModelResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomModelResult> getCustomModelOutput(
+  GetCustomModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getCustomModel:getCustomModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomModelResult.fromMap);
+}
+
 /// Returns a list of Amazon Bedrock custom models.
 ///
 /// ## Example Usage
@@ -355,6 +377,17 @@ Future<GetCustomModelsResult> getCustomModels(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomModelsResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
+  GetCustomModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getCustomModels:getCustomModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomModelsResult.fromMap);
 }
 
 /// Data source for managing an AWS Bedrock Inference Profile.
@@ -493,6 +526,17 @@ Future<GetInferenceProfileResult> getInferenceProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInferenceProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
+  GetInferenceProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getInferenceProfile:getInferenceProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceProfileResult.fromMap);
 }
 
 /// Data source for managing AWS Bedrock Inference Profiles.
@@ -708,6 +752,17 @@ Future<GetInferenceProfilesResult> getInferenceProfiles(
   return GetInferenceProfilesResult.fromMap(result);
 }
 
+pulumi.Output<GetInferenceProfilesResult> getInferenceProfilesOutput(
+  GetInferenceProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getInferenceProfiles:getInferenceProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceProfilesResult.fromMap);
+}
+
 /// Provides details about an AWS Bedrock Use Case For Model Access.
 ///
 /// ## Example Usage
@@ -813,4 +868,15 @@ Future<GetUseCaseForModelAccessResult> getUseCaseForModelAccess(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUseCaseForModelAccessResult.fromMap(result);
+}
+
+pulumi.Output<GetUseCaseForModelAccessResult> getUseCaseForModelAccessOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrock/getUseCaseForModelAccess:getUseCaseForModelAccess',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetUseCaseForModelAccessResult.fromMap);
 }

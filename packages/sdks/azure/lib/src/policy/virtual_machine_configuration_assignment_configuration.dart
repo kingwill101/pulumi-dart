@@ -5,19 +5,19 @@ import 'virtual_machine_configuration_assignment_configuration_parameter.dart';
 
 class VirtualMachineConfigurationAssignmentConfiguration {
   /// The assignment type for the Guest Configuration Assignment. Possible values are `Audit`, `ApplyAndAutoCorrect`, `ApplyAndMonitor` and `DeployAndAutoCorrect`.
-  final pulumi.Input<String>? assignmentType;
+  final pulumi.Input<String?>? assignmentType;
   /// The content hash for the Guest Configuration package.
   ///
   /// &gt; **Note:** The value for `contentHash` should be the SH256SUM for the zip file in the `contentUri` and must be in upper case.
-  final pulumi.Input<String>? contentHash;
+  final pulumi.Input<String?>? contentHash;
   /// The content URI where the Guest Configuration package is stored.
   ///
   /// &gt; **Note:** When deploying a Custom Guest Configuration package the `contentHash` and `contentUri` fields must be defined. For Built-in Guest Configuration packages, such as the `AzureWindowsBaseline` package, the `contentHash` and `contentUri` should not be defined, rather these fields will be returned after the Built-in Guest Configuration package has been provisioned. For more information on guest configuration assignments please see the [product documentation](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration-assignments).
-  final pulumi.Input<String>? contentUri;
+  final pulumi.Input<String?>? contentUri;
   /// One or more `parameter` blocks as defined below which define what configuration parameters and values against.
-  final pulumi.Input<List<VirtualMachineConfigurationAssignmentConfigurationParameter>>? parameters;
+  final pulumi.Input<List<VirtualMachineConfigurationAssignmentConfigurationParameter>?>? parameters;
   /// The version of the Guest Configuration that will be assigned in this Guest Configuration Assignment.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [VirtualMachineConfigurationAssignmentConfiguration].
   /// [assignmentType] The assignment type for the Guest Configuration Assignment. Possible values are `Audit`, `ApplyAndAutoCorrect`, `ApplyAndMonitor` and `DeployAndAutoCorrect`.

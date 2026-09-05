@@ -8,17 +8,17 @@ class MonitorDatadogOrganization {
   /// Application key associated to the Datadog organization. Changing this forces a new Datadog Monitor to be created.
   final pulumi.Input<String> applicationKey;
   /// The ID of the enterprise_app. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? enterpriseAppId;
+  final pulumi.Input<String?>? enterpriseAppId;
   /// The ID of the Datadog Monitor.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The auth code used to linking to an existing Datadog organization. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? linkingAuthCode;
+  final pulumi.Input<String?>? linkingAuthCode;
   /// The ID of the linking_client. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? linkingClientId;
+  final pulumi.Input<String?>? linkingClientId;
   /// The name of the user that will be associated with the Datadog Monitor. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The redirect uri for linking. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
 
   /// Creates a new [MonitorDatadogOrganization].
   /// [apiKey] Api key associated to the Datadog organization. Changing this forces a new Datadog Monitor to be created.

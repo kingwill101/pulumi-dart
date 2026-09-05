@@ -6,9 +6,9 @@ class CrawlerDynamodbTarget {
   /// The name of the DynamoDB table to crawl.
   final pulumi.Input<String> path;
   /// Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table.  defaults to `true`.
-  final pulumi.Input<bool>? scanAll;
+  final pulumi.Input<bool?>? scanAll;
   /// The percentage of the configured read capacity units to use by the AWS Glue crawler. The valid values are null or a value between 0.1 to 1.5.
-  final pulumi.Input<double>? scanRate;
+  final pulumi.Input<double?>? scanRate;
 
   /// Creates a new [CrawlerDynamodbTarget].
   /// [path] The name of the DynamoDB table to crawl.
@@ -32,7 +32,7 @@ class CrawlerDynamodbTarget {
     return CrawlerDynamodbTarget(
       path: pulumi.Input.fromValue(map['path'] as String),
       scanAll: (() { final guardedValue = map['scanAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scanRate: (() { final guardedValue = map['scanRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scanRate: (() { final guardedValue = map['scanRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

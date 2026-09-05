@@ -3,39 +3,39 @@
 
 /// Result data returned by getSites.
 class GetSitesResult {
-  final String globalNetworkId;
+  final String? globalNetworkId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// IDs of the sites.
-  final List<String> ids;
+  final List<String>? ids;
   final Map<String, String>? tags;
 
   /// Creates a new [GetSitesResult].
-  /// [globalNetworkId] Required.
+  /// [globalNetworkId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] IDs of the sites.
   /// [tags] Optional.
   const GetSitesResult({
-    required this.globalNetworkId,
-    required this.id,
-    required this.ids,
+    this.globalNetworkId,
+    this.id,
+    this.ids,
     this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'globalNetworkId': globalNetworkId,
-      'id': id,
-      'ids': ids,
+      'globalNetworkId': ?globalNetworkId,
+      'id': ?id,
+      'ids': ?ids,
       'tags': ?tags,
     };
   }
 
   factory GetSitesResult.fromMap(Map<String, dynamic> map) {
     return GetSitesResult(
-      globalNetworkId: map['globalNetworkId'] as String,
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
+      globalNetworkId: (() { final guardedValue = map['globalNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

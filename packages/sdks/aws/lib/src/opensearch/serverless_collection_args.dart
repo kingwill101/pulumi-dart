@@ -11,26 +11,26 @@ import 'serverless_collection_vector_option.dart';
 /// {@macro pulumi_opensearch_serverless_collection_serverless_collection_args_doc}
 class ServerlessCollectionArgs {
   /// Name of the collection group to associate with this collection.
-  final pulumi.Input<String>? collectionGroupName;
+  final pulumi.Input<String?>? collectionGroupName;
   /// Description of the collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for direct collection encryption settings. See `encryptionConfig` below for details.
-  final pulumi.Input<List<ServerlessCollectionEncryptionConfig>>? encryptionConfigs;
+  final pulumi.Input<List<ServerlessCollectionEncryptionConfig>?>? encryptionConfigs;
   /// Name of the collection.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether standby replicas should be used for a collection. One of `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? standbyReplicas;
+  final pulumi.Input<String?>? standbyReplicas;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ServerlessCollectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ServerlessCollectionTimeouts?>? timeouts;
   /// Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Configuration block for vector search options. Only valid when `type` is `VECTORSEARCH`. See `vectorOptions` below for details.
-  final pulumi.Input<List<ServerlessCollectionVectorOption>>? vectorOptions;
+  final pulumi.Input<List<ServerlessCollectionVectorOption>?>? vectorOptions;
 
   /// Creates a new [ServerlessCollectionArgs].
   /// [collectionGroupName] Name of the collection group to associate with this collection.

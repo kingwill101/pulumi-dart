@@ -386,7 +386,7 @@ import 'open_zfs_snapshot_state.dart';
 /// $ pulumi import aws:fsx/openZfsSnapshot:OpenZfsSnapshot example fs-543ab12b1ca672f33
 /// ```
 class OpenZfsSnapshot extends pulumi.CustomResource {
-  /// Amazon Resource Name of the snapshot.
+  /// ARN of the snapshot.
   late final pulumi.Output<String> arn;
   /// Time that the snapshot was created.
   late final pulumi.Output<String> creationTime;
@@ -413,14 +413,14 @@ class OpenZfsSnapshot extends pulumi.CustomResource {
           'aws:fsx/openZfsSnapshot:OpenZfsSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     volumeId = registerOutput<String>('volumeId');
   }
 
@@ -429,11 +429,12 @@ class OpenZfsSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OpenZfsSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OpenZfsSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -451,8 +452,26 @@ class OpenZfsSnapshot extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [OpenZfsSnapshot] resource.
+  OpenZfsSnapshot.reference(String urn)
+    : super(
+        'aws:fsx/openZfsSnapshot:OpenZfsSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     volumeId = registerOutput<String>('volumeId');
   }
 }

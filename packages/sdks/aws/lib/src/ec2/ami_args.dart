@@ -10,47 +10,47 @@ import 'ami_ephemeral_block_device.dart';
 /// {@macro pulumi_ec2_ami_ami_args_doc}
 class AmiArgs {
   /// Machine architecture for created instances. Defaults to `x8664`.
-  final pulumi.Input<String>? architecture;
-  /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
-  final pulumi.Input<String>? bootMode;
+  final pulumi.Input<String?>? architecture;
+  /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the EC2 User Guide.
+  final pulumi.Input<String?>? bootMode;
   /// Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  final pulumi.Input<String>? deprecationTime;
+  final pulumi.Input<String?>? deprecationTime;
   /// Longer, human-readable description for the AMI.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Nested block describing an EBS block device that should be
   /// attached to created instances. The structure of this block is described below.
-  final pulumi.Input<List<AmiEbsBlockDevice>>? ebsBlockDevices;
+  final pulumi.Input<List<AmiEbsBlockDevice>?>? ebsBlockDevices;
   /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? enaSupport;
+  final pulumi.Input<bool?>? enaSupport;
   /// Nested block describing an ephemeral block device that
   /// should be attached to created instances. The structure of this block is described below.
-  final pulumi.Input<List<AmiEphemeralBlockDevice>>? ephemeralBlockDevices;
-  final pulumi.Input<String>? imageLocation;
+  final pulumi.Input<List<AmiEphemeralBlockDevice>?>? ephemeralBlockDevices;
+  final pulumi.Input<String?>? imageLocation;
   /// If EC2 instances started from this image should require the use of the Instance Metadata Service V2 (IMDSv2), set this argument to `v2.0`. For more information, see [Configure instance metadata options for new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration).
-  final pulumi.Input<String>? imdsSupport;
-  final pulumi.Input<String>? kernelId;
+  final pulumi.Input<String?>? imdsSupport;
+  final pulumi.Input<String?>? kernelId;
   /// Region-unique name for the AMI.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? ramdiskId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? ramdiskId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
-  final pulumi.Input<String>? rootDeviceName;
-  final pulumi.Input<String>? sriovNetSupport;
+  final pulumi.Input<String?>? rootDeviceName;
+  final pulumi.Input<String?>? sriovNetSupport;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
-  final pulumi.Input<String>? tpmSupport;
+  final pulumi.Input<Map<String, String>?>? tags;
+  /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the EC2 User Guide.
+  final pulumi.Input<String?>? tpmSupport;
   /// Base64 representation of the non-volatile UEFI variable store.
-  final pulumi.Input<String>? uefiData;
+  final pulumi.Input<String?>? uefiData;
   /// Keyword to choose what virtualization mode created instances
   /// will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
   /// changes the set of further arguments that are required, as described below.
-  final pulumi.Input<String>? virtualizationType;
+  final pulumi.Input<String?>? virtualizationType;
 
   /// Creates a new [AmiArgs].
   /// [architecture] Machine architecture for created instances. Defaults to `x8664`.
-  /// [bootMode] Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
+  /// [bootMode] Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the EC2 User Guide.
   /// [deprecationTime] Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   /// [description] Longer, human-readable description for the AMI.
   /// [ebsBlockDevices] Nested block describing an EBS block device that should be
@@ -65,7 +65,7 @@ class AmiArgs {
   /// [rootDeviceName] Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   /// [sriovNetSupport] Optional.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
+  /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the EC2 User Guide.
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
   const AmiArgs({

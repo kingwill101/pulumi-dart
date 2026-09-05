@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_destination_args.dart';
+import 'event_destination_cloudwatch_destination.dart';
 import 'event_destination_kinesis_destination.dart';
 import 'event_destination_sns_destination.dart';
 import 'event_destination_state.dart';
@@ -16,6 +17,11 @@ import 'event_destination_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const cloudwatch = new aws.ses.EventDestination("cloudwatch", {
+///     cloudwatchDestinations: [{
+///         defaultValue: "default",
+///         dimensionName: "dimension",
+///         valueSource: "emailHeader",
+///     }],
 ///     name: "event-destination-cloudwatch",
 ///     configurationSetName: example.name,
 ///     enabled: true,
@@ -23,11 +29,6 @@ import 'event_destination_state.dart';
 ///         "bounce",
 ///         "send",
 ///     ],
-///     cloudwatchDestinations: [{
-///         defaultValue: "default",
-///         dimensionName: "dimension",
-///         valueSource: "emailHeader",
-///     }],
 /// });
 /// ```
 /// ```python
@@ -35,18 +36,18 @@ import 'event_destination_state.dart';
 /// import pulumi_aws as aws
 ///
 /// cloudwatch = aws.ses.EventDestination("cloudwatch",
+///     cloudwatch_destinations=[{
+///         "default_value": "default",
+///         "dimension_name": "dimension",
+///         "value_source": "emailHeader",
+///     }],
 ///     name="event-destination-cloudwatch",
 ///     configuration_set_name=example["name"],
 ///     enabled=True,
 ///     matching_types=[
 ///         "bounce",
 ///         "send",
-///     ],
-///     cloudwatch_destinations=[{
-///         "default_value": "default",
-///         "dimension_name": "dimension",
-///         "value_source": "emailHeader",
-///     }])
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,14 +59,6 @@ import 'event_destination_state.dart';
 /// {
 ///     var cloudwatch = new Aws.Ses.EventDestination("cloudwatch", new()
 ///     {
-///         Name = "event-destination-cloudwatch",
-///         ConfigurationSetName = example.Name,
-///         Enabled = true,
-///         MatchingTypes = new[]
-///         {
-///             "bounce",
-///             "send",
-///         },
 ///         CloudwatchDestinations = new[]
 ///         {
 ///             new Aws.Ses.Inputs.EventDestinationCloudwatchDestinationArgs
@@ -74,6 +67,14 @@ import 'event_destination_state.dart';
 ///                 DimensionName = "dimension",
 ///                 ValueSource = "emailHeader",
 ///             },
+///         },
+///         Name = "event-destination-cloudwatch",
+///         ConfigurationSetName = example.Name,
+///         Enabled = true,
+///         MatchingTypes = new[]
+///         {
+///             "bounce",
+///             "send",
 ///         },
 ///     });
 ///
@@ -90,19 +91,19 @@ import 'event_destination_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewEventDestination(ctx, "cloudwatch", &ses.EventDestinationArgs{
-/// 			Name:                 pulumi.String("event-destination-cloudwatch"),
-/// 			ConfigurationSetName: pulumi.Any(example.Name),
-/// 			Enabled:              pulumi.Bool(true),
-/// 			MatchingTypes: pulumi.StringArray{
-/// 				pulumi.String("bounce"),
-/// 				pulumi.String("send"),
-/// 			},
 /// 			CloudwatchDestinations: ses.EventDestinationCloudwatchDestinationArray{
 /// 				&ses.EventDestinationCloudwatchDestinationArgs{
 /// 					DefaultValue:  pulumi.String("default"),
 /// 					DimensionName: pulumi.String("dimension"),
 /// 					ValueSource:   pulumi.String("emailHeader"),
 /// 				},
+/// 			},
+/// 			Name:                 pulumi.String("event-destination-cloudwatch"),
+/// 			ConfigurationSetName: pulumi.Any(example.Name),
+/// 			Enabled:              pulumi.Bool(true),
+/// 			MatchingTypes: pulumi.StringArray{
+/// 				pulumi.String("bounce"),
+/// 				pulumi.String("send"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -122,15 +123,15 @@ import 'event_destination_state.dart';
 /// }
 ///
 /// resource "aws_ses_eventdestination" "cloudwatch" {
-///   name                   = "event-destination-cloudwatch"
-///   configuration_set_name = example.name
-///   enabled                = true
-///   matching_types         = ["bounce", "send"]
 ///   cloudwatch_destinations {
 ///     default_value  = "default"
 ///     dimension_name = "dimension"
 ///     value_source   = "emailHeader"
 ///   }
+///   name                   = "event-destination-cloudwatch"
+///   configuration_set_name = example.name
+///   enabled                = true
+///   matching_types         = ["bounce", "send"]
 /// }
 /// ```
 /// ```java
@@ -156,17 +157,17 @@ import 'event_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cloudwatch = new EventDestination("cloudwatch", EventDestinationArgs.builder()
+///             .cloudwatchDestinations(EventDestinationCloudwatchDestinationArgs.builder()
+///                 .defaultValue("default")
+///                 .dimensionName("dimension")
+///                 .valueSource("emailHeader")
+///                 .build())
 ///             .name("event-destination-cloudwatch")
 ///             .configurationSetName(example.name())
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
 ///                 "send")
-///             .cloudwatchDestinations(EventDestinationCloudwatchDestinationArgs.builder()
-///                 .defaultValue("default")
-///                 .dimensionName("dimension")
-///                 .valueSource("emailHeader")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -177,16 +178,16 @@ import 'event_destination_state.dart';
 ///   cloudwatch:
 ///     type: aws:ses:EventDestination
 ///     properties:
+///       cloudwatchDestinations:
+///         - defaultValue: default
+///           dimensionName: dimension
+///           valueSource: emailHeader
 ///       name: event-destination-cloudwatch
 ///       configurationSetName: ${example.name}
 ///       enabled: true
 ///       matchingTypes:
 ///         - bounce
 ///         - send
-///       cloudwatchDestinations:
-///         - defaultValue: default
-///           dimensionName: dimension
-///           valueSource: emailHeader
 /// ```
 ///
 ///
@@ -198,6 +199,10 @@ import 'event_destination_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const kinesis = new aws.ses.EventDestination("kinesis", {
+///     kinesisDestination: {
+///         streamArn: example.arn,
+///         roleArn: exampleAwsIamRole.arn,
+///     },
 ///     name: "event-destination-kinesis",
 ///     configurationSetName: exampleAwsSesConfigurationSet.name,
 ///     enabled: true,
@@ -205,10 +210,6 @@ import 'event_destination_state.dart';
 ///         "bounce",
 ///         "send",
 ///     ],
-///     kinesisDestination: {
-///         streamArn: exampleAwsKinesisFirehoseDeliveryStream.arn,
-///         roleArn: example.arn,
-///     },
 /// });
 /// ```
 /// ```python
@@ -216,17 +217,17 @@ import 'event_destination_state.dart';
 /// import pulumi_aws as aws
 ///
 /// kinesis = aws.ses.EventDestination("kinesis",
+///     kinesis_destination={
+///         "stream_arn": example["arn"],
+///         "role_arn": example_aws_iam_role["arn"],
+///     },
 ///     name="event-destination-kinesis",
 ///     configuration_set_name=example_aws_ses_configuration_set["name"],
 ///     enabled=True,
 ///     matching_types=[
 ///         "bounce",
 ///         "send",
-///     ],
-///     kinesis_destination={
-///         "stream_arn": example_aws_kinesis_firehose_delivery_stream["arn"],
-///         "role_arn": example["arn"],
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -238,6 +239,11 @@ import 'event_destination_state.dart';
 /// {
 ///     var kinesis = new Aws.Ses.EventDestination("kinesis", new()
 ///     {
+///         KinesisDestination = new Aws.Ses.Inputs.EventDestinationKinesisDestinationArgs
+///         {
+///             StreamArn = example.Arn,
+///             RoleArn = exampleAwsIamRole.Arn,
+///         },
 ///         Name = "event-destination-kinesis",
 ///         ConfigurationSetName = exampleAwsSesConfigurationSet.Name,
 ///         Enabled = true,
@@ -245,11 +251,6 @@ import 'event_destination_state.dart';
 ///         {
 ///             "bounce",
 ///             "send",
-///         },
-///         KinesisDestination = new Aws.Ses.Inputs.EventDestinationKinesisDestinationArgs
-///         {
-///             StreamArn = exampleAwsKinesisFirehoseDeliveryStream.Arn,
-///             RoleArn = example.Arn,
 ///         },
 ///     });
 ///
@@ -266,16 +267,16 @@ import 'event_destination_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewEventDestination(ctx, "kinesis", &ses.EventDestinationArgs{
+/// 			KinesisDestination: &ses.EventDestinationKinesisDestinationArgs{
+/// 				StreamArn: pulumi.Any(example.Arn),
+/// 				RoleArn:   pulumi.Any(exampleAwsIamRole.Arn),
+/// 			},
 /// 			Name:                 pulumi.String("event-destination-kinesis"),
 /// 			ConfigurationSetName: pulumi.Any(exampleAwsSesConfigurationSet.Name),
 /// 			Enabled:              pulumi.Bool(true),
 /// 			MatchingTypes: pulumi.StringArray{
 /// 				pulumi.String("bounce"),
 /// 				pulumi.String("send"),
-/// 			},
-/// 			KinesisDestination: &ses.EventDestinationKinesisDestinationArgs{
-/// 				StreamArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
-/// 				RoleArn:   pulumi.Any(example.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -295,14 +296,14 @@ import 'event_destination_state.dart';
 /// }
 ///
 /// resource "aws_ses_eventdestination" "kinesis" {
+///   kinesis_destination = {
+///     stream_arn = example.arn
+///     role_arn   = exampleAwsIamRole.arn
+///   }
 ///   name                   = "event-destination-kinesis"
 ///   configuration_set_name = exampleAwsSesConfigurationSet.name
 ///   enabled                = true
 ///   matching_types         = ["bounce", "send"]
-///   kinesis_destination = {
-///     stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
-///     role_arn   = example.arn
-///   }
 /// }
 /// ```
 /// ```java
@@ -328,16 +329,16 @@ import 'event_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var kinesis = new EventDestination("kinesis", EventDestinationArgs.builder()
+///             .kinesisDestination(EventDestinationKinesisDestinationArgs.builder()
+///                 .streamArn(example.arn())
+///                 .roleArn(exampleAwsIamRole.arn())
+///                 .build())
 ///             .name("event-destination-kinesis")
 ///             .configurationSetName(exampleAwsSesConfigurationSet.name())
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
 ///                 "send")
-///             .kinesisDestination(EventDestinationKinesisDestinationArgs.builder()
-///                 .streamArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///                 .roleArn(example.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -348,15 +349,15 @@ import 'event_destination_state.dart';
 ///   kinesis:
 ///     type: aws:ses:EventDestination
 ///     properties:
+///       kinesisDestination:
+///         streamArn: ${example.arn}
+///         roleArn: ${exampleAwsIamRole.arn}
 ///       name: event-destination-kinesis
 ///       configurationSetName: ${exampleAwsSesConfigurationSet.name}
 ///       enabled: true
 ///       matchingTypes:
 ///         - bounce
 ///         - send
-///       kinesisDestination:
-///         streamArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
-///         roleArn: ${example.arn}
 /// ```
 ///
 ///
@@ -368,6 +369,9 @@ import 'event_destination_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sns = new aws.ses.EventDestination("sns", {
+///     snsDestination: {
+///         topicArn: example.arn,
+///     },
 ///     name: "event-destination-sns",
 ///     configurationSetName: exampleAwsSesConfigurationSet.name,
 ///     enabled: true,
@@ -375,9 +379,6 @@ import 'event_destination_state.dart';
 ///         "bounce",
 ///         "send",
 ///     ],
-///     snsDestination: {
-///         topicArn: example.arn,
-///     },
 /// });
 /// ```
 /// ```python
@@ -385,16 +386,16 @@ import 'event_destination_state.dart';
 /// import pulumi_aws as aws
 ///
 /// sns = aws.ses.EventDestination("sns",
+///     sns_destination={
+///         "topic_arn": example["arn"],
+///     },
 ///     name="event-destination-sns",
 ///     configuration_set_name=example_aws_ses_configuration_set["name"],
 ///     enabled=True,
 ///     matching_types=[
 ///         "bounce",
 ///         "send",
-///     ],
-///     sns_destination={
-///         "topic_arn": example["arn"],
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -406,6 +407,10 @@ import 'event_destination_state.dart';
 /// {
 ///     var sns = new Aws.Ses.EventDestination("sns", new()
 ///     {
+///         SnsDestination = new Aws.Ses.Inputs.EventDestinationSnsDestinationArgs
+///         {
+///             TopicArn = example.Arn,
+///         },
 ///         Name = "event-destination-sns",
 ///         ConfigurationSetName = exampleAwsSesConfigurationSet.Name,
 ///         Enabled = true,
@@ -413,10 +418,6 @@ import 'event_destination_state.dart';
 ///         {
 ///             "bounce",
 ///             "send",
-///         },
-///         SnsDestination = new Aws.Ses.Inputs.EventDestinationSnsDestinationArgs
-///         {
-///             TopicArn = example.Arn,
 ///         },
 ///     });
 ///
@@ -433,15 +434,15 @@ import 'event_destination_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewEventDestination(ctx, "sns", &ses.EventDestinationArgs{
+/// 			SnsDestination: &ses.EventDestinationSnsDestinationArgs{
+/// 				TopicArn: pulumi.Any(example.Arn),
+/// 			},
 /// 			Name:                 pulumi.String("event-destination-sns"),
 /// 			ConfigurationSetName: pulumi.Any(exampleAwsSesConfigurationSet.Name),
 /// 			Enabled:              pulumi.Bool(true),
 /// 			MatchingTypes: pulumi.StringArray{
 /// 				pulumi.String("bounce"),
 /// 				pulumi.String("send"),
-/// 			},
-/// 			SnsDestination: &ses.EventDestinationSnsDestinationArgs{
-/// 				TopicArn: pulumi.Any(example.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -461,13 +462,13 @@ import 'event_destination_state.dart';
 /// }
 ///
 /// resource "aws_ses_eventdestination" "sns" {
+///   sns_destination = {
+///     topic_arn = example.arn
+///   }
 ///   name                   = "event-destination-sns"
 ///   configuration_set_name = exampleAwsSesConfigurationSet.name
 ///   enabled                = true
 ///   matching_types         = ["bounce", "send"]
-///   sns_destination = {
-///     topic_arn = example.arn
-///   }
 /// }
 /// ```
 /// ```java
@@ -493,15 +494,15 @@ import 'event_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sns = new EventDestination("sns", EventDestinationArgs.builder()
+///             .snsDestination(EventDestinationSnsDestinationArgs.builder()
+///                 .topicArn(example.arn())
+///                 .build())
 ///             .name("event-destination-sns")
 ///             .configurationSetName(exampleAwsSesConfigurationSet.name())
 ///             .enabled(true)
 ///             .matchingTypes(
 ///                 "bounce",
 ///                 "send")
-///             .snsDestination(EventDestinationSnsDestinationArgs.builder()
-///                 .topicArn(example.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -512,14 +513,14 @@ import 'event_destination_state.dart';
 ///   sns:
 ///     type: aws:ses:EventDestination
 ///     properties:
+///       snsDestination:
+///         topicArn: ${example.arn}
 ///       name: event-destination-sns
 ///       configurationSetName: ${exampleAwsSesConfigurationSet.name}
 ///       enabled: true
 ///       matchingTypes:
 ///         - bounce
 ///         - send
-///       snsDestination:
-///         topicArn: ${example.arn}
 /// ```
 ///
 ///
@@ -531,19 +532,19 @@ import 'event_destination_state.dart';
 /// $ pulumi import aws:ses/eventDestination:EventDestination sns some-configuration-set-test/event-destination-sns
 /// ```
 class EventDestination extends pulumi.CustomResource {
-  /// The SES event destination ARN.
+  /// SES event destination ARN.
   late final pulumi.Output<String> arn;
   /// CloudWatch destination for the events
-  late final pulumi.Output<List<Map<String, dynamic>>?> cloudwatchDestinations;
-  /// The name of the configuration set
+  late final pulumi.Output<List<EventDestinationCloudwatchDestination>?> cloudwatchDestinations;
+  /// Name of the configuration set
   late final pulumi.Output<String> configurationSetName;
   /// If true, the event destination will be enabled
   late final pulumi.Output<bool?> enabled;
   /// Send the events to a kinesis firehose destination
   late final pulumi.Output<EventDestinationKinesisDestination?> kinesisDestination;
-  /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
+  /// List of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
   late final pulumi.Output<List<String>> matchingTypes;
-  /// The name of the event destination
+  /// Name of the event destination
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -564,14 +565,14 @@ class EventDestination extends pulumi.CustomResource {
           'aws:ses/eventDestination:EventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    cloudwatchDestinations = registerOutput<List<Map<String, dynamic>>?>('cloudwatchDestinations');
+    cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(guardedValue, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>())); });
     configurationSetName = registerOutput<String>('configurationSetName');
     enabled = registerOutput<bool?>('enabled');
     kinesisDestination = registerOutput<EventDestinationKinesisDestination?>('kinesisDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationKinesisDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    matchingTypes = registerOutput<List<String>>('matchingTypes');
+    matchingTypes = registerOutput<List<String>>('matchingTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsDestination = registerOutput<EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -582,11 +583,12 @@ class EventDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -601,11 +603,31 @@ class EventDestination extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    cloudwatchDestinations = registerOutput<List<Map<String, dynamic>>?>('cloudwatchDestinations');
+    cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(guardedValue, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>())); });
     configurationSetName = registerOutput<String>('configurationSetName');
     enabled = registerOutput<bool?>('enabled');
     kinesisDestination = registerOutput<EventDestinationKinesisDestination?>('kinesisDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationKinesisDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    matchingTypes = registerOutput<List<String>>('matchingTypes');
+    matchingTypes = registerOutput<List<String>>('matchingTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    snsDestination = registerOutput<EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EventDestination] resource.
+  EventDestination.reference(String urn)
+    : super(
+        'aws:ses/eventDestination:EventDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(guardedValue, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    configurationSetName = registerOutput<String>('configurationSetName');
+    enabled = registerOutput<bool?>('enabled');
+    kinesisDestination = registerOutput<EventDestinationKinesisDestination?>('kinesisDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationKinesisDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    matchingTypes = registerOutput<List<String>>('matchingTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsDestination = registerOutput<EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

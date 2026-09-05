@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy {
   /// Deployment model for the firewall policy. To use a distributed model, remove the `policyOption` section. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
-  final pulumi.Input<String>? firewallDeploymentModel;
+  final pulumi.Input<String?>? firewallDeploymentModel;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy].
   /// [firewallDeploymentModel] Deployment model for the firewall policy. To use a distributed model, remove the `policyOption` section. Valid values are `CENTRALIZED` and `DISTRIBUTED`.

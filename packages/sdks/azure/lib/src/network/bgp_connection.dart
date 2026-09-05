@@ -239,18 +239,18 @@ import 'bgp_connection_state.dart';
 /// 		}
 /// 		exampleVirtualHubIp, err := network.NewVirtualHubIp(ctx, "example", &network.VirtualHubIpArgs{
 /// 			Name:                      pulumi.String("example-vhubip"),
-/// 			VirtualHubId:              exampleVirtualHub.ID(),
+/// 			VirtualHubId:              exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateIpAddress:          pulumi.String("10.5.1.18"),
 /// 			PrivateIpAllocationMethod: pulumi.String("Static"),
-/// 			PublicIpAddressId:         examplePublicIp.ID(),
-/// 			SubnetId:                  exampleSubnet.ID(),
+/// 			PublicIpAddressId:         examplePublicIp.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewBgpConnection(ctx, "example", &network.BgpConnectionArgs{
 /// 			Name:         pulumi.String("example-vhub-bgpconnection"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerAsn:      pulumi.Int(65514),
 /// 			PeerIp:       pulumi.String("169.254.21.5"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -510,7 +510,7 @@ class BgpConnection extends pulumi.CustomResource {
           'azure:network/bgpConnection:BgpConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
@@ -524,11 +524,12 @@ class BgpConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BgpConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BgpConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -542,6 +543,22 @@ class BgpConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    peerAsn = registerOutput<int>('peerAsn');
+    peerIp = registerOutput<String>('peerIp');
+    virtualHubId = registerOutput<String>('virtualHubId');
+    virtualNetworkConnectionId = registerOutput<String?>('virtualNetworkConnectionId');
+  }
+
+  /// Creates a typed reference to an existing [BgpConnection] resource.
+  BgpConnection.reference(String urn)
+    : super(
+        'azure:network/bgpConnection:BgpConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
     peerIp = registerOutput<String>('peerIp');

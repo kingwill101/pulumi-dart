@@ -6,7 +6,7 @@ class ConfigurationProtectedFile {
   /// Specifies the base-64 encoded contents of this config file (Sensitive).
   final pulumi.Input<String> content;
   /// The hash of the contents of this configuration file prefixed by the algorithm used.
-  final pulumi.Input<String>? contentHash;
+  final pulumi.Input<String?>? contentHash;
   /// Specifies the path of this config file.
   final pulumi.Input<String> virtualPath;
 

@@ -5,27 +5,27 @@ import 'orchestrated_virtual_machine_scale_set_network_interface_ip_configuratio
 
 class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// A list of Backend Address Pools IDs from a Application Gateway which this Virtual Machine Scale Set should be connected to.
-  final pulumi.Input<List<String>>? applicationGatewayBackendAddressPoolIds;
+  final pulumi.Input<List<String>?>? applicationGatewayBackendAddressPoolIds;
   /// A list of Application Security Group IDs which this Virtual Machine Scale Set should be connected to.
-  final pulumi.Input<List<String>>? applicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? applicationSecurityGroupIds;
   /// A list of Backend Address Pools IDs from a Load Balancer which this Virtual Machine Scale Set should be connected to.
   ///
   /// &gt; **Note:** When using this field you'll also need to configure a Rule for the Load Balancer, and use a dependsOn between this resource and the Load Balancer Rule.
-  final pulumi.Input<List<String>>? loadBalancerBackendAddressPoolIds;
+  final pulumi.Input<List<String>?>? loadBalancerBackendAddressPoolIds;
   /// The Name which should be used for this IP Configuration.
   final pulumi.Input<String> name;
   /// Is this the Primary IP Configuration for this Network Interface? Possible values are `true` and `false`. Defaults to `false`.
   ///
   /// &gt; **Note:** One `ipConfiguration` block must be marked as Primary for each Network Interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// A `publicIpAddress` block as defined below.
-  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>>? publicIpAddresses;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>?>? publicIpAddresses;
   /// The ID of the Subnet which this IP Configuration should be connected to.
   ///
   /// &gt; **Note:** `subnetId` is required if `version` is set to `IPv4`.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// The Internet Protocol Version which should be used for this IP Configuration. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration].
   /// [applicationGatewayBackendAddressPoolIds] A list of Backend Address Pools IDs from a Application Gateway which this Virtual Machine Scale Set should be connected to.

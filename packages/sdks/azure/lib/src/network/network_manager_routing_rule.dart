@@ -210,23 +210,23 @@ import 'network_manager_routing_rule_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-network-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerRoutingConfiguration, err := network.NewNetworkManagerRoutingConfiguration(ctx, "example", &network.NetworkManagerRoutingConfigurationArgs{
 /// 			Name:             pulumi.String("example-routing-configuration"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerRoutingRuleCollection, err := network.NewNetworkManagerRoutingRuleCollection(ctx, "example", &network.NetworkManagerRoutingRuleCollectionArgs{
 /// 			Name:                   pulumi.String("example-routing-rule-collection"),
-/// 			RoutingConfigurationId: exampleNetworkManagerRoutingConfiguration.ID(),
+/// 			RoutingConfigurationId: exampleNetworkManagerRoutingConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkGroupIds: pulumi.StringArray{
-/// 				exampleNetworkManagerNetworkGroup.ID(),
+/// 				exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Description: pulumi.String("example routing rule collection"),
 /// 		})
@@ -235,7 +235,7 @@ import 'network_manager_routing_rule_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerRoutingRule(ctx, "example", &network.NetworkManagerRoutingRuleArgs{
 /// 			Name:             pulumi.String("example-routing-rule"),
-/// 			RuleCollectionId: exampleNetworkManagerRoutingRuleCollection.ID(),
+/// 			RuleCollectionId: exampleNetworkManagerRoutingRuleCollection.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:      pulumi.String("example routing rule"),
 /// 			Destination: &network.NetworkManagerRoutingRuleDestinationArgs{
 /// 				Type:    pulumi.String("AddressPrefix"),
@@ -489,7 +489,7 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
           'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -503,11 +503,12 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerRoutingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerRoutingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -521,6 +522,22 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleNextHop.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleCollectionId = registerOutput<String>('ruleCollectionId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerRoutingRule] resource.
+  NetworkManagerRoutingRule.reference(String urn)
+    : super(
+        'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

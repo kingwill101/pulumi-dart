@@ -5,9 +5,9 @@ import 'service_endpoint_spec_port.dart';
 
 class ServiceEndpointSpec {
   /// The mode of resolution to use for internal load balancing between tasks
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// List of exposed ports that this service is accessible on from the outside. Ports can only be provided if 'vip' resolution mode is used
-  final pulumi.Input<List<ServiceEndpointSpecPort>>? ports;
+  final pulumi.Input<List<ServiceEndpointSpecPort>?>? ports;
 
   /// Creates a new [ServiceEndpointSpec].
   /// [mode] The mode of resolution to use for internal load balancing between tasks

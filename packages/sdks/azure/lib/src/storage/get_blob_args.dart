@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_blob_get_blob_args_doc}
 class GetBlobArgs {
   /// A map of custom blob metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the Blob.
   final pulumi.Input<String> name;
   /// The name of the Storage Account where the Container exists.
   ///
   /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// The ID of the Storage Container where the Blob exists.
-  final pulumi.Input<String>? storageContainerId;
+  final pulumi.Input<String?>? storageContainerId;
   /// The name of the Storage Container where the Blob exists.
   ///
   /// &gt; **Note:** This property is deprecated in favour of `storageContainerId` and will be removed in version 5.0 of the AzureRM Provider.
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
 
   /// Creates a new [GetBlobArgs].
   /// [metadata] A map of custom blob metadata.

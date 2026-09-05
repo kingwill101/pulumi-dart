@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PackageAssociation resources.
 class PackageAssociationState {
   /// Name of the domain to associate the package with.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Internal ID of the package to associate with a domain.
-  final pulumi.Input<String>? packageId;
-  final pulumi.Input<String>? referencePath;
+  final pulumi.Input<String?>? packageId;
+  final pulumi.Input<String?>? referencePath;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PackageAssociationState].
   /// [domainName] Name of the domain to associate the package with.

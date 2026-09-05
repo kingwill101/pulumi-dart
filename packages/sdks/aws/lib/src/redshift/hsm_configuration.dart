@@ -150,7 +150,7 @@ import 'hsm_configuration_state.dart';
 /// $ pulumi import aws:redshift/hsmConfiguration:HsmConfiguration example example
 /// ```
 class HsmConfiguration extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
+  /// ARN of the Hsm Client Certificate.
   late final pulumi.Output<String> arn;
   /// A text description of the HSM configuration to be created.
   late final pulumi.Output<String> description;
@@ -183,18 +183,19 @@ class HsmConfiguration extends pulumi.CustomResource {
           'aws:redshift/hsmConfiguration:HsmConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['hsmPartitionPassword'],
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     hsmConfigurationIdentifier = registerOutput<String>('hsmConfigurationIdentifier');
     hsmIpAddress = registerOutput<String>('hsmIpAddress');
     hsmPartitionName = registerOutput<String>('hsmPartitionName');
-    hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword');
+    hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword', isSecret: true);
     hsmServerPublicCertificate = registerOutput<String>('hsmServerPublicCertificate');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [HsmConfiguration] resource's state with the given [name] and [id].
@@ -202,11 +203,12 @@ class HsmConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HsmConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HsmConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,10 +227,32 @@ class HsmConfiguration extends pulumi.CustomResource {
     hsmConfigurationIdentifier = registerOutput<String>('hsmConfigurationIdentifier');
     hsmIpAddress = registerOutput<String>('hsmIpAddress');
     hsmPartitionName = registerOutput<String>('hsmPartitionName');
-    hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword');
+    hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword', isSecret: true);
     hsmServerPublicCertificate = registerOutput<String>('hsmServerPublicCertificate');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [HsmConfiguration] resource.
+  HsmConfiguration.reference(String urn)
+    : super(
+        'aws:redshift/hsmConfiguration:HsmConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['hsmPartitionPassword'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    hsmConfigurationIdentifier = registerOutput<String>('hsmConfigurationIdentifier');
+    hsmIpAddress = registerOutput<String>('hsmIpAddress');
+    hsmPartitionName = registerOutput<String>('hsmPartitionName');
+    hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword', isSecret: true);
+    hsmServerPublicCertificate = registerOutput<String>('hsmServerPublicCertificate');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

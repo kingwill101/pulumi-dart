@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ActiveSlot resources.
 class ActiveSlotState {
   /// The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appServiceName;
+  final pulumi.Input<String?>? appServiceName;
   /// The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
-  final pulumi.Input<String>? appServiceSlotName;
+  final pulumi.Input<String?>? appServiceSlotName;
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ActiveSlotState].
   /// [appServiceName] The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.

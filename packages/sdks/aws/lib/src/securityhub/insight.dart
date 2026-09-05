@@ -1049,7 +1049,7 @@ class Insight extends pulumi.CustomResource {
           'aws:securityhub/insight:Insight',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filters = registerOutput<InsightFilters>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1063,11 +1063,12 @@ class Insight extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InsightState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Insight._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1081,6 +1082,22 @@ class Insight extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    filters = registerOutput<InsightFilters>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupByAttribute = registerOutput<String>('groupByAttribute');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Insight] resource.
+  Insight.reference(String urn)
+    : super(
+        'aws:securityhub/insight:Insight',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     filters = registerOutput<InsightFilters>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupByAttribute = registerOutput<String>('groupByAttribute');

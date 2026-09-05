@@ -163,7 +163,7 @@ class Partner extends pulumi.CustomResource {
           'aws:redshift/partner:Partner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
@@ -179,11 +179,12 @@ class Partner extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartnerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Partner._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,6 +198,24 @@ class Partner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    databaseName = registerOutput<String>('databaseName');
+    partnerName = registerOutput<String>('partnerName');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+  }
+
+  /// Creates a typed reference to an existing [Partner] resource.
+  Partner.reference(String urn)
+    : super(
+        'aws:redshift/partner:Partner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     databaseName = registerOutput<String>('databaseName');

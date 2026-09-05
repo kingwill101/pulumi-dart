@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_get_resolver_firewall_config_get_resolver_firewall_config_args_doc}
 class GetResolverFirewallConfigArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the VPC from Amazon VPC that the configuration is for.
   final pulumi.Input<String> resourceId;
 

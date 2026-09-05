@@ -7,13 +7,13 @@ import 'gateway_route_spec_http_route.dart';
 
 class GatewayRouteSpec {
   /// Specification of a gRPC gateway route. See `grpcRoute` Block for details.
-  final pulumi.Input<GatewayRouteSpecGrpcRoute>? grpcRoute;
+  final pulumi.Input<GatewayRouteSpecGrpcRoute?>? grpcRoute;
   /// Specification of an HTTP/2 gateway route. See `http2Route` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2Route>? http2Route;
+  final pulumi.Input<GatewayRouteSpecHttp2Route?>? http2Route;
   /// Specification of an HTTP gateway route. See `httpRoute` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttpRoute>? httpRoute;
+  final pulumi.Input<GatewayRouteSpecHttpRoute?>? httpRoute;
   /// Priority for the gateway route, between `0` and `1000`.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
 
   /// Creates a new [GatewayRouteSpec].
   /// [grpcRoute] Specification of a gRPC gateway route. See `grpcRoute` Block for details.
@@ -41,7 +41,7 @@ class GatewayRouteSpec {
       grpcRoute: (() { final guardedValue = map['grpcRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteSpecGrpcRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       http2Route: (() { final guardedValue = map['http2Route']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteSpecHttp2Route.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpRoute: (() { final guardedValue = map['httpRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteSpecHttpRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

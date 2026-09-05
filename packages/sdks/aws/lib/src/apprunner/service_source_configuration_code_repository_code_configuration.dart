@@ -5,7 +5,7 @@ import 'service_source_configuration_code_repository_code_configuration_code_con
 
 class ServiceSourceConfigurationCodeRepositoryCodeConfiguration {
   /// Basic configuration for building and running the App Runner service. Use this parameter to quickly launch an App Runner service without providing an apprunner.yaml file in the source code repository (or ignoring the file if it exists). See `codeConfigurationValues` below.
-  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues>? codeConfigurationValues;
+  final pulumi.Input<ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues?>? codeConfigurationValues;
   /// Source of the App Runner configuration. Valid values: `REPOSITORY`, `API`. Use `REPOSITORY` to have App Runner read configuration values from the `apprunner.yaml` file in the source code repository and ignore `codeConfigurationValues`. Use `API` to have App Runner use the configuration values provided in `codeConfigurationValues` and ignore the `apprunner.yaml` file in the source code repository.
   final pulumi.Input<String> configurationSource;
 

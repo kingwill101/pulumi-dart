@@ -8,7 +8,7 @@ class KxClusterCode {
   /// Full S3 path (excluding bucket) to the .zip file that contains the code to be loaded onto the cluster when it’s started.
   final pulumi.Input<String> s3Key;
   /// Version of an S3 Object.
-  final pulumi.Input<String>? s3ObjectVersion;
+  final pulumi.Input<String?>? s3ObjectVersion;
 
   /// Creates a new [KxClusterCode].
   /// [s3Bucket] Unique name for the S3 bucket.

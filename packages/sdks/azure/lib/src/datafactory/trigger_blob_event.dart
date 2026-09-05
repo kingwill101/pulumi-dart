@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_blob_event_args.dart';
+import 'trigger_blob_event_pipeline.dart';
 import 'trigger_blob_event_state.dart';
 
 /// Manages a Blob Event Trigger inside an Azure Data Factory.
@@ -213,7 +214,7 @@ import 'trigger_blob_event_state.dart';
 /// 		}
 /// 		examplePipeline, err := datafactory.NewPipeline(ctx, "example", &datafactory.PipelineArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -230,8 +231,8 @@ import 'trigger_blob_event_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewTriggerBlobEvent(ctx, "example", &datafactory.TriggerBlobEventArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Events: pulumi.StringArray{
 /// 				pulumi.String("Microsoft.Storage.BlobCreated"),
 /// 				pulumi.String("Microsoft.Storage.BlobDeleted"),
@@ -486,7 +487,7 @@ class TriggerBlobEvent extends pulumi.CustomResource {
   /// Specifies the name of the Data Factory Blob Event Trigger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `pipeline` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
+  late final pulumi.Output<List<TriggerBlobEventPipeline>> pipelines;
   /// The ID of Storage Account in which blob event will be listened. Changing this forces a new resource.
   late final pulumi.Output<String> storageAccountId;
 
@@ -502,19 +503,19 @@ class TriggerBlobEvent extends pulumi.CustomResource {
           'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     blobPathBeginsWith = registerOutput<String?>('blobPathBeginsWith');
     blobPathEndsWith = registerOutput<String?>('blobPathEndsWith');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ignoreEmptyBlobs = registerOutput<bool?>('ignoreEmptyBlobs');
     this.name = registerOutput<String>('name');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelines = registerOutput<List<TriggerBlobEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerBlobEventPipeline>(guardedValue, (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 
@@ -523,11 +524,12 @@ class TriggerBlobEvent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerBlobEventState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerBlobEvent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -542,16 +544,39 @@ class TriggerBlobEvent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     blobPathBeginsWith = registerOutput<String?>('blobPathBeginsWith');
     blobPathEndsWith = registerOutput<String?>('blobPathEndsWith');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ignoreEmptyBlobs = registerOutput<bool?>('ignoreEmptyBlobs');
     this.name = registerOutput<String>('name');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelines = registerOutput<List<TriggerBlobEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerBlobEventPipeline>(guardedValue, (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [TriggerBlobEvent] resource.
+  TriggerBlobEvent.reference(String urn)
+    : super(
+        'azure:datafactory/triggerBlobEvent:TriggerBlobEvent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activated = registerOutput<bool?>('activated');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    blobPathBeginsWith = registerOutput<String?>('blobPathBeginsWith');
+    blobPathEndsWith = registerOutput<String?>('blobPathEndsWith');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ignoreEmptyBlobs = registerOutput<bool?>('ignoreEmptyBlobs');
+    this.name = registerOutput<String>('name');
+    pipelines = registerOutput<List<TriggerBlobEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerBlobEventPipeline>(guardedValue, (value) => TriggerBlobEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

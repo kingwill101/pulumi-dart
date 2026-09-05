@@ -17,57 +17,57 @@ class WorkspaceArgs {
   /// The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `adminEnabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
-  final pulumi.Input<String>? containerRegistryId;
+  final pulumi.Input<String?>? containerRegistryId;
   /// The description of this Machine Learning Workspace.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `encryption` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<WorkspaceEncryption>? encryption;
+  final pulumi.Input<WorkspaceEncryption?>? encryption;
   /// A `featureStore` block as defined below.
-  final pulumi.Input<WorkspaceFeatureStore>? featureStore;
+  final pulumi.Input<WorkspaceFeatureStore?>? featureStore;
   /// Display name for this Machine Learning Workspace.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Flag to signal High Business Impact (HBI) data in the workspace and reduce diagnostic data collected by the service. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? highBusinessImpact;
+  final pulumi.Input<bool?>? highBusinessImpact;
   /// An `identity` block as defined below.
   final pulumi.Input<WorkspaceIdentity> identity;
   /// The compute name for image build of the Machine Learning Workspace.
-  final pulumi.Input<String>? imageBuildComputeName;
+  final pulumi.Input<String?>? imageBuildComputeName;
   /// The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
   /// The type of the Workspace. Possible values are `Default`, `FeatureStore`. Defaults to `Default`
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `managedNetwork` block as defined below.
-  final pulumi.Input<WorkspaceManagedNetwork>? managedNetwork;
+  final pulumi.Input<WorkspaceManagedNetwork?>? managedNetwork;
   /// Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The user assigned identity id that represents the workspace identity.
-  final pulumi.Input<String>? primaryUserAssignedIdentity;
+  final pulumi.Input<String?>? primaryUserAssignedIdentity;
   /// Enable public access when this Machine Learning Workspace is behind VNet. Defaults to `true`.
   ///
   /// &gt; **Note:** `publicAccessBehindVirtualNetworkEnabled` is deprecated and will be removed in favour of the property `publicNetworkAccessEnabled`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `serverlessCompute` block as defined below.
-  final pulumi.Input<WorkspaceServerlessCompute>? serverlessCompute;
+  final pulumi.Input<WorkspaceServerlessCompute?>? serverlessCompute;
   /// Whether to enable service-side encryption with customer-managed keys (CMK). Default to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Setting `serviceSideEncryptionEnabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
-  final pulumi.Input<bool>? serviceSideEncryptionEnabled;
+  final pulumi.Input<bool?>? serviceSideEncryptionEnabled;
   /// SKU/edition of the Machine Learning Workspace, possible values are `Free`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// The access type for the system storage account. Possible values are `AccessKey` and `Identity`. Defaults to `AccessKey`.
-  final pulumi.Input<String>? storageAccountAccessType;
+  final pulumi.Input<String?>? storageAccountAccessType;
   /// The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `accountTier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
   final pulumi.Input<String> storageAccountId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Enable V1 API features, enabling `v1LegacyMode` may prevent you from using features provided by the v2 API. Defaults to `false`.
-  final pulumi.Input<bool>? v1LegacyModeEnabled;
+  final pulumi.Input<bool?>? v1LegacyModeEnabled;
 
   /// Creates a new [WorkspaceArgs].
   /// [applicationInsightsId] The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.

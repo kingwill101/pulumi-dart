@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ChannelSlack resources.
 class ChannelSlackState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The Client ID that will be used to authenticate with Slack.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Client Secret that will be used to authenticate with Slack.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The Slack Landing Page URL.
-  final pulumi.Input<String>? landingPageUrl;
+  final pulumi.Input<String?>? landingPageUrl;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Signing Secret that will be used to sign the requests.
-  final pulumi.Input<String>? signingSecret;
+  final pulumi.Input<String?>? signingSecret;
   /// The Verification Token that will be used to authenticate with Slack.
-  final pulumi.Input<String>? verificationToken;
+  final pulumi.Input<String?>? verificationToken;
 
   /// Creates a new [ChannelSlackState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

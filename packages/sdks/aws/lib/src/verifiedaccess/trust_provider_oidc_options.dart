@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderOidcOptions {
-  final pulumi.Input<String>? authorizationEndpoint;
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? authorizationEndpoint;
+  final pulumi.Input<String?>? clientId;
   final pulumi.Input<String> clientSecret;
-  final pulumi.Input<String>? issuer;
-  final pulumi.Input<String>? scope;
-  final pulumi.Input<String>? tokenEndpoint;
-  final pulumi.Input<String>? userInfoEndpoint;
+  final pulumi.Input<String?>? issuer;
+  final pulumi.Input<String?>? scope;
+  final pulumi.Input<String?>? tokenEndpoint;
+  final pulumi.Input<String?>? userInfoEndpoint;
 
   /// Creates a new [TrustProviderOidcOptions].
   /// [authorizationEndpoint] Optional.

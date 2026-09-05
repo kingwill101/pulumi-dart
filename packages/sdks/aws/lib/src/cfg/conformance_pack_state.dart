@@ -5,27 +5,27 @@ import 'conformance_pack_input_parameter.dart';
 
 /// Input properties used for looking up and filtering ConformancePack resources.
 class ConformancePackState {
-  /// Amazon Resource Name (ARN) of the conformance pack.
-  final pulumi.Input<String>? arn;
+  /// ARN of the conformance pack.
+  final pulumi.Input<String?>? arn;
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Maximum length of 63.
-  final pulumi.Input<String>? deliveryS3Bucket;
+  final pulumi.Input<String?>? deliveryS3Bucket;
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
-  final pulumi.Input<String>? deliveryS3KeyPrefix;
+  final pulumi.Input<String?>? deliveryS3KeyPrefix;
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.
-  final pulumi.Input<List<ConformancePackInputParameter>>? inputParameters;
+  final pulumi.Input<List<ConformancePackInputParameter>?>? inputParameters;
   /// The name of the conformance pack. Must begin with a letter and contain from 1 to 256 alphanumeric characters and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
-  final pulumi.Input<String>? templateBody;
+  final pulumi.Input<String?>? templateBody;
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   ///
   /// &gt; **Note:** If both `templateBody` and `templateS3Uri` are specified, AWS Config uses the `templateS3Uri` and ignores the `templateBody`.
-  final pulumi.Input<String>? templateS3Uri;
+  final pulumi.Input<String?>? templateS3Uri;
 
   /// Creates a new [ConformancePackState].
-  /// [arn] Amazon Resource Name (ARN) of the conformance pack.
+  /// [arn] ARN of the conformance pack.
   /// [deliveryS3Bucket] Amazon S3 bucket where AWS Config stores conformance pack templates. Maximum length of 63.
   /// [deliveryS3KeyPrefix] The prefix for the Amazon S3 bucket. Maximum length of 1024.
   /// [inputParameters] Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `templateBody` or in the template stored in Amazon S3 if using `templateS3Uri`.

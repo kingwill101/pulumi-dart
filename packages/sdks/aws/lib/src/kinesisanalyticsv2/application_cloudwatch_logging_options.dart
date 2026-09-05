@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationCloudwatchLoggingOptions {
-  final pulumi.Input<String>? cloudwatchLoggingOptionId;
+  final pulumi.Input<String?>? cloudwatchLoggingOptionId;
   /// The ARN of the CloudWatch log stream to receive application messages.
   final pulumi.Input<String> logStreamArn;
 

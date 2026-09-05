@@ -252,7 +252,7 @@ class LbCertificateAttachment extends pulumi.CustomResource {
           'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificateName = registerOutput<String>('certificateName');
     lbName = registerOutput<String>('lbName');
@@ -264,11 +264,12 @@ class LbCertificateAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbCertificateAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LbCertificateAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,6 +283,20 @@ class LbCertificateAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateName = registerOutput<String>('certificateName');
+    lbName = registerOutput<String>('lbName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LbCertificateAttachment] resource.
+  LbCertificateAttachment.reference(String urn)
+    : super(
+        'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateName = registerOutput<String>('certificateName');
     lbName = registerOutput<String>('lbName');
     region = registerOutput<String>('region');

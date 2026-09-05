@@ -6,18 +6,18 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 /// Input properties used for looking up and filtering TelemetryEvaluationForOrganization resources.
 class TelemetryEvaluationForOrganizationState {
   /// Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// Reason for the failure status. Only populated if `status` is `FAILED_START` or `FAILED_STOP`.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// AWS Region designated as the home region for multi-region telemetry evaluation. Only present when multi-region evaluation is active.
-  final pulumi.Input<String>? homeRegion;
+  final pulumi.Input<String?>? homeRegion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Regions to include in multi-region telemetry evaluation. The current region is always implicitly included. Mutually exclusive with `allRegions`.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Onboarding status of the telemetry config feature for the organization. Valid values: `NOT_STARTED`, `STARTING`, `FAILED_START`, `RUNNING`, `STOPPING`, `FAILED_STOP`, `STOPPED`.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<TelemetryEvaluationForOrganizationTimeouts>? timeouts;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<TelemetryEvaluationForOrganizationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEvaluationForOrganizationState].
   /// [allRegions] Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.

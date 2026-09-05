@@ -269,10 +269,10 @@ class DataSourceWindowsEvent extends pulumi.CustomResource {
           'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     eventLogName = registerOutput<String>('eventLogName');
-    eventTypes = registerOutput<List<String>>('eventTypes');
+    eventTypes = registerOutput<List<String>>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     workspaceName = registerOutput<String>('workspaceName');
@@ -283,11 +283,12 @@ class DataSourceWindowsEvent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataSourceWindowsEventState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataSourceWindowsEvent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,7 +303,23 @@ class DataSourceWindowsEvent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     eventLogName = registerOutput<String>('eventLogName');
-    eventTypes = registerOutput<List<String>>('eventTypes');
+    eventTypes = registerOutput<List<String>>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    workspaceName = registerOutput<String>('workspaceName');
+  }
+
+  /// Creates a typed reference to an existing [DataSourceWindowsEvent] resource.
+  DataSourceWindowsEvent.reference(String urn)
+    : super(
+        'azure:loganalytics/dataSourceWindowsEvent:DataSourceWindowsEvent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    eventLogName = registerOutput<String>('eventLogName');
+    eventTypes = registerOutput<List<String>>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     workspaceName = registerOutput<String>('workspaceName');

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_set_resource_dns_target_resource.dart';
 
 class ResourceSetResource {
-  final pulumi.Input<String>? componentId;
+  final pulumi.Input<String?>? componentId;
   /// Component for DNS/Routing Control Readiness Checks.
-  final pulumi.Input<ResourceSetResourceDnsTargetResource>? dnsTargetResource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResource?>? dnsTargetResource;
   /// Recovery group ARN or cell ARN that contains this resource set.
-  final pulumi.Input<List<String>>? readinessScopes;
+  final pulumi.Input<List<String>?>? readinessScopes;
   /// ARN of the resource.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
 
   /// Creates a new [ResourceSetResource].
   /// [componentId] Optional.

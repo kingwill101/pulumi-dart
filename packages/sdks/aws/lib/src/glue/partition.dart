@@ -168,15 +168,15 @@ class Partition extends pulumi.CustomResource {
           'aws:glue/partition:Partition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     creationTime = registerOutput<String>('creationTime');
     databaseName = registerOutput<String>('databaseName');
     lastAccessedTime = registerOutput<String>('lastAccessedTime');
     lastAnalyzedTime = registerOutput<String>('lastAnalyzedTime');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    partitionValues = registerOutput<List<String>>('partitionValues');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionValues = registerOutput<List<String>>('partitionValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     storageDescriptor = registerOutput<PartitionStorageDescriptor?>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartitionStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');
@@ -187,11 +187,12 @@ class Partition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Partition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,8 +211,29 @@ class Partition extends pulumi.CustomResource {
     databaseName = registerOutput<String>('databaseName');
     lastAccessedTime = registerOutput<String>('lastAccessedTime');
     lastAnalyzedTime = registerOutput<String>('lastAnalyzedTime');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    partitionValues = registerOutput<List<String>>('partitionValues');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionValues = registerOutput<List<String>>('partitionValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    storageDescriptor = registerOutput<PartitionStorageDescriptor?>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartitionStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [Partition] resource.
+  Partition.reference(String urn)
+    : super(
+        'aws:glue/partition:Partition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    creationTime = registerOutput<String>('creationTime');
+    databaseName = registerOutput<String>('databaseName');
+    lastAccessedTime = registerOutput<String>('lastAccessedTime');
+    lastAnalyzedTime = registerOutput<String>('lastAnalyzedTime');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionValues = registerOutput<List<String>>('partitionValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     storageDescriptor = registerOutput<PartitionStorageDescriptor?>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartitionStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableName = registerOutput<String>('tableName');

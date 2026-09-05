@@ -6,15 +6,15 @@ class ServiceTaskSpecContainerSpecConfig {
   /// ID of the specific config that we're referencing
   final pulumi.Input<String> configId;
   /// Name of the config that this references, but this is just provided for lookup/display purposes. The config in the reference will be identified by its ID
-  final pulumi.Input<String>? configName;
+  final pulumi.Input<String?>? configName;
   /// Represents the file GID. Defaults to `0`.
-  final pulumi.Input<String>? fileGid;
+  final pulumi.Input<String?>? fileGid;
   /// Represents represents the FileMode of the file. Defaults to `0o444`.
-  final pulumi.Input<int>? fileMode;
+  final pulumi.Input<int?>? fileMode;
   /// Represents the final filename in the filesystem
   final pulumi.Input<String> fileName;
   /// Represents the file UID. Defaults to `0`.
-  final pulumi.Input<String>? fileUid;
+  final pulumi.Input<String?>? fileUid;
 
   /// Creates a new [ServiceTaskSpecContainerSpecConfig].
   /// [configId] ID of the specific config that we're referencing
@@ -48,7 +48,7 @@ class ServiceTaskSpecContainerSpecConfig {
       configId: pulumi.Input.fromValue(map['configId'] as String),
       configName: (() { final guardedValue = map['configName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileGid: (() { final guardedValue = map['fileGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileMode: (() { final guardedValue = map['fileMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fileMode: (() { final guardedValue = map['fileMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       fileUid: (() { final guardedValue = map['fileUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

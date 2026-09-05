@@ -25,8 +25,8 @@ class GetFunctionDurableConfig {
 
   factory GetFunctionDurableConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionDurableConfig(
-      executionTimeout: pulumi.Input.fromValue(map['executionTimeout'] as int),
-      retentionPeriod: pulumi.Input.fromValue(map['retentionPeriod'] as int),
+      executionTimeout: pulumi.Input.fromValue((map['executionTimeout'] as num).toInt()),
+      retentionPeriod: pulumi.Input.fromValue((map['retentionPeriod'] as num).toInt()),
     );
   }
 }

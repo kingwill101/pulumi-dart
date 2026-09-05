@@ -7,55 +7,55 @@ import 'socketio_sku.dart';
 /// Input properties used for looking up and filtering Socketio resources.
 class SocketioState {
   /// Whether Azure Active Directory authentication is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? aadAuthEnabled;
+  final pulumi.Input<bool?>? aadAuthEnabled;
   /// The publicly accessible IP address of the Web PubSub Service.
-  final pulumi.Input<String>? externalIp;
+  final pulumi.Input<String?>? externalIp;
   /// The FQDN of the Web PubSub Service.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// An `identity` block as defined below.
-  final pulumi.Input<SocketioIdentity>? identity;
+  final pulumi.Input<SocketioIdentity?>? identity;
   /// Whether the connectivity log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceConnectivityLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceConnectivityLogsEnabled;
   /// Whether the live trace tool is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceEnabled;
+  final pulumi.Input<bool?>? liveTraceEnabled;
   /// Whether the HTTP request log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceHttpRequestLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceHttpRequestLogsEnabled;
   /// Whether the messaging log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceMessagingLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceMessagingLogsEnabled;
   /// Whether local authentication using an access key is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// The Azure Region where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Web PubSub Service. Changing this forces a new Web PubSub Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary access key for the Web PubSub Service.
-  final pulumi.Input<String>? primaryAccessKey;
+  final pulumi.Input<String?>? primaryAccessKey;
   /// The primary connection string for the Web PubSub Service.
-  final pulumi.Input<String>? primaryConnectionString;
+  final pulumi.Input<String?>? primaryConnectionString;
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** `publicNetworkAccess` cannot be set to `Disabled` when `sku` is `Free_F1`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The publicly accessible port for client-side usage of the Web PubSub Service.
-  final pulumi.Input<int>? publicPort;
+  final pulumi.Input<int?>? publicPort;
   /// The name of the Resource Group where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The secondary access key for the Web PubSub Service.
-  final pulumi.Input<String>? secondaryAccessKey;
+  final pulumi.Input<String?>? secondaryAccessKey;
   /// The secondary connection string for the Web PubSub Service.
-  final pulumi.Input<String>? secondaryConnectionString;
+  final pulumi.Input<String?>? secondaryConnectionString;
   /// The publicly accessible port for server-side usage of the Web PubSub Service.
-  final pulumi.Input<int>? serverPort;
+  final pulumi.Input<int?>? serverPort;
   /// The service mode of this Web PubSub Service. Defaults to `Default`. Possible values are `Default` and `Serverless`.
-  final pulumi.Input<String>? serviceMode;
+  final pulumi.Input<String?>? serviceMode;
   /// One or more `sku` blocks as defined below.
-  final pulumi.Input<SocketioSku>? sku;
+  final pulumi.Input<SocketioSku?>? sku;
   /// A mapping of tags which should be assigned to the Web PubSub Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
   /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` when `sku` is `Free_F1`.
-  final pulumi.Input<bool>? tlsClientCertEnabled;
+  final pulumi.Input<bool?>? tlsClientCertEnabled;
 
   /// Creates a new [SocketioState].
   /// [aadAuthEnabled] Whether Azure Active Directory authentication is enabled. Defaults to `true`.
@@ -151,11 +151,11 @@ class SocketioState {
       primaryAccessKey: (() { final guardedValue = map['primaryAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryAccessKey: (() { final guardedValue = map['secondaryAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serverPort: (() { final guardedValue = map['serverPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverPort: (() { final guardedValue = map['serverPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serviceMode: (() { final guardedValue = map['serviceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SocketioSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Template resources.
 class TemplateState {
   /// AWS Region to which the template applies.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// Indicates whether the quota is global.
-  final pulumi.Input<bool>? globalQuota;
+  final pulumi.Input<bool?>? globalQuota;
   /// Quota identifier. To find the quota code for a specific quota, use the aws.servicequotas.ServiceQuota data source.
-  final pulumi.Input<String>? quotaCode;
+  final pulumi.Input<String?>? quotaCode;
   /// Quota name.
-  final pulumi.Input<String>? quotaName;
+  final pulumi.Input<String?>? quotaName;
   /// AWS Region to which the template applies. Use `aws.getRegion` instead.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
-  final pulumi.Input<String>? serviceCode;
+  final pulumi.Input<String?>? serviceCode;
   /// Service name.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Unit of measurement.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
   /// The new, increased value for the quota.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [TemplateState].
   /// [awsRegion] AWS Region to which the template applies.
@@ -69,7 +69,7 @@ class TemplateState {
       serviceCode: (() { final guardedValue = map['serviceCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

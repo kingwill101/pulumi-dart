@@ -6,20 +6,20 @@ import 'iam_role_association_timeouts.dart';
 /// Input properties used for looking up and filtering IamRoleAssociation resources.
 class IamRoleAssociationState {
   /// AWS integration configuration for the IAM role association. Valid value: `KmsTde`.
-  final pulumi.Input<String>? awsIntegration;
+  final pulumi.Input<String?>? awsIntegration;
   /// IAM role ARN to associate.
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// Region where this resource is managed. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Oracle Database@AWS resource ARN to associate the IAM role with.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Current IAM role association status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Additional details about the current status, when available.
-  final pulumi.Input<String>? statusReason;
-  final pulumi.Input<IamRoleAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? statusReason;
+  final pulumi.Input<IamRoleAssociationTimeouts?>? timeouts;
 
   /// Creates a new [IamRoleAssociationState].
   /// [awsIntegration] AWS integration configuration for the IAM role association. Valid value: `KmsTde`.

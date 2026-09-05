@@ -6,9 +6,9 @@ import 'app_authorization_credential_oauth2_credential.dart';
 
 class AppAuthorizationCredential {
   /// API key credential information. See `apiKeyCredential` Block for details.
-  final pulumi.Input<List<AppAuthorizationCredentialApiKeyCredential>>? apiKeyCredentials;
+  final pulumi.Input<List<AppAuthorizationCredentialApiKeyCredential>?>? apiKeyCredentials;
   /// OAuth2 client credential information. See `oauth2Credential` Block for details.
-  final pulumi.Input<AppAuthorizationCredentialOauth2Credential>? oauth2Credential;
+  final pulumi.Input<AppAuthorizationCredentialOauth2Credential?>? oauth2Credential;
 
   /// Creates a new [AppAuthorizationCredential].
   /// [apiKeyCredentials] API key credential information. See `apiKeyCredential` Block for details.

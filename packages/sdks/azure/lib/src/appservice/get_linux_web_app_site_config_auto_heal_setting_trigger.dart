@@ -12,7 +12,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTrigger {
   /// (Optional) One or more `slowRequestWithPath` blocks as defined above.
   final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>> slowRequestWithPaths;
   /// A `slowRequest` block as defined above.
-  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>>? slowRequests;
+  final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest>?>? slowRequests;
   /// A `statusCode` block as defined above.
   final pulumi.Input<List<GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>> statusCodes;
 

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration {
   /// Criteria for selecting data sources. Uses the same filter expression format as `logGroupSelectionCriteria`, but operates on Data Source Name and Data Source Type operands. When both `logGroupSelectionCriteria` and `dataSourceSelectionCriteria` are specified, a log event must match both criteria to be centralized. Must be between 1 and 2000 characters.
-  final pulumi.Input<String>? dataSourceSelectionCriteria;
+  final pulumi.Input<String?>? dataSourceSelectionCriteria;
   /// Strategy for handling encrypted log groups. Valid values: `ALLOW`, `SKIP`.
   final pulumi.Input<String> encryptedLogGroupStrategy;
   /// Criteria for selecting log groups. Use `*` for all log groups or OAM filter syntax like `LogGroupName LIKE '/aws/lambda%'`. Must be between 1 and 2000 characters.
-  final pulumi.Input<String>? logGroupSelectionCriteria;
+  final pulumi.Input<String?>? logGroupSelectionCriteria;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration].
   /// [dataSourceSelectionCriteria] Criteria for selecting data sources. Uses the same filter expression format as `logGroupSelectionCriteria`, but operates on Data Source Name and Data Source Type operands. When both `logGroupSelectionCriteria` and `dataSourceSelectionCriteria` are specified, a log event must match both criteria to be centralized. Must be between 1 and 2000 characters.

@@ -10,7 +10,7 @@ import 'account_cost_management_export_export_data_storage_location.dart';
 /// {@macro pulumi_billing_account_cost_management_export_account_cost_management_export_args_doc}
 class AccountCostManagementExportArgs {
   /// Is the cost management export active? Default is `true`.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// The id of the billing account on which to create an export. Changing this forces a new resource to be created.
   final pulumi.Input<String> billingAccountId;
   /// A `exportDataOptions` block as defined below.
@@ -18,9 +18,9 @@ class AccountCostManagementExportArgs {
   /// A `exportDataStorageLocation` block as defined below.
   final pulumi.Input<AccountCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The date the export will stop capturing information.
   final pulumi.Input<String> recurrencePeriodEndDate;
   /// The date the export will start capturing information.

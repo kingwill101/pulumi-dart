@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedHardwareSecurityModuleKeyRotationPolicy resources.
 class ManagedHardwareSecurityModuleKeyRotationPolicyState {
   /// Specify the expiration duration on a newly rotated key as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `P28D`.
-  final pulumi.Input<String>? expireAfter;
+  final pulumi.Input<String?>? expireAfter;
   /// The ID of the Managed HSM Key. Changing this forces a new Managed HSM Key rotation policy to be created.
-  final pulumi.Input<String>? managedHsmKeyId;
+  final pulumi.Input<String?>? managedHsmKeyId;
   /// Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `timeAfterCreation` or `timeBeforeExpiry` should be specified.
-  final pulumi.Input<String>? timeAfterCreation;
+  final pulumi.Input<String?>? timeAfterCreation;
   /// Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `timeAfterCreation` or `timeBeforeExpiry` should be specified.
-  final pulumi.Input<String>? timeBeforeExpiry;
+  final pulumi.Input<String?>? timeBeforeExpiry;
 
   /// Creates a new [ManagedHardwareSecurityModuleKeyRotationPolicyState].
   /// [expireAfter] Specify the expiration duration on a newly rotated key as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `P28D`.

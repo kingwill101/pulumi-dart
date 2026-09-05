@@ -35,10 +35,10 @@ class GetExadataInfrastructureEstimatedPatchingTime {
 
   factory GetExadataInfrastructureEstimatedPatchingTime.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureEstimatedPatchingTime(
-      estimatedDbServerPatchingTime: pulumi.Input.fromValue(map['estimatedDbServerPatchingTime'] as int),
-      estimatedNetworkSwitchesPatchingTime: pulumi.Input.fromValue(map['estimatedNetworkSwitchesPatchingTime'] as int),
-      estimatedStorageServerPatchingTime: pulumi.Input.fromValue(map['estimatedStorageServerPatchingTime'] as int),
-      totalEstimatedPatchingTime: pulumi.Input.fromValue(map['totalEstimatedPatchingTime'] as int),
+      estimatedDbServerPatchingTime: pulumi.Input.fromValue((map['estimatedDbServerPatchingTime'] as num).toInt()),
+      estimatedNetworkSwitchesPatchingTime: pulumi.Input.fromValue((map['estimatedNetworkSwitchesPatchingTime'] as num).toInt()),
+      estimatedStorageServerPatchingTime: pulumi.Input.fromValue((map['estimatedStorageServerPatchingTime'] as num).toInt()),
+      totalEstimatedPatchingTime: pulumi.Input.fromValue((map['totalEstimatedPatchingTime'] as num).toInt()),
     );
   }
 }

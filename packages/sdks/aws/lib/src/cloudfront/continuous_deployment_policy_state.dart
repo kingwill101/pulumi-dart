@@ -7,17 +7,17 @@ import 'continuous_deployment_policy_traffic_config.dart';
 /// Input properties used for looking up and filtering ContinuousDeploymentPolicy resources.
 class ContinuousDeploymentPolicyState {
   /// The continuous deployment policy ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether this continuous deployment policy is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Current version of the continuous distribution policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Date and time the continuous deployment policy was last modified.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// CloudFront domain name of the staging distribution. See `stagingDistributionDnsNames`.
-  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>? stagingDistributionDnsNames;
+  final pulumi.Input<ContinuousDeploymentPolicyStagingDistributionDnsNames?>? stagingDistributionDnsNames;
   /// Parameters for routing production traffic from primary to staging distributions. See `trafficConfig`.
-  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
+  final pulumi.Input<ContinuousDeploymentPolicyTrafficConfig?>? trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicyState].
   /// [arn] The continuous deployment policy ARN.

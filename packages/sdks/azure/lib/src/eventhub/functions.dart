@@ -165,6 +165,17 @@ Future<GetAuthorizationRuleResult> getAuthorizationRule(
   return GetAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizationRuleResult> getAuthorizationRuleOutput(
+  GetAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getAuthorizationRule:getAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizationRuleResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventHub.
 ///
 /// ## Example Usage
@@ -312,6 +323,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Event Hubs Consumer Group within an Event Hub.
 ///
 /// ## Example Usage
@@ -457,6 +479,17 @@ Future<GetConsumeGroupResult> getConsumeGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConsumeGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetConsumeGroupResult> getConsumeGroupOutput(
+  GetConsumeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getConsumeGroup:getConsumeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsumeGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing EventHub.
@@ -613,6 +646,17 @@ Future<GetEventHubResult> getEventHub(
   return GetEventHubResult.fromMap(result);
 }
 
+pulumi.Output<GetEventHubResult> getEventHubOutput(
+  GetEventHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getEventHub:getEventHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventHub Namespace.
 ///
 /// ## Example Usage
@@ -760,6 +804,17 @@ Future<GetEventhubNamespaceResult> getEventhubNamespace(
   return GetEventhubNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetEventhubNamespaceResult> getEventhubNamespaceOutput(
+  GetEventhubNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getEventhubNamespace:getEventhubNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventhubNamespaceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventHub Namespace.
 ///
 /// ## Example Usage
@@ -905,6 +960,17 @@ Future<GetNamespaceResult> getNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getNamespace:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
 }
 
 /// Use this data source to access information about an Authorization Rule for an Event Hub Namespace.
@@ -1061,6 +1127,17 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
   return GetNamespaceAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRuleOutput(
+  GetNamespaceAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAuthorizationRuleResult.fromMap);
+}
+
 /// Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Event Hub.
 ///
 /// ## Example Usage
@@ -1103,7 +1180,7 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 ///     resourceGroupName: exampleResourceGroup.name,
 /// });
 /// const exampleGetSas = azure.eventhub.getSasOutput({
-///     connectionString: example.apply(example => example.primaryConnectionString),
+///     connectionString: example.primaryConnectionString,
 ///     expiry: "2023-06-23T00:00:00Z",
 /// });
 /// ```
@@ -1254,10 +1331,8 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 		}, nil)
 /// 		_ = eventhub.GetSasOutput(ctx, eventhub.GetSasOutputArgs{
-/// 			ConnectionString: example.ApplyT(func(example eventhub.GetAuthorizationRuleResult) (*string, error) {
-/// 				return example.PrimaryConnectionString, nil
-/// 			}).(pulumi.StringPtrOutput),
-/// 			Expiry: pulumi.String("2023-06-23T00:00:00Z"),
+/// 			ConnectionString: example.PrimaryConnectionString(),
+/// 			Expiry:           pulumi.String("2023-06-23T00:00:00Z"),
 /// 		}, nil)
 /// 		return nil
 /// 	})
@@ -1452,6 +1527,17 @@ Future<GetSasResult> getSas(
   return GetSasResult.fromMap(result);
 }
 
+pulumi.Output<GetSasResult> getSasOutput(
+  GetSasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getSas:getSas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSasResult.fromMap);
+}
+
 /// Use this data source to access information about an existing ServiceBus Namespace.
 ///
 /// ## Example Usage
@@ -1597,4 +1683,15 @@ Future<GetServiceBusNamespaceResult> getServiceBusNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceBusNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceBusNamespaceResult> getServiceBusNamespaceOutput(
+  GetServiceBusNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventhub/getServiceBusNamespace:getServiceBusNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceBusNamespaceResult.fromMap);
 }

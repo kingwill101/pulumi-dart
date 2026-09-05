@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupCapacityReservationSpecificationCapacityReservationTarget {
   /// List of On-Demand Capacity Reservation Ids. Conflicts with `capacityReservationResourceGroupArns`.
-  final pulumi.Input<List<String>>? capacityReservationIds;
+  final pulumi.Input<List<String>?>? capacityReservationIds;
   /// List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacityReservationIds`.
-  final pulumi.Input<List<String>>? capacityReservationResourceGroupArns;
+  final pulumi.Input<List<String>?>? capacityReservationResourceGroupArns;
 
   /// Creates a new [GroupCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationIds] List of On-Demand Capacity Reservation Ids. Conflicts with `capacityReservationResourceGroupArns`.

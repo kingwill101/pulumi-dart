@@ -6,13 +6,13 @@ class KafkaClusterPrivateLinkConfigurationIpConfiguration {
   /// The name of the IP configuration.
   final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The private IP allocation method. Possible values are `Dynamic` and `Static`.
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<String?>? privateIpAllocationMethod;
   /// The ID of the Subnet within the Virtual Network where the IP configuration should be provisioned.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [KafkaClusterPrivateLinkConfigurationIpConfiguration].
   /// [name] The name of the IP configuration.

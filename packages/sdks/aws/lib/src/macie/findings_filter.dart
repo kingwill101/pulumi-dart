@@ -14,16 +14,16 @@ import 'findings_filter_state.dart';
 ///
 /// const example = new aws.macie2.Account("example", {});
 /// const test = new aws.macie.FindingsFilter("test", {
-///     name: "NAME OF THE FINDINGS FILTER",
-///     description: "DESCRIPTION",
-///     position: 1,
-///     action: "ARCHIVE",
 ///     findingCriteria: {
 ///         criterions: [{
 ///             field: "region",
 ///             eqs: [current.region],
 ///         }],
 ///     },
+///     name: "NAME OF THE FINDINGS FILTER",
+///     description: "DESCRIPTION",
+///     position: 1,
+///     action: "ARCHIVE",
 /// }, {
 ///     dependsOn: [testAwsMacie2Account],
 /// });
@@ -34,16 +34,16 @@ import 'findings_filter_state.dart';
 ///
 /// example = aws.macie2.Account("example")
 /// test = aws.macie.FindingsFilter("test",
-///     name="NAME OF THE FINDINGS FILTER",
-///     description="DESCRIPTION",
-///     position=1,
-///     action="ARCHIVE",
 ///     finding_criteria={
 ///         "criterions": [{
 ///             "field": "region",
 ///             "eqs": [current["region"]],
 ///         }],
 ///     },
+///     name="NAME OF THE FINDINGS FILTER",
+///     description="DESCRIPTION",
+///     position=1,
+///     action="ARCHIVE",
 ///     opts = pulumi.ResourceOptions(depends_on=[test_aws_macie2_account]))
 /// ```
 /// ```csharp
@@ -58,10 +58,6 @@ import 'findings_filter_state.dart';
 ///
 ///     var test = new Aws.Macie.FindingsFilter("test", new()
 ///     {
-///         Name = "NAME OF THE FINDINGS FILTER",
-///         Description = "DESCRIPTION",
-///         Position = 1,
-///         Action = "ARCHIVE",
 ///         FindingCriteria = new Aws.Macie.Inputs.FindingsFilterFindingCriteriaArgs
 ///         {
 ///             Criterions = new[]
@@ -76,6 +72,10 @@ import 'findings_filter_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "NAME OF THE FINDINGS FILTER",
+///         Description = "DESCRIPTION",
+///         Position = 1,
+///         Action = "ARCHIVE",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -102,10 +102,6 @@ import 'findings_filter_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = macie.NewFindingsFilter(ctx, "test", &macie.FindingsFilterArgs{
-/// 			Name:        pulumi.String("NAME OF THE FINDINGS FILTER"),
-/// 			Description: pulumi.String("DESCRIPTION"),
-/// 			Position:    pulumi.Int(1),
-/// 			Action:      pulumi.String("ARCHIVE"),
 /// 			FindingCriteria: &macie.FindingsFilterFindingCriteriaArgs{
 /// 				Criterions: macie.FindingsFilterFindingCriteriaCriterionArray{
 /// 					&macie.FindingsFilterFindingCriteriaCriterionArgs{
@@ -116,6 +112,10 @@ import 'findings_filter_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("NAME OF THE FINDINGS FILTER"),
+/// 			Description: pulumi.String("DESCRIPTION"),
+/// 			Position:    pulumi.Int(1),
+/// 			Action:      pulumi.String("ARCHIVE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testAwsMacie2Account,
 /// 		}))
@@ -138,17 +138,17 @@ import 'findings_filter_state.dart';
 /// resource "aws_macie2_account" "example" {
 /// }
 /// resource "aws_macie_findingsfilter" "test" {
-///   depends_on  = [testAwsMacie2Account]
-///   name        = "NAME OF THE FINDINGS FILTER"
-///   description = "DESCRIPTION"
-///   position    = 1
-///   action      = "ARCHIVE"
+///   depends_on = [testAwsMacie2Account]
 ///   finding_criteria = {
 ///     criterions = [{
 ///       "field" = "region"
 ///       "eqs"   = [current.region]
 ///     }]
 ///   }
+///   name        = "NAME OF THE FINDINGS FILTER"
+///   description = "DESCRIPTION"
+///   position    = 1
+///   action      = "ARCHIVE"
 /// }
 /// ```
 /// ```java
@@ -179,16 +179,16 @@ import 'findings_filter_state.dart';
 ///         var example = new Account("example");
 ///
 ///         var test = new FindingsFilter("test", FindingsFilterArgs.builder()
-///             .name("NAME OF THE FINDINGS FILTER")
-///             .description("DESCRIPTION")
-///             .position(1)
-///             .action("ARCHIVE")
 ///             .findingCriteria(FindingsFilterFindingCriteriaArgs.builder()
 ///                 .criterions(FindingsFilterFindingCriteriaCriterionArgs.builder()
 ///                     .field("region")
 ///                     .eqs(current.region())
 ///                     .build())
 ///                 .build())
+///             .name("NAME OF THE FINDINGS FILTER")
+///             .description("DESCRIPTION")
+///             .position(1)
+///             .action("ARCHIVE")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(testAwsMacie2Account)
 ///                 .build());
@@ -203,15 +203,15 @@ import 'findings_filter_state.dart';
 ///   test:
 ///     type: aws:macie:FindingsFilter
 ///     properties:
-///       name: NAME OF THE FINDINGS FILTER
-///       description: DESCRIPTION
-///       position: 1
-///       action: ARCHIVE
 ///       findingCriteria:
 ///         criterions:
 ///           - field: region
 ///             eqs:
 ///               - ${current.region}
+///       name: NAME OF THE FINDINGS FILTER
+///       description: DESCRIPTION
+///       position: 1
+///       action: ARCHIVE
 ///     options:
 ///       dependsOn:
 ///         - ${testAwsMacie2Account}
@@ -228,7 +228,7 @@ import 'findings_filter_state.dart';
 class FindingsFilter extends pulumi.CustomResource {
   /// The action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
   late final pulumi.Output<String> action;
-  /// The Amazon Resource Name (ARN) of the Findings Filter.
+  /// ARN of the Findings Filter.
   late final pulumi.Output<String> arn;
   /// A custom description of the filter. The description can contain as many as 512 characters.
   late final pulumi.Output<String?> description;
@@ -259,7 +259,7 @@ class FindingsFilter extends pulumi.CustomResource {
           'aws:macie/findingsFilter:FindingsFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
@@ -269,8 +269,8 @@ class FindingsFilter extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     position = registerOutput<int>('position');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FindingsFilter] resource's state with the given [name] and [id].
@@ -278,11 +278,12 @@ class FindingsFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FindingsFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FindingsFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,7 +305,28 @@ class FindingsFilter extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     position = registerOutput<int>('position');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FindingsFilter] resource.
+  FindingsFilter.reference(String urn)
+    : super(
+        'aws:macie/findingsFilter:FindingsFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    findingCriteria = registerOutput<FindingsFilterFindingCriteria>('findingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FindingsFilterFindingCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    position = registerOutput<int>('position');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

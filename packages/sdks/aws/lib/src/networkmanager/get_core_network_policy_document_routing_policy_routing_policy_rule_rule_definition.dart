@@ -8,9 +8,9 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition {
   /// Block defining the action to take when conditions match. Detailed below.
   final pulumi.Input<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction> action;
   /// Logic to apply when multiple match conditions are present. Valid values: `and`, `or`.
-  final pulumi.Input<String>? conditionLogic;
+  final pulumi.Input<String?>? conditionLogic;
   /// List of conditions to match against routes. Detailed below.
-  final pulumi.Input<List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition>>? matchConditions;
+  final pulumi.Input<List<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition>?>? matchConditions;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition].
   /// [action] Block defining the action to take when conditions match. Detailed below.

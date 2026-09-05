@@ -146,13 +146,13 @@ import 'project_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Project("example", {
-///     name: "Example",
-///     description: "Example Description",
 ///     dataDelivery: {
 ///         cloudwatchLogs: {
 ///             logGroup: "example-log-group-name",
 ///         },
 ///     },
+///     name: "Example",
+///     description: "Example Description",
 ///     tags: {
 ///         Key1: "example Project",
 ///     },
@@ -163,13 +163,13 @@ import 'project_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Project("example",
-///     name="Example",
-///     description="Example Description",
 ///     data_delivery={
 ///         "cloudwatch_logs": {
 ///             "log_group": "example-log-group-name",
 ///         },
 ///     },
+///     name="Example",
+///     description="Example Description",
 ///     tags={
 ///         "Key1": "example Project",
 ///     })
@@ -184,8 +184,6 @@ import 'project_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Project("example", new()
 ///     {
-///         Name = "Example",
-///         Description = "Example Description",
 ///         DataDelivery = new Aws.Evidently.Inputs.ProjectDataDeliveryArgs
 ///         {
 ///             CloudwatchLogs = new Aws.Evidently.Inputs.ProjectDataDeliveryCloudwatchLogsArgs
@@ -193,6 +191,8 @@ import 'project_state.dart';
 ///                 LogGroup = "example-log-group-name",
 ///             },
 ///         },
+///         Name = "Example",
+///         Description = "Example Description",
 ///         Tags =
 ///         {
 ///             { "Key1", "example Project" },
@@ -212,13 +212,13 @@ import 'project_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewProject(ctx, "example", &evidently.ProjectArgs{
-/// 			Name:        pulumi.String("Example"),
-/// 			Description: pulumi.String("Example Description"),
 /// 			DataDelivery: &evidently.ProjectDataDeliveryArgs{
 /// 				CloudwatchLogs: &evidently.ProjectDataDeliveryCloudwatchLogsArgs{
 /// 					LogGroup: pulumi.String("example-log-group-name"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("Example"),
+/// 			Description: pulumi.String("Example Description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Key1": pulumi.String("example Project"),
 /// 			},
@@ -240,13 +240,13 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_evidently_project" "example" {
-///   name        = "Example"
-///   description = "Example Description"
 ///   data_delivery = {
 ///     cloudwatch_logs = {
 ///       log_group = "example-log-group-name"
 ///     }
 ///   }
+///   name        = "Example"
+///   description = "Example Description"
 ///   tags = {
 ///     "Key1" = "example Project"
 ///   }
@@ -276,13 +276,13 @@ import 'project_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Project("example", ProjectArgs.builder()
-///             .name("Example")
-///             .description("Example Description")
 ///             .dataDelivery(ProjectDataDeliveryArgs.builder()
 ///                 .cloudwatchLogs(ProjectDataDeliveryCloudwatchLogsArgs.builder()
 ///                     .logGroup("example-log-group-name")
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .description("Example Description")
 ///             .tags(Map.of("Key1", "example Project"))
 ///             .build());
 ///
@@ -294,11 +294,11 @@ import 'project_state.dart';
 ///   example:
 ///     type: aws:evidently:Project
 ///     properties:
-///       name: Example
-///       description: Example Description
 ///       dataDelivery:
 ///         cloudwatchLogs:
 ///           logGroup: example-log-group-name
+///       name: Example
+///       description: Example Description
 ///       tags:
 ///         Key1: example Project
 /// ```
@@ -312,14 +312,14 @@ import 'project_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Project("example", {
-///     name: "Example",
-///     description: "Example Description",
 ///     dataDelivery: {
 ///         s3Destination: {
 ///             bucket: "example-bucket-name",
 ///             prefix: "example",
 ///         },
 ///     },
+///     name: "Example",
+///     description: "Example Description",
 ///     tags: {
 ///         Key1: "example Project",
 ///     },
@@ -330,14 +330,14 @@ import 'project_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Project("example",
-///     name="Example",
-///     description="Example Description",
 ///     data_delivery={
 ///         "s3_destination": {
 ///             "bucket": "example-bucket-name",
 ///             "prefix": "example",
 ///         },
 ///     },
+///     name="Example",
+///     description="Example Description",
 ///     tags={
 ///         "Key1": "example Project",
 ///     })
@@ -352,8 +352,6 @@ import 'project_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Project("example", new()
 ///     {
-///         Name = "Example",
-///         Description = "Example Description",
 ///         DataDelivery = new Aws.Evidently.Inputs.ProjectDataDeliveryArgs
 ///         {
 ///             S3Destination = new Aws.Evidently.Inputs.ProjectDataDeliveryS3DestinationArgs
@@ -362,6 +360,8 @@ import 'project_state.dart';
 ///                 Prefix = "example",
 ///             },
 ///         },
+///         Name = "Example",
+///         Description = "Example Description",
 ///         Tags =
 ///         {
 ///             { "Key1", "example Project" },
@@ -381,14 +381,14 @@ import 'project_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewProject(ctx, "example", &evidently.ProjectArgs{
-/// 			Name:        pulumi.String("Example"),
-/// 			Description: pulumi.String("Example Description"),
 /// 			DataDelivery: &evidently.ProjectDataDeliveryArgs{
 /// 				S3Destination: &evidently.ProjectDataDeliveryS3DestinationArgs{
 /// 					Bucket: pulumi.String("example-bucket-name"),
 /// 					Prefix: pulumi.String("example"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("Example"),
+/// 			Description: pulumi.String("Example Description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Key1": pulumi.String("example Project"),
 /// 			},
@@ -410,14 +410,14 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_evidently_project" "example" {
-///   name        = "Example"
-///   description = "Example Description"
 ///   data_delivery = {
 ///     s3_destination = {
 ///       bucket = "example-bucket-name"
 ///       prefix = "example"
 ///     }
 ///   }
+///   name        = "Example"
+///   description = "Example Description"
 ///   tags = {
 ///     "Key1" = "example Project"
 ///   }
@@ -447,14 +447,14 @@ import 'project_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Project("example", ProjectArgs.builder()
-///             .name("Example")
-///             .description("Example Description")
 ///             .dataDelivery(ProjectDataDeliveryArgs.builder()
 ///                 .s3Destination(ProjectDataDeliveryS3DestinationArgs.builder()
 ///                     .bucket("example-bucket-name")
 ///                     .prefix("example")
 ///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .description("Example Description")
 ///             .tags(Map.of("Key1", "example Project"))
 ///             .build());
 ///
@@ -466,12 +466,12 @@ import 'project_state.dart';
 ///   example:
 ///     type: aws:evidently:Project
 ///     properties:
-///       name: Example
-///       description: Example Description
 ///       dataDelivery:
 ///         s3Destination:
 ///           bucket: example-bucket-name
 ///           prefix: example
+///       name: Example
+///       description: Example Description
 ///       tags:
 ///         Key1: example Project
 /// ```
@@ -528,7 +528,7 @@ class Project extends pulumi.CustomResource {
           'aws:evidently/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activeExperimentCount = registerOutput<int>('activeExperimentCount');
     activeLaunchCount = registerOutput<int>('activeLaunchCount');
@@ -543,8 +543,8 @@ class Project extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -552,11 +552,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -583,7 +584,33 @@ class Project extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'aws:evidently/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeExperimentCount = registerOutput<int>('activeExperimentCount');
+    activeLaunchCount = registerOutput<int>('activeLaunchCount');
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    dataDelivery = registerOutput<ProjectDataDelivery?>('dataDelivery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectDataDelivery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    experimentCount = registerOutput<int>('experimentCount');
+    featureCount = registerOutput<int>('featureCount');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    launchCount = registerOutput<int>('launchCount');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

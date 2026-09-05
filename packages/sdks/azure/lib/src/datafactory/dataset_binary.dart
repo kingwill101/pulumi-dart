@@ -145,7 +145,7 @@ import 'dataset_binary_state.dart';
 /// 		}
 /// 		exampleLinkedServiceSftp, err := datafactory.NewLinkedServiceSftp(ctx, "example", &datafactory.LinkedServiceSftpArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Basic"),
 /// 			Host:               pulumi.String("http://www.bing.com"),
 /// 			Port:               pulumi.Int(22),
@@ -157,7 +157,7 @@ import 'dataset_binary_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetBinary(ctx, "example", &datafactory.DatasetBinaryArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceSftp.Name,
 /// 			SftpServerLocation: &datafactory.DatasetBinarySftpServerLocationArgs{
 /// 				Path:     pulumi.String("/test/"),
@@ -355,10 +355,10 @@ class DatasetBinary extends pulumi.CustomResource {
           'azure:datafactory/datasetBinary:DatasetBinary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobStorageLocation = registerOutput<DatasetBinaryAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compression = registerOutput<DatasetBinaryCompression?>('compression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryCompression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -367,7 +367,7 @@ class DatasetBinary extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>('sftpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinarySftpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -376,11 +376,12 @@ class DatasetBinary extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetBinaryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetBinary._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -394,8 +395,8 @@ class DatasetBinary extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobStorageLocation = registerOutput<DatasetBinaryAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compression = registerOutput<DatasetBinaryCompression?>('compression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryCompression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -404,7 +405,30 @@ class DatasetBinary extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>('sftpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinarySftpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetBinary] resource.
+  DatasetBinary.reference(String urn)
+    : super(
+        'azure:datafactory/datasetBinary:DatasetBinary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureBlobStorageLocation = registerOutput<DatasetBinaryAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compression = registerOutput<DatasetBinaryCompression?>('compression', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryCompression.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinaryHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>('sftpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBinarySftpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

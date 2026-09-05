@@ -5,13 +5,13 @@ import 'classification_job_s3_job_definition_scoping_excludes_and_tag_scope_term
 
 class ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm {
   /// The operator to use in the condition.
-  final pulumi.Input<String>? comparator;
+  final pulumi.Input<String?>? comparator;
   /// The tag key to use in the condition. The only valid value is `TAG`.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The tag keys or tag key and value pairs to use in the condition.
-  final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue>>? tagValues;
+  final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue>?>? tagValues;
   /// The type of object to apply the condition to. The only valid value is `S3_OBJECT`.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm].
   /// [comparator] The operator to use in the condition.

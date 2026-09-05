@@ -139,7 +139,7 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
           'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
@@ -150,11 +150,12 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotBlockPublicAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotBlockPublicAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -170,5 +171,18 @@ class SnapshotBlockPublicAccess extends pulumi.CustomResource {
         ) {
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [SnapshotBlockPublicAccess] resource.
+  SnapshotBlockPublicAccess.reference(String urn)
+    : super(
+        'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 }

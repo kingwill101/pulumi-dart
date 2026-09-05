@@ -291,16 +291,16 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
           'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainId = registerOutput<String>('domainId');
-    enabledRegions = registerOutput<List<String>>('enabledRegions');
+    enabledRegions = registerOutput<List<String>>('enabledRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
-    globalParameters = registerOutput<Map<String, String>?>('globalParameters');
+    globalParameters = registerOutput<Map<String, String>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters');
+    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
   }
 
   /// Gets an existing [EnvironmentBlueprintConfiguration] resource's state with the given [name] and [id].
@@ -308,11 +308,12 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentBlueprintConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentBlueprintConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,12 +328,31 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     domainId = registerOutput<String>('domainId');
-    enabledRegions = registerOutput<List<String>>('enabledRegions');
+    enabledRegions = registerOutput<List<String>>('enabledRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
-    globalParameters = registerOutput<Map<String, String>?>('globalParameters');
+    globalParameters = registerOutput<Map<String, String>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
     provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters');
+    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentBlueprintConfiguration] resource.
+  EnvironmentBlueprintConfiguration.reference(String urn)
+    : super(
+        'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    domainId = registerOutput<String>('domainId');
+    enabledRegions = registerOutput<List<String>>('enabledRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentBlueprintId = registerOutput<String>('environmentBlueprintId');
+    globalParameters = registerOutput<Map<String, String>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
+    provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
+    region = registerOutput<String>('region');
+    regionalParameters = registerOutput<Map<String, Map<String, String>>?>('regionalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
   }
 }

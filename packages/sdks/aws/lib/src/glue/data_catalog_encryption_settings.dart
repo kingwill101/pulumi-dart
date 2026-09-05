@@ -205,7 +205,7 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -217,11 +217,12 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataCatalogEncryptionSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataCatalogEncryptionSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,6 +236,20 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DataCatalogEncryptionSettings] resource.
+  DataCatalogEncryptionSettings.reference(String urn)
+    : super(
+        'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

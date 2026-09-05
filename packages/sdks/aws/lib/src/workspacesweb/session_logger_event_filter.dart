@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SessionLoggerEventFilter {
   /// Block that specifies to monitor all events. Set to `{}` to monitor all events.
-  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<Map<String, dynamic>?>? all;
   /// List of specific events to monitor. Valid values include session events like `SessionStart`, `SessionEnd`, etc.
-  final pulumi.Input<List<String>>? includes;
+  final pulumi.Input<List<String>?>? includes;
 
   /// Creates a new [SessionLoggerEventFilter].
   /// [all] Block that specifies to monitor all events. Set to `{}` to monitor all events.

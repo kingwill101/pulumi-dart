@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorReplicationInfoListConsumerGroupReplication {
   /// Consumer group offset synchronization mode. Valid values are `LEGACY` and `ENHANCED`. With `LEGACY`, offsets are synchronized when producers write to the source cluster. With `ENHANCED`, consumer offsets are synchronized regardless of producer location. `ENHANCED` requires a corresponding replicator that replicates data from the target cluster to the source cluster and requires `topic_name_configuration.type` to be set to `IDENTICAL`. Defaults to `LEGACY`. Changing this value will force a new resource.
-  final pulumi.Input<String>? consumerGroupOffsetSyncMode;
+  final pulumi.Input<String?>? consumerGroupOffsetSyncMode;
   /// List of regular expression patterns indicating the consumer groups that should not be replicated.
-  final pulumi.Input<List<String>>? consumerGroupsToExcludes;
+  final pulumi.Input<List<String>?>? consumerGroupsToExcludes;
   /// List of regular expression patterns indicating the consumer groups to copy.
   final pulumi.Input<List<String>> consumerGroupsToReplicates;
   /// Whether to periodically check for new consumer groups.
-  final pulumi.Input<bool>? detectAndCopyNewConsumerGroups;
+  final pulumi.Input<bool?>? detectAndCopyNewConsumerGroups;
   /// Whether to periodically write the translated offsets to __consumer_offsets topic in target cluster.
-  final pulumi.Input<bool>? synchroniseConsumerGroupOffsets;
+  final pulumi.Input<bool?>? synchroniseConsumerGroupOffsets;
 
   /// Creates a new [ReplicatorReplicationInfoListConsumerGroupReplication].
   /// [consumerGroupOffsetSyncMode] Consumer group offset synchronization mode. Valid values are `LEGACY` and `ENHANCED`. With `LEGACY`, offsets are synchronized when producers write to the source cluster. With `ENHANCED`, consumer offsets are synchronized regardless of producer location. `ENHANCED` requires a corresponding replicator that replicates data from the target cluster to the source cluster and requires `topic_name_configuration.type` to be set to `IDENTICAL`. Defaults to `LEGACY`. Changing this value will force a new resource.

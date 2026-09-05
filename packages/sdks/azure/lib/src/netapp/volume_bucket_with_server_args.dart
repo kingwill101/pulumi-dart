@@ -11,17 +11,17 @@ import 'volume_bucket_with_server_server.dart';
 /// {@macro pulumi_netapp_volume_bucket_with_server_volume_bucket_with_server_args_doc}
 class VolumeBucketWithServerArgs {
   /// The CIFS username used by the bucket when accessing volume data over SMB. Exactly one of `fileSystemNfsUser` or `fileSystemCifsUsername` must be specified.
-  final pulumi.Input<String>? fileSystemCifsUsername;
+  final pulumi.Input<String?>? fileSystemCifsUsername;
   /// A `fileSystemNfsUser` block as defined below. Exactly one of `fileSystemNfsUser` or `fileSystemCifsUsername` must be specified.
-  final pulumi.Input<VolumeBucketWithServerFileSystemNfsUser>? fileSystemNfsUser;
+  final pulumi.Input<VolumeBucketWithServerFileSystemNfsUser?>? fileSystemNfsUser;
   /// A `keyVault` block as defined below. Used to source the server certificate and to store generated credentials in Azure Key Vault. Mutually exclusive with `server.0.certificate_pem`.
-  final pulumi.Input<VolumeBucketWithServerKeyVault>? keyVault;
+  final pulumi.Input<VolumeBucketWithServerKeyVault?>? keyVault;
   /// The S3-compatible name of the bucket. Must be 3-63 characters long, DNS-compliant (lowercase letters, digits, hyphens or periods), must start and end with a letter or number and must not look like an IPv4 address. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The volume sub-path mounted inside the bucket. Defaults to `/`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The bucket permission level. Possible values are `ReadOnly` and `ReadWrite`. Defaults to `ReadOnly`.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// A `server` block as defined below. Used to provide the bucket server FQDN and a directly uploaded PEM certificate. The certificate source (`server.0.certificate_pem`) is mutually exclusive with `keyVault`.
   final pulumi.Input<VolumeBucketWithServerServer> server;
   /// The ARM ID of the parent NetApp Volume the bucket attaches to. Changing this forces a new resource to be created.

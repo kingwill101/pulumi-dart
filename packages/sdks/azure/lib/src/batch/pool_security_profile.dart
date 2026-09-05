@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSecurityProfile {
   /// Whether to enable host encryption for the Virtual Machine or Virtual Machine Scale Set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Possible values are `true` and `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? hostEncryptionEnabled;
+  final pulumi.Input<bool?>? hostEncryptionEnabled;
   /// Whether to enable secure boot for the Virtual Machine or Virtual Machine Scale Set. Possible values are `true` and `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? secureBootEnabled;
+  final pulumi.Input<bool?>? secureBootEnabled;
   /// The security type of the Virtual Machine. Possible values are `confidentialVM` and `trustedLaunch`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? securityType;
+  final pulumi.Input<String?>? securityType;
   /// Whether to enable virtual trusted platform module (vTPM) for the Virtual Machine or Virtual Machine Scale Set. Possible values are `true` and `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `securityProfile` block can only be specified during creation and does not support updates.
   ///
   /// &gt; **Note:** `securityType` must be specified to set UEFI related properties including `secureBootEnabled` and `vtpmEnabled`.
-  final pulumi.Input<bool>? vtpmEnabled;
+  final pulumi.Input<bool?>? vtpmEnabled;
 
   /// Creates a new [PoolSecurityProfile].
   /// [hostEncryptionEnabled] Whether to enable host encryption for the Virtual Machine or Virtual Machine Scale Set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Possible values are `true` and `false`. Changing this forces a new resource to be created.

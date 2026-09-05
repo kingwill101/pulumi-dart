@@ -9,13 +9,13 @@ import 'maintenance_window_target_target.dart';
 /// {@macro pulumi_ssm_maintenance_window_target_maintenance_window_target_args_doc}
 class MaintenanceWindowTargetArgs {
   /// The description of the maintenance window target.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the maintenance window target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
-  final pulumi.Input<String>? ownerInformation;
+  final pulumi.Input<String?>? ownerInformation;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The type of target being registered with the Maintenance Window. Possible values are `INSTANCE` and `RESOURCE_GROUP`.
   final pulumi.Input<String> resourceType;
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_update_strategy_args.dart';
+import 'fleet_update_strategy_stage.dart';
 import 'fleet_update_strategy_state.dart';
 
 /// Manages a Kubernetes Fleet Update Strategy.
@@ -126,7 +127,7 @@ import 'fleet_update_strategy_state.dart';
 /// 		}
 /// 		_, err = containerservice.NewFleetUpdateStrategy(ctx, "example", &containerservice.FleetUpdateStrategyArgs{
 /// 			Name:                     pulumi.String("example"),
-/// 			KubernetesFleetManagerId: exampleKubernetesFleetManager.ID(),
+/// 			KubernetesFleetManagerId: exampleKubernetesFleetManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Stages: containerservice.FleetUpdateStrategyStageArray{
 /// 				&containerservice.FleetUpdateStrategyStageArgs{
 /// 					Name: pulumi.String("example-stage-1"),
@@ -277,7 +278,7 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
   /// The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   late final pulumi.Output<String> name;
   /// One or more `stage` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> stages;
+  late final pulumi.Output<List<FleetUpdateStrategyStage>> stages;
 
   /// Creates a new [FleetUpdateStrategy].
   /// [name] The Pulumi resource name.
@@ -291,11 +292,11 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
           'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
     this.name = registerOutput<String>('name');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<FleetUpdateStrategyStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetUpdateStrategyStage>(guardedValue, (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [FleetUpdateStrategy] resource's state with the given [name] and [id].
@@ -303,11 +304,12 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetUpdateStrategyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FleetUpdateStrategy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -323,6 +325,20 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
         ) {
     kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
     this.name = registerOutput<String>('name');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
+    stages = registerOutput<List<FleetUpdateStrategyStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetUpdateStrategyStage>(guardedValue, (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [FleetUpdateStrategy] resource.
+  FleetUpdateStrategy.reference(String urn)
+    : super(
+        'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
+    this.name = registerOutput<String>('name');
+    stages = registerOutput<List<FleetUpdateStrategyStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetUpdateStrategyStage>(guardedValue, (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -22,7 +22,8 @@ class GetMoqRelaysArgs {
   final pulumi.Input<String?>? createdBefore;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
-  /// Maximum number of relays to return per page.
+  /// Maximum number of relays to return per page. Values above the maximum are
+  /// clamped to it rather than rejected.
   final pulumi.Input<int?>? perPage;
 
   /// Creates a new [GetMoqRelaysArgs].
@@ -31,7 +32,7 @@ class GetMoqRelaysArgs {
   /// [createdAfter] Cursor for pagination. Returns relays created strictly after this
   /// [createdBefore] Cursor for pagination. Returns relays created strictly before this
   /// [maxItems] Max items to fetch, default: 1000
-  /// [perPage] Maximum number of relays to return per page.
+  /// [perPage] Maximum number of relays to return per page. Values above the maximum are
   const GetMoqRelaysArgs({
     required this.accountId,
     this.asc,

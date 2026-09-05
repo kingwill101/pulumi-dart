@@ -3,64 +3,64 @@
 
 /// Result data returned by getConnection.
 class GetConnectionResult {
-  final String arn;
+  final String? arn;
   /// CodeStar Connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
-  final String connectionStatus;
+  final String? connectionStatus;
   /// ARN of the host associated with the connection.
-  final String hostArn;
+  final String? hostArn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the CodeStar Connection. The name is unique in the calling AWS account.
-  final String name;
+  final String? name;
   /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `hostArn` instead.
-  final String providerType;
-  final String region;
+  final String? providerType;
+  final String? region;
   /// Map of key-value resource tags to associate with the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetConnectionResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [connectionStatus] CodeStar Connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   /// [hostArn] ARN of the host associated with the connection.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the CodeStar Connection. The name is unique in the calling AWS account.
   /// [providerType] Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `hostArn` instead.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Map of key-value resource tags to associate with the resource.
   const GetConnectionResult({
-    required this.arn,
-    required this.connectionStatus,
-    required this.hostArn,
-    required this.id,
-    required this.name,
-    required this.providerType,
-    required this.region,
-    required this.tags,
+    this.arn,
+    this.connectionStatus,
+    this.hostArn,
+    this.id,
+    this.name,
+    this.providerType,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'connectionStatus': connectionStatus,
-      'hostArn': hostArn,
-      'id': id,
-      'name': name,
-      'providerType': providerType,
-      'region': region,
-      'tags': tags,
+      'arn': ?arn,
+      'connectionStatus': ?connectionStatus,
+      'hostArn': ?hostArn,
+      'id': ?id,
+      'name': ?name,
+      'providerType': ?providerType,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
-      arn: map['arn'] as String,
-      connectionStatus: map['connectionStatus'] as String,
-      hostArn: map['hostArn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      providerType: map['providerType'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionStatus: (() { final guardedValue = map['connectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostArn: (() { final guardedValue = map['hostArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      providerType: (() { final guardedValue = map['providerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

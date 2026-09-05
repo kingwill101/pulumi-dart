@@ -10,15 +10,15 @@ class SmartDetectionRuleArgs {
   /// Specifies a list of additional recipients that will be sent emails on this Application Insights Smart Detection Rule.
   ///
   /// &gt; **Note:** At least one read or write permission must be defined.
-  final pulumi.Input<List<String>>? additionalEmailRecipients;
+  final pulumi.Input<List<String>?>? additionalEmailRecipients;
   /// The ID of the Application Insights component on which the Smart Detection Rule operates. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationInsightsId;
   /// Is the Application Insights Smart Detection Rule enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the name of the Application Insights Smart Detection Rule. Valid values include `Slow page load time`, `Slow server response time`, `Potential memory leak detected`, `Potential security issue detected`, `Long dependency duration`, `Degradation in server response time`, `Degradation in dependency duration`, `Degradation in trace severity ratio`, `Abnormal rise in exception volume`, `Abnormal rise in daily data volume`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Do emails get sent to subscription owners? Defaults to `true`.
-  final pulumi.Input<bool>? sendEmailsToSubscriptionOwners;
+  final pulumi.Input<bool?>? sendEmailsToSubscriptionOwners;
 
   /// Creates a new [SmartDetectionRuleArgs].
   /// [additionalEmailRecipients] Specifies a list of additional recipients that will be sent emails on this Application Insights Smart Detection Rule.

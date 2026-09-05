@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityhub_standards_subscription_standards_subscription_args_doc}
 class StandardsSubscriptionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of a standard - see below.
   ///
   /// Currently available standards (remember to replace `${var.partition}` and `${var.region}` as appropriate):

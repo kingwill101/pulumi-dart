@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_headers_policy_remove_headers_config_item.dart';
 
 class ResponseHeadersPolicyRemoveHeadersConfig {
-  final pulumi.Input<List<ResponseHeadersPolicyRemoveHeadersConfigItem>>? items;
+  final pulumi.Input<List<ResponseHeadersPolicyRemoveHeadersConfigItem>?>? items;
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfig].
   /// [items] Optional.

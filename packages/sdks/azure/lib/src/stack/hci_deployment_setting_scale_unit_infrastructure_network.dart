@@ -7,7 +7,7 @@ class HciDeploymentSettingScaleUnitInfrastructureNetwork {
   /// Whether DHCP is enabled for hosts and cluster IPs. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   ///
   /// &gt; **Note:** If `dhcpEnabled` is set to `false`, the deployment will use static IPs. If set to `true`, the gateway and DNS servers are not required.
-  final pulumi.Input<bool>? dhcpEnabled;
+  final pulumi.Input<bool?>? dhcpEnabled;
   /// Specifies a list of IPv4 addresses of the DNS servers in your environment. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<String>> dnsServers;
   /// Specifies the default gateway that should be used for the provided IP address space. It should be in the format of an IPv4 IP address. Changing this forces a new Stack HCI Deployment Setting to be created.

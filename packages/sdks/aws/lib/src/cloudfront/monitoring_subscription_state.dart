@@ -6,9 +6,9 @@ import 'monitoring_subscription_monitoring_subscription.dart';
 /// Input properties used for looking up and filtering MonitoringSubscription resources.
 class MonitoringSubscriptionState {
   /// The ID of the distribution that you are enabling metrics for.
-  final pulumi.Input<String>? distributionId;
+  final pulumi.Input<String?>? distributionId;
   /// A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  final pulumi.Input<MonitoringSubscriptionMonitoringSubscription>? monitoringSubscription;
+  final pulumi.Input<MonitoringSubscriptionMonitoringSubscription?>? monitoringSubscription;
 
   /// Creates a new [MonitoringSubscriptionState].
   /// [distributionId] The ID of the distribution that you are enabling metrics for.

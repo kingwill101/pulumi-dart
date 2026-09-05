@@ -9,23 +9,23 @@ import 'local_network_gateway_bgp_settings.dart';
 /// {@macro pulumi_network_local_network_gateway_local_network_gateway_args_doc}
 class LocalNetworkGatewayArgs {
   /// The list of string CIDRs representing the address spaces the gateway exposes.
-  final pulumi.Input<List<String>>? addressSpaces;
+  final pulumi.Input<List<String>?>? addressSpaces;
   /// A `bgpSettings` block as defined below containing the Local Network Gateway's BGP speaker settings.
-  final pulumi.Input<LocalNetworkGatewayBgpSettings>? bgpSettings;
+  final pulumi.Input<LocalNetworkGatewayBgpSettings?>? bgpSettings;
   /// The gateway IP address to connect with.
-  final pulumi.Input<String>? gatewayAddress;
+  final pulumi.Input<String?>? gatewayAddress;
   /// The gateway FQDN to connect with.
   ///
   /// &gt; **Note:** Either `gatewayAddress` or `gatewayFqdn` should be specified.
-  final pulumi.Input<String>? gatewayFqdn;
+  final pulumi.Input<String?>? gatewayFqdn;
   /// The location/region where the local network gateway is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the local network gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the local network gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LocalNetworkGatewayArgs].
   /// [addressSpaces] The list of string CIDRs representing the address spaces the gateway exposes.

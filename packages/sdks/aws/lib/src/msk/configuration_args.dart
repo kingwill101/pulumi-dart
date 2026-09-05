@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_msk_configuration_configuration_args_doc}
 class ConfigurationArgs {
   /// Description of the configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of Apache Kafka versions which can use this configuration.
-  final pulumi.Input<List<String>>? kafkaVersions;
+  final pulumi.Input<List<String>?>? kafkaVersions;
   /// Name of the configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
   final pulumi.Input<String> serverProperties;
 

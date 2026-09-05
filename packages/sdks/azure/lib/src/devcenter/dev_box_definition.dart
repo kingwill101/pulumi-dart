@@ -122,8 +122,8 @@ import 'dev_box_definition_state.dart';
 /// 		_, err = devcenter.NewDevBoxDefinition(ctx, "example", &devcenter.DevBoxDefinitionArgs{
 /// 			Name:        pulumi.String("example-dcet"),
 /// 			Location:    example.Location,
-/// 			DevCenterId: exampleDevCenter.ID(),
-/// 			ImageReferenceId: exampleDevCenter.ID().ApplyT(func(id string) (string, error) {
+/// 			DevCenterId: exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
+/// 			ImageReferenceId: exampleDevCenter.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			SkuName: pulumi.String("general_i_8c32gb256ssd_v2"),
@@ -287,7 +287,7 @@ class DevBoxDefinition extends pulumi.CustomResource {
           'azure:devcenter/devBoxDefinition:DevBoxDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     hibernateSupportEnabled = registerOutput<bool?>('hibernateSupportEnabled');
@@ -295,7 +295,7 @@ class DevBoxDefinition extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DevBoxDefinition] resource's state with the given [name] and [id].
@@ -303,11 +303,12 @@ class DevBoxDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DevBoxDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DevBoxDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,6 +328,24 @@ class DevBoxDefinition extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DevBoxDefinition] resource.
+  DevBoxDefinition.reference(String urn)
+    : super(
+        'azure:devcenter/devBoxDefinition:DevBoxDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    devCenterId = registerOutput<String>('devCenterId');
+    hibernateSupportEnabled = registerOutput<bool?>('hibernateSupportEnabled');
+    imageReferenceId = registerOutput<String>('imageReferenceId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

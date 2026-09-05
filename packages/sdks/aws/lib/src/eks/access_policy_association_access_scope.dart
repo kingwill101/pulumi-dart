@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPolicyAssociationAccessScope {
   /// The namespaces to which the access scope applies when type is namespace.
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
   /// Valid values are `namespace` or `cluster`.
   final pulumi.Input<String> type;
 

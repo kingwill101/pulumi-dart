@@ -310,7 +310,7 @@ import 'insights_state.dart';
 /// 			Name:              pulumi.String("tf-test-appinsights"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			ApplicationType:   pulumi.String("web"),
 /// 		})
 /// 		if err != nil {
@@ -509,17 +509,18 @@ class Insights extends pulumi.CustomResource {
           'azure:appinsights/insights:Insights',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString', 'instrumentationKey'],
         ) {
     appId = registerOutput<String>('appId');
     applicationType = registerOutput<String>('applicationType');
-    connectionString = registerOutput<String>('connectionString');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
     dailyDataCapNotificationsDisabled = registerOutput<bool>('dailyDataCapNotificationsDisabled');
     dailyDataCapNotificationsEnabled = registerOutput<bool>('dailyDataCapNotificationsEnabled');
     disableIpMasking = registerOutput<bool>('disableIpMasking');
     forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
-    instrumentationKey = registerOutput<String>('instrumentationKey');
+    instrumentationKey = registerOutput<String>('instrumentationKey', isSecret: true);
     internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
     internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
     ipMaskingEnabled = registerOutput<bool>('ipMaskingEnabled');
@@ -530,7 +531,7 @@ class Insights extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInDays = registerOutput<int?>('retentionInDays');
     samplingPercentage = registerOutput<double?>('samplingPercentage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -539,11 +540,12 @@ class Insights extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InsightsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Insights._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -559,13 +561,13 @@ class Insights extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String>('appId');
     applicationType = registerOutput<String>('applicationType');
-    connectionString = registerOutput<String>('connectionString');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
     dailyDataCapNotificationsDisabled = registerOutput<bool>('dailyDataCapNotificationsDisabled');
     dailyDataCapNotificationsEnabled = registerOutput<bool>('dailyDataCapNotificationsEnabled');
     disableIpMasking = registerOutput<bool>('disableIpMasking');
     forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
-    instrumentationKey = registerOutput<String>('instrumentationKey');
+    instrumentationKey = registerOutput<String>('instrumentationKey', isSecret: true);
     internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
     internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
     ipMaskingEnabled = registerOutput<bool>('ipMaskingEnabled');
@@ -576,7 +578,40 @@ class Insights extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInDays = registerOutput<int?>('retentionInDays');
     samplingPercentage = registerOutput<double?>('samplingPercentage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [Insights] resource.
+  Insights.reference(String urn)
+    : super(
+        'azure:appinsights/insights:Insights',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString', 'instrumentationKey'],
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    applicationType = registerOutput<String>('applicationType');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
+    dailyDataCapInGb = registerOutput<double?>('dailyDataCapInGb');
+    dailyDataCapNotificationsDisabled = registerOutput<bool>('dailyDataCapNotificationsDisabled');
+    dailyDataCapNotificationsEnabled = registerOutput<bool>('dailyDataCapNotificationsEnabled');
+    disableIpMasking = registerOutput<bool>('disableIpMasking');
+    forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
+    instrumentationKey = registerOutput<String>('instrumentationKey', isSecret: true);
+    internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
+    internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
+    ipMaskingEnabled = registerOutput<bool>('ipMaskingEnabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    samplingPercentage = registerOutput<double?>('samplingPercentage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

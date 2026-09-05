@@ -6,11 +6,11 @@ import 'experiment_template_log_configuration_s3_configuration.dart';
 
 class ExperimentTemplateLogConfiguration {
   /// Configuration for experiment logging to Amazon CloudWatch Logs. See below.
-  final pulumi.Input<ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration>? cloudwatchLogsConfiguration;
+  final pulumi.Input<ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration?>? cloudwatchLogsConfiguration;
   /// Schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
   final pulumi.Input<int> logSchemaVersion;
   /// Configuration for experiment logging to Amazon S3. See below.
-  final pulumi.Input<ExperimentTemplateLogConfigurationS3Configuration>? s3Configuration;
+  final pulumi.Input<ExperimentTemplateLogConfigurationS3Configuration?>? s3Configuration;
 
   /// Creates a new [ExperimentTemplateLogConfiguration].
   /// [cloudwatchLogsConfiguration] Configuration for experiment logging to Amazon CloudWatch Logs. See below.
@@ -33,7 +33,7 @@ class ExperimentTemplateLogConfiguration {
   factory ExperimentTemplateLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfiguration(
       cloudwatchLogsConfiguration: (() { final guardedValue = map['cloudwatchLogsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      logSchemaVersion: pulumi.Input.fromValue(map['logSchemaVersion'] as int),
+      logSchemaVersion: pulumi.Input.fromValue((map['logSchemaVersion'] as num).toInt()),
       s3Configuration: (() { final guardedValue = map['s3Configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExperimentTemplateLogConfigurationS3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

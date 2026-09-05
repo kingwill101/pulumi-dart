@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'microvms_image_args.dart';
 import 'microvms_image_code_artifact.dart';
+import 'microvms_image_cpu_configuration.dart';
 import 'microvms_image_state.dart';
 import 'microvms_image_timeouts.dart';
 
@@ -49,12 +50,12 @@ import 'microvms_image_timeouts.dart';
 ///     source: new pulumi.asset.FileAsset("code.zip"),
 /// });
 /// const exampleMicrovmsImage = new aws.lambda.MicrovmsImage("example", {
-///     name: "example",
-///     baseImageArn: Promise.all([current, currentGetRegion]).then(([current, currentGetRegion]) => `arn:${current.partition}:lambda:${currentGetRegion.region}:aws:microvm-image:al2023-1`),
-///     buildRoleArn: example.arn,
 ///     codeArtifact: {
 ///         uri: pulumi.interpolate`s3://${exampleBucket.bucket}/${exampleBucketObjectv2.key}`,
 ///     },
+///     name: "example",
+///     baseImageArn: Promise.all([current, currentGetRegion]).then(([current, currentGetRegion]) => `arn:${current.partition}:lambda:${currentGetRegion.region}:aws:microvm-image:al2023-1`),
+///     buildRoleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -93,16 +94,16 @@ import 'microvms_image_timeouts.dart';
 ///     key="code.zip",
 ///     source=pulumi.FileAsset("code.zip"))
 /// example_microvms_image = aws.lambda_.MicrovmsImage("example",
-///     name="example",
-///     base_image_arn=f"arn:{current.partition}:lambda:{current_get_region.region}:aws:microvm-image:al2023-1",
-///     build_role_arn=example.arn,
 ///     code_artifact={
 ///         "uri": pulumi.Output.all(
 ///             bucket=example_bucket.bucket,
 ///             key=example_bucket_objectv2.key
 /// ).apply(lambda resolved_outputs: f"s3://{resolved_outputs['bucket']}/{resolved_outputs['key']}")
 /// ,
-///     })
+///     },
+///     name="example",
+///     base_image_arn=f"arn:{current.partition}:lambda:{current_get_region.region}:aws:microvm-image:al2023-1",
+///     build_role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,14 +175,6 @@ import 'microvms_image_timeouts.dart';
 ///
 ///     var exampleMicrovmsImage = new Aws.Lambda.MicrovmsImage("example", new()
 ///     {
-///         Name = "example",
-///         BaseImageArn = Output.Tuple(current, currentGetRegion).Apply(values =>
-///         {
-///             var current = values.Item1;
-///             var currentGetRegion = values.Item2;
-///             return $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:lambda:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:aws:microvm-image:al2023-1";
-///         }),
-///         BuildRoleArn = example.Arn,
 ///         CodeArtifact = new Aws.Lambda.Inputs.MicrovmsImageCodeArtifactArgs
 ///         {
 ///             Uri = Output.Tuple(exampleBucket.BucketName, exampleBucketObjectv2.Key).Apply(values =>
@@ -191,6 +184,14 @@ import 'microvms_image_timeouts.dart';
 ///                 return $"s3://{bucket}/{key}";
 ///             }),
 ///         },
+///         Name = "example",
+///         BaseImageArn = Output.Tuple(current, currentGetRegion).Apply(values =>
+///         {
+///             var current = values.Item1;
+///             var currentGetRegion = values.Item2;
+///             return $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:lambda:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:aws:microvm-image:al2023-1";
+///         }),
+///         BuildRoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -284,9 +285,6 @@ import 'microvms_image_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewMicrovmsImage(ctx, "example", &lambda.MicrovmsImageArgs{
-/// 			Name:         pulumi.String("example"),
-/// 			BaseImageArn: pulumi.Sprintf("arn:%v:lambda:%v:aws:microvm-image:al2023-1", current.Partition, currentGetRegion.Region),
-/// 			BuildRoleArn: example.Arn,
 /// 			CodeArtifact: &lambda.MicrovmsImageCodeArtifactArgs{
 /// 				Uri: pulumi.All(exampleBucket.Bucket, exampleBucketObjectv2.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 					bucket := _args[0].(string)
@@ -294,6 +292,9 @@ import 'microvms_image_timeouts.dart';
 /// 					return fmt.Sprintf("s3://%v/%v", bucket, key), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			Name:         pulumi.String("example"),
+/// 			BaseImageArn: pulumi.Sprintf("arn:%v:lambda:%v:aws:microvm-image:al2023-1", current.Partition, currentGetRegion.Region),
+/// 			BuildRoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -350,12 +351,12 @@ import 'microvms_image_timeouts.dart';
 ///   source = fileAsset("code.zip")
 /// }
 /// resource "aws_lambda_microvmsimage" "example" {
-///   name           = "example"
-///   base_image_arn ="arn:${data.aws_getpartition.current.partition}:lambda:${data.aws_getregion.currentGetRegion.region}:aws:microvm-image:al2023-1"
-///   build_role_arn = aws_iam_role.example.arn
 ///   code_artifact = {
 ///     uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
 ///   }
+///   name           = "example"
+///   base_image_arn ="arn:${data.aws_getpartition.current.partition}:lambda:${data.aws_getregion.currentGetRegion.region}:aws:microvm-image:al2023-1"
+///   build_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -439,9 +440,6 @@ import 'microvms_image_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleMicrovmsImage = new MicrovmsImage("exampleMicrovmsImage", MicrovmsImageArgs.builder()
-///             .name("example")
-///             .baseImageArn(String.format("arn:%s:lambda:%s:aws:microvm-image:al2023-1", current.partition(),currentGetRegion.region()))
-///             .buildRoleArn(example.arn())
 ///             .codeArtifact(MicrovmsImageCodeArtifactArgs.builder()
 ///                 .uri(Output.tuple(exampleBucket.bucket(), exampleBucketObjectv2.key()).applyValue(values -> {
 ///                     var bucket = values.t1;
@@ -449,6 +447,9 @@ import 'microvms_image_timeouts.dart';
 ///                     return String.format("s3://%s/%s", bucket,key);
 ///                 }))
 ///                 .build())
+///             .name("example")
+///             .baseImageArn(String.format("arn:%s:lambda:%s:aws:microvm-image:al2023-1", current.partition(),currentGetRegion.region()))
+///             .buildRoleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -499,11 +500,11 @@ import 'microvms_image_timeouts.dart';
 ///     type: aws:lambda:MicrovmsImage
 ///     name: example
 ///     properties:
+///       codeArtifact:
+///         uri: s3://${exampleBucket.bucket}/${exampleBucketObjectv2.key}
 ///       name: example
 ///       baseImageArn: arn:${current.partition}:lambda:${currentGetRegion.region}:aws:microvm-image:al2023-1
 ///       buildRoleArn: ${example.arn}
-///       codeArtifact:
-///         uri: s3://${exampleBucket.bucket}/${exampleBucketObjectv2.key}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -544,7 +545,7 @@ class MicrovmsImage extends pulumi.CustomResource {
   /// Code artifact containing the application code and metadata for the image. See below.
   late final pulumi.Output<MicrovmsImageCodeArtifact> codeArtifact;
   /// CPU configuration for the MicroVM. See `cpuConfiguration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cpuConfigurations;
+  late final pulumi.Output<List<MicrovmsImageCpuConfiguration>?> cpuConfigurations;
   /// RFC3339 timestamp when the image was created.
   late final pulumi.Output<String> createdAt;
   /// Description of the MicroVM image.
@@ -587,27 +588,27 @@ class MicrovmsImage extends pulumi.CustomResource {
           'aws:lambda/microvmsImage:MicrovmsImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities');
+    additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     baseImageArn = registerOutput<String>('baseImageArn');
     baseImageVersion = registerOutput<String>('baseImageVersion');
     buildRoleArn = registerOutput<String>('buildRoleArn');
     codeArtifact = registerOutput<MicrovmsImageCodeArtifact>('codeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageCodeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cpuConfigurations = registerOutput<List<Map<String, dynamic>>?>('cpuConfigurations');
+    cpuConfigurations = registerOutput<List<MicrovmsImageCpuConfiguration>?>('cpuConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MicrovmsImageCpuConfiguration>(guardedValue, (value) => MicrovmsImageCpuConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     imageVersion = registerOutput<String>('imageVersion');
     latestActiveImageVersion = registerOutput<String>('latestActiveImageVersion');
     latestFailedImageVersion = registerOutput<String>('latestFailedImageVersion');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MicrovmsImageTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -617,11 +618,12 @@ class MicrovmsImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MicrovmsImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MicrovmsImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,25 +637,57 @@ class MicrovmsImage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities');
+    additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     baseImageArn = registerOutput<String>('baseImageArn');
     baseImageVersion = registerOutput<String>('baseImageVersion');
     buildRoleArn = registerOutput<String>('buildRoleArn');
     codeArtifact = registerOutput<MicrovmsImageCodeArtifact>('codeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageCodeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cpuConfigurations = registerOutput<List<Map<String, dynamic>>?>('cpuConfigurations');
+    cpuConfigurations = registerOutput<List<MicrovmsImageCpuConfiguration>?>('cpuConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MicrovmsImageCpuConfiguration>(guardedValue, (value) => MicrovmsImageCpuConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     imageVersion = registerOutput<String>('imageVersion');
     latestActiveImageVersion = registerOutput<String>('latestActiveImageVersion');
     latestFailedImageVersion = registerOutput<String>('latestFailedImageVersion');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<MicrovmsImageTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [MicrovmsImage] resource.
+  MicrovmsImage.reference(String urn)
+    : super(
+        'aws:lambda/microvmsImage:MicrovmsImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    baseImageArn = registerOutput<String>('baseImageArn');
+    baseImageVersion = registerOutput<String>('baseImageVersion');
+    buildRoleArn = registerOutput<String>('buildRoleArn');
+    codeArtifact = registerOutput<MicrovmsImageCodeArtifact>('codeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageCodeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpuConfigurations = registerOutput<List<MicrovmsImageCpuConfiguration>?>('cpuConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MicrovmsImageCpuConfiguration>(guardedValue, (value) => MicrovmsImageCpuConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    egressNetworkConnectors = registerOutput<List<String>>('egressNetworkConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    imageVersion = registerOutput<String>('imageVersion');
+    latestActiveImageVersion = registerOutput<String>('latestActiveImageVersion');
+    latestFailedImageVersion = registerOutput<String>('latestFailedImageVersion');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MicrovmsImageTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MicrovmsImageTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }

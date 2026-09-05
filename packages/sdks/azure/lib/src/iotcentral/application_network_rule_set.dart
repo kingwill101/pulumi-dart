@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_network_rule_set_args.dart';
+import 'application_network_rule_set_ip_rule.dart';
 import 'application_network_rule_set_state.dart';
 
 /// Manages an IoT Central Application Network Rule Set.
@@ -151,7 +152,7 @@ import 'application_network_rule_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iotcentral.NewApplicationNetworkRuleSet(ctx, "example", &iotcentral.ApplicationNetworkRuleSetArgs{
-/// 			IotcentralApplicationId: exampleApplication.ID(),
+/// 			IotcentralApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			IpRules: iotcentral.ApplicationNetworkRuleSetIpRuleArray{
 /// 				&iotcentral.ApplicationNetworkRuleSetIpRuleArgs{
 /// 					Name:   pulumi.String("rule1"),
@@ -317,7 +318,7 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
   /// The ID of the IoT Central Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotcentralApplicationId;
   /// One or more `ipRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
+  late final pulumi.Output<List<ApplicationNetworkRuleSetIpRule>?> ipRules;
 
   /// Creates a new [ApplicationNetworkRuleSet].
   /// [name] The Pulumi resource name.
@@ -331,12 +332,12 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
           'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applyToDevice = registerOutput<bool?>('applyToDevice');
     defaultAction = registerOutput<String?>('defaultAction');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
-    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    ipRules = registerOutput<List<ApplicationNetworkRuleSetIpRule>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(guardedValue, (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ApplicationNetworkRuleSet] resource's state with the given [name] and [id].
@@ -344,11 +345,12 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationNetworkRuleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationNetworkRuleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -365,6 +367,21 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
     applyToDevice = registerOutput<bool?>('applyToDevice');
     defaultAction = registerOutput<String?>('defaultAction');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
-    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    ipRules = registerOutput<List<ApplicationNetworkRuleSetIpRule>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(guardedValue, (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationNetworkRuleSet] resource.
+  ApplicationNetworkRuleSet.reference(String urn)
+    : super(
+        'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyToDevice = registerOutput<bool?>('applyToDevice');
+    defaultAction = registerOutput<String?>('defaultAction');
+    iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
+    ipRules = registerOutput<List<ApplicationNetworkRuleSetIpRule>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationNetworkRuleSetIpRule>(guardedValue, (value) => ApplicationNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

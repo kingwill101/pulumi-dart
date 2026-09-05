@@ -271,7 +271,7 @@ import 'network_interface_nat_rule_association_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("primary"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -280,7 +280,7 @@ import 'network_interface_nat_rule_association_state.dart';
 /// 		}
 /// 		exampleNatRule, err := lb.NewNatRule(ctx, "example", &lb.NatRuleArgs{
 /// 			ResourceGroupName:           example.Name,
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                        pulumi.String("RDPAccess"),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPort:                pulumi.Int(3389),
@@ -297,7 +297,7 @@ import 'network_interface_nat_rule_association_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -306,9 +306,9 @@ import 'network_interface_nat_rule_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkInterfaceNatRuleAssociation(ctx, "example", &network.NetworkInterfaceNatRuleAssociationArgs{
-/// 			NetworkInterfaceId:  exampleNetworkInterface.ID(),
+/// 			NetworkInterfaceId:  exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			IpConfigurationName: pulumi.String("testconfiguration1"),
-/// 			NatRuleId:           exampleNatRule.ID(),
+/// 			NatRuleId:           exampleNatRule.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -596,7 +596,7 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
           'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     natRuleId = registerOutput<String>('natRuleId');
@@ -608,11 +608,12 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceNatRuleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfaceNatRuleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -626,6 +627,20 @@ class NetworkInterfaceNatRuleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    natRuleId = registerOutput<String>('natRuleId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceNatRuleAssociation] resource.
+  NetworkInterfaceNatRuleAssociation.reference(String urn)
+    : super(
+        'azure:network/networkInterfaceNatRuleAssociation:NetworkInterfaceNatRuleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     natRuleId = registerOutput<String>('natRuleId');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

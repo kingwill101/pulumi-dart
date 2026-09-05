@@ -10,10 +10,10 @@ import 'data_cells_filter_timeouts.dart';
 /// {@macro pulumi_lakeformation_data_cells_filter_data_cells_filter_args_doc}
 class DataCellsFilterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Information about the data cells filter. See Table Data below for details.
   final pulumi.Input<DataCellsFilterTableData> tableData;
-  final pulumi.Input<DataCellsFilterTimeouts>? timeouts;
+  final pulumi.Input<DataCellsFilterTimeouts?>? timeouts;
 
   /// Creates a new [DataCellsFilterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

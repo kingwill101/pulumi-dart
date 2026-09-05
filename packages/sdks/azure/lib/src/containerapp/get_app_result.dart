@@ -11,130 +11,130 @@ import 'get_app_template.dart';
 /// Result data returned by getApp.
 class GetAppResult {
   /// The ID of the Container App Environment this Container App is linked to.
-  final String containerAppEnvironmentId;
-  final String customDomainVerificationId;
+  final String? containerAppEnvironmentId;
+  final String? customDomainVerificationId;
   /// A `dapr` block as detailed below.
-  final List<GetAppDapr> daprs;
+  final List<GetAppDapr>? daprs;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
-  final List<GetAppIdentity> identities;
+  final List<GetAppIdentity>? identities;
   /// An `ingress` block as detailed below.
-  final List<GetAppIngress> ingresses;
-  final String latestRevisionFqdn;
-  final String latestRevisionName;
-  final String location;
+  final List<GetAppIngress>? ingresses;
+  final String? latestRevisionFqdn;
+  final String? latestRevisionName;
+  final String? location;
   /// The max inactive revisions for this Container App.
-  final int maxInactiveRevisions;
+  final int? maxInactiveRevisions;
   /// Name for the IP restriction rule.
-  final String name;
-  final List<String> outboundIpAddresses;
+  final String? name;
+  final List<String>? outboundIpAddresses;
   final bool? readSecrets;
   /// A `registry` block as detailed below.
-  final List<GetAppRegistry> registries;
-  final String resourceGroupName;
+  final List<GetAppRegistry>? registries;
+  final String? resourceGroupName;
   /// The revision mode of the Container App.
-  final String revisionMode;
+  final String? revisionMode;
   /// One or more `secret` block as detailed below.
-  final List<GetAppSecret> secrets;
+  final List<GetAppSecret>? secrets;
   /// A mapping of tags to assign to the Container App.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// A `template` block as detailed below.
-  final List<GetAppTemplate> templates;
+  final List<GetAppTemplate>? templates;
   /// The name of the Workload Profile in the Container App Environment in which this Container App is running.
-  final String workloadProfileName;
+  final String? workloadProfileName;
 
   /// Creates a new [GetAppResult].
   /// [containerAppEnvironmentId] The ID of the Container App Environment this Container App is linked to.
-  /// [customDomainVerificationId] Required.
+  /// [customDomainVerificationId] Optional.
   /// [daprs] A `dapr` block as detailed below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   /// [ingresses] An `ingress` block as detailed below.
-  /// [latestRevisionFqdn] Required.
-  /// [latestRevisionName] Required.
-  /// [location] Required.
+  /// [latestRevisionFqdn] Optional.
+  /// [latestRevisionName] Optional.
+  /// [location] Optional.
   /// [maxInactiveRevisions] The max inactive revisions for this Container App.
   /// [name] Name for the IP restriction rule.
-  /// [outboundIpAddresses] Required.
+  /// [outboundIpAddresses] Optional.
   /// [readSecrets] Optional.
   /// [registries] A `registry` block as detailed below.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [revisionMode] The revision mode of the Container App.
   /// [secrets] One or more `secret` block as detailed below.
   /// [tags] A mapping of tags to assign to the Container App.
   /// [templates] A `template` block as detailed below.
   /// [workloadProfileName] The name of the Workload Profile in the Container App Environment in which this Container App is running.
   const GetAppResult({
-    required this.containerAppEnvironmentId,
-    required this.customDomainVerificationId,
-    required this.daprs,
-    required this.id,
-    required this.identities,
-    required this.ingresses,
-    required this.latestRevisionFqdn,
-    required this.latestRevisionName,
-    required this.location,
-    required this.maxInactiveRevisions,
-    required this.name,
-    required this.outboundIpAddresses,
+    this.containerAppEnvironmentId,
+    this.customDomainVerificationId,
+    this.daprs,
+    this.id,
+    this.identities,
+    this.ingresses,
+    this.latestRevisionFqdn,
+    this.latestRevisionName,
+    this.location,
+    this.maxInactiveRevisions,
+    this.name,
+    this.outboundIpAddresses,
     this.readSecrets,
-    required this.registries,
-    required this.resourceGroupName,
-    required this.revisionMode,
-    required this.secrets,
-    required this.tags,
-    required this.templates,
-    required this.workloadProfileName,
+    this.registries,
+    this.resourceGroupName,
+    this.revisionMode,
+    this.secrets,
+    this.tags,
+    this.templates,
+    this.workloadProfileName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerAppEnvironmentId': containerAppEnvironmentId,
-      'customDomainVerificationId': customDomainVerificationId,
-      'daprs': pulumi.Input.encodeList<GetAppDapr, Map<String, dynamic>>(daprs, (value) => value.toMap()),
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'ingresses': pulumi.Input.encodeList<GetAppIngress, Map<String, dynamic>>(ingresses, (value) => value.toMap()),
-      'latestRevisionFqdn': latestRevisionFqdn,
-      'latestRevisionName': latestRevisionName,
-      'location': location,
-      'maxInactiveRevisions': maxInactiveRevisions,
-      'name': name,
-      'outboundIpAddresses': outboundIpAddresses,
+      'containerAppEnvironmentId': ?containerAppEnvironmentId,
+      'customDomainVerificationId': ?customDomainVerificationId,
+      'daprs': ?(() { final guardedValue = daprs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppDapr, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'ingresses': ?(() { final guardedValue = ingresses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppIngress, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'latestRevisionFqdn': ?latestRevisionFqdn,
+      'latestRevisionName': ?latestRevisionName,
+      'location': ?location,
+      'maxInactiveRevisions': ?maxInactiveRevisions,
+      'name': ?name,
+      'outboundIpAddresses': ?outboundIpAddresses,
       'readSecrets': ?readSecrets,
-      'registries': pulumi.Input.encodeList<GetAppRegistry, Map<String, dynamic>>(registries, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
-      'revisionMode': revisionMode,
-      'secrets': pulumi.Input.encodeList<GetAppSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
-      'tags': tags,
-      'templates': pulumi.Input.encodeList<GetAppTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
-      'workloadProfileName': workloadProfileName,
+      'registries': ?(() { final guardedValue = registries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppRegistry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
+      'revisionMode': ?revisionMode,
+      'secrets': ?(() { final guardedValue = secrets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppSecret, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAppTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'workloadProfileName': ?workloadProfileName,
     };
   }
 
   factory GetAppResult.fromMap(Map<String, dynamic> map) {
     return GetAppResult(
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] as String,
-      customDomainVerificationId: map['customDomainVerificationId'] as String,
-      daprs: pulumi.Input.decodeList<GetAppDapr>(map['daprs']!, (value) => GetAppDapr.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAppIdentity>(map['identities']!, (value) => GetAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      ingresses: pulumi.Input.decodeList<GetAppIngress>(map['ingresses']!, (value) => GetAppIngress.fromMap((value as Map).cast<String, dynamic>())),
-      latestRevisionFqdn: map['latestRevisionFqdn'] as String,
-      latestRevisionName: map['latestRevisionName'] as String,
-      location: map['location'] as String,
-      maxInactiveRevisions: map['maxInactiveRevisions'] as int,
-      name: map['name'] as String,
-      outboundIpAddresses: (map['outboundIpAddresses'] as List).cast<String>(),
+      containerAppEnvironmentId: (() { final guardedValue = map['containerAppEnvironmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customDomainVerificationId: (() { final guardedValue = map['customDomainVerificationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      daprs: (() { final guardedValue = map['daprs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppDapr>(guardedValue, (value) => GetAppDapr.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppIdentity>(guardedValue, (value) => GetAppIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ingresses: (() { final guardedValue = map['ingresses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppIngress>(guardedValue, (value) => GetAppIngress.fromMap((value as Map).cast<String, dynamic>())); })(),
+      latestRevisionFqdn: (() { final guardedValue = map['latestRevisionFqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      latestRevisionName: (() { final guardedValue = map['latestRevisionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outboundIpAddresses: (() { final guardedValue = map['outboundIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       readSecrets: (() { final guardedValue = map['readSecrets']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      registries: pulumi.Input.decodeList<GetAppRegistry>(map['registries']!, (value) => GetAppRegistry.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
-      revisionMode: map['revisionMode'] as String,
-      secrets: pulumi.Input.decodeList<GetAppSecret>(map['secrets']!, (value) => GetAppSecret.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      templates: pulumi.Input.decodeList<GetAppTemplate>(map['templates']!, (value) => GetAppTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      workloadProfileName: map['workloadProfileName'] as String,
+      registries: (() { final guardedValue = map['registries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppRegistry>(guardedValue, (value) => GetAppRegistry.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionMode: (() { final guardedValue = map['revisionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppSecret>(guardedValue, (value) => GetAppSecret.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAppTemplate>(guardedValue, (value) => GetAppTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      workloadProfileName: (() { final guardedValue = map['workloadProfileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -13,16 +13,16 @@ import 'route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleEndpoint = new aws.ec2clientvpn.Endpoint("example", {
-///     description: "Example Client VPN endpoint",
-///     serverCertificateArn: exampleAwsAcmCertificate.arn,
-///     clientCidrBlock: "10.0.0.0/16",
+///     connectionLogOptions: {
+///         enabled: false,
+///     },
 ///     authenticationOptions: [{
 ///         type: "certificate-authentication",
 ///         rootCertificateChainArn: exampleAwsAcmCertificate.arn,
 ///     }],
-///     connectionLogOptions: {
-///         enabled: false,
-///     },
+///     description: "Example Client VPN endpoint",
+///     serverCertificateArn: exampleAwsAcmCertificate.arn,
+///     clientCidrBlock: "10.0.0.0/16",
 /// });
 /// const exampleNetworkAssociation = new aws.ec2clientvpn.NetworkAssociation("example", {
 ///     clientVpnEndpointId: exampleEndpoint.id,
@@ -39,16 +39,16 @@ import 'route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_endpoint = aws.ec2clientvpn.Endpoint("example",
-///     description="Example Client VPN endpoint",
-///     server_certificate_arn=example_aws_acm_certificate["arn"],
-///     client_cidr_block="10.0.0.0/16",
+///     connection_log_options={
+///         "enabled": False,
+///     },
 ///     authentication_options=[{
 ///         "type": "certificate-authentication",
 ///         "root_certificate_chain_arn": example_aws_acm_certificate["arn"],
 ///     }],
-///     connection_log_options={
-///         "enabled": False,
-///     })
+///     description="Example Client VPN endpoint",
+///     server_certificate_arn=example_aws_acm_certificate["arn"],
+///     client_cidr_block="10.0.0.0/16")
 /// example_network_association = aws.ec2clientvpn.NetworkAssociation("example",
 ///     client_vpn_endpoint_id=example_endpoint.id,
 ///     subnet_id=example_aws_subnet["id"])
@@ -67,9 +67,10 @@ import 'route_state.dart';
 /// {
 ///     var exampleEndpoint = new Aws.Ec2ClientVpn.Endpoint("example", new()
 ///     {
-///         Description = "Example Client VPN endpoint",
-///         ServerCertificateArn = exampleAwsAcmCertificate.Arn,
-///         ClientCidrBlock = "10.0.0.0/16",
+///         ConnectionLogOptions = new Aws.Ec2ClientVpn.Inputs.EndpointConnectionLogOptionsArgs
+///         {
+///             Enabled = false,
+///         },
 ///         AuthenticationOptions = new[]
 ///         {
 ///             new Aws.Ec2ClientVpn.Inputs.EndpointAuthenticationOptionArgs
@@ -78,10 +79,9 @@ import 'route_state.dart';
 ///                 RootCertificateChainArn = exampleAwsAcmCertificate.Arn,
 ///             },
 ///         },
-///         ConnectionLogOptions = new Aws.Ec2ClientVpn.Inputs.EndpointConnectionLogOptionsArgs
-///         {
-///             Enabled = false,
-///         },
+///         Description = "Example Client VPN endpoint",
+///         ServerCertificateArn = exampleAwsAcmCertificate.Arn,
+///         ClientCidrBlock = "10.0.0.0/16",
 ///     });
 ///
 ///     var exampleNetworkAssociation = new Aws.Ec2ClientVpn.NetworkAssociation("example", new()
@@ -110,18 +110,18 @@ import 'route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleEndpoint, err := ec2clientvpn.NewEndpoint(ctx, "example", &ec2clientvpn.EndpointArgs{
-/// 			Description:          pulumi.String("Example Client VPN endpoint"),
-/// 			ServerCertificateArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
-/// 			ClientCidrBlock:      pulumi.String("10.0.0.0/16"),
+/// 			ConnectionLogOptions: &ec2clientvpn.EndpointConnectionLogOptionsArgs{
+/// 				Enabled: pulumi.Bool(false),
+/// 			},
 /// 			AuthenticationOptions: ec2clientvpn.EndpointAuthenticationOptionArray{
 /// 				&ec2clientvpn.EndpointAuthenticationOptionArgs{
 /// 					Type:                    pulumi.String("certificate-authentication"),
 /// 					RootCertificateChainArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
 /// 				},
 /// 			},
-/// 			ConnectionLogOptions: &ec2clientvpn.EndpointConnectionLogOptionsArgs{
-/// 				Enabled: pulumi.Bool(false),
-/// 			},
+/// 			Description:          pulumi.String("Example Client VPN endpoint"),
+/// 			ServerCertificateArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
+/// 			ClientCidrBlock:      pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,16 +164,16 @@ import 'route_state.dart';
 ///   subnet_id              = exampleAwsSubnet.id
 /// }
 /// resource "aws_ec2clientvpn_endpoint" "example" {
-///   description            = "Example Client VPN endpoint"
-///   server_certificate_arn = exampleAwsAcmCertificate.arn
-///   client_cidr_block      = "10.0.0.0/16"
+///   connection_log_options = {
+///     enabled = false
+///   }
 ///   authentication_options {
 ///     type                       = "certificate-authentication"
 ///     root_certificate_chain_arn = exampleAwsAcmCertificate.arn
 ///   }
-///   connection_log_options = {
-///     enabled = false
-///   }
+///   description            = "Example Client VPN endpoint"
+///   server_certificate_arn = exampleAwsAcmCertificate.arn
+///   client_cidr_block      = "10.0.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -184,8 +184,8 @@ import 'route_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.Endpoint;
 /// import com.pulumi.aws.ec2clientvpn.EndpointArgs;
-/// import com.pulumi.aws.ec2clientvpn.inputs.EndpointAuthenticationOptionArgs;
 /// import com.pulumi.aws.ec2clientvpn.inputs.EndpointConnectionLogOptionsArgs;
+/// import com.pulumi.aws.ec2clientvpn.inputs.EndpointAuthenticationOptionArgs;
 /// import com.pulumi.aws.ec2clientvpn.NetworkAssociation;
 /// import com.pulumi.aws.ec2clientvpn.NetworkAssociationArgs;
 /// import com.pulumi.aws.ec2clientvpn.Route;
@@ -204,16 +204,16 @@ import 'route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()
-///             .description("Example Client VPN endpoint")
-///             .serverCertificateArn(exampleAwsAcmCertificate.arn())
-///             .clientCidrBlock("10.0.0.0/16")
+///             .connectionLogOptions(EndpointConnectionLogOptionsArgs.builder()
+///                 .enabled(false)
+///                 .build())
 ///             .authenticationOptions(EndpointAuthenticationOptionArgs.builder()
 ///                 .type("certificate-authentication")
 ///                 .rootCertificateChainArn(exampleAwsAcmCertificate.arn())
 ///                 .build())
-///             .connectionLogOptions(EndpointConnectionLogOptionsArgs.builder()
-///                 .enabled(false)
-///                 .build())
+///             .description("Example Client VPN endpoint")
+///             .serverCertificateArn(exampleAwsAcmCertificate.arn())
+///             .clientCidrBlock("10.0.0.0/16")
 ///             .build());
 ///
 ///         var exampleNetworkAssociation = new NetworkAssociation("exampleNetworkAssociation", NetworkAssociationArgs.builder()
@@ -248,14 +248,14 @@ import 'route_state.dart';
 ///     type: aws:ec2clientvpn:Endpoint
 ///     name: example
 ///     properties:
-///       description: Example Client VPN endpoint
-///       serverCertificateArn: ${exampleAwsAcmCertificate.arn}
-///       clientCidrBlock: 10.0.0.0/16
+///       connectionLogOptions:
+///         enabled: false
 ///       authenticationOptions:
 ///         - type: certificate-authentication
 ///           rootCertificateChainArn: ${exampleAwsAcmCertificate.arn}
-///       connectionLogOptions:
-///         enabled: false
+///       description: Example Client VPN endpoint
+///       serverCertificateArn: ${exampleAwsAcmCertificate.arn}
+///       clientCidrBlock: 10.0.0.0/16
 /// ```
 ///
 ///
@@ -296,7 +296,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2clientvpn/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     description = registerOutput<String?>('description');
@@ -313,11 +313,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,6 +332,25 @@ class Route extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
+    description = registerOutput<String?>('description');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    origin = registerOutput<String>('origin');
+    region = registerOutput<String>('region');
+    targetVpcSubnetId = registerOutput<String?>('targetVpcSubnetId');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'aws:ec2clientvpn/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     description = registerOutput<String?>('description');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');

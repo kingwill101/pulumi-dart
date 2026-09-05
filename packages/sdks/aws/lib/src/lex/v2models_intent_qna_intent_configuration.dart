@@ -6,9 +6,9 @@ import 'v2models_intent_qna_intent_configuration_data_source_configuration.dart'
 
 class V2modelsIntentQnaIntentConfiguration {
   /// Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrockModelConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration>? bedrockModelConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration?>? bedrockModelConfiguration;
   /// Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `dataSourceConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfiguration>? dataSourceConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationDataSourceConfiguration?>? dataSourceConfiguration;
 
   /// Creates a new [V2modelsIntentQnaIntentConfiguration].
   /// [bedrockModelConfiguration] Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrockModelConfiguration`.

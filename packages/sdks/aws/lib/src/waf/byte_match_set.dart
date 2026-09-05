@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'byte_match_set_args.dart';
+import 'byte_match_set_byte_match_tuple.dart';
 import 'byte_match_set_state.dart';
 
 /// Provides a WAF Byte Match Set Resource
@@ -12,16 +13,16 @@ import 'byte_match_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const byteSet = new aws.waf.ByteMatchSet("byte_set", {
-///     name: "my_waf_byte_match_set",
 ///     byteMatchTuples: [{
-///         textTransformation: "NONE",
-///         targetString: "badrefer1",
-///         positionalConstraint: "CONTAINS",
 ///         fieldToMatch: {
 ///             type: "HEADER",
 ///             data: "referer",
 ///         },
+///         textTransformation: "NONE",
+///         targetString: "badrefer1",
+///         positionalConstraint: "CONTAINS",
 ///     }],
+///     name: "my_waf_byte_match_set",
 /// });
 /// ```
 /// ```python
@@ -29,16 +30,16 @@ import 'byte_match_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// byte_set = aws.waf.ByteMatchSet("byte_set",
-///     name="my_waf_byte_match_set",
 ///     byte_match_tuples=[{
-///         "text_transformation": "NONE",
-///         "target_string": "badrefer1",
-///         "positional_constraint": "CONTAINS",
 ///         "field_to_match": {
 ///             "type": "HEADER",
 ///             "data": "referer",
 ///         },
-///     }])
+///         "text_transformation": "NONE",
+///         "target_string": "badrefer1",
+///         "positional_constraint": "CONTAINS",
+///     }],
+///     name="my_waf_byte_match_set")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,21 +51,21 @@ import 'byte_match_set_state.dart';
 /// {
 ///     var byteSet = new Aws.Waf.ByteMatchSet("byte_set", new()
 ///     {
-///         Name = "my_waf_byte_match_set",
 ///         ByteMatchTuples = new[]
 ///         {
 ///             new Aws.Waf.Inputs.ByteMatchSetByteMatchTupleArgs
 ///             {
-///                 TextTransformation = "NONE",
-///                 TargetString = "badrefer1",
-///                 PositionalConstraint = "CONTAINS",
 ///                 FieldToMatch = new Aws.Waf.Inputs.ByteMatchSetByteMatchTupleFieldToMatchArgs
 ///                 {
 ///                     Type = "HEADER",
 ///                     Data = "referer",
 ///                 },
+///                 TextTransformation = "NONE",
+///                 TargetString = "badrefer1",
+///                 PositionalConstraint = "CONTAINS",
 ///             },
 ///         },
+///         Name = "my_waf_byte_match_set",
 ///     });
 ///
 /// });
@@ -80,18 +81,18 @@ import 'byte_match_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := waf.NewByteMatchSet(ctx, "byte_set", &waf.ByteMatchSetArgs{
-/// 			Name: pulumi.String("my_waf_byte_match_set"),
 /// 			ByteMatchTuples: waf.ByteMatchSetByteMatchTupleArray{
 /// 				&waf.ByteMatchSetByteMatchTupleArgs{
-/// 					TextTransformation:   pulumi.String("NONE"),
-/// 					TargetString:         pulumi.String("badrefer1"),
-/// 					PositionalConstraint: pulumi.String("CONTAINS"),
 /// 					FieldToMatch: &waf.ByteMatchSetByteMatchTupleFieldToMatchArgs{
 /// 						Type: pulumi.String("HEADER"),
 /// 						Data: pulumi.String("referer"),
 /// 					},
+/// 					TextTransformation:   pulumi.String("NONE"),
+/// 					TargetString:         pulumi.String("badrefer1"),
+/// 					PositionalConstraint: pulumi.String("CONTAINS"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my_waf_byte_match_set"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,16 +111,16 @@ import 'byte_match_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_bytematchset" "byte_set" {
-///   name = "my_waf_byte_match_set"
 ///   byte_match_tuples {
-///     text_transformation   = "NONE"
-///     target_string         = "badrefer1"
-///     positional_constraint = "CONTAINS"
 ///     field_to_match = {
 ///       type = "HEADER"
 ///       data = "referer"
 ///     }
+///     text_transformation   = "NONE"
+///     target_string         = "badrefer1"
+///     positional_constraint = "CONTAINS"
 ///   }
+///   name = "my_waf_byte_match_set"
 /// }
 /// ```
 /// ```java
@@ -146,16 +147,16 @@ import 'byte_match_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var byteSet = new ByteMatchSet("byteSet", ByteMatchSetArgs.builder()
-///             .name("my_waf_byte_match_set")
 ///             .byteMatchTuples(ByteMatchSetByteMatchTupleArgs.builder()
-///                 .textTransformation("NONE")
-///                 .targetString("badrefer1")
-///                 .positionalConstraint("CONTAINS")
 ///                 .fieldToMatch(ByteMatchSetByteMatchTupleFieldToMatchArgs.builder()
 ///                     .type("HEADER")
 ///                     .data("referer")
 ///                     .build())
+///                 .textTransformation("NONE")
+///                 .targetString("badrefer1")
+///                 .positionalConstraint("CONTAINS")
 ///                 .build())
+///             .name("my_waf_byte_match_set")
 ///             .build());
 ///
 ///     }
@@ -167,14 +168,14 @@ import 'byte_match_set_state.dart';
 ///     type: aws:waf:ByteMatchSet
 ///     name: byte_set
 ///     properties:
-///       name: my_waf_byte_match_set
 ///       byteMatchTuples:
-///         - textTransformation: NONE
-///           targetString: badrefer1
-///           positionalConstraint: CONTAINS
-///           fieldToMatch:
+///         - fieldToMatch:
 ///             type: HEADER
 ///             data: referer
+///           textTransformation: NONE
+///           targetString: badrefer1
+///           positionalConstraint: CONTAINS
+///       name: my_waf_byte_match_set
 /// ```
 ///
 ///
@@ -186,12 +187,12 @@ import 'byte_match_set_state.dart';
 /// $ pulumi import aws:waf/byteMatchSet:ByteMatchSet byte_set a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class ByteMatchSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the byte match set.
+  /// ARN of the byte match set.
   late final pulumi.Output<String> arn;
   /// Specifies the bytes (typically a string that corresponds
   /// with ASCII characters) that you want to search for in web requests,
   /// the location in requests that you want to search, and other settings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> byteMatchTuples;
+  late final pulumi.Output<List<ByteMatchSetByteMatchTuple>?> byteMatchTuples;
   /// The name or description of the Byte Match Set.
   late final pulumi.Output<String> name;
 
@@ -207,10 +208,10 @@ class ByteMatchSet extends pulumi.CustomResource {
           'aws:waf/byteMatchSet:ByteMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    byteMatchTuples = registerOutput<List<Map<String, dynamic>>?>('byteMatchTuples');
+    byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -219,11 +220,12 @@ class ByteMatchSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ByteMatchSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ByteMatchSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,7 +240,21 @@ class ByteMatchSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    byteMatchTuples = registerOutput<List<Map<String, dynamic>>?>('byteMatchTuples');
+    byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ByteMatchSet] resource.
+  ByteMatchSet.reference(String urn)
+    : super(
+        'aws:waf/byteMatchSet:ByteMatchSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

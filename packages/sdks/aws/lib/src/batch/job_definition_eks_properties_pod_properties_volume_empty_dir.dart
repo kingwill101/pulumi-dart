@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir {
   /// Medium to store the volume. The default value is an empty string, which uses the storage of the node.
-  final pulumi.Input<String>? medium;
+  final pulumi.Input<String?>? medium;
   /// Maximum size of the volume. By default, there's no maximum size defined.
   final pulumi.Input<String> sizeLimit;
 

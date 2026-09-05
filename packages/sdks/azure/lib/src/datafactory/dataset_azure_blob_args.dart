@@ -11,31 +11,31 @@ class DatasetAzureBlobArgs {
   /// A map of additional properties to associate with the Data Factory Dataset.
   ///
   /// The following supported arguments are specific to Azure Blob Dataset:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicFilenameEnabled;
+  final pulumi.Input<bool?>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicPathEnabled;
+  final pulumi.Input<bool?>? dynamicPathEnabled;
   /// The filename of the Azure Blob.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String> linkedServiceName;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The path of the Azure Blob.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetAzureBlobSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetAzureBlobSchemaColumn>?>? schemaColumns;
 
   /// Creates a new [DatasetAzureBlobArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.

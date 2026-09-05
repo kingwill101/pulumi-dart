@@ -25,8 +25,8 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeC
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration(
-      maxTokens: pulumi.Input.fromValue(map['maxTokens'] as int),
-      overlapPercentage: pulumi.Input.fromValue(map['overlapPercentage'] as int),
+      maxTokens: pulumi.Input.fromValue((map['maxTokens'] as num).toInt()),
+      overlapPercentage: pulumi.Input.fromValue((map['overlapPercentage'] as num).toInt()),
     );
   }
 }

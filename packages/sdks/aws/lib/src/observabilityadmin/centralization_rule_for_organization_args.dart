@@ -10,7 +10,7 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// {@macro pulumi_observabilityadmin_centralization_rule_for_organization_centralization_rule_for_organization_args_doc}
 class CentralizationRuleForOrganizationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the centralization rule. See `rule` below.
   ///
   /// The following arguments are optional:
@@ -18,8 +18,8 @@ class CentralizationRuleForOrganizationArgs {
   /// Name of the centralization rule. Must be unique within the organization.
   final pulumi.Input<String> ruleName;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<CentralizationRuleForOrganizationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<CentralizationRuleForOrganizationTimeouts?>? timeouts;
 
   /// Creates a new [CentralizationRuleForOrganizationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

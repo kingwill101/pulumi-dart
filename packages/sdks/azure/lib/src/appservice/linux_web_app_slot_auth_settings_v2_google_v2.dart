@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppSlotAuthSettingsV2GoogleV2 {
   /// Specifies a list of Allowed Audiences that should be requested as part of Google Sign-In authentication.
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
   /// The app setting name that contains the `clientSecret` value used for Google Login.
@@ -12,7 +12,7 @@ class LinuxWebAppSlotAuthSettingsV2GoogleV2 {
   /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// The list of OAuth 2.0 scopes that should be requested as part of Google Sign-In authentication.
-  final pulumi.Input<List<String>>? loginScopes;
+  final pulumi.Input<List<String>?>? loginScopes;
 
   /// Creates a new [LinuxWebAppSlotAuthSettingsV2GoogleV2].
   /// [allowedAudiences] Specifies a list of Allowed Audiences that should be requested as part of Google Sign-In authentication.

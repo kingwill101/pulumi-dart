@@ -6,13 +6,13 @@ import 'app_service_logs_http_logs.dart';
 
 class AppServiceLogs {
   /// An `applicationLogs` block as defined below.
-  final pulumi.Input<AppServiceLogsApplicationLogs>? applicationLogs;
+  final pulumi.Input<AppServiceLogsApplicationLogs?>? applicationLogs;
   /// Should `Detailed error messages` be enabled on this App Service? Defaults to `false`.
-  final pulumi.Input<bool>? detailedErrorMessagesEnabled;
+  final pulumi.Input<bool?>? detailedErrorMessagesEnabled;
   /// Should `Failed request tracing` be enabled on this App Service? Defaults to `false`.
-  final pulumi.Input<bool>? failedRequestTracingEnabled;
+  final pulumi.Input<bool?>? failedRequestTracingEnabled;
   /// An `httpLogs` block as defined below.
-  final pulumi.Input<AppServiceLogsHttpLogs>? httpLogs;
+  final pulumi.Input<AppServiceLogsHttpLogs?>? httpLogs;
 
   /// Creates a new [AppServiceLogs].
   /// [applicationLogs] An `applicationLogs` block as defined below.

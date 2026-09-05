@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterCertificate {
   /// The HSM hardware certificate issued (signed) by AWS CloudHSM.
-  final pulumi.Input<String>? awsHardwareCertificate;
+  final pulumi.Input<String?>? awsHardwareCertificate;
   /// The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-  final pulumi.Input<String>? clusterCertificate;
+  final pulumi.Input<String?>? clusterCertificate;
   /// The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-  final pulumi.Input<String>? clusterCsr;
+  final pulumi.Input<String?>? clusterCsr;
   /// The HSM certificate issued (signed) by the HSM hardware.
-  final pulumi.Input<String>? hsmCertificate;
+  final pulumi.Input<String?>? hsmCertificate;
   /// The HSM hardware certificate issued (signed) by the hardware manufacturer.
-  final pulumi.Input<String>? manufacturerHardwareCertificate;
+  final pulumi.Input<String?>? manufacturerHardwareCertificate;
 
   /// Creates a new [ClusterClusterCertificate].
   /// [awsHardwareCertificate] The HSM hardware certificate issued (signed) by AWS CloudHSM.

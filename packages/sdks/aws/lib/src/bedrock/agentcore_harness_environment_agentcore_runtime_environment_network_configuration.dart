@@ -7,7 +7,7 @@ class AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfiguration
   /// Network mode. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
   /// VPC configuration. See `networkModeConfig` Block below.
-  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfigurationNetworkModeConfig>>? networkModeConfigs;
+  final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfigurationNetworkModeConfig>?>? networkModeConfigs;
 
   /// Creates a new [AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfiguration].
   /// [networkMode] Network mode. Valid values: `PUBLIC`, `VPC`.

@@ -15,12 +15,12 @@ import 'iam_policy_assignment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.IamPolicyAssignment("example", {
-///     assignmentName: "example",
-///     assignmentStatus: "ENABLED",
-///     policyArn: exampleAwsIamPolicy.arn,
 ///     identities: {
 ///         users: [exampleAwsQuicksightUser.userName],
 ///     },
+///     assignmentName: "example",
+///     assignmentStatus: "ENABLED",
+///     policyArn: exampleAwsIamPolicy.arn,
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'iam_policy_assignment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.IamPolicyAssignment("example",
-///     assignment_name="example",
-///     assignment_status="ENABLED",
-///     policy_arn=example_aws_iam_policy["arn"],
 ///     identities={
 ///         "users": [example_aws_quicksight_user["userName"]],
-///     })
+///     },
+///     assignment_name="example",
+///     assignment_status="ENABLED",
+///     policy_arn=example_aws_iam_policy["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,9 +45,6 @@ import 'iam_policy_assignment_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.IamPolicyAssignment("example", new()
 ///     {
-///         AssignmentName = "example",
-///         AssignmentStatus = "ENABLED",
-///         PolicyArn = exampleAwsIamPolicy.Arn,
 ///         Identities = new Aws.Quicksight.Inputs.IamPolicyAssignmentIdentitiesArgs
 ///         {
 ///             Users = new[]
@@ -55,6 +52,9 @@ import 'iam_policy_assignment_state.dart';
 ///                 exampleAwsQuicksightUser.UserName,
 ///             },
 ///         },
+///         AssignmentName = "example",
+///         AssignmentStatus = "ENABLED",
+///         PolicyArn = exampleAwsIamPolicy.Arn,
 ///     });
 ///
 /// });
@@ -70,14 +70,14 @@ import 'iam_policy_assignment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewIamPolicyAssignment(ctx, "example", &quicksight.IamPolicyAssignmentArgs{
-/// 			AssignmentName:   pulumi.String("example"),
-/// 			AssignmentStatus: pulumi.String("ENABLED"),
-/// 			PolicyArn:        pulumi.Any(exampleAwsIamPolicy.Arn),
 /// 			Identities: &quicksight.IamPolicyAssignmentIdentitiesArgs{
 /// 				Users: pulumi.StringArray{
 /// 					exampleAwsQuicksightUser.UserName,
 /// 				},
 /// 			},
+/// 			AssignmentName:   pulumi.String("example"),
+/// 			AssignmentStatus: pulumi.String("ENABLED"),
+/// 			PolicyArn:        pulumi.Any(exampleAwsIamPolicy.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -96,12 +96,12 @@ import 'iam_policy_assignment_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_iampolicyassignment" "example" {
-///   assignment_name   = "example"
-///   assignment_status = "ENABLED"
-///   policy_arn        = exampleAwsIamPolicy.arn
 ///   identities = {
 ///     users = [exampleAwsQuicksightUser.userName]
 ///   }
+///   assignment_name   = "example"
+///   assignment_status = "ENABLED"
+///   policy_arn        = exampleAwsIamPolicy.arn
 /// }
 /// ```
 /// ```java
@@ -127,12 +127,12 @@ import 'iam_policy_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IamPolicyAssignment("example", IamPolicyAssignmentArgs.builder()
-///             .assignmentName("example")
-///             .assignmentStatus("ENABLED")
-///             .policyArn(exampleAwsIamPolicy.arn())
 ///             .identities(IamPolicyAssignmentIdentitiesArgs.builder()
 ///                 .users(exampleAwsQuicksightUser.userName())
 ///                 .build())
+///             .assignmentName("example")
+///             .assignmentStatus("ENABLED")
+///             .policyArn(exampleAwsIamPolicy.arn())
 ///             .build());
 ///
 ///     }
@@ -143,12 +143,12 @@ import 'iam_policy_assignment_state.dart';
 ///   example:
 ///     type: aws:quicksight:IamPolicyAssignment
 ///     properties:
-///       assignmentName: example
-///       assignmentStatus: ENABLED
-///       policyArn: ${exampleAwsIamPolicy.arn}
 ///       identities:
 ///         users:
 ///           - ${exampleAwsQuicksightUser.userName}
+///       assignmentName: example
+///       assignmentStatus: ENABLED
+///       policyArn: ${exampleAwsIamPolicy.arn}
 /// ```
 ///
 ///
@@ -191,7 +191,7 @@ class IamPolicyAssignment extends pulumi.CustomResource {
           'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assignmentId = registerOutput<String>('assignmentId');
     assignmentName = registerOutput<String>('assignmentName');
@@ -208,11 +208,12 @@ class IamPolicyAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IamPolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IamPolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,6 +227,25 @@ class IamPolicyAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assignmentId = registerOutput<String>('assignmentId');
+    assignmentName = registerOutput<String>('assignmentName');
+    assignmentStatus = registerOutput<String>('assignmentStatus');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    identities = registerOutput<IamPolicyAssignmentIdentities?>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IamPolicyAssignmentIdentities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    namespace = registerOutput<String>('namespace');
+    policyArn = registerOutput<String?>('policyArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [IamPolicyAssignment] resource.
+  IamPolicyAssignment.reference(String urn)
+    : super(
+        'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assignmentId = registerOutput<String>('assignmentId');
     assignmentName = registerOutput<String>('assignmentName');
     assignmentStatus = registerOutput<String>('assignmentStatus');

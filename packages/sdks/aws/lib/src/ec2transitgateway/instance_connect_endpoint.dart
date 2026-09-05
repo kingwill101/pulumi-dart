@@ -113,7 +113,7 @@ import 'instance_connect_endpoint_timeouts.dart';
 /// $ pulumi import aws:ec2transitgateway/instanceConnectEndpoint:InstanceConnectEndpoint example eice-012345678
 /// ```
 class InstanceConnectEndpoint extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the EC2 Instance Connect Endpoint.
+  /// ARN of the EC2 Instance Connect Endpoint.
   late final pulumi.Output<String> arn;
   /// The Availability Zone of the EC2 Instance Connect Endpoint.
   late final pulumi.Output<String> availabilityZone;
@@ -155,21 +155,21 @@ class InstanceConnectEndpoint extends pulumi.CustomResource {
           'aws:ec2transitgateway/instanceConnectEndpoint:InstanceConnectEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     dnsName = registerOutput<String>('dnsName');
     fipsDnsName = registerOutput<String>('fipsDnsName');
     ipAddressType = registerOutput<String>('ipAddressType');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     preserveClientIp = registerOutput<bool>('preserveClientIp');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<InstanceConnectEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }
@@ -179,11 +179,12 @@ class InstanceConnectEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceConnectEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceConnectEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,14 +203,40 @@ class InstanceConnectEndpoint extends pulumi.CustomResource {
     dnsName = registerOutput<String>('dnsName');
     fipsDnsName = registerOutput<String>('fipsDnsName');
     ipAddressType = registerOutput<String>('ipAddressType');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     preserveClientIp = registerOutput<bool>('preserveClientIp');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<InstanceConnectEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [InstanceConnectEndpoint] resource.
+  InstanceConnectEndpoint.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/instanceConnectEndpoint:InstanceConnectEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    dnsName = registerOutput<String>('dnsName');
+    fipsDnsName = registerOutput<String>('fipsDnsName');
+    ipAddressType = registerOutput<String>('ipAddressType');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerId = registerOutput<String>('ownerId');
+    preserveClientIp = registerOutput<bool>('preserveClientIp');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<InstanceConnectEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }

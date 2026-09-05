@@ -6,9 +6,9 @@ import 'application_application_configuration_run_configuration_flink_run_config
 
 class ApplicationApplicationConfigurationRunConfiguration {
   /// The restore behavior of a restarting application.
-  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration>? applicationRestoreConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration?>? applicationRestoreConfiguration;
   /// The starting parameters for a Flink-based Kinesis Data Analytics application.
-  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration>? flinkRunConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration?>? flinkRunConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationRunConfiguration].
   /// [applicationRestoreConfiguration] The restore behavior of a restarting application.

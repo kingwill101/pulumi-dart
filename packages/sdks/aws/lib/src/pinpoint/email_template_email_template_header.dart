@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EmailTemplateEmailTemplateHeader {
   /// Name of the message header. The header name can contain up to 126 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the message header. The header value can contain up to 870 characters, including the length of any rendered attributes. For example if you add the {CreationDate} attribute, it renders as YYYY-MM-DDTHH:MM:SS.SSSZ and is 24 characters in length.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EmailTemplateEmailTemplateHeader].
   /// [name] Name of the message header. The header name can contain up to 126 characters.

@@ -8,26 +8,26 @@ class ReplicationConfigurationState {
   /// When the replication configuration was created.
   /// * `destination[0].file_system_id` - The fs ID of the replica.
   /// * `destination[0].status` - The status of the replication.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// A destination configuration block (documented below).
-  final pulumi.Input<ReplicationConfigurationDestination>? destination;
-  /// The Amazon Resource Name (ARN) of the original source Amazon EFS file system in the replication configuration.
-  final pulumi.Input<String>? originalSourceFileSystemArn;
+  final pulumi.Input<ReplicationConfigurationDestination?>? destination;
+  /// ARN of the original source Amazon EFS file system in the replication configuration.
+  final pulumi.Input<String?>? originalSourceFileSystemArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
-  final pulumi.Input<String>? sourceFileSystemArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the current source file system in the replication configuration.
+  final pulumi.Input<String?>? sourceFileSystemArn;
   /// The ID of the file system that is to be replicated.
-  final pulumi.Input<String>? sourceFileSystemId;
+  final pulumi.Input<String?>? sourceFileSystemId;
   /// The AWS Region in which the source Amazon EFS file system is located.
-  final pulumi.Input<String>? sourceFileSystemRegion;
+  final pulumi.Input<String?>? sourceFileSystemRegion;
 
   /// Creates a new [ReplicationConfigurationState].
   /// [creationTime] When the replication configuration was created.
   /// [destination] A destination configuration block (documented below).
-  /// [originalSourceFileSystemArn] The Amazon Resource Name (ARN) of the original source Amazon EFS file system in the replication configuration.
+  /// [originalSourceFileSystemArn] ARN of the original source Amazon EFS file system in the replication configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceFileSystemArn] The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
+  /// [sourceFileSystemArn] ARN of the current source file system in the replication configuration.
   /// [sourceFileSystemId] The ID of the file system that is to be replicated.
   /// [sourceFileSystemRegion] The AWS Region in which the source Amazon EFS file system is located.
   const ReplicationConfigurationState({

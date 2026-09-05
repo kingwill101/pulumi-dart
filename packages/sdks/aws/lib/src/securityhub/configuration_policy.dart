@@ -18,27 +18,27 @@ import 'configuration_policy_state.dart';
 ///
 /// const example = new aws.securityhub.FindingAggregator("example", {linkingMode: "ALL_REGIONS"});
 /// const exampleOrganizationConfiguration = new aws.securityhub.OrganizationConfiguration("example", {
-///     autoEnable: false,
-///     autoEnableStandards: "NONE",
 ///     organizationConfiguration: {
 ///         configurationType: "CENTRAL",
 ///     },
+///     autoEnable: false,
+///     autoEnableStandards: "NONE",
 /// }, {
 ///     dependsOn: [example],
 /// });
 /// const exampleConfigurationPolicy = new aws.securityhub.ConfigurationPolicy("example", {
-///     name: "Example",
-///     description: "This is an example configuration policy",
 ///     configurationPolicy: {
+///         securityControlsConfiguration: {
+///             disabledControlIdentifiers: [],
+///         },
 ///         serviceEnabled: true,
 ///         enabledStandardArns: [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         securityControlsConfiguration: {
-///             disabledControlIdentifiers: [],
-///         },
 ///     },
+///     name: "Example",
+///     description: "This is an example configuration policy",
 /// }, {
 ///     dependsOn: [exampleOrganizationConfiguration],
 /// });
@@ -49,25 +49,25 @@ import 'configuration_policy_state.dart';
 ///
 /// example = aws.securityhub.FindingAggregator("example", linking_mode="ALL_REGIONS")
 /// example_organization_configuration = aws.securityhub.OrganizationConfiguration("example",
-///     auto_enable=False,
-///     auto_enable_standards="NONE",
 ///     organization_configuration={
 ///         "configuration_type": "CENTRAL",
 ///     },
+///     auto_enable=False,
+///     auto_enable_standards="NONE",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// example_configuration_policy = aws.securityhub.ConfigurationPolicy("example",
-///     name="Example",
-///     description="This is an example configuration policy",
 ///     configuration_policy={
+///         "security_controls_configuration": {
+///             "disabled_control_identifiers": [],
+///         },
 ///         "service_enabled": True,
 ///         "enabled_standard_arns": [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         "security_controls_configuration": {
-///             "disabled_control_identifiers": [],
-///         },
 ///     },
+///     name="Example",
+///     description="This is an example configuration policy",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_organization_configuration]))
 /// ```
 /// ```csharp
@@ -85,12 +85,12 @@ import 'configuration_policy_state.dart';
 ///
 ///     var exampleOrganizationConfiguration = new Aws.SecurityHub.OrganizationConfiguration("example", new()
 ///     {
-///         AutoEnable = false,
-///         AutoEnableStandards = "NONE",
 ///         OrganizationConfigurationDetails = new Aws.SecurityHub.Inputs.OrganizationConfigurationOrganizationConfigurationArgs
 ///         {
 ///             ConfigurationType = "CENTRAL",
 ///         },
+///         AutoEnable = false,
+///         AutoEnableStandards = "NONE",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -101,21 +101,21 @@ import 'configuration_policy_state.dart';
 ///
 ///     var exampleConfigurationPolicy = new Aws.SecurityHub.ConfigurationPolicy("example", new()
 ///     {
-///         Name = "Example",
-///         Description = "This is an example configuration policy",
 ///         ConfigurationPolicyDetails = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicyArgs
 ///         {
+///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
+///             {
+///                 DisabledControlIdentifiers = new() { },
+///             },
 ///             ServiceEnabled = true,
 ///             EnabledStandardArns = new[]
 ///             {
 ///                 "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                 "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///             },
-///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
-///             {
-///                 DisabledControlIdentifiers = new() { },
-///             },
 ///         },
+///         Name = "Example",
+///         Description = "This is an example configuration policy",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -143,11 +143,11 @@ import 'configuration_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleOrganizationConfiguration, err := securityhub.NewOrganizationConfiguration(ctx, "example", &securityhub.OrganizationConfigurationArgs{
-/// 			AutoEnable:          pulumi.Bool(false),
-/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 			OrganizationConfiguration: &securityhub.OrganizationConfigurationOrganizationConfigurationArgs{
 /// 				ConfigurationType: pulumi.String("CENTRAL"),
 /// 			},
+/// 			AutoEnable:          pulumi.Bool(false),
+/// 			AutoEnableStandards: pulumi.String("NONE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -155,18 +155,18 @@ import 'configuration_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securityhub.NewConfigurationPolicy(ctx, "example", &securityhub.ConfigurationPolicyArgs{
-/// 			Name:        pulumi.String("Example"),
-/// 			Description: pulumi.String("This is an example configuration policy"),
 /// 			ConfigurationPolicy: &securityhub.ConfigurationPolicyConfigurationPolicyArgs{
+/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
+/// 					DisabledControlIdentifiers: pulumi.StringArray{},
+/// 				},
 /// 				ServiceEnabled: pulumi.Bool(true),
 /// 				EnabledStandardArns: pulumi.StringArray{
 /// 					pulumi.String("arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0"),
 /// 					pulumi.String("arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"),
 /// 				},
-/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
-/// 					DisabledControlIdentifiers: pulumi.StringArray{},
-/// 				},
 /// 			},
+/// 			Name:        pulumi.String("Example"),
+/// 			Description: pulumi.String("This is an example configuration policy"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleOrganizationConfiguration,
 /// 		}))
@@ -190,24 +190,24 @@ import 'configuration_policy_state.dart';
 ///   linking_mode = "ALL_REGIONS"
 /// }
 /// resource "aws_securityhub_organizationconfiguration" "example" {
-///   depends_on            = [aws_securityhub_findingaggregator.example]
-///   auto_enable           = false
-///   auto_enable_standards = "NONE"
+///   depends_on = [aws_securityhub_findingaggregator.example]
 ///   organization_configuration = {
 ///     configuration_type = "CENTRAL"
 ///   }
+///   auto_enable           = false
+///   auto_enable_standards = "NONE"
 /// }
 /// resource "aws_securityhub_configurationpolicy" "example" {
-///   depends_on  = [aws_securityhub_organizationconfiguration.example]
-///   name        = "Example"
-///   description = "This is an example configuration policy"
+///   depends_on = [aws_securityhub_organizationconfiguration.example]
 ///   configuration_policy = {
-///     service_enabled       = true
-///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///     security_controls_configuration = {
 ///       disabled_control_identifiers = []
 ///     }
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///   }
+///   name        = "Example"
+///   description = "This is an example configuration policy"
 /// }
 /// ```
 /// ```java
@@ -244,27 +244,27 @@ import 'configuration_policy_state.dart';
 ///             .build());
 ///
 ///         var exampleOrganizationConfiguration = new OrganizationConfiguration("exampleOrganizationConfiguration", OrganizationConfigurationArgs.builder()
-///             .autoEnable(false)
-///             .autoEnableStandards("NONE")
 ///             .organizationConfiguration(OrganizationConfigurationOrganizationConfigurationArgs.builder()
 ///                 .configurationType("CENTRAL")
 ///                 .build())
+///             .autoEnable(false)
+///             .autoEnableStandards("NONE")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
 ///
 ///         var exampleConfigurationPolicy = new ConfigurationPolicy("exampleConfigurationPolicy", ConfigurationPolicyArgs.builder()
-///             .name("Example")
-///             .description("This is an example configuration policy")
 ///             .configurationPolicy(ConfigurationPolicyConfigurationPolicyArgs.builder()
+///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
+///                     .disabledControlIdentifiers()
+///                     .build())
 ///                 .serviceEnabled(true)
 ///                 .enabledStandardArns(
 ///                     "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                     "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0")
-///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
-///                     .disabledControlIdentifiers()
-///                     .build())
 ///                 .build())
+///             .name("Example")
+///             .description("This is an example configuration policy")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleOrganizationConfiguration)
 ///                 .build());
@@ -282,10 +282,10 @@ import 'configuration_policy_state.dart';
 ///     type: aws:securityhub:OrganizationConfiguration
 ///     name: example
 ///     properties:
-///       autoEnable: false
-///       autoEnableStandards: NONE
 ///       organizationConfiguration:
 ///         configurationType: CENTRAL
+///       autoEnable: false
+///       autoEnableStandards: NONE
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -293,15 +293,15 @@ import 'configuration_policy_state.dart';
 ///     type: aws:securityhub:ConfigurationPolicy
 ///     name: example
 ///     properties:
-///       name: Example
-///       description: This is an example configuration policy
 ///       configurationPolicy:
+///         securityControlsConfiguration:
+///           disabledControlIdentifiers: []
 ///         serviceEnabled: true
 ///         enabledStandardArns:
 ///           - arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0
 ///           - arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0
-///         securityControlsConfiguration:
-///           disabledControlIdentifiers: []
+///       name: Example
+///       description: This is an example configuration policy
 ///     options:
 ///       dependsOn:
 ///         - ${exampleOrganizationConfiguration}
@@ -316,11 +316,11 @@ import 'configuration_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const disabled = new aws.securityhub.ConfigurationPolicy("disabled", {
-///     name: "Disabled",
-///     description: "This is an example of disabled configuration policy",
 ///     configurationPolicy: {
 ///         serviceEnabled: false,
 ///     },
+///     name: "Disabled",
+///     description: "This is an example of disabled configuration policy",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -330,11 +330,11 @@ import 'configuration_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// disabled = aws.securityhub.ConfigurationPolicy("disabled",
-///     name="Disabled",
-///     description="This is an example of disabled configuration policy",
 ///     configuration_policy={
 ///         "service_enabled": False,
 ///     },
+///     name="Disabled",
+///     description="This is an example of disabled configuration policy",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -347,12 +347,12 @@ import 'configuration_policy_state.dart';
 /// {
 ///     var disabled = new Aws.SecurityHub.ConfigurationPolicy("disabled", new()
 ///     {
-///         Name = "Disabled",
-///         Description = "This is an example of disabled configuration policy",
 ///         ConfigurationPolicyDetails = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicyArgs
 ///         {
 ///             ServiceEnabled = false,
 ///         },
+///         Name = "Disabled",
+///         Description = "This is an example of disabled configuration policy",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -374,11 +374,11 @@ import 'configuration_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securityhub.NewConfigurationPolicy(ctx, "disabled", &securityhub.ConfigurationPolicyArgs{
-/// 			Name:        pulumi.String("Disabled"),
-/// 			Description: pulumi.String("This is an example of disabled configuration policy"),
 /// 			ConfigurationPolicy: &securityhub.ConfigurationPolicyConfigurationPolicyArgs{
 /// 				ServiceEnabled: pulumi.Bool(false),
 /// 			},
+/// 			Name:        pulumi.String("Disabled"),
+/// 			Description: pulumi.String("This is an example of disabled configuration policy"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -399,12 +399,12 @@ import 'configuration_policy_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_configurationpolicy" "disabled" {
-///   depends_on  = [example]
-///   name        = "Disabled"
-///   description = "This is an example of disabled configuration policy"
+///   depends_on = [example]
 ///   configuration_policy = {
 ///     service_enabled = false
 ///   }
+///   name        = "Disabled"
+///   description = "This is an example of disabled configuration policy"
 /// }
 /// ```
 /// ```java
@@ -431,11 +431,11 @@ import 'configuration_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var disabled = new ConfigurationPolicy("disabled", ConfigurationPolicyArgs.builder()
-///             .name("Disabled")
-///             .description("This is an example of disabled configuration policy")
 ///             .configurationPolicy(ConfigurationPolicyConfigurationPolicyArgs.builder()
 ///                 .serviceEnabled(false)
 ///                 .build())
+///             .name("Disabled")
+///             .description("This is an example of disabled configuration policy")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -448,10 +448,10 @@ import 'configuration_policy_state.dart';
 ///   disabled:
 ///     type: aws:securityhub:ConfigurationPolicy
 ///     properties:
-///       name: Disabled
-///       description: This is an example of disabled configuration policy
 ///       configurationPolicy:
 ///         serviceEnabled: false
+///       name: Disabled
+///       description: This is an example of disabled configuration policy
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -466,52 +466,52 @@ import 'configuration_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const disabled = new aws.securityhub.ConfigurationPolicy("disabled", {
-///     name: "Custom Controls",
-///     description: "This is an example of configuration policy with custom control settings",
 ///     configurationPolicy: {
+///         securityControlsConfiguration: {
+///             securityControlCustomParameters: [
+///                 {
+///                     parameters: [{
+///                         "enum": {
+///                             value: "INFO",
+///                         },
+///                         name: "loggingLevel",
+///                         valueType: "CUSTOM",
+///                     }],
+///                     securityControlId: "APIGateway.1",
+///                 },
+///                 {
+///                     parameters: [
+///                         {
+///                             bool: {
+///                                 value: false,
+///                             },
+///                             name: "RequireLowercaseCharacters",
+///                             valueType: "CUSTOM",
+///                         },
+///                         {
+///                             int: {
+///                                 value: 60,
+///                             },
+///                             name: "MaxPasswordAge",
+///                             valueType: "CUSTOM",
+///                         },
+///                     ],
+///                     securityControlId: "IAM.7",
+///                 },
+///             ],
+///             enabledControlIdentifiers: [
+///                 "APIGateway.1",
+///                 "IAM.7",
+///             ],
+///         },
 ///         serviceEnabled: true,
 ///         enabledStandardArns: [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         securityControlsConfiguration: {
-///             enabledControlIdentifiers: [
-///                 "APIGateway.1",
-///                 "IAM.7",
-///             ],
-///             securityControlCustomParameters: [
-///                 {
-///                     securityControlId: "APIGateway.1",
-///                     parameters: [{
-///                         name: "loggingLevel",
-///                         valueType: "CUSTOM",
-///                         "enum": {
-///                             value: "INFO",
-///                         },
-///                     }],
-///                 },
-///                 {
-///                     securityControlId: "IAM.7",
-///                     parameters: [
-///                         {
-///                             name: "RequireLowercaseCharacters",
-///                             valueType: "CUSTOM",
-///                             bool: {
-///                                 value: false,
-///                             },
-///                         },
-///                         {
-///                             name: "MaxPasswordAge",
-///                             valueType: "CUSTOM",
-///                             int: {
-///                                 value: 60,
-///                             },
-///                         },
-///                     ],
-///                 },
-///             ],
-///         },
 ///     },
+///     name: "Custom Controls",
+///     description: "This is an example of configuration policy with custom control settings",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -521,52 +521,52 @@ import 'configuration_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// disabled = aws.securityhub.ConfigurationPolicy("disabled",
-///     name="Custom Controls",
-///     description="This is an example of configuration policy with custom control settings",
 ///     configuration_policy={
+///         "security_controls_configuration": {
+///             "security_control_custom_parameters": [
+///                 {
+///                     "parameters": [{
+///                         "enum": {
+///                             "value": "INFO",
+///                         },
+///                         "name": "loggingLevel",
+///                         "value_type": "CUSTOM",
+///                     }],
+///                     "security_control_id": "APIGateway.1",
+///                 },
+///                 {
+///                     "parameters": [
+///                         {
+///                             "bool": {
+///                                 "value": False,
+///                             },
+///                             "name": "RequireLowercaseCharacters",
+///                             "value_type": "CUSTOM",
+///                         },
+///                         {
+///                             "int": {
+///                                 "value": 60,
+///                             },
+///                             "name": "MaxPasswordAge",
+///                             "value_type": "CUSTOM",
+///                         },
+///                     ],
+///                     "security_control_id": "IAM.7",
+///                 },
+///             ],
+///             "enabled_control_identifiers": [
+///                 "APIGateway.1",
+///                 "IAM.7",
+///             ],
+///         },
 ///         "service_enabled": True,
 ///         "enabled_standard_arns": [
 ///             "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///             "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///         ],
-///         "security_controls_configuration": {
-///             "enabled_control_identifiers": [
-///                 "APIGateway.1",
-///                 "IAM.7",
-///             ],
-///             "security_control_custom_parameters": [
-///                 {
-///                     "security_control_id": "APIGateway.1",
-///                     "parameters": [{
-///                         "name": "loggingLevel",
-///                         "value_type": "CUSTOM",
-///                         "enum": {
-///                             "value": "INFO",
-///                         },
-///                     }],
-///                 },
-///                 {
-///                     "security_control_id": "IAM.7",
-///                     "parameters": [
-///                         {
-///                             "name": "RequireLowercaseCharacters",
-///                             "value_type": "CUSTOM",
-///                             "bool": {
-///                                 "value": False,
-///                             },
-///                         },
-///                         {
-///                             "name": "MaxPasswordAge",
-///                             "value_type": "CUSTOM",
-///                             "int": {
-///                                 "value": 60,
-///                             },
-///                         },
-///                     ],
-///                 },
-///             ],
-///         },
 ///     },
+///     name="Custom Controls",
+///     description="This is an example of configuration policy with custom control settings",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -579,69 +579,69 @@ import 'configuration_policy_state.dart';
 /// {
 ///     var disabled = new Aws.SecurityHub.ConfigurationPolicy("disabled", new()
 ///     {
-///         Name = "Custom Controls",
-///         Description = "This is an example of configuration policy with custom control settings",
 ///         ConfigurationPolicyDetails = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicyArgs
 ///         {
+///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
+///             {
+///                 SecurityControlCustomParameters = new[]
+///                 {
+///                     new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs
+///                     {
+///                         Parameters = new[]
+///                         {
+///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
+///                             {
+///                                 Enum = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs
+///                                 {
+///                                     Value = "INFO",
+///                                 },
+///                                 Name = "loggingLevel",
+///                                 ValueType = "CUSTOM",
+///                             },
+///                         },
+///                         SecurityControlId = "APIGateway.1",
+///                     },
+///                     new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs
+///                     {
+///                         Parameters = new[]
+///                         {
+///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
+///                             {
+///                                 Bool = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs
+///                                 {
+///                                     Value = false,
+///                                 },
+///                                 Name = "RequireLowercaseCharacters",
+///                                 ValueType = "CUSTOM",
+///                             },
+///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
+///                             {
+///                                 Int = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs
+///                                 {
+///                                     Value = 60,
+///                                 },
+///                                 Name = "MaxPasswordAge",
+///                                 ValueType = "CUSTOM",
+///                             },
+///                         },
+///                         SecurityControlId = "IAM.7",
+///                     },
+///                 },
+///                 EnabledControlIdentifiers = new[]
+///                 {
+///                     "APIGateway.1",
+///                     "IAM.7",
+///                 },
+///             },
 ///             ServiceEnabled = true,
 ///             EnabledStandardArns = new[]
 ///             {
 ///                 "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                 "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
 ///             },
-///             SecurityControlsConfiguration = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs
-///             {
-///                 EnabledControlIdentifiers = new[]
-///                 {
-///                     "APIGateway.1",
-///                     "IAM.7",
-///                 },
-///                 SecurityControlCustomParameters = new[]
-///                 {
-///                     new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs
-///                     {
-///                         SecurityControlId = "APIGateway.1",
-///                         Parameters = new[]
-///                         {
-///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
-///                             {
-///                                 Name = "loggingLevel",
-///                                 ValueType = "CUSTOM",
-///                                 Enum = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs
-///                                 {
-///                                     Value = "INFO",
-///                                 },
-///                             },
-///                         },
-///                     },
-///                     new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs
-///                     {
-///                         SecurityControlId = "IAM.7",
-///                         Parameters = new[]
-///                         {
-///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
-///                             {
-///                                 Name = "RequireLowercaseCharacters",
-///                                 ValueType = "CUSTOM",
-///                                 Bool = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs
-///                                 {
-///                                     Value = false,
-///                                 },
-///                             },
-///                             new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs
-///                             {
-///                                 Name = "MaxPasswordAge",
-///                                 ValueType = "CUSTOM",
-///                                 Int = new Aws.SecurityHub.Inputs.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs
-///                                 {
-///                                     Value = 60,
-///                                 },
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
 ///         },
+///         Name = "Custom Controls",
+///         Description = "This is an example of configuration policy with custom control settings",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -663,54 +663,54 @@ import 'configuration_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securityhub.NewConfigurationPolicy(ctx, "disabled", &securityhub.ConfigurationPolicyArgs{
-/// 			Name:        pulumi.String("Custom Controls"),
-/// 			Description: pulumi.String("This is an example of configuration policy with custom control settings"),
 /// 			ConfigurationPolicy: &securityhub.ConfigurationPolicyConfigurationPolicyArgs{
+/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
+/// 					SecurityControlCustomParameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArray{
+/// 						&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs{
+/// 							Parameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArray{
+/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
+/// 									Enum: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs{
+/// 										Value: pulumi.String("INFO"),
+/// 									},
+/// 									Name:      pulumi.String("loggingLevel"),
+/// 									ValueType: pulumi.String("CUSTOM"),
+/// 								},
+/// 							},
+/// 							SecurityControlId: pulumi.String("APIGateway.1"),
+/// 						},
+/// 						&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs{
+/// 							Parameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArray{
+/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
+/// 									Bool: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs{
+/// 										Value: pulumi.Bool(false),
+/// 									},
+/// 									Name:      pulumi.String("RequireLowercaseCharacters"),
+/// 									ValueType: pulumi.String("CUSTOM"),
+/// 								},
+/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
+/// 									Int: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs{
+/// 										Value: pulumi.Int(60),
+/// 									},
+/// 									Name:      pulumi.String("MaxPasswordAge"),
+/// 									ValueType: pulumi.String("CUSTOM"),
+/// 								},
+/// 							},
+/// 							SecurityControlId: pulumi.String("IAM.7"),
+/// 						},
+/// 					},
+/// 					EnabledControlIdentifiers: pulumi.StringArray{
+/// 						pulumi.String("APIGateway.1"),
+/// 						pulumi.String("IAM.7"),
+/// 					},
+/// 				},
 /// 				ServiceEnabled: pulumi.Bool(true),
 /// 				EnabledStandardArns: pulumi.StringArray{
 /// 					pulumi.String("arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0"),
 /// 					pulumi.String("arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"),
 /// 				},
-/// 				SecurityControlsConfiguration: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs{
-/// 					EnabledControlIdentifiers: pulumi.StringArray{
-/// 						pulumi.String("APIGateway.1"),
-/// 						pulumi.String("IAM.7"),
-/// 					},
-/// 					SecurityControlCustomParameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArray{
-/// 						&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs{
-/// 							SecurityControlId: pulumi.String("APIGateway.1"),
-/// 							Parameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArray{
-/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
-/// 									Name:      pulumi.String("loggingLevel"),
-/// 									ValueType: pulumi.String("CUSTOM"),
-/// 									Enum: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs{
-/// 										Value: pulumi.String("INFO"),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs{
-/// 							SecurityControlId: pulumi.String("IAM.7"),
-/// 							Parameters: securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArray{
-/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
-/// 									Name:      pulumi.String("RequireLowercaseCharacters"),
-/// 									ValueType: pulumi.String("CUSTOM"),
-/// 									Bool: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs{
-/// 										Value: pulumi.Bool(false),
-/// 									},
-/// 								},
-/// 								&securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs{
-/// 									Name:      pulumi.String("MaxPasswordAge"),
-/// 									ValueType: pulumi.String("CUSTOM"),
-/// 									Int: &securityhub.ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs{
-/// 										Value: pulumi.Int(60),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:        pulumi.String("Custom Controls"),
+/// 			Description: pulumi.String("This is an example of configuration policy with custom control settings"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -731,41 +731,41 @@ import 'configuration_policy_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_configurationpolicy" "disabled" {
-///   depends_on  = [example]
-///   name        = "Custom Controls"
-///   description = "This is an example of configuration policy with custom control settings"
+///   depends_on = [example]
 ///   configuration_policy = {
-///     service_enabled       = true
-///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///     security_controls_configuration = {
-///       enabled_control_identifiers = ["APIGateway.1", "IAM.7"]
 ///       security_control_custom_parameters = [{
-///         "securityControlId" = "APIGateway.1"
 ///         "parameters" = [{
-///           "name"      = "loggingLevel"
-///           "valueType" = "CUSTOM"
 ///           "enum" = {
 ///             "value" = "INFO"
 ///           }
-///         }]
-///         }, {
-///         "securityControlId" = "IAM.7"
-///         "parameters" = [{
-///           "name"      = "RequireLowercaseCharacters"
+///           "name"      = "loggingLevel"
 ///           "valueType" = "CUSTOM"
+///         }]
+///         "securityControlId" = "APIGateway.1"
+///         }, {
+///         "parameters" = [{
 ///           "bool" = {
 ///             "value" = false
 ///           }
-///           }, {
-///           "name"      = "MaxPasswordAge"
+///           "name"      = "RequireLowercaseCharacters"
 ///           "valueType" = "CUSTOM"
+///           }, {
 ///           "int" = {
 ///             "value" = 60
 ///           }
+///           "name"      = "MaxPasswordAge"
+///           "valueType" = "CUSTOM"
 ///         }]
+///         "securityControlId" = "IAM.7"
 ///       }]
+///       enabled_control_identifiers = ["APIGateway.1", "IAM.7"]
 ///     }
+///     service_enabled       = true
+///     enabled_standard_arns = ["arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0", "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"]
 ///   }
+///   name        = "Custom Controls"
+///   description = "This is an example of configuration policy with custom control settings"
 /// }
 /// ```
 /// ```java
@@ -798,48 +798,48 @@ import 'configuration_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var disabled = new ConfigurationPolicy("disabled", ConfigurationPolicyArgs.builder()
-///             .name("Custom Controls")
-///             .description("This is an example of configuration policy with custom control settings")
 ///             .configurationPolicy(ConfigurationPolicyConfigurationPolicyArgs.builder()
+///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
+///                     .securityControlCustomParameters(
+///                         ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs.builder()
+///                             .parameters(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
+///                                 .enum_(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs.builder()
+///                                     .value("INFO")
+///                                     .build())
+///                                 .name("loggingLevel")
+///                                 .valueType("CUSTOM")
+///                                 .build())
+///                             .securityControlId("APIGateway.1")
+///                             .build(),
+///                         ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs.builder()
+///                             .parameters(
+///                                 ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
+///                                     .bool(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs.builder()
+///                                         .value(false)
+///                                         .build())
+///                                     .name("RequireLowercaseCharacters")
+///                                     .valueType("CUSTOM")
+///                                     .build(),
+///                                 ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
+///                                     .int_(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs.builder()
+///                                         .value(60)
+///                                         .build())
+///                                     .name("MaxPasswordAge")
+///                                     .valueType("CUSTOM")
+///                                     .build())
+///                             .securityControlId("IAM.7")
+///                             .build())
+///                     .enabledControlIdentifiers(
+///                         "APIGateway.1",
+///                         "IAM.7")
+///                     .build())
 ///                 .serviceEnabled(true)
 ///                 .enabledStandardArns(
 ///                     "arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0",
 ///                     "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0")
-///                 .securityControlsConfiguration(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationArgs.builder()
-///                     .enabledControlIdentifiers(
-///                         "APIGateway.1",
-///                         "IAM.7")
-///                     .securityControlCustomParameters(
-///                         ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs.builder()
-///                             .securityControlId("APIGateway.1")
-///                             .parameters(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
-///                                 .name("loggingLevel")
-///                                 .valueType("CUSTOM")
-///                                 .enum_(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumArgs.builder()
-///                                     .value("INFO")
-///                                     .build())
-///                                 .build())
-///                             .build(),
-///                         ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterArgs.builder()
-///                             .securityControlId("IAM.7")
-///                             .parameters(
-///                                 ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
-///                                     .name("RequireLowercaseCharacters")
-///                                     .valueType("CUSTOM")
-///                                     .bool(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBoolArgs.builder()
-///                                         .value(false)
-///                                         .build())
-///                                     .build(),
-///                                 ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterArgs.builder()
-///                                     .name("MaxPasswordAge")
-///                                     .valueType("CUSTOM")
-///                                     .int_(ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntArgs.builder()
-///                                         .value(60)
-///                                         .build())
-///                                     .build())
-///                             .build())
-///                     .build())
 ///                 .build())
+///             .name("Custom Controls")
+///             .description("This is an example of configuration policy with custom control settings")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -852,34 +852,34 @@ import 'configuration_policy_state.dart';
 ///   disabled:
 ///     type: aws:securityhub:ConfigurationPolicy
 ///     properties:
-///       name: Custom Controls
-///       description: This is an example of configuration policy with custom control settings
 ///       configurationPolicy:
+///         securityControlsConfiguration:
+///           securityControlCustomParameters:
+///             - parameters:
+///                 - enum:
+///                     value: INFO
+///                   name: loggingLevel
+///                   valueType: CUSTOM
+///               securityControlId: APIGateway.1
+///             - parameters:
+///                 - bool:
+///                     value: false
+///                   name: RequireLowercaseCharacters
+///                   valueType: CUSTOM
+///                 - int:
+///                     value: 60
+///                   name: MaxPasswordAge
+///                   valueType: CUSTOM
+///               securityControlId: IAM.7
+///           enabledControlIdentifiers:
+///             - APIGateway.1
+///             - IAM.7
 ///         serviceEnabled: true
 ///         enabledStandardArns:
 ///           - arn:aws:securityhub:us-east-1::standards/aws-foundational-security-best-practices/v/1.0.0
 ///           - arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0
-///         securityControlsConfiguration:
-///           enabledControlIdentifiers:
-///             - APIGateway.1
-///             - IAM.7
-///           securityControlCustomParameters:
-///             - securityControlId: APIGateway.1
-///               parameters:
-///                 - name: loggingLevel
-///                   valueType: CUSTOM
-///                   enum:
-///                     value: INFO
-///             - securityControlId: IAM.7
-///               parameters:
-///                 - name: RequireLowercaseCharacters
-///                   valueType: CUSTOM
-///                   bool:
-///                     value: false
-///                 - name: MaxPasswordAge
-///                   valueType: CUSTOM
-///                   int:
-///                     value: 60
+///       name: Custom Controls
+///       description: This is an example of configuration policy with custom control settings
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -928,7 +928,7 @@ class ConfigurationPolicy extends pulumi.CustomResource {
           'aws:securityhub/configurationPolicy:ConfigurationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -942,11 +942,12 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -960,6 +961,22 @@ class ConfigurationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationPolicy] resource.
+  ConfigurationPolicy.reference(String urn)
+    : super(
+        'aws:securityhub/configurationPolicy:ConfigurationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

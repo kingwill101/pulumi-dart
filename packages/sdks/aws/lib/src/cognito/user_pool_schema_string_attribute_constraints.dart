@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSchemaStringAttributeConstraints {
   /// Maximum length of an attribute value of the string type.
-  final pulumi.Input<String>? maxLength;
+  final pulumi.Input<String?>? maxLength;
   /// Minimum length of an attribute value of the string type.
-  final pulumi.Input<String>? minLength;
+  final pulumi.Input<String?>? minLength;
 
   /// Creates a new [UserPoolSchemaStringAttributeConstraints].
   /// [maxLength] Maximum length of an attribute value of the string type.

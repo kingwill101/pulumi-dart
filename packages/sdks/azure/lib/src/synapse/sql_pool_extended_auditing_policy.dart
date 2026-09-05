@@ -208,7 +208,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,7 +217,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -229,7 +229,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 		}
 /// 		exampleSqlPool, err := synapse.NewSqlPool(ctx, "example", &synapse.SqlPoolArgs{
 /// 			Name:               pulumi.String("examplesqlpool"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:            pulumi.String("DW100c"),
 /// 			CreateMode:         pulumi.String("Default"),
 /// 		})
@@ -247,7 +247,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = synapse.NewSqlPoolExtendedAuditingPolicy(ctx, "example", &synapse.SqlPoolExtendedAuditingPolicyArgs{
-/// 			SqlPoolId:                          exampleSqlPool.ID(),
+/// 			SqlPoolId:                          exampleSqlPool.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageEndpoint:                    auditLogs.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey:            auditLogs.PrimaryAccessKey,
 /// 			StorageAccountAccessKeyIsSecondary: pulumi.Bool(false),
@@ -503,12 +503,13 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
     sqlPoolId = registerOutput<String>('sqlPoolId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
@@ -518,11 +519,12 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlPoolExtendedAuditingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlPoolExtendedAuditingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -539,7 +541,25 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     retentionInDays = registerOutput<int?>('retentionInDays');
     sqlPoolId = registerOutput<String>('sqlPoolId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [SqlPoolExtendedAuditingPolicy] resource.
+  SqlPoolExtendedAuditingPolicy.reference(String urn)
+    : super(
+        'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    sqlPoolId = registerOutput<String>('sqlPoolId');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }

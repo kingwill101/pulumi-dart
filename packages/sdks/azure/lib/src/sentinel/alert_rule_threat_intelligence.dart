@@ -39,7 +39,7 @@ import 'alert_rule_threat_intelligence_state.dart';
 /// const exampleAlertRuleThreatIntelligence = new azure.sentinel.AlertRuleThreatIntelligence("example", {
 ///     name: "example-rule",
 ///     logAnalyticsWorkspaceId: exampleAnalyticsSolution.workspaceResourceId,
-///     alertRuleTemplateGuid: example.apply(example => example.name),
+///     alertRuleTemplateGuid: example.name,
 /// });
 /// ```
 /// ```python
@@ -154,7 +154,7 @@ import 'alert_rule_threat_intelligence_state.dart';
 /// 			SolutionName:        pulumi.String("SecurityInsights"),
 /// 			Location:            exampleResourceGroup.Location,
 /// 			ResourceGroupName:   exampleResourceGroup.Name,
-/// 			WorkspaceResourceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceResourceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			WorkspaceName:       exampleAnalyticsWorkspace.Name,
 /// 			Plan: &operationalinsights.AnalyticsSolutionPlanArgs{
 /// 				Publisher: pulumi.String("Microsoft"),
@@ -171,9 +171,7 @@ import 'alert_rule_threat_intelligence_state.dart';
 /// 		_, err = sentinel.NewAlertRuleThreatIntelligence(ctx, "example", &sentinel.AlertRuleThreatIntelligenceArgs{
 /// 			Name:                    pulumi.String("example-rule"),
 /// 			LogAnalyticsWorkspaceId: exampleAnalyticsSolution.WorkspaceResourceId,
-/// 			AlertRuleTemplateGuid: pulumi.String(example.ApplyT(func(example sentinel.GetAlertRuleTemplateResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			AlertRuleTemplateGuid:   example.Name(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -372,7 +370,7 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
           'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
@@ -385,11 +383,12 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleThreatIntelligenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleThreatIntelligence._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -403,6 +402,21 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleThreatIntelligence] resource.
+  AlertRuleThreatIntelligence.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

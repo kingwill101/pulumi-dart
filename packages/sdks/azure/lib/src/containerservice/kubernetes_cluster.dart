@@ -12,6 +12,8 @@ import 'kubernetes_cluster_identity.dart';
 import 'kubernetes_cluster_ingress_application_gateway.dart';
 import 'kubernetes_cluster_key_management_service.dart';
 import 'kubernetes_cluster_key_vault_secrets_provider.dart';
+import 'kubernetes_cluster_kube_admin_config.dart';
+import 'kubernetes_cluster_kube_config.dart';
 import 'kubernetes_cluster_kubelet_identity.dart';
 import 'kubernetes_cluster_linux_profile.dart';
 import 'kubernetes_cluster_maintenance_window.dart';
@@ -65,7 +67,7 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 ///         Environment: "Production",
 ///     },
 /// });
-/// export const clientCertificate = exampleKubernetesCluster.kubeConfigs.apply(kubeConfigs => kubeConfigs[0].clientCertificate);
+/// export const clientCertificate = exampleKubernetesCluster.kubeConfigs[0].clientCertificate;
 /// export const kubeConfig = exampleKubernetesCluster.kubeConfigRaw;
 /// ```
 /// ```python
@@ -386,11 +388,11 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// Raw Kubernetes config for the admin account to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts enabled.
   late final pulumi.Output<String> kubeAdminConfigRaw;
   /// A `kubeAdminConfig` block as defined below. This is only available when Role Based Access Control with Azure Active Directory is enabled and local accounts enabled.
-  late final pulumi.Output<List<Map<String, dynamic>>> kubeAdminConfigs;
+  late final pulumi.Output<List<KubernetesClusterKubeAdminConfig>> kubeAdminConfigs;
   /// Raw Kubernetes config to be used by [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) and other compatible tools.
   late final pulumi.Output<String> kubeConfigRaw;
   /// A `kubeConfig` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> kubeConfigs;
+  late final pulumi.Output<List<KubernetesClusterKubeConfig>> kubeConfigs;
   /// A `kubeletIdentity` block as defined below.
   late final pulumi.Output<KubernetesClusterKubeletIdentity> kubeletIdentity;
   /// Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as `1.22` are also supported. - The minor version's latest GA patch is automatically chosen in that case. More details can be found in [the documentation](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#alias-minor-version).
@@ -602,7 +604,7 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// 			return err
   /// 		}
   /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-  /// 			Scope:              exampleZone.ID(),
+  /// 			Scope:              exampleZone.ID().ToIDOutput().ToStringOutput(),
   /// 			RoleDefinitionName: pulumi.String("Private DNS Zone Contributor"),
   /// 			PrincipalId:        exampleUserAssignedIdentity.PrincipalId,
   /// 		})
@@ -615,7 +617,7 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// 			ResourceGroupName:     example.Name,
   /// 			DnsPrefix:             pulumi.String("aksexamplednsprefix1"),
   /// 			PrivateClusterEnabled: pulumi.Bool(true),
-  /// 			PrivateDnsZoneId:      exampleZone.ID(),
+  /// 			PrivateDnsZoneId:      exampleZone.ID().ToIDOutput().ToStringOutput(),
   /// 		}, pulumi.DependsOn([]pulumi.Resource{
   /// 			exampleAssignment,
   /// 		}))
@@ -824,7 +826,8 @@ class KubernetesCluster extends pulumi.CustomResource {
           'azure:containerservice/kubernetesCluster:KubernetesCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['kubeAdminConfigRaw', 'kubeAdminConfigs', 'kubeConfigRaw', 'kubeConfigs'],
         ) {
     aciConnectorLinux = registerOutput<KubernetesClusterAciConnectorLinux?>('aciConnectorLinux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAciConnectorLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     aiToolchainOperatorEnabled = registerOutput<bool?>('aiToolchainOperatorEnabled');
@@ -837,7 +840,7 @@ class KubernetesCluster extends pulumi.CustomResource {
     confidentialComputing = registerOutput<KubernetesClusterConfidentialComputing?>('confidentialComputing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterConfidentialComputing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     costAnalysisEnabled = registerOutput<bool?>('costAnalysisEnabled');
     currentKubernetesVersion = registerOutput<String>('currentKubernetesVersion');
-    customCaTrustCertificatesBase64s = registerOutput<List<String>?>('customCaTrustCertificatesBase64s');
+    customCaTrustCertificatesBase64s = registerOutput<List<String>?>('customCaTrustCertificatesBase64s', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultNodePool = registerOutput<KubernetesClusterDefaultNodePool>('defaultNodePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterDefaultNodePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskEncryptionSetId = registerOutput<String?>('diskEncryptionSetId');
     dnsPrefix = registerOutput<String?>('dnsPrefix');
@@ -853,10 +856,10 @@ class KubernetesCluster extends pulumi.CustomResource {
     ingressApplicationGateway = registerOutput<KubernetesClusterIngressApplicationGateway?>('ingressApplicationGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterIngressApplicationGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyManagementService = registerOutput<KubernetesClusterKeyManagementService?>('keyManagementService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyManagementService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultSecretsProvider = registerOutput<KubernetesClusterKeyVaultSecretsProvider?>('keyVaultSecretsProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyVaultSecretsProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    kubeAdminConfigRaw = registerOutput<String>('kubeAdminConfigRaw');
-    kubeAdminConfigs = registerOutput<List<Map<String, dynamic>>>('kubeAdminConfigs');
-    kubeConfigRaw = registerOutput<String>('kubeConfigRaw');
-    kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
+    kubeAdminConfigRaw = registerOutput<String>('kubeAdminConfigRaw', isSecret: true);
+    kubeAdminConfigs = registerOutput<List<KubernetesClusterKubeAdminConfig>>('kubeAdminConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeAdminConfig>(guardedValue, (value) => KubernetesClusterKubeAdminConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    kubeConfigRaw = registerOutput<String>('kubeConfigRaw', isSecret: true);
+    kubeConfigs = registerOutput<List<KubernetesClusterKubeConfig>>('kubeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeConfig>(guardedValue, (value) => KubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     kubeletIdentity = registerOutput<KubernetesClusterKubeletIdentity>('kubeletIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKubeletIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     linuxProfile = registerOutput<KubernetesClusterLinuxProfile?>('linuxProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterLinuxProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -890,7 +893,7 @@ class KubernetesCluster extends pulumi.CustomResource {
     skuTier = registerOutput<String?>('skuTier');
     storageProfile = registerOutput<KubernetesClusterStorageProfile?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportPlan = registerOutput<String?>('supportPlan');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeOverride = registerOutput<KubernetesClusterUpgradeOverride?>('upgradeOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterUpgradeOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAppRouting = registerOutput<KubernetesClusterWebAppRouting?>('webAppRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWebAppRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     windowsProfile = registerOutput<KubernetesClusterWindowsProfile>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -903,11 +906,12 @@ class KubernetesCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KubernetesClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KubernetesCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -932,7 +936,7 @@ class KubernetesCluster extends pulumi.CustomResource {
     confidentialComputing = registerOutput<KubernetesClusterConfidentialComputing?>('confidentialComputing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterConfidentialComputing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     costAnalysisEnabled = registerOutput<bool?>('costAnalysisEnabled');
     currentKubernetesVersion = registerOutput<String>('currentKubernetesVersion');
-    customCaTrustCertificatesBase64s = registerOutput<List<String>?>('customCaTrustCertificatesBase64s');
+    customCaTrustCertificatesBase64s = registerOutput<List<String>?>('customCaTrustCertificatesBase64s', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultNodePool = registerOutput<KubernetesClusterDefaultNodePool>('defaultNodePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterDefaultNodePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskEncryptionSetId = registerOutput<String?>('diskEncryptionSetId');
     dnsPrefix = registerOutput<String?>('dnsPrefix');
@@ -948,10 +952,10 @@ class KubernetesCluster extends pulumi.CustomResource {
     ingressApplicationGateway = registerOutput<KubernetesClusterIngressApplicationGateway?>('ingressApplicationGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterIngressApplicationGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyManagementService = registerOutput<KubernetesClusterKeyManagementService?>('keyManagementService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyManagementService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultSecretsProvider = registerOutput<KubernetesClusterKeyVaultSecretsProvider?>('keyVaultSecretsProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyVaultSecretsProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    kubeAdminConfigRaw = registerOutput<String>('kubeAdminConfigRaw');
-    kubeAdminConfigs = registerOutput<List<Map<String, dynamic>>>('kubeAdminConfigs');
-    kubeConfigRaw = registerOutput<String>('kubeConfigRaw');
-    kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
+    kubeAdminConfigRaw = registerOutput<String>('kubeAdminConfigRaw', isSecret: true);
+    kubeAdminConfigs = registerOutput<List<KubernetesClusterKubeAdminConfig>>('kubeAdminConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeAdminConfig>(guardedValue, (value) => KubernetesClusterKubeAdminConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    kubeConfigRaw = registerOutput<String>('kubeConfigRaw', isSecret: true);
+    kubeConfigs = registerOutput<List<KubernetesClusterKubeConfig>>('kubeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeConfig>(guardedValue, (value) => KubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     kubeletIdentity = registerOutput<KubernetesClusterKubeletIdentity>('kubeletIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKubeletIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     linuxProfile = registerOutput<KubernetesClusterLinuxProfile?>('linuxProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterLinuxProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -985,7 +989,89 @@ class KubernetesCluster extends pulumi.CustomResource {
     skuTier = registerOutput<String?>('skuTier');
     storageProfile = registerOutput<KubernetesClusterStorageProfile?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportPlan = registerOutput<String?>('supportPlan');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upgradeOverride = registerOutput<KubernetesClusterUpgradeOverride?>('upgradeOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterUpgradeOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webAppRouting = registerOutput<KubernetesClusterWebAppRouting?>('webAppRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWebAppRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    windowsProfile = registerOutput<KubernetesClusterWindowsProfile>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadAutoscalerProfile = registerOutput<KubernetesClusterWorkloadAutoscalerProfile?>('workloadAutoscalerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWorkloadAutoscalerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityEnabled = registerOutput<bool?>('workloadIdentityEnabled');
+  }
+
+  /// Creates a typed reference to an existing [KubernetesCluster] resource.
+  KubernetesCluster.reference(String urn)
+    : super(
+        'azure:containerservice/kubernetesCluster:KubernetesCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['kubeAdminConfigRaw', 'kubeAdminConfigs', 'kubeConfigRaw', 'kubeConfigs'],
+        isResourceReference: true,
+      ) {
+    aciConnectorLinux = registerOutput<KubernetesClusterAciConnectorLinux?>('aciConnectorLinux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAciConnectorLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aiToolchainOperatorEnabled = registerOutput<bool?>('aiToolchainOperatorEnabled');
+    apiServerAccessProfile = registerOutput<KubernetesClusterApiServerAccessProfile?>('apiServerAccessProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterApiServerAccessProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScalerProfile = registerOutput<KubernetesClusterAutoScalerProfile>('autoScalerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAutoScalerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
+    azureActiveDirectoryRoleBasedAccessControl = registerOutput<KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl?>('azureActiveDirectoryRoleBasedAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azurePolicyEnabled = registerOutput<bool?>('azurePolicyEnabled');
+    bootstrapProfile = registerOutput<KubernetesClusterBootstrapProfile>('bootstrapProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterBootstrapProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confidentialComputing = registerOutput<KubernetesClusterConfidentialComputing?>('confidentialComputing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterConfidentialComputing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    costAnalysisEnabled = registerOutput<bool?>('costAnalysisEnabled');
+    currentKubernetesVersion = registerOutput<String>('currentKubernetesVersion');
+    customCaTrustCertificatesBase64s = registerOutput<List<String>?>('customCaTrustCertificatesBase64s', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultNodePool = registerOutput<KubernetesClusterDefaultNodePool>('defaultNodePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterDefaultNodePool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptionSetId = registerOutput<String?>('diskEncryptionSetId');
+    dnsPrefix = registerOutput<String?>('dnsPrefix');
+    dnsPrefixPrivateCluster = registerOutput<String?>('dnsPrefixPrivateCluster');
+    edgeZone = registerOutput<String?>('edgeZone');
+    fqdn = registerOutput<String>('fqdn');
+    httpApplicationRoutingEnabled = registerOutput<bool?>('httpApplicationRoutingEnabled');
+    httpApplicationRoutingZoneName = registerOutput<String>('httpApplicationRoutingZoneName');
+    httpProxyConfig = registerOutput<KubernetesClusterHttpProxyConfig?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterHttpProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<KubernetesClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageCleanerEnabled = registerOutput<bool?>('imageCleanerEnabled');
+    imageCleanerIntervalHours = registerOutput<int?>('imageCleanerIntervalHours');
+    ingressApplicationGateway = registerOutput<KubernetesClusterIngressApplicationGateway?>('ingressApplicationGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterIngressApplicationGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyManagementService = registerOutput<KubernetesClusterKeyManagementService?>('keyManagementService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyManagementService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultSecretsProvider = registerOutput<KubernetesClusterKeyVaultSecretsProvider?>('keyVaultSecretsProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKeyVaultSecretsProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubeAdminConfigRaw = registerOutput<String>('kubeAdminConfigRaw', isSecret: true);
+    kubeAdminConfigs = registerOutput<List<KubernetesClusterKubeAdminConfig>>('kubeAdminConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeAdminConfig>(guardedValue, (value) => KubernetesClusterKubeAdminConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    kubeConfigRaw = registerOutput<String>('kubeConfigRaw', isSecret: true);
+    kubeConfigs = registerOutput<List<KubernetesClusterKubeConfig>>('kubeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterKubeConfig>(guardedValue, (value) => KubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    kubeletIdentity = registerOutput<KubernetesClusterKubeletIdentity>('kubeletIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterKubeletIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    linuxProfile = registerOutput<KubernetesClusterLinuxProfile?>('linuxProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterLinuxProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAccountDisabled = registerOutput<bool?>('localAccountDisabled');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<KubernetesClusterMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceWindowAutoUpgrade = registerOutput<KubernetesClusterMaintenanceWindowAutoUpgrade?>('maintenanceWindowAutoUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMaintenanceWindowAutoUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceWindowNodeOs = registerOutput<KubernetesClusterMaintenanceWindowNodeOs?>('maintenanceWindowNodeOs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMaintenanceWindowNodeOs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    microsoftDefender = registerOutput<KubernetesClusterMicrosoftDefender?>('microsoftDefender', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMicrosoftDefender.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitorMetrics = registerOutput<KubernetesClusterMonitorMetrics?>('monitorMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterMonitorMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<KubernetesClusterNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeOsUpgradeChannel = registerOutput<String?>('nodeOsUpgradeChannel');
+    nodeProvisioningProfile = registerOutput<KubernetesClusterNodeProvisioningProfile>('nodeProvisioningProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodeProvisioningProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeResourceGroup = registerOutput<String>('nodeResourceGroup');
+    nodeResourceGroupId = registerOutput<String>('nodeResourceGroupId');
+    oidcIssuerEnabled = registerOutput<bool>('oidcIssuerEnabled');
+    oidcIssuerUrl = registerOutput<String>('oidcIssuerUrl');
+    omsAgent = registerOutput<KubernetesClusterOmsAgent?>('omsAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterOmsAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    openServiceMeshEnabled = registerOutput<bool?>('openServiceMeshEnabled');
+    portalFqdn = registerOutput<String>('portalFqdn');
+    privateClusterEnabled = registerOutput<bool?>('privateClusterEnabled');
+    privateClusterPublicFqdnEnabled = registerOutput<bool?>('privateClusterPublicFqdnEnabled');
+    privateDnsZoneId = registerOutput<String>('privateDnsZoneId');
+    privateFqdn = registerOutput<String>('privateFqdn');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roleBasedAccessControlEnabled = registerOutput<bool?>('roleBasedAccessControlEnabled');
+    runCommandEnabled = registerOutput<bool?>('runCommandEnabled');
+    serviceMeshProfile = registerOutput<KubernetesClusterServiceMeshProfile?>('serviceMeshProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterServiceMeshProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicePrincipal = registerOutput<KubernetesClusterServicePrincipal?>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterServicePrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skuTier = registerOutput<String?>('skuTier');
+    storageProfile = registerOutput<KubernetesClusterStorageProfile?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportPlan = registerOutput<String?>('supportPlan');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradeOverride = registerOutput<KubernetesClusterUpgradeOverride?>('upgradeOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterUpgradeOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAppRouting = registerOutput<KubernetesClusterWebAppRouting?>('webAppRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWebAppRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     windowsProfile = registerOutput<KubernetesClusterWindowsProfile>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -263,12 +263,12 @@ class ResourceShareAccepter extends pulumi.CustomResource {
           'aws:ram/resourceShareAccepter:ResourceShareAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     invitationArn = registerOutput<String>('invitationArn');
     receiverAccountId = registerOutput<String>('receiverAccountId');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     senderAccountId = registerOutput<String>('senderAccountId');
     shareArn = registerOutput<String>('shareArn');
     shareId = registerOutput<String>('shareId');
@@ -281,11 +281,12 @@ class ResourceShareAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceShareAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceShareAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,7 +303,27 @@ class ResourceShareAccepter extends pulumi.CustomResource {
     invitationArn = registerOutput<String>('invitationArn');
     receiverAccountId = registerOutput<String>('receiverAccountId');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    senderAccountId = registerOutput<String>('senderAccountId');
+    shareArn = registerOutput<String>('shareArn');
+    shareId = registerOutput<String>('shareId');
+    shareName = registerOutput<String>('shareName');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [ResourceShareAccepter] resource.
+  ResourceShareAccepter.reference(String urn)
+    : super(
+        'aws:ram/resourceShareAccepter:ResourceShareAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    invitationArn = registerOutput<String>('invitationArn');
+    receiverAccountId = registerOutput<String>('receiverAccountId');
+    region = registerOutput<String>('region');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     senderAccountId = registerOutput<String>('senderAccountId');
     shareArn = registerOutput<String>('shareArn');
     shareId = registerOutput<String>('shareId');

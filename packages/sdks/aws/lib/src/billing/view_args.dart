@@ -10,18 +10,18 @@ import 'view_timeouts.dart';
 /// {@macro pulumi_billing_view_view_args_doc}
 class ViewArgs {
   /// Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
-  final pulumi.Input<ViewDataFilterExpression>? dataFilterExpression;
+  final pulumi.Input<ViewDataFilterExpression?>? dataFilterExpression;
   /// Description of the custom billing view.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the custom billing view to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of ARNs of the source data views for the custom billing view.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? sourceViews;
+  final pulumi.Input<List<String>?>? sourceViews;
   /// List of key value map specifying tags associated to the billing view being created.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ViewTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ViewTimeouts?>? timeouts;
 
   /// Creates a new [ViewArgs].
   /// [dataFilterExpression] Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.

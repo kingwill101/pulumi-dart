@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_encryption_detail.dart';
 import 'cluster_multi_region_properties.dart';
 import 'cluster_state.dart';
 import 'cluster_timeouts.dart';
@@ -132,6 +133,18 @@ import 'cluster_timeouts.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `identifier` (String) Cluster Identifier.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import DSQL Cluster using the `identifier`. For example:
 ///
 /// ```sh
@@ -144,7 +157,7 @@ class Cluster extends pulumi.CustomResource {
   /// Default value is `false`.
   late final pulumi.Output<bool> deletionProtectionEnabled;
   /// Encryption configuration details for the DSQL Cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionDetails;
+  late final pulumi.Output<List<ClusterEncryptionDetail>> encryptionDetails;
   /// Destroys cluster even if `deletionProtectionEnabled` is set to `true`.
   /// Default value is `false`.
   late final pulumi.Output<bool> forceDestroy;
@@ -176,18 +189,18 @@ class Cluster extends pulumi.CustomResource {
           'aws:dsql/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
-    encryptionDetails = registerOutput<List<Map<String, dynamic>>>('encryptionDetails');
+    encryptionDetails = registerOutput<List<ClusterEncryptionDetail>>('encryptionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionDetail>(guardedValue, (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool>('forceDestroy');
     identifier = registerOutput<String>('identifier');
     kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
     multiRegionProperties = registerOutput<ClusterMultiRegionProperties?>('multiRegionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMultiRegionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
   }
@@ -197,11 +210,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,14 +231,37 @@ class Cluster extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
-    encryptionDetails = registerOutput<List<Map<String, dynamic>>>('encryptionDetails');
+    encryptionDetails = registerOutput<List<ClusterEncryptionDetail>>('encryptionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionDetail>(guardedValue, (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool>('forceDestroy');
     identifier = registerOutput<String>('identifier');
     kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
     multiRegionProperties = registerOutput<ClusterMultiRegionProperties?>('multiRegionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMultiRegionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:dsql/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    encryptionDetails = registerOutput<List<ClusterEncryptionDetail>>('encryptionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionDetail>(guardedValue, (value) => ClusterEncryptionDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDestroy = registerOutput<bool>('forceDestroy');
+    identifier = registerOutput<String>('identifier');
+    kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
+    multiRegionProperties = registerOutput<ClusterMultiRegionProperties?>('multiRegionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMultiRegionProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
   }

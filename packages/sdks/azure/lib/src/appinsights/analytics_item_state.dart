@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AnalyticsItem resources.
 class AnalyticsItemState {
   /// The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationInsightsId;
+  final pulumi.Input<String?>? applicationInsightsId;
   /// The content for the Analytics Item, for example the query text if `type` is `query`.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The alias to use for the function. Required when `type` is `function`.
-  final pulumi.Input<String>? functionAlias;
+  final pulumi.Input<String?>? functionAlias;
   /// Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// A string containing the time the Analytics Item was created.
-  final pulumi.Input<String>? timeCreated;
+  final pulumi.Input<String?>? timeCreated;
   /// A string containing the time the Analytics Item was last modified.
-  final pulumi.Input<String>? timeModified;
+  final pulumi.Input<String?>? timeModified;
   /// The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A string indicating the version of the query format
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AnalyticsItemState].
   /// [applicationInsightsId] The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.

@@ -104,7 +104,7 @@ import 'linked_service_web_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceWeb(ctx, "example", &datafactory.LinkedServiceWebArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Anonymous"),
 /// 			Url:                pulumi.String("http://www.bing.com"),
 /// 		})
@@ -256,17 +256,18 @@ class LinkedServiceWeb extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceWeb:LinkedServiceWeb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     url = registerOutput<String>('url');
     username = registerOutput<String?>('username');
   }
@@ -276,11 +277,12 @@ class LinkedServiceWeb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceWebState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceWeb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,15 +296,38 @@ class LinkedServiceWeb extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
+    url = registerOutput<String>('url');
+    username = registerOutput<String?>('username');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceWeb] resource.
+  LinkedServiceWeb.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceWeb:LinkedServiceWeb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authenticationType = registerOutput<String>('authenticationType');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     url = registerOutput<String>('url');
     username = registerOutput<String?>('username');
   }

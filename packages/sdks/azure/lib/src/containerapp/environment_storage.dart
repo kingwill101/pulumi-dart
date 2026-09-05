@@ -178,7 +178,7 @@ import 'environment_storage_state.dart';
 /// 			Name:                    pulumi.String("myEnvironment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -203,7 +203,7 @@ import 'environment_storage_state.dart';
 /// 		}
 /// 		_, err = containerapp.NewEnvironmentStorage(ctx, "example", &containerapp.EnvironmentStorageArgs{
 /// 			Name:                      pulumi.String("mycontainerappstorage"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountName:               exampleAccount.Name,
 /// 			ShareName:                 exampleShare.Name,
 /// 			AccessKey:                 exampleAccount.PrimaryAccessKey,
@@ -435,9 +435,10 @@ class EnvironmentStorage extends pulumi.CustomResource {
           'azure:containerapp/environmentStorage:EnvironmentStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['accessKey'],
         ) {
-    accessKey = registerOutput<String?>('accessKey');
+    accessKey = registerOutput<String?>('accessKey', isSecret: true);
     accessMode = registerOutput<String>('accessMode');
     accountName = registerOutput<String?>('accountName');
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
@@ -451,11 +452,12 @@ class EnvironmentStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -469,7 +471,26 @@ class EnvironmentStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessKey = registerOutput<String?>('accessKey');
+    accessKey = registerOutput<String?>('accessKey', isSecret: true);
+    accessMode = registerOutput<String>('accessMode');
+    accountName = registerOutput<String?>('accountName');
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    this.name = registerOutput<String>('name');
+    nfsServerUrl = registerOutput<String?>('nfsServerUrl');
+    shareName = registerOutput<String>('shareName');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentStorage] resource.
+  EnvironmentStorage.reference(String urn)
+    : super(
+        'azure:containerapp/environmentStorage:EnvironmentStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accessKey'],
+        isResourceReference: true,
+      ) {
+    accessKey = registerOutput<String?>('accessKey', isSecret: true);
     accessMode = registerOutput<String>('accessMode');
     accountName = registerOutput<String?>('accountName');
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');

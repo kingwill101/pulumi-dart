@@ -8,29 +8,29 @@ import 'application_timeouts.dart';
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// ARN of the Q Business application.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachmentsConfiguration` below.
-  final pulumi.Input<ApplicationAttachmentsConfiguration>? attachmentsConfiguration;
+  final pulumi.Input<ApplicationAttachmentsConfiguration?>? attachmentsConfiguration;
   /// Description of the Amazon Q application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the Amazon Q application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Information about encryption configuration. See `encryptionConfiguration` below.
-  final pulumi.Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<ApplicationEncryptionConfiguration?>? encryptionConfiguration;
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.
-  final pulumi.Input<String>? iamServiceRoleArn;
+  final pulumi.Input<String?>? iamServiceRoleArn;
   /// ARN of the AWS IAM Identity Center application attached to your Amazon Q Business application.
-  final pulumi.Input<String>? identityCenterApplicationArn;
+  final pulumi.Input<String?>? identityCenterApplicationArn;
   /// ARN of the IAM Identity Center instance you are either creating for — or connecting to — your Amazon Q Business application.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? identityCenterInstanceArn;
+  final pulumi.Input<String?>? identityCenterInstanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ApplicationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationState].
   /// [arn] ARN of the Q Business application.

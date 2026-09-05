@@ -149,13 +149,13 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.elasticache.User("test", {
+///     authenticationMode: {
+///         type: "iam",
+///     },
 ///     userId: "testUserId",
 ///     userName: "testUserName",
 ///     accessString: "on ~* +@all",
 ///     engine: "redis",
-///     authenticationMode: {
-///         type: "iam",
-///     },
 /// });
 /// ```
 /// ```python
@@ -163,13 +163,13 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.elasticache.User("test",
+///     authentication_mode={
+///         "type": "iam",
+///     },
 ///     user_id="testUserId",
 ///     user_name="testUserName",
 ///     access_string="on ~* +@all",
-///     engine="redis",
-///     authentication_mode={
-///         "type": "iam",
-///     })
+///     engine="redis")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -181,14 +181,14 @@ import 'user_state.dart';
 /// {
 ///     var test = new Aws.ElastiCache.User("test", new()
 ///     {
-///         UserId = "testUserId",
-///         UserName = "testUserName",
-///         AccessString = "on ~* +@all",
-///         Engine = "redis",
 ///         AuthenticationMode = new Aws.ElastiCache.Inputs.UserAuthenticationModeArgs
 ///         {
 ///             Type = "iam",
 ///         },
+///         UserId = "testUserId",
+///         UserName = "testUserName",
+///         AccessString = "on ~* +@all",
+///         Engine = "redis",
 ///     });
 ///
 /// });
@@ -204,13 +204,13 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewUser(ctx, "test", &elasticache.UserArgs{
+/// 			AuthenticationMode: &elasticache.UserAuthenticationModeArgs{
+/// 				Type: pulumi.String("iam"),
+/// 			},
 /// 			UserId:       pulumi.String("testUserId"),
 /// 			UserName:     pulumi.String("testUserName"),
 /// 			AccessString: pulumi.String("on ~* +@all"),
 /// 			Engine:       pulumi.String("redis"),
-/// 			AuthenticationMode: &elasticache.UserAuthenticationModeArgs{
-/// 				Type: pulumi.String("iam"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -229,13 +229,13 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
+///   authentication_mode = {
+///     type = "iam"
+///   }
 ///   user_id       = "testUserId"
 ///   user_name     = "testUserName"
 ///   access_string = "on ~* +@all"
 ///   engine        = "redis"
-///   authentication_mode = {
-///     type = "iam"
-///   }
 /// }
 /// ```
 /// ```java
@@ -261,13 +261,13 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new User("test", UserArgs.builder()
+///             .authenticationMode(UserAuthenticationModeArgs.builder()
+///                 .type("iam")
+///                 .build())
 ///             .userId("testUserId")
 ///             .userName("testUserName")
 ///             .accessString("on ~* +@all")
 ///             .engine("redis")
-///             .authenticationMode(UserAuthenticationModeArgs.builder()
-///                 .type("iam")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -278,12 +278,12 @@ import 'user_state.dart';
 ///   test:
 ///     type: aws:elasticache:User
 ///     properties:
+///       authenticationMode:
+///         type: iam
 ///       userId: testUserId
 ///       userName: testUserName
 ///       accessString: on ~* +@all
 ///       engine: redis
-///       authenticationMode:
-///         type: iam
 /// ```
 ///
 ///
@@ -293,10 +293,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.elasticache.User("test", {
-///     userId: "testUserId",
-///     userName: "testUserName",
-///     accessString: "on ~* +@all",
-///     engine: "redis",
 ///     authenticationMode: {
 ///         type: "password",
 ///         passwords: [
@@ -304,6 +300,10 @@ import 'user_state.dart';
 ///             "password2",
 ///         ],
 ///     },
+///     userId: "testUserId",
+///     userName: "testUserName",
+///     accessString: "on ~* +@all",
+///     engine: "redis",
 /// });
 /// ```
 /// ```python
@@ -311,17 +311,17 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.elasticache.User("test",
-///     user_id="testUserId",
-///     user_name="testUserName",
-///     access_string="on ~* +@all",
-///     engine="redis",
 ///     authentication_mode={
 ///         "type": "password",
 ///         "passwords": [
 ///             "password1",
 ///             "password2",
 ///         ],
-///     })
+///     },
+///     user_id="testUserId",
+///     user_name="testUserName",
+///     access_string="on ~* +@all",
+///     engine="redis")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -333,10 +333,6 @@ import 'user_state.dart';
 /// {
 ///     var test = new Aws.ElastiCache.User("test", new()
 ///     {
-///         UserId = "testUserId",
-///         UserName = "testUserName",
-///         AccessString = "on ~* +@all",
-///         Engine = "redis",
 ///         AuthenticationMode = new Aws.ElastiCache.Inputs.UserAuthenticationModeArgs
 ///         {
 ///             Type = "password",
@@ -346,6 +342,10 @@ import 'user_state.dart';
 ///                 "password2",
 ///             },
 ///         },
+///         UserId = "testUserId",
+///         UserName = "testUserName",
+///         AccessString = "on ~* +@all",
+///         Engine = "redis",
 ///     });
 ///
 /// });
@@ -361,10 +361,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewUser(ctx, "test", &elasticache.UserArgs{
-/// 			UserId:       pulumi.String("testUserId"),
-/// 			UserName:     pulumi.String("testUserName"),
-/// 			AccessString: pulumi.String("on ~* +@all"),
-/// 			Engine:       pulumi.String("redis"),
 /// 			AuthenticationMode: &elasticache.UserAuthenticationModeArgs{
 /// 				Type: pulumi.String("password"),
 /// 				Passwords: pulumi.StringArray{
@@ -372,6 +368,10 @@ import 'user_state.dart';
 /// 					pulumi.String("password2"),
 /// 				},
 /// 			},
+/// 			UserId:       pulumi.String("testUserId"),
+/// 			UserName:     pulumi.String("testUserName"),
+/// 			AccessString: pulumi.String("on ~* +@all"),
+/// 			Engine:       pulumi.String("redis"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -390,14 +390,14 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
-///   user_id       = "testUserId"
-///   user_name     = "testUserName"
-///   access_string = "on ~* +@all"
-///   engine        = "redis"
 ///   authentication_mode = {
 ///     type      = "password"
 ///     passwords = ["password1", "password2"]
 ///   }
+///   user_id       = "testUserId"
+///   user_name     = "testUserName"
+///   access_string = "on ~* +@all"
+///   engine        = "redis"
 /// }
 /// ```
 /// ```java
@@ -423,16 +423,16 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new User("test", UserArgs.builder()
-///             .userId("testUserId")
-///             .userName("testUserName")
-///             .accessString("on ~* +@all")
-///             .engine("redis")
 ///             .authenticationMode(UserAuthenticationModeArgs.builder()
 ///                 .type("password")
 ///                 .passwords(
 ///                     "password1",
 ///                     "password2")
 ///                 .build())
+///             .userId("testUserId")
+///             .userName("testUserName")
+///             .accessString("on ~* +@all")
+///             .engine("redis")
 ///             .build());
 ///
 ///     }
@@ -443,15 +443,15 @@ import 'user_state.dart';
 ///   test:
 ///     type: aws:elasticache:User
 ///     properties:
-///       userId: testUserId
-///       userName: testUserName
-///       accessString: on ~* +@all
-///       engine: redis
 ///       authenticationMode:
 ///         type: password
 ///         passwords:
 ///           - password1
 ///           - password2
+///       userId: testUserId
+///       userName: testUserName
+///       accessString: on ~* +@all
+///       engine: redis
 /// ```
 ///
 ///
@@ -642,19 +642,20 @@ class User extends pulumi.CustomResource {
           'aws:elasticache/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['passwords', 'passwordsWo'],
         ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
-    passwords = registerOutput<List<String>?>('passwords');
-    passwordsWo = registerOutput<String?>('passwordsWo');
+    passwords = registerOutput<List<String>?>('passwords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); }, isSecret: true);
+    passwordsWo = registerOutput<String?>('passwordsWo', isSecret: true);
     passwordsWoVersion = registerOutput<int?>('passwordsWoVersion');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userId = registerOutput<String>('userId');
     userName = registerOutput<String>('userName');
   }
@@ -664,11 +665,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -687,12 +689,37 @@ class User extends pulumi.CustomResource {
     authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
-    passwords = registerOutput<List<String>?>('passwords');
-    passwordsWo = registerOutput<String?>('passwordsWo');
+    passwords = registerOutput<List<String>?>('passwords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); }, isSecret: true);
+    passwordsWo = registerOutput<String?>('passwordsWo', isSecret: true);
     passwordsWoVersion = registerOutput<int?>('passwordsWoVersion');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:elasticache/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['passwords', 'passwordsWo'],
+        isResourceReference: true,
+      ) {
+    accessString = registerOutput<String>('accessString');
+    arn = registerOutput<String>('arn');
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    engine = registerOutput<String>('engine');
+    noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
+    passwords = registerOutput<List<String>?>('passwords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); }, isSecret: true);
+    passwordsWo = registerOutput<String?>('passwordsWo', isSecret: true);
+    passwordsWoVersion = registerOutput<int?>('passwordsWoVersion');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userId = registerOutput<String>('userId');
     userName = registerOutput<String>('userName');
   }

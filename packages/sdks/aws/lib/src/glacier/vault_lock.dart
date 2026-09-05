@@ -22,14 +22,14 @@ import 'vault_lock_state.dart';
 /// const exampleVault = new aws.glacier.Vault("example", {name: "example"});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         actions: ["glacier:DeleteArchive"],
-///         effect: "Deny",
-///         resources: [exampleVault.arn],
 ///         conditions: [{
 ///             test: "NumericLessThanEquals",
 ///             variable: "glacier:ArchiveAgeinDays",
 ///             values: ["365"],
 ///         }],
+///         actions: ["glacier:DeleteArchive"],
+///         effect: "Deny",
+///         resources: [exampleVault.arn],
 ///     }],
 /// });
 /// const exampleVaultLock = new aws.glacier.VaultLock("example", {
@@ -44,14 +44,14 @@ import 'vault_lock_state.dart';
 ///
 /// example_vault = aws.glacier.Vault("example", name="example")
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "actions": ["glacier:DeleteArchive"],
-///     "effect": "Deny",
-///     "resources": [example_vault.arn],
 ///     "conditions": [{
 ///         "test": "NumericLessThanEquals",
 ///         "variable": "glacier:ArchiveAgeinDays",
 ///         "values": ["365"],
 ///     }],
+///     "actions": ["glacier:DeleteArchive"],
+///     "effect": "Deny",
+///     "resources": [example_vault.arn],
 /// }])
 /// example_vault_lock = aws.glacier.VaultLock("example",
 ///     complete_lock=False,
@@ -77,15 +77,6 @@ import 'vault_lock_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "glacier:DeleteArchive",
-///                 },
-///                 Effect = "Deny",
-///                 Resources = new[]
-///                 {
-///                     exampleVault.Arn,
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -97,6 +88,15 @@ import 'vault_lock_state.dart';
 ///                             "365",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "glacier:DeleteArchive",
+///                 },
+///                 Effect = "Deny",
+///                 Resources = new[]
+///                 {
+///                     exampleVault.Arn,
 ///                 },
 ///             },
 ///         },
@@ -131,13 +131,6 @@ import 'vault_lock_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("glacier:DeleteArchive"),
-/// 					},
-/// 					Effect: pulumi.String("Deny"),
-/// 					Resources: pulumi.StringArray{
-/// 						exampleVault.Arn,
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("NumericLessThanEquals"),
@@ -146,6 +139,13 @@ import 'vault_lock_state.dart';
 /// 								pulumi.String("365"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("glacier:DeleteArchive"),
+/// 					},
+/// 					Effect: pulumi.String("Deny"),
+/// 					Resources: pulumi.StringArray{
+/// 						exampleVault.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -173,14 +173,14 @@ import 'vault_lock_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions   = ["glacier:DeleteArchive"]
-///     effect    = "Deny"
-///     resources = [aws_glacier_vault.example.arn]
 ///     conditions {
 ///       test     = "NumericLessThanEquals"
 ///       variable = "glacier:ArchiveAgeinDays"
 ///       values   = ["365"]
 ///     }
+///     actions   = ["glacier:DeleteArchive"]
+///     effect    = "Deny"
+///     resources = [aws_glacier_vault.example.arn]
 ///   }
 /// }
 ///
@@ -226,14 +226,14 @@ import 'vault_lock_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("glacier:DeleteArchive")
-///                 .effect("Deny")
-///                 .resources(exampleVault.arn())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("NumericLessThanEquals")
 ///                     .variable("glacier:ArchiveAgeinDays")
 ///                     .values("365")
 ///                     .build())
+///                 .actions("glacier:DeleteArchive")
+///                 .effect("Deny")
+///                 .resources(exampleVault.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -266,16 +266,16 @@ import 'vault_lock_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - glacier:DeleteArchive
-///             effect: Deny
-///             resources:
-///               - ${exampleVault.arn}
-///             conditions:
+///           - conditions:
 ///               - test: NumericLessThanEquals
 ///                 variable: glacier:ArchiveAgeinDays
 ///                 values:
 ///                   - '365'
+///             actions:
+///               - glacier:DeleteArchive
+///             effect: Deny
+///             resources:
+///               - ${exampleVault.arn}
 /// ```
 ///
 ///
@@ -427,7 +427,7 @@ class VaultLock extends pulumi.CustomResource {
           'aws:glacier/vaultLock:VaultLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     completeLock = registerOutput<bool>('completeLock');
     ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');
@@ -441,11 +441,12 @@ class VaultLock extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultLockState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VaultLock._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,6 +460,22 @@ class VaultLock extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    completeLock = registerOutput<bool>('completeLock');
+    ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    vaultName = registerOutput<String>('vaultName');
+  }
+
+  /// Creates a typed reference to an existing [VaultLock] resource.
+  VaultLock.reference(String urn)
+    : super(
+        'aws:glacier/vaultLock:VaultLock',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     completeLock = registerOutput<bool>('completeLock');
     ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');
     policy = registerOutput<String>('policy');

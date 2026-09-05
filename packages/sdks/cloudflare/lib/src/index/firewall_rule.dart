@@ -253,7 +253,7 @@ class FirewallRule extends pulumi.CustomResource {
           'cloudflare:index/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     action = registerOutput<FirewallRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

@@ -10,15 +10,15 @@ import 'volume_label.dart';
 /// {@macro pulumi_index_volume_volume_args_doc}
 class VolumeArgs {
   /// Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.
-  final pulumi.Input<VolumeCluster>? cluster;
+  final pulumi.Input<VolumeCluster?>? cluster;
   /// Driver type for the volume. Defaults to `local`.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// Options specific to the driver.
-  final pulumi.Input<Map<String, String>>? driverOpts;
+  final pulumi.Input<Map<String, String>?>? driverOpts;
   /// User-defined key/value metadata
-  final pulumi.Input<List<VolumeLabel>>? labels;
+  final pulumi.Input<List<VolumeLabel>?>? labels;
   /// The name of the Docker volume (will be generated if not provided).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VolumeArgs].
   /// [cluster] Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.

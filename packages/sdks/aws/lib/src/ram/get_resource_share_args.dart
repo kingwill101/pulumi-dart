@@ -9,17 +9,17 @@ import 'get_resource_share_filter.dart';
 /// {@macro pulumi_ram_get_resource_share_get_resource_share_args_doc}
 class GetResourceShareArgs {
   /// Filter used to scope the list e.g., by tags. See `filter` Block below.
-  final pulumi.Input<List<GetResourceShareFilter>>? filters;
+  final pulumi.Input<List<GetResourceShareFilter>?>? filters;
   /// Name of the resource share to retrieve.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Owner of the resource share. Valid values are `SELF` or `OTHER-ACCOUNTS`.
   final pulumi.Input<String> resourceOwner;
   /// Status of resource shares to retrieve. Valid values are `PENDING`, `ACTIVE`, `FAILED`, `DELETING`, and `DELETED`.
-  final pulumi.Input<String>? resourceShareStatus;
+  final pulumi.Input<String?>? resourceShareStatus;
   /// Tags attached to the resource share.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetResourceShareArgs].
   /// [filters] Filter used to scope the list e.g., by tags. See `filter` Block below.

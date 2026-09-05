@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverInboundEndpointIpConfigurations {
   /// Private IP address of the IP configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Private IP address allocation method. Possible values are `Dynamic` and `Static`. Defaults to `Dynamic`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<String?>? privateIpAllocationMethod;
   /// The subnet ID of the IP configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_mover_project_mover_project_args_doc}
 class MoverProjectArgs {
   /// Specifies a description for this Storage Mover Project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageMoverId;
 

@@ -164,7 +164,7 @@ import 'network_manager_scope_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerScopeConnection(ctx, "example", &network.NetworkManagerScopeConnectionArgs{
 /// 			Name:             pulumi.String("example-nsc"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:         pulumi.String(current.TenantId),
 /// 			TargetScopeId:    pulumi.String(alt.Id),
 /// 			Description:      pulumi.String("example"),
@@ -362,7 +362,7 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
           'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
@@ -377,11 +377,12 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerScopeConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerScopeConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -395,6 +396,23 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    targetScopeId = registerOutput<String>('targetScopeId');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerScopeConnection] resource.
+  NetworkManagerScopeConnection.reference(String urn)
+    : super(
+        'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

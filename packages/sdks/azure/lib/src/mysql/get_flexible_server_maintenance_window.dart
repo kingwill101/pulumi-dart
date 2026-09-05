@@ -30,9 +30,9 @@ class GetFlexibleServerMaintenanceWindow {
 
   factory GetFlexibleServerMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerMaintenanceWindow(
-      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as int),
-      startHour: pulumi.Input.fromValue(map['startHour'] as int),
-      startMinute: pulumi.Input.fromValue(map['startMinute'] as int),
+      dayOfWeek: pulumi.Input.fromValue((map['dayOfWeek'] as num).toInt()),
+      startHour: pulumi.Input.fromValue((map['startHour'] as num).toInt()),
+      startMinute: pulumi.Input.fromValue((map['startMinute'] as num).toInt()),
     );
   }
 }

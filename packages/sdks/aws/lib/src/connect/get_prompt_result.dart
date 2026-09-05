@@ -4,50 +4,50 @@
 /// Result data returned by getPrompt.
 class GetPromptResult {
   /// ARN of the Prompt.
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instanceId;
-  final String name;
+  final String? id;
+  final String? instanceId;
+  final String? name;
   /// Identifier for the prompt.
-  final String promptId;
-  final String region;
+  final String? promptId;
+  final String? region;
 
   /// Creates a new [GetPromptResult].
   /// [arn] ARN of the Prompt.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceId] Required.
-  /// [name] Required.
+  /// [instanceId] Optional.
+  /// [name] Optional.
   /// [promptId] Identifier for the prompt.
-  /// [region] Required.
+  /// [region] Optional.
   const GetPromptResult({
-    required this.arn,
-    required this.id,
-    required this.instanceId,
-    required this.name,
-    required this.promptId,
-    required this.region,
+    this.arn,
+    this.id,
+    this.instanceId,
+    this.name,
+    this.promptId,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'instanceId': instanceId,
-      'name': name,
-      'promptId': promptId,
-      'region': region,
+      'arn': ?arn,
+      'id': ?id,
+      'instanceId': ?instanceId,
+      'name': ?name,
+      'promptId': ?promptId,
+      'region': ?region,
     };
   }
 
   factory GetPromptResult.fromMap(Map<String, dynamic> map) {
     return GetPromptResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      name: map['name'] as String,
-      promptId: map['promptId'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      promptId: (() { final guardedValue = map['promptId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,39 +4,39 @@
 /// Result data returned by getOrganizationalUnit.
 class GetOrganizationalUnitResult {
   /// ARN of the organizational unit
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String parentId;
+  final String? id;
+  final String? name;
+  final String? parentId;
 
   /// Creates a new [GetOrganizationalUnitResult].
   /// [arn] ARN of the organizational unit
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [parentId] Required.
+  /// [name] Optional.
+  /// [parentId] Optional.
   const GetOrganizationalUnitResult({
-    required this.arn,
-    required this.id,
-    required this.name,
-    required this.parentId,
+    this.arn,
+    this.id,
+    this.name,
+    this.parentId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'name': name,
-      'parentId': parentId,
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+      'parentId': ?parentId,
     };
   }
 
   factory GetOrganizationalUnitResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      parentId: map['parentId'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentId: (() { final guardedValue = map['parentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

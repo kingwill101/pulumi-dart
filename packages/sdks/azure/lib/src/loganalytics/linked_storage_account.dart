@@ -145,9 +145,9 @@ import 'linked_storage_account_state.dart';
 /// 		_, err = loganalytics.NewLinkedStorageAccount(ctx, "example", &loganalytics.LinkedStorageAccountArgs{
 /// 			DataSourceType:    pulumi.String("CustomLogs"),
 /// 			ResourceGroupName: example.Name,
-/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountIds: pulumi.StringArray{
-/// 				exampleAccount.ID(),
+/// 				exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -320,11 +320,11 @@ class LinkedStorageAccount extends pulumi.CustomResource {
           'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataSourceType = registerOutput<String>('dataSourceType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storageAccountIds = registerOutput<List<String>>('storageAccountIds');
+    storageAccountIds = registerOutput<List<String>>('storageAccountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
@@ -334,11 +334,12 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedStorageAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedStorageAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,7 +355,23 @@ class LinkedStorageAccount extends pulumi.CustomResource {
         ) {
     dataSourceType = registerOutput<String>('dataSourceType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storageAccountIds = registerOutput<List<String>>('storageAccountIds');
+    storageAccountIds = registerOutput<List<String>>('storageAccountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
+  }
+
+  /// Creates a typed reference to an existing [LinkedStorageAccount] resource.
+  LinkedStorageAccount.reference(String urn)
+    : super(
+        'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataSourceType = registerOutput<String>('dataSourceType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountIds = registerOutput<List<String>>('storageAccountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }

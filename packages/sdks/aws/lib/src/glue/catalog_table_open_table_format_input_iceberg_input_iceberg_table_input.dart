@@ -9,13 +9,13 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInput {
   /// S3 location where the Iceberg table data will be stored. Maximum length of 2056 characters.
   final pulumi.Input<String> location;
   /// Partitioning specification that defines how the Iceberg table data will be organized and partitioned for optimal query performance. See `partitionSpec` below.
-  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec>? partitionSpec;
+  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec?>? partitionSpec;
   /// Key-value pairs of additional table properties and configuration settings for the Iceberg table.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Schema definition that specifies the structure, field types, and metadata for the Iceberg table. See `schema` below.
   final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema> schema;
   /// Sort order specification that defines how data should be ordered within each partition to optimize query performance. See `sortOrder` below.
-  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder>? sortOrder;
+  final pulumi.Input<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder?>? sortOrder;
 
   /// Creates a new [CatalogTableOpenTableFormatInputIcebergInputIcebergTableInput].
   /// [location] S3 location where the Iceberg table data will be stored. Maximum length of 2056 characters.

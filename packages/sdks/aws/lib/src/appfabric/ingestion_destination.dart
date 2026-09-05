@@ -17,8 +17,6 @@ import 'ingestion_destination_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appfabric.IngestionDestination("example", {
-///     appBundleArn: exampleAwsAppfabricAppBundle.arn,
-///     ingestionArn: exampleAwsAppfabricIngestion.arn,
 ///     processingConfiguration: {
 ///         auditLog: {
 ///             format: "json",
@@ -34,6 +32,8 @@ import 'ingestion_destination_timeouts.dart';
 ///             },
 ///         },
 ///     },
+///     appBundleArn: exampleAwsAppfabricAppBundle.arn,
+///     ingestionArn: exampleAwsAppfabricIngestion.arn,
 /// });
 /// ```
 /// ```python
@@ -41,8 +41,6 @@ import 'ingestion_destination_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appfabric.IngestionDestination("example",
-///     app_bundle_arn=example_aws_appfabric_app_bundle["arn"],
-///     ingestion_arn=example_aws_appfabric_ingestion["arn"],
 ///     processing_configuration={
 ///         "audit_log": {
 ///             "format": "json",
@@ -57,7 +55,9 @@ import 'ingestion_destination_timeouts.dart';
 ///                 },
 ///             },
 ///         },
-///     })
+///     },
+///     app_bundle_arn=example_aws_appfabric_app_bundle["arn"],
+///     ingestion_arn=example_aws_appfabric_ingestion["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -69,8 +69,6 @@ import 'ingestion_destination_timeouts.dart';
 /// {
 ///     var example = new Aws.AppFabric.IngestionDestination("example", new()
 ///     {
-///         AppBundleArn = exampleAwsAppfabricAppBundle.Arn,
-///         IngestionArn = exampleAwsAppfabricIngestion.Arn,
 ///         ProcessingConfiguration = new Aws.AppFabric.Inputs.IngestionDestinationProcessingConfigurationArgs
 ///         {
 ///             AuditLog = new Aws.AppFabric.Inputs.IngestionDestinationProcessingConfigurationAuditLogArgs
@@ -92,6 +90,8 @@ import 'ingestion_destination_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         AppBundleArn = exampleAwsAppfabricAppBundle.Arn,
+///         IngestionArn = exampleAwsAppfabricIngestion.Arn,
 ///     });
 ///
 /// });
@@ -107,8 +107,6 @@ import 'ingestion_destination_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appfabric.NewIngestionDestination(ctx, "example", &appfabric.IngestionDestinationArgs{
-/// 			AppBundleArn: pulumi.Any(exampleAwsAppfabricAppBundle.Arn),
-/// 			IngestionArn: pulumi.Any(exampleAwsAppfabricIngestion.Arn),
 /// 			ProcessingConfiguration: &appfabric.IngestionDestinationProcessingConfigurationArgs{
 /// 				AuditLog: &appfabric.IngestionDestinationProcessingConfigurationAuditLogArgs{
 /// 					Format: pulumi.String("json"),
@@ -124,6 +122,8 @@ import 'ingestion_destination_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AppBundleArn: pulumi.Any(exampleAwsAppfabricAppBundle.Arn),
+/// 			IngestionArn: pulumi.Any(exampleAwsAppfabricIngestion.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,8 +142,6 @@ import 'ingestion_destination_timeouts.dart';
 /// }
 ///
 /// resource "aws_appfabric_ingestiondestination" "example" {
-///   app_bundle_arn = exampleAwsAppfabricAppBundle.arn
-///   ingestion_arn  = exampleAwsAppfabricIngestion.arn
 ///   processing_configuration = {
 ///     audit_log = {
 ///       format = "json"
@@ -159,6 +157,8 @@ import 'ingestion_destination_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   app_bundle_arn = exampleAwsAppfabricAppBundle.arn
+///   ingestion_arn  = exampleAwsAppfabricIngestion.arn
 /// }
 /// ```
 /// ```java
@@ -189,8 +189,6 @@ import 'ingestion_destination_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IngestionDestination("example", IngestionDestinationArgs.builder()
-///             .appBundleArn(exampleAwsAppfabricAppBundle.arn())
-///             .ingestionArn(exampleAwsAppfabricIngestion.arn())
 ///             .processingConfiguration(IngestionDestinationProcessingConfigurationArgs.builder()
 ///                 .auditLog(IngestionDestinationProcessingConfigurationAuditLogArgs.builder()
 ///                     .format("json")
@@ -206,6 +204,8 @@ import 'ingestion_destination_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .appBundleArn(exampleAwsAppfabricAppBundle.arn())
+///             .ingestionArn(exampleAwsAppfabricIngestion.arn())
 ///             .build());
 ///
 ///     }
@@ -216,8 +216,6 @@ import 'ingestion_destination_timeouts.dart';
 ///   example:
 ///     type: aws:appfabric:IngestionDestination
 ///     properties:
-///       appBundleArn: ${exampleAwsAppfabricAppBundle.arn}
-///       ingestionArn: ${exampleAwsAppfabricIngestion.arn}
 ///       processingConfiguration:
 ///         auditLog:
 ///           format: json
@@ -227,15 +225,17 @@ import 'ingestion_destination_timeouts.dart';
 ///           destination:
 ///             s3Bucket:
 ///               bucketName: ${exampleAwsS3Bucket.bucket}
+///       appBundleArn: ${exampleAwsAppfabricAppBundle.arn}
+///       ingestionArn: ${exampleAwsAppfabricIngestion.arn}
 /// ```
 class IngestionDestination extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
   /// ARN of the Ingestion Destination.
   late final pulumi.Output<String> arn;
   /// Configuration for the destination of ingested data. See `destinationConfiguration` Block below.
   late final pulumi.Output<IngestionDestinationDestinationConfiguration> destinationConfiguration;
-  /// Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// ARN of the ingestion to use for the request.
   late final pulumi.Output<String> ingestionArn;
   /// Configuration for how ingested data is processed. See `processingConfiguration` Block below.
   ///
@@ -261,7 +261,7 @@ class IngestionDestination extends pulumi.CustomResource {
           'aws:appfabric/ingestionDestination:IngestionDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appBundleArn = registerOutput<String>('appBundleArn');
     arn = registerOutput<String>('arn');
@@ -269,8 +269,8 @@ class IngestionDestination extends pulumi.CustomResource {
     ingestionArn = registerOutput<String>('ingestionArn');
     processingConfiguration = registerOutput<IngestionDestinationProcessingConfiguration>('processingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -279,11 +279,12 @@ class IngestionDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IngestionDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IngestionDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,8 +304,28 @@ class IngestionDestination extends pulumi.CustomResource {
     ingestionArn = registerOutput<String>('ingestionArn');
     processingConfiguration = registerOutput<IngestionDestinationProcessingConfiguration>('processingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IngestionDestination] resource.
+  IngestionDestination.reference(String urn)
+    : super(
+        'aws:appfabric/ingestionDestination:IngestionDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appBundleArn = registerOutput<String>('appBundleArn');
+    arn = registerOutput<String>('arn');
+    destinationConfiguration = registerOutput<IngestionDestinationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingestionArn = registerOutput<String>('ingestionArn');
+    processingConfiguration = registerOutput<IngestionDestinationProcessingConfiguration>('processingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionDestinationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

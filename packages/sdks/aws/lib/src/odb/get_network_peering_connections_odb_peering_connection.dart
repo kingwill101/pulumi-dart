@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkPeeringConnectionsOdbPeeringConnection {
-  /// Amazon Resource Name (ARN) for the ODB network peering connection.
+  /// ARN for the ODB network peering connection.
   final pulumi.Input<String> arn;
   /// Display name of the ODB network peering connection.
   final pulumi.Input<String> displayName;
@@ -15,7 +15,7 @@ class GetNetworkPeeringConnectionsOdbPeeringConnection {
   final pulumi.Input<String> peerNetworkArn;
 
   /// Creates a new [GetNetworkPeeringConnectionsOdbPeeringConnection].
-  /// [arn] Amazon Resource Name (ARN) for the ODB network peering connection.
+  /// [arn] ARN for the ODB network peering connection.
   /// [displayName] Display name of the ODB network peering connection.
   /// [id] Unique identifier of the ODB network peering connection.
   /// [odbNetworkArn] ARN of the ODB network peering connection.

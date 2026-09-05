@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendTls {
   /// Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for the backend host.
-  final pulumi.Input<bool>? validateCertificateChain;
+  final pulumi.Input<bool?>? validateCertificateChain;
   /// Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for the backend host.
-  final pulumi.Input<bool>? validateCertificateName;
+  final pulumi.Input<bool?>? validateCertificateName;
 
   /// Creates a new [BackendTls].
   /// [validateCertificateChain] Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for the backend host.

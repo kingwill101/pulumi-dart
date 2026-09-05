@@ -8,9 +8,9 @@ class BudgetNotification {
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
   final pulumi.Input<String> notificationType;
   /// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
-  final pulumi.Input<List<String>>? subscriberEmailAddresses;
+  final pulumi.Input<List<String>?>? subscriberEmailAddresses;
   /// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
-  final pulumi.Input<List<String>>? subscriberSnsTopicArns;
+  final pulumi.Input<List<String>?>? subscriberSnsTopicArns;
   /// (Required) Threshold when the notification should be sent.
   final pulumi.Input<double> threshold;
   /// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
@@ -49,7 +49,7 @@ class BudgetNotification {
       notificationType: pulumi.Input.fromValue(map['notificationType'] as String),
       subscriberEmailAddresses: (() { final guardedValue = map['subscriberEmailAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       subscriberSnsTopicArns: (() { final guardedValue = map['subscriberSnsTopicArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
     );
   }

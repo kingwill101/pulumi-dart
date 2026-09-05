@@ -9,24 +9,24 @@ import 'mlflow_app_timeouts.dart';
 /// {@macro pulumi_sagemaker_mlflow_app_mlflow_app_args_doc}
 class MlflowAppArgs {
   /// Indicates whether this MLflow app is the default for the entire account. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? accountDefaultStatus;
+  final pulumi.Input<String?>? accountDefaultStatus;
   /// S3 URI for a general purpose bucket to use as the MLflow App artifact store.
   final pulumi.Input<String> artifactStoreUri;
   /// List of SageMaker domain IDs for which this MLflow App is used as the default.
-  final pulumi.Input<List<String>>? defaultDomainIdLists;
+  final pulumi.Input<List<String>?>? defaultDomainIdLists;
   /// Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. Valid values are `AutoModelRegistrationEnabled` and `AutoModelRegistrationDisabled`. Defaults to `AutoModelRegistrationDisabled`.
-  final pulumi.Input<String>? modelRegistrationMode;
+  final pulumi.Input<String?>? modelRegistrationMode;
   /// MLflow app name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
+  final pulumi.Input<String?>? region;
+  /// ARN for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
   final pulumi.Input<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<MlflowAppTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<MlflowAppTimeouts?>? timeouts;
   /// Day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: `SUN:03:00`.
-  final pulumi.Input<String>? weeklyMaintenanceWindowStart;
+  final pulumi.Input<String?>? weeklyMaintenanceWindowStart;
 
   /// Creates a new [MlflowAppArgs].
   /// [accountDefaultStatus] Indicates whether this MLflow app is the default for the entire account. Valid values are `ENABLED` and `DISABLED`.
@@ -35,7 +35,7 @@ class MlflowAppArgs {
   /// [modelRegistrationMode] Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. Valid values are `AutoModelRegistrationEnabled` and `AutoModelRegistrationDisabled`. Defaults to `AutoModelRegistrationDisabled`.
   /// [name] MLflow app name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
+  /// [roleArn] ARN for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [weeklyMaintenanceWindowStart] Day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: `SUN:03:00`.

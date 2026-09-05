@@ -10,16 +10,16 @@ import 'registry.dart';
 /// {@macro pulumi_index_image_image_args_doc}
 class ImageArgs {
   /// The Docker build context
-  final pulumi.Input<DockerBuild>? build;
+  final pulumi.Input<DockerBuild?>? build;
   /// A flag to build an image on preview
-  final pulumi.Input<bool>? buildOnPreview;
+  final pulumi.Input<bool?>? buildOnPreview;
   /// The image name, of the format repository[:tag], e.g. `docker.io/username/demo-image:v1`.
   /// This reference is not unique to each build and push.For the unique manifest SHA of a pushed docker image, or the local image ID, please use `repoDigest`.
   final pulumi.Input<String> imageName;
   /// The registry to push the image to
-  final pulumi.Input<Registry>? registry;
+  final pulumi.Input<Registry?>? registry;
   /// A flag to skip a registry push.
-  final pulumi.Input<bool>? skipPush;
+  final pulumi.Input<bool?>? skipPush;
 
   /// Creates a new [ImageArgs].
   /// [build] The Docker build context
@@ -27,13 +27,13 @@ class ImageArgs {
   /// [imageName] The image name, of the format repository[:tag], e.g. `docker.io/username/demo-image:v1`.
   /// [registry] The registry to push the image to
   /// [skipPush] A flag to skip a registry push.
-  const ImageArgs({
+  ImageArgs({
     this.build,
-    this.buildOnPreview,
+    pulumi.Input<bool?>? buildOnPreview,
     required this.imageName,
     this.registry,
-    this.skipPush,
-  });
+    pulumi.Input<bool?>? skipPush,
+  }) : buildOnPreview = buildOnPreview ?? pulumi.Input.fromValue(false), skipPush = skipPush ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

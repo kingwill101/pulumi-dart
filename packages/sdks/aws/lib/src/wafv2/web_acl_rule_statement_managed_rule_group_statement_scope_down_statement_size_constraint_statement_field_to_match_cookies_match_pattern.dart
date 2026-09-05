@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern {
-  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<Map<String, dynamic>?>? all;
   /// List of cookie names to exclude from inspection.
-  final pulumi.Input<List<String>>? excludedCookies;
+  final pulumi.Input<List<String>?>? excludedCookies;
   /// List of cookie names to inspect.
-  final pulumi.Input<List<String>>? includedCookies;
+  final pulumi.Input<List<String>?>? includedCookies;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern].
   /// [all] Optional.

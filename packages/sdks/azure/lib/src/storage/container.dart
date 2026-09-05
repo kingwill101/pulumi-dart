@@ -121,7 +121,7 @@ import 'container_state.dart';
 /// 		}
 /// 		_, err = storage.NewContainer(ctx, "example", &storage.ContainerArgs{
 /// 			Name:                pulumi.String("vhds"),
-/// 			StorageAccountId:    exampleAccount.ID(),
+/// 			StorageAccountId:    exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ContainerAccessType: pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -292,14 +292,14 @@ class Container extends pulumi.CustomResource {
           'azure:storage/container:Container',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerAccessType = registerOutput<String?>('containerAccessType');
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
     encryptionScopeOverrideEnabled = registerOutput<bool?>('encryptionScopeOverrideEnabled');
     hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
     hasLegalHold = registerOutput<bool>('hasLegalHold');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');
@@ -312,11 +312,12 @@ class Container extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Container._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,7 +336,29 @@ class Container extends pulumi.CustomResource {
     encryptionScopeOverrideEnabled = registerOutput<bool?>('encryptionScopeOverrideEnabled');
     hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
     hasLegalHold = registerOutput<bool>('hasLegalHold');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Container] resource.
+  Container.reference(String urn)
+    : super(
+        'azure:storage/container:Container',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerAccessType = registerOutput<String?>('containerAccessType');
+    defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
+    encryptionScopeOverrideEnabled = registerOutput<bool?>('encryptionScopeOverrideEnabled');
+    hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
+    hasLegalHold = registerOutput<bool>('hasLegalHold');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceManagerId = registerOutput<String>('resourceManagerId');
     storageAccountId = registerOutput<String?>('storageAccountId');

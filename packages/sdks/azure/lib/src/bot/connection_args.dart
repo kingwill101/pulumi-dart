@@ -14,15 +14,15 @@ class ConnectionArgs {
   /// The Client Secret that will be used to authenticate with the service provider.
   final pulumi.Input<String> clientSecret;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Bot Connection. Changing this forces a new resource to be created. Must be globally unique.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of additional parameters to apply to the connection.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the resource group in which to create the Bot Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The Scopes at which the connection should be applied.
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// The name of the service provider that will be associated with this connection. Changing this forces a new resource to be created.
   final pulumi.Input<String> serviceProviderName;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource {
   /// The Amazon S3 URI for the statistics resource.
-  final pulumi.Input<String>? s3Uri;
+  final pulumi.Input<String?>? s3Uri;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource].
   /// [s3Uri] The Amazon S3 URI for the statistics resource.

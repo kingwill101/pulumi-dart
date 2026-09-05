@@ -13,19 +13,19 @@ class SpaceArgs {
   /// The ID of the associated Domain.
   final pulumi.Input<String> domainId;
   /// A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.
-  final pulumi.Input<SpaceOwnershipSettings>? ownershipSettings;
+  final pulumi.Input<SpaceOwnershipSettings?>? ownershipSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the space that appears in the SageMaker AI Studio UI.
-  final pulumi.Input<String>? spaceDisplayName;
+  final pulumi.Input<String?>? spaceDisplayName;
   /// The name of the space.
   final pulumi.Input<String> spaceName;
   /// A collection of space settings. See `spaceSettings` Block below.
-  final pulumi.Input<SpaceSpaceSettings>? spaceSettings;
+  final pulumi.Input<SpaceSpaceSettings?>? spaceSettings;
   /// A collection of space sharing settings. Required if `ownershipSettings` is set. See `spaceSharingSettings` Block below.
-  final pulumi.Input<SpaceSpaceSharingSettings>? spaceSharingSettings;
+  final pulumi.Input<SpaceSpaceSharingSettings?>? spaceSharingSettings;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SpaceArgs].
   /// [domainId] The ID of the associated Domain.

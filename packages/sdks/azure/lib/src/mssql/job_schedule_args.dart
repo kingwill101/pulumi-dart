@@ -10,15 +10,15 @@ class JobScheduleArgs {
   /// Should the Elastic Job Schedule be enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignoreChanges`. This is because Azure will set `enabled` to `false` once the job has executed.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The end time of the schedule. Must be in RFC3339 format.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The interval between job executions. Must be in ISO8601 duration format.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Schedule to be created.
   final pulumi.Input<String> jobId;
   /// The start time of the schedule. Must be in RFC3339 format.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The type of schedule. Possible values are `Once` and `Recurring`.
   final pulumi.Input<String> type;
 

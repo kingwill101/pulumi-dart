@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_loganalytics_linked_service_linked_service_args_doc}
 class LinkedServiceArgs {
   /// The ID of the readable Resource that will be linked to the workspace. This should be used for linking to an Automation Account resource.
-  final pulumi.Input<String>? readAccessId;
+  final pulumi.Input<String?>? readAccessId;
   /// The name of the resource group in which the Log Analytics Linked Service is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the Log Analytics Workspace that will contain the Log Analytics Linked Service resource.
@@ -16,7 +16,7 @@ class LinkedServiceArgs {
   /// The ID of the writable Resource that will be linked to the workspace. This should be used for linking to a Log Analytics Cluster resource.
   ///
   /// &gt; **Note:** You must define at least one of the above access resource id attributes (e.g. `readAccessId` or `writeAccessId`).
-  final pulumi.Input<String>? writeAccessId;
+  final pulumi.Input<String?>? writeAccessId;
 
   /// Creates a new [LinkedServiceArgs].
   /// [readAccessId] The ID of the readable Resource that will be linked to the workspace. This should be used for linking to an Automation Account resource.

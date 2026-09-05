@@ -20,11 +20,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// const currentGetRegion = aws.getRegion({});
 /// const exampleAgentTrust = Promise.all([current, currentGetPartition, currentGetRegion]).then(([current, currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         principals: [{
-///             identifiers: ["bedrock.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -37,6 +32,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                 variable: "AWS:SourceArn",
 ///             },
 ///         ],
+///         principals: [{
+///             identifiers: ["bedrock.amazonaws.com"],
+///             type: "Service",
+///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
 /// const exampleAgentPermissions = Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => aws.iam.getPolicyDocument({
@@ -87,13 +87,13 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     description: "Test Alias",
 /// });
 /// const exampleAgentAgentCollaborator = new aws.bedrock.AgentAgentCollaborator("example", {
+///     agentDescriptor: {
+///         aliasArn: exampleAgentAgentAlias.agentAliasArn,
+///     },
 ///     agentId: exampleSupervisor.agentId,
 ///     collaborationInstruction: "tell the other agent what to do",
 ///     collaboratorName: "my-collab-example",
 ///     relayConversationHistory: "TO_COLLABORATOR",
-///     agentDescriptor: {
-///         aliasArn: exampleAgentAgentAlias.agentAliasArn,
-///     },
 /// });
 /// ```
 /// ```python
@@ -104,11 +104,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_region = aws.get_region()
 /// example_agent_trust = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "principals": [{
-///         "identifiers": ["bedrock.amazonaws.com"],
-///         "type": "Service",
-///     }],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -121,6 +116,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///             "variable": "AWS:SourceArn",
 ///         },
 ///     ],
+///     "principals": [{
+///         "identifiers": ["bedrock.amazonaws.com"],
+///         "type": "Service",
+///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_agent_permissions = aws.iam.get_policy_document(statements=[
 ///     {
@@ -163,13 +163,13 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     agent_id=example_collaborator.agent_id,
 ///     description="Test Alias")
 /// example_agent_agent_collaborator = aws.bedrock.AgentAgentCollaborator("example",
+///     agent_descriptor={
+///         "alias_arn": example_agent_agent_alias.agent_alias_arn,
+///     },
 ///     agent_id=example_supervisor.agent_id,
 ///     collaboration_instruction="tell the other agent what to do",
 ///     collaborator_name="my-collab-example",
-///     relay_conversation_history="TO_COLLABORATOR",
-///     agent_descriptor={
-///         "alias_arn": example_agent_agent_alias.agent_alias_arn,
-///     })
+///     relay_conversation_history="TO_COLLABORATOR")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -191,21 +191,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Identifiers = new[]
-///                         {
-///                             "bedrock.amazonaws.com",
-///                         },
-///                         Type = "Service",
-///                     },
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -226,6 +211,21 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                         },
 ///                         Variable = "AWS:SourceArn",
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Identifiers = new[]
+///                         {
+///                             "bedrock.amazonaws.com",
+///                         },
+///                         Type = "Service",
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -303,14 +303,14 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///
 ///     var exampleAgentAgentCollaborator = new Aws.Bedrock.AgentAgentCollaborator("example", new()
 ///     {
-///         AgentId = exampleSupervisor.AgentId,
-///         CollaborationInstruction = "tell the other agent what to do",
-///         CollaboratorName = "my-collab-example",
-///         RelayConversationHistory = "TO_COLLABORATOR",
 ///         AgentDescriptor = new Aws.Bedrock.Inputs.AgentAgentCollaboratorAgentDescriptorArgs
 ///         {
 ///             AliasArn = exampleAgentAgentAlias.AgentAliasArn,
 ///         },
+///         AgentId = exampleSupervisor.AgentId,
+///         CollaborationInstruction = "tell the other agent what to do",
+///         CollaboratorName = "my-collab-example",
+///         RelayConversationHistory = "TO_COLLABORATOR",
 ///     });
 ///
 /// });
@@ -344,17 +344,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 		exampleAgentTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Identifiers: []string{
-/// 								"bedrock.amazonaws.com",
-/// 							},
-/// 							Type: "Service",
-/// 						},
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
@@ -370,6 +359,17 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 							},
 /// 							Variable: "AWS:SourceArn",
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Identifiers: []string{
+/// 								"bedrock.amazonaws.com",
+/// 							},
+/// 							Type: "Service",
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -447,13 +447,13 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentAgentCollaborator(ctx, "example", &bedrock.AgentAgentCollaboratorArgs{
+/// 			AgentDescriptor: &bedrock.AgentAgentCollaboratorAgentDescriptorArgs{
+/// 				AliasArn: exampleAgentAgentAlias.AgentAliasArn,
+/// 			},
 /// 			AgentId:                  exampleSupervisor.AgentId,
 /// 			CollaborationInstruction: pulumi.String("tell the other agent what to do"),
 /// 			CollaboratorName:         pulumi.String("my-collab-example"),
 /// 			RelayConversationHistory: pulumi.String("TO_COLLABORATOR"),
-/// 			AgentDescriptor: &bedrock.AgentAgentCollaboratorAgentDescriptorArgs{
-/// 				AliasArn: exampleAgentAgentAlias.AgentAliasArn,
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -479,11 +479,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     principals {
-///       identifiers = ["bedrock.amazonaws.com"]
-///       type        = "Service"
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
@@ -494,6 +489,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
 ///       variable = "AWS:SourceArn"
 ///     }
+///     principals {
+///       identifiers = ["bedrock.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
@@ -537,13 +537,13 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   description      = "Test Alias"
 /// }
 /// resource "aws_bedrock_agentagentcollaborator" "example" {
+///   agent_descriptor = {
+///     alias_arn = aws_bedrock_agentagentalias.example.agent_alias_arn
+///   }
 ///   agent_id                   = aws_bedrock_agentagent.example_supervisor.agent_id
 ///   collaboration_instruction  = "tell the other agent what to do"
 ///   collaborator_name          = "my-collab-example"
 ///   relay_conversation_history = "TO_COLLABORATOR"
-///   agent_descriptor = {
-///     alias_arn = aws_bedrock_agentagentalias.example.agent_alias_arn
-///   }
 /// }
 /// ```
 /// ```java
@@ -559,8 +559,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -596,11 +596,6 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///
 ///         final var exampleAgentTrust = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers("bedrock.amazonaws.com")
-///                     .type("Service")
-///                     .build())
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -612,6 +607,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                         .values(String.format("arn:%s:bedrock:%s:%s:agent/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                         .variable("AWS:SourceArn")
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .identifiers("bedrock.amazonaws.com")
+///                     .type("Service")
+///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -666,13 +666,13 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentAgentCollaborator = new AgentAgentCollaborator("exampleAgentAgentCollaborator", AgentAgentCollaboratorArgs.builder()
+///             .agentDescriptor(AgentAgentCollaboratorAgentDescriptorArgs.builder()
+///                 .aliasArn(exampleAgentAgentAlias.agentAliasArn())
+///                 .build())
 ///             .agentId(exampleSupervisor.agentId())
 ///             .collaborationInstruction("tell the other agent what to do")
 ///             .collaboratorName("my-collab-example")
 ///             .relayConversationHistory("TO_COLLABORATOR")
-///             .agentDescriptor(AgentAgentCollaboratorAgentDescriptorArgs.builder()
-///                 .aliasArn(exampleAgentAgentAlias.agentAliasArn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -722,12 +722,12 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     type: aws:bedrock:AgentAgentCollaborator
 ///     name: example
 ///     properties:
+///       agentDescriptor:
+///         aliasArn: ${exampleAgentAgentAlias.agentAliasArn}
 ///       agentId: ${exampleSupervisor.agentId}
 ///       collaborationInstruction: tell the other agent what to do
 ///       collaboratorName: my-collab-example
 ///       relayConversationHistory: TO_COLLABORATOR
-///       agentDescriptor:
-///         aliasArn: ${exampleAgentAgentAlias.agentAliasArn}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -746,13 +746,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
-///               - identifiers:
-///                   - bedrock.amazonaws.com
-///                 type: Service
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
@@ -761,6 +755,12 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                 values:
 ///                   - arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*
 ///                 variable: AWS:SourceArn
+///             principals:
+///               - identifiers:
+///                   - bedrock.amazonaws.com
+///                 type: Service
+///             actions:
+///               - sts:AssumeRole
 ///   exampleAgentPermissions:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -819,7 +819,7 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
           'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');
@@ -838,11 +838,12 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentAgentCollaboratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentAgentCollaborator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -856,6 +857,27 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentId = registerOutput<String>('agentId');
+    agentVersion = registerOutput<String>('agentVersion');
+    collaborationInstruction = registerOutput<String>('collaborationInstruction');
+    collaboratorId = registerOutput<String>('collaboratorId');
+    collaboratorName = registerOutput<String>('collaboratorName');
+    prepareAgent = registerOutput<bool>('prepareAgent');
+    region = registerOutput<String>('region');
+    relayConversationHistory = registerOutput<String>('relayConversationHistory');
+    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentAgentCollaborator] resource.
+  AgentAgentCollaborator.reference(String urn)
+    : super(
+        'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');

@@ -33,10 +33,10 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletext
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle(
-      height: pulumi.Input.fromValue(map['height'] as double),
-      leftOffset: pulumi.Input.fromValue(map['leftOffset'] as double),
-      topOffset: pulumi.Input.fromValue(map['topOffset'] as double),
-      width: pulumi.Input.fromValue(map['width'] as double),
+      height: pulumi.Input.fromValue((map['height'] as num).toDouble()),
+      leftOffset: pulumi.Input.fromValue((map['leftOffset'] as num).toDouble()),
+      topOffset: pulumi.Input.fromValue((map['topOffset'] as num).toDouble()),
+      width: pulumi.Input.fromValue((map['width'] as num).toDouble()),
     );
   }
 }

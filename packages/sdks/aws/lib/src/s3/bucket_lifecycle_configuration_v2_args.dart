@@ -12,14 +12,14 @@ class BucketLifecycleConfigurationV2Args {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
   final pulumi.Input<String> bucket;
   /// Account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of configuration blocks describing the rules managing the replication. See below.
-  final pulumi.Input<List<BucketLifecycleConfigurationV2Rule>>? rules;
-  final pulumi.Input<BucketLifecycleConfigurationV2Timeouts>? timeouts;
+  final pulumi.Input<List<BucketLifecycleConfigurationV2Rule>?>? rules;
+  final pulumi.Input<BucketLifecycleConfigurationV2Timeouts?>? timeouts;
   /// Default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `variesByStorageClass`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `objectSizeGreaterThan` or `objectSizeLessThan` value. Custom filters always take precedence over the default transition behavior.
-  final pulumi.Input<String>? transitionDefaultMinimumObjectSize;
+  final pulumi.Input<String?>? transitionDefaultMinimumObjectSize;
 
   /// Creates a new [BucketLifecycleConfigurationV2Args].
   /// [bucket] Name of the source S3 bucket you want Amazon S3 to monitor.

@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_regex_match_statement_field_to_match_header_match
 
 class WebAclRuleStatementRegexMatchStatementFieldToMatchHeader {
   /// Headers to inspect. See Headers Match Pattern below.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern>? matchPattern;
+  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern?>? matchPattern;
   /// Parts of the headers to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with headers larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`.

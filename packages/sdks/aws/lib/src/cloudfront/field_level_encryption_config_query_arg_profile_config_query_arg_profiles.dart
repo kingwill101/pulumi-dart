@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_level_encryption_config_query_arg_profile_config_query_arg_profiles_item.dart';
 
 class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles {
-  final pulumi.Input<List<FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem>>? items;
+  final pulumi.Input<List<FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem>?>? items;
 
   /// Creates a new [FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles].
   /// [items] Optional.

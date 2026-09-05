@@ -6,32 +6,32 @@ import 'shard_group_timeouts.dart';
 /// Input properties used for looking up and filtering ShardGroup resources.
 class ShardGroupState {
   /// ARN of the shard group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
-  final pulumi.Input<int>? computeRedundancy;
+  final pulumi.Input<int?>? computeRedundancy;
   /// The name of the primary DB cluster for the DB shard group.
-  final pulumi.Input<String>? dbClusterIdentifier;
+  final pulumi.Input<String?>? dbClusterIdentifier;
   /// The name of the DB shard group.
-  final pulumi.Input<String>? dbShardGroupIdentifier;
+  final pulumi.Input<String?>? dbShardGroupIdentifier;
   /// The AWS Region-unique, immutable identifier for the DB shard group.
-  final pulumi.Input<String>? dbShardGroupResourceId;
+  final pulumi.Input<String?>? dbShardGroupResourceId;
   /// The connection endpoint for the DB shard group.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
-  final pulumi.Input<double>? maxAcu;
+  final pulumi.Input<double?>? maxAcu;
   /// The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
-  final pulumi.Input<double>? minAcu;
+  final pulumi.Input<double?>? minAcu;
   /// Indicates whether the DB shard group is publicly accessible.
-  final pulumi.Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ShardGroupTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ShardGroupTimeouts?>? timeouts;
 
   /// Creates a new [ShardGroupState].
   /// [arn] ARN of the shard group.
@@ -84,13 +84,13 @@ class ShardGroupState {
   factory ShardGroupState.fromMap(Map<String, dynamic> map) {
     return ShardGroupState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      computeRedundancy: (() { final guardedValue = map['computeRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      computeRedundancy: (() { final guardedValue = map['computeRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dbClusterIdentifier: (() { final guardedValue = map['dbClusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbShardGroupIdentifier: (() { final guardedValue = map['dbShardGroupIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbShardGroupResourceId: (() { final guardedValue = map['dbShardGroupResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAcu: (() { final guardedValue = map['maxAcu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      minAcu: (() { final guardedValue = map['minAcu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxAcu: (() { final guardedValue = map['maxAcu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minAcu: (() { final guardedValue = map['minAcu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

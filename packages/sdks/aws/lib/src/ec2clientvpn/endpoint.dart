@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
+import 'endpoint_authentication_option.dart';
 import 'endpoint_client_connect_options.dart';
 import 'endpoint_client_login_banner_options.dart';
 import 'endpoint_client_route_enforcement_options.dart';
@@ -18,18 +19,18 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2clientvpn.Endpoint("example", {
-///     description: "clientvpn-example",
-///     serverCertificateArn: cert.arn,
-///     clientCidrBlock: "10.0.0.0/16",
-///     authenticationOptions: [{
-///         type: "certificate-authentication",
-///         rootCertificateChainArn: rootCert.arn,
-///     }],
 ///     connectionLogOptions: {
 ///         enabled: true,
 ///         cloudwatchLogGroup: lg.name,
 ///         cloudwatchLogStream: ls.name,
 ///     },
+///     authenticationOptions: [{
+///         type: "certificate-authentication",
+///         rootCertificateChainArn: rootCert.arn,
+///     }],
+///     description: "clientvpn-example",
+///     serverCertificateArn: cert.arn,
+///     clientCidrBlock: "10.0.0.0/16",
 /// });
 /// ```
 /// ```python
@@ -37,18 +38,18 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2clientvpn.Endpoint("example",
-///     description="clientvpn-example",
-///     server_certificate_arn=cert["arn"],
-///     client_cidr_block="10.0.0.0/16",
-///     authentication_options=[{
-///         "type": "certificate-authentication",
-///         "root_certificate_chain_arn": root_cert["arn"],
-///     }],
 ///     connection_log_options={
 ///         "enabled": True,
 ///         "cloudwatch_log_group": lg["name"],
 ///         "cloudwatch_log_stream": ls["name"],
-///     })
+///     },
+///     authentication_options=[{
+///         "type": "certificate-authentication",
+///         "root_certificate_chain_arn": root_cert["arn"],
+///     }],
+///     description="clientvpn-example",
+///     server_certificate_arn=cert["arn"],
+///     client_cidr_block="10.0.0.0/16")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,9 +61,12 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// {
 ///     var example = new Aws.Ec2ClientVpn.Endpoint("example", new()
 ///     {
-///         Description = "clientvpn-example",
-///         ServerCertificateArn = cert.Arn,
-///         ClientCidrBlock = "10.0.0.0/16",
+///         ConnectionLogOptions = new Aws.Ec2ClientVpn.Inputs.EndpointConnectionLogOptionsArgs
+///         {
+///             Enabled = true,
+///             CloudwatchLogGroup = lg.Name,
+///             CloudwatchLogStream = ls.Name,
+///         },
 ///         AuthenticationOptions = new[]
 ///         {
 ///             new Aws.Ec2ClientVpn.Inputs.EndpointAuthenticationOptionArgs
@@ -71,12 +75,9 @@ import 'endpoint_transit_gateway_configuration.dart';
 ///                 RootCertificateChainArn = rootCert.Arn,
 ///             },
 ///         },
-///         ConnectionLogOptions = new Aws.Ec2ClientVpn.Inputs.EndpointConnectionLogOptionsArgs
-///         {
-///             Enabled = true,
-///             CloudwatchLogGroup = lg.Name,
-///             CloudwatchLogStream = ls.Name,
-///         },
+///         Description = "clientvpn-example",
+///         ServerCertificateArn = cert.Arn,
+///         ClientCidrBlock = "10.0.0.0/16",
 ///     });
 ///
 /// });
@@ -92,20 +93,20 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2clientvpn.NewEndpoint(ctx, "example", &ec2clientvpn.EndpointArgs{
-/// 			Description:          pulumi.String("clientvpn-example"),
-/// 			ServerCertificateArn: pulumi.Any(cert.Arn),
-/// 			ClientCidrBlock:      pulumi.String("10.0.0.0/16"),
+/// 			ConnectionLogOptions: &ec2clientvpn.EndpointConnectionLogOptionsArgs{
+/// 				Enabled:             pulumi.Bool(true),
+/// 				CloudwatchLogGroup:  pulumi.Any(lg.Name),
+/// 				CloudwatchLogStream: pulumi.Any(ls.Name),
+/// 			},
 /// 			AuthenticationOptions: ec2clientvpn.EndpointAuthenticationOptionArray{
 /// 				&ec2clientvpn.EndpointAuthenticationOptionArgs{
 /// 					Type:                    pulumi.String("certificate-authentication"),
 /// 					RootCertificateChainArn: pulumi.Any(rootCert.Arn),
 /// 				},
 /// 			},
-/// 			ConnectionLogOptions: &ec2clientvpn.EndpointConnectionLogOptionsArgs{
-/// 				Enabled:             pulumi.Bool(true),
-/// 				CloudwatchLogGroup:  pulumi.Any(lg.Name),
-/// 				CloudwatchLogStream: pulumi.Any(ls.Name),
-/// 			},
+/// 			Description:          pulumi.String("clientvpn-example"),
+/// 			ServerCertificateArn: pulumi.Any(cert.Arn),
+/// 			ClientCidrBlock:      pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -124,18 +125,18 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// }
 ///
 /// resource "aws_ec2clientvpn_endpoint" "example" {
-///   description            = "clientvpn-example"
-///   server_certificate_arn = cert.arn
-///   client_cidr_block      = "10.0.0.0/16"
-///   authentication_options {
-///     type                       = "certificate-authentication"
-///     root_certificate_chain_arn = rootCert.arn
-///   }
 ///   connection_log_options = {
 ///     enabled               = true
 ///     cloudwatch_log_group  = lg.name
 ///     cloudwatch_log_stream = ls.name
 ///   }
+///   authentication_options {
+///     type                       = "certificate-authentication"
+///     root_certificate_chain_arn = rootCert.arn
+///   }
+///   description            = "clientvpn-example"
+///   server_certificate_arn = cert.arn
+///   client_cidr_block      = "10.0.0.0/16"
 /// }
 /// ```
 /// ```java
@@ -146,8 +147,8 @@ import 'endpoint_transit_gateway_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2clientvpn.Endpoint;
 /// import com.pulumi.aws.ec2clientvpn.EndpointArgs;
-/// import com.pulumi.aws.ec2clientvpn.inputs.EndpointAuthenticationOptionArgs;
 /// import com.pulumi.aws.ec2clientvpn.inputs.EndpointConnectionLogOptionsArgs;
+/// import com.pulumi.aws.ec2clientvpn.inputs.EndpointAuthenticationOptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -162,18 +163,18 @@ import 'endpoint_transit_gateway_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Endpoint("example", EndpointArgs.builder()
-///             .description("clientvpn-example")
-///             .serverCertificateArn(cert.arn())
-///             .clientCidrBlock("10.0.0.0/16")
-///             .authenticationOptions(EndpointAuthenticationOptionArgs.builder()
-///                 .type("certificate-authentication")
-///                 .rootCertificateChainArn(rootCert.arn())
-///                 .build())
 ///             .connectionLogOptions(EndpointConnectionLogOptionsArgs.builder()
 ///                 .enabled(true)
 ///                 .cloudwatchLogGroup(lg.name())
 ///                 .cloudwatchLogStream(ls.name())
 ///                 .build())
+///             .authenticationOptions(EndpointAuthenticationOptionArgs.builder()
+///                 .type("certificate-authentication")
+///                 .rootCertificateChainArn(rootCert.arn())
+///                 .build())
+///             .description("clientvpn-example")
+///             .serverCertificateArn(cert.arn())
+///             .clientCidrBlock("10.0.0.0/16")
 ///             .build());
 ///
 ///     }
@@ -184,16 +185,16 @@ import 'endpoint_transit_gateway_configuration.dart';
 ///   example:
 ///     type: aws:ec2clientvpn:Endpoint
 ///     properties:
-///       description: clientvpn-example
-///       serverCertificateArn: ${cert.arn}
-///       clientCidrBlock: 10.0.0.0/16
-///       authenticationOptions:
-///         - type: certificate-authentication
-///           rootCertificateChainArn: ${rootCert.arn}
 ///       connectionLogOptions:
 ///         enabled: true
 ///         cloudwatchLogGroup: ${lg.name}
 ///         cloudwatchLogStream: ${ls.name}
+///       authenticationOptions:
+///         - type: certificate-authentication
+///           rootCertificateChainArn: ${rootCert.arn}
+///       description: clientvpn-example
+///       serverCertificateArn: ${cert.arn}
+///       clientCidrBlock: 10.0.0.0/16
 /// ```
 ///
 ///
@@ -208,7 +209,7 @@ class Endpoint extends pulumi.CustomResource {
   /// The ARN of the Client VPN endpoint.
   late final pulumi.Output<String> arn;
   /// Information about the authentication method to be used to authenticate clients. See `authenticationOptions` Block Reference below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> authenticationOptions;
+  late final pulumi.Output<List<EndpointAuthenticationOption>> authenticationOptions;
   /// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater. When `trafficIpAddressType` is set to `ipv6`, it must not be specified. Otherwise, it is required.
   late final pulumi.Output<String?> clientCidrBlock;
   /// The options for managing connection authorization for new client connections. See `clientConnectOptions` Block Reference below for details.
@@ -270,10 +271,10 @@ class Endpoint extends pulumi.CustomResource {
           'aws:ec2clientvpn/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    authenticationOptions = registerOutput<List<Map<String, dynamic>>>('authenticationOptions');
+    authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAuthenticationOption>(guardedValue, (value) => EndpointAuthenticationOption.fromMap((value as Map).cast<String, dynamic>())); });
     clientCidrBlock = registerOutput<String?>('clientCidrBlock');
     clientConnectOptions = registerOutput<EndpointClientConnectOptions>('clientConnectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientConnectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>('clientLoginBannerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientLoginBannerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -282,17 +283,17 @@ class Endpoint extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     disconnectOnSessionTimeout = registerOutput<bool>('disconnectOnSessionTimeout');
     dnsName = registerOutput<String>('dnsName');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfServicePortal = registerOutput<String?>('selfServicePortal');
     selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
     serverCertificateArn = registerOutput<String>('serverCertificateArn');
     sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
     splitTunnel = registerOutput<bool?>('splitTunnel');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
     transitGatewayConfiguration = registerOutput<EndpointTransitGatewayConfiguration>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transportProtocol = registerOutput<String?>('transportProtocol');
@@ -305,11 +306,12 @@ class Endpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Endpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -324,7 +326,7 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    authenticationOptions = registerOutput<List<Map<String, dynamic>>>('authenticationOptions');
+    authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAuthenticationOption>(guardedValue, (value) => EndpointAuthenticationOption.fromMap((value as Map).cast<String, dynamic>())); });
     clientCidrBlock = registerOutput<String?>('clientCidrBlock');
     clientConnectOptions = registerOutput<EndpointClientConnectOptions>('clientConnectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientConnectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>('clientLoginBannerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientLoginBannerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -333,17 +335,54 @@ class Endpoint extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     disconnectOnSessionTimeout = registerOutput<bool>('disconnectOnSessionTimeout');
     dnsName = registerOutput<String>('dnsName');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfServicePortal = registerOutput<String?>('selfServicePortal');
     selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
     serverCertificateArn = registerOutput<String>('serverCertificateArn');
     sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
     splitTunnel = registerOutput<bool?>('splitTunnel');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    transitGatewayConfiguration = registerOutput<EndpointTransitGatewayConfiguration>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transportProtocol = registerOutput<String?>('transportProtocol');
+    vpcId = registerOutput<String>('vpcId');
+    vpnPort = registerOutput<int?>('vpnPort');
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'aws:ec2clientvpn/endpoint:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authenticationOptions = registerOutput<List<EndpointAuthenticationOption>>('authenticationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointAuthenticationOption>(guardedValue, (value) => EndpointAuthenticationOption.fromMap((value as Map).cast<String, dynamic>())); });
+    clientCidrBlock = registerOutput<String?>('clientCidrBlock');
+    clientConnectOptions = registerOutput<EndpointClientConnectOptions>('clientConnectOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientConnectOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>('clientLoginBannerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientLoginBannerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientRouteEnforcementOptions = registerOutput<EndpointClientRouteEnforcementOptions>('clientRouteEnforcementOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointClientRouteEnforcementOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionLogOptions = registerOutput<EndpointConnectionLogOptions>('connectionLogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointConnectionLogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    disconnectOnSessionTimeout = registerOutput<bool>('disconnectOnSessionTimeout');
+    dnsName = registerOutput<String>('dnsName');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endpointIpAddressType = registerOutput<String>('endpointIpAddressType');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selfServicePortal = registerOutput<String?>('selfServicePortal');
+    selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
+    serverCertificateArn = registerOutput<String>('serverCertificateArn');
+    sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
+    splitTunnel = registerOutput<bool?>('splitTunnel');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
     transitGatewayConfiguration = registerOutput<EndpointTransitGatewayConfiguration>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transportProtocol = registerOutput<String?>('transportProtocol');

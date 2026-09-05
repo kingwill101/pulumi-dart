@@ -8,10 +8,10 @@ class IPGroupCIDRState {
   /// Changing this forces a new IP Group CIDR to be created.
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via this standalone resource and in-line within azure.network.IPGroup using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via this resource then `ignoreChanges` should be used in the resource `azure.network.IPGroupCIDR` configuration.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// The ID of the destination IP Group.
   /// Changing this forces a new IP Group CIDR to be created.
-  final pulumi.Input<String>? ipGroupId;
+  final pulumi.Input<String?>? ipGroupId;
 
   /// Creates a new [IPGroupCIDRState].
   /// [cidr] The `CIDR` that should be added to the IP Group.

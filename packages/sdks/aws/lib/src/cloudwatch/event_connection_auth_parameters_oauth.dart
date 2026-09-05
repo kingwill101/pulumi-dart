@@ -8,7 +8,7 @@ class EventConnectionAuthParametersOauth {
   /// The URL to the authorization endpoint.
   final pulumi.Input<String> authorizationEndpoint;
   /// Contains the client parameters for OAuth authorization. Contains the following two parameters.
-  final pulumi.Input<EventConnectionAuthParametersOauthClientParameters>? clientParameters;
+  final pulumi.Input<EventConnectionAuthParametersOauthClientParameters?>? clientParameters;
   /// A password for the authorization. Created and stored in AWS Secrets Manager.
   final pulumi.Input<String> httpMethod;
   /// OAuth Http Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.

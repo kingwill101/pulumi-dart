@@ -6,11 +6,11 @@ import 'ip_set_ip_set_descriptor.dart';
 /// Input properties used for looking up and filtering IpSet resources.
 class IpSetState {
   /// The ARN of the WAF IPSet.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
-  final pulumi.Input<List<IpSetIpSetDescriptor>>? ipSetDescriptors;
+  final pulumi.Input<List<IpSetIpSetDescriptor>?>? ipSetDescriptors;
   /// The name or description of the IPSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IpSetState].
   /// [arn] The ARN of the WAF IPSet.

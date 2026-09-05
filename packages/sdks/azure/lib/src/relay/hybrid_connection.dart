@@ -281,7 +281,7 @@ class HybridConnection extends pulumi.CustomResource {
           'azure:relay/hybridConnection:HybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     relayNamespaceName = registerOutput<String>('relayNamespaceName');
@@ -295,11 +295,12 @@ class HybridConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HybridConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HybridConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,6 +314,22 @@ class HybridConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    relayNamespaceName = registerOutput<String>('relayNamespaceName');
+    requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    userMetadata = registerOutput<String?>('userMetadata');
+  }
+
+  /// Creates a typed reference to an existing [HybridConnection] resource.
+  HybridConnection.reference(String urn)
+    : super(
+        'azure:relay/hybridConnection:HybridConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     relayNamespaceName = registerOutput<String>('relayNamespaceName');
     requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');

@@ -21,78 +21,78 @@ import 'service_vpc_lattice_configuration.dart';
 /// {@macro pulumi_ecs_service_service_args_doc}
 class ServiceArgs {
   /// Information about the CloudWatch alarms. See below.
-  final pulumi.Input<ServiceAlarms>? alarms;
+  final pulumi.Input<ServiceAlarms?>? alarms;
   /// ECS automatically redistributes tasks within a service across Availability Zones (AZs) to mitigate the risk of impaired application availability due to underlying infrastructure failures and task lifecycle activities. The valid values are `ENABLED` and `DISABLED`. When creating a new service, if no value is specified, it defaults to `ENABLED` if the service is compatible with AvailabilityZoneRebalancing. When updating an existing service, if no value is specified it defaults to the existing service's AvailabilityZoneRebalancing value. If the service never had an AvailabilityZoneRebalancing value set, Amazon ECS treats this as `DISABLED`.
-  final pulumi.Input<String>? availabilityZoneRebalancing;
+  final pulumi.Input<String?>? availabilityZoneRebalancing;
   /// Capacity provider strategies to use for the service. Can be one or more. Updating this argument requires `forceNewDeployment = true`. See below. Conflicts with `launchType`.
-  final pulumi.Input<List<ServiceCapacityProviderStrategy>>? capacityProviderStrategies;
+  final pulumi.Input<List<ServiceCapacityProviderStrategy>?>? capacityProviderStrategies;
   /// ARN of an ECS cluster.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Configuration block for deployment circuit breaker. See below.
-  final pulumi.Input<ServiceDeploymentCircuitBreaker>? deploymentCircuitBreaker;
+  final pulumi.Input<ServiceDeploymentCircuitBreaker?>? deploymentCircuitBreaker;
   /// Configuration block for deployment settings. See below.
-  final pulumi.Input<ServiceDeploymentConfiguration>? deploymentConfiguration;
+  final pulumi.Input<ServiceDeploymentConfiguration?>? deploymentConfiguration;
   /// Configuration block for deployment controller configuration. See below.
-  final pulumi.Input<ServiceDeploymentController>? deploymentController;
+  final pulumi.Input<ServiceDeploymentController?>? deploymentController;
   /// Upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Not valid when using the `DAEMON` scheduling strategy.
-  final pulumi.Input<int>? deploymentMaximumPercent;
+  final pulumi.Input<int?>? deploymentMaximumPercent;
   /// Lower limit (as a percentage of the service's desiredCount) of the number of running tasks that must remain running and healthy in a service during a deployment.
-  final pulumi.Input<int>? deploymentMinimumHealthyPercent;
+  final pulumi.Input<int?>? deploymentMinimumHealthyPercent;
   /// Number of instances of the task definition to place and keep running. Defaults to 0. Do not specify if using the `DAEMON` scheduling strategy.
-  final pulumi.Input<int>? desiredCount;
+  final pulumi.Input<int?>? desiredCount;
   /// Whether to enable Amazon ECS managed tags for the tasks within the service.
-  final pulumi.Input<bool>? enableEcsManagedTags;
+  final pulumi.Input<bool?>? enableEcsManagedTags;
   /// Whether to enable Amazon ECS Exec for the tasks within the service.
-  final pulumi.Input<bool>? enableExecuteCommand;
+  final pulumi.Input<bool?>? enableExecuteCommand;
   /// Enable to delete a service even if it wasn't scaled down to zero tasks. It's only necessary to use this if the service uses the `REPLICA` scheduling strategy.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// Enable to force a new task deployment of the service. This can be used to update tasks to use a newer Docker image with same image/tag combination (e.g., `myimage:latest`), roll Fargate tasks onto a newer platform version, or immediately deploy `orderedPlacementStrategy` and `placementConstraints` updates.
   /// When using the forceNewDeployment property you also need to configure the triggers property.
-  final pulumi.Input<bool>? forceNewDeployment;
+  final pulumi.Input<bool?>? forceNewDeployment;
   /// Seconds to ignore failing load balancer health checks on newly instantiated tasks to prevent premature shutdown, up to 2147483647. Only valid for services configured to use load balancers.
-  final pulumi.Input<int>? healthCheckGracePeriodSeconds;
+  final pulumi.Input<int?>? healthCheckGracePeriodSeconds;
   /// ARN of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service, but only if your task definition does not use the `awsvpc` network mode. If using `awsvpc` network mode, do not specify this role. If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here.
-  final pulumi.Input<String>? iamRole;
+  final pulumi.Input<String?>? iamRole;
   /// Launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`. Conflicts with `capacityProviderStrategy`.
-  final pulumi.Input<String>? launchType;
+  final pulumi.Input<String?>? launchType;
   /// Configuration block for load balancers. See below.
-  final pulumi.Input<List<ServiceLoadBalancer>>? loadBalancers;
+  final pulumi.Input<List<ServiceLoadBalancer>?>? loadBalancers;
   /// Name of the service (up to 255 letters, numbers, hyphens, and underscores)
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
-  final pulumi.Input<ServiceNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<ServiceNetworkConfiguration?>? networkConfiguration;
   /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. The maximum number of `orderedPlacementStrategy` blocks is `5`. See below.
-  final pulumi.Input<List<ServiceOrderedPlacementStrategy>>? orderedPlacementStrategies;
+  final pulumi.Input<List<ServiceOrderedPlacementStrategy>?>? orderedPlacementStrategies;
   /// Rules that are taken into consideration during task placement. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. Maximum number of `placementConstraints` is `10`. See below.
-  final pulumi.Input<List<ServicePlacementConstraint>>? placementConstraints;
+  final pulumi.Input<List<ServicePlacementConstraint>?>? placementConstraints;
   /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
-  final pulumi.Input<String>? platformVersion;
+  final pulumi.Input<String?>? platformVersion;
   /// Whether to propagate the tags from the task definition or the service to the tasks. The valid values are `SERVICE` and `TASK_DEFINITION`.
-  final pulumi.Input<String>? propagateTags;
+  final pulumi.Input<String?>? propagateTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Scheduling strategy to use for the service. The valid values are `REPLICA` and `DAEMON`. Defaults to `REPLICA`. Note that [*Tasks using the Fargate launch type or the `CODE_DEPLOY` or `EXTERNAL` deployment controller types don't support the `DAEMON` scheduling strategy*](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html).
-  final pulumi.Input<String>? schedulingStrategy;
+  final pulumi.Input<String?>? schedulingStrategy;
   /// ECS Service Connect configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace. See below.
-  final pulumi.Input<ServiceServiceConnectConfiguration>? serviceConnectConfiguration;
+  final pulumi.Input<ServiceServiceConnectConfiguration?>? serviceConnectConfiguration;
   /// Service discovery registries for the service. The maximum number of `serviceRegistries` blocks is `1`. See below.
-  final pulumi.Input<ServiceServiceRegistries>? serviceRegistries;
+  final pulumi.Input<ServiceServiceRegistries?>? serviceRegistries;
   /// Whether to enable graceful termination of deployments using SIGINT signals. When enabled, allows customers to safely cancel an in-progress deployment and automatically trigger a rollback to the previous stable state. Defaults to `false`. Only applicable when using `ECS` deployment controller and requires `waitForSteadyState = true`.
-  final pulumi.Input<bool>? sigintRollback;
+  final pulumi.Input<bool?>? sigintRollback;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service. Required unless using the `EXTERNAL` deployment controller. If a revision is not specified, the latest `ACTIVE` revision is used.
-  final pulumi.Input<String>? taskDefinition;
+  final pulumi.Input<String?>? taskDefinition;
   /// Map of arbitrary keys and values that, when changed, will trigger an in-place update (redeployment). Useful with `"plantimestamp()"`. When using the triggers property you also need to set the forceNewDeployment property to True.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
   /// Configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. See below.
-  final pulumi.Input<ServiceVolumeConfiguration>? volumeConfiguration;
+  final pulumi.Input<ServiceVolumeConfiguration?>? volumeConfiguration;
   /// VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
-  final pulumi.Input<List<ServiceVpcLatticeConfiguration>>? vpcLatticeConfigurations;
+  final pulumi.Input<List<ServiceVpcLatticeConfiguration>?>? vpcLatticeConfigurations;
   /// If `true`, this provider will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-  final pulumi.Input<bool>? waitForSteadyState;
+  final pulumi.Input<bool?>? waitForSteadyState;
 
   /// Creates a new [ServiceArgs].
   /// [alarms] Information about the CloudWatch alarms. See below.
@@ -217,14 +217,14 @@ class ServiceArgs {
       deploymentCircuitBreaker: (() { final guardedValue = map['deploymentCircuitBreaker']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceDeploymentCircuitBreaker.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deploymentConfiguration: (() { final guardedValue = map['deploymentConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deploymentController: (() { final guardedValue = map['deploymentController']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceDeploymentController.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      deploymentMaximumPercent: (() { final guardedValue = map['deploymentMaximumPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      deploymentMinimumHealthyPercent: (() { final guardedValue = map['deploymentMinimumHealthyPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deploymentMaximumPercent: (() { final guardedValue = map['deploymentMaximumPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deploymentMinimumHealthyPercent: (() { final guardedValue = map['deploymentMinimumHealthyPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enableEcsManagedTags: (() { final guardedValue = map['enableEcsManagedTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableExecuteCommand: (() { final guardedValue = map['enableExecuteCommand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceDelete: (() { final guardedValue = map['forceDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceNewDeployment: (() { final guardedValue = map['forceNewDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      healthCheckGracePeriodSeconds: (() { final guardedValue = map['healthCheckGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckGracePeriodSeconds: (() { final guardedValue = map['healthCheckGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       iamRole: (() { final guardedValue = map['iamRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       launchType: (() { final guardedValue = map['launchType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancers: (() { final guardedValue = map['loadBalancers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceLoadBalancer>(guardedValue, (value) => ServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))); })(),

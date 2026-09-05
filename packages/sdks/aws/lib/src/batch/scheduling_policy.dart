@@ -13,10 +13,7 @@ import 'scheduling_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.batch.SchedulingPolicy("example", {
-///     name: "example",
 ///     fairSharePolicy: {
-///         computeReservation: 1,
-///         shareDecaySeconds: 3600,
 ///         shareDistributions: [
 ///             {
 ///                 shareIdentifier: "A1*",
@@ -27,7 +24,10 @@ import 'scheduling_policy_state.dart';
 ///                 weightFactor: 0.2,
 ///             },
 ///         ],
+///         computeReservation: 1,
+///         shareDecaySeconds: 3600,
 ///     },
+///     name: "example",
 ///     tags: {
 ///         Name: "Example Batch Scheduling Policy",
 ///     },
@@ -38,10 +38,7 @@ import 'scheduling_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.batch.SchedulingPolicy("example",
-///     name="example",
 ///     fair_share_policy={
-///         "compute_reservation": 1,
-///         "share_decay_seconds": 3600,
 ///         "share_distributions": [
 ///             {
 ///                 "share_identifier": "A1*",
@@ -52,7 +49,10 @@ import 'scheduling_policy_state.dart';
 ///                 "weight_factor": 0.2,
 ///             },
 ///         ],
+///         "compute_reservation": 1,
+///         "share_decay_seconds": 3600,
 ///     },
+///     name="example",
 ///     tags={
 ///         "Name": "Example Batch Scheduling Policy",
 ///     })
@@ -67,11 +67,8 @@ import 'scheduling_policy_state.dart';
 /// {
 ///     var example = new Aws.Batch.SchedulingPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FairSharePolicy = new Aws.Batch.Inputs.SchedulingPolicyFairSharePolicyArgs
 ///         {
-///             ComputeReservation = 1,
-///             ShareDecaySeconds = 3600,
 ///             ShareDistributions = new[]
 ///             {
 ///                 new Aws.Batch.Inputs.SchedulingPolicyFairSharePolicyShareDistributionArgs
@@ -85,7 +82,10 @@ import 'scheduling_policy_state.dart';
 ///                     WeightFactor = 0.2,
 ///                 },
 ///             },
+///             ComputeReservation = 1,
+///             ShareDecaySeconds = 3600,
 ///         },
+///         Name = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Batch Scheduling Policy" },
@@ -105,10 +105,7 @@ import 'scheduling_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := batch.NewSchedulingPolicy(ctx, "example", &batch.SchedulingPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FairSharePolicy: &batch.SchedulingPolicyFairSharePolicyArgs{
-/// 				ComputeReservation: pulumi.Int(1),
-/// 				ShareDecaySeconds:  pulumi.Int(3600),
 /// 				ShareDistributions: batch.SchedulingPolicyFairSharePolicyShareDistributionArray{
 /// 					&batch.SchedulingPolicyFairSharePolicyShareDistributionArgs{
 /// 						ShareIdentifier: pulumi.String("A1*"),
@@ -119,7 +116,10 @@ import 'scheduling_policy_state.dart';
 /// 						WeightFactor:    pulumi.Float64(0.2),
 /// 					},
 /// 				},
+/// 				ComputeReservation: pulumi.Int(1),
+/// 				ShareDecaySeconds:  pulumi.Int(3600),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Batch Scheduling Policy"),
 /// 			},
@@ -141,10 +141,7 @@ import 'scheduling_policy_state.dart';
 /// }
 ///
 /// resource "aws_batch_schedulingpolicy" "example" {
-///   name = "example"
 ///   fair_share_policy = {
-///     compute_reservation = 1
-///     share_decay_seconds = 3600
 ///     share_distributions = [{
 ///       "shareIdentifier" = "A1*"
 ///       "weightFactor"    = 0.1
@@ -152,7 +149,10 @@ import 'scheduling_policy_state.dart';
 ///       "shareIdentifier" = "A2"
 ///       "weightFactor"    = 0.2
 ///     }]
+///     compute_reservation = 1
+///     share_decay_seconds = 3600
 ///   }
+///   name = "example"
 ///   tags = {
 ///     "Name" = "Example Batch Scheduling Policy"
 ///   }
@@ -182,10 +182,7 @@ import 'scheduling_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SchedulingPolicy("example", SchedulingPolicyArgs.builder()
-///             .name("example")
 ///             .fairSharePolicy(SchedulingPolicyFairSharePolicyArgs.builder()
-///                 .computeReservation(1)
-///                 .shareDecaySeconds(3600)
 ///                 .shareDistributions(
 ///                     SchedulingPolicyFairSharePolicyShareDistributionArgs.builder()
 ///                         .shareIdentifier("A1*")
@@ -195,7 +192,10 @@ import 'scheduling_policy_state.dart';
 ///                         .shareIdentifier("A2")
 ///                         .weightFactor(0.2)
 ///                         .build())
+///                 .computeReservation(1)
+///                 .shareDecaySeconds(3600)
 ///                 .build())
+///             .name("example")
 ///             .tags(Map.of("Name", "Example Batch Scheduling Policy"))
 ///             .build());
 ///
@@ -207,15 +207,15 @@ import 'scheduling_policy_state.dart';
 ///   example:
 ///     type: aws:batch:SchedulingPolicy
 ///     properties:
-///       name: example
 ///       fairSharePolicy:
-///         computeReservation: 1
-///         shareDecaySeconds: 3600
 ///         shareDistributions:
 ///           - shareIdentifier: A1*
 ///             weightFactor: 0.1
 ///           - shareIdentifier: A2
 ///             weightFactor: 0.2
+///         computeReservation: 1
+///         shareDecaySeconds: 3600
+///       name: example
 ///       tags:
 ///         Name: Example Batch Scheduling Policy
 /// ```
@@ -229,7 +229,7 @@ import 'scheduling_policy_state.dart';
 /// $ pulumi import aws:batch/schedulingPolicy:SchedulingPolicy test_policy arn:aws:batch:us-east-1:123456789012:scheduling-policy/sample
 /// ```
 class SchedulingPolicy extends pulumi.CustomResource {
-  /// The Amazon Resource Name of the scheduling policy.
+  /// ARN of the scheduling policy.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<SchedulingPolicyFairSharePolicy?> fairSharePolicy;
   /// Specifies the name of the scheduling policy.
@@ -253,14 +253,14 @@ class SchedulingPolicy extends pulumi.CustomResource {
           'aws:batch/schedulingPolicy:SchedulingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>('fairSharePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPolicyFairSharePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SchedulingPolicy] resource's state with the given [name] and [id].
@@ -268,11 +268,12 @@ class SchedulingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchedulingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SchedulingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,7 +291,24 @@ class SchedulingPolicy extends pulumi.CustomResource {
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>('fairSharePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPolicyFairSharePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SchedulingPolicy] resource.
+  SchedulingPolicy.reference(String urn)
+    : super(
+        'aws:batch/schedulingPolicy:SchedulingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>('fairSharePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPolicyFairSharePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

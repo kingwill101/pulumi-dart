@@ -158,7 +158,7 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
           'aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -172,11 +172,12 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGroupVpcAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGroupVpcAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -193,6 +194,22 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     this.state = registerOutput<String>('state');
+    timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGroupVpcAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGroupVpcAssociation] resource.
+  SecurityGroupVpcAssociation.reference(String urn)
+    : super(
+        'aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    state = registerOutput<String>('state');
     timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGroupVpcAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcId = registerOutput<String>('vpcId');
   }

@@ -223,9 +223,9 @@ class EventConfigurations extends pulumi.CustomResource {
           'aws:iot/eventConfigurations:EventConfigurations',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations');
+    eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     region = registerOutput<String>('region');
   }
 
@@ -234,11 +234,12 @@ class EventConfigurations extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventConfigurationsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventConfigurations._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,7 +253,20 @@ class EventConfigurations extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations');
+    eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EventConfigurations] resource.
+  EventConfigurations.reference(String urn)
+    : super(
+        'aws:iot/eventConfigurations:EventConfigurations',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     region = registerOutput<String>('region');
   }
 }

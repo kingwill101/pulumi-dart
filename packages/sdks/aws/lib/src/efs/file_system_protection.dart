@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSystemProtection {
   /// Indicates whether replication overwrite protection is enabled. Valid values: `ENABLED` or `DISABLED`.
-  final pulumi.Input<String>? replicationOverwrite;
+  final pulumi.Input<String?>? replicationOverwrite;
 
   /// Creates a new [FileSystemProtection].
   /// [replicationOverwrite] Indicates whether replication overwrite protection is enabled. Valid values: `ENABLED` or `DISABLED`.

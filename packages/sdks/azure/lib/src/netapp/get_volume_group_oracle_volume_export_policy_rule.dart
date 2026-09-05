@@ -54,7 +54,7 @@ class GetVolumeGroupOracleVolumeExportPolicyRule {
       nfsv3Enabled: pulumi.Input.fromValue(map['nfsv3Enabled'] as bool),
       nfsv41Enabled: pulumi.Input.fromValue(map['nfsv41Enabled'] as bool),
       rootAccessEnabled: pulumi.Input.fromValue(map['rootAccessEnabled'] as bool),
-      ruleIndex: pulumi.Input.fromValue(map['ruleIndex'] as int),
+      ruleIndex: pulumi.Input.fromValue((map['ruleIndex'] as num).toInt()),
       unixReadOnly: pulumi.Input.fromValue(map['unixReadOnly'] as bool),
       unixReadWrite: pulumi.Input.fromValue(map['unixReadWrite'] as bool),
     );

@@ -6,19 +6,19 @@ import 'service_region_vpc_settings.dart';
 /// Input properties used for looking up and filtering ServiceRegion resources.
 class ServiceRegionState {
   /// The number of domain controllers desired in the replicated directory. Minimum value of `2`.
-  final pulumi.Input<int>? desiredNumberOfDomainControllers;
+  final pulumi.Input<int?>? desiredNumberOfDomainControllers;
   /// The identifier of the directory to which you want to add Region replication.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the Region where you want to add domain controllers for replication.
-  final pulumi.Input<String>? regionName;
+  final pulumi.Input<String?>? regionName;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// VPC information in the replicated Region. Detailed below.
-  final pulumi.Input<ServiceRegionVpcSettings>? vpcSettings;
+  final pulumi.Input<ServiceRegionVpcSettings?>? vpcSettings;
 
   /// Creates a new [ServiceRegionState].
   /// [desiredNumberOfDomainControllers] The number of domain controllers desired in the replicated directory. Minimum value of `2`.
@@ -52,7 +52,7 @@ class ServiceRegionState {
 
   factory ServiceRegionState.fromMap(Map<String, dynamic> map) {
     return ServiceRegionState(
-      desiredNumberOfDomainControllers: (() { final guardedValue = map['desiredNumberOfDomainControllers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      desiredNumberOfDomainControllers: (() { final guardedValue = map['desiredNumberOfDomainControllers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionName: (() { final guardedValue = map['regionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

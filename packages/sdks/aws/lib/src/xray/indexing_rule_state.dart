@@ -6,11 +6,11 @@ import 'indexing_rule_rule.dart';
 /// Input properties used for looking up and filtering IndexingRule resources.
 class IndexingRuleState {
   /// Indexing rule name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Rule configuration. See `rule` Block below.
-  final pulumi.Input<IndexingRuleRule>? rule;
+  final pulumi.Input<IndexingRuleRule?>? rule;
 
   /// Creates a new [IndexingRuleState].
   /// [name] Indexing rule name.

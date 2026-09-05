@@ -168,7 +168,7 @@ import 'usage_limit_state.dart';
 class UsageLimit extends pulumi.CustomResource {
   /// The limit amount. If time-based, this amount is in Redshift Processing Units (RPU) consumed per hour. If data-based, this amount is in terabytes (TB) of data transferred between Regions in cross-account sharing. The value must be a positive number.
   late final pulumi.Output<int> amount;
-  /// Amazon Resource Name (ARN) of the Redshift Serverless Usage Limit.
+  /// ARN of the Redshift Serverless Usage Limit.
   late final pulumi.Output<String> arn;
   /// The action that Amazon Redshift Serverless takes when the limit is reached. Valid values are `log`, `emit-metric`, and `deactivate`. The default is `log`.
   late final pulumi.Output<String?> breachAction;
@@ -176,7 +176,7 @@ class UsageLimit extends pulumi.CustomResource {
   late final pulumi.Output<String?> period;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the Amazon Redshift Serverless resource to create the usage limit for.
+  /// ARN of the Amazon Redshift Serverless resource to create the usage limit for.
   late final pulumi.Output<String> resourceArn;
   /// The type of Amazon Redshift Serverless usage to create a usage limit for. Valid values are `serverless-compute` or `cross-region-datasharing`.
   late final pulumi.Output<String> usageType;
@@ -193,7 +193,7 @@ class UsageLimit extends pulumi.CustomResource {
           'aws:redshiftserverless/usageLimit:UsageLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amount = registerOutput<int>('amount');
     arn = registerOutput<String>('arn');
@@ -209,11 +209,12 @@ class UsageLimit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UsageLimitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UsageLimit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,6 +228,24 @@ class UsageLimit extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    amount = registerOutput<int>('amount');
+    arn = registerOutput<String>('arn');
+    breachAction = registerOutput<String?>('breachAction');
+    period = registerOutput<String?>('period');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    usageType = registerOutput<String>('usageType');
+  }
+
+  /// Creates a typed reference to an existing [UsageLimit] resource.
+  UsageLimit.reference(String urn)
+    : super(
+        'aws:redshiftserverless/usageLimit:UsageLimit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     amount = registerOutput<int>('amount');
     arn = registerOutput<String>('arn');
     breachAction = registerOutput<String?>('breachAction');

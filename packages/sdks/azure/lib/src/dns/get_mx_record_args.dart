@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dns_get_mx_record_get_mx_record_args_doc}
 class GetMxRecordArgs {
   /// The name of the DNS MX Record.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the resource group where the DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the DNS Zone where the resource exists.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableCapacitySpecification {
   /// The throughput capacity specified for read operations defined in read capacity units (RCUs).
-  final pulumi.Input<int>? readCapacityUnits;
+  final pulumi.Input<int?>? readCapacityUnits;
   /// The read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
-  final pulumi.Input<String>? throughputMode;
+  final pulumi.Input<String?>? throughputMode;
   /// The throughput capacity specified for write operations defined in write capacity units (WCUs).
-  final pulumi.Input<int>? writeCapacityUnits;
+  final pulumi.Input<int?>? writeCapacityUnits;
 
   /// Creates a new [TableCapacitySpecification].
   /// [readCapacityUnits] The throughput capacity specified for read operations defined in read capacity units (RCUs).
@@ -30,9 +30,9 @@ class TableCapacitySpecification {
 
   factory TableCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return TableCapacitySpecification(
-      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       throughputMode: (() { final guardedValue = map['throughputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

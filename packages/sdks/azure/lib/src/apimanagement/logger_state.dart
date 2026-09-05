@@ -7,21 +7,21 @@ import 'logger_eventhub.dart';
 /// Input properties used for looking up and filtering Logger resources.
 class LoggerState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// An `applicationInsights` block as documented below. Changing this forces a new resource to be created.
-  final pulumi.Input<LoggerApplicationInsights>? applicationInsights;
+  final pulumi.Input<LoggerApplicationInsights?>? applicationInsights;
   /// Specifies whether records should be buffered in the Logger prior to publishing. Defaults to `true`.
-  final pulumi.Input<bool>? buffered;
+  final pulumi.Input<bool?>? buffered;
   /// A description of this Logger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `eventhub` block as documented below. Changing this forces a new resource to be created.
-  final pulumi.Input<LoggerEventhub>? eventhub;
+  final pulumi.Input<LoggerEventhub?>? eventhub;
   /// The name of this Logger, which must be unique within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The target resource id which will be linked in the API-Management portal page. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [LoggerState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.

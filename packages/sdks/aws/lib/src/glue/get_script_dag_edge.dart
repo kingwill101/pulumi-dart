@@ -8,7 +8,7 @@ class GetScriptDagEdge {
   /// ID of the node at which the edge ends.
   final pulumi.Input<String> target;
   /// Target of the edge.
-  final pulumi.Input<String>? targetParameter;
+  final pulumi.Input<String?>? targetParameter;
 
   /// Creates a new [GetScriptDagEdge].
   /// [source] ID of the node at which the edge starts.

@@ -102,7 +102,7 @@ import 'get_service_result.dart';
 /// 			return err
 /// 		}
 /// 		_ = webpubsub.GetPrivateLinkResourceOutput(ctx, webpubsub.GetPrivateLinkResourceOutputArgs{
-/// 			WebPubsubId: testService.ID(),
+/// 			WebPubsubId: testService.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
@@ -223,6 +223,17 @@ Future<GetPrivateLinkResourceResult> getPrivateLinkResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkResourceResult> getPrivateLinkResourceOutput(
+  GetPrivateLinkResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:webpubsub/getPrivateLinkResource:getPrivateLinkResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkResourceResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Azure Web Pubsub service.
@@ -356,4 +367,15 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:webpubsub/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }

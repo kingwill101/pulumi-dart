@@ -27,7 +27,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
   factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule(
       ruleDefinition: pulumi.Input.fromValue(GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

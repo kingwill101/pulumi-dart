@@ -112,7 +112,7 @@ import 'route_table_state.dart';
 /// $ pulumi import aws:ec2transitgateway/routeTable:RouteTable example tgw-rtb-12345678
 /// ```
 class RouteTable extends pulumi.CustomResource {
-  /// EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
+  /// EC2 Transit Gateway Route Table ARN.
   late final pulumi.Output<String> arn;
   /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
   late final pulumi.Output<bool> defaultAssociationRouteTable;
@@ -139,14 +139,14 @@ class RouteTable extends pulumi.CustomResource {
           'aws:ec2transitgateway/routeTable:RouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
     defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 
@@ -155,11 +155,12 @@ class RouteTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,8 +178,26 @@ class RouteTable extends pulumi.CustomResource {
     defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
     defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [RouteTable] resource.
+  RouteTable.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/routeTable:RouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
+    defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

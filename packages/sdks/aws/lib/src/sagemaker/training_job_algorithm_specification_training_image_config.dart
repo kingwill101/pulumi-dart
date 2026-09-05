@@ -5,9 +5,9 @@ import 'training_job_algorithm_specification_training_image_config_training_repo
 
 class TrainingJobAlgorithmSpecificationTrainingImageConfig {
   /// Access mode for the training image repository.
-  final pulumi.Input<String>? trainingRepositoryAccessMode;
+  final pulumi.Input<String?>? trainingRepositoryAccessMode;
   /// Authentication configuration for the training image repository. See `trainingRepositoryAuthConfig` below.
-  final pulumi.Input<TrainingJobAlgorithmSpecificationTrainingImageConfigTrainingRepositoryAuthConfig>? trainingRepositoryAuthConfig;
+  final pulumi.Input<TrainingJobAlgorithmSpecificationTrainingImageConfigTrainingRepositoryAuthConfig?>? trainingRepositoryAuthConfig;
 
   /// Creates a new [TrainingJobAlgorithmSpecificationTrainingImageConfig].
   /// [trainingRepositoryAccessMode] Access mode for the training image repository.

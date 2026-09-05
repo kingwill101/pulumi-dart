@@ -7,25 +7,25 @@ import 'dev_environment_repository.dart';
 
 /// Input properties used for looking up and filtering DevEnvironment resources.
 class DevEnvironmentState {
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Information about the integrated development environment (IDE) configured for a Dev Environment.
-  final pulumi.Input<DevEnvironmentIdes>? ides;
+  final pulumi.Input<DevEnvironmentIdes?>? ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  final pulumi.Input<int>? inactivityTimeoutMinutes;
+  final pulumi.Input<int?>? inactivityTimeoutMinutes;
   /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Information about the amount of storage allocated to the Dev Environment.
-  final pulumi.Input<DevEnvironmentPersistentStorage>? persistentStorage;
+  final pulumi.Input<DevEnvironmentPersistentStorage?>? persistentStorage;
   /// The name of the project in the space.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The source repository that contains the branch to clone into the Dev Environment.
-  final pulumi.Input<List<DevEnvironmentRepository>>? repositories;
+  final pulumi.Input<List<DevEnvironmentRepository>?>? repositories;
   /// The name of the space.
-  final pulumi.Input<String>? spaceName;
+  final pulumi.Input<String?>? spaceName;
 
   /// Creates a new [DevEnvironmentState].
   /// [alias] Optional.
@@ -67,7 +67,7 @@ class DevEnvironmentState {
     return DevEnvironmentState(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistentStorage: (() { final guardedValue = map['persistentStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

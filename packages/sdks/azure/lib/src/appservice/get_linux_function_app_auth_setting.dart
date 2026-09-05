@@ -107,7 +107,7 @@ class GetLinuxFunctionAppAuthSetting {
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
       microsofts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingMicrosoft>(map['microsofts']!, (value) => GetLinuxFunctionAppAuthSettingMicrosoft.fromMap((value as Map).cast<String, dynamic>()))),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
-      tokenRefreshExtensionHours: pulumi.Input.fromValue(map['tokenRefreshExtensionHours'] as double),
+      tokenRefreshExtensionHours: pulumi.Input.fromValue((map['tokenRefreshExtensionHours'] as num).toDouble()),
       tokenStoreEnabled: pulumi.Input.fromValue(map['tokenStoreEnabled'] as bool),
       twitters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppAuthSettingTwitter>(map['twitters']!, (value) => GetLinuxFunctionAppAuthSettingTwitter.fromMap((value as Map).cast<String, dynamic>()))),
       unauthenticatedClientAction: pulumi.Input.fromValue(map['unauthenticatedClientAction'] as String),

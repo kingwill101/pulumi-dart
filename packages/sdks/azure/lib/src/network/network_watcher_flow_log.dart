@@ -244,8 +244,8 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// 			NetworkWatcherName: testNetworkWatcher.Name,
 /// 			ResourceGroupName:  example.Name,
 /// 			Name:               pulumi.String("example-log"),
-/// 			TargetResourceId:   test.ID(),
-/// 			StorageAccountId:   testAccount.ID(),
+/// 			TargetResourceId:   test.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:   testAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:            pulumi.Bool(true),
 /// 			RetentionPolicy: &network.NetworkWatcherFlowLogRetentionPolicyArgs{
 /// 				Enabled: pulumi.Bool(true),
@@ -255,7 +255,7 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// 				Enabled:             pulumi.Bool(true),
 /// 				WorkspaceId:         testAnalyticsWorkspace.WorkspaceId,
 /// 				WorkspaceRegion:     testAnalyticsWorkspace.Location,
-/// 				WorkspaceResourceId: testAnalyticsWorkspace.ID(),
+/// 				WorkspaceResourceId: testAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 				IntervalInMinutes:   pulumi.Int(10),
 /// 			},
 /// 		})
@@ -528,7 +528,7 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
           'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     location = registerOutput<String>('location');
@@ -538,7 +538,7 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String>('targetResourceId');
     trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>('trafficAnalytics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<int?>('version');
@@ -549,11 +549,12 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkWatcherFlowLogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkWatcherFlowLog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -575,7 +576,30 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+    trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>('trafficAnalytics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<int?>('version');
+  }
+
+  /// Creates a typed reference to an existing [NetworkWatcherFlowLog] resource.
+  NetworkWatcherFlowLog.reference(String urn)
+    : super(
+        'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+    networkWatcherName = registerOutput<String>('networkWatcherName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String>('targetResourceId');
     trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>('trafficAnalytics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<int?>('version');

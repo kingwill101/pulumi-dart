@@ -17,7 +17,7 @@ class ResourceSetArgs {
   /// The following arguments are optional:
   final pulumi.Input<List<ResourceSetResource>> resources;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceSetArgs].
   /// [resourceSetName] Unique name describing the resource set.

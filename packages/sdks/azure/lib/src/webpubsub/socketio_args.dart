@@ -10,39 +10,39 @@ import 'socketio_sku.dart';
 /// {@macro pulumi_webpubsub_socketio_socketio_args_doc}
 class SocketioArgs {
   /// Whether Azure Active Directory authentication is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? aadAuthEnabled;
+  final pulumi.Input<bool?>? aadAuthEnabled;
   /// An `identity` block as defined below.
-  final pulumi.Input<SocketioIdentity>? identity;
+  final pulumi.Input<SocketioIdentity?>? identity;
   /// Whether the connectivity log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceConnectivityLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceConnectivityLogsEnabled;
   /// Whether the live trace tool is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceEnabled;
+  final pulumi.Input<bool?>? liveTraceEnabled;
   /// Whether the HTTP request log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceHttpRequestLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceHttpRequestLogsEnabled;
   /// Whether the messaging log category for live trace is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? liveTraceMessagingLogsEnabled;
+  final pulumi.Input<bool?>? liveTraceMessagingLogsEnabled;
   /// Whether local authentication using an access key is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// The Azure Region where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Web PubSub Service. Changing this forces a new Web PubSub Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether public network access is enabled. Defaults to `Enabled`. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** `publicNetworkAccess` cannot be set to `Disabled` when `sku` is `Free_F1`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the Resource Group where the Web PubSub Service should exist. Changing this forces a new Web PubSub Service to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The service mode of this Web PubSub Service. Defaults to `Default`. Possible values are `Default` and `Serverless`.
-  final pulumi.Input<String>? serviceMode;
+  final pulumi.Input<String?>? serviceMode;
   /// One or more `sku` blocks as defined below.
   final pulumi.Input<SocketioSku> sku;
   /// A mapping of tags which should be assigned to the Web PubSub Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
   ///
   /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` when `sku` is `Free_F1`.
-  final pulumi.Input<bool>? tlsClientCertEnabled;
+  final pulumi.Input<bool?>? tlsClientCertEnabled;
 
   /// Creates a new [SocketioArgs].
   /// [aadAuthEnabled] Whether Azure Active Directory authentication is enabled. Defaults to `true`.

@@ -5,13 +5,13 @@ import 'backend_credentials_authorization.dart';
 
 class BackendCredentials {
   /// An `authorization` block as defined below.
-  final pulumi.Input<BackendCredentialsAuthorization>? authorization;
+  final pulumi.Input<BackendCredentialsAuthorization?>? authorization;
   /// A list of client certificate thumbprints to present to the backend host. The certificates must exist within the API Management Service.
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
   /// A mapping of header parameters to pass to the backend host. The keys are the header names and the values are a comma separated string of header values. This is converted to a list before being passed to the API.
-  final pulumi.Input<Map<String, String>>? header;
+  final pulumi.Input<Map<String, String>?>? header;
   /// A mapping of query parameters to pass to the backend host. The keys are the query names and the values are a comma separated string of query values. This is converted to a list before being passed to the API.
-  final pulumi.Input<Map<String, String>>? query;
+  final pulumi.Input<Map<String, String>?>? query;
 
   /// Creates a new [BackendCredentials].
   /// [authorization] An `authorization` block as defined below.

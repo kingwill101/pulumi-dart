@@ -6,25 +6,25 @@ import 'user_defined_function_resource_uri.dart';
 /// Input properties used for looking up and filtering UserDefinedFunction resources.
 class UserDefinedFunctionState {
   /// The ARN of the Glue User Defined Function.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The Java class that contains the function code.
-  final pulumi.Input<String>? className;
+  final pulumi.Input<String?>? className;
   /// The time at which the function was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The name of the Database to create the Function.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The name of the function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The owner of the function.
-  final pulumi.Input<String>? ownerName;
+  final pulumi.Input<String?>? ownerName;
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
-  final pulumi.Input<String>? ownerType;
+  final pulumi.Input<String?>? ownerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The configuration block for Resource URIs. See resource uris below for more details.
-  final pulumi.Input<List<UserDefinedFunctionResourceUri>>? resourceUris;
+  final pulumi.Input<List<UserDefinedFunctionResourceUri>?>? resourceUris;
 
   /// Creates a new [UserDefinedFunctionState].
   /// [arn] The ARN of the Glue User Defined Function.

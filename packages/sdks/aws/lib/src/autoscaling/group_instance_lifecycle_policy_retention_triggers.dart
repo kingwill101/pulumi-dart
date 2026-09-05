@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupInstanceLifecyclePolicyRetentionTriggers {
   /// Action to take when a termination lifecycle hook is abandoned due to failure, timeout, or explicit abandonment. Valid values are `retain` and `terminate`. Set to `retain` to move instances to a retained state instead of terminating them. Retained instances don't count toward desired capacity and remain until you terminate them.
-  final pulumi.Input<String>? terminateHookAbandon;
+  final pulumi.Input<String?>? terminateHookAbandon;
 
   /// Creates a new [GroupInstanceLifecyclePolicyRetentionTriggers].
   /// [terminateHookAbandon] Action to take when a termination lifecycle hook is abandoned due to failure, timeout, or explicit abandonment. Valid values are `retain` and `terminate`. Set to `retain` to move instances to a retained state instead of terminating them. Retained instances don't count toward desired capacity and remain until you terminate them.

@@ -9,7 +9,7 @@ import 'trigger_trigger.dart';
 /// {@macro pulumi_codecommit_trigger_trigger_args_doc}
 class TriggerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name for the repository. This needs to be less than 100 characters.
   final pulumi.Input<String> repositoryName;
   /// The name of the trigger.

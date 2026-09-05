@@ -186,7 +186,7 @@ class IdentityCenterConfiguration extends pulumi.CustomResource {
           'aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     catalogId = registerOutput<String>('catalogId');
@@ -200,11 +200,12 @@ class IdentityCenterConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityCenterConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityCenterConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -218,6 +219,22 @@ class IdentityCenterConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationArn = registerOutput<String>('applicationArn');
+    catalogId = registerOutput<String>('catalogId');
+    instanceArn = registerOutput<String>('instanceArn');
+    region = registerOutput<String>('region');
+    resourceShare = registerOutput<String>('resourceShare');
+  }
+
+  /// Creates a typed reference to an existing [IdentityCenterConfiguration] resource.
+  IdentityCenterConfiguration.reference(String urn)
+    : super(
+        'aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationArn = registerOutput<String>('applicationArn');
     catalogId = registerOutput<String>('catalogId');
     instanceArn = registerOutput<String>('instanceArn');

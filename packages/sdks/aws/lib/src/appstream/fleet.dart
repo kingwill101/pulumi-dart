@@ -15,10 +15,13 @@ import 'fleet_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testFleet = new aws.appstream.Fleet("test_fleet", {
-///     name: "test-fleet",
 ///     computeCapacity: {
 ///         desiredInstances: 1,
 ///     },
+///     vpcConfig: {
+///         subnetIds: ["subnet-06e9b13400c225127"],
+///     },
+///     name: "test-fleet",
 ///     description: "test fleet",
 ///     idleDisconnectTimeoutInSeconds: 60,
 ///     displayName: "test-fleet",
@@ -27,9 +30,6 @@ import 'fleet_vpc_config.dart';
 ///     imageName: "Amazon-AppStream2-Sample-Image-03-11-2023",
 ///     instanceType: "stream.standard.large",
 ///     maxUserDurationInSeconds: 600,
-///     vpcConfig: {
-///         subnetIds: ["subnet-06e9b13400c225127"],
-///     },
 ///     tags: {
 ///         TagName: "tag-value",
 ///     },
@@ -40,10 +40,13 @@ import 'fleet_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// test_fleet = aws.appstream.Fleet("test_fleet",
-///     name="test-fleet",
 ///     compute_capacity={
 ///         "desired_instances": 1,
 ///     },
+///     vpc_config={
+///         "subnet_ids": ["subnet-06e9b13400c225127"],
+///     },
+///     name="test-fleet",
 ///     description="test fleet",
 ///     idle_disconnect_timeout_in_seconds=60,
 ///     display_name="test-fleet",
@@ -52,9 +55,6 @@ import 'fleet_vpc_config.dart';
 ///     image_name="Amazon-AppStream2-Sample-Image-03-11-2023",
 ///     instance_type="stream.standard.large",
 ///     max_user_duration_in_seconds=600,
-///     vpc_config={
-///         "subnet_ids": ["subnet-06e9b13400c225127"],
-///     },
 ///     tags={
 ///         "TagName": "tag-value",
 ///     })
@@ -69,11 +69,18 @@ import 'fleet_vpc_config.dart';
 /// {
 ///     var testFleet = new Aws.AppStream.Fleet("test_fleet", new()
 ///     {
-///         Name = "test-fleet",
 ///         ComputeCapacity = new Aws.AppStream.Inputs.FleetComputeCapacityArgs
 ///         {
 ///             DesiredInstances = 1,
 ///         },
+///         VpcConfig = new Aws.AppStream.Inputs.FleetVpcConfigArgs
+///         {
+///             SubnetIds = new[]
+///             {
+///                 "subnet-06e9b13400c225127",
+///             },
+///         },
+///         Name = "test-fleet",
 ///         Description = "test fleet",
 ///         IdleDisconnectTimeoutInSeconds = 60,
 ///         DisplayName = "test-fleet",
@@ -82,13 +89,6 @@ import 'fleet_vpc_config.dart';
 ///         ImageName = "Amazon-AppStream2-Sample-Image-03-11-2023",
 ///         InstanceType = "stream.standard.large",
 ///         MaxUserDurationInSeconds = 600,
-///         VpcConfig = new Aws.AppStream.Inputs.FleetVpcConfigArgs
-///         {
-///             SubnetIds = new[]
-///             {
-///                 "subnet-06e9b13400c225127",
-///             },
-///         },
 ///         Tags =
 ///         {
 ///             { "TagName", "tag-value" },
@@ -108,10 +108,15 @@ import 'fleet_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appstream.NewFleet(ctx, "test_fleet", &appstream.FleetArgs{
-/// 			Name: pulumi.String("test-fleet"),
 /// 			ComputeCapacity: &appstream.FleetComputeCapacityArgs{
 /// 				DesiredInstances: pulumi.Int(1),
 /// 			},
+/// 			VpcConfig: &appstream.FleetVpcConfigArgs{
+/// 				SubnetIds: pulumi.StringArray{
+/// 					pulumi.String("subnet-06e9b13400c225127"),
+/// 				},
+/// 			},
+/// 			Name:                           pulumi.String("test-fleet"),
 /// 			Description:                    pulumi.String("test fleet"),
 /// 			IdleDisconnectTimeoutInSeconds: pulumi.Int(60),
 /// 			DisplayName:                    pulumi.String("test-fleet"),
@@ -120,11 +125,6 @@ import 'fleet_vpc_config.dart';
 /// 			ImageName:                      pulumi.String("Amazon-AppStream2-Sample-Image-03-11-2023"),
 /// 			InstanceType:                   pulumi.String("stream.standard.large"),
 /// 			MaxUserDurationInSeconds:       pulumi.Int(600),
-/// 			VpcConfig: &appstream.FleetVpcConfigArgs{
-/// 				SubnetIds: pulumi.StringArray{
-/// 					pulumi.String("subnet-06e9b13400c225127"),
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"TagName": pulumi.String("tag-value"),
 /// 			},
@@ -146,10 +146,13 @@ import 'fleet_vpc_config.dart';
 /// }
 ///
 /// resource "aws_appstream_fleet" "test_fleet" {
-///   name = "test-fleet"
 ///   compute_capacity = {
 ///     desired_instances = 1
 ///   }
+///   vpc_config = {
+///     subnet_ids = ["subnet-06e9b13400c225127"]
+///   }
+///   name                               = "test-fleet"
 ///   description                        = "test fleet"
 ///   idle_disconnect_timeout_in_seconds = 60
 ///   display_name                       = "test-fleet"
@@ -158,9 +161,6 @@ import 'fleet_vpc_config.dart';
 ///   image_name                         = "Amazon-AppStream2-Sample-Image-03-11-2023"
 ///   instance_type                      = "stream.standard.large"
 ///   max_user_duration_in_seconds       = 600
-///   vpc_config = {
-///     subnet_ids = ["subnet-06e9b13400c225127"]
-///   }
 ///   tags = {
 ///     "TagName" = "tag-value"
 ///   }
@@ -190,10 +190,13 @@ import 'fleet_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testFleet = new Fleet("testFleet", FleetArgs.builder()
-///             .name("test-fleet")
 ///             .computeCapacity(FleetComputeCapacityArgs.builder()
 ///                 .desiredInstances(1)
 ///                 .build())
+///             .vpcConfig(FleetVpcConfigArgs.builder()
+///                 .subnetIds("subnet-06e9b13400c225127")
+///                 .build())
+///             .name("test-fleet")
 ///             .description("test fleet")
 ///             .idleDisconnectTimeoutInSeconds(60)
 ///             .displayName("test-fleet")
@@ -202,9 +205,6 @@ import 'fleet_vpc_config.dart';
 ///             .imageName("Amazon-AppStream2-Sample-Image-03-11-2023")
 ///             .instanceType("stream.standard.large")
 ///             .maxUserDurationInSeconds(600)
-///             .vpcConfig(FleetVpcConfigArgs.builder()
-///                 .subnetIds("subnet-06e9b13400c225127")
-///                 .build())
 ///             .tags(Map.of("TagName", "tag-value"))
 ///             .build());
 ///
@@ -217,9 +217,12 @@ import 'fleet_vpc_config.dart';
 ///     type: aws:appstream:Fleet
 ///     name: test_fleet
 ///     properties:
-///       name: test-fleet
 ///       computeCapacity:
 ///         desiredInstances: 1
+///       vpcConfig:
+///         subnetIds:
+///           - subnet-06e9b13400c225127
+///       name: test-fleet
 ///       description: test fleet
 ///       idleDisconnectTimeoutInSeconds: 60
 ///       displayName: test-fleet
@@ -228,9 +231,6 @@ import 'fleet_vpc_config.dart';
 ///       imageName: Amazon-AppStream2-Sample-Image-03-11-2023
 ///       instanceType: stream.standard.large
 ///       maxUserDurationInSeconds: 600
-///       vpcConfig:
-///         subnetIds:
-///           - subnet-06e9b13400c225127
 ///       tags:
 ///         TagName: tag-value
 /// ```
@@ -304,7 +304,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:appstream/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -326,8 +326,8 @@ class Fleet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
     streamView = registerOutput<String>('streamView');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -336,11 +336,12 @@ class Fleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,8 +375,42 @@ class Fleet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
     streamView = registerOutput<String>('streamView');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'aws:appstream/fleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String>('description');
+    disconnectTimeoutInSeconds = registerOutput<int>('disconnectTimeoutInSeconds');
+    displayName = registerOutput<String>('displayName');
+    domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDomainJoinInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDefaultInternetAccess = registerOutput<bool>('enableDefaultInternetAccess');
+    fleetType = registerOutput<String>('fleetType');
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    idleDisconnectTimeoutInSeconds = registerOutput<int?>('idleDisconnectTimeoutInSeconds');
+    imageArn = registerOutput<String>('imageArn');
+    imageName = registerOutput<String>('imageName');
+    instanceType = registerOutput<String>('instanceType');
+    maxSessionsPerInstance = registerOutput<int?>('maxSessionsPerInstance');
+    maxUserDurationInSeconds = registerOutput<int>('maxUserDurationInSeconds');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    streamView = registerOutput<String>('streamView');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

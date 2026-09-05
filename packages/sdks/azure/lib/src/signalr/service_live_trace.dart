@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceLiveTrace {
   /// Whether the log category `ConnectivityLogs` is enabled? Defaults to `true`
-  final pulumi.Input<bool>? connectivityLogsEnabled;
+  final pulumi.Input<bool?>? connectivityLogsEnabled;
   /// Whether the live trace is enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Whether the log category `HttpRequestLogs` is enabled? Defaults to `true`
-  final pulumi.Input<bool>? httpRequestLogsEnabled;
+  final pulumi.Input<bool?>? httpRequestLogsEnabled;
   /// Whether the log category `MessagingLogs` is enabled? Defaults to `true`
-  final pulumi.Input<bool>? messagingLogsEnabled;
+  final pulumi.Input<bool?>? messagingLogsEnabled;
 
   /// Creates a new [ServiceLiveTrace].
   /// [connectivityLogsEnabled] Whether the log category `ConnectivityLogs` is enabled? Defaults to `true`

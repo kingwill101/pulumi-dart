@@ -293,11 +293,11 @@ import 'event_bus_state.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const example = new aws.cloudwatch.EventBus("example", {
-///     name: "example-event-bus",
 ///     logConfig: {
 ///         includeDetail: "FULL",
 ///         level: "TRACE",
 ///     },
+///     name: "example-event-bus",
 /// });
 /// // CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
 /// const infoLogs = new aws.cloudwatch.LogDeliverySource("info_logs", {
@@ -319,13 +319,6 @@ import 'event_bus_state.dart';
 /// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example-event-bus-logs"});
 /// const bucket = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["delivery.logs.amazonaws.com"],
-///         }],
-///         actions: ["s3:PutObject"],
-///         resources: [pulumi.all([exampleBucket.arn, current]).apply(([arn, current]) => `${arn}/AWSLogs/${current.accountId}/EventBusLogs/*`)],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -347,6 +340,13 @@ import 'event_bus_state.dart';
 ///                 ],
 ///             },
 ///         ],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["delivery.logs.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: ["s3:PutObject"],
+///         resources: [pulumi.all([exampleBucket.arn, current]).apply(([arn, current]) => `${arn}/AWSLogs/${current.accountId}/EventBusLogs/*`)],
 ///     }],
 /// });
 /// const exampleBucketPolicy = new aws.s3.BucketPolicy("example", {
@@ -354,10 +354,10 @@ import 'event_bus_state.dart';
 ///     policy: bucket.json,
 /// });
 /// const s3 = new aws.cloudwatch.LogDeliveryDestination("s3", {
-///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-S3`,
 ///     deliveryDestinationConfiguration: {
 ///         destinationResourceArn: exampleBucket.arn,
 ///     },
+///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-S3`,
 /// });
 /// const s3InfoLogs = new aws.cloudwatch.LogDelivery("s3_info_logs", {
 ///     deliveryDestinationArn: s3.arn,
@@ -379,16 +379,6 @@ import 'event_bus_state.dart';
 /// const eventBusLogs = new aws.cloudwatch.LogGroup("event_bus_logs", {name: pulumi.interpolate`/aws/vendedlogs/events/event-bus/${example.name}`});
 /// const cwlogs = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["delivery.logs.amazonaws.com"],
-///         }],
-///         actions: [
-///             "logs:CreateLogStream",
-///             "logs:PutLogEvents",
-///         ],
-///         resources: [pulumi.interpolate`${eventBusLogs.arn}:log-stream:*`],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -405,6 +395,16 @@ import 'event_bus_state.dart';
 ///                 ],
 ///             },
 ///         ],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["delivery.logs.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: [
+///             "logs:CreateLogStream",
+///             "logs:PutLogEvents",
+///         ],
+///         resources: [pulumi.interpolate`${eventBusLogs.arn}:log-stream:*`],
 ///     }],
 /// });
 /// const exampleLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("example", {
@@ -412,10 +412,10 @@ import 'event_bus_state.dart';
 ///     policyName: pulumi.interpolate`AWSLogDeliveryWrite-${example.name}`,
 /// });
 /// const cwlogsLogDeliveryDestination = new aws.cloudwatch.LogDeliveryDestination("cwlogs", {
-///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-CWLogs`,
 ///     deliveryDestinationConfiguration: {
 ///         destinationResourceArn: eventBusLogs.arn,
 ///     },
+///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-CWLogs`,
 /// });
 /// const cwlogsInfoLogs = new aws.cloudwatch.LogDelivery("cwlogs_info_logs", {
 ///     deliveryDestinationArn: cwlogsLogDeliveryDestination.arn,
@@ -446,10 +446,10 @@ import 'event_bus_state.dart';
 ///     LogDeliveryEnabled: "true",
 /// }});
 /// const firehose = new aws.cloudwatch.LogDeliveryDestination("firehose", {
-///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-Firehose`,
 ///     deliveryDestinationConfiguration: {
 ///         destinationResourceArn: cloudfrontLogs.arn,
 ///     },
+///     name: pulumi.interpolate`EventsDeliveryDestination-${example.name}-Firehose`,
 /// });
 /// const firehoseInfoLogs = new aws.cloudwatch.LogDelivery("firehose_info_logs", {
 ///     deliveryDestinationArn: firehose.arn,
@@ -482,11 +482,11 @@ import 'event_bus_state.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example = aws.cloudwatch.EventBus("example",
-///     name="example-event-bus",
 ///     log_config={
 ///         "include_detail": "FULL",
 ///         "level": "TRACE",
-///     })
+///     },
+///     name="example-event-bus")
 /// # CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
 /// info_logs = aws.cloudwatch.LogDeliverySource("info_logs",
 ///     name=example.name.apply(lambda name: f"EventBusSource-{name}-INFO_LOGS"),
@@ -503,13 +503,6 @@ import 'event_bus_state.dart';
 /// # Logging to S3 Bucket
 /// example_bucket = aws.s3.Bucket("example", bucket="example-event-bus-logs")
 /// bucket = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["delivery.logs.amazonaws.com"],
-///     }],
-///     "actions": ["s3:PutObject"],
-///     "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/AWSLogs/{current.account_id}/EventBusLogs/*")],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -531,15 +524,22 @@ import 'event_bus_state.dart';
 ///             ],
 ///         },
 ///     ],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["delivery.logs.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["s3:PutObject"],
+///     "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/AWSLogs/{current.account_id}/EventBusLogs/*")],
 /// }])
 /// example_bucket_policy = aws.s3.BucketPolicy("example",
 ///     bucket=example_bucket.bucket,
 ///     policy=bucket.json)
 /// s3 = aws.cloudwatch.LogDeliveryDestination("s3",
-///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-S3"),
 ///     delivery_destination_configuration={
 ///         "destination_resource_arn": example_bucket.arn,
-///     })
+///     },
+///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-S3"))
 /// s3_info_logs = aws.cloudwatch.LogDelivery("s3_info_logs",
 ///     delivery_destination_arn=s3.arn,
 ///     delivery_source_name=info_logs.name)
@@ -554,16 +554,6 @@ import 'event_bus_state.dart';
 /// # Logging to CloudWatch Log Group
 /// event_bus_logs = aws.cloudwatch.LogGroup("event_bus_logs", name=example.name.apply(lambda name: f"/aws/vendedlogs/events/event-bus/{name}"))
 /// cwlogs = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["delivery.logs.amazonaws.com"],
-///     }],
-///     "actions": [
-///         "logs:CreateLogStream",
-///         "logs:PutLogEvents",
-///     ],
-///     "resources": [event_bus_logs.arn.apply(lambda arn: f"{arn}:log-stream:*")],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -580,15 +570,25 @@ import 'event_bus_state.dart';
 ///             ],
 ///         },
 ///     ],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["delivery.logs.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": [
+///         "logs:CreateLogStream",
+///         "logs:PutLogEvents",
+///     ],
+///     "resources": [event_bus_logs.arn.apply(lambda arn: f"{arn}:log-stream:*")],
 /// }])
 /// example_log_resource_policy = aws.cloudwatch.LogResourcePolicy("example",
 ///     policy_document=cwlogs.json,
 ///     policy_name=example.name.apply(lambda name: f"AWSLogDeliveryWrite-{name}"))
 /// cwlogs_log_delivery_destination = aws.cloudwatch.LogDeliveryDestination("cwlogs",
-///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-CWLogs"),
 ///     delivery_destination_configuration={
 ///         "destination_resource_arn": event_bus_logs.arn,
-///     })
+///     },
+///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-CWLogs"))
 /// cwlogs_info_logs = aws.cloudwatch.LogDelivery("cwlogs_info_logs",
 ///     delivery_destination_arn=cwlogs_log_delivery_destination.arn,
 ///     delivery_source_name=info_logs.name,
@@ -612,10 +612,10 @@ import 'event_bus_state.dart';
 ///     "LogDeliveryEnabled": "true",
 /// })
 /// firehose = aws.cloudwatch.LogDeliveryDestination("firehose",
-///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-Firehose"),
 ///     delivery_destination_configuration={
 ///         "destination_resource_arn": cloudfront_logs.arn,
-///     })
+///     },
+///     name=example.name.apply(lambda name: f"EventsDeliveryDestination-{name}-Firehose"))
 /// firehose_info_logs = aws.cloudwatch.LogDelivery("firehose_info_logs",
 ///     delivery_destination_arn=firehose.arn,
 ///     delivery_source_name=info_logs.name,
@@ -647,12 +647,12 @@ import 'event_bus_state.dart';
 ///
 ///     var example = new Aws.CloudWatch.EventBus("example", new()
 ///     {
-///         Name = "example-event-bus",
 ///         LogConfig = new Aws.CloudWatch.Inputs.EventBusLogConfigArgs
 ///         {
 ///             IncludeDetail = "FULL",
 ///             Level = "TRACE",
 ///         },
+///         Name = "example-event-bus",
 ///     });
 ///
 ///     // CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
@@ -689,26 +689,6 @@ import 'event_bus_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "delivery.logs.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "s3:PutObject",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{exampleBucket.Arn}/AWSLogs/{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}/EventBusLogs/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -741,6 +721,26 @@ import 'event_bus_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "delivery.logs.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "s3:PutObject",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{exampleBucket.Arn}/AWSLogs/{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}/EventBusLogs/*",
+///                 },
 ///             },
 ///         },
 ///     });
@@ -753,11 +753,11 @@ import 'event_bus_state.dart';
 ///
 ///     var s3 = new Aws.CloudWatch.LogDeliveryDestination("s3", new()
 ///     {
-///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-S3"),
 ///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
 ///         {
 ///             DestinationResourceArn = exampleBucket.Arn,
 ///         },
+///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-S3"),
 ///     });
 ///
 ///     var s3InfoLogs = new Aws.CloudWatch.LogDelivery("s3_info_logs", new()
@@ -802,27 +802,6 @@ import 'event_bus_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "delivery.logs.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{eventBusLogs.Arn}:log-stream:*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -846,6 +825,27 @@ import 'event_bus_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "delivery.logs.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{eventBusLogs.Arn}:log-stream:*",
+///                 },
 ///             },
 ///         },
 ///     });
@@ -858,11 +858,11 @@ import 'event_bus_state.dart';
 ///
 ///     var cwlogsLogDeliveryDestination = new Aws.CloudWatch.LogDeliveryDestination("cwlogs", new()
 ///     {
-///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-CWLogs"),
 ///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
 ///         {
 ///             DestinationResourceArn = eventBusLogs.Arn,
 ///         },
+///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-CWLogs"),
 ///     });
 ///
 ///     var cwlogsInfoLogs = new Aws.CloudWatch.LogDelivery("cwlogs_info_logs", new()
@@ -914,11 +914,11 @@ import 'event_bus_state.dart';
 ///
 ///     var firehose = new Aws.CloudWatch.LogDeliveryDestination("firehose", new()
 ///     {
-///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-Firehose"),
 ///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
 ///         {
 ///             DestinationResourceArn = cloudfrontLogs.Arn,
 ///         },
+///         Name = example.Name.Apply(name => $"EventsDeliveryDestination-{name}-Firehose"),
 ///     });
 ///
 ///     var firehoseInfoLogs = new Aws.CloudWatch.LogDelivery("firehose_info_logs", new()
@@ -982,11 +982,11 @@ import 'event_bus_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := cloudwatch.NewEventBus(ctx, "example", &cloudwatch.EventBusArgs{
-/// 			Name: pulumi.String("example-event-bus"),
 /// 			LogConfig: &cloudwatch.EventBusLogConfigArgs{
 /// 				IncludeDetail: pulumi.String("FULL"),
 /// 				Level:         pulumi.String("TRACE"),
 /// 			},
+/// 			Name: pulumi.String("example-event-bus"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1032,23 +1032,6 @@ import 'event_bus_state.dart';
 /// 		bucket := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("delivery.logs.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("s3:PutObject"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
-/// 							return fmt.Sprintf("%v/AWSLogs/%v/EventBusLogs/*", arn, current.AccountId), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -1074,6 +1057,23 @@ import 'event_bus_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("delivery.logs.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("s3:PutObject"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleBucket.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v/AWSLogs/%v/EventBusLogs/*", arn, current.AccountId), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -1085,12 +1085,12 @@ import 'event_bus_state.dart';
 /// 			return err
 /// 		}
 /// 		s32, err := cloudwatch.NewLogDeliveryDestination(ctx, "s3", &cloudwatch.LogDeliveryDestinationArgs{
-/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
-/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-S3", name), nil
-/// 			}).(pulumi.StringOutput),
 /// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
 /// 				DestinationResourceArn: exampleBucket.Arn,
 /// 			},
+/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-S3", name), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1132,24 +1132,6 @@ import 'event_bus_state.dart';
 /// 		cwlogs := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("delivery.logs.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("logs:CreateLogStream"),
-/// 						pulumi.String("logs:PutLogEvents"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						eventBusLogs.Arn.ApplyT(func(arn string) (string, error) {
-/// 							return fmt.Sprintf("%v:log-stream:*", arn), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("StringEquals"),
@@ -1168,6 +1150,24 @@ import 'event_bus_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("delivery.logs.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("logs:CreateLogStream"),
+/// 						pulumi.String("logs:PutLogEvents"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						eventBusLogs.Arn.ApplyT(func(arn string) (string, error) {
+/// 							return fmt.Sprintf("%v:log-stream:*", arn), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -1181,12 +1181,12 @@ import 'event_bus_state.dart';
 /// 			return err
 /// 		}
 /// 		cwlogsLogDeliveryDestination, err := cloudwatch.NewLogDeliveryDestination(ctx, "cwlogs", &cloudwatch.LogDeliveryDestinationArgs{
-/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
-/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-CWLogs", name), nil
-/// 			}).(pulumi.StringOutput),
 /// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
 /// 				DestinationResourceArn: eventBusLogs.Arn,
 /// 			},
+/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-CWLogs", name), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1230,12 +1230,12 @@ import 'event_bus_state.dart';
 /// 			return err
 /// 		}
 /// 		firehose, err := cloudwatch.NewLogDeliveryDestination(ctx, "firehose", &cloudwatch.LogDeliveryDestinationArgs{
-/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
-/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-Firehose", name), nil
-/// 			}).(pulumi.StringOutput),
 /// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
 /// 				DestinationResourceArn: cloudfrontLogs.Arn,
 /// 			},
+/// 			Name: example.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("EventsDeliveryDestination-%v-Firehose", name), nil
+/// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1286,13 +1286,6 @@ import 'event_bus_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "bucket" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "Service"
-///       identifiers = ["delivery.logs.amazonaws.com"]
-///     }
-///     actions   = ["s3:PutObject"]
-///     resources = ["${aws_s3_bucket.example.arn}/AWSLogs/${data.aws_getcalleridentity.current.account_id}/EventBusLogs/*"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
@@ -1308,17 +1301,17 @@ import 'event_bus_state.dart';
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_cloudwatch_logdeliverysource.info_logs.arn, aws_cloudwatch_logdeliverysource.error_logs.arn, aws_cloudwatch_logdeliverysource.trace_logs.arn]
 ///     }
-///   }
-/// }
-/// data "aws_iam_getpolicydocument" "cwlogs" {
-///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["delivery.logs.amazonaws.com"]
 ///     }
-///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-///     resources = ["${aws_cloudwatch_loggroup.event_bus_logs.arn}:log-stream:*"]
+///     effect    = "Allow"
+///     actions   = ["s3:PutObject"]
+///     resources = ["${aws_s3_bucket.example.arn}/AWSLogs/${data.aws_getcalleridentity.current.account_id}/EventBusLogs/*"]
+///   }
+/// }
+/// data "aws_iam_getpolicydocument" "cwlogs" {
+///   statements {
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceAccount"
@@ -1329,15 +1322,22 @@ import 'event_bus_state.dart';
 ///       variable = "aws:SourceArn"
 ///       values   = [aws_cloudwatch_logdeliverysource.info_logs.arn, aws_cloudwatch_logdeliverysource.error_logs.arn, aws_cloudwatch_logdeliverysource.trace_logs.arn]
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["delivery.logs.amazonaws.com"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+///     resources = ["${aws_cloudwatch_loggroup.event_bus_logs.arn}:log-stream:*"]
 ///   }
 /// }
 ///
 /// resource "aws_cloudwatch_eventbus" "example" {
-///   name = "example-event-bus"
 ///   log_config = {
 ///     include_detail = "FULL"
 ///     level          = "TRACE"
 ///   }
+///   name = "example-event-bus"
 /// }
 /// # CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
 /// resource "aws_cloudwatch_logdeliverysource" "info_logs" {
@@ -1364,10 +1364,10 @@ import 'event_bus_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.bucket.json
 /// }
 /// resource "aws_cloudwatch_logdeliverydestination" "s3" {
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-S3"
 ///   delivery_destination_configuration = {
 ///     destination_resource_arn = aws_s3_bucket.example.arn
 ///   }
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-S3"
 /// }
 /// resource "aws_cloudwatch_logdelivery" "s3_info_logs" {
 ///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.s3.arn
@@ -1392,10 +1392,10 @@ import 'event_bus_state.dart';
 ///   policy_name     ="AWSLogDeliveryWrite-${aws_cloudwatch_eventbus.example.name}"
 /// }
 /// resource "aws_cloudwatch_logdeliverydestination" "cwlogs" {
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-CWLogs"
 ///   delivery_destination_configuration = {
 ///     destination_resource_arn = aws_cloudwatch_loggroup.event_bus_logs.arn
 ///   }
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-CWLogs"
 /// }
 /// resource "aws_cloudwatch_logdelivery" "cwlogs_info_logs" {
 ///   depends_on               = [aws_cloudwatch_logdelivery.s3_info_logs]
@@ -1419,10 +1419,10 @@ import 'event_bus_state.dart';
 ///   }
 /// }
 /// resource "aws_cloudwatch_logdeliverydestination" "firehose" {
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-Firehose"
 ///   delivery_destination_configuration = {
 ///     destination_resource_arn = aws_kinesis_firehosedeliverystream.cloudfront_logs.arn
 ///   }
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-Firehose"
 /// }
 /// resource "aws_cloudwatch_logdelivery" "firehose_info_logs" {
 ///   depends_on               = [aws_cloudwatch_logdelivery.cwlogs_info_logs]
@@ -1458,8 +1458,8 @@ import 'event_bus_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.cloudwatch.LogDeliveryDestination;
@@ -1491,11 +1491,11 @@ import 'event_bus_state.dart';
 ///             .build());
 ///
 ///         var example = new EventBus("example", EventBusArgs.builder()
-///             .name("example-event-bus")
 ///             .logConfig(EventBusLogConfigArgs.builder()
 ///                 .includeDetail("FULL")
 ///                 .level("TRACE")
 ///                 .build())
+///             .name("example-event-bus")
 ///             .build());
 ///
 ///         // CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
@@ -1524,13 +1524,6 @@ import 'event_bus_state.dart';
 ///
 ///         final var bucket = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("delivery.logs.amazonaws.com")
-///                     .build())
-///                 .actions("s3:PutObject")
-///                 .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/AWSLogs/%s/EventBusLogs/*", _arn,current.accountId())))
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -1550,6 +1543,13 @@ import 'event_bus_state.dart';
 ///                             errorLogs.arn(),
 ///                             traceLogs.arn())
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("delivery.logs.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("s3:PutObject")
+///                 .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/AWSLogs/%s/EventBusLogs/*", _arn,current.accountId())))
 ///                 .build())
 ///             .build());
 ///
@@ -1559,10 +1559,10 @@ import 'event_bus_state.dart';
 ///             .build());
 ///
 ///         var s3 = new LogDeliveryDestination("s3", LogDeliveryDestinationArgs.builder()
-///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-S3", _name)))
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
 ///                 .destinationResourceArn(exampleBucket.arn())
 ///                 .build())
+///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-S3", _name)))
 ///             .build());
 ///
 ///         var s3InfoLogs = new LogDelivery("s3InfoLogs", LogDeliveryArgs.builder()
@@ -1591,15 +1591,6 @@ import 'event_bus_state.dart';
 ///
 ///         final var cwlogs = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("delivery.logs.amazonaws.com")
-///                     .build())
-///                 .actions(
-///                     "logs:CreateLogStream",
-///                     "logs:PutLogEvents")
-///                 .resources(eventBusLogs.arn().applyValue(_arn -> String.format("%s:log-stream:*", _arn)))
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -1614,6 +1605,15 @@ import 'event_bus_state.dart';
 ///                             errorLogs.arn(),
 ///                             traceLogs.arn())
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("delivery.logs.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions(
+///                     "logs:CreateLogStream",
+///                     "logs:PutLogEvents")
+///                 .resources(eventBusLogs.arn().applyValue(_arn -> String.format("%s:log-stream:*", _arn)))
 ///                 .build())
 ///             .build());
 ///
@@ -1623,10 +1623,10 @@ import 'event_bus_state.dart';
 ///             .build());
 ///
 ///         var cwlogsLogDeliveryDestination = new LogDeliveryDestination("cwlogsLogDeliveryDestination", LogDeliveryDestinationArgs.builder()
-///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-CWLogs", _name)))
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
 ///                 .destinationResourceArn(eventBusLogs.arn())
 ///                 .build())
+///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-CWLogs", _name)))
 ///             .build());
 ///
 ///         var cwlogsInfoLogs = new LogDelivery("cwlogsInfoLogs", LogDeliveryArgs.builder()
@@ -1660,10 +1660,10 @@ import 'event_bus_state.dart';
 ///             .build());
 ///
 ///         var firehose = new LogDeliveryDestination("firehose", LogDeliveryDestinationArgs.builder()
-///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-Firehose", _name)))
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
 ///                 .destinationResourceArn(cloudfrontLogs.arn())
 ///                 .build())
+///             .name(example.name().applyValue(_name -> String.format("EventsDeliveryDestination-%s-Firehose", _name)))
 ///             .build());
 ///
 ///         var firehoseInfoLogs = new LogDelivery("firehoseInfoLogs", LogDeliveryArgs.builder()
@@ -1699,10 +1699,10 @@ import 'event_bus_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:EventBus
 ///     properties:
-///       name: example-event-bus
 ///       logConfig:
 ///         includeDetail: FULL
 ///         level: TRACE
+///       name: example-event-bus
 ///   # CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
 ///   infoLogs:
 ///     type: aws:cloudwatch:LogDeliverySource
@@ -1740,9 +1740,9 @@ import 'event_bus_state.dart';
 ///   s3:
 ///     type: aws:cloudwatch:LogDeliveryDestination
 ///     properties:
-///       name: EventsDeliveryDestination-${example.name}-S3
 ///       deliveryDestinationConfiguration:
 ///         destinationResourceArn: ${exampleBucket.arn}
+///       name: EventsDeliveryDestination-${example.name}-S3
 ///   s3InfoLogs:
 ///     type: aws:cloudwatch:LogDelivery
 ///     name: s3_info_logs
@@ -1783,9 +1783,9 @@ import 'event_bus_state.dart';
 ///     type: aws:cloudwatch:LogDeliveryDestination
 ///     name: cwlogs
 ///     properties:
-///       name: EventsDeliveryDestination-${example.name}-CWLogs
 ///       deliveryDestinationConfiguration:
 ///         destinationResourceArn: ${eventBusLogs.arn}
+///       name: EventsDeliveryDestination-${example.name}-CWLogs
 ///   cwlogsInfoLogs:
 ///     type: aws:cloudwatch:LogDelivery
 ///     name: cwlogs_info_logs
@@ -1825,9 +1825,9 @@ import 'event_bus_state.dart';
 ///   firehose:
 ///     type: aws:cloudwatch:LogDeliveryDestination
 ///     properties:
-///       name: EventsDeliveryDestination-${example.name}-Firehose
 ///       deliveryDestinationConfiguration:
 ///         destinationResourceArn: ${cloudfrontLogs.arn}
+///       name: EventsDeliveryDestination-${example.name}-Firehose
 ///   firehoseInfoLogs:
 ///     type: aws:cloudwatch:LogDelivery
 ///     name: firehose_info_logs
@@ -1867,16 +1867,7 @@ import 'event_bus_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - delivery.logs.amazonaws.com
-///             actions:
-///               - s3:PutObject
-///             resources:
-///               - ${exampleBucket.arn}/AWSLogs/${current.accountId}/EventBusLogs/*
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: s3:x-amz-acl
 ///                 values:
@@ -1891,22 +1882,21 @@ import 'event_bus_state.dart';
 ///                   - ${infoLogs.arn}
 ///                   - ${errorLogs.arn}
 ///                   - ${traceLogs.arn}
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - delivery.logs.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - s3:PutObject
+///             resources:
+///               - ${exampleBucket.arn}/AWSLogs/${current.accountId}/EventBusLogs/*
 ///   cwlogs:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - delivery.logs.amazonaws.com
-///             actions:
-///               - logs:CreateLogStream
-///               - logs:PutLogEvents
-///             resources:
-///               - ${eventBusLogs.arn}:log-stream:*
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: aws:SourceAccount
 ///                 values:
@@ -1917,6 +1907,16 @@ import 'event_bus_state.dart';
 ///                   - ${infoLogs.arn}
 ///                   - ${errorLogs.arn}
 ///                   - ${traceLogs.arn}
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - delivery.logs.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - logs:CreateLogStream
+///               - logs:PutLogEvents
+///             resources:
+///               - ${eventBusLogs.arn}:log-stream:*
 /// ```
 ///
 ///
@@ -1948,7 +1948,7 @@ class EventBus extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Partner event source that the new event bus will be matched with. Must match `name`.
   late final pulumi.Output<String?> eventSourceName;
-  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
+  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// Block for logging configuration settings for the event bus.
   late final pulumi.Output<EventBusLogConfig?> logConfig;
@@ -1975,7 +1975,7 @@ class EventBus extends pulumi.CustomResource {
           'aws:cloudwatch/eventBus:EventBus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>('deadLetterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1985,8 +1985,8 @@ class EventBus extends pulumi.CustomResource {
     logConfig = registerOutput<EventBusLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventBus] resource's state with the given [name] and [id].
@@ -1994,11 +1994,12 @@ class EventBus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventBusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventBus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2020,7 +2021,28 @@ class EventBus extends pulumi.CustomResource {
     logConfig = registerOutput<EventBusLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventBus] resource.
+  EventBus.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventBus:EventBus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>('deadLetterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    eventSourceName = registerOutput<String?>('eventSourceName');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    logConfig = registerOutput<EventBusLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

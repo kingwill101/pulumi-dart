@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EventhubNamespaceDisasterRecoveryConfig resources.
 class EventhubNamespaceDisasterRecoveryConfigState {
   /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The ID of the EventHub Namespace to replicate to.
-  final pulumi.Input<String>? partnerNamespaceId;
+  final pulumi.Input<String?>? partnerNamespaceId;
   /// The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [EventhubNamespaceDisasterRecoveryConfigState].
   /// [name] Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.

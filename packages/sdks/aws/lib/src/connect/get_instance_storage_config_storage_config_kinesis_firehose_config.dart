@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig {
-  /// The Amazon Resource Name (ARN) of the delivery stream.
+  /// ARN of the delivery stream.
   final pulumi.Input<String> firehoseArn;
 
   /// Creates a new [GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig].
-  /// [firehoseArn] The Amazon Resource Name (ARN) of the delivery stream.
+  /// [firehoseArn] ARN of the delivery stream.
   const GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig({
     required this.firehoseArn,
   });

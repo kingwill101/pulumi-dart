@@ -21,7 +21,6 @@ import 'multi_region_access_point_state.dart';
 /// const fooBucket = new aws.s3.Bucket("foo_bucket", {bucket: "example-bucket-foo"});
 /// const barBucket = new aws.s3.Bucket("bar_bucket", {bucket: "example-bucket-bar"});
 /// const example = new aws.s3control.MultiRegionAccessPoint("example", {details: {
-///     name: "example",
 ///     regions: [
 ///         {
 ///             bucket: fooBucket.id,
@@ -30,6 +29,7 @@ import 'multi_region_access_point_state.dart';
 ///             bucket: barBucket.id,
 ///         },
 ///     ],
+///     name: "example",
 /// }});
 /// ```
 /// ```python
@@ -39,7 +39,6 @@ import 'multi_region_access_point_state.dart';
 /// foo_bucket = aws.s3.Bucket("foo_bucket", bucket="example-bucket-foo")
 /// bar_bucket = aws.s3.Bucket("bar_bucket", bucket="example-bucket-bar")
 /// example = aws.s3control.MultiRegionAccessPoint("example", details={
-///     "name": "example",
 ///     "regions": [
 ///         {
 ///             "bucket": foo_bucket.id,
@@ -48,6 +47,7 @@ import 'multi_region_access_point_state.dart';
 ///             "bucket": bar_bucket.id,
 ///         },
 ///     ],
+///     "name": "example",
 /// })
 /// ```
 /// ```csharp
@@ -72,7 +72,6 @@ import 'multi_region_access_point_state.dart';
 ///     {
 ///         Details = new Aws.S3Control.Inputs.MultiRegionAccessPointDetailsArgs
 ///         {
-///             Name = "example",
 ///             Regions = new[]
 ///             {
 ///                 new Aws.S3Control.Inputs.MultiRegionAccessPointDetailsRegionArgs
@@ -84,6 +83,7 @@ import 'multi_region_access_point_state.dart';
 ///                     Bucket = barBucket.Id,
 ///                 },
 ///             },
+///             Name = "example",
 ///         },
 ///     });
 ///
@@ -114,7 +114,6 @@ import 'multi_region_access_point_state.dart';
 /// 		}
 /// 		_, err = s3control.NewMultiRegionAccessPoint(ctx, "example", &s3control.MultiRegionAccessPointArgs{
 /// 			Details: &s3control.MultiRegionAccessPointDetailsArgs{
-/// 				Name: pulumi.String("example"),
 /// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
 /// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
@@ -123,6 +122,7 @@ import 'multi_region_access_point_state.dart';
 /// 						Bucket: barBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
+/// 				Name: pulumi.String("example"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -149,12 +149,12 @@ import 'multi_region_access_point_state.dart';
 /// }
 /// resource "aws_s3control_multiregionaccesspoint" "example" {
 ///   details = {
-///     name = "example"
 ///     regions = [{
 ///       "bucket" = aws_s3_bucket.foo_bucket.id
 ///       }, {
 ///       "bucket" = aws_s3_bucket.bar_bucket.id
 ///     }]
+///     name = "example"
 ///   }
 /// }
 /// ```
@@ -193,7 +193,6 @@ import 'multi_region_access_point_state.dart';
 ///
 ///         var example = new MultiRegionAccessPoint("example", MultiRegionAccessPointArgs.builder()
 ///             .details(MultiRegionAccessPointDetailsArgs.builder()
-///                 .name("example")
 ///                 .regions(
 ///                     MultiRegionAccessPointDetailsRegionArgs.builder()
 ///                         .bucket(fooBucket.id())
@@ -201,6 +200,7 @@ import 'multi_region_access_point_state.dart';
 ///                     MultiRegionAccessPointDetailsRegionArgs.builder()
 ///                         .bucket(barBucket.id())
 ///                         .build())
+///                 .name("example")
 ///                 .build())
 ///             .build());
 ///
@@ -223,10 +223,10 @@ import 'multi_region_access_point_state.dart';
 ///     type: aws:s3control:MultiRegionAccessPoint
 ///     properties:
 ///       details:
-///         name: example
 ///         regions:
 ///           - bucket: ${fooBucket.id}
 ///           - bucket: ${barBucket.id}
+///         name: example
 /// ```
 ///
 ///
@@ -254,7 +254,7 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// Alias for the Multi-Region Access Point.
   late final pulumi.Output<String> alias;
-  /// Amazon Resource Name (ARN) of the Multi-Region Access Point.
+  /// ARN of the Multi-Region Access Point.
   late final pulumi.Output<String> arn;
   /// Configuration block containing details about the Multi-Region Access Point. See `details` Block below.
   late final pulumi.Output<MultiRegionAccessPointDetails> details;
@@ -279,7 +279,7 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
           'aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
@@ -296,11 +296,12 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MultiRegionAccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MultiRegionAccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,6 +315,25 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    alias = registerOutput<String>('alias');
+    arn = registerOutput<String>('arn');
+    details = registerOutput<MultiRegionAccessPointDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [MultiRegionAccessPoint] resource.
+  MultiRegionAccessPoint.reference(String urn)
+    : super(
+        'aws:s3control/multiRegionAccessPoint:MultiRegionAccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

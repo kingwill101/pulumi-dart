@@ -224,7 +224,7 @@ import 'software_update_configuration_windows.dart';
 /// 		}
 /// 		_, err = automation.NewSoftwareUpdateConfiguration(ctx, "example", &automation.SoftwareUpdateConfigurationArgs{
 /// 			Name:                pulumi.String("example"),
-/// 			AutomationAccountId: exampleAccount.ID(),
+/// 			AutomationAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Linux: &automation.SoftwareUpdateConfigurationLinuxArgs{
 /// 				ClassificationsIncludeds: pulumi.StringArray("Security"),
 /// 				ExcludedPackages: pulumi.StringArray{
@@ -486,7 +486,7 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
           'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     duration = registerOutput<String?>('duration');
@@ -494,12 +494,12 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
     errorMessage = registerOutput<String>('errorMessage');
     linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames');
+    nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPostTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPreTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<SoftwareUpdateConfigurationTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
+    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationWindows.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -508,11 +508,12 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SoftwareUpdateConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SoftwareUpdateConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -532,12 +533,36 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
     errorMessage = registerOutput<String>('errorMessage');
     linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames');
+    nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPostTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPreTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<SoftwareUpdateConfigurationTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
+    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationWindows.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SoftwareUpdateConfiguration] resource.
+  SoftwareUpdateConfiguration.reference(String urn)
+    : super(
+        'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    duration = registerOutput<String?>('duration');
+    errorCode = registerOutput<String>('errorCode');
+    errorMessage = registerOutput<String>('errorMessage');
+    linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPostTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationPreTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<SoftwareUpdateConfigurationTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationWindows.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

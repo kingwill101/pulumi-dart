@@ -321,7 +321,7 @@ import 'schema_state.dart';
 /// $ pulumi import aws:schemas/schema:Schema test name/registry
 /// ```
 class Schema extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the discoverer.
+  /// ARN of the discoverer.
   late final pulumi.Output<String> arn;
   /// The schema specification. Must be a valid Open API 3.0 spec.
   late final pulumi.Output<String> content;
@@ -358,7 +358,7 @@ class Schema extends pulumi.CustomResource {
           'aws:schemas/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');
@@ -367,8 +367,8 @@ class Schema extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryName = registerOutput<String>('registryName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
     versionCreatedDate = registerOutput<String>('versionCreatedDate');
@@ -379,11 +379,12 @@ class Schema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -404,8 +405,31 @@ class Schema extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     registryName = registerOutput<String>('registryName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+    versionCreatedDate = registerOutput<String>('versionCreatedDate');
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'aws:schemas/schema:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    content = registerOutput<String>('content');
+    description = registerOutput<String?>('description');
+    lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    registryName = registerOutput<String>('registryName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
     versionCreatedDate = registerOutput<String>('versionCreatedDate');

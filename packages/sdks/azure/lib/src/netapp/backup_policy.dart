@@ -265,7 +265,7 @@ class BackupPolicy extends pulumi.CustomResource {
           'azure:netapp/backupPolicy:BackupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
@@ -274,7 +274,7 @@ class BackupPolicy extends pulumi.CustomResource {
     monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
   }
 
@@ -283,11 +283,12 @@ class BackupPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,7 +309,27 @@ class BackupPolicy extends pulumi.CustomResource {
     monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
+  }
+
+  /// Creates a typed reference to an existing [BackupPolicy] resource.
+  BackupPolicy.reference(String urn)
+    : super(
+        'azure:netapp/backupPolicy:BackupPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
   }
 }

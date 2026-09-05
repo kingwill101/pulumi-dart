@@ -6,16 +6,16 @@ import 'user_profile_user_settings_kernel_gateway_app_settings_default_resource_
 
 class UserProfileUserSettingsKernelGatewayAppSettings {
   /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
-  final pulumi.Input<List<UserProfileUserSettingsKernelGatewayAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec>? defaultResourceSpec;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<List<UserProfileUserSettingsKernelGatewayAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsKernelGatewayAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [UserProfileUserSettingsKernelGatewayAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const UserProfileUserSettingsKernelGatewayAppSettings({
     this.customImages,
     this.defaultResourceSpec,

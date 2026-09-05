@@ -7,23 +7,23 @@ import 'ledger_certificate_based_security_principal.dart';
 /// Input properties used for looking up and filtering Ledger resources.
 class LedgerState {
   /// A list of `azureadBasedServicePrincipal` blocks as defined below.
-  final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>>? azureadBasedServicePrincipals;
+  final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>?>? azureadBasedServicePrincipals;
   /// A list of `certificateBasedSecurityPrincipal` blocks as defined below.
-  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals;
+  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>?>? certificateBasedSecurityPrincipals;
   /// The Identity Service Endpoint for this Confidential Ledger.
-  final pulumi.Input<String>? identityServiceEndpoint;
+  final pulumi.Input<String?>? identityServiceEndpoint;
   /// The Endpoint for this Confidential Ledger.
-  final pulumi.Input<String>? ledgerEndpoint;
+  final pulumi.Input<String?>? ledgerEndpoint;
   /// Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? ledgerType;
+  final pulumi.Input<String?>? ledgerType;
   /// Specifies the supported Azure location where the Confidential Ledger exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the Confidential Ledger.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LedgerState].
   /// [azureadBasedServicePrincipals] A list of `azureadBasedServicePrincipal` blocks as defined below.

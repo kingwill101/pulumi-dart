@@ -203,7 +203,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:apigateway/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     parentId = registerOutput<String>('parentId');
     path = registerOutput<String>('path');
@@ -217,11 +217,12 @@ class ResourceType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,6 +236,22 @@ class ResourceType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    parentId = registerOutput<String>('parentId');
+    path = registerOutput<String>('path');
+    pathPart = registerOutput<String>('pathPart');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'aws:apigateway/resource:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     parentId = registerOutput<String>('parentId');
     path = registerOutput<String>('path');
     pathPart = registerOutput<String>('pathPart');

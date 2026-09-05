@@ -106,7 +106,7 @@ import 'mover_source_endpoint_state.dart';
 /// 		}
 /// 		_, err = storage.NewMoverSourceEndpoint(ctx, "example", &storage.MoverSourceEndpointArgs{
 /// 			Name:           pulumi.String("example-se"),
-/// 			StorageMoverId: exampleMover.ID(),
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
 /// 			Export:         pulumi.String("/"),
 /// 			Host:           pulumi.String("192.168.0.1"),
 /// 			NfsVersion:     pulumi.String("NFSv3"),
@@ -257,7 +257,7 @@ class MoverSourceEndpoint extends pulumi.CustomResource {
           'azure:storage/moverSourceEndpoint:MoverSourceEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     export = registerOutput<String?>('export');
@@ -272,11 +272,12 @@ class MoverSourceEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MoverSourceEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MoverSourceEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,23 @@ class MoverSourceEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    export = registerOutput<String?>('export');
+    host = registerOutput<String>('host');
+    this.name = registerOutput<String>('name');
+    nfsVersion = registerOutput<String?>('nfsVersion');
+    storageMoverId = registerOutput<String>('storageMoverId');
+  }
+
+  /// Creates a typed reference to an existing [MoverSourceEndpoint] resource.
+  MoverSourceEndpoint.reference(String urn)
+    : super(
+        'azure:storage/moverSourceEndpoint:MoverSourceEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     export = registerOutput<String?>('export');
     host = registerOutput<String>('host');

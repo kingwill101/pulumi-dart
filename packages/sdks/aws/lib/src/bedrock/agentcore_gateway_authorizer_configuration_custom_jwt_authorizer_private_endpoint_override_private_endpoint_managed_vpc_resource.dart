@@ -6,13 +6,13 @@ class AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointO
   /// IP address type for the endpoint. Valid values are `IPV4` and `IPV6`.
   final pulumi.Input<String> endpointIpAddressType;
   /// Routing domain for the endpoint.
-  final pulumi.Input<String>? routingDomain;
+  final pulumi.Input<String?>? routingDomain;
   /// IDs of the security groups for the endpoint.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// IDs of the subnets for the endpoint.
   final pulumi.Input<List<String>> subnetIds;
   /// Tags to assign to the managed VPC resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the VPC for the endpoint.
   final pulumi.Input<String> vpcIdentifier;
 

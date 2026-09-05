@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_policy_args.dart';
+import 'management_policy_rule.dart';
 import 'management_policy_state.dart';
 
 /// Manages an Azure Storage Account Management Policy.
@@ -290,7 +291,7 @@ import 'management_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewManagementPolicy(ctx, "example", &storage.ManagementPolicyArgs{
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: storage.ManagementPolicyRuleArray{
 /// 				&storage.ManagementPolicyRuleArgs{
 /// 					Name:    pulumi.String("rule1"),
@@ -618,7 +619,7 @@ import 'management_policy_state.dart';
 /// ```
 class ManagementPolicy extends pulumi.CustomResource {
   /// A `rule` block as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<ManagementPolicyRule>?> rules;
   /// Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -634,9 +635,9 @@ class ManagementPolicy extends pulumi.CustomResource {
           'azure:storage/managementPolicy:ManagementPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<ManagementPolicyRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementPolicyRule>(guardedValue, (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 
@@ -645,11 +646,12 @@ class ManagementPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagementPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagementPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -663,7 +665,20 @@ class ManagementPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<ManagementPolicyRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementPolicyRule>(guardedValue, (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [ManagementPolicy] resource.
+  ManagementPolicy.reference(String urn)
+    : super(
+        'azure:storage/managementPolicy:ManagementPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    rules = registerOutput<List<ManagementPolicyRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementPolicyRule>(guardedValue, (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

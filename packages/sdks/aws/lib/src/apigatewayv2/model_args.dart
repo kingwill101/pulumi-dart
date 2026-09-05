@@ -12,11 +12,11 @@ class ModelArgs {
   /// Content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   final pulumi.Input<String> contentType;
   /// Description of the model. Must be between 1 and 128 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the model. Must be alphanumeric. Must be between 1 and 128 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model. Must be less than or equal to 32768 characters in length.
   final pulumi.Input<String> schema;
 

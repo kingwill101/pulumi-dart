@@ -7,13 +7,13 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions.da
 
 class RuleGroupRuleGroupRulesSource {
   /// A configuration block containing **stateful** inspection criteria for a domain list rule group. See Rules Source List below for details.
-  final pulumi.Input<RuleGroupRuleGroupRulesSourceRulesSourceList>? rulesSourceList;
+  final pulumi.Input<RuleGroupRuleGroupRulesSourceRulesSourceList?>? rulesSourceList;
   /// Stateful inspection criteria, provided in Suricata compatible rules. These rules contain the inspection criteria and the action to take for traffic that matches the criteria, so this type of rule group doesn’t have a separate action setting.
-  final pulumi.Input<String>? rulesString;
+  final pulumi.Input<String?>? rulesString;
   /// Set of configuration blocks containing **stateful** inspection criteria for 5-tuple rules to be used together in a rule group. See Stateful Rule below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatefulRule>>? statefulRules;
+  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatefulRule>?>? statefulRules;
   /// A configuration block containing **stateless** inspection criteria for a stateless rule group. See Stateless Rules and Custom Actions below for details.
-  final pulumi.Input<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions>? statelessRulesAndCustomActions;
+  final pulumi.Input<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions?>? statelessRulesAndCustomActions;
 
   /// Creates a new [RuleGroupRuleGroupRulesSource].
   /// [rulesSourceList] A configuration block containing **stateful** inspection criteria for a domain list rule group. See Rules Source List below for details.

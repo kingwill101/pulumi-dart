@@ -46,7 +46,7 @@ class SizeConstraintSetSizeConstraint {
     return SizeConstraintSetSizeConstraint(
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: pulumi.Input.fromValue(SizeConstraintSetSizeConstraintFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       textTransformation: pulumi.Input.fromValue(map['textTransformation'] as String),
     );
   }

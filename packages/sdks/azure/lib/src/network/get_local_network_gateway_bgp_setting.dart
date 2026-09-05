@@ -30,9 +30,9 @@ class GetLocalNetworkGatewayBgpSetting {
 
   factory GetLocalNetworkGatewayBgpSetting.fromMap(Map<String, dynamic> map) {
     return GetLocalNetworkGatewayBgpSetting(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       bgpPeeringAddress: pulumi.Input.fromValue(map['bgpPeeringAddress'] as String),
-      peerWeight: pulumi.Input.fromValue(map['peerWeight'] as int),
+      peerWeight: pulumi.Input.fromValue((map['peerWeight'] as num).toInt()),
     );
   }
 }

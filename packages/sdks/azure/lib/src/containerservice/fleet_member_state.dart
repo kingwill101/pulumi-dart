@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FleetMember resources.
 class FleetMemberState {
   /// The group this member belongs to for multi-cluster update management.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The ARM resource ID of the cluster that joins the Fleet. Changing this forces a new Kubernetes Fleet Member to be created.
-  final pulumi.Input<String>? kubernetesClusterId;
+  final pulumi.Input<String?>? kubernetesClusterId;
   /// Specifies the Kubernetes Fleet Id within which this Kubernetes Fleet Member should exist. Changing this forces a new Kubernetes Fleet Member to be created.
-  final pulumi.Input<String>? kubernetesFleetId;
+  final pulumi.Input<String?>? kubernetesFleetId;
   /// Specifies the name of this Kubernetes Fleet Member. Changing this forces a new Kubernetes Fleet Member to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FleetMemberState].
   /// [group] The group this member belongs to for multi-cluster update management.

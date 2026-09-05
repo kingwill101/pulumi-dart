@@ -8,29 +8,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datafactory_linked_service_cosmos_db_linked_service_cosmos_db_args_doc}
 class LinkedServiceCosmosDbArgs {
   /// The endpoint of the Azure CosmosDB account. Required if `connectionString` is unspecified.
-  final pulumi.Input<String>? accountEndpoint;
+  final pulumi.Input<String?>? accountEndpoint;
   /// The account key of the Azure Cosmos DB account. Required if `connectionString` is unspecified.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to CosmosDB Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The connection string. Required if `accountEndpoint`, `accountKey`, and `database` are unspecified.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The name of the database. Required if `connectionString` is unspecified.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The description for the Data Factory Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [LinkedServiceCosmosDbArgs].
   /// [accountEndpoint] The endpoint of the Azure CosmosDB account. Required if `connectionString` is unspecified.

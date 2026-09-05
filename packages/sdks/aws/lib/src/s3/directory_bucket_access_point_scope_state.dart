@@ -6,13 +6,13 @@ import 'directory_bucket_access_point_scope_scope.dart';
 /// Input properties used for looking up and filtering DirectoryBucketAccessPointScope resources.
 class DirectoryBucketAccessPointScopeState {
   /// AWS account ID that owns the specified access point.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Name of the access point that you want to apply the scope to.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
-  final pulumi.Input<DirectoryBucketAccessPointScopeScope>? scope;
+  final pulumi.Input<DirectoryBucketAccessPointScopeScope?>? scope;
 
   /// Creates a new [DirectoryBucketAccessPointScopeState].
   /// [accountId] AWS account ID that owns the specified access point.

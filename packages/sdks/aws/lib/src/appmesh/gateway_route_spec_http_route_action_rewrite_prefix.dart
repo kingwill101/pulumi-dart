@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecHttpRouteActionRewritePrefix {
   /// Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? defaultPrefix;
+  final pulumi.Input<String?>? defaultPrefix;
   /// Value used to replace the incoming route prefix when rewritten.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewritePrefix].
   /// [defaultPrefix] Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.

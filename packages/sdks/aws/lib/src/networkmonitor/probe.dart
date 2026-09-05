@@ -225,7 +225,7 @@ class Probe extends pulumi.CustomResource {
           'aws:networkmonitor/probe:Probe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
@@ -237,8 +237,8 @@ class Probe extends pulumi.CustomResource {
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     sourceArn = registerOutput<String>('sourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -247,11 +247,12 @@ class Probe extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProbeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Probe._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,8 +276,32 @@ class Probe extends pulumi.CustomResource {
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     sourceArn = registerOutput<String>('sourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Probe] resource.
+  Probe.reference(String urn)
+    : super(
+        'aws:networkmonitor/probe:Probe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    arn = registerOutput<String>('arn');
+    destination = registerOutput<String>('destination');
+    destinationPort = registerOutput<int?>('destinationPort');
+    monitorName = registerOutput<String>('monitorName');
+    packetSize = registerOutput<int>('packetSize');
+    probeId = registerOutput<String>('probeId');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    sourceArn = registerOutput<String>('sourceArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

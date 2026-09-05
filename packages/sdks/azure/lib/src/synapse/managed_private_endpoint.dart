@@ -224,7 +224,7 @@ import 'managed_private_endpoint_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -233,7 +233,7 @@ import 'managed_private_endpoint_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			ManagedVirtualNetworkEnabled:    pulumi.Bool(true),
@@ -246,7 +246,7 @@ import 'managed_private_endpoint_state.dart';
 /// 		}
 /// 		exampleFirewallRule, err := synapse.NewFirewallRule(ctx, "example", &synapse.FirewallRuleArgs{
 /// 			Name:               pulumi.String("AllowAll"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress:     pulumi.String("0.0.0.0"),
 /// 			EndIpAddress:       pulumi.String("255.255.255.255"),
 /// 		})
@@ -266,8 +266,8 @@ import 'managed_private_endpoint_state.dart';
 /// 		}
 /// 		_, err = synapse.NewManagedPrivateEndpoint(ctx, "example", &synapse.ManagedPrivateEndpointArgs{
 /// 			Name:               pulumi.String("example-endpoint"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
-/// 			TargetResourceId:   exampleConnect.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetResourceId:   exampleConnect.ID().ToIDOutput().ToStringOutput(),
 /// 			SubresourceName:    pulumi.String("blob"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleFirewallRule,
@@ -546,9 +546,9 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -560,11 +560,12 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPrivateEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPrivateEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -578,7 +579,23 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    subresourceName = registerOutput<String>('subresourceName');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrivateEndpoint] resource.
+  ManagedPrivateEndpoint.reference(String urn)
+    : super(
+        'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String>('subresourceName');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

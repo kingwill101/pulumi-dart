@@ -113,7 +113,7 @@ import 'outbound_firewall_rule_state.dart';
 /// 		}
 /// 		_, err = mssql.NewOutboundFirewallRule(ctx, "example", &mssql.OutboundFirewallRuleArgs{
 /// 			Name:     pulumi.String("sqlexamplefdqn.database.windows.net"),
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -256,7 +256,7 @@ class OutboundFirewallRule extends pulumi.CustomResource {
           'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
@@ -267,11 +267,12 @@ class OutboundFirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutboundFirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutboundFirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -285,6 +286,19 @@ class OutboundFirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [OutboundFirewallRule] resource.
+  OutboundFirewallRule.reference(String urn)
+    : super(
+        'azure:mssql/outboundFirewallRule:OutboundFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
   }

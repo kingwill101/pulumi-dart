@@ -7,11 +7,11 @@ import 'pipeline_trigger_git_configuration_push_tags.dart';
 
 class PipelineTriggerGitConfigurationPush {
   /// The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
-  final pulumi.Input<PipelineTriggerGitConfigurationPushBranches>? branches;
+  final pulumi.Input<PipelineTriggerGitConfigurationPushBranches?>? branches;
   /// The field that specifies to filter on file paths for the push trigger configuration. A `filePaths` block is documented below.
-  final pulumi.Input<PipelineTriggerGitConfigurationPushFilePaths>? filePaths;
+  final pulumi.Input<PipelineTriggerGitConfigurationPushFilePaths?>? filePaths;
   /// The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
-  final pulumi.Input<PipelineTriggerGitConfigurationPushTags>? tags;
+  final pulumi.Input<PipelineTriggerGitConfigurationPushTags?>? tags;
 
   /// Creates a new [PipelineTriggerGitConfigurationPush].
   /// [branches] The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.

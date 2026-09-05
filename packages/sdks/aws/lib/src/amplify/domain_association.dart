@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_association_args.dart';
 import 'domain_association_certificate_settings.dart';
 import 'domain_association_state.dart';
+import 'domain_association_sub_domain.dart';
 
 /// Provides an Amplify Domain Association resource.
 ///
@@ -13,20 +14,18 @@ import 'domain_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.amplify.App("example", {
-///     name: "app",
 ///     customRules: [{
 ///         source: "https://example.com",
 ///         status: "302",
 ///         target: "https://www.example.com",
 ///     }],
+///     name: "app",
 /// });
 /// const master = new aws.amplify.Branch("master", {
 ///     appId: example.id,
 ///     branchName: "master",
 /// });
 /// const exampleDomainAssociation = new aws.amplify.DomainAssociation("example", {
-///     appId: example.id,
-///     domainName: "example.com",
 ///     subDomains: [
 ///         {
 ///             branchName: master.branchName,
@@ -37,6 +36,8 @@ import 'domain_association_state.dart';
 ///             prefix: "www",
 ///         },
 ///     ],
+///     appId: example.id,
+///     domainName: "example.com",
 /// });
 /// ```
 /// ```python
@@ -44,18 +45,16 @@ import 'domain_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.amplify.App("example",
-///     name="app",
 ///     custom_rules=[{
 ///         "source": "https://example.com",
 ///         "status": "302",
 ///         "target": "https://www.example.com",
-///     }])
+///     }],
+///     name="app")
 /// master = aws.amplify.Branch("master",
 ///     app_id=example.id,
 ///     branch_name="master")
 /// example_domain_association = aws.amplify.DomainAssociation("example",
-///     app_id=example.id,
-///     domain_name="example.com",
 ///     sub_domains=[
 ///         {
 ///             "branch_name": master.branch_name,
@@ -65,7 +64,9 @@ import 'domain_association_state.dart';
 ///             "branch_name": master.branch_name,
 ///             "prefix": "www",
 ///         },
-///     ])
+///     ],
+///     app_id=example.id,
+///     domain_name="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,7 +78,6 @@ import 'domain_association_state.dart';
 /// {
 ///     var example = new Aws.Amplify.App("example", new()
 ///     {
-///         Name = "app",
 ///         CustomRules = new[]
 ///         {
 ///             new Aws.Amplify.Inputs.AppCustomRuleArgs
@@ -87,6 +87,7 @@ import 'domain_association_state.dart';
 ///                 Target = "https://www.example.com",
 ///             },
 ///         },
+///         Name = "app",
 ///     });
 ///
 ///     var master = new Aws.Amplify.Branch("master", new()
@@ -97,8 +98,6 @@ import 'domain_association_state.dart';
 ///
 ///     var exampleDomainAssociation = new Aws.Amplify.DomainAssociation("example", new()
 ///     {
-///         AppId = example.Id,
-///         DomainName = "example.com",
 ///         SubDomains = new[]
 ///         {
 ///             new Aws.Amplify.Inputs.DomainAssociationSubDomainArgs
@@ -112,6 +111,8 @@ import 'domain_association_state.dart';
 ///                 Prefix = "www",
 ///             },
 ///         },
+///         AppId = example.Id,
+///         DomainName = "example.com",
 ///     });
 ///
 /// });
@@ -127,7 +128,6 @@ import 'domain_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := amplify.NewApp(ctx, "example", &amplify.AppArgs{
-/// 			Name: pulumi.String("app"),
 /// 			CustomRules: amplify.AppCustomRuleArray{
 /// 				&amplify.AppCustomRuleArgs{
 /// 					Source: pulumi.String("https://example.com"),
@@ -135,6 +135,7 @@ import 'domain_association_state.dart';
 /// 					Target: pulumi.String("https://www.example.com"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("app"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -147,8 +148,6 @@ import 'domain_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewDomainAssociation(ctx, "example", &amplify.DomainAssociationArgs{
-/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
-/// 			DomainName: pulumi.String("example.com"),
 /// 			SubDomains: amplify.DomainAssociationSubDomainArray{
 /// 				&amplify.DomainAssociationSubDomainArgs{
 /// 					BranchName: master.BranchName,
@@ -159,6 +158,8 @@ import 'domain_association_state.dart';
 /// 					Prefix:     pulumi.String("www"),
 /// 				},
 /// 			},
+/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainName: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -177,20 +178,18 @@ import 'domain_association_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
-///   name = "app"
 ///   custom_rules {
 ///     source = "https://example.com"
 ///     status = "302"
 ///     target = "https://www.example.com"
 ///   }
+///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
 ///   app_id      = aws_amplify_app.example.id
 ///   branch_name = "master"
 /// }
 /// resource "aws_amplify_domainassociation" "example" {
-///   app_id      = aws_amplify_app.example.id
-///   domain_name = "example.com"
 ///   sub_domains {
 ///     branch_name = aws_amplify_branch.master.branch_name
 ///     prefix      = ""
@@ -199,6 +198,8 @@ import 'domain_association_state.dart';
 ///     branch_name = aws_amplify_branch.master.branch_name
 ///     prefix      = "www"
 ///   }
+///   app_id      = aws_amplify_app.example.id
+///   domain_name = "example.com"
 /// }
 /// ```
 /// ```java
@@ -229,12 +230,12 @@ import 'domain_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new App("example", AppArgs.builder()
-///             .name("app")
 ///             .customRules(AppCustomRuleArgs.builder()
 ///                 .source("https://example.com")
 ///                 .status("302")
 ///                 .target("https://www.example.com")
 ///                 .build())
+///             .name("app")
 ///             .build());
 ///
 ///         var master = new Branch("master", BranchArgs.builder()
@@ -243,8 +244,6 @@ import 'domain_association_state.dart';
 ///             .build());
 ///
 ///         var exampleDomainAssociation = new DomainAssociation("exampleDomainAssociation", DomainAssociationArgs.builder()
-///             .appId(example.id())
-///             .domainName("example.com")
 ///             .subDomains(
 ///                 DomainAssociationSubDomainArgs.builder()
 ///                     .branchName(master.branchName())
@@ -254,6 +253,8 @@ import 'domain_association_state.dart';
 ///                     .branchName(master.branchName())
 ///                     .prefix("www")
 ///                     .build())
+///             .appId(example.id())
+///             .domainName("example.com")
 ///             .build());
 ///
 ///     }
@@ -264,11 +265,11 @@ import 'domain_association_state.dart';
 ///   example:
 ///     type: aws:amplify:App
 ///     properties:
-///       name: app
 ///       customRules:
 ///         - source: https://example.com
 ///           status: '302'
 ///           target: https://www.example.com
+///       name: app
 ///   master:
 ///     type: aws:amplify:Branch
 ///     properties:
@@ -278,13 +279,13 @@ import 'domain_association_state.dart';
 ///     type: aws:amplify:DomainAssociation
 ///     name: example
 ///     properties:
-///       appId: ${example.id}
-///       domainName: example.com
 ///       subDomains:
 ///         - branchName: ${master.branchName}
 ///           prefix: ""
 ///         - branchName: ${master.branchName}
 ///           prefix: www
+///       appId: ${example.id}
+///       domainName: example.com
 /// ```
 ///
 ///
@@ -311,7 +312,7 @@ class DomainAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Setting for the subdomain. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> subDomains;
+  late final pulumi.Output<List<DomainAssociationSubDomain>> subDomains;
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
   late final pulumi.Output<bool?> waitForVerification;
 
@@ -327,7 +328,7 @@ class DomainAssociation extends pulumi.CustomResource {
           'aws:amplify/domainAssociation:DomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
@@ -336,7 +337,7 @@ class DomainAssociation extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
     region = registerOutput<String>('region');
-    subDomains = registerOutput<List<Map<String, dynamic>>>('subDomains');
+    subDomains = registerOutput<List<DomainAssociationSubDomain>>('subDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainAssociationSubDomain>(guardedValue, (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>())); });
     waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 
@@ -345,11 +346,12 @@ class DomainAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -370,7 +372,27 @@ class DomainAssociation extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
     region = registerOutput<String>('region');
-    subDomains = registerOutput<List<Map<String, dynamic>>>('subDomains');
+    subDomains = registerOutput<List<DomainAssociationSubDomain>>('subDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainAssociationSubDomain>(guardedValue, (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>())); });
+    waitForVerification = registerOutput<bool?>('waitForVerification');
+  }
+
+  /// Creates a typed reference to an existing [DomainAssociation] resource.
+  DomainAssociation.reference(String urn)
+    : super(
+        'aws:amplify/domainAssociation:DomainAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    certificateSettings = registerOutput<DomainAssociationCertificateSettings>('certificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAssociationCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateVerificationDnsRecord = registerOutput<String>('certificateVerificationDnsRecord');
+    domainName = registerOutput<String>('domainName');
+    enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
+    region = registerOutput<String>('region');
+    subDomains = registerOutput<List<DomainAssociationSubDomain>>('subDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainAssociationSubDomain>(guardedValue, (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>())); });
     waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regex_match_set_args.dart';
+import 'regex_match_set_regex_match_tuple.dart';
 import 'regex_match_set_state.dart';
 
 /// Provides a WAF Regex Match Set Resource
@@ -19,7 +20,6 @@ import 'regex_match_set_state.dart';
 ///     ],
 /// });
 /// const example = new aws.waf.RegexMatchSet("example", {
-///     name: "example",
 ///     regexMatchTuples: [{
 ///         fieldToMatch: {
 ///             data: "User-Agent",
@@ -28,6 +28,7 @@ import 'regex_match_set_state.dart';
 ///         regexPatternSetId: exampleRegexPatternSet.id,
 ///         textTransformation: "NONE",
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -41,7 +42,6 @@ import 'regex_match_set_state.dart';
 ///         "two",
 ///     ])
 /// example = aws.waf.RegexMatchSet("example",
-///     name="example",
 ///     regex_match_tuples=[{
 ///         "field_to_match": {
 ///             "data": "User-Agent",
@@ -49,7 +49,8 @@ import 'regex_match_set_state.dart';
 ///         },
 ///         "regex_pattern_set_id": example_regex_pattern_set.id,
 ///         "text_transformation": "NONE",
-///     }])
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -71,7 +72,6 @@ import 'regex_match_set_state.dart';
 ///
 ///     var example = new Aws.Waf.RegexMatchSet("example", new()
 ///     {
-///         Name = "example",
 ///         RegexMatchTuples = new[]
 ///         {
 ///             new Aws.Waf.Inputs.RegexMatchSetRegexMatchTupleArgs
@@ -85,6 +85,7 @@ import 'regex_match_set_state.dart';
 ///                 TextTransformation = "NONE",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -110,7 +111,6 @@ import 'regex_match_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = waf.NewRegexMatchSet(ctx, "example", &waf.RegexMatchSetArgs{
-/// 			Name: pulumi.String("example"),
 /// 			RegexMatchTuples: waf.RegexMatchSetRegexMatchTupleArray{
 /// 				&waf.RegexMatchSetRegexMatchTupleArgs{
 /// 					FieldToMatch: &waf.RegexMatchSetRegexMatchTupleFieldToMatchArgs{
@@ -121,6 +121,7 @@ import 'regex_match_set_state.dart';
 /// 					TextTransformation: pulumi.String("NONE"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -139,7 +140,6 @@ import 'regex_match_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_regexmatchset" "example" {
-///   name = "example"
 ///   regex_match_tuples {
 ///     field_to_match = {
 ///       data = "User-Agent"
@@ -148,6 +148,7 @@ import 'regex_match_set_state.dart';
 ///     regex_pattern_set_id = aws_waf_regexpatternset.example.id
 ///     text_transformation  = "NONE"
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_waf_regexpatternset" "example" {
 ///   name                  = "example"
@@ -187,7 +188,6 @@ import 'regex_match_set_state.dart';
 ///             .build());
 ///
 ///         var example = new RegexMatchSet("example", RegexMatchSetArgs.builder()
-///             .name("example")
 ///             .regexMatchTuples(RegexMatchSetRegexMatchTupleArgs.builder()
 ///                 .fieldToMatch(RegexMatchSetRegexMatchTupleFieldToMatchArgs.builder()
 ///                     .data("User-Agent")
@@ -196,6 +196,7 @@ import 'regex_match_set_state.dart';
 ///                 .regexPatternSetId(exampleRegexPatternSet.id())
 ///                 .textTransformation("NONE")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -206,13 +207,13 @@ import 'regex_match_set_state.dart';
 ///   example:
 ///     type: aws:waf:RegexMatchSet
 ///     properties:
-///       name: example
 ///       regexMatchTuples:
 ///         - fieldToMatch:
 ///             data: User-Agent
 ///             type: HEADER
 ///           regexPatternSetId: ${exampleRegexPatternSet.id}
 ///           textTransformation: NONE
+///       name: example
 ///   exampleRegexPatternSet:
 ///     type: aws:waf:RegexPatternSet
 ///     name: example
@@ -232,12 +233,12 @@ import 'regex_match_set_state.dart';
 /// $ pulumi import aws:waf/regexMatchSet:RegexMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class RegexMatchSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN)
+  /// ARN
   late final pulumi.Output<String> arn;
   /// The name or description of the Regex Match Set.
   late final pulumi.Output<String> name;
   /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> regexMatchTuples;
+  late final pulumi.Output<List<RegexMatchSetRegexMatchTuple>?> regexMatchTuples;
 
   /// Creates a new [RegexMatchSet].
   /// [name] The Pulumi resource name.
@@ -251,11 +252,11 @@ class RegexMatchSet extends pulumi.CustomResource {
           'aws:waf/regexMatchSet:RegexMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>('regexMatchTuples');
+    regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(guardedValue, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RegexMatchSet] resource's state with the given [name] and [id].
@@ -263,11 +264,12 @@ class RegexMatchSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegexMatchSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegexMatchSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +285,20 @@ class RegexMatchSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>('regexMatchTuples');
+    regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(guardedValue, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegexMatchSet] resource.
+  RegexMatchSet.reference(String urn)
+    : super(
+        'aws:waf/regexMatchSet:RegexMatchSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(guardedValue, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

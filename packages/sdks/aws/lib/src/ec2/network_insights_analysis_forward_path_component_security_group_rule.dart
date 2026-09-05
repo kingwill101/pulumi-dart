@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_insights_analysis_forward_path_component_security_group_rule_port_range.dart';
 
 class NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule {
-  final pulumi.Input<String>? cidr;
-  final pulumi.Input<String>? direction;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange>>? portRanges;
-  final pulumi.Input<String>? prefixListId;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? cidr;
+  final pulumi.Input<String?>? direction;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange>?>? portRanges;
+  final pulumi.Input<String?>? prefixListId;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<String?>? securityGroupId;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule].
   /// [cidr] Optional.

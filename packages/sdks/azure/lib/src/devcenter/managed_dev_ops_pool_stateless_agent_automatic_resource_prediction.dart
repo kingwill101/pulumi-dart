@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedDevOpsPoolStatelessAgentAutomaticResourcePrediction {
   /// Specifies the desired balance between cost and performance. Possible values are `MostCostEffective`, `MoreCostEffective`, `Balanced`, `MorePerformance`, and `BestPerformance`. Defaults to `Balanced`.
-  final pulumi.Input<String>? predictionPreference;
+  final pulumi.Input<String?>? predictionPreference;
 
   /// Creates a new [ManagedDevOpsPoolStatelessAgentAutomaticResourcePrediction].
   /// [predictionPreference] Specifies the desired balance between cost and performance. Possible values are `MostCostEffective`, `MoreCostEffective`, `Balanced`, `MorePerformance`, and `BestPerformance`. Defaults to `Balanced`.

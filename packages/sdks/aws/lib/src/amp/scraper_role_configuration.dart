@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperRoleConfiguration {
   /// ARN of the source role configuration. Must be an IAM role ARN.
-  final pulumi.Input<String>? sourceRoleArn;
+  final pulumi.Input<String?>? sourceRoleArn;
   /// ARN of the target role configuration. Must be an IAM role ARN.
-  final pulumi.Input<String>? targetRoleArn;
+  final pulumi.Input<String?>? targetRoleArn;
 
   /// Creates a new [ScraperRoleConfiguration].
   /// [sourceRoleArn] ARN of the source role configuration. Must be an IAM role ARN.

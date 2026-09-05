@@ -191,7 +191,7 @@ class UserAgentBlockingRule extends pulumi.CustomResource {
           'cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     configuration = registerOutput<UserAgentBlockingRuleConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAgentBlockingRuleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

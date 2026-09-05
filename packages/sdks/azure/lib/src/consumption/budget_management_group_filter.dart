@@ -6,9 +6,9 @@ import 'budget_management_group_filter_tag.dart';
 
 class BudgetManagementGroupFilter {
   /// One or more `dimension` blocks as defined below to filter the budget on.
-  final pulumi.Input<List<BudgetManagementGroupFilterDimension>>? dimensions;
+  final pulumi.Input<List<BudgetManagementGroupFilterDimension>?>? dimensions;
   /// One or more `tag` blocks as defined below to filter the budget on.
-  final pulumi.Input<List<BudgetManagementGroupFilterTag>>? tags;
+  final pulumi.Input<List<BudgetManagementGroupFilterTag>?>? tags;
 
   /// Creates a new [BudgetManagementGroupFilter].
   /// [dimensions] One or more `dimension` blocks as defined below to filter the budget on.

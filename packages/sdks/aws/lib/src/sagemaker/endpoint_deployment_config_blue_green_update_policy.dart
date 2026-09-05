@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_deployment_config_blue_green_update_policy_traffic_routing_configuration.dart';
 
 class EndpointDeploymentConfigBlueGreenUpdatePolicy {
-  final pulumi.Input<int>? maximumExecutionTimeoutInSeconds;
+  final pulumi.Input<int?>? maximumExecutionTimeoutInSeconds;
   /// Additional waiting time in seconds after the completion of an endpoint deployment before terminating the old endpoint fleet. Default is `0`. Valid values are between `0` and `3600`.
-  final pulumi.Input<int>? terminationWaitInSeconds;
+  final pulumi.Input<int?>? terminationWaitInSeconds;
   /// Defines the traffic routing strategy to shift traffic from the old fleet to the new fleet during an endpoint deployment. See Traffic Routing Configuration.
   final pulumi.Input<EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration> trafficRoutingConfiguration;
 
@@ -30,8 +30,8 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicy {
 
   factory EndpointDeploymentConfigBlueGreenUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigBlueGreenUpdatePolicy(
-      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      terminationWaitInSeconds: (() { final guardedValue = map['terminationWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      terminationWaitInSeconds: (() { final guardedValue = map['terminationWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       trafficRoutingConfiguration: pulumi.Input.fromValue(EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration.fromMap((map['trafficRoutingConfiguration']! as Map).cast<String, dynamic>())),
     );
   }

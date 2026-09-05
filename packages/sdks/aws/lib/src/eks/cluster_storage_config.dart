@@ -5,7 +5,7 @@ import 'cluster_storage_config_block_storage.dart';
 
 class ClusterStorageConfig {
   /// Configuration block with block storage configuration for the cluster. Detailed below.
-  final pulumi.Input<ClusterStorageConfigBlockStorage>? blockStorage;
+  final pulumi.Input<ClusterStorageConfigBlockStorage?>? blockStorage;
 
   /// Creates a new [ClusterStorageConfig].
   /// [blockStorage] Configuration block with block storage configuration for the cluster. Detailed below.

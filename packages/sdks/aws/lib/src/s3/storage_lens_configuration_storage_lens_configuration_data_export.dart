@@ -7,11 +7,11 @@ import 'storage_lens_configuration_storage_lens_configuration_data_export_storag
 
 class StorageLensConfigurationStorageLensConfigurationDataExport {
   /// Amazon CloudWatch publishing for S3 Storage Lens metrics. See `cloudWatchMetrics` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics>? cloudWatchMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics?>? cloudWatchMetrics;
   /// Bucket where the S3 Storage Lens metrics export will be located. See `s3BucketDestination` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination>? s3BucketDestination;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination?>? s3BucketDestination;
   /// S3 table bucket where the S3 Storage Lens metrics export will be located. See `storageLensTableDestination` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportStorageLensTableDestination>? storageLensTableDestination;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportStorageLensTableDestination?>? storageLensTableDestination;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExport].
   /// [cloudWatchMetrics] Amazon CloudWatch publishing for S3 Storage Lens metrics. See `cloudWatchMetrics` below for more details.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_profile_args.dart';
+import 'routing_profile_media_concurrency.dart';
+import 'routing_profile_queue_config.dart';
 import 'routing_profile_state.dart';
 
 /// Provides an Amazon Connect Routing Profile resource. For more information see
@@ -13,24 +15,20 @@ import 'routing_profile_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.RoutingProfile("example", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name: "example",
-///     defaultOutboundQueueId: "12345678-1234-1234-1234-123456789012",
-///     description: "example description",
 ///     mediaConcurrencies: [
 ///         {
-///             channel: "VOICE",
-///             concurrency: 1,
 ///             crossChannelBehavior: {
 ///                 behaviorType: "ROUTE_ANY_CHANNEL",
 ///             },
+///             channel: "VOICE",
+///             concurrency: 1,
 ///         },
 ///         {
-///             channel: "CHAT",
-///             concurrency: 3,
 ///             crossChannelBehavior: {
 ///                 behaviorType: "ROUTE_CURRENT_CHANNEL_ONLY",
 ///             },
+///             channel: "CHAT",
+///             concurrency: 3,
 ///         },
 ///     ],
 ///     queueConfigs: [{
@@ -39,6 +37,10 @@ import 'routing_profile_state.dart';
 ///         priority: 1,
 ///         queueId: "12345678-1234-1234-1234-123456789012",
 ///     }],
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name: "example",
+///     defaultOutboundQueueId: "12345678-1234-1234-1234-123456789012",
+///     description: "example description",
 ///     tags: {
 ///         Name: "Example Routing Profile",
 ///     },
@@ -49,24 +51,20 @@ import 'routing_profile_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.RoutingProfile("example",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name="example",
-///     default_outbound_queue_id="12345678-1234-1234-1234-123456789012",
-///     description="example description",
 ///     media_concurrencies=[
 ///         {
-///             "channel": "VOICE",
-///             "concurrency": 1,
 ///             "cross_channel_behavior": {
 ///                 "behavior_type": "ROUTE_ANY_CHANNEL",
 ///             },
+///             "channel": "VOICE",
+///             "concurrency": 1,
 ///         },
 ///         {
-///             "channel": "CHAT",
-///             "concurrency": 3,
 ///             "cross_channel_behavior": {
 ///                 "behavior_type": "ROUTE_CURRENT_CHANNEL_ONLY",
 ///             },
+///             "channel": "CHAT",
+///             "concurrency": 3,
 ///         },
 ///     ],
 ///     queue_configs=[{
@@ -75,6 +73,10 @@ import 'routing_profile_state.dart';
 ///         "priority": 1,
 ///         "queue_id": "12345678-1234-1234-1234-123456789012",
 ///     }],
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name="example",
+///     default_outbound_queue_id="12345678-1234-1234-1234-123456789012",
+///     description="example description",
 ///     tags={
 ///         "Name": "Example Routing Profile",
 ///     })
@@ -89,29 +91,25 @@ import 'routing_profile_state.dart';
 /// {
 ///     var example = new Aws.Connect.RoutingProfile("example", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///         Name = "example",
-///         DefaultOutboundQueueId = "12345678-1234-1234-1234-123456789012",
-///         Description = "example description",
 ///         MediaConcurrencies = new[]
 ///         {
 ///             new Aws.Connect.Inputs.RoutingProfileMediaConcurrencyArgs
 ///             {
-///                 Channel = "VOICE",
-///                 Concurrency = 1,
 ///                 CrossChannelBehavior = new Aws.Connect.Inputs.RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs
 ///                 {
 ///                     BehaviorType = "ROUTE_ANY_CHANNEL",
 ///                 },
+///                 Channel = "VOICE",
+///                 Concurrency = 1,
 ///             },
 ///             new Aws.Connect.Inputs.RoutingProfileMediaConcurrencyArgs
 ///             {
-///                 Channel = "CHAT",
-///                 Concurrency = 3,
 ///                 CrossChannelBehavior = new Aws.Connect.Inputs.RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs
 ///                 {
 ///                     BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY",
 ///                 },
+///                 Channel = "CHAT",
+///                 Concurrency = 3,
 ///             },
 ///         },
 ///         QueueConfigs = new[]
@@ -124,6 +122,10 @@ import 'routing_profile_state.dart';
 ///                 QueueId = "12345678-1234-1234-1234-123456789012",
 ///             },
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///         Name = "example",
+///         DefaultOutboundQueueId = "12345678-1234-1234-1234-123456789012",
+///         Description = "example description",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Routing Profile" },
@@ -143,24 +145,20 @@ import 'routing_profile_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewRoutingProfile(ctx, "example", &connect.RoutingProfileArgs{
-/// 			InstanceId:             pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
-/// 			Name:                   pulumi.String("example"),
-/// 			DefaultOutboundQueueId: pulumi.String("12345678-1234-1234-1234-123456789012"),
-/// 			Description:            pulumi.String("example description"),
 /// 			MediaConcurrencies: connect.RoutingProfileMediaConcurrencyArray{
 /// 				&connect.RoutingProfileMediaConcurrencyArgs{
-/// 					Channel:     pulumi.String("VOICE"),
-/// 					Concurrency: pulumi.Int(1),
 /// 					CrossChannelBehavior: &connect.RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs{
 /// 						BehaviorType: pulumi.String("ROUTE_ANY_CHANNEL"),
 /// 					},
+/// 					Channel:     pulumi.String("VOICE"),
+/// 					Concurrency: pulumi.Int(1),
 /// 				},
 /// 				&connect.RoutingProfileMediaConcurrencyArgs{
-/// 					Channel:     pulumi.String("CHAT"),
-/// 					Concurrency: pulumi.Int(3),
 /// 					CrossChannelBehavior: &connect.RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs{
 /// 						BehaviorType: pulumi.String("ROUTE_CURRENT_CHANNEL_ONLY"),
 /// 					},
+/// 					Channel:     pulumi.String("CHAT"),
+/// 					Concurrency: pulumi.Int(3),
 /// 				},
 /// 			},
 /// 			QueueConfigs: connect.RoutingProfileQueueConfigArray{
@@ -171,6 +169,10 @@ import 'routing_profile_state.dart';
 /// 					QueueId:  pulumi.String("12345678-1234-1234-1234-123456789012"),
 /// 				},
 /// 			},
+/// 			InstanceId:             pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
+/// 			Name:                   pulumi.String("example"),
+/// 			DefaultOutboundQueueId: pulumi.String("12345678-1234-1234-1234-123456789012"),
+/// 			Description:            pulumi.String("example description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Routing Profile"),
 /// 			},
@@ -192,23 +194,19 @@ import 'routing_profile_state.dart';
 /// }
 ///
 /// resource "aws_connect_routingprofile" "example" {
-///   instance_id               = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
-///   name                      = "example"
-///   default_outbound_queue_id = "12345678-1234-1234-1234-123456789012"
-///   description               = "example description"
 ///   media_concurrencies {
-///     channel     = "VOICE"
-///     concurrency = 1
 ///     cross_channel_behavior = {
 ///       behavior_type = "ROUTE_ANY_CHANNEL"
 ///     }
+///     channel     = "VOICE"
+///     concurrency = 1
 ///   }
 ///   media_concurrencies {
-///     channel     = "CHAT"
-///     concurrency = 3
 ///     cross_channel_behavior = {
 ///       behavior_type = "ROUTE_CURRENT_CHANNEL_ONLY"
 ///     }
+///     channel     = "CHAT"
+///     concurrency = 3
 ///   }
 ///   queue_configs {
 ///     channel  = "VOICE"
@@ -216,6 +214,10 @@ import 'routing_profile_state.dart';
 ///     priority = 1
 ///     queue_id = "12345678-1234-1234-1234-123456789012"
 ///   }
+///   instance_id               = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name                      = "example"
+///   default_outbound_queue_id = "12345678-1234-1234-1234-123456789012"
+///   description               = "example description"
 ///   tags = {
 ///     "Name" = "Example Routing Profile"
 ///   }
@@ -246,24 +248,20 @@ import 'routing_profile_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RoutingProfile("example", RoutingProfileArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
-///             .name("example")
-///             .defaultOutboundQueueId("12345678-1234-1234-1234-123456789012")
-///             .description("example description")
 ///             .mediaConcurrencies(
 ///                 RoutingProfileMediaConcurrencyArgs.builder()
-///                     .channel("VOICE")
-///                     .concurrency(1)
 ///                     .crossChannelBehavior(RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs.builder()
 ///                         .behaviorType("ROUTE_ANY_CHANNEL")
 ///                         .build())
+///                     .channel("VOICE")
+///                     .concurrency(1)
 ///                     .build(),
 ///                 RoutingProfileMediaConcurrencyArgs.builder()
-///                     .channel("CHAT")
-///                     .concurrency(3)
 ///                     .crossChannelBehavior(RoutingProfileMediaConcurrencyCrossChannelBehaviorArgs.builder()
 ///                         .behaviorType("ROUTE_CURRENT_CHANNEL_ONLY")
 ///                         .build())
+///                     .channel("CHAT")
+///                     .concurrency(3)
 ///                     .build())
 ///             .queueConfigs(RoutingProfileQueueConfigArgs.builder()
 ///                 .channel("VOICE")
@@ -271,6 +269,10 @@ import 'routing_profile_state.dart';
 ///                 .priority(1)
 ///                 .queueId("12345678-1234-1234-1234-123456789012")
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
+///             .name("example")
+///             .defaultOutboundQueueId("12345678-1234-1234-1234-123456789012")
+///             .description("example description")
 ///             .tags(Map.of("Name", "Example Routing Profile"))
 ///             .build());
 ///
@@ -282,24 +284,24 @@ import 'routing_profile_state.dart';
 ///   example:
 ///     type: aws:connect:RoutingProfile
 ///     properties:
-///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
-///       name: example
-///       defaultOutboundQueueId: 12345678-1234-1234-1234-123456789012
-///       description: example description
 ///       mediaConcurrencies:
-///         - channel: VOICE
-///           concurrency: 1
-///           crossChannelBehavior:
+///         - crossChannelBehavior:
 ///             behaviorType: ROUTE_ANY_CHANNEL
-///         - channel: CHAT
-///           concurrency: 3
-///           crossChannelBehavior:
+///           channel: VOICE
+///           concurrency: 1
+///         - crossChannelBehavior:
 ///             behaviorType: ROUTE_CURRENT_CHANNEL_ONLY
+///           channel: CHAT
+///           concurrency: 3
 ///       queueConfigs:
 ///         - channel: VOICE
 ///           delay: 2
 ///           priority: 1
 ///           queueId: 12345678-1234-1234-1234-123456789012
+///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
+///       name: example
+///       defaultOutboundQueueId: 12345678-1234-1234-1234-123456789012
+///       description: example description
 ///       tags:
 ///         Name: Example Routing Profile
 /// ```
@@ -313,7 +315,7 @@ import 'routing_profile_state.dart';
 /// $ pulumi import aws:connect/routingProfile:RoutingProfile example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class RoutingProfile extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Routing Profile.
+  /// ARN of the Routing Profile.
   late final pulumi.Output<String> arn;
   /// Specifies the default outbound queue for the Routing Profile.
   late final pulumi.Output<String> defaultOutboundQueueId;
@@ -322,11 +324,11 @@ class RoutingProfile extends pulumi.CustomResource {
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
   /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> mediaConcurrencies;
+  late final pulumi.Output<List<RoutingProfileMediaConcurrency>> mediaConcurrencies;
   /// Specifies the name of the Routing Profile.
   late final pulumi.Output<String> name;
   /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> queueConfigs;
+  late final pulumi.Output<List<RoutingProfileQueueConfig>?> queueConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Identifier for the Routing Profile.
@@ -349,19 +351,19 @@ class RoutingProfile extends pulumi.CustomResource {
           'aws:connect/routingProfile:RoutingProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultOutboundQueueId = registerOutput<String>('defaultOutboundQueueId');
     description = registerOutput<String>('description');
     instanceId = registerOutput<String>('instanceId');
-    mediaConcurrencies = registerOutput<List<Map<String, dynamic>>>('mediaConcurrencies');
+    mediaConcurrencies = registerOutput<List<RoutingProfileMediaConcurrency>>('mediaConcurrencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(guardedValue, (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    queueConfigs = registerOutput<List<Map<String, dynamic>>?>('queueConfigs');
+    queueConfigs = registerOutput<List<RoutingProfileQueueConfig>?>('queueConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileQueueConfig>(guardedValue, (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RoutingProfile] resource's state with the given [name] and [id].
@@ -369,11 +371,12 @@ class RoutingProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutingProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoutingProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -391,12 +394,34 @@ class RoutingProfile extends pulumi.CustomResource {
     defaultOutboundQueueId = registerOutput<String>('defaultOutboundQueueId');
     description = registerOutput<String>('description');
     instanceId = registerOutput<String>('instanceId');
-    mediaConcurrencies = registerOutput<List<Map<String, dynamic>>>('mediaConcurrencies');
+    mediaConcurrencies = registerOutput<List<RoutingProfileMediaConcurrency>>('mediaConcurrencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(guardedValue, (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    queueConfigs = registerOutput<List<Map<String, dynamic>>?>('queueConfigs');
+    queueConfigs = registerOutput<List<RoutingProfileQueueConfig>?>('queueConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileQueueConfig>(guardedValue, (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RoutingProfile] resource.
+  RoutingProfile.reference(String urn)
+    : super(
+        'aws:connect/routingProfile:RoutingProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultOutboundQueueId = registerOutput<String>('defaultOutboundQueueId');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    mediaConcurrencies = registerOutput<List<RoutingProfileMediaConcurrency>>('mediaConcurrencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(guardedValue, (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    queueConfigs = registerOutput<List<RoutingProfileQueueConfig>?>('queueConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingProfileQueueConfig>(guardedValue, (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    routingProfileId = registerOutput<String>('routingProfileId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,15 +6,15 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override.d
 
 class WebAclRuleGroupAssociationManagedRuleGroup {
   /// Additional information that's used by a managed rule group. Only one rule attribute is allowed in each config. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigs>? managedRuleGroupConfigs;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigs?>? managedRuleGroupConfigs;
   /// Name of the managed rule group.
   final pulumi.Input<String> name;
   /// Override actions for specific rules within the rule group. See below.
-  final pulumi.Input<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride>>? ruleActionOverrides;
+  final pulumi.Input<List<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride>?>? ruleActionOverrides;
   /// Name of the managed rule group vendor. For AWS managed rule groups, this is `AWS`.
   final pulumi.Input<String> vendorName;
   /// Version of the managed rule group. If not specified, the default version is used.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroup].
   /// [managedRuleGroupConfigs] Additional information that's used by a managed rule group. Only one rule attribute is allowed in each config. See below.

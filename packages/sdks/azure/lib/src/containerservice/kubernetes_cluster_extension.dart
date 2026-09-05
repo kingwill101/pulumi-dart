@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'kubernetes_cluster_extension_aks_assigned_identity.dart';
 import 'kubernetes_cluster_extension_args.dart';
 import 'kubernetes_cluster_extension_plan.dart';
 import 'kubernetes_cluster_extension_state.dart';
@@ -139,7 +140,7 @@ import 'kubernetes_cluster_extension_state.dart';
 /// 		}
 /// 		_, err = containerservice.NewKubernetesClusterExtension(ctx, "example", &containerservice.KubernetesClusterExtensionArgs{
 /// 			Name:          pulumi.String("example-ext"),
-/// 			ClusterId:     exampleKubernetesCluster.ID(),
+/// 			ClusterId:     exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			ExtensionType: pulumi.String("microsoft.flux"),
 /// 		})
 /// 		if err != nil {
@@ -285,7 +286,7 @@ import 'kubernetes_cluster_extension_state.dart';
 /// ```
 class KubernetesClusterExtension extends pulumi.CustomResource {
   /// An `aksAssignedIdentity` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> aksAssignedIdentities;
+  late final pulumi.Output<List<KubernetesClusterExtensionAksAssignedIdentity>> aksAssignedIdentities;
   /// Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
@@ -321,12 +322,12 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
           'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    aksAssignedIdentities = registerOutput<List<Map<String, dynamic>>>('aksAssignedIdentities');
+    aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(guardedValue, (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');
@@ -342,11 +343,12 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KubernetesClusterExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KubernetesClusterExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -360,10 +362,33 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aksAssignedIdentities = registerOutput<List<Map<String, dynamic>>>('aksAssignedIdentities');
+    aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(guardedValue, (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<KubernetesClusterExtensionPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterExtensionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [KubernetesClusterExtension] resource.
+  KubernetesClusterExtension.reference(String urn)
+    : super(
+        'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(guardedValue, (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');

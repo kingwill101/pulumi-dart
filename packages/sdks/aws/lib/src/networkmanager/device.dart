@@ -165,7 +165,7 @@ class Device extends pulumi.CustomResource {
           'aws:networkmanager/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceAwsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -175,8 +175,8 @@ class Device extends pulumi.CustomResource {
     model = registerOutput<String?>('model');
     serialNumber = registerOutput<String?>('serialNumber');
     siteId = registerOutput<String?>('siteId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     vendor = registerOutput<String?>('vendor');
   }
@@ -186,11 +186,12 @@ class Device extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeviceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Device._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,8 +213,31 @@ class Device extends pulumi.CustomResource {
     model = registerOutput<String?>('model');
     serialNumber = registerOutput<String?>('serialNumber');
     siteId = registerOutput<String?>('siteId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    vendor = registerOutput<String?>('vendor');
+  }
+
+  /// Creates a typed reference to an existing [Device] resource.
+  Device.reference(String urn)
+    : super(
+        'aws:networkmanager/device:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceAwsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    location = registerOutput<DeviceLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    model = registerOutput<String?>('model');
+    serialNumber = registerOutput<String?>('serialNumber');
+    siteId = registerOutput<String?>('siteId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     vendor = registerOutput<String?>('vendor');
   }

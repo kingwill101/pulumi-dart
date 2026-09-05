@@ -35,7 +35,7 @@ class GetAppTemplateAzureQueueScaleRule {
     return GetAppTemplateAzureQueueScaleRule(
       authentications: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateAzureQueueScaleRuleAuthentication>(map['authentications']!, (value) => GetAppTemplateAzureQueueScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      queueLength: pulumi.Input.fromValue(map['queueLength'] as int),
+      queueLength: pulumi.Input.fromValue((map['queueLength'] as num).toInt()),
       queueName: pulumi.Input.fromValue(map['queueName'] as String),
     );
   }

@@ -7,23 +7,23 @@ import 'subscription_cost_management_export_export_data_storage_location.dart';
 /// Input properties used for looking up and filtering SubscriptionCostManagementExport resources.
 class SubscriptionCostManagementExportState {
   /// Is the cost management export active? Default is `true`.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// A `exportDataOptions` block as defined below.
-  final pulumi.Input<SubscriptionCostManagementExportExportDataOptions>? exportDataOptions;
+  final pulumi.Input<SubscriptionCostManagementExportExportDataOptions?>? exportDataOptions;
   /// A `exportDataStorageLocation` block as defined below.
-  final pulumi.Input<SubscriptionCostManagementExportExportDataStorageLocation>? exportDataStorageLocation;
+  final pulumi.Input<SubscriptionCostManagementExportExportDataStorageLocation?>? exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The date the export will stop capturing information.
-  final pulumi.Input<String>? recurrencePeriodEndDate;
+  final pulumi.Input<String?>? recurrencePeriodEndDate;
   /// The date the export will start capturing information.
-  final pulumi.Input<String>? recurrencePeriodStartDate;
+  final pulumi.Input<String?>? recurrencePeriodStartDate;
   /// How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
-  final pulumi.Input<String>? recurrenceType;
+  final pulumi.Input<String?>? recurrenceType;
   /// The id of the subscription on which to create an export. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [SubscriptionCostManagementExportState].
   /// [active] Is the cost management export active? Default is `true`.

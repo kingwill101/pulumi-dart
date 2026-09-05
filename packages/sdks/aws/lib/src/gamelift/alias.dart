@@ -13,12 +13,12 @@ import 'alias_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.gamelift.Alias("example", {
-///     name: "example-alias",
-///     description: "Example Description",
 ///     routingStrategy: {
 ///         message: "Example Message",
 ///         type: "TERMINAL",
 ///     },
+///     name: "example-alias",
+///     description: "Example Description",
 /// });
 /// ```
 /// ```python
@@ -26,12 +26,12 @@ import 'alias_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.gamelift.Alias("example",
-///     name="example-alias",
-///     description="Example Description",
 ///     routing_strategy={
 ///         "message": "Example Message",
 ///         "type": "TERMINAL",
-///     })
+///     },
+///     name="example-alias",
+///     description="Example Description")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,13 +43,13 @@ import 'alias_state.dart';
 /// {
 ///     var example = new Aws.GameLift.Alias("example", new()
 ///     {
-///         Name = "example-alias",
-///         Description = "Example Description",
 ///         RoutingStrategy = new Aws.GameLift.Inputs.AliasRoutingStrategyArgs
 ///         {
 ///             Message = "Example Message",
 ///             Type = "TERMINAL",
 ///         },
+///         Name = "example-alias",
+///         Description = "Example Description",
 ///     });
 ///
 /// });
@@ -65,12 +65,12 @@ import 'alias_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewAlias(ctx, "example", &gamelift.AliasArgs{
-/// 			Name:        pulumi.String("example-alias"),
-/// 			Description: pulumi.String("Example Description"),
 /// 			RoutingStrategy: &gamelift.AliasRoutingStrategyArgs{
 /// 				Message: pulumi.String("Example Message"),
 /// 				Type:    pulumi.String("TERMINAL"),
 /// 			},
+/// 			Name:        pulumi.String("example-alias"),
+/// 			Description: pulumi.String("Example Description"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,12 +89,12 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_alias" "example" {
-///   name        = "example-alias"
-///   description = "Example Description"
 ///   routing_strategy = {
 ///     message = "Example Message"
 ///     type    = "TERMINAL"
 ///   }
+///   name        = "example-alias"
+///   description = "Example Description"
 /// }
 /// ```
 /// ```java
@@ -120,12 +120,12 @@ import 'alias_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Alias("example", AliasArgs.builder()
-///             .name("example-alias")
-///             .description("Example Description")
 ///             .routingStrategy(AliasRoutingStrategyArgs.builder()
 ///                 .message("Example Message")
 ///                 .type("TERMINAL")
 ///                 .build())
+///             .name("example-alias")
+///             .description("Example Description")
 ///             .build());
 ///
 ///     }
@@ -136,11 +136,11 @@ import 'alias_state.dart';
 ///   example:
 ///     type: aws:gamelift:Alias
 ///     properties:
-///       name: example-alias
-///       description: Example Description
 ///       routingStrategy:
 ///         message: Example Message
 ///         type: TERMINAL
+///       name: example-alias
+///       description: Example Description
 /// ```
 ///
 ///
@@ -179,15 +179,15 @@ class Alias extends pulumi.CustomResource {
           'aws:gamelift/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
@@ -195,11 +195,12 @@ class Alias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Alias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -218,7 +219,25 @@ class Alias extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Alias] resource.
+  Alias.reference(String urn)
+    : super(
+        'aws:gamelift/alias:Alias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -12,7 +12,7 @@ class GetPermissionsTable {
   /// Name of the table. At least one of `name` or `wildcard` is required.
   final pulumi.Input<String> name;
   /// Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
-  final pulumi.Input<bool>? wildcard;
+  final pulumi.Input<bool?>? wildcard;
 
   /// Creates a new [GetPermissionsTable].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.

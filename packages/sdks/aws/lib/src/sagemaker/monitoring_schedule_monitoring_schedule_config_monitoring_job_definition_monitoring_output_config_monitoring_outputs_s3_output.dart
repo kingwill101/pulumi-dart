@@ -6,7 +6,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// Local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final pulumi.Input<String> localPath;
   /// Whether to upload the results of the monitoring job continuously or after the job completes. Valid values: `Continuous`, `EndOfJob`.
-  final pulumi.Input<String>? s3UploadMode;
+  final pulumi.Input<String?>? s3UploadMode;
   /// URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   final pulumi.Input<String> s3Uri;
 

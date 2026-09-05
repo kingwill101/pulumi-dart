@@ -5,9 +5,9 @@ import 'topic_rule_http_http_header.dart';
 
 class TopicRuleHttp {
   /// The HTTPS URL used to verify ownership of `url`.
-  final pulumi.Input<String>? confirmationUrl;
+  final pulumi.Input<String?>? confirmationUrl;
   /// Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
-  final pulumi.Input<List<TopicRuleHttpHttpHeader>>? httpHeaders;
+  final pulumi.Input<List<TopicRuleHttpHttpHeader>?>? httpHeaders;
   /// The HTTPS URL.
   final pulumi.Input<String> url;
 

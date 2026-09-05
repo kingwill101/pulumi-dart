@@ -8,7 +8,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
   final pulumi.Input<Map<String, String>> amiTags;
   /// Description of the container distribution configuration.
   final pulumi.Input<String> description;
-  /// ARN of Key Management Service (KMS) Key to encrypt AMI.
+  /// ARN of KMS Key to encrypt AMI.
   final pulumi.Input<String> kmsKeyId;
   /// Nested list of EC2 launch permissions.
   final pulumi.Input<List<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>> launchPermissions;
@@ -20,7 +20,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
   /// Creates a new [GetDistributionConfigurationDistributionAmiDistributionConfiguration].
   /// [amiTags] Key-value map of tags to apply to distributed AMI.
   /// [description] Description of the container distribution configuration.
-  /// [kmsKeyId] ARN of Key Management Service (KMS) Key to encrypt AMI.
+  /// [kmsKeyId] ARN of KMS Key to encrypt AMI.
   /// [launchPermissions] Nested list of EC2 launch permissions.
   /// [name] Name of the distribution configuration.
   /// [targetAccountIds] Set of target AWS Account identifiers.

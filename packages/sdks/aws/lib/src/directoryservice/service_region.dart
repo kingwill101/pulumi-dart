@@ -16,11 +16,11 @@ import 'service_region_vpc_settings.dart';
 ///
 /// const example = aws.getRegion({});
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const exampleVpc = new aws.ec2.Vpc("example", {
 ///     cidrBlock: "10.0.0.0/16",
@@ -44,20 +44,20 @@ import 'service_region_vpc_settings.dart';
 ///     }));
 /// }
 /// const exampleDirectory = new aws.directoryservice.Directory("example", {
-///     name: "example.com",
-///     password: "SuperSecretPassw0rd",
-///     type: "MicrosoftAD",
 ///     vpcSettings: {
 ///         vpcId: exampleVpc.id,
 ///         subnetIds: exampleSubnet.map(__item => __item.id),
 ///     },
+///     name: "example.com",
+///     password: "SuperSecretPassw0rd",
+///     type: "MicrosoftAD",
 /// });
 /// const available_secondary = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example_secondary = new aws.ec2.Vpc("example-secondary", {
 ///     cidrBlock: "10.1.0.0/16",
@@ -81,12 +81,12 @@ import 'service_region_vpc_settings.dart';
 ///     }));
 /// }
 /// const exampleServiceRegion = new aws.directoryservice.ServiceRegion("example", {
-///     directoryId: exampleDirectory.id,
-///     regionName: example.then(example => example.region),
 ///     vpcSettings: {
 ///         vpcId: example_secondary.id,
 ///         subnetIds: example_secondarySubnet.map(__item => __item.id),
 ///     },
+///     directoryId: exampleDirectory.id,
+///     regionName: example.then(example => example.region),
 ///     tags: {
 ///         Name: "Secondary",
 ///     },
@@ -99,11 +99,11 @@ import 'service_region_vpc_settings.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.get_region()
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example_vpc = aws.ec2.Vpc("example",
 ///     cidr_block="10.0.0.0/16",
 ///     tags={
@@ -121,18 +121,18 @@ import 'service_region_vpc_settings.dart';
 ///             "Name": "Primary",
 ///         }))
 /// example_directory = aws.directoryservice.Directory("example",
-///     name="example.com",
-///     password="SuperSecretPassw0rd",
-///     type="MicrosoftAD",
 ///     vpc_settings={
 ///         "vpc_id": example_vpc.id,
 ///         "subnet_ids": [__item.id for __item in example_subnet],
-///     })
-/// available_secondary = aws.get_availability_zones(state="available",
-///     filters=[{
+///     },
+///     name="example.com",
+///     password="SuperSecretPassw0rd",
+///     type="MicrosoftAD")
+/// available_secondary = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example_secondary = aws.ec2.Vpc("example-secondary",
 ///     cidr_block="10.1.0.0/16",
 ///     tags={
@@ -150,12 +150,12 @@ import 'service_region_vpc_settings.dart';
 ///             "Name": "Secondary",
 ///         }))
 /// example_service_region = aws.directoryservice.ServiceRegion("example",
-///     directory_id=example_directory.id,
-///     region_name=example.region,
 ///     vpc_settings={
 ///         "vpc_id": example_secondary.id,
 ///         "subnet_ids": [__item.id for __item in example_secondary_subnet],
 ///     },
+///     directory_id=example_directory.id,
+///     region_name=example.region,
 ///     tags={
 ///         "Name": "Secondary",
 ///     })
@@ -173,7 +173,6 @@ import 'service_region_vpc_settings.dart';
 ///
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -185,6 +184,7 @@ import 'service_region_vpc_settings.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var exampleVpc = new Aws.Ec2.Vpc("example", new()
@@ -218,19 +218,18 @@ import 'service_region_vpc_settings.dart';
 ///     }
 ///     var exampleDirectory = new Aws.DirectoryService.Directory("example", new()
 ///     {
-///         Name = "example.com",
-///         Password = "SuperSecretPassw0rd",
-///         Type = "MicrosoftAD",
 ///         VpcSettings = new Aws.DirectoryService.Inputs.DirectoryVpcSettingsArgs
 ///         {
 ///             VpcId = exampleVpc.Id,
 ///             SubnetIds = exampleSubnet.Select(__item => __item.Id).ToList(),
 ///         },
+///         Name = "example.com",
+///         Password = "SuperSecretPassw0rd",
+///         Type = "MicrosoftAD",
 ///     });
 ///
 ///     var available_secondary = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -242,6 +241,7 @@ import 'service_region_vpc_settings.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example_secondary = new Aws.Ec2.Vpc("example-secondary", new()
@@ -275,13 +275,13 @@ import 'service_region_vpc_settings.dart';
 ///     }
 ///     var exampleServiceRegion = new Aws.DirectoryService.ServiceRegion("example", new()
 ///     {
-///         DirectoryId = exampleDirectory.Id,
-///         RegionName = example.Apply(getRegionResult => getRegionResult.Region),
 ///         VpcSettings = new Aws.DirectoryService.Inputs.ServiceRegionVpcSettingsArgs
 ///         {
 ///             VpcId = example_secondary.Id,
 ///             SubnetIds = example_secondarySubnet.Select(__item => __item.Id).ToList(),
 ///         },
+///         DirectoryId = exampleDirectory.Id,
+///         RegionName = example.Apply(getRegionResult => getRegionResult.Region),
 ///         Tags =
 ///         {
 ///             { "Name", "Secondary" },
@@ -310,7 +310,6 @@ import 'service_region_vpc_settings.dart';
 /// return err
 /// }
 /// available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// State: pulumi.StringRef("available"),
 /// Filters: []aws.GetAvailabilityZonesFilter{
 /// {
 /// Name: "opt-in-status",
@@ -319,6 +318,7 @@ import 'service_region_vpc_settings.dart';
 /// },
 /// },
 /// },
+/// State: pulumi.StringRef("available"),
 /// }, nil);
 /// if err != nil {
 /// return err
@@ -354,19 +354,18 @@ import 'service_region_vpc_settings.dart';
 /// exampleSubnet = append(exampleSubnet, __res)
 /// }
 /// exampleDirectory, err := directoryservice.NewDirectory(ctx, "example", &directoryservice.DirectoryArgs{
+/// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
+/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:41,17-36)),
+/// },
 /// Name: pulumi.String("example.com"),
 /// Password: pulumi.String("SuperSecretPassw0rd"),
 /// Type: pulumi.String("MicrosoftAD"),
-/// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:44,17-36)),
-/// },
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// available_secondary, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// State: pulumi.StringRef("available"),
 /// Filters: []aws.GetAvailabilityZonesFilter{
 /// {
 /// Name: "opt-in-status",
@@ -375,6 +374,7 @@ import 'service_region_vpc_settings.dart';
 /// },
 /// },
 /// },
+/// State: pulumi.StringRef("available"),
 /// }, nil);
 /// if err != nil {
 /// return err
@@ -410,12 +410,12 @@ import 'service_region_vpc_settings.dart';
 /// example_secondarySubnet = append(example_secondarySubnet, __res)
 /// }
 /// _, err = directoryservice.NewServiceRegion(ctx, "example", &directoryservice.ServiceRegionArgs{
-/// DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
-/// RegionName: pulumi.String(example.Region),
 /// VpcSettings: &directoryservice.ServiceRegionVpcSettingsArgs{
 /// VpcId: example_secondary.ID().ToIDOutput().ToStringOutput(),
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:87,17-46)),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:85,17-46)),
 /// },
+/// DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
+/// RegionName: pulumi.String(example.Region),
 /// Tags: pulumi.StringMap{
 /// "Name": pulumi.String("Secondary"),
 /// },
@@ -442,18 +442,18 @@ import 'service_region_vpc_settings.dart';
 /// data "aws_getregion" "example" {
 /// }
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 /// data "aws_getavailabilityzones" "available-secondary" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
@@ -472,13 +472,13 @@ import 'service_region_vpc_settings.dart';
 ///   }
 /// }
 /// resource "aws_directoryservice_directory" "example" {
-///   name     = "example.com"
-///   password = "SuperSecretPassw0rd"
-///   type     = "MicrosoftAD"
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example.id
 ///     subnet_ids = aws_ec2_subnet.example[*].id
 ///   }
+///   name     = "example.com"
+///   password = "SuperSecretPassw0rd"
+///   type     = "MicrosoftAD"
 /// }
 /// resource "aws_ec2_vpc" "example-secondary" {
 ///   cidr_block = "10.1.0.0/16"
@@ -496,12 +496,12 @@ import 'service_region_vpc_settings.dart';
 ///   }
 /// }
 /// resource "aws_directoryservice_serviceregion" "example" {
-///   directory_id = aws_directoryservice_directory.example.id
-///   region_name  = data.aws_getregion.example.region
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example-secondary.id
 ///     subnet_ids = aws_ec2_subnet.example-secondary[*].id
 ///   }
+///   directory_id = aws_directoryservice_directory.example.id
+///   region_name  = data.aws_getregion.example.region
 ///   tags = {
 ///     "Name" = "Secondary"
 ///   }
@@ -547,11 +547,11 @@ import 'service_region_vpc_settings.dart';
 ///             .build());
 ///
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
@@ -574,21 +574,21 @@ import 'service_region_vpc_settings.dart';
 ///
 /// }
 ///         var exampleDirectory = new Directory("exampleDirectory", DirectoryArgs.builder()
-///             .name("example.com")
-///             .password("SuperSecretPassw0rd")
-///             .type("MicrosoftAD")
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
 ///                 .vpcId(exampleVpc.id())
 ///                 .subnetIds(exampleSubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .name("example.com")
+///             .password("SuperSecretPassw0rd")
+///             .type("MicrosoftAD")
 ///             .build());
 ///
 ///         final var available-secondary = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example_secondary = new Vpc("example-secondary", VpcArgs.builder()
@@ -611,12 +611,12 @@ import 'service_region_vpc_settings.dart';
 ///
 /// }
 ///         var exampleServiceRegion = new ServiceRegion("exampleServiceRegion", ServiceRegionArgs.builder()
-///             .directoryId(exampleDirectory.id())
-///             .regionName(example.region())
 ///             .vpcSettings(ServiceRegionVpcSettingsArgs.builder()
 ///                 .vpcId(example_secondary.id())
 ///                 .subnetIds(example_secondarySubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .directoryId(exampleDirectory.id())
+///             .regionName(example.region())
 ///             .tags(Map.of("Name", "Secondary"))
 ///             .build());
 ///
@@ -660,14 +660,14 @@ class ServiceRegion extends pulumi.CustomResource {
           'aws:directoryservice/serviceRegion:ServiceRegion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
     directoryId = registerOutput<String>('directoryId');
     region = registerOutput<String>('region');
     regionName = registerOutput<String>('regionName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceRegionVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -676,11 +676,12 @@ class ServiceRegion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceRegionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceRegion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -698,8 +699,26 @@ class ServiceRegion extends pulumi.CustomResource {
     directoryId = registerOutput<String>('directoryId');
     region = registerOutput<String>('region');
     regionName = registerOutput<String>('regionName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceRegionVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ServiceRegion] resource.
+  ServiceRegion.reference(String urn)
+    : super(
+        'aws:directoryservice/serviceRegion:ServiceRegion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    desiredNumberOfDomainControllers = registerOutput<int>('desiredNumberOfDomainControllers');
+    directoryId = registerOutput<String>('directoryId');
+    region = registerOutput<String>('region');
+    regionName = registerOutput<String>('regionName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceRegionVpcSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

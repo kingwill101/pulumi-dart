@@ -6,9 +6,9 @@ import 'channel_namespace_handler_configs_on_subscribe.dart';
 
 class ChannelNamespaceHandlerConfigs {
   /// Handler configuration for published events. See `onPublish` below.
-  final pulumi.Input<ChannelNamespaceHandlerConfigsOnPublish>? onPublish;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnPublish?>? onPublish;
   /// Handler configuration for subscribe requests. See `onSubscribe` below.
-  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribe>? onSubscribe;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribe?>? onSubscribe;
 
   /// Creates a new [ChannelNamespaceHandlerConfigs].
   /// [onPublish] Handler configuration for published events. See `onPublish` below.

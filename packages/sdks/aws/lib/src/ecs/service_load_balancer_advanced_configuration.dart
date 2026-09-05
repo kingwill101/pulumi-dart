@@ -10,7 +10,7 @@ class ServiceLoadBalancerAdvancedConfiguration {
   /// ARN of the IAM role that allows ECS to manage the target groups.
   final pulumi.Input<String> roleArn;
   /// ARN of the listener rule that routes test traffic.
-  final pulumi.Input<String>? testListenerRule;
+  final pulumi.Input<String?>? testListenerRule;
 
   /// Creates a new [ServiceLoadBalancerAdvancedConfiguration].
   /// [alternateTargetGroupArn] ARN of the alternate target group to use for Blue/Green deployments.

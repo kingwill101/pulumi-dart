@@ -6,11 +6,11 @@ import 'job_template_job_template_data_configuration_overrides_monitoring_config
 
 class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration {
   /// Monitoring configurations for CloudWatch.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration>? cloudWatchMonitoringConfiguration;
+  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration?>? cloudWatchMonitoringConfiguration;
   /// Monitoring configurations for the persistent application UI.
-  final pulumi.Input<String>? persistentAppUi;
+  final pulumi.Input<String?>? persistentAppUi;
   /// Amazon S3 configuration for monitoring log publishing.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration>? s3MonitoringConfiguration;
+  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration?>? s3MonitoringConfiguration;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration].
   /// [cloudWatchMonitoringConfiguration] Monitoring configurations for CloudWatch.

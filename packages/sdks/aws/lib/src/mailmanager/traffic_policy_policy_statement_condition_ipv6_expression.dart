@@ -5,7 +5,7 @@ import 'traffic_policy_policy_statement_condition_ipv6_expression_evaluate.dart'
 
 class TrafficPolicyPolicyStatementConditionIpv6Expression {
   /// Operand evaluated by the expression. See `policy_statement.condition.ipv6_expression.evaluate` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpv6ExpressionEvaluate>? evaluate;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpv6ExpressionEvaluate?>? evaluate;
   /// IPv6 address operator used for the comparison.
   final pulumi.Input<String> operator;
   /// IPv6 CIDR ranges used for the comparison.

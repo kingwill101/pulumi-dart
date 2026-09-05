@@ -5,7 +5,7 @@ import 'application_application_configuration_sql_application_configuration_refe
 import 'application_application_configuration_sql_application_configuration_reference_data_source_s3_reference_data_source.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource {
-  final pulumi.Input<String>? referenceId;
+  final pulumi.Input<String?>? referenceId;
   /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema> referenceSchema;
   /// Identifies the S3 bucket and object that contains the reference data.

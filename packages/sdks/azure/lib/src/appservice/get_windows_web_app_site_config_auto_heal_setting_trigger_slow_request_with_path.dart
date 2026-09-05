@@ -35,7 +35,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
 
   factory GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       timeTaken: pulumi.Input.fromValue(map['timeTaken'] as String),

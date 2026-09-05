@@ -5,7 +5,7 @@ import 'application_initial_capacity_initial_capacity_config_worker_configuratio
 
 class ApplicationInitialCapacityInitialCapacityConfig {
   /// The resource configuration of the initial capacity configuration.
-  final pulumi.Input<ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration>? workerConfiguration;
+  final pulumi.Input<ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration?>? workerConfiguration;
   /// The number of workers in the initial capacity configuration.
   final pulumi.Input<int> workerCount;
 
@@ -27,7 +27,7 @@ class ApplicationInitialCapacityInitialCapacityConfig {
   factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfig(
       workerConfiguration: (() { final guardedValue = map['workerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      workerCount: pulumi.Input.fromValue(map['workerCount'] as int),
+      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
     );
   }
 }

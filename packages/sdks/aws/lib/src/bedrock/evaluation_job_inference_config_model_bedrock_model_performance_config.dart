@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EvaluationJobInferenceConfigModelBedrockModelPerformanceConfig {
   /// Whether to use the latency-optimized or standard version of the model. Valid values: `standard`, `optimized`.
-  final pulumi.Input<String>? latency;
+  final pulumi.Input<String?>? latency;
 
   /// Creates a new [EvaluationJobInferenceConfigModelBedrockModelPerformanceConfig].
   /// [latency] Whether to use the latency-optimized or standard version of the model. Valid values: `standard`, `optimized`.

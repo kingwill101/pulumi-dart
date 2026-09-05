@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityDeviceGroupAllowRule {
   /// Specifies which IP is not allowed to be connected to in current device group for inbound connection.
-  final pulumi.Input<List<String>>? connectionFromIpsNotAlloweds;
+  final pulumi.Input<List<String>?>? connectionFromIpsNotAlloweds;
   /// Specifies which IP is not allowed to be connected to in current device group for outbound connection.
-  final pulumi.Input<List<String>>? connectionToIpsNotAlloweds;
+  final pulumi.Input<List<String>?>? connectionToIpsNotAlloweds;
   /// Specifies which local user is not allowed to login in current device group.
-  final pulumi.Input<List<String>>? localUsersNotAlloweds;
+  final pulumi.Input<List<String>?>? localUsersNotAlloweds;
   /// Specifies which process is not allowed to be executed in current device group.
-  final pulumi.Input<List<String>>? processesNotAlloweds;
+  final pulumi.Input<List<String>?>? processesNotAlloweds;
 
   /// Creates a new [SecurityDeviceGroupAllowRule].
   /// [connectionFromIpsNotAlloweds] Specifies which IP is not allowed to be connected to in current device group for inbound connection.

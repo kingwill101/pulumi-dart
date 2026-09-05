@@ -176,8 +176,8 @@ import 'fleet_member_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewFleetMember(ctx, "example", &containerservice.FleetMemberArgs{
-/// 			KubernetesClusterId: example.ID(),
-/// 			KubernetesFleetId:   exampleKubernetesFleetManager.ID(),
+/// 			KubernetesClusterId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			KubernetesFleetId:   exampleKubernetesFleetManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -370,7 +370,7 @@ class FleetMember extends pulumi.CustomResource {
           'azure:containerservice/fleetMember:FleetMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     group = registerOutput<String?>('group');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
@@ -383,11 +383,12 @@ class FleetMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FleetMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -401,6 +402,21 @@ class FleetMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    group = registerOutput<String?>('group');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    kubernetesFleetId = registerOutput<String>('kubernetesFleetId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [FleetMember] resource.
+  FleetMember.reference(String urn)
+    : super(
+        'azure:containerservice/fleetMember:FleetMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     group = registerOutput<String?>('group');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     kubernetesFleetId = registerOutput<String>('kubernetesFleetId');

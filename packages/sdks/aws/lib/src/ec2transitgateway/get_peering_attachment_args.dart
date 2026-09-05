@@ -9,17 +9,17 @@ import 'get_peering_attachment_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_peering_attachment_get_peering_attachment_args_doc}
 class GetPeeringAttachmentArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetPeeringAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetPeeringAttachmentFilter>?>? filters;
   /// Identifier of the EC2 Transit Gateway Peering Attachment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPeeringAttachmentArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

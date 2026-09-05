@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationsAccess resources.
 class OrganizationsAccessState {
   /// Whether to enable AWS Organizations access.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [OrganizationsAccessState].
   /// [enabled] Whether to enable AWS Organizations access.

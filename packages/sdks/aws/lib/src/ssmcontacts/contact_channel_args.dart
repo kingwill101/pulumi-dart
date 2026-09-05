@@ -8,19 +8,19 @@ import 'contact_channel_delivery_address.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ssmcontacts_contact_channel_contact_channel_args_doc}
 class ContactChannelArgs {
-  /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
+  /// ARN of the AWS SSM Contact that the contact channel belongs to.
   final pulumi.Input<String> contactId;
   /// Block that contains contact engagement details. See details below.
   final pulumi.Input<ContactChannelDeliveryAddress> deliveryAddress;
   /// Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
   final pulumi.Input<String> type;
 
   /// Creates a new [ContactChannelArgs].
-  /// [contactId] Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
+  /// [contactId] ARN of the AWS SSM Contact that the contact channel belongs to.
   /// [deliveryAddress] Block that contains contact engagement details. See details below.
   /// [name] Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

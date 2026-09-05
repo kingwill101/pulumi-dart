@@ -5,7 +5,7 @@ import 'response_plan_action_ssm_automation.dart';
 
 class ResponsePlanAction {
   /// The Systems Manager automation document to start as the runbook at the beginning of the incident. The following values are supported:
-  final pulumi.Input<List<ResponsePlanActionSsmAutomation>>? ssmAutomations;
+  final pulumi.Input<List<ResponsePlanActionSsmAutomation>?>? ssmAutomations;
 
   /// Creates a new [ResponsePlanAction].
   /// [ssmAutomations] The Systems Manager automation document to start as the runbook at the beginning of the incident. The following values are supported:

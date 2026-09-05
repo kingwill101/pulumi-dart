@@ -8,19 +8,19 @@ import 'configuration_set_event_destination_event_destination.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sesv2_configuration_set_event_destination_configuration_set_event_destination_args_doc}
 class ConfigurationSetEventDestinationArgs {
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   final pulumi.Input<String> configurationSetName;
-  /// An object that defines the event destination. See `eventDestination` Block for details.
+  /// Object that defines the event destination. See `eventDestination` Block for details.
   final pulumi.Input<ConfigurationSetEventDestinationEventDestination> eventDestination;
-  /// A name that identifies the event destination within the configuration set.
+  /// Name that identifies the event destination within the configuration set.
   final pulumi.Input<String> eventDestinationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ConfigurationSetEventDestinationArgs].
-  /// [configurationSetName] The name of the configuration set.
-  /// [eventDestination] An object that defines the event destination. See `eventDestination` Block for details.
-  /// [eventDestinationName] A name that identifies the event destination within the configuration set.
+  /// [configurationSetName] Name of the configuration set.
+  /// [eventDestination] Object that defines the event destination. See `eventDestination` Block for details.
+  /// [eventDestinationName] Name that identifies the event destination within the configuration set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ConfigurationSetEventDestinationArgs({
     required this.configurationSetName,

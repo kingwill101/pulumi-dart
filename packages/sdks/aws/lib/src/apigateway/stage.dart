@@ -268,7 +268,7 @@ class Stage extends pulumi.CustomResource {
           'aws:apigateway/stage:Stage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -284,9 +284,9 @@ class Stage extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
     stageName = registerOutput<String>('stageName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    variables = registerOutput<Map<String, String>?>('variables');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webAclArn = registerOutput<String>('webAclArn');
     xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
   }
@@ -296,11 +296,12 @@ class Stage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -328,9 +329,39 @@ class Stage extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
     stageName = registerOutput<String>('stageName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    variables = registerOutput<Map<String, String>?>('variables');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    webAclArn = registerOutput<String>('webAclArn');
+    xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Stage] resource.
+  Stage.reference(String urn)
+    : super(
+        'aws:apigateway/stage:Stage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
+    cacheClusterSize = registerOutput<String?>('cacheClusterSize');
+    canarySettings = registerOutput<StageCanarySettings?>('canarySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageCanarySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientCertificateId = registerOutput<String?>('clientCertificateId');
+    deployment = registerOutput<String>('deployment');
+    description = registerOutput<String?>('description');
+    documentationVersion = registerOutput<String?>('documentationVersion');
+    executionArn = registerOutput<String>('executionArn');
+    invokeUrl = registerOutput<String>('invokeUrl');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    stageName = registerOutput<String>('stageName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webAclArn = registerOutput<String>('webAclArn');
     xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
   }

@@ -8,27 +8,27 @@ class SourceControlState {
   /// The ID of the Windows or Linux Web App. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Function apps are not supported at this time.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A `githubActionConfiguration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SourceControlGithubActionConfiguration>? githubActionConfiguration;
+  final pulumi.Input<SourceControlGithubActionConfiguration?>? githubActionConfiguration;
   /// The URL for the repository. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure can typically set this value automatically based on the `repoUrl` value.
-  final pulumi.Input<bool>? rollbackEnabled;
+  final pulumi.Input<bool?>? rollbackEnabled;
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<String?>? scmType;
   /// Should the App use local Git configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useLocalGit;
+  final pulumi.Input<bool?>? useLocalGit;
   /// Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useManualIntegration;
+  final pulumi.Input<bool?>? useManualIntegration;
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useMercurial;
+  final pulumi.Input<bool?>? useMercurial;
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
-  final pulumi.Input<bool>? usesGithubAction;
+  final pulumi.Input<bool?>? usesGithubAction;
 
   /// Creates a new [SourceControlState].
   /// [appId] The ID of the Windows or Linux Web App. Changing this forces a new resource to be created.

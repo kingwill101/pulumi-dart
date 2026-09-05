@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectAttachmentOptions {
   /// Protocol used for the attachment connection. Valid values: `GRE`, `NO_ENCAP`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ConnectAttachmentOptions].
   /// [protocol] Protocol used for the attachment connection. Valid values: `GRE`, `NO_ENCAP`.

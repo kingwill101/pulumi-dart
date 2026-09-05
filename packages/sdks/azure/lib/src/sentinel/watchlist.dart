@@ -114,7 +114,7 @@ import 'watchlist_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -287,13 +287,13 @@ class Watchlist extends pulumi.CustomResource {
           'azure:sentinel/watchlist:Watchlist',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     defaultDuration = registerOutput<String?>('defaultDuration');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     itemSearchKey = registerOutput<String>('itemSearchKey');
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
   }
@@ -303,11 +303,12 @@ class Watchlist extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WatchlistState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Watchlist._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,7 +326,25 @@ class Watchlist extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     itemSearchKey = registerOutput<String>('itemSearchKey');
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Watchlist] resource.
+  Watchlist.reference(String urn)
+    : super(
+        'azure:sentinel/watchlist:Watchlist',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    defaultDuration = registerOutput<String?>('defaultDuration');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    itemSearchKey = registerOutput<String>('itemSearchKey');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
   }

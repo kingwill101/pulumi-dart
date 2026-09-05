@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope_args.dart';
 import 'scope_state.dart';
+import 'scope_target.dart';
 import 'scope_timeouts.dart';
 
 /// Manages a Network Flow Monitor Scope.
@@ -17,13 +18,13 @@ import 'scope_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const example = new aws.networkflowmonitor.Scope("example", {
 ///     targets: [{
-///         region: "us-east-1",
 ///         targetIdentifier: {
-///             targetType: "ACCOUNT",
 ///             targetId: {
 ///                 accountId: current.then(current => current.accountId),
 ///             },
+///             targetType: "ACCOUNT",
 ///         },
+///         region: "us-east-1",
 ///     }],
 ///     tags: {
 ///         Name: "example",
@@ -37,13 +38,13 @@ import 'scope_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// example = aws.networkflowmonitor.Scope("example",
 ///     targets=[{
-///         "region": "us-east-1",
 ///         "target_identifier": {
-///             "target_type": "ACCOUNT",
 ///             "target_id": {
 ///                 "account_id": current.account_id,
 ///             },
+///             "target_type": "ACCOUNT",
 ///         },
+///         "region": "us-east-1",
 ///     }],
 ///     tags={
 ///         "Name": "example",
@@ -65,15 +66,15 @@ import 'scope_timeouts.dart';
 ///         {
 ///             new Aws.Networkflowmonitor.Inputs.ScopeTargetArgs
 ///             {
-///                 Region = "us-east-1",
 ///                 TargetIdentifier = new Aws.Networkflowmonitor.Inputs.ScopeTargetTargetIdentifierArgs
 ///                 {
-///                     TargetType = "ACCOUNT",
 ///                     TargetId = new Aws.Networkflowmonitor.Inputs.ScopeTargetTargetIdentifierTargetIdArgs
 ///                     {
 ///                         AccountId = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
 ///                     },
+///                     TargetType = "ACCOUNT",
 ///                 },
+///                 Region = "us-east-1",
 ///             },
 ///         },
 ///         Tags =
@@ -102,13 +103,13 @@ import 'scope_timeouts.dart';
 /// 		_, err = networkflowmonitor.NewScope(ctx, "example", &networkflowmonitor.ScopeArgs{
 /// 			Targets: networkflowmonitor.ScopeTargetArray{
 /// 				&networkflowmonitor.ScopeTargetArgs{
-/// 					Region: pulumi.String("us-east-1"),
 /// 					TargetIdentifier: &networkflowmonitor.ScopeTargetTargetIdentifierArgs{
-/// 						TargetType: pulumi.String("ACCOUNT"),
 /// 						TargetId: &networkflowmonitor.ScopeTargetTargetIdentifierTargetIdArgs{
 /// 							AccountId: pulumi.String(current.AccountId),
 /// 						},
+/// 						TargetType: pulumi.String("ACCOUNT"),
 /// 					},
+/// 					Region: pulumi.String("us-east-1"),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -136,13 +137,13 @@ import 'scope_timeouts.dart';
 ///
 /// resource "aws_networkflowmonitor_scope" "example" {
 ///   targets {
-///     region = "us-east-1"
 ///     target_identifier = {
-///       target_type = "ACCOUNT"
 ///       target_id = {
 ///         account_id = data.aws_getcalleridentity.current.account_id
 ///       }
+///       target_type = "ACCOUNT"
 ///     }
+///     region = "us-east-1"
 ///   }
 ///   tags = {
 ///     "Name" = "example"
@@ -180,13 +181,13 @@ import 'scope_timeouts.dart';
 ///
 ///         var example = new Scope("example", ScopeArgs.builder()
 ///             .targets(ScopeTargetArgs.builder()
-///                 .region("us-east-1")
 ///                 .targetIdentifier(ScopeTargetTargetIdentifierArgs.builder()
-///                     .targetType("ACCOUNT")
 ///                     .targetId(ScopeTargetTargetIdentifierTargetIdArgs.builder()
 ///                         .accountId(current.accountId())
 ///                         .build())
+///                     .targetType("ACCOUNT")
 ///                     .build())
+///                 .region("us-east-1")
 ///                 .build())
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
@@ -200,11 +201,11 @@ import 'scope_timeouts.dart';
 ///     type: aws:networkflowmonitor:Scope
 ///     properties:
 ///       targets:
-///         - region: us-east-1
-///           targetIdentifier:
-///             targetType: ACCOUNT
+///         - targetIdentifier:
 ///             targetId:
 ///               accountId: ${current.accountId}
+///             targetType: ACCOUNT
+///           region: us-east-1
 ///       tags:
 ///         Name: example
 /// variables:
@@ -225,7 +226,7 @@ import 'scope_timeouts.dart';
 class Scope extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the scope.
+  /// ARN of the scope.
   late final pulumi.Output<String> scopeArn;
   /// The identifier for the scope that includes the resources you want to get data results for.
   late final pulumi.Output<String> scopeId;
@@ -236,7 +237,7 @@ class Scope extends pulumi.CustomResource {
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+  late final pulumi.Output<List<ScopeTarget>> targets;
   late final pulumi.Output<ScopeTimeouts?> timeouts;
 
   /// Creates a new [Scope].
@@ -251,14 +252,14 @@ class Scope extends pulumi.CustomResource {
           'aws:networkflowmonitor/scope:Scope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     scopeArn = registerOutput<String>('scopeArn');
     scopeId = registerOutput<String>('scopeId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ScopeTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeTarget>(guardedValue, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<ScopeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -267,11 +268,12 @@ class Scope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Scope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,9 +290,27 @@ class Scope extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scopeArn = registerOutput<String>('scopeArn');
     scopeId = registerOutput<String>('scopeId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ScopeTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeTarget>(guardedValue, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<ScopeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Scope] resource.
+  Scope.reference(String urn)
+    : super(
+        'aws:networkflowmonitor/scope:Scope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    scopeArn = registerOutput<String>('scopeArn');
+    scopeId = registerOutput<String>('scopeId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ScopeTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeTarget>(guardedValue, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<ScopeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

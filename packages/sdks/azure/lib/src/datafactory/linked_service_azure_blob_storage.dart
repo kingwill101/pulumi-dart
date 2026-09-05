@@ -30,7 +30,7 @@ import 'linked_service_azure_blob_storage_state.dart';
 /// const exampleLinkedServiceAzureBlobStorage = new azure.datafactory.LinkedServiceAzureBlobStorage("example", {
 ///     name: "example",
 ///     dataFactoryId: exampleFactory.id,
-///     connectionString: example.apply(example => example.primaryConnectionString),
+///     connectionString: example.primaryConnectionString,
 /// });
 /// ```
 /// ```python
@@ -119,11 +119,9 @@ import 'linked_service_azure_blob_storage_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureBlobStorage(ctx, "example", &datafactory.LinkedServiceAzureBlobStorageArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return example.PrimaryConnectionString, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:             pulumi.String("example"),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionString: example.PrimaryConnectionString(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,21 +299,22 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString', 'sasUri', 'serviceEndpoint'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     connectionStringInsecure = registerOutput<String?>('connectionStringInsecure');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultSasToken = registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>('keyVaultSasToken', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     sasTokenLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>('sasTokenLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sasUri = registerOutput<String?>('sasUri');
-    serviceEndpoint = registerOutput<String?>('serviceEndpoint');
+    sasUri = registerOutput<String?>('sasUri', isSecret: true);
+    serviceEndpoint = registerOutput<String?>('serviceEndpoint', isSecret: true);
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
     servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
     servicePrincipalLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>('servicePrincipalLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -329,11 +328,12 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureBlobStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureBlobStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,19 +347,50 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     connectionStringInsecure = registerOutput<String?>('connectionStringInsecure');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultSasToken = registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>('keyVaultSasToken', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     sasTokenLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>('sasTokenLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sasUri = registerOutput<String?>('sasUri');
-    serviceEndpoint = registerOutput<String?>('serviceEndpoint');
+    sasUri = registerOutput<String?>('sasUri', isSecret: true);
+    serviceEndpoint = registerOutput<String?>('serviceEndpoint', isSecret: true);
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>('servicePrincipalLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageKind = registerOutput<String?>('storageKind');
+    tenantId = registerOutput<String?>('tenantId');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureBlobStorage] resource.
+  LinkedServiceAzureBlobStorage.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString', 'sasUri', 'serviceEndpoint'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    connectionStringInsecure = registerOutput<String?>('connectionStringInsecure');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultSasToken = registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>('keyVaultSasToken', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    sasTokenLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>('sasTokenLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sasUri = registerOutput<String?>('sasUri', isSecret: true);
+    serviceEndpoint = registerOutput<String?>('serviceEndpoint', isSecret: true);
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
     servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
     servicePrincipalLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>('servicePrincipalLinkedKeyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });

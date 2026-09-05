@@ -9,37 +9,37 @@ import 'endpoint_configuration_shadow_production_variant_serverless_config.dart'
 
 class EndpointConfigurationShadowProductionVariant {
   /// Size of the Elastic Inference (EI) instance to use for the production variant.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// Settings for the capacity reservation for the compute instances that SageMaker AI reserves for an endpoint. See capacityReservationConfig below.
-  final pulumi.Input<EndpointConfigurationShadowProductionVariantCapacityReservationConfig>? capacityReservationConfig;
+  final pulumi.Input<EndpointConfigurationShadowProductionVariantCapacityReservationConfig?>? capacityReservationConfig;
   /// Timeout value, in seconds, for your inference container to pass health check by SageMaker AI Hosting. For more information about health check, see [How Your Container Should Respond to Health Check (Ping) Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-algo-ping-requests). Valid values between `60` and `3600`.
-  final pulumi.Input<int>? containerStartupHealthCheckTimeoutInSeconds;
+  final pulumi.Input<int?>? containerStartupHealthCheckTimeoutInSeconds;
   /// Core dump configuration from the model container when the process crashes. Fields are documented below.
-  final pulumi.Input<EndpointConfigurationShadowProductionVariantCoreDumpConfig>? coreDumpConfig;
+  final pulumi.Input<EndpointConfigurationShadowProductionVariantCoreDumpConfig?>? coreDumpConfig;
   /// Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `modelName` is not set (Inference Components endpoint).
-  final pulumi.Input<bool>? enableSsmAccess;
+  final pulumi.Input<bool?>? enableSsmAccess;
   /// Option from a collection of preconfigured AMI images. Each image is configured by AWS with a set of software and driver versions. AWS optimizes these configurations for different machine learning workloads.
-  final pulumi.Input<String>? inferenceAmiVersion;
+  final pulumi.Input<String?>? inferenceAmiVersion;
   /// Initial number of instances used for auto-scaling.
-  final pulumi.Input<int>? initialInstanceCount;
+  final pulumi.Input<int?>? initialInstanceCount;
   /// Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `modelName` is not set (Inference Components endpoint).
-  final pulumi.Input<double>? initialVariantWeight;
+  final pulumi.Input<double?>? initialVariantWeight;
   /// Type of instance to start.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Control the range in the number of instances that the endpoint provisions as it scales up or down to accommodate traffic.
-  final pulumi.Input<EndpointConfigurationShadowProductionVariantManagedInstanceScaling>? managedInstanceScaling;
+  final pulumi.Input<EndpointConfigurationShadowProductionVariantManagedInstanceScaling?>? managedInstanceScaling;
   /// Timeout value, in seconds, to download and extract the model that you want to host from S3 to the individual inference instance associated with this production variant. Valid values between `60` and `3600`.
-  final pulumi.Input<int>? modelDataDownloadTimeoutInSeconds;
+  final pulumi.Input<int?>? modelDataDownloadTimeoutInSeconds;
   /// Name of the model to use. Required unless using Inference Components (in which case `executionRoleArn` must be specified at the endpoint configuration level).
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// How the endpoint routes incoming traffic. See routingConfig below.
-  final pulumi.Input<List<EndpointConfigurationShadowProductionVariantRoutingConfig>>? routingConfigs;
+  final pulumi.Input<List<EndpointConfigurationShadowProductionVariantRoutingConfig>?>? routingConfigs;
   /// How an endpoint performs asynchronous inference.
-  final pulumi.Input<EndpointConfigurationShadowProductionVariantServerlessConfig>? serverlessConfig;
+  final pulumi.Input<EndpointConfigurationShadowProductionVariantServerlessConfig?>? serverlessConfig;
   /// Name of the variant. If omitted, the provider will assign a random, unique name.
-  final pulumi.Input<String>? variantName;
+  final pulumi.Input<String?>? variantName;
   /// Size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Valid values between `1` and `512`.
-  final pulumi.Input<int>? volumeSizeInGb;
+  final pulumi.Input<int?>? volumeSizeInGb;
 
   /// Creates a new [EndpointConfigurationShadowProductionVariant].
   /// [acceleratorType] Size of the Elastic Inference (EI) instance to use for the production variant.
@@ -102,20 +102,20 @@ class EndpointConfigurationShadowProductionVariant {
     return EndpointConfigurationShadowProductionVariant(
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacityReservationConfig: (() { final guardedValue = map['capacityReservationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationShadowProductionVariantCapacityReservationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      containerStartupHealthCheckTimeoutInSeconds: (() { final guardedValue = map['containerStartupHealthCheckTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerStartupHealthCheckTimeoutInSeconds: (() { final guardedValue = map['containerStartupHealthCheckTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       coreDumpConfig: (() { final guardedValue = map['coreDumpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableSsmAccess: (() { final guardedValue = map['enableSsmAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inferenceAmiVersion: (() { final guardedValue = map['inferenceAmiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialInstanceCount: (() { final guardedValue = map['initialInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      initialVariantWeight: (() { final guardedValue = map['initialVariantWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      initialInstanceCount: (() { final guardedValue = map['initialInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialVariantWeight: (() { final guardedValue = map['initialVariantWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedInstanceScaling: (() { final guardedValue = map['managedInstanceScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationShadowProductionVariantManagedInstanceScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      modelDataDownloadTimeoutInSeconds: (() { final guardedValue = map['modelDataDownloadTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      modelDataDownloadTimeoutInSeconds: (() { final guardedValue = map['modelDataDownloadTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       modelName: (() { final guardedValue = map['modelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingConfigs: (() { final guardedValue = map['routingConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariantRoutingConfig>(guardedValue, (value) => EndpointConfigurationShadowProductionVariantRoutingConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       serverlessConfig: (() { final guardedValue = map['serverlessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointConfigurationShadowProductionVariantServerlessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       variantName: (() { final guardedValue = map['variantName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

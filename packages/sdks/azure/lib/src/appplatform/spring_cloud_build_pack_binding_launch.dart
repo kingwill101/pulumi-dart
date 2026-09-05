@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudBuildPackBindingLaunch {
   /// Specifies a map of non-sensitive properties for launchProperties.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Specifies a map of sensitive properties for launchProperties.
-  final pulumi.Input<Map<String, String>>? secrets;
+  final pulumi.Input<Map<String, String>?>? secrets;
 
   /// Creates a new [SpringCloudBuildPackBindingLaunch].
   /// [properties] Specifies a map of non-sensitive properties for launchProperties.

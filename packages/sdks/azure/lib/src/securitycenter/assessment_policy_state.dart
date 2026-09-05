@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AssessmentPolicy resources.
 class AssessmentPolicyState {
   /// A list of the categories of resource that is at risk when the Security Center Assessment is unhealthy. Possible values are `Unknown`, `Compute`, `Data`, `IdentityAndAccess`, `IoT` and `Networking`.
-  final pulumi.Input<List<String>>? categories;
+  final pulumi.Input<List<String>?>? categories;
   /// The description of the Security Center Assessment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-friendly display name of the Security Center Assessment.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The implementation effort which is used to remediate the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
-  final pulumi.Input<String>? implementationEffort;
+  final pulumi.Input<String?>? implementationEffort;
   /// The GUID as the name of the Security Center Assessment Policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The description which is used to mitigate the security issue.
-  final pulumi.Input<String>? remediationDescription;
+  final pulumi.Input<String?>? remediationDescription;
   /// The severity level of the Security Center Assessment. Possible values are `Low`, `Medium` and `High`. Defaults to `Medium`.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// A list of the threat impacts for the Security Center Assessment. Possible values are `AccountBreach`, `DataExfiltration`, `DataSpillage`, `DenialOfService`, `ElevationOfPrivilege`, `MaliciousInsider`, `MissingCoverage` and `ThreatResistance`.
-  final pulumi.Input<List<String>>? threats;
+  final pulumi.Input<List<String>?>? threats;
   /// The user impact of the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
-  final pulumi.Input<String>? userImpact;
+  final pulumi.Input<String?>? userImpact;
 
   /// Creates a new [AssessmentPolicyState].
   /// [categories] A list of the categories of resource that is at risk when the Security Center Assessment is unhealthy. Possible values are `Unknown`, `Compute`, `Data`, `IdentityAndAccess`, `IoT` and `Networking`.

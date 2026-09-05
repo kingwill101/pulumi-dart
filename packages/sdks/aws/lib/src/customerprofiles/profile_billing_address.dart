@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileBillingAddress {
   /// The first line of a customer address.
-  final pulumi.Input<String>? address1;
+  final pulumi.Input<String?>? address1;
   /// The second line of a customer address.
-  final pulumi.Input<String>? address2;
+  final pulumi.Input<String?>? address2;
   /// The third line of a customer address.
-  final pulumi.Input<String>? address3;
+  final pulumi.Input<String?>? address3;
   /// The fourth line of a customer address.
-  final pulumi.Input<String>? address4;
+  final pulumi.Input<String?>? address4;
   /// The city in which a customer lives.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The country in which a customer lives.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// The county in which a customer lives.
-  final pulumi.Input<String>? county;
+  final pulumi.Input<String?>? county;
   /// The postal code of a customer address.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The province in which a customer lives.
-  final pulumi.Input<String>? province;
+  final pulumi.Input<String?>? province;
   /// The state in which a customer lives.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ProfileBillingAddress].
   /// [address1] The first line of a customer address.

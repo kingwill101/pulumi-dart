@@ -308,7 +308,7 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
           'aws:ec2transitgateway/meteringPolicyEntry:MeteringPolicyEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
     destinationPortRange = registerOutput<String?>('destinationPortRange');
@@ -331,11 +331,12 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MeteringPolicyEntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MeteringPolicyEntry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -349,6 +350,31 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
+    destinationPortRange = registerOutput<String?>('destinationPortRange');
+    destinationTransitGatewayAttachmentId = registerOutput<String?>('destinationTransitGatewayAttachmentId');
+    destinationTransitGatewayAttachmentType = registerOutput<String?>('destinationTransitGatewayAttachmentType');
+    meteredAccount = registerOutput<String>('meteredAccount');
+    policyRuleNumber = registerOutput<int>('policyRuleNumber');
+    protocol = registerOutput<String?>('protocol');
+    region = registerOutput<String>('region');
+    sourceCidrBlock = registerOutput<String?>('sourceCidrBlock');
+    sourcePortRange = registerOutput<String?>('sourcePortRange');
+    sourceTransitGatewayAttachmentId = registerOutput<String?>('sourceTransitGatewayAttachmentId');
+    sourceTransitGatewayAttachmentType = registerOutput<String?>('sourceTransitGatewayAttachmentType');
+    timeouts = registerOutput<MeteringPolicyEntryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MeteringPolicyEntryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitGatewayMeteringPolicyId = registerOutput<String>('transitGatewayMeteringPolicyId');
+  }
+
+  /// Creates a typed reference to an existing [MeteringPolicyEntry] resource.
+  MeteringPolicyEntry.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/meteringPolicyEntry:MeteringPolicyEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
     destinationPortRange = registerOutput<String?>('destinationPortRange');
     destinationTransitGatewayAttachmentId = registerOutput<String?>('destinationTransitGatewayAttachmentId');

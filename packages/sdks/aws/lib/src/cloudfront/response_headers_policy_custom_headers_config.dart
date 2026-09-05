@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_headers_policy_custom_headers_config_item.dart';
 
 class ResponseHeadersPolicyCustomHeadersConfig {
-  final pulumi.Input<List<ResponseHeadersPolicyCustomHeadersConfigItem>>? items;
+  final pulumi.Input<List<ResponseHeadersPolicyCustomHeadersConfigItem>?>? items;
 
   /// Creates a new [ResponseHeadersPolicyCustomHeadersConfig].
   /// [items] Optional.

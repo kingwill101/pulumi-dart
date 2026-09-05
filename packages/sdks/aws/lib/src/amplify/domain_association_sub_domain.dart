@@ -6,11 +6,11 @@ class DomainAssociationSubDomain {
   /// Branch name setting for the subdomain.
   final pulumi.Input<String> branchName;
   /// DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME &lt;target&gt;`).
-  final pulumi.Input<String>? dnsRecord;
+  final pulumi.Input<String?>? dnsRecord;
   /// Prefix setting for the subdomain.
   final pulumi.Input<String> prefix;
   /// Verified status of the subdomain.
-  final pulumi.Input<bool>? verified;
+  final pulumi.Input<bool?>? verified;
 
   /// Creates a new [DomainAssociationSubDomain].
   /// [branchName] Branch name setting for the subdomain.

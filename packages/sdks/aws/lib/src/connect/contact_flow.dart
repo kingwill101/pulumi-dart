@@ -577,7 +577,7 @@ import 'contact_flow_state.dart';
 /// $ pulumi import aws:connect/contactFlow:ContactFlow example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class ContactFlow extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Contact Flow.
+  /// ARN of the Contact Flow.
   late final pulumi.Output<String> arn;
   /// The identifier of the Contact Flow.
   late final pulumi.Output<String> contactFlowId;
@@ -614,7 +614,7 @@ class ContactFlow extends pulumi.CustomResource {
           'aws:connect/contactFlow:ContactFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactFlowId = registerOutput<String>('contactFlowId');
@@ -625,8 +625,8 @@ class ContactFlow extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -635,11 +635,12 @@ class ContactFlow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactFlowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContactFlow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -662,8 +663,31 @@ class ContactFlow extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [ContactFlow] resource.
+  ContactFlow.reference(String urn)
+    : super(
+        'aws:connect/contactFlow:ContactFlow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    contactFlowId = registerOutput<String>('contactFlowId');
+    content = registerOutput<String>('content');
+    contentHash = registerOutput<String?>('contentHash');
+    description = registerOutput<String?>('description');
+    filename = registerOutput<String?>('filename');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 }

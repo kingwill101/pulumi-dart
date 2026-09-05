@@ -11,21 +11,21 @@ class EnvironmentCertificateArgs {
   /// The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** One of `certificateBlobBase64` and `certificateKeyVault` must be set.
-  final pulumi.Input<String>? certificateBlobBase64;
+  final pulumi.Input<String?>? certificateBlobBase64;
   /// A `certificateKeyVault` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** one of `certificateBlobBase64` and `certificateKeyVault` must be set.
-  final pulumi.Input<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault;
+  final pulumi.Input<EnvironmentCertificateCertificateKeyVault?>? certificateKeyVault;
   /// The password for the Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** required if `certificateBlobBase64` is specified.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
   /// The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentCertificateArgs].
   /// [certificateBlobBase64] The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.

@@ -5,15 +5,15 @@ import 'plan_stage.dart';
 
 /// Input properties used for looking up and filtering Plan resources.
 class PlanState {
-  /// The Amazon Resource Name (ARN) of the contact or escalation plan.
-  final pulumi.Input<String>? contactId;
+  /// The ARN of the contact or escalation plan.
+  final pulumi.Input<String?>? contactId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
-  final pulumi.Input<List<PlanStage>>? stages;
+  final pulumi.Input<List<PlanStage>?>? stages;
 
   /// Creates a new [PlanState].
-  /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// [contactId] The ARN of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stages] One or more configuration blocks for specifying a list of stages that the escalation plan or engagement plan uses to engage contacts and contact methods. See Stage below for more details.
   const PlanState({

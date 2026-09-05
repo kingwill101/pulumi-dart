@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_logs_get_logs_args_doc}
 class GetLogsArgs {
-  final pulumi.Input<bool>? details;
+  final pulumi.Input<bool?>? details;
   /// Discard headers that docker appends to each log entry
-  final pulumi.Input<bool>? discardHeaders;
-  final pulumi.Input<bool>? follow;
+  final pulumi.Input<bool?>? discardHeaders;
+  final pulumi.Input<bool?>? follow;
   /// If true populate computed value `logsListString`
-  final pulumi.Input<bool>? logsListStringEnabled;
+  final pulumi.Input<bool?>? logsListStringEnabled;
   /// The name of the Docker Container
   final pulumi.Input<String> name;
-  final pulumi.Input<bool>? showStderr;
-  final pulumi.Input<bool>? showStdout;
-  final pulumi.Input<String>? since;
-  final pulumi.Input<String>? tail;
-  final pulumi.Input<bool>? timestamps;
-  final pulumi.Input<String>? until;
+  final pulumi.Input<bool?>? showStderr;
+  final pulumi.Input<bool?>? showStdout;
+  final pulumi.Input<String?>? since;
+  final pulumi.Input<String?>? tail;
+  final pulumi.Input<bool?>? timestamps;
+  final pulumi.Input<String?>? until;
 
   /// Creates a new [GetLogsArgs].
   /// [details] Optional.

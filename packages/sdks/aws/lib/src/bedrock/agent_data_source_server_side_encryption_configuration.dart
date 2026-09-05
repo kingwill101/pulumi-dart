@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceServerSideEncryptionConfiguration {
   /// ARN of the AWS KMS key used to encrypt the resource.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [AgentDataSourceServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN of the AWS KMS key used to encrypt the resource.

@@ -261,10 +261,10 @@ class SamplingRule extends pulumi.CustomResource {
           'aws:xray/samplingRule:SamplingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<Map<String, String>?>('attributes');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     fixedRate = registerOutput<double>('fixedRate');
     host = registerOutput<String>('host');
     httpMethod = registerOutput<String>('httpMethod');
@@ -275,8 +275,8 @@ class SamplingRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     serviceName = registerOutput<String>('serviceName');
     serviceType = registerOutput<String>('serviceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     urlPath = registerOutput<String>('urlPath');
     version = registerOutput<int>('version');
   }
@@ -286,11 +286,12 @@ class SamplingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SamplingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SamplingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,7 +306,7 @@ class SamplingRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<Map<String, String>?>('attributes');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     fixedRate = registerOutput<double>('fixedRate');
     host = registerOutput<String>('host');
     httpMethod = registerOutput<String>('httpMethod');
@@ -316,8 +317,35 @@ class SamplingRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     serviceName = registerOutput<String>('serviceName');
     serviceType = registerOutput<String>('serviceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    urlPath = registerOutput<String>('urlPath');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [SamplingRule] resource.
+  SamplingRule.reference(String urn)
+    : super(
+        'aws:xray/samplingRule:SamplingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    fixedRate = registerOutput<double>('fixedRate');
+    host = registerOutput<String>('host');
+    httpMethod = registerOutput<String>('httpMethod');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    reservoirSize = registerOutput<int>('reservoirSize');
+    resourceArn = registerOutput<String>('resourceArn');
+    ruleName = registerOutput<String?>('ruleName');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     urlPath = registerOutput<String>('urlPath');
     version = registerOutput<int>('version');
   }

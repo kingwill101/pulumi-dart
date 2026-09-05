@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties {
   /// A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used by Amazon QuickSight to optimize query performance.
-  final pulumi.Input<bool>? uniqueKey;
+  final pulumi.Input<bool?>? uniqueKey;
 
   /// Creates a new [DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties].
   /// [uniqueKey] A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used by Amazon QuickSight to optimize query performance.

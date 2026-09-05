@@ -27,8 +27,8 @@ class GetNodeGroupUpdateConfig {
 
   factory GetNodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupUpdateConfig(
-      maxUnavailable: pulumi.Input.fromValue(map['maxUnavailable'] as int),
-      maxUnavailablePercentage: pulumi.Input.fromValue(map['maxUnavailablePercentage'] as int),
+      maxUnavailable: pulumi.Input.fromValue((map['maxUnavailable'] as num).toInt()),
+      maxUnavailablePercentage: pulumi.Input.fromValue((map['maxUnavailablePercentage'] as num).toInt()),
       updateStrategy: pulumi.Input.fromValue(map['updateStrategy'] as String),
     );
   }

@@ -376,7 +376,7 @@ class RateLimit extends pulumi.CustomResource {
           'cloudflare:index/rateLimit:RateLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     action = registerOutput<RateLimitAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bypasses = registerOutput<List<RateLimitBypass>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateLimitBypass>(guardedValue, (value) => RateLimitBypass.fromMap((value as Map).cast<String, dynamic>())); });

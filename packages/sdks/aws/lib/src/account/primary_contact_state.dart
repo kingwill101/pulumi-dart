@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PrimaryContact resources.
 class PrimaryContactState {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The first line of the primary contact address.
-  final pulumi.Input<String>? addressLine1;
+  final pulumi.Input<String?>? addressLine1;
   /// The second line of the primary contact address, if any.
-  final pulumi.Input<String>? addressLine2;
+  final pulumi.Input<String?>? addressLine2;
   /// The third line of the primary contact address, if any.
-  final pulumi.Input<String>? addressLine3;
+  final pulumi.Input<String?>? addressLine3;
   /// The city of the primary contact address.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The name of the company associated with the primary contact information, if any.
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
   /// The ISO-3166 two-letter country code for the primary contact address.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// The district or county of the primary contact address, if any.
-  final pulumi.Input<String>? districtOrCounty;
+  final pulumi.Input<String?>? districtOrCounty;
   /// The full name of the primary contact address.
-  final pulumi.Input<String>? fullName;
+  final pulumi.Input<String?>? fullName;
   /// The phone number of the primary contact information. The number will be validated and, in some countries, checked for activation.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
   /// The postal code of the primary contact address.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The state or region of the primary contact address. This field is required in selected countries.
-  final pulumi.Input<String>? stateOrRegion;
+  final pulumi.Input<String?>? stateOrRegion;
   /// The URL of the website associated with the primary contact information, if any.
-  final pulumi.Input<String>? websiteUrl;
+  final pulumi.Input<String?>? websiteUrl;
 
   /// Creates a new [PrimaryContactState].
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.

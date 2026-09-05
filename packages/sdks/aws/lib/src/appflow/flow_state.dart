@@ -10,38 +10,38 @@ import 'flow_trigger_config.dart';
 /// Input properties used for looking up and filtering Flow resources.
 class FlowState {
   /// Flow's ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the flow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration that controls how Amazon AppFlow places data in the destination connector. See the `destinationFlowConfig` Block for details.
-  final pulumi.Input<List<FlowDestinationFlowConfig>>? destinationFlowConfigs;
+  final pulumi.Input<List<FlowDestinationFlowConfig>?>? destinationFlowConfigs;
   /// Current status of the flow.
-  final pulumi.Input<String>? flowStatus;
-  /// ARN of the Key Management Service (KMS) key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
-  final pulumi.Input<String>? kmsArn;
+  final pulumi.Input<String?>? flowStatus;
+  /// ARN of the KMS key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
+  final pulumi.Input<String?>? kmsArn;
   /// Configuration that determines how Amazon AppFlow catalogs the data that the flow transfers. See the `metadataCatalogConfig` Block for details.
-  final pulumi.Input<FlowMetadataCatalogConfig>? metadataCatalogConfig;
+  final pulumi.Input<FlowMetadataCatalogConfig?>? metadataCatalogConfig;
   /// Name of the flow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration that controls how Amazon AppFlow retrieves data from the source connector. See the `sourceFlowConfig` Block for details.
-  final pulumi.Input<FlowSourceFlowConfig>? sourceFlowConfig;
+  final pulumi.Input<FlowSourceFlowConfig?>? sourceFlowConfig;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Tasks that Amazon AppFlow performs while transferring the data in the flow run. See the `task` Block for details.
-  final pulumi.Input<List<FlowTask>>? tasks;
+  final pulumi.Input<List<FlowTask>?>? tasks;
   /// Configuration that determines how and when the flow runs. See the `triggerConfig` Block for details.
-  final pulumi.Input<FlowTriggerConfig>? triggerConfig;
+  final pulumi.Input<FlowTriggerConfig?>? triggerConfig;
 
   /// Creates a new [FlowState].
   /// [arn] Flow's ARN.
   /// [description] Description of the flow.
   /// [destinationFlowConfigs] Configuration that controls how Amazon AppFlow places data in the destination connector. See the `destinationFlowConfig` Block for details.
   /// [flowStatus] Current status of the flow.
-  /// [kmsArn] ARN of the Key Management Service (KMS) key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
+  /// [kmsArn] ARN of the KMS key you provide for encryption. Required if you do not want to use the Amazon AppFlow-managed KMS key. Uses the Amazon AppFlow-managed KMS key when not provided.
   /// [metadataCatalogConfig] Configuration that determines how Amazon AppFlow catalogs the data that the flow transfers. See the `metadataCatalogConfig` Block for details.
   /// [name] Name of the flow.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

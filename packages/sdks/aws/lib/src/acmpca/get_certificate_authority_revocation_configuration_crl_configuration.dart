@@ -48,7 +48,7 @@ class GetCertificateAuthorityRevocationConfigurationCrlConfiguration {
       customCname: pulumi.Input.fromValue(map['customCname'] as String),
       customPath: pulumi.Input.fromValue(map['customPath'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      expirationInDays: pulumi.Input.fromValue(map['expirationInDays'] as int),
+      expirationInDays: pulumi.Input.fromValue((map['expirationInDays'] as num).toInt()),
       s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
       s3ObjectAcl: pulumi.Input.fromValue(map['s3ObjectAcl'] as String),
     );

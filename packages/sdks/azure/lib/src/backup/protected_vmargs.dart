@@ -12,15 +12,15 @@ class ProtectedVMArgs {
   /// &gt; **Note:** `backupPolicyId` is required during initial creation of this resource.
   ///
   /// &gt; **Note:** When `protectionState` is set to `BackupsSuspended` or `ProtectionStopped`, the Azure API may not return `backupPolicyId`. To avoid a perpetual diff, use Terraform's ignoreChanges argument.
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// A list of Disks' Logical Unit Numbers (LUN) to be excluded for VM Protection.
-  final pulumi.Input<List<int>>? excludeDiskLuns;
+  final pulumi.Input<List<int>?>? excludeDiskLuns;
   /// A list of Disks' Logical Unit Numbers (LUN) to be included for VM Protection.
-  final pulumi.Input<List<int>>? includeDiskLuns;
+  final pulumi.Input<List<int>?>? includeDiskLuns;
   /// Specifies Protection state of the backup. Possible values are `Protected`, `BackupsSuspended`, and `ProtectionStopped`.
   ///
   /// &gt; **Note:** `protectionState` cannot be set to `BackupsSuspended` unless the `azure.recoveryservices.Vault` has `immutability` set to `Unlocked` or `Locked`.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
   /// Specifies the name of the Resource Group **associated with** the Recovery Services Vault to use. Changing this forces a new resource to be created.
@@ -28,7 +28,7 @@ class ProtectedVMArgs {
   /// Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** After creation, the `sourceVmId` property can be removed without forcing a new resource to be created; however, setting it to a different ID will create a new resource. This allows the source virtual machine to be deleted without having to remove the backup.
-  final pulumi.Input<String>? sourceVmId;
+  final pulumi.Input<String?>? sourceVmId;
 
   /// Creates a new [ProtectedVMArgs].
   /// [backupPolicyId] Specifies the ID of the backup policy to use.

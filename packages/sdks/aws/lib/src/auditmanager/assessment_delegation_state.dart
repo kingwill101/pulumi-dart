@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AssessmentDelegation resources.
 class AssessmentDelegationState {
   /// Identifier for the assessment.
-  final pulumi.Input<String>? assessmentId;
+  final pulumi.Input<String?>? assessmentId;
   /// Comment describing the delegation request.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
-  final pulumi.Input<String>? controlSetId;
+  final pulumi.Input<String?>? controlSetId;
   /// Unique identifier for the delegation.
-  final pulumi.Input<String>? delegationId;
+  final pulumi.Input<String?>? delegationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the IAM role.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role.
+  final pulumi.Input<String?>? roleArn;
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? roleType;
+  final pulumi.Input<String?>? roleType;
   /// Status of the delegation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AssessmentDelegationState].
   /// [assessmentId] Identifier for the assessment.
@@ -29,7 +29,7 @@ class AssessmentDelegationState {
   /// [controlSetId] Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   /// [delegationId] Unique identifier for the delegation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
+  /// [roleArn] ARN of the IAM role.
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   /// [status] Status of the delegation.
   const AssessmentDelegationState({

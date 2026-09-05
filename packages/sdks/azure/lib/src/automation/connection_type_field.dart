@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionTypeField {
   /// Whether to set the isEncrypted flag of the connection field definition.
-  final pulumi.Input<bool>? isEncrypted;
+  final pulumi.Input<bool?>? isEncrypted;
   /// Whether to set the isOptional flag of the connection field definition.
-  final pulumi.Input<bool>? isOptional;
+  final pulumi.Input<bool?>? isOptional;
   /// The name which should be used for this connection field definition.
   final pulumi.Input<String> name;
   /// The type of the connection field definition.

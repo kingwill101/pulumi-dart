@@ -6,9 +6,9 @@ class TrafficManagerAzureEndpointSubnet {
   /// The first IP Address in this subnet.
   final pulumi.Input<String> first;
   /// The last IP Address in this subnet.
-  final pulumi.Input<String>? last;
+  final pulumi.Input<String?>? last;
   /// The block size (number of leading bits in the subnet mask).
-  final pulumi.Input<int>? scope;
+  final pulumi.Input<int?>? scope;
 
   /// Creates a new [TrafficManagerAzureEndpointSubnet].
   /// [first] The first IP Address in this subnet.
@@ -32,7 +32,7 @@ class TrafficManagerAzureEndpointSubnet {
     return TrafficManagerAzureEndpointSubnet(
       first: pulumi.Input.fromValue(map['first'] as String),
       last: (() { final guardedValue = map['last']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

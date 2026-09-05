@@ -9,17 +9,17 @@ import 'connection_group_timeouts.dart';
 /// {@macro pulumi_cloudfront_connection_group_connection_group_args_doc}
 class ConnectionGroupArgs {
   /// ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument
-  final pulumi.Input<String>? anycastIpListId;
+  final pulumi.Input<String?>? anycastIpListId;
   /// Whether the connection group is enabled. Default is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
-  final pulumi.Input<bool>? ipv6Enabled;
+  final pulumi.Input<bool?>? ipv6Enabled;
   /// Name of the connection group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
-  final pulumi.Input<bool>? waitForDeployment;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ConnectionGroupTimeouts?>? timeouts;
+  final pulumi.Input<bool?>? waitForDeployment;
 
   /// Creates a new [ConnectionGroupArgs].
   /// [anycastIpListId] ID of the associated Anycast IP List. `ipv6Enabled` must not be set to `true` in order to set this argument

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CacheBlobTarget resources.
 class CacheBlobTargetState {
   /// The name of the access policy applied to this target. Defaults to `default`.
-  final pulumi.Input<String>? accessPolicyName;
+  final pulumi.Input<String?>? accessPolicyName;
   /// The name HPC Cache, which the HPC Cache Blob Target will be added to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cacheName;
+  final pulumi.Input<String?>? cacheName;
   /// The name of the HPC Cache Blob Target. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The client-facing file path of the HPC Cache Blob Target.
-  final pulumi.Input<String>? namespacePath;
+  final pulumi.Input<String?>? namespacePath;
   /// The name of the Resource Group in which to create the HPC Cache Blob Target. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Resource Manager ID of the Storage Container used as the HPC Cache Blob Target. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This is the Resource Manager ID of the Storage Container, rather than the regular ID - and can be accessed on the `azure.storage.Container` Data Source/Resource as `resourceManagerId`.
-  final pulumi.Input<String>? storageContainerId;
+  final pulumi.Input<String?>? storageContainerId;
 
   /// Creates a new [CacheBlobTargetState].
   /// [accessPolicyName] The name of the access policy applied to this target. Defaults to `default`.

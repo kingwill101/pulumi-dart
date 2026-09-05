@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_user_login_profile_user_login_profile_args_doc}
 class UserLoginProfileArgs {
   /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
-  final pulumi.Input<int>? passwordLength;
+  final pulumi.Input<int?>? passwordLength;
   /// Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation.
-  final pulumi.Input<bool>? passwordResetRequired;
+  final pulumi.Input<bool?>? passwordResetRequired;
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
-  final pulumi.Input<String>? pgpKey;
+  final pulumi.Input<String?>? pgpKey;
   /// The IAM user's name.
   final pulumi.Input<String> user;
 
@@ -39,7 +39,7 @@ class UserLoginProfileArgs {
 
   factory UserLoginProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileArgs(
-      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       passwordResetRequired: (() { final guardedValue = map['passwordResetRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pgpKey: (() { final guardedValue = map['pgpKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       user: pulumi.Input.fromValue(map['user'] as String),

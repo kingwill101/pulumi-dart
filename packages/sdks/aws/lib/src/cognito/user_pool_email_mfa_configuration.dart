@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolEmailMfaConfiguration {
   /// The template for the email messages that your user pool sends to users with codes for MFA and sign-in with email OTPs. The message must contain the {####} placeholder. In the message, Amazon Cognito replaces this placeholder with the code. If you don't provide this parameter, Amazon Cognito sends messages in the default format.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The subject of the email messages that your user pool sends to users with codes for MFA and email OTP sign-in.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
 
   /// Creates a new [UserPoolEmailMfaConfiguration].
   /// [message] The template for the email messages that your user pool sends to users with codes for MFA and sign-in with email OTPs. The message must contain the {####} placeholder. In the message, Amazon Cognito replaces this placeholder with the code. If you don't provide this parameter, Amazon Cognito sends messages in the default format.

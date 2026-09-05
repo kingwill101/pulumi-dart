@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupDiagnosticsLogAnalytics {
   /// The log type which should be used. Possible values are `ContainerInsights` and `ContainerInstanceLogs`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? logType;
+  final pulumi.Input<String?>? logType;
   /// Any metadata required for Log Analytics. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The Workspace ID of the Log Analytics Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String> workspaceId;
   /// The Workspace Key of the Log Analytics Workspace. Changing this forces a new resource to be created.

@@ -20,7 +20,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationVideoSegmentationConfiguration(
-      fixedLengthDuration: pulumi.Input.fromValue(map['fixedLengthDuration'] as int),
+      fixedLengthDuration: pulumi.Input.fromValue((map['fixedLengthDuration'] as num).toInt()),
     );
   }
 }

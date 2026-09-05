@@ -24,6 +24,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     name: "example",
 ///     location: exampleResourceGroup.location,
 ///     resourceGroupName: exampleResourceGroup.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: exampleAzurermClientConfig.tenantId,
 ///     skuName: "example-value",
 ///     softDeleteRetentionDays: Number("example-value"),
@@ -93,6 +94,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///     name="example",
 ///     location=example_resource_group.location,
 ///     resource_group_name=example_resource_group.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=example_azurerm_client_config["tenantId"],
 ///     sku_name="example-value",
 ///     soft_delete_retention_days=int("example-value"))
@@ -168,6 +170,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///         Name = "example",
 ///         Location = exampleResourceGroup.Location,
 ///         ResourceGroupName = exampleResourceGroup.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = exampleAzurermClientConfig.TenantId,
 ///         SkuName = "example-value",
 ///         SoftDeleteRetentionDays = "example-value",
@@ -272,18 +275,19 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example"),
-/// 			Location:                exampleResourceGroup.Location,
-/// 			ResourceGroupName:       exampleResourceGroup.Name,
-/// 			TenantId:                pulumi.Any(exampleAzurermClientConfig.TenantId),
-/// 			SkuName:                 pulumi.String("example-value"),
-/// 			SoftDeleteRetentionDays: pulumi.Int("example-value"),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 exampleResourceGroup.Location,
+/// 			ResourceGroupName:        exampleResourceGroup.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.Any(exampleAzurermClientConfig.TenantId),
+/// 			SkuName:                  pulumi.String("example-value"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int("example-value"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId:     exampleKeyVault.ID(),
+/// 			KeyVaultId:     exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:       pulumi.Any(exampleAzurermClientConfig.TenantId),
 /// 			ObjectId:       pulumi.Any(exampleAzurermClientConfig.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray("example-value"),
@@ -325,9 +329,9 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// 			Name:                  pulumi.String("example"),
 /// 			Location:              exampleResourceGroup.Location,
 /// 			ResourceGroupName:     exampleResourceGroup.Name,
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
-/// 			ApplicationInsightsId: example.ID(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationInsightsId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("example-value"),
 /// 			},
@@ -336,10 +340,10 @@ import 'cluster_trusted_access_role_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewClusterTrustedAccessRoleBinding(ctx, "example", &containerservice.ClusterTrustedAccessRoleBindingArgs{
-/// 			KubernetesClusterId: exampleKubernetesCluster.ID(),
+/// 			KubernetesClusterId: exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                pulumi.String("example"),
 /// 			Roles:               pulumi.StringArray("example-value"),
-/// 			SourceResourceId:    exampleWorkspace.ID(),
+/// 			SourceResourceId:    exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -370,6 +374,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///   name                       = "example"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = exampleAzurermClientConfig.tenantId
 ///   sku_name                   = "example-value"
 ///   soft_delete_retention_days = "example-value"
@@ -484,6 +489,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///             .name("example")
 ///             .location(exampleResourceGroup.location())
 ///             .resourceGroupName(exampleResourceGroup.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(exampleAzurermClientConfig.tenantId())
 ///             .skuName("example-value")
 ///             .softDeleteRetentionDays("example-value")
@@ -560,6 +566,7 @@ import 'cluster_trusted_access_role_binding_state.dart';
 ///       name: example
 ///       location: ${exampleResourceGroup.location}
 ///       resourceGroupName: ${exampleResourceGroup.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${exampleAzurermClientConfig.tenantId}
 ///       skuName: example-value
 ///       softDeleteRetentionDays: example-value
@@ -671,11 +678,11 @@ class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
           'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     this.name = registerOutput<String>('name');
-    roles = registerOutput<List<String>>('roles');
+    roles = registerOutput<List<String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceResourceId = registerOutput<String>('sourceResourceId');
   }
 
@@ -684,11 +691,12 @@ class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterTrustedAccessRoleBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterTrustedAccessRoleBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -704,7 +712,22 @@ class ClusterTrustedAccessRoleBinding extends pulumi.CustomResource {
         ) {
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     this.name = registerOutput<String>('name');
-    roles = registerOutput<List<String>>('roles');
+    roles = registerOutput<List<String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+  }
+
+  /// Creates a typed reference to an existing [ClusterTrustedAccessRoleBinding] resource.
+  ClusterTrustedAccessRoleBinding.reference(String urn)
+    : super(
+        'azure:containerservice/clusterTrustedAccessRoleBinding:ClusterTrustedAccessRoleBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    this.name = registerOutput<String>('name');
+    roles = registerOutput<List<String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceResourceId = registerOutput<String>('sourceResourceId');
   }
 }

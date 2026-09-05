@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest {
   /// Code provided by the connector when it has been authenticated via the connected app.
-  final pulumi.Input<String>? authCode;
+  final pulumi.Input<String?>? authCode;
   /// URL to which the authentication server redirects the browser after authorization has been granted.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentialsOauthRequest].
   /// [authCode] Code provided by the connector when it has been authenticated via the connected app.

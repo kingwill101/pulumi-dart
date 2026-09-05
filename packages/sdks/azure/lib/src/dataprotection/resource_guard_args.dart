@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataprotection_resource_guard_resource_guard_args_doc}
 class ResourceGuardArgs {
   /// The Azure Region where the Resource Guard should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Resource Guard. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Resource Guard should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Resource Guard.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of the critical operations which are not protected by this Resource Guard.
-  final pulumi.Input<List<String>>? vaultCriticalOperationExclusionLists;
+  final pulumi.Input<List<String>?>? vaultCriticalOperationExclusionLists;
 
   /// Creates a new [ResourceGuardArgs].
   /// [location] The Azure Region where the Resource Guard should exist. Changing this forces a new resource to be created.

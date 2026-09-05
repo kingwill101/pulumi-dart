@@ -24,7 +24,7 @@ class GetJobQueueComputeEnvironmentOrder {
   factory GetJobQueueComputeEnvironmentOrder.fromMap(Map<String, dynamic> map) {
     return GetJobQueueComputeEnvironmentOrder(
       computeEnvironment: pulumi.Input.fromValue(map['computeEnvironment'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
     );
   }
 }

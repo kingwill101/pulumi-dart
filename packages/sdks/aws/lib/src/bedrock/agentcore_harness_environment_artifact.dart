@@ -5,7 +5,7 @@ import 'agentcore_harness_environment_artifact_container_configuration.dart';
 
 class AgentcoreHarnessEnvironmentArtifact {
   /// Container configuration. See `containerConfiguration` Block below.
-  final pulumi.Input<AgentcoreHarnessEnvironmentArtifactContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<AgentcoreHarnessEnvironmentArtifactContainerConfiguration?>? containerConfiguration;
 
   /// Creates a new [AgentcoreHarnessEnvironmentArtifact].
   /// [containerConfiguration] Container configuration. See `containerConfiguration` Block below.

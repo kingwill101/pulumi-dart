@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics {
   /// Whether the activity metrics are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics].
   /// [enabled] Whether the activity metrics are enabled.

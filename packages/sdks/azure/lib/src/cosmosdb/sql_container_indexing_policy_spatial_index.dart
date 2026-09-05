@@ -6,7 +6,7 @@ class SqlContainerIndexingPolicySpatialIndex {
   /// Path for which the indexing behaviour applies to. According to the service design, all spatial types including `LineString`, `MultiPolygon`, `Point`, and `Polygon` will be applied to the path.
   final pulumi.Input<String> path;
   /// A set of spatial types of the path.
-  final pulumi.Input<List<String>>? types;
+  final pulumi.Input<List<String>?>? types;
 
   /// Creates a new [SqlContainerIndexingPolicySpatialIndex].
   /// [path] Path for which the indexing behaviour applies to. According to the service design, all spatial types including `LineString`, `MultiPolygon`, `Point`, and `Polygon` will be applied to the path.

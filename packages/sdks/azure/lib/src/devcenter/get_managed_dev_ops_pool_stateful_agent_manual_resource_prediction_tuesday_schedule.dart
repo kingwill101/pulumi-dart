@@ -25,7 +25,7 @@ class GetManagedDevOpsPoolStatefulAgentManualResourcePredictionTuesdaySchedule {
 
   factory GetManagedDevOpsPoolStatefulAgentManualResourcePredictionTuesdaySchedule.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolStatefulAgentManualResourcePredictionTuesdaySchedule(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       time: pulumi.Input.fromValue(map['time'] as String),
     );
   }

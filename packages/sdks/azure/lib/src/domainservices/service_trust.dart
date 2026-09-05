@@ -229,12 +229,13 @@ class ServiceTrust extends pulumi.CustomResource {
           'azure:domainservices/serviceTrust:ServiceTrust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     domainServiceId = registerOutput<String>('domainServiceId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
-    trustedDomainDnsIps = registerOutput<List<String>>('trustedDomainDnsIps');
+    password = registerOutput<String>('password', isSecret: true);
+    trustedDomainDnsIps = registerOutput<List<String>>('trustedDomainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     trustedDomainFqdn = registerOutput<String>('trustedDomainFqdn');
   }
 
@@ -243,11 +244,12 @@ class ServiceTrust extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceTrustState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceTrust._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,8 +265,25 @@ class ServiceTrust extends pulumi.CustomResource {
         ) {
     domainServiceId = registerOutput<String>('domainServiceId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
-    trustedDomainDnsIps = registerOutput<List<String>>('trustedDomainDnsIps');
+    password = registerOutput<String>('password', isSecret: true);
+    trustedDomainDnsIps = registerOutput<List<String>>('trustedDomainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    trustedDomainFqdn = registerOutput<String>('trustedDomainFqdn');
+  }
+
+  /// Creates a typed reference to an existing [ServiceTrust] resource.
+  ServiceTrust.reference(String urn)
+    : super(
+        'azure:domainservices/serviceTrust:ServiceTrust',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    domainServiceId = registerOutput<String>('domainServiceId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    trustedDomainDnsIps = registerOutput<List<String>>('trustedDomainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     trustedDomainFqdn = registerOutput<String>('trustedDomainFqdn');
   }
 }

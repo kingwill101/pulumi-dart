@@ -11,45 +11,45 @@ import 'connector_worker_configuration.dart';
 
 /// Input properties used for looking up and filtering Connector resources.
 class ConnectorState {
-  /// The Amazon Resource Name (ARN) of the connector.
-  final pulumi.Input<String>? arn;
+  /// ARN of the connector.
+  final pulumi.Input<String?>? arn;
   /// Information about the capacity allocated to the connector. See `capacity` Block for details.
-  final pulumi.Input<ConnectorCapacity>? capacity;
+  final pulumi.Input<ConnectorCapacity?>? capacity;
   /// A map of keys to values that represent the configuration for the connector.
-  final pulumi.Input<Map<String, String>>? connectorConfiguration;
+  final pulumi.Input<Map<String, String>?>? connectorConfiguration;
   /// A summary description of the connector.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies which Apache Kafka cluster to connect to. See `kafkaCluster` Block for details.
-  final pulumi.Input<ConnectorKafkaCluster>? kafkaCluster;
+  final pulumi.Input<ConnectorKafkaCluster?>? kafkaCluster;
   /// Details of the client authentication used by the Apache Kafka cluster. See `kafkaClusterClientAuthentication` Block for details.
-  final pulumi.Input<ConnectorKafkaClusterClientAuthentication>? kafkaClusterClientAuthentication;
+  final pulumi.Input<ConnectorKafkaClusterClientAuthentication?>? kafkaClusterClientAuthentication;
   /// Details of encryption in transit to the Apache Kafka cluster. See `kafkaClusterEncryptionInTransit` Block for details.
-  final pulumi.Input<ConnectorKafkaClusterEncryptionInTransit>? kafkaClusterEncryptionInTransit;
+  final pulumi.Input<ConnectorKafkaClusterEncryptionInTransit?>? kafkaClusterEncryptionInTransit;
   /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
-  final pulumi.Input<String>? kafkaconnectVersion;
+  final pulumi.Input<String?>? kafkaconnectVersion;
   /// Details about log delivery. See `logDelivery` Block for details.
-  final pulumi.Input<ConnectorLogDelivery>? logDelivery;
+  final pulumi.Input<ConnectorLogDelivery?>? logDelivery;
   /// The name of the connector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies which plugins to use for the connector. See `plugin` Block for details.
-  final pulumi.Input<List<ConnectorPlugin>>? plugins;
+  final pulumi.Input<List<ConnectorPlugin>?>? plugins;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? serviceExecutionRoleArn;
+  final pulumi.Input<String?>? serviceExecutionRoleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The current version of the connector.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Specifies which worker configuration to use with the connector. See `workerConfiguration` Block for details.
-  final pulumi.Input<ConnectorWorkerConfiguration>? workerConfiguration;
+  final pulumi.Input<ConnectorWorkerConfiguration?>? workerConfiguration;
 
   /// Creates a new [ConnectorState].
-  /// [arn] The Amazon Resource Name (ARN) of the connector.
+  /// [arn] ARN of the connector.
   /// [capacity] Information about the capacity allocated to the connector. See `capacity` Block for details.
   /// [connectorConfiguration] A map of keys to values that represent the configuration for the connector.
   /// [description] A summary description of the connector.
@@ -61,7 +61,7 @@ class ConnectorState {
   /// [name] The name of the connector.
   /// [plugins] Specifies which plugins to use for the connector. See `plugin` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceExecutionRoleArn] The Amazon Resource Name (ARN) of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
+  /// [serviceExecutionRoleArn] ARN of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [version] The current version of the connector.

@@ -6,7 +6,7 @@ class VnpGatewayNatRuleExternalMapping {
   /// The string CIDR representing the address space for the VPN Gateway Nat Rule external mapping.
   final pulumi.Input<String> addressSpace;
   /// The single port range for the VPN Gateway Nat Rule external mapping.
-  final pulumi.Input<String>? portRange;
+  final pulumi.Input<String?>? portRange;
 
   /// Creates a new [VnpGatewayNatRuleExternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the VPN Gateway Nat Rule external mapping.

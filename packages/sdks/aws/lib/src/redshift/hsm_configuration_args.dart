@@ -20,9 +20,9 @@ class HsmConfigurationArgs {
   /// The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.
   final pulumi.Input<String> hsmServerPublicCertificate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HsmConfigurationArgs].
   /// [description] A text description of the HSM configuration to be created.

@@ -10,11 +10,11 @@ class GetAssetsArgs {
   /// Outpost ARN.
   final pulumi.Input<String> arn;
   /// Filters by list of Host IDs of a Dedicated Host.
-  final pulumi.Input<List<String>>? hostIdFilters;
+  final pulumi.Input<List<String>?>? hostIdFilters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Filters by list of state status. Valid values: "ACTIVE", "RETIRING".
-  final pulumi.Input<List<String>>? statusIdFilters;
+  final pulumi.Input<List<String>?>? statusIdFilters;
 
   /// Creates a new [GetAssetsArgs].
   /// [arn] Outpost ARN.

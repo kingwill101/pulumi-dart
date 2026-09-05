@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sagemaker_image_version_image_version_args_doc}
 class ImageVersionArgs {
   /// A list of aliases for the image version.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// The registry path of the container image on which this image version is based.
   final pulumi.Input<String> baseImage;
   /// Indicates Horovod compatibility.
-  final pulumi.Input<bool>? horovod;
+  final pulumi.Input<bool?>? horovod;
   /// The name of the image. Must be unique to your account.
   final pulumi.Input<String> imageName;
   /// Indicates SageMaker AI job type compatibility. Valid values are: `TRAINING`, `INFERENCE`, and `NOTEBOOK_KERNEL`.
-  final pulumi.Input<String>? jobType;
+  final pulumi.Input<String?>? jobType;
   /// The machine learning framework vended in the image version.
-  final pulumi.Input<String>? mlFramework;
+  final pulumi.Input<String?>? mlFramework;
   /// Indicates CPU or GPU compatibility. Valid values are: `CPU` and `GPU`.
-  final pulumi.Input<String>? processor;
+  final pulumi.Input<String?>? processor;
   /// The supported programming language and its version.
-  final pulumi.Input<String>? programmingLang;
+  final pulumi.Input<String?>? programmingLang;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The maintainer description of the image version.
-  final pulumi.Input<String>? releaseNotes;
+  final pulumi.Input<String?>? releaseNotes;
   /// The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
-  final pulumi.Input<String>? vendorGuidance;
+  final pulumi.Input<String?>? vendorGuidance;
 
   /// Creates a new [ImageVersionArgs].
   /// [aliases] A list of aliases for the image version.

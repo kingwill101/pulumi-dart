@@ -12,9 +12,9 @@ class ControlPanelArgs {
   /// Name describing the control panel.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ControlPanelArgs].
   /// [clusterArn] ARN of the cluster in which this control panel will reside.

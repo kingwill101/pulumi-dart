@@ -8,20 +8,20 @@ import 'domain_rule_based_matching_matching_rule.dart';
 
 class DomainRuleBasedMatching {
   /// A block that configures information about the `AttributeTypesSelector` where the rule-based identity resolution uses to match profiles. Documented below.
-  final pulumi.Input<DomainRuleBasedMatchingAttributeTypesSelector>? attributeTypesSelector;
+  final pulumi.Input<DomainRuleBasedMatchingAttributeTypesSelector?>? attributeTypesSelector;
   /// A block that specifies how the auto-merging process should resolve conflicts between different profiles. Documented below.
-  final pulumi.Input<DomainRuleBasedMatchingConflictResolution>? conflictResolution;
+  final pulumi.Input<DomainRuleBasedMatchingConflictResolution?>? conflictResolution;
   /// The flag that enables the rule-based matching process of duplicate profiles.
   final pulumi.Input<bool> enabled;
   /// A block that specifies the configuration for exporting Identity Resolution results. Documented below.
-  final pulumi.Input<DomainRuleBasedMatchingExportingConfig>? exportingConfig;
+  final pulumi.Input<DomainRuleBasedMatchingExportingConfig?>? exportingConfig;
   /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natchingRules`. Documented below.
-  final pulumi.Input<List<DomainRuleBasedMatchingMatchingRule>>? matchingRules;
+  final pulumi.Input<List<DomainRuleBasedMatchingMatchingRule>?>? matchingRules;
   /// Indicates the maximum allowed rule level for matching.
-  final pulumi.Input<int>? maxAllowedRuleLevelForMatching;
+  final pulumi.Input<int?>? maxAllowedRuleLevelForMatching;
   /// Indicates the maximum allowed rule level for merging.
-  final pulumi.Input<int>? maxAllowedRuleLevelForMerging;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<int?>? maxAllowedRuleLevelForMerging;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DomainRuleBasedMatching].
   /// [attributeTypesSelector] A block that configures information about the `AttributeTypesSelector` where the rule-based identity resolution uses to match profiles. Documented below.
@@ -63,8 +63,8 @@ class DomainRuleBasedMatching {
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       exportingConfig: (() { final guardedValue = map['exportingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainRuleBasedMatchingExportingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchingRules: (() { final guardedValue = map['matchingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(guardedValue, (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxAllowedRuleLevelForMatching: (() { final guardedValue = map['maxAllowedRuleLevelForMatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxAllowedRuleLevelForMerging: (() { final guardedValue = map['maxAllowedRuleLevelForMerging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAllowedRuleLevelForMatching: (() { final guardedValue = map['maxAllowedRuleLevelForMatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAllowedRuleLevelForMerging: (() { final guardedValue = map['maxAllowedRuleLevelForMerging']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

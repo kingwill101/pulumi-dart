@@ -6,13 +6,13 @@ import 'subscriber_source_custom_log_source_resource_provider.dart';
 
 class SubscriberSourceCustomLogSourceResource {
   /// The attributes of the third-party custom source. See `attributes` Block below.
-  final pulumi.Input<List<SubscriberSourceCustomLogSourceResourceAttribute>>? attributes;
+  final pulumi.Input<List<SubscriberSourceCustomLogSourceResourceAttribute>?>? attributes;
   /// The details of the log provider for the third-party custom source. See `provider` Block below.
-  final pulumi.Input<List<SubscriberSourceCustomLogSourceResourceProvider>>? providers;
+  final pulumi.Input<List<SubscriberSourceCustomLogSourceResourceProvider>?>? providers;
   /// The name for a third-party custom source. This must be a Regionally unique value.
   final pulumi.Input<String> sourceName;
   /// The version for a third-party custom source. This must be a Regionally unique value.
-  final pulumi.Input<String>? sourceVersion;
+  final pulumi.Input<String?>? sourceVersion;
 
   /// Creates a new [SubscriberSourceCustomLogSourceResource].
   /// [attributes] The attributes of the third-party custom source. See `attributes` Block below.

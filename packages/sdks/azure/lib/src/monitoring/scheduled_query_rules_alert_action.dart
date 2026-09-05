@@ -6,9 +6,9 @@ class ScheduledQueryRulesAlertAction {
   /// List of action group reference resource IDs.
   final pulumi.Input<List<String>> actionGroups;
   /// Custom payload to be sent for all webhook payloads in alerting action.
-  final pulumi.Input<String>? customWebhookPayload;
+  final pulumi.Input<String?>? customWebhookPayload;
   /// Custom subject override for all email ids in Azure action group.
-  final pulumi.Input<String>? emailSubject;
+  final pulumi.Input<String?>? emailSubject;
 
   /// Creates a new [ScheduledQueryRulesAlertAction].
   /// [actionGroups] List of action group reference resource IDs.

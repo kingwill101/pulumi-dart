@@ -16,12 +16,12 @@ import 'repository_policy_state.dart';
 /// const exampleRepository = new aws.ecr.Repository("example", {name: "example-repo"});
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "new policy",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["123456789012"],
 ///         }],
+///         sid: "new policy",
+///         effect: "Allow",
 ///         actions: [
 ///             "ecr:GetDownloadUrlForLayer",
 ///             "ecr:BatchGetImage",
@@ -51,12 +51,12 @@ import 'repository_policy_state.dart';
 ///
 /// example_repository = aws.ecr.Repository("example", name="example-repo")
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "new policy",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["123456789012"],
 ///     }],
+///     "sid": "new policy",
+///     "effect": "Allow",
 ///     "actions": [
 ///         "ecr:GetDownloadUrlForLayer",
 ///         "ecr:BatchGetImage",
@@ -97,8 +97,6 @@ import 'repository_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "new policy",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -110,6 +108,8 @@ import 'repository_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "new policy",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "ecr:GetDownloadUrlForLayer",
@@ -159,8 +159,6 @@ import 'repository_policy_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("new policy"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -169,6 +167,8 @@ import 'repository_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("new policy"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"ecr:GetDownloadUrlForLayer",
 /// 						"ecr:BatchGetImage",
@@ -213,12 +213,12 @@ import 'repository_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "new policy"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     sid     = "new policy"
+///     effect  = "Allow"
 ///     actions = ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability", "ecr:PutImage", "ecr:InitiateLayerUpload", "ecr:UploadLayerPart", "ecr:CompleteLayerUpload", "ecr:DescribeRepositories", "ecr:GetRepositoryPolicy", "ecr:ListImages", "ecr:DeleteRepository", "ecr:BatchDeleteImage", "ecr:SetRepositoryPolicy", "ecr:DeleteRepositoryPolicy"]
 ///   }
 /// }
@@ -264,12 +264,12 @@ import 'repository_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("new policy")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("123456789012")
 ///                     .build())
+///                 .sid("new policy")
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "ecr:GetDownloadUrlForLayer",
 ///                     "ecr:BatchGetImage",
@@ -315,12 +315,12 @@ import 'repository_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: new policy
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '123456789012'
+///             sid: new policy
+///             effect: Allow
 ///             actions:
 ///               - ecr:GetDownloadUrlForLayer
 ///               - ecr:BatchGetImage
@@ -380,7 +380,7 @@ class RepositoryPolicy extends pulumi.CustomResource {
           'aws:ecr/repositoryPolicy:RepositoryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -393,11 +393,12 @@ class RepositoryPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,6 +412,21 @@ class RepositoryPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repository = registerOutput<String>('repository');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryPolicy] resource.
+  RepositoryPolicy.reference(String urn)
+    : super(
+        'aws:ecr/repositoryPolicy:RepositoryPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

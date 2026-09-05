@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'experiment_template_action.dart';
 import 'experiment_template_args.dart';
 import 'experiment_template_experiment_options.dart';
 import 'experiment_template_experiment_report_configuration.dart';
 import 'experiment_template_log_configuration.dart';
 import 'experiment_template_state.dart';
+import 'experiment_template_stop_condition.dart';
+import 'experiment_template_target.dart';
 
 /// Provides an FIS Experiment Template, which can be used to run an experiment.
 /// An experiment template contains one or more actions to run on specified targets during an experiment.
@@ -19,28 +22,28 @@ import 'experiment_template_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.fis.ExperimentTemplate("example", {
-///     description: "example",
-///     roleArn: exampleAwsIamRole.arn,
-///     stopConditions: [{
-///         source: "none",
-///     }],
 ///     actions: [{
-///         name: "example-action",
-///         actionId: "aws:ec2:terminate-instances",
 ///         target: {
 ///             key: "Instances",
 ///             value: "example-target",
 ///         },
+///         name: "example-action",
+///         actionId: "aws:ec2:terminate-instances",
+///     }],
+///     stopConditions: [{
+///         source: "none",
 ///     }],
 ///     targets: [{
-///         name: "example-target",
-///         resourceType: "aws:ec2:instance",
-///         selectionMode: "COUNT(1)",
 ///         resourceTags: [{
 ///             key: "env",
 ///             value: "example",
 ///         }],
+///         name: "example-target",
+///         resourceType: "aws:ec2:instance",
+///         selectionMode: "COUNT(1)",
 ///     }],
+///     description: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -48,28 +51,28 @@ import 'experiment_template_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.fis.ExperimentTemplate("example",
-///     description="example",
-///     role_arn=example_aws_iam_role["arn"],
-///     stop_conditions=[{
-///         "source": "none",
-///     }],
 ///     actions=[{
-///         "name": "example-action",
-///         "action_id": "aws:ec2:terminate-instances",
 ///         "target": {
 ///             "key": "Instances",
 ///             "value": "example-target",
 ///         },
+///         "name": "example-action",
+///         "action_id": "aws:ec2:terminate-instances",
+///     }],
+///     stop_conditions=[{
+///         "source": "none",
 ///     }],
 ///     targets=[{
-///         "name": "example-target",
-///         "resource_type": "aws:ec2:instance",
-///         "selection_mode": "COUNT(1)",
 ///         "resource_tags": [{
 ///             "key": "env",
 ///             "value": "example",
 ///         }],
-///     }])
+///         "name": "example-target",
+///         "resource_type": "aws:ec2:instance",
+///         "selection_mode": "COUNT(1)",
+///     }],
+///     description="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -81,8 +84,19 @@ import 'experiment_template_state.dart';
 /// {
 ///     var example = new Aws.Fis.ExperimentTemplate("example", new()
 ///     {
-///         Description = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
+///         Actions = new[]
+///         {
+///             new Aws.Fis.Inputs.ExperimentTemplateActionArgs
+///             {
+///                 Target = new Aws.Fis.Inputs.ExperimentTemplateActionTargetArgs
+///                 {
+///                     Key = "Instances",
+///                     Value = "example-target",
+///                 },
+///                 Name = "example-action",
+///                 ActionId = "aws:ec2:terminate-instances",
+///             },
+///         },
 ///         StopConditions = new[]
 ///         {
 ///             new Aws.Fis.Inputs.ExperimentTemplateStopConditionArgs
@@ -90,26 +104,10 @@ import 'experiment_template_state.dart';
 ///                 Source = "none",
 ///             },
 ///         },
-///         Actions = new[]
-///         {
-///             new Aws.Fis.Inputs.ExperimentTemplateActionArgs
-///             {
-///                 Name = "example-action",
-///                 ActionId = "aws:ec2:terminate-instances",
-///                 Target = new Aws.Fis.Inputs.ExperimentTemplateActionTargetArgs
-///                 {
-///                     Key = "Instances",
-///                     Value = "example-target",
-///                 },
-///             },
-///         },
 ///         Targets = new[]
 ///         {
 ///             new Aws.Fis.Inputs.ExperimentTemplateTargetArgs
 ///             {
-///                 Name = "example-target",
-///                 ResourceType = "aws:ec2:instance",
-///                 SelectionMode = "COUNT(1)",
 ///                 ResourceTags = new[]
 ///                 {
 ///                     new Aws.Fis.Inputs.ExperimentTemplateTargetResourceTagArgs
@@ -118,8 +116,13 @@ import 'experiment_template_state.dart';
 ///                         Value = "example",
 ///                     },
 ///                 },
+///                 Name = "example-target",
+///                 ResourceType = "aws:ec2:instance",
+///                 SelectionMode = "COUNT(1)",
 ///             },
 ///         },
+///         Description = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -135,36 +138,36 @@ import 'experiment_template_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fis.NewExperimentTemplate(ctx, "example", &fis.ExperimentTemplateArgs{
-/// 			Description: pulumi.String("example"),
-/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Actions: fis.ExperimentTemplateActionArray{
+/// 				&fis.ExperimentTemplateActionArgs{
+/// 					Target: &fis.ExperimentTemplateActionTargetArgs{
+/// 						Key:   pulumi.String("Instances"),
+/// 						Value: pulumi.String("example-target"),
+/// 					},
+/// 					Name:     pulumi.String("example-action"),
+/// 					ActionId: pulumi.String("aws:ec2:terminate-instances"),
+/// 				},
+/// 			},
 /// 			StopConditions: fis.ExperimentTemplateStopConditionArray{
 /// 				&fis.ExperimentTemplateStopConditionArgs{
 /// 					Source: pulumi.String("none"),
 /// 				},
 /// 			},
-/// 			Actions: fis.ExperimentTemplateActionArray{
-/// 				&fis.ExperimentTemplateActionArgs{
-/// 					Name:     pulumi.String("example-action"),
-/// 					ActionId: pulumi.String("aws:ec2:terminate-instances"),
-/// 					Target: &fis.ExperimentTemplateActionTargetArgs{
-/// 						Key:   pulumi.String("Instances"),
-/// 						Value: pulumi.String("example-target"),
-/// 					},
-/// 				},
-/// 			},
 /// 			Targets: fis.ExperimentTemplateTargetArray{
 /// 				&fis.ExperimentTemplateTargetArgs{
-/// 					Name:          pulumi.String("example-target"),
-/// 					ResourceType:  pulumi.String("aws:ec2:instance"),
-/// 					SelectionMode: pulumi.String("COUNT(1)"),
 /// 					ResourceTags: fis.ExperimentTemplateTargetResourceTagArray{
 /// 						&fis.ExperimentTemplateTargetResourceTagArgs{
 /// 							Key:   pulumi.String("env"),
 /// 							Value: pulumi.String("example"),
 /// 						},
 /// 					},
+/// 					Name:          pulumi.String("example-target"),
+/// 					ResourceType:  pulumi.String("aws:ec2:instance"),
+/// 					SelectionMode: pulumi.String("COUNT(1)"),
 /// 				},
 /// 			},
+/// 			Description: pulumi.String("example"),
+/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -183,28 +186,28 @@ import 'experiment_template_state.dart';
 /// }
 ///
 /// resource "aws_fis_experimenttemplate" "example" {
-///   description = "example"
-///   role_arn    = exampleAwsIamRole.arn
-///   stop_conditions {
-///     source = "none"
-///   }
 ///   actions {
-///     name      = "example-action"
-///     action_id = "aws:ec2:terminate-instances"
 ///     target = {
 ///       key   = "Instances"
 ///       value = "example-target"
 ///     }
+///     name      = "example-action"
+///     action_id = "aws:ec2:terminate-instances"
+///   }
+///   stop_conditions {
+///     source = "none"
 ///   }
 ///   targets {
-///     name           = "example-target"
-///     resource_type  = "aws:ec2:instance"
-///     selection_mode = "COUNT(1)"
 ///     resource_tags {
 ///       key   = "env"
 ///       value = "example"
 ///     }
+///     name           = "example-target"
+///     resource_type  = "aws:ec2:instance"
+///     selection_mode = "COUNT(1)"
 ///   }
+///   description = "example"
+///   role_arn    = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -215,9 +218,9 @@ import 'experiment_template_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fis.ExperimentTemplate;
 /// import com.pulumi.aws.fis.ExperimentTemplateArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateStopConditionArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionTargetArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateStopConditionArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetResourceTagArgs;
 /// import java.util.ArrayList;
@@ -234,28 +237,28 @@ import 'experiment_template_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ExperimentTemplate("example", ExperimentTemplateArgs.builder()
-///             .description("example")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .stopConditions(ExperimentTemplateStopConditionArgs.builder()
-///                 .source("none")
-///                 .build())
 ///             .actions(ExperimentTemplateActionArgs.builder()
-///                 .name("example-action")
-///                 .actionId("aws:ec2:terminate-instances")
 ///                 .target(ExperimentTemplateActionTargetArgs.builder()
 ///                     .key("Instances")
 ///                     .value("example-target")
 ///                     .build())
+///                 .name("example-action")
+///                 .actionId("aws:ec2:terminate-instances")
+///                 .build())
+///             .stopConditions(ExperimentTemplateStopConditionArgs.builder()
+///                 .source("none")
 ///                 .build())
 ///             .targets(ExperimentTemplateTargetArgs.builder()
-///                 .name("example-target")
-///                 .resourceType("aws:ec2:instance")
-///                 .selectionMode("COUNT(1)")
 ///                 .resourceTags(ExperimentTemplateTargetResourceTagArgs.builder()
 ///                     .key("env")
 ///                     .value("example")
 ///                     .build())
+///                 .name("example-target")
+///                 .resourceType("aws:ec2:instance")
+///                 .selectionMode("COUNT(1)")
 ///                 .build())
+///             .description("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -266,23 +269,23 @@ import 'experiment_template_state.dart';
 ///   example:
 ///     type: aws:fis:ExperimentTemplate
 ///     properties:
-///       description: example
-///       roleArn: ${exampleAwsIamRole.arn}
-///       stopConditions:
-///         - source: none
 ///       actions:
-///         - name: example-action
-///           actionId: aws:ec2:terminate-instances
-///           target:
+///         - target:
 ///             key: Instances
 ///             value: example-target
+///           name: example-action
+///           actionId: aws:ec2:terminate-instances
+///       stopConditions:
+///         - source: none
 ///       targets:
-///         - name: example-target
-///           resourceType: aws:ec2:instance
-///           selectionMode: COUNT(1)
-///           resourceTags:
+///         - resourceTags:
 ///             - key: env
 ///               value: example
+///           name: example-target
+///           resourceType: aws:ec2:instance
+///           selectionMode: COUNT(1)
+///       description: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -308,7 +311,6 @@ import 'experiment_template_state.dart';
 ///     }),
 /// });
 /// const reportAccess = aws.iam.getPolicyDocument({
-///     version: "2012-10-17",
 ///     statements: [
 ///         {
 ///             sid: "logsDelivery",
@@ -338,6 +340,7 @@ import 'experiment_template_state.dart';
 ///             resources: ["*"],
 ///         },
 ///     ],
+///     version: "2012-10-17",
 /// });
 /// const reportAccessPolicy = new aws.iam.Policy("report_access", {
 ///     name: "report_access",
@@ -348,28 +351,6 @@ import 'experiment_template_state.dart';
 ///     policyArn: reportAccessPolicy.arn,
 /// });
 /// const exampleExperimentTemplate = new aws.fis.ExperimentTemplate("example", {
-///     description: "example",
-///     roleArn: example.arn,
-///     stopConditions: [{
-///         source: "none",
-///     }],
-///     actions: [{
-///         name: "example-action",
-///         actionId: "aws:ec2:terminate-instances",
-///         target: {
-///             key: "Instances",
-///             value: "example-target",
-///         },
-///     }],
-///     targets: [{
-///         name: "example-target",
-///         resourceType: "aws:ec2:instance",
-///         selectionMode: "COUNT(1)",
-///         resourceTags: [{
-///             key: "env",
-///             value: "example",
-///         }],
-///     }],
 ///     experimentReportConfiguration: {
 ///         dataSources: {
 ///             cloudwatchDashboards: [{
@@ -385,6 +366,28 @@ import 'experiment_template_state.dart';
 ///         postExperimentDuration: "PT10M",
 ///         preExperimentDuration: "PT10M",
 ///     },
+///     actions: [{
+///         target: {
+///             key: "Instances",
+///             value: "example-target",
+///         },
+///         name: "example-action",
+///         actionId: "aws:ec2:terminate-instances",
+///     }],
+///     stopConditions: [{
+///         source: "none",
+///     }],
+///     targets: [{
+///         resourceTags: [{
+///             key: "env",
+///             value: "example",
+///         }],
+///         name: "example-target",
+///         resourceType: "aws:ec2:instance",
+///         selectionMode: "COUNT(1)",
+///     }],
+///     description: "example",
+///     roleArn: example.arn,
 ///     tags: {
 ///         Name: "example",
 ///     },
@@ -408,8 +411,7 @@ import 'experiment_template_state.dart';
 ///         }],
 ///         "Version": "2012-10-17",
 ///     }))
-/// report_access = aws.iam.get_policy_document(version="2012-10-17",
-///     statements=[
+/// report_access = aws.iam.get_policy_document(statements=[
 ///         {
 ///             "sid": "logsDelivery",
 ///             "effect": "Allow",
@@ -437,7 +439,8 @@ import 'experiment_template_state.dart';
 ///             "actions": ["cloudwatch:getMetricWidgetImage"],
 ///             "resources": ["*"],
 ///         },
-///     ])
+///     ],
+///     version="2012-10-17")
 /// report_access_policy = aws.iam.Policy("report_access",
 ///     name="report_access",
 ///     policy=report_access.json)
@@ -445,28 +448,6 @@ import 'experiment_template_state.dart';
 ///     role=test["name"],
 ///     policy_arn=report_access_policy.arn)
 /// example_experiment_template = aws.fis.ExperimentTemplate("example",
-///     description="example",
-///     role_arn=example.arn,
-///     stop_conditions=[{
-///         "source": "none",
-///     }],
-///     actions=[{
-///         "name": "example-action",
-///         "action_id": "aws:ec2:terminate-instances",
-///         "target": {
-///             "key": "Instances",
-///             "value": "example-target",
-///         },
-///     }],
-///     targets=[{
-///         "name": "example-target",
-///         "resource_type": "aws:ec2:instance",
-///         "selection_mode": "COUNT(1)",
-///         "resource_tags": [{
-///             "key": "env",
-///             "value": "example",
-///         }],
-///     }],
 ///     experiment_report_configuration={
 ///         "data_sources": {
 ///             "cloudwatch_dashboards": [{
@@ -482,6 +463,28 @@ import 'experiment_template_state.dart';
 ///         "post_experiment_duration": "PT10M",
 ///         "pre_experiment_duration": "PT10M",
 ///     },
+///     actions=[{
+///         "target": {
+///             "key": "Instances",
+///             "value": "example-target",
+///         },
+///         "name": "example-action",
+///         "action_id": "aws:ec2:terminate-instances",
+///     }],
+///     stop_conditions=[{
+///         "source": "none",
+///     }],
+///     targets=[{
+///         "resource_tags": [{
+///             "key": "env",
+///             "value": "example",
+///         }],
+///         "name": "example-target",
+///         "resource_type": "aws:ec2:instance",
+///         "selection_mode": "COUNT(1)",
+///     }],
+///     description="example",
+///     role_arn=example.arn,
 ///     tags={
 ///         "Name": "example",
 ///     })
@@ -523,7 +526,6 @@ import 'experiment_template_state.dart';
 ///
 ///     var reportAccess = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         Version = "2012-10-17",
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -580,6 +582,7 @@ import 'experiment_template_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Version = "2012-10-17",
 ///     });
 ///
 ///     var reportAccessPolicy = new Aws.Iam.Policy("report_access", new()
@@ -596,45 +599,6 @@ import 'experiment_template_state.dart';
 ///
 ///     var exampleExperimentTemplate = new Aws.Fis.ExperimentTemplate("example", new()
 ///     {
-///         Description = "example",
-///         RoleArn = example.Arn,
-///         StopConditions = new[]
-///         {
-///             new Aws.Fis.Inputs.ExperimentTemplateStopConditionArgs
-///             {
-///                 Source = "none",
-///             },
-///         },
-///         Actions = new[]
-///         {
-///             new Aws.Fis.Inputs.ExperimentTemplateActionArgs
-///             {
-///                 Name = "example-action",
-///                 ActionId = "aws:ec2:terminate-instances",
-///                 Target = new Aws.Fis.Inputs.ExperimentTemplateActionTargetArgs
-///                 {
-///                     Key = "Instances",
-///                     Value = "example-target",
-///                 },
-///             },
-///         },
-///         Targets = new[]
-///         {
-///             new Aws.Fis.Inputs.ExperimentTemplateTargetArgs
-///             {
-///                 Name = "example-target",
-///                 ResourceType = "aws:ec2:instance",
-///                 SelectionMode = "COUNT(1)",
-///                 ResourceTags = new[]
-///                 {
-///                     new Aws.Fis.Inputs.ExperimentTemplateTargetResourceTagArgs
-///                     {
-///                         Key = "env",
-///                         Value = "example",
-///                     },
-///                 },
-///             },
-///         },
 ///         ExperimentReportConfiguration = new Aws.Fis.Inputs.ExperimentTemplateExperimentReportConfigurationArgs
 ///         {
 ///             DataSources = new Aws.Fis.Inputs.ExperimentTemplateExperimentReportConfigurationDataSourcesArgs
@@ -658,6 +622,45 @@ import 'experiment_template_state.dart';
 ///             PostExperimentDuration = "PT10M",
 ///             PreExperimentDuration = "PT10M",
 ///         },
+///         Actions = new[]
+///         {
+///             new Aws.Fis.Inputs.ExperimentTemplateActionArgs
+///             {
+///                 Target = new Aws.Fis.Inputs.ExperimentTemplateActionTargetArgs
+///                 {
+///                     Key = "Instances",
+///                     Value = "example-target",
+///                 },
+///                 Name = "example-action",
+///                 ActionId = "aws:ec2:terminate-instances",
+///             },
+///         },
+///         StopConditions = new[]
+///         {
+///             new Aws.Fis.Inputs.ExperimentTemplateStopConditionArgs
+///             {
+///                 Source = "none",
+///             },
+///         },
+///         Targets = new[]
+///         {
+///             new Aws.Fis.Inputs.ExperimentTemplateTargetArgs
+///             {
+///                 ResourceTags = new[]
+///                 {
+///                     new Aws.Fis.Inputs.ExperimentTemplateTargetResourceTagArgs
+///                     {
+///                         Key = "env",
+///                         Value = "example",
+///                     },
+///                 },
+///                 Name = "example-target",
+///                 ResourceType = "aws:ec2:instance",
+///                 SelectionMode = "COUNT(1)",
+///             },
+///         },
+///         Description = "example",
+///         RoleArn = example.Arn,
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -711,7 +714,6 @@ import 'experiment_template_state.dart';
 /// 			return err
 /// 		}
 /// 		reportAccess, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			Version: pulumi.StringRef("2012-10-17"),
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
 /// 					Sid:    pulumi.StringRef("logsDelivery"),
@@ -755,6 +757,7 @@ import 'experiment_template_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Version: pulumi.StringRef("2012-10-17"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -774,36 +777,6 @@ import 'experiment_template_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fis.NewExperimentTemplate(ctx, "example", &fis.ExperimentTemplateArgs{
-/// 			Description: pulumi.String("example"),
-/// 			RoleArn:     example.Arn,
-/// 			StopConditions: fis.ExperimentTemplateStopConditionArray{
-/// 				&fis.ExperimentTemplateStopConditionArgs{
-/// 					Source: pulumi.String("none"),
-/// 				},
-/// 			},
-/// 			Actions: fis.ExperimentTemplateActionArray{
-/// 				&fis.ExperimentTemplateActionArgs{
-/// 					Name:     pulumi.String("example-action"),
-/// 					ActionId: pulumi.String("aws:ec2:terminate-instances"),
-/// 					Target: &fis.ExperimentTemplateActionTargetArgs{
-/// 						Key:   pulumi.String("Instances"),
-/// 						Value: pulumi.String("example-target"),
-/// 					},
-/// 				},
-/// 			},
-/// 			Targets: fis.ExperimentTemplateTargetArray{
-/// 				&fis.ExperimentTemplateTargetArgs{
-/// 					Name:          pulumi.String("example-target"),
-/// 					ResourceType:  pulumi.String("aws:ec2:instance"),
-/// 					SelectionMode: pulumi.String("COUNT(1)"),
-/// 					ResourceTags: fis.ExperimentTemplateTargetResourceTagArray{
-/// 						&fis.ExperimentTemplateTargetResourceTagArgs{
-/// 							Key:   pulumi.String("env"),
-/// 							Value: pulumi.String("example"),
-/// 						},
-/// 					},
-/// 				},
-/// 			},
 /// 			ExperimentReportConfiguration: &fis.ExperimentTemplateExperimentReportConfigurationArgs{
 /// 				DataSources: &fis.ExperimentTemplateExperimentReportConfigurationDataSourcesArgs{
 /// 					CloudwatchDashboards: fis.ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboardArray{
@@ -821,6 +794,36 @@ import 'experiment_template_state.dart';
 /// 				PostExperimentDuration: pulumi.String("PT10M"),
 /// 				PreExperimentDuration:  pulumi.String("PT10M"),
 /// 			},
+/// 			Actions: fis.ExperimentTemplateActionArray{
+/// 				&fis.ExperimentTemplateActionArgs{
+/// 					Target: &fis.ExperimentTemplateActionTargetArgs{
+/// 						Key:   pulumi.String("Instances"),
+/// 						Value: pulumi.String("example-target"),
+/// 					},
+/// 					Name:     pulumi.String("example-action"),
+/// 					ActionId: pulumi.String("aws:ec2:terminate-instances"),
+/// 				},
+/// 			},
+/// 			StopConditions: fis.ExperimentTemplateStopConditionArray{
+/// 				&fis.ExperimentTemplateStopConditionArgs{
+/// 					Source: pulumi.String("none"),
+/// 				},
+/// 			},
+/// 			Targets: fis.ExperimentTemplateTargetArray{
+/// 				&fis.ExperimentTemplateTargetArgs{
+/// 					ResourceTags: fis.ExperimentTemplateTargetResourceTagArray{
+/// 						&fis.ExperimentTemplateTargetResourceTagArgs{
+/// 							Key:   pulumi.String("env"),
+/// 							Value: pulumi.String("example"),
+/// 						},
+/// 					},
+/// 					Name:          pulumi.String("example-target"),
+/// 					ResourceType:  pulumi.String("aws:ec2:instance"),
+/// 					SelectionMode: pulumi.String("COUNT(1)"),
+/// 				},
+/// 			},
+/// 			Description: pulumi.String("example"),
+/// 			RoleArn:     example.Arn,
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -844,7 +847,6 @@ import 'experiment_template_state.dart';
 /// data "aws_getpartition" "current" {
 /// }
 /// data "aws_iam_getpolicydocument" "reportAccess" {
-///   version = "2012-10-17"
 ///   statements {
 ///     sid       = "logsDelivery"
 ///     effect    = "Allow"
@@ -869,6 +871,7 @@ import 'experiment_template_state.dart';
 ///     actions   = ["cloudwatch:getMetricWidgetImage"]
 ///     resources = ["*"]
 ///   }
+///   version = "2012-10-17"
 /// }
 ///
 /// resource "aws_iam_role" "example" {
@@ -893,28 +896,6 @@ import 'experiment_template_state.dart';
 ///   policy_arn = aws_iam_policy.report_access.arn
 /// }
 /// resource "aws_fis_experimenttemplate" "example" {
-///   description = "example"
-///   role_arn    = aws_iam_role.example.arn
-///   stop_conditions {
-///     source = "none"
-///   }
-///   actions {
-///     name      = "example-action"
-///     action_id = "aws:ec2:terminate-instances"
-///     target = {
-///       key   = "Instances"
-///       value = "example-target"
-///     }
-///   }
-///   targets {
-///     name           = "example-target"
-///     resource_type  = "aws:ec2:instance"
-///     selection_mode = "COUNT(1)"
-///     resource_tags {
-///       key   = "env"
-///       value = "example"
-///     }
-///   }
 ///   experiment_report_configuration = {
 ///     data_sources = {
 ///       cloudwatch_dashboards = [{
@@ -930,6 +911,28 @@ import 'experiment_template_state.dart';
 ///     post_experiment_duration = "PT10M"
 ///     pre_experiment_duration  = "PT10M"
 ///   }
+///   actions {
+///     target = {
+///       key   = "Instances"
+///       value = "example-target"
+///     }
+///     name      = "example-action"
+///     action_id = "aws:ec2:terminate-instances"
+///   }
+///   stop_conditions {
+///     source = "none"
+///   }
+///   targets {
+///     resource_tags {
+///       key   = "env"
+///       value = "example"
+///     }
+///     name           = "example-target"
+///     resource_type  = "aws:ec2:instance"
+///     selection_mode = "COUNT(1)"
+///   }
+///   description = "example"
+///   role_arn    = aws_iam_role.example.arn
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -954,16 +957,16 @@ import 'experiment_template_state.dart';
 /// import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
 /// import com.pulumi.aws.fis.ExperimentTemplate;
 /// import com.pulumi.aws.fis.ExperimentTemplateArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateStopConditionArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionTargetArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetArgs;
-/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetResourceTagArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationDataSourcesArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboardArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationOutputsArgs;
 /// import com.pulumi.aws.fis.inputs.ExperimentTemplateExperimentReportConfigurationOutputsS3ConfigurationArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateActionTargetArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateStopConditionArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetArgs;
+/// import com.pulumi.aws.fis.inputs.ExperimentTemplateTargetResourceTagArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -997,7 +1000,6 @@ import 'experiment_template_state.dart';
 ///             .build());
 ///
 ///         final var reportAccess = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .version("2012-10-17")
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .sid("logsDelivery")
@@ -1025,6 +1027,7 @@ import 'experiment_template_state.dart';
 ///                     .actions("cloudwatch:getMetricWidgetImage")
 ///                     .resources("*")
 ///                     .build())
+///             .version("2012-10-17")
 ///             .build());
 ///
 ///         var reportAccessPolicy = new Policy("reportAccessPolicy", PolicyArgs.builder()
@@ -1038,28 +1041,6 @@ import 'experiment_template_state.dart';
 ///             .build());
 ///
 ///         var exampleExperimentTemplate = new ExperimentTemplate("exampleExperimentTemplate", ExperimentTemplateArgs.builder()
-///             .description("example")
-///             .roleArn(example.arn())
-///             .stopConditions(ExperimentTemplateStopConditionArgs.builder()
-///                 .source("none")
-///                 .build())
-///             .actions(ExperimentTemplateActionArgs.builder()
-///                 .name("example-action")
-///                 .actionId("aws:ec2:terminate-instances")
-///                 .target(ExperimentTemplateActionTargetArgs.builder()
-///                     .key("Instances")
-///                     .value("example-target")
-///                     .build())
-///                 .build())
-///             .targets(ExperimentTemplateTargetArgs.builder()
-///                 .name("example-target")
-///                 .resourceType("aws:ec2:instance")
-///                 .selectionMode("COUNT(1)")
-///                 .resourceTags(ExperimentTemplateTargetResourceTagArgs.builder()
-///                     .key("env")
-///                     .value("example")
-///                     .build())
-///                 .build())
 ///             .experimentReportConfiguration(ExperimentTemplateExperimentReportConfigurationArgs.builder()
 ///                 .dataSources(ExperimentTemplateExperimentReportConfigurationDataSourcesArgs.builder()
 ///                     .cloudwatchDashboards(ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboardArgs.builder()
@@ -1075,6 +1056,28 @@ import 'experiment_template_state.dart';
 ///                 .postExperimentDuration("PT10M")
 ///                 .preExperimentDuration("PT10M")
 ///                 .build())
+///             .actions(ExperimentTemplateActionArgs.builder()
+///                 .target(ExperimentTemplateActionTargetArgs.builder()
+///                     .key("Instances")
+///                     .value("example-target")
+///                     .build())
+///                 .name("example-action")
+///                 .actionId("aws:ec2:terminate-instances")
+///                 .build())
+///             .stopConditions(ExperimentTemplateStopConditionArgs.builder()
+///                 .source("none")
+///                 .build())
+///             .targets(ExperimentTemplateTargetArgs.builder()
+///                 .resourceTags(ExperimentTemplateTargetResourceTagArgs.builder()
+///                     .key("env")
+///                     .value("example")
+///                     .build())
+///                 .name("example-target")
+///                 .resourceType("aws:ec2:instance")
+///                 .selectionMode("COUNT(1)")
+///                 .build())
+///             .description("example")
+///             .roleArn(example.arn())
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -1112,23 +1115,6 @@ import 'experiment_template_state.dart';
 ///     type: aws:fis:ExperimentTemplate
 ///     name: example
 ///     properties:
-///       description: example
-///       roleArn: ${example.arn}
-///       stopConditions:
-///         - source: none
-///       actions:
-///         - name: example-action
-///           actionId: aws:ec2:terminate-instances
-///           target:
-///             key: Instances
-///             value: example-target
-///       targets:
-///         - name: example-target
-///           resourceType: aws:ec2:instance
-///           selectionMode: COUNT(1)
-///           resourceTags:
-///             - key: env
-///               value: example
 ///       experimentReportConfiguration:
 ///         dataSources:
 ///           cloudwatchDashboards:
@@ -1139,6 +1125,23 @@ import 'experiment_template_state.dart';
 ///             prefix: fis-example-reports
 ///         postExperimentDuration: PT10M
 ///         preExperimentDuration: PT10M
+///       actions:
+///         - target:
+///             key: Instances
+///             value: example-target
+///           name: example-action
+///           actionId: aws:ec2:terminate-instances
+///       stopConditions:
+///         - source: none
+///       targets:
+///         - resourceTags:
+///             - key: env
+///               value: example
+///           name: example-target
+///           resourceType: aws:ec2:instance
+///           selectionMode: COUNT(1)
+///       description: example
+///       roleArn: ${example.arn}
 ///       tags:
 ///         Name: example
 /// variables:
@@ -1150,7 +1153,6 @@ import 'experiment_template_state.dart';
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         version: 2012-10-17
 ///         statements:
 ///           - sid: logsDelivery
 ///             effect: Allow
@@ -1177,6 +1179,7 @@ import 'experiment_template_state.dart';
 ///               - cloudwatch:getMetricWidgetImage
 ///             resources:
 ///               - '*'
+///         version: 2012-10-17
 /// ```
 ///
 ///
@@ -1189,7 +1192,7 @@ import 'experiment_template_state.dart';
 /// ```
 class ExperimentTemplate extends pulumi.CustomResource {
   /// Action to be performed during an experiment. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<ExperimentTemplateAction>> actions;
   /// Description for the experiment template.
   late final pulumi.Output<String> description;
   /// Experiment options for the experiment template. See experimentOptions below for more details!
@@ -1205,12 +1208,12 @@ class ExperimentTemplate extends pulumi.CustomResource {
   /// When an ongoing experiment should be stopped. See below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> stopConditions;
+  late final pulumi.Output<List<ExperimentTemplateStopCondition>> stopConditions;
   /// Key-value mapping of tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Target of an action. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targets;
+  late final pulumi.Output<List<ExperimentTemplateTarget>?> targets;
 
   /// Creates a new [ExperimentTemplate].
   /// [name] The Pulumi resource name.
@@ -1224,19 +1227,19 @@ class ExperimentTemplate extends pulumi.CustomResource {
           'aws:fis/experimentTemplate:ExperimentTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<ExperimentTemplateAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateAction>(guardedValue, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>('experimentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     experimentReportConfiguration = registerOutput<ExperimentTemplateExperimentReportConfiguration?>('experimentReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stopConditions = registerOutput<List<Map<String, dynamic>>>('stopConditions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    stopConditions = registerOutput<List<ExperimentTemplateStopCondition>>('stopConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateStopCondition>(guardedValue, (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ExperimentTemplateTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateTarget>(guardedValue, (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ExperimentTemplate] resource's state with the given [name] and [id].
@@ -1244,11 +1247,12 @@ class ExperimentTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExperimentTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExperimentTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1262,16 +1266,38 @@ class ExperimentTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<ExperimentTemplateAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateAction>(guardedValue, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>('experimentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     experimentReportConfiguration = registerOutput<ExperimentTemplateExperimentReportConfiguration?>('experimentReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stopConditions = registerOutput<List<Map<String, dynamic>>>('stopConditions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    stopConditions = registerOutput<List<ExperimentTemplateStopCondition>>('stopConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateStopCondition>(guardedValue, (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ExperimentTemplateTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateTarget>(guardedValue, (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ExperimentTemplate] resource.
+  ExperimentTemplate.reference(String urn)
+    : super(
+        'aws:fis/experimentTemplate:ExperimentTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<ExperimentTemplateAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateAction>(guardedValue, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>('experimentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    experimentReportConfiguration = registerOutput<ExperimentTemplateExperimentReportConfiguration?>('experimentReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateExperimentReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentTemplateLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    stopConditions = registerOutput<List<ExperimentTemplateStopCondition>>('stopConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateStopCondition>(guardedValue, (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<ExperimentTemplateTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateTarget>(guardedValue, (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -6,7 +6,7 @@ import 'listener_rule_action_forward_target_group.dart';
 
 class ListenerRuleActionForward {
   /// The target group stickiness for the rule.
-  final pulumi.Input<ListenerRuleActionForwardStickiness>? stickiness;
+  final pulumi.Input<ListenerRuleActionForwardStickiness?>? stickiness;
   /// One or more target group blocks.
   final pulumi.Input<List<ListenerRuleActionForwardTargetGroup>> targetGroups;
 

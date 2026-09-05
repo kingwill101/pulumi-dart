@@ -6,14 +6,14 @@ import 'route_server_vpc_association_timeouts.dart';
 /// Input properties used for looking up and filtering RouteServerVpcAssociation resources.
 class RouteServerVpcAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifier for the route server to be associated.
-  final pulumi.Input<String>? routeServerId;
-  final pulumi.Input<RouteServerVpcAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? routeServerId;
+  final pulumi.Input<RouteServerVpcAssociationTimeouts?>? timeouts;
   /// The ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [RouteServerVpcAssociationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

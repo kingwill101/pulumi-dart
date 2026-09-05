@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedLoginBrandingAsset {
   /// Image file, in Base64-encoded binary.
-  final pulumi.Input<String>? bytes;
+  final pulumi.Input<String?>? bytes;
   /// Category that the image corresponds to. See [AWS documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssetType.html#CognitoUserPools-Type-AssetType-Category) for valid values.
   final pulumi.Input<String> category;
   /// Display-mode target of the asset. Valid values: `LIGHT`, `DARK`, `DYNAMIC`.
   final pulumi.Input<String> colorMode;
   final pulumi.Input<String> extension;
   /// Asset ID.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ManagedLoginBrandingAsset].
   /// [bytes] Image file, in Base64-encoded binary.

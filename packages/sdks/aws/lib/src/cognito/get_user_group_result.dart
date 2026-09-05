@@ -4,56 +4,56 @@
 /// Result data returned by getUserGroup.
 class GetUserGroupResult {
   /// Description of the user group.
-  final String description;
+  final String? description;
   /// A comma-delimited string concatenating `name` and `userPoolId`.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   /// Precedence of the user group.
-  final int precedence;
-  final String region;
+  final int? precedence;
+  final String? region;
   /// ARN of the IAM role to be associated with the user group.
-  final String roleArn;
-  final String userPoolId;
+  final String? roleArn;
+  final String? userPoolId;
 
   /// Creates a new [GetUserGroupResult].
   /// [description] Description of the user group.
   /// [id] A comma-delimited string concatenating `name` and `userPoolId`.
-  /// [name] Required.
+  /// [name] Optional.
   /// [precedence] Precedence of the user group.
-  /// [region] Required.
+  /// [region] Optional.
   /// [roleArn] ARN of the IAM role to be associated with the user group.
-  /// [userPoolId] Required.
+  /// [userPoolId] Optional.
   const GetUserGroupResult({
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.precedence,
-    required this.region,
-    required this.roleArn,
-    required this.userPoolId,
+    this.description,
+    this.id,
+    this.name,
+    this.precedence,
+    this.region,
+    this.roleArn,
+    this.userPoolId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'id': id,
-      'name': name,
-      'precedence': precedence,
-      'region': region,
-      'roleArn': roleArn,
-      'userPoolId': userPoolId,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'precedence': ?precedence,
+      'region': ?region,
+      'roleArn': ?roleArn,
+      'userPoolId': ?userPoolId,
     };
   }
 
   factory GetUserGroupResult.fromMap(Map<String, dynamic> map) {
     return GetUserGroupResult(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      precedence: map['precedence'] as int,
-      region: map['region'] as String,
-      roleArn: map['roleArn'] as String,
-      userPoolId: map['userPoolId'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userPoolId: (() { final guardedValue = map['userPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

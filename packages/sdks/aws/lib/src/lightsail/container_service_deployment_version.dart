@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_service_deployment_version_args.dart';
+import 'container_service_deployment_version_container.dart';
 import 'container_service_deployment_version_public_endpoint.dart';
 import 'container_service_deployment_version_state.dart';
 
@@ -19,6 +20,18 @@ import 'container_service_deployment_version_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lightsail.ContainerServiceDeploymentVersion("example", {
+///     publicEndpoint: {
+///         healthCheck: {
+///             healthyThreshold: 2,
+///             unhealthyThreshold: 2,
+///             timeoutSeconds: 2,
+///             intervalSeconds: 5,
+///             path: "/",
+///             successCodes: "200-499",
+///         },
+///         containerName: "hello-world",
+///         containerPort: 80,
+///     },
 ///     containers: [{
 ///         containerName: "hello-world",
 ///         image: "amazon/amazon-lightsail:hello-world",
@@ -30,18 +43,6 @@ import 'container_service_deployment_version_state.dart';
 ///             "80": "HTTP",
 ///         },
 ///     }],
-///     publicEndpoint: {
-///         containerName: "hello-world",
-///         containerPort: 80,
-///         healthCheck: {
-///             healthyThreshold: 2,
-///             unhealthyThreshold: 2,
-///             timeoutSeconds: 2,
-///             intervalSeconds: 5,
-///             path: "/",
-///             successCodes: "200-499",
-///         },
-///     },
 ///     serviceName: exampleAwsLightsailContainerService.name,
 /// });
 /// ```
@@ -50,6 +51,18 @@ import 'container_service_deployment_version_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lightsail.ContainerServiceDeploymentVersion("example",
+///     public_endpoint={
+///         "health_check": {
+///             "healthy_threshold": 2,
+///             "unhealthy_threshold": 2,
+///             "timeout_seconds": 2,
+///             "interval_seconds": 5,
+///             "path": "/",
+///             "success_codes": "200-499",
+///         },
+///         "container_name": "hello-world",
+///         "container_port": 80,
+///     },
 ///     containers=[{
 ///         "container_name": "hello-world",
 ///         "image": "amazon/amazon-lightsail:hello-world",
@@ -61,18 +74,6 @@ import 'container_service_deployment_version_state.dart';
 ///             "80": "HTTP",
 ///         },
 ///     }],
-///     public_endpoint={
-///         "container_name": "hello-world",
-///         "container_port": 80,
-///         "health_check": {
-///             "healthy_threshold": 2,
-///             "unhealthy_threshold": 2,
-///             "timeout_seconds": 2,
-///             "interval_seconds": 5,
-///             "path": "/",
-///             "success_codes": "200-499",
-///         },
-///     },
 ///     service_name=example_aws_lightsail_container_service["name"])
 /// ```
 /// ```csharp
@@ -85,6 +86,20 @@ import 'container_service_deployment_version_state.dart';
 /// {
 ///     var example = new Aws.LightSail.ContainerServiceDeploymentVersion("example", new()
 ///     {
+///         PublicEndpoint = new Aws.LightSail.Inputs.ContainerServiceDeploymentVersionPublicEndpointArgs
+///         {
+///             HealthCheck = new Aws.LightSail.Inputs.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs
+///             {
+///                 HealthyThreshold = 2,
+///                 UnhealthyThreshold = 2,
+///                 TimeoutSeconds = 2,
+///                 IntervalSeconds = 5,
+///                 Path = "/",
+///                 SuccessCodes = "200-499",
+///             },
+///             ContainerName = "hello-world",
+///             ContainerPort = 80,
+///         },
 ///         Containers = new[]
 ///         {
 ///             new Aws.LightSail.Inputs.ContainerServiceDeploymentVersionContainerArgs
@@ -100,20 +115,6 @@ import 'container_service_deployment_version_state.dart';
 ///                 {
 ///                     { "80", "HTTP" },
 ///                 },
-///             },
-///         },
-///         PublicEndpoint = new Aws.LightSail.Inputs.ContainerServiceDeploymentVersionPublicEndpointArgs
-///         {
-///             ContainerName = "hello-world",
-///             ContainerPort = 80,
-///             HealthCheck = new Aws.LightSail.Inputs.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs
-///             {
-///                 HealthyThreshold = 2,
-///                 UnhealthyThreshold = 2,
-///                 TimeoutSeconds = 2,
-///                 IntervalSeconds = 5,
-///                 Path = "/",
-///                 SuccessCodes = "200-499",
 ///             },
 ///         },
 ///         ServiceName = exampleAwsLightsailContainerService.Name,
@@ -132,6 +133,18 @@ import 'container_service_deployment_version_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lightsail.NewContainerServiceDeploymentVersion(ctx, "example", &lightsail.ContainerServiceDeploymentVersionArgs{
+/// 			PublicEndpoint: &lightsail.ContainerServiceDeploymentVersionPublicEndpointArgs{
+/// 				HealthCheck: &lightsail.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs{
+/// 					HealthyThreshold:   pulumi.Int(2),
+/// 					UnhealthyThreshold: pulumi.Int(2),
+/// 					TimeoutSeconds:     pulumi.Int(2),
+/// 					IntervalSeconds:    pulumi.Int(5),
+/// 					Path:               pulumi.String("/"),
+/// 					SuccessCodes:       pulumi.String("200-499"),
+/// 				},
+/// 				ContainerName: pulumi.String("hello-world"),
+/// 				ContainerPort: pulumi.Int(80),
+/// 			},
 /// 			Containers: lightsail.ContainerServiceDeploymentVersionContainerArray{
 /// 				&lightsail.ContainerServiceDeploymentVersionContainerArgs{
 /// 					ContainerName: pulumi.String("hello-world"),
@@ -143,18 +156,6 @@ import 'container_service_deployment_version_state.dart';
 /// 					Ports: pulumi.StringMap{
 /// 						"80": pulumi.String("HTTP"),
 /// 					},
-/// 				},
-/// 			},
-/// 			PublicEndpoint: &lightsail.ContainerServiceDeploymentVersionPublicEndpointArgs{
-/// 				ContainerName: pulumi.String("hello-world"),
-/// 				ContainerPort: pulumi.Int(80),
-/// 				HealthCheck: &lightsail.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs{
-/// 					HealthyThreshold:   pulumi.Int(2),
-/// 					UnhealthyThreshold: pulumi.Int(2),
-/// 					TimeoutSeconds:     pulumi.Int(2),
-/// 					IntervalSeconds:    pulumi.Int(5),
-/// 					Path:               pulumi.String("/"),
-/// 					SuccessCodes:       pulumi.String("200-499"),
 /// 				},
 /// 			},
 /// 			ServiceName: pulumi.Any(exampleAwsLightsailContainerService.Name),
@@ -176,6 +177,18 @@ import 'container_service_deployment_version_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_containerservicedeploymentversion" "example" {
+///   public_endpoint = {
+///     health_check = {
+///       healthy_threshold   = 2
+///       unhealthy_threshold = 2
+///       timeout_seconds     = 2
+///       interval_seconds    = 5
+///       path                = "/"
+///       success_codes       = "200-499"
+///     }
+///     container_name = "hello-world"
+///     container_port = 80
+///   }
 ///   containers {
 ///     container_name = "hello-world"
 ///     image          = "amazon/amazon-lightsail:hello-world"
@@ -185,18 +198,6 @@ import 'container_service_deployment_version_state.dart';
 ///     }
 ///     ports = {
 ///       80 = "HTTP"
-///     }
-///   }
-///   public_endpoint = {
-///     container_name = "hello-world"
-///     container_port = 80
-///     health_check = {
-///       healthy_threshold   = 2
-///       unhealthy_threshold = 2
-///       timeout_seconds     = 2
-///       interval_seconds    = 5
-///       path                = "/"
-///       success_codes       = "200-499"
 ///     }
 ///   }
 ///   service_name = exampleAwsLightsailContainerService.name
@@ -210,9 +211,9 @@ import 'container_service_deployment_version_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.lightsail.ContainerServiceDeploymentVersion;
 /// import com.pulumi.aws.lightsail.ContainerServiceDeploymentVersionArgs;
-/// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionContainerArgs;
 /// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionPublicEndpointArgs;
 /// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs;
+/// import com.pulumi.aws.lightsail.inputs.ContainerServiceDeploymentVersionContainerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -227,16 +228,7 @@ import 'container_service_deployment_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerServiceDeploymentVersion("example", ContainerServiceDeploymentVersionArgs.builder()
-///             .containers(ContainerServiceDeploymentVersionContainerArgs.builder()
-///                 .containerName("hello-world")
-///                 .image("amazon/amazon-lightsail:hello-world")
-///                 .commands()
-///                 .environment(Map.of("MY_ENVIRONMENT_VARIABLE", "my_value"))
-///                 .ports(Map.of("80", "HTTP"))
-///                 .build())
 ///             .publicEndpoint(ContainerServiceDeploymentVersionPublicEndpointArgs.builder()
-///                 .containerName("hello-world")
-///                 .containerPort(80)
 ///                 .healthCheck(ContainerServiceDeploymentVersionPublicEndpointHealthCheckArgs.builder()
 ///                     .healthyThreshold(2)
 ///                     .unhealthyThreshold(2)
@@ -245,6 +237,15 @@ import 'container_service_deployment_version_state.dart';
 ///                     .path("/")
 ///                     .successCodes("200-499")
 ///                     .build())
+///                 .containerName("hello-world")
+///                 .containerPort(80)
+///                 .build())
+///             .containers(ContainerServiceDeploymentVersionContainerArgs.builder()
+///                 .containerName("hello-world")
+///                 .image("amazon/amazon-lightsail:hello-world")
+///                 .commands()
+///                 .environment(Map.of("MY_ENVIRONMENT_VARIABLE", "my_value"))
+///                 .ports(Map.of("80", "HTTP"))
 ///                 .build())
 ///             .serviceName(exampleAwsLightsailContainerService.name())
 ///             .build());
@@ -257,6 +258,16 @@ import 'container_service_deployment_version_state.dart';
 ///   example:
 ///     type: aws:lightsail:ContainerServiceDeploymentVersion
 ///     properties:
+///       publicEndpoint:
+///         healthCheck:
+///           healthyThreshold: 2
+///           unhealthyThreshold: 2
+///           timeoutSeconds: 2
+///           intervalSeconds: 5
+///           path: /
+///           successCodes: 200-499
+///         containerName: hello-world
+///         containerPort: 80
 ///       containers:
 ///         - containerName: hello-world
 ///           image: amazon/amazon-lightsail:hello-world
@@ -265,16 +276,6 @@ import 'container_service_deployment_version_state.dart';
 ///             MY_ENVIRONMENT_VARIABLE: my_value
 ///           ports:
 ///             '80': HTTP
-///       publicEndpoint:
-///         containerName: hello-world
-///         containerPort: 80
-///         healthCheck:
-///           healthyThreshold: 2
-///           unhealthyThreshold: 2
-///           timeoutSeconds: 2
-///           intervalSeconds: 5
-///           path: /
-///           successCodes: 200-499
 ///       serviceName: ${exampleAwsLightsailContainerService.name}
 /// ```
 ///
@@ -288,7 +289,7 @@ import 'container_service_deployment_version_state.dart';
 /// ```
 class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
   /// Set of configuration blocks that describe the settings of the containers that will be launched on the container service. Maximum of 53. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> containers;
+  late final pulumi.Output<List<ContainerServiceDeploymentVersionContainer>> containers;
   /// Date and time when the deployment was created.
   late final pulumi.Output<String> createdAt;
   /// Configuration block that describes the settings of the public endpoint for the container service. See below.
@@ -316,9 +317,9 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
           'aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(guardedValue, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     publicEndpoint = registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>('publicEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServiceDeploymentVersionPublicEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -332,11 +333,12 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerServiceDeploymentVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerServiceDeploymentVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -350,12 +352,30 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(guardedValue, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     publicEndpoint = registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>('publicEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServiceDeploymentVersionPublicEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     serviceName = registerOutput<String>('serviceName');
     this.state = registerOutput<String>('state');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [ContainerServiceDeploymentVersion] resource.
+  ContainerServiceDeploymentVersion.reference(String urn)
+    : super(
+        'aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(guardedValue, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    publicEndpoint = registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>('publicEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerServiceDeploymentVersionPublicEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    serviceName = registerOutput<String>('serviceName');
+    state = registerOutput<String>('state');
     version = registerOutput<int>('version');
   }
 }

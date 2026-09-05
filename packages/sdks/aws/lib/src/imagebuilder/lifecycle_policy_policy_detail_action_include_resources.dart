@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailActionIncludeResources {
   /// Specifies whether the lifecycle action should apply to distributed AMIs.
-  final pulumi.Input<bool>? amis;
+  final pulumi.Input<bool?>? amis;
   /// Specifies whether the lifecycle action should apply to distributed containers.
-  final pulumi.Input<bool>? containers;
+  final pulumi.Input<bool?>? containers;
   /// Specifies whether the lifecycle action should apply to snapshots associated with distributed AMIs.
-  final pulumi.Input<bool>? snapshots;
+  final pulumi.Input<bool?>? snapshots;
 
   /// Creates a new [LifecyclePolicyPolicyDetailActionIncludeResources].
   /// [amis] Specifies whether the lifecycle action should apply to distributed AMIs.

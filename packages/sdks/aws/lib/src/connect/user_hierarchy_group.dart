@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_hierarchy_group_args.dart';
+import 'user_hierarchy_group_hierarchy_path.dart';
 import 'user_hierarchy_group_state.dart';
 
 /// Provides an Amazon Connect User Hierarchy Group resource. For more information see
@@ -335,12 +336,12 @@ import 'user_hierarchy_group_state.dart';
 /// $ pulumi import aws:connect/userHierarchyGroup:UserHierarchyGroup example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class UserHierarchyGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the hierarchy group.
+  /// The ARN of the hierarchy group.
   late final pulumi.Output<String> arn;
   /// The identifier for the hierarchy group.
   late final pulumi.Output<String> hierarchyGroupId;
   /// A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hierarchyPaths;
+  late final pulumi.Output<List<UserHierarchyGroupHierarchyPath>> hierarchyPaths;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
   /// The identifier of the level in the hierarchy group.
@@ -369,18 +370,18 @@ class UserHierarchyGroup extends pulumi.CustomResource {
           'aws:connect/userHierarchyGroup:UserHierarchyGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
-    hierarchyPaths = registerOutput<List<Map<String, dynamic>>>('hierarchyPaths');
+    hierarchyPaths = registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(guardedValue, (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     levelId = registerOutput<String>('levelId');
     this.name = registerOutput<String>('name');
     parentGroupId = registerOutput<String?>('parentGroupId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [UserHierarchyGroup] resource's state with the given [name] and [id].
@@ -388,11 +389,12 @@ class UserHierarchyGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserHierarchyGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserHierarchyGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,13 +410,34 @@ class UserHierarchyGroup extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
-    hierarchyPaths = registerOutput<List<Map<String, dynamic>>>('hierarchyPaths');
+    hierarchyPaths = registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(guardedValue, (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     levelId = registerOutput<String>('levelId');
     this.name = registerOutput<String>('name');
     parentGroupId = registerOutput<String?>('parentGroupId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UserHierarchyGroup] resource.
+  UserHierarchyGroup.reference(String urn)
+    : super(
+        'aws:connect/userHierarchyGroup:UserHierarchyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
+    hierarchyPaths = registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(guardedValue, (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceId = registerOutput<String>('instanceId');
+    levelId = registerOutput<String>('levelId');
+    this.name = registerOutput<String>('name');
+    parentGroupId = registerOutput<String?>('parentGroupId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

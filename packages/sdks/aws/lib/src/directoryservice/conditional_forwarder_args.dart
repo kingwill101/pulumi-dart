@@ -12,7 +12,7 @@ class ConditionalForwarderArgs {
   /// A list of forwarder IP addresses.
   final pulumi.Input<List<String>> dnsIps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
   final pulumi.Input<String> remoteDomainName;
 

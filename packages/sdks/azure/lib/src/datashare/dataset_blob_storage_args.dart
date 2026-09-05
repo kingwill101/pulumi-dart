@@ -13,11 +13,11 @@ class DatasetBlobStorageArgs {
   /// The ID of the Data Share in which this Data Share Blob Storage Dataset should be created. Changing this forces a new Data Share Blob Storage Dataset to be created.
   final pulumi.Input<String> dataShareId;
   /// The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `storageAccount` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<DatasetBlobStorageStorageAccount> storageAccount;
 

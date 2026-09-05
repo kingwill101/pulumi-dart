@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobNotificationProperty {
   /// After a job run starts, the number of minutes to wait before sending a job run delay notification.
-  final pulumi.Input<int>? notifyDelayAfter;
+  final pulumi.Input<int?>? notifyDelayAfter;
 
   /// Creates a new [JobNotificationProperty].
   /// [notifyDelayAfter] After a job run starts, the number of minutes to wait before sending a job run delay notification.
@@ -20,7 +20,7 @@ class JobNotificationProperty {
 
   factory JobNotificationProperty.fromMap(Map<String, dynamic> map) {
     return JobNotificationProperty(
-      notifyDelayAfter: (() { final guardedValue = map['notifyDelayAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      notifyDelayAfter: (() { final guardedValue = map['notifyDelayAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

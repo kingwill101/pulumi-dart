@@ -7,21 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_access_log_subscription_access_log_subscription_args_doc}
 class AccessLogSubscriptionArgs {
-  /// Amazon Resource Name (ARN) of the log destination.
+  /// ARN of the log destination.
   final pulumi.Input<String> destinationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceIdentifier;
   /// Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
-  final pulumi.Input<String>? serviceNetworkLogType;
+  final pulumi.Input<String?>? serviceNetworkLogType;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccessLogSubscriptionArgs].
-  /// [destinationArn] Amazon Resource Name (ARN) of the log destination.
+  /// [destinationArn] ARN of the log destination.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceIdentifier] ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   /// [serviceNetworkLogType] Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.

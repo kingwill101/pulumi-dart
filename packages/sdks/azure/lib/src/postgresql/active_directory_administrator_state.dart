@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ActiveDirectoryAdministrator resources.
 class ActiveDirectoryAdministratorState {
   /// The login name of the principal to set as the server administrator
-  final pulumi.Input<String>? login;
+  final pulumi.Input<String?>? login;
   /// The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The name of the resource group for the PostgreSQL server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// The Azure Tenant ID
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ActiveDirectoryAdministratorState].
   /// [login] The login name of the principal to set as the server administrator

@@ -8,14 +8,16 @@ import 'get_secrets_store_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_secrets_store_get_secrets_store_args_doc}
 class GetSecretsStoreArgs {
+  /// Account Identifier
   final pulumi.Input<String> accountId;
   final pulumi.Input<GetSecretsStoreFilter?>? filter;
+  /// Store Identifier
   final pulumi.Input<String?>? storeId;
 
   /// Creates a new [GetSecretsStoreArgs].
-  /// [accountId] Required.
+  /// [accountId] Account Identifier
   /// [filter] Optional.
-  /// [storeId] Optional.
+  /// [storeId] Store Identifier
   const GetSecretsStoreArgs({
     required this.accountId,
     this.filter,

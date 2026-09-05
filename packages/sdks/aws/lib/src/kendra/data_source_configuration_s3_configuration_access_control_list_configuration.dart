@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
   /// Path to the AWS S3 bucket that contains the ACL files.
-  final pulumi.Input<String>? keyPath;
+  final pulumi.Input<String?>? keyPath;
 
   /// Creates a new [DataSourceConfigurationS3ConfigurationAccessControlListConfiguration].
   /// [keyPath] Path to the AWS S3 bucket that contains the ACL files.

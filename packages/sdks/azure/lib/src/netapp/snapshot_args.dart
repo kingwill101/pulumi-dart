@@ -10,9 +10,9 @@ class SnapshotArgs {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the NetApp Snapshot. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> poolName;
   /// The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.

@@ -6,14 +6,14 @@ import 'workspace_private_endpoint_connection.dart';
 /// Input properties used for looking up and filtering Workspace resources.
 class WorkspaceState {
   /// Specifies the Azure Region where the Healthcare Workspace should be created. Changing this forces a new Healthcare Workspace to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<WorkspacePrivateEndpointConnection>>? privateEndpointConnections;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<WorkspacePrivateEndpointConnection>?>? privateEndpointConnections;
   /// Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the Healthcare Workspace.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WorkspaceState].
   /// [location] Specifies the Azure Region where the Healthcare Workspace should be created. Changing this forces a new Healthcare Workspace to be created.

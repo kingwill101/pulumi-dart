@@ -6,9 +6,9 @@ import 'workflow_on_exception_step_decrypt_step_details_destination_file_locatio
 
 class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation {
   /// Details for the EFS file being copied. See `efsFileLocation` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation>? efsFileLocation;
+  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationEfsFileLocation?>? efsFileLocation;
   /// Details for the S3 file being copied. See `s3FileLocation` Block below.
-  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation>? s3FileLocation;
+  final pulumi.Input<WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation?>? s3FileLocation;
 
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation].
   /// [efsFileLocation] Details for the EFS file being copied. See `efsFileLocation` Block below.

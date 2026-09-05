@@ -398,7 +398,8 @@ class KeyPair extends pulumi.CustomResource {
           'aws:lightsail/keyPair:KeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['privateKey'],
         ) {
     arn = registerOutput<String>('arn');
     encryptedFingerprint = registerOutput<String>('encryptedFingerprint');
@@ -407,11 +408,11 @@ class KeyPair extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     pgpKey = registerOutput<String?>('pgpKey');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     publicKey = registerOutput<String>('publicKey');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [KeyPair] resource's state with the given [name] and [id].
@@ -419,11 +420,12 @@ class KeyPair extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyPairState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyPair._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -444,10 +446,34 @@ class KeyPair extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     pgpKey = registerOutput<String?>('pgpKey');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     publicKey = registerOutput<String>('publicKey');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KeyPair] resource.
+  KeyPair.reference(String urn)
+    : super(
+        'aws:lightsail/keyPair:KeyPair',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    encryptedFingerprint = registerOutput<String>('encryptedFingerprint');
+    encryptedPrivateKey = registerOutput<String>('encryptedPrivateKey');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    pgpKey = registerOutput<String?>('pgpKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    publicKey = registerOutput<String>('publicKey');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -112,7 +112,7 @@ import 'hsm_client_certificate_state.dart';
 /// $ pulumi import aws:redshift/hsmClientCertificate:HsmClientCertificate test example
 /// ```
 class HsmClientCertificate extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
+  /// ARN of the Hsm Client Certificate.
   late final pulumi.Output<String> arn;
   /// The identifier of the HSM client certificate.
   late final pulumi.Output<String> hsmClientCertificateIdentifier;
@@ -137,14 +137,14 @@ class HsmClientCertificate extends pulumi.CustomResource {
           'aws:redshift/hsmClientCertificate:HsmClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');
     hsmClientCertificatePublicKey = registerOutput<String>('hsmClientCertificatePublicKey');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [HsmClientCertificate] resource's state with the given [name] and [id].
@@ -152,11 +152,12 @@ class HsmClientCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HsmClientCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HsmClientCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -174,7 +175,24 @@ class HsmClientCertificate extends pulumi.CustomResource {
     hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');
     hsmClientCertificatePublicKey = registerOutput<String>('hsmClientCertificatePublicKey');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [HsmClientCertificate] resource.
+  HsmClientCertificate.reference(String urn)
+    : super(
+        'aws:redshift/hsmClientCertificate:HsmClientCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');
+    hsmClientCertificatePublicKey = registerOutput<String>('hsmClientCertificatePublicKey');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -20,7 +20,7 @@ class GetCustomModelValidationMetric {
 
   factory GetCustomModelValidationMetric.fromMap(Map<String, dynamic> map) {
     return GetCustomModelValidationMetric(
-      validationLoss: pulumi.Input.fromValue(map['validationLoss'] as double),
+      validationLoss: pulumi.Input.fromValue((map['validationLoss'] as num).toDouble()),
     );
   }
 }

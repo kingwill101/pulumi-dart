@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataLakeConfigurationLifecycleConfigurationExpiration {
   /// Number of days before data transition to a different S3 Storage Class in the Amazon Security Lake object.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
 
   /// Creates a new [DataLakeConfigurationLifecycleConfigurationExpiration].
   /// [days] Number of days before data transition to a different S3 Storage Class in the Amazon Security Lake object.
@@ -20,7 +20,7 @@ class DataLakeConfigurationLifecycleConfigurationExpiration {
 
   factory DataLakeConfigurationLifecycleConfigurationExpiration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationLifecycleConfigurationExpiration(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

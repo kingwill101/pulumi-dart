@@ -137,16 +137,16 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// 		}
 /// 		exampleSpringCloudGateway, err := appplatform.NewSpringCloudGateway(ctx, "example", &appplatform.SpringCloudGatewayArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleSpringCloudApiPortal, err := appplatform.NewSpringCloudApiPortal(ctx, "example", &appplatform.SpringCloudApiPortalArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			GatewayIds: pulumi.StringArray{
-/// 				exampleSpringCloudGateway.ID(),
+/// 				exampleSpringCloudGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -154,7 +154,7 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudApiPortalCustomDomain(ctx, "example", &appplatform.SpringCloudApiPortalCustomDomainArgs{
 /// 			Name:                   pulumi.String("example.com"),
-/// 			SpringCloudApiPortalId: exampleSpringCloudApiPortal.ID(),
+/// 			SpringCloudApiPortalId: exampleSpringCloudApiPortal.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -321,7 +321,7 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
           'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');
@@ -333,11 +333,12 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudApiPortalCustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudApiPortalCustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,6 +352,20 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');
+    thumbprint = registerOutput<String?>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudApiPortalCustomDomain] resource.
+  SpringCloudApiPortalCustomDomain.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');
     thumbprint = registerOutput<String?>('thumbprint');

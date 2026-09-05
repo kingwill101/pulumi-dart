@@ -13,7 +13,7 @@ class FirewallApplicationRuleCollectionArgs {
   /// Specifies the name of the Firewall in which the Application Rule Collection should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> azureFirewallName;
   /// Specifies the name of the Application Rule Collection which must be unique within the Firewall. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
   final pulumi.Input<int> priority;
   /// Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
@@ -53,7 +53,7 @@ class FirewallApplicationRuleCollectionArgs {
       action: pulumi.Input.fromValue(map['action'] as String),
       azureFirewallName: pulumi.Input.fromValue(map['azureFirewallName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(map['rules']!, (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
     );

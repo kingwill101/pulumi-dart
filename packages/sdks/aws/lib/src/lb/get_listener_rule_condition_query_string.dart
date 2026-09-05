@@ -5,7 +5,7 @@ import 'get_listener_rule_condition_query_string_value.dart';
 
 class GetListenerRuleConditionQueryString {
   /// Set of source IP addresses in CIDR format for Application Load Balancers
-  final pulumi.Input<List<GetListenerRuleConditionQueryStringValue>>? values;
+  final pulumi.Input<List<GetListenerRuleConditionQueryStringValue>?>? values;
 
   /// Creates a new [GetListenerRuleConditionQueryString].
   /// [values] Set of source IP addresses in CIDR format for Application Load Balancers

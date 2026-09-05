@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_anchor_args.dart';
+import 'trust_anchor_notification_setting.dart';
 import 'trust_anchor_source.dart';
 import 'trust_anchor_state.dart';
 
@@ -13,26 +14,26 @@ import 'trust_anchor_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.acmpca.CertificateAuthority("example", {
-///     permanentDeletionTimeInDays: 7,
-///     type: "ROOT",
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
+///     permanentDeletionTimeInDays: 7,
+///     type: "ROOT",
 /// });
 /// const current = aws.getPartition({});
 /// const test = new aws.acmpca.Certificate("test", {
-///     certificateAuthorityArn: example.arn,
-///     certificateSigningRequest: example.certificateSigningRequest,
-///     signingAlgorithm: "SHA512WITHRSA",
-///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/RootCACertificate/V1`),
 ///     validity: {
 ///         type: "YEARS",
 ///         value: "1",
 ///     },
+///     certificateAuthorityArn: example.arn,
+///     certificateSigningRequest: example.certificateSigningRequest,
+///     signingAlgorithm: "SHA512WITHRSA",
+///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/RootCACertificate/V1`),
 /// });
 /// const exampleCertificateAuthorityCertificate = new aws.acmpca.CertificateAuthorityCertificate("example", {
 ///     certificateAuthorityArn: example.arn,
@@ -40,13 +41,13 @@ import 'trust_anchor_state.dart';
 ///     certificateChain: exampleAwsAcmpcaCertificate.certificateChain,
 /// });
 /// const testTrustAnchor = new aws.rolesanywhere.TrustAnchor("test", {
-///     name: "example",
 ///     source: {
 ///         sourceData: {
 ///             acmPcaArn: example.arn,
 ///         },
 ///         sourceType: "AWS_ACM_PCA",
 ///     },
+///     name: "example",
 /// }, {
 ///     dependsOn: [exampleCertificateAuthorityCertificate],
 /// });
@@ -56,37 +57,37 @@ import 'trust_anchor_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.acmpca.CertificateAuthority("example",
-///     permanent_deletion_time_in_days=7,
-///     type="ROOT",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
-///     })
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
+///     },
+///     permanent_deletion_time_in_days=7,
+///     type="ROOT")
 /// current = aws.get_partition()
 /// test = aws.acmpca.Certificate("test",
-///     certificate_authority_arn=example.arn,
-///     certificate_signing_request=example.certificate_signing_request,
-///     signing_algorithm="SHA512WITHRSA",
-///     template_arn=f"arn:{current.partition}:acm-pca:::template/RootCACertificate/V1",
 ///     validity={
 ///         "type": "YEARS",
 ///         "value": "1",
-///     })
+///     },
+///     certificate_authority_arn=example.arn,
+///     certificate_signing_request=example.certificate_signing_request,
+///     signing_algorithm="SHA512WITHRSA",
+///     template_arn=f"arn:{current.partition}:acm-pca:::template/RootCACertificate/V1")
 /// example_certificate_authority_certificate = aws.acmpca.CertificateAuthorityCertificate("example",
 ///     certificate_authority_arn=example.arn,
 ///     certificate=example_aws_acmpca_certificate["certificate"],
 ///     certificate_chain=example_aws_acmpca_certificate["certificateChain"])
 /// test_trust_anchor = aws.rolesanywhere.TrustAnchor("test",
-///     name="example",
 ///     source={
 ///         "source_data": {
 ///             "acm_pca_arn": example.arn,
 ///         },
 ///         "source_type": "AWS_ACM_PCA",
 ///     },
+///     name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_certificate_authority_certificate]))
 /// ```
 /// ```csharp
@@ -99,32 +100,32 @@ import 'trust_anchor_state.dart';
 /// {
 ///     var example = new Aws.Acmpca.CertificateAuthority("example", new()
 ///     {
-///         PermanentDeletionTimeInDays = 7,
-///         Type = "ROOT",
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
+///         PermanentDeletionTimeInDays = 7,
+///         Type = "ROOT",
 ///     });
 ///
 ///     var current = Aws.GetPartition.Invoke();
 ///
 ///     var test = new Aws.Acmpca.Certificate("test", new()
 ///     {
-///         CertificateAuthorityArn = example.Arn,
-///         CertificateSigningRequest = example.CertificateSigningRequest,
-///         SigningAlgorithm = "SHA512WITHRSA",
-///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/RootCACertificate/V1",
 ///         Validity = new Aws.Acmpca.Inputs.CertificateValidityArgs
 ///         {
 ///             Type = "YEARS",
 ///             Value = "1",
 ///         },
+///         CertificateAuthorityArn = example.Arn,
+///         CertificateSigningRequest = example.CertificateSigningRequest,
+///         SigningAlgorithm = "SHA512WITHRSA",
+///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/RootCACertificate/V1",
 ///     });
 ///
 ///     var exampleCertificateAuthorityCertificate = new Aws.Acmpca.CertificateAuthorityCertificate("example", new()
@@ -136,7 +137,6 @@ import 'trust_anchor_state.dart';
 ///
 ///     var testTrustAnchor = new Aws.RolesAnywhere.TrustAnchor("test", new()
 ///     {
-///         Name = "example",
 ///         Source = new Aws.RolesAnywhere.Inputs.TrustAnchorSourceArgs
 ///         {
 ///             SourceData = new Aws.RolesAnywhere.Inputs.TrustAnchorSourceSourceDataArgs
@@ -145,6 +145,7 @@ import 'trust_anchor_state.dart';
 ///             },
 ///             SourceType = "AWS_ACM_PCA",
 ///         },
+///         Name = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -168,15 +169,15 @@ import 'trust_anchor_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
-/// 			PermanentDeletionTimeInDays: pulumi.Int(7),
-/// 			Type:                        pulumi.String("ROOT"),
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
+/// 			PermanentDeletionTimeInDays: pulumi.Int(7),
+/// 			Type:                        pulumi.String("ROOT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -186,14 +187,14 @@ import 'trust_anchor_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = acmpca.NewCertificate(ctx, "test", &acmpca.CertificateArgs{
-/// 			CertificateAuthorityArn:   example.Arn,
-/// 			CertificateSigningRequest: example.CertificateSigningRequest,
-/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
-/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/RootCACertificate/V1", current.Partition),
 /// 			Validity: &acmpca.CertificateValidityArgs{
 /// 				Type:  pulumi.String("YEARS"),
 /// 				Value: pulumi.String("1"),
 /// 			},
+/// 			CertificateAuthorityArn:   example.Arn,
+/// 			CertificateSigningRequest: example.CertificateSigningRequest,
+/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
+/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/RootCACertificate/V1", current.Partition),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -207,13 +208,13 @@ import 'trust_anchor_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = rolesanywhere.NewTrustAnchor(ctx, "test", &rolesanywhere.TrustAnchorArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Source: &rolesanywhere.TrustAnchorSourceArgs{
 /// 				SourceData: &rolesanywhere.TrustAnchorSourceSourceDataArgs{
 /// 					AcmPcaArn: example.Arn,
 /// 				},
 /// 				SourceType: pulumi.String("AWS_ACM_PCA"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleCertificateAuthorityCertificate,
 /// 		}))
@@ -237,25 +238,25 @@ import 'trust_anchor_state.dart';
 /// }
 ///
 /// resource "aws_acmpca_certificateauthority" "example" {
-///   permanent_deletion_time_in_days = 7
-///   type                            = "ROOT"
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
+///   permanent_deletion_time_in_days = 7
+///   type                            = "ROOT"
 /// }
 /// resource "aws_acmpca_certificate" "test" {
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
-///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 ///   validity = {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 /// }
 /// resource "aws_acmpca_certificateauthoritycertificate" "example" {
 ///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
@@ -264,13 +265,13 @@ import 'trust_anchor_state.dart';
 /// }
 /// resource "aws_rolesanywhere_trustanchor" "test" {
 ///   depends_on = [aws_acmpca_certificateauthoritycertificate.example]
-///   name       = "example"
 ///   source = {
 ///     source_data = {
 ///       acm_pca_arn = aws_acmpca_certificateauthority.example.arn
 ///     }
 ///     source_type = "AWS_ACM_PCA"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -309,29 +310,29 @@ import 'trust_anchor_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CertificateAuthority("example", CertificateAuthorityArgs.builder()
-///             .permanentDeletionTimeInDays(7)
-///             .type("ROOT")
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
+///             .permanentDeletionTimeInDays(7)
+///             .type("ROOT")
 ///             .build());
 ///
 ///         final var current = AwsFunctions.getPartition(GetPartitionArgs.builder()
 ///             .build());
 ///
 ///         var test = new Certificate("test", CertificateArgs.builder()
-///             .certificateAuthorityArn(example.arn())
-///             .certificateSigningRequest(example.certificateSigningRequest())
-///             .signingAlgorithm("SHA512WITHRSA")
-///             .templateArn(String.format("arn:%s:acm-pca:::template/RootCACertificate/V1", current.partition()))
 ///             .validity(CertificateValidityArgs.builder()
 ///                 .type("YEARS")
 ///                 .value("1")
 ///                 .build())
+///             .certificateAuthorityArn(example.arn())
+///             .certificateSigningRequest(example.certificateSigningRequest())
+///             .signingAlgorithm("SHA512WITHRSA")
+///             .templateArn(String.format("arn:%s:acm-pca:::template/RootCACertificate/V1", current.partition()))
 ///             .build());
 ///
 ///         var exampleCertificateAuthorityCertificate = new CertificateAuthorityCertificate("exampleCertificateAuthorityCertificate", CertificateAuthorityCertificateArgs.builder()
@@ -341,13 +342,13 @@ import 'trust_anchor_state.dart';
 ///             .build());
 ///
 ///         var testTrustAnchor = new TrustAnchor("testTrustAnchor", TrustAnchorArgs.builder()
-///             .name("example")
 ///             .source(TrustAnchorSourceArgs.builder()
 ///                 .sourceData(TrustAnchorSourceSourceDataArgs.builder()
 ///                     .acmPcaArn(example.arn())
 ///                     .build())
 ///                 .sourceType("AWS_ACM_PCA")
 ///                 .build())
+///             .name("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleCertificateAuthorityCertificate)
 ///                 .build());
@@ -360,23 +361,23 @@ import 'trust_anchor_state.dart';
 ///   example:
 ///     type: aws:acmpca:CertificateAuthority
 ///     properties:
-///       permanentDeletionTimeInDays: 7
-///       type: ROOT
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
+///       permanentDeletionTimeInDays: 7
+///       type: ROOT
 ///   test:
 ///     type: aws:acmpca:Certificate
 ///     properties:
+///       validity:
+///         type: YEARS
+///         value: 1
 ///       certificateAuthorityArn: ${example.arn}
 ///       certificateSigningRequest: ${example.certificateSigningRequest}
 ///       signingAlgorithm: SHA512WITHRSA
 ///       templateArn: arn:${current.partition}:acm-pca:::template/RootCACertificate/V1
-///       validity:
-///         type: YEARS
-///         value: 1
 ///   exampleCertificateAuthorityCertificate:
 ///     type: aws:acmpca:CertificateAuthorityCertificate
 ///     name: example
@@ -388,11 +389,11 @@ import 'trust_anchor_state.dart';
 ///     type: aws:rolesanywhere:TrustAnchor
 ///     name: test
 ///     properties:
-///       name: example
 ///       source:
 ///         sourceData:
 ///           acmPcaArn: ${example.arn}
 ///         sourceType: AWS_ACM_PCA
+///       name: example
 ///     options:
 ///       dependsOn:
 ///         - ${exampleCertificateAuthorityCertificate}
@@ -412,13 +413,13 @@ import 'trust_anchor_state.dart';
 /// $ pulumi import aws:rolesanywhere/trustAnchor:TrustAnchor example 92b2fbbb-984d-41a3-a765-e3cbdb69ebb1
 /// ```
 class TrustAnchor extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Trust Anchor
+  /// ARN of the Trust Anchor
   late final pulumi.Output<String> arn;
   /// Whether or not the Trust Anchor should be enabled.
   late final pulumi.Output<bool> enabled;
   /// The name of the Trust Anchor.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<Map<String, dynamic>>> notificationSettings;
+  late final pulumi.Output<List<TrustAnchorNotificationSetting>> notificationSettings;
   /// The source of trust, documented below
   late final pulumi.Output<TrustAnchorSource> source;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -438,15 +439,15 @@ class TrustAnchor extends pulumi.CustomResource {
           'aws:rolesanywhere/trustAnchor:TrustAnchor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<List<Map<String, dynamic>>>('notificationSettings');
+    notificationSettings = registerOutput<List<TrustAnchorNotificationSetting>>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustAnchorNotificationSetting>(guardedValue, (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     source = registerOutput<TrustAnchorSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustAnchorSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TrustAnchor] resource's state with the given [name] and [id].
@@ -454,11 +455,12 @@ class TrustAnchor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustAnchorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustAnchor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -475,9 +477,27 @@ class TrustAnchor extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    notificationSettings = registerOutput<List<Map<String, dynamic>>>('notificationSettings');
+    notificationSettings = registerOutput<List<TrustAnchorNotificationSetting>>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustAnchorNotificationSetting>(guardedValue, (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     source = registerOutput<TrustAnchorSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustAnchorSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TrustAnchor] resource.
+  TrustAnchor.reference(String urn)
+    : super(
+        'aws:rolesanywhere/trustAnchor:TrustAnchor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool>('enabled');
+    this.name = registerOutput<String>('name');
+    notificationSettings = registerOutput<List<TrustAnchorNotificationSetting>>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustAnchorNotificationSetting>(guardedValue, (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    source = registerOutput<TrustAnchorSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustAnchorSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl {
-  final pulumi.Input<bool>? iam;
-  final pulumi.Input<bool>? scram;
+  final pulumi.Input<bool?>? iam;
+  final pulumi.Input<bool?>? scram;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl].
   /// [iam] Optional.

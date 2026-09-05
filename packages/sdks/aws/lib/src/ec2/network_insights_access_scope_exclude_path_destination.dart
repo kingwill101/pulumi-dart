@@ -7,8 +7,8 @@ import 'network_insights_access_scope_exclude_path_destination_resource_statemen
 class NetworkInsightsAccessScopeExcludePathDestination {
   /// Packet header statement.
   /// See `packetHeaderStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestinationPacketHeaderStatement>? packetHeaderStatement;
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestinationResourceStatement>? resourceStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestinationPacketHeaderStatement?>? packetHeaderStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathDestinationResourceStatement?>? resourceStatement;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePathDestination].
   /// [packetHeaderStatement] Packet header statement.

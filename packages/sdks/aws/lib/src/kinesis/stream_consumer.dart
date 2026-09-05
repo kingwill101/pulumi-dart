@@ -170,7 +170,7 @@ import 'stream_consumer_state.dart';
 /// $ pulumi import aws:kinesis/streamConsumer:StreamConsumer example arn:aws:kinesis:us-west-2:123456789012:stream/example/consumer/example:1616044553
 /// ```
 class StreamConsumer extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the stream consumer.
+  /// ARN of the stream consumer.
   late final pulumi.Output<String> arn;
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
   late final pulumi.Output<String> creationTimestamp;
@@ -178,7 +178,7 @@ class StreamConsumer extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+  /// ARN of the data stream the consumer is registered with.
   late final pulumi.Output<String> streamArn;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -195,15 +195,15 @@ class StreamConsumer extends pulumi.CustomResource {
           'aws:kinesis/streamConsumer:StreamConsumer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     streamArn = registerOutput<String>('streamArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [StreamConsumer] resource's state with the given [name] and [id].
@@ -211,11 +211,12 @@ class StreamConsumer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamConsumerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StreamConsumer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,7 +235,25 @@ class StreamConsumer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     streamArn = registerOutput<String>('streamArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StreamConsumer] resource.
+  StreamConsumer.reference(String urn)
+    : super(
+        'aws:kinesis/streamConsumer:StreamConsumer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    streamArn = registerOutput<String>('streamArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

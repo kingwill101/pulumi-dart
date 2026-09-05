@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementByteMatchStatementFieldToMatchUriFragment {
   /// How to handle requests with a URI fragment that is too large to inspect. Valid values: `MATCH`, `NO_MATCH`.
-  final pulumi.Input<String>? fallbackBehavior;
+  final pulumi.Input<String?>? fallbackBehavior;
 
   /// Creates a new [WebAclRuleStatementByteMatchStatementFieldToMatchUriFragment].
   /// [fallbackBehavior] How to handle requests with a URI fragment that is too large to inspect. Valid values: `MATCH`, `NO_MATCH`.

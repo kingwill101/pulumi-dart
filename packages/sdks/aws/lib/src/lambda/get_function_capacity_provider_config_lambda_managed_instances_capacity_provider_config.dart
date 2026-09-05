@@ -31,8 +31,8 @@ class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderCon
   factory GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
       capacityProviderArn: pulumi.Input.fromValue(map['capacityProviderArn'] as String),
-      executionEnvironmentMemoryGibPerVcpu: pulumi.Input.fromValue(map['executionEnvironmentMemoryGibPerVcpu'] as double),
-      perExecutionEnvironmentMaxConcurrency: pulumi.Input.fromValue(map['perExecutionEnvironmentMaxConcurrency'] as int),
+      executionEnvironmentMemoryGibPerVcpu: pulumi.Input.fromValue((map['executionEnvironmentMemoryGibPerVcpu'] as num).toDouble()),
+      perExecutionEnvironmentMaxConcurrency: pulumi.Input.fromValue((map['perExecutionEnvironmentMaxConcurrency'] as num).toInt()),
     );
   }
 }

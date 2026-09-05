@@ -11,29 +11,29 @@ import 'response_plan_integration.dart';
 /// {@macro pulumi_ssmincidents_response_plan_response_plan_args_doc}
 class ResponsePlanArgs {
   /// The actions that the response plan starts at the beginning of an incident.
-  final pulumi.Input<ResponsePlanAction>? action;
+  final pulumi.Input<ResponsePlanAction?>? action;
   /// The Chatbot chat channel used for collaboration during an incident.
-  final pulumi.Input<List<String>>? chatChannels;
+  final pulumi.Input<List<String>?>? chatChannels;
   /// The long format of the response plan name. This field can contain spaces.
-  final pulumi.Input<String>? displayName;
-  /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
-  final pulumi.Input<List<String>>? engagements;
+  final pulumi.Input<String?>? displayName;
+  /// ARN for the contacts and escalation plans that the response plan engages during an incident.
+  final pulumi.Input<List<String>?>? engagements;
   /// The `incidentTemplate` configuration block is required and supports the following arguments:
   final pulumi.Input<ResponsePlanIncidentTemplate> incidentTemplate;
   /// Information about third-party services integrated into the response plan. The following values are supported:
-  final pulumi.Input<ResponsePlanIntegration>? integration;
+  final pulumi.Input<ResponsePlanIntegration?>? integration;
   /// The name of the response plan.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The tags applied to the response plan.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResponsePlanArgs].
   /// [action] The actions that the response plan starts at the beginning of an incident.
   /// [chatChannels] The Chatbot chat channel used for collaboration during an incident.
   /// [displayName] The long format of the response plan name. This field can contain spaces.
-  /// [engagements] The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
+  /// [engagements] ARN for the contacts and escalation plans that the response plan engages during an incident.
   /// [incidentTemplate] The `incidentTemplate` configuration block is required and supports the following arguments:
   /// [integration] Information about third-party services integrated into the response plan. The following values are supported:
   /// [name] The name of the response plan.

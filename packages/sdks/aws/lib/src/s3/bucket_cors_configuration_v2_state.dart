@@ -6,13 +6,13 @@ import 'bucket_cors_configuration_v2_cors_rule.dart';
 /// Input properties used for looking up and filtering BucketCorsConfigurationV2 resources.
 class BucketCorsConfigurationV2State {
   /// Name of the bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
-  final pulumi.Input<List<BucketCorsConfigurationV2CorsRule>>? corsRules;
+  final pulumi.Input<List<BucketCorsConfigurationV2CorsRule>?>? corsRules;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketCorsConfigurationV2State].
   /// [bucket] Name of the bucket.

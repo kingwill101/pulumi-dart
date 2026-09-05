@@ -3,11 +3,11 @@
 import 'package:pulumi_docker/index.dart' as module_index;
 import 'package:pulumi_docker/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final BuilderVersion = module_index.BuilderVersion.values;
   final BuildxBuilder = module_index.BuildxBuilder.new;
   final BuildxBuilderArgs = module_index.BuildxBuilderArgs.new;
@@ -252,7 +252,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Docker = module_providers.ProviderProvider.new;
   final DockerArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

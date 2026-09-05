@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkInterfaceBackendAddressPoolAssociation resources.
 class NetworkInterfaceBackendAddressPoolAssociationState {
   /// The ID of the Load Balancer Backend Address Pool which this Network Interface should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? backendAddressPoolId;
+  final pulumi.Input<String?>? backendAddressPoolId;
   /// The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? ipConfigurationName;
+  final pulumi.Input<String?>? ipConfigurationName;
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
 
   /// Creates a new [NetworkInterfaceBackendAddressPoolAssociationState].
   /// [backendAddressPoolId] The ID of the Load Balancer Backend Address Pool which this Network Interface should be connected to. Changing this forces a new resource to be created.

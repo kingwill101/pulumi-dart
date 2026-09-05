@@ -9,9 +9,9 @@ import 'get_instances_filter.dart';
 /// {@macro pulumi_ssm_get_instances_get_instances_args_doc}
 class GetInstancesArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetInstancesFilter>>? filters;
+  final pulumi.Input<List<GetInstancesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInstancesArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

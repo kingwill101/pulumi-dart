@@ -7,21 +7,21 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
   /// Used together with write-only credentials to trigger an update. Increment this value when an update to `clientIdWo` or `clientSecretWo` is required.
   ///
   /// **OAuth Discovery Configuration:**
-  final pulumi.Input<int>? clientCredentialsWoVersion;
+  final pulumi.Input<int?>? clientCredentialsWoVersion;
   /// OAuth2 client ID. Cannot be used with `clientIdWo`. Must be used together with `clientSecret`.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only OAuth2 client ID. Cannot be used with `clientId`. Must be used together with `clientSecretWo` and `clientCredentialsWoVersion`.
-  final pulumi.Input<String>? clientIdWo;
+  final pulumi.Input<String?>? clientIdWo;
   /// OAuth2 client secret. Cannot be used with `clientSecretWo`. Must be used together with `clientId`.
   ///
   /// **Write-Only Credentials (choose one pair):**
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only OAuth2 client secret. Cannot be used with `clientSecret`. Must be used together with `clientIdWo` and `clientCredentialsWoVersion`.
-  final pulumi.Input<String>? clientSecretWo;
+  final pulumi.Input<String?>? clientSecretWo;
   /// OAuth discovery configuration. See `oauthDiscovery` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery>? oauthDiscovery;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery?>? oauthDiscovery;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig].
   /// [clientCredentialsWoVersion] Used together with write-only credentials to trigger an update. Increment this value when an update to `clientIdWo` or `clientSecretWo` is required.
@@ -52,7 +52,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig(
-      clientCredentialsWoVersion: (() { final guardedValue = map['clientCredentialsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientCredentialsWoVersion: (() { final guardedValue = map['clientCredentialsWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientIdWo: (() { final guardedValue = map['clientIdWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

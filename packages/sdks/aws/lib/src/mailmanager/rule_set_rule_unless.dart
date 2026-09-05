@@ -10,17 +10,17 @@ import 'rule_set_rule_unless_verdict_expression.dart';
 
 class RuleSetRuleUnless {
   /// Boolean expression evaluated against an email attribute or Add On result. See `booleanExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessBooleanExpression>? booleanExpression;
+  final pulumi.Input<RuleSetRuleUnlessBooleanExpression?>? booleanExpression;
   /// DMARC policy expression evaluated against the email's DMARC result. See `dmarcExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessDmarcExpression>? dmarcExpression;
+  final pulumi.Input<RuleSetRuleUnlessDmarcExpression?>? dmarcExpression;
   /// IP CIDR expression evaluated against the sender IP address. See `ipExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessIpExpression>? ipExpression;
+  final pulumi.Input<RuleSetRuleUnlessIpExpression?>? ipExpression;
   /// Numeric expression evaluated against an email attribute such as message size. See `numberExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessNumberExpression>? numberExpression;
+  final pulumi.Input<RuleSetRuleUnlessNumberExpression?>? numberExpression;
   /// String expression evaluated against an email attribute, MIME header, client certificate field, or Add On result. See `stringExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessStringExpression>? stringExpression;
+  final pulumi.Input<RuleSetRuleUnlessStringExpression?>? stringExpression;
   /// Verdict expression evaluated against email authentication results such as SPF or DKIM. See `verdictExpression` Block.
-  final pulumi.Input<RuleSetRuleUnlessVerdictExpression>? verdictExpression;
+  final pulumi.Input<RuleSetRuleUnlessVerdictExpression?>? verdictExpression;
 
   /// Creates a new [RuleSetRuleUnless].
   /// [booleanExpression] Boolean expression evaluated against an email attribute or Add On result. See `booleanExpression` Block.

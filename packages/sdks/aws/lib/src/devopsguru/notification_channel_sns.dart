@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationChannelSns {
-  /// Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
+  /// ARN of an Amazon Simple Notification Service topic.
   final pulumi.Input<String> topicArn;
 
   /// Creates a new [NotificationChannelSns].
-  /// [topicArn] Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
+  /// [topicArn] ARN of an Amazon Simple Notification Service topic.
   const NotificationChannelSns({
     required this.topicArn,
   });

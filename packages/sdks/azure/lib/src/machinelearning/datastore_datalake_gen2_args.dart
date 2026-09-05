@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearning_datastore_datalake_gen2_datastore_datalake_gen2_args_doc}
 class DatastoreDatalakeGen2Args {
   /// An URL used for authentication.
-  final pulumi.Input<String>? authorityUrl;
+  final pulumi.Input<String?>? authorityUrl;
   /// The object ID of the Service Principal.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The secret of the Service Principal.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
-  final pulumi.Input<String>? serviceDataIdentity;
+  final pulumi.Input<String?>? serviceDataIdentity;
   /// The ID of the Storage Account Container. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> storageContainerId;
   /// A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Tenant which the Service Principal belongs to.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> workspaceId;
 

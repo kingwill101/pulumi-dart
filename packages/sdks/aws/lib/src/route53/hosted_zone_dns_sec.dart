@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosted_zone_dns_sec_args.dart';
 import 'hosted_zone_dns_sec_state.dart';
 
-/// Manages Route 53 Hosted Zone Domain Name System Security Extensions (DNSSEC). For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
+/// Manages Route 53 Hosted Zone DNS Security Extensions (DNSSEC). For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
 ///
 /// &gt; **WARNING:** If you disable DNSSEC signing for your hosted zone before the DNS changes have propagated, your domain could become unavailable on the internet. When you remove the DS records, you must wait until the longest TTL for the DS records that you remove has expired before you complete the step to disable DNSSEC signing. Please refer to the [Route 53 Developer Guide - Disable DNSSEC](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-disable.html) for a detailed breakdown on the steps required to disable DNSSEC safely for a hosted zone.
 ///
@@ -490,7 +490,7 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
           'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     hostedZoneId = registerOutput<String>('hostedZoneId');
     signingStatus = registerOutput<String?>('signingStatus');
@@ -501,11 +501,12 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedZoneDnsSecState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedZoneDnsSec._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -519,6 +520,19 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    signingStatus = registerOutput<String?>('signingStatus');
+  }
+
+  /// Creates a typed reference to an existing [HostedZoneDnsSec] resource.
+  HostedZoneDnsSec.reference(String urn)
+    : super(
+        'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     hostedZoneId = registerOutput<String>('hostedZoneId');
     signingStatus = registerOutput<String?>('signingStatus');
   }

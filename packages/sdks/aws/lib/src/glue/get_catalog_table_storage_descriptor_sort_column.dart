@@ -26,7 +26,7 @@ class GetCatalogTableStorageDescriptorSortColumn {
   factory GetCatalogTableStorageDescriptorSortColumn.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSortColumn(
       column: pulumi.Input.fromValue(map['column'] as String),
-      sortOrder: pulumi.Input.fromValue(map['sortOrder'] as int),
+      sortOrder: pulumi.Input.fromValue((map['sortOrder'] as num).toInt()),
     );
   }
 }

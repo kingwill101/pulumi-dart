@@ -12,9 +12,9 @@ class RegistryScopeMapArgs {
   /// The name of the Container Registry. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerRegistryName;
   /// The description of the Container Registry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the scope map. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

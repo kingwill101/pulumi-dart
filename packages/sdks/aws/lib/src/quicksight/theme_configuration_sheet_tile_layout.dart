@@ -6,9 +6,9 @@ import 'theme_configuration_sheet_tile_layout_margin.dart';
 
 class ThemeConfigurationSheetTileLayout {
   /// The gutter settings that apply between tiles. See gutter.
-  final pulumi.Input<ThemeConfigurationSheetTileLayoutGutter>? gutter;
+  final pulumi.Input<ThemeConfigurationSheetTileLayoutGutter?>? gutter;
   /// The margin settings that apply around the outside edge of sheets. See margin.
-  final pulumi.Input<ThemeConfigurationSheetTileLayoutMargin>? margin;
+  final pulumi.Input<ThemeConfigurationSheetTileLayoutMargin?>? margin;
 
   /// Creates a new [ThemeConfigurationSheetTileLayout].
   /// [gutter] The gutter settings that apply between tiles. See gutter.

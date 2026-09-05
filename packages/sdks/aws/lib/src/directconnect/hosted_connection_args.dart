@@ -12,7 +12,7 @@ class HostedConnectionArgs {
   /// The ID of the interconnect or LAG.
   final pulumi.Input<String> connectionId;
   /// The name of the connection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the AWS account of the customer for the connection.
   final pulumi.Input<String> ownerAccountId;
   /// The dedicated VLAN provisioned to the hosted connection.
@@ -48,7 +48,7 @@ class HostedConnectionArgs {
       connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerAccountId: pulumi.Input.fromValue(map['ownerAccountId'] as String),
-      vlan: pulumi.Input.fromValue(map['vlan'] as int),
+      vlan: pulumi.Input.fromValue((map['vlan'] as num).toInt()),
     );
   }
 }

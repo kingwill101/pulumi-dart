@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineEndpointVpcOptions {
   /// List of security groups associated with the VPC endpoint.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// List of subnet IDs associated with the VPC endpoint.
   final pulumi.Input<List<String>> subnetIds;
 

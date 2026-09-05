@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_line_args.dart';
+import 'channel_line_line_channel.dart';
 import 'channel_line_state.dart';
 
 /// Manages a Line integration for a Bot Channel
@@ -283,7 +284,7 @@ class ChannelLine extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
   /// One or more `lineChannel` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lineChannels;
+  late final pulumi.Output<List<ChannelLineLineChannel>> lineChannels;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
@@ -301,10 +302,10 @@ class ChannelLine extends pulumi.CustomResource {
           'azure:bot/channelLine:ChannelLine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     botName = registerOutput<String>('botName');
-    lineChannels = registerOutput<List<Map<String, dynamic>>>('lineChannels');
+    lineChannels = registerOutput<List<ChannelLineLineChannel>>('lineChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelLineLineChannel>(guardedValue, (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -314,11 +315,12 @@ class ChannelLine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelLineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelLine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +335,22 @@ class ChannelLine extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     botName = registerOutput<String>('botName');
-    lineChannels = registerOutput<List<Map<String, dynamic>>>('lineChannels');
+    lineChannels = registerOutput<List<ChannelLineLineChannel>>('lineChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelLineLineChannel>(guardedValue, (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ChannelLine] resource.
+  ChannelLine.reference(String urn)
+    : super(
+        'azure:bot/channelLine:ChannelLine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    lineChannels = registerOutput<List<ChannelLineLineChannel>>('lineChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelLineLineChannel>(guardedValue, (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

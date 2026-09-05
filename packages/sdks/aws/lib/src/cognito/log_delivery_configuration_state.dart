@@ -6,13 +6,13 @@ import 'log_delivery_configuration_log_configuration.dart';
 /// Input properties used for looking up and filtering LogDeliveryConfiguration resources.
 class LogDeliveryConfigurationState {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>>? logConfigurations;
+  final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>?>? logConfigurations;
   /// The AWS region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [LogDeliveryConfigurationState].
   /// [logConfigurations] Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.

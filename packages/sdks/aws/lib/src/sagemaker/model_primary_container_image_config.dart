@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_primary_container_image_config_repository_auth_config.dart';
 
 class ModelPrimaryContainerImageConfig {
-  /// Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). Allowed values are: `Platform` and `Vpc`.
+  /// Whether the model container is in Amazon ECR or a private Docker registry accessible from your VPC. Allowed values are: `Platform` and `Vpc`.
   final pulumi.Input<String> repositoryAccessMode;
   /// Specifies an authentication configuration for the private docker registry where your model image is hosted. Specify a value for this property only if you specified Vpc as the value for the RepositoryAccessMode field, and the private Docker registry where the model image is hosted requires authentication. see Repository Auth Config.
-  final pulumi.Input<ModelPrimaryContainerImageConfigRepositoryAuthConfig>? repositoryAuthConfig;
+  final pulumi.Input<ModelPrimaryContainerImageConfigRepositoryAuthConfig?>? repositoryAuthConfig;
 
   /// Creates a new [ModelPrimaryContainerImageConfig].
-  /// [repositoryAccessMode] Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). Allowed values are: `Platform` and `Vpc`.
+  /// [repositoryAccessMode] Whether the model container is in Amazon ECR or a private Docker registry accessible from your VPC. Allowed values are: `Platform` and `Vpc`.
   /// [repositoryAuthConfig] Specifies an authentication configuration for the private docker registry where your model image is hosted. Specify a value for this property only if you specified Vpc as the value for the RepositoryAccessMode field, and the private Docker registry where the model image is hosted requires authentication. see Repository Auth Config.
   const ModelPrimaryContainerImageConfig({
     required this.repositoryAccessMode,

@@ -7,23 +7,23 @@ import 'profile_monitor_config.dart';
 /// Input properties used for looking up and filtering Profile resources.
 class ProfileState {
   /// This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
-  final pulumi.Input<ProfileDnsConfig>? dnsConfig;
+  final pulumi.Input<ProfileDnsConfig?>? dnsConfig;
   /// The FQDN of the created Profile.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
   /// &gt; **Note:** `maxReturn` must be set when the `trafficRoutingMethod` is `MultiValue`.
-  final pulumi.Input<int>? maxReturn;
+  final pulumi.Input<int?>? maxReturn;
   /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitorConfig` block as defined below.
-  final pulumi.Input<ProfileMonitorConfig>? monitorConfig;
+  final pulumi.Input<ProfileMonitorConfig?>? monitorConfig;
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The status of the profile, can be set to either `Enabled` or `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? profileStatus;
+  final pulumi.Input<String?>? profileStatus;
   /// The name of the resource group in which to create the Traffic Manager profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// * `Geographic` - Traffic is routed based on Geographic regions specified in the Endpoint.
   /// * `MultiValue` - All healthy Endpoints are returned.  MultiValue routing method works only if all the endpoints of type `External` and are specified as IPv4 or IPv6 addresses.
@@ -31,9 +31,9 @@ class ProfileState {
   /// * `Priority` - Traffic is routed to the Endpoint with the lowest `priority` value.
   /// * `Subnet` - Traffic is routed based on a mapping of sets of end-user IP address ranges to a specific Endpoint within a Traffic Manager profile.
   /// * `Weighted` - Traffic is spread across Endpoints proportional to their `weight` value.
-  final pulumi.Input<String>? trafficRoutingMethod;
+  final pulumi.Input<String?>? trafficRoutingMethod;
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  final pulumi.Input<bool>? trafficViewEnabled;
+  final pulumi.Input<bool?>? trafficViewEnabled;
 
   /// Creates a new [ProfileState].
   /// [dnsConfig] This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
@@ -78,7 +78,7 @@ class ProfileState {
     return ProfileState(
       dnsConfig: (() { final guardedValue = map['dnsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       monitorConfig: (() { final guardedValue = map['monitorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

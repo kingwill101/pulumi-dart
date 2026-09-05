@@ -12,7 +12,7 @@ class DataSourceWindowsEventArgs {
   /// Specifies an array of event types applied to the specified event log. Possible values include `Error`, `Warning` and `Information`.
   final pulumi.Input<List<String>> eventTypes;
   /// The name which should be used for this Log Analytics Windows Event DataSource. Changing this forces a new Log Analytics Windows Event DataSource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Log Analytics Workspace where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.

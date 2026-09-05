@@ -5,11 +5,11 @@ import 'web_acl_rule_action_block_custom_response_response_header.dart';
 
 class WebAclRuleActionBlockCustomResponse {
   /// Key of a custom response body defined in the Web ACL.
-  final pulumi.Input<String>? customResponseBodyKey;
+  final pulumi.Input<String?>? customResponseBodyKey;
   /// HTTP status code to return (200-599).
   final pulumi.Input<int> responseCode;
   /// Custom headers to include in the response. See Response Header below.
-  final pulumi.Input<List<WebAclRuleActionBlockCustomResponseResponseHeader>>? responseHeaders;
+  final pulumi.Input<List<WebAclRuleActionBlockCustomResponseResponseHeader>?>? responseHeaders;
 
   /// Creates a new [WebAclRuleActionBlockCustomResponse].
   /// [customResponseBodyKey] Key of a custom response body defined in the Web ACL.
@@ -32,7 +32,7 @@ class WebAclRuleActionBlockCustomResponse {
   factory WebAclRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionBlockCustomResponse(
       customResponseBodyKey: (() { final guardedValue = map['customResponseBodyKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      responseCode: pulumi.Input.fromValue(map['responseCode'] as int),
+      responseCode: pulumi.Input.fromValue((map['responseCode'] as num).toInt()),
       responseHeaders: (() { final guardedValue = map['responseHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleActionBlockCustomResponseResponseHeader>(guardedValue, (value) => WebAclRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

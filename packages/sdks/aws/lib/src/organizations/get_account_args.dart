@@ -10,7 +10,7 @@ class GetAccountArgs {
   /// Account ID number of a delegated administrator account in the organization.
   final pulumi.Input<String> accountId;
   /// Map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetAccountArgs].
   /// [accountId] Account ID number of a delegated administrator account in the organization.

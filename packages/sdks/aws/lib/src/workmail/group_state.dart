@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Group resources.
 class GroupState {
   /// Timestamp when the group was disabled from WorkMail use.
-  final pulumi.Input<String>? disabledDate;
+  final pulumi.Input<String?>? disabledDate;
   /// Primary email address used to register the group with WorkMail.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Timestamp when the group was enabled for WorkMail use.
-  final pulumi.Input<String>? enabledDate;
+  final pulumi.Input<String?>? enabledDate;
   /// Identifier of the group.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Whether to hide the group from the global address list.
-  final pulumi.Input<bool>? hiddenFromGlobalAddressList;
+  final pulumi.Input<bool?>? hiddenFromGlobalAddressList;
   /// Name of the group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Identifier of the WorkMail organization where the group is managed.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current WorkMail state of the group.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [GroupState].
   /// [disabledDate] Timestamp when the group was disabled from WorkMail use.

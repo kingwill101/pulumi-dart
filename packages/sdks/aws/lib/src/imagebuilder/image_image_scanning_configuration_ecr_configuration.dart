@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageImageScanningConfigurationEcrConfiguration {
   /// Set of tags for Image Builder to apply to the output container image that that Amazon Inspector scans.
-  final pulumi.Input<List<String>>? containerTags;
+  final pulumi.Input<List<String>?>? containerTags;
   /// The name of the container repository that Amazon Inspector scans to identify findings for your container images.
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
 
   /// Creates a new [ImageImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Set of tags for Image Builder to apply to the output container image that that Amazon Inspector scans.

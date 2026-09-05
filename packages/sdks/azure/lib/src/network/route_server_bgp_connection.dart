@@ -221,8 +221,8 @@ import 'route_server_bgp_connection_state.dart';
 /// 			ResourceGroupName:            example.Name,
 /// 			Location:                     example.Location,
 /// 			Sku:                          pulumi.String("Standard"),
-/// 			PublicIpAddressId:            examplePublicIp.ID(),
-/// 			SubnetId:                     exampleSubnet.ID(),
+/// 			PublicIpAddressId:            examplePublicIp.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			BranchToBranchTrafficEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -230,7 +230,7 @@ import 'route_server_bgp_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewRouteServerBgpConnection(ctx, "example", &network.RouteServerBgpConnectionArgs{
 /// 			Name:          pulumi.String("example-rs-bgpconnection"),
-/// 			RouteServerId: exampleRouteServer.ID(),
+/// 			RouteServerId: exampleRouteServer.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerAsn:       pulumi.Int(65501),
 /// 			PeerIp:        pulumi.String("169.254.21.5"),
 /// 		})
@@ -465,7 +465,7 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
           'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
@@ -478,11 +478,12 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerBgpConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServerBgpConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -496,6 +497,21 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    peerAsn = registerOutput<int>('peerAsn');
+    peerIp = registerOutput<String>('peerIp');
+    routeServerId = registerOutput<String>('routeServerId');
+  }
+
+  /// Creates a typed reference to an existing [RouteServerBgpConnection] resource.
+  RouteServerBgpConnection.reference(String urn)
+    : super(
+        'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
     peerIp = registerOutput<String>('peerIp');

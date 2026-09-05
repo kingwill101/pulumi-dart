@@ -8,35 +8,35 @@ class PlanState {
   /// The ID of the App Service Environment where the App Service Plan should be located. Changing forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Attaching to an App Service Environment requires the App Service Plan use a `Premium` SKU (when using an ASEv1) and the `Isolated` SKU (for an ASEv2).
-  final pulumi.Input<String>? appServiceEnvironmentId;
+  final pulumi.Input<String?>? appServiceEnvironmentId;
   /// Whether to create a xenon App Service Plan.
-  final pulumi.Input<bool>? isXenon;
+  final pulumi.Input<bool?>? isXenon;
   /// The kind of the App Service Plan to create. Possible values are `Windows` (also available as `App`), `Linux`, `elastic` (for Premium Consumption), `xenon` and `FunctionApp` (for a Consumption Plan). Defaults to `Windows`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** When creating a `Linux` App Service Plan, the `reserved` field must be set to `true`, and when creating a `Windows`/`app` App Service Plan the `reserved` field must be set to `false`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan.
-  final pulumi.Input<int>? maximumElasticWorkerCount;
+  final pulumi.Input<int?>? maximumElasticWorkerCount;
   /// The maximum number of workers supported with the App Service Plan's sku.
-  final pulumi.Input<int>? maximumNumberOfWorkers;
+  final pulumi.Input<int?>? maximumNumberOfWorkers;
   /// Specifies the name of the App Service Plan component. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Can Apps assigned to this App Service Plan be scaled independently? If set to `false` apps assigned to this plan will scale to all instances of the plan.
-  final pulumi.Input<bool>? perSiteScaling;
+  final pulumi.Input<bool?>? perSiteScaling;
   /// Is this App Service Plan `Reserved`.
-  final pulumi.Input<bool>? reserved;
+  final pulumi.Input<bool?>? reserved;
   /// The name of the resource group in which to create the App Service Plan component. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `sku` block as documented below.
-  final pulumi.Input<PlanSku>? sku;
+  final pulumi.Input<PlanSku?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies if the App Service Plan should be Zone Redundant. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Requires either `PremiumV2` or `PremiumV3` SKU and that at least 3 instances. For more information, please see the [App Service Team Blog](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html).
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [PlanState].
   /// [appServiceEnvironmentId] The ID of the App Service Environment where the App Service Plan should be located. Changing forces a new resource to be created.
@@ -92,8 +92,8 @@ class PlanState {
       isXenon: (() { final guardedValue = map['isXenon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maximumElasticWorkerCount: (() { final guardedValue = map['maximumElasticWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maximumNumberOfWorkers: (() { final guardedValue = map['maximumNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumElasticWorkerCount: (() { final guardedValue = map['maximumElasticWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumNumberOfWorkers: (() { final guardedValue = map['maximumNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perSiteScaling: (() { final guardedValue = map['perSiteScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       reserved: (() { final guardedValue = map['reserved']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

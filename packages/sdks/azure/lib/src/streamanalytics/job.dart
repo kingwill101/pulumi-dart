@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_args.dart';
 import 'job_identity.dart';
+import 'job_job_storage_account.dart';
 import 'job_state.dart';
 
 /// Manages a Stream Analytics Job.
@@ -294,7 +295,7 @@ class Job extends pulumi.CustomResource {
   /// The details of the job storage account. A `jobStorageAccount` block as defined below.
   ///
   /// &gt; **Note:** `contentStoragePolicy` must be set to `JobStorageAccount` when specifying `jobStorageAccount`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> jobStorageAccounts;
+  late final pulumi.Output<List<JobJobStorageAccount>?> jobStorageAccounts;
   /// The Azure Region in which the Resource Group exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
@@ -330,7 +331,7 @@ class Job extends pulumi.CustomResource {
           'azure:streamanalytics/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     compatibilityLevel = registerOutput<String>('compatibilityLevel');
     contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');
@@ -340,7 +341,7 @@ class Job extends pulumi.CustomResource {
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
     identity = registerOutput<JobIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobId = registerOutput<String>('jobId');
-    jobStorageAccounts = registerOutput<List<Map<String, dynamic>>?>('jobStorageAccounts');
+    jobStorageAccounts = registerOutput<List<JobJobStorageAccount>?>('jobStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobJobStorageAccount>(guardedValue, (value) => JobJobStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputErrorPolicy = registerOutput<String?>('outputErrorPolicy');
@@ -348,7 +349,7 @@ class Job extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     streamAnalyticsClusterId = registerOutput<String?>('streamAnalyticsClusterId');
     streamingUnits = registerOutput<int?>('streamingUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transformationQuery = registerOutput<String>('transformationQuery');
     type = registerOutput<String?>('type');
   }
@@ -358,11 +359,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -384,7 +386,7 @@ class Job extends pulumi.CustomResource {
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
     identity = registerOutput<JobIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobId = registerOutput<String>('jobId');
-    jobStorageAccounts = registerOutput<List<Map<String, dynamic>>?>('jobStorageAccounts');
+    jobStorageAccounts = registerOutput<List<JobJobStorageAccount>?>('jobStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobJobStorageAccount>(guardedValue, (value) => JobJobStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputErrorPolicy = registerOutput<String?>('outputErrorPolicy');
@@ -392,7 +394,37 @@ class Job extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     streamAnalyticsClusterId = registerOutput<String?>('streamAnalyticsClusterId');
     streamingUnits = registerOutput<int?>('streamingUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transformationQuery = registerOutput<String>('transformationQuery');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'azure:streamanalytics/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    compatibilityLevel = registerOutput<String>('compatibilityLevel');
+    contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');
+    dataLocale = registerOutput<String?>('dataLocale');
+    eventsLateArrivalMaxDelayInSeconds = registerOutput<int?>('eventsLateArrivalMaxDelayInSeconds');
+    eventsOutOfOrderMaxDelayInSeconds = registerOutput<int?>('eventsOutOfOrderMaxDelayInSeconds');
+    eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
+    identity = registerOutput<JobIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobId = registerOutput<String>('jobId');
+    jobStorageAccounts = registerOutput<List<JobJobStorageAccount>?>('jobStorageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobJobStorageAccount>(guardedValue, (value) => JobJobStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outputErrorPolicy = registerOutput<String?>('outputErrorPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String?>('skuName');
+    streamAnalyticsClusterId = registerOutput<String?>('streamAnalyticsClusterId');
+    streamingUnits = registerOutput<int?>('streamingUnits');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transformationQuery = registerOutput<String>('transformationQuery');
     type = registerOutput<String?>('type');
   }

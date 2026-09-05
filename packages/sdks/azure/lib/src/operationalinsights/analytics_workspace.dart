@@ -249,7 +249,8 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
           'azure:operationalinsights/analyticsWorkspace:AnalyticsWorkspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primarySharedKey', 'secondarySharedKey'],
         ) {
     allowResourceOnlyPermissions = registerOutput<bool?>('allowResourceOnlyPermissions');
     cmkForQueryForced = registerOutput<bool?>('cmkForQueryForced');
@@ -263,13 +264,13 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
     localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primarySharedKey = registerOutput<String>('primarySharedKey');
+    primarySharedKey = registerOutput<String>('primarySharedKey', isSecret: true);
     reservationCapacityInGbPerDay = registerOutput<int?>('reservationCapacityInGbPerDay');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInDays = registerOutput<int>('retentionInDays');
-    secondarySharedKey = registerOutput<String>('secondarySharedKey');
+    secondarySharedKey = registerOutput<String>('secondarySharedKey', isSecret: true);
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -278,11 +279,12 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyticsWorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalyticsWorkspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,13 +310,45 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
     localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primarySharedKey = registerOutput<String>('primarySharedKey');
+    primarySharedKey = registerOutput<String>('primarySharedKey', isSecret: true);
     reservationCapacityInGbPerDay = registerOutput<int?>('reservationCapacityInGbPerDay');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionInDays = registerOutput<int>('retentionInDays');
-    secondarySharedKey = registerOutput<String>('secondarySharedKey');
+    secondarySharedKey = registerOutput<String>('secondarySharedKey', isSecret: true);
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsWorkspace] resource.
+  AnalyticsWorkspace.reference(String urn)
+    : super(
+        'azure:operationalinsights/analyticsWorkspace:AnalyticsWorkspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primarySharedKey', 'secondarySharedKey'],
+        isResourceReference: true,
+      ) {
+    allowResourceOnlyPermissions = registerOutput<bool?>('allowResourceOnlyPermissions');
+    cmkForQueryForced = registerOutput<bool?>('cmkForQueryForced');
+    dailyQuotaGb = registerOutput<double?>('dailyQuotaGb');
+    dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
+    identity = registerOutput<AnalyticsWorkspaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsWorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immediateDataPurgeOn30DaysEnabled = registerOutput<bool?>('immediateDataPurgeOn30DaysEnabled');
+    internetIngestionEnabled = registerOutput<bool?>('internetIngestionEnabled');
+    internetQueryEnabled = registerOutput<bool?>('internetQueryEnabled');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primarySharedKey = registerOutput<String>('primarySharedKey', isSecret: true);
+    reservationCapacityInGbPerDay = registerOutput<int?>('reservationCapacityInGbPerDay');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionInDays = registerOutput<int>('retentionInDays');
+    secondarySharedKey = registerOutput<String>('secondarySharedKey', isSecret: true);
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

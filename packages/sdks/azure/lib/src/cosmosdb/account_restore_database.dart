@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountRestoreDatabase {
   /// A list of the collection names for the restore request. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? collectionNames;
+  final pulumi.Input<List<String>?>? collectionNames;
   /// The database name for the restore request. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
 

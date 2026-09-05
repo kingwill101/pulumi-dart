@@ -4,7 +4,7 @@
 /// Result data returned by getSubscribedRuleGroup.
 class GetSubscribedRuleGroupResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? metricName;
   final String? name;
 
@@ -13,14 +13,14 @@ class GetSubscribedRuleGroupResult {
   /// [metricName] Optional.
   /// [name] Optional.
   const GetSubscribedRuleGroupResult({
-    required this.id,
+    this.id,
     this.metricName,
     this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'metricName': ?metricName,
       'name': ?name,
     };
@@ -28,7 +28,7 @@ class GetSubscribedRuleGroupResult {
 
   factory GetSubscribedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

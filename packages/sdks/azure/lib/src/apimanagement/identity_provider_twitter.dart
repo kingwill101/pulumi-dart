@@ -267,11 +267,12 @@ class IdentityProviderTwitter extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiKey', 'apiSecretKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     apiManagementName = registerOutput<String>('apiManagementName');
-    apiSecretKey = registerOutput<String>('apiSecretKey');
+    apiSecretKey = registerOutput<String>('apiSecretKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
@@ -280,11 +281,12 @@ class IdentityProviderTwitter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderTwitterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderTwitter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -298,9 +300,25 @@ class IdentityProviderTwitter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     apiManagementName = registerOutput<String>('apiManagementName');
-    apiSecretKey = registerOutput<String>('apiSecretKey');
+    apiSecretKey = registerOutput<String>('apiSecretKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderTwitter] resource.
+  IdentityProviderTwitter.reference(String urn)
+    : super(
+        'azure:apimanagement/identityProviderTwitter:IdentityProviderTwitter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey', 'apiSecretKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiSecretKey = registerOutput<String>('apiSecretKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

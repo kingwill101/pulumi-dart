@@ -6,7 +6,7 @@ import 'policy_managed_rules_managed_rule_set.dart';
 
 class PolicyManagedRules {
   /// One or more `exclusion` block defined below.
-  final pulumi.Input<List<PolicyManagedRulesExclusion>>? exclusions;
+  final pulumi.Input<List<PolicyManagedRulesExclusion>?>? exclusions;
   /// One or more `managedRuleSet` block defined below.
   final pulumi.Input<List<PolicyManagedRulesManagedRuleSet>> managedRuleSets;
 

@@ -297,7 +297,7 @@ class V2ServiceFunction extends pulumi.CustomResource {
           'aws:resiliencehub/v2ServiceFunction:V2ServiceFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     criticality = registerOutput<String>('criticality');
     description = registerOutput<String?>('description');
@@ -312,11 +312,12 @@ class V2ServiceFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2ServiceFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2ServiceFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,6 +331,23 @@ class V2ServiceFunction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    criticality = registerOutput<String>('criticality');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    serviceFunctionId = registerOutput<String>('serviceFunctionId');
+  }
+
+  /// Creates a typed reference to an existing [V2ServiceFunction] resource.
+  V2ServiceFunction.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2ServiceFunction:V2ServiceFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     criticality = registerOutput<String>('criticality');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

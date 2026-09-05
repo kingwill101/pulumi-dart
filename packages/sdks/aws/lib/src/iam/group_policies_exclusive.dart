@@ -265,10 +265,10 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [GroupPoliciesExclusive] resource's state with the given [name] and [id].
@@ -276,11 +276,12 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPoliciesExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPoliciesExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,6 +296,19 @@ class GroupPoliciesExclusive extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     groupName = registerOutput<String>('groupName');
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GroupPoliciesExclusive] resource.
+  GroupPoliciesExclusive.reference(String urn)
+    : super(
+        'aws:iam/groupPoliciesExclusive:GroupPoliciesExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    groupName = registerOutput<String>('groupName');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

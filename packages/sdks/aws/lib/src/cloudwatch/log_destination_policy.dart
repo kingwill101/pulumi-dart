@@ -18,11 +18,11 @@ import 'log_destination_policy_state.dart';
 /// });
 /// const testDestinationPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["123456789012"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["logs:PutSubscriptionFilter"],
 ///         resources: [testDestination.arn],
 ///     }],
@@ -41,11 +41,11 @@ import 'log_destination_policy_state.dart';
 ///     role_arn=iam_for_cloudwatch["arn"],
 ///     target_arn=kinesis_for_cloudwatch["arn"])
 /// test_destination_policy = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["123456789012"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["logs:PutSubscriptionFilter"],
 ///     "resources": [test_destination.arn],
 /// }])
@@ -74,7 +74,6 @@ import 'log_destination_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -86,6 +85,7 @@ import 'log_destination_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "logs:PutSubscriptionFilter",
@@ -128,7 +128,6 @@ import 'log_destination_policy_state.dart';
 /// 		testDestinationPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -137,6 +136,7 @@ import 'log_destination_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("logs:PutSubscriptionFilter"),
 /// 					},
@@ -168,11 +168,11 @@ import 'log_destination_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "testDestinationPolicy" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["logs:PutSubscriptionFilter"]
 ///     resources = [aws_cloudwatch_logdestination.test_destination.arn]
 ///   }
@@ -223,11 +223,11 @@ import 'log_destination_policy_state.dart';
 ///
 ///         final var testDestinationPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("123456789012")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("logs:PutSubscriptionFilter")
 ///                 .resources(testDestination.arn())
 ///                 .build())
@@ -262,11 +262,11 @@ import 'log_destination_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - '123456789012'
+///             effect: Allow
 ///             actions:
 ///               - logs:PutSubscriptionFilter
 ///             resources:
@@ -315,7 +315,7 @@ class LogDestinationPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     destinationName = registerOutput<String>('destinationName');
@@ -328,11 +328,12 @@ class LogDestinationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDestinationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDestinationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,21 @@ class LogDestinationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicy = registerOutput<String>('accessPolicy');
+    destinationName = registerOutput<String>('destinationName');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogDestinationPolicy] resource.
+  LogDestinationPolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDestinationPolicy:LogDestinationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     destinationName = registerOutput<String>('destinationName');
     forceUpdate = registerOutput<bool?>('forceUpdate');

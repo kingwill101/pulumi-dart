@@ -6,7 +6,7 @@ class FirewallManagementIpConfiguration {
   /// Specifies the name of the IP Configuration.
   final pulumi.Input<String> name;
   /// The private IP address associated with the Firewall.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The ID of the Public IP Address associated with the firewall.
   ///
   /// &gt; **Note:** The Public IP must have a `Static` allocation and `Standard` SKU.

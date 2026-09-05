@@ -13,19 +13,19 @@ import 'response_headers_policy_server_timing_headers_config.dart';
 /// {@macro pulumi_cloudfront_response_headers_policy_response_headers_policy_args_doc}
 class ResponseHeadersPolicyArgs {
   /// A comment to describe the response headers policy. The comment cannot be longer than 128 characters.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See CORS Config for more information.
-  final pulumi.Input<ResponseHeadersPolicyCorsConfig>? corsConfig;
+  final pulumi.Input<ResponseHeadersPolicyCorsConfig?>? corsConfig;
   /// Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
-  final pulumi.Input<ResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfig;
+  final pulumi.Input<ResponseHeadersPolicyCustomHeadersConfig?>? customHeadersConfig;
   /// A unique name to identify the response headers policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A configuration for a set of HTTP headers to remove from the HTTP response. Object that contains an attribute `items` that contains a list of headers. See Remove Header for more information.
-  final pulumi.Input<ResponseHeadersPolicyRemoveHeadersConfig>? removeHeadersConfig;
+  final pulumi.Input<ResponseHeadersPolicyRemoveHeadersConfig?>? removeHeadersConfig;
   /// A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.
-  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfig>? securityHeadersConfig;
+  final pulumi.Input<ResponseHeadersPolicySecurityHeadersConfig?>? securityHeadersConfig;
   /// A configuration for enabling the Server-Timing header in HTTP responses sent from CloudFront. See Server Timing Headers Config for more information.
-  final pulumi.Input<ResponseHeadersPolicyServerTimingHeadersConfig>? serverTimingHeadersConfig;
+  final pulumi.Input<ResponseHeadersPolicyServerTimingHeadersConfig?>? serverTimingHeadersConfig;
 
   /// Creates a new [ResponseHeadersPolicyArgs].
   /// [comment] A comment to describe the response headers policy. The comment cannot be longer than 128 characters.

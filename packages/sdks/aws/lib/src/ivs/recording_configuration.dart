@@ -16,12 +16,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ivs.RecordingConfiguration("example", {
-///     name: "recording_configuration-1",
 ///     destinationConfiguration: {
 ///         s3: {
 ///             bucketName: "ivs-stream-archive",
 ///         },
 ///     },
+///     name: "recording_configuration-1",
 /// });
 /// ```
 /// ```python
@@ -29,12 +29,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ivs.RecordingConfiguration("example",
-///     name="recording_configuration-1",
 ///     destination_configuration={
 ///         "s3": {
 ///             "bucket_name": "ivs-stream-archive",
 ///         },
-///     })
+///     },
+///     name="recording_configuration-1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,7 +46,6 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// {
 ///     var example = new Aws.Ivs.RecordingConfiguration("example", new()
 ///     {
-///         Name = "recording_configuration-1",
 ///         DestinationConfiguration = new Aws.Ivs.Inputs.RecordingConfigurationDestinationConfigurationArgs
 ///         {
 ///             S3 = new Aws.Ivs.Inputs.RecordingConfigurationDestinationConfigurationS3Args
@@ -54,6 +53,7 @@ import 'recording_configuration_thumbnail_configuration.dart';
 ///                 BucketName = "ivs-stream-archive",
 ///             },
 ///         },
+///         Name = "recording_configuration-1",
 ///     });
 ///
 /// });
@@ -69,12 +69,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ivs.NewRecordingConfiguration(ctx, "example", &ivs.RecordingConfigurationArgs{
-/// 			Name: pulumi.String("recording_configuration-1"),
 /// 			DestinationConfiguration: &ivs.RecordingConfigurationDestinationConfigurationArgs{
 /// 				S3: &ivs.RecordingConfigurationDestinationConfigurationS3Args{
 /// 					BucketName: pulumi.String("ivs-stream-archive"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("recording_configuration-1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,12 +93,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 /// }
 ///
 /// resource "aws_ivs_recordingconfiguration" "example" {
-///   name = "recording_configuration-1"
 ///   destination_configuration = {
 ///     s3 = {
 ///       bucket_name = "ivs-stream-archive"
 ///     }
 ///   }
+///   name = "recording_configuration-1"
 /// }
 /// ```
 /// ```java
@@ -125,12 +125,12 @@ import 'recording_configuration_thumbnail_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RecordingConfiguration("example", RecordingConfigurationArgs.builder()
-///             .name("recording_configuration-1")
 ///             .destinationConfiguration(RecordingConfigurationDestinationConfigurationArgs.builder()
 ///                 .s3(RecordingConfigurationDestinationConfigurationS3Args.builder()
 ///                     .bucketName("ivs-stream-archive")
 ///                     .build())
 ///                 .build())
+///             .name("recording_configuration-1")
 ///             .build());
 ///
 ///     }
@@ -141,10 +141,10 @@ import 'recording_configuration_thumbnail_configuration.dart';
 ///   example:
 ///     type: aws:ivs:RecordingConfiguration
 ///     properties:
-///       name: recording_configuration-1
 ///       destinationConfiguration:
 ///         s3:
 ///           bucketName: ivs-stream-archive
+///       name: recording_configuration-1
 /// ```
 ///
 ///
@@ -154,7 +154,7 @@ import 'recording_configuration_thumbnail_configuration.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the IVS recording configuration.
+/// - `arn` (String) ARN of the IVS recording configuration.
 ///
 ///
 /// Using `pulumi import`, import IVS (Interactive Video) Recording Configuration using the ARN. For example:
@@ -194,7 +194,7 @@ class RecordingConfiguration extends pulumi.CustomResource {
           'aws:ivs/recordingConfiguration:RecordingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfiguration = registerOutput<RecordingConfigurationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -202,8 +202,8 @@ class RecordingConfiguration extends pulumi.CustomResource {
     recordingReconnectWindowSeconds = registerOutput<int>('recordingReconnectWindowSeconds');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbnailConfiguration = registerOutput<RecordingConfigurationThumbnailConfiguration>('thumbnailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -212,11 +212,12 @@ class RecordingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecordingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecordingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,8 +237,28 @@ class RecordingConfiguration extends pulumi.CustomResource {
     recordingReconnectWindowSeconds = registerOutput<int>('recordingReconnectWindowSeconds');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thumbnailConfiguration = registerOutput<RecordingConfigurationThumbnailConfiguration>('thumbnailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RecordingConfiguration] resource.
+  RecordingConfiguration.reference(String urn)
+    : super(
+        'aws:ivs/recordingConfiguration:RecordingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationConfiguration = registerOutput<RecordingConfigurationDestinationConfiguration>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    recordingReconnectWindowSeconds = registerOutput<int>('recordingReconnectWindowSeconds');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbnailConfiguration = registerOutput<RecordingConfigurationThumbnailConfiguration>('thumbnailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

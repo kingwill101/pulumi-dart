@@ -29,7 +29,7 @@ import 'linked_service_azure_function_state.dart';
 /// const exampleLinkedServiceAzureFunction = new azure.datafactory.LinkedServiceAzureFunction("example", {
 ///     name: "example",
 ///     dataFactoryId: exampleFactory.id,
-///     url: example.apply(example => `https://${example.defaultHostname}`),
+///     url: pulumi.interpolate`https://${example.defaultHostname}`,
 ///     key: "foo",
 /// });
 /// ```
@@ -124,7 +124,7 @@ import 'linked_service_azure_function_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureFunction(ctx, "example", &datafactory.LinkedServiceAzureFunctionArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Url: example.ApplyT(func(example appservice.GetFunctionAppResult) (string, error) {
 /// 				return fmt.Sprintf("https://%v", example.DefaultHostname), nil
 /// 			}).(pulumi.StringOutput),
@@ -296,17 +296,18 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureFunction:LinkedServiceAzureFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['key'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    key = registerOutput<String?>('key');
+    key = registerOutput<String?>('key', isSecret: true);
     keyVaultKey = registerOutput<LinkedServiceAzureFunctionKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFunctionKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 
@@ -315,11 +316,12 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,15 +335,37 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    key = registerOutput<String?>('key');
+    key = registerOutput<String?>('key', isSecret: true);
     keyVaultKey = registerOutput<LinkedServiceAzureFunctionKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFunctionKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureFunction] resource.
+  LinkedServiceAzureFunction.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureFunction:LinkedServiceAzureFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['key'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    key = registerOutput<String?>('key', isSecret: true);
+    keyVaultKey = registerOutput<LinkedServiceAzureFunctionKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFunctionKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 }

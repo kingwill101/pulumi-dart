@@ -5,7 +5,7 @@ import 'workteam_worker_access_configuration_s3_presign.dart';
 
 class WorkteamWorkerAccessConfiguration {
   /// Defines any Amazon S3 resource constraints. see S3 Presign details below.
-  final pulumi.Input<WorkteamWorkerAccessConfigurationS3Presign>? s3Presign;
+  final pulumi.Input<WorkteamWorkerAccessConfigurationS3Presign?>? s3Presign;
 
   /// Creates a new [WorkteamWorkerAccessConfiguration].
   /// [s3Presign] Defines any Amazon S3 resource constraints. see S3 Presign details below.

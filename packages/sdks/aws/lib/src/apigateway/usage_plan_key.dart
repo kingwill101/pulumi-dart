@@ -14,11 +14,11 @@ import 'usage_plan_key_state.dart';
 /// const test = new aws.apigateway.RestApi("test", {name: "MyDemoAPI"});
 /// // ...
 /// const myusageplan = new aws.apigateway.UsagePlan("myusageplan", {
-///     name: "my_usage_plan",
 ///     apiStages: [{
 ///         apiId: test.id,
 ///         stage: foo.stageName,
 ///     }],
+///     name: "my_usage_plan",
 /// });
 /// const mykey = new aws.apigateway.ApiKey("mykey", {name: "my_key"});
 /// const main = new aws.apigateway.UsagePlanKey("main", {
@@ -34,11 +34,11 @@ import 'usage_plan_key_state.dart';
 /// test = aws.apigateway.RestApi("test", name="MyDemoAPI")
 /// # ...
 /// myusageplan = aws.apigateway.UsagePlan("myusageplan",
-///     name="my_usage_plan",
 ///     api_stages=[{
 ///         "api_id": test.id,
 ///         "stage": foo["stageName"],
-///     }])
+///     }],
+///     name="my_usage_plan")
 /// mykey = aws.apigateway.ApiKey("mykey", name="my_key")
 /// main = aws.apigateway.UsagePlanKey("main",
 ///     key_id=mykey.id,
@@ -61,7 +61,6 @@ import 'usage_plan_key_state.dart';
 ///     // ...
 ///     var myusageplan = new Aws.ApiGateway.UsagePlan("myusageplan", new()
 ///     {
-///         Name = "my_usage_plan",
 ///         ApiStages = new[]
 ///         {
 ///             new Aws.ApiGateway.Inputs.UsagePlanApiStageArgs
@@ -70,6 +69,7 @@ import 'usage_plan_key_state.dart';
 ///                 Stage = foo.StageName,
 ///             },
 ///         },
+///         Name = "my_usage_plan",
 ///     });
 ///
 ///     var mykey = new Aws.ApiGateway.ApiKey("mykey", new()
@@ -104,13 +104,13 @@ import 'usage_plan_key_state.dart';
 /// 		}
 /// 		// ...
 /// 		myusageplan, err := apigateway.NewUsagePlan(ctx, "myusageplan", &apigateway.UsagePlanArgs{
-/// 			Name: pulumi.String("my_usage_plan"),
 /// 			ApiStages: apigateway.UsagePlanApiStageArray{
 /// 				&apigateway.UsagePlanApiStageArgs{
 /// 					ApiId: test.ID().ToIDOutput().ToStringOutput(),
 /// 					Stage: pulumi.Any(foo.StageName),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my_usage_plan"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -147,11 +147,11 @@ import 'usage_plan_key_state.dart';
 /// }
 /// # ...
 /// resource "aws_apigateway_usageplan" "myusageplan" {
-///   name = "my_usage_plan"
 ///   api_stages {
 ///     api_id = aws_apigateway_restapi.test.id
 ///     stage  = foo.stageName
 ///   }
+///   name = "my_usage_plan"
 /// }
 /// resource "aws_apigateway_apikey" "mykey" {
 ///   name = "my_key"
@@ -196,11 +196,11 @@ import 'usage_plan_key_state.dart';
 ///
 ///         // ...
 ///         var myusageplan = new UsagePlan("myusageplan", UsagePlanArgs.builder()
-///             .name("my_usage_plan")
 ///             .apiStages(UsagePlanApiStageArgs.builder()
 ///                 .apiId(test.id())
 ///                 .stage(foo.stageName())
 ///                 .build())
+///             .name("my_usage_plan")
 ///             .build());
 ///
 ///         var mykey = new ApiKey("mykey", ApiKeyArgs.builder()
@@ -226,10 +226,10 @@ import 'usage_plan_key_state.dart';
 ///   myusageplan:
 ///     type: aws:apigateway:UsagePlan
 ///     properties:
-///       name: my_usage_plan
 ///       apiStages:
 ///         - apiId: ${test.id}
 ///           stage: ${foo.stageName}
+///       name: my_usage_plan
 ///   mykey:
 ///     type: aws:apigateway:ApiKey
 ///     properties:
@@ -276,7 +276,7 @@ class UsagePlanKey extends pulumi.CustomResource {
           'aws:apigateway/usagePlanKey:UsagePlanKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     keyId = registerOutput<String>('keyId');
     keyType = registerOutput<String>('keyType');
@@ -291,11 +291,12 @@ class UsagePlanKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UsagePlanKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UsagePlanKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -309,6 +310,23 @@ class UsagePlanKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyId = registerOutput<String>('keyId');
+    keyType = registerOutput<String>('keyType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    usagePlanId = registerOutput<String>('usagePlanId');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [UsagePlanKey] resource.
+  UsagePlanKey.reference(String urn)
+    : super(
+        'aws:apigateway/usagePlanKey:UsagePlanKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyId = registerOutput<String>('keyId');
     keyType = registerOutput<String>('keyType');
     this.name = registerOutput<String>('name');

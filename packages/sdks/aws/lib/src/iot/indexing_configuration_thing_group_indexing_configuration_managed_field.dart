@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexingConfigurationThingGroupIndexingConfigurationManagedField {
   /// The name of the field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The data type of the field. Valid values: `Number`, `String`, `Boolean`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IndexingConfigurationThingGroupIndexingConfigurationManagedField].
   /// [name] The name of the field.

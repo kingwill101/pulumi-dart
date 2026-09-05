@@ -141,7 +141,7 @@ class StaticIp extends pulumi.CustomResource {
           'aws:lightsail/staticIp:StaticIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipAddress = registerOutput<String>('ipAddress');
@@ -155,11 +155,12 @@ class StaticIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -173,6 +174,22 @@ class StaticIp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    supportCode = registerOutput<String>('supportCode');
+  }
+
+  /// Creates a typed reference to an existing [StaticIp] resource.
+  StaticIp.reference(String urn)
+    : super(
+        'aws:lightsail/staticIp:StaticIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');

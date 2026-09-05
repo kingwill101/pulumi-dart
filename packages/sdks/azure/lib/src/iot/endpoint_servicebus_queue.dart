@@ -187,7 +187,7 @@ import 'endpoint_servicebus_queue_state.dart';
 /// 		}
 /// 		exampleQueue, err := servicebus.NewQueue(ctx, "example", &servicebus.QueueArgs{
 /// 			Name:               pulumi.String("exampleQueue"),
-/// 			NamespaceId:        exampleNamespace.ID(),
+/// 			NamespaceId:        exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EnablePartitioning: true,
 /// 		})
 /// 		if err != nil {
@@ -195,7 +195,7 @@ import 'endpoint_servicebus_queue_state.dart';
 /// 		}
 /// 		exampleQueueAuthorizationRule, err := servicebus.NewQueueAuthorizationRule(ctx, "example", &servicebus.QueueAuthorizationRuleArgs{
 /// 			Name:    pulumi.String("exampleRule"),
-/// 			QueueId: exampleQueue.ID(),
+/// 			QueueId: exampleQueue.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:  pulumi.Bool(false),
 /// 			Send:    pulumi.Bool(true),
 /// 			Manage:  pulumi.Bool(false),
@@ -220,7 +220,7 @@ import 'endpoint_servicebus_queue_state.dart';
 /// 		}
 /// 		_, err = iot.NewEndpointServicebusQueue(ctx, "example", &iot.EndpointServicebusQueueArgs{
 /// 			ResourceGroupName: example.Name,
-/// 			IothubId:          exampleIoTHub.ID(),
+/// 			IothubId:          exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:              pulumi.String("example"),
 /// 			ConnectionString:  exampleQueueAuthorizationRule.PrimaryConnectionString,
 /// 		})
@@ -457,10 +457,11 @@ class EndpointServicebusQueue extends pulumi.CustomResource {
           'azure:iot/endpointServicebusQueue:EndpointServicebusQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');
@@ -475,11 +476,12 @@ class EndpointServicebusQueue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointServicebusQueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointServicebusQueue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -494,7 +496,28 @@ class EndpointServicebusQueue extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    endpointUri = registerOutput<String?>('endpointUri');
+    entityPath = registerOutput<String?>('entityPath');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [EndpointServicebusQueue] resource.
+  EndpointServicebusQueue.reference(String urn)
+    : super(
+        'azure:iot/endpointServicebusQueue:EndpointServicebusQueue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');

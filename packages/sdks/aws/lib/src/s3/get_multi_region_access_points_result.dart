@@ -6,34 +6,34 @@ import 'get_multi_region_access_points_access_point.dart';
 /// Result data returned by getMultiRegionAccessPoints.
 class GetMultiRegionAccessPointsResult {
   /// List of multi-region access points. See `accessPoints` below.
-  final List<GetMultiRegionAccessPointsAccessPoint> accessPoints;
+  final List<GetMultiRegionAccessPointsAccessPoint>? accessPoints;
   final String? accountId;
   /// Name of the Region.
-  final String region;
+  final String? region;
 
   /// Creates a new [GetMultiRegionAccessPointsResult].
   /// [accessPoints] List of multi-region access points. See `accessPoints` below.
   /// [accountId] Optional.
   /// [region] Name of the Region.
   const GetMultiRegionAccessPointsResult({
-    required this.accessPoints,
+    this.accessPoints,
     this.accountId,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPoints': pulumi.Input.encodeList<GetMultiRegionAccessPointsAccessPoint, Map<String, dynamic>>(accessPoints, (value) => value.toMap()),
+      'accessPoints': ?(() { final guardedValue = accessPoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMultiRegionAccessPointsAccessPoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'accountId': ?accountId,
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetMultiRegionAccessPointsResult.fromMap(Map<String, dynamic> map) {
     return GetMultiRegionAccessPointsResult(
-      accessPoints: pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(map['accessPoints']!, (value) => GetMultiRegionAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
+      accessPoints: (() { final guardedValue = map['accessPoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(guardedValue, (value) => GetMultiRegionAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())); })(),
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

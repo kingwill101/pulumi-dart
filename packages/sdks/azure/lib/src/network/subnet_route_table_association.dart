@@ -192,8 +192,8 @@ import 'subnet_route_table_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetRouteTableAssociation(ctx, "example", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     exampleSubnet.ID(),
-/// 			RouteTableId: exampleRouteTable.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -392,7 +392,7 @@ class SubnetRouteTableAssociation extends pulumi.CustomResource {
           'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     routeTableId = registerOutput<String>('routeTableId');
     subnetId = registerOutput<String>('subnetId');
@@ -403,11 +403,12 @@ class SubnetRouteTableAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetRouteTableAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetRouteTableAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,6 +422,19 @@ class SubnetRouteTableAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    routeTableId = registerOutput<String>('routeTableId');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [SubnetRouteTableAssociation] resource.
+  SubnetRouteTableAssociation.reference(String urn)
+    : super(
+        'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     routeTableId = registerOutput<String>('routeTableId');
     subnetId = registerOutput<String>('subnetId');
   }

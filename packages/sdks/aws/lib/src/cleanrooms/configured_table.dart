@@ -15,6 +15,10 @@ import 'configured_table_table_reference.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testConfiguredTable = new aws.cleanrooms.ConfiguredTable("test_configured_table", {
+///     tableReference: {
+///         databaseName: "example_database",
+///         tableName: "example_table",
+///     },
 ///     name: "pulumi-example-table",
 ///     description: "I made this table with Pulumi!",
 ///     analysisMethod: "DIRECT_QUERY",
@@ -23,10 +27,6 @@ import 'configured_table_table_reference.dart';
 ///         "column2",
 ///         "column3",
 ///     ],
-///     tableReference: {
-///         databaseName: "example_database",
-///         tableName: "example_table",
-///     },
 ///     tags: {
 ///         Project: "Pulumi",
 ///     },
@@ -37,6 +37,10 @@ import 'configured_table_table_reference.dart';
 /// import pulumi_aws as aws
 ///
 /// test_configured_table = aws.cleanrooms.ConfiguredTable("test_configured_table",
+///     table_reference={
+///         "database_name": "example_database",
+///         "table_name": "example_table",
+///     },
 ///     name="pulumi-example-table",
 ///     description="I made this table with Pulumi!",
 ///     analysis_method="DIRECT_QUERY",
@@ -45,10 +49,6 @@ import 'configured_table_table_reference.dart';
 ///         "column2",
 ///         "column3",
 ///     ],
-///     table_reference={
-///         "database_name": "example_database",
-///         "table_name": "example_table",
-///     },
 ///     tags={
 ///         "Project": "Pulumi",
 ///     })
@@ -63,6 +63,11 @@ import 'configured_table_table_reference.dart';
 /// {
 ///     var testConfiguredTable = new Aws.CleanRooms.ConfiguredTable("test_configured_table", new()
 ///     {
+///         TableReference = new Aws.CleanRooms.Inputs.ConfiguredTableTableReferenceArgs
+///         {
+///             DatabaseName = "example_database",
+///             TableName = "example_table",
+///         },
 ///         Name = "pulumi-example-table",
 ///         Description = "I made this table with Pulumi!",
 ///         AnalysisMethod = "DIRECT_QUERY",
@@ -71,11 +76,6 @@ import 'configured_table_table_reference.dart';
 ///             "column1",
 ///             "column2",
 ///             "column3",
-///         },
-///         TableReference = new Aws.CleanRooms.Inputs.ConfiguredTableTableReferenceArgs
-///         {
-///             DatabaseName = "example_database",
-///             TableName = "example_table",
 ///         },
 ///         Tags =
 ///         {
@@ -96,6 +96,10 @@ import 'configured_table_table_reference.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cleanrooms.NewConfiguredTable(ctx, "test_configured_table", &cleanrooms.ConfiguredTableArgs{
+/// 			TableReference: &cleanrooms.ConfiguredTableTableReferenceArgs{
+/// 				DatabaseName: pulumi.String("example_database"),
+/// 				TableName:    pulumi.String("example_table"),
+/// 			},
 /// 			Name:           pulumi.String("pulumi-example-table"),
 /// 			Description:    pulumi.String("I made this table with Pulumi!"),
 /// 			AnalysisMethod: pulumi.String("DIRECT_QUERY"),
@@ -103,10 +107,6 @@ import 'configured_table_table_reference.dart';
 /// 				pulumi.String("column1"),
 /// 				pulumi.String("column2"),
 /// 				pulumi.String("column3"),
-/// 			},
-/// 			TableReference: &cleanrooms.ConfiguredTableTableReferenceArgs{
-/// 				DatabaseName: pulumi.String("example_database"),
-/// 				TableName:    pulumi.String("example_table"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Project": pulumi.String("Pulumi"),
@@ -129,14 +129,14 @@ import 'configured_table_table_reference.dart';
 /// }
 ///
 /// resource "aws_cleanrooms_configuredtable" "test_configured_table" {
-///   name            = "pulumi-example-table"
-///   description     = "I made this table with Pulumi!"
-///   analysis_method = "DIRECT_QUERY"
-///   allowed_columns = ["column1", "column2", "column3"]
 ///   table_reference = {
 ///     database_name = "example_database"
 ///     table_name    = "example_table"
 ///   }
+///   name            = "pulumi-example-table"
+///   description     = "I made this table with Pulumi!"
+///   analysis_method = "DIRECT_QUERY"
+///   allowed_columns = ["column1", "column2", "column3"]
 ///   tags = {
 ///     "Project" = "Pulumi"
 ///   }
@@ -165,6 +165,10 @@ import 'configured_table_table_reference.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testConfiguredTable = new ConfiguredTable("testConfiguredTable", ConfiguredTableArgs.builder()
+///             .tableReference(ConfiguredTableTableReferenceArgs.builder()
+///                 .databaseName("example_database")
+///                 .tableName("example_table")
+///                 .build())
 ///             .name("pulumi-example-table")
 ///             .description("I made this table with Pulumi!")
 ///             .analysisMethod("DIRECT_QUERY")
@@ -172,10 +176,6 @@ import 'configured_table_table_reference.dart';
 ///                 "column1",
 ///                 "column2",
 ///                 "column3")
-///             .tableReference(ConfiguredTableTableReferenceArgs.builder()
-///                 .databaseName("example_database")
-///                 .tableName("example_table")
-///                 .build())
 ///             .tags(Map.of("Project", "Pulumi"))
 ///             .build());
 ///
@@ -188,6 +188,9 @@ import 'configured_table_table_reference.dart';
 ///     type: aws:cleanrooms:ConfiguredTable
 ///     name: test_configured_table
 ///     properties:
+///       tableReference:
+///         databaseName: example_database
+///         tableName: example_table
 ///       name: pulumi-example-table
 ///       description: I made this table with Pulumi!
 ///       analysisMethod: DIRECT_QUERY
@@ -195,9 +198,6 @@ import 'configured_table_table_reference.dart';
 ///         - column1
 ///         - column2
 ///         - column3
-///       tableReference:
-///         databaseName: example_database
-///         tableName: example_table
 ///       tags:
 ///         Project: Pulumi
 /// ```
@@ -259,9 +259,9 @@ class ConfiguredTable extends pulumi.CustomResource {
           'aws:cleanrooms/configuredTable:ConfiguredTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allowedColumns = registerOutput<List<String>>('allowedColumns');
+    allowedColumns = registerOutput<List<String>>('allowedColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analysisMethod = registerOutput<String>('analysisMethod');
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
@@ -269,8 +269,8 @@ class ConfiguredTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tableReference = registerOutput<ConfiguredTableTableReference>('tableReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfiguredTableTableReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -279,11 +279,12 @@ class ConfiguredTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfiguredTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfiguredTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,7 +298,7 @@ class ConfiguredTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedColumns = registerOutput<List<String>>('allowedColumns');
+    allowedColumns = registerOutput<List<String>>('allowedColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analysisMethod = registerOutput<String>('analysisMethod');
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
@@ -305,8 +306,30 @@ class ConfiguredTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tableReference = registerOutput<ConfiguredTableTableReference>('tableReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfiguredTableTableReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConfiguredTable] resource.
+  ConfiguredTable.reference(String urn)
+    : super(
+        'aws:cleanrooms/configuredTable:ConfiguredTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedColumns = registerOutput<List<String>>('allowedColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    analysisMethod = registerOutput<String>('analysisMethod');
+    arn = registerOutput<String>('arn');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tableReference = registerOutput<ConfiguredTableTableReference>('tableReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfiguredTableTableReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

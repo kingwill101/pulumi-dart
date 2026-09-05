@@ -155,6 +155,17 @@ Future<GetApiKeyResult> getApiKey(
   return GetApiKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiKeyResult> getApiKeyOutput(
+  GetApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:nginx/getApiKey:getApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiKeyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing NGINX Certificate.
 ///
 /// ## Example Usage
@@ -302,6 +313,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:nginx/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Nginx Configuration.
 ///
 /// ## Example Usage
@@ -440,6 +462,17 @@ Future<GetConfigurationResult> getConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:nginx/getConfiguration:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
 }
 
 /// Use this data source to access information about an existing NGINX Deployment.
@@ -587,4 +620,15 @@ Future<GetDeploymentResult> getDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:nginx/getDeployment:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
 }

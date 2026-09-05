@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedDataProtectionMetrics {
   /// Whether advanced data-protection metrics are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedDataProtectionMetrics].
   /// [enabled] Whether advanced data-protection metrics are enabled.

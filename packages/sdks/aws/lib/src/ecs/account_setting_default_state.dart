@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccountSettingDefault resources.
 class AccountSettingDefaultState {
   /// Name of the account setting to set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN that identifies the account setting.
-  final pulumi.Input<String>? principalArn;
+  final pulumi.Input<String?>? principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the setting.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AccountSettingDefaultState].
   /// [name] Name of the account setting to set.

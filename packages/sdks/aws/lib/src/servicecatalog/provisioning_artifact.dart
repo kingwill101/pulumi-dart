@@ -185,7 +185,7 @@ class ProvisioningArtifact extends pulumi.CustomResource {
           'aws:servicecatalog/provisioningArtifact:ProvisioningArtifact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     active = registerOutput<bool?>('active');
@@ -207,11 +207,12 @@ class ProvisioningArtifact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisioningArtifactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisioningArtifact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,30 @@ class ProvisioningArtifact extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    active = registerOutput<bool?>('active');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String>('description');
+    disableTemplateValidation = registerOutput<bool?>('disableTemplateValidation');
+    guidance = registerOutput<String?>('guidance');
+    this.name = registerOutput<String>('name');
+    productId = registerOutput<String>('productId');
+    provisioningArtifactId = registerOutput<String>('provisioningArtifactId');
+    region = registerOutput<String>('region');
+    templatePhysicalId = registerOutput<String?>('templatePhysicalId');
+    templateUrl = registerOutput<String?>('templateUrl');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProvisioningArtifact] resource.
+  ProvisioningArtifact.reference(String urn)
+    : super(
+        'aws:servicecatalog/provisioningArtifact:ProvisioningArtifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     active = registerOutput<bool?>('active');
     createdTime = registerOutput<String>('createdTime');

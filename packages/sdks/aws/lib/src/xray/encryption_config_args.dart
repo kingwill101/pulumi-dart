@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_xray_encryption_config_encryption_config_args_doc}
 class EncryptionConfigArgs {
   /// AWS KMS customer master key (CMK) ARN.
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
   final pulumi.Input<String> type;
 

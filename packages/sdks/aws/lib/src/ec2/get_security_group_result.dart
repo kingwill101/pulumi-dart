@@ -6,59 +6,59 @@ import 'get_security_group_filter.dart';
 /// Result data returned by getSecurityGroup.
 class GetSecurityGroupResult {
   /// Computed ARN of the security group.
-  final String arn;
+  final String? arn;
   /// Description of the security group.
-  final String description;
+  final String? description;
   final List<GetSecurityGroupFilter>? filters;
-  final String id;
-  final String name;
-  final String region;
-  final Map<String, String> tags;
-  final String vpcId;
+  final String? id;
+  final String? name;
+  final String? region;
+  final Map<String, String>? tags;
+  final String? vpcId;
 
   /// Creates a new [GetSecurityGroupResult].
   /// [arn] Computed ARN of the security group.
   /// [description] Description of the security group.
   /// [filters] Optional.
-  /// [id] Required.
-  /// [name] Required.
-  /// [region] Required.
-  /// [tags] Required.
-  /// [vpcId] Required.
+  /// [id] Optional.
+  /// [name] Optional.
+  /// [region] Optional.
+  /// [tags] Optional.
+  /// [vpcId] Optional.
   const GetSecurityGroupResult({
-    required this.arn,
-    required this.description,
+    this.arn,
+    this.description,
     this.filters,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.tags,
-    required this.vpcId,
+    this.id,
+    this.name,
+    this.region,
+    this.tags,
+    this.vpcId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
+      'arn': ?arn,
+      'description': ?description,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityGroupFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'name': name,
-      'region': region,
-      'tags': tags,
-      'vpcId': vpcId,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
+      'vpcId': ?vpcId,
     };
   }
 
   factory GetSecurityGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityGroupFilter>(guardedValue, (value) => GetSecurityGroupFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

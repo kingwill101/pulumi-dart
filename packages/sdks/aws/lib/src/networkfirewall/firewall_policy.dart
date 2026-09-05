@@ -17,16 +17,16 @@ import 'firewall_policy_state.dart';
 /// const currentGetPartition = aws.getPartition({});
 /// const currentGetCallerIdentity = aws.getCallerIdentity({});
 /// const example = new aws.networkfirewall.FirewallPolicy("example", {
-///     name: "example",
 ///     firewallPolicy: {
-///         statelessDefaultActions: ["aws:pass"],
-///         statelessFragmentDefaultActions: ["aws:drop"],
 ///         statelessRuleGroupReferences: [{
 ///             priority: 1,
 ///             resourceArn: exampleAwsNetworkfirewallRuleGroup.arn,
 ///         }],
+///         statelessDefaultActions: ["aws:pass"],
+///         statelessFragmentDefaultActions: ["aws:drop"],
 ///         tlsInspectionConfigurationArn: Promise.all([currentGetPartition, current, currentGetCallerIdentity]).then(([currentGetPartition, current, currentGetCallerIdentity]) => `arn:${currentGetPartition.partition}:network-firewall:${current.region}:${currentGetCallerIdentity.accountId}:tls-configuration/example`),
 ///     },
+///     name: "example",
 ///     tags: {
 ///         Tag1: "Value1",
 ///         Tag2: "Value2",
@@ -41,16 +41,16 @@ import 'firewall_policy_state.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_caller_identity = aws.get_caller_identity()
 /// example = aws.networkfirewall.FirewallPolicy("example",
-///     name="example",
 ///     firewall_policy={
-///         "stateless_default_actions": ["aws:pass"],
-///         "stateless_fragment_default_actions": ["aws:drop"],
 ///         "stateless_rule_group_references": [{
 ///             "priority": 1,
 ///             "resource_arn": example_aws_networkfirewall_rule_group["arn"],
 ///         }],
+///         "stateless_default_actions": ["aws:pass"],
+///         "stateless_fragment_default_actions": ["aws:drop"],
 ///         "tls_inspection_configuration_arn": f"arn:{current_get_partition.partition}:network-firewall:{current.region}:{current_get_caller_identity.account_id}:tls-configuration/example",
 ///     },
+///     name="example",
 ///     tags={
 ///         "Tag1": "Value1",
 ///         "Tag2": "Value2",
@@ -72,17 +72,8 @@ import 'firewall_policy_state.dart';
 ///
 ///     var example = new Aws.NetworkFirewall.FirewallPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
 ///         {
-///             StatelessDefaultActions = new[]
-///             {
-///                 "aws:pass",
-///             },
-///             StatelessFragmentDefaultActions = new[]
-///             {
-///                 "aws:drop",
-///             },
 ///             StatelessRuleGroupReferences = new[]
 ///             {
 ///                 new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs
@@ -90,6 +81,14 @@ import 'firewall_policy_state.dart';
 ///                     Priority = 1,
 ///                     ResourceArn = exampleAwsNetworkfirewallRuleGroup.Arn,
 ///                 },
+///             },
+///             StatelessDefaultActions = new[]
+///             {
+///                 "aws:pass",
+///             },
+///             StatelessFragmentDefaultActions = new[]
+///             {
+///                 "aws:drop",
 ///             },
 ///             TlsInspectionConfigurationArn = Output.Tuple(currentGetPartition, current, currentGetCallerIdentity).Apply(values =>
 ///             {
@@ -99,6 +98,7 @@ import 'firewall_policy_state.dart';
 ///                 return $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:network-firewall:{current.Apply(getRegionResult => getRegionResult.Region)}:{currentGetCallerIdentity.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:tls-configuration/example";
 ///             }),
 ///         },
+///         Name = "example",
 ///         Tags =
 ///         {
 ///             { "Tag1", "Value1" },
@@ -132,22 +132,22 @@ import 'firewall_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
-/// 				StatelessDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:pass"),
-/// 				},
-/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:drop"),
-/// 				},
 /// 				StatelessRuleGroupReferences: networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArray{
 /// 					&networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs{
 /// 						Priority:    pulumi.Int(1),
 /// 						ResourceArn: pulumi.Any(exampleAwsNetworkfirewallRuleGroup.Arn),
 /// 					},
 /// 				},
+/// 				StatelessDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:pass"),
+/// 				},
+/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:drop"),
+/// 				},
 /// 				TlsInspectionConfigurationArn: pulumi.Sprintf("arn:%v:network-firewall:%v:%v:tls-configuration/example", currentGetPartition.Partition, current.Region, currentGetCallerIdentity.AccountId),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Tag1": pulumi.String("Value1"),
 /// 				"Tag2": pulumi.String("Value2"),
@@ -177,16 +177,16 @@ import 'firewall_policy_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   name = "example"
 ///   firewall_policy = {
-///     stateless_default_actions          = ["aws:pass"]
-///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_rule_group_references = [{
 ///       "priority"    = 1
 ///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
 ///     }]
-///     tls_inspection_configuration_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:tls-configuration/example"
+///     stateless_default_actions          = ["aws:pass"]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     tls_inspection_configuration_arn   ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:tls-configuration/example"
 ///   }
+///   name = "example"
 ///   tags = {
 ///     "Tag1" = "Value1"
 ///     "Tag2" = "Value2"
@@ -230,16 +230,16 @@ import 'firewall_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new FirewallPolicy("example", FirewallPolicyArgs.builder()
-///             .name("example")
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
-///                 .statelessDefaultActions("aws:pass")
-///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
 ///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
 ///                     .build())
+///                 .statelessDefaultActions("aws:pass")
+///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .tlsInspectionConfigurationArn(String.format("arn:%s:network-firewall:%s:%s:tls-configuration/example", currentGetPartition.partition(),current.region(),currentGetCallerIdentity.accountId()))
 ///                 .build())
+///             .name("example")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Tag1", "Value1"),
 ///                 Map.entry("Tag2", "Value2")
@@ -254,16 +254,16 @@ import 'firewall_policy_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:FirewallPolicy
 ///     properties:
-///       name: example
 ///       firewallPolicy:
+///         statelessRuleGroupReferences:
+///           - priority: 1
+///             resourceArn: ${exampleAwsNetworkfirewallRuleGroup.arn}
 ///         statelessDefaultActions:
 ///           - aws:pass
 ///         statelessFragmentDefaultActions:
 ///           - aws:drop
-///         statelessRuleGroupReferences:
-///           - priority: 1
-///             resourceArn: ${exampleAwsNetworkfirewallRuleGroup.arn}
 ///         tlsInspectionConfigurationArn: arn:${currentGetPartition.partition}:network-firewall:${current.region}:${currentGetCallerIdentity.accountId}:tls-configuration/example
+///       name: example
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
@@ -291,26 +291,26 @@ import 'firewall_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.FirewallPolicy("example", {
-///     name: "example",
 ///     firewallPolicy: {
 ///         policyVariables: {
 ///             ruleVariables: [{
-///                 key: "HOME_NET",
 ///                 ipSet: {
 ///                     definitions: [
 ///                         "10.0.0.0/16",
 ///                         "10.1.0.0/24",
 ///                     ],
 ///                 },
+///                 key: "HOME_NET",
 ///             }],
 ///         },
-///         statelessDefaultActions: ["aws:pass"],
-///         statelessFragmentDefaultActions: ["aws:drop"],
 ///         statelessRuleGroupReferences: [{
 ///             priority: 1,
 ///             resourceArn: exampleAwsNetworkfirewallRuleGroup.arn,
 ///         }],
+///         statelessDefaultActions: ["aws:pass"],
+///         statelessFragmentDefaultActions: ["aws:drop"],
 ///     },
+///     name: "example",
 ///     tags: {
 ///         Tag1: "Value1",
 ///         Tag2: "Value2",
@@ -322,26 +322,26 @@ import 'firewall_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.FirewallPolicy("example",
-///     name="example",
 ///     firewall_policy={
 ///         "policy_variables": {
 ///             "rule_variables": [{
-///                 "key": "HOME_NET",
 ///                 "ip_set": {
 ///                     "definitions": [
 ///                         "10.0.0.0/16",
 ///                         "10.1.0.0/24",
 ///                     ],
 ///                 },
+///                 "key": "HOME_NET",
 ///             }],
 ///         },
-///         "stateless_default_actions": ["aws:pass"],
-///         "stateless_fragment_default_actions": ["aws:drop"],
 ///         "stateless_rule_group_references": [{
 ///             "priority": 1,
 ///             "resource_arn": example_aws_networkfirewall_rule_group["arn"],
 ///         }],
+///         "stateless_default_actions": ["aws:pass"],
+///         "stateless_fragment_default_actions": ["aws:drop"],
 ///     },
+///     name="example",
 ///     tags={
 ///         "Tag1": "Value1",
 ///         "Tag2": "Value2",
@@ -357,7 +357,6 @@ import 'firewall_policy_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.FirewallPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
 ///         {
 ///             PolicyVariables = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyPolicyVariablesArgs
@@ -366,7 +365,6 @@ import 'firewall_policy_state.dart';
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableArgs
 ///                     {
-///                         Key = "HOME_NET",
 ///                         IpSet = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSetArgs
 ///                         {
 ///                             Definitions = new[]
@@ -375,7 +373,16 @@ import 'firewall_policy_state.dart';
 ///                                 "10.1.0.0/24",
 ///                             },
 ///                         },
+///                         Key = "HOME_NET",
 ///                     },
+///                 },
+///             },
+///             StatelessRuleGroupReferences = new[]
+///             {
+///                 new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs
+///                 {
+///                     Priority = 1,
+///                     ResourceArn = exampleAwsNetworkfirewallRuleGroup.Arn,
 ///                 },
 ///             },
 ///             StatelessDefaultActions = new[]
@@ -386,15 +393,8 @@ import 'firewall_policy_state.dart';
 ///             {
 ///                 "aws:drop",
 ///             },
-///             StatelessRuleGroupReferences = new[]
-///             {
-///                 new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs
-///                 {
-///                     Priority = 1,
-///                     ResourceArn = exampleAwsNetworkfirewallRuleGroup.Arn,
-///                 },
-///             },
 ///         },
+///         Name = "example",
 ///         Tags =
 ///         {
 ///             { "Tag1", "Value1" },
@@ -415,19 +415,24 @@ import 'firewall_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
 /// 				PolicyVariables: &networkfirewall.FirewallPolicyFirewallPolicyPolicyVariablesArgs{
 /// 					RuleVariables: networkfirewall.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableArray{
 /// 						&networkfirewall.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableArgs{
-/// 							Key: pulumi.String("HOME_NET"),
 /// 							IpSet: &networkfirewall.FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSetArgs{
 /// 								Definitions: pulumi.StringArray{
 /// 									pulumi.String("10.0.0.0/16"),
 /// 									pulumi.String("10.1.0.0/24"),
 /// 								},
 /// 							},
+/// 							Key: pulumi.String("HOME_NET"),
 /// 						},
+/// 					},
+/// 				},
+/// 				StatelessRuleGroupReferences: networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArray{
+/// 					&networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs{
+/// 						Priority:    pulumi.Int(1),
+/// 						ResourceArn: pulumi.Any(exampleAwsNetworkfirewallRuleGroup.Arn),
 /// 					},
 /// 				},
 /// 				StatelessDefaultActions: pulumi.StringArray{
@@ -436,13 +441,8 @@ import 'firewall_policy_state.dart';
 /// 				StatelessFragmentDefaultActions: pulumi.StringArray{
 /// 					pulumi.String("aws:drop"),
 /// 				},
-/// 				StatelessRuleGroupReferences: networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArray{
-/// 					&networkfirewall.FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs{
-/// 						Priority:    pulumi.Int(1),
-/// 						ResourceArn: pulumi.Any(exampleAwsNetworkfirewallRuleGroup.Arn),
-/// 					},
-/// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Tag1": pulumi.String("Value1"),
 /// 				"Tag2": pulumi.String("Value2"),
@@ -465,23 +465,23 @@ import 'firewall_policy_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   name = "example"
 ///   firewall_policy = {
 ///     policy_variables = {
 ///       rule_variables = [{
-///         "key" = "HOME_NET"
 ///         "ipSet" = {
 ///           "definitions" = ["10.0.0.0/16", "10.1.0.0/24"]
 ///         }
+///         "key" = "HOME_NET"
 ///       }]
 ///     }
-///     stateless_default_actions          = ["aws:pass"]
-///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_rule_group_references = [{
 ///       "priority"    = 1
 ///       "resourceArn" = exampleAwsNetworkfirewallRuleGroup.arn
 ///     }]
+///     stateless_default_actions          = ["aws:pass"]
+///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
+///   name = "example"
 ///   tags = {
 ///     "Tag1" = "Value1"
 ///     "Tag2" = "Value2"
@@ -515,25 +515,25 @@ import 'firewall_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FirewallPolicy("example", FirewallPolicyArgs.builder()
-///             .name("example")
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
 ///                 .policyVariables(FirewallPolicyFirewallPolicyPolicyVariablesArgs.builder()
 ///                     .ruleVariables(FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableArgs.builder()
-///                         .key("HOME_NET")
 ///                         .ipSet(FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSetArgs.builder()
 ///                             .definitions(
 ///                                 "10.0.0.0/16",
 ///                                 "10.1.0.0/24")
 ///                             .build())
+///                         .key("HOME_NET")
 ///                         .build())
 ///                     .build())
-///                 .statelessDefaultActions("aws:pass")
-///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .statelessRuleGroupReferences(FirewallPolicyFirewallPolicyStatelessRuleGroupReferenceArgs.builder()
 ///                     .priority(1)
 ///                     .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
 ///                     .build())
+///                 .statelessDefaultActions("aws:pass")
+///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .build())
+///             .name("example")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Tag1", "Value1"),
 ///                 Map.entry("Tag2", "Value2")
@@ -548,22 +548,22 @@ import 'firewall_policy_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:FirewallPolicy
 ///     properties:
-///       name: example
 ///       firewallPolicy:
 ///         policyVariables:
 ///           ruleVariables:
-///             - key: HOME_NET
-///               ipSet:
+///             - ipSet:
 ///                 definitions:
 ///                   - 10.0.0.0/16
 ///                   - 10.1.0.0/24
+///               key: HOME_NET
+///         statelessRuleGroupReferences:
+///           - priority: 1
+///             resourceArn: ${exampleAwsNetworkfirewallRuleGroup.arn}
 ///         statelessDefaultActions:
 ///           - aws:pass
 ///         statelessFragmentDefaultActions:
 ///           - aws:drop
-///         statelessRuleGroupReferences:
-///           - priority: 1
-///             resourceArn: ${exampleAwsNetworkfirewallRuleGroup.arn}
+///       name: example
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
@@ -578,13 +578,7 @@ import 'firewall_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.FirewallPolicy("example", {
-///     name: "example",
 ///     firewallPolicy: {
-///         statelessDefaultActions: [
-///             "aws:pass",
-///             "ExampleCustomAction",
-///         ],
-///         statelessFragmentDefaultActions: ["aws:drop"],
 ///         statelessCustomActions: [{
 ///             actionDefinition: {
 ///                 publishMetricAction: {
@@ -595,7 +589,13 @@ import 'firewall_policy_state.dart';
 ///             },
 ///             actionName: "ExampleCustomAction",
 ///         }],
+///         statelessDefaultActions: [
+///             "aws:pass",
+///             "ExampleCustomAction",
+///         ],
+///         statelessFragmentDefaultActions: ["aws:drop"],
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -603,13 +603,7 @@ import 'firewall_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.FirewallPolicy("example",
-///     name="example",
 ///     firewall_policy={
-///         "stateless_default_actions": [
-///             "aws:pass",
-///             "ExampleCustomAction",
-///         ],
-///         "stateless_fragment_default_actions": ["aws:drop"],
 ///         "stateless_custom_actions": [{
 ///             "action_definition": {
 ///                 "publish_metric_action": {
@@ -620,7 +614,13 @@ import 'firewall_policy_state.dart';
 ///             },
 ///             "action_name": "ExampleCustomAction",
 ///         }],
-///     })
+///         "stateless_default_actions": [
+///             "aws:pass",
+///             "ExampleCustomAction",
+///         ],
+///         "stateless_fragment_default_actions": ["aws:drop"],
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -632,18 +632,8 @@ import 'firewall_policy_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.FirewallPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
 ///         {
-///             StatelessDefaultActions = new[]
-///             {
-///                 "aws:pass",
-///                 "ExampleCustomAction",
-///             },
-///             StatelessFragmentDefaultActions = new[]
-///             {
-///                 "aws:drop",
-///             },
 ///             StatelessCustomActions = new[]
 ///             {
 ///                 new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatelessCustomActionArgs
@@ -664,7 +654,17 @@ import 'firewall_policy_state.dart';
 ///                     ActionName = "ExampleCustomAction",
 ///                 },
 ///             },
+///             StatelessDefaultActions = new[]
+///             {
+///                 "aws:pass",
+///                 "ExampleCustomAction",
+///             },
+///             StatelessFragmentDefaultActions = new[]
+///             {
+///                 "aws:drop",
+///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -680,15 +680,7 @@ import 'firewall_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
-/// 				StatelessDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:pass"),
-/// 					pulumi.String("ExampleCustomAction"),
-/// 				},
-/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:drop"),
-/// 				},
 /// 				StatelessCustomActions: networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionArray{
 /// 					&networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionArgs{
 /// 						ActionDefinition: &networkfirewall.FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionArgs{
@@ -703,7 +695,15 @@ import 'firewall_policy_state.dart';
 /// 						ActionName: pulumi.String("ExampleCustomAction"),
 /// 					},
 /// 				},
+/// 				StatelessDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:pass"),
+/// 					pulumi.String("ExampleCustomAction"),
+/// 				},
+/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:drop"),
+/// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -722,10 +722,7 @@ import 'firewall_policy_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   name = "example"
 ///   firewall_policy = {
-///     stateless_default_actions          = ["aws:pass", "ExampleCustomAction"]
-///     stateless_fragment_default_actions = ["aws:drop"]
 ///     stateless_custom_actions = [{
 ///       "actionDefinition" = {
 ///         "publishMetricAction" = {
@@ -736,7 +733,10 @@ import 'firewall_policy_state.dart';
 ///       }
 ///       "actionName" = "ExampleCustomAction"
 ///     }]
+///     stateless_default_actions          = ["aws:pass", "ExampleCustomAction"]
+///     stateless_fragment_default_actions = ["aws:drop"]
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -766,12 +766,7 @@ import 'firewall_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FirewallPolicy("example", FirewallPolicyArgs.builder()
-///             .name("example")
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
-///                 .statelessDefaultActions(
-///                     "aws:pass",
-///                     "ExampleCustomAction")
-///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .statelessCustomActions(FirewallPolicyFirewallPolicyStatelessCustomActionArgs.builder()
 ///                     .actionDefinition(FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionArgs.builder()
 ///                         .publishMetricAction(FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionArgs.builder()
@@ -782,7 +777,12 @@ import 'firewall_policy_state.dart';
 ///                         .build())
 ///                     .actionName("ExampleCustomAction")
 ///                     .build())
+///                 .statelessDefaultActions(
+///                     "aws:pass",
+///                     "ExampleCustomAction")
+///                 .statelessFragmentDefaultActions("aws:drop")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -793,19 +793,19 @@ import 'firewall_policy_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:FirewallPolicy
 ///     properties:
-///       name: example
 ///       firewallPolicy:
-///         statelessDefaultActions:
-///           - aws:pass
-///           - ExampleCustomAction
-///         statelessFragmentDefaultActions:
-///           - aws:drop
 ///         statelessCustomActions:
 ///           - actionDefinition:
 ///               publishMetricAction:
 ///                 dimensions:
 ///                   - value: '1'
 ///             actionName: ExampleCustomAction
+///         statelessDefaultActions:
+///           - aws:pass
+///           - ExampleCustomAction
+///         statelessFragmentDefaultActions:
+///           - aws:drop
+///       name: example
 /// ```
 ///
 ///
@@ -819,15 +819,15 @@ import 'firewall_policy_state.dart';
 /// const current = aws.getRegion({});
 /// const currentGetPartition = aws.getPartition({});
 /// const example = new aws.networkfirewall.FirewallPolicy("example", {
-///     name: "example",
 ///     firewallPolicy: {
-///         statelessFragmentDefaultActions: ["aws:drop"],
-///         statelessDefaultActions: ["aws:pass"],
 ///         statefulRuleGroupReferences: [{
 ///             deepThreatInspection: "true",
 ///             resourceArn: Promise.all([currentGetPartition, current]).then(([currentGetPartition, current]) => `arn:${currentGetPartition.partition}:network-firewall:${current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder`),
 ///         }],
+///         statelessFragmentDefaultActions: ["aws:drop"],
+///         statelessDefaultActions: ["aws:pass"],
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -837,15 +837,15 @@ import 'firewall_policy_state.dart';
 /// current = aws.get_region()
 /// current_get_partition = aws.get_partition()
 /// example = aws.networkfirewall.FirewallPolicy("example",
-///     name="example",
 ///     firewall_policy={
-///         "stateless_fragment_default_actions": ["aws:drop"],
-///         "stateless_default_actions": ["aws:pass"],
 ///         "stateful_rule_group_references": [{
 ///             "deep_threat_inspection": "true",
 ///             "resource_arn": f"arn:{current_get_partition.partition}:network-firewall:{current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder",
 ///         }],
-///     })
+///         "stateless_fragment_default_actions": ["aws:drop"],
+///         "stateless_default_actions": ["aws:pass"],
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -861,17 +861,8 @@ import 'firewall_policy_state.dart';
 ///
 ///     var example = new Aws.NetworkFirewall.FirewallPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
 ///         {
-///             StatelessFragmentDefaultActions = new[]
-///             {
-///                 "aws:drop",
-///             },
-///             StatelessDefaultActions = new[]
-///             {
-///                 "aws:pass",
-///             },
 ///             StatefulRuleGroupReferences = new[]
 ///             {
 ///                 new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArgs
@@ -885,7 +876,16 @@ import 'firewall_policy_state.dart';
 ///                     }),
 ///                 },
 ///             },
+///             StatelessFragmentDefaultActions = new[]
+///             {
+///                 "aws:drop",
+///             },
+///             StatelessDefaultActions = new[]
+///             {
+///                 "aws:pass",
+///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -910,21 +910,21 @@ import 'firewall_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
-/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:drop"),
-/// 				},
-/// 				StatelessDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:pass"),
-/// 				},
 /// 				StatefulRuleGroupReferences: networkfirewall.FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArray{
 /// 					&networkfirewall.FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArgs{
 /// 						DeepThreatInspection: pulumi.String("true"),
 /// 						ResourceArn:          pulumi.Sprintf("arn:%v:network-firewall:%v:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder", currentGetPartition.Partition, current.Region),
 /// 					},
 /// 				},
+/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:drop"),
+/// 				},
+/// 				StatelessDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:pass"),
+/// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -948,15 +948,15 @@ import 'firewall_policy_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   name = "example"
 ///   firewall_policy = {
-///     stateless_fragment_default_actions = ["aws:drop"]
-///     stateless_default_actions          = ["aws:pass"]
 ///     stateful_rule_group_references = [{
 ///       "deepThreatInspection" = true
 ///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder"
 ///     }]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_default_actions          = ["aws:pass"]
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -992,15 +992,15 @@ import 'firewall_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new FirewallPolicy("example", FirewallPolicyArgs.builder()
-///             .name("example")
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
-///                 .statelessFragmentDefaultActions("aws:drop")
-///                 .statelessDefaultActions("aws:pass")
 ///                 .statefulRuleGroupReferences(FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceArgs.builder()
 ///                     .deepThreatInspection("true")
 ///                     .resourceArn(String.format("arn:%s:network-firewall:%s:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder", currentGetPartition.partition(),current.region()))
 ///                     .build())
+///                 .statelessFragmentDefaultActions("aws:drop")
+///                 .statelessDefaultActions("aws:pass")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -1011,15 +1011,15 @@ import 'firewall_policy_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:FirewallPolicy
 ///     properties:
-///       name: example
 ///       firewallPolicy:
+///         statefulRuleGroupReferences:
+///           - deepThreatInspection: true
+///             resourceArn: arn:${currentGetPartition.partition}:network-firewall:${current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder
 ///         statelessFragmentDefaultActions:
 ///           - aws:drop
 ///         statelessDefaultActions:
 ///           - aws:pass
-///         statefulRuleGroupReferences:
-///           - deepThreatInspection: true
-///             resourceArn: arn:${currentGetPartition.partition}:network-firewall:${current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureActionOrder
+///       name: example
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -1042,10 +1042,7 @@ import 'firewall_policy_state.dart';
 /// const current = aws.getRegion({});
 /// const currentGetPartition = aws.getPartition({});
 /// const example = new aws.networkfirewall.FirewallPolicy("example", {
-///     name: "example",
 ///     firewallPolicy: {
-///         statelessFragmentDefaultActions: ["aws:drop"],
-///         statelessDefaultActions: ["aws:pass"],
 ///         statefulEngineOptions: {
 ///             ruleOrder: "STRICT_ORDER",
 ///         },
@@ -1054,7 +1051,10 @@ import 'firewall_policy_state.dart';
 ///             priority: 1,
 ///             resourceArn: Promise.all([currentGetPartition, current]).then(([currentGetPartition, current]) => `arn:${currentGetPartition.partition}:network-firewall:${current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder`),
 ///         }],
+///         statelessFragmentDefaultActions: ["aws:drop"],
+///         statelessDefaultActions: ["aws:pass"],
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -1064,10 +1064,7 @@ import 'firewall_policy_state.dart';
 /// current = aws.get_region()
 /// current_get_partition = aws.get_partition()
 /// example = aws.networkfirewall.FirewallPolicy("example",
-///     name="example",
 ///     firewall_policy={
-///         "stateless_fragment_default_actions": ["aws:drop"],
-///         "stateless_default_actions": ["aws:pass"],
 ///         "stateful_engine_options": {
 ///             "rule_order": "STRICT_ORDER",
 ///         },
@@ -1076,7 +1073,10 @@ import 'firewall_policy_state.dart';
 ///             "priority": 1,
 ///             "resource_arn": f"arn:{current_get_partition.partition}:network-firewall:{current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder",
 ///         }],
-///     })
+///         "stateless_fragment_default_actions": ["aws:drop"],
+///         "stateless_default_actions": ["aws:pass"],
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1092,17 +1092,8 @@ import 'firewall_policy_state.dart';
 ///
 ///     var example = new Aws.NetworkFirewall.FirewallPolicy("example", new()
 ///     {
-///         Name = "example",
 ///         FirewallPolicyConfiguration = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyArgs
 ///         {
-///             StatelessFragmentDefaultActions = new[]
-///             {
-///                 "aws:drop",
-///             },
-///             StatelessDefaultActions = new[]
-///             {
-///                 "aws:pass",
-///             },
 ///             StatefulEngineOptions = new Aws.NetworkFirewall.Inputs.FirewallPolicyFirewallPolicyStatefulEngineOptionsArgs
 ///             {
 ///                 RuleOrder = "STRICT_ORDER",
@@ -1121,7 +1112,16 @@ import 'firewall_policy_state.dart';
 ///                     }),
 ///                 },
 ///             },
+///             StatelessFragmentDefaultActions = new[]
+///             {
+///                 "aws:drop",
+///             },
+///             StatelessDefaultActions = new[]
+///             {
+///                 "aws:pass",
+///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -1146,14 +1146,7 @@ import 'firewall_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewFirewallPolicy(ctx, "example", &networkfirewall.FirewallPolicyArgs{
-/// 			Name: pulumi.String("example"),
 /// 			FirewallPolicy: &networkfirewall.FirewallPolicyFirewallPolicyArgs{
-/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:drop"),
-/// 				},
-/// 				StatelessDefaultActions: pulumi.StringArray{
-/// 					pulumi.String("aws:pass"),
-/// 				},
 /// 				StatefulEngineOptions: &networkfirewall.FirewallPolicyFirewallPolicyStatefulEngineOptionsArgs{
 /// 					RuleOrder: pulumi.String("STRICT_ORDER"),
 /// 				},
@@ -1164,7 +1157,14 @@ import 'firewall_policy_state.dart';
 /// 						ResourceArn:          pulumi.Sprintf("arn:%v:network-firewall:%v:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder", currentGetPartition.Partition, current.Region),
 /// 					},
 /// 				},
+/// 				StatelessFragmentDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:drop"),
+/// 				},
+/// 				StatelessDefaultActions: pulumi.StringArray{
+/// 					pulumi.String("aws:pass"),
+/// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1188,10 +1188,7 @@ import 'firewall_policy_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewallpolicy" "example" {
-///   name = "example"
 ///   firewall_policy = {
-///     stateless_fragment_default_actions = ["aws:drop"]
-///     stateless_default_actions          = ["aws:pass"]
 ///     stateful_engine_options = {
 ///       rule_order = "STRICT_ORDER"
 ///     }
@@ -1200,7 +1197,10 @@ import 'firewall_policy_state.dart';
 ///       "priority"             = 1
 ///       "resourceArn"          ="arn:${data.aws_getpartition.currentGetPartition.partition}:network-firewall:${data.aws_getregion.current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder"
 ///     }]
+///     stateless_fragment_default_actions = ["aws:drop"]
+///     stateless_default_actions          = ["aws:pass"]
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -1237,10 +1237,7 @@ import 'firewall_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new FirewallPolicy("example", FirewallPolicyArgs.builder()
-///             .name("example")
 ///             .firewallPolicy(FirewallPolicyFirewallPolicyArgs.builder()
-///                 .statelessFragmentDefaultActions("aws:drop")
-///                 .statelessDefaultActions("aws:pass")
 ///                 .statefulEngineOptions(FirewallPolicyFirewallPolicyStatefulEngineOptionsArgs.builder()
 ///                     .ruleOrder("STRICT_ORDER")
 ///                     .build())
@@ -1249,7 +1246,10 @@ import 'firewall_policy_state.dart';
 ///                     .priority(1)
 ///                     .resourceArn(String.format("arn:%s:network-firewall:%s:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder", currentGetPartition.partition(),current.region()))
 ///                     .build())
+///                 .statelessFragmentDefaultActions("aws:drop")
+///                 .statelessDefaultActions("aws:pass")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -1260,18 +1260,18 @@ import 'firewall_policy_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:FirewallPolicy
 ///     properties:
-///       name: example
 ///       firewallPolicy:
-///         statelessFragmentDefaultActions:
-///           - aws:drop
-///         statelessDefaultActions:
-///           - aws:pass
 ///         statefulEngineOptions:
 ///           ruleOrder: STRICT_ORDER
 ///         statefulRuleGroupReferences:
 ///           - deepThreatInspection: false
 ///             priority: 1
 ///             resourceArn: arn:${currentGetPartition.partition}:network-firewall:${current.region}:aws-managed:stateful-rulegroup/AttackInfrastructureStrictOrder
+///         statelessFragmentDefaultActions:
+///           - aws:drop
+///         statelessDefaultActions:
+///           - aws:pass
+///       name: example
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -1292,7 +1292,7 @@ import 'firewall_policy_state.dart';
 /// $ pulumi import aws:networkfirewall/firewallPolicy:FirewallPolicy example arn:aws:network-firewall:us-west-1:123456789012:firewall-policy/example
 /// ```
 class FirewallPolicy extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) that identifies the firewall policy.
+  /// ARN that identifies the firewall policy.
   late final pulumi.Output<String> arn;
   /// A friendly description of the firewall policy.
   late final pulumi.Output<String?> description;
@@ -1323,7 +1323,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'aws:networkfirewall/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -1331,8 +1331,8 @@ class FirewallPolicy extends pulumi.CustomResource {
     firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>('firewallPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyFirewallPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateToken = registerOutput<String>('updateToken');
   }
 
@@ -1341,11 +1341,12 @@ class FirewallPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1365,8 +1366,28 @@ class FirewallPolicy extends pulumi.CustomResource {
     firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>('firewallPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyFirewallPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateToken = registerOutput<String>('updateToken');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicy] resource.
+  FirewallPolicy.reference(String urn)
+    : super(
+        'aws:networkfirewall/firewallPolicy:FirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    encryptionConfiguration = registerOutput<FirewallPolicyEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    firewallPolicy = registerOutput<FirewallPolicyFirewallPolicy>('firewallPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyFirewallPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateToken = registerOutput<String>('updateToken');
   }
 }

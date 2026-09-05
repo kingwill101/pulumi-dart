@@ -10,17 +10,17 @@ import 'active_role_assignment_ticket.dart';
 /// {@macro pulumi_pim_active_role_assignment_active_role_assignment_args_doc}
 class ActiveRoleAssignmentArgs {
   /// The justification for the role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// Object ID of the principal for this role assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
   /// The role definition ID for this role assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String> roleDefinitionId;
   /// A `schedule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ActiveRoleAssignmentSchedule>? schedule;
+  final pulumi.Input<ActiveRoleAssignmentSchedule?>? schedule;
   /// The scope for this role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   final pulumi.Input<String> scope;
   /// A `ticket` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ActiveRoleAssignmentTicket>? ticket;
+  final pulumi.Input<ActiveRoleAssignmentTicket?>? ticket;
 
   /// Creates a new [ActiveRoleAssignmentArgs].
   /// [justification] The justification for the role assignment. Changing this forces a new resource to be created.

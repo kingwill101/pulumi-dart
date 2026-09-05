@@ -15,10 +15,10 @@ import 'gateway_api_state.dart';
 ///     name: "example-api",
 ///     resourceGroupName: "example-resources",
 /// });
-/// const exampleGetApi = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getApi({
+/// const exampleGetApi = example.then(example => azure.apimanagement.getApi({
 ///     name: "search-api",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 ///     revision: "2",
 /// }));
 /// const exampleGetGateway = example.then(example => azure.apimanagement.getGateway({
@@ -269,7 +269,7 @@ class GatewayApi extends pulumi.CustomResource {
           'azure:apimanagement/gatewayApi:GatewayApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     gatewayId = registerOutput<String>('gatewayId');
@@ -280,11 +280,12 @@ class GatewayApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -298,6 +299,19 @@ class GatewayApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    gatewayId = registerOutput<String>('gatewayId');
+  }
+
+  /// Creates a typed reference to an existing [GatewayApi] resource.
+  GatewayApi.reference(String urn)
+    : super(
+        'azure:apimanagement/gatewayApi:GatewayApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     gatewayId = registerOutput<String>('gatewayId');
   }

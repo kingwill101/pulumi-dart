@@ -122,7 +122,7 @@ class OrganizationsAccess extends pulumi.CustomResource {
           'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
   }
@@ -132,11 +132,12 @@ class OrganizationsAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationsAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationsAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -150,6 +151,18 @@ class OrganizationsAccess extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationsAccess] resource.
+  OrganizationsAccess.reference(String urn)
+    : super(
+        'aws:servicecatalog/organizationsAccess:OrganizationsAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
   }
 }

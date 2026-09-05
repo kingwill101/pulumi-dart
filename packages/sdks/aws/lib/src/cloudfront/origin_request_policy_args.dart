@@ -11,13 +11,13 @@ import 'origin_request_policy_query_strings_config.dart';
 /// {@macro pulumi_cloudfront_origin_request_policy_origin_request_policy_args_doc}
 class OriginRequestPolicyArgs {
   /// Comment to describe the origin request policy.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Object that determines whether any cookies in viewer requests (and if so, which cookies) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Cookies Config for more information.
   final pulumi.Input<OriginRequestPolicyCookiesConfig> cookiesConfig;
   /// Object that determines whether any HTTP headers (and if so, which headers) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
   final pulumi.Input<OriginRequestPolicyHeadersConfig> headersConfig;
   /// Unique name to identify the origin request policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
   final pulumi.Input<OriginRequestPolicyQueryStringsConfig> queryStringsConfig;
 

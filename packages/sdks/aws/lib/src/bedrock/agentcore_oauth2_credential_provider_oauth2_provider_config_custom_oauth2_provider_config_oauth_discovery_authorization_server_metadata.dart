@@ -8,7 +8,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
   /// OAuth2 authorization server issuer identifier.
   final pulumi.Input<String> issuer;
   /// Set of OAuth2 response types supported by the authorization server.
-  final pulumi.Input<List<String>>? responseTypes;
+  final pulumi.Input<List<String>?>? responseTypes;
   /// OAuth2 token endpoint URL.
   final pulumi.Input<String> tokenEndpoint;
 

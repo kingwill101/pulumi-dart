@@ -155,14 +155,14 @@ import 'spring_cloud_customized_accelerator_state.dart';
 /// 		}
 /// 		exampleSpringCloudAccelerator, err := appplatform.NewSpringCloudAccelerator(ctx, "example", &appplatform.SpringCloudAcceleratorArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudCustomizedAccelerator(ctx, "example", &appplatform.SpringCloudCustomizedAcceleratorArgs{
 /// 			Name:                     pulumi.String("example"),
-/// 			SpringCloudAcceleratorId: exampleSpringCloudAccelerator.ID(),
+/// 			SpringCloudAcceleratorId: exampleSpringCloudAccelerator.ID().ToIDOutput().ToStringOutput(),
 /// 			GitRepository: &appplatform.SpringCloudCustomizedAcceleratorGitRepositoryArgs{
 /// 				Url:               pulumi.String("https://github.com/Azure-Samples/piggymetrics"),
 /// 				GitTag:            pulumi.String("spring.version.2.0.3"),
@@ -368,9 +368,9 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
           'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    acceleratorTags = registerOutput<List<String>?>('acceleratorTags');
+    acceleratorTags = registerOutput<List<String>?>('acceleratorTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     acceleratorType = registerOutput<String?>('acceleratorType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -385,11 +385,12 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudCustomizedAcceleratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudCustomizedAccelerator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -403,7 +404,26 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    acceleratorTags = registerOutput<List<String>?>('acceleratorTags');
+    acceleratorTags = registerOutput<List<String>?>('acceleratorTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    acceleratorType = registerOutput<String?>('acceleratorType');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    gitRepository = registerOutput<SpringCloudCustomizedAcceleratorGitRepository>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudCustomizedAcceleratorGitRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iconUrl = registerOutput<String?>('iconUrl');
+    this.name = registerOutput<String>('name');
+    springCloudAcceleratorId = registerOutput<String>('springCloudAcceleratorId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudCustomizedAccelerator] resource.
+  SpringCloudCustomizedAccelerator.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorTags = registerOutput<List<String>?>('acceleratorTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     acceleratorType = registerOutput<String?>('acceleratorType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

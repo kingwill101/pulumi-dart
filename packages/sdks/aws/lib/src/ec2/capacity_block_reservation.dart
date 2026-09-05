@@ -229,7 +229,7 @@ class CapacityBlockReservation extends pulumi.CustomResource {
           'aws:ec2/capacityBlockReservation:CapacityBlockReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
@@ -246,8 +246,8 @@ class CapacityBlockReservation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationType = registerOutput<String>('reservationType');
     startDate = registerOutput<String>('startDate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     timeouts = registerOutput<CapacityBlockReservationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityBlockReservationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -257,11 +257,12 @@ class CapacityBlockReservation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapacityBlockReservationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CapacityBlockReservation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,8 +291,38 @@ class CapacityBlockReservation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationType = registerOutput<String>('reservationType');
     startDate = registerOutput<String>('startDate');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancy = registerOutput<String>('tenancy');
+    timeouts = registerOutput<CapacityBlockReservationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityBlockReservationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CapacityBlockReservation] resource.
+  CapacityBlockReservation.reference(String urn)
+    : super(
+        'aws:ec2/capacityBlockReservation:CapacityBlockReservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    capacityBlockOfferingId = registerOutput<String>('capacityBlockOfferingId');
+    createdDate = registerOutput<String>('createdDate');
+    ebsOptimized = registerOutput<bool>('ebsOptimized');
+    endDate = registerOutput<String>('endDate');
+    endDateType = registerOutput<String>('endDateType');
+    instanceCount = registerOutput<int>('instanceCount');
+    instancePlatform = registerOutput<String>('instancePlatform');
+    instanceType = registerOutput<String>('instanceType');
+    outpostArn = registerOutput<String>('outpostArn');
+    placementGroupArn = registerOutput<String>('placementGroupArn');
+    region = registerOutput<String>('region');
+    reservationType = registerOutput<String>('reservationType');
+    startDate = registerOutput<String>('startDate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     timeouts = registerOutput<CapacityBlockReservationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityBlockReservationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

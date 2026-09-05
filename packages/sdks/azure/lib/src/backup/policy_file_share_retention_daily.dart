@@ -20,7 +20,7 @@ class PolicyFileShareRetentionDaily {
 
   factory PolicyFileShareRetentionDaily.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareRetentionDaily(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
     );
   }
 }

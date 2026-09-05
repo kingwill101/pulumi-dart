@@ -6,9 +6,9 @@ import 'linux_web_app_logs_http_logs_file_system.dart';
 
 class LinuxWebAppLogsHttpLogs {
   /// A `azureBlobStorageHttp` block as defined above.
-  final pulumi.Input<LinuxWebAppLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<LinuxWebAppLogsHttpLogsAzureBlobStorage?>? azureBlobStorage;
   /// A `fileSystem` block as defined above.
-  final pulumi.Input<LinuxWebAppLogsHttpLogsFileSystem>? fileSystem;
+  final pulumi.Input<LinuxWebAppLogsHttpLogsFileSystem?>? fileSystem;
 
   /// Creates a new [LinuxWebAppLogsHttpLogs].
   /// [azureBlobStorage] A `azureBlobStorageHttp` block as defined above.

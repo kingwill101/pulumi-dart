@@ -6,73 +6,73 @@ import 'get_accelerator_ip_set.dart';
 
 /// Result data returned by getAccelerator.
 class GetAcceleratorResult {
-  final String arn;
-  final List<GetAcceleratorAttribute> attributes;
-  final String dnsName;
-  final String dualStackDnsName;
-  final bool enabled;
-  final String hostedZoneId;
-  final String id;
-  final String ipAddressType;
-  final List<GetAcceleratorIpSet> ipSets;
-  final String name;
-  final Map<String, String> tags;
+  final String? arn;
+  final List<GetAcceleratorAttribute>? attributes;
+  final String? dnsName;
+  final String? dualStackDnsName;
+  final bool? enabled;
+  final String? hostedZoneId;
+  final String? id;
+  final String? ipAddressType;
+  final List<GetAcceleratorIpSet>? ipSets;
+  final String? name;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetAcceleratorResult].
-  /// [arn] Required.
-  /// [attributes] Required.
-  /// [dnsName] Required.
-  /// [dualStackDnsName] Required.
-  /// [enabled] Required.
-  /// [hostedZoneId] Required.
-  /// [id] Required.
-  /// [ipAddressType] Required.
-  /// [ipSets] Required.
-  /// [name] Required.
-  /// [tags] Required.
+  /// [arn] Optional.
+  /// [attributes] Optional.
+  /// [dnsName] Optional.
+  /// [dualStackDnsName] Optional.
+  /// [enabled] Optional.
+  /// [hostedZoneId] Optional.
+  /// [id] Optional.
+  /// [ipAddressType] Optional.
+  /// [ipSets] Optional.
+  /// [name] Optional.
+  /// [tags] Optional.
   const GetAcceleratorResult({
-    required this.arn,
-    required this.attributes,
-    required this.dnsName,
-    required this.dualStackDnsName,
-    required this.enabled,
-    required this.hostedZoneId,
-    required this.id,
-    required this.ipAddressType,
-    required this.ipSets,
-    required this.name,
-    required this.tags,
+    this.arn,
+    this.attributes,
+    this.dnsName,
+    this.dualStackDnsName,
+    this.enabled,
+    this.hostedZoneId,
+    this.id,
+    this.ipAddressType,
+    this.ipSets,
+    this.name,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'attributes': pulumi.Input.encodeList<GetAcceleratorAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
-      'dnsName': dnsName,
-      'dualStackDnsName': dualStackDnsName,
-      'enabled': enabled,
-      'hostedZoneId': hostedZoneId,
-      'id': id,
-      'ipAddressType': ipAddressType,
-      'ipSets': pulumi.Input.encodeList<GetAcceleratorIpSet, Map<String, dynamic>>(ipSets, (value) => value.toMap()),
-      'name': name,
-      'tags': tags,
+      'arn': ?arn,
+      'attributes': ?(() { final guardedValue = attributes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAcceleratorAttribute, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dnsName': ?dnsName,
+      'dualStackDnsName': ?dualStackDnsName,
+      'enabled': ?enabled,
+      'hostedZoneId': ?hostedZoneId,
+      'id': ?id,
+      'ipAddressType': ?ipAddressType,
+      'ipSets': ?(() { final guardedValue = ipSets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAcceleratorIpSet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'tags': ?tags,
     };
   }
 
   factory GetAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorResult(
-      arn: map['arn'] as String,
-      attributes: pulumi.Input.decodeList<GetAcceleratorAttribute>(map['attributes']!, (value) => GetAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      dnsName: map['dnsName'] as String,
-      dualStackDnsName: map['dualStackDnsName'] as String,
-      enabled: map['enabled'] as bool,
-      hostedZoneId: map['hostedZoneId'] as String,
-      id: map['id'] as String,
-      ipAddressType: map['ipAddressType'] as String,
-      ipSets: pulumi.Input.decodeList<GetAcceleratorIpSet>(map['ipSets']!, (value) => GetAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAcceleratorAttribute>(guardedValue, (value) => GetAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dualStackDnsName: (() { final guardedValue = map['dualStackDnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipSets: (() { final guardedValue = map['ipSets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAcceleratorIpSet>(guardedValue, (value) => GetAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

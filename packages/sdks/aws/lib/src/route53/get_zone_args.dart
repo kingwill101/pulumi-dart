@@ -8,22 +8,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_get_zone_get_zone_args_doc}
 class GetZoneArgs {
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone.
-  final pulumi.Input<bool>? enableAcceleratedRecovery;
+  final pulumi.Input<bool?>? enableAcceleratedRecovery;
   /// Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `privateZone`, `vpcId` and `tags`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Filter to only private Hosted Zones.
-  final pulumi.Input<bool>? privateZone;
+  final pulumi.Input<bool?>? privateZone;
   /// A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
   ///
   /// The arguments of this data source act as filters for querying the available Hosted Zone.
   ///
   /// - The given filter must match exactly one Hosted Zone.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Filter to private Hosted Zones associated with the specified `vpcId`.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
   /// and `name` are mutually exclusive.
   /// - If you use the `name` argument for a private Hosted Zone, you need to set the `privateZone` argument to `true`.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetZoneArgs].
   /// [enableAcceleratedRecovery] Boolean to indicate whether to enable accelerated recovery for the hosted zone.

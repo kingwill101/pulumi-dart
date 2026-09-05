@@ -104,7 +104,7 @@ import 'trigger_recurrence_state.dart';
 /// 		}
 /// 		_, err = logicapps.NewTriggerRecurrence(ctx, "example", &logicapps.TriggerRecurrenceArgs{
 /// 			Name:       pulumi.String("run-every-day"),
-/// 			LogicAppId: exampleWorkflow.ID(),
+/// 			LogicAppId: exampleWorkflow.ID().ToIDOutput().ToStringOutput(),
 /// 			Frequency:  pulumi.String("Day"),
 /// 			Interval:   pulumi.Int(1),
 /// 		})
@@ -250,7 +250,7 @@ class TriggerRecurrence extends pulumi.CustomResource {
           'azure:logicapps/triggerRecurrence:TriggerRecurrence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
@@ -266,11 +266,12 @@ class TriggerRecurrence extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerRecurrenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerRecurrence._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,24 @@ class TriggerRecurrence extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    frequency = registerOutput<String>('frequency');
+    interval = registerOutput<int>('interval');
+    logicAppId = registerOutput<String>('logicAppId');
+    this.name = registerOutput<String>('name');
+    schedule = registerOutput<TriggerRecurrenceSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String?>('startTime');
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [TriggerRecurrence] resource.
+  TriggerRecurrence.reference(String urn)
+    : super(
+        'azure:logicapps/triggerRecurrence:TriggerRecurrence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
     logicAppId = registerOutput<String>('logicAppId');

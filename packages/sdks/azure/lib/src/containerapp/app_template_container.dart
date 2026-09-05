@@ -9,23 +9,23 @@ import 'app_template_container_volume_mount.dart';
 
 class AppTemplateContainer {
   /// A list of extra arguments to pass to the container.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// A command to pass to the container to override the default. This is provided as a list of command line elements without spaces.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// The amount of vCPU to allocate to the container.
   ///
   /// &gt; **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
   final pulumi.Input<double> cpu;
   /// One or more `env` blocks as detailed below.
-  final pulumi.Input<List<AppTemplateContainerEnv>>? envs;
+  final pulumi.Input<List<AppTemplateContainerEnv>?>? envs;
   /// The amount of ephemeral storage available to the Container App.
   ///
   /// &gt; **Note:** `ephemeralStorage` is currently in preview and not configurable at this time.
-  final pulumi.Input<String>? ephemeralStorage;
+  final pulumi.Input<String?>? ephemeralStorage;
   /// The image to use to create the container.
   final pulumi.Input<String> image;
   /// A `livenessProbe` block as detailed below.
-  final pulumi.Input<List<AppTemplateContainerLivenessProbe>>? livenessProbes;
+  final pulumi.Input<List<AppTemplateContainerLivenessProbe>?>? livenessProbes;
   /// The amount of memory to allocate to the container.
   ///
   /// &gt; **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
@@ -33,11 +33,11 @@ class AppTemplateContainer {
   /// The name of the container
   final pulumi.Input<String> name;
   /// A `readinessProbe` block as detailed below.
-  final pulumi.Input<List<AppTemplateContainerReadinessProbe>>? readinessProbes;
+  final pulumi.Input<List<AppTemplateContainerReadinessProbe>?>? readinessProbes;
   /// A `startupProbe` block as detailed below.
-  final pulumi.Input<List<AppTemplateContainerStartupProbe>>? startupProbes;
+  final pulumi.Input<List<AppTemplateContainerStartupProbe>?>? startupProbes;
   /// A `volumeMounts` block as detailed below.
-  final pulumi.Input<List<AppTemplateContainerVolumeMount>>? volumeMounts;
+  final pulumi.Input<List<AppTemplateContainerVolumeMount>?>? volumeMounts;
 
   /// Creates a new [AppTemplateContainer].
   /// [args] A list of extra arguments to pass to the container.
@@ -88,7 +88,7 @@ class AppTemplateContainer {
     return AppTemplateContainer(
       args: (() { final guardedValue = map['args']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateContainerEnv>(guardedValue, (value) => AppTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ephemeralStorage: (() { final guardedValue = map['ephemeralStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       image: pulumi.Input.fromValue(map['image'] as String),

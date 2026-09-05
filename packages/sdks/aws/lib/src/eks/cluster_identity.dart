@@ -5,7 +5,7 @@ import 'cluster_identity_oidc.dart';
 
 class ClusterIdentity {
   /// Nested block containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
-  final pulumi.Input<List<ClusterIdentityOidc>>? oidcs;
+  final pulumi.Input<List<ClusterIdentityOidc>?>? oidcs;
 
   /// Creates a new [ClusterIdentity].
   /// [oidcs] Nested block containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.

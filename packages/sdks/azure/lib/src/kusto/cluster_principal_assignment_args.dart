@@ -10,7 +10,7 @@ class ClusterPrincipalAssignmentArgs {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
   /// The name of the Kusto cluster principal assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The object id of the principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.

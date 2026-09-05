@@ -128,6 +128,17 @@ Future<GetFrameworkResult> getFramework(
   return GetFrameworkResult.fromMap(result);
 }
 
+pulumi.Output<GetFrameworkResult> getFrameworkOutput(
+  GetFrameworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:backup/getFramework:getFramework',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrameworkResult.fromMap);
+}
+
 /// Use this data source to get information on an existing backup plan.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetPlanResult> getPlan(
   return GetPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetPlanResult> getPlanOutput(
+  GetPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:backup/getPlan:getPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlanResult.fromMap);
+}
+
 /// Use this data source to get information on an existing backup report plan.
 ///
 /// ## Example Usage
@@ -362,6 +384,17 @@ Future<GetReportPlanResult> getReportPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetReportPlanResult> getReportPlanOutput(
+  GetReportPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:backup/getReportPlan:getReportPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportPlanResult.fromMap);
 }
 
 /// Use this data source to get information on an existing backup selection.
@@ -489,6 +522,17 @@ Future<GetSelectionResult> getSelection(
   return GetSelectionResult.fromMap(result);
 }
 
+pulumi.Output<GetSelectionResult> getSelectionOutput(
+  GetSelectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:backup/getSelection:getSelection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSelectionResult.fromMap);
+}
+
 /// Use this data source to get information on an existing backup vault.
 ///
 /// ## Example Usage
@@ -605,4 +649,15 @@ Future<GetVaultResult> getVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetVaultResult> getVaultOutput(
+  GetVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:backup/getVault:getVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVaultResult.fromMap);
 }

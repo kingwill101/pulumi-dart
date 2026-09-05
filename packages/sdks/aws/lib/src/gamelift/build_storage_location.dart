@@ -8,7 +8,7 @@ class BuildStorageLocation {
   /// Name of the zip file containing your build files.
   final pulumi.Input<String> key;
   /// A specific version of the file. If not set, the latest version of the file is retrieved.
-  final pulumi.Input<String>? objectVersion;
+  final pulumi.Input<String?>? objectVersion;
   /// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
   final pulumi.Input<String> roleArn;
 

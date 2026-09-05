@@ -138,15 +138,15 @@ import 'vpc_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkmanager.VpcAttachment("example", {
-///     subnetArns: [exampleAwsSubnet.arn],
-///     coreNetworkId: exampleAwsccNetworkmanagerCoreNetwork.id,
-///     vpcArn: exampleAwsVpc.arn,
 ///     options: {
 ///         applianceModeSupport: false,
 ///         dnsSupport: true,
 ///         ipv6Support: false,
 ///         securityGroupReferencingSupport: true,
 ///     },
+///     subnetArns: [exampleAwsSubnet.arn],
+///     coreNetworkId: exampleAwsccNetworkmanagerCoreNetwork.id,
+///     vpcArn: exampleAwsVpc.arn,
 /// });
 /// ```
 /// ```python
@@ -154,15 +154,15 @@ import 'vpc_attachment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkmanager.VpcAttachment("example",
-///     subnet_arns=[example_aws_subnet["arn"]],
-///     core_network_id=example_awscc_networkmanager_core_network["id"],
-///     vpc_arn=example_aws_vpc["arn"],
 ///     options={
 ///         "appliance_mode_support": False,
 ///         "dns_support": True,
 ///         "ipv6_support": False,
 ///         "security_group_referencing_support": True,
-///     })
+///     },
+///     subnet_arns=[example_aws_subnet["arn"]],
+///     core_network_id=example_awscc_networkmanager_core_network["id"],
+///     vpc_arn=example_aws_vpc["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,12 +174,6 @@ import 'vpc_attachment_state.dart';
 /// {
 ///     var example = new Aws.NetworkManager.VpcAttachment("example", new()
 ///     {
-///         SubnetArns = new[]
-///         {
-///             exampleAwsSubnet.Arn,
-///         },
-///         CoreNetworkId = exampleAwsccNetworkmanagerCoreNetwork.Id,
-///         VpcArn = exampleAwsVpc.Arn,
 ///         Options = new Aws.NetworkManager.Inputs.VpcAttachmentOptionsArgs
 ///         {
 ///             ApplianceModeSupport = false,
@@ -187,6 +181,12 @@ import 'vpc_attachment_state.dart';
 ///             Ipv6Support = false,
 ///             SecurityGroupReferencingSupport = true,
 ///         },
+///         SubnetArns = new[]
+///         {
+///             exampleAwsSubnet.Arn,
+///         },
+///         CoreNetworkId = exampleAwsccNetworkmanagerCoreNetwork.Id,
+///         VpcArn = exampleAwsVpc.Arn,
 ///     });
 ///
 /// });
@@ -202,17 +202,17 @@ import 'vpc_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
-/// 			SubnetArns: pulumi.StringArray{
-/// 				exampleAwsSubnet.Arn,
-/// 			},
-/// 			CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// 			VpcArn:        pulumi.Any(exampleAwsVpc.Arn),
 /// 			Options: &networkmanager.VpcAttachmentOptionsArgs{
 /// 				ApplianceModeSupport:            pulumi.Bool(false),
 /// 				DnsSupport:                      pulumi.Bool(true),
 /// 				Ipv6Support:                     pulumi.Bool(false),
 /// 				SecurityGroupReferencingSupport: pulumi.Bool(true),
 /// 			},
+/// 			SubnetArns: pulumi.StringArray{
+/// 				exampleAwsSubnet.Arn,
+/// 			},
+/// 			CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
+/// 			VpcArn:        pulumi.Any(exampleAwsVpc.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -231,15 +231,15 @@ import 'vpc_attachment_state.dart';
 /// }
 ///
 /// resource "aws_networkmanager_vpcattachment" "example" {
-///   subnet_arns     = [exampleAwsSubnet.arn]
-///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
-///   vpc_arn         = exampleAwsVpc.arn
 ///   options = {
 ///     appliance_mode_support             = false
 ///     dns_support                        = true
 ///     ipv6_support                       = false
 ///     security_group_referencing_support = true
 ///   }
+///   subnet_arns     = [exampleAwsSubnet.arn]
+///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
+///   vpc_arn         = exampleAwsVpc.arn
 /// }
 /// ```
 /// ```java
@@ -265,15 +265,15 @@ import 'vpc_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetArns(exampleAwsSubnet.arn())
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpcArn(exampleAwsVpc.arn())
 ///             .options(VpcAttachmentOptionsArgs.builder()
 ///                 .applianceModeSupport(false)
 ///                 .dnsSupport(true)
 ///                 .ipv6Support(false)
 ///                 .securityGroupReferencingSupport(true)
 ///                 .build())
+///             .subnetArns(exampleAwsSubnet.arn())
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
+///             .vpcArn(exampleAwsVpc.arn())
 ///             .build());
 ///
 ///     }
@@ -284,15 +284,15 @@ import 'vpc_attachment_state.dart';
 ///   example:
 ///     type: aws:networkmanager:VpcAttachment
 ///     properties:
-///       subnetArns:
-///         - ${exampleAwsSubnet.arn}
-///       coreNetworkId: ${exampleAwsccNetworkmanagerCoreNetwork.id}
-///       vpcArn: ${exampleAwsVpc.arn}
 ///       options:
 ///         applianceModeSupport: false
 ///         dnsSupport: true
 ///         ipv6Support: false
 ///         securityGroupReferencingSupport: true
+///       subnetArns:
+///         - ${exampleAwsSubnet.arn}
+///       coreNetworkId: ${exampleAwsccNetworkmanagerCoreNetwork.id}
+///       vpcArn: ${exampleAwsVpc.arn}
 /// ```
 ///
 ///
@@ -351,7 +351,7 @@ class VpcAttachment extends pulumi.CustomResource {
           'aws:networkmanager/vpcAttachment:VpcAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
@@ -365,9 +365,9 @@ class VpcAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     state = registerOutput<String>('state');
-    subnetArns = registerOutput<List<String>>('subnetArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetArns = registerOutput<List<String>>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcArn = registerOutput<String>('vpcArn');
   }
 
@@ -376,11 +376,12 @@ class VpcAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -406,9 +407,36 @@ class VpcAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     this.state = registerOutput<String>('state');
-    subnetArns = registerOutput<List<String>>('subnetArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetArns = registerOutput<List<String>>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcArn = registerOutput<String>('vpcArn');
+  }
+
+  /// Creates a typed reference to an existing [VpcAttachment] resource.
+  VpcAttachment.reference(String urn)
+    : super(
+        'aws:networkmanager/vpcAttachment:VpcAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    this.options = registerOutput<VpcAttachmentOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    resourceArn = registerOutput<String>('resourceArn');
+    routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    segmentName = registerOutput<String>('segmentName');
+    state = registerOutput<String>('state');
+    subnetArns = registerOutput<List<String>>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcArn = registerOutput<String>('vpcArn');
   }
 }

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification {
   /// List of arguments for the container used to run the monitoring job.
-  final pulumi.Input<List<String>>? containerArguments;
+  final pulumi.Input<List<String>?>? containerArguments;
   /// Entrypoint for the container used to run the monitoring job.
-  final pulumi.Input<List<String>>? containerEntrypoints;
+  final pulumi.Input<List<String>?>? containerEntrypoints;
   /// Container image to be run by the monitoring job.
   final pulumi.Input<String> imageUri;
   /// Script that is called after analysis has been performed.
-  final pulumi.Input<String>? postAnalyticsProcessorSourceUri;
+  final pulumi.Input<String?>? postAnalyticsProcessorSourceUri;
   /// Script that is called per row prior to running analysis.
-  final pulumi.Input<String>? recordPreprocessorSourceUri;
+  final pulumi.Input<String?>? recordPreprocessorSourceUri;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification].
   /// [containerArguments] List of arguments for the container used to run the monitoring job.

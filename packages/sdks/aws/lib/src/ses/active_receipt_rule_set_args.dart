@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ses_active_receipt_rule_set_active_receipt_rule_set_args_doc}
 class ActiveReceiptRuleSetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The name of the rule set
+  final pulumi.Input<String?>? region;
+  /// Name of the rule set
   final pulumi.Input<String> ruleSetName;
 
   /// Creates a new [ActiveReceiptRuleSetArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [ruleSetName] The name of the rule set
+  /// [ruleSetName] Name of the rule set
   const ActiveReceiptRuleSetArgs({
     this.region,
     required this.ruleSetName,

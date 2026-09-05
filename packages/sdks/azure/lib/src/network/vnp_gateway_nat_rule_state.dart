@@ -7,19 +7,19 @@ import 'vnp_gateway_nat_rule_internal_mapping.dart';
 /// Input properties used for looking up and filtering VnpGatewayNatRule resources.
 class VnpGatewayNatRuleState {
   /// One of more `externalMapping` blocks as defined below.
-  final pulumi.Input<List<VnpGatewayNatRuleExternalMapping>>? externalMappings;
+  final pulumi.Input<List<VnpGatewayNatRuleExternalMapping>?>? externalMappings;
   /// One of more `internalMapping` blocks as defined below.
-  final pulumi.Input<List<VnpGatewayNatRuleInternalMapping>>? internalMappings;
+  final pulumi.Input<List<VnpGatewayNatRuleInternalMapping>?>? internalMappings;
   /// The ID of the IP Configuration this VPN Gateway NAT Rule applies to. Possible values are `Instance0` and `Instance1`.
-  final pulumi.Input<String>? ipConfigurationId;
+  final pulumi.Input<String?>? ipConfigurationId;
   /// The source NAT direction of the VPN NAT. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name which should be used for this VPN Gateway NAT Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the VPN Gateway NAT Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The ID of the VPN Gateway that this VPN Gateway NAT Rule belongs to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vpnGatewayId;
+  final pulumi.Input<String?>? vpnGatewayId;
 
   /// Creates a new [VnpGatewayNatRuleState].
   /// [externalMappings] One of more `externalMapping` blocks as defined below.

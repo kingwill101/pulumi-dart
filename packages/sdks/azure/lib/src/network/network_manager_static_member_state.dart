@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerStaticMember resources.
 class NetworkManagerStaticMemberState {
   /// Specifies the name which should be used for this Network Manager Static Member. Changing this forces a new Network Manager Static Member to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager Group. Changing this forces a new Network Manager Static Member to be created.
-  final pulumi.Input<String>? networkGroupId;
+  final pulumi.Input<String?>? networkGroupId;
   /// The region of the Network Manager Static Member.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
   ///
   /// &gt; **Note:** Subnet is supported only if the Network Manager has added `Routing` to `scopeAccesses` and the Network Group has set `Subnet` as the `memberType` value.
-  final pulumi.Input<String>? targetVirtualNetworkId;
+  final pulumi.Input<String?>? targetVirtualNetworkId;
 
   /// Creates a new [NetworkManagerStaticMemberState].
   /// [name] Specifies the name which should be used for this Network Manager Static Member. Changing this forces a new Network Manager Static Member to be created.

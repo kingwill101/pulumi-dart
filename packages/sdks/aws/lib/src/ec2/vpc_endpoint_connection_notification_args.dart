@@ -14,11 +14,11 @@ class VpcEndpointConnectionNotificationArgs {
   /// The ARN of the SNS topic for the notifications.
   final pulumi.Input<String> connectionNotificationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the VPC Endpoint to receive notifications for.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// The ID of the VPC Endpoint Service to receive notifications for.
-  final pulumi.Input<String>? vpcEndpointServiceId;
+  final pulumi.Input<String?>? vpcEndpointServiceId;
 
   /// Creates a new [VpcEndpointConnectionNotificationArgs].
   /// [connectionEvents] One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.

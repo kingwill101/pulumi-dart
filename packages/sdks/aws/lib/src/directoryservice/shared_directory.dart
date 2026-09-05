@@ -13,21 +13,21 @@ import 'shared_directory_target.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.directoryservice.Directory("example", {
-///     name: "tf-example",
-///     password: "SuperSecretPassw0rd",
-///     type: "MicrosoftAD",
-///     edition: "Standard",
 ///     vpcSettings: {
 ///         vpcId: exampleAwsVpc.id,
 ///         subnetIds: exampleAwsSubnet.map(__item => __item.id),
 ///     },
+///     name: "tf-example",
+///     password: "SuperSecretPassw0rd",
+///     type: "MicrosoftAD",
+///     edition: "Standard",
 /// });
 /// const exampleSharedDirectory = new aws.directoryservice.SharedDirectory("example", {
-///     directoryId: example.id,
-///     notes: "You wanna have a catch?",
 ///     target: {
 ///         id: receiver.accountId,
 ///     },
+///     directoryId: example.id,
+///     notes: "You wanna have a catch?",
 /// });
 /// ```
 /// ```python
@@ -35,20 +35,20 @@ import 'shared_directory_target.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.directoryservice.Directory("example",
-///     name="tf-example",
-///     password="SuperSecretPassw0rd",
-///     type="MicrosoftAD",
-///     edition="Standard",
 ///     vpc_settings={
 ///         "vpc_id": example_aws_vpc["id"],
 ///         "subnet_ids": [__item["id"] for __item in example_aws_subnet],
-///     })
+///     },
+///     name="tf-example",
+///     password="SuperSecretPassw0rd",
+///     type="MicrosoftAD",
+///     edition="Standard")
 /// example_shared_directory = aws.directoryservice.SharedDirectory("example",
-///     directory_id=example.id,
-///     notes="You wanna have a catch?",
 ///     target={
 ///         "id": receiver["accountId"],
-///     })
+///     },
+///     directory_id=example.id,
+///     notes="You wanna have a catch?")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,25 +60,25 @@ import 'shared_directory_target.dart';
 /// {
 ///     var example = new Aws.DirectoryService.Directory("example", new()
 ///     {
-///         Name = "tf-example",
-///         Password = "SuperSecretPassw0rd",
-///         Type = "MicrosoftAD",
-///         Edition = "Standard",
 ///         VpcSettings = new Aws.DirectoryService.Inputs.DirectoryVpcSettingsArgs
 ///         {
 ///             VpcId = exampleAwsVpc.Id,
 ///             SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///         },
+///         Name = "tf-example",
+///         Password = "SuperSecretPassw0rd",
+///         Type = "MicrosoftAD",
+///         Edition = "Standard",
 ///     });
 ///
 ///     var exampleSharedDirectory = new Aws.DirectoryService.SharedDirectory("example", new()
 ///     {
-///         DirectoryId = example.Id,
-///         Notes = "You wanna have a catch?",
 ///         Target = new Aws.DirectoryService.Inputs.SharedDirectoryTargetArgs
 ///         {
 ///             Id = receiver.AccountId,
 ///         },
+///         DirectoryId = example.Id,
+///         Notes = "You wanna have a catch?",
 ///     });
 ///
 /// });
@@ -93,24 +93,24 @@ import 'shared_directory_target.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// example, err := directoryservice.NewDirectory(ctx, "example", &directoryservice.DirectoryArgs{
+/// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
+/// VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,17-39)),
+/// },
 /// Name: pulumi.String("tf-example"),
 /// Password: pulumi.String("SuperSecretPassw0rd"),
 /// Type: pulumi.String("MicrosoftAD"),
 /// Edition: pulumi.String("Standard"),
-/// VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
-/// VpcId: pulumi.Any(exampleAwsVpc.Id),
-/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,17-39)),
-/// },
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// _, err = directoryservice.NewSharedDirectory(ctx, "example", &directoryservice.SharedDirectoryArgs{
-/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
-/// Notes: pulumi.String("You wanna have a catch?"),
 /// Target: &directoryservice.SharedDirectoryTargetArgs{
 /// Id: pulumi.Any(receiver.AccountId),
 /// },
+/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
+/// Notes: pulumi.String("You wanna have a catch?"),
 /// })
 /// if err != nil {
 /// return err
@@ -129,21 +129,21 @@ import 'shared_directory_target.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "example" {
-///   name     = "tf-example"
-///   password = "SuperSecretPassw0rd"
-///   type     = "MicrosoftAD"
-///   edition  = "Standard"
 ///   vpc_settings = {
 ///     vpc_id     = exampleAwsVpc.id
 ///     subnet_ids = exampleAwsSubnet[*].id
 ///   }
+///   name     = "tf-example"
+///   password = "SuperSecretPassw0rd"
+///   type     = "MicrosoftAD"
+///   edition  = "Standard"
 /// }
 /// resource "aws_directoryservice_shareddirectory" "example" {
-///   directory_id = aws_directoryservice_directory.example.id
-///   notes        = "You wanna have a catch?"
 ///   target = {
 ///     id = receiver.accountId
 ///   }
+///   directory_id = aws_directoryservice_directory.example.id
+///   notes        = "You wanna have a catch?"
 /// }
 /// ```
 /// ```java
@@ -172,22 +172,22 @@ import 'shared_directory_target.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Directory("example", DirectoryArgs.builder()
-///             .name("tf-example")
-///             .password("SuperSecretPassw0rd")
-///             .type("MicrosoftAD")
-///             .edition("Standard")
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
 ///                 .vpcId(exampleAwsVpc.id())
 ///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .build())
+///             .name("tf-example")
+///             .password("SuperSecretPassw0rd")
+///             .type("MicrosoftAD")
+///             .edition("Standard")
 ///             .build());
 ///
 ///         var exampleSharedDirectory = new SharedDirectory("exampleSharedDirectory", SharedDirectoryArgs.builder()
-///             .directoryId(example.id())
-///             .notes("You wanna have a catch?")
 ///             .target(SharedDirectoryTargetArgs.builder()
 ///                 .id(receiver.accountId())
 ///                 .build())
+///             .directoryId(example.id())
+///             .notes("You wanna have a catch?")
 ///             .build());
 ///
 ///     }
@@ -230,11 +230,12 @@ class SharedDirectory extends pulumi.CustomResource {
           'aws:directoryservice/sharedDirectory:SharedDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['notes'],
         ) {
     directoryId = registerOutput<String>('directoryId');
     method = registerOutput<String?>('method');
-    notes = registerOutput<String?>('notes');
+    notes = registerOutput<String?>('notes', isSecret: true);
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
     target = registerOutput<SharedDirectoryTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedDirectoryTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -245,11 +246,12 @@ class SharedDirectory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedDirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedDirectory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -265,7 +267,25 @@ class SharedDirectory extends pulumi.CustomResource {
         ) {
     directoryId = registerOutput<String>('directoryId');
     method = registerOutput<String?>('method');
-    notes = registerOutput<String?>('notes');
+    notes = registerOutput<String?>('notes', isSecret: true);
+    region = registerOutput<String>('region');
+    sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
+    target = registerOutput<SharedDirectoryTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedDirectoryTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SharedDirectory] resource.
+  SharedDirectory.reference(String urn)
+    : super(
+        'aws:directoryservice/sharedDirectory:SharedDirectory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['notes'],
+        isResourceReference: true,
+      ) {
+    directoryId = registerOutput<String>('directoryId');
+    method = registerOutput<String?>('method');
+    notes = registerOutput<String?>('notes', isSecret: true);
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
     target = registerOutput<SharedDirectoryTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedDirectoryTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });

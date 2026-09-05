@@ -6,7 +6,7 @@ class LinuxVirtualMachineBootDiagnostics {
   /// The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
   ///
   /// &gt; **NOTE:** Passing a null value will utilize a Managed Storage Account to store Boot Diagnostics
-  final pulumi.Input<String>? storageAccountUri;
+  final pulumi.Input<String?>? storageAccountUri;
 
   /// Creates a new [LinuxVirtualMachineBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.

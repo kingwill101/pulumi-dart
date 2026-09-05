@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DocumentationVersion resources.
 class DocumentationVersionState {
   /// Description of the API documentation version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the associated Rest API
-  final pulumi.Input<String>? restApiId;
+  final pulumi.Input<String?>? restApiId;
   /// Version identifier of the API documentation snapshot.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DocumentationVersionState].
   /// [description] Description of the API documentation version.

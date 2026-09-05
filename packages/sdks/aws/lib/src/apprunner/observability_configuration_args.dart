@@ -11,11 +11,11 @@ class ObservabilityConfigurationArgs {
   /// Name of the observability configuration.
   final pulumi.Input<String> observabilityConfigurationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing. See `traceConfiguration` Block below for more details.
-  final pulumi.Input<ObservabilityConfigurationTraceConfiguration>? traceConfiguration;
+  final pulumi.Input<ObservabilityConfigurationTraceConfiguration?>? traceConfiguration;
 
   /// Creates a new [ObservabilityConfigurationArgs].
   /// [observabilityConfigurationName] Name of the observability configuration.

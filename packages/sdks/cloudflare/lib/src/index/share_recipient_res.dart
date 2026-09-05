@@ -136,8 +136,10 @@ import 'share_recipient_state.dart';
 class ShareRecipientRes extends pulumi.CustomResource {
   /// Account identifier.
   late final pulumi.Output<String> accountId;
-  /// Share Recipient association status.
-  /// Available values: "associating", "associated", "disassociating", "disassociated".
+  /// The current state of the recipient relative to the share. The
+  /// `desiredAssociationStatus` (not exposed in the response) tracks the
+  /// target state set by the API; the background reconciliation workflow
+  /// drives `currentAssociationStatus` toward it.
   late final pulumi.Output<String> associationStatus;
   /// When the share was created.
   late final pulumi.Output<String> created;
@@ -163,7 +165,7 @@ class ShareRecipientRes extends pulumi.CustomResource {
           'cloudflare:index/shareRecipient:ShareRecipient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');

@@ -6,15 +6,15 @@ import 'task_task_report_config_s3_destination.dart';
 
 class TaskTaskReportConfig {
   /// Specifies the type of task report you'd like. Valid values: `SUMMARY_ONLY` and `STANDARD`.
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<String?>? outputType;
   /// Specifies whether you want your task report to include only what went wrong with your transfer or a list of what succeeded and didn't. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  final pulumi.Input<String>? reportLevel;
+  final pulumi.Input<String?>? reportLevel;
   /// Configuration block containing the configuration of the reporting level for aspects of your task report. See `reportOverrides` below.
-  final pulumi.Input<TaskTaskReportConfigReportOverrides>? reportOverrides;
+  final pulumi.Input<TaskTaskReportConfigReportOverrides?>? reportOverrides;
   /// Configuration block containing the configuration for the Amazon S3 bucket where DataSync uploads your task report. See `s3Destination` below.
   final pulumi.Input<TaskTaskReportConfigS3Destination> s3Destination;
   /// Specifies whether your task report includes the new version of each object transferred into an S3 bucket. This only applies if you enable versioning on your bucket. Keep in mind that setting this to INCLUDE can increase the duration of your task execution. Valid values: `INCLUDE` and `NONE`.
-  final pulumi.Input<String>? s3ObjectVersioning;
+  final pulumi.Input<String?>? s3ObjectVersioning;
 
   /// Creates a new [TaskTaskReportConfig].
   /// [outputType] Specifies the type of task report you'd like. Valid values: `SUMMARY_ONLY` and `STANDARD`.

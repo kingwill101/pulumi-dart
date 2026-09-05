@@ -6,9 +6,9 @@ import 'ontap_file_system_endpoint_management.dart';
 
 class OntapFileSystemEndpoint {
   /// Endpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See Endpoint.
-  final pulumi.Input<List<OntapFileSystemEndpointIntercluster>>? interclusters;
+  final pulumi.Input<List<OntapFileSystemEndpointIntercluster>?>? interclusters;
   /// Endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
-  final pulumi.Input<List<OntapFileSystemEndpointManagement>>? managements;
+  final pulumi.Input<List<OntapFileSystemEndpointManagement>?>? managements;
 
   /// Creates a new [OntapFileSystemEndpoint].
   /// [interclusters] Endpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See Endpoint.

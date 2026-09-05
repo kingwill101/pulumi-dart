@@ -254,7 +254,7 @@ class DocumentationVersion extends pulumi.CustomResource {
           'aws:apigateway/documentationVersion:DocumentationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
@@ -267,11 +267,12 @@ class DocumentationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -285,6 +286,21 @@ class DocumentationVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [DocumentationVersion] resource.
+  DocumentationVersion.reference(String urn)
+    : super(
+        'aws:apigateway/documentationVersion:DocumentationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');

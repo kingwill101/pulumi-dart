@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AliasRoutingStrategy {
   /// ID of the GameLift Fleet to point the alias to.
-  final pulumi.Input<String>? fleetId;
+  final pulumi.Input<String?>? fleetId;
   /// Message text to be used with the `TERMINAL` routing strategy.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
   final pulumi.Input<String> type;
 

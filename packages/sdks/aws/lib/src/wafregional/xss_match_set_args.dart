@@ -9,11 +9,11 @@ import 'xss_match_set_xss_match_tuple.dart';
 /// {@macro pulumi_wafregional_xss_match_set_xss_match_set_args_doc}
 class XssMatchSetArgs {
   /// The name of the set
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-  final pulumi.Input<List<XssMatchSetXssMatchTuple>>? xssMatchTuples;
+  final pulumi.Input<List<XssMatchSetXssMatchTuple>?>? xssMatchTuples;
 
   /// Creates a new [XssMatchSetArgs].
   /// [name] The name of the set

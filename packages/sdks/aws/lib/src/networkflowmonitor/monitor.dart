@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_args.dart';
+import 'monitor_local_resource.dart';
+import 'monitor_remote_resource.dart';
 import 'monitor_state.dart';
 import 'monitor_timeouts.dart';
 
@@ -21,8 +23,6 @@ import 'monitor_timeouts.dart';
 ///     },
 /// });
 /// const exampleMonitor = new aws.networkflowmonitor.Monitor("example", {
-///     monitorName: "example-monitor",
-///     scopeArn: exampleAwsNetworkflowmonitorScope.scopeArn,
 ///     localResources: [{
 ///         type: "AWS::EC2::VPC",
 ///         identifier: example.arn,
@@ -31,6 +31,8 @@ import 'monitor_timeouts.dart';
 ///         type: "AWS::EC2::VPC",
 ///         identifier: example.arn,
 ///     }],
+///     monitorName: "example-monitor",
+///     scopeArn: exampleAwsNetworkflowmonitorScope.scopeArn,
 ///     tags: {
 ///         Name: "example",
 ///     },
@@ -46,8 +48,6 @@ import 'monitor_timeouts.dart';
 ///         "Name": "example",
 ///     })
 /// example_monitor = aws.networkflowmonitor.Monitor("example",
-///     monitor_name="example-monitor",
-///     scope_arn=example_aws_networkflowmonitor_scope["scopeArn"],
 ///     local_resources=[{
 ///         "type": "AWS::EC2::VPC",
 ///         "identifier": example.arn,
@@ -56,6 +56,8 @@ import 'monitor_timeouts.dart';
 ///         "type": "AWS::EC2::VPC",
 ///         "identifier": example.arn,
 ///     }],
+///     monitor_name="example-monitor",
+///     scope_arn=example_aws_networkflowmonitor_scope["scopeArn"],
 ///     tags={
 ///         "Name": "example",
 ///     })
@@ -79,8 +81,6 @@ import 'monitor_timeouts.dart';
 ///
 ///     var exampleMonitor = new Aws.Networkflowmonitor.Monitor("example", new()
 ///     {
-///         MonitorName = "example-monitor",
-///         ScopeArn = exampleAwsNetworkflowmonitorScope.ScopeArn,
 ///         LocalResources = new[]
 ///         {
 ///             new Aws.Networkflowmonitor.Inputs.MonitorLocalResourceArgs
@@ -97,6 +97,8 @@ import 'monitor_timeouts.dart';
 ///                 Identifier = example.Arn,
 ///             },
 ///         },
+///         MonitorName = "example-monitor",
+///         ScopeArn = exampleAwsNetworkflowmonitorScope.ScopeArn,
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -126,8 +128,6 @@ import 'monitor_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkflowmonitor.NewMonitor(ctx, "example", &networkflowmonitor.MonitorArgs{
-/// 			MonitorName: pulumi.String("example-monitor"),
-/// 			ScopeArn:    pulumi.Any(exampleAwsNetworkflowmonitorScope.ScopeArn),
 /// 			LocalResources: networkflowmonitor.MonitorLocalResourceArray{
 /// 				&networkflowmonitor.MonitorLocalResourceArgs{
 /// 					Type:       pulumi.String("AWS::EC2::VPC"),
@@ -140,6 +140,8 @@ import 'monitor_timeouts.dart';
 /// 					Identifier: example.Arn,
 /// 				},
 /// 			},
+/// 			MonitorName: pulumi.String("example-monitor"),
+/// 			ScopeArn:    pulumi.Any(exampleAwsNetworkflowmonitorScope.ScopeArn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -167,8 +169,6 @@ import 'monitor_timeouts.dart';
 ///   }
 /// }
 /// resource "aws_networkflowmonitor_monitor" "example" {
-///   monitor_name = "example-monitor"
-///   scope_arn    = exampleAwsNetworkflowmonitorScope.scopeArn
 ///   local_resources {
 ///     type       = "AWS::EC2::VPC"
 ///     identifier = aws_ec2_vpc.example.arn
@@ -177,6 +177,8 @@ import 'monitor_timeouts.dart';
 ///     type       = "AWS::EC2::VPC"
 ///     identifier = aws_ec2_vpc.example.arn
 ///   }
+///   monitor_name = "example-monitor"
+///   scope_arn    = exampleAwsNetworkflowmonitorScope.scopeArn
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -213,8 +215,6 @@ import 'monitor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleMonitor = new Monitor("exampleMonitor", MonitorArgs.builder()
-///             .monitorName("example-monitor")
-///             .scopeArn(exampleAwsNetworkflowmonitorScope.scopeArn())
 ///             .localResources(MonitorLocalResourceArgs.builder()
 ///                 .type("AWS::EC2::VPC")
 ///                 .identifier(example.arn())
@@ -223,6 +223,8 @@ import 'monitor_timeouts.dart';
 ///                 .type("AWS::EC2::VPC")
 ///                 .identifier(example.arn())
 ///                 .build())
+///             .monitorName("example-monitor")
+///             .scopeArn(exampleAwsNetworkflowmonitorScope.scopeArn())
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -241,14 +243,14 @@ import 'monitor_timeouts.dart';
 ///     type: aws:networkflowmonitor:Monitor
 ///     name: example
 ///     properties:
-///       monitorName: example-monitor
-///       scopeArn: ${exampleAwsNetworkflowmonitorScope.scopeArn}
 ///       localResources:
 ///         - type: AWS::EC2::VPC
 ///           identifier: ${example.arn}
 ///       remoteResources:
 ///         - type: AWS::EC2::VPC
 ///           identifier: ${example.arn}
+///       monitorName: example-monitor
+///       scopeArn: ${exampleAwsNetworkflowmonitorScope.scopeArn}
 ///       tags:
 ///         Name: example
 /// ```
@@ -263,16 +265,16 @@ import 'monitor_timeouts.dart';
 /// ```
 class Monitor extends pulumi.CustomResource {
   /// The local resources to monitor. A local resource in a workload is the location of the hosts where the Network Flow Monitor agent is installed.
-  late final pulumi.Output<List<Map<String, dynamic>>> localResources;
-  /// The Amazon Resource Name (ARN) of the monitor.
+  late final pulumi.Output<List<MonitorLocalResource>> localResources;
+  /// ARN of the monitor.
   late final pulumi.Output<String> monitorArn;
   /// The name of the monitor. Cannot be changed after creation.
   late final pulumi.Output<String> monitorName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> remoteResources;
-  /// The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
+  late final pulumi.Output<List<MonitorRemoteResource>?> remoteResources;
+  /// ARN of the scope for the monitor. Cannot be changed after creation.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> scopeArn;
@@ -294,16 +296,16 @@ class Monitor extends pulumi.CustomResource {
           'aws:networkflowmonitor/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    localResources = registerOutput<List<Map<String, dynamic>>>('localResources');
+    localResources = registerOutput<List<MonitorLocalResource>>('localResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorLocalResource>(guardedValue, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>())); });
     monitorArn = registerOutput<String>('monitorArn');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
-    remoteResources = registerOutput<List<Map<String, dynamic>>?>('remoteResources');
+    remoteResources = registerOutput<List<MonitorRemoteResource>?>('remoteResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorRemoteResource>(guardedValue, (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>())); });
     scopeArn = registerOutput<String>('scopeArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MonitorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -312,11 +314,12 @@ class Monitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Monitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,14 +333,34 @@ class Monitor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    localResources = registerOutput<List<Map<String, dynamic>>>('localResources');
+    localResources = registerOutput<List<MonitorLocalResource>>('localResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorLocalResource>(guardedValue, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>())); });
     monitorArn = registerOutput<String>('monitorArn');
     monitorName = registerOutput<String>('monitorName');
     region = registerOutput<String>('region');
-    remoteResources = registerOutput<List<Map<String, dynamic>>?>('remoteResources');
+    remoteResources = registerOutput<List<MonitorRemoteResource>?>('remoteResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorRemoteResource>(guardedValue, (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>())); });
     scopeArn = registerOutput<String>('scopeArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<MonitorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Monitor] resource.
+  Monitor.reference(String urn)
+    : super(
+        'aws:networkflowmonitor/monitor:Monitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    localResources = registerOutput<List<MonitorLocalResource>>('localResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorLocalResource>(guardedValue, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>())); });
+    monitorArn = registerOutput<String>('monitorArn');
+    monitorName = registerOutput<String>('monitorName');
+    region = registerOutput<String>('region');
+    remoteResources = registerOutput<List<MonitorRemoteResource>?>('remoteResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorRemoteResource>(guardedValue, (value) => MonitorRemoteResource.fromMap((value as Map).cast<String, dynamic>())); });
+    scopeArn = registerOutput<String>('scopeArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MonitorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

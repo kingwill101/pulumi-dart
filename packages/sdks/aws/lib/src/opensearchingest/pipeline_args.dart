@@ -13,11 +13,11 @@ import 'pipeline_vpc_options.dart';
 /// {@macro pulumi_opensearchingest_pipeline_pipeline_args_doc}
 class PipelineArgs {
   /// Key-value pairs to configure persistent buffering for the pipeline. See `bufferOptions` below.
-  final pulumi.Input<PipelineBufferOptions>? bufferOptions;
+  final pulumi.Input<PipelineBufferOptions?>? bufferOptions;
   /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryptionAtRestOptions` below.
-  final pulumi.Input<PipelineEncryptionAtRestOptions>? encryptionAtRestOptions;
+  final pulumi.Input<PipelineEncryptionAtRestOptions?>? encryptionAtRestOptions;
   /// Key-value pairs to configure log publishing. See `logPublishingOptions` below.
-  final pulumi.Input<PipelineLogPublishingOptions>? logPublishingOptions;
+  final pulumi.Input<PipelineLogPublishingOptions?>? logPublishingOptions;
   /// The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   final pulumi.Input<int> maxUnits;
   /// The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
@@ -29,14 +29,14 @@ class PipelineArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> pipelineName;
   /// ARN of the IAM role that grants the pipeline permission to access AWS resources.
-  final pulumi.Input<String>? pipelineRoleArn;
+  final pulumi.Input<String?>? pipelineRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the pipeline. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<PipelineTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<PipelineTimeouts?>? timeouts;
   /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpcOptions` below.
-  final pulumi.Input<PipelineVpcOptions>? vpcOptions;
+  final pulumi.Input<PipelineVpcOptions?>? vpcOptions;
 
   /// Creates a new [PipelineArgs].
   /// [bufferOptions] Key-value pairs to configure persistent buffering for the pipeline. See `bufferOptions` below.
@@ -88,8 +88,8 @@ class PipelineArgs {
       bufferOptions: (() { final guardedValue = map['bufferOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionAtRestOptions: (() { final guardedValue = map['encryptionAtRestOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logPublishingOptions: (() { final guardedValue = map['logPublishingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxUnits: pulumi.Input.fromValue(map['maxUnits'] as int),
-      minUnits: pulumi.Input.fromValue(map['minUnits'] as int),
+      maxUnits: pulumi.Input.fromValue((map['maxUnits'] as num).toInt()),
+      minUnits: pulumi.Input.fromValue((map['minUnits'] as num).toInt()),
       pipelineConfigurationBody: pulumi.Input.fromValue(map['pipelineConfigurationBody'] as String),
       pipelineName: pulumi.Input.fromValue(map['pipelineName'] as String),
       pipelineRoleArn: (() { final guardedValue = map['pipelineRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,7 +5,7 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration {
   /// The Salesforce standard object configuration. See `filterConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration>? filterConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfiguration?>? filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filterConfiguration` block for details.

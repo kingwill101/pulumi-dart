@@ -9,47 +9,47 @@ import 'workspace_identity.dart';
 /// Input properties used for looking up and filtering Workspace resources.
 class WorkspaceState {
   /// An `azureDevopsRepo` block as defined below.
-  final pulumi.Input<WorkspaceAzureDevopsRepo>? azureDevopsRepo;
+  final pulumi.Input<WorkspaceAzureDevopsRepo?>? azureDevopsRepo;
   /// Is Azure Active Directory Authentication the only way to authenticate with resources inside this synapse Workspace. Defaults to `false`.
-  final pulumi.Input<bool>? azureadAuthenticationOnly;
+  final pulumi.Input<bool?>? azureadAuthenticationOnly;
   /// Subnet ID used for computes in workspace Changing this forces a new resource to be created.
-  final pulumi.Input<String>? computeSubnetId;
+  final pulumi.Input<String?>? computeSubnetId;
   /// A map of Connectivity endpoints for this Synapse Workspace. Possible key values are `dev`, `sql`, `sqlOnDemand`, and `web`.
-  final pulumi.Input<Map<String, String>>? connectivityEndpoints;
+  final pulumi.Input<Map<String, String>?>? connectivityEndpoints;
   /// A `customerManagedKey` block as defined below.
-  final pulumi.Input<WorkspaceCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<WorkspaceCustomerManagedKey?>? customerManagedKey;
   /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managedVirtualNetworkEnabled` must also be set to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? dataExfiltrationProtectionEnabled;
+  final pulumi.Input<bool?>? dataExfiltrationProtectionEnabled;
   /// A `githubRepo` block as defined below.
-  final pulumi.Input<WorkspaceGithubRepo>? githubRepo;
+  final pulumi.Input<WorkspaceGithubRepo?>? githubRepo;
   /// An `identity` block as defined below.
-  final pulumi.Input<WorkspaceIdentity>? identity;
+  final pulumi.Input<WorkspaceIdentity?>? identity;
   /// Allowed AAD Tenant Ids For Linking.
-  final pulumi.Input<List<String>>? linkingAllowedForAadTenantIds;
+  final pulumi.Input<List<String>?>? linkingAllowedForAadTenantIds;
   /// Specifies the Azure Region where the synapse Workspace should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Workspace managed resource group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// Is Virtual Network enabled for all computes in this workspace? Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? managedVirtualNetworkEnabled;
+  final pulumi.Input<bool?>? managedVirtualNetworkEnabled;
   /// Specifies the name which should be used for this synapse Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The ID of purview account.
-  final pulumi.Input<String>? purviewId;
+  final pulumi.Input<String?>? purviewId;
   /// Specifies the name of the Resource Group where the synapse Workspace should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customerManagedKey` must be provided.
-  final pulumi.Input<String>? sqlAdministratorLogin;
+  final pulumi.Input<String?>? sqlAdministratorLogin;
   /// The Password associated with the `sqlAdministratorLogin` for the SQL administrator. If this is not provided `customerManagedKey` must be provided.
-  final pulumi.Input<String>? sqlAdministratorLoginPassword;
+  final pulumi.Input<String?>? sqlAdministratorLoginPassword;
   /// Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
-  final pulumi.Input<bool>? sqlIdentityControlEnabled;
+  final pulumi.Input<bool?>? sqlIdentityControlEnabled;
   /// Specifies the ID of storage data lake gen2 filesystem resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageDataLakeGen2FilesystemId;
+  final pulumi.Input<String?>? storageDataLakeGen2FilesystemId;
   /// A mapping of tags which should be assigned to the Synapse Workspace.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WorkspaceState].
   /// [azureDevopsRepo] An `azureDevopsRepo` block as defined below.

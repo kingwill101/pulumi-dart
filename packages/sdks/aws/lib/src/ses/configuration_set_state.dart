@@ -7,23 +7,23 @@ import 'configuration_set_tracking_options.dart';
 /// Input properties used for looking up and filtering ConfigurationSet resources.
 class ConfigurationSetState {
   /// SES configuration set ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether messages that use the configuration set are required to use TLS. See below.
-  final pulumi.Input<ConfigurationSetDeliveryOptions>? deliveryOptions;
+  final pulumi.Input<ConfigurationSetDeliveryOptions?>? deliveryOptions;
   /// Date and time at which the reputation metrics for the configuration set were last reset. Resetting these metrics is known as a fresh start.
-  final pulumi.Input<String>? lastFreshStart;
+  final pulumi.Input<String?>? lastFreshStart;
   /// Name of the configuration set.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether or not Amazon SES publishes reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch. The default value is `false`.
-  final pulumi.Input<bool>? reputationMetricsEnabled;
+  final pulumi.Input<bool?>? reputationMetricsEnabled;
   /// Whether email sending is enabled or disabled for the configuration set. The default value is `true`.
-  final pulumi.Input<bool>? sendingEnabled;
+  final pulumi.Input<bool?>? sendingEnabled;
   /// Domain that is used to redirect email recipients to an Amazon SES-operated domain. See below. **NOTE:** This functionality is best effort.
-  final pulumi.Input<ConfigurationSetTrackingOptions>? trackingOptions;
+  final pulumi.Input<ConfigurationSetTrackingOptions?>? trackingOptions;
 
   /// Creates a new [ConfigurationSetState].
   /// [arn] SES configuration set ARN.

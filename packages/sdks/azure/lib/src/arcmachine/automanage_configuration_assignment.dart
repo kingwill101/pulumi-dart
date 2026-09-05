@@ -28,7 +28,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///     location: exampleResourceGroup.location,
 /// });
 /// const exampleAutomanageConfigurationAssignment = new azure.arcmachine.AutomanageConfigurationAssignment("example", {
-///     arcMachineId: example.apply(example => example.id),
+///     arcMachineId: example.id,
 ///     configurationId: exampleConfiguration.id,
 /// });
 /// ```
@@ -127,10 +127,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = arcmachine.NewAutomanageConfigurationAssignment(ctx, "example", &arcmachine.AutomanageConfigurationAssignmentArgs{
-/// 			ArcMachineId: pulumi.String(example.ApplyT(func(example arcmachine.GetResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ConfigurationId: exampleConfiguration.ID(),
+/// 			ArcMachineId:    example.Id(),
+/// 			ConfigurationId: exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,7 +289,7 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           'azure:arcmachine/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     arcMachineId = registerOutput<String>('arcMachineId');
     configurationId = registerOutput<String>('configurationId');
@@ -302,11 +300,12 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomanageConfigurationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutomanageConfigurationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -320,6 +319,19 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arcMachineId = registerOutput<String>('arcMachineId');
+    configurationId = registerOutput<String>('configurationId');
+  }
+
+  /// Creates a typed reference to an existing [AutomanageConfigurationAssignment] resource.
+  AutomanageConfigurationAssignment.reference(String urn)
+    : super(
+        'azure:arcmachine/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arcMachineId = registerOutput<String>('arcMachineId');
     configurationId = registerOutput<String>('configurationId');
   }

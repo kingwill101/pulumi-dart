@@ -202,11 +202,11 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
           'aws:chatbot/slackChannelConfiguration:SlackChannelConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
     configurationName = registerOutput<String>('configurationName');
-    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     loggingLevel = registerOutput<String>('loggingLevel');
     region = registerOutput<String>('region');
@@ -214,9 +214,9 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
     slackChannelName = registerOutput<String>('slackChannelName');
     slackTeamId = registerOutput<String>('slackTeamId');
     slackTeamName = registerOutput<String>('slackTeamName');
-    snsTopicArns = registerOutput<List<String>>('snsTopicArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SlackChannelConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlackChannelConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userAuthorizationRequired = registerOutput<bool>('userAuthorizationRequired');
   }
@@ -226,11 +226,12 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SlackChannelConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SlackChannelConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -246,7 +247,7 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
         ) {
     chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
     configurationName = registerOutput<String>('configurationName');
-    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     loggingLevel = registerOutput<String>('loggingLevel');
     region = registerOutput<String>('region');
@@ -254,9 +255,35 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
     slackChannelName = registerOutput<String>('slackChannelName');
     slackTeamId = registerOutput<String>('slackTeamId');
     slackTeamName = registerOutput<String>('slackTeamName');
-    snsTopicArns = registerOutput<List<String>>('snsTopicArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<SlackChannelConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlackChannelConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userAuthorizationRequired = registerOutput<bool>('userAuthorizationRequired');
+  }
+
+  /// Creates a typed reference to an existing [SlackChannelConfiguration] resource.
+  SlackChannelConfiguration.reference(String urn)
+    : super(
+        'aws:chatbot/slackChannelConfiguration:SlackChannelConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
+    configurationName = registerOutput<String>('configurationName');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    loggingLevel = registerOutput<String>('loggingLevel');
+    region = registerOutput<String>('region');
+    slackChannelId = registerOutput<String>('slackChannelId');
+    slackChannelName = registerOutput<String>('slackChannelName');
+    slackTeamId = registerOutput<String>('slackTeamId');
+    slackTeamName = registerOutput<String>('slackTeamName');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SlackChannelConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlackChannelConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userAuthorizationRequired = registerOutput<bool>('userAuthorizationRequired');
   }

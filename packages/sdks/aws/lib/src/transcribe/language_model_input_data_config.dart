@@ -8,7 +8,7 @@ class LanguageModelInputDataConfig {
   /// S3 URI where training data is located.
   final pulumi.Input<String> s3Uri;
   /// S3 URI where tuning data is located.
-  final pulumi.Input<String>? tuningDataS3Uri;
+  final pulumi.Input<String?>? tuningDataS3Uri;
 
   /// Creates a new [LanguageModelInputDataConfig].
   /// [dataAccessRoleArn] IAM role with access to S3 bucket.

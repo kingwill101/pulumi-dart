@@ -3,50 +3,50 @@
 
 /// Result data returned by getAddonVersion.
 class GetAddonVersionResult {
-  final String addonName;
+  final String? addonName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kubernetesVersion;
+  final String? id;
+  final String? kubernetesVersion;
   final bool? mostRecent;
-  final String region;
+  final String? region;
   /// Version of the EKS add-on.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetAddonVersionResult].
-  /// [addonName] Required.
+  /// [addonName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kubernetesVersion] Required.
+  /// [kubernetesVersion] Optional.
   /// [mostRecent] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [version] Version of the EKS add-on.
   const GetAddonVersionResult({
-    required this.addonName,
-    required this.id,
-    required this.kubernetesVersion,
+    this.addonName,
+    this.id,
+    this.kubernetesVersion,
     this.mostRecent,
-    required this.region,
-    required this.version,
+    this.region,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addonName': addonName,
-      'id': id,
-      'kubernetesVersion': kubernetesVersion,
+      'addonName': ?addonName,
+      'id': ?id,
+      'kubernetesVersion': ?kubernetesVersion,
       'mostRecent': ?mostRecent,
-      'region': region,
-      'version': version,
+      'region': ?region,
+      'version': ?version,
     };
   }
 
   factory GetAddonVersionResult.fromMap(Map<String, dynamic> map) {
     return GetAddonVersionResult(
-      addonName: map['addonName'] as String,
-      id: map['id'] as String,
-      kubernetesVersion: map['kubernetesVersion'] as String,
+      addonName: (() { final guardedValue = map['addonName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      region: map['region'] as String,
-      version: map['version'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

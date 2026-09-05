@@ -6,9 +6,9 @@ import 'virtual_service_spec_provider_virtual_router.dart';
 
 class VirtualServiceSpecProvider {
   /// Virtual node associated with a virtual service. See `virtualNode` Block for details.
-  final pulumi.Input<VirtualServiceSpecProviderVirtualNode>? virtualNode;
+  final pulumi.Input<VirtualServiceSpecProviderVirtualNode?>? virtualNode;
   /// Virtual router associated with a virtual service. See `virtualRouter` Block for details.
-  final pulumi.Input<VirtualServiceSpecProviderVirtualRouter>? virtualRouter;
+  final pulumi.Input<VirtualServiceSpecProviderVirtualRouter?>? virtualRouter;
 
   /// Creates a new [VirtualServiceSpecProvider].
   /// [virtualNode] Virtual node associated with a virtual service. See `virtualNode` Block for details.

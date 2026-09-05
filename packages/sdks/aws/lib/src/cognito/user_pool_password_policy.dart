@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolPasswordPolicy {
   /// Minimum length of the password policy that you have set.
-  final pulumi.Input<int>? minimumLength;
+  final pulumi.Input<int?>? minimumLength;
   /// Number of previous passwords that you want Amazon Cognito to restrict each user from reusing. Users can't set a password that matches any of number of previous passwords specified by this argument. A value of 0 means that password history is not enforced. Valid values are between 0 and 24.
   ///
   /// **Note:** This argument requires advanced security features to be active in the user pool.
-  final pulumi.Input<int>? passwordHistorySize;
+  final pulumi.Input<int?>? passwordHistorySize;
   /// Whether you have required users to use at least one lowercase letter in their password.
-  final pulumi.Input<bool>? requireLowercase;
+  final pulumi.Input<bool?>? requireLowercase;
   /// Whether you have required users to use at least one number in their password.
-  final pulumi.Input<bool>? requireNumbers;
+  final pulumi.Input<bool?>? requireNumbers;
   /// Whether you have required users to use at least one symbol in their password.
-  final pulumi.Input<bool>? requireSymbols;
+  final pulumi.Input<bool?>? requireSymbols;
   /// Whether you have required users to use at least one uppercase letter in their password.
-  final pulumi.Input<bool>? requireUppercase;
+  final pulumi.Input<bool?>? requireUppercase;
   /// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
-  final pulumi.Input<int>? temporaryPasswordValidityDays;
+  final pulumi.Input<int?>? temporaryPasswordValidityDays;
 
   /// Creates a new [UserPoolPasswordPolicy].
   /// [minimumLength] Minimum length of the password policy that you have set.
@@ -52,13 +52,13 @@ class UserPoolPasswordPolicy {
 
   factory UserPoolPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolPasswordPolicy(
-      minimumLength: (() { final guardedValue = map['minimumLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      passwordHistorySize: (() { final guardedValue = map['passwordHistorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumLength: (() { final guardedValue = map['minimumLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      passwordHistorySize: (() { final guardedValue = map['passwordHistorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       requireLowercase: (() { final guardedValue = map['requireLowercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireNumbers: (() { final guardedValue = map['requireNumbers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireSymbols: (() { final guardedValue = map['requireSymbols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireUppercase: (() { final guardedValue = map['requireUppercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      temporaryPasswordValidityDays: (() { final guardedValue = map['temporaryPasswordValidityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      temporaryPasswordValidityDays: (() { final guardedValue = map['temporaryPasswordValidityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

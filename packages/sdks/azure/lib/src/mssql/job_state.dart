@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Job resources.
 class JobState {
   /// The description of the Elastic Job.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the Elastic Job Agent. Changing this forces a new Elastic Job to be created.
-  final pulumi.Input<String>? jobAgentId;
+  final pulumi.Input<String?>? jobAgentId;
   /// The name which should be used for this Elastic Job. Changing this forces a new Elastic Job to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [JobState].
   /// [description] The description of the Elastic Job.

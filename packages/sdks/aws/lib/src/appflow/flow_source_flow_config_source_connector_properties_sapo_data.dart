@@ -7,9 +7,9 @@ import 'flow_source_flow_config_source_connector_properties_sapo_data_parallelis
 class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   final pulumi.Input<String> objectPath;
   /// Page size for each concurrent process that transfers OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.pagination_config` Block for details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig>? paginationConfig;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig?>? paginationConfig;
   /// Number of concurrent processes that transfer OData records from your SAP instance. See the `source_flow_config.source_connector_properties.sapo_data.parallelism_config` Block for details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig>? parallelismConfig;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig?>? parallelismConfig;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoData].
   /// [objectPath] Required.

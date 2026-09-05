@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_variant_options.dart';
-import 'image_variant_variant.dart';
 
 /// Input properties used for looking up and filtering ImageVariant resources.
 class ImageVariantState {
@@ -14,20 +13,17 @@ class ImageVariantState {
   final pulumi.Input<bool?>? neverRequireSignedUrls;
   /// Allows you to define image resizing sizes for different use cases.
   final pulumi.Input<ImageVariantOptions?>? options;
-  final pulumi.Input<ImageVariantVariant?>? variant;
 
   /// Creates a new [ImageVariantState].
   /// [accountId] Account identifier tag.
   /// [imageVariantId] The ID of this resource.
   /// [neverRequireSignedUrls] Indicates whether the variant can access an image without a signature, regardless of image access control.
   /// [options] Allows you to define image resizing sizes for different use cases.
-  /// [variant] Optional.
   const ImageVariantState({
     this.accountId,
     this.imageVariantId,
     this.neverRequireSignedUrls,
     this.options,
-    this.variant,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,7 +32,6 @@ class ImageVariantState {
       'imageVariantId': ?imageVariantId,
       'neverRequireSignedUrls': ?neverRequireSignedUrls,
       'options': ?pulumi.Input.mapOptionalInputValue<ImageVariantOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
-      'variant': ?pulumi.Input.mapOptionalInputValue<ImageVariantVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
     };
   }
 
@@ -46,7 +41,6 @@ class ImageVariantState {
       imageVariantId: (() { final guardedValue = map['imageVariantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       neverRequireSignedUrls: (() { final guardedValue = map['neverRequireSignedUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageVariantOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageVariantVariant.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

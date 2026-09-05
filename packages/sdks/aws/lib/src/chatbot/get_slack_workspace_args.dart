@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_chatbot_get_slack_workspace_get_slack_workspace_args_doc}
 class GetSlackWorkspaceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Slack workspace name configured with AWS Chatbot.
   final pulumi.Input<String> slackTeamName;
 

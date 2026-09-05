@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MetricsDestination resources.
 class MetricsDestinationState {
   /// The name of the CloudWatch RUM app monitor that will send the metrics.
-  final pulumi.Input<String>? appMonitorName;
+  final pulumi.Input<String?>? appMonitorName;
   /// Defines the destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Use this parameter only if Destination is Evidently. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
-  final pulumi.Input<String>? destinationArn;
+  final pulumi.Input<String?>? destinationArn;
   /// This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MetricsDestinationState].
   /// [appMonitorName] The name of the CloudWatch RUM app monitor that will send the metrics.

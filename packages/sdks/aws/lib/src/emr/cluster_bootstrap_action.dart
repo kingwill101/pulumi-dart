@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBootstrapAction {
   /// List of command line arguments to pass to the bootstrap action script.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Name of the bootstrap action.
   final pulumi.Input<String> name;
   /// Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.

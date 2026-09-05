@@ -121,3 +121,14 @@ Future<GetSlackWorkspaceResult> getSlackWorkspace(
   );
   return GetSlackWorkspaceResult.fromMap(result);
 }
+
+pulumi.Output<GetSlackWorkspaceResult> getSlackWorkspaceOutput(
+  GetSlackWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:chatbot/getSlackWorkspace:getSlackWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSlackWorkspaceResult.fromMap);
+}

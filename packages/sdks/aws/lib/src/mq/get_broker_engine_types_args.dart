@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mq_get_broker_engine_types_get_broker_engine_types_args_doc}
 class GetBrokerEngineTypesArgs {
   /// MQ engine type to return version details for.
-  final pulumi.Input<String>? engineType;
+  final pulumi.Input<String?>? engineType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetBrokerEngineTypesArgs].
   /// [engineType] MQ engine type to return version details for.

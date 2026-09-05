@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServerlessSecurityPolicy resources.
 class ServerlessSecurityPolicyState {
   /// Description of the policy. Typically used to store information about the permissions defined in the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// JSON policy document to use as the content for the new policy
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Version of the policy.
-  final pulumi.Input<String>? policyVersion;
+  final pulumi.Input<String?>? policyVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of security policy. One of `encryption` or `network`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServerlessSecurityPolicyState].
   /// [description] Description of the policy. Typically used to store information about the permissions defined in the policy.

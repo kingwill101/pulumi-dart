@@ -15,11 +15,11 @@ import 'vault_policy_state.dart';
 /// const exampleVault = new aws.backup.Vault("example", {name: "example"});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [current.then(current => current.accountId)],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "backup:DescribeBackupVault",
 ///             "backup:DeleteBackupVault",
@@ -45,11 +45,11 @@ import 'vault_policy_state.dart';
 /// current = aws.get_caller_identity()
 /// example_vault = aws.backup.Vault("example", name="example")
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [current.account_id],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "backup:DescribeBackupVault",
 ///         "backup:DeleteBackupVault",
@@ -87,7 +87,6 @@ import 'vault_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -99,6 +98,7 @@ import 'vault_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "backup:DescribeBackupVault",
@@ -151,7 +151,6 @@ import 'vault_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -160,6 +159,7 @@ import 'vault_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("backup:DescribeBackupVault"),
 /// 						pulumi.String("backup:DeleteBackupVault"),
@@ -200,11 +200,11 @@ import 'vault_policy_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [data.aws_getcalleridentity.current.account_id]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["backup:DescribeBackupVault", "backup:DeleteBackupVault", "backup:PutBackupVaultAccessPolicy", "backup:DeleteBackupVaultAccessPolicy", "backup:GetBackupVaultAccessPolicy", "backup:StartBackupJob", "backup:GetBackupVaultNotifications", "backup:PutBackupVaultNotifications"]
 ///     resources = [aws_backup_vault.example.arn]
 ///   }
@@ -256,11 +256,11 @@ import 'vault_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(current.accountId())
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "backup:DescribeBackupVault",
 ///                     "backup:DeleteBackupVault",
@@ -305,11 +305,11 @@ import 'vault_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${current.accountId}
+///             effect: Allow
 ///             actions:
 ///               - backup:DescribeBackupVault
 ///               - backup:DeleteBackupVault
@@ -353,7 +353,7 @@ class VaultPolicy extends pulumi.CustomResource {
           'aws:backup/vaultPolicy:VaultPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');
@@ -366,11 +366,12 @@ class VaultPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VaultPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -384,6 +385,21 @@ class VaultPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupVaultArn = registerOutput<String>('backupVaultArn');
+    backupVaultName = registerOutput<String>('backupVaultName');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [VaultPolicy] resource.
+  VaultPolicy.reference(String urn)
+    : super(
+        'aws:backup/vaultPolicy:VaultPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');
     policy = registerOutput<String>('policy');

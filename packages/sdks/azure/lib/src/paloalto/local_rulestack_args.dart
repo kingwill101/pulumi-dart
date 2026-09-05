@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_paloalto_local_rulestack_local_rulestack_args_doc}
 class LocalRulestackArgs {
   /// The setting to use for Anti-Spyware. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? antiSpywareProfile;
+  final pulumi.Input<String?>? antiSpywareProfile;
   /// The setting to use for Anti-Virus. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? antiVirusProfile;
+  final pulumi.Input<String?>? antiVirusProfile;
   /// The description for this Local Rulestack.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// TThe setting to use for DNS Subscription. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? dnsSubscription;
+  final pulumi.Input<String?>? dnsSubscription;
   /// The setting to use for the File Blocking Profile. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? fileBlockingProfile;
+  final pulumi.Input<String?>? fileBlockingProfile;
   /// The Azure Region where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Palo Alto Networks Rulestack. Changing this forces a new Palo Alto Networks Rulestack to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The setting to use for the URL Filtering Profile. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? urlFilteringProfile;
+  final pulumi.Input<String?>? urlFilteringProfile;
   /// The setting to use for the Vulnerability Profile. Possible values include `BestPractice`, and `Custom`.
-  final pulumi.Input<String>? vulnerabilityProfile;
+  final pulumi.Input<String?>? vulnerabilityProfile;
 
   /// Creates a new [LocalRulestackArgs].
   /// [antiSpywareProfile] The setting to use for Anti-Spyware. Possible values include `BestPractice`, and `Custom`.

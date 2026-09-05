@@ -7,9 +7,9 @@ class WebAclDataProtectionConfigDataProtection {
   /// Specifies how to protect the field. Valid values are `SUBSTITUTION` or `HASH`.
   final pulumi.Input<String> action;
   /// Boolean to specify whether to also exclude any rate-based rule details from the data protection you have enabled for a given field.
-  final pulumi.Input<bool>? excludeRateBasedDetails;
+  final pulumi.Input<bool?>? excludeRateBasedDetails;
   /// Boolean to specify whether to also exclude any rule match details from the data protection you have enabled for a given field. AWS WAF logs these details for non-terminating matching rules and for the terminating matching rule.
-  final pulumi.Input<bool>? excludeRuleMatchDetails;
+  final pulumi.Input<bool?>? excludeRuleMatchDetails;
   /// Specifies the field type and optional keys to apply the protection behavior to. See `field` block below for details.
   final pulumi.Input<WebAclDataProtectionConfigDataProtectionField> field;
 

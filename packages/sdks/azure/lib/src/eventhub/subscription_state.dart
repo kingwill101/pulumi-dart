@@ -6,37 +6,37 @@ import 'subscription_client_scoped_subscription.dart';
 /// Input properties used for looking up and filtering Subscription resources.
 class SubscriptionState {
   /// The idle interval after which the topic is automatically deleted as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `5` minutes or `PT5M`. Defaults to `P10675199DT2H48M5.4775807S`.
-  final pulumi.Input<String>? autoDeleteOnIdle;
+  final pulumi.Input<String?>? autoDeleteOnIdle;
   /// Boolean flag which controls whether the Subscription supports batched operations.
-  final pulumi.Input<bool>? batchedOperationsEnabled;
+  final pulumi.Input<bool?>? batchedOperationsEnabled;
   /// A `clientScopedSubscription` block as defined below.
-  final pulumi.Input<SubscriptionClientScopedSubscription>? clientScopedSubscription;
+  final pulumi.Input<SubscriptionClientScopedSubscription?>? clientScopedSubscription;
   /// whether the subscription is scoped to a client id. Defaults to `false`.
   ///
   /// &gt; **Note:** Client Scoped Subscription can only be used for JMS subscription (Java Message Service).
-  final pulumi.Input<bool>? clientScopedSubscriptionEnabled;
+  final pulumi.Input<bool?>? clientScopedSubscriptionEnabled;
   /// Boolean flag which controls whether the Subscription has dead letter support on filter evaluation exceptions. Defaults to `true`.
-  final pulumi.Input<bool>? deadLetteringOnFilterEvaluationError;
+  final pulumi.Input<bool?>? deadLetteringOnFilterEvaluationError;
   /// Boolean flag which controls whether the Subscription has dead letter support when a message expires.
-  final pulumi.Input<bool>? deadLetteringOnMessageExpiration;
+  final pulumi.Input<bool?>? deadLetteringOnMessageExpiration;
   /// The Default message timespan to live as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the value used when TimeToLive is not set on a message itself. Defaults to `P10675199DT2H48M5.4775807S`.
-  final pulumi.Input<String>? defaultMessageTtl;
+  final pulumi.Input<String?>? defaultMessageTtl;
   /// The name of a Queue or Topic to automatically forward Dead Letter messages to.
-  final pulumi.Input<String>? forwardDeadLetteredMessagesTo;
+  final pulumi.Input<String?>? forwardDeadLetteredMessagesTo;
   /// The name of a Queue or Topic to automatically forward messages to.
-  final pulumi.Input<String>? forwardTo;
+  final pulumi.Input<String?>? forwardTo;
   /// The lock duration for the subscription as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Defaults to `PT1M`.
-  final pulumi.Input<String>? lockDuration;
+  final pulumi.Input<String?>? lockDuration;
   /// The maximum number of deliveries.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
   /// Specifies the name of the ServiceBus Subscription resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Boolean flag which controls whether this Subscription supports the concept of a session. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? requiresSession;
+  final pulumi.Input<bool?>? requiresSession;
   /// The status of the Subscription. Possible values are `Active`,`ReceiveDisabled`, or `Disabled`. Defaults to `Active`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The ID of the ServiceBus Topic to create this Subscription in. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? topicId;
+  final pulumi.Input<String?>? topicId;
 
   /// Creates a new [SubscriptionState].
   /// [autoDeleteOnIdle] The idle interval after which the topic is automatically deleted as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `5` minutes or `PT5M`. Defaults to `P10675199DT2H48M5.4775807S`.
@@ -104,7 +104,7 @@ class SubscriptionState {
       forwardDeadLetteredMessagesTo: (() { final guardedValue = map['forwardDeadLetteredMessagesTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forwardTo: (() { final guardedValue = map['forwardTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lockDuration: (() { final guardedValue = map['lockDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requiresSession: (() { final guardedValue = map['requiresSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

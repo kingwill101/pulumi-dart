@@ -145,7 +145,7 @@ class PolicyTableAssociation extends pulumi.CustomResource {
           'aws:ec2transitgateway/policyTableAssociation:PolicyTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
@@ -159,11 +159,12 @@ class PolicyTableAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyTableAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyTableAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,6 +178,22 @@ class PolicyTableAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayPolicyTableId = registerOutput<String>('transitGatewayPolicyTableId');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTableAssociation] resource.
+  PolicyTableAssociation.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/policyTableAssociation:PolicyTableAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
     resourceType = registerOutput<String>('resourceType');

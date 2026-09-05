@@ -6,7 +6,7 @@ class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigu
   /// Enable or disable deletion protection for the connector. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> deletionProtectionStatus;
   /// Maximum percentage of documents that a sync job can delete from your index.
-  final pulumi.Input<int>? deletionProtectionThreshold;
+  final pulumi.Input<int?>? deletionProtectionThreshold;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration].
   /// [deletionProtectionStatus] Enable or disable deletion protection for the connector. Valid values: `ENABLED`, `DISABLED`.
@@ -26,7 +26,7 @@ class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigu
   factory AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration(
       deletionProtectionStatus: pulumi.Input.fromValue(map['deletionProtectionStatus'] as String),
-      deletionProtectionThreshold: (() { final guardedValue = map['deletionProtectionThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionProtectionThreshold: (() { final guardedValue = map['deletionProtectionThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

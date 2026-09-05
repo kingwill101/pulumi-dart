@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Watchlist resources.
 class WatchlistState {
   /// The default duration in ISO8601 duration form of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? defaultDuration;
+  final pulumi.Input<String?>? defaultDuration;
   /// The description of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The key used to optimize query performance when using Watchlist for joins with other data. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? itemSearchKey;
+  final pulumi.Input<String?>? itemSearchKey;
   /// Specifies a list of labels related to this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// The name which should be used for this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [WatchlistState].
   /// [defaultDuration] The default duration in ISO8601 duration form of this Sentinel Watchlist. Changing this forces a new Sentinel Watchlist to be created.

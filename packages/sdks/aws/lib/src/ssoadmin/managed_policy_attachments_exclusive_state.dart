@@ -6,16 +6,16 @@ import 'managed_policy_attachments_exclusive_timeouts.dart';
 /// Input properties used for looking up and filtering ManagedPolicyAttachmentsExclusive resources.
 class ManagedPolicyAttachmentsExclusiveState {
   /// ARN of the SSO Instance.
-  final pulumi.Input<String>? instanceArn;
+  final pulumi.Input<String?>? instanceArn;
   /// Set of ARNs of IAM managed policies to attach to the Permission Set.
-  final pulumi.Input<List<String>>? managedPolicyArns;
+  final pulumi.Input<List<String>?>? managedPolicyArns;
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? permissionSetArn;
+  final pulumi.Input<String?>? permissionSetArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ManagedPolicyAttachmentsExclusiveTimeouts?>? timeouts;
 
   /// Creates a new [ManagedPolicyAttachmentsExclusiveState].
   /// [instanceArn] ARN of the SSO Instance.

@@ -6,23 +6,23 @@ import 'named_value_value_from_key_vault.dart';
 /// Input properties used for looking up and filtering NamedValue resources.
 class NamedValueState {
   /// The name of the API Management Service in which the API Management Named Value should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The display name of this API Management Named Value.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the API Management Named Value. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group in which the API Management Named Value should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies whether the API Management Named Value is secret. Valid values are `true` or `false`. The default value is `false`.
   ///
   /// &gt; **NOTE:** setting the field `secret` to `true` doesn't make this field sensitive in the provider, instead it marks the value as secret and encrypts the value in Azure.
-  final pulumi.Input<bool>? secret;
+  final pulumi.Input<bool?>? secret;
   /// A list of tags to be applied to the API Management Named Value.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The value of this API Management Named Value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// A `valueFromKeyVault` block as defined below. If specified, `secret` must also be set to `true`.
-  final pulumi.Input<NamedValueValueFromKeyVault>? valueFromKeyVault;
+  final pulumi.Input<NamedValueValueFromKeyVault?>? valueFromKeyVault;
 
   /// Creates a new [NamedValueState].
   /// [apiManagementName] The name of the API Management Service in which the API Management Named Value should exist. Changing this forces a new resource to be created.

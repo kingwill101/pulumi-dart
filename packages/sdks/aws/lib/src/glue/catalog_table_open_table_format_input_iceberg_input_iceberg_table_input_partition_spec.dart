@@ -7,7 +7,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec
   /// List of partition fields that define how the table data should be partitioned. See `partition_spec.fields` below.
   final pulumi.Input<List<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField>> fields;
   /// Unique identifier for this partition specification within the Iceberg table's metadata history.
-  final pulumi.Input<int>? specId;
+  final pulumi.Input<int?>? specId;
 
   /// Creates a new [CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec].
   /// [fields] List of partition fields that define how the table data should be partitioned. See `partition_spec.fields` below.
@@ -27,7 +27,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField.fromMap((value as Map).cast<String, dynamic>()))),
-      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

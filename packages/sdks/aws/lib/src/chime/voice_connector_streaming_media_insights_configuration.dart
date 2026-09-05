@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VoiceConnectorStreamingMediaInsightsConfiguration {
   /// The media insights configuration that will be invoked by the Voice Connector.
-  final pulumi.Input<String>? configurationArn;
+  final pulumi.Input<String?>? configurationArn;
   /// When `true`, the media insights configuration is not enabled. Defaults to `false`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
 
   /// Creates a new [VoiceConnectorStreamingMediaInsightsConfiguration].
   /// [configurationArn] The media insights configuration that will be invoked by the Voice Connector.

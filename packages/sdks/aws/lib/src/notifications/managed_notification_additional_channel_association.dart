@@ -178,7 +178,7 @@ class ManagedNotificationAdditionalChannelAssociation extends pulumi.CustomResou
           'aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     channelArn = registerOutput<String>('channelArn');
     managedNotificationArn = registerOutput<String>('managedNotificationArn');
@@ -189,11 +189,12 @@ class ManagedNotificationAdditionalChannelAssociation extends pulumi.CustomResou
     String name,
     pulumi.Input<String> id, {
     ManagedNotificationAdditionalChannelAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedNotificationAdditionalChannelAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,6 +208,19 @@ class ManagedNotificationAdditionalChannelAssociation extends pulumi.CustomResou
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    channelArn = registerOutput<String>('channelArn');
+    managedNotificationArn = registerOutput<String>('managedNotificationArn');
+  }
+
+  /// Creates a typed reference to an existing [ManagedNotificationAdditionalChannelAssociation] resource.
+  ManagedNotificationAdditionalChannelAssociation.reference(String urn)
+    : super(
+        'aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     channelArn = registerOutput<String>('channelArn');
     managedNotificationArn = registerOutput<String>('managedNotificationArn');
   }

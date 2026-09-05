@@ -244,7 +244,7 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
     customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
@@ -258,11 +258,12 @@ class CustomDomainAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDomainAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDomainAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,6 +277,22 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
+    customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
+    customDomainName = registerOutput<String>('customDomainName');
+    region = registerOutput<String>('region');
+    workgroupName = registerOutput<String>('workgroupName');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomainAssociation] resource.
+  CustomDomainAssociation.reference(String urn)
+    : super(
+        'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
     customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');
     customDomainName = registerOutput<String>('customDomainName');

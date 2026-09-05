@@ -5,9 +5,11 @@ import 'virtual_machine_boot_diagnostics.dart';
 import 'virtual_machine_identity.dart';
 import 'virtual_machine_os_profile.dart';
 import 'virtual_machine_os_profile_linux_config.dart';
+import 'virtual_machine_os_profile_secret.dart';
 import 'virtual_machine_os_profile_windows_config.dart';
 import 'virtual_machine_plan.dart';
 import 'virtual_machine_state.dart';
+import 'virtual_machine_storage_data_disk.dart';
 import 'virtual_machine_storage_image_reference.dart';
 import 'virtual_machine_storage_os_disk.dart';
 
@@ -299,7 +301,7 @@ import 'virtual_machine_storage_os_disk.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   internal.ID(),
+/// 					SubnetId:                   internal.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -312,7 +314,7 @@ import 'virtual_machine_storage_os_disk.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				mainNetworkInterface.ID(),
+/// 				mainNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_DS1_v2"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -629,7 +631,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// (Required, when a Linux machine) An `osProfileLinuxConfig` block as defined below.
   late final pulumi.Output<VirtualMachineOsProfileLinuxConfig?> osProfileLinuxConfig;
   /// One or more `osProfileSecrets` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> osProfileSecrets;
+  late final pulumi.Output<List<VirtualMachineOsProfileSecret>?> osProfileSecrets;
   /// (Required, when a Windows machine) An `osProfileWindowsConfig` block as defined below.
   late final pulumi.Output<VirtualMachineOsProfileWindowsConfig?> osProfileWindowsConfig;
   /// A `plan` block as defined below.
@@ -643,7 +645,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// One or more `storageDataDisk` blocks as defined below.
   ///
   /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageDataDisks;
+  late final pulumi.Output<List<VirtualMachineStorageDataDisk>> storageDataDisks;
   /// A `storageImageReference` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<VirtualMachineStorageImageReference> storageImageReference;
   /// A `storageOsDisk` block as defined below.
@@ -671,7 +673,7 @@ class VirtualMachine extends pulumi.CustomResource {
           'azure:compute/virtualMachine:VirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     additionalCapabilities = registerOutput<VirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilitySetId = registerOutput<String>('availabilitySetId');
@@ -682,19 +684,19 @@ class VirtualMachine extends pulumi.CustomResource {
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>('osProfileSecrets');
+    osProfileSecrets = registerOutput<List<VirtualMachineOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineOsProfileSecret>(guardedValue, (value) => VirtualMachineOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
     osProfileWindowsConfig = registerOutput<VirtualMachineOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     plan = registerOutput<VirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryNetworkInterfaceId = registerOutput<String?>('primaryNetworkInterfaceId');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storageDataDisks = registerOutput<List<Map<String, dynamic>>>('storageDataDisks');
+    storageDataDisks = registerOutput<List<VirtualMachineStorageDataDisk>>('storageDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineStorageDataDisk>(guardedValue, (value) => VirtualMachineStorageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     storageImageReference = registerOutput<VirtualMachineStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>('storageOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vmSize = registerOutput<String>('vmSize');
     zones = registerOutput<String?>('zones');
   }
@@ -704,11 +706,12 @@ class VirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -731,19 +734,54 @@ class VirtualMachine extends pulumi.CustomResource {
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>('osProfileSecrets');
+    osProfileSecrets = registerOutput<List<VirtualMachineOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineOsProfileSecret>(guardedValue, (value) => VirtualMachineOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
     osProfileWindowsConfig = registerOutput<VirtualMachineOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     plan = registerOutput<VirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryNetworkInterfaceId = registerOutput<String?>('primaryNetworkInterfaceId');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    storageDataDisks = registerOutput<List<Map<String, dynamic>>>('storageDataDisks');
+    storageDataDisks = registerOutput<List<VirtualMachineStorageDataDisk>>('storageDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineStorageDataDisk>(guardedValue, (value) => VirtualMachineStorageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     storageImageReference = registerOutput<VirtualMachineStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>('storageOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vmSize = registerOutput<String>('vmSize');
+    zones = registerOutput<String?>('zones');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure:compute/virtualMachine:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<VirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilitySetId = registerOutput<String>('availabilitySetId');
+    bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteDataDisksOnTermination = registerOutput<bool?>('deleteDataDisksOnTermination');
+    deleteOsDiskOnTermination = registerOutput<bool?>('deleteOsDiskOnTermination');
+    identity = registerOutput<VirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfileSecrets = registerOutput<List<VirtualMachineOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineOsProfileSecret>(guardedValue, (value) => VirtualMachineOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    osProfileWindowsConfig = registerOutput<VirtualMachineOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    plan = registerOutput<VirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryNetworkInterfaceId = registerOutput<String?>('primaryNetworkInterfaceId');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageDataDisks = registerOutput<List<VirtualMachineStorageDataDisk>>('storageDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineStorageDataDisk>(guardedValue, (value) => VirtualMachineStorageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    storageImageReference = registerOutput<VirtualMachineStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>('storageOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vmSize = registerOutput<String>('vmSize');
     zones = registerOutput<String?>('zones');
   }

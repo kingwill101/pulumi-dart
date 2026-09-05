@@ -30,11 +30,11 @@ import 'firehose_delivery_stream_state.dart';
 /// const bucket = new aws.s3.Bucket("bucket", {bucket: "tf-test-bucket"});
 /// const firehoseAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["firehose.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -44,11 +44,11 @@ import 'firehose_delivery_stream_state.dart';
 /// });
 /// const lambdaAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -64,22 +64,22 @@ import 'firehose_delivery_stream_state.dart';
 ///     runtime: aws.lambda.Runtime.NodeJS24dX,
 /// });
 /// const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extended_s3_stream", {
-///     name: "kinesis-firehose-extended-s3-test-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
-///         roleArn: firehoseRole.arn,
-///         bucketArn: bucket.arn,
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [{
-///                 type: "Lambda",
 ///                 parameters: [{
 ///                     parameterName: "LambdaArn",
 ///                     parameterValue: pulumi.interpolate`${lambdaProcessor.arn}:$LATEST`,
 ///                 }],
+///                 type: "Lambda",
 ///             }],
+///             enabled: true,
 ///         },
+///         roleArn: firehoseRole.arn,
+///         bucketArn: bucket.arn,
 ///     },
+///     name: "kinesis-firehose-extended-s3-test-stream",
+///     destination: "extended_s3",
 /// });
 /// const bucketAcl = new aws.s3.BucketAcl("bucket_acl", {
 ///     bucket: bucket.id,
@@ -92,22 +92,22 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// bucket = aws.s3.Bucket("bucket", bucket="tf-test-bucket")
 /// firehose_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["firehose.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// firehose_role = aws.iam.Role("firehose_role",
 ///     name="firehose_test_role",
 ///     assume_role_policy=firehose_assume_role.json)
 /// lambda_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// lambda_iam = aws.iam.Role("lambda_iam",
@@ -120,22 +120,22 @@ import 'firehose_delivery_stream_state.dart';
 ///     handler="exports.handler",
 ///     runtime=aws.lambda_.Runtime.NODE_JS24D_X)
 /// extended_s3_stream = aws.kinesis.FirehoseDeliveryStream("extended_s3_stream",
-///     name="kinesis-firehose-extended-s3-test-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
-///         "role_arn": firehose_role.arn,
-///         "bucket_arn": bucket.arn,
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [{
-///                 "type": "Lambda",
 ///                 "parameters": [{
 ///                     "parameter_name": "LambdaArn",
 ///                     "parameter_value": lambda_processor.arn.apply(lambda arn: f"{arn}:$LATEST"),
 ///                 }],
+///                 "type": "Lambda",
 ///             }],
+///             "enabled": True,
 ///         },
-///     })
+///         "role_arn": firehose_role.arn,
+///         "bucket_arn": bucket.arn,
+///     },
+///     name="kinesis-firehose-extended-s3-test-stream",
+///     destination="extended_s3")
 /// bucket_acl = aws.s3.BucketAcl("bucket_acl",
 ///     bucket=bucket.id,
 ///     acl="private")
@@ -159,7 +159,6 @@ import 'firehose_delivery_stream_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -171,6 +170,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -191,7 +191,6 @@ import 'firehose_delivery_stream_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -203,6 +202,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -228,20 +228,14 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var extendedS3Stream = new Aws.Kinesis.FirehoseDeliveryStream("extended_s3_stream", new()
 ///     {
-///         Name = "kinesis-firehose-extended-s3-test-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
-///             RoleArn = firehoseRole.Arn,
-///             BucketArn = bucket.Arn,
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "Lambda",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs
@@ -250,10 +244,16 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = lambdaProcessor.Arn.Apply(arn => $"{arn}:$LATEST"),
 ///                             },
 ///                         },
+///                         Type = "Lambda",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             RoleArn = firehoseRole.Arn,
+///             BucketArn = bucket.Arn,
 ///         },
+///         Name = "kinesis-firehose-extended-s3-test-stream",
+///         Destination = "extended_s3",
 ///     });
 ///
 ///     var bucketAcl = new Aws.S3.BucketAcl("bucket_acl", new()
@@ -288,7 +288,6 @@ import 'firehose_delivery_stream_state.dart';
 /// 		firehoseAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -297,6 +296,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -316,7 +316,6 @@ import 'firehose_delivery_stream_state.dart';
 /// 		lambdaAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -325,6 +324,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -352,16 +352,10 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "extended_s3_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
-/// 				RoleArn:   firehoseRole.Arn,
-/// 				BucketArn: bucket.Arn,
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("Lambda"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName: pulumi.String("LambdaArn"),
@@ -370,10 +364,16 @@ import 'firehose_delivery_stream_state.dart';
 /// 									}).(pulumi.StringOutput),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("Lambda"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				RoleArn:   firehoseRole.Arn,
+/// 				BucketArn: bucket.Arn,
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -400,42 +400,42 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "firehoseAssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   name        = "kinesis-firehose-extended-s3-test-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
-///     role_arn   = aws_iam_role.firehose_role.arn
-///     bucket_arn = aws_s3_bucket.bucket.arn
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "Lambda"
 ///         "parameters" = [{
 ///           "parameterName"  = "LambdaArn"
 ///           "parameterValue" ="${aws_lambda_function.lambda_processor.arn}:$LATEST"
 ///         }]
+///         "type" = "Lambda"
 ///       }]
+///       enabled = "true"
 ///     }
+///     role_arn   = aws_iam_role.firehose_role.arn
+///     bucket_arn = aws_s3_bucket.bucket.arn
 ///   }
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
 /// }
 /// resource "aws_s3_bucket" "bucket" {
 ///   bucket = "tf-test-bucket"
@@ -504,11 +504,11 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///         final var firehoseAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("firehose.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -520,11 +520,11 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///         final var lambdaAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -543,22 +543,22 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var extendedS3Stream = new FirehoseDeliveryStream("extendedS3Stream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-extended-s3-test-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .bucketArn(bucket.arn())
 ///                 .processingConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("Lambda")
 ///                         .parameters(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
 ///                             .parameterValue(lambdaProcessor.arn().applyValue(_arn -> String.format("%s:$LATEST", _arn)))
 ///                             .build())
+///                         .type("Lambda")
 ///                         .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .bucketArn(bucket.arn())
 ///                 .build())
+///             .name("kinesis-firehose-extended-s3-test-stream")
+///             .destination("extended_s3")
 ///             .build());
 ///
 ///         var bucketAcl = new BucketAcl("bucketAcl", BucketAclArgs.builder()
@@ -575,18 +575,18 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: extended_s3_stream
 ///     properties:
-///       name: kinesis-firehose-extended-s3-test-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
-///         roleArn: ${firehoseRole.arn}
-///         bucketArn: ${bucket.arn}
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: Lambda
-///               parameters:
+///             - parameters:
 ///                 - parameterName: LambdaArn
 ///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///               type: Lambda
+///           enabled: 'true'
+///         roleArn: ${firehoseRole.arn}
+///         bucketArn: ${bucket.arn}
+///       name: kinesis-firehose-extended-s3-test-stream
+///       destination: extended_s3
 ///   bucket:
 ///     type: aws:s3:Bucket
 ///     properties:
@@ -625,11 +625,11 @@ import 'firehose_delivery_stream_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - firehose.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   lambdaAssumeRole:
@@ -637,11 +637,11 @@ import 'firehose_delivery_stream_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -657,32 +657,23 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extended_s3_stream", {
-///     name: "kinesis-firehose-extended-s3-test-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
-///         roleArn: firehoseRole.arn,
-///         bucketArn: bucket.arn,
-///         bufferingSize: 64,
 ///         dynamicPartitioningConfiguration: {
 ///             enabled: true,
 ///         },
-///         prefix: "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///         errorOutputPrefix: "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [
 ///                 {
-///                     type: "RecordDeAggregation",
 ///                     parameters: [{
 ///                         parameterName: "SubRecordType",
 ///                         parameterValue: "JSON",
 ///                     }],
+///                     type: "RecordDeAggregation",
 ///                 },
 ///                 {
 ///                     type: "AppendDelimiterToRecord",
 ///                 },
 ///                 {
-///                     type: "MetadataExtraction",
 ///                     parameters: [
 ///                         {
 ///                             parameterName: "JsonParsingEngine",
@@ -693,10 +684,19 @@ import 'firehose_delivery_stream_state.dart';
 ///                             parameterValue: "{customer_id:.customer_id}",
 ///                         },
 ///                     ],
+///                     type: "MetadataExtraction",
 ///                 },
 ///             ],
+///             enabled: true,
 ///         },
+///         roleArn: firehoseRole.arn,
+///         bucketArn: bucket.arn,
+///         bufferingSize: 64,
+///         prefix: "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///         errorOutputPrefix: "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///     },
+///     name: "kinesis-firehose-extended-s3-test-stream",
+///     destination: "extended_s3",
 /// });
 /// ```
 /// ```python
@@ -704,32 +704,23 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// extended_s3_stream = aws.kinesis.FirehoseDeliveryStream("extended_s3_stream",
-///     name="kinesis-firehose-extended-s3-test-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
-///         "role_arn": firehose_role["arn"],
-///         "bucket_arn": bucket["arn"],
-///         "buffering_size": 64,
 ///         "dynamic_partitioning_configuration": {
 ///             "enabled": True,
 ///         },
-///         "prefix": "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///         "error_output_prefix": "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [
 ///                 {
-///                     "type": "RecordDeAggregation",
 ///                     "parameters": [{
 ///                         "parameter_name": "SubRecordType",
 ///                         "parameter_value": "JSON",
 ///                     }],
+///                     "type": "RecordDeAggregation",
 ///                 },
 ///                 {
 ///                     "type": "AppendDelimiterToRecord",
 ///                 },
 ///                 {
-///                     "type": "MetadataExtraction",
 ///                     "parameters": [
 ///                         {
 ///                             "parameter_name": "JsonParsingEngine",
@@ -740,10 +731,19 @@ import 'firehose_delivery_stream_state.dart';
 ///                             "parameter_value": "{customer_id:.customer_id}",
 ///                         },
 ///                     ],
+///                     "type": "MetadataExtraction",
 ///                 },
 ///             ],
+///             "enabled": True,
 ///         },
-///     })
+///         "role_arn": firehose_role["arn"],
+///         "bucket_arn": bucket["arn"],
+///         "buffering_size": 64,
+///         "prefix": "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///         "error_output_prefix": "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
+///     },
+///     name="kinesis-firehose-extended-s3-test-stream",
+///     destination="extended_s3")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -755,27 +755,18 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var extendedS3Stream = new Aws.Kinesis.FirehoseDeliveryStream("extended_s3_stream", new()
 ///     {
-///         Name = "kinesis-firehose-extended-s3-test-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
-///             RoleArn = firehoseRole.Arn,
-///             BucketArn = bucket.Arn,
-///             BufferingSize = 64,
 ///             DynamicPartitioningConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs
 ///             {
 ///                 Enabled = true,
 ///             },
-///             Prefix = "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///             ErrorOutputPrefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "RecordDeAggregation",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs
@@ -784,6 +775,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = "JSON",
 ///                             },
 ///                         },
+///                         Type = "RecordDeAggregation",
 ///                     },
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs
 ///                     {
@@ -791,7 +783,6 @@ import 'firehose_delivery_stream_state.dart';
 ///                     },
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "MetadataExtraction",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs
@@ -805,10 +796,19 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = "{customer_id:.customer_id}",
 ///                             },
 ///                         },
+///                         Type = "MetadataExtraction",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             RoleArn = firehoseRole.Arn,
+///             BucketArn = bucket.Arn,
+///             BufferingSize = 64,
+///             Prefix = "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///             ErrorOutputPrefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         },
+///         Name = "kinesis-firehose-extended-s3-test-stream",
+///         Destination = "extended_s3",
 ///     });
 ///
 /// });
@@ -824,34 +824,25 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "extended_s3_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
-/// 				RoleArn:       pulumi.Any(firehoseRole.Arn),
-/// 				BucketArn:     pulumi.Any(bucket.Arn),
-/// 				BufferingSize: pulumi.Int(64),
 /// 				DynamicPartitioningConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs{
 /// 					Enabled: pulumi.Bool(true),
 /// 				},
-/// 				Prefix:            pulumi.String("data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"),
-/// 				ErrorOutputPrefix: pulumi.String("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"),
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("RecordDeAggregation"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("SubRecordType"),
 /// 									ParameterValue: pulumi.String("JSON"),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("RecordDeAggregation"),
 /// 						},
 /// 						&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs{
 /// 							Type: pulumi.String("AppendDelimiterToRecord"),
 /// 						},
 /// 						&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("MetadataExtraction"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("JsonParsingEngine"),
@@ -862,10 +853,19 @@ import 'firehose_delivery_stream_state.dart';
 /// 									ParameterValue: pulumi.String("{customer_id:.customer_id}"),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("MetadataExtraction"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				RoleArn:           pulumi.Any(firehoseRole.Arn),
+/// 				BucketArn:         pulumi.Any(bucket.Arn),
+/// 				BufferingSize:     pulumi.Int(64),
+/// 				Prefix:            pulumi.String("data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"),
+/// 				ErrorOutputPrefix: pulumi.String("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -884,29 +884,20 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   name        = "kinesis-firehose-extended-s3-test-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
-///     role_arn       = firehoseRole.arn
-///     bucket_arn     = bucket.arn
-///     buffering_size = 64
 ///     dynamic_partitioning_configuration = {
 ///       enabled = "true"
 ///     }
-///     prefix              = "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
-///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "RecordDeAggregation"
 ///         "parameters" = [{
 ///           "parameterName"  = "SubRecordType"
 ///           "parameterValue" = "JSON"
 ///         }]
+///         "type" = "RecordDeAggregation"
 ///         }, {
 ///         "type" = "AppendDelimiterToRecord"
 ///         }, {
-///         "type" = "MetadataExtraction"
 ///         "parameters" = [{
 ///           "parameterName"  = "JsonParsingEngine"
 ///           "parameterValue" = "JQ-1.6"
@@ -914,9 +905,20 @@ import 'firehose_delivery_stream_state.dart';
 ///           "parameterName"  = "MetadataExtractionQuery"
 ///           "parameterValue" = "{customer_id:.customer_id}"
 ///         }]
+///         "type" = "MetadataExtraction"
 ///       }]
+///       enabled = "true"
 ///     }
+///     role_arn            = firehoseRole.arn
+///     bucket_arn          = bucket.arn
+///     buffering_size      = 64
+///     prefix              = "data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
+///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
 ///   }
+///   # https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html
+///   # Example prefix using partitionKeyFromQuery, applicable to JQ processor
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
 /// }
 /// ```
 /// ```java
@@ -946,32 +948,23 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var extendedS3Stream = new FirehoseDeliveryStream("extendedS3Stream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-extended-s3-test-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .bucketArn(bucket.arn())
-///                 .bufferingSize(64)
 ///                 .dynamicPartitioningConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs.builder()
 ///                     .enabled(true)
 ///                     .build())
-///                 .prefix("data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
-///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
 ///                 .processingConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(
 ///                         FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs.builder()
-///                             .type("RecordDeAggregation")
 ///                             .parameters(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                                 .parameterName("SubRecordType")
 ///                                 .parameterValue("JSON")
 ///                                 .build())
+///                             .type("RecordDeAggregation")
 ///                             .build(),
 ///                         FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs.builder()
 ///                             .type("AppendDelimiterToRecord")
 ///                             .build(),
 ///                         FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs.builder()
-///                             .type("MetadataExtraction")
 ///                             .parameters(
 ///                                 FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                                     .parameterName("JsonParsingEngine")
@@ -981,9 +974,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                                     .parameterName("MetadataExtractionQuery")
 ///                                     .parameterValue("{customer_id:.customer_id}")
 ///                                     .build())
+///                             .type("MetadataExtraction")
 ///                             .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .bucketArn(bucket.arn())
+///                 .bufferingSize(64)
+///                 .prefix("data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
+///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
 ///                 .build())
+///             .name("kinesis-firehose-extended-s3-test-stream")
+///             .destination("extended_s3")
 ///             .build());
 ///
 ///     }
@@ -995,30 +997,30 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: extended_s3_stream
 ///     properties:
-///       name: kinesis-firehose-extended-s3-test-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
-///         roleArn: ${firehoseRole.arn}
-///         bucketArn: ${bucket.arn}
-///         bufferingSize: 64
 ///         dynamicPartitioningConfiguration:
 ///           enabled: 'true'
-///         prefix: data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
-///         errorOutputPrefix: errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: RecordDeAggregation
-///               parameters:
+///             - parameters:
 ///                 - parameterName: SubRecordType
 ///                   parameterValue: JSON
+///               type: RecordDeAggregation
 ///             - type: AppendDelimiterToRecord
-///             - type: MetadataExtraction
-///               parameters:
+///             - parameters:
 ///                 - parameterName: JsonParsingEngine
 ///                   parameterValue: JQ-1.6
 ///                 - parameterName: MetadataExtractionQuery
 ///                   parameterValue: '{customer_id:.customer_id}'
+///               type: MetadataExtraction
+///           enabled: 'true'
+///         roleArn: ${firehoseRole.arn}
+///         bucketArn: ${bucket.arn}
+///         bufferingSize: 64
+///         prefix: data/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
+///         errorOutputPrefix: errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/
+///       name: kinesis-firehose-extended-s3-test-stream
+///       destination: extended_s3
 /// ```
 ///
 ///
@@ -1032,21 +1034,12 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extended_s3_stream", {
-///     name: "kinesis-firehose-extended-s3-test-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
-///         roleArn: firehoseRole.arn,
-///         bucketArn: bucket.arn,
-///         bufferingSize: 64,
 ///         dynamicPartitioningConfiguration: {
 ///             enabled: true,
 ///         },
-///         prefix: "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///         errorOutputPrefix: "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [{
-///                 type: "MetadataExtraction",
 ///                 parameters: [
 ///                     {
 ///                         parameterName: "JsonParsingEngine",
@@ -1057,9 +1050,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                         parameterValue: "{store_id:.store_id,customer_id:.customer_id}",
 ///                     },
 ///                 ],
+///                 type: "MetadataExtraction",
 ///             }],
+///             enabled: true,
 ///         },
+///         roleArn: firehoseRole.arn,
+///         bucketArn: bucket.arn,
+///         bufferingSize: 64,
+///         prefix: "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///         errorOutputPrefix: "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///     },
+///     name: "kinesis-firehose-extended-s3-test-stream",
+///     destination: "extended_s3",
 /// });
 /// ```
 /// ```python
@@ -1067,21 +1069,12 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// extended_s3_stream = aws.kinesis.FirehoseDeliveryStream("extended_s3_stream",
-///     name="kinesis-firehose-extended-s3-test-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
-///         "role_arn": firehose_role["arn"],
-///         "bucket_arn": bucket["arn"],
-///         "buffering_size": 64,
 ///         "dynamic_partitioning_configuration": {
 ///             "enabled": True,
 ///         },
-///         "prefix": "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///         "error_output_prefix": "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [{
-///                 "type": "MetadataExtraction",
 ///                 "parameters": [
 ///                     {
 ///                         "parameter_name": "JsonParsingEngine",
@@ -1092,9 +1085,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                         "parameter_value": "{store_id:.store_id,customer_id:.customer_id}",
 ///                     },
 ///                 ],
+///                 "type": "MetadataExtraction",
 ///             }],
+///             "enabled": True,
 ///         },
-///     })
+///         "role_arn": firehose_role["arn"],
+///         "bucket_arn": bucket["arn"],
+///         "buffering_size": 64,
+///         "prefix": "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///         "error_output_prefix": "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
+///     },
+///     name="kinesis-firehose-extended-s3-test-stream",
+///     destination="extended_s3")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1106,27 +1108,18 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var extendedS3Stream = new Aws.Kinesis.FirehoseDeliveryStream("extended_s3_stream", new()
 ///     {
-///         Name = "kinesis-firehose-extended-s3-test-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
-///             RoleArn = firehoseRole.Arn,
-///             BucketArn = bucket.Arn,
-///             BufferingSize = 64,
 ///             DynamicPartitioningConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs
 ///             {
 ///                 Enabled = true,
 ///             },
-///             Prefix = "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
-///             ErrorOutputPrefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "MetadataExtraction",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs
@@ -1140,10 +1133,19 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = "{store_id:.store_id,customer_id:.customer_id}",
 ///                             },
 ///                         },
+///                         Type = "MetadataExtraction",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             RoleArn = firehoseRole.Arn,
+///             BucketArn = bucket.Arn,
+///             BufferingSize = 64,
+///             Prefix = "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/",
+///             ErrorOutputPrefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/",
 ///         },
+///         Name = "kinesis-firehose-extended-s3-test-stream",
+///         Destination = "extended_s3",
 ///     });
 ///
 /// });
@@ -1159,22 +1161,13 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "extended_s3_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
-/// 				RoleArn:       pulumi.Any(firehoseRole.Arn),
-/// 				BucketArn:     pulumi.Any(bucket.Arn),
-/// 				BufferingSize: pulumi.Int(64),
 /// 				DynamicPartitioningConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs{
 /// 					Enabled: pulumi.Bool(true),
 /// 				},
-/// 				Prefix:            pulumi.String("data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"),
-/// 				ErrorOutputPrefix: pulumi.String("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"),
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("MetadataExtraction"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("JsonParsingEngine"),
@@ -1185,10 +1178,19 @@ import 'firehose_delivery_stream_state.dart';
 /// 									ParameterValue: pulumi.String("{store_id:.store_id,customer_id:.customer_id}"),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("MetadataExtraction"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				RoleArn:           pulumi.Any(firehoseRole.Arn),
+/// 				BucketArn:         pulumi.Any(bucket.Arn),
+/// 				BufferingSize:     pulumi.Int(64),
+/// 				Prefix:            pulumi.String("data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"),
+/// 				ErrorOutputPrefix: pulumi.String("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-extended-s3-test-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1207,21 +1209,12 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "extended_s3_stream" {
-///   name        = "kinesis-firehose-extended-s3-test-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
-///     role_arn       = firehoseRole.arn
-///     bucket_arn     = bucket.arn
-///     buffering_size = 64
 ///     dynamic_partitioning_configuration = {
 ///       enabled = "true"
 ///     }
-///     prefix              = "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
-///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "MetadataExtraction"
 ///         "parameters" = [{
 ///           "parameterName"  = "JsonParsingEngine"
 ///           "parameterValue" = "JQ-1.6"
@@ -1229,9 +1222,20 @@ import 'firehose_delivery_stream_state.dart';
 ///           "parameterName"  = "MetadataExtractionQuery"
 ///           "parameterValue" = "{store_id:.store_id,customer_id:.customer_id}"
 ///         }]
+///         "type" = "MetadataExtraction"
 ///       }]
+///       enabled = "true"
 ///     }
+///     role_arn            = firehoseRole.arn
+///     bucket_arn          = bucket.arn
+///     buffering_size      = 64
+///     prefix              = "data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/"
+///     error_output_prefix = "errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/"
 ///   }
+///   # https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html
+///   # Example prefix using partitionKeyFromQuery, applicable to JQ processor
+///   name        = "kinesis-firehose-extended-s3-test-stream"
+///   destination = "extended_s3"
 /// }
 /// ```
 /// ```java
@@ -1261,21 +1265,12 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var extendedS3Stream = new FirehoseDeliveryStream("extendedS3Stream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-extended-s3-test-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .bucketArn(bucket.arn())
-///                 .bufferingSize(64)
 ///                 .dynamicPartitioningConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationArgs.builder()
 ///                     .enabled(true)
 ///                     .build())
-///                 .prefix("data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
-///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
 ///                 .processingConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("MetadataExtraction")
 ///                         .parameters(
 ///                             FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                                 .parameterName("JsonParsingEngine")
@@ -1285,9 +1280,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 .parameterName("MetadataExtractionQuery")
 ///                                 .parameterValue("{store_id:.store_id,customer_id:.customer_id}")
 ///                                 .build())
+///                         .type("MetadataExtraction")
 ///                         .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .bucketArn(bucket.arn())
+///                 .bufferingSize(64)
+///                 .prefix("data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/")
+///                 .errorOutputPrefix("errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/")
 ///                 .build())
+///             .name("kinesis-firehose-extended-s3-test-stream")
+///             .destination("extended_s3")
 ///             .build());
 ///
 ///     }
@@ -1299,25 +1303,25 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: extended_s3_stream
 ///     properties:
-///       name: kinesis-firehose-extended-s3-test-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
-///         roleArn: ${firehoseRole.arn}
-///         bucketArn: ${bucket.arn}
-///         bufferingSize: 64
 ///         dynamicPartitioningConfiguration:
 ///           enabled: 'true'
-///         prefix: data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
-///         errorOutputPrefix: errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: MetadataExtraction
-///               parameters:
+///             - parameters:
 ///                 - parameterName: JsonParsingEngine
 ///                   parameterValue: JQ-1.6
 ///                 - parameterName: MetadataExtractionQuery
 ///                   parameterValue: '{store_id:.store_id,customer_id:.customer_id}'
+///               type: MetadataExtraction
+///           enabled: 'true'
+///         roleArn: ${firehoseRole.arn}
+///         bucketArn: ${bucket.arn}
+///         bufferingSize: 64
+///         prefix: data/store_id=!{partitionKeyFromQuery:store_id}/customer_id=!{partitionKeyFromQuery:customer_id}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/
+///         errorOutputPrefix: errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}/
+///       name: kinesis-firehose-extended-s3-test-stream
+///       destination: extended_s3
 /// ```
 ///
 ///
@@ -1337,17 +1341,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     clusterType: "single-node",
 /// });
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "redshift",
 ///     redshiftConfiguration: {
-///         roleArn: firehoseRole.arn,
-///         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
-///         username: "testuser",
-///         password: "T3stPass",
-///         dataTableName: "test-table",
-///         copyOptions: "delimiter '|'",
-///         dataTableColumns: "test-col",
-///         s3BackupMode: "Enabled",
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
@@ -1362,7 +1356,17 @@ import 'firehose_delivery_stream_state.dart';
 ///             bufferingInterval: 300,
 ///             compressionFormat: "GZIP",
 ///         },
+///         roleArn: firehoseRole.arn,
+///         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
+///         username: "testuser",
+///         password: "T3stPass",
+///         dataTableName: "test-table",
+///         copyOptions: "delimiter '|'",
+///         dataTableColumns: "test-col",
+///         s3BackupMode: "Enabled",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "redshift",
 /// });
 /// ```
 /// ```python
@@ -1377,21 +1381,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     node_type="dc1.large",
 ///     cluster_type="single-node")
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="redshift",
 ///     redshift_configuration={
-///         "role_arn": firehose_role["arn"],
-///         "cluster_jdbcurl": pulumi.Output.all(
-///             endpoint=test_cluster.endpoint,
-///             database_name=test_cluster.database_name
-/// ).apply(lambda resolved_outputs: f"jdbc:redshift://{resolved_outputs['endpoint']}/{resolved_outputs['database_name']}")
-/// ,
-///         "username": "testuser",
-///         "password": "T3stPass",
-///         "data_table_name": "test-table",
-///         "copy_options": "delimiter '|'",
-///         "data_table_columns": "test-col",
-///         "s3_backup_mode": "Enabled",
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -1406,7 +1396,21 @@ import 'firehose_delivery_stream_state.dart';
 ///             "buffering_interval": 300,
 ///             "compression_format": "GZIP",
 ///         },
-///     })
+///         "role_arn": firehose_role["arn"],
+///         "cluster_jdbcurl": pulumi.Output.all(
+///             endpoint=test_cluster.endpoint,
+///             database_name=test_cluster.database_name
+/// ).apply(lambda resolved_outputs: f"jdbc:redshift://{resolved_outputs['endpoint']}/{resolved_outputs['database_name']}")
+/// ,
+///         "username": "testuser",
+///         "password": "T3stPass",
+///         "data_table_name": "test-table",
+///         "copy_options": "delimiter '|'",
+///         "data_table_columns": "test-col",
+///         "s3_backup_mode": "Enabled",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="redshift")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1428,23 +1432,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "redshift",
 ///         RedshiftConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamRedshiftConfigurationArgs
 ///         {
-///             RoleArn = firehoseRole.Arn,
-///             ClusterJdbcurl = Output.Tuple(testCluster.Endpoint, testCluster.DatabaseName).Apply(values =>
-///             {
-///                 var endpoint = values.Item1;
-///                 var databaseName = values.Item2;
-///                 return $"jdbc:redshift://{endpoint}/{databaseName}";
-///             }),
-///             Username = "testuser",
-///             Password = "T3stPass",
-///             DataTableName = "test-table",
-///             CopyOptions = "delimiter '|'",
-///             DataTableColumns = "test-col",
-///             S3BackupMode = "Enabled",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehoseRole.Arn,
@@ -1461,7 +1450,22 @@ import 'firehose_delivery_stream_state.dart';
 ///                 BufferingInterval = 300,
 ///                 CompressionFormat = "GZIP",
 ///             },
+///             RoleArn = firehoseRole.Arn,
+///             ClusterJdbcurl = Output.Tuple(testCluster.Endpoint, testCluster.DatabaseName).Apply(values =>
+///             {
+///                 var endpoint = values.Item1;
+///                 var databaseName = values.Item2;
+///                 return $"jdbc:redshift://{endpoint}/{databaseName}";
+///             }),
+///             Username = "testuser",
+///             Password = "T3stPass",
+///             DataTableName = "test-table",
+///             CopyOptions = "delimiter '|'",
+///             DataTableColumns = "test-col",
+///             S3BackupMode = "Enabled",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "redshift",
 ///     });
 ///
 /// });
@@ -1491,21 +1495,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("redshift"),
 /// 			RedshiftConfiguration: &kinesis.FirehoseDeliveryStreamRedshiftConfigurationArgs{
-/// 				RoleArn: pulumi.Any(firehoseRole.Arn),
-/// 				ClusterJdbcurl: pulumi.All(testCluster.Endpoint, testCluster.DatabaseName).ApplyT(func(_args []interface{}) (string, error) {
-/// 					endpoint := _args[0].(string)
-/// 					databaseName := _args[1].(string)
-/// 					return fmt.Sprintf("jdbc:redshift://%v/%v", endpoint, databaseName), nil
-/// 				}).(pulumi.StringOutput),
-/// 				Username:         pulumi.String("testuser"),
-/// 				Password:         pulumi.String("T3stPass"),
-/// 				DataTableName:    pulumi.String("test-table"),
-/// 				CopyOptions:      pulumi.String("delimiter '|'"),
-/// 				DataTableColumns: pulumi.String("test-col"),
-/// 				S3BackupMode:     pulumi.String("Enabled"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -1520,7 +1510,21 @@ import 'firehose_delivery_stream_state.dart';
 /// 					BufferingInterval: pulumi.Int(300),
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
+/// 				RoleArn: pulumi.Any(firehoseRole.Arn),
+/// 				ClusterJdbcurl: pulumi.All(testCluster.Endpoint, testCluster.DatabaseName).ApplyT(func(_args []interface{}) (string, error) {
+/// 					endpoint := _args[0].(string)
+/// 					databaseName := _args[1].(string)
+/// 					return fmt.Sprintf("jdbc:redshift://%v/%v", endpoint, databaseName), nil
+/// 				}).(pulumi.StringOutput),
+/// 				Username:         pulumi.String("testuser"),
+/// 				Password:         pulumi.String("T3stPass"),
+/// 				DataTableName:    pulumi.String("test-table"),
+/// 				CopyOptions:      pulumi.String("delimiter '|'"),
+/// 				DataTableColumns: pulumi.String("test-col"),
+/// 				S3BackupMode:     pulumi.String("Enabled"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("redshift"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1547,17 +1551,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   cluster_type       = "single-node"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "redshift"
 ///   redshift_configuration = {
-///     role_arn           = firehoseRole.arn
-///     cluster_jdbcurl    ="jdbc:redshift://${aws_redshift_cluster.test_cluster.endpoint}/${aws_redshift_cluster.test_cluster.database_name}"
-///     username           = "testuser"
-///     password           = "T3stPass"
-///     data_table_name    = "test-table"
-///     copy_options       = "delimiter '|'"
-///     data_table_columns = "test-col"
-///     s3_backup_mode     = "Enabled"
 ///     s3_configuration = {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
@@ -1572,7 +1566,18 @@ import 'firehose_delivery_stream_state.dart';
 ///       buffering_interval = 300
 ///       compression_format = "GZIP"
 ///     }
+///     role_arn           = firehoseRole.arn
+///     cluster_jdbcurl    ="jdbc:redshift://${aws_redshift_cluster.test_cluster.endpoint}/${aws_redshift_cluster.test_cluster.database_name}"
+///     username           = "testuser"
+///     password           = "T3stPass"
+///     data_table_name    = "test-table"
+///     copy_options       = "delimiter '|'"
+///     data_table_columns = "test-col"
+///     s3_backup_mode     = "Enabled"
 ///   }
+///   # the default delimiter
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "redshift"
 /// }
 /// ```
 /// ```java
@@ -1611,21 +1616,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("redshift")
 ///             .redshiftConfiguration(FirehoseDeliveryStreamRedshiftConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .clusterJdbcurl(Output.tuple(testCluster.endpoint(), testCluster.databaseName()).applyValue(values -> {
-///                     var endpoint = values.t1;
-///                     var databaseName = values.t2;
-///                     return String.format("jdbc:redshift://%s/%s", endpoint,databaseName);
-///                 }))
-///                 .username("testuser")
-///                 .password("T3stPass")
-///                 .dataTableName("test-table")
-///                 .copyOptions("delimiter '|'")
-///                 .dataTableColumns("test-col")
-///                 .s3BackupMode("Enabled")
 ///                 .s3Configuration(FirehoseDeliveryStreamRedshiftConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
@@ -1640,7 +1631,21 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .bufferingInterval(300)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .clusterJdbcurl(Output.tuple(testCluster.endpoint(), testCluster.databaseName()).applyValue(values -> {
+///                     var endpoint = values.t1;
+///                     var databaseName = values.t2;
+///                     return String.format("jdbc:redshift://%s/%s", endpoint,databaseName);
+///                 }))
+///                 .username("testuser")
+///                 .password("T3stPass")
+///                 .dataTableName("test-table")
+///                 .copyOptions("delimiter '|'")
+///                 .dataTableColumns("test-col")
+///                 .s3BackupMode("Enabled")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("redshift")
 ///             .build());
 ///
 ///     }
@@ -1662,17 +1667,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: redshift
 ///       redshiftConfiguration:
-///         roleArn: ${firehoseRole.arn}
-///         clusterJdbcurl: jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}
-///         username: testuser
-///         password: T3stPass
-///         dataTableName: test-table
-///         copyOptions: delimiter '|'
-///         dataTableColumns: test-col
-///         s3BackupMode: Enabled
 ///         s3Configuration:
 ///           roleArn: ${firehoseRole.arn}
 ///           bucketArn: ${bucket.arn}
@@ -1685,6 +1680,16 @@ import 'firehose_delivery_stream_state.dart';
 ///           bufferingSize: 15
 ///           bufferingInterval: 300
 ///           compressionFormat: GZIP
+///         roleArn: ${firehoseRole.arn}
+///         clusterJdbcurl: jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}
+///         username: testuser
+///         password: T3stPass
+///         dataTableName: test-table
+///         copyOptions: delimiter '|'
+///         dataTableColumns: test-col
+///         s3BackupMode: Enabled
+///       name: kinesis-firehose-test-stream
+///       destination: redshift
 /// ```
 ///
 ///
@@ -1697,13 +1702,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// const testCluster = new aws.elasticsearch.Domain("test_cluster", {domainName: "firehose-es-test"});
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "elasticsearch",
 ///     elasticsearchConfiguration: {
-///         domainArn: testCluster.arn,
-///         roleArn: firehoseRole.arn,
-///         indexName: "test",
-///         typeName: "test",
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
@@ -1712,16 +1711,22 @@ import 'firehose_delivery_stream_state.dart';
 ///             compressionFormat: "GZIP",
 ///         },
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [{
-///                 type: "Lambda",
 ///                 parameters: [{
 ///                     parameterName: "LambdaArn",
 ///                     parameterValue: `${lambdaProcessor.arn}:$LATEST`,
 ///                 }],
+///                 type: "Lambda",
 ///             }],
+///             enabled: true,
 ///         },
+///         domainArn: testCluster.arn,
+///         roleArn: firehoseRole.arn,
+///         indexName: "test",
+///         typeName: "test",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "elasticsearch",
 /// });
 /// ```
 /// ```python
@@ -1730,13 +1735,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// test_cluster = aws.elasticsearch.Domain("test_cluster", domain_name="firehose-es-test")
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="elasticsearch",
 ///     elasticsearch_configuration={
-///         "domain_arn": test_cluster.arn,
-///         "role_arn": firehose_role["arn"],
-///         "index_name": "test",
-///         "type_name": "test",
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -1745,16 +1744,22 @@ import 'firehose_delivery_stream_state.dart';
 ///             "compression_format": "GZIP",
 ///         },
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [{
-///                 "type": "Lambda",
 ///                 "parameters": [{
 ///                     "parameter_name": "LambdaArn",
 ///                     "parameter_value": f"{lambda_processor['arn']}:$LATEST",
 ///                 }],
+///                 "type": "Lambda",
 ///             }],
+///             "enabled": True,
 ///         },
-///     })
+///         "domain_arn": test_cluster.arn,
+///         "role_arn": firehose_role["arn"],
+///         "index_name": "test",
+///         "type_name": "test",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="elasticsearch")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1771,14 +1776,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "elasticsearch",
 ///         ElasticsearchConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationArgs
 ///         {
-///             DomainArn = testCluster.Arn,
-///             RoleArn = firehoseRole.Arn,
-///             IndexName = "test",
-///             TypeName = "test",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehoseRole.Arn,
@@ -1789,12 +1788,10 @@ import 'firehose_delivery_stream_state.dart';
 ///             },
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "Lambda",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs
@@ -1803,10 +1800,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = $"{lambdaProcessor.Arn}:$LATEST",
 ///                             },
 ///                         },
+///                         Type = "Lambda",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             DomainArn = testCluster.Arn,
+///             RoleArn = firehoseRole.Arn,
+///             IndexName = "test",
+///             TypeName = "test",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "elasticsearch",
 ///     });
 ///
 /// });
@@ -1829,13 +1834,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("elasticsearch"),
 /// 			ElasticsearchConfiguration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationArgs{
-/// 				DomainArn: testCluster.Arn,
-/// 				RoleArn:   pulumi.Any(firehoseRole.Arn),
-/// 				IndexName: pulumi.String("test"),
-/// 				TypeName:  pulumi.String("test"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -1844,20 +1843,26 @@ import 'firehose_delivery_stream_state.dart';
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("Lambda"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("LambdaArn"),
 /// 									ParameterValue: pulumi.Sprintf("%v:$LATEST", lambdaProcessor.Arn),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("Lambda"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				DomainArn: testCluster.Arn,
+/// 				RoleArn:   pulumi.Any(firehoseRole.Arn),
+/// 				IndexName: pulumi.String("test"),
+/// 				TypeName:  pulumi.String("test"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("elasticsearch"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1879,13 +1884,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   domain_name = "firehose-es-test"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "elasticsearch"
 ///   elasticsearch_configuration = {
-///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
-///     role_arn   = firehoseRole.arn
-///     index_name = "test"
-///     type_name  = "test"
 ///     s3_configuration = {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
@@ -1894,16 +1893,22 @@ import 'firehose_delivery_stream_state.dart';
 ///       compression_format = "GZIP"
 ///     }
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "Lambda"
 ///         "parameters" = [{
 ///           "parameterName"  = "LambdaArn"
 ///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
 ///         }]
+///         "type" = "Lambda"
 ///       }]
+///       enabled = "true"
 ///     }
+///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
+///     role_arn   = firehoseRole.arn
+///     index_name = "test"
+///     type_name  = "test"
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "elasticsearch"
 /// }
 /// ```
 /// ```java
@@ -1939,13 +1944,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("elasticsearch")
 ///             .elasticsearchConfiguration(FirehoseDeliveryStreamElasticsearchConfigurationArgs.builder()
-///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehoseRole.arn())
-///                 .indexName("test")
-///                 .typeName("test")
 ///                 .s3Configuration(FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
@@ -1954,16 +1953,22 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .compressionFormat("GZIP")
 ///                     .build())
 ///                 .processingConfiguration(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("Lambda")
 ///                         .parameters(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
 ///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
 ///                             .build())
+///                         .type("Lambda")
 ///                         .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .domainArn(testCluster.arn())
+///                 .roleArn(firehoseRole.arn())
+///                 .indexName("test")
+///                 .typeName("test")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("elasticsearch")
 ///             .build());
 ///
 ///     }
@@ -1980,13 +1985,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: elasticsearch
 ///       elasticsearchConfiguration:
-///         domainArn: ${testCluster.arn}
-///         roleArn: ${firehoseRole.arn}
-///         indexName: test
-///         typeName: test
 ///         s3Configuration:
 ///           roleArn: ${firehoseRole.arn}
 ///           bucketArn: ${bucket.arn}
@@ -1994,12 +1993,18 @@ import 'firehose_delivery_stream_state.dart';
 ///           bufferingInterval: 400
 ///           compressionFormat: GZIP
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: Lambda
-///               parameters:
+///             - parameters:
 ///                 - parameterName: LambdaArn
 ///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///               type: Lambda
+///           enabled: 'true'
+///         domainArn: ${testCluster.arn}
+///         roleArn: ${firehoseRole.arn}
+///         indexName: test
+///         typeName: test
+///       name: kinesis-firehose-test-stream
+///       destination: elasticsearch
 /// ```
 ///
 ///
@@ -2011,7 +2016,6 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testCluster = new aws.elasticsearch.Domain("test_cluster", {
-///     domainName: "es-test",
 ///     clusterConfig: {
 ///         instanceCount: 2,
 ///         zoneAwarenessEnabled: true,
@@ -2028,6 +2032,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             second.id,
 ///         ],
 ///     },
+///     domainName: "es-test",
 /// });
 /// const firehose_elasticsearch = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
@@ -2061,13 +2066,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     policy: firehose_elasticsearch.json,
 /// });
 /// const test = new aws.kinesis.FirehoseDeliveryStream("test", {
-///     name: "kinesis-firehose-es",
-///     destination: "elasticsearch",
 ///     elasticsearchConfiguration: {
-///         domainArn: testCluster.arn,
-///         roleArn: firehose.arn,
-///         indexName: "test",
-///         typeName: "test",
 ///         s3Configuration: {
 ///             roleArn: firehose.arn,
 ///             bucketArn: bucket.arn,
@@ -2080,7 +2079,13 @@ import 'firehose_delivery_stream_state.dart';
 ///             securityGroupIds: [first.id],
 ///             roleArn: firehose.arn,
 ///         },
+///         domainArn: testCluster.arn,
+///         roleArn: firehose.arn,
+///         indexName: "test",
+///         typeName: "test",
 ///     },
+///     name: "kinesis-firehose-es",
+///     destination: "elasticsearch",
 /// }, {
 ///     dependsOn: [firehose_elasticsearchRolePolicy],
 /// });
@@ -2090,7 +2095,6 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_cluster = aws.elasticsearch.Domain("test_cluster",
-///     domain_name="es-test",
 ///     cluster_config={
 ///         "instance_count": 2,
 ///         "zone_awareness_enabled": True,
@@ -2106,7 +2110,8 @@ import 'firehose_delivery_stream_state.dart';
 ///             first_aws_subnet["id"],
 ///             second["id"],
 ///         ],
-///     })
+///     },
+///     domain_name="es-test")
 /// firehose_elasticsearch = aws.iam.get_policy_document_output(statements=[
 ///     {
 ///         "effect": "Allow",
@@ -2136,13 +2141,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     role=firehose["id"],
 ///     policy=firehose_elasticsearch.json)
 /// test = aws.kinesis.FirehoseDeliveryStream("test",
-///     name="kinesis-firehose-es",
-///     destination="elasticsearch",
 ///     elasticsearch_configuration={
-///         "domain_arn": test_cluster.arn,
-///         "role_arn": firehose["arn"],
-///         "index_name": "test",
-///         "type_name": "test",
 ///         "s3_configuration": {
 ///             "role_arn": firehose["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -2155,7 +2154,13 @@ import 'firehose_delivery_stream_state.dart';
 ///             "security_group_ids": [first["id"]],
 ///             "role_arn": firehose["arn"],
 ///         },
+///         "domain_arn": test_cluster.arn,
+///         "role_arn": firehose["arn"],
+///         "index_name": "test",
+///         "type_name": "test",
 ///     },
+///     name="kinesis-firehose-es",
+///     destination="elasticsearch",
 ///     opts = pulumi.ResourceOptions(depends_on=[firehose_elasticsearch_role_policy]))
 /// ```
 /// ```csharp
@@ -2168,7 +2173,6 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var testCluster = new Aws.ElasticSearch.Domain("test_cluster", new()
 ///     {
-///         DomainName = "es-test",
 ///         ClusterConfig = new Aws.ElasticSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceCount = 2,
@@ -2192,6 +2196,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                 second.Id,
 ///             },
 ///         },
+///         DomainName = "es-test",
 ///     });
 ///
 ///     var firehose_elasticsearch = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -2242,14 +2247,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var test = new Aws.Kinesis.FirehoseDeliveryStream("test", new()
 ///     {
-///         Name = "kinesis-firehose-es",
-///         Destination = "elasticsearch",
 ///         ElasticsearchConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationArgs
 ///         {
-///             DomainArn = testCluster.Arn,
-///             RoleArn = firehose.Arn,
-///             IndexName = "test",
-///             TypeName = "test",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehose.Arn,
@@ -2268,7 +2267,13 @@ import 'firehose_delivery_stream_state.dart';
 ///                 },
 ///                 RoleArn = firehose.Arn,
 ///             },
+///             DomainArn = testCluster.Arn,
+///             RoleArn = firehose.Arn,
+///             IndexName = "test",
+///             TypeName = "test",
 ///         },
+///         Name = "kinesis-firehose-es",
+///         Destination = "elasticsearch",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -2294,7 +2299,6 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testCluster, err := elasticsearch.NewDomain(ctx, "test_cluster", &elasticsearch.DomainArgs{
-/// 			DomainName: pulumi.String("es-test"),
 /// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 /// 				InstanceCount:        pulumi.Int(2),
 /// 				ZoneAwarenessEnabled: pulumi.Bool(true),
@@ -2313,6 +2317,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 					second.Id,
 /// 				},
 /// 			},
+/// 			DomainName: pulumi.String("es-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2358,13 +2363,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-es"),
-/// 			Destination: pulumi.String("elasticsearch"),
 /// 			ElasticsearchConfiguration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationArgs{
-/// 				DomainArn: testCluster.Arn,
-/// 				RoleArn:   pulumi.Any(firehose.Arn),
-/// 				IndexName: pulumi.String("test"),
-/// 				TypeName:  pulumi.String("test"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs{
 /// 					RoleArn:   pulumi.Any(firehose.Arn),
 /// 					BucketArn: pulumi.Any(bucket.Arn),
@@ -2379,7 +2378,13 @@ import 'firehose_delivery_stream_state.dart';
 /// 					},
 /// 					RoleArn: pulumi.Any(firehose.Arn),
 /// 				},
+/// 				DomainArn: testCluster.Arn,
+/// 				RoleArn:   pulumi.Any(firehose.Arn),
+/// 				IndexName: pulumi.String("test"),
+/// 				TypeName:  pulumi.String("test"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-es"),
+/// 			Destination: pulumi.String("elasticsearch"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			firehose_elasticsearchRolePolicy,
 /// 		}))
@@ -2413,7 +2418,6 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "test_cluster" {
-///   domain_name = "es-test"
 ///   cluster_config = {
 ///     instance_count         = 2
 ///     zone_awareness_enabled = true
@@ -2427,6 +2431,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     security_group_ids = [first.id]
 ///     subnet_ids         = [firstAwsSubnet.id, second.id]
 ///   }
+///   domain_name = "es-test"
 /// }
 /// resource "aws_iam_rolepolicy" "firehose-elasticsearch" {
 ///   name   = "elasticsearch"
@@ -2434,14 +2439,8 @@ import 'firehose_delivery_stream_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.firehose-elasticsearch.json
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test" {
-///   depends_on  = [aws_iam_rolepolicy.firehose-elasticsearch]
-///   name        = "kinesis-firehose-es"
-///   destination = "elasticsearch"
+///   depends_on = [aws_iam_rolepolicy.firehose-elasticsearch]
 ///   elasticsearch_configuration = {
-///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
-///     role_arn   = firehose.arn
-///     index_name = "test"
-///     type_name  = "test"
 ///     s3_configuration = {
 ///       role_arn   = firehose.arn
 ///       bucket_arn = bucket.arn
@@ -2451,7 +2450,13 @@ import 'firehose_delivery_stream_state.dart';
 ///       security_group_ids = [first.id]
 ///       role_arn           = firehose.arn
 ///     }
+///     domain_arn = aws_elasticsearch_domain.test_cluster.arn
+///     role_arn   = firehose.arn
+///     index_name = "test"
+///     type_name  = "test"
 ///   }
+///   name        = "kinesis-firehose-es"
+///   destination = "elasticsearch"
 /// }
 /// ```
 /// ```java
@@ -2490,7 +2495,6 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testCluster = new Domain("testCluster", DomainArgs.builder()
-///             .domainName("es-test")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceCount(2)
 ///                 .zoneAwarenessEnabled(true)
@@ -2506,6 +2510,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                     firstAwsSubnet.id(),
 ///                     second.id())
 ///                 .build())
+///             .domainName("es-test")
 ///             .build());
 ///
 ///         final var firehose-elasticsearch = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -2539,13 +2544,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var test = new FirehoseDeliveryStream("test", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-es")
-///             .destination("elasticsearch")
 ///             .elasticsearchConfiguration(FirehoseDeliveryStreamElasticsearchConfigurationArgs.builder()
-///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehose.arn())
-///                 .indexName("test")
-///                 .typeName("test")
 ///                 .s3Configuration(FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehose.arn())
 ///                     .bucketArn(bucket.arn())
@@ -2557,7 +2556,13 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .securityGroupIds(first.id())
 ///                     .roleArn(firehose.arn())
 ///                     .build())
+///                 .domainArn(testCluster.arn())
+///                 .roleArn(firehose.arn())
+///                 .indexName("test")
+///                 .typeName("test")
 ///                 .build())
+///             .name("kinesis-firehose-es")
+///             .destination("elasticsearch")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(firehose_elasticsearchRolePolicy)
 ///                 .build());
@@ -2571,7 +2576,6 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:elasticsearch:Domain
 ///     name: test_cluster
 ///     properties:
-///       domainName: es-test
 ///       clusterConfig:
 ///         instanceCount: 2
 ///         zoneAwarenessEnabled: true
@@ -2585,6 +2589,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         subnetIds:
 ///           - ${firstAwsSubnet.id}
 ///           - ${second.id}
+///       domainName: es-test
 ///   firehose-elasticsearchRolePolicy:
 ///     type: aws:iam:RolePolicy
 ///     name: firehose-elasticsearch
@@ -2595,13 +2600,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   test:
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     properties:
-///       name: kinesis-firehose-es
-///       destination: elasticsearch
 ///       elasticsearchConfiguration:
-///         domainArn: ${testCluster.arn}
-///         roleArn: ${firehose.arn}
-///         indexName: test
-///         typeName: test
 ///         s3Configuration:
 ///           roleArn: ${firehose.arn}
 ///           bucketArn: ${bucket.arn}
@@ -2612,6 +2611,12 @@ import 'firehose_delivery_stream_state.dart';
 ///           securityGroupIds:
 ///             - ${first.id}
 ///           roleArn: ${firehose.arn}
+///         domainArn: ${testCluster.arn}
+///         roleArn: ${firehose.arn}
+///         indexName: test
+///         typeName: test
+///       name: kinesis-firehose-es
+///       destination: elasticsearch
 ///     options:
 ///       dependsOn:
 ///         - ${["firehose-elasticsearchRolePolicy"]}
@@ -2651,12 +2656,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// const testCluster = new aws.opensearch.Domain("test_cluster", {domainName: "firehose-os-test"});
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "opensearch",
 ///     opensearchConfiguration: {
-///         domainArn: testCluster.arn,
-///         roleArn: firehoseRole.arn,
-///         indexName: "test",
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
@@ -2665,16 +2665,21 @@ import 'firehose_delivery_stream_state.dart';
 ///             compressionFormat: "GZIP",
 ///         },
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [{
-///                 type: "Lambda",
 ///                 parameters: [{
 ///                     parameterName: "LambdaArn",
 ///                     parameterValue: `${lambdaProcessor.arn}:$LATEST`,
 ///                 }],
+///                 type: "Lambda",
 ///             }],
+///             enabled: true,
 ///         },
+///         domainArn: testCluster.arn,
+///         roleArn: firehoseRole.arn,
+///         indexName: "test",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "opensearch",
 /// });
 /// ```
 /// ```python
@@ -2683,12 +2688,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// test_cluster = aws.opensearch.Domain("test_cluster", domain_name="firehose-os-test")
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="opensearch",
 ///     opensearch_configuration={
-///         "domain_arn": test_cluster.arn,
-///         "role_arn": firehose_role["arn"],
-///         "index_name": "test",
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -2697,16 +2697,21 @@ import 'firehose_delivery_stream_state.dart';
 ///             "compression_format": "GZIP",
 ///         },
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [{
-///                 "type": "Lambda",
 ///                 "parameters": [{
 ///                     "parameter_name": "LambdaArn",
 ///                     "parameter_value": f"{lambda_processor['arn']}:$LATEST",
 ///                 }],
+///                 "type": "Lambda",
 ///             }],
+///             "enabled": True,
 ///         },
-///     })
+///         "domain_arn": test_cluster.arn,
+///         "role_arn": firehose_role["arn"],
+///         "index_name": "test",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="opensearch")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2723,13 +2728,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "opensearch",
 ///         OpensearchConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationArgs
 ///         {
-///             DomainArn = testCluster.Arn,
-///             RoleArn = firehoseRole.Arn,
-///             IndexName = "test",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehoseRole.Arn,
@@ -2740,12 +2740,10 @@ import 'firehose_delivery_stream_state.dart';
 ///             },
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "Lambda",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArgs
@@ -2754,10 +2752,17 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = $"{lambdaProcessor.Arn}:$LATEST",
 ///                             },
 ///                         },
+///                         Type = "Lambda",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             DomainArn = testCluster.Arn,
+///             RoleArn = firehoseRole.Arn,
+///             IndexName = "test",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "opensearch",
 ///     });
 ///
 /// });
@@ -2780,12 +2785,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("opensearch"),
 /// 			OpensearchConfiguration: &kinesis.FirehoseDeliveryStreamOpensearchConfigurationArgs{
-/// 				DomainArn: testCluster.Arn,
-/// 				RoleArn:   pulumi.Any(firehoseRole.Arn),
-/// 				IndexName: pulumi.String("test"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -2794,20 +2794,25 @@ import 'firehose_delivery_stream_state.dart';
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("Lambda"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("LambdaArn"),
 /// 									ParameterValue: pulumi.Sprintf("%v:$LATEST", lambdaProcessor.Arn),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("Lambda"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				DomainArn: testCluster.Arn,
+/// 				RoleArn:   pulumi.Any(firehoseRole.Arn),
+/// 				IndexName: pulumi.String("test"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("opensearch"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2829,12 +2834,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   domain_name = "firehose-os-test"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "opensearch"
 ///   opensearch_configuration = {
-///     domain_arn = aws_opensearch_domain.test_cluster.arn
-///     role_arn   = firehoseRole.arn
-///     index_name = "test"
 ///     s3_configuration = {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
@@ -2843,16 +2843,21 @@ import 'firehose_delivery_stream_state.dart';
 ///       compression_format = "GZIP"
 ///     }
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "Lambda"
 ///         "parameters" = [{
 ///           "parameterName"  = "LambdaArn"
 ///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
 ///         }]
+///         "type" = "Lambda"
 ///       }]
+///       enabled = "true"
 ///     }
+///     domain_arn = aws_opensearch_domain.test_cluster.arn
+///     role_arn   = firehoseRole.arn
+///     index_name = "test"
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "opensearch"
 /// }
 /// ```
 /// ```java
@@ -2888,12 +2893,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("opensearch")
 ///             .opensearchConfiguration(FirehoseDeliveryStreamOpensearchConfigurationArgs.builder()
-///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehoseRole.arn())
-///                 .indexName("test")
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
@@ -2902,16 +2902,21 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .compressionFormat("GZIP")
 ///                     .build())
 ///                 .processingConfiguration(FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("Lambda")
 ///                         .parameters(FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
 ///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
 ///                             .build())
+///                         .type("Lambda")
 ///                         .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .domainArn(testCluster.arn())
+///                 .roleArn(firehoseRole.arn())
+///                 .indexName("test")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("opensearch")
 ///             .build());
 ///
 ///     }
@@ -2928,12 +2933,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: opensearch
 ///       opensearchConfiguration:
-///         domainArn: ${testCluster.arn}
-///         roleArn: ${firehoseRole.arn}
-///         indexName: test
 ///         s3Configuration:
 ///           roleArn: ${firehoseRole.arn}
 ///           bucketArn: ${bucket.arn}
@@ -2941,12 +2941,17 @@ import 'firehose_delivery_stream_state.dart';
 ///           bufferingInterval: 400
 ///           compressionFormat: GZIP
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: Lambda
-///               parameters:
+///             - parameters:
 ///                 - parameterName: LambdaArn
 ///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///               type: Lambda
+///           enabled: 'true'
+///         domainArn: ${testCluster.arn}
+///         roleArn: ${firehoseRole.arn}
+///         indexName: test
+///       name: kinesis-firehose-test-stream
+///       destination: opensearch
 /// ```
 ///
 ///
@@ -2958,7 +2963,6 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testCluster = new aws.opensearch.Domain("test_cluster", {
-///     domainName: "es-test",
 ///     clusterConfig: {
 ///         instanceCount: 2,
 ///         zoneAwarenessEnabled: true,
@@ -2975,6 +2979,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             second.id,
 ///         ],
 ///     },
+///     domainName: "es-test",
 /// });
 /// const firehose_opensearch = new aws.iam.RolePolicy("firehose-opensearch", {
 ///     name: "opensearch",
@@ -3013,12 +3018,7 @@ import 'firehose_delivery_stream_state.dart';
 /// `,
 /// });
 /// const test = new aws.kinesis.FirehoseDeliveryStream("test", {
-///     name: "pulumi-kinesis-firehose-os",
-///     destination: "opensearch",
 ///     opensearchConfiguration: {
-///         domainArn: testCluster.arn,
-///         roleArn: firehose.arn,
-///         indexName: "test",
 ///         s3Configuration: {
 ///             roleArn: firehose.arn,
 ///             bucketArn: bucket.arn,
@@ -3031,7 +3031,12 @@ import 'firehose_delivery_stream_state.dart';
 ///             securityGroupIds: [first.id],
 ///             roleArn: firehose.arn,
 ///         },
+///         domainArn: testCluster.arn,
+///         roleArn: firehose.arn,
+///         indexName: "test",
 ///     },
+///     name: "pulumi-kinesis-firehose-os",
+///     destination: "opensearch",
 /// }, {
 ///     dependsOn: [firehose_opensearch],
 /// });
@@ -3041,7 +3046,6 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_cluster = aws.opensearch.Domain("test_cluster",
-///     domain_name="es-test",
 ///     cluster_config={
 ///         "instance_count": 2,
 ///         "zone_awareness_enabled": True,
@@ -3057,7 +3061,8 @@ import 'firehose_delivery_stream_state.dart';
 ///             first_aws_subnet["id"],
 ///             second["id"],
 ///         ],
-///     })
+///     },
+///     domain_name="es-test")
 /// firehose_opensearch = aws.iam.RolePolicy("firehose-opensearch",
 ///     name="opensearch",
 ///     role=firehose["id"],
@@ -3094,12 +3099,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }}
 /// """))
 /// test = aws.kinesis.FirehoseDeliveryStream("test",
-///     name="pulumi-kinesis-firehose-os",
-///     destination="opensearch",
 ///     opensearch_configuration={
-///         "domain_arn": test_cluster.arn,
-///         "role_arn": firehose["arn"],
-///         "index_name": "test",
 ///         "s3_configuration": {
 ///             "role_arn": firehose["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -3112,7 +3112,12 @@ import 'firehose_delivery_stream_state.dart';
 ///             "security_group_ids": [first["id"]],
 ///             "role_arn": firehose["arn"],
 ///         },
+///         "domain_arn": test_cluster.arn,
+///         "role_arn": firehose["arn"],
+///         "index_name": "test",
 ///     },
+///     name="pulumi-kinesis-firehose-os",
+///     destination="opensearch",
 ///     opts = pulumi.ResourceOptions(depends_on=[firehose_opensearch]))
 /// ```
 /// ```csharp
@@ -3125,7 +3130,6 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var testCluster = new Aws.OpenSearch.Domain("test_cluster", new()
 ///     {
-///         DomainName = "es-test",
 ///         ClusterConfig = new Aws.OpenSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceCount = 2,
@@ -3149,6 +3153,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                 second.Id,
 ///             },
 ///         },
+///         DomainName = "es-test",
 ///     });
 ///
 ///     var firehose_opensearch = new Aws.Iam.RolePolicy("firehose-opensearch", new()
@@ -3191,13 +3196,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var test = new Aws.Kinesis.FirehoseDeliveryStream("test", new()
 ///     {
-///         Name = "pulumi-kinesis-firehose-os",
-///         Destination = "opensearch",
 ///         OpensearchConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationArgs
 ///         {
-///             DomainArn = testCluster.Arn,
-///             RoleArn = firehose.Arn,
-///             IndexName = "test",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehose.Arn,
@@ -3216,7 +3216,12 @@ import 'firehose_delivery_stream_state.dart';
 ///                 },
 ///                 RoleArn = firehose.Arn,
 ///             },
+///             DomainArn = testCluster.Arn,
+///             RoleArn = firehose.Arn,
+///             IndexName = "test",
 ///         },
+///         Name = "pulumi-kinesis-firehose-os",
+///         Destination = "opensearch",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -3242,7 +3247,6 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testCluster, err := opensearch.NewDomain(ctx, "test_cluster", &opensearch.DomainArgs{
-/// 			DomainName: pulumi.String("es-test"),
 /// 			ClusterConfig: &opensearch.DomainClusterConfigArgs{
 /// 				InstanceCount:        pulumi.Int(2),
 /// 				ZoneAwarenessEnabled: pulumi.Bool(true),
@@ -3261,6 +3265,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 					second.Id,
 /// 				},
 /// 			},
+/// 			DomainName: pulumi.String("es-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3307,12 +3312,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("pulumi-kinesis-firehose-os"),
-/// 			Destination: pulumi.String("opensearch"),
 /// 			OpensearchConfiguration: &kinesis.FirehoseDeliveryStreamOpensearchConfigurationArgs{
-/// 				DomainArn: testCluster.Arn,
-/// 				RoleArn:   pulumi.Any(firehose.Arn),
-/// 				IndexName: pulumi.String("test"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs{
 /// 					RoleArn:   pulumi.Any(firehose.Arn),
 /// 					BucketArn: pulumi.Any(bucket.Arn),
@@ -3327,7 +3327,12 @@ import 'firehose_delivery_stream_state.dart';
 /// 					},
 /// 					RoleArn: pulumi.Any(firehose.Arn),
 /// 				},
+/// 				DomainArn: testCluster.Arn,
+/// 				RoleArn:   pulumi.Any(firehose.Arn),
+/// 				IndexName: pulumi.String("test"),
 /// 			},
+/// 			Name:        pulumi.String("pulumi-kinesis-firehose-os"),
+/// 			Destination: pulumi.String("opensearch"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			firehose_opensearch,
 /// 		}))
@@ -3348,7 +3353,6 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "test_cluster" {
-///   domain_name = "es-test"
 ///   cluster_config = {
 ///     instance_count         = 2
 ///     zone_awareness_enabled = true
@@ -3362,6 +3366,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     security_group_ids = [first.id]
 ///     subnet_ids         = [firstAwsSubnet.id, second.id]
 ///   }
+///   domain_name = "es-test"
 /// }
 /// resource "aws_iam_rolepolicy" "firehose-opensearch" {
 ///   name   = "opensearch"
@@ -3400,13 +3405,8 @@ import 'firehose_delivery_stream_state.dart';
 /// "
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test" {
-///   depends_on  = [aws_iam_rolepolicy.firehose-opensearch]
-///   name        = "pulumi-kinesis-firehose-os"
-///   destination = "opensearch"
+///   depends_on = [aws_iam_rolepolicy.firehose-opensearch]
 ///   opensearch_configuration = {
-///     domain_arn = aws_opensearch_domain.test_cluster.arn
-///     role_arn   = firehose.arn
-///     index_name = "test"
 ///     s3_configuration = {
 ///       role_arn   = firehose.arn
 ///       bucket_arn = bucket.arn
@@ -3416,7 +3416,12 @@ import 'firehose_delivery_stream_state.dart';
 ///       security_group_ids = [first.id]
 ///       role_arn           = firehose.arn
 ///     }
+///     domain_arn = aws_opensearch_domain.test_cluster.arn
+///     role_arn   = firehose.arn
+///     index_name = "test"
 ///   }
+///   name        = "pulumi-kinesis-firehose-os"
+///   destination = "opensearch"
 /// }
 /// ```
 /// ```java
@@ -3452,7 +3457,6 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testCluster = new Domain("testCluster", DomainArgs.builder()
-///             .domainName("es-test")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceCount(2)
 ///                 .zoneAwarenessEnabled(true)
@@ -3468,6 +3472,7 @@ import 'firehose_delivery_stream_state.dart';
 ///                     firstAwsSubnet.id(),
 ///                     second.id())
 ///                 .build())
+///             .domainName("es-test")
 ///             .build());
 ///
 ///         var firehose_opensearch = new RolePolicy("firehose-opensearch", RolePolicyArgs.builder()
@@ -3509,12 +3514,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var test = new FirehoseDeliveryStream("test", FirehoseDeliveryStreamArgs.builder()
-///             .name("pulumi-kinesis-firehose-os")
-///             .destination("opensearch")
 ///             .opensearchConfiguration(FirehoseDeliveryStreamOpensearchConfigurationArgs.builder()
-///                 .domainArn(testCluster.arn())
-///                 .roleArn(firehose.arn())
-///                 .indexName("test")
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehose.arn())
 ///                     .bucketArn(bucket.arn())
@@ -3526,7 +3526,12 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .securityGroupIds(first.id())
 ///                     .roleArn(firehose.arn())
 ///                     .build())
+///                 .domainArn(testCluster.arn())
+///                 .roleArn(firehose.arn())
+///                 .indexName("test")
 ///                 .build())
+///             .name("pulumi-kinesis-firehose-os")
+///             .destination("opensearch")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(firehose_opensearch)
 ///                 .build());
@@ -3540,7 +3545,6 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:opensearch:Domain
 ///     name: test_cluster
 ///     properties:
-///       domainName: es-test
 ///       clusterConfig:
 ///         instanceCount: 2
 ///         zoneAwarenessEnabled: true
@@ -3554,6 +3558,7 @@ import 'firehose_delivery_stream_state.dart';
 ///         subnetIds:
 ///           - ${firstAwsSubnet.id}
 ///           - ${second.id}
+///       domainName: es-test
 ///   firehose-opensearch:
 ///     type: aws:iam:RolePolicy
 ///     properties:
@@ -3594,12 +3599,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   test:
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     properties:
-///       name: pulumi-kinesis-firehose-os
-///       destination: opensearch
 ///       opensearchConfiguration:
-///         domainArn: ${testCluster.arn}
-///         roleArn: ${firehose.arn}
-///         indexName: test
 ///         s3Configuration:
 ///           roleArn: ${firehose.arn}
 ///           bucketArn: ${bucket.arn}
@@ -3610,6 +3610,11 @@ import 'firehose_delivery_stream_state.dart';
 ///           securityGroupIds:
 ///             - ${first.id}
 ///           roleArn: ${firehose.arn}
+///         domainArn: ${testCluster.arn}
+///         roleArn: ${firehose.arn}
+///         indexName: test
+///       name: pulumi-kinesis-firehose-os
+///       destination: opensearch
 ///     options:
 ///       dependsOn:
 ///         - ${["firehose-opensearch"]}
@@ -3625,12 +3630,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// const testCollection = new aws.opensearch.ServerlessCollection("test_collection", {name: "firehose-osserverless-test"});
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "opensearchserverless",
 ///     opensearchserverlessConfiguration: {
-///         collectionEndpoint: testCollection.collectionEndpoint,
-///         roleArn: firehoseRole.arn,
-///         indexName: "test",
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
@@ -3639,16 +3639,21 @@ import 'firehose_delivery_stream_state.dart';
 ///             compressionFormat: "GZIP",
 ///         },
 ///         processingConfiguration: {
-///             enabled: true,
 ///             processors: [{
-///                 type: "Lambda",
 ///                 parameters: [{
 ///                     parameterName: "LambdaArn",
 ///                     parameterValue: `${lambdaProcessor.arn}:$LATEST`,
 ///                 }],
+///                 type: "Lambda",
 ///             }],
+///             enabled: true,
 ///         },
+///         collectionEndpoint: testCollection.collectionEndpoint,
+///         roleArn: firehoseRole.arn,
+///         indexName: "test",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "opensearchserverless",
 /// });
 /// ```
 /// ```python
@@ -3657,12 +3662,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// test_collection = aws.opensearch.ServerlessCollection("test_collection", name="firehose-osserverless-test")
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="opensearchserverless",
 ///     opensearchserverless_configuration={
-///         "collection_endpoint": test_collection.collection_endpoint,
-///         "role_arn": firehose_role["arn"],
-///         "index_name": "test",
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -3671,16 +3671,21 @@ import 'firehose_delivery_stream_state.dart';
 ///             "compression_format": "GZIP",
 ///         },
 ///         "processing_configuration": {
-///             "enabled": True,
 ///             "processors": [{
-///                 "type": "Lambda",
 ///                 "parameters": [{
 ///                     "parameter_name": "LambdaArn",
 ///                     "parameter_value": f"{lambda_processor['arn']}:$LATEST",
 ///                 }],
+///                 "type": "Lambda",
 ///             }],
+///             "enabled": True,
 ///         },
-///     })
+///         "collection_endpoint": test_collection.collection_endpoint,
+///         "role_arn": firehose_role["arn"],
+///         "index_name": "test",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="opensearchserverless")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -3697,13 +3702,8 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "opensearchserverless",
 ///         OpensearchserverlessConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationArgs
 ///         {
-///             CollectionEndpoint = testCollection.CollectionEndpoint,
-///             RoleArn = firehoseRole.Arn,
-///             IndexName = "test",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehoseRole.Arn,
@@ -3714,12 +3714,10 @@ import 'firehose_delivery_stream_state.dart';
 ///             },
 ///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationArgs
 ///             {
-///                 Enabled = true,
 ///                 Processors = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArgs
 ///                     {
-///                         Type = "Lambda",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArgs
@@ -3728,10 +3726,17 @@ import 'firehose_delivery_stream_state.dart';
 ///                                 ParameterValue = $"{lambdaProcessor.Arn}:$LATEST",
 ///                             },
 ///                         },
+///                         Type = "Lambda",
 ///                     },
 ///                 },
+///                 Enabled = true,
 ///             },
+///             CollectionEndpoint = testCollection.CollectionEndpoint,
+///             RoleArn = firehoseRole.Arn,
+///             IndexName = "test",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "opensearchserverless",
 ///     });
 ///
 /// });
@@ -3754,12 +3759,7 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("opensearchserverless"),
 /// 			OpensearchserverlessConfiguration: &kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationArgs{
-/// 				CollectionEndpoint: testCollection.CollectionEndpoint,
-/// 				RoleArn:            pulumi.Any(firehoseRole.Arn),
-/// 				IndexName:          pulumi.String("test"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -3768,20 +3768,25 @@ import 'firehose_delivery_stream_state.dart';
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
 /// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
 /// 					Processors: kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArray{
 /// 						&kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("Lambda"),
 /// 							Parameters: kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArray{
 /// 								&kinesis.FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArgs{
 /// 									ParameterName:  pulumi.String("LambdaArn"),
 /// 									ParameterValue: pulumi.Sprintf("%v:$LATEST", lambdaProcessor.Arn),
 /// 								},
 /// 							},
+/// 							Type: pulumi.String("Lambda"),
 /// 						},
 /// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
+/// 				CollectionEndpoint: testCollection.CollectionEndpoint,
+/// 				RoleArn:            pulumi.Any(firehoseRole.Arn),
+/// 				IndexName:          pulumi.String("test"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("opensearchserverless"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3803,12 +3808,7 @@ import 'firehose_delivery_stream_state.dart';
 ///   name = "firehose-osserverless-test"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "opensearchserverless"
 ///   opensearchserverless_configuration = {
-///     collection_endpoint = aws_opensearch_serverlesscollection.test_collection.collection_endpoint
-///     role_arn            = firehoseRole.arn
-///     index_name          = "test"
 ///     s3_configuration = {
 ///       role_arn           = firehoseRole.arn
 ///       bucket_arn         = bucket.arn
@@ -3817,16 +3817,21 @@ import 'firehose_delivery_stream_state.dart';
 ///       compression_format = "GZIP"
 ///     }
 ///     processing_configuration = {
-///       enabled = "true"
 ///       processors = [{
-///         "type" = "Lambda"
 ///         "parameters" = [{
 ///           "parameterName"  = "LambdaArn"
 ///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
 ///         }]
+///         "type" = "Lambda"
 ///       }]
+///       enabled = "true"
 ///     }
+///     collection_endpoint = aws_opensearch_serverlesscollection.test_collection.collection_endpoint
+///     role_arn            = firehoseRole.arn
+///     index_name          = "test"
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "opensearchserverless"
 /// }
 /// ```
 /// ```java
@@ -3862,12 +3867,7 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("opensearchserverless")
 ///             .opensearchserverlessConfiguration(FirehoseDeliveryStreamOpensearchserverlessConfigurationArgs.builder()
-///                 .collectionEndpoint(testCollection.collectionEndpoint())
-///                 .roleArn(firehoseRole.arn())
-///                 .indexName("test")
 ///                 .s3Configuration(FirehoseDeliveryStreamOpensearchserverlessConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
@@ -3876,16 +3876,21 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .compressionFormat("GZIP")
 ///                     .build())
 ///                 .processingConfiguration(FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
 ///                     .processors(FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("Lambda")
 ///                         .parameters(FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameterArgs.builder()
 ///                             .parameterName("LambdaArn")
 ///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
 ///                             .build())
+///                         .type("Lambda")
 ///                         .build())
+///                     .enabled(true)
 ///                     .build())
+///                 .collectionEndpoint(testCollection.collectionEndpoint())
+///                 .roleArn(firehoseRole.arn())
+///                 .indexName("test")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("opensearchserverless")
 ///             .build());
 ///
 ///     }
@@ -3902,12 +3907,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: opensearchserverless
 ///       opensearchserverlessConfiguration:
-///         collectionEndpoint: ${testCollection.collectionEndpoint}
-///         roleArn: ${firehoseRole.arn}
-///         indexName: test
 ///         s3Configuration:
 ///           roleArn: ${firehoseRole.arn}
 ///           bucketArn: ${bucket.arn}
@@ -3915,12 +3915,17 @@ import 'firehose_delivery_stream_state.dart';
 ///           bufferingInterval: 400
 ///           compressionFormat: GZIP
 ///         processingConfiguration:
-///           enabled: 'true'
 ///           processors:
-///             - type: Lambda
-///               parameters:
+///             - parameters:
 ///                 - parameterName: LambdaArn
 ///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///               type: Lambda
+///           enabled: 'true'
+///         collectionEndpoint: ${testCollection.collectionEndpoint}
+///         roleArn: ${firehoseRole.arn}
+///         indexName: test
+///       name: kinesis-firehose-test-stream
+///       destination: opensearchserverless
 /// ```
 ///
 ///
@@ -3940,12 +3945,6 @@ import 'firehose_delivery_stream_state.dart';
 /// });
 /// const test = new aws.glue.CatalogDatabase("test", {name: "test"});
 /// const testCatalogTable = new aws.glue.CatalogTable("test", {
-///     name: "test",
-///     databaseName: test.name,
-///     parameters: {
-///         format: "parquet",
-///     },
-///     tableType: "EXTERNAL_TABLE",
 ///     openTableFormatInput: {
 ///         icebergInput: {
 ///             metadataOperation: "CREATE",
@@ -3953,40 +3952,46 @@ import 'firehose_delivery_stream_state.dart';
 ///         },
 ///     },
 ///     storageDescriptor: {
-///         location: pulumi.interpolate`s3://${bucket.id}`,
 ///         columns: [{
 ///             name: "my_column_1",
 ///             type: "int",
 ///         }],
+///         location: pulumi.interpolate`s3://${bucket.id}`,
 ///     },
+///     name: "test",
+///     databaseName: test.name,
+///     parameters: {
+///         format: "parquet",
+///     },
+///     tableType: "EXTERNAL_TABLE",
 /// });
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "iceberg",
 ///     icebergConfiguration: {
-///         roleArn: firehoseRole.arn,
-///         catalogArn: Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => `arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:catalog`),
-///         bufferingSize: 10,
-///         bufferingInterval: 400,
 ///         s3Configuration: {
 ///             roleArn: firehoseRole.arn,
 ///             bucketArn: bucket.arn,
+///         },
+///         processingConfiguration: {
+///             processors: [{
+///                 parameters: [{
+///                     parameterName: "LambdaArn",
+///                     parameterValue: `${lambdaProcessor.arn}:$LATEST`,
+///                 }],
+///                 type: "Lambda",
+///             }],
+///             enabled: true,
 ///         },
 ///         destinationTableConfigurations: [{
 ///             databaseName: test.name,
 ///             tableName: testCatalogTable.name,
 ///         }],
-///         processingConfiguration: {
-///             enabled: true,
-///             processors: [{
-///                 type: "Lambda",
-///                 parameters: [{
-///                     parameterName: "LambdaArn",
-///                     parameterValue: `${lambdaProcessor.arn}:$LATEST`,
-///                 }],
-///             }],
-///         },
+///         roleArn: firehoseRole.arn,
+///         catalogArn: Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => `arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:catalog`),
+///         bufferingSize: 10,
+///         bufferingInterval: 400,
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "iceberg",
 /// });
 /// ```
 /// ```python
@@ -4001,12 +4006,6 @@ import 'firehose_delivery_stream_state.dart';
 ///     force_destroy=True)
 /// test = aws.glue.CatalogDatabase("test", name="test")
 /// test_catalog_table = aws.glue.CatalogTable("test",
-///     name="test",
-///     database_name=test.name,
-///     parameters={
-///         "format": "parquet",
-///     },
-///     table_type="EXTERNAL_TABLE",
 ///     open_table_format_input={
 ///         "iceberg_input": {
 ///             "metadata_operation": "CREATE",
@@ -4014,39 +4013,45 @@ import 'firehose_delivery_stream_state.dart';
 ///         },
 ///     },
 ///     storage_descriptor={
-///         "location": bucket.id.apply(lambda id: f"s3://{id}"),
 ///         "columns": [{
 ///             "name": "my_column_1",
 ///             "type": "int",
 ///         }],
-///     })
+///         "location": bucket.id.apply(lambda id: f"s3://{id}"),
+///     },
+///     name="test",
+///     database_name=test.name,
+///     parameters={
+///         "format": "parquet",
+///     },
+///     table_type="EXTERNAL_TABLE")
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="iceberg",
 ///     iceberg_configuration={
-///         "role_arn": firehose_role["arn"],
-///         "catalog_arn": f"arn:{current_get_partition.partition}:glue:{current_get_region.region}:{current.account_id}:catalog",
-///         "buffering_size": 10,
-///         "buffering_interval": 400,
 ///         "s3_configuration": {
 ///             "role_arn": firehose_role["arn"],
 ///             "bucket_arn": bucket.arn,
+///         },
+///         "processing_configuration": {
+///             "processors": [{
+///                 "parameters": [{
+///                     "parameter_name": "LambdaArn",
+///                     "parameter_value": f"{lambda_processor['arn']}:$LATEST",
+///                 }],
+///                 "type": "Lambda",
+///             }],
+///             "enabled": True,
 ///         },
 ///         "destination_table_configurations": [{
 ///             "database_name": test.name,
 ///             "table_name": test_catalog_table.name,
 ///         }],
-///         "processing_configuration": {
-///             "enabled": True,
-///             "processors": [{
-///                 "type": "Lambda",
-///                 "parameters": [{
-///                     "parameter_name": "LambdaArn",
-///                     "parameter_value": f"{lambda_processor['arn']}:$LATEST",
-///                 }],
-///             }],
-///         },
-///     })
+///         "role_arn": firehose_role["arn"],
+///         "catalog_arn": f"arn:{current_get_partition.partition}:glue:{current_get_region.region}:{current.account_id}:catalog",
+///         "buffering_size": 10,
+///         "buffering_interval": 400,
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="iceberg")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4075,13 +4080,6 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     var testCatalogTable = new Aws.Glue.CatalogTable("test", new()
 ///     {
-///         Name = "test",
-///         DatabaseName = test.Name,
-///         Parameters =
-///         {
-///             { "format", "parquet" },
-///         },
-///         TableType = "EXTERNAL_TABLE",
 ///         OpenTableFormatInput = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputArgs
 ///         {
 ///             IcebergInput = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputArgs
@@ -4092,7 +4090,6 @@ import 'firehose_delivery_stream_state.dart';
 ///         },
 ///         StorageDescriptor = new Aws.Glue.Inputs.CatalogTableStorageDescriptorArgs
 ///         {
-///             Location = bucket.Id.Apply(id => $"s3://{id}"),
 ///             Columns = new[]
 ///             {
 ///                 new Aws.Glue.Inputs.CatalogTableStorageDescriptorColumnArgs
@@ -4101,15 +4098,53 @@ import 'firehose_delivery_stream_state.dart';
 ///                     Type = "int",
 ///                 },
 ///             },
+///             Location = bucket.Id.Apply(id => $"s3://{id}"),
 ///         },
+///         Name = "test",
+///         DatabaseName = test.Name,
+///         Parameters =
+///         {
+///             { "format", "parquet" },
+///         },
+///         TableType = "EXTERNAL_TABLE",
 ///     });
 ///
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "iceberg",
 ///         IcebergConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationArgs
 ///         {
+///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs
+///             {
+///                 RoleArn = firehoseRole.Arn,
+///                 BucketArn = bucket.Arn,
+///             },
+///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs
+///             {
+///                 Processors = new[]
+///                 {
+///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs
+///                     {
+///                         Parameters = new[]
+///                         {
+///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs
+///                             {
+///                                 ParameterName = "LambdaArn",
+///                                 ParameterValue = $"{lambdaProcessor.Arn}:$LATEST",
+///                             },
+///                         },
+///                         Type = "Lambda",
+///                     },
+///                 },
+///                 Enabled = true,
+///             },
+///             DestinationTableConfigurations = new[]
+///             {
+///                 new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs
+///                 {
+///                     DatabaseName = test.Name,
+///                     TableName = testCatalogTable.Name,
+///                 },
+///             },
 ///             RoleArn = firehoseRole.Arn,
 ///             CatalogArn = Output.Tuple(currentGetPartition, currentGetRegion, current).Apply(values =>
 ///             {
@@ -4120,39 +4155,9 @@ import 'firehose_delivery_stream_state.dart';
 ///             }),
 ///             BufferingSize = 10,
 ///             BufferingInterval = 400,
-///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs
-///             {
-///                 RoleArn = firehoseRole.Arn,
-///                 BucketArn = bucket.Arn,
-///             },
-///             DestinationTableConfigurations = new[]
-///             {
-///                 new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs
-///                 {
-///                     DatabaseName = test.Name,
-///                     TableName = testCatalogTable.Name,
-///                 },
-///             },
-///             ProcessingConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs
-///             {
-///                 Enabled = true,
-///                 Processors = new[]
-///                 {
-///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs
-///                     {
-///                         Type = "Lambda",
-///                         Parameters = new[]
-///                         {
-///                             new Aws.Kinesis.Inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs
-///                             {
-///                                 ParameterName = "LambdaArn",
-///                                 ParameterValue = $"{lambdaProcessor.Arn}:$LATEST",
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "iceberg",
 ///     });
 ///
 /// });
@@ -4198,12 +4203,6 @@ import 'firehose_delivery_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		testCatalogTable, err := glue.NewCatalogTable(ctx, "test", &glue.CatalogTableArgs{
-/// 			Name:         pulumi.String("test"),
-/// 			DatabaseName: test.Name,
-/// 			Parameters: pulumi.StringMap{
-/// 				"format": pulumi.String("parquet"),
-/// 			},
-/// 			TableType: pulumi.String("EXTERNAL_TABLE"),
 /// 			OpenTableFormatInput: &glue.CatalogTableOpenTableFormatInputArgs{
 /// 				IcebergInput: &glue.CatalogTableOpenTableFormatInputIcebergInputArgs{
 /// 					MetadataOperation: pulumi.String("CREATE"),
@@ -4211,31 +4210,45 @@ import 'firehose_delivery_stream_state.dart';
 /// 				},
 /// 			},
 /// 			StorageDescriptor: &glue.CatalogTableStorageDescriptorArgs{
-/// 				Location: bucket.ID().ApplyT(func(id pulumi.ID) (string, error) {
-/// 					return fmt.Sprintf("s3://%v", id), nil
-/// 				}).(pulumi.StringOutput),
 /// 				Columns: glue.CatalogTableStorageDescriptorColumnArray{
 /// 					&glue.CatalogTableStorageDescriptorColumnArgs{
 /// 						Name: pulumi.String("my_column_1"),
 /// 						Type: pulumi.String("int"),
 /// 					},
 /// 				},
+/// 				Location: bucket.ID().ApplyT(func(id pulumi.ID) (string, error) {
+/// 					return fmt.Sprintf("s3://%v", id), nil
+/// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			Name:         pulumi.String("test"),
+/// 			DatabaseName: test.Name,
+/// 			Parameters: pulumi.StringMap{
+/// 				"format": pulumi.String("parquet"),
+/// 			},
+/// 			TableType: pulumi.String("EXTERNAL_TABLE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("iceberg"),
 /// 			IcebergConfiguration: &kinesis.FirehoseDeliveryStreamIcebergConfigurationArgs{
-/// 				RoleArn:           pulumi.Any(firehoseRole.Arn),
-/// 				CatalogArn:        pulumi.Sprintf("arn:%v:glue:%v:%v:catalog", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
-/// 				BufferingSize:     pulumi.Int(10),
-/// 				BufferingInterval: pulumi.Int(400),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs{
 /// 					RoleArn:   pulumi.Any(firehoseRole.Arn),
 /// 					BucketArn: bucket.Arn,
+/// 				},
+/// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs{
+/// 					Processors: kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArray{
+/// 						&kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs{
+/// 							Parameters: kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArray{
+/// 								&kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs{
+/// 									ParameterName:  pulumi.String("LambdaArn"),
+/// 									ParameterValue: pulumi.Sprintf("%v:$LATEST", lambdaProcessor.Arn),
+/// 								},
+/// 							},
+/// 							Type: pulumi.String("Lambda"),
+/// 						},
+/// 					},
+/// 					Enabled: pulumi.Bool(true),
 /// 				},
 /// 				DestinationTableConfigurations: kinesis.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArray{
 /// 					&kinesis.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs{
@@ -4243,21 +4256,13 @@ import 'firehose_delivery_stream_state.dart';
 /// 						TableName:    testCatalogTable.Name,
 /// 					},
 /// 				},
-/// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs{
-/// 					Enabled: pulumi.Bool(true),
-/// 					Processors: kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArray{
-/// 						&kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs{
-/// 							Type: pulumi.String("Lambda"),
-/// 							Parameters: kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArray{
-/// 								&kinesis.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs{
-/// 									ParameterName:  pulumi.String("LambdaArn"),
-/// 									ParameterValue: pulumi.Sprintf("%v:$LATEST", lambdaProcessor.Arn),
-/// 								},
-/// 							},
-/// 						},
-/// 					},
-/// 				},
+/// 				RoleArn:           pulumi.Any(firehoseRole.Arn),
+/// 				CatalogArn:        pulumi.Sprintf("arn:%v:glue:%v:%v:catalog", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
+/// 				BufferingSize:     pulumi.Int(10),
+/// 				BufferingInterval: pulumi.Int(400),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("iceberg"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4290,12 +4295,6 @@ import 'firehose_delivery_stream_state.dart';
 ///   name = "test"
 /// }
 /// resource "aws_glue_catalogtable" "test" {
-///   name          = "test"
-///   database_name = aws_glue_catalogdatabase.test.name
-///   parameters = {
-///     "format" = "parquet"
-///   }
-///   table_type = "EXTERNAL_TABLE"
 ///   open_table_format_input = {
 ///     iceberg_input = {
 ///       metadata_operation = "CREATE"
@@ -4303,40 +4302,46 @@ import 'firehose_delivery_stream_state.dart';
 ///     }
 ///   }
 ///   storage_descriptor = {
-///     location ="s3://${aws_s3_bucket.bucket.id}"
 ///     columns = [{
 ///       "name" = "my_column_1"
 ///       "type" = "int"
 ///     }]
+///     location ="s3://${aws_s3_bucket.bucket.id}"
 ///   }
+///   name          = "test"
+///   database_name = aws_glue_catalogdatabase.test.name
+///   parameters = {
+///     "format" = "parquet"
+///   }
+///   table_type = "EXTERNAL_TABLE"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "iceberg"
 ///   iceberg_configuration = {
-///     role_arn           = firehoseRole.arn
-///     catalog_arn        ="arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:catalog"
-///     buffering_size     = 10
-///     buffering_interval = 400
 ///     s3_configuration = {
 ///       role_arn   = firehoseRole.arn
 ///       bucket_arn = aws_s3_bucket.bucket.arn
+///     }
+///     processing_configuration = {
+///       processors = [{
+///         "parameters" = [{
+///           "parameterName"  = "LambdaArn"
+///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
+///         }]
+///         "type" = "Lambda"
+///       }]
+///       enabled = "true"
 ///     }
 ///     destination_table_configurations = [{
 ///       "databaseName" = aws_glue_catalogdatabase.test.name
 ///       "tableName"    = aws_glue_catalogtable.test.name
 ///     }]
-///     processing_configuration = {
-///       enabled = "true"
-///       processors = [{
-///         "type" = "Lambda"
-///         "parameters" = [{
-///           "parameterName"  = "LambdaArn"
-///           "parameterValue" ="${lambdaProcessor.arn}:$LATEST"
-///         }]
-///       }]
-///     }
+///     role_arn           = firehoseRole.arn
+///     catalog_arn        ="arn:${data.aws_getpartition.currentGetPartition.partition}:glue:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:catalog"
+///     buffering_size     = 10
+///     buffering_interval = 400
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "iceberg"
 /// }
 /// ```
 /// ```java
@@ -4363,10 +4368,10 @@ import 'firehose_delivery_stream_state.dart';
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs;
-/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -4399,10 +4404,6 @@ import 'firehose_delivery_stream_state.dart';
 ///             .build());
 ///
 ///         var testCatalogTable = new CatalogTable("testCatalogTable", CatalogTableArgs.builder()
-///             .name("test")
-///             .databaseName(test.name())
-///             .parameters(Map.of("format", "parquet"))
-///             .tableType("EXTERNAL_TABLE")
 ///             .openTableFormatInput(CatalogTableOpenTableFormatInputArgs.builder()
 ///                 .icebergInput(CatalogTableOpenTableFormatInputIcebergInputArgs.builder()
 ///                     .metadataOperation("CREATE")
@@ -4410,41 +4411,45 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .storageDescriptor(CatalogTableStorageDescriptorArgs.builder()
-///                 .location(bucket.id().applyValue(_id -> String.format("s3://%s", _id)))
 ///                 .columns(CatalogTableStorageDescriptorColumnArgs.builder()
 ///                     .name("my_column_1")
 ///                     .type("int")
 ///                     .build())
+///                 .location(bucket.id().applyValue(_id -> String.format("s3://%s", _id)))
 ///                 .build())
+///             .name("test")
+///             .databaseName(test.name())
+///             .parameters(Map.of("format", "parquet"))
+///             .tableType("EXTERNAL_TABLE")
 ///             .build());
 ///
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("iceberg")
 ///             .icebergConfiguration(FirehoseDeliveryStreamIcebergConfigurationArgs.builder()
-///                 .roleArn(firehoseRole.arn())
-///                 .catalogArn(String.format("arn:%s:glue:%s:%s:catalog", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
-///                 .bufferingSize(10)
-///                 .bufferingInterval(400)
 ///                 .s3Configuration(FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehoseRole.arn())
 ///                     .bucketArn(bucket.arn())
+///                     .build())
+///                 .processingConfiguration(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs.builder()
+///                     .processors(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs.builder()
+///                         .parameters(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs.builder()
+///                             .parameterName("LambdaArn")
+///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
+///                             .build())
+///                         .type("Lambda")
+///                         .build())
+///                     .enabled(true)
 ///                     .build())
 ///                 .destinationTableConfigurations(FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfigurationArgs.builder()
 ///                     .databaseName(test.name())
 ///                     .tableName(testCatalogTable.name())
 ///                     .build())
-///                 .processingConfiguration(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationArgs.builder()
-///                     .enabled(true)
-///                     .processors(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorArgs.builder()
-///                         .type("Lambda")
-///                         .parameters(FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameterArgs.builder()
-///                             .parameterName("LambdaArn")
-///                             .parameterValue(String.format("%s:$LATEST", lambdaProcessor.arn()))
-///                             .build())
-///                         .build())
-///                     .build())
+///                 .roleArn(firehoseRole.arn())
+///                 .catalogArn(String.format("arn:%s:glue:%s:%s:catalog", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
+///                 .bufferingSize(10)
+///                 .bufferingInterval(400)
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("iceberg")
 ///             .build());
 ///
 ///     }
@@ -4465,44 +4470,44 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:glue:CatalogTable
 ///     name: test
 ///     properties:
-///       name: test
-///       databaseName: ${test.name}
-///       parameters:
-///         format: parquet
-///       tableType: EXTERNAL_TABLE
 ///       openTableFormatInput:
 ///         icebergInput:
 ///           metadataOperation: CREATE
 ///           version: 2
 ///       storageDescriptor:
-///         location: s3://${bucket.id}
 ///         columns:
 ///           - name: my_column_1
 ///             type: int
+///         location: s3://${bucket.id}
+///       name: test
+///       databaseName: ${test.name}
+///       parameters:
+///         format: parquet
+///       tableType: EXTERNAL_TABLE
 ///   testStream:
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: iceberg
 ///       icebergConfiguration:
+///         s3Configuration:
+///           roleArn: ${firehoseRole.arn}
+///           bucketArn: ${bucket.arn}
+///         processingConfiguration:
+///           processors:
+///             - parameters:
+///                 - parameterName: LambdaArn
+///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///               type: Lambda
+///           enabled: 'true'
+///         destinationTableConfigurations:
+///           - databaseName: ${test.name}
+///             tableName: ${testCatalogTable.name}
 ///         roleArn: ${firehoseRole.arn}
 ///         catalogArn: arn:${currentGetPartition.partition}:glue:${currentGetRegion.region}:${current.accountId}:catalog
 ///         bufferingSize: 10
 ///         bufferingInterval: 400
-///         s3Configuration:
-///           roleArn: ${firehoseRole.arn}
-///           bucketArn: ${bucket.arn}
-///         destinationTableConfigurations:
-///           - databaseName: ${test.name}
-///             tableName: ${testCatalogTable.name}
-///         processingConfiguration:
-///           enabled: 'true'
-///           processors:
-///             - type: Lambda
-///               parameters:
-///                 - parameterName: LambdaArn
-///                   parameterValue: ${lambdaProcessor.arn}:$LATEST
+///       name: kinesis-firehose-test-stream
+///       destination: iceberg
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -4527,14 +4532,7 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "splunk",
 ///     splunkConfiguration: {
-///         hecEndpoint: "https://http-inputs-mydomain.splunkcloud.com:443",
-///         hecToken: "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
-///         hecAcknowledgmentTimeout: 600,
-///         hecEndpointType: "Event",
-///         s3BackupMode: "FailedEventsOnly",
 ///         s3Configuration: {
 ///             roleArn: firehose.arn,
 ///             bucketArn: bucket.arn,
@@ -4542,7 +4540,14 @@ import 'firehose_delivery_stream_state.dart';
 ///             bufferingInterval: 400,
 ///             compressionFormat: "GZIP",
 ///         },
+///         hecEndpoint: "https://http-inputs-mydomain.splunkcloud.com:443",
+///         hecToken: "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
+///         hecAcknowledgmentTimeout: 600,
+///         hecEndpointType: "Event",
+///         s3BackupMode: "FailedEventsOnly",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "splunk",
 /// });
 /// ```
 /// ```python
@@ -4550,14 +4555,7 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="splunk",
 ///     splunk_configuration={
-///         "hec_endpoint": "https://http-inputs-mydomain.splunkcloud.com:443",
-///         "hec_token": "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
-///         "hec_acknowledgment_timeout": 600,
-///         "hec_endpoint_type": "Event",
-///         "s3_backup_mode": "FailedEventsOnly",
 ///         "s3_configuration": {
 ///             "role_arn": firehose["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -4565,7 +4563,14 @@ import 'firehose_delivery_stream_state.dart';
 ///             "buffering_interval": 400,
 ///             "compression_format": "GZIP",
 ///         },
-///     })
+///         "hec_endpoint": "https://http-inputs-mydomain.splunkcloud.com:443",
+///         "hec_token": "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
+///         "hec_acknowledgment_timeout": 600,
+///         "hec_endpoint_type": "Event",
+///         "s3_backup_mode": "FailedEventsOnly",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="splunk")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4577,15 +4582,8 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "splunk",
 ///         SplunkConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamSplunkConfigurationArgs
 ///         {
-///             HecEndpoint = "https://http-inputs-mydomain.splunkcloud.com:443",
-///             HecToken = "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
-///             HecAcknowledgmentTimeout = 600,
-///             HecEndpointType = "Event",
-///             S3BackupMode = "FailedEventsOnly",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehose.Arn,
@@ -4594,7 +4592,14 @@ import 'firehose_delivery_stream_state.dart';
 ///                 BufferingInterval = 400,
 ///                 CompressionFormat = "GZIP",
 ///             },
+///             HecEndpoint = "https://http-inputs-mydomain.splunkcloud.com:443",
+///             HecToken = "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A",
+///             HecAcknowledgmentTimeout = 600,
+///             HecEndpointType = "Event",
+///             S3BackupMode = "FailedEventsOnly",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "splunk",
 ///     });
 ///
 /// });
@@ -4610,14 +4615,7 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("splunk"),
 /// 			SplunkConfiguration: &kinesis.FirehoseDeliveryStreamSplunkConfigurationArgs{
-/// 				HecEndpoint:              pulumi.String("https://http-inputs-mydomain.splunkcloud.com:443"),
-/// 				HecToken:                 pulumi.String("51D4DA16-C61B-4F5F-8EC7-ED4301342A4A"),
-/// 				HecAcknowledgmentTimeout: pulumi.Int(600),
-/// 				HecEndpointType:          pulumi.String("Event"),
-/// 				S3BackupMode:             pulumi.String("FailedEventsOnly"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehose.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -4625,7 +4623,14 @@ import 'firehose_delivery_stream_state.dart';
 /// 					BufferingInterval: pulumi.Int(400),
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
+/// 				HecEndpoint:              pulumi.String("https://http-inputs-mydomain.splunkcloud.com:443"),
+/// 				HecToken:                 pulumi.String("51D4DA16-C61B-4F5F-8EC7-ED4301342A4A"),
+/// 				HecAcknowledgmentTimeout: pulumi.Int(600),
+/// 				HecEndpointType:          pulumi.String("Event"),
+/// 				S3BackupMode:             pulumi.String("FailedEventsOnly"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("splunk"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4644,14 +4649,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "splunk"
 ///   splunk_configuration = {
-///     hec_endpoint               = "https://http-inputs-mydomain.splunkcloud.com:443"
-///     hec_token                  = "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A"
-///     hec_acknowledgment_timeout = 600
-///     hec_endpoint_type          = "Event"
-///     s3_backup_mode             = "FailedEventsOnly"
 ///     s3_configuration = {
 ///       role_arn           = firehose.arn
 ///       bucket_arn         = bucket.arn
@@ -4659,7 +4657,14 @@ import 'firehose_delivery_stream_state.dart';
 ///       buffering_interval = 400
 ///       compression_format = "GZIP"
 ///     }
+///     hec_endpoint               = "https://http-inputs-mydomain.splunkcloud.com:443"
+///     hec_token                  = "51D4DA16-C61B-4F5F-8EC7-ED4301342A4A"
+///     hec_acknowledgment_timeout = 600
+///     hec_endpoint_type          = "Event"
+///     s3_backup_mode             = "FailedEventsOnly"
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "splunk"
 /// }
 /// ```
 /// ```java
@@ -4686,14 +4691,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("splunk")
 ///             .splunkConfiguration(FirehoseDeliveryStreamSplunkConfigurationArgs.builder()
-///                 .hecEndpoint("https://http-inputs-mydomain.splunkcloud.com:443")
-///                 .hecToken("51D4DA16-C61B-4F5F-8EC7-ED4301342A4A")
-///                 .hecAcknowledgmentTimeout(600)
-///                 .hecEndpointType("Event")
-///                 .s3BackupMode("FailedEventsOnly")
 ///                 .s3Configuration(FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehose.arn())
 ///                     .bucketArn(bucket.arn())
@@ -4701,7 +4699,14 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .bufferingInterval(400)
 ///                     .compressionFormat("GZIP")
 ///                     .build())
+///                 .hecEndpoint("https://http-inputs-mydomain.splunkcloud.com:443")
+///                 .hecToken("51D4DA16-C61B-4F5F-8EC7-ED4301342A4A")
+///                 .hecAcknowledgmentTimeout(600)
+///                 .hecEndpointType("Event")
+///                 .s3BackupMode("FailedEventsOnly")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("splunk")
 ///             .build());
 ///
 ///     }
@@ -4713,20 +4718,20 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: splunk
 ///       splunkConfiguration:
-///         hecEndpoint: https://http-inputs-mydomain.splunkcloud.com:443
-///         hecToken: 51D4DA16-C61B-4F5F-8EC7-ED4301342A4A
-///         hecAcknowledgmentTimeout: 600
-///         hecEndpointType: Event
-///         s3BackupMode: FailedEventsOnly
 ///         s3Configuration:
 ///           roleArn: ${firehose.arn}
 ///           bucketArn: ${bucket.arn}
 ///           bufferingSize: 10
 ///           bufferingInterval: 400
 ///           compressionFormat: GZIP
+///         hecEndpoint: https://http-inputs-mydomain.splunkcloud.com:443
+///         hecToken: 51D4DA16-C61B-4F5F-8EC7-ED4301342A4A
+///         hecAcknowledgmentTimeout: 600
+///         hecEndpointType: Event
+///         s3BackupMode: FailedEventsOnly
+///       name: kinesis-firehose-test-stream
+///       destination: splunk
 /// ```
 ///
 ///
@@ -4740,16 +4745,7 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
-///     name: "kinesis-firehose-test-stream",
-///     destination: "http_endpoint",
 ///     httpEndpointConfiguration: {
-///         url: "https://aws-api.newrelic.com/firehose/v1",
-///         name: "New Relic",
-///         accessKey: "my-key",
-///         bufferingSize: 15,
-///         bufferingInterval: 600,
-///         roleArn: firehose.arn,
-///         s3BackupMode: "FailedDataOnly",
 ///         s3Configuration: {
 ///             roleArn: firehose.arn,
 ///             bucketArn: bucket.arn,
@@ -4758,7 +4754,6 @@ import 'firehose_delivery_stream_state.dart';
 ///             compressionFormat: "GZIP",
 ///         },
 ///         requestConfiguration: {
-///             contentEncoding: "GZIP",
 ///             commonAttributes: [
 ///                 {
 ///                     name: "testname",
@@ -4769,8 +4764,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                     value: "testvalue2",
 ///                 },
 ///             ],
+///             contentEncoding: "GZIP",
 ///         },
+///         url: "https://aws-api.newrelic.com/firehose/v1",
+///         name: "New Relic",
+///         accessKey: "my-key",
+///         bufferingSize: 15,
+///         bufferingInterval: 600,
+///         roleArn: firehose.arn,
+///         s3BackupMode: "FailedDataOnly",
 ///     },
+///     name: "kinesis-firehose-test-stream",
+///     destination: "http_endpoint",
 /// });
 /// ```
 /// ```python
@@ -4778,16 +4783,7 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_stream = aws.kinesis.FirehoseDeliveryStream("test_stream",
-///     name="kinesis-firehose-test-stream",
-///     destination="http_endpoint",
 ///     http_endpoint_configuration={
-///         "url": "https://aws-api.newrelic.com/firehose/v1",
-///         "name": "New Relic",
-///         "access_key": "my-key",
-///         "buffering_size": 15,
-///         "buffering_interval": 600,
-///         "role_arn": firehose["arn"],
-///         "s3_backup_mode": "FailedDataOnly",
 ///         "s3_configuration": {
 ///             "role_arn": firehose["arn"],
 ///             "bucket_arn": bucket["arn"],
@@ -4796,7 +4792,6 @@ import 'firehose_delivery_stream_state.dart';
 ///             "compression_format": "GZIP",
 ///         },
 ///         "request_configuration": {
-///             "content_encoding": "GZIP",
 ///             "common_attributes": [
 ///                 {
 ///                     "name": "testname",
@@ -4807,8 +4802,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                     "value": "testvalue2",
 ///                 },
 ///             ],
+///             "content_encoding": "GZIP",
 ///         },
-///     })
+///         "url": "https://aws-api.newrelic.com/firehose/v1",
+///         "name": "New Relic",
+///         "access_key": "my-key",
+///         "buffering_size": 15,
+///         "buffering_interval": 600,
+///         "role_arn": firehose["arn"],
+///         "s3_backup_mode": "FailedDataOnly",
+///     },
+///     name="kinesis-firehose-test-stream",
+///     destination="http_endpoint")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4820,17 +4825,8 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var testStream = new Aws.Kinesis.FirehoseDeliveryStream("test_stream", new()
 ///     {
-///         Name = "kinesis-firehose-test-stream",
-///         Destination = "http_endpoint",
 ///         HttpEndpointConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamHttpEndpointConfigurationArgs
 ///         {
-///             Url = "https://aws-api.newrelic.com/firehose/v1",
-///             Name = "New Relic",
-///             AccessKey = "my-key",
-///             BufferingSize = 15,
-///             BufferingInterval = 600,
-///             RoleArn = firehose.Arn,
-///             S3BackupMode = "FailedDataOnly",
 ///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamHttpEndpointConfigurationS3ConfigurationArgs
 ///             {
 ///                 RoleArn = firehose.Arn,
@@ -4841,7 +4837,6 @@ import 'firehose_delivery_stream_state.dart';
 ///             },
 ///             RequestConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs
 ///             {
-///                 ContentEncoding = "GZIP",
 ///                 CommonAttributes = new[]
 ///                 {
 ///                     new Aws.Kinesis.Inputs.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributeArgs
@@ -4855,8 +4850,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                         Value = "testvalue2",
 ///                     },
 ///                 },
+///                 ContentEncoding = "GZIP",
 ///             },
+///             Url = "https://aws-api.newrelic.com/firehose/v1",
+///             Name = "New Relic",
+///             AccessKey = "my-key",
+///             BufferingSize = 15,
+///             BufferingInterval = 600,
+///             RoleArn = firehose.Arn,
+///             S3BackupMode = "FailedDataOnly",
 ///         },
+///         Name = "kinesis-firehose-test-stream",
+///         Destination = "http_endpoint",
 ///     });
 ///
 /// });
@@ -4872,16 +4877,7 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "test_stream", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
-/// 			Destination: pulumi.String("http_endpoint"),
 /// 			HttpEndpointConfiguration: &kinesis.FirehoseDeliveryStreamHttpEndpointConfigurationArgs{
-/// 				Url:               pulumi.String("https://aws-api.newrelic.com/firehose/v1"),
-/// 				Name:              pulumi.String("New Relic"),
-/// 				AccessKey:         pulumi.String("my-key"),
-/// 				BufferingSize:     pulumi.Int(15),
-/// 				BufferingInterval: pulumi.Int(600),
-/// 				RoleArn:           pulumi.Any(firehose.Arn),
-/// 				S3BackupMode:      pulumi.String("FailedDataOnly"),
 /// 				S3Configuration: &kinesis.FirehoseDeliveryStreamHttpEndpointConfigurationS3ConfigurationArgs{
 /// 					RoleArn:           pulumi.Any(firehose.Arn),
 /// 					BucketArn:         pulumi.Any(bucket.Arn),
@@ -4890,7 +4886,6 @@ import 'firehose_delivery_stream_state.dart';
 /// 					CompressionFormat: pulumi.String("GZIP"),
 /// 				},
 /// 				RequestConfiguration: &kinesis.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs{
-/// 					ContentEncoding: pulumi.String("GZIP"),
 /// 					CommonAttributes: kinesis.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributeArray{
 /// 						&kinesis.FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributeArgs{
 /// 							Name:  pulumi.String("testname"),
@@ -4901,8 +4896,18 @@ import 'firehose_delivery_stream_state.dart';
 /// 							Value: pulumi.String("testvalue2"),
 /// 						},
 /// 					},
+/// 					ContentEncoding: pulumi.String("GZIP"),
 /// 				},
+/// 				Url:               pulumi.String("https://aws-api.newrelic.com/firehose/v1"),
+/// 				Name:              pulumi.String("New Relic"),
+/// 				AccessKey:         pulumi.String("my-key"),
+/// 				BufferingSize:     pulumi.Int(15),
+/// 				BufferingInterval: pulumi.Int(600),
+/// 				RoleArn:           pulumi.Any(firehose.Arn),
+/// 				S3BackupMode:      pulumi.String("FailedDataOnly"),
 /// 			},
+/// 			Name:        pulumi.String("kinesis-firehose-test-stream"),
+/// 			Destination: pulumi.String("http_endpoint"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4921,16 +4926,7 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "test_stream" {
-///   name        = "kinesis-firehose-test-stream"
-///   destination = "http_endpoint"
 ///   http_endpoint_configuration = {
-///     url                = "https://aws-api.newrelic.com/firehose/v1"
-///     name               = "New Relic"
-///     access_key         = "my-key"
-///     buffering_size     = 15
-///     buffering_interval = 600
-///     role_arn           = firehose.arn
-///     s3_backup_mode     = "FailedDataOnly"
 ///     s3_configuration = {
 ///       role_arn           = firehose.arn
 ///       bucket_arn         = bucket.arn
@@ -4939,7 +4935,6 @@ import 'firehose_delivery_stream_state.dart';
 ///       compression_format = "GZIP"
 ///     }
 ///     request_configuration = {
-///       content_encoding = "GZIP"
 ///       common_attributes = [{
 ///         "name"  = "testname"
 ///         "value" = "testvalue"
@@ -4947,8 +4942,18 @@ import 'firehose_delivery_stream_state.dart';
 ///         "name"  = "testname2"
 ///         "value" = "testvalue2"
 ///       }]
+///       content_encoding = "GZIP"
 ///     }
+///     url                = "https://aws-api.newrelic.com/firehose/v1"
+///     name               = "New Relic"
+///     access_key         = "my-key"
+///     buffering_size     = 15
+///     buffering_interval = 600
+///     role_arn           = firehose.arn
+///     s3_backup_mode     = "FailedDataOnly"
 ///   }
+///   name        = "kinesis-firehose-test-stream"
+///   destination = "http_endpoint"
 /// }
 /// ```
 /// ```java
@@ -4977,16 +4982,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testStream = new FirehoseDeliveryStream("testStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("kinesis-firehose-test-stream")
-///             .destination("http_endpoint")
 ///             .httpEndpointConfiguration(FirehoseDeliveryStreamHttpEndpointConfigurationArgs.builder()
-///                 .url("https://aws-api.newrelic.com/firehose/v1")
-///                 .name("New Relic")
-///                 .accessKey("my-key")
-///                 .bufferingSize(15)
-///                 .bufferingInterval(600)
-///                 .roleArn(firehose.arn())
-///                 .s3BackupMode("FailedDataOnly")
 ///                 .s3Configuration(FirehoseDeliveryStreamHttpEndpointConfigurationS3ConfigurationArgs.builder()
 ///                     .roleArn(firehose.arn())
 ///                     .bucketArn(bucket.arn())
@@ -4995,7 +4991,6 @@ import 'firehose_delivery_stream_state.dart';
 ///                     .compressionFormat("GZIP")
 ///                     .build())
 ///                 .requestConfiguration(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs.builder()
-///                     .contentEncoding("GZIP")
 ///                     .commonAttributes(
 ///                         FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributeArgs.builder()
 ///                             .name("testname")
@@ -5005,8 +5000,18 @@ import 'firehose_delivery_stream_state.dart';
 ///                             .name("testname2")
 ///                             .value("testvalue2")
 ///                             .build())
+///                     .contentEncoding("GZIP")
 ///                     .build())
+///                 .url("https://aws-api.newrelic.com/firehose/v1")
+///                 .name("New Relic")
+///                 .accessKey("my-key")
+///                 .bufferingSize(15)
+///                 .bufferingInterval(600)
+///                 .roleArn(firehose.arn())
+///                 .s3BackupMode("FailedDataOnly")
 ///                 .build())
+///             .name("kinesis-firehose-test-stream")
+///             .destination("http_endpoint")
 ///             .build());
 ///
 ///     }
@@ -5018,16 +5023,7 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-firehose-test-stream
-///       destination: http_endpoint
 ///       httpEndpointConfiguration:
-///         url: https://aws-api.newrelic.com/firehose/v1
-///         name: New Relic
-///         accessKey: my-key
-///         bufferingSize: 15
-///         bufferingInterval: 600
-///         roleArn: ${firehose.arn}
-///         s3BackupMode: FailedDataOnly
 ///         s3Configuration:
 ///           roleArn: ${firehose.arn}
 ///           bucketArn: ${bucket.arn}
@@ -5035,12 +5031,21 @@ import 'firehose_delivery_stream_state.dart';
 ///           bufferingInterval: 400
 ///           compressionFormat: GZIP
 ///         requestConfiguration:
-///           contentEncoding: GZIP
 ///           commonAttributes:
 ///             - name: testname
 ///               value: testvalue
 ///             - name: testname2
 ///               value: testvalue2
+///           contentEncoding: GZIP
+///         url: https://aws-api.newrelic.com/firehose/v1
+///         name: New Relic
+///         accessKey: my-key
+///         bufferingSize: 15
+///         bufferingInterval: 600
+///         roleArn: ${firehose.arn}
+///         s3BackupMode: FailedDataOnly
+///       name: kinesis-firehose-test-stream
+///       destination: http_endpoint
 /// ```
 ///
 ///
@@ -5052,9 +5057,14 @@ import 'firehose_delivery_stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleSnowflakeDestination = new aws.kinesis.FirehoseDeliveryStream("example_snowflake_destination", {
-///     name: "example-snowflake-destination",
-///     destination: "snowflake",
 ///     snowflakeConfiguration: {
+///         s3Configuration: {
+///             roleArn: firehose.arn,
+///             bucketArn: bucket.arn,
+///             bufferingSize: 10,
+///             bufferingInterval: 400,
+///             compressionFormat: "GZIP",
+///         },
 ///         accountUrl: "https://example.snowflakecomputing.com",
 ///         bufferingSize: 15,
 ///         bufferingInterval: 600,
@@ -5064,14 +5074,9 @@ import 'firehose_delivery_stream_state.dart';
 ///         schema: "example-schema",
 ///         table: "example-table",
 ///         user: "example-usr",
-///         s3Configuration: {
-///             roleArn: firehose.arn,
-///             bucketArn: bucket.arn,
-///             bufferingSize: 10,
-///             bufferingInterval: 400,
-///             compressionFormat: "GZIP",
-///         },
 ///     },
+///     name: "example-snowflake-destination",
+///     destination: "snowflake",
 /// });
 /// ```
 /// ```python
@@ -5079,9 +5084,14 @@ import 'firehose_delivery_stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_snowflake_destination = aws.kinesis.FirehoseDeliveryStream("example_snowflake_destination",
-///     name="example-snowflake-destination",
-///     destination="snowflake",
 ///     snowflake_configuration={
+///         "s3_configuration": {
+///             "role_arn": firehose["arn"],
+///             "bucket_arn": bucket["arn"],
+///             "buffering_size": 10,
+///             "buffering_interval": 400,
+///             "compression_format": "GZIP",
+///         },
 ///         "account_url": "https://example.snowflakecomputing.com",
 ///         "buffering_size": 15,
 ///         "buffering_interval": 600,
@@ -5091,14 +5101,9 @@ import 'firehose_delivery_stream_state.dart';
 ///         "schema": "example-schema",
 ///         "table": "example-table",
 ///         "user": "example-usr",
-///         "s3_configuration": {
-///             "role_arn": firehose["arn"],
-///             "bucket_arn": bucket["arn"],
-///             "buffering_size": 10,
-///             "buffering_interval": 400,
-///             "compression_format": "GZIP",
-///         },
-///     })
+///     },
+///     name="example-snowflake-destination",
+///     destination="snowflake")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -5110,10 +5115,16 @@ import 'firehose_delivery_stream_state.dart';
 /// {
 ///     var exampleSnowflakeDestination = new Aws.Kinesis.FirehoseDeliveryStream("example_snowflake_destination", new()
 ///     {
-///         Name = "example-snowflake-destination",
-///         Destination = "snowflake",
 ///         SnowflakeConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamSnowflakeConfigurationArgs
 ///         {
+///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs
+///             {
+///                 RoleArn = firehose.Arn,
+///                 BucketArn = bucket.Arn,
+///                 BufferingSize = 10,
+///                 BufferingInterval = 400,
+///                 CompressionFormat = "GZIP",
+///             },
 ///             AccountUrl = "https://example.snowflakecomputing.com",
 ///             BufferingSize = 15,
 ///             BufferingInterval = 600,
@@ -5123,15 +5134,9 @@ import 'firehose_delivery_stream_state.dart';
 ///             Schema = "example-schema",
 ///             Table = "example-table",
 ///             User = "example-usr",
-///             S3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs
-///             {
-///                 RoleArn = firehose.Arn,
-///                 BucketArn = bucket.Arn,
-///                 BufferingSize = 10,
-///                 BufferingInterval = 400,
-///                 CompressionFormat = "GZIP",
-///             },
 ///         },
+///         Name = "example-snowflake-destination",
+///         Destination = "snowflake",
 ///     });
 ///
 /// });
@@ -5147,9 +5152,14 @@ import 'firehose_delivery_stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "example_snowflake_destination", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("example-snowflake-destination"),
-/// 			Destination: pulumi.String("snowflake"),
 /// 			SnowflakeConfiguration: &kinesis.FirehoseDeliveryStreamSnowflakeConfigurationArgs{
+/// 				S3Configuration: &kinesis.FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs{
+/// 					RoleArn:           pulumi.Any(firehose.Arn),
+/// 					BucketArn:         pulumi.Any(bucket.Arn),
+/// 					BufferingSize:     pulumi.Int(10),
+/// 					BufferingInterval: pulumi.Int(400),
+/// 					CompressionFormat: pulumi.String("GZIP"),
+/// 				},
 /// 				AccountUrl:        pulumi.String("https://example.snowflakecomputing.com"),
 /// 				BufferingSize:     pulumi.Int(15),
 /// 				BufferingInterval: pulumi.Int(600),
@@ -5159,14 +5169,9 @@ import 'firehose_delivery_stream_state.dart';
 /// 				Schema:            pulumi.String("example-schema"),
 /// 				Table:             pulumi.String("example-table"),
 /// 				User:              pulumi.String("example-usr"),
-/// 				S3Configuration: &kinesis.FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs{
-/// 					RoleArn:           pulumi.Any(firehose.Arn),
-/// 					BucketArn:         pulumi.Any(bucket.Arn),
-/// 					BufferingSize:     pulumi.Int(10),
-/// 					BufferingInterval: pulumi.Int(400),
-/// 					CompressionFormat: pulumi.String("GZIP"),
-/// 				},
 /// 			},
+/// 			Name:        pulumi.String("example-snowflake-destination"),
+/// 			Destination: pulumi.String("snowflake"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5185,9 +5190,14 @@ import 'firehose_delivery_stream_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_firehosedeliverystream" "example_snowflake_destination" {
-///   name        = "example-snowflake-destination"
-///   destination = "snowflake"
 ///   snowflake_configuration = {
+///     s3_configuration = {
+///       role_arn           = firehose.arn
+///       bucket_arn         = bucket.arn
+///       buffering_size     = 10
+///       buffering_interval = 400
+///       compression_format = "GZIP"
+///     }
 ///     account_url        = "https://example.snowflakecomputing.com"
 ///     buffering_size     = 15
 ///     buffering_interval = 600
@@ -5197,14 +5207,9 @@ import 'firehose_delivery_stream_state.dart';
 ///     schema             = "example-schema"
 ///     table              = "example-table"
 ///     user               = "example-usr"
-///     s3_configuration = {
-///       role_arn           = firehose.arn
-///       bucket_arn         = bucket.arn
-///       buffering_size     = 10
-///       buffering_interval = 400
-///       compression_format = "GZIP"
-///     }
 ///   }
+///   name        = "example-snowflake-destination"
+///   destination = "snowflake"
 /// }
 /// ```
 /// ```java
@@ -5231,9 +5236,14 @@ import 'firehose_delivery_stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleSnowflakeDestination = new FirehoseDeliveryStream("exampleSnowflakeDestination", FirehoseDeliveryStreamArgs.builder()
-///             .name("example-snowflake-destination")
-///             .destination("snowflake")
 ///             .snowflakeConfiguration(FirehoseDeliveryStreamSnowflakeConfigurationArgs.builder()
+///                 .s3Configuration(FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs.builder()
+///                     .roleArn(firehose.arn())
+///                     .bucketArn(bucket.arn())
+///                     .bufferingSize(10)
+///                     .bufferingInterval(400)
+///                     .compressionFormat("GZIP")
+///                     .build())
 ///                 .accountUrl("https://example.snowflakecomputing.com")
 ///                 .bufferingSize(15)
 ///                 .bufferingInterval(600)
@@ -5243,14 +5253,9 @@ import 'firehose_delivery_stream_state.dart';
 ///                 .schema("example-schema")
 ///                 .table("example-table")
 ///                 .user("example-usr")
-///                 .s3Configuration(FirehoseDeliveryStreamSnowflakeConfigurationS3ConfigurationArgs.builder()
-///                     .roleArn(firehose.arn())
-///                     .bucketArn(bucket.arn())
-///                     .bufferingSize(10)
-///                     .bufferingInterval(400)
-///                     .compressionFormat("GZIP")
-///                     .build())
 ///                 .build())
+///             .name("example-snowflake-destination")
+///             .destination("snowflake")
 ///             .build());
 ///
 ///     }
@@ -5262,9 +5267,13 @@ import 'firehose_delivery_stream_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: example_snowflake_destination
 ///     properties:
-///       name: example-snowflake-destination
-///       destination: snowflake
 ///       snowflakeConfiguration:
+///         s3Configuration:
+///           roleArn: ${firehose.arn}
+///           bucketArn: ${bucket.arn}
+///           bufferingSize: 10
+///           bufferingInterval: 400
+///           compressionFormat: GZIP
 ///         accountUrl: https://example.snowflakecomputing.com
 ///         bufferingSize: 15
 ///         bufferingInterval: 600
@@ -5274,12 +5283,8 @@ import 'firehose_delivery_stream_state.dart';
 ///         schema: example-schema
 ///         table: example-table
 ///         user: example-usr
-///         s3Configuration:
-///           roleArn: ${firehose.arn}
-///           bucketArn: ${bucket.arn}
-///           bufferingSize: 10
-///           bufferingInterval: 400
-///           compressionFormat: GZIP
+///       name: example-snowflake-destination
+///       destination: snowflake
 /// ```
 ///
 ///
@@ -5300,7 +5305,7 @@ import 'firehose_delivery_stream_state.dart';
 ///
 /// Note: Import does not work for stream destination `s3`. Consider using `extendedS3` since `s3` destination is deprecated.
 class FirehoseDeliveryStream extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the Stream
+  /// ARN specifying the Stream
   late final pulumi.Output<String> arn;
   /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   late final pulumi.Output<String> destination;
@@ -5313,7 +5318,7 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
   late final pulumi.Output<FirehoseDeliveryStreamHttpEndpointConfiguration?> httpEndpointConfiguration;
   /// Configuration options when `destination` is `iceberg`. See `icebergConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?> icebergConfiguration;
-  /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
+  /// Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?> kinesisSourceConfiguration;
   /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?> mskSourceConfiguration;
@@ -5353,7 +5358,7 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
           'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');
@@ -5372,8 +5377,8 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
     serverSideEncryption = registerOutput<FirehoseDeliveryStreamServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snowflakeConfiguration = registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>('snowflakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     splunkConfiguration = registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>('splunkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSplunkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
   }
 
@@ -5382,11 +5387,12 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirehoseDeliveryStreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirehoseDeliveryStream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5417,8 +5423,39 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
     serverSideEncryption = registerOutput<FirehoseDeliveryStreamServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     snowflakeConfiguration = registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>('snowflakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     splunkConfiguration = registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>('splunkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSplunkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [FirehoseDeliveryStream] resource.
+  FirehoseDeliveryStream.reference(String urn)
+    : super(
+        'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destination = registerOutput<String>('destination');
+    destinationId = registerOutput<String>('destinationId');
+    elasticsearchConfiguration = registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>('elasticsearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamElasticsearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedS3Configuration = registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>('extendedS3Configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamExtendedS3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpEndpointConfiguration = registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>('httpEndpointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    icebergConfiguration = registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>('icebergConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamIcebergConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kinesisSourceConfiguration = registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>('kinesisSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mskSourceConfiguration = registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>('mskSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamMskSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    opensearchConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>('opensearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    opensearchserverlessConfiguration = registerOutput<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>('opensearchserverlessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redshiftConfiguration = registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>('redshiftConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamRedshiftConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    serverSideEncryption = registerOutput<FirehoseDeliveryStreamServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snowflakeConfiguration = registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>('snowflakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSnowflakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    splunkConfiguration = registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>('splunkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirehoseDeliveryStreamSplunkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
   }
 }

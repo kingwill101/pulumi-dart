@@ -6,17 +6,17 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatement {
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>>? managedRuleGroupConfigs;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>?>? managedRuleGroupConfigs;
   /// Name of the managed rule group.
   final pulumi.Input<String> name;
   /// Override actions for specific rules within the managed rule group. See Rule Action Override below.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>>? ruleActionOverrides;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>?>? ruleActionOverrides;
   /// Additional statement to narrow the scope of requests that the managed rule group evaluates. See Scope Down Statement below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>? scopeDownStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement?>? scopeDownStatement;
   /// Name of the managed rule group vendor (e.g., "AWS").
   final pulumi.Input<String> vendorName;
   /// Version of the managed rule group.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatement].
   /// [managedRuleGroupConfigs] Optional.

@@ -27,8 +27,8 @@ class ScaleSetStandbyPoolElasticityProfile {
 
   factory ScaleSetStandbyPoolElasticityProfile.fromMap(Map<String, dynamic> map) {
     return ScaleSetStandbyPoolElasticityProfile(
-      maxReadyCapacity: pulumi.Input.fromValue(map['maxReadyCapacity'] as int),
-      minReadyCapacity: pulumi.Input.fromValue(map['minReadyCapacity'] as int),
+      maxReadyCapacity: pulumi.Input.fromValue((map['maxReadyCapacity'] as num).toInt()),
+      minReadyCapacity: pulumi.Input.fromValue((map['minReadyCapacity'] as num).toInt()),
     );
   }
 }

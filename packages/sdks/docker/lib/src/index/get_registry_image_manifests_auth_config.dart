@@ -6,9 +6,9 @@ class GetRegistryImageManifestsAuthConfig {
   /// The address of the Docker registry.
   final pulumi.Input<String> address;
   /// The password for the Docker registry.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The username for the Docker registry.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GetRegistryImageManifestsAuthConfig].
   /// [address] The address of the Docker registry.

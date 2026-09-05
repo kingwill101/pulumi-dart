@@ -5,9 +5,9 @@ import 'catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class CatalogTableStorageDescriptorSchemaReference {
   /// Configuration block that contains schema identity fields. Either this or the `schemaVersionId` has to be provided. See `schemaId` below.
-  final pulumi.Input<CatalogTableStorageDescriptorSchemaReferenceSchemaId>? schemaId;
+  final pulumi.Input<CatalogTableStorageDescriptorSchemaReferenceSchemaId?>? schemaId;
   /// Unique ID assigned to a version of the schema. Either this or the `schemaId` has to be provided.
-  final pulumi.Input<String>? schemaVersionId;
+  final pulumi.Input<String?>? schemaVersionId;
   /// Version number of the schema.
   final pulumi.Input<int> schemaVersionNumber;
 
@@ -33,7 +33,7 @@ class CatalogTableStorageDescriptorSchemaReference {
     return CatalogTableStorageDescriptorSchemaReference(
       schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schemaVersionId: (() { final guardedValue = map['schemaVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schemaVersionNumber: pulumi.Input.fromValue(map['schemaVersionNumber'] as int),
+      schemaVersionNumber: pulumi.Input.fromValue((map['schemaVersionNumber'] as num).toInt()),
     );
   }
 }

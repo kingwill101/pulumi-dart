@@ -7,26 +7,32 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// Input properties used for looking up and filtering CentralizationRuleForOrganization resources.
 class CentralizationRuleForOrganizationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the centralization rule. See `rule` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<CentralizationRuleForOrganizationRule>? rule;
+  final pulumi.Input<CentralizationRuleForOrganizationRule?>? rule;
   /// ARN of the centralization rule.
-  final pulumi.Input<String>? ruleArn;
+  final pulumi.Input<String?>? ruleArn;
   /// Name of the centralization rule. Must be unique within the organization.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
+  /// Reason tag propagation is unhealthy, when applicable (for example, `RoleNotAssumable` or `RoleLacksPermissions`).
+  final pulumi.Input<String?>? tagPropagationFailureReason;
+  /// Health status of tag propagation for the rule (for example, `Healthy` or `Unhealthy`). Independent of the overall rule health.
+  final pulumi.Input<String?>? tagPropagationStatus;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<CentralizationRuleForOrganizationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<CentralizationRuleForOrganizationTimeouts?>? timeouts;
 
   /// Creates a new [CentralizationRuleForOrganizationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rule] Configuration block for the centralization rule. See `rule` below.
   /// [ruleArn] ARN of the centralization rule.
   /// [ruleName] Name of the centralization rule. Must be unique within the organization.
+  /// [tagPropagationFailureReason] Reason tag propagation is unhealthy, when applicable (for example, `RoleNotAssumable` or `RoleLacksPermissions`).
+  /// [tagPropagationStatus] Health status of tag propagation for the rule (for example, `Healthy` or `Unhealthy`). Independent of the overall rule health.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
@@ -35,6 +41,8 @@ class CentralizationRuleForOrganizationState {
     this.rule,
     this.ruleArn,
     this.ruleName,
+    this.tagPropagationFailureReason,
+    this.tagPropagationStatus,
     this.tags,
     this.tagsAll,
     this.timeouts,
@@ -46,6 +54,8 @@ class CentralizationRuleForOrganizationState {
       'rule': ?pulumi.Input.mapOptionalInputValue<CentralizationRuleForOrganizationRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
       'ruleArn': ?ruleArn,
       'ruleName': ?ruleName,
+      'tagPropagationFailureReason': ?tagPropagationFailureReason,
+      'tagPropagationStatus': ?tagPropagationStatus,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<CentralizationRuleForOrganizationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
@@ -58,6 +68,8 @@ class CentralizationRuleForOrganizationState {
       rule: (() { final guardedValue = map['rule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CentralizationRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleArn: (() { final guardedValue = map['ruleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagPropagationFailureReason: (() { final guardedValue = map['tagPropagationFailureReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tagPropagationStatus: (() { final guardedValue = map['tagPropagationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CentralizationRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

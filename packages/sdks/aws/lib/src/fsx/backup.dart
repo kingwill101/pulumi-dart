@@ -644,11 +644,11 @@ import 'backup_state.dart';
 /// $ pulumi import aws:fsx/backup:Backup example fs-543ab12b1ca672f33
 /// ```
 class Backup extends pulumi.CustomResource {
-  /// Amazon Resource Name of the backup.
+  /// ARN of the backup.
   late final pulumi.Output<String> arn;
   /// ID of the file system to back up. Required if backing up Lustre or Windows file systems.
   late final pulumi.Output<String?> fileSystemId;
-  /// ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
+  /// ID of the KMS key used to encrypt the backup of the Amazon FSx file system's data at rest.
   late final pulumi.Output<String> kmsKeyId;
   /// AWS account identifier that created the file system.
   late final pulumi.Output<String> ownerId;
@@ -675,15 +675,15 @@ class Backup extends pulumi.CustomResource {
           'aws:fsx/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemId = registerOutput<String?>('fileSystemId');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     volumeId = registerOutput<String?>('volumeId');
   }
@@ -693,11 +693,12 @@ class Backup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Backup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -716,8 +717,28 @@ class Backup extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    volumeId = registerOutput<String?>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'aws:fsx/backup:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    fileSystemId = registerOutput<String?>('fileSystemId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     volumeId = registerOutput<String?>('volumeId');
   }

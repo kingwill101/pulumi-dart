@@ -10,7 +10,7 @@ class TimeSeriesDatabaseConnectionArgs {
   /// The ID of the Digital Twins. Changing this forces a new resource to be created.
   final pulumi.Input<String> digitalTwinsId;
   /// Name of the Event Hub Consumer Group. Changing this forces a new resource to be created. Defaults to `$Default`.
-  final pulumi.Input<String>? eventhubConsumerGroupName;
+  final pulumi.Input<String?>? eventhubConsumerGroupName;
   /// Name of the Event Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubName;
   /// URI of the Event Hub Namespace. Changing this forces a new resource to be created.
@@ -24,9 +24,9 @@ class TimeSeriesDatabaseConnectionArgs {
   /// Name of the Kusto Database. Changing this forces a new resource to be created.
   final pulumi.Input<String> kustoDatabaseName;
   /// Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kustoTableName;
+  final pulumi.Input<String?>? kustoTableName;
   /// The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TimeSeriesDatabaseConnectionArgs].
   /// [digitalTwinsId] The ID of the Digital Twins. Changing this forces a new resource to be created.

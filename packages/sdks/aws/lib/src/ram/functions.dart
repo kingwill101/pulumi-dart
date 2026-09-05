@@ -122,22 +122,22 @@ import 'get_resource_share_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tagFilter = aws.ram.getResourceShare({
-///     resourceOwner: "SELF",
 ///     filters: [{
 ///         name: "NameOfTag",
 ///         values: ["exampleNameTagValue"],
 ///     }],
+///     resourceOwner: "SELF",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// tag_filter = aws.ram.get_resource_share(resource_owner="SELF",
-///     filters=[{
+/// tag_filter = aws.ram.get_resource_share(filters=[{
 ///         "name": "NameOfTag",
 ///         "values": ["exampleNameTagValue"],
-///     }])
+///     }],
+///     resource_owner="SELF")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -149,7 +149,6 @@ import 'get_resource_share_result.dart';
 /// {
 ///     var tagFilter = Aws.Ram.GetResourceShare.Invoke(new()
 ///     {
-///         ResourceOwner = "SELF",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ram.Inputs.GetResourceShareFilterInputArgs
@@ -161,6 +160,7 @@ import 'get_resource_share_result.dart';
 ///                 },
 ///             },
 ///         },
+///         ResourceOwner = "SELF",
 ///     });
 ///
 /// });
@@ -176,7 +176,6 @@ import 'get_resource_share_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ram.LookupResourceShare(ctx, &ram.LookupResourceShareArgs{
-/// 			ResourceOwner: "SELF",
 /// 			Filters: []ram.GetResourceShareFilter{
 /// 				{
 /// 					Name: "NameOfTag",
@@ -185,6 +184,7 @@ import 'get_resource_share_result.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ResourceOwner: "SELF",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -203,11 +203,11 @@ import 'get_resource_share_result.dart';
 /// }
 ///
 /// data "aws_ram_getresourceshare" "tagFilter" {
-///   resource_owner = "SELF"
 ///   filters {
 ///     name   = "NameOfTag"
 ///     values = ["exampleNameTagValue"]
 ///   }
+///   resource_owner = "SELF"
 /// }
 /// ```
 /// ```java
@@ -233,11 +233,11 @@ import 'get_resource_share_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var tagFilter = RamFunctions.getResourceShare(GetResourceShareArgs.builder()
-///             .resourceOwner("SELF")
 ///             .filters(GetResourceShareFilterArgs.builder()
 ///                 .name("NameOfTag")
 ///                 .values("exampleNameTagValue")
 ///                 .build())
+///             .resourceOwner("SELF")
 ///             .build());
 ///
 ///     }
@@ -249,11 +249,11 @@ import 'get_resource_share_result.dart';
 ///     fn::invoke:
 ///       function: aws:ram:getResourceShare
 ///       arguments:
-///         resourceOwner: SELF
 ///         filters:
 ///           - name: NameOfTag
 ///             values:
 ///               - exampleNameTagValue
+///         resourceOwner: SELF
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ram_get_resource_share_get_resource_share_args_doc}
 /// [options] Invoke options controlling this call.
@@ -268,4 +268,15 @@ Future<GetResourceShareResult> getResourceShare(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceShareResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceShareResult> getResourceShareOutput(
+  GetResourceShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ram/getResourceShare:getResourceShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceShareResult.fromMap);
 }

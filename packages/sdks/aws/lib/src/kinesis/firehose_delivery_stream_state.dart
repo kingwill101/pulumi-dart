@@ -16,56 +16,56 @@ import 'firehose_delivery_stream_splunk_configuration.dart';
 
 /// Input properties used for looking up and filtering FirehoseDeliveryStream resources.
 class FirehoseDeliveryStreamState {
-  /// The Amazon Resource Name (ARN) specifying the Stream
-  final pulumi.Input<String>? arn;
+  /// ARN specifying the Stream
+  final pulumi.Input<String?>? arn;
   /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
-  final pulumi.Input<String>? destination;
-  final pulumi.Input<String>? destinationId;
+  final pulumi.Input<String?>? destination;
+  final pulumi.Input<String?>? destinationId;
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfiguration>? elasticsearchConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfiguration?>? elasticsearchConfiguration;
   /// Enhanced configuration options for the s3 destination. See `extendedS3Configuration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3Configuration>? extendedS3Configuration;
+  final pulumi.Input<FirehoseDeliveryStreamExtendedS3Configuration?>? extendedS3Configuration;
   /// Configuration options when `destination` is `httpEndpoint`. Requires the user to also specify an `s3Configuration` block.  See `httpEndpointConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfiguration>? httpEndpointConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfiguration?>? httpEndpointConfiguration;
   /// Configuration options when `destination` is `iceberg`. See `icebergConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamIcebergConfiguration>? icebergConfiguration;
-  /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamKinesisSourceConfiguration>? kinesisSourceConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamIcebergConfiguration?>? icebergConfiguration;
+  /// Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
+  final pulumi.Input<FirehoseDeliveryStreamKinesisSourceConfiguration?>? kinesisSourceConfiguration;
   /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamMskSourceConfiguration>? mskSourceConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamMskSourceConfiguration?>? mskSourceConfiguration;
   /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamOpensearchConfiguration>? opensearchConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamOpensearchConfiguration?>? opensearchConfiguration;
   /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverlessConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamOpensearchserverlessConfiguration>? opensearchserverlessConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>? opensearchserverlessConfiguration;
   /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3Configuration` block. See `redshiftConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamRedshiftConfiguration>? redshiftConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamRedshiftConfiguration?>? redshiftConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Encrypt at rest options. See `serverSideEncryption` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamServerSideEncryption>? serverSideEncryption;
+  final pulumi.Input<FirehoseDeliveryStreamServerSideEncryption?>? serverSideEncryption;
   /// Configuration options when `destination` is `snowflake`. See `snowflakeConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfiguration>? snowflakeConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfiguration?>? snowflakeConfiguration;
   /// Configuration options when `destination` is `splunk`. See `splunkConfiguration` block below for details.
   ///
   /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-  final pulumi.Input<FirehoseDeliveryStreamSplunkConfiguration>? splunkConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamSplunkConfiguration?>? splunkConfiguration;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [FirehoseDeliveryStreamState].
-  /// [arn] The Amazon Resource Name (ARN) specifying the Stream
+  /// [arn] ARN specifying the Stream
   /// [destination] This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   /// [destinationId] Optional.
   /// [elasticsearchConfiguration] Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
   /// [extendedS3Configuration] Enhanced configuration options for the s3 destination. See `extendedS3Configuration` block below for details.
   /// [httpEndpointConfiguration] Configuration options when `destination` is `httpEndpoint`. Requires the user to also specify an `s3Configuration` block.  See `httpEndpointConfiguration` block below for details.
   /// [icebergConfiguration] Configuration options when `destination` is `iceberg`. See `icebergConfiguration` block below for details.
-  /// [kinesisSourceConfiguration] The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
+  /// [kinesisSourceConfiguration] Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
   /// [mskSourceConfiguration] The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
   /// [name] A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   /// [opensearchConfiguration] Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.

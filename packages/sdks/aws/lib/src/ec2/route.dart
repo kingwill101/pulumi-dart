@@ -352,7 +352,7 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
   late final pulumi.Output<String?> carrierGatewayId;
-  /// The Amazon Resource Name (ARN) of a core network.
+  /// ARN of a core network.
   late final pulumi.Output<String?> coreNetworkArn;
   /// The destination CIDR block.
   late final pulumi.Output<String?> destinationCidrBlock;
@@ -376,7 +376,7 @@ class Route extends pulumi.CustomResource {
   late final pulumi.Output<String?> natGatewayId;
   /// Identifier of an EC2 network interface.
   late final pulumi.Output<String> networkInterfaceId;
-  /// The Amazon Resource Name (ARN) of an ODB network.
+  /// ARN of an ODB network.
   late final pulumi.Output<String?> odbNetworkArn;
   /// How the route was created - `CreateRouteTable`, `CreateRoute` or `EnableVgwRoutePropagation`.
   late final pulumi.Output<String> origin;
@@ -409,7 +409,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     carrierGatewayId = registerOutput<String?>('carrierGatewayId');
     coreNetworkArn = registerOutput<String?>('coreNetworkArn');
@@ -438,11 +438,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -473,6 +474,37 @@ class Route extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');
     this.state = registerOutput<String>('state');
+    transitGatewayId = registerOutput<String?>('transitGatewayId');
+    vpcEndpointId = registerOutput<String?>('vpcEndpointId');
+    vpcPeeringConnectionId = registerOutput<String?>('vpcPeeringConnectionId');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'aws:ec2/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    carrierGatewayId = registerOutput<String?>('carrierGatewayId');
+    coreNetworkArn = registerOutput<String?>('coreNetworkArn');
+    destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
+    destinationIpv6CidrBlock = registerOutput<String?>('destinationIpv6CidrBlock');
+    destinationPrefixListId = registerOutput<String?>('destinationPrefixListId');
+    egressOnlyGatewayId = registerOutput<String?>('egressOnlyGatewayId');
+    gatewayId = registerOutput<String?>('gatewayId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceOwnerId = registerOutput<String>('instanceOwnerId');
+    localGatewayId = registerOutput<String?>('localGatewayId');
+    natGatewayId = registerOutput<String?>('natGatewayId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    odbNetworkArn = registerOutput<String?>('odbNetworkArn');
+    origin = registerOutput<String>('origin');
+    region = registerOutput<String>('region');
+    routeTableId = registerOutput<String>('routeTableId');
+    state = registerOutput<String>('state');
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     vpcEndpointId = registerOutput<String?>('vpcEndpointId');
     vpcPeeringConnectionId = registerOutput<String?>('vpcPeeringConnectionId');

@@ -10,23 +10,23 @@ class ApiKeyArgs {
   /// ID of the associated AppSync API
   final pulumi.Input<String> apiId;
   /// API key description. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
-  final pulumi.Input<String>? expires;
+  final pulumi.Input<String?>? expires;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ApiKeyArgs].
   /// [apiId] ID of the associated AppSync API
   /// [description] API key description. Defaults to "Managed by Pulumi".
   /// [expires] RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  const ApiKeyArgs({
+  ApiKeyArgs({
     required this.apiId,
-    this.description,
+    pulumi.Input<String?>? description,
     this.expires,
     this.region,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

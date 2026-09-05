@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorEndpointFilterItem {
   /// The address of the filter item.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The type of items included in the filter. Possible values are `AgentAddress`. Defaults to `AgentAddress`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NetworkConnectionMonitorEndpointFilterItem].
   /// [address] The address of the filter item.

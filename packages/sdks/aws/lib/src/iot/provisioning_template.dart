@@ -14,11 +14,11 @@ import 'provisioning_template_state.dart';
 ///
 /// const iotAssumeRolePolicy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["iot.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const iotFleetProvisioning = new aws.iam.Role("iot_fleet_provisioning", {
@@ -77,11 +77,11 @@ import 'provisioning_template_state.dart';
 /// import pulumi_aws as aws
 ///
 /// iot_assume_role_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["iot.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// iot_fleet_provisioning = aws.iam.Role("iot_fleet_provisioning",
 ///     name="IoTProvisioningServiceRole",
@@ -142,10 +142,6 @@ import 'provisioning_template_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -156,6 +152,10 @@ import 'provisioning_template_state.dart';
 ///                             "iot.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -257,9 +257,6 @@ import 'provisioning_template_state.dart';
 /// 		iotAssumeRolePolicy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -267,6 +264,9 @@ import 'provisioning_template_state.dart';
 /// 								"iot.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -367,11 +367,11 @@ import 'provisioning_template_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "iotAssumeRolePolicy" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["iot.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "devicePolicy" {
@@ -459,11 +459,11 @@ import 'provisioning_template_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var iotAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("iot.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -575,12 +575,12 @@ import 'provisioning_template_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - iot.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 ///   devicePolicy:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -638,7 +638,7 @@ class ProvisioningTemplate extends pulumi.CustomResource {
           'aws:iot/provisioningTemplate:ProvisioningTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultVersionId = registerOutput<int>('defaultVersionId');
@@ -648,8 +648,8 @@ class ProvisioningTemplate extends pulumi.CustomResource {
     preProvisioningHook = registerOutput<ProvisioningTemplatePreProvisioningHook?>('preProvisioningHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisioningTemplatePreProvisioningHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningRoleArn = registerOutput<String>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     type = registerOutput<String>('type');
   }
@@ -659,11 +659,12 @@ class ProvisioningTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisioningTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisioningTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -685,8 +686,31 @@ class ProvisioningTemplate extends pulumi.CustomResource {
     preProvisioningHook = registerOutput<ProvisioningTemplatePreProvisioningHook?>('preProvisioningHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisioningTemplatePreProvisioningHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningRoleArn = registerOutput<String>('provisioningRoleArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateBody = registerOutput<String>('templateBody');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProvisioningTemplate] resource.
+  ProvisioningTemplate.reference(String urn)
+    : super(
+        'aws:iot/provisioningTemplate:ProvisioningTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultVersionId = registerOutput<int>('defaultVersionId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    preProvisioningHook = registerOutput<ProvisioningTemplatePreProvisioningHook?>('preProvisioningHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisioningTemplatePreProvisioningHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningRoleArn = registerOutput<String>('provisioningRoleArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     type = registerOutput<String>('type');
   }

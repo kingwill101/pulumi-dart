@@ -133,14 +133,14 @@ import 'source_control_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          exampleServicePlan.Location,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.LinuxWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewSourceControl(ctx, "example", &appservice.SourceControlArgs{
-/// 			AppId:   exampleLinuxWebApp.ID(),
+/// 			AppId:   exampleLinuxWebApp.ID().ToIDOutput().ToStringOutput(),
 /// 			RepoUrl: pulumi.String("https://github.com/Azure-Samples/python-docs-hello-world"),
 /// 			Branch:  pulumi.String("master"),
 /// 		})
@@ -330,7 +330,7 @@ class SourceControl extends pulumi.CustomResource {
           'azure:appservice/sourceControl:SourceControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     branch = registerOutput<String>('branch');
@@ -349,11 +349,12 @@ class SourceControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,6 +368,27 @@ class SourceControl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
+  }
+
+  /// Creates a typed reference to an existing [SourceControl] resource.
+  SourceControl.reference(String urn)
+    : super(
+        'azure:appservice/sourceControl:SourceControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     branch = registerOutput<String>('branch');
     githubActionConfiguration = registerOutput<SourceControlGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

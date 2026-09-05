@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VaultResourceGuardAssociation resources.
 class VaultResourceGuardAssociationState {
   /// ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGuardId;
+  final pulumi.Input<String?>? resourceGuardId;
   /// ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [VaultResourceGuardAssociationState].
   /// [resourceGuardId] ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.

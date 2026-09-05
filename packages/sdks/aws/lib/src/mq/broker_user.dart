@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerUser {
   /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engineType` of `ActiveMQ` only.
-  final pulumi.Input<bool>? consoleAccess;
+  final pulumi.Input<bool?>? consoleAccess;
   /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engineType` of `ActiveMQ` only.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   final pulumi.Input<String> password;
   /// Whether to set replication user. Defaults to `false`.
-  final pulumi.Input<bool>? replicationUser;
+  final pulumi.Input<bool?>? replicationUser;
   /// Username of the user.
   ///
   /// The following arguments are optional:

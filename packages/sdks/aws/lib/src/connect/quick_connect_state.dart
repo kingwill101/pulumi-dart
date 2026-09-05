@@ -5,27 +5,27 @@ import 'quick_connect_quick_connect_config.dart';
 
 /// Input properties used for looking up and filtering QuickConnect resources.
 class QuickConnectState {
-  /// The Amazon Resource Name (ARN) of the Quick Connect.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Quick Connect.
+  final pulumi.Input<String?>? arn;
   /// Specifies the description of the Quick Connect.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Specifies the name of the Quick Connect.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A block that defines the configuration information for the Quick Connect: `quickConnectType` and one of `phoneConfig`, `queueConfig`, `userConfig` . The Quick Connect Config block is documented below.
-  final pulumi.Input<QuickConnectQuickConnectConfig>? quickConnectConfig;
+  final pulumi.Input<QuickConnectQuickConnectConfig?>? quickConnectConfig;
   /// The identifier for the Quick Connect.
-  final pulumi.Input<String>? quickConnectId;
+  final pulumi.Input<String?>? quickConnectId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Quick Connect. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [QuickConnectState].
-  /// [arn] The Amazon Resource Name (ARN) of the Quick Connect.
+  /// [arn] ARN of the Quick Connect.
   /// [description] Specifies the description of the Quick Connect.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [name] Specifies the name of the Quick Connect.

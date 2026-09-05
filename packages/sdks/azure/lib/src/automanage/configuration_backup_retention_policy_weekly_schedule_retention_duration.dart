@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration {
   /// The count of the retention duration of the backup policy. Valid value inside `dailySchedule` is `7` to `9999` and inside `weeklySchedule` is `1` to `5163`.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// The duration type of the retention duration of the backup policy. Valid value inside `dailySchedule` is `Days` and inside `weeklySchedule` is `Weeks`. Defaults to `Days`.
-  final pulumi.Input<String>? durationType;
+  final pulumi.Input<String?>? durationType;
 
   /// Creates a new [ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration].
   /// [count] The count of the retention duration of the backup policy. Valid value inside `dailySchedule` is `7` to `9999` and inside `weeklySchedule` is `1` to `5163`.
@@ -25,7 +25,7 @@ class ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration {
 
   factory ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

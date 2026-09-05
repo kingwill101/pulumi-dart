@@ -32,6 +32,7 @@ import 'compute_cluster_state.dart';
 ///     name: "example-kv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -103,6 +104,7 @@ import 'compute_cluster_state.dart';
 ///     name="example-kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -181,6 +183,7 @@ import 'compute_cluster_state.dart';
 ///         Name = "example-kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -292,12 +295,13 @@ import 'compute_cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example-kv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-kv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -316,9 +320,9 @@ import 'compute_cluster_state.dart';
 /// 			Name:                  pulumi.String("example-mlw"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -353,8 +357,8 @@ import 'compute_cluster_state.dart';
 /// 			Location:                   example.Location,
 /// 			VmPriority:                 pulumi.String("LowPriority"),
 /// 			VmSize:                     pulumi.String("Standard_DS2_v2"),
-/// 			MachineLearningWorkspaceId: exampleWorkspace.ID(),
-/// 			SubnetResourceId:           exampleSubnet.ID(),
+/// 			MachineLearningWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetResourceId:           exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			ScaleSettings: &machinelearning.ComputeClusterScaleSettingsArgs{
 /// 				MinNodeCount:                    pulumi.Int(0),
 /// 				MaxNodeCount:                    pulumi.Int(1),
@@ -397,12 +401,13 @@ import 'compute_cluster_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example-kv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example-kv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "examplesa"
@@ -509,6 +514,7 @@ import 'compute_cluster_state.dart';
 ///             .name("example-kv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -592,6 +598,7 @@ import 'compute_cluster_state.dart';
 ///       name: example-kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -713,7 +720,7 @@ class ComputeCluster extends pulumi.CustomResource {
           'azure:machinelearning/computeCluster:ComputeCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     identity = registerOutput<ComputeClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -726,7 +733,7 @@ class ComputeCluster extends pulumi.CustomResource {
     ssh = registerOutput<ComputeClusterSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vmPriority = registerOutput<String>('vmPriority');
     vmSize = registerOutput<String>('vmSize');
   }
@@ -736,11 +743,12 @@ class ComputeCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ComputeClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ComputeCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -765,7 +773,32 @@ class ComputeCluster extends pulumi.CustomResource {
     ssh = registerOutput<ComputeClusterSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vmPriority = registerOutput<String>('vmPriority');
+    vmSize = registerOutput<String>('vmSize');
+  }
+
+  /// Creates a typed reference to an existing [ComputeCluster] resource.
+  ComputeCluster.reference(String urn)
+    : super(
+        'azure:machinelearning/computeCluster:ComputeCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<ComputeClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+    this.name = registerOutput<String>('name');
+    nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
+    scaleSettings = registerOutput<ComputeClusterScaleSettings>('scaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ssh = registerOutput<ComputeClusterSsh?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeClusterSsh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
+    subnetResourceId = registerOutput<String>('subnetResourceId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vmPriority = registerOutput<String>('vmPriority');
     vmSize = registerOutput<String>('vmSize');
   }

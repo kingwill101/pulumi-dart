@@ -148,3 +148,14 @@ Future<GetServicesAccountResult> getServicesAccount(
   );
   return GetServicesAccountResult.fromMap(result);
 }
+
+pulumi.Output<GetServicesAccountResult> getServicesAccountOutput(
+  GetServicesAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:graph/getServicesAccount:getServicesAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicesAccountResult.fromMap);
+}

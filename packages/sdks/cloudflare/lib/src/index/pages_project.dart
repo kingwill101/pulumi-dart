@@ -1555,7 +1555,7 @@ class PagesProject extends pulumi.CustomResource {
           'cloudflare:index/pagesProject:PagesProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     buildConfig = registerOutput<PagesProjectBuildConfig>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

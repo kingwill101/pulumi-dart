@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserHierarchyGroupHierarchyPathLevelFour {
-  /// The Amazon Resource Name (ARN) of the hierarchy group.
-  final pulumi.Input<String>? arn;
+  /// The ARN of the hierarchy group.
+  final pulumi.Input<String?>? arn;
   /// The identifier of the hierarchy group.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the user hierarchy group. Must not be more than 100 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [UserHierarchyGroupHierarchyPathLevelFour].
-  /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
+  /// [arn] The ARN of the hierarchy group.
   /// [id] The identifier of the hierarchy group.
   /// [name] The name of the user hierarchy group. Must not be more than 100 characters.
   const UserHierarchyGroupHierarchyPathLevelFour({

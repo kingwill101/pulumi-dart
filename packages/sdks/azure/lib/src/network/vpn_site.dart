@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_site_args.dart';
+import 'vpn_site_link.dart';
 import 'vpn_site_o365_policy.dart';
 import 'vpn_site_state.dart';
 
@@ -128,7 +129,7 @@ import 'vpn_site_state.dart';
 /// 			Name:              pulumi.String("site1"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressCidrs: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/24"),
 /// 			},
@@ -282,7 +283,7 @@ class VpnSite extends pulumi.CustomResource {
   /// The name of the VPN device vendor.
   late final pulumi.Output<String?> deviceVendor;
   /// One or more `link` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> links;
+  late final pulumi.Output<List<VpnSiteLink>?> links;
   /// The Azure Region where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
@@ -308,17 +309,17 @@ class VpnSite extends pulumi.CustomResource {
           'azure:network/vpnSite:VpnSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressCidrs = registerOutput<List<String>?>('addressCidrs');
+    addressCidrs = registerOutput<List<String>?>('addressCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deviceModel = registerOutput<String?>('deviceModel');
     deviceVendor = registerOutput<String?>('deviceVendor');
-    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    links = registerOutput<List<VpnSiteLink>?>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnSiteLink>(guardedValue, (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnSiteO365Policy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualWanId = registerOutput<String>('virtualWanId');
   }
 
@@ -327,11 +328,12 @@ class VpnSite extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnSiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnSite._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,15 +347,36 @@ class VpnSite extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressCidrs = registerOutput<List<String>?>('addressCidrs');
+    addressCidrs = registerOutput<List<String>?>('addressCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deviceModel = registerOutput<String?>('deviceModel');
     deviceVendor = registerOutput<String?>('deviceVendor');
-    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    links = registerOutput<List<VpnSiteLink>?>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnSiteLink>(guardedValue, (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnSiteO365Policy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualWanId = registerOutput<String>('virtualWanId');
+  }
+
+  /// Creates a typed reference to an existing [VpnSite] resource.
+  VpnSite.reference(String urn)
+    : super(
+        'azure:network/vpnSite:VpnSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressCidrs = registerOutput<List<String>?>('addressCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deviceModel = registerOutput<String?>('deviceModel');
+    deviceVendor = registerOutput<String?>('deviceVendor');
+    links = registerOutput<List<VpnSiteLink>?>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnSiteLink>(guardedValue, (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnSiteO365Policy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualWanId = registerOutput<String>('virtualWanId');
   }
 }

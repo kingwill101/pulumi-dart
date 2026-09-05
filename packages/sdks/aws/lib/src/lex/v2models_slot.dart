@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_slot_args.dart';
+import 'v2models_slot_multiple_values_setting.dart';
+import 'v2models_slot_obfuscation_setting.dart';
 import 'v2models_slot_state.dart';
+import 'v2models_slot_sub_slot_setting.dart';
 import 'v2models_slot_timeouts.dart';
 import 'v2models_slot_value_elicitation_setting.dart';
 
@@ -151,17 +154,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lex.V2modelsSlot("example", {
-///     botId: test.id,
-///     botVersion: testAwsLexv2modelsBotLocale.botVersion,
-///     intentId: testAwsLexv2modelsIntent.intentId,
-///     localeId: testAwsLexv2modelsBotLocale.localeId,
-///     name: "example",
 ///     valueElicitationSetting: {
-///         slotConstraint: "Required",
 ///         promptSpecification: {
-///             allowInterrupt: true,
-///             maxRetries: 1,
-///             messageSelectionStrategy: "Random",
 ///             messageGroups: [{
 ///                 message: {
 ///                     plainTextMessage: {
@@ -171,38 +165,35 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///             }],
 ///             promptAttemptsSpecifications: [
 ///                 {
+///                     allowedInputTypes: {
+///                         allowAudioInput: true,
+///                         allowDtmfInput: true,
+///                     },
+///                     audioAndDtmfInputSpecification: {
+///                         audioSpecification: {
+///                             endTimeoutMs: 640,
+///                             maxLengthMs: 15000,
+///                         },
+///                         dtmfSpecification: {
+///                             deletionCharacter: "*",
+///                             endCharacter: "#",
+///                             endTimeoutMs: 5000,
+///                             maxLength: 513,
+///                         },
+///                         startTimeoutMs: 4000,
+///                     },
+///                     textInputSpecification: {
+///                         startTimeoutMs: 30000,
+///                     },
 ///                     allowInterrupt: true,
 ///                     mapBlockKey: "Initial",
-///                     allowedInputTypes: {
-///                         allowAudioInput: true,
-///                         allowDtmfInput: true,
-///                     },
-///                     audioAndDtmfInputSpecification: {
-///                         startTimeoutMs: 4000,
-///                         audioSpecification: {
-///                             endTimeoutMs: 640,
-///                             maxLengthMs: 15000,
-///                         },
-///                         dtmfSpecification: {
-///                             deletionCharacter: "*",
-///                             endCharacter: "#",
-///                             endTimeoutMs: 5000,
-///                             maxLength: 513,
-///                         },
-///                     },
-///                     textInputSpecification: {
-///                         startTimeoutMs: 30000,
-///                     },
 ///                 },
 ///                 {
-///                     allowInterrupt: true,
-///                     mapBlockKey: "Retry1",
 ///                     allowedInputTypes: {
 ///                         allowAudioInput: true,
 ///                         allowDtmfInput: true,
 ///                     },
 ///                     audioAndDtmfInputSpecification: {
-///                         startTimeoutMs: 4000,
 ///                         audioSpecification: {
 ///                             endTimeoutMs: 640,
 ///                             maxLengthMs: 15000,
@@ -213,14 +204,26 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                             endTimeoutMs: 5000,
 ///                             maxLength: 513,
 ///                         },
+///                         startTimeoutMs: 4000,
 ///                     },
 ///                     textInputSpecification: {
 ///                         startTimeoutMs: 30000,
 ///                     },
+///                     allowInterrupt: true,
+///                     mapBlockKey: "Retry1",
 ///                 },
 ///             ],
+///             allowInterrupt: true,
+///             maxRetries: 1,
+///             messageSelectionStrategy: "Random",
 ///         },
+///         slotConstraint: "Required",
 ///     },
+///     botId: test.id,
+///     botVersion: testAwsLexv2modelsBotLocale.botVersion,
+///     intentId: testAwsLexv2modelsIntent.intentId,
+///     localeId: testAwsLexv2modelsBotLocale.localeId,
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -228,17 +231,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lex.V2modelsSlot("example",
-///     bot_id=test["id"],
-///     bot_version=test_aws_lexv2models_bot_locale["botVersion"],
-///     intent_id=test_aws_lexv2models_intent["intentId"],
-///     locale_id=test_aws_lexv2models_bot_locale["localeId"],
-///     name="example",
 ///     value_elicitation_setting={
-///         "slot_constraint": "Required",
 ///         "prompt_specification": {
-///             "allow_interrupt": True,
-///             "max_retries": 1,
-///             "message_selection_strategy": "Random",
 ///             "message_groups": [{
 ///                 "message": {
 ///                     "plain_text_message": {
@@ -248,38 +242,35 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///             }],
 ///             "prompt_attempts_specifications": [
 ///                 {
+///                     "allowed_input_types": {
+///                         "allow_audio_input": True,
+///                         "allow_dtmf_input": True,
+///                     },
+///                     "audio_and_dtmf_input_specification": {
+///                         "audio_specification": {
+///                             "end_timeout_ms": 640,
+///                             "max_length_ms": 15000,
+///                         },
+///                         "dtmf_specification": {
+///                             "deletion_character": "*",
+///                             "end_character": "#",
+///                             "end_timeout_ms": 5000,
+///                             "max_length": 513,
+///                         },
+///                         "start_timeout_ms": 4000,
+///                     },
+///                     "text_input_specification": {
+///                         "start_timeout_ms": 30000,
+///                     },
 ///                     "allow_interrupt": True,
 ///                     "map_block_key": "Initial",
-///                     "allowed_input_types": {
-///                         "allow_audio_input": True,
-///                         "allow_dtmf_input": True,
-///                     },
-///                     "audio_and_dtmf_input_specification": {
-///                         "start_timeout_ms": 4000,
-///                         "audio_specification": {
-///                             "end_timeout_ms": 640,
-///                             "max_length_ms": 15000,
-///                         },
-///                         "dtmf_specification": {
-///                             "deletion_character": "*",
-///                             "end_character": "#",
-///                             "end_timeout_ms": 5000,
-///                             "max_length": 513,
-///                         },
-///                     },
-///                     "text_input_specification": {
-///                         "start_timeout_ms": 30000,
-///                     },
 ///                 },
 ///                 {
-///                     "allow_interrupt": True,
-///                     "map_block_key": "Retry1",
 ///                     "allowed_input_types": {
 ///                         "allow_audio_input": True,
 ///                         "allow_dtmf_input": True,
 ///                     },
 ///                     "audio_and_dtmf_input_specification": {
-///                         "start_timeout_ms": 4000,
 ///                         "audio_specification": {
 ///                             "end_timeout_ms": 640,
 ///                             "max_length_ms": 15000,
@@ -290,14 +281,26 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                             "end_timeout_ms": 5000,
 ///                             "max_length": 513,
 ///                         },
+///                         "start_timeout_ms": 4000,
 ///                     },
 ///                     "text_input_specification": {
 ///                         "start_timeout_ms": 30000,
 ///                     },
+///                     "allow_interrupt": True,
+///                     "map_block_key": "Retry1",
 ///                 },
 ///             ],
+///             "allow_interrupt": True,
+///             "max_retries": 1,
+///             "message_selection_strategy": "Random",
 ///         },
-///     })
+///         "slot_constraint": "Required",
+///     },
+///     bot_id=test["id"],
+///     bot_version=test_aws_lexv2models_bot_locale["botVersion"],
+///     intent_id=test_aws_lexv2models_intent["intentId"],
+///     locale_id=test_aws_lexv2models_bot_locale["localeId"],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -309,19 +312,10 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// {
 ///     var example = new Aws.Lex.V2modelsSlot("example", new()
 ///     {
-///         BotId = test.Id,
-///         BotVersion = testAwsLexv2modelsBotLocale.BotVersion,
-///         IntentId = testAwsLexv2modelsIntent.IntentId,
-///         LocaleId = testAwsLexv2modelsBotLocale.LocaleId,
-///         Name = "example",
 ///         ValueElicitationSetting = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingArgs
 ///         {
-///             SlotConstraint = "Required",
 ///             PromptSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationArgs
 ///             {
-///                 AllowInterrupt = true,
-///                 MaxRetries = 1,
-///                 MessageSelectionStrategy = "Random",
 ///                 MessageGroups = new[]
 ///                 {
 ///                     new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupArgs
@@ -339,8 +333,6 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                 {
 ///                     new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs
 ///                     {
-///                         AllowInterrupt = true,
-///                         MapBlockKey = "Initial",
 ///                         AllowedInputTypes = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs
 ///                         {
 ///                             AllowAudioInput = true,
@@ -348,7 +340,6 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                         },
 ///                         AudioAndDtmfInputSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs
 ///                         {
-///                             StartTimeoutMs = 4000,
 ///                             AudioSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs
 ///                             {
 ///                                 EndTimeoutMs = 640,
@@ -361,16 +352,17 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                                 EndTimeoutMs = 5000,
 ///                                 MaxLength = 513,
 ///                             },
+///                             StartTimeoutMs = 4000,
 ///                         },
 ///                         TextInputSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs
 ///                         {
 ///                             StartTimeoutMs = 30000,
 ///                         },
+///                         AllowInterrupt = true,
+///                         MapBlockKey = "Initial",
 ///                     },
 ///                     new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs
 ///                     {
-///                         AllowInterrupt = true,
-///                         MapBlockKey = "Retry1",
 ///                         AllowedInputTypes = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs
 ///                         {
 ///                             AllowAudioInput = true,
@@ -378,7 +370,6 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                         },
 ///                         AudioAndDtmfInputSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs
 ///                         {
-///                             StartTimeoutMs = 4000,
 ///                             AudioSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs
 ///                             {
 ///                                 EndTimeoutMs = 640,
@@ -391,15 +382,27 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                                 EndTimeoutMs = 5000,
 ///                                 MaxLength = 513,
 ///                             },
+///                             StartTimeoutMs = 4000,
 ///                         },
 ///                         TextInputSpecification = new Aws.Lex.Inputs.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs
 ///                         {
 ///                             StartTimeoutMs = 30000,
 ///                         },
+///                         AllowInterrupt = true,
+///                         MapBlockKey = "Retry1",
 ///                     },
 ///                 },
+///                 AllowInterrupt = true,
+///                 MaxRetries = 1,
+///                 MessageSelectionStrategy = "Random",
 ///             },
+///             SlotConstraint = "Required",
 ///         },
+///         BotId = test.Id,
+///         BotVersion = testAwsLexv2modelsBotLocale.BotVersion,
+///         IntentId = testAwsLexv2modelsIntent.IntentId,
+///         LocaleId = testAwsLexv2modelsBotLocale.LocaleId,
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -415,17 +418,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lex.NewV2modelsSlot(ctx, "example", &lex.V2modelsSlotArgs{
-/// 			BotId:      pulumi.Any(test.Id),
-/// 			BotVersion: pulumi.Any(testAwsLexv2modelsBotLocale.BotVersion),
-/// 			IntentId:   pulumi.Any(testAwsLexv2modelsIntent.IntentId),
-/// 			LocaleId:   pulumi.Any(testAwsLexv2modelsBotLocale.LocaleId),
-/// 			Name:       pulumi.String("example"),
 /// 			ValueElicitationSetting: &lex.V2modelsSlotValueElicitationSettingArgs{
-/// 				SlotConstraint: pulumi.String("Required"),
 /// 				PromptSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationArgs{
-/// 					AllowInterrupt:           pulumi.Bool(true),
-/// 					MaxRetries:               pulumi.Int(1),
-/// 					MessageSelectionStrategy: pulumi.String("Random"),
 /// 					MessageGroups: lex.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupArray{
 /// 						&lex.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupArgs{
 /// 							Message: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageArgs{
@@ -437,38 +431,35 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// 					},
 /// 					PromptAttemptsSpecifications: lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArray{
 /// 						&lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs{
+/// 							AllowedInputTypes: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs{
+/// 								AllowAudioInput: pulumi.Bool(true),
+/// 								AllowDtmfInput:  pulumi.Bool(true),
+/// 							},
+/// 							AudioAndDtmfInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs{
+/// 								AudioSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs{
+/// 									EndTimeoutMs: pulumi.Int(640),
+/// 									MaxLengthMs:  pulumi.Int(15000),
+/// 								},
+/// 								DtmfSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs{
+/// 									DeletionCharacter: pulumi.String("*"),
+/// 									EndCharacter:      pulumi.String("#"),
+/// 									EndTimeoutMs:      pulumi.Int(5000),
+/// 									MaxLength:         pulumi.Int(513),
+/// 								},
+/// 								StartTimeoutMs: pulumi.Int(4000),
+/// 							},
+/// 							TextInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs{
+/// 								StartTimeoutMs: pulumi.Int(30000),
+/// 							},
 /// 							AllowInterrupt: pulumi.Bool(true),
 /// 							MapBlockKey:    pulumi.String("Initial"),
-/// 							AllowedInputTypes: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs{
-/// 								AllowAudioInput: pulumi.Bool(true),
-/// 								AllowDtmfInput:  pulumi.Bool(true),
-/// 							},
-/// 							AudioAndDtmfInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs{
-/// 								StartTimeoutMs: pulumi.Int(4000),
-/// 								AudioSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs{
-/// 									EndTimeoutMs: pulumi.Int(640),
-/// 									MaxLengthMs:  pulumi.Int(15000),
-/// 								},
-/// 								DtmfSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs{
-/// 									DeletionCharacter: pulumi.String("*"),
-/// 									EndCharacter:      pulumi.String("#"),
-/// 									EndTimeoutMs:      pulumi.Int(5000),
-/// 									MaxLength:         pulumi.Int(513),
-/// 								},
-/// 							},
-/// 							TextInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs{
-/// 								StartTimeoutMs: pulumi.Int(30000),
-/// 							},
 /// 						},
 /// 						&lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs{
-/// 							AllowInterrupt: pulumi.Bool(true),
-/// 							MapBlockKey:    pulumi.String("Retry1"),
 /// 							AllowedInputTypes: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs{
 /// 								AllowAudioInput: pulumi.Bool(true),
 /// 								AllowDtmfInput:  pulumi.Bool(true),
 /// 							},
 /// 							AudioAndDtmfInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs{
-/// 								StartTimeoutMs: pulumi.Int(4000),
 /// 								AudioSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs{
 /// 									EndTimeoutMs: pulumi.Int(640),
 /// 									MaxLengthMs:  pulumi.Int(15000),
@@ -479,14 +470,26 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// 									EndTimeoutMs:      pulumi.Int(5000),
 /// 									MaxLength:         pulumi.Int(513),
 /// 								},
+/// 								StartTimeoutMs: pulumi.Int(4000),
 /// 							},
 /// 							TextInputSpecification: &lex.V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs{
 /// 								StartTimeoutMs: pulumi.Int(30000),
 /// 							},
+/// 							AllowInterrupt: pulumi.Bool(true),
+/// 							MapBlockKey:    pulumi.String("Retry1"),
 /// 						},
 /// 					},
+/// 					AllowInterrupt:           pulumi.Bool(true),
+/// 					MaxRetries:               pulumi.Int(1),
+/// 					MessageSelectionStrategy: pulumi.String("Random"),
 /// 				},
+/// 				SlotConstraint: pulumi.String("Required"),
 /// 			},
+/// 			BotId:      pulumi.Any(test.Id),
+/// 			BotVersion: pulumi.Any(testAwsLexv2modelsBotLocale.BotVersion),
+/// 			IntentId:   pulumi.Any(testAwsLexv2modelsIntent.IntentId),
+/// 			LocaleId:   pulumi.Any(testAwsLexv2modelsBotLocale.LocaleId),
+/// 			Name:       pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -505,17 +508,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// }
 ///
 /// resource "aws_lex_v2modelsslot" "example" {
-///   bot_id      = test.id
-///   bot_version = testAwsLexv2modelsBotLocale.botVersion
-///   intent_id   = testAwsLexv2modelsIntent.intentId
-///   locale_id   = testAwsLexv2modelsBotLocale.localeId
-///   name        = "example"
 ///   value_elicitation_setting = {
-///     slot_constraint = "Required"
 ///     prompt_specification = {
-///       allow_interrupt            = true
-///       max_retries                = 1
-///       message_selection_strategy = "Random"
 ///       message_groups = [{
 ///         "message" = {
 ///           "plainTextMessage" = {
@@ -524,14 +518,34 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///         }
 ///       }]
 ///       prompt_attempts_specifications = [{
+///         "allowedInputTypes" = {
+///           "allowAudioInput" = true
+///           "allowDtmfInput"  = true
+///         }
+///         "audioAndDtmfInputSpecification" = {
+///           "audioSpecification" = {
+///             "endTimeoutMs" = 640
+///             "maxLengthMs"  = 15000
+///           }
+///           "dtmfSpecification" = {
+///             "deletionCharacter" = "*"
+///             "endCharacter"      = "#"
+///             "endTimeoutMs"      = 5000
+///             "maxLength"         = 513
+///           }
+///           "startTimeoutMs" = 4000
+///         }
+///         "textInputSpecification" = {
+///           "startTimeoutMs" = 30000
+///         }
 ///         "allowInterrupt" = true
 ///         "mapBlockKey"    = "Initial"
+///         }, {
 ///         "allowedInputTypes" = {
 ///           "allowAudioInput" = true
 ///           "allowDtmfInput"  = true
 ///         }
 ///         "audioAndDtmfInputSpecification" = {
-///           "startTimeoutMs" = 4000
 ///           "audioSpecification" = {
 ///             "endTimeoutMs" = 640
 ///             "maxLengthMs"  = 15000
@@ -542,36 +556,25 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///             "endTimeoutMs"      = 5000
 ///             "maxLength"         = 513
 ///           }
+///           "startTimeoutMs" = 4000
 ///         }
 ///         "textInputSpecification" = {
 ///           "startTimeoutMs" = 30000
 ///         }
-///         }, {
 ///         "allowInterrupt" = true
 ///         "mapBlockKey"    = "Retry1"
-///         "allowedInputTypes" = {
-///           "allowAudioInput" = true
-///           "allowDtmfInput"  = true
-///         }
-///         "audioAndDtmfInputSpecification" = {
-///           "startTimeoutMs" = 4000
-///           "audioSpecification" = {
-///             "endTimeoutMs" = 640
-///             "maxLengthMs"  = 15000
-///           }
-///           "dtmfSpecification" = {
-///             "deletionCharacter" = "*"
-///             "endCharacter"      = "#"
-///             "endTimeoutMs"      = 5000
-///             "maxLength"         = 513
-///           }
-///         }
-///         "textInputSpecification" = {
-///           "startTimeoutMs" = 30000
-///         }
 ///       }]
+///       allow_interrupt            = true
+///       max_retries                = 1
+///       message_selection_strategy = "Random"
 ///     }
+///     slot_constraint = "Required"
 ///   }
+///   bot_id      = test.id
+///   bot_version = testAwsLexv2modelsBotLocale.botVersion
+///   intent_id   = testAwsLexv2modelsIntent.intentId
+///   locale_id   = testAwsLexv2modelsBotLocale.localeId
+///   name        = "example"
 /// }
 /// ```
 /// ```java
@@ -607,17 +610,8 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2modelsSlot("example", V2modelsSlotArgs.builder()
-///             .botId(test.id())
-///             .botVersion(testAwsLexv2modelsBotLocale.botVersion())
-///             .intentId(testAwsLexv2modelsIntent.intentId())
-///             .localeId(testAwsLexv2modelsBotLocale.localeId())
-///             .name("example")
 ///             .valueElicitationSetting(V2modelsSlotValueElicitationSettingArgs.builder()
-///                 .slotConstraint("Required")
 ///                 .promptSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationArgs.builder()
-///                     .allowInterrupt(true)
-///                     .maxRetries(1)
-///                     .messageSelectionStrategy("Random")
 ///                     .messageGroups(V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupArgs.builder()
 ///                         .message(V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageArgs.builder()
 ///                             .plainTextMessage(V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessageArgs.builder()
@@ -627,38 +621,35 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                         .build())
 ///                     .promptAttemptsSpecifications(
 ///                         V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs.builder()
+///                             .allowedInputTypes(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs.builder()
+///                                 .allowAudioInput(true)
+///                                 .allowDtmfInput(true)
+///                                 .build())
+///                             .audioAndDtmfInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs.builder()
+///                                 .audioSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs.builder()
+///                                     .endTimeoutMs(640)
+///                                     .maxLengthMs(15000)
+///                                     .build())
+///                                 .dtmfSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs.builder()
+///                                     .deletionCharacter("*")
+///                                     .endCharacter("#")
+///                                     .endTimeoutMs(5000)
+///                                     .maxLength(513)
+///                                     .build())
+///                                 .startTimeoutMs(4000)
+///                                 .build())
+///                             .textInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs.builder()
+///                                 .startTimeoutMs(30000)
+///                                 .build())
 ///                             .allowInterrupt(true)
 ///                             .mapBlockKey("Initial")
-///                             .allowedInputTypes(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs.builder()
-///                                 .allowAudioInput(true)
-///                                 .allowDtmfInput(true)
-///                                 .build())
-///                             .audioAndDtmfInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs.builder()
-///                                 .startTimeoutMs(4000)
-///                                 .audioSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs.builder()
-///                                     .endTimeoutMs(640)
-///                                     .maxLengthMs(15000)
-///                                     .build())
-///                                 .dtmfSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecificationArgs.builder()
-///                                     .deletionCharacter("*")
-///                                     .endCharacter("#")
-///                                     .endTimeoutMs(5000)
-///                                     .maxLength(513)
-///                                     .build())
-///                                 .build())
-///                             .textInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs.builder()
-///                                 .startTimeoutMs(30000)
-///                                 .build())
 ///                             .build(),
 ///                         V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationArgs.builder()
-///                             .allowInterrupt(true)
-///                             .mapBlockKey("Retry1")
 ///                             .allowedInputTypes(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypesArgs.builder()
 ///                                 .allowAudioInput(true)
 ///                                 .allowDtmfInput(true)
 ///                                 .build())
 ///                             .audioAndDtmfInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationArgs.builder()
-///                                 .startTimeoutMs(4000)
 ///                                 .audioSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecificationArgs.builder()
 ///                                     .endTimeoutMs(640)
 ///                                     .maxLengthMs(15000)
@@ -669,13 +660,25 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                                     .endTimeoutMs(5000)
 ///                                     .maxLength(513)
 ///                                     .build())
+///                                 .startTimeoutMs(4000)
 ///                                 .build())
 ///                             .textInputSpecification(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecificationArgs.builder()
 ///                                 .startTimeoutMs(30000)
 ///                                 .build())
+///                             .allowInterrupt(true)
+///                             .mapBlockKey("Retry1")
 ///                             .build())
+///                     .allowInterrupt(true)
+///                     .maxRetries(1)
+///                     .messageSelectionStrategy("Random")
 ///                     .build())
+///                 .slotConstraint("Required")
 ///                 .build())
+///             .botId(test.id())
+///             .botVersion(testAwsLexv2modelsBotLocale.botVersion())
+///             .intentId(testAwsLexv2modelsIntent.intentId())
+///             .localeId(testAwsLexv2modelsBotLocale.localeId())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -686,29 +689,34 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///   example:
 ///     type: aws:lex:V2modelsSlot
 ///     properties:
-///       botId: ${test.id}
-///       botVersion: ${testAwsLexv2modelsBotLocale.botVersion}
-///       intentId: ${testAwsLexv2modelsIntent.intentId}
-///       localeId: ${testAwsLexv2modelsBotLocale.localeId}
-///       name: example
 ///       valueElicitationSetting:
-///         slotConstraint: Required
 ///         promptSpecification:
-///           allowInterrupt: true
-///           maxRetries: 1
-///           messageSelectionStrategy: Random
 ///           messageGroups:
 ///             - message:
 ///                 plainTextMessage:
 ///                   value: What is your favorite color?
 ///           promptAttemptsSpecifications:
-///             - allowInterrupt: true
+///             - allowedInputTypes:
+///                 allowAudioInput: true
+///                 allowDtmfInput: true
+///               audioAndDtmfInputSpecification:
+///                 audioSpecification:
+///                   endTimeoutMs: 640
+///                   maxLengthMs: 15000
+///                 dtmfSpecification:
+///                   deletionCharacter: '*'
+///                   endCharacter: '#'
+///                   endTimeoutMs: 5000
+///                   maxLength: 513
+///                 startTimeoutMs: 4000
+///               textInputSpecification:
+///                 startTimeoutMs: 30000
+///               allowInterrupt: true
 ///               mapBlockKey: Initial
-///               allowedInputTypes:
+///             - allowedInputTypes:
 ///                 allowAudioInput: true
 ///                 allowDtmfInput: true
 ///               audioAndDtmfInputSpecification:
-///                 startTimeoutMs: 4000
 ///                 audioSpecification:
 ///                   endTimeoutMs: 640
 ///                   maxLengthMs: 15000
@@ -717,25 +725,20 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                   endCharacter: '#'
 ///                   endTimeoutMs: 5000
 ///                   maxLength: 513
+///                 startTimeoutMs: 4000
 ///               textInputSpecification:
 ///                 startTimeoutMs: 30000
-///             - allowInterrupt: true
+///               allowInterrupt: true
 ///               mapBlockKey: Retry1
-///               allowedInputTypes:
-///                 allowAudioInput: true
-///                 allowDtmfInput: true
-///               audioAndDtmfInputSpecification:
-///                 startTimeoutMs: 4000
-///                 audioSpecification:
-///                   endTimeoutMs: 640
-///                   maxLengthMs: 15000
-///                 dtmfSpecification:
-///                   deletionCharacter: '*'
-///                   endCharacter: '#'
-///                   endTimeoutMs: 5000
-///                   maxLength: 513
-///               textInputSpecification:
-///                 startTimeoutMs: 30000
+///           allowInterrupt: true
+///           maxRetries: 1
+///           messageSelectionStrategy: Random
+///         slotConstraint: Required
+///       botId: ${test.id}
+///       botVersion: ${testAwsLexv2modelsBotLocale.botVersion}
+///       intentId: ${testAwsLexv2modelsIntent.intentId}
+///       localeId: ${testAwsLexv2modelsBotLocale.localeId}
+///       name: example
 /// ```
 ///
 ///
@@ -759,12 +762,12 @@ class V2modelsSlot extends pulumi.CustomResource {
   late final pulumi.Output<String> localeId;
   /// Whether the slot returns multiple values in one response.
   /// See the `multipleValuesSetting` argument reference below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> multipleValuesSettings;
+  late final pulumi.Output<List<V2modelsSlotMultipleValuesSetting>?> multipleValuesSettings;
   /// Name of the slot.
   late final pulumi.Output<String> name;
   /// Determines how slot values are used in Amazon CloudWatch logs.
   /// See the `obfuscationSetting` argument reference below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> obfuscationSettings;
+  late final pulumi.Output<List<V2modelsSlotObfuscationSetting>?> obfuscationSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Unique identifier associated with the slot.
@@ -773,7 +776,7 @@ class V2modelsSlot extends pulumi.CustomResource {
   late final pulumi.Output<String> slotTypeId;
   /// Specifications for the constituent sub slots and the expression for the composite slot.
   /// See the `subSlotSetting` argument reference below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subSlotSettings;
+  late final pulumi.Output<List<V2modelsSlotSubSlotSetting>?> subSlotSettings;
   late final pulumi.Output<V2modelsSlotTimeouts?> timeouts;
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
   /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `promptAttemptsSpecification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
@@ -796,20 +799,20 @@ class V2modelsSlot extends pulumi.CustomResource {
           'aws:lex/v2modelsSlot:V2modelsSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
     description = registerOutput<String?>('description');
     intentId = registerOutput<String>('intentId');
     localeId = registerOutput<String>('localeId');
-    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>('multipleValuesSettings');
+    multipleValuesSettings = registerOutput<List<V2modelsSlotMultipleValuesSetting>?>('multipleValuesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotMultipleValuesSetting>(guardedValue, (value) => V2modelsSlotMultipleValuesSetting.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>('obfuscationSettings');
+    obfuscationSettings = registerOutput<List<V2modelsSlotObfuscationSetting>?>('obfuscationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotObfuscationSetting>(guardedValue, (value) => V2modelsSlotObfuscationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     slotId = registerOutput<String>('slotId');
     slotTypeId = registerOutput<String>('slotTypeId');
-    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>('subSlotSettings');
+    subSlotSettings = registerOutput<List<V2modelsSlotSubSlotSetting>?>('subSlotSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotSubSlotSetting>(guardedValue, (value) => V2modelsSlotSubSlotSetting.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotValueElicitationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -819,11 +822,12 @@ class V2modelsSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2modelsSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2modelsSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -842,13 +846,38 @@ class V2modelsSlot extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     intentId = registerOutput<String>('intentId');
     localeId = registerOutput<String>('localeId');
-    multipleValuesSettings = registerOutput<List<Map<String, dynamic>>?>('multipleValuesSettings');
+    multipleValuesSettings = registerOutput<List<V2modelsSlotMultipleValuesSetting>?>('multipleValuesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotMultipleValuesSetting>(guardedValue, (value) => V2modelsSlotMultipleValuesSetting.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    obfuscationSettings = registerOutput<List<Map<String, dynamic>>?>('obfuscationSettings');
+    obfuscationSettings = registerOutput<List<V2modelsSlotObfuscationSetting>?>('obfuscationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotObfuscationSetting>(guardedValue, (value) => V2modelsSlotObfuscationSetting.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     slotId = registerOutput<String>('slotId');
     slotTypeId = registerOutput<String>('slotTypeId');
-    subSlotSettings = registerOutput<List<Map<String, dynamic>>?>('subSlotSettings');
+    subSlotSettings = registerOutput<List<V2modelsSlotSubSlotSetting>?>('subSlotSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotSubSlotSetting>(guardedValue, (value) => V2modelsSlotSubSlotSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotValueElicitationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [V2modelsSlot] resource.
+  V2modelsSlot.reference(String urn)
+    : super(
+        'aws:lex/v2modelsSlot:V2modelsSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    description = registerOutput<String?>('description');
+    intentId = registerOutput<String>('intentId');
+    localeId = registerOutput<String>('localeId');
+    multipleValuesSettings = registerOutput<List<V2modelsSlotMultipleValuesSetting>?>('multipleValuesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotMultipleValuesSetting>(guardedValue, (value) => V2modelsSlotMultipleValuesSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    obfuscationSettings = registerOutput<List<V2modelsSlotObfuscationSetting>?>('obfuscationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotObfuscationSetting>(guardedValue, (value) => V2modelsSlotObfuscationSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    slotId = registerOutput<String>('slotId');
+    slotTypeId = registerOutput<String>('slotTypeId');
+    subSlotSettings = registerOutput<List<V2modelsSlotSubSlotSetting>?>('subSlotSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsSlotSubSlotSetting>(guardedValue, (value) => V2modelsSlotSubSlotSetting.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsSlotValueElicitationSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

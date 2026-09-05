@@ -167,7 +167,7 @@ class TransitGatewayRouteTableAttachment extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayRouteTableAttachment:TransitGatewayRouteTableAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
@@ -181,8 +181,8 @@ class TransitGatewayRouteTableAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayRouteTableArn = registerOutput<String>('transitGatewayRouteTableArn');
   }
 
@@ -191,11 +191,12 @@ class TransitGatewayRouteTableAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransitGatewayRouteTableAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransitGatewayRouteTableAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,8 +222,34 @@ class TransitGatewayRouteTableAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayRouteTableArn = registerOutput<String>('transitGatewayRouteTableArn');
+  }
+
+  /// Creates a typed reference to an existing [TransitGatewayRouteTableAttachment] resource.
+  TransitGatewayRouteTableAttachment.reference(String urn)
+    : super(
+        'aws:networkmanager/transitGatewayRouteTableAttachment:TransitGatewayRouteTableAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    peeringId = registerOutput<String>('peeringId');
+    resourceArn = registerOutput<String>('resourceArn');
+    routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    segmentName = registerOutput<String>('segmentName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayRouteTableArn = registerOutput<String>('transitGatewayRouteTableArn');
   }
 }

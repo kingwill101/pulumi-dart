@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SqlFunction resources.
 class SqlFunctionState {
   /// Body of the User Defined Function.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
-  final pulumi.Input<String>? containerId;
+  final pulumi.Input<String?>? containerId;
   /// The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SqlFunctionState].
   /// [body] Body of the User Defined Function.

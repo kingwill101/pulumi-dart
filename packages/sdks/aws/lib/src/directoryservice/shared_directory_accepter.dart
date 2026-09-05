@@ -14,11 +14,11 @@ import 'shared_directory_accepter_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.directoryservice.SharedDirectory("example", {
-///     directoryId: exampleAwsDirectoryServiceDirectory.id,
-///     notes: "example",
 ///     target: {
 ///         id: receiver.accountId,
 ///     },
+///     directoryId: exampleAwsDirectoryServiceDirectory.id,
+///     notes: "example",
 /// });
 /// const exampleSharedDirectoryAccepter = new aws.directoryservice.SharedDirectoryAccepter("example", {sharedDirectoryId: example.sharedDirectoryId});
 /// ```
@@ -27,11 +27,11 @@ import 'shared_directory_accepter_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.directoryservice.SharedDirectory("example",
-///     directory_id=example_aws_directory_service_directory["id"],
-///     notes="example",
 ///     target={
 ///         "id": receiver["accountId"],
-///     })
+///     },
+///     directory_id=example_aws_directory_service_directory["id"],
+///     notes="example")
 /// example_shared_directory_accepter = aws.directoryservice.SharedDirectoryAccepter("example", shared_directory_id=example.shared_directory_id)
 /// ```
 /// ```csharp
@@ -44,12 +44,12 @@ import 'shared_directory_accepter_state.dart';
 /// {
 ///     var example = new Aws.DirectoryService.SharedDirectory("example", new()
 ///     {
-///         DirectoryId = exampleAwsDirectoryServiceDirectory.Id,
-///         Notes = "example",
 ///         Target = new Aws.DirectoryService.Inputs.SharedDirectoryTargetArgs
 ///         {
 ///             Id = receiver.AccountId,
 ///         },
+///         DirectoryId = exampleAwsDirectoryServiceDirectory.Id,
+///         Notes = "example",
 ///     });
 ///
 ///     var exampleSharedDirectoryAccepter = new Aws.DirectoryService.SharedDirectoryAccepter("example", new()
@@ -70,11 +70,11 @@ import 'shared_directory_accepter_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := directoryservice.NewSharedDirectory(ctx, "example", &directoryservice.SharedDirectoryArgs{
-/// 			DirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
-/// 			Notes:       pulumi.String("example"),
 /// 			Target: &directoryservice.SharedDirectoryTargetArgs{
 /// 				Id: pulumi.Any(receiver.AccountId),
 /// 			},
+/// 			DirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
+/// 			Notes:       pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,11 +99,11 @@ import 'shared_directory_accepter_state.dart';
 /// }
 ///
 /// resource "aws_directoryservice_shareddirectory" "example" {
-///   directory_id = exampleAwsDirectoryServiceDirectory.id
-///   notes        = "example"
 ///   target = {
 ///     id = receiver.accountId
 ///   }
+///   directory_id = exampleAwsDirectoryServiceDirectory.id
+///   notes        = "example"
 /// }
 /// resource "aws_directoryservice_shareddirectoryaccepter" "example" {
 ///   shared_directory_id = aws_directoryservice_shareddirectory.example.shared_directory_id
@@ -134,11 +134,11 @@ import 'shared_directory_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SharedDirectory("example", SharedDirectoryArgs.builder()
-///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
-///             .notes("example")
 ///             .target(SharedDirectoryTargetArgs.builder()
 ///                 .id(receiver.accountId())
 ///                 .build())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .notes("example")
 ///             .build());
 ///
 ///         var exampleSharedDirectoryAccepter = new SharedDirectoryAccepter("exampleSharedDirectoryAccepter", SharedDirectoryAccepterArgs.builder()
@@ -153,10 +153,10 @@ import 'shared_directory_accepter_state.dart';
 ///   example:
 ///     type: aws:directoryservice:SharedDirectory
 ///     properties:
-///       directoryId: ${exampleAwsDirectoryServiceDirectory.id}
-///       notes: example
 ///       target:
 ///         id: ${receiver.accountId}
+///       directoryId: ${exampleAwsDirectoryServiceDirectory.id}
+///       notes: example
 ///   exampleSharedDirectoryAccepter:
 ///     type: aws:directoryservice:SharedDirectoryAccepter
 ///     name: example
@@ -198,7 +198,7 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
           'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     method = registerOutput<String>('method');
     notes = registerOutput<String>('notes');
@@ -213,11 +213,12 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedDirectoryAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedDirectoryAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,6 +232,23 @@ class SharedDirectoryAccepter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    method = registerOutput<String>('method');
+    notes = registerOutput<String>('notes');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    ownerDirectoryId = registerOutput<String>('ownerDirectoryId');
+    region = registerOutput<String>('region');
+    sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
+  }
+
+  /// Creates a typed reference to an existing [SharedDirectoryAccepter] resource.
+  SharedDirectoryAccepter.reference(String urn)
+    : super(
+        'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     method = registerOutput<String>('method');
     notes = registerOutput<String>('notes');
     ownerAccountId = registerOutput<String>('ownerAccountId');

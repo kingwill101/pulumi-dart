@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration {
   /// Enables managed log persistence for monitoring logs.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The KMS key ARN to encrypt the logs stored in managed persistence.
-  final pulumi.Input<String>? encryptionKeyArn;
+  final pulumi.Input<String?>? encryptionKeyArn;
 
   /// Creates a new [ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration].
   /// [enabled] Enables managed log persistence for monitoring logs.

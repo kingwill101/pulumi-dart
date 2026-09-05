@@ -227,7 +227,7 @@ import 'replica_set_state.dart';
 /// });
 /// const replicaVirtualNetworkDnsServers = new azure.network.VirtualNetworkDnsServers("replica", {
 ///     virtualNetworkId: replicaVirtualNetwork.id,
-///     dnsServers: exampleService.initialReplicaSet.apply(initialReplicaSet => initialReplicaSet.domainControllerIpAddresses),
+///     dnsServers: exampleService.initialReplicaSet.domainControllerIpAddresses,
 /// });
 /// const replicaReplicaSet = new azure.domainservices.ReplicaSet("replica", {
 ///     domainServiceId: exampleService.id,
@@ -863,8 +863,8 @@ import 'replica_set_state.dart';
 /// 			return err
 /// 		}
 /// 		primarySubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "primary", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               primarySubnet.ID(),
-/// 			NetworkSecurityGroupId: primaryNetworkSecurityGroup.ID(),
+/// 			SubnetId:               primarySubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: primaryNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -913,7 +913,7 @@ import 'replica_set_state.dart';
 /// 			FilteredSyncEnabled: pulumi.Bool(false),
 /// 			InitialReplicaSet: &domainservices.ServiceInitialReplicaSetArgs{
 /// 				Location: primaryVirtualNetwork.Location,
-/// 				SubnetId: primarySubnet.ID(),
+/// 				SubnetId: primarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Notifications: &domainservices.ServiceNotificationsArgs{
 /// 				AdditionalRecipients: pulumi.StringArray{
@@ -1022,8 +1022,8 @@ import 'replica_set_state.dart';
 /// 			return err
 /// 		}
 /// 		replicaSubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "replica", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               aaddsReplica.ID(),
-/// 			NetworkSecurityGroupId: aaddsReplicaNetworkSecurityGroup.ID(),
+/// 			SubnetId:               aaddsReplica.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: aaddsReplicaNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1032,7 +1032,7 @@ import 'replica_set_state.dart';
 /// 			Name:                      pulumi.String("aadds-primary-replica"),
 /// 			ResourceGroupName:         primaryVirtualNetwork.ResourceGroupName,
 /// 			VirtualNetworkName:        primaryVirtualNetwork.Name,
-/// 			RemoteVirtualNetworkId:    replicaVirtualNetwork.ID(),
+/// 			RemoteVirtualNetworkId:    replicaVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowForwardedTraffic:     pulumi.Bool(true),
 /// 			AllowGatewayTransit:       pulumi.Bool(false),
 /// 			AllowVirtualNetworkAccess: pulumi.Bool(true),
@@ -1045,7 +1045,7 @@ import 'replica_set_state.dart';
 /// 			Name:                      pulumi.String("aadds-replica-primary"),
 /// 			ResourceGroupName:         replicaVirtualNetwork.ResourceGroupName,
 /// 			VirtualNetworkName:        replicaVirtualNetwork.Name,
-/// 			RemoteVirtualNetworkId:    primaryVirtualNetwork.ID(),
+/// 			RemoteVirtualNetworkId:    primaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowForwardedTraffic:     pulumi.Bool(true),
 /// 			AllowGatewayTransit:       pulumi.Bool(false),
 /// 			AllowVirtualNetworkAccess: pulumi.Bool(true),
@@ -1055,18 +1055,16 @@ import 'replica_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewVirtualNetworkDnsServers(ctx, "replica", &network.VirtualNetworkDnsServersArgs{
-/// 			VirtualNetworkId: replicaVirtualNetwork.ID(),
-/// 			DnsServers: pulumi.StringArray(exampleService.InitialReplicaSet.ApplyT(func(initialReplicaSet domainservices.ServiceInitialReplicaSet) ([]string, error) {
-/// 				return initialReplicaSet.DomainControllerIpAddresses, nil
-/// 			}).(pulumi.StringArrayOutput)),
+/// 			VirtualNetworkId: replicaVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			DnsServers:       exampleService.InitialReplicaSet.DomainControllerIpAddresses(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = domainservices.NewReplicaSet(ctx, "replica", &domainservices.ReplicaSetArgs{
-/// 			DomainServiceId: exampleService.ID(),
+/// 			DomainServiceId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:        replica.Location,
-/// 			SubnetId:        aaddsReplica.ID(),
+/// 			SubnetId:        aaddsReplica.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			replicaSubnetNetworkSecurityGroupAssociation,
 /// 			primaryReplica,
@@ -1891,9 +1889,9 @@ class ReplicaSet extends pulumi.CustomResource {
           'azure:domainservices/replicaSet:ReplicaSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses');
+    domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainServiceId = registerOutput<String>('domainServiceId');
     externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
     location = registerOutput<String>('location');
@@ -1906,11 +1904,12 @@ class ReplicaSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicaSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicaSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1924,7 +1923,24 @@ class ReplicaSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses');
+    domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    domainServiceId = registerOutput<String>('domainServiceId');
+    externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
+    location = registerOutput<String>('location');
+    serviceStatus = registerOutput<String>('serviceStatus');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [ReplicaSet] resource.
+  ReplicaSet.reference(String urn)
+    : super(
+        'azure:domainservices/replicaSet:ReplicaSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainServiceId = registerOutput<String>('domainServiceId');
     externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
     location = registerOutput<String>('location');

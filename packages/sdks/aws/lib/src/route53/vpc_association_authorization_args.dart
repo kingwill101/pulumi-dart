@@ -10,7 +10,7 @@ class VpcAssociationAuthorizationArgs {
   /// The VPC to authorize for association with the private hosted zone.
   final pulumi.Input<String> vpcId;
   /// The VPC's region. Defaults to the region of the AWS provider.
-  final pulumi.Input<String>? vpcRegion;
+  final pulumi.Input<String?>? vpcRegion;
   /// The ID of the private hosted zone that you want to authorize associating a VPC with.
   final pulumi.Input<String> zoneId;
 

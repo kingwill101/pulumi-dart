@@ -7,30 +7,30 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// Input properties used for looking up and filtering NetworkWatcherFlowLog resources.
 class NetworkWatcherFlowLogState {
   /// Should Network Flow Logging be Enabled?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The location where the Network Watcher Flow Log resides. Changing this forces a new resource to be created. Defaults to the `location` of the Network Watcher.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Network Watcher Flow Log. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// The name of the Network Watcher. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkWatcherName;
+  final pulumi.Input<String?>? networkWatcherName;
   /// The name of the resource group in which the Network Watcher was deployed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `retentionPolicy` block as documented below.
-  final pulumi.Input<NetworkWatcherFlowLogRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<NetworkWatcherFlowLogRetentionPolicy?>? retentionPolicy;
   /// The ID of the Storage Account where flow logs are stored.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// A mapping of tags which should be assigned to the Network Watcher Flow Log.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Resource for which to enable flow logs for.
   ///
   /// &gt; **Note:** As of July 30, 2025, it is no longer possible to create new flow logs for Network Security Groups.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// A `trafficAnalytics` block as documented below.
-  final pulumi.Input<NetworkWatcherFlowLogTrafficAnalytics>? trafficAnalytics;
+  final pulumi.Input<NetworkWatcherFlowLogTrafficAnalytics?>? trafficAnalytics;
   /// The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [NetworkWatcherFlowLogState].
   /// [enabled] Should Network Flow Logging be Enabled?
@@ -90,7 +90,7 @@ class NetworkWatcherFlowLogState {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       trafficAnalytics: (() { final guardedValue = map['trafficAnalytics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkWatcherFlowLogTrafficAnalytics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

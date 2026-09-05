@@ -148,7 +148,7 @@ class AssessmentDelegation extends pulumi.CustomResource {
   late final pulumi.Output<String> delegationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the IAM role.
+  /// ARN of the IAM role.
   late final pulumi.Output<String> roleArn;
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
@@ -169,7 +169,7 @@ class AssessmentDelegation extends pulumi.CustomResource {
           'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assessmentId = registerOutput<String>('assessmentId');
     comment = registerOutput<String?>('comment');
@@ -186,11 +186,12 @@ class AssessmentDelegation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentDelegationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentDelegation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,6 +205,25 @@ class AssessmentDelegation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    comment = registerOutput<String?>('comment');
+    controlSetId = registerOutput<String>('controlSetId');
+    delegationId = registerOutput<String>('delegationId');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    roleType = registerOutput<String>('roleType');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentDelegation] resource.
+  AssessmentDelegation.reference(String urn)
+    : super(
+        'aws:auditmanager/assessmentDelegation:AssessmentDelegation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assessmentId = registerOutput<String>('assessmentId');
     comment = registerOutput<String?>('comment');
     controlSetId = registerOutput<String>('controlSetId');

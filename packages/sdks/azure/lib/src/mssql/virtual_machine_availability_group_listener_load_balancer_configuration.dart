@@ -44,7 +44,7 @@ class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
     return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration(
       loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
-      probePort: pulumi.Input.fromValue(map['probePort'] as int),
+      probePort: pulumi.Input.fromValue((map['probePort'] as num).toInt()),
       sqlVirtualMachineIds: pulumi.Input.fromValue((map['sqlVirtualMachineIds'] as List).cast<String>()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );

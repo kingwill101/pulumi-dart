@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_all_setting.dart';
 import 'environment_args.dart';
+import 'environment_setting.dart';
 import 'environment_state.dart';
 
 /// Provides an Elastic Beanstalk Environment Resource. Elastic Beanstalk allows
@@ -174,7 +176,7 @@ class Environment extends pulumi.CustomResource {
   /// List of all option settings configured in this Environment. These
   /// are a combination of default settings and their overrides from `setting` in
   /// the configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> allSettings;
+  late final pulumi.Output<List<EnvironmentAllSetting>> allSettings;
   /// Name of the application that contains the version
   /// to be deployed
   late final pulumi.Output<String> application;
@@ -214,7 +216,7 @@ class Environment extends pulumi.CustomResource {
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
-  late final pulumi.Output<List<Map<String, dynamic>>?> settings;
+  late final pulumi.Output<List<EnvironmentSetting>?> settings;
   /// A solution stack to base your environment
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   late final pulumi.Output<String> solutionStackName;
@@ -251,31 +253,31 @@ class Environment extends pulumi.CustomResource {
           'aws:elasticbeanstalk/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allSettings = registerOutput<List<Map<String, dynamic>>>('allSettings');
+    allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
     application = registerOutput<String>('application');
     arn = registerOutput<String>('arn');
-    autoscalingGroups = registerOutput<List<String>>('autoscalingGroups');
+    autoscalingGroups = registerOutput<List<String>>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cname = registerOutput<String>('cname');
     cnamePrefix = registerOutput<String>('cnamePrefix');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
-    instances = registerOutput<List<String>>('instances');
-    launchConfigurations = registerOutput<List<String>>('launchConfigurations');
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    launchConfigurations = registerOutput<List<String>>('launchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     platformArn = registerOutput<String>('platformArn');
     pollInterval = registerOutput<String?>('pollInterval');
-    queues = registerOutput<List<String>>('queues');
+    queues = registerOutput<List<String>>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<EnvironmentSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentSetting>(guardedValue, (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>())); });
     solutionStackName = registerOutput<String>('solutionStackName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateName = registerOutput<String?>('templateName');
     tier = registerOutput<String?>('tier');
-    triggers = registerOutput<List<String>>('triggers');
+    triggers = registerOutput<List<String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     version = registerOutput<String>('version');
     waitForReadyTimeout = registerOutput<String?>('waitForReadyTimeout');
   }
@@ -285,11 +287,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,29 +306,65 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allSettings = registerOutput<List<Map<String, dynamic>>>('allSettings');
+    allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
     application = registerOutput<String>('application');
     arn = registerOutput<String>('arn');
-    autoscalingGroups = registerOutput<List<String>>('autoscalingGroups');
+    autoscalingGroups = registerOutput<List<String>>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cname = registerOutput<String>('cname');
     cnamePrefix = registerOutput<String>('cnamePrefix');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
-    instances = registerOutput<List<String>>('instances');
-    launchConfigurations = registerOutput<List<String>>('launchConfigurations');
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    launchConfigurations = registerOutput<List<String>>('launchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     platformArn = registerOutput<String>('platformArn');
     pollInterval = registerOutput<String?>('pollInterval');
-    queues = registerOutput<List<String>>('queues');
+    queues = registerOutput<List<String>>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<EnvironmentSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentSetting>(guardedValue, (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>())); });
     solutionStackName = registerOutput<String>('solutionStackName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateName = registerOutput<String?>('templateName');
     tier = registerOutput<String?>('tier');
-    triggers = registerOutput<List<String>>('triggers');
+    triggers = registerOutput<List<String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    version = registerOutput<String>('version');
+    waitForReadyTimeout = registerOutput<String?>('waitForReadyTimeout');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'aws:elasticbeanstalk/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    application = registerOutput<String>('application');
+    arn = registerOutput<String>('arn');
+    autoscalingGroups = registerOutput<List<String>>('autoscalingGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cname = registerOutput<String>('cname');
+    cnamePrefix = registerOutput<String>('cnamePrefix');
+    description = registerOutput<String?>('description');
+    endpointUrl = registerOutput<String>('endpointUrl');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    launchConfigurations = registerOutput<List<String>>('launchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    platformArn = registerOutput<String>('platformArn');
+    pollInterval = registerOutput<String?>('pollInterval');
+    queues = registerOutput<List<String>>('queues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    settings = registerOutput<List<EnvironmentSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentSetting>(guardedValue, (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    solutionStackName = registerOutput<String>('solutionStackName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateName = registerOutput<String?>('templateName');
+    tier = registerOutput<String?>('tier');
+    triggers = registerOutput<List<String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     version = registerOutput<String>('version');
     waitForReadyTimeout = registerOutput<String?>('waitForReadyTimeout');
   }

@@ -6,52 +6,52 @@ import 'get_route_filter_rule.dart';
 /// Result data returned by getRouteFilter.
 class GetRouteFilterResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Route Filter exists.
-  final String location;
+  final String? location;
   /// The Name of Route Filter Rule
-  final String name;
-  final String resourceGroupName;
+  final String? name;
+  final String? resourceGroupName;
   /// A `rule` block as defined below.
-  final List<GetRouteFilterRule> rules;
+  final List<GetRouteFilterRule>? rules;
   /// A mapping of tags assigned to the Route Filter.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetRouteFilterResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Route Filter exists.
   /// [name] The Name of Route Filter Rule
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [rules] A `rule` block as defined below.
   /// [tags] A mapping of tags assigned to the Route Filter.
   const GetRouteFilterResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.rules,
-    required this.tags,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.rules,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'rules': pulumi.Input.encodeList<GetRouteFilterRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'tags': tags,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRouteFilterRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
     };
   }
 
   factory GetRouteFilterResult.fromMap(Map<String, dynamic> map) {
     return GetRouteFilterResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      rules: pulumi.Input.decodeList<GetRouteFilterRule>(map['rules']!, (value) => GetRouteFilterRule.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRouteFilterRule>(guardedValue, (value) => GetRouteFilterRule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

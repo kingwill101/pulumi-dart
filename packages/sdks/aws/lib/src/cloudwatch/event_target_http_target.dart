@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetHttpTarget {
   /// Enables you to specify HTTP headers to add to the request.
-  final pulumi.Input<Map<String, String>>? headerParameters;
+  final pulumi.Input<Map<String, String>?>? headerParameters;
   /// The list of values that correspond sequentially to any path variables in your endpoint ARN (for example `arn:aws:execute-api:us-east-1:123456:myapi/*/POST/pets/*`).
-  final pulumi.Input<List<String>>? pathParameterValues;
+  final pulumi.Input<List<String>?>? pathParameterValues;
   /// Represents keys/values of query string parameters that are appended to the invoked endpoint.
-  final pulumi.Input<Map<String, String>>? queryStringParameters;
+  final pulumi.Input<Map<String, String>?>? queryStringParameters;
 
   /// Creates a new [EventTargetHttpTarget].
   /// [headerParameters] Enables you to specify HTTP headers to add to the request.

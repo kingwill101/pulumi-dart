@@ -12,53 +12,53 @@ import 'service_task_spec_container_spec_secret.dart';
 
 class ServiceTaskSpecContainerSpec {
   /// Arguments to the command
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// List of Linux capabilities to add to the container
-  final pulumi.Input<List<String>>? capAdds;
+  final pulumi.Input<List<String>?>? capAdds;
   /// List of Linux capabilities to drop from the container
-  final pulumi.Input<List<String>>? capDrops;
+  final pulumi.Input<List<String>?>? capDrops;
   /// The command/entrypoint to be run in the image. According to the [docker cli](https://github.com/docker/cli/blob/v20.10.7/cli/command/service/opts.go#L705) the override of the entrypoint is also passed to the `command` property and there is no `entrypoint` attribute in the `ContainerSpec` of the service.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// References to zero or more configs that will be exposed to the service
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecConfig>>? configs;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecConfig>?>? configs;
   /// The working directory for commands to run in
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
   /// Specification for DNS related configurations in resolver configuration file (`resolv.conf`)
-  final pulumi.Input<ServiceTaskSpecContainerSpecDnsConfig>? dnsConfig;
+  final pulumi.Input<ServiceTaskSpecContainerSpecDnsConfig?>? dnsConfig;
   /// A list of environment variables in the form VAR="value"
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// A list of additional groups that the container process will run as
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// A test to perform to check that the container is healthy. It works in the same way, and has the same default values, as the HEALTHCHECK Dockerfile instruction set by the service's Docker image. Your Compose file can override the values set in the Dockerfile.
-  final pulumi.Input<ServiceTaskSpecContainerSpecHealthcheck>? healthcheck;
+  final pulumi.Input<ServiceTaskSpecContainerSpecHealthcheck?>? healthcheck;
   /// The hostname to use for the container, as a valid RFC 1123 hostname
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// A list of hostname/IP mappings to add to the container's hosts file
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecHost>>? hosts;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecHost>?>? hosts;
   /// The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repoDigest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
   final pulumi.Input<String> image;
   /// Configured whether an init process should be injected for this container. If unset this will default to the `dockerd` defaults.
-  final pulumi.Input<bool>? init;
+  final pulumi.Input<bool?>? init;
   /// Isolation technology of the containers running the service. (Windows only). Defaults to `default`.
-  final pulumi.Input<String>? isolation;
+  final pulumi.Input<String?>? isolation;
   /// User-defined key/value metadata
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecLabel>>? labels;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecLabel>?>? labels;
   /// Specification for mounts to be added to containers created as part of the service
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecMount>>? mounts;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecMount>?>? mounts;
   /// Security options for the container
-  final pulumi.Input<ServiceTaskSpecContainerSpecPrivileges>? privileges;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivileges?>? privileges;
   /// Mount the container's root filesystem as read only
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// References to zero or more secrets that will be exposed to the service
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecSecret>>? secrets;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecSecret>?>? secrets;
   /// Amount of time to wait for the container to terminate before forcefully removing it (ms|s|m|h). If not specified or '0s' the destroy will not check if all tasks/containers of the service terminate.
-  final pulumi.Input<String>? stopGracePeriod;
+  final pulumi.Input<String?>? stopGracePeriod;
   /// Signal to stop the container
-  final pulumi.Input<String>? stopSignal;
+  final pulumi.Input<String?>? stopSignal;
   /// Sysctls config (Linux only)
-  final pulumi.Input<Map<String, String>>? sysctl;
+  final pulumi.Input<Map<String, String>?>? sysctl;
   /// The user inside the container
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [ServiceTaskSpecContainerSpec].
   /// [args] Arguments to the command

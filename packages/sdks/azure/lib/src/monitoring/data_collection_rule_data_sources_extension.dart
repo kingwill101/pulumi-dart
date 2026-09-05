@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCollectionRuleDataSourcesExtension {
   /// A JSON String which specifies the extension setting.
-  final pulumi.Input<String>? extensionJson;
+  final pulumi.Input<String?>? extensionJson;
   /// The name of the VM extension.
   final pulumi.Input<String> extensionName;
   /// Specifies a list of data sources this extension needs data from. An item should be a name of a supported data source which produces only one stream. Supported data sources type: `performanceCounter`, `windowsEventLog`,and `syslog`.
-  final pulumi.Input<List<String>>? inputDataSources;
+  final pulumi.Input<List<String>?>? inputDataSources;
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   final pulumi.Input<String> name;
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to. Possible values include but not limited to `Microsoft-Event`, `Microsoft-InsightsMetrics`, `Microsoft-Perf`, `Microsoft-Syslog`, `Microsoft-WindowsEvent`.

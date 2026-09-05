@@ -188,12 +188,12 @@ class PartnerRegistration extends pulumi.CustomResource {
           'azure:eventgrid/partnerRegistration:PartnerRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PartnerRegistration] resource's state with the given [name] and [id].
@@ -201,11 +201,12 @@ class PartnerRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartnerRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PartnerRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,6 +223,21 @@ class PartnerRegistration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PartnerRegistration] resource.
+  PartnerRegistration.reference(String urn)
+    : super(
+        'azure:eventgrid/partnerRegistration:PartnerRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

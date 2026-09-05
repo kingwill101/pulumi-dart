@@ -13,23 +13,23 @@ class HubArgs {
   /// A `apnsCredential` block as defined below.
   ///
   /// &gt; **Note:** Removing the `apnsCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
-  final pulumi.Input<HubApnsCredential>? apnsCredential;
+  final pulumi.Input<HubApnsCredential?>? apnsCredential;
   /// A `browserCredential` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<HubBrowserCredential>? browserCredential;
+  final pulumi.Input<HubBrowserCredential?>? browserCredential;
   /// A `gcmCredential` block as defined below.
   ///
   /// &gt; **Note:** Removing the `gcmCredential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
-  final pulumi.Input<HubGcmCredential>? gcmCredential;
+  final pulumi.Input<HubGcmCredential?>? gcmCredential;
   /// The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name to use for this Notification Hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Notification Hub Namespace in which to create this Notification Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HubArgs].
   /// [apnsCredential] A `apnsCredential` block as defined below.

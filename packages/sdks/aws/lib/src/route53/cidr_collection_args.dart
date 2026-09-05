@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_cidr_collection_cidr_collection_args_doc}
 class CidrCollectionArgs {
   /// Unique name for the CIDR collection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CidrCollectionArgs].
   /// [name] Unique name for the CIDR collection.

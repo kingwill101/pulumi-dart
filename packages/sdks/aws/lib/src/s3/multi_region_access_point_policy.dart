@@ -19,10 +19,10 @@ import 'multi_region_access_point_policy_state.dart';
 /// const currentGetPartition = aws.getPartition({});
 /// const fooBucket = new aws.s3.Bucket("foo_bucket", {bucket: "example-bucket-foo"});
 /// const example = new aws.s3control.MultiRegionAccessPoint("example", {details: {
-///     name: "example",
 ///     regions: [{
 ///         bucket: fooBucket.id,
 ///     }],
+///     name: "example",
 /// }});
 /// const exampleMultiRegionAccessPointPolicy = new aws.s3control.MultiRegionAccessPointPolicy("example", {details: {
 ///     name: std.splitOutput({
@@ -56,10 +56,10 @@ import 'multi_region_access_point_policy_state.dart';
 /// current_get_partition = aws.get_partition()
 /// foo_bucket = aws.s3.Bucket("foo_bucket", bucket="example-bucket-foo")
 /// example = aws.s3control.MultiRegionAccessPoint("example", details={
-///     "name": "example",
 ///     "regions": [{
 ///         "bucket": foo_bucket.id,
 ///     }],
+///     "name": "example",
 /// })
 /// example_multi_region_access_point_policy = aws.s3control.MultiRegionAccessPointPolicy("example", details={
 ///     "name": std.split_output(separator=":",
@@ -104,7 +104,6 @@ import 'multi_region_access_point_policy_state.dart';
 ///     {
 ///         Details = new Aws.S3Control.Inputs.MultiRegionAccessPointDetailsArgs
 ///         {
-///             Name = "example",
 ///             Regions = new[]
 ///             {
 ///                 new Aws.S3Control.Inputs.MultiRegionAccessPointDetailsRegionArgs
@@ -112,6 +111,7 @@ import 'multi_region_access_point_policy_state.dart';
 ///                     Bucket = fooBucket.Id,
 ///                 },
 ///             },
+///             Name = "example",
 ///         },
 ///     });
 ///
@@ -189,12 +189,12 @@ import 'multi_region_access_point_policy_state.dart';
 /// 		}
 /// 		example, err := s3control.NewMultiRegionAccessPoint(ctx, "example", &s3control.MultiRegionAccessPointArgs{
 /// 			Details: &s3control.MultiRegionAccessPointDetailsArgs{
-/// 				Name: pulumi.String("example"),
 /// 				Regions: s3control.MultiRegionAccessPointDetailsRegionArray{
 /// 					&s3control.MultiRegionAccessPointDetailsRegionArgs{
 /// 						Bucket: fooBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
+/// 				Name: pulumi.String("example"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -262,10 +262,10 @@ import 'multi_region_access_point_policy_state.dart';
 /// }
 /// resource "aws_s3control_multiregionaccesspoint" "example" {
 ///   details = {
-///     name = "example"
 ///     regions = [{
 ///       "bucket" = aws_s3_bucket.foo_bucket.id
 ///     }]
+///     name = "example"
 ///   }
 /// }
 /// resource "aws_s3control_multiregionaccesspointpolicy" "example" {
@@ -332,10 +332,10 @@ import 'multi_region_access_point_policy_state.dart';
 ///
 ///         var example = new MultiRegionAccessPoint("example", MultiRegionAccessPointArgs.builder()
 ///             .details(MultiRegionAccessPointDetailsArgs.builder()
-///                 .name("example")
 ///                 .regions(MultiRegionAccessPointDetailsRegionArgs.builder()
 ///                     .bucket(fooBucket.id())
 ///                     .build())
+///                 .name("example")
 ///                 .build())
 ///             .build());
 ///
@@ -378,9 +378,9 @@ import 'multi_region_access_point_policy_state.dart';
 ///     type: aws:s3control:MultiRegionAccessPoint
 ///     properties:
 ///       details:
-///         name: example
 ///         regions:
 ///           - bucket: ${fooBucket.id}
+///         name: example
 ///   exampleMultiRegionAccessPointPolicy:
 ///     type: aws:s3control:MultiRegionAccessPointPolicy
 ///     name: example
@@ -450,7 +450,7 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
           'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -464,11 +464,12 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MultiRegionAccessPointPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MultiRegionAccessPointPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -482,6 +483,22 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    established = registerOutput<String>('established');
+    proposed = registerOutput<String>('proposed');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [MultiRegionAccessPointPolicy] resource.
+  MultiRegionAccessPointPolicy.reference(String urn)
+    : super(
+        'aws:s3control/multiRegionAccessPointPolicy:MultiRegionAccessPointPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     details = registerOutput<MultiRegionAccessPointPolicyDetails>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionAccessPointPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     established = registerOutput<String>('established');

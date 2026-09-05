@@ -10,29 +10,29 @@ class ConfigurationKeyArgs {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> configurationStoreId;
   /// The content type of the App Configuration Key. This should only be set when type is set to `kv`.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// (Optional) The ETag of the key.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the App Configuration Key to create. Changing this forces a new resource to be created.
   final pulumi.Input<String> key;
   /// The label of the App Configuration Key. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Should this App Configuration Key be Locked to prevent changes?
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the App Configuration Key. It can either be `kv` (simple [key/value](https://docs.microsoft.com/azure/azure-app-configuration/concept-key-value)) or `vault` (where the value is a reference to a [Key Vault Secret](https://azure.microsoft.com/en-gb/services/key-vault/). Defaults to `kv`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the App Configuration Key. This should only be set when type is set to `kv`.
   ///
   /// &gt; **Note:** `value` and `vaultKeyReference` are mutually exclusive.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// The ID of the vault secret this App Configuration Key refers to. This should only be set when `type` is set to `vault`.
   ///
   /// &gt; **Note:** `vaultKeyReference` and `value` are mutually exclusive.
   ///
   /// &gt; **Note:** When setting the `vaultKeyReference` using the `id` will pin the value to specific version of the secret, to reference latest secret value use `versionlessId`
-  final pulumi.Input<String>? vaultKeyReference;
+  final pulumi.Input<String?>? vaultKeyReference;
 
   /// Creates a new [ConfigurationKeyArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration. Changing this forces a new resource to be created.

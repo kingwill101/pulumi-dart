@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
   /// File type that Amazon AppFlow gets from your Amazon S3 bucket. Valid values are `CSV` and `JSON`.
-  final pulumi.Input<String>? s3InputFileType;
+  final pulumi.Input<String?>? s3InputFileType;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig].
   /// [s3InputFileType] File type that Amazon AppFlow gets from your Amazon S3 bucket. Valid values are `CSV` and `JSON`.

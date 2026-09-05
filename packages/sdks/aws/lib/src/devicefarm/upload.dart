@@ -156,7 +156,7 @@ import 'upload_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm upload.
+/// - `arn` (String) ARN of the Device Farm upload.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Uploads using their ARN. For example:
@@ -165,7 +165,7 @@ import 'upload_state.dart';
 /// $ pulumi import aws:devicefarm/upload:Upload example arn:aws:devicefarm:us-west-2:123456789012:upload:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class Upload extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this upload.
+  /// ARN of this upload.
   late final pulumi.Output<String> arn;
   /// The upload's category.
   late final pulumi.Output<String> category;
@@ -196,7 +196,7 @@ class Upload extends pulumi.CustomResource {
           'aws:devicefarm/upload:Upload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
@@ -214,11 +214,12 @@ class Upload extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UploadState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Upload._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -232,6 +233,26 @@ class Upload extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    category = registerOutput<String>('category');
+    contentType = registerOutput<String?>('contentType');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    projectArn = registerOutput<String>('projectArn');
+    region = registerOutput<String>('region');
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Upload] resource.
+  Upload.reference(String urn)
+    : super(
+        'aws:devicefarm/upload:Upload',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
     contentType = registerOutput<String?>('contentType');

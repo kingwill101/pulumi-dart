@@ -128,6 +128,17 @@ Future<GetLinkResult> getLink(
   return GetLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetLinkResult> getLinkOutput(
+  GetLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:oam/getLink:getLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkResult.fromMap);
+}
+
 /// Data source for managing an AWS CloudWatch Observability Access Manager Links.
 ///
 /// ## Example Usage
@@ -236,6 +247,17 @@ Future<GetLinksResult> getLinks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinksResult.fromMap(result);
+}
+
+pulumi.Output<GetLinksResult> getLinksOutput(
+  GetLinksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:oam/getLinks:getLinks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinksResult.fromMap);
 }
 
 /// Data source for managing an AWS CloudWatch Observability Access Manager Sink.
@@ -358,6 +380,17 @@ Future<GetSinkResult> getSink(
   return GetSinkResult.fromMap(result);
 }
 
+pulumi.Output<GetSinkResult> getSinkOutput(
+  GetSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:oam/getSink:getSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSinkResult.fromMap);
+}
+
 /// Data source for managing an AWS CloudWatch Observability Access Manager Sinks.
 ///
 /// ## Example Usage
@@ -466,4 +499,15 @@ Future<GetSinksResult> getSinks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSinksResult.fromMap(result);
+}
+
+pulumi.Output<GetSinksResult> getSinksOutput(
+  GetSinksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:oam/getSinks:getSinks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSinksResult.fromMap);
 }

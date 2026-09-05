@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchemaS3 {
   /// Account ID of the S3 bucket owner.
-  final pulumi.Input<String>? bucketOwnerAccountId;
+  final pulumi.Input<String?>? bucketOwnerAccountId;
   /// S3 URI where the schema is stored.
   final pulumi.Input<String> uri;
 

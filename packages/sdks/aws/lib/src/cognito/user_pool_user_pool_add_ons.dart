@@ -5,7 +5,7 @@ import 'user_pool_user_pool_add_ons_advanced_security_additional_flows.dart';
 
 class UserPoolUserPoolAddOns {
   /// A block to specify the threat protection configuration options for additional authentication types in your user pool, including custom authentication. Detailed below.
-  final pulumi.Input<UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows>? advancedSecurityAdditionalFlows;
+  final pulumi.Input<UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows?>? advancedSecurityAdditionalFlows;
   /// Mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
   final pulumi.Input<String> advancedSecurityMode;
 

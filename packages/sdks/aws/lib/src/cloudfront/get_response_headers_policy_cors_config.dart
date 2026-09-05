@@ -58,7 +58,7 @@ class GetResponseHeadersPolicyCorsConfig {
       accessControlAllowMethods: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod>(map['accessControlAllowMethods']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod.fromMap((value as Map).cast<String, dynamic>()))),
       accessControlAllowOrigins: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin>(map['accessControlAllowOrigins']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin.fromMap((value as Map).cast<String, dynamic>()))),
       accessControlExposeHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader>(map['accessControlExposeHeaders']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      accessControlMaxAgeSec: pulumi.Input.fromValue(map['accessControlMaxAgeSec'] as int),
+      accessControlMaxAgeSec: pulumi.Input.fromValue((map['accessControlMaxAgeSec'] as num).toInt()),
       originOverride: pulumi.Input.fromValue(map['originOverride'] as bool),
     );
   }

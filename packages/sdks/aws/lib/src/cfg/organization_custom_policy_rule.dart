@@ -237,7 +237,7 @@ import 'organization_custom_policy_rule_state.dart';
 /// $ pulumi import aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule example example
 /// ```
 class OrganizationCustomPolicyRule extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the rule.
+  /// ARN of the rule.
   late final pulumi.Output<String> arn;
   /// List of accounts that you can enable debug logging for. The list is null when debug logging is enabled for all accounts.
   late final pulumi.Output<List<String>?> debugLogDeliveryAccounts;
@@ -282,12 +282,12 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
           'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts');
+    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
@@ -295,10 +295,10 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
     policyText = registerOutput<String>('policyText');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');
-    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tagKeyScope = registerOutput<String?>('tagKeyScope');
     tagValueScope = registerOutput<String?>('tagValueScope');
-    triggerTypes = registerOutput<List<String>>('triggerTypes');
+    triggerTypes = registerOutput<List<String>>('triggerTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [OrganizationCustomPolicyRule] resource's state with the given [name] and [id].
@@ -306,11 +306,12 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationCustomPolicyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationCustomPolicyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,9 +326,9 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts');
+    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
-    excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     inputParameters = registerOutput<String?>('inputParameters');
     maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
     this.name = registerOutput<String>('name');
@@ -335,9 +336,35 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
     policyText = registerOutput<String>('policyText');
     region = registerOutput<String>('region');
     resourceIdScope = registerOutput<String?>('resourceIdScope');
-    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tagKeyScope = registerOutput<String?>('tagKeyScope');
     tagValueScope = registerOutput<String?>('tagValueScope');
-    triggerTypes = registerOutput<List<String>>('triggerTypes');
+    triggerTypes = registerOutput<List<String>>('triggerTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [OrganizationCustomPolicyRule] resource.
+  OrganizationCustomPolicyRule.reference(String urn)
+    : super(
+        'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    excludedAccounts = registerOutput<List<String>?>('excludedAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inputParameters = registerOutput<String?>('inputParameters');
+    maximumExecutionFrequency = registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    policyRuntime = registerOutput<String>('policyRuntime');
+    policyText = registerOutput<String>('policyText');
+    region = registerOutput<String>('region');
+    resourceIdScope = registerOutput<String?>('resourceIdScope');
+    resourceTypesScopes = registerOutput<List<String>?>('resourceTypesScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tagKeyScope = registerOutput<String?>('tagKeyScope');
+    tagValueScope = registerOutput<String?>('tagValueScope');
+    triggerTypes = registerOutput<List<String>>('triggerTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

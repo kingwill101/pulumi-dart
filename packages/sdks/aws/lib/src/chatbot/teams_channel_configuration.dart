@@ -213,19 +213,19 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
           'aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     channelId = registerOutput<String>('channelId');
     channelName = registerOutput<String>('channelName');
     chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
     configurationName = registerOutput<String>('configurationName');
-    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     loggingLevel = registerOutput<String>('loggingLevel');
     region = registerOutput<String>('region');
-    snsTopicArns = registerOutput<List<String>>('snsTopicArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     teamId = registerOutput<String>('teamId');
     teamName = registerOutput<String>('teamName');
     tenantId = registerOutput<String>('tenantId');
@@ -238,11 +238,12 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TeamsChannelConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TeamsChannelConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,13 +261,40 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
     channelName = registerOutput<String>('channelName');
     chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
     configurationName = registerOutput<String>('configurationName');
-    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     loggingLevel = registerOutput<String>('loggingLevel');
     region = registerOutput<String>('region');
-    snsTopicArns = registerOutput<List<String>>('snsTopicArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    teamId = registerOutput<String>('teamId');
+    teamName = registerOutput<String>('teamName');
+    tenantId = registerOutput<String>('tenantId');
+    timeouts = registerOutput<TeamsChannelConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TeamsChannelConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userAuthorizationRequired = registerOutput<bool>('userAuthorizationRequired');
+  }
+
+  /// Creates a typed reference to an existing [TeamsChannelConfiguration] resource.
+  TeamsChannelConfiguration.reference(String urn)
+    : super(
+        'aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    channelId = registerOutput<String>('channelId');
+    channelName = registerOutput<String>('channelName');
+    chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
+    configurationName = registerOutput<String>('configurationName');
+    guardrailPolicyArns = registerOutput<List<String>>('guardrailPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    loggingLevel = registerOutput<String>('loggingLevel');
+    region = registerOutput<String>('region');
+    snsTopicArns = registerOutput<List<String>>('snsTopicArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     teamId = registerOutput<String>('teamId');
     teamName = registerOutput<String>('teamName');
     tenantId = registerOutput<String>('tenantId');

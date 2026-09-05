@@ -25,8 +25,8 @@ class ClusterNodeTypeApplicationPorts {
 
   factory ClusterNodeTypeApplicationPorts.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeApplicationPorts(
-      endPort: pulumi.Input.fromValue(map['endPort'] as int),
-      startPort: pulumi.Input.fromValue(map['startPort'] as int),
+      endPort: pulumi.Input.fromValue((map['endPort'] as num).toInt()),
+      startPort: pulumi.Input.fromValue((map['startPort'] as num).toInt()),
     );
   }
 }

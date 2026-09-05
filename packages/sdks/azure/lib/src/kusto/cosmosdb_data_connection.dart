@@ -73,7 +73,7 @@ import 'cosmosdb_data_connection_state.dart';
 /// const exampleSqlRoleAssignment = new azure.cosmosdb.SqlRoleAssignment("example", {
 ///     resourceGroupName: exampleResourceGroup.name,
 ///     accountName: exampleAccount.name,
-///     roleDefinitionId: example.apply(example => example.id),
+///     roleDefinitionId: example.id,
 ///     principalId: exampleCluster.identity.apply(identity => identity?.principalId),
 ///     scope: exampleAccount.id,
 /// });
@@ -379,11 +379,9 @@ import 'cosmosdb_data_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleResourceGroup.ID(),
+/// 			Scope:              exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String(builtin.Name),
-/// 			PrincipalId: pulumi.String(exampleCluster.Identity.ApplyT(func(identity kusto.ClusterIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleCluster.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -436,13 +434,9 @@ import 'cosmosdb_data_connection_state.dart';
 /// 		_, err = cosmosdb.NewSqlRoleAssignment(ctx, "example", &cosmosdb.SqlRoleAssignmentArgs{
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			AccountName:       exampleAccount.Name,
-/// 			RoleDefinitionId: pulumi.String(example.ApplyT(func(example cosmosdb.GetSqlRoleDefinitionResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PrincipalId: pulumi.String(exampleCluster.Identity.ApplyT(func(identity kusto.ClusterIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Scope: exampleAccount.ID(),
+/// 			RoleDefinitionId:  example.Id(),
+/// 			PrincipalId:       exampleCluster.Identity.PrincipalId(),
+/// 			Scope:             exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -458,7 +452,7 @@ import 'cosmosdb_data_connection_state.dart';
 /// 		}
 /// 		_, err = kusto.NewScript(ctx, "example", &kusto.ScriptArgs{
 /// 			Name:       pulumi.String("create-table-script"),
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			ScriptContent: pulumi.String(`.create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)
 /// .create table TestTable ingestion json mapping \"TestMapping\"
 /// '['
@@ -476,9 +470,9 @@ import 'cosmosdb_data_connection_state.dart';
 /// 		_, err = kusto.NewCosmosdbDataConnection(ctx, "example", &kusto.CosmosdbDataConnectionArgs{
 /// 			Name:                pulumi.String("examplekcdcd"),
 /// 			Location:            exampleResourceGroup.Location,
-/// 			CosmosdbContainerId: exampleSqlContainer.ID(),
-/// 			KustoDatabaseId:     exampleDatabase.ID(),
-/// 			ManagedIdentityId:   exampleCluster.ID(),
+/// 			CosmosdbContainerId: exampleSqlContainer.ID().ToIDOutput().ToStringOutput(),
+/// 			KustoDatabaseId:     exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			ManagedIdentityId:   exampleCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			TableName:           pulumi.String("TestTable"),
 /// 			MappingRuleName:     pulumi.String("TestMapping"),
 /// 			RetrievalStartDate:  pulumi.String("2023-06-26T12:00:00.6554616Z"),
@@ -919,7 +913,7 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
           'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
     kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
@@ -936,11 +930,12 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CosmosdbDataConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CosmosdbDataConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -954,6 +949,25 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
+    kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
+    location = registerOutput<String>('location');
+    managedIdentityId = registerOutput<String>('managedIdentityId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [CosmosdbDataConnection] resource.
+  CosmosdbDataConnection.reference(String urn)
+    : super(
+        'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
     kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
     location = registerOutput<String>('location');

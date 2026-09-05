@@ -144,7 +144,7 @@ class StudioSessionMapping extends pulumi.CustomResource {
   late final pulumi.Output<String> identityType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. You should specify the ARN for the session policy that you want to apply, not the ARN of your user role.
+  /// ARN for the session policy that will be applied to the user or group. You should specify the ARN for the session policy that you want to apply, not the ARN of your user role.
   late final pulumi.Output<String> sessionPolicyArn;
   /// The ID of the Amazon EMR Studio to which the user or group will be mapped.
   late final pulumi.Output<String> studioId;
@@ -161,7 +161,7 @@ class StudioSessionMapping extends pulumi.CustomResource {
           'aws:emr/studioSessionMapping:StudioSessionMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identityId = registerOutput<String>('identityId');
     identityName = registerOutput<String>('identityName');
@@ -176,11 +176,12 @@ class StudioSessionMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StudioSessionMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StudioSessionMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -194,6 +195,23 @@ class StudioSessionMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    identityId = registerOutput<String>('identityId');
+    identityName = registerOutput<String>('identityName');
+    identityType = registerOutput<String>('identityType');
+    region = registerOutput<String>('region');
+    sessionPolicyArn = registerOutput<String>('sessionPolicyArn');
+    studioId = registerOutput<String>('studioId');
+  }
+
+  /// Creates a typed reference to an existing [StudioSessionMapping] resource.
+  StudioSessionMapping.reference(String urn)
+    : super(
+        'aws:emr/studioSessionMapping:StudioSessionMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     identityId = registerOutput<String>('identityId');
     identityName = registerOutput<String>('identityName');
     identityType = registerOutput<String>('identityType');

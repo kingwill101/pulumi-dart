@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityhub_get_security_controls_get_security_controls_args_doc}
 class GetSecurityControlsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the standard that you want to list controls for. If omitted, all controls are returned.
-  final pulumi.Input<String>? standardsArn;
+  final pulumi.Input<String?>? standardsArn;
 
   /// Creates a new [GetSecurityControlsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

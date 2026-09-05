@@ -291,12 +291,12 @@ class IntegrationAccountMap extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     mapType = registerOutput<String>('mapType');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -306,11 +306,12 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,7 +328,24 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     mapType = registerOutput<String>('mapType');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountMap] resource.
+  IntegrationAccountMap.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    content = registerOutput<String>('content');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    mapType = registerOutput<String>('mapType');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

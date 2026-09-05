@@ -214,7 +214,7 @@ class MagicTransitCf1Site extends pulumi.CustomResource {
           'cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bodies = registerOutput<List<MagicTransitCf1SiteBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitCf1SiteBody>(guardedValue, (value) => MagicTransitCf1SiteBody.fromMap((value as Map).cast<String, dynamic>())); });

@@ -196,7 +196,7 @@ import 'application_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			Type:              pulumi.String("RemoteApp"),
-/// 			HostPoolId:        pooledbreadthfirst.ID(),
+/// 			HostPoolId:        pooledbreadthfirst.ID().ToIDOutput().ToStringOutput(),
 /// 			FriendlyName:      pulumi.String("TestAppGroup"),
 /// 			Description:       pulumi.String("Acceptance Test: An application group"),
 /// 		})
@@ -205,7 +205,7 @@ import 'application_state.dart';
 /// 		}
 /// 		_, err = desktopvirtualization.NewApplication(ctx, "chrome", &desktopvirtualization.ApplicationArgs{
 /// 			Name:                      pulumi.String("googlechrome"),
-/// 			ApplicationGroupId:        remoteapp.ID(),
+/// 			ApplicationGroupId:        remoteapp.ID().ToIDOutput().ToStringOutput(),
 /// 			FriendlyName:              pulumi.String("Google Chrome"),
 /// 			Description:               pulumi.String("Chromium based web browser"),
 /// 			Path:                      pulumi.String("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"),
@@ -445,7 +445,7 @@ class Application extends pulumi.CustomResource {
           'azure:desktopvirtualization/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');
@@ -464,11 +464,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -482,6 +483,27 @@ class Application extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');
+    commandLineArguments = registerOutput<String?>('commandLineArguments');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String>('friendlyName');
+    iconIndex = registerOutput<int?>('iconIndex');
+    iconPath = registerOutput<String>('iconPath');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    showInPortal = registerOutput<bool?>('showInPortal');
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');
     commandLineArguments = registerOutput<String?>('commandLineArguments');

@@ -5,23 +5,23 @@ import 'windows_web_app_site_config_ip_restriction_headers.dart';
 
 class WindowsWebAppSiteConfigIpRestriction {
   /// The action to take. Possible values are `Allow` or `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The Description of this IP Restriction.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `headers` block as defined above.
-  final pulumi.Input<WindowsWebAppSiteConfigIpRestrictionHeaders>? headers;
+  final pulumi.Input<WindowsWebAppSiteConfigIpRestrictionHeaders?>? headers;
   /// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24` or `192.168.10.1/32`
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name which should be used for this `ipRestriction`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The priority value of this `ipRestriction`. Defaults to `65000`.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The Service Tag used for this IP Restriction.
-  final pulumi.Input<String>? serviceTag;
+  final pulumi.Input<String?>? serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
   /// &gt; **Note:** One and only one of `ipAddress`, `serviceTag` or `virtualNetworkSubnetId` must be specified.
-  final pulumi.Input<String>? virtualNetworkSubnetId;
+  final pulumi.Input<String?>? virtualNetworkSubnetId;
 
   /// Creates a new [WindowsWebAppSiteConfigIpRestriction].
   /// [action] The action to take. Possible values are `Allow` or `Deny`. Defaults to `Allow`.
@@ -63,7 +63,7 @@ class WindowsWebAppSiteConfigIpRestriction {
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSiteConfigIpRestrictionHeaders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serviceTag: (() { final guardedValue = map['serviceTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

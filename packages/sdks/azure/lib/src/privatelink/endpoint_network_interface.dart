@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointNetworkInterface {
   /// The ID of the Private DNS Zone Config.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EndpointNetworkInterface].
   /// [id] The ID of the Private DNS Zone Config.

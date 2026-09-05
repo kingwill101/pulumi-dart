@@ -25,8 +25,8 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotal
 
   factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb(
-      max: pulumi.Input.fromValue(map['max'] as double),
-      min: pulumi.Input.fromValue(map['min'] as double),
+      max: pulumi.Input.fromValue((map['max'] as num).toDouble()),
+      min: pulumi.Input.fromValue((map['min'] as num).toDouble()),
     );
   }
 }

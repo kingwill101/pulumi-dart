@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxFunctionAppSlotAuthSettingsV2ActiveDirectoryV2 {
   /// The list of allowed Applications for the Default Authorisation Policy.
-  final pulumi.Input<List<String>>? allowedApplications;
+  final pulumi.Input<List<String>?>? allowedApplications;
   /// Specifies a list of Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
   ///
   /// &gt; **Note:** This is configured on the Authentication Provider side and is Read Only here.
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// The list of allowed Group Names for the Default Authorisation Policy.
-  final pulumi.Input<List<String>>? allowedGroups;
+  final pulumi.Input<List<String>?>? allowedGroups;
   /// The list of allowed Identities for the Default Authorisation Policy.
-  final pulumi.Input<List<String>>? allowedIdentities;
+  final pulumi.Input<List<String>?>? allowedIdentities;
   /// The ID of the Client to use to authenticate with Azure Active Directory.
   final pulumi.Input<String> clientId;
   /// The thumbprint of the certificate used for signing purposes.
   ///
   /// &gt; **Note:** If one `clientSecretSettingName` or `clientSecretCertificateThumbprint` is specified, terraform won't write the client secret or secret certificate thumbprint back to `appSetting`, so make sure they are existed in `appSettings` to function correctly.
-  final pulumi.Input<String>? clientSecretCertificateThumbprint;
+  final pulumi.Input<String?>? clientSecretCertificateThumbprint;
   /// The App Setting name that contains the client secret of the Client.
   ///
   /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// A list of Allowed Client Applications in the JWT Claim.
-  final pulumi.Input<List<String>>? jwtAllowedClientApplications;
+  final pulumi.Input<List<String>?>? jwtAllowedClientApplications;
   /// A list of Allowed Groups in the JWT Claim.
-  final pulumi.Input<List<String>>? jwtAllowedGroups;
+  final pulumi.Input<List<String>?>? jwtAllowedGroups;
   /// A map of key-value pairs to send to the Authorisation Endpoint when a user logs in.
-  final pulumi.Input<Map<String, String>>? loginParameters;
+  final pulumi.Input<Map<String, String>?>? loginParameters;
   /// The Azure Tenant Endpoint for the Authenticating Tenant. e.g. `https://login.microsoftonline.com/{tenant-guid}/v2.0/`
   ///
   /// &gt; **Note:** [Here](https://learn.microsoft.com/en-us/entra/identity-platform/authentication-national-cloud#microsoft-entra-authentication-endpoints) is a list of possible authentication endpoints based on the cloud environment. [Here](https://learn.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad?tabs=workforce-tenant) is more information to better understand how to configure authentication for Azure App Service or Azure Functions.
   final pulumi.Input<String> tenantAuthEndpoint;
   /// Should the www-authenticate provider should be omitted from the request? Defaults to `false`.
-  final pulumi.Input<bool>? wwwAuthenticationDisabled;
+  final pulumi.Input<bool?>? wwwAuthenticationDisabled;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettingsV2ActiveDirectoryV2].
   /// [allowedApplications] The list of allowed Applications for the Default Authorisation Policy.

@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_args.dart';
 import 'workspace_custom_parameters.dart';
 import 'workspace_enhanced_security_compliance.dart';
+import 'workspace_managed_disk_identity.dart';
 import 'workspace_state.dart';
+import 'workspace_storage_account_identity.dart';
 
 /// Manages a Databricks Workspace
 ///
@@ -248,7 +250,7 @@ class Workspace extends pulumi.CustomResource {
   /// Whether customer managed keys for disk encryption will automatically be rotated to the latest version.
   late final pulumi.Output<bool?> managedDiskCmkRotationToLatestVersionEnabled;
   /// A `managedDiskIdentity` block as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedDiskIdentities;
+  late final pulumi.Output<List<WorkspaceManagedDiskIdentity>> managedDiskIdentities;
   /// The ID of the Managed Resource Group created by the Databricks Workspace.
   late final pulumi.Output<String> managedResourceGroupId;
   /// The name of the resource group where Azure should place the managed Databricks resources. Changing this forces a new resource to be created.
@@ -276,7 +278,7 @@ class Workspace extends pulumi.CustomResource {
   /// &gt; **Note:** Downgrading to a `trial sku` from a `standard` or `premium sku` will force a new resource to be created.
   late final pulumi.Output<String> sku;
   /// A `storageAccountIdentity` block as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageAccountIdentities;
+  late final pulumi.Output<List<WorkspaceStorageAccountIdentity>> storageAccountIdentities;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The unique identifier of the databricks workspace in Databricks control plane.
@@ -296,7 +298,7 @@ class Workspace extends pulumi.CustomResource {
           'azure:databricks/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessConnectorId = registerOutput<String?>('accessConnectorId');
     customParameters = registerOutput<WorkspaceCustomParameters>('customParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCustomParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -310,7 +312,7 @@ class Workspace extends pulumi.CustomResource {
     managedDiskCmkKeyVaultId = registerOutput<String?>('managedDiskCmkKeyVaultId');
     managedDiskCmkKeyVaultKeyId = registerOutput<String?>('managedDiskCmkKeyVaultKeyId');
     managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>('managedDiskCmkRotationToLatestVersionEnabled');
-    managedDiskIdentities = registerOutput<List<Map<String, dynamic>>>('managedDiskIdentities');
+    managedDiskIdentities = registerOutput<List<WorkspaceManagedDiskIdentity>>('managedDiskIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceManagedDiskIdentity>(guardedValue, (value) => WorkspaceManagedDiskIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     managedServicesCmkKeyVaultId = registerOutput<String?>('managedServicesCmkKeyVaultId');
@@ -320,8 +322,8 @@ class Workspace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    storageAccountIdentities = registerOutput<List<Map<String, dynamic>>>('storageAccountIdentities');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccountIdentities = registerOutput<List<WorkspaceStorageAccountIdentity>>('storageAccountIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceStorageAccountIdentity>(guardedValue, (value) => WorkspaceStorageAccountIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
     workspaceUrl = registerOutput<String>('workspaceUrl');
   }
@@ -331,11 +333,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,7 +364,7 @@ class Workspace extends pulumi.CustomResource {
     managedDiskCmkKeyVaultId = registerOutput<String?>('managedDiskCmkKeyVaultId');
     managedDiskCmkKeyVaultKeyId = registerOutput<String?>('managedDiskCmkKeyVaultKeyId');
     managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>('managedDiskCmkRotationToLatestVersionEnabled');
-    managedDiskIdentities = registerOutput<List<Map<String, dynamic>>>('managedDiskIdentities');
+    managedDiskIdentities = registerOutput<List<WorkspaceManagedDiskIdentity>>('managedDiskIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceManagedDiskIdentity>(guardedValue, (value) => WorkspaceManagedDiskIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     managedServicesCmkKeyVaultId = registerOutput<String?>('managedServicesCmkKeyVaultId');
@@ -371,8 +374,45 @@ class Workspace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    storageAccountIdentities = registerOutput<List<Map<String, dynamic>>>('storageAccountIdentities');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccountIdentities = registerOutput<List<WorkspaceStorageAccountIdentity>>('storageAccountIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceStorageAccountIdentity>(guardedValue, (value) => WorkspaceStorageAccountIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceUrl = registerOutput<String>('workspaceUrl');
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:databricks/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessConnectorId = registerOutput<String?>('accessConnectorId');
+    customParameters = registerOutput<WorkspaceCustomParameters>('customParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCustomParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
+    defaultStorageFirewallEnabled = registerOutput<bool?>('defaultStorageFirewallEnabled');
+    diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
+    enhancedSecurityCompliance = registerOutput<WorkspaceEnhancedSecurityCompliance?>('enhancedSecurityCompliance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceEnhancedSecurityCompliance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
+    loadBalancerBackendAddressPoolId = registerOutput<String?>('loadBalancerBackendAddressPoolId');
+    location = registerOutput<String>('location');
+    managedDiskCmkKeyVaultId = registerOutput<String?>('managedDiskCmkKeyVaultId');
+    managedDiskCmkKeyVaultKeyId = registerOutput<String?>('managedDiskCmkKeyVaultKeyId');
+    managedDiskCmkRotationToLatestVersionEnabled = registerOutput<bool?>('managedDiskCmkRotationToLatestVersionEnabled');
+    managedDiskIdentities = registerOutput<List<WorkspaceManagedDiskIdentity>>('managedDiskIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceManagedDiskIdentity>(guardedValue, (value) => WorkspaceManagedDiskIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    managedServicesCmkKeyVaultId = registerOutput<String?>('managedServicesCmkKeyVaultId');
+    managedServicesCmkKeyVaultKeyId = registerOutput<String?>('managedServicesCmkKeyVaultKeyId');
+    this.name = registerOutput<String>('name');
+    networkSecurityGroupRulesRequired = registerOutput<String?>('networkSecurityGroupRulesRequired');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    storageAccountIdentities = registerOutput<List<WorkspaceStorageAccountIdentity>>('storageAccountIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceStorageAccountIdentity>(guardedValue, (value) => WorkspaceStorageAccountIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
     workspaceUrl = registerOutput<String>('workspaceUrl');
   }

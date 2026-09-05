@@ -153,6 +153,17 @@ Future<GetDelegationSetResult> getDelegationSet(
   return GetDelegationSetResult.fromMap(result);
 }
 
+pulumi.Output<GetDelegationSetResult> getDelegationSetOutput(
+  GetDelegationSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getDelegationSet:getDelegationSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDelegationSetResult.fromMap);
+}
+
 /// Provides details about an AWS Route 53 Profile.
 ///
 /// ## Example Usage
@@ -376,6 +387,17 @@ Future<GetProfilesProfileResult> getProfilesProfile(
   return GetProfilesProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetProfilesProfileResult> getProfilesProfileOutput(
+  GetProfilesProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getProfilesProfile:getProfilesProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfilesProfileResult.fromMap);
+}
+
 /// Data source for managing an AWS Route 53 Profiles.
 ///
 /// ## Example Usage
@@ -484,6 +506,17 @@ Future<GetProfilesProfilesResult> getProfilesProfiles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProfilesProfilesResult.fromMap(result);
+}
+
+pulumi.Output<GetProfilesProfilesResult> getProfilesProfilesOutput(
+  GetProfilesProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getProfilesProfiles:getProfilesProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfilesProfilesResult.fromMap);
 }
 
 /// `aws.route53.ResolverQueryLogConfig` provides details about a specific Route53 Resolver Query Logging Configuration.
@@ -774,6 +807,17 @@ Future<GetQueryLogConfigResult> getQueryLogConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueryLogConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetQueryLogConfigResult> getQueryLogConfigOutput(
+  GetQueryLogConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getQueryLogConfig:getQueryLogConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueryLogConfigResult.fromMap);
 }
 
 /// Use this data source to get the details of resource records in a Route 53 hosted zone.
@@ -1080,6 +1124,17 @@ Future<GetRecordsResult> getRecords(
   return GetRecordsResult.fromMap(result);
 }
 
+pulumi.Output<GetRecordsResult> getRecordsOutput(
+  GetRecordsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getRecords:getRecords',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordsResult.fromMap);
+}
+
 /// `aws.route53.ResolverEndpoint` provides details about a specific Route53 Resolver Endpoint.
 ///
 /// This data source allows to find a list of IPaddresses associated with a specific Route53 Resolver Endpoint.
@@ -1334,6 +1389,17 @@ Future<GetResolverEndpointResult> getResolverEndpoint(
   return GetResolverEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverEndpointResult> getResolverEndpointOutput(
+  GetResolverEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverEndpoint:getResolverEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverEndpointResult.fromMap);
+}
+
 /// `aws.route53.ResolverFirewallConfig` provides details about a specific a Route 53 Resolver DNS Firewall config.
 ///
 /// This data source allows to find a details about a specific a Route 53 Resolver DNS Firewall config.
@@ -1454,6 +1520,17 @@ Future<GetResolverFirewallConfigResult> getResolverFirewallConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverFirewallConfigResult> getResolverFirewallConfigOutput(
+  GetResolverFirewallConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverFirewallConfig:getResolverFirewallConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverFirewallConfigResult.fromMap);
 }
 
 /// `aws.route53.ResolverFirewallDomainList` Retrieves the specified firewall domain list.
@@ -1578,6 +1655,17 @@ Future<GetResolverFirewallDomainListResult> getResolverFirewallDomainList(
   return GetResolverFirewallDomainListResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverFirewallDomainListResult> getResolverFirewallDomainListOutput(
+  GetResolverFirewallDomainListArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverFirewallDomainList:getResolverFirewallDomainList',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverFirewallDomainListResult.fromMap);
+}
+
 /// `aws.route53.ResolverFirewallRuleGroup` Retrieves the specified firewall rule group.
 ///
 /// This data source allows to retrieve details about a specific a Route 53 Resolver DNS Firewall rule group.
@@ -1698,6 +1786,17 @@ Future<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallRuleGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroupOutput(
+  GetResolverFirewallRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverFirewallRuleGroup:getResolverFirewallRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverFirewallRuleGroupResult.fromMap);
 }
 
 /// `aws.route53.ResolverFirewallRuleGroupAssociation` Retrieves the specified firewall rule group association.
@@ -1822,6 +1921,17 @@ Future<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewallRuleGro
   return GetResolverFirewallRuleGroupAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewallRuleGroupAssociationOutput(
+  GetResolverFirewallRuleGroupAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverFirewallRuleGroupAssociation:getResolverFirewallRuleGroupAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverFirewallRuleGroupAssociationResult.fromMap);
+}
+
 /// `aws.route53.getResolverFirewallRules` Provides details about rules in a specific Route53 Resolver Firewall rule group.
 ///
 /// ## Example Usage
@@ -1940,6 +2050,17 @@ Future<GetResolverFirewallRulesResult> getResolverFirewallRules(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallRulesResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverFirewallRulesResult> getResolverFirewallRulesOutput(
+  GetResolverFirewallRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverFirewallRules:getResolverFirewallRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverFirewallRulesResult.fromMap);
 }
 
 /// `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
@@ -2067,6 +2188,17 @@ Future<GetResolverRuleResult> getResolverRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetResolverRuleResult> getResolverRuleOutput(
+  GetResolverRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverRule:getResolverRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverRuleResult.fromMap);
 }
 
 /// `aws.route53.getResolverRules` provides details about a set of Route53 Resolver rules.
@@ -2418,6 +2550,17 @@ Future<GetResolverRulesResult> getResolverRules(
   return GetResolverRulesResult.fromMap(result);
 }
 
+pulumi.Output<GetResolverRulesResult> getResolverRulesOutput(
+  GetResolverRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getResolverRules:getResolverRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResolverRulesResult.fromMap);
+}
+
 /// Generates an Route53 traffic policy document in JSON format for use with resources that expect policy documents such as `aws.route53.TrafficPolicy`.
 ///
 /// ## Example Usage
@@ -2431,8 +2574,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///
 /// const current = aws.getRegion({});
 /// const example = current.then(current => aws.route53.getTrafficPolicyDocument({
-///     recordType: "A",
-///     startRule: "site_switch",
 ///     endpoints: [
 ///         {
 ///             id: "my_elb",
@@ -2447,15 +2588,17 @@ Future<GetResolverRulesResult> getResolverRules(
 ///         },
 ///     ],
 ///     rules: [{
-///         id: "site_switch",
-///         type: "failover",
 ///         primary: {
 ///             endpointReference: "my_elb",
 ///         },
 ///         secondary: {
 ///             endpointReference: "site_down_banner",
 ///         },
+///         id: "site_switch",
+///         type: "failover",
 ///     }],
+///     recordType: "A",
+///     startRule: "site_switch",
 /// }));
 /// const exampleTrafficPolicy = new aws.route53.TrafficPolicy("example", {
 ///     name: "example",
@@ -2468,9 +2611,7 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import pulumi_aws as aws
 ///
 /// current = aws.get_region()
-/// example = aws.route53.get_traffic_policy_document(record_type="A",
-///     start_rule="site_switch",
-///     endpoints=[
+/// example = aws.route53.get_traffic_policy_document(endpoints=[
 ///         {
 ///             "id": "my_elb",
 ///             "type": "elastic-load-balancer",
@@ -2484,15 +2625,17 @@ Future<GetResolverRulesResult> getResolverRules(
 ///         },
 ///     ],
 ///     rules=[{
-///         "id": "site_switch",
-///         "type": "failover",
 ///         "primary": {
 ///             "endpoint_reference": "my_elb",
 ///         },
 ///         "secondary": {
 ///             "endpoint_reference": "site_down_banner",
 ///         },
-///     }])
+///         "id": "site_switch",
+///         "type": "failover",
+///     }],
+///     record_type="A",
+///     start_rule="site_switch")
 /// example_traffic_policy = aws.route53.TrafficPolicy("example",
 ///     name="example",
 ///     comment="example comment",
@@ -2510,8 +2653,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///
 ///     var example = Aws.Route53.GetTrafficPolicyDocument.Invoke(new()
 ///     {
-///         RecordType = "A",
-///         StartRule = "site_switch",
 ///         Endpoints = new[]
 ///         {
 ///             new Aws.Route53.Inputs.GetTrafficPolicyDocumentEndpointInputArgs
@@ -2532,8 +2673,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///         {
 ///             new Aws.Route53.Inputs.GetTrafficPolicyDocumentRuleInputArgs
 ///             {
-///                 Id = "site_switch",
-///                 Type = "failover",
 ///                 Primary = new Aws.Route53.Inputs.GetTrafficPolicyDocumentRulePrimaryInputArgs
 ///                 {
 ///                     EndpointReference = "my_elb",
@@ -2542,8 +2681,12 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                 {
 ///                     EndpointReference = "site_down_banner",
 ///                 },
+///                 Id = "site_switch",
+///                 Type = "failover",
 ///             },
 ///         },
+///         RecordType = "A",
+///         StartRule = "site_switch",
 ///     });
 ///
 ///     var exampleTrafficPolicy = new Aws.Route53.TrafficPolicy("example", new()
@@ -2573,8 +2716,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 			return err
 /// 		}
 /// 		example, err := route53.GetTrafficPolicyDocument(ctx, &route53.GetTrafficPolicyDocumentArgs{
-/// 			RecordType: pulumi.StringRef("A"),
-/// 			StartRule:  pulumi.StringRef("site_switch"),
 /// 			Endpoints: []route53.GetTrafficPolicyDocumentEndpoint{
 /// 				{
 /// 					Id:    "my_elb",
@@ -2590,16 +2731,18 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 			},
 /// 			Rules: []route53.GetTrafficPolicyDocumentRule{
 /// 				{
-/// 					Id:   "site_switch",
-/// 					Type: pulumi.StringRef("failover"),
 /// 					Primary: {
 /// 						EndpointReference: pulumi.StringRef("my_elb"),
 /// 					},
 /// 					Secondary: {
 /// 						EndpointReference: pulumi.StringRef("site_down_banner"),
 /// 					},
+/// 					Id:   "site_switch",
+/// 					Type: pulumi.StringRef("failover"),
 /// 				},
 /// 			},
+/// 			RecordType: pulumi.StringRef("A"),
+/// 			StartRule:  pulumi.StringRef("site_switch"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -2628,8 +2771,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// data "aws_getregion" "current" {
 /// }
 /// data "aws_route53_gettrafficpolicydocument" "example" {
-///   record_type = "A"
-///   start_rule  = "site_switch"
 ///   endpoints {
 ///     id    = "my_elb"
 ///     type  = "elastic-load-balancer"
@@ -2642,15 +2783,17 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     value  = "www.example.com"
 ///   }
 ///   rules {
-///     id   = "site_switch"
-///     type = "failover"
 ///     primary = {
 ///       endpoint_reference = "my_elb"
 ///     }
 ///     secondary = {
 ///       endpoint_reference = "site_down_banner"
 ///     }
+///     id   = "site_switch"
+///     type = "failover"
 ///   }
+///   record_type = "A"
+///   start_rule  = "site_switch"
 /// }
 ///
 /// resource "aws_route53_trafficpolicy" "example" {
@@ -2692,8 +2835,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///             .build());
 ///
 ///         final var example = Route53Functions.getTrafficPolicyDocument(GetTrafficPolicyDocumentArgs.builder()
-///             .recordType("A")
-///             .startRule("site_switch")
 ///             .endpoints(
 ///                 GetTrafficPolicyDocumentEndpointArgs.builder()
 ///                     .id("my_elb")
@@ -2707,15 +2848,17 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                     .value("www.example.com")
 ///                     .build())
 ///             .rules(GetTrafficPolicyDocumentRuleArgs.builder()
-///                 .id("site_switch")
-///                 .type("failover")
 ///                 .primary(GetTrafficPolicyDocumentRulePrimaryArgs.builder()
 ///                     .endpointReference("my_elb")
 ///                     .build())
 ///                 .secondary(GetTrafficPolicyDocumentRuleSecondaryArgs.builder()
 ///                     .endpointReference("site_down_banner")
 ///                     .build())
+///                 .id("site_switch")
+///                 .type("failover")
 ///                 .build())
+///             .recordType("A")
+///             .startRule("site_switch")
 ///             .build());
 ///
 ///         var exampleTrafficPolicy = new TrafficPolicy("exampleTrafficPolicy", TrafficPolicyArgs.builder()
@@ -2745,8 +2888,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     fn::invoke:
 ///       function: aws:route53:getTrafficPolicyDocument
 ///       arguments:
-///         recordType: A
-///         startRule: site_switch
 ///         endpoints:
 ///           - id: my_elb
 ///             type: elastic-load-balancer
@@ -2756,12 +2897,14 @@ Future<GetResolverRulesResult> getResolverRules(
 ///             region: ${current.region}
 ///             value: www.example.com
 ///         rules:
-///           - id: site_switch
-///             type: failover
-///             primary:
+///           - primary:
 ///               endpointReference: my_elb
 ///             secondary:
 ///               endpointReference: site_down_banner
+///             id: site_switch
+///             type: failover
+///         recordType: A
+///         startRule: site_switch
 /// ```
 ///
 ///
@@ -2775,8 +2918,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.route53.getTrafficPolicyDocument({
-///     recordType: "A",
-///     startRule: "geoproximity_rule",
 ///     endpoints: [
 ///         {
 ///             id: "na_endpoint_a",
@@ -2801,18 +2942,16 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     ],
 ///     rules: [
 ///         {
-///             id: "na_rule",
-///             type: "failover",
 ///             primary: {
 ///                 endpointReference: "na_endpoint_a",
 ///             },
 ///             secondary: {
 ///                 endpointReference: "na_endpoint_b",
 ///             },
+///             id: "na_rule",
+///             type: "failover",
 ///         },
 ///         {
-///             id: "geoproximity_rule",
-///             type: "geoproximity",
 ///             geoProximityLocations: [
 ///                 {
 ///                     region: "aws:route53:us-west-1",
@@ -2833,8 +2972,12 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                     endpointReference: "ap_endpoint",
 ///                 },
 ///             ],
+///             id: "geoproximity_rule",
+///             type: "geoproximity",
 ///         },
 ///     ],
+///     recordType: "A",
+///     startRule: "geoproximity_rule",
 /// });
 /// const exampleTrafficPolicy = new aws.route53.TrafficPolicy("example", {
 ///     name: "example",
@@ -2846,9 +2989,7 @@ Future<GetResolverRulesResult> getResolverRules(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.route53.get_traffic_policy_document(record_type="A",
-///     start_rule="geoproximity_rule",
-///     endpoints=[
+/// example = aws.route53.get_traffic_policy_document(endpoints=[
 ///         {
 ///             "id": "na_endpoint_a",
 ///             "type": "elastic-load-balancer",
@@ -2872,18 +3013,16 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     ],
 ///     rules=[
 ///         {
-///             "id": "na_rule",
-///             "type": "failover",
 ///             "primary": {
 ///                 "endpoint_reference": "na_endpoint_a",
 ///             },
 ///             "secondary": {
 ///                 "endpoint_reference": "na_endpoint_b",
 ///             },
+///             "id": "na_rule",
+///             "type": "failover",
 ///         },
 ///         {
-///             "id": "geoproximity_rule",
-///             "type": "geoproximity",
 ///             "geo_proximity_locations": [
 ///                 {
 ///                     "region": "aws:route53:us-west-1",
@@ -2904,8 +3043,12 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                     "endpoint_reference": "ap_endpoint",
 ///                 },
 ///             ],
+///             "id": "geoproximity_rule",
+///             "type": "geoproximity",
 ///         },
-///     ])
+///     ],
+///     record_type="A",
+///     start_rule="geoproximity_rule")
 /// example_traffic_policy = aws.route53.TrafficPolicy("example",
 ///     name="example",
 ///     comment="example comment",
@@ -2921,8 +3064,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// {
 ///     var example = Aws.Route53.GetTrafficPolicyDocument.Invoke(new()
 ///     {
-///         RecordType = "A",
-///         StartRule = "geoproximity_rule",
 ///         Endpoints = new[]
 ///         {
 ///             new Aws.Route53.Inputs.GetTrafficPolicyDocumentEndpointInputArgs
@@ -2954,8 +3095,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///         {
 ///             new Aws.Route53.Inputs.GetTrafficPolicyDocumentRuleInputArgs
 ///             {
-///                 Id = "na_rule",
-///                 Type = "failover",
 ///                 Primary = new Aws.Route53.Inputs.GetTrafficPolicyDocumentRulePrimaryInputArgs
 ///                 {
 ///                     EndpointReference = "na_endpoint_a",
@@ -2964,11 +3103,11 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                 {
 ///                     EndpointReference = "na_endpoint_b",
 ///                 },
+///                 Id = "na_rule",
+///                 Type = "failover",
 ///             },
 ///             new Aws.Route53.Inputs.GetTrafficPolicyDocumentRuleInputArgs
 ///             {
-///                 Id = "geoproximity_rule",
-///                 Type = "geoproximity",
 ///                 GeoProximityLocations = new[]
 ///                 {
 ///                     new Aws.Route53.Inputs.GetTrafficPolicyDocumentRuleGeoProximityLocationInputArgs
@@ -2993,8 +3132,12 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                         EndpointReference = "ap_endpoint",
 ///                     },
 ///                 },
+///                 Id = "geoproximity_rule",
+///                 Type = "geoproximity",
 ///             },
 ///         },
+///         RecordType = "A",
+///         StartRule = "geoproximity_rule",
 ///     });
 ///
 ///     var exampleTrafficPolicy = new Aws.Route53.TrafficPolicy("example", new()
@@ -3017,8 +3160,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := route53.GetTrafficPolicyDocument(ctx, &route53.GetTrafficPolicyDocumentArgs{
-/// 			RecordType: pulumi.StringRef("A"),
-/// 			StartRule:  pulumi.StringRef("geoproximity_rule"),
 /// 			Endpoints: []route53.GetTrafficPolicyDocumentEndpoint{
 /// 				{
 /// 					Id:    "na_endpoint_a",
@@ -3043,18 +3184,16 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 			},
 /// 			Rules: []route53.GetTrafficPolicyDocumentRule{
 /// 				{
-/// 					Id:   "na_rule",
-/// 					Type: pulumi.StringRef("failover"),
 /// 					Primary: {
 /// 						EndpointReference: pulumi.StringRef("na_endpoint_a"),
 /// 					},
 /// 					Secondary: {
 /// 						EndpointReference: pulumi.StringRef("na_endpoint_b"),
 /// 					},
+/// 					Id:   "na_rule",
+/// 					Type: pulumi.StringRef("failover"),
 /// 				},
 /// 				{
-/// 					Id:   "geoproximity_rule",
-/// 					Type: pulumi.StringRef("geoproximity"),
 /// 					GeoProximityLocations: []route53.GetTrafficPolicyDocumentRuleGeoProximityLocation{
 /// 						{
 /// 							Region:               pulumi.StringRef("aws:route53:us-west-1"),
@@ -3075,8 +3214,12 @@ Future<GetResolverRulesResult> getResolverRules(
 /// 							EndpointReference:    pulumi.StringRef("ap_endpoint"),
 /// 						},
 /// 					},
+/// 					Id:   "geoproximity_rule",
+/// 					Type: pulumi.StringRef("geoproximity"),
 /// 				},
 /// 			},
+/// 			RecordType: pulumi.StringRef("A"),
+/// 			StartRule:  pulumi.StringRef("geoproximity_rule"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -3103,8 +3246,6 @@ Future<GetResolverRulesResult> getResolverRules(
 /// }
 ///
 /// data "aws_route53_gettrafficpolicydocument" "example" {
-///   record_type = "A"
-///   start_rule  = "geoproximity_rule"
 ///   endpoints {
 ///     id    = "na_endpoint_a"
 ///     type  = "elastic-load-balancer"
@@ -3126,18 +3267,16 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     value = "elb-444444.ap-northeast-2.elb.amazonaws.com"
 ///   }
 ///   rules {
-///     id   = "na_rule"
-///     type = "failover"
 ///     primary = {
 ///       endpoint_reference = "na_endpoint_a"
 ///     }
 ///     secondary = {
 ///       endpoint_reference = "na_endpoint_b"
 ///     }
+///     id   = "na_rule"
+///     type = "failover"
 ///   }
 ///   rules {
-///     id   = "geoproximity_rule"
-///     type = "geoproximity"
 ///     geo_proximity_locations {
 ///       region                 = "aws:route53:us-west-1"
 ///       bias                   = 10
@@ -3156,7 +3295,11 @@ Future<GetResolverRulesResult> getResolverRules(
 ///       evaluate_target_health = true
 ///       endpoint_reference     = "ap_endpoint"
 ///     }
+///     id   = "geoproximity_rule"
+///     type = "geoproximity"
 ///   }
+///   record_type = "A"
+///   start_rule  = "geoproximity_rule"
 /// }
 ///
 /// resource "aws_route53_trafficpolicy" "example" {
@@ -3194,8 +3337,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Route53Functions.getTrafficPolicyDocument(GetTrafficPolicyDocumentArgs.builder()
-///             .recordType("A")
-///             .startRule("geoproximity_rule")
 ///             .endpoints(
 ///                 GetTrafficPolicyDocumentEndpointArgs.builder()
 ///                     .id("na_endpoint_a")
@@ -3219,18 +3360,16 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                     .build())
 ///             .rules(
 ///                 GetTrafficPolicyDocumentRuleArgs.builder()
-///                     .id("na_rule")
-///                     .type("failover")
 ///                     .primary(GetTrafficPolicyDocumentRulePrimaryArgs.builder()
 ///                         .endpointReference("na_endpoint_a")
 ///                         .build())
 ///                     .secondary(GetTrafficPolicyDocumentRuleSecondaryArgs.builder()
 ///                         .endpointReference("na_endpoint_b")
 ///                         .build())
+///                     .id("na_rule")
+///                     .type("failover")
 ///                     .build(),
 ///                 GetTrafficPolicyDocumentRuleArgs.builder()
-///                     .id("geoproximity_rule")
-///                     .type("geoproximity")
 ///                     .geoProximityLocations(
 ///                         GetTrafficPolicyDocumentRuleGeoProximityLocationArgs.builder()
 ///                             .region("aws:route53:us-west-1")
@@ -3250,7 +3389,11 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                             .evaluateTargetHealth(true)
 ///                             .endpointReference("ap_endpoint")
 ///                             .build())
+///                     .id("geoproximity_rule")
+///                     .type("geoproximity")
 ///                     .build())
+///             .recordType("A")
+///             .startRule("geoproximity_rule")
 ///             .build());
 ///
 ///         var exampleTrafficPolicy = new TrafficPolicy("exampleTrafficPolicy", TrafficPolicyArgs.builder()
@@ -3276,8 +3419,6 @@ Future<GetResolverRulesResult> getResolverRules(
 ///     fn::invoke:
 ///       function: aws:route53:getTrafficPolicyDocument
 ///       arguments:
-///         recordType: A
-///         startRule: geoproximity_rule
 ///         endpoints:
 ///           - id: na_endpoint_a
 ///             type: elastic-load-balancer
@@ -3292,15 +3433,13 @@ Future<GetResolverRulesResult> getResolverRules(
 ///             type: elastic-load-balancer
 ///             value: elb-444444.ap-northeast-2.elb.amazonaws.com
 ///         rules:
-///           - id: na_rule
-///             type: failover
-///             primary:
+///           - primary:
 ///               endpointReference: na_endpoint_a
 ///             secondary:
 ///               endpointReference: na_endpoint_b
-///           - id: geoproximity_rule
-///             type: geoproximity
-///             geoProximityLocations:
+///             id: na_rule
+///             type: failover
+///           - geoProximityLocations:
 ///               - region: aws:route53:us-west-1
 ///                 bias: 10
 ///                 evaluateTargetHealth: true
@@ -3313,6 +3452,10 @@ Future<GetResolverRulesResult> getResolverRules(
 ///                 bias: 0
 ///                 evaluateTargetHealth: true
 ///                 endpointReference: ap_endpoint
+///             id: geoproximity_rule
+///             type: geoproximity
+///         recordType: A
+///         startRule: geoproximity_rule
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_route53_get_traffic_policy_document_get_traffic_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3327,6 +3470,17 @@ Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrafficPolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetTrafficPolicyDocumentResult> getTrafficPolicyDocumentOutput(
+  GetTrafficPolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getTrafficPolicyDocument:getTrafficPolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrafficPolicyDocumentResult.fromMap);
 }
 
 /// `aws.route53.Zone` provides details about a specific Route 53 Hosted Zone.
@@ -3661,6 +3815,17 @@ Future<GetZoneResult> getZone(
   return GetZoneResult.fromMap(result);
 }
 
+pulumi.Output<GetZoneResult> getZoneOutput(
+  GetZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getZone:getZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneResult.fromMap);
+}
+
 /// This resource can be useful for getting back a list of Route53 Hosted Zone IDs for a Region.
 ///
 /// ## Example Usage
@@ -3780,4 +3945,15 @@ Future<GetZonesResult> getZones(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZonesResult.fromMap(result);
+}
+
+pulumi.Output<GetZonesResult> getZonesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:route53/getZones:getZones',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetZonesResult.fromMap);
 }

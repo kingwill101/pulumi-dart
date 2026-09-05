@@ -6,7 +6,7 @@ class StackApplicationSettings {
   /// Whether application settings should be persisted.
   final pulumi.Input<bool> enabled;
   /// Name of the settings group. Required when `enabled` is `true`. Can be up to 100 characters.
-  final pulumi.Input<String>? settingsGroup;
+  final pulumi.Input<String?>? settingsGroup;
 
   /// Creates a new [StackApplicationSettings].
   /// [enabled] Whether application settings should be persisted.

@@ -6,17 +6,17 @@ import 'instance_access_control_attributes_attribute.dart';
 /// Input properties used for looking up and filtering InstanceAccessControlAttributes resources.
 class InstanceAccessControlAttributesState {
   /// See AccessControlAttribute for more details.
-  final pulumi.Input<List<InstanceAccessControlAttributesAttribute>>? attributes;
-  /// The Amazon Resource Name (ARN) of the SSO Instance.
-  final pulumi.Input<String>? instanceArn;
+  final pulumi.Input<List<InstanceAccessControlAttributesAttribute>?>? attributes;
+  /// ARN of the SSO Instance.
+  final pulumi.Input<String?>? instanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? status;
-  final pulumi.Input<String>? statusReason;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<String?>? statusReason;
 
   /// Creates a new [InstanceAccessControlAttributesState].
   /// [attributes] See AccessControlAttribute for more details.
-  /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance.
+  /// [instanceArn] ARN of the SSO Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Optional.
   /// [statusReason] Optional.

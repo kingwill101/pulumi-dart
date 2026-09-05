@@ -141,15 +141,15 @@ import 'alias_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.Alias("example", {
-///     name: "staging",
-///     description: "Staging environment with traffic splitting",
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     functionVersion: "2",
 ///     routingConfig: {
 ///         additionalVersionWeights: {
 ///             "1": 0.1,
 ///         },
 ///     },
+///     name: "staging",
+///     description: "Staging environment with traffic splitting",
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     functionVersion: "2",
 /// });
 /// ```
 /// ```python
@@ -157,15 +157,15 @@ import 'alias_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.Alias("example",
-///     name="staging",
-///     description="Staging environment with traffic splitting",
-///     function_name=example_aws_lambda_function["functionName"],
-///     function_version="2",
 ///     routing_config={
 ///         "additional_version_weights": {
 ///             "1": 0.1,
 ///         },
-///     })
+///     },
+///     name="staging",
+///     description="Staging environment with traffic splitting",
+///     function_name=example_aws_lambda_function["functionName"],
+///     function_version="2")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -177,10 +177,6 @@ import 'alias_state.dart';
 /// {
 ///     var example = new Aws.Lambda.Alias("example", new()
 ///     {
-///         Name = "staging",
-///         Description = "Staging environment with traffic splitting",
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         FunctionVersion = "2",
 ///         RoutingConfig = new Aws.Lambda.Inputs.AliasRoutingConfigArgs
 ///         {
 ///             AdditionalVersionWeights =
@@ -188,6 +184,10 @@ import 'alias_state.dart';
 ///                 { "1", 0.1 },
 ///             },
 ///         },
+///         Name = "staging",
+///         Description = "Staging environment with traffic splitting",
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         FunctionVersion = "2",
 ///     });
 ///
 /// });
@@ -203,15 +203,15 @@ import 'alias_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewAlias(ctx, "example", &lambda.AliasArgs{
-/// 			Name:            pulumi.String("staging"),
-/// 			Description:     pulumi.String("Staging environment with traffic splitting"),
-/// 			FunctionName:    pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			FunctionVersion: pulumi.String("2"),
 /// 			RoutingConfig: &lambda.AliasRoutingConfigArgs{
 /// 				AdditionalVersionWeights: pulumi.Float64Map{
 /// 					"1": pulumi.Float64(0.1),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("staging"),
+/// 			Description:     pulumi.String("Staging environment with traffic splitting"),
+/// 			FunctionName:    pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			FunctionVersion: pulumi.String("2"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -230,15 +230,17 @@ import 'alias_state.dart';
 /// }
 ///
 /// resource "aws_lambda_alias" "example" {
-///   name             = "staging"
-///   description      = "Staging environment with traffic splitting"
-///   function_name    = exampleAwsLambdaFunction.functionName
-///   function_version = "2"
 ///   routing_config = {
 ///     additional_version_weights = {
 ///       "1" = 0.1
 ///     }
 ///   }
+///   # Send 10% of traffic to version 1
+///   # Remaining 90% goes to version 2 (the primary version)
+///   name             = "staging"
+///   description      = "Staging environment with traffic splitting"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = "2"
 /// }
 /// ```
 /// ```java
@@ -264,13 +266,13 @@ import 'alias_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Alias("example", AliasArgs.builder()
+///             .routingConfig(AliasRoutingConfigArgs.builder()
+///                 .additionalVersionWeights(Map.of("1", 0.1))
+///                 .build())
 ///             .name("staging")
 ///             .description("Staging environment with traffic splitting")
 ///             .functionName(exampleAwsLambdaFunction.functionName())
 ///             .functionVersion("2")
-///             .routingConfig(AliasRoutingConfigArgs.builder()
-///                 .additionalVersionWeights(Map.of("1", 0.1))
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -281,13 +283,13 @@ import 'alias_state.dart';
 ///   example:
 ///     type: aws:lambda:Alias
 ///     properties:
+///       routingConfig:
+///         additionalVersionWeights:
+///           '1': 0.1
 ///       name: staging
 ///       description: Staging environment with traffic splitting
 ///       functionName: ${exampleAwsLambdaFunction.functionName}
 ///       functionVersion: '2'
-///       routingConfig:
-///         additionalVersionWeights:
-///           '1': 0.1
 /// ```
 ///
 ///
@@ -300,15 +302,15 @@ import 'alias_state.dart';
 ///
 /// // Alias for gradual rollout
 /// const example = new aws.lambda.Alias("example", {
-///     name: "live",
-///     description: "Live traffic with gradual rollout to new version",
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     functionVersion: "5",
 ///     routingConfig: {
 ///         additionalVersionWeights: {
 ///             "6": 0.05,
 ///         },
 ///     },
+///     name: "live",
+///     description: "Live traffic with gradual rollout to new version",
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     functionVersion: "5",
 /// });
 /// ```
 /// ```python
@@ -317,15 +319,15 @@ import 'alias_state.dart';
 ///
 /// # Alias for gradual rollout
 /// example = aws.lambda_.Alias("example",
-///     name="live",
-///     description="Live traffic with gradual rollout to new version",
-///     function_name=example_aws_lambda_function["functionName"],
-///     function_version="5",
 ///     routing_config={
 ///         "additional_version_weights": {
 ///             "6": 0.05,
 ///         },
-///     })
+///     },
+///     name="live",
+///     description="Live traffic with gradual rollout to new version",
+///     function_name=example_aws_lambda_function["functionName"],
+///     function_version="5")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -338,10 +340,6 @@ import 'alias_state.dart';
 ///     // Alias for gradual rollout
 ///     var example = new Aws.Lambda.Alias("example", new()
 ///     {
-///         Name = "live",
-///         Description = "Live traffic with gradual rollout to new version",
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         FunctionVersion = "5",
 ///         RoutingConfig = new Aws.Lambda.Inputs.AliasRoutingConfigArgs
 ///         {
 ///             AdditionalVersionWeights =
@@ -349,6 +347,10 @@ import 'alias_state.dart';
 ///                 { "6", 0.05 },
 ///             },
 ///         },
+///         Name = "live",
+///         Description = "Live traffic with gradual rollout to new version",
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         FunctionVersion = "5",
 ///     });
 ///
 /// });
@@ -365,15 +367,15 @@ import 'alias_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Alias for gradual rollout
 /// 		_, err := lambda.NewAlias(ctx, "example", &lambda.AliasArgs{
-/// 			Name:            pulumi.String("live"),
-/// 			Description:     pulumi.String("Live traffic with gradual rollout to new version"),
-/// 			FunctionName:    pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			FunctionVersion: pulumi.String("5"),
 /// 			RoutingConfig: &lambda.AliasRoutingConfigArgs{
 /// 				AdditionalVersionWeights: pulumi.Float64Map{
 /// 					"6": pulumi.Float64(0.05),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("live"),
+/// 			Description:     pulumi.String("Live traffic with gradual rollout to new version"),
+/// 			FunctionName:    pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			FunctionVersion: pulumi.String("5"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -393,15 +395,16 @@ import 'alias_state.dart';
 ///
 /// # Alias for gradual rollout
 /// resource "aws_lambda_alias" "example" {
-///   name             = "live"
-///   description      = "Live traffic with gradual rollout to new version"
-///   function_name    = exampleAwsLambdaFunction.functionName
-///   function_version = "5"
 ///   routing_config = {
 ///     additional_version_weights = {
 ///       "6" = 0.05
 ///     }
 ///   }
+///   # Send 5% of traffic to new version for testing
+///   name             = "live"
+///   description      = "Live traffic with gradual rollout to new version"
+///   function_name    = exampleAwsLambdaFunction.functionName
+///   function_version = "5"
 /// }
 /// ```
 /// ```java
@@ -428,13 +431,13 @@ import 'alias_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Alias for gradual rollout
 ///         var example = new Alias("example", AliasArgs.builder()
+///             .routingConfig(AliasRoutingConfigArgs.builder()
+///                 .additionalVersionWeights(Map.of("6", 0.05))
+///                 .build())
 ///             .name("live")
 ///             .description("Live traffic with gradual rollout to new version")
 ///             .functionName(exampleAwsLambdaFunction.functionName())
 ///             .functionVersion("5")
-///             .routingConfig(AliasRoutingConfigArgs.builder()
-///                 .additionalVersionWeights(Map.of("6", 0.05))
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -446,13 +449,13 @@ import 'alias_state.dart';
 ///   example:
 ///     type: aws:lambda:Alias
 ///     properties:
+///       routingConfig:
+///         additionalVersionWeights:
+///           '6': 0.05
 ///       name: live
 ///       description: Live traffic with gradual rollout to new version
 ///       functionName: ${exampleAwsLambdaFunction.functionName}
 ///       functionVersion: '5'
-///       routingConfig:
-///         additionalVersionWeights:
-///           '6': 0.05
 /// ```
 ///
 ///
@@ -619,7 +622,7 @@ class Alias extends pulumi.CustomResource {
           'aws:lambda/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -636,11 +639,12 @@ class Alias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Alias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -654,6 +658,25 @@ class Alias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    functionName = registerOutput<String>('functionName');
+    functionVersion = registerOutput<String>('functionVersion');
+    invokeArn = registerOutput<String>('invokeArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AliasRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Alias] resource.
+  Alias.reference(String urn)
+    : super(
+        'aws:lambda/alias:Alias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     functionName = registerOutput<String>('functionName');

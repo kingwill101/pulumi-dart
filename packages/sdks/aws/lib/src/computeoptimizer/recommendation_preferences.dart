@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'recommendation_preferences_args.dart';
 import 'recommendation_preferences_external_metrics_preference.dart';
+import 'recommendation_preferences_preferred_resource.dart';
 import 'recommendation_preferences_scope.dart';
 import 'recommendation_preferences_state.dart';
+import 'recommendation_preferences_utilization_preference.dart';
 
 /// Manages AWS Compute Optimizer recommendation preferences.
 ///
@@ -16,11 +18,11 @@ import 'recommendation_preferences_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.computeoptimizer.RecommendationPreferences("example", {
-///     resourceType: "Ec2Instance",
 ///     scope: {
 ///         name: "AccountId",
 ///         value: "123456789012",
 ///     },
+///     resourceType: "Ec2Instance",
 ///     lookBackPeriod: "DAYS_32",
 /// });
 /// ```
@@ -29,11 +31,11 @@ import 'recommendation_preferences_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.computeoptimizer.RecommendationPreferences("example",
-///     resource_type="Ec2Instance",
 ///     scope={
 ///         "name": "AccountId",
 ///         "value": "123456789012",
 ///     },
+///     resource_type="Ec2Instance",
 ///     look_back_period="DAYS_32")
 /// ```
 /// ```csharp
@@ -46,12 +48,12 @@ import 'recommendation_preferences_state.dart';
 /// {
 ///     var example = new Aws.ComputeOptimizer.RecommendationPreferences("example", new()
 ///     {
-///         ResourceType = "Ec2Instance",
 ///         Scope = new Aws.ComputeOptimizer.Inputs.RecommendationPreferencesScopeArgs
 ///         {
 ///             Name = "AccountId",
 ///             Value = "123456789012",
 ///         },
+///         ResourceType = "Ec2Instance",
 ///         LookBackPeriod = "DAYS_32",
 ///     });
 ///
@@ -68,11 +70,11 @@ import 'recommendation_preferences_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := computeoptimizer.NewRecommendationPreferences(ctx, "example", &computeoptimizer.RecommendationPreferencesArgs{
-/// 			ResourceType: pulumi.String("Ec2Instance"),
 /// 			Scope: &computeoptimizer.RecommendationPreferencesScopeArgs{
 /// 				Name:  pulumi.String("AccountId"),
 /// 				Value: pulumi.String("123456789012"),
 /// 			},
+/// 			ResourceType:   pulumi.String("Ec2Instance"),
 /// 			LookBackPeriod: pulumi.String("DAYS_32"),
 /// 		})
 /// 		if err != nil {
@@ -92,11 +94,11 @@ import 'recommendation_preferences_state.dart';
 /// }
 ///
 /// resource "aws_computeoptimizer_recommendationpreferences" "example" {
-///   resource_type = "Ec2Instance"
 ///   scope = {
 ///     name  = "AccountId"
 ///     value = "123456789012"
 ///   }
+///   resource_type    = "Ec2Instance"
 ///   look_back_period = "DAYS_32"
 /// }
 /// ```
@@ -123,11 +125,11 @@ import 'recommendation_preferences_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RecommendationPreferences("example", RecommendationPreferencesArgs.builder()
-///             .resourceType("Ec2Instance")
 ///             .scope(RecommendationPreferencesScopeArgs.builder()
 ///                 .name("AccountId")
 ///                 .value("123456789012")
 ///                 .build())
+///             .resourceType("Ec2Instance")
 ///             .lookBackPeriod("DAYS_32")
 ///             .build());
 ///
@@ -139,10 +141,10 @@ import 'recommendation_preferences_state.dart';
 ///   example:
 ///     type: aws:computeoptimizer:RecommendationPreferences
 ///     properties:
-///       resourceType: Ec2Instance
 ///       scope:
 ///         name: AccountId
 ///         value: '123456789012'
+///       resourceType: Ec2Instance
 ///       lookBackPeriod: DAYS_32
 /// ```
 ///
@@ -155,12 +157,10 @@ import 'recommendation_preferences_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.computeoptimizer.RecommendationPreferences("example", {
-///     resourceType: "Ec2Instance",
 ///     scope: {
 ///         name: "AccountId",
 ///         value: "123456789012",
 ///     },
-///     enhancedInfrastructureMetrics: "Active",
 ///     externalMetricsPreference: {
 ///         source: "Datadog",
 ///     },
@@ -171,6 +171,8 @@ import 'recommendation_preferences_state.dart';
 ///         ],
 ///         name: "Ec2InstanceTypes",
 ///     }],
+///     resourceType: "Ec2Instance",
+///     enhancedInfrastructureMetrics: "Active",
 /// });
 /// ```
 /// ```python
@@ -178,12 +180,10 @@ import 'recommendation_preferences_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.computeoptimizer.RecommendationPreferences("example",
-///     resource_type="Ec2Instance",
 ///     scope={
 ///         "name": "AccountId",
 ///         "value": "123456789012",
 ///     },
-///     enhanced_infrastructure_metrics="Active",
 ///     external_metrics_preference={
 ///         "source": "Datadog",
 ///     },
@@ -193,7 +193,9 @@ import 'recommendation_preferences_state.dart';
 ///             "r5",
 ///         ],
 ///         "name": "Ec2InstanceTypes",
-///     }])
+///     }],
+///     resource_type="Ec2Instance",
+///     enhanced_infrastructure_metrics="Active")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -205,13 +207,11 @@ import 'recommendation_preferences_state.dart';
 /// {
 ///     var example = new Aws.ComputeOptimizer.RecommendationPreferences("example", new()
 ///     {
-///         ResourceType = "Ec2Instance",
 ///         Scope = new Aws.ComputeOptimizer.Inputs.RecommendationPreferencesScopeArgs
 ///         {
 ///             Name = "AccountId",
 ///             Value = "123456789012",
 ///         },
-///         EnhancedInfrastructureMetrics = "Active",
 ///         ExternalMetricsPreference = new Aws.ComputeOptimizer.Inputs.RecommendationPreferencesExternalMetricsPreferenceArgs
 ///         {
 ///             Source = "Datadog",
@@ -228,6 +228,8 @@ import 'recommendation_preferences_state.dart';
 ///                 Name = "Ec2InstanceTypes",
 ///             },
 ///         },
+///         ResourceType = "Ec2Instance",
+///         EnhancedInfrastructureMetrics = "Active",
 ///     });
 ///
 /// });
@@ -243,12 +245,10 @@ import 'recommendation_preferences_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := computeoptimizer.NewRecommendationPreferences(ctx, "example", &computeoptimizer.RecommendationPreferencesArgs{
-/// 			ResourceType: pulumi.String("Ec2Instance"),
 /// 			Scope: &computeoptimizer.RecommendationPreferencesScopeArgs{
 /// 				Name:  pulumi.String("AccountId"),
 /// 				Value: pulumi.String("123456789012"),
 /// 			},
-/// 			EnhancedInfrastructureMetrics: pulumi.String("Active"),
 /// 			ExternalMetricsPreference: &computeoptimizer.RecommendationPreferencesExternalMetricsPreferenceArgs{
 /// 				Source: pulumi.String("Datadog"),
 /// 			},
@@ -261,6 +261,8 @@ import 'recommendation_preferences_state.dart';
 /// 					Name: pulumi.String("Ec2InstanceTypes"),
 /// 				},
 /// 			},
+/// 			ResourceType:                  pulumi.String("Ec2Instance"),
+/// 			EnhancedInfrastructureMetrics: pulumi.String("Active"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -279,12 +281,10 @@ import 'recommendation_preferences_state.dart';
 /// }
 ///
 /// resource "aws_computeoptimizer_recommendationpreferences" "example" {
-///   resource_type = "Ec2Instance"
 ///   scope = {
 ///     name  = "AccountId"
 ///     value = "123456789012"
 ///   }
-///   enhanced_infrastructure_metrics = "Active"
 ///   external_metrics_preference = {
 ///     source = "Datadog"
 ///   }
@@ -292,6 +292,8 @@ import 'recommendation_preferences_state.dart';
 ///     include_lists = ["m5.xlarge", "r5"]
 ///     name          = "Ec2InstanceTypes"
 ///   }
+///   resource_type                   = "Ec2Instance"
+///   enhanced_infrastructure_metrics = "Active"
 /// }
 /// ```
 /// ```java
@@ -319,12 +321,10 @@ import 'recommendation_preferences_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RecommendationPreferences("example", RecommendationPreferencesArgs.builder()
-///             .resourceType("Ec2Instance")
 ///             .scope(RecommendationPreferencesScopeArgs.builder()
 ///                 .name("AccountId")
 ///                 .value("123456789012")
 ///                 .build())
-///             .enhancedInfrastructureMetrics("Active")
 ///             .externalMetricsPreference(RecommendationPreferencesExternalMetricsPreferenceArgs.builder()
 ///                 .source("Datadog")
 ///                 .build())
@@ -334,6 +334,8 @@ import 'recommendation_preferences_state.dart';
 ///                     "r5")
 ///                 .name("Ec2InstanceTypes")
 ///                 .build())
+///             .resourceType("Ec2Instance")
+///             .enhancedInfrastructureMetrics("Active")
 ///             .build());
 ///
 ///     }
@@ -344,11 +346,9 @@ import 'recommendation_preferences_state.dart';
 ///   example:
 ///     type: aws:computeoptimizer:RecommendationPreferences
 ///     properties:
-///       resourceType: Ec2Instance
 ///       scope:
 ///         name: AccountId
 ///         value: '123456789012'
-///       enhancedInfrastructureMetrics: Active
 ///       externalMetricsPreference:
 ///         source: Datadog
 ///       preferredResources:
@@ -356,6 +356,8 @@ import 'recommendation_preferences_state.dart';
 ///             - m5.xlarge
 ///             - r5
 ///           name: Ec2InstanceTypes
+///       resourceType: Ec2Instance
+///       enhancedInfrastructureMetrics: Active
 /// ```
 ///
 ///
@@ -376,7 +378,7 @@ class RecommendationPreferences extends pulumi.CustomResource {
   /// The preference to control the number of days the utilization metrics of the AWS resource are analyzed. Valid values: `DAYS_14`, `DAYS_32`, `DAYS_93`.
   late final pulumi.Output<String> lookBackPeriod;
   /// The preference to control which resource type values are considered when generating rightsizing recommendations. See Preferred Resources below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> preferredResources;
+  late final pulumi.Output<List<RecommendationPreferencesPreferredResource>?> preferredResources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The target resource type of the recommendation preferences. Valid values: `Ec2Instance`, `AutoScalingGroup`, `RdsDBInstance`, `AuroraDBClusterStorage`.
@@ -386,7 +388,7 @@ class RecommendationPreferences extends pulumi.CustomResource {
   /// The scope of the recommendation preferences. See Scope below.
   late final pulumi.Output<RecommendationPreferencesScope> scope;
   /// The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> utilizationPreferences;
+  late final pulumi.Output<List<RecommendationPreferencesUtilizationPreference>?> utilizationPreferences;
 
   /// Creates a new [RecommendationPreferences].
   /// [name] The Pulumi resource name.
@@ -400,18 +402,18 @@ class RecommendationPreferences extends pulumi.CustomResource {
           'aws:computeoptimizer/recommendationPreferences:RecommendationPreferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enhancedInfrastructureMetrics = registerOutput<String?>('enhancedInfrastructureMetrics');
     externalMetricsPreference = registerOutput<RecommendationPreferencesExternalMetricsPreference?>('externalMetricsPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesExternalMetricsPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
     lookBackPeriod = registerOutput<String>('lookBackPeriod');
-    preferredResources = registerOutput<List<Map<String, dynamic>>?>('preferredResources');
+    preferredResources = registerOutput<List<RecommendationPreferencesPreferredResource>?>('preferredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(guardedValue, (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
     savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
     scope = registerOutput<RecommendationPreferencesScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    utilizationPreferences = registerOutput<List<Map<String, dynamic>>?>('utilizationPreferences');
+    utilizationPreferences = registerOutput<List<RecommendationPreferencesUtilizationPreference>?>('utilizationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(guardedValue, (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RecommendationPreferences] resource's state with the given [name] and [id].
@@ -419,11 +421,12 @@ class RecommendationPreferences extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecommendationPreferencesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RecommendationPreferences._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -441,11 +444,32 @@ class RecommendationPreferences extends pulumi.CustomResource {
     externalMetricsPreference = registerOutput<RecommendationPreferencesExternalMetricsPreference?>('externalMetricsPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesExternalMetricsPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
     lookBackPeriod = registerOutput<String>('lookBackPeriod');
-    preferredResources = registerOutput<List<Map<String, dynamic>>?>('preferredResources');
+    preferredResources = registerOutput<List<RecommendationPreferencesPreferredResource>?>('preferredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(guardedValue, (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
     savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
     scope = registerOutput<RecommendationPreferencesScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    utilizationPreferences = registerOutput<List<Map<String, dynamic>>?>('utilizationPreferences');
+    utilizationPreferences = registerOutput<List<RecommendationPreferencesUtilizationPreference>?>('utilizationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(guardedValue, (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RecommendationPreferences] resource.
+  RecommendationPreferences.reference(String urn)
+    : super(
+        'aws:computeoptimizer/recommendationPreferences:RecommendationPreferences',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enhancedInfrastructureMetrics = registerOutput<String?>('enhancedInfrastructureMetrics');
+    externalMetricsPreference = registerOutput<RecommendationPreferencesExternalMetricsPreference?>('externalMetricsPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesExternalMetricsPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
+    lookBackPeriod = registerOutput<String>('lookBackPeriod');
+    preferredResources = registerOutput<List<RecommendationPreferencesPreferredResource>?>('preferredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(guardedValue, (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
+    scope = registerOutput<RecommendationPreferencesScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationPreferencesScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    utilizationPreferences = registerOutput<List<RecommendationPreferencesUtilizationPreference>?>('utilizationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(guardedValue, (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_cache_node.dart';
+import 'cluster_log_delivery_configuration.dart';
 import 'cluster_state.dart';
 
 /// Provides an ElastiCache Cluster resource, which manages a Memcached cluster, a single-node Redis instance,
@@ -426,12 +428,6 @@ import 'cluster_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.elasticache.Cluster("test", {
-///     clusterId: "mycluster",
-///     engine: "redis",
-///     nodeType: "cache.t3.micro",
-///     numCacheNodes: 1,
-///     port: 6379,
-///     applyImmediately: true,
 ///     logDeliveryConfigurations: [
 ///         {
 ///             destination: example.name,
@@ -446,6 +442,12 @@ import 'cluster_state.dart';
 ///             logType: "engine-log",
 ///         },
 ///     ],
+///     clusterId: "mycluster",
+///     engine: "redis",
+///     nodeType: "cache.t3.micro",
+///     numCacheNodes: 1,
+///     port: 6379,
+///     applyImmediately: true,
 /// });
 /// ```
 /// ```python
@@ -453,12 +455,6 @@ import 'cluster_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.elasticache.Cluster("test",
-///     cluster_id="mycluster",
-///     engine="redis",
-///     node_type="cache.t3.micro",
-///     num_cache_nodes=1,
-///     port=6379,
-///     apply_immediately=True,
 ///     log_delivery_configurations=[
 ///         {
 ///             "destination": example["name"],
@@ -472,7 +468,13 @@ import 'cluster_state.dart';
 ///             "log_format": "json",
 ///             "log_type": "engine-log",
 ///         },
-///     ])
+///     ],
+///     cluster_id="mycluster",
+///     engine="redis",
+///     node_type="cache.t3.micro",
+///     num_cache_nodes=1,
+///     port=6379,
+///     apply_immediately=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -484,12 +486,6 @@ import 'cluster_state.dart';
 /// {
 ///     var test = new Aws.ElastiCache.Cluster("test", new()
 ///     {
-///         ClusterId = "mycluster",
-///         Engine = "redis",
-///         NodeType = "cache.t3.micro",
-///         NumCacheNodes = 1,
-///         Port = 6379,
-///         ApplyImmediately = true,
 ///         LogDeliveryConfigurations = new[]
 ///         {
 ///             new Aws.ElastiCache.Inputs.ClusterLogDeliveryConfigurationArgs
@@ -507,6 +503,12 @@ import 'cluster_state.dart';
 ///                 LogType = "engine-log",
 ///             },
 ///         },
+///         ClusterId = "mycluster",
+///         Engine = "redis",
+///         NodeType = "cache.t3.micro",
+///         NumCacheNodes = 1,
+///         Port = 6379,
+///         ApplyImmediately = true,
 ///     });
 ///
 /// });
@@ -522,12 +524,6 @@ import 'cluster_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewCluster(ctx, "test", &elasticache.ClusterArgs{
-/// 			ClusterId:        pulumi.String("mycluster"),
-/// 			Engine:           pulumi.String("redis"),
-/// 			NodeType:         pulumi.String("cache.t3.micro"),
-/// 			NumCacheNodes:    pulumi.Int(1),
-/// 			Port:             pulumi.Int(6379),
-/// 			ApplyImmediately: pulumi.Bool(true),
 /// 			LogDeliveryConfigurations: elasticache.ClusterLogDeliveryConfigurationArray{
 /// 				&elasticache.ClusterLogDeliveryConfigurationArgs{
 /// 					Destination:     pulumi.Any(example.Name),
@@ -542,6 +538,12 @@ import 'cluster_state.dart';
 /// 					LogType:         pulumi.String("engine-log"),
 /// 				},
 /// 			},
+/// 			ClusterId:        pulumi.String("mycluster"),
+/// 			Engine:           pulumi.String("redis"),
+/// 			NodeType:         pulumi.String("cache.t3.micro"),
+/// 			NumCacheNodes:    pulumi.Int(1),
+/// 			Port:             pulumi.Int(6379),
+/// 			ApplyImmediately: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -560,12 +562,6 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_cluster" "test" {
-///   cluster_id        = "mycluster"
-///   engine            = "redis"
-///   node_type         = "cache.t3.micro"
-///   num_cache_nodes   = 1
-///   port              = 6379
-///   apply_immediately = true
 ///   log_delivery_configurations {
 ///     destination      = example.name
 ///     destination_type = "cloudwatch-logs"
@@ -578,6 +574,12 @@ import 'cluster_state.dart';
 ///     log_format       = "json"
 ///     log_type         = "engine-log"
 ///   }
+///   cluster_id        = "mycluster"
+///   engine            = "redis"
+///   node_type         = "cache.t3.micro"
+///   num_cache_nodes   = 1
+///   port              = 6379
+///   apply_immediately = true
 /// }
 /// ```
 /// ```java
@@ -603,12 +605,6 @@ import 'cluster_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Cluster("test", ClusterArgs.builder()
-///             .clusterId("mycluster")
-///             .engine("redis")
-///             .nodeType("cache.t3.micro")
-///             .numCacheNodes(1)
-///             .port(6379)
-///             .applyImmediately(true)
 ///             .logDeliveryConfigurations(
 ///                 ClusterLogDeliveryConfigurationArgs.builder()
 ///                     .destination(example.name())
@@ -622,6 +618,12 @@ import 'cluster_state.dart';
 ///                     .logFormat("json")
 ///                     .logType("engine-log")
 ///                     .build())
+///             .clusterId("mycluster")
+///             .engine("redis")
+///             .nodeType("cache.t3.micro")
+///             .numCacheNodes(1)
+///             .port(6379)
+///             .applyImmediately(true)
 ///             .build());
 ///
 ///     }
@@ -632,12 +634,6 @@ import 'cluster_state.dart';
 ///   test:
 ///     type: aws:elasticache:Cluster
 ///     properties:
-///       clusterId: mycluster
-///       engine: redis
-///       nodeType: cache.t3.micro
-///       numCacheNodes: 1
-///       port: 6379
-///       applyImmediately: true
 ///       logDeliveryConfigurations:
 ///         - destination: ${example.name}
 ///           destinationType: cloudwatch-logs
@@ -647,6 +643,12 @@ import 'cluster_state.dart';
 ///           destinationType: kinesis-firehose
 ///           logFormat: json
 ///           logType: engine-log
+///       clusterId: mycluster
+///       engine: redis
+///       nodeType: cache.t3.micro
+///       numCacheNodes: 1
+///       port: 6379
+///       applyImmediately: true
 /// ```
 ///
 ///
@@ -1008,7 +1010,7 @@ class Cluster extends pulumi.CustomResource {
   /// Whether the nodes in this Memcached node group are created in a single Availability Zone or created across multiple Availability Zones in the cluster's region. Valid values for this parameter are `single-az` or `cross-az`, default is `single-az`. If you want to choose `cross-az`, `numCacheNodes` must be greater than `1`.
   late final pulumi.Output<String> azMode;
   /// List of node objects including `id`, `address`, `port` and `availabilityZone`.
-  late final pulumi.Output<List<Map<String, dynamic>>> cacheNodes;
+  late final pulumi.Output<List<ClusterCacheNode>> cacheNodes;
   /// (Memcached only) DNS name of the cache cluster without the port appended.
   late final pulumi.Output<String> clusterAddress;
   /// Group identifier. ElastiCache converts this name to lowercase. Changing this value will re-create the resource.
@@ -1033,7 +1035,7 @@ class Cluster extends pulumi.CustomResource {
   /// The IP version to advertise in the discovery protocol. Valid values are `ipv4` or `ipv6`.
   late final pulumi.Output<String> ipDiscovery;
   /// Specifies the destination and format of Redis [SLOWLOG](https://redis.io/commands/slowlog) or Redis [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Log_Delivery.html#Log_contents-engine-log). See the documentation on [Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Log_Delivery.html). See Log Delivery Configuration below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logDeliveryConfigurations;
+  late final pulumi.Output<List<ClusterLogDeliveryConfiguration>?> logDeliveryConfigurations;
   /// Specifies the weekly time range for when maintenance
   /// on the cache cluster is performed. The format is `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC).
   /// The minimum maintenance window is a 60 minute period. Example: `sun:05:00-sun:09:00`.
@@ -1065,7 +1067,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> replicationGroupId;
   /// One or more VPC security groups associated with the cache cluster. Cannot be provided with `replication_group_id.`
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// Single-element string list containing an Amazon Resource Name (ARN) of a Redis RDB snapshot file stored in Amazon S3. The object name cannot contain any commas. Changing `snapshotArns` forces a new resource.
+  /// Single-element string list containing an ARN of a Redis RDB snapshot file stored in Amazon S3. The object name cannot contain any commas. Changing `snapshotArns` forces a new resource.
   late final pulumi.Output<String?> snapshotArns;
   /// Name of a snapshot from which to restore data into the new node group. Changing `snapshotName` forces a new resource.
   late final pulumi.Output<String?> snapshotName;
@@ -1079,7 +1081,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Enable encryption in-transit. Supported with Memcached versions `1.6.12` and later, Redis OSS versions `3.2.6`, `4.0.10` and later, running in a VPC. See the [ElastiCache in-transit encryption documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/in-transit-encryption.html#in-transit-encryption-constraints) for more details.
+  /// Enable encryption in-transit. Supported only with Memcached versions `1.6.12` and later, running in a VPC. For Redis or Valkey transit encryption, use `aws.elasticache.ReplicationGroup` instead. See the [ElastiCache in-transit encryption documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/in-transit-encryption.html#in-transit-encryption-constraints) for more details.
   late final pulumi.Output<bool> transitEncryptionEnabled;
 
   /// Creates a new [Cluster].
@@ -1094,14 +1096,14 @@ class Cluster extends pulumi.CustomResource {
           'aws:elasticache/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<String?>('autoMinorVersionUpgrade');
     availabilityZone = registerOutput<String>('availabilityZone');
     azMode = registerOutput<String>('azMode');
-    cacheNodes = registerOutput<List<Map<String, dynamic>>>('cacheNodes');
+    cacheNodes = registerOutput<List<ClusterCacheNode>>('cacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCacheNode>(guardedValue, (value) => ClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())); });
     clusterAddress = registerOutput<String>('clusterAddress');
     clusterId = registerOutput<String>('clusterId');
     configurationEndpoint = registerOutput<String>('configurationEndpoint');
@@ -1110,7 +1112,7 @@ class Cluster extends pulumi.CustomResource {
     engineVersionActual = registerOutput<String>('engineVersionActual');
     finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
     ipDiscovery = registerOutput<String>('ipDiscovery');
-    logDeliveryConfigurations = registerOutput<List<Map<String, dynamic>>?>('logDeliveryConfigurations');
+    logDeliveryConfigurations = registerOutput<List<ClusterLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLogDeliveryConfiguration>(guardedValue, (value) => ClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     networkType = registerOutput<String>('networkType');
     nodeType = registerOutput<String>('nodeType');
@@ -1119,18 +1121,18 @@ class Cluster extends pulumi.CustomResource {
     outpostMode = registerOutput<String?>('outpostMode');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
-    preferredAvailabilityZones = registerOutput<List<String>?>('preferredAvailabilityZones');
+    preferredAvailabilityZones = registerOutput<List<String>?>('preferredAvailabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredOutpostArn = registerOutput<String>('preferredOutpostArn');
     region = registerOutput<String>('region');
     replicationGroupId = registerOutput<String>('replicationGroupId');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotArns = registerOutput<String?>('snapshotArns');
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
   }
 
@@ -1139,11 +1141,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1162,7 +1165,7 @@ class Cluster extends pulumi.CustomResource {
     autoMinorVersionUpgrade = registerOutput<String?>('autoMinorVersionUpgrade');
     availabilityZone = registerOutput<String>('availabilityZone');
     azMode = registerOutput<String>('azMode');
-    cacheNodes = registerOutput<List<Map<String, dynamic>>>('cacheNodes');
+    cacheNodes = registerOutput<List<ClusterCacheNode>>('cacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCacheNode>(guardedValue, (value) => ClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())); });
     clusterAddress = registerOutput<String>('clusterAddress');
     clusterId = registerOutput<String>('clusterId');
     configurationEndpoint = registerOutput<String>('configurationEndpoint');
@@ -1171,7 +1174,7 @@ class Cluster extends pulumi.CustomResource {
     engineVersionActual = registerOutput<String>('engineVersionActual');
     finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
     ipDiscovery = registerOutput<String>('ipDiscovery');
-    logDeliveryConfigurations = registerOutput<List<Map<String, dynamic>>?>('logDeliveryConfigurations');
+    logDeliveryConfigurations = registerOutput<List<ClusterLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLogDeliveryConfiguration>(guardedValue, (value) => ClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     networkType = registerOutput<String>('networkType');
     nodeType = registerOutput<String>('nodeType');
@@ -1180,18 +1183,65 @@ class Cluster extends pulumi.CustomResource {
     outpostMode = registerOutput<String?>('outpostMode');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
-    preferredAvailabilityZones = registerOutput<List<String>?>('preferredAvailabilityZones');
+    preferredAvailabilityZones = registerOutput<List<String>?>('preferredAvailabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredOutpostArn = registerOutput<String>('preferredOutpostArn');
     region = registerOutput<String>('region');
     replicationGroupId = registerOutput<String>('replicationGroupId');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotArns = registerOutput<String?>('snapshotArns');
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:elasticache/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<String?>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    azMode = registerOutput<String>('azMode');
+    cacheNodes = registerOutput<List<ClusterCacheNode>>('cacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterCacheNode>(guardedValue, (value) => ClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterAddress = registerOutput<String>('clusterAddress');
+    clusterId = registerOutput<String>('clusterId');
+    configurationEndpoint = registerOutput<String>('configurationEndpoint');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    ipDiscovery = registerOutput<String>('ipDiscovery');
+    logDeliveryConfigurations = registerOutput<List<ClusterLogDeliveryConfiguration>?>('logDeliveryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLogDeliveryConfiguration>(guardedValue, (value) => ClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    networkType = registerOutput<String>('networkType');
+    nodeType = registerOutput<String>('nodeType');
+    notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    numCacheNodes = registerOutput<int>('numCacheNodes');
+    outpostMode = registerOutput<String?>('outpostMode');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    port = registerOutput<int>('port');
+    preferredAvailabilityZones = registerOutput<List<String>?>('preferredAvailabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    preferredOutpostArn = registerOutput<String>('preferredOutpostArn');
+    region = registerOutput<String>('region');
+    replicationGroupId = registerOutput<String>('replicationGroupId');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArns = registerOutput<String?>('snapshotArns');
+    snapshotName = registerOutput<String?>('snapshotName');
+    snapshotRetentionLimit = registerOutput<int?>('snapshotRetentionLimit');
+    snapshotWindow = registerOutput<String>('snapshotWindow');
+    subnetGroupName = registerOutput<String>('subnetGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitEncryptionEnabled = registerOutput<bool>('transitEncryptionEnabled');
   }
 }

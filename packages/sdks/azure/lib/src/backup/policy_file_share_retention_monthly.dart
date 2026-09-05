@@ -6,15 +6,15 @@ class PolicyFileShareRetentionMonthly {
   /// The number of monthly backups to keep. Must be between `1` and `120`
   final pulumi.Input<int> count;
   /// The days of the month to retain backups of. Must be between `1` and `31`.
-  final pulumi.Input<List<int>>? days;
+  final pulumi.Input<List<int>?>? days;
   /// Including the last day of the month, default to `false`.
   ///
   /// &gt; **Note:** Either `weekdays` and `weeks` or `days` and `includeLastDays` must be specified.
-  final pulumi.Input<bool>? includeLastDays;
+  final pulumi.Input<bool?>? includeLastDays;
   /// The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-  final pulumi.Input<List<String>>? weekdays;
+  final pulumi.Input<List<String>?>? weekdays;
   /// The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
-  final pulumi.Input<List<String>>? weeks;
+  final pulumi.Input<List<String>?>? weeks;
 
   /// Creates a new [PolicyFileShareRetentionMonthly].
   /// [count] The number of monthly backups to keep. Must be between `1` and `120`
@@ -42,7 +42,7 @@ class PolicyFileShareRetentionMonthly {
 
   factory PolicyFileShareRetentionMonthly.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareRetentionMonthly(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       includeLastDays: (() { final guardedValue = map['includeLastDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       weekdays: (() { final guardedValue = map['weekdays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -10,7 +10,7 @@ class WorkspaceEncryption {
   /// The Key Vault URI to access the encryption key.
   ///
   /// &gt; **Note:** `userAssignedIdentityId` must set when`identity.type` is `UserAssigned` or service won't be able to find the assigned permissions.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [WorkspaceEncryption].
   /// [keyId] The Key Vault URI to access the encryption key.

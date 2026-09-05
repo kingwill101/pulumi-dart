@@ -6,28 +6,28 @@ import 'get_profiles_profiles_profile.dart';
 /// Result data returned by getProfilesProfiles.
 class GetProfilesProfilesResult {
   /// List of Profiles.
-  final List<GetProfilesProfilesProfile> profiles;
-  final String region;
+  final List<GetProfilesProfilesProfile>? profiles;
+  final String? region;
 
   /// Creates a new [GetProfilesProfilesResult].
   /// [profiles] List of Profiles.
-  /// [region] Required.
+  /// [region] Optional.
   const GetProfilesProfilesResult({
-    required this.profiles,
-    required this.region,
+    this.profiles,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'profiles': pulumi.Input.encodeList<GetProfilesProfilesProfile, Map<String, dynamic>>(profiles, (value) => value.toMap()),
-      'region': region,
+      'profiles': ?(() { final guardedValue = profiles; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetProfilesProfilesProfile, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetProfilesProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesResult(
-      profiles: pulumi.Input.decodeList<GetProfilesProfilesProfile>(map['profiles']!, (value) => GetProfilesProfilesProfile.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      profiles: (() { final guardedValue = map['profiles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetProfilesProfilesProfile>(guardedValue, (value) => GetProfilesProfilesProfile.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

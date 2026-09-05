@@ -9,17 +9,17 @@ import 'certificate_issuer_admin.dart';
 /// {@macro pulumi_keyvault_certificate_issuer_certificate_issuer_args_doc}
 class CertificateIssuerArgs {
   /// The account number with the third-party Certificate Issuer.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// One or more `admin` blocks as defined below.
-  final pulumi.Input<List<CertificateIssuerAdmin>>? admins;
+  final pulumi.Input<List<CertificateIssuerAdmin>?>? admins;
   /// The ID of the Key Vault in which to create the Certificate Issuer. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
   /// The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the organization as provided to the issuer.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`, `OneCertV2-PrivateCA`, `OneCertV2-PublicCA` and `SslAdminV2`.
   final pulumi.Input<String> providerName;
 

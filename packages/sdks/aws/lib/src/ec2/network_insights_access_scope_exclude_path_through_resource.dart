@@ -7,7 +7,7 @@ class NetworkInsightsAccessScopeExcludePathThroughResource {
   /// Resource statement.
   /// Exactly one of `resources` or `resourceTypes` must be specified.
   /// See `resourceStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathThroughResourceResourceStatement>? resourceStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathThroughResourceResourceStatement?>? resourceStatement;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePathThroughResource].
   /// [resourceStatement] Resource statement.

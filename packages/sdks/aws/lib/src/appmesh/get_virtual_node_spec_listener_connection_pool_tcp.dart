@@ -20,7 +20,7 @@ class GetVirtualNodeSpecListenerConnectionPoolTcp {
 
   factory GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPoolTcp(
-      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
+      maxConnections: pulumi.Input.fromValue((map['maxConnections'] as num).toInt()),
     );
   }
 }

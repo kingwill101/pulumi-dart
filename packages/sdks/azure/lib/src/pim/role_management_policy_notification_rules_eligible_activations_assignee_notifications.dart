@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications {
   /// The additional recipients to notify
-  final pulumi.Input<List<String>>? additionalRecipients;
+  final pulumi.Input<List<String>?>? additionalRecipients;
   /// Whether the default recipients are notified
   final pulumi.Input<bool> defaultRecipients;
   /// What level of notifications are sent

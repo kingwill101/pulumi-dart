@@ -5,11 +5,11 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig {
   /// Whether to encrypt all communications between distributed processing jobs.
-  final pulumi.Input<bool>? enableInterContainerTrafficEncryption;
+  final pulumi.Input<bool?>? enableInterContainerTrafficEncryption;
   /// Whether to allow inbound and outbound network calls to and from the containers used for the processing job.
-  final pulumi.Input<bool>? enableNetworkIsolation;
+  final pulumi.Input<bool?>? enableNetworkIsolation;
   /// VPC that SageMaker jobs, hosted models, and compute resources have access to. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig>? vpcConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig?>? vpcConfig;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig].
   /// [enableInterContainerTrafficEncryption] Whether to encrypt all communications between distributed processing jobs.

@@ -8,23 +8,23 @@ import 'network_connection_monitor_test_group.dart';
 /// Input properties used for looking up and filtering NetworkConnectionMonitor resources.
 class NetworkConnectionMonitorState {
   /// A `endpoint` block as defined below.
-  final pulumi.Input<List<NetworkConnectionMonitorEndpoint>>? endpoints;
+  final pulumi.Input<List<NetworkConnectionMonitorEndpoint>?>? endpoints;
   /// The Azure Region where the Network Connection Monitor should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Network Connection Monitor. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Network Watcher. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkWatcherId;
+  final pulumi.Input<String?>? networkWatcherId;
   /// The description of the Network Connection Monitor.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// A list of IDs of the Log Analytics Workspace which will accept the output from the Network Connection Monitor.
-  final pulumi.Input<List<String>>? outputWorkspaceResourceIds;
+  final pulumi.Input<List<String>?>? outputWorkspaceResourceIds;
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `testConfiguration` block as defined below.
-  final pulumi.Input<List<NetworkConnectionMonitorTestConfiguration>>? testConfigurations;
+  final pulumi.Input<List<NetworkConnectionMonitorTestConfiguration>?>? testConfigurations;
   /// A `testGroup` block as defined below.
-  final pulumi.Input<List<NetworkConnectionMonitorTestGroup>>? testGroups;
+  final pulumi.Input<List<NetworkConnectionMonitorTestGroup>?>? testGroups;
 
   /// Creates a new [NetworkConnectionMonitorState].
   /// [endpoints] A `endpoint` block as defined below.

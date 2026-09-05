@@ -6,21 +6,21 @@ import 'protection_container_mapping_automatic_update.dart';
 /// Input properties used for looking up and filtering ProtectionContainerMapping resources.
 class ProtectionContainerMappingState {
   /// a `automaticUpdate` block defined as below.
-  final pulumi.Input<ProtectionContainerMappingAutomaticUpdate>? automaticUpdate;
+  final pulumi.Input<ProtectionContainerMappingAutomaticUpdate?>? automaticUpdate;
   /// The name of the protection container mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of fabric that should contains the protection container to map. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryFabricName;
+  final pulumi.Input<String?>? recoveryFabricName;
   /// Id of the policy to use for this mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryReplicationPolicyId;
+  final pulumi.Input<String?>? recoveryReplicationPolicyId;
   /// Name of the source protection container to map. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoverySourceProtectionContainerName;
+  final pulumi.Input<String?>? recoverySourceProtectionContainerName;
   /// Id of target protection container to map to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryTargetProtectionContainerId;
+  final pulumi.Input<String?>? recoveryTargetProtectionContainerId;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ProtectionContainerMappingState].
   /// [automaticUpdate] a `automaticUpdate` block defined as below.

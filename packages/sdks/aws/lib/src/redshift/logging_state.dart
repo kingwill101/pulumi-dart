@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Logging resources.
 class LoggingState {
   /// Name of an existing S3 bucket where the log files are to be stored. Required when `logDestinationType` is `s3`. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions. For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// Identifier of the source cluster.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? clusterIdentifier;
+  final pulumi.Input<String?>? clusterIdentifier;
   /// Log destination type. Valid values are `s3` and `cloudwatch`.
-  final pulumi.Input<String>? logDestinationType;
+  final pulumi.Input<String?>? logDestinationType;
   /// Collection of exported log types. Required when `logDestinationType` is `cloudwatch`. Valid values are `connectionlog`, `useractivitylog`, and `userlog`.
-  final pulumi.Input<List<String>>? logExports;
+  final pulumi.Input<List<String>?>? logExports;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Prefix applied to the log file names.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [LoggingState].
   /// [bucketName] Name of an existing S3 bucket where the log files are to be stored. Required when `logDestinationType` is `s3`. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions. For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)

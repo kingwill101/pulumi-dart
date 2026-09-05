@@ -7,17 +7,17 @@ import 'contacts_rotation_recurrence_shift_coverage.dart';
 import 'contacts_rotation_recurrence_weekly_setting.dart';
 
 class ContactsRotationRecurrence {
-  final pulumi.Input<List<ContactsRotationRecurrenceDailySetting>>? dailySettings;
+  final pulumi.Input<List<ContactsRotationRecurrenceDailySetting>?>? dailySettings;
   /// (Optional) Information about on-call rotations that recur monthly. See Monthly Settings for more details.
-  final pulumi.Input<List<ContactsRotationRecurrenceMonthlySetting>>? monthlySettings;
+  final pulumi.Input<List<ContactsRotationRecurrenceMonthlySetting>?>? monthlySettings;
   /// (Required) The number of contacts, or shift team members designated to be on call concurrently during a shift.
   final pulumi.Input<int> numberOfOnCalls;
   /// (Required) The number of days, weeks, or months a single rotation lasts.
   final pulumi.Input<int> recurrenceMultiplier;
   /// (Optional) Information about the days of the week that the on-call rotation coverage includes. See Shift Coverages for more details.
-  final pulumi.Input<List<ContactsRotationRecurrenceShiftCoverage>>? shiftCoverages;
+  final pulumi.Input<List<ContactsRotationRecurrenceShiftCoverage>?>? shiftCoverages;
   /// (Optional) Information about on-call rotations that recur weekly. See Weekly Settings for more details.
-  final pulumi.Input<List<ContactsRotationRecurrenceWeeklySetting>>? weeklySettings;
+  final pulumi.Input<List<ContactsRotationRecurrenceWeeklySetting>?>? weeklySettings;
 
   /// Creates a new [ContactsRotationRecurrence].
   /// [dailySettings] Optional.
@@ -50,8 +50,8 @@ class ContactsRotationRecurrence {
     return ContactsRotationRecurrence(
       dailySettings: (() { final guardedValue = map['dailySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceDailySetting>(guardedValue, (value) => ContactsRotationRecurrenceDailySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       monthlySettings: (() { final guardedValue = map['monthlySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceMonthlySetting>(guardedValue, (value) => ContactsRotationRecurrenceMonthlySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      numberOfOnCalls: pulumi.Input.fromValue(map['numberOfOnCalls'] as int),
-      recurrenceMultiplier: pulumi.Input.fromValue(map['recurrenceMultiplier'] as int),
+      numberOfOnCalls: pulumi.Input.fromValue((map['numberOfOnCalls'] as num).toInt()),
+      recurrenceMultiplier: pulumi.Input.fromValue((map['recurrenceMultiplier'] as num).toInt()),
       shiftCoverages: (() { final guardedValue = map['shiftCoverages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceShiftCoverage>(guardedValue, (value) => ContactsRotationRecurrenceShiftCoverage.fromMap((value as Map).cast<String, dynamic>()))); })(),
       weeklySettings: (() { final guardedValue = map['weeklySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceWeeklySetting>(guardedValue, (value) => ContactsRotationRecurrenceWeeklySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImagePipelineImageScanningConfigurationEcrConfiguration {
-  final pulumi.Input<List<String>>? containerTags;
+  final pulumi.Input<List<String>?>? containerTags;
   /// The name of the repository to scan
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
 
   /// Creates a new [ImagePipelineImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Optional.

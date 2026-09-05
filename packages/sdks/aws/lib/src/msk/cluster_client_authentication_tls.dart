@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClientAuthenticationTls {
-  /// List of ACM Certificate Authority Amazon Resource Names (ARNs).
-  final pulumi.Input<List<String>>? certificateAuthorityArns;
+  /// List of ACM Certificate Authority ARNs.
+  final pulumi.Input<List<String>?>? certificateAuthorityArns;
 
   /// Creates a new [ClusterClientAuthenticationTls].
-  /// [certificateAuthorityArns] List of ACM Certificate Authority Amazon Resource Names (ARNs).
+  /// [certificateAuthorityArns] List of ACM Certificate Authority ARNs.
   const ClusterClientAuthenticationTls({
     this.certificateAuthorityArns,
   });

@@ -9,9 +9,9 @@ import 'get_vpc_attachments_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_vpc_attachments_get_vpc_attachments_args_doc}
 class GetVpcAttachmentsArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetVpcAttachmentsFilter>>? filters;
+  final pulumi.Input<List<GetVpcAttachmentsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetVpcAttachmentsArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

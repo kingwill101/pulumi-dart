@@ -8,28 +8,28 @@ import 'file_system_association_cache_attributes.dart';
 /// {@endtemplate}
 /// {@macro pulumi_storagegateway_file_system_association_file_system_association_args_doc}
 class FileSystemAssociationArgs {
-  /// The Amazon Resource Name (ARN) of the storage used for the audit logs.
-  final pulumi.Input<String>? auditDestinationArn;
+  /// ARN of the storage used for the audit logs.
+  final pulumi.Input<String?>? auditDestinationArn;
   /// Refresh cache information. see Cache Attributes for more details.
-  final pulumi.Input<FileSystemAssociationCacheAttributes>? cacheAttributes;
-  /// The Amazon Resource Name (ARN) of the gateway.
+  final pulumi.Input<FileSystemAssociationCacheAttributes?>? cacheAttributes;
+  /// ARN of the gateway.
   final pulumi.Input<String> gatewayArn;
-  /// The Amazon Resource Name (ARN) of the Amazon FSx file system to associate with the FSx File Gateway.
+  /// ARN of the Amazon FSx file system to associate with the FSx File Gateway.
   final pulumi.Input<String> locationArn;
   /// The password of the user credential.
   final pulumi.Input<String> password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
   final pulumi.Input<String> username;
 
   /// Creates a new [FileSystemAssociationArgs].
-  /// [auditDestinationArn] The Amazon Resource Name (ARN) of the storage used for the audit logs.
+  /// [auditDestinationArn] ARN of the storage used for the audit logs.
   /// [cacheAttributes] Refresh cache information. see Cache Attributes for more details.
-  /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
-  /// [locationArn] The Amazon Resource Name (ARN) of the Amazon FSx file system to associate with the FSx File Gateway.
+  /// [gatewayArn] ARN of the gateway.
+  /// [locationArn] ARN of the Amazon FSx file system to associate with the FSx File Gateway.
   /// [password] The password of the user credential.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

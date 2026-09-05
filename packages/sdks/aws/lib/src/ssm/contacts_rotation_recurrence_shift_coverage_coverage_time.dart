@@ -6,9 +6,9 @@ import 'contacts_rotation_recurrence_shift_coverage_coverage_time_start.dart';
 
 class ContactsRotationRecurrenceShiftCoverageCoverageTime {
   /// (Required) The end time of the on-call shift. See Hand Off Time for more details.
-  final pulumi.Input<ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd>? end;
+  final pulumi.Input<ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd?>? end;
   /// (Required) The start time of the on-call shift. See Hand Off Time for more details.
-  final pulumi.Input<ContactsRotationRecurrenceShiftCoverageCoverageTimeStart>? start;
+  final pulumi.Input<ContactsRotationRecurrenceShiftCoverageCoverageTimeStart?>? start;
 
   /// Creates a new [ContactsRotationRecurrenceShiftCoverageCoverageTime].
   /// [end] (Required) The end time of the on-call shift. See Hand Off Time for more details.

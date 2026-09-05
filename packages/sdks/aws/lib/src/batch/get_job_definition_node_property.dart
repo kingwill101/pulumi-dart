@@ -31,9 +31,9 @@ class GetJobDefinitionNodeProperty {
 
   factory GetJobDefinitionNodeProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodeProperty(
-      mainNode: pulumi.Input.fromValue(map['mainNode'] as int),
+      mainNode: pulumi.Input.fromValue((map['mainNode'] as num).toInt()),
       nodeRangeProperties: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangeProperty>(map['nodeRangeProperties']!, (value) => GetJobDefinitionNodePropertyNodeRangeProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      numNodes: pulumi.Input.fromValue(map['numNodes'] as int),
+      numNodes: pulumi.Input.fromValue((map['numNodes'] as num).toInt()),
     );
   }
 }

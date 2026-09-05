@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ssm_get_contacts_rotation_get_contacts_rotation_args_doc}
 class GetContactsRotationArgs {
-  /// The Amazon Resource Name (ARN) of the rotation.
+  /// ARN of the rotation.
   final pulumi.Input<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetContactsRotationArgs].
-  /// [arn] The Amazon Resource Name (ARN) of the rotation.
+  /// [arn] ARN of the rotation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetContactsRotationArgs({
     required this.arn,

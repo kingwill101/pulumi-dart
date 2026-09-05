@@ -128,7 +128,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> findingPublishingFrequency;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.
+  /// ARN of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.
   late final pulumi.Output<String> serviceRole;
   /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   late final pulumi.Output<String> status;
@@ -147,7 +147,7 @@ class Account extends pulumi.CustomResource {
           'aws:macie2/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
@@ -162,11 +162,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,6 +181,23 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
+    region = registerOutput<String>('region');
+    serviceRole = registerOutput<String>('serviceRole');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'aws:macie2/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
     region = registerOutput<String>('region');

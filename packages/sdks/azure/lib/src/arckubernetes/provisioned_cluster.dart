@@ -153,7 +153,7 @@ import 'provisioned_cluster_state.dart';
 /// 			AzureActiveDirectory: &arckubernetes.ProvisionedClusterAzureActiveDirectoryArgs{
 /// 				AzureRbacEnabled: pulumi.Bool(true),
 /// 				AdminGroupObjectIds: pulumi.StringArray{
-/// 					exampleGroup.ID(),
+/// 					exampleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				TenantId: pulumi.String(current.TenantId),
 /// 			},
@@ -359,7 +359,7 @@ class ProvisionedCluster extends pulumi.CustomResource {
           'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     agentVersion = registerOutput<String>('agentVersion');
     arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
@@ -373,7 +373,7 @@ class ProvisionedCluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     offering = registerOutput<String>('offering');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalCoreCount = registerOutput<int>('totalCoreCount');
     totalNodeCount = registerOutput<int>('totalNodeCount');
   }
@@ -383,11 +383,12 @@ class ProvisionedCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisionedClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisionedCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,7 +414,33 @@ class ProvisionedCluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     offering = registerOutput<String>('offering');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
+  }
+
+  /// Creates a typed reference to an existing [ProvisionedCluster] resource.
+  ProvisionedCluster.reference(String urn)
+    : super(
+        'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
+    arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
+    azureActiveDirectory = registerOutput<ProvisionedClusterAzureActiveDirectory?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterAzureActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    distribution = registerOutput<String>('distribution');
+    identity = registerOutput<ProvisionedClusterIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisionedClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructure = registerOutput<String>('infrastructure');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    offering = registerOutput<String>('offering');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalCoreCount = registerOutput<int>('totalCoreCount');
     totalNodeCount = registerOutput<int>('totalNodeCount');
   }

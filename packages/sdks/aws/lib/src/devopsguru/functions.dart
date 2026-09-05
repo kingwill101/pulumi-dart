@@ -124,6 +124,17 @@ Future<GetNotificationChannelResult> getNotificationChannel(
   return GetNotificationChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
+  GetNotificationChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:devopsguru/getNotificationChannel:getNotificationChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationChannelResult.fromMap);
+}
+
 /// Data source for managing an AWS DevOps Guru Resource Collection.
 ///
 /// ## Example Usage
@@ -242,4 +253,15 @@ Future<GetResourceCollectionResult> getResourceCollection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceCollectionResult> getResourceCollectionOutput(
+  GetResourceCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:devopsguru/getResourceCollection:getResourceCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceCollectionResult.fromMap);
 }

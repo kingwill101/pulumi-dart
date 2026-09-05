@@ -5,7 +5,7 @@ import 'rule_group_rule_action_challenge_custom_request_handling.dart';
 
 class RuleGroupRuleActionChallenge {
   /// Defines custom handling for the web request. See Custom Request Handling below for details.
-  final pulumi.Input<RuleGroupRuleActionChallengeCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<RuleGroupRuleActionChallengeCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [RuleGroupRuleActionChallenge].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.

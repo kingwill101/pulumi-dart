@@ -5,9 +5,9 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric_security_key_vault
 
 class ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurity {
   /// Specifies whether the agent should run in interactive mode. Defaults to `false`.
-  final pulumi.Input<bool>? interactiveLogonEnabled;
+  final pulumi.Input<bool?>? interactiveLogonEnabled;
   /// A `keyVaultManagement` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurityKeyVaultManagement>? keyVaultManagement;
+  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurityKeyVaultManagement?>? keyVaultManagement;
 
   /// Creates a new [ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurity].
   /// [interactiveLogonEnabled] Specifies whether the agent should run in interactive mode. Defaults to `false`.

@@ -274,7 +274,7 @@ class PrefixListReference extends pulumi.CustomResource {
           'aws:ec2transitgateway/prefixListReference:PrefixListReference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blackhole = registerOutput<bool?>('blackhole');
     prefixListId = registerOutput<String>('prefixListId');
@@ -289,11 +289,12 @@ class PrefixListReference extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrefixListReferenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrefixListReference._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,23 @@ class PrefixListReference extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    blackhole = registerOutput<bool?>('blackhole');
+    prefixListId = registerOutput<String>('prefixListId');
+    prefixListOwnerId = registerOutput<String>('prefixListOwnerId');
+    region = registerOutput<String>('region');
+    transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
+    transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+  }
+
+  /// Creates a typed reference to an existing [PrefixListReference] resource.
+  PrefixListReference.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/prefixListReference:PrefixListReference',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     blackhole = registerOutput<bool?>('blackhole');
     prefixListId = registerOutput<String>('prefixListId');
     prefixListOwnerId = registerOutput<String>('prefixListOwnerId');

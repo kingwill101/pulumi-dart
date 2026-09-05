@@ -5,13 +5,13 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_xss_mat
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBody {
   /// How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.
-  final pulumi.Input<String>? invalidFallbackBehavior;
+  final pulumi.Input<String?>? invalidFallbackBehavior;
   /// JSON content to inspect. See JSON Body Match Pattern below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern>? matchPattern;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern?>? matchPattern;
   /// Parts of the JSON to inspect. Valid values: `ALL`, `KEY`, `VALUE`.
   final pulumi.Input<String> matchScope;
   /// How to handle requests with a body larger than the inspection limit. Valid values: `CONTINUE`, `MATCH`, `NO_MATCH`. Defaults to `CONTINUE`.
-  final pulumi.Input<String>? oversizeHandling;
+  final pulumi.Input<String?>? oversizeHandling;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBody].
   /// [invalidFallbackBehavior] How to handle requests with invalid JSON body. Valid values: `EVALUATE_AS_STRING`, `MATCH`, `NO_MATCH`.

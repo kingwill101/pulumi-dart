@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_start_stop_schedule_args.dart';
+import 'managed_instance_start_stop_schedule_schedule.dart';
 import 'managed_instance_start_stop_schedule_state.dart';
 
 /// Manages Start Stop Schedules for an MS SQL Managed Instance.
@@ -857,8 +858,8 @@ import 'managed_instance_start_stop_schedule_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "example", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               exampleSubnet.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -875,8 +876,8 @@ import 'managed_instance_start_stop_schedule_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetRouteTableAssociation, err := network.NewSubnetRouteTableAssociation(ctx, "example", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     exampleSubnet.ID(),
-/// 			RouteTableId: exampleRouteTable.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -888,7 +889,7 @@ import 'managed_instance_start_stop_schedule_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("mradministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
@@ -900,7 +901,7 @@ import 'managed_instance_start_stop_schedule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewManagedInstanceStartStopSchedule(ctx, "example", &mssql.ManagedInstanceStartStopScheduleArgs{
-/// 			ManagedInstanceId: exampleManagedInstance.ID(),
+/// 			ManagedInstanceId: exampleManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			TimezoneId:        pulumi.String("Central European Standard Time"),
 /// 			Schedules: mssql.ManagedInstanceStartStopScheduleScheduleArray{
 /// 				&mssql.ManagedInstanceStartStopScheduleScheduleArgs{
@@ -1616,7 +1617,7 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
   /// Next action to be executed (Start or Stop).
   late final pulumi.Output<String> nextRunAction;
   /// A `schedule` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+  late final pulumi.Output<List<ManagedInstanceStartStopScheduleSchedule>> schedules;
   /// Specifies the time zone of the schedule. Defaults to `UTC`.
   late final pulumi.Output<String?> timezoneId;
 
@@ -1632,13 +1633,13 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
           'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     managedInstanceId = registerOutput<String>('managedInstanceId');
     nextExecutionTime = registerOutput<String>('nextExecutionTime');
     nextRunAction = registerOutput<String>('nextRunAction');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    schedules = registerOutput<List<ManagedInstanceStartStopScheduleSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(guardedValue, (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     timezoneId = registerOutput<String?>('timezoneId');
   }
 
@@ -1647,11 +1648,12 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceStartStopScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstanceStartStopSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1669,7 +1671,24 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
     managedInstanceId = registerOutput<String>('managedInstanceId');
     nextExecutionTime = registerOutput<String>('nextExecutionTime');
     nextRunAction = registerOutput<String>('nextRunAction');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    schedules = registerOutput<List<ManagedInstanceStartStopScheduleSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(guardedValue, (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    timezoneId = registerOutput<String?>('timezoneId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstanceStartStopSchedule] resource.
+  ManagedInstanceStartStopSchedule.reference(String urn)
+    : super(
+        'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    nextExecutionTime = registerOutput<String>('nextExecutionTime');
+    nextRunAction = registerOutput<String>('nextRunAction');
+    schedules = registerOutput<List<ManagedInstanceStartStopScheduleSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(guardedValue, (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     timezoneId = registerOutput<String?>('timezoneId');
   }
 }

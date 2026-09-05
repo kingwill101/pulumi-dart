@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ses_identity_policy_identity_policy_args_doc}
 class IdentityPolicyArgs {
-  /// Name or Amazon Resource Name (ARN) of the SES Identity.
+  /// Name or ARN of the SES Identity.
   final pulumi.Input<String> identity;
   /// Name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// JSON string of the policy.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IdentityPolicyArgs].
-  /// [identity] Name or Amazon Resource Name (ARN) of the SES Identity.
+  /// [identity] Name or ARN of the SES Identity.
   /// [name] Name of the policy.
   /// [policy] JSON string of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

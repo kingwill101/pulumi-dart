@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesStorage {
-  final pulumi.Input<bool>? dataPlaneAvailable;
+  final pulumi.Input<bool?>? dataPlaneAvailable;
 
   /// Creates a new [FeaturesStorage].
   /// [dataPlaneAvailable] Optional.

@@ -9,19 +9,19 @@ import 'spring_cloud_customized_accelerator_git_repository.dart';
 /// {@macro pulumi_appplatform_spring_cloud_customized_accelerator_spring_cloud_customized_accelerator_args_doc}
 class SpringCloudCustomizedAcceleratorArgs {
   /// Specifies a list of accelerator tags.
-  final pulumi.Input<List<String>>? acceleratorTags;
+  final pulumi.Input<List<String>?>? acceleratorTags;
   /// Specifies the type of the Spring Cloud Customized Accelerator. Possible values are `Accelerator` and `Fragment`. Defaults to `Accelerator`.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// Specifies the description of the Spring Cloud Customized Accelerator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the display name of the Spring Cloud Customized Accelerator..
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A `gitRepository` block as defined below.
   final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepository> gitRepository;
   /// Specifies the icon URL of the Spring Cloud Customized Accelerator..
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   final pulumi.Input<String> springCloudAcceleratorId;
 

@@ -9,17 +9,17 @@ import 'get_open_zfs_snapshot_filter.dart';
 /// {@macro pulumi_fsx_get_open_zfs_snapshot_get_open_zfs_snapshot_args_doc}
 class GetOpenZfsSnapshotArgs {
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<GetOpenZfsSnapshotFilter>>? filters;
+  final pulumi.Input<List<GetOpenZfsSnapshotFilter>?>? filters;
   /// If more than one result is returned, use the most recent snapshot.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Name of the snapshot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Returns information on a specific snapshot_id.
-  final pulumi.Input<List<String>>? snapshotIds;
+  final pulumi.Input<List<String>?>? snapshotIds;
   /// List of Tag values, with a maximum of 50 elements.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetOpenZfsSnapshotArgs].
   /// [filters] Configuration block. Detailed below.

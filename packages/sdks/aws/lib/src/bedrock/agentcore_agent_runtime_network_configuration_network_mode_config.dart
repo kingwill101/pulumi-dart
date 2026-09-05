@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
   /// Whether a service-managed Amazon S3 gateway endpoint is provisioned in the VPC for the agent runtime. This value is managed by the service and cannot be set: it is rejected on both create and update. Agent runtimes created on or after the May 5, 2026 rollout do not include a service-managed Amazon S3 gateway.
-  final pulumi.Input<bool>? requireServiceS3Endpoint;
+  final pulumi.Input<bool?>? requireServiceS3Endpoint;
   /// Security groups associated with the VPC configuration.
   final pulumi.Input<List<String>> securityGroups;
   /// Subnets associated with the VPC configuration.

@@ -7,37 +7,37 @@ import 'buildx_builder_kubernetes_requests.dart';
 
 class BuildxBuilderKubernetes {
   /// Sets additional annotations on the deployments and pods.
-  final pulumi.Input<String>? annotations;
+  final pulumi.Input<String?>? annotations;
   /// Automatically load images to the Docker Engine image store. Defaults to `false`
-  final pulumi.Input<bool>? defaultLoad;
+  final pulumi.Input<bool?>? defaultLoad;
   /// Sets the image to use for running BuildKit.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Sets additional labels on the deployments and pods.
-  final pulumi.Input<String>? labels;
+  final pulumi.Input<String?>? labels;
   /// Resource limits for CPU, memory, and ephemeral storage.
-  final pulumi.Input<BuildxBuilderKubernetesLimits>? limits;
+  final pulumi.Input<BuildxBuilderKubernetesLimits?>? limits;
   /// Load-balancing strategy (sticky or random).
-  final pulumi.Input<String>? loadbalance;
+  final pulumi.Input<String?>? loadbalance;
   /// Sets the Kubernetes namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Sets the pod's nodeSelector label(s).
-  final pulumi.Input<String>? nodeselector;
+  final pulumi.Input<String?>? nodeselector;
   /// QEMU emulation configuration.
-  final pulumi.Input<BuildxBuilderKubernetesQemu>? qemu;
+  final pulumi.Input<BuildxBuilderKubernetesQemu?>? qemu;
   /// Sets the number of Pod replicas to create.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// Resource requests for CPU, memory, and ephemeral storage.
-  final pulumi.Input<BuildxBuilderKubernetesRequests>? requests;
+  final pulumi.Input<BuildxBuilderKubernetesRequests?>? requests;
   /// Run the container as a non-root user.
-  final pulumi.Input<bool>? rootless;
+  final pulumi.Input<bool?>? rootless;
   /// Sets the scheduler responsible for scheduling the pod.
-  final pulumi.Input<String>? schedulername;
+  final pulumi.Input<String?>? schedulername;
   /// Sets the pod's serviceAccountName.
-  final pulumi.Input<String>? serviceaccount;
+  final pulumi.Input<String?>? serviceaccount;
   /// Set the timeout limit for pod provisioning.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// Configures the pod's taint toleration.
-  final pulumi.Input<String>? tolerations;
+  final pulumi.Input<String?>? tolerations;
 
   /// Creates a new [BuildxBuilderKubernetes].
   /// [annotations] Sets additional annotations on the deployments and pods.
@@ -107,7 +107,7 @@ class BuildxBuilderKubernetes {
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeselector: (() { final guardedValue = map['nodeselector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qemu: (() { final guardedValue = map['qemu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildxBuilderKubernetesQemu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildxBuilderKubernetesRequests.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rootless: (() { final guardedValue = map['rootless']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       schedulername: (() { final guardedValue = map['schedulername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,9 +5,9 @@ import 'algorithm_validation_specification_validation_profiles_training_job_defi
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig {
   /// Whether multiple jobs can share the placement configuration.
-  final pulumi.Input<bool>? enableMultipleJobs;
+  final pulumi.Input<bool?>? enableMultipleJobs;
   /// Placement specifications for ultra servers. See Placement Specifications.
-  final pulumi.Input<List<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification>>? placementSpecifications;
+  final pulumi.Input<List<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification>?>? placementSpecifications;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig].
   /// [enableMultipleJobs] Whether multiple jobs can share the placement configuration.

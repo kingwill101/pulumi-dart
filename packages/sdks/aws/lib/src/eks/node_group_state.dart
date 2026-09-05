@@ -12,64 +12,64 @@ import 'node_group_warm_pool_config.dart';
 
 /// Input properties used for looking up and filtering NodeGroup resources.
 class NodeGroupState {
-  /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<String>? amiType;
-  /// Amazon Resource Name (ARN) of the EKS Node Group.
-  final pulumi.Input<String>? arn;
+  /// Type of AMI associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. The provider will only perform drift detection if a configuration value is provided.
+  final pulumi.Input<String?>? amiType;
+  /// ARN of the EKS Node Group.
+  final pulumi.Input<String?>? arn;
   /// Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<String>? capacityType;
+  final pulumi.Input<String?>? capacityType;
   /// Name of the EKS Cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Disk size in GiB for worker nodes. Defaults to `50` for Windows, `20` all other node groups. The provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<int>? diskSize;
+  final pulumi.Input<int?>? diskSize;
   /// Force version update if existing pods are unable to be drained due to a pod disruption budget issue.
-  final pulumi.Input<bool>? forceUpdateVersion;
+  final pulumi.Input<bool?>? forceUpdateVersion;
   /// List of instance types associated with the EKS Node Group. Defaults to `["t3.medium"]`. The provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<List<String>>? instanceTypes;
+  final pulumi.Input<List<String>?>? instanceTypes;
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configuration block with Launch Template settings. See `launchTemplate` below for details. Conflicts with `remoteAccess`.
-  final pulumi.Input<NodeGroupLaunchTemplate>? launchTemplate;
+  final pulumi.Input<NodeGroupLaunchTemplate?>? launchTemplate;
   /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `nodeGroupNamePrefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
-  final pulumi.Input<String>? nodeGroupName;
+  final pulumi.Input<String?>? nodeGroupName;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `nodeGroupName`.
-  final pulumi.Input<String>? nodeGroupNamePrefix;
+  final pulumi.Input<String?>? nodeGroupNamePrefix;
   /// The node auto repair configuration for the node group. See `nodeRepairConfig` below for details.
-  final pulumi.Input<NodeGroupNodeRepairConfig>? nodeRepairConfig;
-  /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
-  final pulumi.Input<String>? nodeRoleArn;
+  final pulumi.Input<NodeGroupNodeRepairConfig?>? nodeRepairConfig;
+  /// ARN of the IAM Role that provides permissions for the EKS Node Group.
+  final pulumi.Input<String?>? nodeRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
-  final pulumi.Input<String>? releaseVersion;
+  final pulumi.Input<String?>? releaseVersion;
   /// Configuration block with remote access settings. See `remoteAccess` below for details. Conflicts with `launchTemplate`.
-  final pulumi.Input<NodeGroupRemoteAccess>? remoteAccess;
+  final pulumi.Input<NodeGroupRemoteAccess?>? remoteAccess;
   /// List of objects containing information about underlying resources.
-  final pulumi.Input<List<NodeGroupResource>>? resources;
+  final pulumi.Input<List<NodeGroupResource>?>? resources;
   /// Configuration block with scaling settings. See `scalingConfig` below for details.
-  final pulumi.Input<NodeGroupScalingConfig>? scalingConfig;
+  final pulumi.Input<NodeGroupScalingConfig?>? scalingConfig;
   /// Status of the EKS Node Group.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Identifiers of EC2 Subnets to associate with the EKS Node Group.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
-  final pulumi.Input<List<NodeGroupTaint>>? taints;
+  final pulumi.Input<List<NodeGroupTaint>?>? taints;
   /// Configuration block with update settings. See `updateConfig` below for details.
-  final pulumi.Input<NodeGroupUpdateConfig>? updateConfig;
+  final pulumi.Input<NodeGroupUpdateConfig?>? updateConfig;
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Configuration block with EC2 Auto Scaling warm pool settings. Including this block enables the warm pool; removing it disables and removes the warm pool. See `warmPoolConfig` below for details.
-  final pulumi.Input<NodeGroupWarmPoolConfig>? warmPoolConfig;
+  final pulumi.Input<NodeGroupWarmPoolConfig?>? warmPoolConfig;
 
   /// Creates a new [NodeGroupState].
-  /// [amiType] Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
-  /// [arn] Amazon Resource Name (ARN) of the EKS Node Group.
+  /// [amiType] Type of AMI associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. The provider will only perform drift detection if a configuration value is provided.
+  /// [arn] ARN of the EKS Node Group.
   /// [capacityType] Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
   /// [clusterName] Name of the EKS Cluster.
   /// [diskSize] Disk size in GiB for worker nodes. Defaults to `50` for Windows, `20` all other node groups. The provider will only perform drift detection if a configuration value is provided.
@@ -80,7 +80,7 @@ class NodeGroupState {
   /// [nodeGroupName] Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `nodeGroupNamePrefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
   /// [nodeGroupNamePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `nodeGroupName`.
   /// [nodeRepairConfig] The node auto repair configuration for the node group. See `nodeRepairConfig` below for details.
-  /// [nodeRoleArn] Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
+  /// [nodeRoleArn] ARN of the IAM Role that provides permissions for the EKS Node Group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [releaseVersion] AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
   /// [remoteAccess] Configuration block with remote access settings. See `remoteAccess` below for details. Conflicts with `launchTemplate`.
@@ -160,7 +160,7 @@ class NodeGroupState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacityType: (() { final guardedValue = map['capacityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       forceUpdateVersion: (() { final guardedValue = map['forceUpdateVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceTypes: (() { final guardedValue = map['instanceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -816,7 +816,7 @@ class Invocation extends pulumi.CustomResource {
           'aws:lambda/invocation:Invocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     functionName = registerOutput<String>('functionName');
     input = registerOutput<String>('input');
@@ -826,7 +826,7 @@ class Invocation extends pulumi.CustomResource {
     result = registerOutput<String>('result');
     tenantId = registerOutput<String?>('tenantId');
     terraformKey = registerOutput<String?>('terraformKey');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Invocation] resource's state with the given [name] and [id].
@@ -834,11 +834,12 @@ class Invocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InvocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Invocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -860,6 +861,26 @@ class Invocation extends pulumi.CustomResource {
     result = registerOutput<String>('result');
     tenantId = registerOutput<String?>('tenantId');
     terraformKey = registerOutput<String?>('terraformKey');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Invocation] resource.
+  Invocation.reference(String urn)
+    : super(
+        'aws:lambda/invocation:Invocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    functionName = registerOutput<String>('functionName');
+    input = registerOutput<String>('input');
+    lifecycleScope = registerOutput<String?>('lifecycleScope');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    result = registerOutput<String>('result');
+    tenantId = registerOutput<String?>('tenantId');
+    terraformKey = registerOutput<String?>('terraformKey');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

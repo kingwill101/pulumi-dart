@@ -4,45 +4,45 @@
 /// Result data returned by getPartnerRegistration.
 class GetPartnerRegistrationResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   /// The immutable id of the corresponding partner registration.
-  final String partnerRegistrationId;
-  final String resourceGroupName;
+  final String? partnerRegistrationId;
+  final String? resourceGroupName;
   /// A mapping of tags which are assigned to the EventGrid Partner Registration.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetPartnerRegistrationResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [partnerRegistrationId] The immutable id of the corresponding partner registration.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags which are assigned to the EventGrid Partner Registration.
   const GetPartnerRegistrationResult({
-    required this.id,
-    required this.name,
-    required this.partnerRegistrationId,
-    required this.resourceGroupName,
-    required this.tags,
+    this.id,
+    this.name,
+    this.partnerRegistrationId,
+    this.resourceGroupName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'partnerRegistrationId': partnerRegistrationId,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
+      'id': ?id,
+      'name': ?name,
+      'partnerRegistrationId': ?partnerRegistrationId,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
     };
   }
 
   factory GetPartnerRegistrationResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerRegistrationResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      partnerRegistrationId: map['partnerRegistrationId'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerRegistrationId: (() { final guardedValue = map['partnerRegistrationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServerMicrosoftSupportAuditingPolicy resources.
 class ServerMicrosoftSupportAuditingPolicyState {
   /// The blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Microsoft support auditing logs.
-  final pulumi.Input<String>? blobStorageEndpoint;
+  final pulumi.Input<String?>? blobStorageEndpoint;
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** If `enabled` is `true`, `blobStorageEndpoint` or `logMonitoringEnabled` are required.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Enable audit events to Azure Monitor? To enable server audit events to Azure Monitor, please enable its main database audit events to Azure Monitor. Defaults to `true`.
-  final pulumi.Input<bool>? logMonitoringEnabled;
+  final pulumi.Input<bool?>? logMonitoringEnabled;
   /// The ID of the SQL Server to set the extended auditing policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// The access key to use for the auditing storage account.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// The ID of the Subscription containing the Storage Account.
-  final pulumi.Input<String>? storageAccountSubscriptionId;
+  final pulumi.Input<String?>? storageAccountSubscriptionId;
 
   /// Creates a new [ServerMicrosoftSupportAuditingPolicyState].
   /// [blobStorageEndpoint] The blob storage endpoint (e.g. https://example.blob.core.windows.net). This blob storage will hold all Microsoft support auditing logs.

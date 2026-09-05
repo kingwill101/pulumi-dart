@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineThumbnailConfigPermission {
   /// The permission that you want to give to the AWS user that you specified in `thumbnail_config_permissions.grantee`. Valid values are `Read`, `ReadAcp`, `WriteAcp` or `FullControl`.
-  final pulumi.Input<List<String>>? accesses;
+  final pulumi.Input<List<String>?>? accesses;
   /// The AWS user or group that you want to have access to thumbnail files.
-  final pulumi.Input<String>? grantee;
+  final pulumi.Input<String?>? grantee;
   /// Specify the type of value that appears in the `thumbnail_config_permissions.grantee` object. Valid values are `Canonical`, `Email` or `Group`.
-  final pulumi.Input<String>? granteeType;
+  final pulumi.Input<String?>? granteeType;
 
   /// Creates a new [PipelineThumbnailConfigPermission].
   /// [accesses] The permission that you want to give to the AWS user that you specified in `thumbnail_config_permissions.grantee`. Valid values are `Read`, `ReadAcp`, `WriteAcp` or `FullControl`.

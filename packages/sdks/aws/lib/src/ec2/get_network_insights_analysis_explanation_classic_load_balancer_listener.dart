@@ -23,8 +23,8 @@ class GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
 
   factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener(
-      instancePort: pulumi.Input.fromValue(map['instancePort'] as int),
-      loadBalancerPort: pulumi.Input.fromValue(map['loadBalancerPort'] as int),
+      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
+      loadBalancerPort: pulumi.Input.fromValue((map['loadBalancerPort'] as num).toInt()),
     );
   }
 }

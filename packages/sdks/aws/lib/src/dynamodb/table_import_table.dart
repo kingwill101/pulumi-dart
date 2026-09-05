@@ -7,14 +7,14 @@ import 'table_import_table_s3_bucket_source.dart';
 class TableImportTable {
   /// Type of compression to be used on the input coming from the imported table.
   /// Valid values are `GZIP`, `ZSTD` and `NONE`.
-  final pulumi.Input<String>? inputCompressionType;
+  final pulumi.Input<String?>? inputCompressionType;
   /// The format of the source data.
   /// Valid values are `CSV`, `DYNAMODB_JSON`, and `ION`.
   final pulumi.Input<String> inputFormat;
   /// Describe the format options for the data that was imported into the target table.
   /// There is one value, `csv`.
   /// See below.
-  final pulumi.Input<TableImportTableInputFormatOptions>? inputFormatOptions;
+  final pulumi.Input<TableImportTableInputFormatOptions?>? inputFormatOptions;
   /// Values for the S3 bucket the source file is imported from.
   /// See below.
   final pulumi.Input<TableImportTableS3BucketSource> s3BucketSource;

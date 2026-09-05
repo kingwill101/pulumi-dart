@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceWorkforceVpcConfig {
   /// The VPC security group IDs. The security groups must be for the same VPC as specified in the subnet.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The ID of the subnets in the VPC that you want to connect.
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? subnets;
   /// The IDs for the VPC service endpoints of your VPC workforce.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// The ID of the VPC that the workforce uses for communication.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [WorkforceWorkforceVpcConfig].
   /// [securityGroupIds] The VPC security group IDs. The security groups must be for the same VPC as specified in the subnet.

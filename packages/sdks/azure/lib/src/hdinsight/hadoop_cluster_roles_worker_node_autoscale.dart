@@ -6,11 +6,11 @@ import 'hadoop_cluster_roles_worker_node_autoscale_recurrence.dart';
 
 class HadoopClusterRolesWorkerNodeAutoscale {
   /// A `capacity` block as defined below.
-  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleCapacity>? capacity;
+  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleCapacity?>? capacity;
   /// A `recurrence` block as defined below.
   ///
   /// &gt; **Note:** Either a `capacity` or `recurrence` block must be specified - but not both.
-  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
+  final pulumi.Input<HadoopClusterRolesWorkerNodeAutoscaleRecurrence?>? recurrence;
 
   /// Creates a new [HadoopClusterRolesWorkerNodeAutoscale].
   /// [capacity] A `capacity` block as defined below.

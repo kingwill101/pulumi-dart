@@ -6,7 +6,7 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   /// The CPU requirements for every worker instance of the worker type.
   final pulumi.Input<String> cpu;
   /// The disk requirements for every worker instance of the worker type.
-  final pulumi.Input<String>? disk;
+  final pulumi.Input<String?>? disk;
   /// The memory requirements for every worker instance of the worker type.
   final pulumi.Input<String> memory;
 

@@ -6,17 +6,15 @@ import 'v2_input_source_resource_configuration_resource_tag.dart';
 
 class V2InputSourceResourceConfiguration {
   /// CloudFormation stack ARN.
-  final pulumi.Input<String>? cfnStackArn;
+  final pulumi.Input<String?>? cfnStackArn;
   /// S3 URL.
-  final pulumi.Input<String>? designFileS3Url;
+  final pulumi.Input<String?>? designFileS3Url;
   /// EKS configuration. See `eks` Block below.
-  final pulumi.Input<V2InputSourceResourceConfigurationEks>? eks;
+  final pulumi.Input<V2InputSourceResourceConfigurationEks?>? eks;
   /// Resource tags used for discovery. See `resourceTag` Block below.
-  final pulumi.Input<List<V2InputSourceResourceConfigurationResourceTag>>? resourceTags;
+  final pulumi.Input<List<V2InputSourceResourceConfigurationResourceTag>?>? resourceTags;
   /// S3 URL.
-  ///
-  /// Exactly one attribute must be configured.
-  final pulumi.Input<String>? tfStateFileUrl;
+  final pulumi.Input<String?>? tfStateFileUrl;
 
   /// Creates a new [V2InputSourceResourceConfiguration].
   /// [cfnStackArn] CloudFormation stack ARN.

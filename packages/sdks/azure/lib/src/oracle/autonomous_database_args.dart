@@ -11,7 +11,7 @@ class AutonomousDatabaseArgs {
   /// The password must be between `12` and `30 `characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (") or the username "admin", regardless of casing.
   final pulumi.Input<String> adminPassword;
   /// (Optional) Defines the network access type for the Autonomous Database. If the property is explicitly set to an empty list, it allows secure public access to the database from any IP address. If specific ACL (Access Control List) values are provided, access will be restricted to only the specified IP addresses.
-  final pulumi.Input<List<String>>? allowedIps;
+  final pulumi.Input<List<String>?>? allowedIps;
   /// Indicates if auto scaling is enabled for the Autonomous Database CPU core count.
   final pulumi.Input<bool> autoScalingEnabled;
   /// Indicates if auto scaling is enabled for the Autonomous Database storage.
@@ -24,7 +24,7 @@ class AutonomousDatabaseArgs {
   final pulumi.Input<double> computeCount;
   /// The compute model of the Autonomous Database. This is required if using the `computeCount` parameter. If using `cpuCoreCount` then it is an error to specify `computeModel` to a non-null value. ECPU compute model is the recommended model and OCPU compute model is legacy. Changing this forces a new Autonomous Database to be created.
   final pulumi.Input<String> computeModel;
-  final pulumi.Input<List<String>>? customerContacts;
+  final pulumi.Input<List<String>?>? customerContacts;
   /// The maximum storage that can be allocated for the database, in terabytes.
   final pulumi.Input<int> dataStorageSizeInTbs;
   /// A valid Oracle Database version for Autonomous Database. Changing this forces a new Autonomous Database to be created.
@@ -39,23 +39,23 @@ class AutonomousDatabaseArgs {
   /// The Oracle license model that applies to the Oracle Autonomous Database. Possible values are `LicenseIncluded` and `BringYourOwnLicense`. Changing this forces a new Autonomous Database to be created. Bring your own license (BYOL) allows you to apply your current on-premises Oracle software licenses to equivalent, highly automated Oracle services in the cloud. License Included allows you to subscribe to new Oracle Database software licenses and the Oracle Database service. Note that when provisioning an [Autonomous Database on dedicated Exadata infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/index.html), this attribute must be null. It is already set at the Autonomous Exadata Infrastructure level. When provisioning an [Autonomous Database Serverless] (https://docs.oracle.com/en/cloud/paas/autonomous-database/index.html) database, if a value is not specified, the system defaults the value to `BRING_YOUR_OWN_LICENSE`. Bring your own license (BYOL) also allows you to select the DB edition using the optional parameter.
   final pulumi.Input<String> licenseModel;
   /// The Azure Region where the Autonomous Database should exist. Changing this forces a new Autonomous Database to be created.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<AutonomousDatabaseLongTermBackupSchedule>? longTermBackupSchedule;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<AutonomousDatabaseLongTermBackupSchedule?>? longTermBackupSchedule;
   /// Specifies if the Autonomous Database requires mTLS connections. Changing this forces a new Autonomous Database to be created. Default value `false`.
   ///
   /// &gt; **Note:** `mtlsConnectionRequired`  must be set to `true` for all workload types except 'APEX' when creating a database with public access.
   final pulumi.Input<bool> mtlsConnectionRequired;
   /// The name which should be used for this Autonomous Database. Changing this forces a new Autonomous Database to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The national character set for the autonomous database. Changing this forces a new Autonomous Database to be created. The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
   final pulumi.Input<String> nationalCharacterSet;
   /// The name of the Resource Group where the Autonomous Database should exist. Changing this forces a new Autonomous Database to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subnet the resource is associated with. Changing this forces a new Autonomous Database to be created.
-  final pulumi.Input<String>? subnetId;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? subnetId;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the vnet associated with the cloud VM cluster. Changing this forces a new Autonomous Database to be created.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [AutonomousDatabaseArgs].
   /// [adminPassword] The password must be between `12` and `30 `characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (") or the username "admin", regardless of casing.
@@ -141,12 +141,12 @@ class AutonomousDatabaseArgs {
       allowedIps: (() { final guardedValue = map['allowedIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       autoScalingEnabled: pulumi.Input.fromValue(map['autoScalingEnabled'] as bool),
       autoScalingForStorageEnabled: pulumi.Input.fromValue(map['autoScalingForStorageEnabled'] as bool),
-      backupRetentionPeriodInDays: pulumi.Input.fromValue(map['backupRetentionPeriodInDays'] as int),
+      backupRetentionPeriodInDays: pulumi.Input.fromValue((map['backupRetentionPeriodInDays'] as num).toInt()),
       characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
-      computeCount: pulumi.Input.fromValue(map['computeCount'] as double),
+      computeCount: pulumi.Input.fromValue((map['computeCount'] as num).toDouble()),
       computeModel: pulumi.Input.fromValue(map['computeModel'] as String),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      dataStorageSizeInTbs: pulumi.Input.fromValue(map['dataStorageSizeInTbs'] as int),
+      dataStorageSizeInTbs: pulumi.Input.fromValue((map['dataStorageSizeInTbs'] as num).toInt()),
       dbVersion: pulumi.Input.fromValue(map['dbVersion'] as String),
       dbWorkload: pulumi.Input.fromValue(map['dbWorkload'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),

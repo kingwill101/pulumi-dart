@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_input_settings_caption_selector_selector_settings.dart';
 
 class ChannelInputAttachmentInputSettingsCaptionSelector {
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings>? selectorSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings?>? selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelector].
   /// [languageCode] Optional.

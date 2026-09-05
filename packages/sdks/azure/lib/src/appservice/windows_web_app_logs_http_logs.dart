@@ -6,9 +6,9 @@ import 'windows_web_app_logs_http_logs_file_system.dart';
 
 class WindowsWebAppLogsHttpLogs {
   /// A `azureBlobStorageHttp` block as defined below.
-  final pulumi.Input<WindowsWebAppLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<WindowsWebAppLogsHttpLogsAzureBlobStorage?>? azureBlobStorage;
   /// A `fileSystem` block as defined above.
-  final pulumi.Input<WindowsWebAppLogsHttpLogsFileSystem>? fileSystem;
+  final pulumi.Input<WindowsWebAppLogsHttpLogsFileSystem?>? fileSystem;
 
   /// Creates a new [WindowsWebAppLogsHttpLogs].
   /// [azureBlobStorage] A `azureBlobStorageHttp` block as defined below.

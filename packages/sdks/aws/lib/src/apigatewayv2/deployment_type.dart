@@ -43,13 +43,13 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apigatewayv2/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     autoDeployed = registerOutput<bool>('autoDeployed');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -57,11 +57,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -79,6 +80,22 @@ class DeploymentType extends pulumi.CustomResource {
     autoDeployed = registerOutput<bool>('autoDeployed');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'aws:apigatewayv2/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    autoDeployed = registerOutput<bool>('autoDeployed');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

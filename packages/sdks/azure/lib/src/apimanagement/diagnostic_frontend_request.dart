@@ -5,11 +5,11 @@ import 'diagnostic_frontend_request_data_masking.dart';
 
 class DiagnosticFrontendRequest {
   /// Number of payload bytes to log (up to 8192).
-  final pulumi.Input<int>? bodyBytes;
+  final pulumi.Input<int?>? bodyBytes;
   /// A `dataMasking` block as defined below.
-  final pulumi.Input<DiagnosticFrontendRequestDataMasking>? dataMasking;
+  final pulumi.Input<DiagnosticFrontendRequestDataMasking?>? dataMasking;
   /// Specifies a list of headers to log.
-  final pulumi.Input<List<String>>? headersToLogs;
+  final pulumi.Input<List<String>?>? headersToLogs;
 
   /// Creates a new [DiagnosticFrontendRequest].
   /// [bodyBytes] Number of payload bytes to log (up to 8192).
@@ -31,7 +31,7 @@ class DiagnosticFrontendRequest {
 
   factory DiagnosticFrontendRequest.fromMap(Map<String, dynamic> map) {
     return DiagnosticFrontendRequest(
-      bodyBytes: (() { final guardedValue = map['bodyBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bodyBytes: (() { final guardedValue = map['bodyBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dataMasking: (() { final guardedValue = map['dataMasking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiagnosticFrontendRequestDataMasking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       headersToLogs: (() { final guardedValue = map['headersToLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

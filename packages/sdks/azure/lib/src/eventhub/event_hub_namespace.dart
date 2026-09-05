@@ -264,17 +264,18 @@ class EventHubNamespace extends pulumi.CustomResource {
           'azure:eventhub/eventHubNamespace:EventHubNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['defaultPrimaryConnectionString', 'defaultPrimaryConnectionStringAlias', 'defaultPrimaryKey', 'defaultSecondaryConnectionString', 'defaultSecondaryConnectionStringAlias', 'defaultSecondaryKey'],
         ) {
     autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
     capacity = registerOutput<int?>('capacity');
     dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
-    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     identity = registerOutput<EventHubNamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubNamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
@@ -285,7 +286,7 @@ class EventHubNamespace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventHubNamespace] resource's state with the given [name] and [id].
@@ -293,11 +294,12 @@ class EventHubNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventHubNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventHubNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,12 +316,12 @@ class EventHubNamespace extends pulumi.CustomResource {
     autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
     capacity = registerOutput<int?>('capacity');
     dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
-    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     identity = registerOutput<EventHubNamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubNamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
@@ -330,6 +332,38 @@ class EventHubNamespace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventHubNamespace] resource.
+  EventHubNamespace.reference(String urn)
+    : super(
+        'azure:eventhub/eventHubNamespace:EventHubNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['defaultPrimaryConnectionString', 'defaultPrimaryConnectionStringAlias', 'defaultPrimaryKey', 'defaultSecondaryConnectionString', 'defaultSecondaryConnectionStringAlias', 'defaultSecondaryKey'],
+        isResourceReference: true,
+      ) {
+    autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
+    capacity = registerOutput<int?>('capacity');
+    dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
+    identity = registerOutput<EventHubNamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubNamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    maximumThroughputUnits = registerOutput<int?>('maximumThroughputUnits');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>('networkRulesets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubNamespaceNetworkRulesets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

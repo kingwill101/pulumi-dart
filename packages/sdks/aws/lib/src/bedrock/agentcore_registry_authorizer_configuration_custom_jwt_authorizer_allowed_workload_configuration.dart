@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_allowed_workload_configuration_hosting_environment.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration {
-  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfigurationHostingEnvironment>>? hostingEnvironments;
-  final pulumi.Input<List<String>>? workloadIdentities;
+  final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfigurationHostingEnvironment>?>? hostingEnvironments;
+  final pulumi.Input<List<String>?>? workloadIdentities;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration].
   /// [hostingEnvironments] Optional.

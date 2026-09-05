@@ -15,9 +15,9 @@ class ConnectAttachmentArgs {
   /// Options block. See options for more information.
   final pulumi.Input<ConnectAttachmentOptions> options;
   /// The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the attachment between the two connections.
   ///
   /// The following arguments are optional:

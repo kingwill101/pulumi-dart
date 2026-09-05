@@ -469,7 +469,7 @@ class Segment extends pulumi.CustomResource {
           'aws:evidently/segment:Segment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
@@ -480,8 +480,8 @@ class Segment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pattern = registerOutput<String>('pattern');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Segment] resource's state with the given [name] and [id].
@@ -489,11 +489,12 @@ class Segment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SegmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Segment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,7 +517,29 @@ class Segment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pattern = registerOutput<String>('pattern');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Segment] resource.
+  Segment.reference(String urn)
+    : super(
+        'aws:evidently/segment:Segment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    experimentCount = registerOutput<int>('experimentCount');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    launchCount = registerOutput<int>('launchCount');
+    this.name = registerOutput<String>('name');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

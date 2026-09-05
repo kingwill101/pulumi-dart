@@ -25,18 +25,18 @@ import 'service_state.dart';
 ///     vpc: example.id,
 /// });
 /// const exampleService = new aws.servicediscovery.Service("example", {
-///     name: "example",
 ///     dnsConfig: {
-///         namespaceId: examplePrivateDnsNamespace.id,
 ///         dnsRecords: [{
 ///             ttl: 10,
 ///             type: "A",
 ///         }],
+///         namespaceId: examplePrivateDnsNamespace.id,
 ///         routingPolicy: "MULTIVALUE",
 ///     },
 ///     healthCheckConfig: {
 ///         failureThreshold: 1,
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -52,18 +52,18 @@ import 'service_state.dart';
 ///     description="example",
 ///     vpc=example.id)
 /// example_service = aws.servicediscovery.Service("example",
-///     name="example",
 ///     dns_config={
-///         "namespace_id": example_private_dns_namespace.id,
 ///         "dns_records": [{
 ///             "ttl": 10,
 ///             "type": "A",
 ///         }],
+///         "namespace_id": example_private_dns_namespace.id,
 ///         "routing_policy": "MULTIVALUE",
 ///     },
 ///     health_check_config={
 ///         "failure_threshold": 1,
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -89,10 +89,8 @@ import 'service_state.dart';
 ///
 ///     var exampleService = new Aws.ServiceDiscovery.Service("example", new()
 ///     {
-///         Name = "example",
 ///         DnsConfig = new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigArgs
 ///         {
-///             NamespaceId = examplePrivateDnsNamespace.Id,
 ///             DnsRecords = new[]
 ///             {
 ///                 new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigDnsRecordArgs
@@ -101,12 +99,14 @@ import 'service_state.dart';
 ///                     Type = "A",
 ///                 },
 ///             },
+///             NamespaceId = examplePrivateDnsNamespace.Id,
 ///             RoutingPolicy = "MULTIVALUE",
 ///         },
 ///         HealthCheckConfig = new Aws.ServiceDiscovery.Inputs.ServiceHealthCheckConfigArgs
 ///         {
 ///             FailureThreshold = 1,
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -139,20 +139,20 @@ import 'service_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
-/// 			Name: pulumi.String("example"),
 /// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
-/// 				NamespaceId: examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 /// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 /// 						Ttl:  pulumi.Int(10),
 /// 						Type: pulumi.String("A"),
 /// 					},
 /// 				},
+/// 				NamespaceId:   examplePrivateDnsNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 				RoutingPolicy: pulumi.String("MULTIVALUE"),
 /// 			},
 /// 			HealthCheckConfig: &servicediscovery.ServiceHealthCheckConfigArgs{
 /// 				FailureThreshold: pulumi.Int(1),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -181,18 +181,18 @@ import 'service_state.dart';
 ///   vpc         = aws_ec2_vpc.example.id
 /// }
 /// resource "aws_servicediscovery_service" "example" {
-///   name = "example"
 ///   dns_config = {
-///     namespace_id = aws_servicediscovery_privatednsnamespace.example.id
 ///     dns_records = [{
 ///       "ttl"  = 10
 ///       "type" = "A"
 ///     }]
+///     namespace_id   = aws_servicediscovery_privatednsnamespace.example.id
 ///     routing_policy = "MULTIVALUE"
 ///   }
 ///   health_check_config = {
 ///     failure_threshold = 1
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -236,18 +236,18 @@ import 'service_state.dart';
 ///             .build());
 ///
 ///         var exampleService = new Service("exampleService", ServiceArgs.builder()
-///             .name("example")
 ///             .dnsConfig(ServiceDnsConfigArgs.builder()
-///                 .namespaceId(examplePrivateDnsNamespace.id())
 ///                 .dnsRecords(ServiceDnsConfigDnsRecordArgs.builder()
 ///                     .ttl(10)
 ///                     .type("A")
 ///                     .build())
+///                 .namespaceId(examplePrivateDnsNamespace.id())
 ///                 .routingPolicy("MULTIVALUE")
 ///                 .build())
 ///             .healthCheckConfig(ServiceHealthCheckConfigArgs.builder()
 ///                 .failureThreshold(1)
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -272,15 +272,15 @@ import 'service_state.dart';
 ///     type: aws:servicediscovery:Service
 ///     name: example
 ///     properties:
-///       name: example
 ///       dnsConfig:
-///         namespaceId: ${examplePrivateDnsNamespace.id}
 ///         dnsRecords:
 ///           - ttl: 10
 ///             type: A
+///         namespaceId: ${examplePrivateDnsNamespace.id}
 ///         routingPolicy: MULTIVALUE
 ///       healthCheckConfig:
 ///         failureThreshold: 1
+///       name: example
 /// ```
 ///
 ///
@@ -294,19 +294,19 @@ import 'service_state.dart';
 ///     description: "example",
 /// });
 /// const exampleService = new aws.servicediscovery.Service("example", {
-///     name: "example",
 ///     dnsConfig: {
-///         namespaceId: example.id,
 ///         dnsRecords: [{
 ///             ttl: 10,
 ///             type: "A",
 ///         }],
+///         namespaceId: example.id,
 ///     },
 ///     healthCheckConfig: {
 ///         failureThreshold: 10,
 ///         resourcePath: "path",
 ///         type: "HTTP",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -317,19 +317,19 @@ import 'service_state.dart';
 ///     name="example.mydomain.com",
 ///     description="example")
 /// example_service = aws.servicediscovery.Service("example",
-///     name="example",
 ///     dns_config={
-///         "namespace_id": example.id,
 ///         "dns_records": [{
 ///             "ttl": 10,
 ///             "type": "A",
 ///         }],
+///         "namespace_id": example.id,
 ///     },
 ///     health_check_config={
 ///         "failure_threshold": 10,
 ///         "resource_path": "path",
 ///         "type": "HTTP",
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -347,10 +347,8 @@ import 'service_state.dart';
 ///
 ///     var exampleService = new Aws.ServiceDiscovery.Service("example", new()
 ///     {
-///         Name = "example",
 ///         DnsConfig = new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigArgs
 ///         {
-///             NamespaceId = example.Id,
 ///             DnsRecords = new[]
 ///             {
 ///                 new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigDnsRecordArgs
@@ -359,6 +357,7 @@ import 'service_state.dart';
 ///                     Type = "A",
 ///                 },
 ///             },
+///             NamespaceId = example.Id,
 ///         },
 ///         HealthCheckConfig = new Aws.ServiceDiscovery.Inputs.ServiceHealthCheckConfigArgs
 ///         {
@@ -366,6 +365,7 @@ import 'service_state.dart';
 ///             ResourcePath = "path",
 ///             Type = "HTTP",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -388,21 +388,21 @@ import 'service_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = servicediscovery.NewService(ctx, "example", &servicediscovery.ServiceArgs{
-/// 			Name: pulumi.String("example"),
 /// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
-/// 				NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 /// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 /// 						Ttl:  pulumi.Int(10),
 /// 						Type: pulumi.String("A"),
 /// 					},
 /// 				},
+/// 				NamespaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			HealthCheckConfig: &servicediscovery.ServiceHealthCheckConfigArgs{
 /// 				FailureThreshold: pulumi.Int(10),
 /// 				ResourcePath:     pulumi.String("path"),
 /// 				Type:             pulumi.String("HTTP"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -425,19 +425,19 @@ import 'service_state.dart';
 ///   description = "example"
 /// }
 /// resource "aws_servicediscovery_service" "example" {
-///   name = "example"
 ///   dns_config = {
-///     namespace_id = aws_servicediscovery_publicdnsnamespace.example.id
 ///     dns_records = [{
 ///       "ttl"  = 10
 ///       "type" = "A"
 ///     }]
+///     namespace_id = aws_servicediscovery_publicdnsnamespace.example.id
 ///   }
 ///   health_check_config = {
 ///     failure_threshold = 10
 ///     resource_path     = "path"
 ///     type              = "HTTP"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -472,19 +472,19 @@ import 'service_state.dart';
 ///             .build());
 ///
 ///         var exampleService = new Service("exampleService", ServiceArgs.builder()
-///             .name("example")
 ///             .dnsConfig(ServiceDnsConfigArgs.builder()
-///                 .namespaceId(example.id())
 ///                 .dnsRecords(ServiceDnsConfigDnsRecordArgs.builder()
 ///                     .ttl(10)
 ///                     .type("A")
 ///                     .build())
+///                 .namespaceId(example.id())
 ///                 .build())
 ///             .healthCheckConfig(ServiceHealthCheckConfigArgs.builder()
 ///                 .failureThreshold(10)
 ///                 .resourcePath("path")
 ///                 .type("HTTP")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -501,16 +501,16 @@ import 'service_state.dart';
 ///     type: aws:servicediscovery:Service
 ///     name: example
 ///     properties:
-///       name: example
 ///       dnsConfig:
-///         namespaceId: ${example.id}
 ///         dnsRecords:
 ///           - ttl: 10
 ///             type: A
+///         namespaceId: ${example.id}
 ///       healthCheckConfig:
 ///         failureThreshold: 10
 ///         resourcePath: path
 ///         type: HTTP
+///       name: example
 /// ```
 ///
 ///
@@ -558,7 +558,7 @@ class Service extends pulumi.CustomResource {
           'aws:servicediscovery/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -569,8 +569,8 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -579,11 +579,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -606,8 +607,31 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'aws:servicediscovery/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>('healthCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>('healthCheckCustomConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

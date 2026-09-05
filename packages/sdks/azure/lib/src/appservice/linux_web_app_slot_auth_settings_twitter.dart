@@ -6,9 +6,9 @@ class LinuxWebAppSlotAuthSettingsTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerKey;
   /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecretSettingName`.
-  final pulumi.Input<String>? consumerSecret;
+  final pulumi.Input<String?>? consumerSecret;
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumerSecret`.
-  final pulumi.Input<String>? consumerSecretSettingName;
+  final pulumi.Input<String?>? consumerSecretSettingName;
 
   /// Creates a new [LinuxWebAppSlotAuthSettingsTwitter].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.

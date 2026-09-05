@@ -1,7 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_args.dart';
+import 'plan_associated_alarm.dart';
+import 'plan_report_configuration.dart';
 import 'plan_state.dart';
 import 'plan_timeouts.dart';
+import 'plan_trigger.dart';
+import 'plan_workflow.dart';
 
 /// Resource for managing an Amazon ARC Region Switch plan.
 ///
@@ -28,6 +32,32 @@ import 'plan_timeouts.dart';
 ///     }),
 /// });
 /// const examplePlan = new aws.arcregionswitch.Plan("example", {
+///     workflows: [
+///         {
+///             steps: [{
+///                 executionApprovalConfigs: [{
+///                     approvalRole: example.arn,
+///                     timeoutMinutes: 60,
+///                 }],
+///                 name: "manual-approval",
+///                 executionBlockType: "ManualApproval",
+///             }],
+///             workflowTargetAction: "activate",
+///             workflowTargetRegion: "us-west-2",
+///         },
+///         {
+///             steps: [{
+///                 executionApprovalConfigs: [{
+///                     approvalRole: example.arn,
+///                     timeoutMinutes: 60,
+///                 }],
+///                 name: "manual-approval",
+///                 executionBlockType: "ManualApproval",
+///             }],
+///             workflowTargetAction: "deactivate",
+///             workflowTargetRegion: "us-east-1",
+///         },
+///     ],
 ///     name: "example-plan",
 ///     executionRole: example.arn,
 ///     recoveryApproach: "activePassive",
@@ -36,32 +66,6 @@ import 'plan_timeouts.dart';
 ///         "us-west-2",
 ///     ],
 ///     primaryRegion: "us-east-1",
-///     workflows: [
-///         {
-///             workflowTargetAction: "activate",
-///             workflowTargetRegion: "us-west-2",
-///             steps: [{
-///                 name: "manual-approval",
-///                 executionBlockType: "ManualApproval",
-///                 executionApprovalConfigs: [{
-///                     approvalRole: example.arn,
-///                     timeoutMinutes: 60,
-///                 }],
-///             }],
-///         },
-///         {
-///             workflowTargetAction: "deactivate",
-///             workflowTargetRegion: "us-east-1",
-///             steps: [{
-///                 name: "manual-approval",
-///                 executionBlockType: "ManualApproval",
-///                 executionApprovalConfigs: [{
-///                     approvalRole: example.arn,
-///                     timeoutMinutes: 60,
-///                 }],
-///             }],
-///         },
-///     ],
 /// });
 /// ```
 /// ```python
@@ -82,6 +86,32 @@ import 'plan_timeouts.dart';
 ///         }],
 ///     }))
 /// example_plan = aws.arcregionswitch.Plan("example",
+///     workflows=[
+///         {
+///             "steps": [{
+///                 "execution_approval_configs": [{
+///                     "approval_role": example.arn,
+///                     "timeout_minutes": 60,
+///                 }],
+///                 "name": "manual-approval",
+///                 "execution_block_type": "ManualApproval",
+///             }],
+///             "workflow_target_action": "activate",
+///             "workflow_target_region": "us-west-2",
+///         },
+///         {
+///             "steps": [{
+///                 "execution_approval_configs": [{
+///                     "approval_role": example.arn,
+///                     "timeout_minutes": 60,
+///                 }],
+///                 "name": "manual-approval",
+///                 "execution_block_type": "ManualApproval",
+///             }],
+///             "workflow_target_action": "deactivate",
+///             "workflow_target_region": "us-east-1",
+///         },
+///     ],
 ///     name="example-plan",
 ///     execution_role=example.arn,
 ///     recovery_approach="activePassive",
@@ -89,33 +119,7 @@ import 'plan_timeouts.dart';
 ///         "us-east-1",
 ///         "us-west-2",
 ///     ],
-///     primary_region="us-east-1",
-///     workflows=[
-///         {
-///             "workflow_target_action": "activate",
-///             "workflow_target_region": "us-west-2",
-///             "steps": [{
-///                 "name": "manual-approval",
-///                 "execution_block_type": "ManualApproval",
-///                 "execution_approval_configs": [{
-///                     "approval_role": example.arn,
-///                     "timeout_minutes": 60,
-///                 }],
-///             }],
-///         },
-///         {
-///             "workflow_target_action": "deactivate",
-///             "workflow_target_region": "us-east-1",
-///             "steps": [{
-///                 "name": "manual-approval",
-///                 "execution_block_type": "ManualApproval",
-///                 "execution_approval_configs": [{
-///                     "approval_role": example.arn,
-///                     "timeout_minutes": 60,
-///                 }],
-///             }],
-///         },
-///     ])
+///     primary_region="us-east-1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -149,6 +153,51 @@ import 'plan_timeouts.dart';
 ///
 ///     var examplePlan = new Aws.ArcRegionSwitch.Plan("example", new()
 ///     {
+///         Workflows = new[]
+///         {
+///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
+///             {
+///                 Steps = new[]
+///                 {
+///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
+///                     {
+///                         ExecutionApprovalConfigs = new[]
+///                         {
+///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepExecutionApprovalConfigArgs
+///                             {
+///                                 ApprovalRole = example.Arn,
+///                                 TimeoutMinutes = 60,
+///                             },
+///                         },
+///                         Name = "manual-approval",
+///                         ExecutionBlockType = "ManualApproval",
+///                     },
+///                 },
+///                 WorkflowTargetAction = "activate",
+///                 WorkflowTargetRegion = "us-west-2",
+///             },
+///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
+///             {
+///                 Steps = new[]
+///                 {
+///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
+///                     {
+///                         ExecutionApprovalConfigs = new[]
+///                         {
+///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepExecutionApprovalConfigArgs
+///                             {
+///                                 ApprovalRole = example.Arn,
+///                                 TimeoutMinutes = 60,
+///                             },
+///                         },
+///                         Name = "manual-approval",
+///                         ExecutionBlockType = "ManualApproval",
+///                     },
+///                 },
+///                 WorkflowTargetAction = "deactivate",
+///                 WorkflowTargetRegion = "us-east-1",
+///             },
+///         },
 ///         Name = "example-plan",
 ///         ExecutionRole = example.Arn,
 ///         RecoveryApproach = "activePassive",
@@ -158,51 +207,6 @@ import 'plan_timeouts.dart';
 ///             "us-west-2",
 ///         },
 ///         PrimaryRegion = "us-east-1",
-///         Workflows = new[]
-///         {
-///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
-///             {
-///                 WorkflowTargetAction = "activate",
-///                 WorkflowTargetRegion = "us-west-2",
-///                 Steps = new[]
-///                 {
-///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
-///                     {
-///                         Name = "manual-approval",
-///                         ExecutionBlockType = "ManualApproval",
-///                         ExecutionApprovalConfigs = new[]
-///                         {
-///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepExecutionApprovalConfigArgs
-///                             {
-///                                 ApprovalRole = example.Arn,
-///                                 TimeoutMinutes = 60,
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
-///             {
-///                 WorkflowTargetAction = "deactivate",
-///                 WorkflowTargetRegion = "us-east-1",
-///                 Steps = new[]
-///                 {
-///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
-///                     {
-///                         Name = "manual-approval",
-///                         ExecutionBlockType = "ManualApproval",
-///                         ExecutionApprovalConfigs = new[]
-///                         {
-///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepExecutionApprovalConfigArgs
-///                             {
-///                                 ApprovalRole = example.Arn,
-///                                 TimeoutMinutes = 60,
-///                             },
-///                         },
-///                     },
-///                 },
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -244,6 +248,40 @@ import 'plan_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = arcregionswitch.NewPlan(ctx, "example", &arcregionswitch.PlanArgs{
+/// 			Workflows: arcregionswitch.PlanWorkflowArray{
+/// 				&arcregionswitch.PlanWorkflowArgs{
+/// 					Steps: arcregionswitch.PlanWorkflowStepArray{
+/// 						&arcregionswitch.PlanWorkflowStepArgs{
+/// 							ExecutionApprovalConfigs: arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArray{
+/// 								&arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArgs{
+/// 									ApprovalRole:   example.Arn,
+/// 									TimeoutMinutes: pulumi.Int(60),
+/// 								},
+/// 							},
+/// 							Name:               pulumi.String("manual-approval"),
+/// 							ExecutionBlockType: pulumi.String("ManualApproval"),
+/// 						},
+/// 					},
+/// 					WorkflowTargetAction: pulumi.String("activate"),
+/// 					WorkflowTargetRegion: pulumi.String("us-west-2"),
+/// 				},
+/// 				&arcregionswitch.PlanWorkflowArgs{
+/// 					Steps: arcregionswitch.PlanWorkflowStepArray{
+/// 						&arcregionswitch.PlanWorkflowStepArgs{
+/// 							ExecutionApprovalConfigs: arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArray{
+/// 								&arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArgs{
+/// 									ApprovalRole:   example.Arn,
+/// 									TimeoutMinutes: pulumi.Int(60),
+/// 								},
+/// 							},
+/// 							Name:               pulumi.String("manual-approval"),
+/// 							ExecutionBlockType: pulumi.String("ManualApproval"),
+/// 						},
+/// 					},
+/// 					WorkflowTargetAction: pulumi.String("deactivate"),
+/// 					WorkflowTargetRegion: pulumi.String("us-east-1"),
+/// 				},
+/// 			},
 /// 			Name:             pulumi.String("example-plan"),
 /// 			ExecutionRole:    example.Arn,
 /// 			RecoveryApproach: pulumi.String("activePassive"),
@@ -252,40 +290,6 @@ import 'plan_timeouts.dart';
 /// 				pulumi.String("us-west-2"),
 /// 			},
 /// 			PrimaryRegion: pulumi.String("us-east-1"),
-/// 			Workflows: arcregionswitch.PlanWorkflowArray{
-/// 				&arcregionswitch.PlanWorkflowArgs{
-/// 					WorkflowTargetAction: pulumi.String("activate"),
-/// 					WorkflowTargetRegion: pulumi.String("us-west-2"),
-/// 					Steps: arcregionswitch.PlanWorkflowStepArray{
-/// 						&arcregionswitch.PlanWorkflowStepArgs{
-/// 							Name:               pulumi.String("manual-approval"),
-/// 							ExecutionBlockType: pulumi.String("ManualApproval"),
-/// 							ExecutionApprovalConfigs: arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArray{
-/// 								&arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArgs{
-/// 									ApprovalRole:   example.Arn,
-/// 									TimeoutMinutes: pulumi.Int(60),
-/// 								},
-/// 							},
-/// 						},
-/// 					},
-/// 				},
-/// 				&arcregionswitch.PlanWorkflowArgs{
-/// 					WorkflowTargetAction: pulumi.String("deactivate"),
-/// 					WorkflowTargetRegion: pulumi.String("us-east-1"),
-/// 					Steps: arcregionswitch.PlanWorkflowStepArray{
-/// 						&arcregionswitch.PlanWorkflowStepArgs{
-/// 							Name:               pulumi.String("manual-approval"),
-/// 							ExecutionBlockType: pulumi.String("ManualApproval"),
-/// 							ExecutionApprovalConfigs: arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArray{
-/// 								&arcregionswitch.PlanWorkflowStepExecutionApprovalConfigArgs{
-/// 									ApprovalRole:   example.Arn,
-/// 									TimeoutMinutes: pulumi.Int(60),
-/// 								},
-/// 							},
-/// 						},
-/// 					},
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -317,35 +321,35 @@ import 'plan_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_arcregionswitch_plan" "example" {
+///   workflows {
+///     steps {
+///       execution_approval_configs {
+///         approval_role   = aws_iam_role.example.arn
+///         timeout_minutes = 60
+///       }
+///       name                 = "manual-approval"
+///       execution_block_type = "ManualApproval"
+///     }
+///     workflow_target_action = "activate"
+///     workflow_target_region = "us-west-2"
+///   }
+///   workflows {
+///     steps {
+///       execution_approval_configs {
+///         approval_role   = aws_iam_role.example.arn
+///         timeout_minutes = 60
+///       }
+///       name                 = "manual-approval"
+///       execution_block_type = "ManualApproval"
+///     }
+///     workflow_target_action = "deactivate"
+///     workflow_target_region = "us-east-1"
+///   }
 ///   name              = "example-plan"
 ///   execution_role    = aws_iam_role.example.arn
 ///   recovery_approach = "activePassive"
 ///   regions           = ["us-east-1", "us-west-2"]
 ///   primary_region    = "us-east-1"
-///   workflows {
-///     workflow_target_action = "activate"
-///     workflow_target_region = "us-west-2"
-///     steps {
-///       name                 = "manual-approval"
-///       execution_block_type = "ManualApproval"
-///       execution_approval_configs {
-///         approval_role   = aws_iam_role.example.arn
-///         timeout_minutes = 60
-///       }
-///     }
-///   }
-///   workflows {
-///     workflow_target_action = "deactivate"
-///     workflow_target_region = "us-east-1"
-///     steps {
-///       name                 = "manual-approval"
-///       execution_block_type = "ManualApproval"
-///       execution_approval_configs {
-///         approval_role   = aws_iam_role.example.arn
-///         timeout_minutes = 60
-///       }
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -391,6 +395,31 @@ import 'plan_timeouts.dart';
 ///             .build());
 ///
 ///         var examplePlan = new Plan("examplePlan", PlanArgs.builder()
+///             .workflows(
+///                 PlanWorkflowArgs.builder()
+///                     .steps(PlanWorkflowStepArgs.builder()
+///                         .executionApprovalConfigs(PlanWorkflowStepExecutionApprovalConfigArgs.builder()
+///                             .approvalRole(example.arn())
+///                             .timeoutMinutes(60)
+///                             .build())
+///                         .name("manual-approval")
+///                         .executionBlockType("ManualApproval")
+///                         .build())
+///                     .workflowTargetAction("activate")
+///                     .workflowTargetRegion("us-west-2")
+///                     .build(),
+///                 PlanWorkflowArgs.builder()
+///                     .steps(PlanWorkflowStepArgs.builder()
+///                         .executionApprovalConfigs(PlanWorkflowStepExecutionApprovalConfigArgs.builder()
+///                             .approvalRole(example.arn())
+///                             .timeoutMinutes(60)
+///                             .build())
+///                         .name("manual-approval")
+///                         .executionBlockType("ManualApproval")
+///                         .build())
+///                     .workflowTargetAction("deactivate")
+///                     .workflowTargetRegion("us-east-1")
+///                     .build())
 ///             .name("example-plan")
 ///             .executionRole(example.arn())
 ///             .recoveryApproach("activePassive")
@@ -398,31 +427,6 @@ import 'plan_timeouts.dart';
 ///                 "us-east-1",
 ///                 "us-west-2")
 ///             .primaryRegion("us-east-1")
-///             .workflows(
-///                 PlanWorkflowArgs.builder()
-///                     .workflowTargetAction("activate")
-///                     .workflowTargetRegion("us-west-2")
-///                     .steps(PlanWorkflowStepArgs.builder()
-///                         .name("manual-approval")
-///                         .executionBlockType("ManualApproval")
-///                         .executionApprovalConfigs(PlanWorkflowStepExecutionApprovalConfigArgs.builder()
-///                             .approvalRole(example.arn())
-///                             .timeoutMinutes(60)
-///                             .build())
-///                         .build())
-///                     .build(),
-///                 PlanWorkflowArgs.builder()
-///                     .workflowTargetAction("deactivate")
-///                     .workflowTargetRegion("us-east-1")
-///                     .steps(PlanWorkflowStepArgs.builder()
-///                         .name("manual-approval")
-///                         .executionBlockType("ManualApproval")
-///                         .executionApprovalConfigs(PlanWorkflowStepExecutionApprovalConfigArgs.builder()
-///                             .approvalRole(example.arn())
-///                             .timeoutMinutes(60)
-///                             .build())
-///                         .build())
-///                     .build())
 ///             .build());
 ///
 ///     }
@@ -446,6 +450,23 @@ import 'plan_timeouts.dart';
 ///     type: aws:arcregionswitch:Plan
 ///     name: example
 ///     properties:
+///       workflows:
+///         - steps:
+///             - executionApprovalConfigs:
+///                 - approvalRole: ${example.arn}
+///                   timeoutMinutes: 60
+///               name: manual-approval
+///               executionBlockType: ManualApproval
+///           workflowTargetAction: activate
+///           workflowTargetRegion: us-west-2
+///         - steps:
+///             - executionApprovalConfigs:
+///                 - approvalRole: ${example.arn}
+///                   timeoutMinutes: 60
+///               name: manual-approval
+///               executionBlockType: ManualApproval
+///           workflowTargetAction: deactivate
+///           workflowTargetRegion: us-east-1
 ///       name: example-plan
 ///       executionRole: ${example.arn}
 ///       recoveryApproach: activePassive
@@ -453,23 +474,6 @@ import 'plan_timeouts.dart';
 ///         - us-east-1
 ///         - us-west-2
 ///       primaryRegion: us-east-1
-///       workflows:
-///         - workflowTargetAction: activate
-///           workflowTargetRegion: us-west-2
-///           steps:
-///             - name: manual-approval
-///               executionBlockType: ManualApproval
-///               executionApprovalConfigs:
-///                 - approvalRole: ${example.arn}
-///                   timeoutMinutes: 60
-///         - workflowTargetAction: deactivate
-///           workflowTargetRegion: us-east-1
-///           steps:
-///             - name: manual-approval
-///               executionBlockType: ManualApproval
-///               executionApprovalConfigs:
-///                 - approvalRole: ${example.arn}
-///                   timeoutMinutes: 60
 /// ```
 ///
 ///
@@ -481,6 +485,81 @@ import 'plan_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const complex = new aws.arcregionswitch.Plan("complex", {
+///     associatedAlarms: [{
+///         name: "application-health-alarm",
+///         alarmType: "applicationHealth",
+///         resourceIdentifier: "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm",
+///     }],
+///     triggers: [{
+///         conditions: [{
+///             associatedAlarmName: "application-health-alarm",
+///             condition: "red",
+///         }],
+///         action: "activate",
+///         targetRegion: "us-west-2",
+///         minDelayMinutesBetweenExecutions: 30,
+///     }],
+///     workflows: [
+///         {
+///             steps: [
+///                 {
+///                     customActionLambdaConfigs: [{
+///                         lambdas: [{
+///                             arn: example.arn,
+///                         }],
+///                         regionToRun: "activatingRegion",
+///                         retryIntervalMinutes: 5,
+///                         timeoutMinutes: 30,
+///                     }],
+///                     name: "lambda-step",
+///                     executionBlockType: "CustomActionLambda",
+///                 },
+///                 {
+///                     parallelConfigs: [{
+///                         steps: [
+///                             {
+///                                 ec2AsgCapacityIncreaseConfigs: [{
+///                                     asgs: [{
+///                                         arn: exampleAwsAutoscalingGroup.arn,
+///                                     }],
+///                                     targetPercent: 150,
+///                                 }],
+///                                 name: "asg-scaling",
+///                                 executionBlockType: "EC2AutoScaling",
+///                             },
+///                             {
+///                                 ecsCapacityIncreaseConfigs: [{
+///                                     services: [{
+///                                         clusterArn: exampleAwsEcsCluster.arn,
+///                                         serviceArn: exampleAwsEcsService.arn,
+///                                     }],
+///                                     targetPercent: 200,
+///                                 }],
+///                                 name: "ecs-scaling",
+///                                 executionBlockType: "ECSServiceScaling",
+///                             },
+///                         ],
+///                     }],
+///                     name: "parallel-step",
+///                     executionBlockType: "Parallel",
+///                 },
+///             ],
+///             workflowTargetAction: "activate",
+///             workflowTargetRegion: "us-west-2",
+///         },
+///         {
+///             steps: [{
+///                 route53HealthCheckConfigs: [{
+///                     hostedZoneId: exampleAwsRoute53Zone.zoneId,
+///                     recordName: "api.example.com",
+///                 }],
+///                 name: "route53-health-check",
+///                 executionBlockType: "Route53HealthCheck",
+///             }],
+///             workflowTargetAction: "deactivate",
+///             workflowTargetRegion: "us-east-1",
+///         },
+///     ],
 ///     name: "complex-plan",
 ///     executionRole: exampleAwsIamRole.arn,
 ///     recoveryApproach: "activeActive",
@@ -490,81 +569,6 @@ import 'plan_timeouts.dart';
 ///     ],
 ///     description: "Complex plan with multiple execution block types",
 ///     recoveryTimeObjectiveMinutes: 60,
-///     associatedAlarms: [{
-///         name: "application-health-alarm",
-///         alarmType: "applicationHealth",
-///         resourceIdentifier: "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm",
-///     }],
-///     workflows: [
-///         {
-///             workflowTargetAction: "activate",
-///             workflowTargetRegion: "us-west-2",
-///             steps: [
-///                 {
-///                     name: "lambda-step",
-///                     executionBlockType: "CustomActionLambda",
-///                     customActionLambdaConfigs: [{
-///                         regionToRun: "activatingRegion",
-///                         retryIntervalMinutes: 5,
-///                         timeoutMinutes: 30,
-///                         lambdas: [{
-///                             arn: example.arn,
-///                         }],
-///                     }],
-///                 },
-///                 {
-///                     name: "parallel-step",
-///                     executionBlockType: "Parallel",
-///                     parallelConfigs: [{
-///                         steps: [
-///                             {
-///                                 name: "asg-scaling",
-///                                 executionBlockType: "EC2AutoScaling",
-///                                 ec2AsgCapacityIncreaseConfigs: [{
-///                                     asgs: [{
-///                                         arn: exampleAwsAutoscalingGroup.arn,
-///                                     }],
-///                                     targetPercent: 150,
-///                                 }],
-///                             },
-///                             {
-///                                 name: "ecs-scaling",
-///                                 executionBlockType: "ECSServiceScaling",
-///                                 ecsCapacityIncreaseConfigs: [{
-///                                     services: [{
-///                                         clusterArn: exampleAwsEcsCluster.arn,
-///                                         serviceArn: exampleAwsEcsService.arn,
-///                                     }],
-///                                     targetPercent: 200,
-///                                 }],
-///                             },
-///                         ],
-///                     }],
-///                 },
-///             ],
-///         },
-///         {
-///             workflowTargetAction: "deactivate",
-///             workflowTargetRegion: "us-east-1",
-///             steps: [{
-///                 name: "route53-health-check",
-///                 executionBlockType: "Route53HealthCheck",
-///                 route53HealthCheckConfigs: [{
-///                     hostedZoneId: exampleAwsRoute53Zone.zoneId,
-///                     recordName: "api.example.com",
-///                 }],
-///             }],
-///         },
-///     ],
-///     triggers: [{
-///         action: "activate",
-///         targetRegion: "us-west-2",
-///         minDelayMinutesBetweenExecutions: 30,
-///         conditions: [{
-///             associatedAlarmName: "application-health-alarm",
-///             condition: "red",
-///         }],
-///     }],
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -575,6 +579,81 @@ import 'plan_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// complex = aws.arcregionswitch.Plan("complex",
+///     associated_alarms=[{
+///         "name": "application-health-alarm",
+///         "alarm_type": "applicationHealth",
+///         "resource_identifier": "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm",
+///     }],
+///     triggers=[{
+///         "conditions": [{
+///             "associated_alarm_name": "application-health-alarm",
+///             "condition": "red",
+///         }],
+///         "action": "activate",
+///         "target_region": "us-west-2",
+///         "min_delay_minutes_between_executions": 30,
+///     }],
+///     workflows=[
+///         {
+///             "steps": [
+///                 {
+///                     "custom_action_lambda_configs": [{
+///                         "lambdas": [{
+///                             "arn": example["arn"],
+///                         }],
+///                         "region_to_run": "activatingRegion",
+///                         "retry_interval_minutes": float(5),
+///                         "timeout_minutes": 30,
+///                     }],
+///                     "name": "lambda-step",
+///                     "execution_block_type": "CustomActionLambda",
+///                 },
+///                 {
+///                     "parallel_configs": [{
+///                         "steps": [
+///                             {
+///                                 "ec2_asg_capacity_increase_configs": [{
+///                                     "asgs": [{
+///                                         "arn": example_aws_autoscaling_group["arn"],
+///                                     }],
+///                                     "target_percent": 150,
+///                                 }],
+///                                 "name": "asg-scaling",
+///                                 "execution_block_type": "EC2AutoScaling",
+///                             },
+///                             {
+///                                 "ecs_capacity_increase_configs": [{
+///                                     "services": [{
+///                                         "cluster_arn": example_aws_ecs_cluster["arn"],
+///                                         "service_arn": example_aws_ecs_service["arn"],
+///                                     }],
+///                                     "target_percent": 200,
+///                                 }],
+///                                 "name": "ecs-scaling",
+///                                 "execution_block_type": "ECSServiceScaling",
+///                             },
+///                         ],
+///                     }],
+///                     "name": "parallel-step",
+///                     "execution_block_type": "Parallel",
+///                 },
+///             ],
+///             "workflow_target_action": "activate",
+///             "workflow_target_region": "us-west-2",
+///         },
+///         {
+///             "steps": [{
+///                 "route53_health_check_configs": [{
+///                     "hosted_zone_id": example_aws_route53_zone["zoneId"],
+///                     "record_name": "api.example.com",
+///                 }],
+///                 "name": "route53-health-check",
+///                 "execution_block_type": "Route53HealthCheck",
+///             }],
+///             "workflow_target_action": "deactivate",
+///             "workflow_target_region": "us-east-1",
+///         },
+///     ],
 ///     name="complex-plan",
 ///     execution_role=example_aws_iam_role["arn"],
 ///     recovery_approach="activeActive",
@@ -584,81 +663,6 @@ import 'plan_timeouts.dart';
 ///     ],
 ///     description="Complex plan with multiple execution block types",
 ///     recovery_time_objective_minutes=60,
-///     associated_alarms=[{
-///         "name": "application-health-alarm",
-///         "alarm_type": "applicationHealth",
-///         "resource_identifier": "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm",
-///     }],
-///     workflows=[
-///         {
-///             "workflow_target_action": "activate",
-///             "workflow_target_region": "us-west-2",
-///             "steps": [
-///                 {
-///                     "name": "lambda-step",
-///                     "execution_block_type": "CustomActionLambda",
-///                     "custom_action_lambda_configs": [{
-///                         "region_to_run": "activatingRegion",
-///                         "retry_interval_minutes": float(5),
-///                         "timeout_minutes": 30,
-///                         "lambdas": [{
-///                             "arn": example["arn"],
-///                         }],
-///                     }],
-///                 },
-///                 {
-///                     "name": "parallel-step",
-///                     "execution_block_type": "Parallel",
-///                     "parallel_configs": [{
-///                         "steps": [
-///                             {
-///                                 "name": "asg-scaling",
-///                                 "execution_block_type": "EC2AutoScaling",
-///                                 "ec2_asg_capacity_increase_configs": [{
-///                                     "asgs": [{
-///                                         "arn": example_aws_autoscaling_group["arn"],
-///                                     }],
-///                                     "target_percent": 150,
-///                                 }],
-///                             },
-///                             {
-///                                 "name": "ecs-scaling",
-///                                 "execution_block_type": "ECSServiceScaling",
-///                                 "ecs_capacity_increase_configs": [{
-///                                     "services": [{
-///                                         "cluster_arn": example_aws_ecs_cluster["arn"],
-///                                         "service_arn": example_aws_ecs_service["arn"],
-///                                     }],
-///                                     "target_percent": 200,
-///                                 }],
-///                             },
-///                         ],
-///                     }],
-///                 },
-///             ],
-///         },
-///         {
-///             "workflow_target_action": "deactivate",
-///             "workflow_target_region": "us-east-1",
-///             "steps": [{
-///                 "name": "route53-health-check",
-///                 "execution_block_type": "Route53HealthCheck",
-///                 "route53_health_check_configs": [{
-///                     "hosted_zone_id": example_aws_route53_zone["zoneId"],
-///                     "record_name": "api.example.com",
-///                 }],
-///             }],
-///         },
-///     ],
-///     triggers=[{
-///         "action": "activate",
-///         "target_region": "us-west-2",
-///         "min_delay_minutes_between_executions": 30,
-///         "conditions": [{
-///             "associated_alarm_name": "application-health-alarm",
-///             "condition": "red",
-///         }],
-///     }],
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -673,16 +677,6 @@ import 'plan_timeouts.dart';
 /// {
 ///     var complex = new Aws.ArcRegionSwitch.Plan("complex", new()
 ///     {
-///         Name = "complex-plan",
-///         ExecutionRole = exampleAwsIamRole.Arn,
-///         RecoveryApproach = "activeActive",
-///         Regions = new[]
-///         {
-///             "us-east-1",
-///             "us-west-2",
-///         },
-///         Description = "Complex plan with multiple execution block types",
-///         RecoveryTimeObjectiveMinutes = 60,
 ///         AssociatedAlarms = new[]
 ///         {
 ///             new Aws.ArcRegionSwitch.Inputs.PlanAssociatedAlarmArgs
@@ -692,25 +686,35 @@ import 'plan_timeouts.dart';
 ///                 ResourceIdentifier = "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm",
 ///             },
 ///         },
+///         Triggers = new[]
+///         {
+///             new Aws.ArcRegionSwitch.Inputs.PlanTriggerArgs
+///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.ArcRegionSwitch.Inputs.PlanTriggerConditionArgs
+///                     {
+///                         AssociatedAlarmName = "application-health-alarm",
+///                         Condition = "red",
+///                     },
+///                 },
+///                 Action = "activate",
+///                 TargetRegion = "us-west-2",
+///                 MinDelayMinutesBetweenExecutions = 30,
+///             },
+///         },
 ///         Workflows = new[]
 ///         {
 ///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
 ///             {
-///                 WorkflowTargetAction = "activate",
-///                 WorkflowTargetRegion = "us-west-2",
 ///                 Steps = new[]
 ///                 {
 ///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
 ///                     {
-///                         Name = "lambda-step",
-///                         ExecutionBlockType = "CustomActionLambda",
 ///                         CustomActionLambdaConfigs = new[]
 ///                         {
 ///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepCustomActionLambdaConfigArgs
 ///                             {
-///                                 RegionToRun = "activatingRegion",
-///                                 RetryIntervalMinutes = 5,
-///                                 TimeoutMinutes = 30,
 ///                                 Lambdas = new[]
 ///                                 {
 ///                                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepCustomActionLambdaConfigLambdaArgs
@@ -718,13 +722,16 @@ import 'plan_timeouts.dart';
 ///                                         Arn = example.Arn,
 ///                                     },
 ///                                 },
+///                                 RegionToRun = "activatingRegion",
+///                                 RetryIntervalMinutes = 5,
+///                                 TimeoutMinutes = 30,
 ///                             },
 ///                         },
+///                         Name = "lambda-step",
+///                         ExecutionBlockType = "CustomActionLambda",
 ///                     },
 ///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
 ///                     {
-///                         Name = "parallel-step",
-///                         ExecutionBlockType = "Parallel",
 ///                         ParallelConfigs = new[]
 ///                         {
 ///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepParallelConfigArgs
@@ -733,8 +740,6 @@ import 'plan_timeouts.dart';
 ///                                 {
 ///                                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepParallelConfigStepArgs
 ///                                     {
-///                                         Name = "asg-scaling",
-///                                         ExecutionBlockType = "EC2AutoScaling",
 ///                                         Ec2AsgCapacityIncreaseConfigs = new[]
 ///                                         {
 ///                                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs
@@ -749,11 +754,11 @@ import 'plan_timeouts.dart';
 ///                                                 TargetPercent = 150,
 ///                                             },
 ///                                         },
+///                                         Name = "asg-scaling",
+///                                         ExecutionBlockType = "EC2AutoScaling",
 ///                                     },
 ///                                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepParallelConfigStepArgs
 ///                                     {
-///                                         Name = "ecs-scaling",
-///                                         ExecutionBlockType = "ECSServiceScaling",
 ///                                         EcsCapacityIncreaseConfigs = new[]
 ///                                         {
 ///                                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs
@@ -769,23 +774,25 @@ import 'plan_timeouts.dart';
 ///                                                 TargetPercent = 200,
 ///                                             },
 ///                                         },
+///                                         Name = "ecs-scaling",
+///                                         ExecutionBlockType = "ECSServiceScaling",
 ///                                     },
 ///                                 },
 ///                             },
 ///                         },
+///                         Name = "parallel-step",
+///                         ExecutionBlockType = "Parallel",
 ///                     },
 ///                 },
+///                 WorkflowTargetAction = "activate",
+///                 WorkflowTargetRegion = "us-west-2",
 ///             },
 ///             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowArgs
 ///             {
-///                 WorkflowTargetAction = "deactivate",
-///                 WorkflowTargetRegion = "us-east-1",
 ///                 Steps = new[]
 ///                 {
 ///                     new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepArgs
 ///                     {
-///                         Name = "route53-health-check",
-///                         ExecutionBlockType = "Route53HealthCheck",
 ///                         Route53HealthCheckConfigs = new[]
 ///                         {
 ///                             new Aws.ArcRegionSwitch.Inputs.PlanWorkflowStepRoute53HealthCheckConfigArgs
@@ -794,27 +801,24 @@ import 'plan_timeouts.dart';
 ///                                 RecordName = "api.example.com",
 ///                             },
 ///                         },
+///                         Name = "route53-health-check",
+///                         ExecutionBlockType = "Route53HealthCheck",
 ///                     },
 ///                 },
+///                 WorkflowTargetAction = "deactivate",
+///                 WorkflowTargetRegion = "us-east-1",
 ///             },
 ///         },
-///         Triggers = new[]
+///         Name = "complex-plan",
+///         ExecutionRole = exampleAwsIamRole.Arn,
+///         RecoveryApproach = "activeActive",
+///         Regions = new[]
 ///         {
-///             new Aws.ArcRegionSwitch.Inputs.PlanTriggerArgs
-///             {
-///                 Action = "activate",
-///                 TargetRegion = "us-west-2",
-///                 MinDelayMinutesBetweenExecutions = 30,
-///                 Conditions = new[]
-///                 {
-///                     new Aws.ArcRegionSwitch.Inputs.PlanTriggerConditionArgs
-///                     {
-///                         AssociatedAlarmName = "application-health-alarm",
-///                         Condition = "red",
-///                     },
-///                 },
-///             },
+///             "us-east-1",
+///             "us-west-2",
 ///         },
+///         Description = "Complex plan with multiple execution block types",
+///         RecoveryTimeObjectiveMinutes = 60,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -834,15 +838,6 @@ import 'plan_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := arcregionswitch.NewPlan(ctx, "complex", &arcregionswitch.PlanArgs{
-/// 			Name:             pulumi.String("complex-plan"),
-/// 			ExecutionRole:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 			RecoveryApproach: pulumi.String("activeActive"),
-/// 			Regions: pulumi.StringArray{
-/// 				pulumi.String("us-east-1"),
-/// 				pulumi.String("us-west-2"),
-/// 			},
-/// 			Description:                  pulumi.String("Complex plan with multiple execution block types"),
-/// 			RecoveryTimeObjectiveMinutes: pulumi.Int(60),
 /// 			AssociatedAlarms: arcregionswitch.PlanAssociatedAlarmArray{
 /// 				&arcregionswitch.PlanAssociatedAlarmArgs{
 /// 					Name:               "application-health-alarm",
@@ -850,36 +845,43 @@ import 'plan_timeouts.dart';
 /// 					ResourceIdentifier: pulumi.String("arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm"),
 /// 				},
 /// 			},
+/// 			Triggers: arcregionswitch.PlanTriggerArray{
+/// 				&arcregionswitch.PlanTriggerArgs{
+/// 					Conditions: arcregionswitch.PlanTriggerConditionArray{
+/// 						&arcregionswitch.PlanTriggerConditionArgs{
+/// 							AssociatedAlarmName: pulumi.String("application-health-alarm"),
+/// 							Condition:           pulumi.String("red"),
+/// 						},
+/// 					},
+/// 					Action:                           pulumi.String("activate"),
+/// 					TargetRegion:                     pulumi.String("us-west-2"),
+/// 					MinDelayMinutesBetweenExecutions: pulumi.Int(30),
+/// 				},
+/// 			},
 /// 			Workflows: arcregionswitch.PlanWorkflowArray{
 /// 				&arcregionswitch.PlanWorkflowArgs{
-/// 					WorkflowTargetAction: pulumi.String("activate"),
-/// 					WorkflowTargetRegion: pulumi.String("us-west-2"),
 /// 					Steps: arcregionswitch.PlanWorkflowStepArray{
 /// 						&arcregionswitch.PlanWorkflowStepArgs{
-/// 							Name:               pulumi.String("lambda-step"),
-/// 							ExecutionBlockType: pulumi.String("CustomActionLambda"),
 /// 							CustomActionLambdaConfigs: arcregionswitch.PlanWorkflowStepCustomActionLambdaConfigArray{
 /// 								&arcregionswitch.PlanWorkflowStepCustomActionLambdaConfigArgs{
-/// 									RegionToRun:          pulumi.String("activatingRegion"),
-/// 									RetryIntervalMinutes: pulumi.Float64(5),
-/// 									TimeoutMinutes:       pulumi.Int(30),
 /// 									Lambdas: arcregionswitch.PlanWorkflowStepCustomActionLambdaConfigLambdaArray{
 /// 										&arcregionswitch.PlanWorkflowStepCustomActionLambdaConfigLambdaArgs{
 /// 											Arn: pulumi.Any(example.Arn),
 /// 										},
 /// 									},
+/// 									RegionToRun:          pulumi.String("activatingRegion"),
+/// 									RetryIntervalMinutes: pulumi.Float64(5),
+/// 									TimeoutMinutes:       pulumi.Int(30),
 /// 								},
 /// 							},
+/// 							Name:               pulumi.String("lambda-step"),
+/// 							ExecutionBlockType: pulumi.String("CustomActionLambda"),
 /// 						},
 /// 						&arcregionswitch.PlanWorkflowStepArgs{
-/// 							Name:               pulumi.String("parallel-step"),
-/// 							ExecutionBlockType: pulumi.String("Parallel"),
 /// 							ParallelConfigs: arcregionswitch.PlanWorkflowStepParallelConfigArray{
 /// 								&arcregionswitch.PlanWorkflowStepParallelConfigArgs{
 /// 									Steps: arcregionswitch.PlanWorkflowStepParallelConfigStepArray{
 /// 										&arcregionswitch.PlanWorkflowStepParallelConfigStepArgs{
-/// 											Name:               pulumi.String("asg-scaling"),
-/// 											ExecutionBlockType: pulumi.String("EC2AutoScaling"),
 /// 											Ec2AsgCapacityIncreaseConfigs: arcregionswitch.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArray{
 /// 												&arcregionswitch.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs{
 /// 													Asgs: arcregionswitch.PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsgArray{
@@ -890,10 +892,10 @@ import 'plan_timeouts.dart';
 /// 													TargetPercent: pulumi.Int(150),
 /// 												},
 /// 											},
+/// 											Name:               pulumi.String("asg-scaling"),
+/// 											ExecutionBlockType: pulumi.String("EC2AutoScaling"),
 /// 										},
 /// 										&arcregionswitch.PlanWorkflowStepParallelConfigStepArgs{
-/// 											Name:               pulumi.String("ecs-scaling"),
-/// 											ExecutionBlockType: pulumi.String("ECSServiceScaling"),
 /// 											EcsCapacityIncreaseConfigs: arcregionswitch.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArray{
 /// 												&arcregionswitch.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs{
 /// 													Services: arcregionswitch.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArray{
@@ -905,43 +907,45 @@ import 'plan_timeouts.dart';
 /// 													TargetPercent: pulumi.Int(200),
 /// 												},
 /// 											},
+/// 											Name:               pulumi.String("ecs-scaling"),
+/// 											ExecutionBlockType: pulumi.String("ECSServiceScaling"),
 /// 										},
 /// 									},
 /// 								},
 /// 							},
+/// 							Name:               pulumi.String("parallel-step"),
+/// 							ExecutionBlockType: pulumi.String("Parallel"),
 /// 						},
 /// 					},
+/// 					WorkflowTargetAction: pulumi.String("activate"),
+/// 					WorkflowTargetRegion: pulumi.String("us-west-2"),
 /// 				},
 /// 				&arcregionswitch.PlanWorkflowArgs{
-/// 					WorkflowTargetAction: pulumi.String("deactivate"),
-/// 					WorkflowTargetRegion: pulumi.String("us-east-1"),
 /// 					Steps: arcregionswitch.PlanWorkflowStepArray{
 /// 						&arcregionswitch.PlanWorkflowStepArgs{
-/// 							Name:               pulumi.String("route53-health-check"),
-/// 							ExecutionBlockType: pulumi.String("Route53HealthCheck"),
 /// 							Route53HealthCheckConfigs: arcregionswitch.PlanWorkflowStepRoute53HealthCheckConfigArray{
 /// 								&arcregionswitch.PlanWorkflowStepRoute53HealthCheckConfigArgs{
 /// 									HostedZoneId: pulumi.Any(exampleAwsRoute53Zone.ZoneId),
 /// 									RecordName:   pulumi.String("api.example.com"),
 /// 								},
 /// 							},
+/// 							Name:               pulumi.String("route53-health-check"),
+/// 							ExecutionBlockType: pulumi.String("Route53HealthCheck"),
 /// 						},
 /// 					},
+/// 					WorkflowTargetAction: pulumi.String("deactivate"),
+/// 					WorkflowTargetRegion: pulumi.String("us-east-1"),
 /// 				},
 /// 			},
-/// 			Triggers: arcregionswitch.PlanTriggerArray{
-/// 				&arcregionswitch.PlanTriggerArgs{
-/// 					Action:                           pulumi.String("activate"),
-/// 					TargetRegion:                     pulumi.String("us-west-2"),
-/// 					MinDelayMinutesBetweenExecutions: pulumi.Int(30),
-/// 					Conditions: arcregionswitch.PlanTriggerConditionArray{
-/// 						&arcregionswitch.PlanTriggerConditionArgs{
-/// 							AssociatedAlarmName: pulumi.String("application-health-alarm"),
-/// 							Condition:           pulumi.String("red"),
-/// 						},
-/// 					},
-/// 				},
+/// 			Name:             pulumi.String("complex-plan"),
+/// 			ExecutionRole:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 			RecoveryApproach: pulumi.String("activeActive"),
+/// 			Regions: pulumi.StringArray{
+/// 				pulumi.String("us-east-1"),
+/// 				pulumi.String("us-west-2"),
 /// 			},
+/// 			Description:                  pulumi.String("Complex plan with multiple execution block types"),
+/// 			RecoveryTimeObjectiveMinutes: pulumi.Int(60),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -963,49 +967,46 @@ import 'plan_timeouts.dart';
 /// }
 ///
 /// resource "aws_arcregionswitch_plan" "complex" {
-///   name                            = "complex-plan"
-///   execution_role                  = exampleAwsIamRole.arn
-///   recovery_approach               = "activeActive"
-///   regions                         = ["us-east-1", "us-west-2"]
-///   description                     = "Complex plan with multiple execution block types"
-///   recovery_time_objective_minutes = 60
 ///   associated_alarms {
 ///     name                = "application-health-alarm"
 ///     alarm_type          = "applicationHealth"
 ///     resource_identifier = "arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm"
 ///   }
+///   triggers {
+///     conditions {
+///       associated_alarm_name = "application-health-alarm"
+///       condition             = "red"
+///     }
+///     action                               = "activate"
+///     target_region                        = "us-west-2"
+///     min_delay_minutes_between_executions = 30
+///   }
 ///   workflows {
-///     workflow_target_action = "activate"
-///     workflow_target_region = "us-west-2"
 ///     steps {
-///       name                 = "lambda-step"
-///       execution_block_type = "CustomActionLambda"
 ///       custom_action_lambda_configs {
-///         region_to_run          = "activatingRegion"
-///         retry_interval_minutes = 5
-///         timeout_minutes        = 30
 ///         lambdas {
 ///           arn = example.arn
 ///         }
+///         region_to_run          = "activatingRegion"
+///         retry_interval_minutes = 5
+///         timeout_minutes        = 30
 ///       }
+///       name                 = "lambda-step"
+///       execution_block_type = "CustomActionLambda"
 ///     }
 ///     steps {
-///       name                 = "parallel-step"
-///       execution_block_type = "Parallel"
 ///       parallel_configs {
 ///         steps {
-///           name                 = "asg-scaling"
-///           execution_block_type = "EC2AutoScaling"
 ///           ec2_asg_capacity_increase_configs {
 ///             asgs {
 ///               arn = exampleAwsAutoscalingGroup.arn
 ///             }
 ///             target_percent = 150
 ///           }
+///           name                 = "asg-scaling"
+///           execution_block_type = "EC2AutoScaling"
 ///         }
 ///         steps {
-///           name                 = "ecs-scaling"
-///           execution_block_type = "ECSServiceScaling"
 ///           ecs_capacity_increase_configs {
 ///             services {
 ///               cluster_arn = exampleAwsEcsCluster.arn
@@ -1013,31 +1014,34 @@ import 'plan_timeouts.dart';
 ///             }
 ///             target_percent = 200
 ///           }
+///           name                 = "ecs-scaling"
+///           execution_block_type = "ECSServiceScaling"
 ///         }
 ///       }
+///       name                 = "parallel-step"
+///       execution_block_type = "Parallel"
 ///     }
+///     workflow_target_action = "activate"
+///     workflow_target_region = "us-west-2"
 ///   }
 ///   workflows {
-///     workflow_target_action = "deactivate"
-///     workflow_target_region = "us-east-1"
 ///     steps {
-///       name                 = "route53-health-check"
-///       execution_block_type = "Route53HealthCheck"
 ///       route53_health_check_configs {
 ///         hosted_zone_id = exampleAwsRoute53Zone.zoneId
 ///         record_name    = "api.example.com"
 ///       }
+///       name                 = "route53-health-check"
+///       execution_block_type = "Route53HealthCheck"
 ///     }
+///     workflow_target_action = "deactivate"
+///     workflow_target_region = "us-east-1"
 ///   }
-///   triggers {
-///     action                               = "activate"
-///     target_region                        = "us-west-2"
-///     min_delay_minutes_between_executions = 30
-///     conditions {
-///       associated_alarm_name = "application-health-alarm"
-///       condition             = "red"
-///     }
-///   }
+///   name                            = "complex-plan"
+///   execution_role                  = exampleAwsIamRole.arn
+///   recovery_approach               = "activeActive"
+///   regions                         = ["us-east-1", "us-west-2"]
+///   description                     = "Complex plan with multiple execution block types"
+///   recovery_time_objective_minutes = 60
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -1052,6 +1056,8 @@ import 'plan_timeouts.dart';
 /// import com.pulumi.aws.arcregionswitch.Plan;
 /// import com.pulumi.aws.arcregionswitch.PlanArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanAssociatedAlarmArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerArgs;
+/// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerConditionArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepCustomActionLambdaConfigArgs;
@@ -1063,8 +1069,6 @@ import 'plan_timeouts.dart';
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArgs;
 /// import com.pulumi.aws.arcregionswitch.inputs.PlanWorkflowStepRoute53HealthCheckConfigArgs;
-/// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerArgs;
-/// import com.pulumi.aws.arcregionswitch.inputs.PlanTriggerConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1079,6 +1083,78 @@ import 'plan_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var complex = new Plan("complex", PlanArgs.builder()
+///             .associatedAlarms(PlanAssociatedAlarmArgs.builder()
+///                 .name("application-health-alarm")
+///                 .alarmType("applicationHealth")
+///                 .resourceIdentifier("arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm")
+///                 .build())
+///             .triggers(PlanTriggerArgs.builder()
+///                 .conditions(PlanTriggerConditionArgs.builder()
+///                     .associatedAlarmName("application-health-alarm")
+///                     .condition("red")
+///                     .build())
+///                 .action("activate")
+///                 .targetRegion("us-west-2")
+///                 .minDelayMinutesBetweenExecutions(30)
+///                 .build())
+///             .workflows(
+///                 PlanWorkflowArgs.builder()
+///                     .steps(
+///                         PlanWorkflowStepArgs.builder()
+///                             .customActionLambdaConfigs(PlanWorkflowStepCustomActionLambdaConfigArgs.builder()
+///                                 .lambdas(PlanWorkflowStepCustomActionLambdaConfigLambdaArgs.builder()
+///                                     .arn(example.arn())
+///                                     .build())
+///                                 .regionToRun("activatingRegion")
+///                                 .retryIntervalMinutes(5.0)
+///                                 .timeoutMinutes(30)
+///                                 .build())
+///                             .name("lambda-step")
+///                             .executionBlockType("CustomActionLambda")
+///                             .build(),
+///                         PlanWorkflowStepArgs.builder()
+///                             .parallelConfigs(PlanWorkflowStepParallelConfigArgs.builder()
+///                                 .steps(
+///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
+///                                         .ec2AsgCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs.builder()
+///                                             .asgs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsgArgs.builder()
+///                                                 .arn(exampleAwsAutoscalingGroup.arn())
+///                                                 .build())
+///                                             .targetPercent(150)
+///                                             .build())
+///                                         .name("asg-scaling")
+///                                         .executionBlockType("EC2AutoScaling")
+///                                         .build(),
+///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
+///                                         .ecsCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs.builder()
+///                                             .services(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArgs.builder()
+///                                                 .clusterArn(exampleAwsEcsCluster.arn())
+///                                                 .serviceArn(exampleAwsEcsService.arn())
+///                                                 .build())
+///                                             .targetPercent(200)
+///                                             .build())
+///                                         .name("ecs-scaling")
+///                                         .executionBlockType("ECSServiceScaling")
+///                                         .build())
+///                                 .build())
+///                             .name("parallel-step")
+///                             .executionBlockType("Parallel")
+///                             .build())
+///                     .workflowTargetAction("activate")
+///                     .workflowTargetRegion("us-west-2")
+///                     .build(),
+///                 PlanWorkflowArgs.builder()
+///                     .steps(PlanWorkflowStepArgs.builder()
+///                         .route53HealthCheckConfigs(PlanWorkflowStepRoute53HealthCheckConfigArgs.builder()
+///                             .hostedZoneId(exampleAwsRoute53Zone.zoneId())
+///                             .recordName("api.example.com")
+///                             .build())
+///                         .name("route53-health-check")
+///                         .executionBlockType("Route53HealthCheck")
+///                         .build())
+///                     .workflowTargetAction("deactivate")
+///                     .workflowTargetRegion("us-east-1")
+///                     .build())
 ///             .name("complex-plan")
 ///             .executionRole(exampleAwsIamRole.arn())
 ///             .recoveryApproach("activeActive")
@@ -1087,78 +1163,6 @@ import 'plan_timeouts.dart';
 ///                 "us-west-2")
 ///             .description("Complex plan with multiple execution block types")
 ///             .recoveryTimeObjectiveMinutes(60)
-///             .associatedAlarms(PlanAssociatedAlarmArgs.builder()
-///                 .name("application-health-alarm")
-///                 .alarmType("applicationHealth")
-///                 .resourceIdentifier("arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm")
-///                 .build())
-///             .workflows(
-///                 PlanWorkflowArgs.builder()
-///                     .workflowTargetAction("activate")
-///                     .workflowTargetRegion("us-west-2")
-///                     .steps(
-///                         PlanWorkflowStepArgs.builder()
-///                             .name("lambda-step")
-///                             .executionBlockType("CustomActionLambda")
-///                             .customActionLambdaConfigs(PlanWorkflowStepCustomActionLambdaConfigArgs.builder()
-///                                 .regionToRun("activatingRegion")
-///                                 .retryIntervalMinutes(5.0)
-///                                 .timeoutMinutes(30)
-///                                 .lambdas(PlanWorkflowStepCustomActionLambdaConfigLambdaArgs.builder()
-///                                     .arn(example.arn())
-///                                     .build())
-///                                 .build())
-///                             .build(),
-///                         PlanWorkflowStepArgs.builder()
-///                             .name("parallel-step")
-///                             .executionBlockType("Parallel")
-///                             .parallelConfigs(PlanWorkflowStepParallelConfigArgs.builder()
-///                                 .steps(
-///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
-///                                         .name("asg-scaling")
-///                                         .executionBlockType("EC2AutoScaling")
-///                                         .ec2AsgCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigArgs.builder()
-///                                             .asgs(PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsgArgs.builder()
-///                                                 .arn(exampleAwsAutoscalingGroup.arn())
-///                                                 .build())
-///                                             .targetPercent(150)
-///                                             .build())
-///                                         .build(),
-///                                     PlanWorkflowStepParallelConfigStepArgs.builder()
-///                                         .name("ecs-scaling")
-///                                         .executionBlockType("ECSServiceScaling")
-///                                         .ecsCapacityIncreaseConfigs(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigArgs.builder()
-///                                             .services(PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigServiceArgs.builder()
-///                                                 .clusterArn(exampleAwsEcsCluster.arn())
-///                                                 .serviceArn(exampleAwsEcsService.arn())
-///                                                 .build())
-///                                             .targetPercent(200)
-///                                             .build())
-///                                         .build())
-///                                 .build())
-///                             .build())
-///                     .build(),
-///                 PlanWorkflowArgs.builder()
-///                     .workflowTargetAction("deactivate")
-///                     .workflowTargetRegion("us-east-1")
-///                     .steps(PlanWorkflowStepArgs.builder()
-///                         .name("route53-health-check")
-///                         .executionBlockType("Route53HealthCheck")
-///                         .route53HealthCheckConfigs(PlanWorkflowStepRoute53HealthCheckConfigArgs.builder()
-///                             .hostedZoneId(exampleAwsRoute53Zone.zoneId())
-///                             .recordName("api.example.com")
-///                             .build())
-///                         .build())
-///                     .build())
-///             .triggers(PlanTriggerArgs.builder()
-///                 .action("activate")
-///                 .targetRegion("us-west-2")
-///                 .minDelayMinutesBetweenExecutions(30)
-///                 .conditions(PlanTriggerConditionArgs.builder()
-///                     .associatedAlarmName("application-health-alarm")
-///                     .condition("red")
-///                     .build())
-///                 .build())
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -1170,6 +1174,54 @@ import 'plan_timeouts.dart';
 ///   complex:
 ///     type: aws:arcregionswitch:Plan
 ///     properties:
+///       associatedAlarms:
+///         - name: application-health-alarm
+///           alarmType: applicationHealth
+///           resourceIdentifier: arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm
+///       triggers:
+///         - conditions:
+///             - associatedAlarmName: application-health-alarm
+///               condition: red
+///           action: activate
+///           targetRegion: us-west-2
+///           minDelayMinutesBetweenExecutions: 30
+///       workflows:
+///         - steps:
+///             - customActionLambdaConfigs:
+///                 - lambdas:
+///                     - arn: ${example.arn}
+///                   regionToRun: activatingRegion
+///                   retryIntervalMinutes: 5
+///                   timeoutMinutes: 30
+///               name: lambda-step
+///               executionBlockType: CustomActionLambda
+///             - parallelConfigs:
+///                 - steps:
+///                     - ec2AsgCapacityIncreaseConfigs:
+///                         - asgs:
+///                             - arn: ${exampleAwsAutoscalingGroup.arn}
+///                           targetPercent: 150
+///                       name: asg-scaling
+///                       executionBlockType: EC2AutoScaling
+///                     - ecsCapacityIncreaseConfigs:
+///                         - services:
+///                             - clusterArn: ${exampleAwsEcsCluster.arn}
+///                               serviceArn: ${exampleAwsEcsService.arn}
+///                           targetPercent: 200
+///                       name: ecs-scaling
+///                       executionBlockType: ECSServiceScaling
+///               name: parallel-step
+///               executionBlockType: Parallel
+///           workflowTargetAction: activate
+///           workflowTargetRegion: us-west-2
+///         - steps:
+///             - route53HealthCheckConfigs:
+///                 - hostedZoneId: ${exampleAwsRoute53Zone.zoneId}
+///                   recordName: api.example.com
+///               name: route53-health-check
+///               executionBlockType: Route53HealthCheck
+///           workflowTargetAction: deactivate
+///           workflowTargetRegion: us-east-1
 ///       name: complex-plan
 ///       executionRole: ${exampleAwsIamRole.arn}
 ///       recoveryApproach: activeActive
@@ -1178,54 +1230,6 @@ import 'plan_timeouts.dart';
 ///         - us-west-2
 ///       description: Complex plan with multiple execution block types
 ///       recoveryTimeObjectiveMinutes: 60
-///       associatedAlarms:
-///         - name: application-health-alarm
-///           alarmType: applicationHealth
-///           resourceIdentifier: arn:aws:cloudwatch:us-east-1:123456789012:alarm:MyAlarm
-///       workflows:
-///         - workflowTargetAction: activate
-///           workflowTargetRegion: us-west-2
-///           steps:
-///             - name: lambda-step
-///               executionBlockType: CustomActionLambda
-///               customActionLambdaConfigs:
-///                 - regionToRun: activatingRegion
-///                   retryIntervalMinutes: 5
-///                   timeoutMinutes: 30
-///                   lambdas:
-///                     - arn: ${example.arn}
-///             - name: parallel-step
-///               executionBlockType: Parallel
-///               parallelConfigs:
-///                 - steps:
-///                     - name: asg-scaling
-///                       executionBlockType: EC2AutoScaling
-///                       ec2AsgCapacityIncreaseConfigs:
-///                         - asgs:
-///                             - arn: ${exampleAwsAutoscalingGroup.arn}
-///                           targetPercent: 150
-///                     - name: ecs-scaling
-///                       executionBlockType: ECSServiceScaling
-///                       ecsCapacityIncreaseConfigs:
-///                         - services:
-///                             - clusterArn: ${exampleAwsEcsCluster.arn}
-///                               serviceArn: ${exampleAwsEcsService.arn}
-///                           targetPercent: 200
-///         - workflowTargetAction: deactivate
-///           workflowTargetRegion: us-east-1
-///           steps:
-///             - name: route53-health-check
-///               executionBlockType: Route53HealthCheck
-///               route53HealthCheckConfigs:
-///                 - hostedZoneId: ${exampleAwsRoute53Zone.zoneId}
-///                   recordName: api.example.com
-///       triggers:
-///         - action: activate
-///           targetRegion: us-west-2
-///           minDelayMinutesBetweenExecutions: 30
-///           conditions:
-///             - associatedAlarmName: application-health-alarm
-///               condition: red
 ///       tags:
 ///         Environment: production
 /// ```
@@ -1237,7 +1241,7 @@ import 'plan_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the ARC Region Switch Plan.
+/// - `arn` (String) ARN of the ARC Region Switch Plan.
 ///
 ///
 /// Using `pulumi import`, import Application Recovery Controller Region Switch Plan using the `arn`. For example:
@@ -1249,7 +1253,7 @@ class Plan extends pulumi.CustomResource {
   /// ARN of the plan.
   late final pulumi.Output<String> arn;
   /// CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> associatedAlarms;
+  late final pulumi.Output<List<PlanAssociatedAlarm>?> associatedAlarms;
   /// Description of the plan.
   late final pulumi.Output<String?> description;
   /// ARN of the IAM role that ARC Region Switch will assume to execute the plan.
@@ -1267,18 +1271,18 @@ class Plan extends pulumi.CustomResource {
   /// List of AWS regions involved in the plan. Must contain at least 2 regions.
   late final pulumi.Output<List<String>> regions;
   /// Configuration for automated execution reports. See `reportConfiguration` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> reportConfigurations;
+  late final pulumi.Output<List<PlanReportConfiguration>?> reportConfigurations;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PlanTimeouts?> timeouts;
   /// Triggers that can initiate the plan execution. See `triggers` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
+  late final pulumi.Output<List<PlanTrigger>?> triggers;
   /// Workflows that define the steps to execute. See `workflow` Block for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> workflows;
+  late final pulumi.Output<List<PlanWorkflow>?> workflows;
 
   /// Creates a new [Plan].
   /// [name] The Pulumi resource name.
@@ -1292,10 +1296,10 @@ class Plan extends pulumi.CustomResource {
           'aws:arcregionswitch/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    associatedAlarms = registerOutput<List<Map<String, dynamic>>?>('associatedAlarms');
+    associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAssociatedAlarm>(guardedValue, (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
@@ -1303,13 +1307,13 @@ class Plan extends pulumi.CustomResource {
     recoveryApproach = registerOutput<String>('recoveryApproach');
     recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
-    reportConfigurations = registerOutput<List<Map<String, dynamic>>?>('reportConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    reportConfigurations = registerOutput<List<PlanReportConfiguration>?>('reportConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
-    workflows = registerOutput<List<Map<String, dynamic>>?>('workflows');
+    triggers = registerOutput<List<PlanTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanTrigger>(guardedValue, (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    workflows = registerOutput<List<PlanWorkflow>?>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanWorkflow>(guardedValue, (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Plan] resource's state with the given [name] and [id].
@@ -1317,11 +1321,12 @@ class Plan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1336,7 +1341,7 @@ class Plan extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    associatedAlarms = registerOutput<List<Map<String, dynamic>>?>('associatedAlarms');
+    associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAssociatedAlarm>(guardedValue, (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
@@ -1344,12 +1349,39 @@ class Plan extends pulumi.CustomResource {
     recoveryApproach = registerOutput<String>('recoveryApproach');
     recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
-    reportConfigurations = registerOutput<List<Map<String, dynamic>>?>('reportConfigurations');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    reportConfigurations = registerOutput<List<PlanReportConfiguration>?>('reportConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
-    workflows = registerOutput<List<Map<String, dynamic>>?>('workflows');
+    triggers = registerOutput<List<PlanTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanTrigger>(guardedValue, (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    workflows = registerOutput<List<PlanWorkflow>?>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanWorkflow>(guardedValue, (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Plan] resource.
+  Plan.reference(String urn)
+    : super(
+        'aws:arcregionswitch/plan:Plan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAssociatedAlarm>(guardedValue, (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    executionRole = registerOutput<String>('executionRole');
+    this.name = registerOutput<String>('name');
+    primaryRegion = registerOutput<String?>('primaryRegion');
+    recoveryApproach = registerOutput<String>('recoveryApproach');
+    recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
+    region = registerOutput<String>('region');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    reportConfigurations = registerOutput<List<PlanReportConfiguration>?>('reportConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<PlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggers = registerOutput<List<PlanTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanTrigger>(guardedValue, (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    workflows = registerOutput<List<PlanWorkflow>?>('workflows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanWorkflow>(guardedValue, (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

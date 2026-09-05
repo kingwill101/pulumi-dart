@@ -166,7 +166,7 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
@@ -175,8 +175,8 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -185,11 +185,12 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreAgentRuntimeEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreAgentRuntimeEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,8 +211,29 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreAgentRuntimeEndpoint] resource.
+  AgentcoreAgentRuntimeEndpoint.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
+    agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');
+    agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

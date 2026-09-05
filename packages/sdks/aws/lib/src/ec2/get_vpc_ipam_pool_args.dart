@@ -9,17 +9,17 @@ import 'get_vpc_ipam_pool_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_ipam_pool_get_vpc_ipam_pool_args_doc}
 class GetVpcIpamPoolArgs {
   /// Tags that are required to create resources in using this pool.
-  final pulumi.Input<Map<String, String>>? allocationResourceTags;
+  final pulumi.Input<Map<String, String>?>? allocationResourceTags;
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpcIpamPoolFilter>>? filters;
+  final pulumi.Input<List<GetVpcIpamPoolFilter>?>? filters;
   /// ID of the IPAM pool.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// ID of the IPAM pool you would like information on.
-  final pulumi.Input<String>? ipamPoolId;
+  final pulumi.Input<String?>? ipamPoolId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcIpamPoolArgs].
   /// [allocationResourceTags] Tags that are required to create resources in using this pool.

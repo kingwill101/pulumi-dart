@@ -7,11 +7,11 @@ import 'management_policy_rule_actions_version.dart';
 
 class ManagementPolicyRuleActions {
   /// A `baseBlob` block as documented below.
-  final pulumi.Input<ManagementPolicyRuleActionsBaseBlob>? baseBlob;
+  final pulumi.Input<ManagementPolicyRuleActionsBaseBlob?>? baseBlob;
   /// A `snapshot` block as documented below.
-  final pulumi.Input<ManagementPolicyRuleActionsSnapshot>? snapshot;
+  final pulumi.Input<ManagementPolicyRuleActionsSnapshot?>? snapshot;
   /// A `version` block as documented below.
-  final pulumi.Input<ManagementPolicyRuleActionsVersion>? version;
+  final pulumi.Input<ManagementPolicyRuleActionsVersion?>? version;
 
   /// Creates a new [ManagementPolicyRuleActions].
   /// [baseBlob] A `baseBlob` block as documented below.

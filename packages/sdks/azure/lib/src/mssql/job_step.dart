@@ -239,7 +239,7 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -249,14 +249,14 @@ import 'job_step_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleJobCredential, err := mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-job-credential"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("exampleusername"),
 /// 			Password:   pulumi.String("examplepassword"),
 /// 		})
@@ -265,12 +265,12 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleJobTargetGroup, err := mssql.NewJobTargetGroup(ctx, "example", &mssql.JobTargetGroupArgs{
 /// 			Name:       pulumi.String("example-target-group"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			JobTargets: mssql.JobTargetGroupJobTargetArray{
 /// 				&mssql.JobTargetGroupJobTargetArgs{
 /// 					ServerName:      exampleServer.Name,
 /// 					DatabaseName:    exampleDatabase.Name,
-/// 					JobCredentialId: exampleJobCredential.ID(),
+/// 					JobCredentialId: exampleJobCredential.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -279,7 +279,7 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleJob, err := mssql.NewJob(ctx, "example", &mssql.JobArgs{
 /// 			Name:        pulumi.String("example-job"),
-/// 			JobAgentId:  exampleJobAgent.ID(),
+/// 			JobAgentId:  exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("example description"),
 /// 		})
 /// 		if err != nil {
@@ -287,9 +287,9 @@ import 'job_step_state.dart';
 /// 		}
 /// 		_, err = mssql.NewJobStep(ctx, "test", &mssql.JobStepArgs{
 /// 			Name:             pulumi.String("example-job-step"),
-/// 			JobId:            exampleJob.ID(),
-/// 			JobCredentialId:  exampleJobCredential.ID(),
-/// 			JobTargetGroupId: exampleJobTargetGroup.ID(),
+/// 			JobId:            exampleJob.ID().ToIDOutput().ToStringOutput(),
+/// 			JobCredentialId:  exampleJobCredential.ID().ToIDOutput().ToStringOutput(),
+/// 			JobTargetGroupId: exampleJobTargetGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			JobStepIndex:     pulumi.Int(1),
 /// 			SqlScript: pulumi.String(`IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'Pets')
 ///   CREATE TABLE Pets (
@@ -604,7 +604,7 @@ class JobStep extends pulumi.CustomResource {
           'azure:mssql/jobStep:JobStep',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
     jobCredentialId = registerOutput<String?>('jobCredentialId');
@@ -625,11 +625,12 @@ class JobStep extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobStepState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobStep._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -643,6 +644,29 @@ class JobStep extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
+    jobCredentialId = registerOutput<String?>('jobCredentialId');
+    jobId = registerOutput<String>('jobId');
+    jobStepIndex = registerOutput<int>('jobStepIndex');
+    jobTargetGroupId = registerOutput<String>('jobTargetGroupId');
+    maximumRetryIntervalSeconds = registerOutput<int?>('maximumRetryIntervalSeconds');
+    this.name = registerOutput<String>('name');
+    outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStepOutputTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryAttempts = registerOutput<int?>('retryAttempts');
+    retryIntervalBackoffMultiplier = registerOutput<double?>('retryIntervalBackoffMultiplier');
+    sqlScript = registerOutput<String>('sqlScript');
+    timeoutSeconds = registerOutput<int?>('timeoutSeconds');
+  }
+
+  /// Creates a typed reference to an existing [JobStep] resource.
+  JobStep.reference(String urn)
+    : super(
+        'azure:mssql/jobStep:JobStep',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
     jobCredentialId = registerOutput<String?>('jobCredentialId');
     jobId = registerOutput<String>('jobId');

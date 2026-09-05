@@ -9,13 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityCenterConfigurationArgs {
   /// Identifier for the Data Catalog.
   /// By default, the account ID.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// ARN of the IAM Identity Center Instance to associate.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> instanceArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [IdentityCenterConfigurationArgs].
   /// [catalogId] Identifier for the Data Catalog.

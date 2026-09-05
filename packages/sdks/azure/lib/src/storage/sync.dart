@@ -218,14 +218,14 @@ class Sync extends pulumi.CustomResource {
           'azure:storage/sync:Sync',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    registeredServers = registerOutput<List<String>>('registeredServers');
+    registeredServers = registerOutput<List<String>>('registeredServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Sync] resource's state with the given [name] and [id].
@@ -233,11 +233,12 @@ class Sync extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SyncState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Sync._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,8 +255,25 @@ class Sync extends pulumi.CustomResource {
     incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    registeredServers = registerOutput<List<String>>('registeredServers');
+    registeredServers = registerOutput<List<String>>('registeredServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Sync] resource.
+  Sync.reference(String urn)
+    : super(
+        'azure:storage/sync:Sync',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    registeredServers = registerOutput<List<String>>('registeredServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

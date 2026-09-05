@@ -12,14 +12,14 @@ class ScraperLoggingConfigurationArgs {
   /// Configuration block for the logging destination. See `loggingDestination` Block below.
   final pulumi.Input<ScraperLoggingConfigurationLoggingDestination> loggingDestination;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Scraper components to log. Valid values: `COLLECTOR`, `EXPORTER`, `SERVICE_DISCOVERY`.
-  final pulumi.Input<List<String>>? scraperComponents;
+  final pulumi.Input<List<String>?>? scraperComponents;
   /// ID of the scraper to configure logging for.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> scraperId;
-  final pulumi.Input<ScraperLoggingConfigurationTimeouts>? timeouts;
+  final pulumi.Input<ScraperLoggingConfigurationTimeouts?>? timeouts;
 
   /// Creates a new [ScraperLoggingConfigurationArgs].
   /// [loggingDestination] Configuration block for the logging destination. See `loggingDestination` Block below.

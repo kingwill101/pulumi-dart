@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_online_evaluation_config_args.dart';
 import 'agentcore_online_evaluation_config_data_source_config.dart';
+import 'agentcore_online_evaluation_config_evaluator.dart';
+import 'agentcore_online_evaluation_config_output_config.dart';
 import 'agentcore_online_evaluation_config_rule.dart';
 import 'agentcore_online_evaluation_config_state.dart';
 import 'agentcore_online_evaluation_config_timeouts.dart';
@@ -33,14 +35,15 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// });
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "/aws/agentcore/my-agent-traces"});
 /// const exampleAgentcoreOnlineEvaluationConfig = new aws.bedrock.AgentcoreOnlineEvaluationConfig("example", {
-///     onlineEvaluationConfigName: "my_evaluation_config",
-///     description: "Continuous evaluation of agent performance",
-///     enableOnCreate: true,
-///     evaluationExecutionRoleArn: example.arn,
 ///     dataSourceConfig: {
 ///         cloudwatchLogs: {
 ///             logGroupNames: [exampleLogGroup.name],
 ///             serviceNames: ["my_agent_service"],
+///         },
+///     },
+///     rule: {
+///         samplingConfig: {
+///             samplingPercentage: 10,
 ///         },
 ///     },
 ///     evaluators: [
@@ -51,11 +54,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///             evaluatorId: "Builtin.GoalSuccessRate",
 ///         },
 ///     ],
-///     rule: {
-///         samplingConfig: {
-///             samplingPercentage: 10,
-///         },
-///     },
+///     onlineEvaluationConfigName: "my_evaluation_config",
+///     description: "Continuous evaluation of agent performance",
+///     enableOnCreate: true,
+///     evaluationExecutionRoleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -77,14 +79,15 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///     }))
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="/aws/agentcore/my-agent-traces")
 /// example_agentcore_online_evaluation_config = aws.bedrock.AgentcoreOnlineEvaluationConfig("example",
-///     online_evaluation_config_name="my_evaluation_config",
-///     description="Continuous evaluation of agent performance",
-///     enable_on_create=True,
-///     evaluation_execution_role_arn=example.arn,
 ///     data_source_config={
 ///         "cloudwatch_logs": {
 ///             "log_group_names": [example_log_group.name],
 ///             "service_names": ["my_agent_service"],
+///         },
+///     },
+///     rule={
+///         "sampling_config": {
+///             "sampling_percentage": float(10),
 ///         },
 ///     },
 ///     evaluators=[
@@ -95,11 +98,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///             "evaluator_id": "Builtin.GoalSuccessRate",
 ///         },
 ///     ],
-///     rule={
-///         "sampling_config": {
-///             "sampling_percentage": float(10),
-///         },
-///     })
+///     online_evaluation_config_name="my_evaluation_config",
+///     description="Continuous evaluation of agent performance",
+///     enable_on_create=True,
+///     evaluation_execution_role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -138,10 +140,6 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///
 ///     var exampleAgentcoreOnlineEvaluationConfig = new Aws.Bedrock.AgentcoreOnlineEvaluationConfig("example", new()
 ///     {
-///         OnlineEvaluationConfigName = "my_evaluation_config",
-///         Description = "Continuous evaluation of agent performance",
-///         EnableOnCreate = true,
-///         EvaluationExecutionRoleArn = example.Arn,
 ///         DataSourceConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs
 ///         {
 ///             CloudwatchLogs = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs
@@ -156,6 +154,13 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Rule = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleArgs
+///         {
+///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
+///             {
+///                 SamplingPercentage = 10,
+///             },
+///         },
 ///         Evaluators = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs
@@ -167,13 +172,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 EvaluatorId = "Builtin.GoalSuccessRate",
 ///             },
 ///         },
-///         Rule = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleArgs
-///         {
-///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
-///             {
-///                 SamplingPercentage = 10,
-///             },
-///         },
+///         OnlineEvaluationConfigName = "my_evaluation_config",
+///         Description = "Continuous evaluation of agent performance",
+///         EnableOnCreate = true,
+///         EvaluationExecutionRoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -222,10 +224,6 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreOnlineEvaluationConfig(ctx, "example", &bedrock.AgentcoreOnlineEvaluationConfigArgs{
-/// 			OnlineEvaluationConfigName: pulumi.String("my_evaluation_config"),
-/// 			Description:                pulumi.String("Continuous evaluation of agent performance"),
-/// 			EnableOnCreate:             pulumi.Bool(true),
-/// 			EvaluationExecutionRoleArn: example.Arn,
 /// 			DataSourceConfig: &bedrock.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs{
 /// 				CloudwatchLogs: &bedrock.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs{
 /// 					LogGroupNames: pulumi.StringArray{
@@ -236,6 +234,11 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Rule: &bedrock.AgentcoreOnlineEvaluationConfigRuleArgs{
+/// 				SamplingConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs{
+/// 					SamplingPercentage: pulumi.Float64(10),
+/// 				},
+/// 			},
 /// 			Evaluators: bedrock.AgentcoreOnlineEvaluationConfigEvaluatorArray{
 /// 				&bedrock.AgentcoreOnlineEvaluationConfigEvaluatorArgs{
 /// 					EvaluatorId: pulumi.String("Builtin.Helpfulness"),
@@ -244,11 +247,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// 					EvaluatorId: pulumi.String("Builtin.GoalSuccessRate"),
 /// 				},
 /// 			},
-/// 			Rule: &bedrock.AgentcoreOnlineEvaluationConfigRuleArgs{
-/// 				SamplingConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs{
-/// 					SamplingPercentage: pulumi.Float64(10),
-/// 				},
-/// 			},
+/// 			OnlineEvaluationConfigName: pulumi.String("my_evaluation_config"),
+/// 			Description:                pulumi.String("Continuous evaluation of agent performance"),
+/// 			EnableOnCreate:             pulumi.Bool(true),
+/// 			EvaluationExecutionRoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -283,14 +285,15 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///   name = "/aws/agentcore/my-agent-traces"
 /// }
 /// resource "aws_bedrock_agentcoreonlineevaluationconfig" "example" {
-///   online_evaluation_config_name = "my_evaluation_config"
-///   description                   = "Continuous evaluation of agent performance"
-///   enable_on_create              = true
-///   evaluation_execution_role_arn = aws_iam_role.example.arn
 ///   data_source_config = {
 ///     cloudwatch_logs = {
 ///       log_group_names = [aws_cloudwatch_loggroup.example.name]
 ///       service_names   = ["my_agent_service"]
+///     }
+///   }
+///   rule = {
+///     sampling_config = {
+///       sampling_percentage = 10
 ///     }
 ///   }
 ///   evaluators {
@@ -299,11 +302,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///   evaluators {
 ///     evaluator_id = "Builtin.GoalSuccessRate"
 ///   }
-///   rule = {
-///     sampling_config = {
-///       sampling_percentage = 10
-///     }
-///   }
+///   online_evaluation_config_name = "my_evaluation_config"
+///   description                   = "Continuous evaluation of agent performance"
+///   enable_on_create              = true
+///   evaluation_execution_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -320,9 +322,9 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreOnlineEvaluationConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -357,14 +359,15 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreOnlineEvaluationConfig = new AgentcoreOnlineEvaluationConfig("exampleAgentcoreOnlineEvaluationConfig", AgentcoreOnlineEvaluationConfigArgs.builder()
-///             .onlineEvaluationConfigName("my_evaluation_config")
-///             .description("Continuous evaluation of agent performance")
-///             .enableOnCreate(true)
-///             .evaluationExecutionRoleArn(example.arn())
 ///             .dataSourceConfig(AgentcoreOnlineEvaluationConfigDataSourceConfigArgs.builder()
 ///                 .cloudwatchLogs(AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs.builder()
 ///                     .logGroupNames(exampleLogGroup.name())
 ///                     .serviceNames("my_agent_service")
+///                     .build())
+///                 .build())
+///             .rule(AgentcoreOnlineEvaluationConfigRuleArgs.builder()
+///                 .samplingConfig(AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs.builder()
+///                     .samplingPercentage(10.0)
 ///                     .build())
 ///                 .build())
 ///             .evaluators(
@@ -374,11 +377,10 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 AgentcoreOnlineEvaluationConfigEvaluatorArgs.builder()
 ///                     .evaluatorId("Builtin.GoalSuccessRate")
 ///                     .build())
-///             .rule(AgentcoreOnlineEvaluationConfigRuleArgs.builder()
-///                 .samplingConfig(AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs.builder()
-///                     .samplingPercentage(10.0)
-///                     .build())
-///                 .build())
+///             .onlineEvaluationConfigName("my_evaluation_config")
+///             .description("Continuous evaluation of agent performance")
+///             .enableOnCreate(true)
+///             .evaluationExecutionRoleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -407,22 +409,22 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreOnlineEvaluationConfig
 ///     name: example
 ///     properties:
-///       onlineEvaluationConfigName: my_evaluation_config
-///       description: Continuous evaluation of agent performance
-///       enableOnCreate: true
-///       evaluationExecutionRoleArn: ${example.arn}
 ///       dataSourceConfig:
 ///         cloudwatchLogs:
 ///           logGroupNames:
 ///             - ${exampleLogGroup.name}
 ///           serviceNames:
 ///             - my_agent_service
-///       evaluators:
-///         - evaluatorId: Builtin.Helpfulness
-///         - evaluatorId: Builtin.GoalSuccessRate
 ///       rule:
 ///         samplingConfig:
 ///           samplingPercentage: 10
+///       evaluators:
+///         - evaluatorId: Builtin.Helpfulness
+///         - evaluatorId: Builtin.GoalSuccessRate
+///       onlineEvaluationConfigName: my_evaluation_config
+///       description: Continuous evaluation of agent performance
+///       enableOnCreate: true
+///       evaluationExecutionRoleArn: ${example.arn}
 /// ```
 ///
 ///
@@ -434,33 +436,33 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const filtered = new aws.bedrock.AgentcoreOnlineEvaluationConfig("filtered", {
-///     onlineEvaluationConfigName: "filtered_evaluation",
-///     enableOnCreate: true,
-///     evaluationExecutionRoleArn: exampleAwsIamRole.arn,
 ///     dataSourceConfig: {
 ///         cloudwatchLogs: {
 ///             logGroupNames: [example.name],
 ///             serviceNames: ["my_agent_service"],
 ///         },
 ///     },
-///     evaluators: [{
-///         evaluatorId: "Builtin.Helpfulness",
-///     }],
 ///     rule: {
 ///         samplingConfig: {
 ///             samplingPercentage: 50,
 ///         },
-///         filters: [{
-///             key: "environment",
-///             operator: "Equals",
-///             value: {
-///                 stringValue: "production",
-///             },
-///         }],
 ///         sessionConfig: {
 ///             sessionTimeoutMinutes: 30,
 ///         },
+///         filters: [{
+///             value: {
+///                 stringValue: "production",
+///             },
+///             key: "environment",
+///             operator: "Equals",
+///         }],
 ///     },
+///     evaluators: [{
+///         evaluatorId: "Builtin.Helpfulness",
+///     }],
+///     onlineEvaluationConfigName: "filtered_evaluation",
+///     enableOnCreate: true,
+///     evaluationExecutionRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -468,33 +470,33 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// filtered = aws.bedrock.AgentcoreOnlineEvaluationConfig("filtered",
-///     online_evaluation_config_name="filtered_evaluation",
-///     enable_on_create=True,
-///     evaluation_execution_role_arn=example_aws_iam_role["arn"],
 ///     data_source_config={
 ///         "cloudwatch_logs": {
 ///             "log_group_names": [example["name"]],
 ///             "service_names": ["my_agent_service"],
 ///         },
 ///     },
-///     evaluators=[{
-///         "evaluator_id": "Builtin.Helpfulness",
-///     }],
 ///     rule={
 ///         "sampling_config": {
 ///             "sampling_percentage": float(50),
 ///         },
-///         "filters": [{
-///             "key": "environment",
-///             "operator": "Equals",
-///             "value": {
-///                 "string_value": "production",
-///             },
-///         }],
 ///         "session_config": {
 ///             "session_timeout_minutes": 30,
 ///         },
-///     })
+///         "filters": [{
+///             "value": {
+///                 "string_value": "production",
+///             },
+///             "key": "environment",
+///             "operator": "Equals",
+///         }],
+///     },
+///     evaluators=[{
+///         "evaluator_id": "Builtin.Helpfulness",
+///     }],
+///     online_evaluation_config_name="filtered_evaluation",
+///     enable_on_create=True,
+///     evaluation_execution_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -506,9 +508,6 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// {
 ///     var filtered = new Aws.Bedrock.AgentcoreOnlineEvaluationConfig("filtered", new()
 ///     {
-///         OnlineEvaluationConfigName = "filtered_evaluation",
-///         EnableOnCreate = true,
-///         EvaluationExecutionRoleArn = exampleAwsIamRole.Arn,
 ///         DataSourceConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs
 ///         {
 ///             CloudwatchLogs = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs
@@ -523,6 +522,29 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Rule = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleArgs
+///         {
+///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
+///             {
+///                 SamplingPercentage = 50,
+///             },
+///             SessionConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs
+///             {
+///                 SessionTimeoutMinutes = 30,
+///             },
+///             Filters = new[]
+///             {
+///                 new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleFilterArgs
+///                 {
+///                     Value = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleFilterValueArgs
+///                     {
+///                         StringValue = "production",
+///                     },
+///                     Key = "environment",
+///                     Operator = "Equals",
+///                 },
+///             },
+///         },
 ///         Evaluators = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs
@@ -530,29 +552,9 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///                 EvaluatorId = "Builtin.Helpfulness",
 ///             },
 ///         },
-///         Rule = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleArgs
-///         {
-///             SamplingConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs
-///             {
-///                 SamplingPercentage = 50,
-///             },
-///             Filters = new[]
-///             {
-///                 new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleFilterArgs
-///                 {
-///                     Key = "environment",
-///                     Operator = "Equals",
-///                     Value = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleFilterValueArgs
-///                     {
-///                         StringValue = "production",
-///                     },
-///                 },
-///             },
-///             SessionConfig = new Aws.Bedrock.Inputs.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs
-///             {
-///                 SessionTimeoutMinutes = 30,
-///             },
-///         },
+///         OnlineEvaluationConfigName = "filtered_evaluation",
+///         EnableOnCreate = true,
+///         EvaluationExecutionRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -568,9 +570,6 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreOnlineEvaluationConfig(ctx, "filtered", &bedrock.AgentcoreOnlineEvaluationConfigArgs{
-/// 			OnlineEvaluationConfigName: pulumi.String("filtered_evaluation"),
-/// 			EnableOnCreate:             pulumi.Bool(true),
-/// 			EvaluationExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			DataSourceConfig: &bedrock.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs{
 /// 				CloudwatchLogs: &bedrock.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs{
 /// 					LogGroupNames: pulumi.StringArray{
@@ -581,28 +580,31 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Rule: &bedrock.AgentcoreOnlineEvaluationConfigRuleArgs{
+/// 				SamplingConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs{
+/// 					SamplingPercentage: pulumi.Float64(50),
+/// 				},
+/// 				SessionConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs{
+/// 					SessionTimeoutMinutes: pulumi.Int(30),
+/// 				},
+/// 				Filters: bedrock.AgentcoreOnlineEvaluationConfigRuleFilterArray{
+/// 					&bedrock.AgentcoreOnlineEvaluationConfigRuleFilterArgs{
+/// 						Value: &bedrock.AgentcoreOnlineEvaluationConfigRuleFilterValueArgs{
+/// 							StringValue: pulumi.String("production"),
+/// 						},
+/// 						Key:      pulumi.String("environment"),
+/// 						Operator: pulumi.String("Equals"),
+/// 					},
+/// 				},
+/// 			},
 /// 			Evaluators: bedrock.AgentcoreOnlineEvaluationConfigEvaluatorArray{
 /// 				&bedrock.AgentcoreOnlineEvaluationConfigEvaluatorArgs{
 /// 					EvaluatorId: pulumi.String("Builtin.Helpfulness"),
 /// 				},
 /// 			},
-/// 			Rule: &bedrock.AgentcoreOnlineEvaluationConfigRuleArgs{
-/// 				SamplingConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs{
-/// 					SamplingPercentage: pulumi.Float64(50),
-/// 				},
-/// 				Filters: bedrock.AgentcoreOnlineEvaluationConfigRuleFilterArray{
-/// 					&bedrock.AgentcoreOnlineEvaluationConfigRuleFilterArgs{
-/// 						Key:      pulumi.String("environment"),
-/// 						Operator: pulumi.String("Equals"),
-/// 						Value: &bedrock.AgentcoreOnlineEvaluationConfigRuleFilterValueArgs{
-/// 							StringValue: pulumi.String("production"),
-/// 						},
-/// 					},
-/// 				},
-/// 				SessionConfig: &bedrock.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs{
-/// 					SessionTimeoutMinutes: pulumi.Int(30),
-/// 				},
-/// 			},
+/// 			OnlineEvaluationConfigName: pulumi.String("filtered_evaluation"),
+/// 			EnableOnCreate:             pulumi.Bool(true),
+/// 			EvaluationExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -621,33 +623,33 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreonlineevaluationconfig" "filtered" {
-///   online_evaluation_config_name = "filtered_evaluation"
-///   enable_on_create              = true
-///   evaluation_execution_role_arn = exampleAwsIamRole.arn
 ///   data_source_config = {
 ///     cloudwatch_logs = {
 ///       log_group_names = [example.name]
 ///       service_names   = ["my_agent_service"]
 ///     }
 ///   }
-///   evaluators {
-///     evaluator_id = "Builtin.Helpfulness"
-///   }
 ///   rule = {
 ///     sampling_config = {
 ///       sampling_percentage = 50
 ///     }
-///     filters = [{
-///       "key"      = "environment"
-///       "operator" = "Equals"
-///       "value" = {
-///         "stringValue" = "production"
-///       }
-///     }]
 ///     session_config = {
 ///       session_timeout_minutes = 30
 ///     }
+///     filters = [{
+///       "value" = {
+///         "stringValue" = "production"
+///       }
+///       "key"      = "environment"
+///       "operator" = "Equals"
+///     }]
 ///   }
+///   evaluators {
+///     evaluator_id = "Builtin.Helpfulness"
+///   }
+///   online_evaluation_config_name = "filtered_evaluation"
+///   enable_on_create              = true
+///   evaluation_execution_role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -660,12 +662,12 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreOnlineEvaluationConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleFilterArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleFilterValueArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOnlineEvaluationConfigEvaluatorArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -680,33 +682,33 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var filtered = new AgentcoreOnlineEvaluationConfig("filtered", AgentcoreOnlineEvaluationConfigArgs.builder()
-///             .onlineEvaluationConfigName("filtered_evaluation")
-///             .enableOnCreate(true)
-///             .evaluationExecutionRoleArn(exampleAwsIamRole.arn())
 ///             .dataSourceConfig(AgentcoreOnlineEvaluationConfigDataSourceConfigArgs.builder()
 ///                 .cloudwatchLogs(AgentcoreOnlineEvaluationConfigDataSourceConfigCloudwatchLogsArgs.builder()
 ///                     .logGroupNames(example.name())
 ///                     .serviceNames("my_agent_service")
 ///                     .build())
 ///                 .build())
-///             .evaluators(AgentcoreOnlineEvaluationConfigEvaluatorArgs.builder()
-///                 .evaluatorId("Builtin.Helpfulness")
-///                 .build())
 ///             .rule(AgentcoreOnlineEvaluationConfigRuleArgs.builder()
 ///                 .samplingConfig(AgentcoreOnlineEvaluationConfigRuleSamplingConfigArgs.builder()
 ///                     .samplingPercentage(50.0)
 ///                     .build())
-///                 .filters(AgentcoreOnlineEvaluationConfigRuleFilterArgs.builder()
-///                     .key("environment")
-///                     .operator("Equals")
-///                     .value(AgentcoreOnlineEvaluationConfigRuleFilterValueArgs.builder()
-///                         .stringValue("production")
-///                         .build())
-///                     .build())
 ///                 .sessionConfig(AgentcoreOnlineEvaluationConfigRuleSessionConfigArgs.builder()
 ///                     .sessionTimeoutMinutes(30)
 ///                     .build())
+///                 .filters(AgentcoreOnlineEvaluationConfigRuleFilterArgs.builder()
+///                     .value(AgentcoreOnlineEvaluationConfigRuleFilterValueArgs.builder()
+///                         .stringValue("production")
+///                         .build())
+///                     .key("environment")
+///                     .operator("Equals")
+///                     .build())
 ///                 .build())
+///             .evaluators(AgentcoreOnlineEvaluationConfigEvaluatorArgs.builder()
+///                 .evaluatorId("Builtin.Helpfulness")
+///                 .build())
+///             .onlineEvaluationConfigName("filtered_evaluation")
+///             .enableOnCreate(true)
+///             .evaluationExecutionRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -717,27 +719,27 @@ import 'agentcore_online_evaluation_config_timeouts.dart';
 ///   filtered:
 ///     type: aws:bedrock:AgentcoreOnlineEvaluationConfig
 ///     properties:
-///       onlineEvaluationConfigName: filtered_evaluation
-///       enableOnCreate: true
-///       evaluationExecutionRoleArn: ${exampleAwsIamRole.arn}
 ///       dataSourceConfig:
 ///         cloudwatchLogs:
 ///           logGroupNames:
 ///             - ${example.name}
 ///           serviceNames:
 ///             - my_agent_service
-///       evaluators:
-///         - evaluatorId: Builtin.Helpfulness
 ///       rule:
 ///         samplingConfig:
 ///           samplingPercentage: 50
-///         filters:
-///           - key: environment
-///             operator: Equals
-///             value:
-///               stringValue: production
 ///         sessionConfig:
 ///           sessionTimeoutMinutes: 30
+///         filters:
+///           - value:
+///               stringValue: production
+///             key: environment
+///             operator: Equals
+///       evaluators:
+///         - evaluatorId: Builtin.Helpfulness
+///       onlineEvaluationConfigName: filtered_evaluation
+///       enableOnCreate: true
+///       evaluationExecutionRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -770,7 +772,7 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
   /// ARN of the IAM role that grants permissions to read from CloudWatch logs, write evaluation results, and invoke Amazon Bedrock models for evaluation.
   late final pulumi.Output<String> evaluationExecutionRoleArn;
   /// List of evaluators to apply during online evaluation. Minimum 1, maximum 10. See `evaluator` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> evaluators;
+  late final pulumi.Output<List<AgentcoreOnlineEvaluationConfigEvaluator>> evaluators;
   /// Execution status to enable or disable the online evaluation. Valid values: `ENABLED`, `DISABLED`. Computed on create based on `enableOnCreate`.
   late final pulumi.Output<String> executionStatus;
   /// ARN of the online evaluation configuration.
@@ -780,7 +782,7 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
   /// Name of the online evaluation configuration. Must start with a letter and contain only alphanumeric characters and underscores, up to 48 characters.
   late final pulumi.Output<String> onlineEvaluationConfigName;
   /// Configuration specifying where evaluation results are written. See `outputConfig` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> outputConfigs;
+  late final pulumi.Output<List<AgentcoreOnlineEvaluationConfigOutputConfig>> outputConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Evaluation rule defining sampling configuration, filters, and session detection settings. See `rule` Block below.
@@ -805,22 +807,22 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOnlineEvaluationConfig:AgentcoreOnlineEvaluationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dataSourceConfig = registerOutput<AgentcoreOnlineEvaluationConfigDataSourceConfig>('dataSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigDataSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enableOnCreate = registerOutput<bool>('enableOnCreate');
     evaluationExecutionRoleArn = registerOutput<String>('evaluationExecutionRoleArn');
-    evaluators = registerOutput<List<Map<String, dynamic>>>('evaluators');
+    evaluators = registerOutput<List<AgentcoreOnlineEvaluationConfigEvaluator>>('evaluators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigEvaluator>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigEvaluator.fromMap((value as Map).cast<String, dynamic>())); });
     executionStatus = registerOutput<String>('executionStatus');
     onlineEvaluationConfigArn = registerOutput<String>('onlineEvaluationConfigArn');
     onlineEvaluationConfigId = registerOutput<String>('onlineEvaluationConfigId');
     onlineEvaluationConfigName = registerOutput<String>('onlineEvaluationConfigName');
-    outputConfigs = registerOutput<List<Map<String, dynamic>>>('outputConfigs');
+    outputConfigs = registerOutput<List<AgentcoreOnlineEvaluationConfigOutputConfig>>('outputConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigOutputConfig>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigOutputConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     rule = registerOutput<AgentcoreOnlineEvaluationConfigRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreOnlineEvaluationConfigTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -829,11 +831,12 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreOnlineEvaluationConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreOnlineEvaluationConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -851,16 +854,42 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enableOnCreate = registerOutput<bool>('enableOnCreate');
     evaluationExecutionRoleArn = registerOutput<String>('evaluationExecutionRoleArn');
-    evaluators = registerOutput<List<Map<String, dynamic>>>('evaluators');
+    evaluators = registerOutput<List<AgentcoreOnlineEvaluationConfigEvaluator>>('evaluators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigEvaluator>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigEvaluator.fromMap((value as Map).cast<String, dynamic>())); });
     executionStatus = registerOutput<String>('executionStatus');
     onlineEvaluationConfigArn = registerOutput<String>('onlineEvaluationConfigArn');
     onlineEvaluationConfigId = registerOutput<String>('onlineEvaluationConfigId');
     onlineEvaluationConfigName = registerOutput<String>('onlineEvaluationConfigName');
-    outputConfigs = registerOutput<List<Map<String, dynamic>>>('outputConfigs');
+    outputConfigs = registerOutput<List<AgentcoreOnlineEvaluationConfigOutputConfig>>('outputConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigOutputConfig>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigOutputConfig.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     rule = registerOutput<AgentcoreOnlineEvaluationConfigRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOnlineEvaluationConfigTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreOnlineEvaluationConfig] resource.
+  AgentcoreOnlineEvaluationConfig.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreOnlineEvaluationConfig:AgentcoreOnlineEvaluationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataSourceConfig = registerOutput<AgentcoreOnlineEvaluationConfigDataSourceConfig>('dataSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigDataSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    enableOnCreate = registerOutput<bool>('enableOnCreate');
+    evaluationExecutionRoleArn = registerOutput<String>('evaluationExecutionRoleArn');
+    evaluators = registerOutput<List<AgentcoreOnlineEvaluationConfigEvaluator>>('evaluators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigEvaluator>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigEvaluator.fromMap((value as Map).cast<String, dynamic>())); });
+    executionStatus = registerOutput<String>('executionStatus');
+    onlineEvaluationConfigArn = registerOutput<String>('onlineEvaluationConfigArn');
+    onlineEvaluationConfigId = registerOutput<String>('onlineEvaluationConfigId');
+    onlineEvaluationConfigName = registerOutput<String>('onlineEvaluationConfigName');
+    outputConfigs = registerOutput<List<AgentcoreOnlineEvaluationConfigOutputConfig>>('outputConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOnlineEvaluationConfigOutputConfig>(guardedValue, (value) => AgentcoreOnlineEvaluationConfigOutputConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    rule = registerOutput<AgentcoreOnlineEvaluationConfigRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreOnlineEvaluationConfigTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

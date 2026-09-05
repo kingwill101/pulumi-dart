@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppJobConfig {
   /// Size of the build instance. Valid values: `STANDARD_8GB`, `LARGE_16GB`, and `XLARGE_72GB`. Default: `STANDARD_8GB`.
-  final pulumi.Input<String>? buildComputeType;
+  final pulumi.Input<String?>? buildComputeType;
 
   /// Creates a new [AppJobConfig].
   /// [buildComputeType] Size of the build instance. Valid values: `STANDARD_8GB`, `LARGE_16GB`, and `XLARGE_72GB`. Default: `STANDARD_8GB`.

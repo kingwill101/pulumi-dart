@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ActionCustom resources.
 class ActionCustomState {
   /// Specifies the JSON Blob defining the Body of this Custom Action.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? logicAppId;
+  final pulumi.Input<String?>? logicAppId;
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ActionCustomState].
   /// [body] Specifies the JSON Blob defining the Body of this Custom Action.

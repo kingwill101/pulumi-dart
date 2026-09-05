@@ -160,10 +160,6 @@ import 'windows_file_system_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.fsx.WindowsFileSystem("example", {
-///     kmsKeyId: exampleAwsKmsKey.arn,
-///     storageCapacity: 32,
-///     subnetIds: [exampleAwsSubnet.id],
-///     throughputCapacity: 32,
 ///     selfManagedActiveDirectory: {
 ///         dnsIps: [
 ///             "10.0.0.111",
@@ -173,6 +169,10 @@ import 'windows_file_system_state.dart';
 ///         password: "avoid-plaintext-passwords",
 ///         username: "Admin",
 ///     },
+///     kmsKeyId: exampleAwsKmsKey.arn,
+///     storageCapacity: 32,
+///     subnetIds: [exampleAwsSubnet.id],
+///     throughputCapacity: 32,
 /// });
 /// ```
 /// ```python
@@ -180,10 +180,6 @@ import 'windows_file_system_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.fsx.WindowsFileSystem("example",
-///     kms_key_id=example_aws_kms_key["arn"],
-///     storage_capacity=32,
-///     subnet_ids=[example_aws_subnet["id"]],
-///     throughput_capacity=32,
 ///     self_managed_active_directory={
 ///         "dns_ips": [
 ///             "10.0.0.111",
@@ -192,7 +188,11 @@ import 'windows_file_system_state.dart';
 ///         "domain_name": "corp.example.com",
 ///         "password": "avoid-plaintext-passwords",
 ///         "username": "Admin",
-///     })
+///     },
+///     kms_key_id=example_aws_kms_key["arn"],
+///     storage_capacity=32,
+///     subnet_ids=[example_aws_subnet["id"]],
+///     throughput_capacity=32)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -204,13 +204,6 @@ import 'windows_file_system_state.dart';
 /// {
 ///     var example = new Aws.Fsx.WindowsFileSystem("example", new()
 ///     {
-///         KmsKeyId = exampleAwsKmsKey.Arn,
-///         StorageCapacity = 32,
-///         SubnetIds = new[]
-///         {
-///             exampleAwsSubnet.Id,
-///         },
-///         ThroughputCapacity = 32,
 ///         SelfManagedActiveDirectory = new Aws.Fsx.Inputs.WindowsFileSystemSelfManagedActiveDirectoryArgs
 ///         {
 ///             DnsIps = new[]
@@ -222,6 +215,13 @@ import 'windows_file_system_state.dart';
 ///             Password = "avoid-plaintext-passwords",
 ///             Username = "Admin",
 ///         },
+///         KmsKeyId = exampleAwsKmsKey.Arn,
+///         StorageCapacity = 32,
+///         SubnetIds = new[]
+///         {
+///             exampleAwsSubnet.Id,
+///         },
+///         ThroughputCapacity = 32,
 ///     });
 ///
 /// });
@@ -237,12 +237,6 @@ import 'windows_file_system_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
-/// 			KmsKeyId:        pulumi.Any(exampleAwsKmsKey.Arn),
-/// 			StorageCapacity: pulumi.Int(32),
-/// 			SubnetIds: pulumi.StringArray{
-/// 				exampleAwsSubnet.Id,
-/// 			},
-/// 			ThroughputCapacity: pulumi.Int(32),
 /// 			SelfManagedActiveDirectory: &fsx.WindowsFileSystemSelfManagedActiveDirectoryArgs{
 /// 				DnsIps: pulumi.StringArray{
 /// 					pulumi.String("10.0.0.111"),
@@ -252,6 +246,12 @@ import 'windows_file_system_state.dart';
 /// 				Password:   pulumi.String("avoid-plaintext-passwords"),
 /// 				Username:   pulumi.String("Admin"),
 /// 			},
+/// 			KmsKeyId:        pulumi.Any(exampleAwsKmsKey.Arn),
+/// 			StorageCapacity: pulumi.Int(32),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleAwsSubnet.Id,
+/// 			},
+/// 			ThroughputCapacity: pulumi.Int(32),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -270,16 +270,16 @@ import 'windows_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_windowsfilesystem" "example" {
-///   kms_key_id          = exampleAwsKmsKey.arn
-///   storage_capacity    = 32
-///   subnet_ids          = [exampleAwsSubnet.id]
-///   throughput_capacity = 32
 ///   self_managed_active_directory = {
 ///     dns_ips     = ["10.0.0.111", "10.0.0.222"]
 ///     domain_name = "corp.example.com"
 ///     password    = "avoid-plaintext-passwords"
 ///     username    = "Admin"
 ///   }
+///   kms_key_id          = exampleAwsKmsKey.arn
+///   storage_capacity    = 32
+///   subnet_ids          = [exampleAwsSubnet.id]
+///   throughput_capacity = 32
 /// }
 /// ```
 /// ```java
@@ -305,10 +305,6 @@ import 'windows_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WindowsFileSystem("example", WindowsFileSystemArgs.builder()
-///             .kmsKeyId(exampleAwsKmsKey.arn())
-///             .storageCapacity(32)
-///             .subnetIds(exampleAwsSubnet.id())
-///             .throughputCapacity(32)
 ///             .selfManagedActiveDirectory(WindowsFileSystemSelfManagedActiveDirectoryArgs.builder()
 ///                 .dnsIps(
 ///                     "10.0.0.111",
@@ -317,6 +313,10 @@ import 'windows_file_system_state.dart';
 ///                 .password("avoid-plaintext-passwords")
 ///                 .username("Admin")
 ///                 .build())
+///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .storageCapacity(32)
+///             .subnetIds(exampleAwsSubnet.id())
+///             .throughputCapacity(32)
 ///             .build());
 ///
 ///     }
@@ -327,11 +327,6 @@ import 'windows_file_system_state.dart';
 ///   example:
 ///     type: aws:fsx:WindowsFileSystem
 ///     properties:
-///       kmsKeyId: ${exampleAwsKmsKey.arn}
-///       storageCapacity: 32
-///       subnetIds:
-///         - ${exampleAwsSubnet.id}
-///       throughputCapacity: 32
 ///       selfManagedActiveDirectory:
 ///         dnsIps:
 ///           - 10.0.0.111
@@ -339,6 +334,11 @@ import 'windows_file_system_state.dart';
 ///         domainName: corp.example.com
 ///         password: avoid-plaintext-passwords
 ///         username: Admin
+///       kmsKeyId: ${exampleAwsKmsKey.arn}
+///       storageCapacity: 32
+///       subnetIds:
+///         - ${exampleAwsSubnet.id}
+///       throughputCapacity: 32
 /// ```
 ///
 ///
@@ -350,10 +350,6 @@ import 'windows_file_system_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.fsx.WindowsFileSystem("example", {
-///     kmsKeyId: exampleAwsKmsKey.arn,
-///     storageCapacity: 32,
-///     subnetIds: [exampleAwsSubnet.id],
-///     throughputCapacity: 32,
 ///     selfManagedActiveDirectory: {
 ///         dnsIps: [
 ///             "10.0.0.111",
@@ -362,6 +358,10 @@ import 'windows_file_system_state.dart';
 ///         domainName: "corp.example.com",
 ///         domainJoinServiceAccountSecret: exampleAwsSecretsmanagerSecret.arn,
 ///     },
+///     kmsKeyId: exampleAwsKmsKey.arn,
+///     storageCapacity: 32,
+///     subnetIds: [exampleAwsSubnet.id],
+///     throughputCapacity: 32,
 /// });
 /// ```
 /// ```python
@@ -369,10 +369,6 @@ import 'windows_file_system_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.fsx.WindowsFileSystem("example",
-///     kms_key_id=example_aws_kms_key["arn"],
-///     storage_capacity=32,
-///     subnet_ids=[example_aws_subnet["id"]],
-///     throughput_capacity=32,
 ///     self_managed_active_directory={
 ///         "dns_ips": [
 ///             "10.0.0.111",
@@ -380,7 +376,11 @@ import 'windows_file_system_state.dart';
 ///         ],
 ///         "domain_name": "corp.example.com",
 ///         "domain_join_service_account_secret": example_aws_secretsmanager_secret["arn"],
-///     })
+///     },
+///     kms_key_id=example_aws_kms_key["arn"],
+///     storage_capacity=32,
+///     subnet_ids=[example_aws_subnet["id"]],
+///     throughput_capacity=32)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -392,13 +392,6 @@ import 'windows_file_system_state.dart';
 /// {
 ///     var example = new Aws.Fsx.WindowsFileSystem("example", new()
 ///     {
-///         KmsKeyId = exampleAwsKmsKey.Arn,
-///         StorageCapacity = 32,
-///         SubnetIds = new[]
-///         {
-///             exampleAwsSubnet.Id,
-///         },
-///         ThroughputCapacity = 32,
 ///         SelfManagedActiveDirectory = new Aws.Fsx.Inputs.WindowsFileSystemSelfManagedActiveDirectoryArgs
 ///         {
 ///             DnsIps = new[]
@@ -409,6 +402,13 @@ import 'windows_file_system_state.dart';
 ///             DomainName = "corp.example.com",
 ///             DomainJoinServiceAccountSecret = exampleAwsSecretsmanagerSecret.Arn,
 ///         },
+///         KmsKeyId = exampleAwsKmsKey.Arn,
+///         StorageCapacity = 32,
+///         SubnetIds = new[]
+///         {
+///             exampleAwsSubnet.Id,
+///         },
+///         ThroughputCapacity = 32,
 ///     });
 ///
 /// });
@@ -424,12 +424,6 @@ import 'windows_file_system_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
-/// 			KmsKeyId:        pulumi.Any(exampleAwsKmsKey.Arn),
-/// 			StorageCapacity: pulumi.Int(32),
-/// 			SubnetIds: pulumi.StringArray{
-/// 				exampleAwsSubnet.Id,
-/// 			},
-/// 			ThroughputCapacity: pulumi.Int(32),
 /// 			SelfManagedActiveDirectory: &fsx.WindowsFileSystemSelfManagedActiveDirectoryArgs{
 /// 				DnsIps: pulumi.StringArray{
 /// 					pulumi.String("10.0.0.111"),
@@ -438,6 +432,12 @@ import 'windows_file_system_state.dart';
 /// 				DomainName:                     pulumi.String("corp.example.com"),
 /// 				DomainJoinServiceAccountSecret: pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
 /// 			},
+/// 			KmsKeyId:        pulumi.Any(exampleAwsKmsKey.Arn),
+/// 			StorageCapacity: pulumi.Int(32),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleAwsSubnet.Id,
+/// 			},
+/// 			ThroughputCapacity: pulumi.Int(32),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -456,15 +456,15 @@ import 'windows_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_windowsfilesystem" "example" {
-///   kms_key_id          = exampleAwsKmsKey.arn
-///   storage_capacity    = 32
-///   subnet_ids          = [exampleAwsSubnet.id]
-///   throughput_capacity = 32
 ///   self_managed_active_directory = {
 ///     dns_ips                            = ["10.0.0.111", "10.0.0.222"]
 ///     domain_name                        = "corp.example.com"
 ///     domain_join_service_account_secret = exampleAwsSecretsmanagerSecret.arn
 ///   }
+///   kms_key_id          = exampleAwsKmsKey.arn
+///   storage_capacity    = 32
+///   subnet_ids          = [exampleAwsSubnet.id]
+///   throughput_capacity = 32
 /// }
 /// ```
 /// ```java
@@ -490,10 +490,6 @@ import 'windows_file_system_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WindowsFileSystem("example", WindowsFileSystemArgs.builder()
-///             .kmsKeyId(exampleAwsKmsKey.arn())
-///             .storageCapacity(32)
-///             .subnetIds(exampleAwsSubnet.id())
-///             .throughputCapacity(32)
 ///             .selfManagedActiveDirectory(WindowsFileSystemSelfManagedActiveDirectoryArgs.builder()
 ///                 .dnsIps(
 ///                     "10.0.0.111",
@@ -501,6 +497,10 @@ import 'windows_file_system_state.dart';
 ///                 .domainName("corp.example.com")
 ///                 .domainJoinServiceAccountSecret(exampleAwsSecretsmanagerSecret.arn())
 ///                 .build())
+///             .kmsKeyId(exampleAwsKmsKey.arn())
+///             .storageCapacity(32)
+///             .subnetIds(exampleAwsSubnet.id())
+///             .throughputCapacity(32)
 ///             .build());
 ///
 ///     }
@@ -511,17 +511,17 @@ import 'windows_file_system_state.dart';
 ///   example:
 ///     type: aws:fsx:WindowsFileSystem
 ///     properties:
-///       kmsKeyId: ${exampleAwsKmsKey.arn}
-///       storageCapacity: 32
-///       subnetIds:
-///         - ${exampleAwsSubnet.id}
-///       throughputCapacity: 32
 ///       selfManagedActiveDirectory:
 ///         dnsIps:
 ///           - 10.0.0.111
 ///           - 10.0.0.222
 ///         domainName: corp.example.com
 ///         domainJoinServiceAccountSecret: ${exampleAwsSecretsmanagerSecret.arn}
+///       kmsKeyId: ${exampleAwsKmsKey.arn}
+///       storageCapacity: 32
+///       subnetIds:
+///         - ${exampleAwsSubnet.id}
+///       throughputCapacity: 32
 /// ```
 ///
 ///
@@ -540,13 +540,16 @@ import 'windows_file_system_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.fsx.WindowsFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]});
+/// const example = new aws.fsx.WindowsFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]}, {
+///     ignoreChanges: ["securityGroupIds"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.WindowsFileSystem("example", security_group_ids=[example_aws_security_group["id"]])
+/// example = aws.fsx.WindowsFileSystem("example", security_group_ids=[example_aws_security_group["id"]],
+/// opts = pulumi.ResourceOptions(ignore_changes=["securityGroupIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -561,6 +564,12 @@ import 'windows_file_system_state.dart';
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "securityGroupIds",
 ///         },
 ///     });
 ///
@@ -580,7 +589,9 @@ import 'windows_file_system_state.dart';
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"securityGroupIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -598,6 +609,9 @@ import 'windows_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_windowsfilesystem" "example" {
+///   lifecycle {
+///     ignore_changes = [securityGroupIds]
+///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
 /// ```
@@ -609,6 +623,7 @@ import 'windows_file_system_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.WindowsFileSystem;
 /// import com.pulumi.aws.fsx.WindowsFileSystemArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -624,7 +639,9 @@ import 'windows_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new WindowsFileSystem("example", WindowsFileSystemArgs.builder()
 ///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("securityGroupIds")
+///                 .build());
 ///
 ///     }
 /// }
@@ -636,13 +653,16 @@ import 'windows_file_system_state.dart';
 ///     properties:
 ///       securityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
+///     options:
+///       ignoreChanges:
+///         - securityGroupIds
 /// ```
 class WindowsFileSystem extends pulumi.CustomResource {
   /// ID for an existing Microsoft Active Directory instance that the file system should join when it's created. Cannot be specified with `selfManagedActiveDirectory`.
   late final pulumi.Output<String?> activeDirectoryId;
   /// Array DNS alias names that you want to associate with the Amazon FSx file system.  For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
   late final pulumi.Output<List<String>?> aliases;
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// Configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system. See `auditLogConfiguration` Block for details.
   late final pulumi.Output<WindowsFileSystemAuditLogConfiguration> auditLogConfiguration;
@@ -698,7 +718,7 @@ class WindowsFileSystem extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> throughputCapacity;
-  /// Identifier of the Virtual Private Cloud for the file system.
+  /// Identifier of the VPC for the file system.
   late final pulumi.Output<String> vpcId;
   /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   late final pulumi.Output<String> weeklyMaintenanceStartTime;
@@ -715,10 +735,10 @@ class WindowsFileSystem extends pulumi.CustomResource {
           'aws:fsx/windowsFileSystem:WindowsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activeDirectoryId = registerOutput<String?>('activeDirectoryId');
-    aliases = registerOutput<List<String>?>('aliases');
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     auditLogConfiguration = registerOutput<WindowsFileSystemAuditLogConfiguration>('auditLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemAuditLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
@@ -728,23 +748,23 @@ class WindowsFileSystem extends pulumi.CustomResource {
     deploymentType = registerOutput<String?>('deploymentType');
     diskIopsConfiguration = registerOutput<WindowsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredFileServerIp = registerOutput<String>('preferredFileServerIp');
     preferredSubnetId = registerOutput<String>('preferredSubnetId');
     region = registerOutput<String>('region');
     remoteAdministrationEndpoint = registerOutput<String>('remoteAdministrationEndpoint');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfManagedActiveDirectory = registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>('selfManagedActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemSelfManagedActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
@@ -755,11 +775,12 @@ class WindowsFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WindowsFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WindowsFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -774,7 +795,7 @@ class WindowsFileSystem extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activeDirectoryId = registerOutput<String?>('activeDirectoryId');
-    aliases = registerOutput<List<String>?>('aliases');
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     auditLogConfiguration = registerOutput<WindowsFileSystemAuditLogConfiguration>('auditLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemAuditLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
@@ -784,23 +805,65 @@ class WindowsFileSystem extends pulumi.CustomResource {
     deploymentType = registerOutput<String?>('deploymentType');
     diskIopsConfiguration = registerOutput<WindowsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredFileServerIp = registerOutput<String>('preferredFileServerIp');
     preferredSubnetId = registerOutput<String>('preferredSubnetId');
     region = registerOutput<String>('region');
     remoteAdministrationEndpoint = registerOutput<String>('remoteAdministrationEndpoint');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     selfManagedActiveDirectory = registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>('selfManagedActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemSelfManagedActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputCapacity = registerOutput<int>('throughputCapacity');
+    vpcId = registerOutput<String>('vpcId');
+    weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
+  }
+
+  /// Creates a typed reference to an existing [WindowsFileSystem] resource.
+  WindowsFileSystem.reference(String urn)
+    : super(
+        'aws:fsx/windowsFileSystem:WindowsFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeDirectoryId = registerOutput<String?>('activeDirectoryId');
+    aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    auditLogConfiguration = registerOutput<WindowsFileSystemAuditLogConfiguration>('auditLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemAuditLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
+    backupId = registerOutput<String?>('backupId');
+    copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
+    deploymentType = registerOutput<String?>('deploymentType');
+    diskIopsConfiguration = registerOutput<WindowsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsName = registerOutput<String>('dnsName');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    networkType = registerOutput<String>('networkType');
+    ownerId = registerOutput<String>('ownerId');
+    preferredFileServerIp = registerOutput<String>('preferredFileServerIp');
+    preferredSubnetId = registerOutput<String>('preferredSubnetId');
+    region = registerOutput<String>('region');
+    remoteAdministrationEndpoint = registerOutput<String>('remoteAdministrationEndpoint');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selfManagedActiveDirectory = registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>('selfManagedActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFileSystemSelfManagedActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    storageCapacity = registerOutput<int>('storageCapacity');
+    storageType = registerOutput<String?>('storageType');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');

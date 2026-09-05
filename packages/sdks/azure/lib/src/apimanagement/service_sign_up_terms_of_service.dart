@@ -8,7 +8,7 @@ class ServiceSignUpTermsOfService {
   /// Should Terms of Service be displayed during sign up?.
   final pulumi.Input<bool> enabled;
   /// The Terms of Service which users are required to agree to in order to sign up.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [ServiceSignUpTermsOfService].
   /// [consentRequired] Should the user be asked for consent during sign up?

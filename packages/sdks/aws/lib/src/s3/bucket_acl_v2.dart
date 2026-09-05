@@ -20,10 +20,10 @@ import 'bucket_acl_v2_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "my-tf-example-bucket"});
 /// const exampleBucketOwnershipControls = new aws.s3.BucketOwnershipControls("example", {
-///     bucket: example.id,
 ///     rule: {
 ///         objectOwnership: "BucketOwnerPreferred",
 ///     },
+///     bucket: example.id,
 /// });
 /// const exampleBucketAcl = new aws.s3.BucketAcl("example", {
 ///     bucket: example.id,
@@ -38,10 +38,10 @@ import 'bucket_acl_v2_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="my-tf-example-bucket")
 /// example_bucket_ownership_controls = aws.s3.BucketOwnershipControls("example",
-///     bucket=example.id,
 ///     rule={
 ///         "object_ownership": "BucketOwnerPreferred",
-///     })
+///     },
+///     bucket=example.id)
 /// example_bucket_acl = aws.s3.BucketAcl("example",
 ///     bucket=example.id,
 ///     acl="private",
@@ -62,11 +62,11 @@ import 'bucket_acl_v2_state.dart';
 ///
 ///     var exampleBucketOwnershipControls = new Aws.S3.BucketOwnershipControls("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         Rule = new Aws.S3.Inputs.BucketOwnershipControlsRuleArgs
 ///         {
 ///             ObjectOwnership = "BucketOwnerPreferred",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 ///     var exampleBucketAcl = new Aws.S3.BucketAcl("example", new()
@@ -100,10 +100,10 @@ import 'bucket_acl_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -134,10 +134,10 @@ import 'bucket_acl_v2_state.dart';
 ///   bucket = "my-tf-example-bucket"
 /// }
 /// resource "aws_s3_bucketownershipcontrols" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketacl" "example" {
 ///   depends_on = [aws_s3_bucketownershipcontrols.example]
@@ -177,10 +177,10 @@ import 'bucket_acl_v2_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketOwnershipControls = new BucketOwnershipControls("exampleBucketOwnershipControls", BucketOwnershipControlsArgs.builder()
-///             .bucket(example.id())
 ///             .rule(BucketOwnershipControlsRuleArgs.builder()
 ///                 .objectOwnership("BucketOwnerPreferred")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
@@ -203,9 +203,9 @@ import 'bucket_acl_v2_state.dart';
 ///     type: aws:s3:BucketOwnershipControls
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       rule:
 ///         objectOwnership: BucketOwnerPreferred
+///       bucket: ${example.id}
 ///   exampleBucketAcl:
 ///     type: aws:s3:BucketAcl
 ///     name: example
@@ -230,10 +230,10 @@ import 'bucket_acl_v2_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "my-tf-example-bucket"});
 /// const exampleBucketOwnershipControls = new aws.s3.BucketOwnershipControls("example", {
-///     bucket: example.id,
 ///     rule: {
 ///         objectOwnership: "BucketOwnerPreferred",
 ///     },
+///     bucket: example.id,
 /// });
 /// const exampleBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("example", {
 ///     bucket: example.id,
@@ -258,10 +258,10 @@ import 'bucket_acl_v2_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="my-tf-example-bucket")
 /// example_bucket_ownership_controls = aws.s3.BucketOwnershipControls("example",
-///     bucket=example.id,
 ///     rule={
 ///         "object_ownership": "BucketOwnerPreferred",
-///     })
+///     },
+///     bucket=example.id)
 /// example_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("example",
 ///     bucket=example.id,
 ///     block_public_acls=False,
@@ -291,11 +291,11 @@ import 'bucket_acl_v2_state.dart';
 ///
 ///     var exampleBucketOwnershipControls = new Aws.S3.BucketOwnershipControls("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         Rule = new Aws.S3.Inputs.BucketOwnershipControlsRuleArgs
 ///         {
 ///             ObjectOwnership = "BucketOwnerPreferred",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 ///     var exampleBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("example", new()
@@ -339,10 +339,10 @@ import 'bucket_acl_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -384,10 +384,10 @@ import 'bucket_acl_v2_state.dart';
 ///   bucket = "my-tf-example-bucket"
 /// }
 /// resource "aws_s3_bucketownershipcontrols" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketpublicaccessblock" "example" {
 ///   bucket                  = aws_s3_bucket.example.id
@@ -436,10 +436,10 @@ import 'bucket_acl_v2_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketOwnershipControls = new BucketOwnershipControls("exampleBucketOwnershipControls", BucketOwnershipControlsArgs.builder()
-///             .bucket(example.id())
 ///             .rule(BucketOwnershipControlsRuleArgs.builder()
 ///                 .objectOwnership("BucketOwnerPreferred")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///         var exampleBucketPublicAccessBlock = new BucketPublicAccessBlock("exampleBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()
@@ -472,9 +472,9 @@ import 'bucket_acl_v2_state.dart';
 ///     type: aws:s3:BucketOwnershipControls
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       rule:
 ///         objectOwnership: BucketOwnerPreferred
+///       bucket: ${example.id}
 ///   exampleBucketPublicAccessBlock:
 ///     type: aws:s3:BucketPublicAccessBlock
 ///     name: example
@@ -507,14 +507,16 @@ import 'bucket_acl_v2_state.dart';
 /// const current = aws.s3.getCanonicalUserId({});
 /// const example = new aws.s3.Bucket("example", {bucket: "my-tf-example-bucket"});
 /// const exampleBucketOwnershipControls = new aws.s3.BucketOwnershipControls("example", {
-///     bucket: example.id,
 ///     rule: {
 ///         objectOwnership: "BucketOwnerPreferred",
 ///     },
+///     bucket: example.id,
 /// });
 /// const exampleBucketAcl = new aws.s3.BucketAcl("example", {
-///     bucket: example.id,
 ///     accessControlPolicy: {
+///         owner: {
+///             id: current.then(current => current.id),
+///         },
 ///         grants: [
 ///             {
 ///                 grantee: {
@@ -531,10 +533,8 @@ import 'bucket_acl_v2_state.dart';
 ///                 permission: "READ_ACP",
 ///             },
 ///         ],
-///         owner: {
-///             id: current.then(current => current.id),
-///         },
 ///     },
+///     bucket: example.id,
 /// }, {
 ///     dependsOn: [exampleBucketOwnershipControls],
 /// });
@@ -546,13 +546,15 @@ import 'bucket_acl_v2_state.dart';
 /// current = aws.s3.get_canonical_user_id()
 /// example = aws.s3.Bucket("example", bucket="my-tf-example-bucket")
 /// example_bucket_ownership_controls = aws.s3.BucketOwnershipControls("example",
-///     bucket=example.id,
 ///     rule={
 ///         "object_ownership": "BucketOwnerPreferred",
-///     })
+///     },
+///     bucket=example.id)
 /// example_bucket_acl = aws.s3.BucketAcl("example",
-///     bucket=example.id,
 ///     access_control_policy={
+///         "owner": {
+///             "id": current.id,
+///         },
 ///         "grants": [
 ///             {
 ///                 "grantee": {
@@ -569,10 +571,8 @@ import 'bucket_acl_v2_state.dart';
 ///                 "permission": "READ_ACP",
 ///             },
 ///         ],
-///         "owner": {
-///             "id": current.id,
-///         },
 ///     },
+///     bucket=example.id,
 ///     opts = pulumi.ResourceOptions(depends_on=[example_bucket_ownership_controls]))
 /// ```
 /// ```csharp
@@ -592,18 +592,21 @@ import 'bucket_acl_v2_state.dart';
 ///
 ///     var exampleBucketOwnershipControls = new Aws.S3.BucketOwnershipControls("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         Rule = new Aws.S3.Inputs.BucketOwnershipControlsRuleArgs
 ///         {
 ///             ObjectOwnership = "BucketOwnerPreferred",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 ///     var exampleBucketAcl = new Aws.S3.BucketAcl("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         AccessControlPolicy = new Aws.S3.Inputs.BucketAclAccessControlPolicyArgs
 ///         {
+///             Owner = new Aws.S3.Inputs.BucketAclAccessControlPolicyOwnerArgs
+///             {
+///                 Id = current.Apply(getCanonicalUserIdResult => getCanonicalUserIdResult.Id),
+///             },
 ///             Grants = new[]
 ///             {
 ///                 new Aws.S3.Inputs.BucketAclAccessControlPolicyGrantArgs
@@ -625,11 +628,8 @@ import 'bucket_acl_v2_state.dart';
 ///                     Permission = "READ_ACP",
 ///                 },
 ///             },
-///             Owner = new Aws.S3.Inputs.BucketAclAccessControlPolicyOwnerArgs
-///             {
-///                 Id = current.Apply(getCanonicalUserIdResult => getCanonicalUserIdResult.Id),
-///             },
 ///         },
+///         Bucket = example.Id,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -661,17 +661,19 @@ import 'bucket_acl_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketOwnershipControls, err := s3.NewBucketOwnershipControls(ctx, "example", &s3.BucketOwnershipControlsArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketOwnershipControlsRuleArgs{
 /// 				ObjectOwnership: pulumi.String("BucketOwnerPreferred"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessControlPolicy: &s3.BucketAclAccessControlPolicyArgs{
+/// 				Owner: &s3.BucketAclAccessControlPolicyOwnerArgs{
+/// 					Id: pulumi.String(current.Id),
+/// 				},
 /// 				Grants: s3.BucketAclAccessControlPolicyGrantArray{
 /// 					&s3.BucketAclAccessControlPolicyGrantArgs{
 /// 						Grantee: &s3.BucketAclAccessControlPolicyGrantGranteeArgs{
@@ -688,10 +690,8 @@ import 'bucket_acl_v2_state.dart';
 /// 						Permission: pulumi.String("READ_ACP"),
 /// 					},
 /// 				},
-/// 				Owner: &s3.BucketAclAccessControlPolicyOwnerArgs{
-/// 					Id: pulumi.String(current.Id),
-/// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketOwnershipControls,
 /// 		}))
@@ -718,15 +718,17 @@ import 'bucket_acl_v2_state.dart';
 ///   bucket = "my-tf-example-bucket"
 /// }
 /// resource "aws_s3_bucketownershipcontrols" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     object_ownership = "BucketOwnerPreferred"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketacl" "example" {
 ///   depends_on = [aws_s3_bucketownershipcontrols.example]
-///   bucket     = aws_s3_bucket.example.id
 ///   access_control_policy = {
+///     owner = {
+///       id = data.aws_s3_getcanonicaluserid.current.id
+///     }
 ///     grants = [{
 ///       "grantee" = {
 ///         "id"   = data.aws_s3_getcanonicaluserid.current.id
@@ -740,10 +742,8 @@ import 'bucket_acl_v2_state.dart';
 ///       }
 ///       "permission" = "READ_ACP"
 ///     }]
-///     owner = {
-///       id = data.aws_s3_getcanonicaluserid.current.id
-///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -761,9 +761,9 @@ import 'bucket_acl_v2_state.dart';
 /// import com.pulumi.aws.s3.BucketAcl;
 /// import com.pulumi.aws.s3.BucketAclArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyArgs;
+/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantArgs;
 /// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyGrantGranteeArgs;
-/// import com.pulumi.aws.s3.inputs.BucketAclAccessControlPolicyOwnerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -785,15 +785,17 @@ import 'bucket_acl_v2_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketOwnershipControls = new BucketOwnershipControls("exampleBucketOwnershipControls", BucketOwnershipControlsArgs.builder()
-///             .bucket(example.id())
 ///             .rule(BucketOwnershipControlsRuleArgs.builder()
 ///                 .objectOwnership("BucketOwnerPreferred")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
-///             .bucket(example.id())
 ///             .accessControlPolicy(BucketAclAccessControlPolicyArgs.builder()
+///                 .owner(BucketAclAccessControlPolicyOwnerArgs.builder()
+///                     .id(current.id())
+///                     .build())
 ///                 .grants(
 ///                     BucketAclAccessControlPolicyGrantArgs.builder()
 ///                         .grantee(BucketAclAccessControlPolicyGrantGranteeArgs.builder()
@@ -809,10 +811,8 @@ import 'bucket_acl_v2_state.dart';
 ///                             .build())
 ///                         .permission("READ_ACP")
 ///                         .build())
-///                 .owner(BucketAclAccessControlPolicyOwnerArgs.builder()
-///                     .id(current.id())
-///                     .build())
 ///                 .build())
+///             .bucket(example.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleBucketOwnershipControls)
 ///                 .build());
@@ -830,15 +830,16 @@ import 'bucket_acl_v2_state.dart';
 ///     type: aws:s3:BucketOwnershipControls
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       rule:
 ///         objectOwnership: BucketOwnerPreferred
+///       bucket: ${example.id}
 ///   exampleBucketAcl:
 ///     type: aws:s3:BucketAcl
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       accessControlPolicy:
+///         owner:
+///           id: ${current.id}
 ///         grants:
 ///           - grantee:
 ///               id: ${current.id}
@@ -848,8 +849,7 @@ import 'bucket_acl_v2_state.dart';
 ///               type: Group
 ///               uri: http://acs.amazonaws.com/groups/s3/LogDelivery
 ///             permission: READ_ACP
-///         owner:
-///           id: ${current.id}
+///       bucket: ${example.id}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleBucketOwnershipControls}
@@ -936,7 +936,7 @@ class BucketAclV2 extends pulumi.CustomResource {
           'aws:s3/bucketAclV2:BucketAclV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclV2AccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');
@@ -950,11 +950,12 @@ class BucketAclV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketAclV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketAclV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -968,6 +969,22 @@ class BucketAclV2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclV2AccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BucketAclV2] resource.
+  BucketAclV2.reference(String urn)
+    : super(
+        'aws:s3/bucketAclV2:BucketAclV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclV2AccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');

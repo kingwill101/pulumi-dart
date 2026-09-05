@@ -6,23 +6,23 @@ import 'action_http_run_after.dart';
 /// Input properties used for looking up and filtering ActionHttp resources.
 class ActionHttpState {
   /// Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? logicAppId;
+  final pulumi.Input<String?>? logicAppId;
   /// Specifies the HTTP Method which should be used for this HTTP Action. Possible values include `DELETE`, `GET`, `PATCH`, `POST` and `PUT`.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<Map<String, String>>? queries;
+  final pulumi.Input<Map<String, String>?>? queries;
   /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
-  final pulumi.Input<List<ActionHttpRunAfter>>? runAfters;
+  final pulumi.Input<List<ActionHttpRunAfter>?>? runAfters;
   /// Specifies the URI which will be called when this HTTP Action is triggered.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ActionHttpState].
   /// [body] Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.

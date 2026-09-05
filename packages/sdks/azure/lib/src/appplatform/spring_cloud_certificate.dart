@@ -41,7 +41,7 @@ class SpringCloudCertificate extends pulumi.CustomResource {
           'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificateContent = registerOutput<String?>('certificateContent');
     excludePrivateKey = registerOutput<bool?>('excludePrivateKey');
@@ -57,11 +57,12 @@ class SpringCloudCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -75,6 +76,24 @@ class SpringCloudCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateContent = registerOutput<String?>('certificateContent');
+    excludePrivateKey = registerOutput<bool?>('excludePrivateKey');
+    keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudCertificate] resource.
+  SpringCloudCertificate.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateContent = registerOutput<String?>('certificateContent');
     excludePrivateKey = registerOutput<bool?>('excludePrivateKey');
     keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');

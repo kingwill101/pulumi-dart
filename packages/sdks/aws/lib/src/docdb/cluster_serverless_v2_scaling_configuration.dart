@@ -25,8 +25,8 @@ class ClusterServerlessV2ScalingConfiguration {
 
   factory ClusterServerlessV2ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterServerlessV2ScalingConfiguration(
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as double),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as double),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toDouble()),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toDouble()),
     );
   }
 }

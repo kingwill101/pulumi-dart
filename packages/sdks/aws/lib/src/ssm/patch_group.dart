@@ -197,7 +197,7 @@ class PatchGroup extends pulumi.CustomResource {
           'aws:ssm/patchGroup:PatchGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     baselineId = registerOutput<String>('baselineId');
     patchGroup = registerOutput<String>('patchGroup');
@@ -209,11 +209,12 @@ class PatchGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PatchGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PatchGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,6 +228,20 @@ class PatchGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    baselineId = registerOutput<String>('baselineId');
+    patchGroup = registerOutput<String>('patchGroup');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PatchGroup] resource.
+  PatchGroup.reference(String urn)
+    : super(
+        'aws:ssm/patchGroup:PatchGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     baselineId = registerOutput<String>('baselineId');
     patchGroup = registerOutput<String>('patchGroup');
     region = registerOutput<String>('region');

@@ -25,7 +25,7 @@ class GetInfrastructureConfigurationInstanceMetadataOption {
 
   factory GetInfrastructureConfigurationInstanceMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationInstanceMetadataOption(
-      httpPutResponseHopLimit: pulumi.Input.fromValue(map['httpPutResponseHopLimit'] as int),
+      httpPutResponseHopLimit: pulumi.Input.fromValue((map['httpPutResponseHopLimit'] as num).toInt()),
       httpTokens: pulumi.Input.fromValue(map['httpTokens'] as String),
     );
   }

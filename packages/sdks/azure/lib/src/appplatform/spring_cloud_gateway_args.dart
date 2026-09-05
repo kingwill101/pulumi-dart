@@ -15,37 +15,37 @@ import 'spring_cloud_gateway_sso.dart';
 /// {@macro pulumi_appplatform_spring_cloud_gateway_spring_cloud_gateway_args_doc}
 class SpringCloudGatewayArgs {
   /// A `apiMetadata` block as defined below.
-  final pulumi.Input<SpringCloudGatewayApiMetadata>? apiMetadata;
+  final pulumi.Input<SpringCloudGatewayApiMetadata?>? apiMetadata;
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
-  final pulumi.Input<List<String>>? applicationPerformanceMonitoringIds;
+  final pulumi.Input<List<String>?>? applicationPerformanceMonitoringIds;
   /// Specifies a list of application performance monitoring types used in the Spring Cloud Gateway. The allowed values are `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
-  final pulumi.Input<List<String>>? applicationPerformanceMonitoringTypes;
+  final pulumi.Input<List<String>?>? applicationPerformanceMonitoringTypes;
   /// A `clientAuthorization` block as defined below.
-  final pulumi.Input<SpringCloudGatewayClientAuthorization>? clientAuthorization;
+  final pulumi.Input<SpringCloudGatewayClientAuthorization?>? clientAuthorization;
   /// A `cors` block as defined below.
-  final pulumi.Input<SpringCloudGatewayCors>? cors;
+  final pulumi.Input<SpringCloudGatewayCors?>? cors;
   /// Specifies the environment variables of the Spring Cloud Gateway as a map of key-value pairs.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// is only https is allowed?
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// Specifies the required instance count of the Spring Cloud Gateway. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// A `localResponseCachePerInstance` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
-  final pulumi.Input<SpringCloudGatewayLocalResponseCachePerInstance>? localResponseCachePerInstance;
+  final pulumi.Input<SpringCloudGatewayLocalResponseCachePerInstance?>? localResponseCachePerInstance;
   /// A `localResponseCachePerRoute` block as defined below. Only one of `localResponseCachePerInstance` or `localResponseCachePerRoute` can be specified.
-  final pulumi.Input<SpringCloudGatewayLocalResponseCachePerRoute>? localResponseCachePerRoute;
+  final pulumi.Input<SpringCloudGatewayLocalResponseCachePerRoute?>? localResponseCachePerRoute;
   /// The name which should be used for this Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway to be created. The only possible value is `default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates whether the Spring Cloud Gateway exposes endpoint.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// A `quota` block as defined below.
-  final pulumi.Input<SpringCloudGatewayQuota>? quota;
+  final pulumi.Input<SpringCloudGatewayQuota?>? quota;
   /// Specifies the sensitive environment variables of the Spring Cloud Gateway as a map of key-value pairs.
-  final pulumi.Input<Map<String, String>>? sensitiveEnvironmentVariables;
+  final pulumi.Input<Map<String, String>?>? sensitiveEnvironmentVariables;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Gateway to be created.
   final pulumi.Input<String> springCloudServiceId;
   /// A `sso` block as defined below.
-  final pulumi.Input<SpringCloudGatewaySso>? sso;
+  final pulumi.Input<SpringCloudGatewaySso?>? sso;
 
   /// Creates a new [SpringCloudGatewayArgs].
   /// [apiMetadata] A `apiMetadata` block as defined below.
@@ -113,7 +113,7 @@ class SpringCloudGatewayArgs {
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudGatewayCors.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       localResponseCachePerInstance: (() { final guardedValue = map['localResponseCachePerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudGatewayLocalResponseCachePerInstance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localResponseCachePerRoute: (() { final guardedValue = map['localResponseCachePerRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudGatewayLocalResponseCachePerRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

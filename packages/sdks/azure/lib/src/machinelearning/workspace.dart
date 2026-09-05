@@ -33,6 +33,7 @@ import 'workspace_state.dart';
 ///     name: "workspaceexamplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 /// });
@@ -72,6 +73,7 @@ import 'workspace_state.dart';
 ///     name="workspaceexamplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium")
 /// example_account = azure.storage.Account("example",
@@ -120,6 +122,7 @@ import 'workspace_state.dart';
 ///         Name = "workspaceexamplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///     });
@@ -184,11 +187,12 @@ import 'workspace_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("workspaceexamplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("workspaceexamplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -207,9 +211,9 @@ import 'workspace_state.dart';
 /// 			Name:                  pulumi.String("example-workspace"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -244,11 +248,12 @@ import 'workspace_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "workspaceexamplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "workspaceexamplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "workspacestorageaccount"
@@ -318,6 +323,7 @@ import 'workspace_state.dart';
 ///             .name("workspaceexamplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .build());
@@ -367,6 +373,7 @@ import 'workspace_state.dart';
 ///       name: workspaceexamplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///   exampleAccount:
@@ -423,6 +430,7 @@ import 'workspace_state.dart';
 ///     name: "workspaceexamplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     purgeProtectionEnabled: true,
@@ -498,6 +506,7 @@ import 'workspace_state.dart';
 ///     name="workspaceexamplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     purge_protection_enabled=True)
@@ -579,6 +588,7 @@ import 'workspace_state.dart';
 ///         Name = "workspaceexamplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         PurgeProtectionEnabled = true,
@@ -688,18 +698,19 @@ import 'workspace_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("workspaceexamplekeyvault"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("premium"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("workspaceexamplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleAccessPolicy, err := keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -725,7 +736,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("workspaceexamplekeyvaultkey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -747,15 +758,15 @@ import 'workspace_state.dart';
 /// 			Name:                  pulumi.String("example-workspace"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
 /// 			Encryption: &machinelearning.WorkspaceEncryptionArgs{
-/// 				KeyVaultId: exampleKeyVault.ID(),
-/// 				KeyId:      exampleKey.ID(),
+/// 				KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 				KeyId:      exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -788,12 +799,13 @@ import 'workspace_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "workspaceexamplekeyvault"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "premium"
-///   purge_protection_enabled = true
+///   name                       = "workspaceexamplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "example" {
 ///   key_vault_id    = azure_keyvault_keyvault.example.id
@@ -887,6 +899,7 @@ import 'workspace_state.dart';
 ///             .name("workspaceexamplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .purgeProtectionEnabled(true)
@@ -971,6 +984,7 @@ import 'workspace_state.dart';
 ///       name: workspaceexamplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       purgeProtectionEnabled: true
@@ -1120,7 +1134,7 @@ class Workspace extends pulumi.CustomResource {
           'azure:machinelearning/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
@@ -1145,7 +1159,7 @@ class Workspace extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     storageAccountAccessType = registerOutput<String?>('storageAccountAccessType');
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -1155,11 +1169,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1196,7 +1211,44 @@ class Workspace extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     storageAccountAccessType = registerOutput<String?>('storageAccountAccessType');
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:machinelearning/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    containerRegistryId = registerOutput<String?>('containerRegistryId');
+    description = registerOutput<String?>('description');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    encryption = registerOutput<WorkspaceEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceFeatureStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
+    identity = registerOutput<WorkspaceIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverlessCompute = registerOutput<WorkspaceServerlessCompute?>('serverlessCompute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceServerlessCompute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceSideEncryptionEnabled = registerOutput<bool?>('serviceSideEncryptionEnabled');
+    skuName = registerOutput<String?>('skuName');
+    storageAccountAccessType = registerOutput<String?>('storageAccountAccessType');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     v1LegacyModeEnabled = registerOutput<bool?>('v1LegacyModeEnabled');
     workspaceId = registerOutput<String>('workspaceId');
   }

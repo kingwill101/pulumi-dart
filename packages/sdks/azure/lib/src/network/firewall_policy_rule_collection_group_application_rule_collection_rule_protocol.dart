@@ -25,7 +25,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol {
 
   factory FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

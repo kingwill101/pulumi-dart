@@ -30,9 +30,9 @@ class GetAccessPointPosixUser {
 
   factory GetAccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return GetAccessPointPosixUser(
-      gid: pulumi.Input.fromValue(map['gid'] as int),
+      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
       secondaryGids: pulumi.Input.fromValue((map['secondaryGids'] as List).cast<int>()),
-      uid: pulumi.Input.fromValue(map['uid'] as int),
+      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
     );
   }
 }

@@ -188,7 +188,7 @@ class DefaultVpc extends pulumi.CustomResource {
           'aws:ec2/defaultVpc:DefaultVpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');
@@ -211,8 +211,8 @@ class DefaultVpc extends pulumi.CustomResource {
     mainRouteTableId = registerOutput<String>('mainRouteTableId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DefaultVpc] resource's state with the given [name] and [id].
@@ -220,11 +220,12 @@ class DefaultVpc extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultVpcState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultVpc._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,7 +260,41 @@ class DefaultVpc extends pulumi.CustomResource {
     mainRouteTableId = registerOutput<String>('mainRouteTableId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DefaultVpc] resource.
+  DefaultVpc.reference(String urn)
+    : super(
+        'aws:ec2/defaultVpc:DefaultVpc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
+    defaultSecurityGroupId = registerOutput<String>('defaultSecurityGroupId');
+    dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
+    enableDnsHostnames = registerOutput<bool?>('enableDnsHostnames');
+    enableDnsSupport = registerOutput<bool?>('enableDnsSupport');
+    enableNetworkAddressUsageMetrics = registerOutput<bool>('enableNetworkAddressUsageMetrics');
+    existingDefaultVpc = registerOutput<bool>('existingDefaultVpc');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    instanceTenancy = registerOutput<String>('instanceTenancy');
+    ipv6AssociationId = registerOutput<String>('ipv6AssociationId');
+    ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    ipv6CidrBlockNetworkBorderGroup = registerOutput<String>('ipv6CidrBlockNetworkBorderGroup');
+    ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    mainRouteTableId = registerOutput<String>('mainRouteTableId');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

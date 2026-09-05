@@ -14,12 +14,12 @@ import 'association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.ec2.getAmi({
-///     mostRecent: true,
-///     owners: ["amazon"],
 ///     filters: [{
 ///         name: "name",
 ///         values: ["amzn-ami-vpc-nat*"],
 ///     }],
+///     mostRecent: true,
+///     owners: ["amazon"],
 /// });
 /// const exampleInstance = new aws.ec2.Instance("example", {
 ///     ami: example.then(example => example.id),
@@ -38,12 +38,12 @@ import 'association_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ec2.get_ami(most_recent=True,
-///     owners=["amazon"],
-///     filters=[{
+/// example = aws.ec2.get_ami(filters=[{
 ///         "name": "name",
 ///         "values": ["amzn-ami-vpc-nat*"],
-///     }])
+///     }],
+///     most_recent=True,
+///     owners=["amazon"])
 /// example_instance = aws.ec2.Instance("example",
 ///     ami=example.id,
 ///     instance_type=aws.ec2.InstanceType.T2_MICRO)
@@ -64,11 +64,6 @@ import 'association_state.dart';
 /// {
 ///     var example = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "amazon",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -79,6 +74,11 @@ import 'association_state.dart';
 ///                     "amzn-ami-vpc-nat*",
 ///                 },
 ///             },
+///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "amazon",
 ///         },
 ///     });
 ///
@@ -114,10 +114,6 @@ import 'association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"amazon",
-/// 			},
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -125,6 +121,10 @@ import 'association_state.dart';
 /// 						"amzn-ami-vpc-nat*",
 /// 					},
 /// 				},
+/// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"amazon",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -165,12 +165,12 @@ import 'association_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "example" {
-///   most_recent = true
-///   owners      = ["amazon"]
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-vpc-nat*"]
 ///   }
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
@@ -215,12 +215,12 @@ import 'association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
-///             .owners("amazon")
 ///             .filters(GetAmiFilterArgs.builder()
 ///                 .name("name")
 ///                 .values("amzn-ami-vpc-nat*")
 ///                 .build())
+///             .mostRecent(true)
+///             .owners("amazon")
 ///             .build());
 ///
 ///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
@@ -266,13 +266,13 @@ import 'association_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - amazon
 ///         filters:
 ///           - name: name
 ///             values:
 ///               - amzn-ami-vpc-nat*
+///         mostRecent: true
+///         owners:
+///           - amazon
 /// ```
 ///
 ///
@@ -303,7 +303,7 @@ class Association extends pulumi.CustomResource {
           'aws:licensemanager/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     licenseConfigurationArn = registerOutput<String>('licenseConfigurationArn');
     region = registerOutput<String>('region');
@@ -315,11 +315,12 @@ class Association extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Association._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,6 +334,20 @@ class Association extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    licenseConfigurationArn = registerOutput<String>('licenseConfigurationArn');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [Association] resource.
+  Association.reference(String urn)
+    : super(
+        'aws:licensemanager/association:Association',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     licenseConfigurationArn = registerOutput<String>('licenseConfigurationArn');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

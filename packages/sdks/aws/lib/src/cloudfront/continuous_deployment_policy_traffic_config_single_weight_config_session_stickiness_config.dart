@@ -25,8 +25,8 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickiness
 
   factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig(
-      idleTtl: pulumi.Input.fromValue(map['idleTtl'] as int),
-      maximumTtl: pulumi.Input.fromValue(map['maximumTtl'] as int),
+      idleTtl: pulumi.Input.fromValue((map['idleTtl'] as num).toInt()),
+      maximumTtl: pulumi.Input.fromValue((map['maximumTtl'] as num).toInt()),
     );
   }
 }

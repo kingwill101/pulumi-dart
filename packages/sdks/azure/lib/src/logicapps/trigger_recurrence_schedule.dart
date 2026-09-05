@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerRecurrenceSchedule {
   /// Specifies a list of hours when the trigger should run. Valid values are between 0 and 23.
-  final pulumi.Input<List<int>>? atTheseHours;
+  final pulumi.Input<List<int>?>? atTheseHours;
   /// Specifies a list of minutes when the trigger should run. Valid values are between 0 and 59.
-  final pulumi.Input<List<int>>? atTheseMinutes;
+  final pulumi.Input<List<int>?>? atTheseMinutes;
   /// Specifies a list of days when the trigger should run. Valid values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
-  final pulumi.Input<List<String>>? onTheseDays;
+  final pulumi.Input<List<String>?>? onTheseDays;
 
   /// Creates a new [TriggerRecurrenceSchedule].
   /// [atTheseHours] Specifies a list of hours when the trigger should run. Valid values are between 0 and 23.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_chime_voice_connector_logging_voice_connector_logging_args_doc}
 class VoiceConnectorLoggingArgs {
   /// When true, enables logging of detailed media metrics for Voice Connectors to Amazon CloudWatch logs.
-  final pulumi.Input<bool>? enableMediaMetricLogs;
+  final pulumi.Input<bool?>? enableMediaMetricLogs;
   /// When true, enables SIP message logs for sending to Amazon CloudWatch Logs.
-  final pulumi.Input<bool>? enableSipLogs;
+  final pulumi.Input<bool?>? enableSipLogs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The Amazon Chime Voice Connector ID.
   final pulumi.Input<String> voiceConnectorId;
 

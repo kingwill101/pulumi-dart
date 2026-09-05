@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationWindow {
   /// The duration of the maintenance window in HH:mm format.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format.
-  final pulumi.Input<String>? expirationDateTime;
+  final pulumi.Input<String?>? expirationDateTime;
   /// The rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
-  final pulumi.Input<String>? recurEvery;
+  final pulumi.Input<String?>? recurEvery;
   /// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format.
   final pulumi.Input<String> startDateTime;
   /// The time zone for the maintenance window. A list of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.

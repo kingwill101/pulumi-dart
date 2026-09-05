@@ -319,19 +319,19 @@ class Smsvoicev2SenderId extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2SenderId:Smsvoicev2SenderId',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     isoCountryCode = registerOutput<String>('isoCountryCode');
-    messageTypes = registerOutput<List<String>>('messageTypes');
+    messageTypes = registerOutput<List<String>>('messageTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
     region = registerOutput<String>('region');
     registered = registerOutput<bool>('registered');
     registrationId = registerOutput<String>('registrationId');
     senderId = registerOutput<String>('senderId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<Smsvoicev2SenderIdTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2SenderIdTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -340,11 +340,12 @@ class Smsvoicev2SenderId extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Smsvoicev2SenderIdState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Smsvoicev2SenderId._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,14 +362,37 @@ class Smsvoicev2SenderId extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
     isoCountryCode = registerOutput<String>('isoCountryCode');
-    messageTypes = registerOutput<List<String>>('messageTypes');
+    messageTypes = registerOutput<List<String>>('messageTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
     region = registerOutput<String>('region');
     registered = registerOutput<bool>('registered');
     registrationId = registerOutput<String>('registrationId');
     senderId = registerOutput<String>('senderId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<Smsvoicev2SenderIdTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2SenderIdTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Smsvoicev2SenderId] resource.
+  Smsvoicev2SenderId.reference(String urn)
+    : super(
+        'aws:pinpoint/smsvoicev2SenderId:Smsvoicev2SenderId',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    isoCountryCode = registerOutput<String>('isoCountryCode');
+    messageTypes = registerOutput<List<String>>('messageTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
+    region = registerOutput<String>('region');
+    registered = registerOutput<bool>('registered');
+    registrationId = registerOutput<String>('registrationId');
+    senderId = registerOutput<String>('senderId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<Smsvoicev2SenderIdTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2SenderIdTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

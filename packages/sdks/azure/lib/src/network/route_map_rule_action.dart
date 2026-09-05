@@ -5,7 +5,7 @@ import 'route_map_rule_action_parameter.dart';
 
 class RouteMapRuleAction {
   /// A `parameter` block as defined below. Required if `type` is anything other than `Drop`.
-  final pulumi.Input<List<RouteMapRuleActionParameter>>? parameters;
+  final pulumi.Input<List<RouteMapRuleActionParameter>?>? parameters;
   /// The type of the action to be taken. Possible values are `Add`, `Drop`, `Remove`, `Replace` and `Unknown`.
   final pulumi.Input<String> type;
 

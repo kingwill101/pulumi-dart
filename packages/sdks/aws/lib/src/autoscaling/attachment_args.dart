@@ -10,11 +10,11 @@ class AttachmentArgs {
   /// Name of ASG to associate with the ELB.
   final pulumi.Input<String> autoscalingGroupName;
   /// Name of the ELB.
-  final pulumi.Input<String>? elb;
+  final pulumi.Input<String?>? elb;
   /// ARN of a load balancer target group.
-  final pulumi.Input<String>? lbTargetGroupArn;
+  final pulumi.Input<String?>? lbTargetGroupArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AttachmentArgs].
   /// [autoscalingGroupName] Name of ASG to associate with the ELB.

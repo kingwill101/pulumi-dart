@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_configuration_execute_command_configuration_log_configuration.dart';
 
 class ClusterConfigurationExecuteCommandConfiguration {
-  /// AWS Key Management Service key ID to encrypt the data between the local client and the container.
-  final pulumi.Input<String>? kmsKeyId;
+  /// KMS key ID to encrypt the data between the local client and the container.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `logConfiguration` Block for details.
-  final pulumi.Input<ClusterConfigurationExecuteCommandConfigurationLogConfiguration>? logConfiguration;
+  final pulumi.Input<ClusterConfigurationExecuteCommandConfigurationLogConfiguration?>? logConfiguration;
   /// Log setting to use for redirecting logs for your execute command results. Valid values: `NONE`, `DEFAULT`, `OVERRIDE`.
-  final pulumi.Input<String>? logging;
+  final pulumi.Input<String?>? logging;
 
   /// Creates a new [ClusterConfigurationExecuteCommandConfiguration].
-  /// [kmsKeyId] AWS Key Management Service key ID to encrypt the data between the local client and the container.
+  /// [kmsKeyId] KMS key ID to encrypt the data between the local client and the container.
   /// [logConfiguration] Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `logConfiguration` Block for details.
   /// [logging] Log setting to use for redirecting logs for your execute command results. Valid values: `NONE`, `DEFAULT`, `OVERRIDE`.
   const ClusterConfigurationExecuteCommandConfiguration({

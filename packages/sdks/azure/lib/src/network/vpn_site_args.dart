@@ -12,23 +12,23 @@ class VpnSiteArgs {
   /// Specifies a list of IP address CIDRs that are located on your on-premises site. Traffic destined for these address spaces is routed to your local site.
   ///
   /// &gt; **Note:** The `addressCidrs` has to be set when the `link.bgp` isn't specified.
-  final pulumi.Input<List<String>>? addressCidrs;
+  final pulumi.Input<List<String>?>? addressCidrs;
   /// The model of the VPN device.
-  final pulumi.Input<String>? deviceModel;
+  final pulumi.Input<String?>? deviceModel;
   /// The name of the VPN device vendor.
-  final pulumi.Input<String>? deviceVendor;
+  final pulumi.Input<String?>? deviceVendor;
   /// One or more `link` blocks as defined below.
-  final pulumi.Input<List<VpnSiteLink>>? links;
+  final pulumi.Input<List<VpnSiteLink>?>? links;
   /// The Azure Region where the VPN Site should exist. Changing this forces a new VPN Site to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this VPN Site. Changing this forces a new VPN Site to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `o365Policy` block as defined below.
-  final pulumi.Input<VpnSiteO365Policy>? o365Policy;
+  final pulumi.Input<VpnSiteO365Policy?>? o365Policy;
   /// The name of the Resource Group where the VPN Site should exist. Changing this forces a new VPN Site to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the VPN Site.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Wan where this VPN site resides in. Changing this forces a new VPN Site to be created.
   final pulumi.Input<String> virtualWanId;
 

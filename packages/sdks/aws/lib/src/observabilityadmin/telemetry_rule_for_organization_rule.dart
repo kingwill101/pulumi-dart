@@ -5,21 +5,21 @@ import 'telemetry_rule_for_organization_rule_destination_configuration.dart';
 
 class TelemetryRuleForOrganizationRule {
   /// Whether to replicate the rule to every Region in the partition where CloudWatch Observability Admin is available. Mutually exclusive with `regions`.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// Whether CloudWatch Observability Admin should detect and remediate configuration drift in managed telemetry resources. Currently supported for `AWS::EC2::VPC` resources (VPC flow logs).
-  final pulumi.Input<bool>? allowFieldUpdates;
+  final pulumi.Input<bool?>? allowFieldUpdates;
   /// Configuration block specifying where and how the telemetry data is delivered. See `destinationConfiguration` below.
-  final pulumi.Input<TelemetryRuleForOrganizationRuleDestinationConfiguration>? destinationConfiguration;
+  final pulumi.Input<TelemetryRuleForOrganizationRuleDestinationConfiguration?>? destinationConfiguration;
   /// Set of Regions to replicate the rule to. Mutually exclusive with `allRegions`. Order is not preserved.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// AWS resource type to apply the rule to (for example `AWS::EC2::VPC`, `AWS::EKS::Cluster`, `AWS::WAFv2::WebACL`).
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Organizational scope to which the rule applies, specified using accounts or organizational units.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Criteria for selecting which resources the rule applies to, such as resource tags.
-  final pulumi.Input<String>? selectionCriteria;
+  final pulumi.Input<String?>? selectionCriteria;
   /// List of telemetry source types to configure for the resource (for example `VPC_FLOW_LOGS`, `EKS_AUDIT_LOGS`). Must correlate with the chosen `resourceType`. If not provided, the API may default this value based on `resourceType` (for example `VPC_FLOW_LOGS` for `AWS::EC2::VPC`).
-  final pulumi.Input<List<String>>? telemetrySourceTypes;
+  final pulumi.Input<List<String>?>? telemetrySourceTypes;
   /// Type of telemetry data to collect. Valid values: `Logs`, `Metrics`, `Traces`.
   final pulumi.Input<String> telemetryType;
 

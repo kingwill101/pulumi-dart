@@ -10,13 +10,13 @@ class ManagedStorageAccountSasTokenDefinitionArgs {
   /// The ID of the Managed Storage Account.
   final pulumi.Input<String> managedStorageAccountId;
   /// The name which should be used for this SAS Definition.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The SAS definition token template signed with an arbitrary key. Tokens created according to the SAS definition will have the same properties as the template, but regenerated with a new validity period.
   final pulumi.Input<String> sasTemplateUri;
   /// The type of SAS token the SAS definition will create. Possible values are `account` and `service`.
   final pulumi.Input<String> sasType;
   /// A mapping of tags which should be assigned to the SAS Definition. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Validity period of SAS token. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   final pulumi.Input<String> validityPeriod;
 

@@ -6,29 +6,29 @@ import 'orchestrated_virtual_machine_scale_set_os_profile_linux_configuration_se
 
 class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration {
   /// The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// An `adminSshKey` block as defined above.
-  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey>>? adminSshKeys;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey>?>? adminSshKeys;
   /// The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminUsername;
   /// The prefix which should be used for the name of the Virtual Machines in this Scale Set. If unspecified this defaults to the value for the name field. If the value of the name field is not a valid `computerNamePrefix`, then you must specify `computerNamePrefix`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? computerNamePrefix;
+  final pulumi.Input<String?>? computerNamePrefix;
   /// When an `adminPassword` is specified `disablePasswordAuthentication` must be set to `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** Either `adminPassword` or `adminSshKey` must be specified.
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// Specifies the mode of VM Guest Patching for the virtual machines that are associated to the Virtual Machine Scale Set. Possible values are `AutomaticByPlatform` or `ImageDefault`. Defaults to `ImageDefault`.
   ///
   /// &gt; **Note:** If `patchAssessmentMode` is set to `AutomaticByPlatform`, `provisionVmAgent` must be set to `true`.
-  final pulumi.Input<String>? patchAssessmentMode;
+  final pulumi.Input<String?>? patchAssessmentMode;
   /// Specifies the mode of in-guest patching of this Linux Virtual Machine. Possible values are `ImageDefault` and `AutomaticByPlatform`. Defaults to `ImageDefault`. For more information on patch modes please see the [product documentation](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#patch-orchestration-modes).
   ///
   /// &gt; **Note:** If `patchMode` is set to `AutomaticByPlatform`, `provisionVmAgent` must be set to `true` and the `extension` block must contain at least one application health extension. An example of how to correctly configure a Virtual Machine Scale Set to provision a Linux Virtual Machine with Automatic VM Guest Patching enabled can be found in the `./examples/orchestrated-vm-scale-set/automatic-vm-guest-patching` directory within the GitHub Repository.
-  final pulumi.Input<String>? patchMode;
+  final pulumi.Input<String?>? patchMode;
   /// Should the Azure VM Agent be provisioned on each Virtual Machine in the Scale Set? Defaults to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? provisionVmAgent;
+  final pulumi.Input<bool?>? provisionVmAgent;
   /// One or more `secret` blocks as defined below.
-  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret>>? secrets;
+  final pulumi.Input<List<OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret>?>? secrets;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration].
   /// [adminPassword] The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.

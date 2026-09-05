@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedDevOpsPoolVirtualMachineScaleSetFabricImage {
   /// List of aliases to reference the image by.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// The percentage of the buffer to be allocated to this image. Possible values are `*` or between `0` and `100`. Defaults to `*`.
-  final pulumi.Input<String>? buffer;
+  final pulumi.Input<String?>? buffer;
   /// The resource id of the image.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The image to use from a well-known set of images made available to customers.
   ///
   /// &gt; **Note:** More information about supported images can be found in [list of Azure Pipelines image predefined aliases](https://learn.microsoft.com/azure/devops/managed-devops-pools/configure-images?view=azure-devops&tabs=arm#azure-pipelines-images). You can optionally specify a version in your `wellKnownImageName`, for example `windows-2022/latest` or `windows-2022/20250427.1.0`. If you don't specify a version, latest is used.
   ///
   /// &gt; **Note:** Exactly one of `id` or `wellKnownImageName` are required per `image`
-  final pulumi.Input<String>? wellKnownImageName;
+  final pulumi.Input<String?>? wellKnownImageName;
 
   /// Creates a new [ManagedDevOpsPoolVirtualMachineScaleSetFabricImage].
   /// [aliases] List of aliases to reference the image by.

@@ -6,9 +6,9 @@ class AlertProcessingRuleActionGroupScheduleRecurrenceMonthly {
   /// Specifies a list of dayOfMonth to recurrence. Possible values are integers between `1` - `31`.
   final pulumi.Input<List<int>> daysOfMonths;
   /// Specifies the recurrence end time (H:M:S).
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies the recurrence start time (H:M:S).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [AlertProcessingRuleActionGroupScheduleRecurrenceMonthly].
   /// [daysOfMonths] Specifies a list of dayOfMonth to recurrence. Possible values are integers between `1` - `31`.

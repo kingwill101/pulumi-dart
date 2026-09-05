@@ -14,29 +14,29 @@ class ResolverArgs {
   /// API ID for the GraphQL API.
   final pulumi.Input<String> apiId;
   /// Caching Config. See Caching Config.
-  final pulumi.Input<ResolverCachingConfig>? cachingConfig;
+  final pulumi.Input<ResolverCachingConfig?>? cachingConfig;
   /// Function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Data source name.
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Field name from the schema defined in the GraphQL API.
   final pulumi.Input<String> field;
   /// Resolver type. Valid values are `UNIT` and `PIPELINE`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
-  final pulumi.Input<int>? maxBatchSize;
+  final pulumi.Input<int?>? maxBatchSize;
   /// Caching configuration for the resolver. See Pipeline Config.
-  final pulumi.Input<ResolverPipelineConfig>? pipelineConfig;
+  final pulumi.Input<ResolverPipelineConfig?>? pipelineConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
-  final pulumi.Input<String>? requestTemplate;
+  final pulumi.Input<String?>? requestTemplate;
   /// Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
-  final pulumi.Input<String>? responseTemplate;
+  final pulumi.Input<String?>? responseTemplate;
   /// Runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
-  final pulumi.Input<ResolverRuntime>? runtime;
+  final pulumi.Input<ResolverRuntime?>? runtime;
   /// Sync configuration for a resolver. See Sync Config.
-  final pulumi.Input<ResolverSyncConfig>? syncConfig;
+  final pulumi.Input<ResolverSyncConfig?>? syncConfig;
   /// Type name from the schema defined in the GraphQL API.
   final pulumi.Input<String> type;
 
@@ -99,7 +99,7 @@ class ResolverArgs {
       dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       field: pulumi.Input.fromValue(map['field'] as String),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pipelineConfig: (() { final guardedValue = map['pipelineConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResolverPipelineConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestTemplate: (() { final guardedValue = map['requestTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

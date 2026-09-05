@@ -178,7 +178,7 @@ class V2modelsBotVersion extends pulumi.CustomResource {
           'aws:lex/v2modelsBotVersion:V2modelsBotVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
@@ -193,11 +193,12 @@ class V2modelsBotVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2modelsBotVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2modelsBotVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -211,6 +212,23 @@ class V2modelsBotVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    description = registerOutput<String?>('description');
+    localeSpecification = registerOutput<Map<String, V2modelsBotVersionLocaleSpecification>>('localeSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(guardedValue, (value) => V2modelsBotVersionLocaleSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<V2modelsBotVersionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotVersionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [V2modelsBotVersion] resource.
+  V2modelsBotVersion.reference(String urn)
+    : super(
+        'aws:lex/v2modelsBotVersion:V2modelsBotVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');
     description = registerOutput<String?>('description');

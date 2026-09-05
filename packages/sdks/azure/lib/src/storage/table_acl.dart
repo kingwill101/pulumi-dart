@@ -5,7 +5,7 @@ import 'table_acl_access_policy.dart';
 
 class TableAcl {
   /// An `accessPolicy` block as defined below.
-  final pulumi.Input<List<TableAclAccessPolicy>>? accessPolicies;
+  final pulumi.Input<List<TableAclAccessPolicy>?>? accessPolicies;
   /// The ID which should be used for this Shared Identifier.
   final pulumi.Input<String> id;
 

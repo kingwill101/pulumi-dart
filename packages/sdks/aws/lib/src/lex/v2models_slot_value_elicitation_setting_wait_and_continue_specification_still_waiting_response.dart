@@ -5,10 +5,10 @@ import 'v2models_slot_value_elicitation_setting_wait_and_continue_specification_
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   /// How often a message should be sent to the user.
   final pulumi.Input<int> frequencyInSeconds;
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>>? messageGroups;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>?>? messageGroups;
   /// If Amazon Lex waits longer than this length of time for a response, it will stop sending messages.
   final pulumi.Input<int> timeoutInSeconds;
 
@@ -36,9 +36,9 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitin
   factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse(
       allowInterrupt: (() { final guardedValue = map['allowInterrupt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      frequencyInSeconds: pulumi.Input.fromValue(map['frequencyInSeconds'] as int),
+      frequencyInSeconds: pulumi.Input.fromValue((map['frequencyInSeconds'] as num).toInt()),
       messageGroups: (() { final guardedValue = map['messageGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup>(guardedValue, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      timeoutInSeconds: pulumi.Input.fromValue(map['timeoutInSeconds'] as int),
+      timeoutInSeconds: pulumi.Input.fromValue((map['timeoutInSeconds'] as num).toInt()),
     );
   }
 }

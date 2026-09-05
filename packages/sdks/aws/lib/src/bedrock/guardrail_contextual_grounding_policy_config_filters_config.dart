@@ -25,7 +25,7 @@ class GuardrailContextualGroundingPolicyConfigFiltersConfig {
 
   factory GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContextualGroundingPolicyConfigFiltersConfig(
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

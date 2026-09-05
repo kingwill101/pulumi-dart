@@ -19,12 +19,12 @@ import 'rest_api_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apigateway.RestApi("example", {
-///     name: "example",
-///     securityPolicy: "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
-///     endpointAccessMode: "BASIC",
 ///     endpointConfiguration: {
 ///         types: "REGIONAL",
 ///     },
+///     name: "example",
+///     securityPolicy: "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
+///     endpointAccessMode: "BASIC",
 /// });
 /// ```
 /// ```python
@@ -32,12 +32,12 @@ import 'rest_api_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apigateway.RestApi("example",
-///     name="example",
-///     security_policy="SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
-///     endpoint_access_mode="BASIC",
 ///     endpoint_configuration={
 ///         "types": "REGIONAL",
-///     })
+///     },
+///     name="example",
+///     security_policy="SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
+///     endpoint_access_mode="BASIC")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,13 +49,13 @@ import 'rest_api_state.dart';
 /// {
 ///     var example = new Aws.ApiGateway.RestApi("example", new()
 ///     {
-///         Name = "example",
-///         SecurityPolicy = "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
-///         EndpointAccessMode = "BASIC",
 ///         EndpointConfiguration = new Aws.ApiGateway.Inputs.RestApiEndpointConfigurationArgs
 ///         {
 ///             Types = "REGIONAL",
 ///         },
+///         Name = "example",
+///         SecurityPolicy = "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09",
+///         EndpointAccessMode = "BASIC",
 ///     });
 ///
 /// });
@@ -71,12 +71,12 @@ import 'rest_api_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigateway.NewRestApi(ctx, "example", &apigateway.RestApiArgs{
-/// 			Name:               pulumi.String("example"),
-/// 			SecurityPolicy:     pulumi.String("SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"),
-/// 			EndpointAccessMode: pulumi.String("BASIC"),
 /// 			EndpointConfiguration: &apigateway.RestApiEndpointConfigurationArgs{
 /// 				Types: pulumi.String("REGIONAL"),
 /// 			},
+/// 			Name:               pulumi.String("example"),
+/// 			SecurityPolicy:     pulumi.String("SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"),
+/// 			EndpointAccessMode: pulumi.String("BASIC"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,12 +95,12 @@ import 'rest_api_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_restapi" "example" {
-///   name                 = "example"
-///   security_policy      = "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"
-///   endpoint_access_mode = "BASIC"
 ///   endpoint_configuration = {
 ///     types = "REGIONAL"
 ///   }
+///   name                 = "example"
+///   security_policy      = "SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09"
+///   endpoint_access_mode = "BASIC"
 /// }
 /// ```
 /// ```java
@@ -126,12 +126,12 @@ import 'rest_api_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RestApi("example", RestApiArgs.builder()
-///             .name("example")
-///             .securityPolicy("SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09")
-///             .endpointAccessMode("BASIC")
 ///             .endpointConfiguration(RestApiEndpointConfigurationArgs.builder()
 ///                 .types("REGIONAL")
 ///                 .build())
+///             .name("example")
+///             .securityPolicy("SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09")
+///             .endpointAccessMode("BASIC")
 ///             .build());
 ///
 ///     }
@@ -142,11 +142,11 @@ import 'rest_api_state.dart';
 ///   example:
 ///     type: aws:apigateway:RestApi
 ///     properties:
+///       endpointConfiguration:
+///         types: REGIONAL
 ///       name: example
 ///       securityPolicy: SecurityPolicy_TLS13_1_2_PFS_PQ_2025_09
 ///       endpointAccessMode: BASIC
-///       endpointConfiguration:
-///         types: REGIONAL
 /// ```
 ///
 ///
@@ -219,11 +219,11 @@ class RestApi extends pulumi.CustomResource {
           'aws:apigateway/restApi:RestApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiKeySource = registerOutput<String>('apiKeySource');
     arn = registerOutput<String>('arn');
-    binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes');
+    binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     body = registerOutput<String?>('body');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String>('description');
@@ -234,14 +234,14 @@ class RestApi extends pulumi.CustomResource {
     failOnWarnings = registerOutput<bool?>('failOnWarnings');
     minimumCompressionSize = registerOutput<String>('minimumCompressionSize');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     policy = registerOutput<String>('policy');
     putRestApiMode = registerOutput<String?>('putRestApiMode');
     region = registerOutput<String>('region');
     rootResourceId = registerOutput<String>('rootResourceId');
     securityPolicy = registerOutput<String>('securityPolicy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RestApi] resource's state with the given [name] and [id].
@@ -249,11 +249,12 @@ class RestApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,7 +270,7 @@ class RestApi extends pulumi.CustomResource {
         ) {
     apiKeySource = registerOutput<String>('apiKeySource');
     arn = registerOutput<String>('arn');
-    binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes');
+    binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     body = registerOutput<String?>('body');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String>('description');
@@ -280,13 +281,45 @@ class RestApi extends pulumi.CustomResource {
     failOnWarnings = registerOutput<bool?>('failOnWarnings');
     minimumCompressionSize = registerOutput<String>('minimumCompressionSize');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     policy = registerOutput<String>('policy');
     putRestApiMode = registerOutput<String?>('putRestApiMode');
     region = registerOutput<String>('region');
     rootResourceId = registerOutput<String>('rootResourceId');
     securityPolicy = registerOutput<String>('securityPolicy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RestApi] resource.
+  RestApi.reference(String urn)
+    : super(
+        'aws:apigateway/restApi:RestApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeySource = registerOutput<String>('apiKeySource');
+    arn = registerOutput<String>('arn');
+    binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    body = registerOutput<String?>('body');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String>('description');
+    disableExecuteApiEndpoint = registerOutput<bool>('disableExecuteApiEndpoint');
+    endpointAccessMode = registerOutput<String?>('endpointAccessMode');
+    endpointConfiguration = registerOutput<RestApiEndpointConfiguration>('endpointConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiEndpointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionArn = registerOutput<String>('executionArn');
+    failOnWarnings = registerOutput<bool?>('failOnWarnings');
+    minimumCompressionSize = registerOutput<String>('minimumCompressionSize');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    policy = registerOutput<String>('policy');
+    putRestApiMode = registerOutput<String?>('putRestApiMode');
+    region = registerOutput<String>('region');
+    rootResourceId = registerOutput<String>('rootResourceId');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

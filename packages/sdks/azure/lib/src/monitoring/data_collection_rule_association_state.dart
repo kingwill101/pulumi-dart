@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataCollectionRuleAssociation resources.
 class DataCollectionRuleAssociationState {
   /// The ID of the Data Collection Endpoint which will be associated to the target resource.
-  final pulumi.Input<String>? dataCollectionEndpointId;
+  final pulumi.Input<String?>? dataCollectionEndpointId;
   /// The ID of the Data Collection Rule which will be associated to the target resource.
   ///
   /// &gt; **Note:** Exactly one of `dataCollectionEndpointId` and `dataCollectionRuleId` blocks must be specified.
-  final pulumi.Input<String>? dataCollectionRuleId;
+  final pulumi.Input<String?>? dataCollectionRuleId;
   /// The description of the Data Collection Rule Association.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Data Collection Rule Association. Changing this forces a new Data Collection Rule Association to be created. Defaults to `configurationAccessEndpoint`.
   ///
   /// &gt; **Note:** `name` is required when `dataCollectionRuleId` is specified. And when `dataCollectionEndpointId` is specified, the `name` is populated with `configurationAccessEndpoint`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Azure Resource which to associate to a Data Collection Rule or a Data Collection Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [DataCollectionRuleAssociationState].
   /// [dataCollectionEndpointId] The ID of the Data Collection Endpoint which will be associated to the target resource.

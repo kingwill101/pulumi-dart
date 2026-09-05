@@ -5,15 +5,15 @@ import 'alert_rule_nrt_alert_details_override_dynamic_property.dart';
 
 class AlertRuleNrtAlertDetailsOverride {
   /// The format containing columns name(s) to override the description of this Sentinel Alert Rule.
-  final pulumi.Input<String>? descriptionFormat;
+  final pulumi.Input<String?>? descriptionFormat;
   /// The format containing columns name(s) to override the name of this Sentinel Alert Rule.
-  final pulumi.Input<String>? displayNameFormat;
+  final pulumi.Input<String?>? displayNameFormat;
   /// A list of `dynamicProperty` blocks as defined below.
-  final pulumi.Input<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>>? dynamicProperties;
+  final pulumi.Input<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>?>? dynamicProperties;
   /// The column name to take the alert severity from.
-  final pulumi.Input<String>? severityColumnName;
+  final pulumi.Input<String?>? severityColumnName;
   /// The column name to take the alert tactics from.
-  final pulumi.Input<String>? tacticsColumnName;
+  final pulumi.Input<String?>? tacticsColumnName;
 
   /// Creates a new [AlertRuleNrtAlertDetailsOverride].
   /// [descriptionFormat] The format containing columns name(s) to override the description of this Sentinel Alert Rule.

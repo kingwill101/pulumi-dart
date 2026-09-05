@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regex_pattern_set_args.dart';
+import 'regex_pattern_set_regular_expression.dart';
 import 'regex_pattern_set_state.dart';
 
 /// Provides an AWS WAFv2 Regex Pattern Set Resource
@@ -12,9 +13,6 @@ import 'regex_pattern_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.RegexPatternSet("example", {
-///     name: "example",
-///     description: "Example regex pattern set",
-///     scope: "REGIONAL",
 ///     regularExpressions: [
 ///         {
 ///             regexString: "one",
@@ -23,6 +21,9 @@ import 'regex_pattern_set_state.dart';
 ///             regexString: "two",
 ///         },
 ///     ],
+///     name: "example",
+///     description: "Example regex pattern set",
+///     scope: "REGIONAL",
 ///     tags: {
 ///         Tag1: "Value1",
 ///         Tag2: "Value2",
@@ -34,9 +35,6 @@ import 'regex_pattern_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.RegexPatternSet("example",
-///     name="example",
-///     description="Example regex pattern set",
-///     scope="REGIONAL",
 ///     regular_expressions=[
 ///         {
 ///             "regex_string": "one",
@@ -45,6 +43,9 @@ import 'regex_pattern_set_state.dart';
 ///             "regex_string": "two",
 ///         },
 ///     ],
+///     name="example",
+///     description="Example regex pattern set",
+///     scope="REGIONAL",
 ///     tags={
 ///         "Tag1": "Value1",
 ///         "Tag2": "Value2",
@@ -60,9 +61,6 @@ import 'regex_pattern_set_state.dart';
 /// {
 ///     var example = new Aws.WafV2.RegexPatternSet("example", new()
 ///     {
-///         Name = "example",
-///         Description = "Example regex pattern set",
-///         Scope = "REGIONAL",
 ///         RegularExpressions = new[]
 ///         {
 ///             new Aws.WafV2.Inputs.RegexPatternSetRegularExpressionArgs
@@ -74,6 +72,9 @@ import 'regex_pattern_set_state.dart';
 ///                 RegexString = "two",
 ///             },
 ///         },
+///         Name = "example",
+///         Description = "Example regex pattern set",
+///         Scope = "REGIONAL",
 ///         Tags =
 ///         {
 ///             { "Tag1", "Value1" },
@@ -94,9 +95,6 @@ import 'regex_pattern_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewRegexPatternSet(ctx, "example", &wafv2.RegexPatternSetArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("Example regex pattern set"),
-/// 			Scope:       pulumi.String("REGIONAL"),
 /// 			RegularExpressions: wafv2.RegexPatternSetRegularExpressionArray{
 /// 				&wafv2.RegexPatternSetRegularExpressionArgs{
 /// 					RegexString: pulumi.String("one"),
@@ -105,6 +103,9 @@ import 'regex_pattern_set_state.dart';
 /// 					RegexString: pulumi.String("two"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("Example regex pattern set"),
+/// 			Scope:       pulumi.String("REGIONAL"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Tag1": pulumi.String("Value1"),
 /// 				"Tag2": pulumi.String("Value2"),
@@ -127,15 +128,15 @@ import 'regex_pattern_set_state.dart';
 /// }
 ///
 /// resource "aws_wafv2_regexpatternset" "example" {
-///   name        = "example"
-///   description = "Example regex pattern set"
-///   scope       = "REGIONAL"
 ///   regular_expressions {
 ///     regex_string = "one"
 ///   }
 ///   regular_expressions {
 ///     regex_string = "two"
 ///   }
+///   name        = "example"
+///   description = "Example regex pattern set"
+///   scope       = "REGIONAL"
 ///   tags = {
 ///     "Tag1" = "Value1"
 ///     "Tag2" = "Value2"
@@ -165,9 +166,6 @@ import 'regex_pattern_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RegexPatternSet("example", RegexPatternSetArgs.builder()
-///             .name("example")
-///             .description("Example regex pattern set")
-///             .scope("REGIONAL")
 ///             .regularExpressions(
 ///                 RegexPatternSetRegularExpressionArgs.builder()
 ///                     .regexString("one")
@@ -175,6 +173,9 @@ import 'regex_pattern_set_state.dart';
 ///                 RegexPatternSetRegularExpressionArgs.builder()
 ///                     .regexString("two")
 ///                     .build())
+///             .name("example")
+///             .description("Example regex pattern set")
+///             .scope("REGIONAL")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Tag1", "Value1"),
 ///                 Map.entry("Tag2", "Value2")
@@ -189,12 +190,12 @@ import 'regex_pattern_set_state.dart';
 ///   example:
 ///     type: aws:wafv2:RegexPatternSet
 ///     properties:
-///       name: example
-///       description: Example regex pattern set
-///       scope: REGIONAL
 ///       regularExpressions:
 ///         - regexString: one
 ///         - regexString: two
+///       name: example
+///       description: Example regex pattern set
+///       scope: REGIONAL
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
@@ -209,7 +210,7 @@ import 'regex_pattern_set_state.dart';
 /// $ pulumi import aws:wafv2/regexPatternSet:RegexPatternSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc/example/REGIONAL
 /// ```
 class RegexPatternSet extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) that identifies the cluster.
+  /// ARN that identifies the cluster.
   late final pulumi.Output<String> arn;
   /// A friendly description of the regular expression pattern set.
   late final pulumi.Output<String?> description;
@@ -221,7 +222,7 @@ class RegexPatternSet extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> regularExpressions;
+  late final pulumi.Output<List<RegexPatternSetRegularExpression>?> regularExpressions;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
   /// An array of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -241,7 +242,7 @@ class RegexPatternSet extends pulumi.CustomResource {
           'aws:wafv2/regexPatternSet:RegexPatternSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -249,10 +250,10 @@ class RegexPatternSet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    regularExpressions = registerOutput<List<Map<String, dynamic>>?>('regularExpressions');
+    regularExpressions = registerOutput<List<RegexPatternSetRegularExpression>?>('regularExpressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexPatternSetRegularExpression>(guardedValue, (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RegexPatternSet] resource's state with the given [name] and [id].
@@ -260,11 +261,12 @@ class RegexPatternSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegexPatternSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegexPatternSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,9 +286,30 @@ class RegexPatternSet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    regularExpressions = registerOutput<List<Map<String, dynamic>>?>('regularExpressions');
+    regularExpressions = registerOutput<List<RegexPatternSetRegularExpression>?>('regularExpressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexPatternSetRegularExpression>(guardedValue, (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegexPatternSet] resource.
+  RegexPatternSet.reference(String urn)
+    : super(
+        'aws:wafv2/regexPatternSet:RegexPatternSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    lockToken = registerOutput<String>('lockToken');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    regularExpressions = registerOutput<List<RegexPatternSetRegularExpression>?>('regularExpressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexPatternSetRegularExpression>(guardedValue, (value) => RegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())); });
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

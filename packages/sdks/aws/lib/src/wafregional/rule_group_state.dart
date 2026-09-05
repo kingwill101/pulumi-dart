@@ -6,19 +6,19 @@ import 'rule_group_activated_rule.dart';
 /// Input properties used for looking up and filtering RuleGroup resources.
 class RuleGroupState {
   /// A list of activated rules, see below
-  final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
+  final pulumi.Input<List<RuleGroupActivatedRule>?>? activatedRules;
   /// The ARN of the WAF Regional Rule Group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A friendly name for the metrics from the rule group
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// A friendly name of the rule group
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RuleGroupState].
   /// [activatedRules] A list of activated rules, see below

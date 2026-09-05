@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_search_shared_private_link_service_shared_private_link_service_args_doc}
 class SharedPrivateLinkServiceArgs {
   /// Specify the name of the Azure Search Shared Private Link Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the request message for requesting approval of the Shared Private Link Enabled Remote Resource.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// Specify the id of the Azure Search Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> searchServiceId;
   /// Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.

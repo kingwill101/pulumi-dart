@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskFileStep {
   /// The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
-  final pulumi.Input<String>? contextAccessToken;
+  final pulumi.Input<String?>? contextAccessToken;
   /// The URL (absolute or relative) of the source context for this step.
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// Specifies a map of secret values that can be passed when running a task.
-  final pulumi.Input<Map<String, String>>? secretValues;
+  final pulumi.Input<Map<String, String>?>? secretValues;
   /// The task template file path relative to the source context.
   final pulumi.Input<String> taskFilePath;
   /// The parameters file path relative to the source context.
-  final pulumi.Input<String>? valueFilePath;
+  final pulumi.Input<String?>? valueFilePath;
   /// Specifies a map of values that can be passed when running a task.
-  final pulumi.Input<Map<String, String>>? values;
+  final pulumi.Input<Map<String, String>?>? values;
 
   /// Creates a new [RegistryTaskFileStep].
   /// [contextAccessToken] The token (Git PAT or SAS token of storage account blob) associated with the context for this step.

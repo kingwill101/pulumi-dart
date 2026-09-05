@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LicationLoadBalancerFrontend resources.
 class LicationLoadBalancerFrontendState {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationLoadBalancerId;
+  final pulumi.Input<String?>? applicationLoadBalancerId;
   /// The Fully Qualified Domain Name of the DNS record associated to an Application Gateway for Containers Frontend.
-  final pulumi.Input<String>? fullyQualifiedDomainName;
+  final pulumi.Input<String?>? fullyQualifiedDomainName;
   /// The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LicationLoadBalancerFrontendState].
   /// [applicationLoadBalancerId] The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.

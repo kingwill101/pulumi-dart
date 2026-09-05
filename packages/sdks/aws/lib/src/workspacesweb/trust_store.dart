@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store_args.dart';
+import 'trust_store_certificate.dart';
 import 'trust_store_state.dart';
 
 /// Resource for managing an AWS WorkSpaces Web Trust Store.
@@ -376,7 +377,7 @@ class TrustStore extends pulumi.CustomResource {
   /// List of ARNs of the web portals associated with the trust store.
   late final pulumi.Output<List<String>> associatedPortalArns;
   /// Set of certificates to include in the trust store. See Certificate below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<TrustStoreCertificate>?> certificates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -398,13 +399,13 @@ class TrustStore extends pulumi.CustomResource {
           'aws:workspacesweb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificates = registerOutput<List<TrustStoreCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreCertificate>(guardedValue, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 
@@ -413,11 +414,12 @@ class TrustStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -431,11 +433,28 @@ class TrustStore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificates = registerOutput<List<TrustStoreCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreCertificate>(guardedValue, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustStoreArn = registerOutput<String>('trustStoreArn');
+  }
+
+  /// Creates a typed reference to an existing [TrustStore] resource.
+  TrustStore.reference(String urn)
+    : super(
+        'aws:workspacesweb/trustStore:TrustStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificates = registerOutput<List<TrustStoreCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreCertificate>(guardedValue, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 }

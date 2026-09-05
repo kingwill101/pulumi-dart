@@ -20,7 +20,7 @@ class VmwareReplicatedVmArgs {
   /// &gt; **Note:** Changing `defaultLogStorageAccountId` forces a new resource to be created. But removing it does not.
   ///
   /// &gt; **Note:** When `defaultLogStorageAccountId` co-exist with `managedDisk`, the value of `defaultLogStorageAccountId` must be as same as `logStorageAccountId` of every `managedDisk` or it forces a new resource to be created.
-  final pulumi.Input<String>? defaultLogStorageAccountId;
+  final pulumi.Input<String?>? defaultLogStorageAccountId;
   /// The type of storage account that should be used for recovery disks when a failover is done. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`.
   ///
   /// &gt; **Note:** Only one of `defaultRecoveryDiskType` or `managedDisk` must be specified.
@@ -28,25 +28,25 @@ class VmwareReplicatedVmArgs {
   /// &gt; **Note:** Changing `defaultRecoveryDiskType` forces a new resource to be created. But removing it does not.
   ///
   /// &gt; **Note:** When `defaultRecoveryDiskType` co-exist with `managedDisk`, the value of `defaultRecoveryDiskType` must be as same as `targetDiskType` of every `managedDisk` or it forces a new resource to be created.
-  final pulumi.Input<String>? defaultRecoveryDiskType;
+  final pulumi.Input<String?>? defaultRecoveryDiskType;
   /// The ID of the default Disk Encryption Set that should be used for the disks when a failover is done.
   ///
   /// &gt; **Note:** Changing `defaultTargetDiskEncryptionSetId` forces a new resource to be created. But removing it does not.
   ///
   /// &gt; **Note:** When `defaultTargetDiskEncryptionSetId` co-exist with `managedDisk`, the value of `defaultTargetDiskEncryptionSetId` must be as same as `targetDiskEncryptionSetId` of every `managedDisk` or it forces a new resource to be created.
-  final pulumi.Input<String>? defaultTargetDiskEncryptionSetId;
+  final pulumi.Input<String?>? defaultTargetDiskEncryptionSetId;
   /// The license type of the VM. Possible values are `NoLicenseType`, `NotSpecified` and `WindowsServer`. Defaults to `NotSpecified`.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// One or more `managedDisk` block as defined below. It's available only if mobility service is already installed on the source VM.
   ///
   /// &gt; **Note:** A replicated VM could be created without `managedDisk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
-  final pulumi.Input<List<VmwareReplicatedVmManagedDisk>>? managedDisks;
+  final pulumi.Input<List<VmwareReplicatedVmManagedDisk>?>? managedDisks;
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The name of the replicated VM. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `networkInterface` block as defined below.
-  final pulumi.Input<List<VmwareReplicatedVmNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<VmwareReplicatedVmNetworkInterface>?>? networkInterfaces;
   /// The name of the credential to access the source VM. Changing this forces a new resource to be created. More information about the credentials could be found [here](https://learn.microsoft.com/en-us/azure/site-recovery/deploy-vmware-azure-replication-appliance-modernized).
   final pulumi.Input<String> physicalServerCredentialName;
   /// The ID of the policy to use for this replicated VM.
@@ -56,27 +56,27 @@ class VmwareReplicatedVmArgs {
   /// The name of the source VM in VMWare. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceVmName;
   /// The ID of availability set that the new VM should belong to when a failover is done.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The ID of the storage account that should be used for boot diagnostics when a failover is done.
-  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String?>? targetBootDiagnosticsStorageAccountId;
   /// The ID of network to use when a failover is done.
   ///
   /// &gt; **Note:** `targetNetworkId` is required when `networkInterface` is specified.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// The ID of Proximity Placement Group the new VM should belong to when a failover is done.
   ///
   /// &gt; **Note:** Only one of `targetAvailabilitySetId` or `targetZone` can be specified.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The ID of resource group where the VM should be created when a failover is done.
   final pulumi.Input<String> targetResourceGroupId;
   /// Name of the VM that should be created when a failover is done. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetVmName;
   /// Size of the VM that should be created when a failover is done, such as `Standard_F2`. If it's not specified, it will automatically be set by detecting the source VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// Specifies the Availability Zone where the Failover VM should exist.
-  final pulumi.Input<String>? targetZone;
+  final pulumi.Input<String?>? targetZone;
   /// The ID of network to use when a test failover is done.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
 
   /// Creates a new [VmwareReplicatedVmArgs].
   /// [applianceName] The name of VMWare appliance which handles the replication. Changing this forces a new resource to be created.

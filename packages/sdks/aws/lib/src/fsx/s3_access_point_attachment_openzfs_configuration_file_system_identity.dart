@@ -5,7 +5,7 @@ import 's3_access_point_attachment_openzfs_configuration_file_system_identity_po
 
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
   /// UID and GIDs of the file system POSIX user. See `posixUser` Block for details.
-  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser>? posixUser;
+  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser?>? posixUser;
   /// FSx for OpenZFS user identity type. Valid values: `POSIX`.
   final pulumi.Input<String> type;
 

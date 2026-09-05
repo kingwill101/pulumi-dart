@@ -496,7 +496,7 @@ class TagRules extends pulumi.CustomResource {
           'azure:dynatrace/tagRules:TagRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -509,11 +509,12 @@ class TagRules extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagRulesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagRules._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -527,6 +528,21 @@ class TagRules extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitorId = registerOutput<String>('monitorId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [TagRules] resource.
+  TagRules.reference(String urn)
+    : super(
+        'azure:dynatrace/tagRules:TagRules',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitorId = registerOutput<String>('monitorId');

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationChannelFilters {
   /// Events to receive notifications for. Valid values are `NEW_INSIGHT`, `CLOSED_INSIGHT`, `NEW_ASSOCIATION`, `SEVERITY_UPGRADED`, and `NEW_RECOMMENDATION`.
-  final pulumi.Input<List<String>>? messageTypes;
+  final pulumi.Input<List<String>?>? messageTypes;
   /// Severity levels to receive notifications for. Valid values are `LOW`, `MEDIUM`, and `HIGH`.
-  final pulumi.Input<List<String>>? severities;
+  final pulumi.Input<List<String>?>? severities;
 
   /// Creates a new [NotificationChannelFilters].
   /// [messageTypes] Events to receive notifications for. Valid values are `NEW_INSIGHT`, `CLOSED_INSIGHT`, `NEW_ASSOCIATION`, `SEVERITY_UPGRADED`, and `NEW_RECOMMENDATION`.

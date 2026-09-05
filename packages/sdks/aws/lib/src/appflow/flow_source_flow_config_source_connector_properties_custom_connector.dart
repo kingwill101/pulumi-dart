@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector {
-  final pulumi.Input<Map<String, String>>? customProperties;
+  final pulumi.Input<Map<String, String>?>? customProperties;
   final pulumi.Input<String> entityName;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector].

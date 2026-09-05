@@ -10,49 +10,49 @@ class ServiceAzureBotArgs {
   /// The CMK Key Vault Key URL that will be used to encrypt the Bot with the Customer Managed Encryption Key.
   ///
   /// &gt; **Note:** In order to utilize CMEK, you must add the `Key Vault Crypto Service Encryption User` role to the Azure-defined `Bot Service CMEK Prod` Service Principal. You must also enable `softDeleteEnabled` and `purgeProtectionEnabled` on the `azure.keyvault.KeyVault` that `cmkKeyVaultKeyUrl` refers to. [See Azure Documentation](https://learn.microsoft.com/en-us/azure/bot-service/bot-service-encryption?view=azure-bot-service-4.0#how-to-configure-your-azure-key-vault-instance)
-  final pulumi.Input<String>? cmkKeyVaultKeyUrl;
+  final pulumi.Input<String?>? cmkKeyVaultKeyUrl;
   /// The Application Insights API Key to associate with this Azure Bot Service.
-  final pulumi.Input<String>? developerAppInsightsApiKey;
+  final pulumi.Input<String?>? developerAppInsightsApiKey;
   /// The resource ID of the Application Insights instance to associate with this Azure Bot Service.
-  final pulumi.Input<String>? developerAppInsightsApplicationId;
+  final pulumi.Input<String?>? developerAppInsightsApplicationId;
   /// The Application Insight Key to associate with this Azure Bot Service.
-  final pulumi.Input<String>? developerAppInsightsKey;
+  final pulumi.Input<String?>? developerAppInsightsKey;
   /// The name that the Azure Bot Service will be displayed as. This defaults to the value set for `name` if not specified.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The Azure Bot Service endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The Icon Url of the Azure Bot Service. Defaults to `https://docs.botframework.com/static/devportal/client/images/bot-framework-default.png`.
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// Is local authentication enabled? Defaults to `true`.
-  final pulumi.Input<bool>? localAuthenticationEnabled;
+  final pulumi.Input<bool?>? localAuthenticationEnabled;
   /// The supported Azure location where the Azure Bot Service should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A list of LUIS App IDs to associate with this Azure Bot Service.
-  final pulumi.Input<List<String>>? luisAppIds;
+  final pulumi.Input<List<String>?>? luisAppIds;
   /// The LUIS key to associate with this Azure Bot Service.
-  final pulumi.Input<String>? luisKey;
+  final pulumi.Input<String?>? luisKey;
   /// The Microsoft Application ID for the Azure Bot Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> microsoftAppId;
   /// The ID of the Microsoft App Managed Identity for this Azure Bot Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? microsoftAppMsiId;
+  final pulumi.Input<String?>? microsoftAppMsiId;
   /// The Tenant ID of the Microsoft App for this Azure Bot Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? microsoftAppTenantId;
+  final pulumi.Input<String?>? microsoftAppTenantId;
   /// The Microsoft App Type for this Azure Bot Service. Possible values are `MultiTenant`, `SingleTenant` and `UserAssignedMSI`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Creation of `azure.bot.ServiceAzureBot` resources using the `MultiTenant` type is no longer supported by Azure, existing resources can continue using this type.
-  final pulumi.Input<String>? microsoftAppType;
+  final pulumi.Input<String?>? microsoftAppType;
   /// The name which should be used for this Azure Bot Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether public network access is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the Resource Group where the Azure Bot Service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the Azure Bot Service. Accepted values are `F0` or `S1`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
   /// Is the streaming endpoint enabled for this Azure Bot Service. Defaults to `false`.
-  final pulumi.Input<bool>? streamingEndpointEnabled;
+  final pulumi.Input<bool?>? streamingEndpointEnabled;
   /// A mapping of tags which should be assigned to this Azure Bot Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceAzureBotArgs].
   /// [cmkKeyVaultKeyUrl] The CMK Key Vault Key URL that will be used to encrypt the Bot with the Customer Managed Encryption Key.

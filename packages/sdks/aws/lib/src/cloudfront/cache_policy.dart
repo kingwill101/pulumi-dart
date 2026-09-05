@@ -13,31 +13,31 @@ import 'cache_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.CachePolicy("example", {
+///     parametersInCacheKeyAndForwardedToOrigin: {
+///         cookiesConfig: {
+///             cookies: {
+///                 items: ["example"],
+///             },
+///             cookieBehavior: "whitelist",
+///         },
+///         headersConfig: {
+///             headers: {
+///                 items: ["example"],
+///             },
+///             headerBehavior: "whitelist",
+///         },
+///         queryStringsConfig: {
+///             queryStrings: {
+///                 items: ["example"],
+///             },
+///             queryStringBehavior: "whitelist",
+///         },
+///     },
 ///     name: "example-policy",
 ///     comment: "test comment",
 ///     defaultTtl: 50,
 ///     maxTtl: 100,
 ///     minTtl: 1,
-///     parametersInCacheKeyAndForwardedToOrigin: {
-///         cookiesConfig: {
-///             cookieBehavior: "whitelist",
-///             cookies: {
-///                 items: ["example"],
-///             },
-///         },
-///         headersConfig: {
-///             headerBehavior: "whitelist",
-///             headers: {
-///                 items: ["example"],
-///             },
-///         },
-///         queryStringsConfig: {
-///             queryStringBehavior: "whitelist",
-///             queryStrings: {
-///                 items: ["example"],
-///             },
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -45,31 +45,31 @@ import 'cache_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.CachePolicy("example",
+///     parameters_in_cache_key_and_forwarded_to_origin={
+///         "cookies_config": {
+///             "cookies": {
+///                 "items": ["example"],
+///             },
+///             "cookie_behavior": "whitelist",
+///         },
+///         "headers_config": {
+///             "headers": {
+///                 "items": ["example"],
+///             },
+///             "header_behavior": "whitelist",
+///         },
+///         "query_strings_config": {
+///             "query_strings": {
+///                 "items": ["example"],
+///             },
+///             "query_string_behavior": "whitelist",
+///         },
+///     },
 ///     name="example-policy",
 ///     comment="test comment",
 ///     default_ttl=50,
 ///     max_ttl=100,
-///     min_ttl=1,
-///     parameters_in_cache_key_and_forwarded_to_origin={
-///         "cookies_config": {
-///             "cookie_behavior": "whitelist",
-///             "cookies": {
-///                 "items": ["example"],
-///             },
-///         },
-///         "headers_config": {
-///             "header_behavior": "whitelist",
-///             "headers": {
-///                 "items": ["example"],
-///             },
-///         },
-///         "query_strings_config": {
-///             "query_string_behavior": "whitelist",
-///             "query_strings": {
-///                 "items": ["example"],
-///             },
-///         },
-///     })
+///     min_ttl=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -81,16 +81,10 @@ import 'cache_policy_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.CachePolicy("example", new()
 ///     {
-///         Name = "example-policy",
-///         Comment = "test comment",
-///         DefaultTtl = 50,
-///         MaxTtl = 100,
-///         MinTtl = 1,
 ///         ParametersInCacheKeyAndForwardedToOrigin = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginArgs
 ///         {
 ///             CookiesConfig = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigArgs
 ///             {
-///                 CookieBehavior = "whitelist",
 ///                 Cookies = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesArgs
 ///                 {
 ///                     Items = new[]
@@ -98,10 +92,10 @@ import 'cache_policy_state.dart';
 ///                         "example",
 ///                     },
 ///                 },
+///                 CookieBehavior = "whitelist",
 ///             },
 ///             HeadersConfig = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigArgs
 ///             {
-///                 HeaderBehavior = "whitelist",
 ///                 Headers = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersArgs
 ///                 {
 ///                     Items = new[]
@@ -109,10 +103,10 @@ import 'cache_policy_state.dart';
 ///                         "example",
 ///                     },
 ///                 },
+///                 HeaderBehavior = "whitelist",
 ///             },
 ///             QueryStringsConfig = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigArgs
 ///             {
-///                 QueryStringBehavior = "whitelist",
 ///                 QueryStrings = new Aws.CloudFront.Inputs.CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsArgs
 ///                 {
 ///                     Items = new[]
@@ -120,8 +114,14 @@ import 'cache_policy_state.dart';
 ///                         "example",
 ///                     },
 ///                 },
+///                 QueryStringBehavior = "whitelist",
 ///             },
 ///         },
+///         Name = "example-policy",
+///         Comment = "test comment",
+///         DefaultTtl = 50,
+///         MaxTtl = 100,
+///         MinTtl = 1,
 ///     });
 ///
 /// });
@@ -137,37 +137,37 @@ import 'cache_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewCachePolicy(ctx, "example", &cloudfront.CachePolicyArgs{
-/// 			Name:       pulumi.String("example-policy"),
-/// 			Comment:    pulumi.String("test comment"),
-/// 			DefaultTtl: pulumi.Int(50),
-/// 			MaxTtl:     pulumi.Int(100),
-/// 			MinTtl:     pulumi.Int(1),
 /// 			ParametersInCacheKeyAndForwardedToOrigin: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginArgs{
 /// 				CookiesConfig: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigArgs{
-/// 					CookieBehavior: pulumi.String("whitelist"),
 /// 					Cookies: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesArgs{
 /// 						Items: pulumi.StringArray{
 /// 							pulumi.String("example"),
 /// 						},
 /// 					},
+/// 					CookieBehavior: pulumi.String("whitelist"),
 /// 				},
 /// 				HeadersConfig: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigArgs{
-/// 					HeaderBehavior: pulumi.String("whitelist"),
 /// 					Headers: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersArgs{
 /// 						Items: pulumi.StringArray{
 /// 							pulumi.String("example"),
 /// 						},
 /// 					},
+/// 					HeaderBehavior: pulumi.String("whitelist"),
 /// 				},
 /// 				QueryStringsConfig: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigArgs{
-/// 					QueryStringBehavior: pulumi.String("whitelist"),
 /// 					QueryStrings: &cloudfront.CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsArgs{
 /// 						Items: pulumi.StringArray{
 /// 							pulumi.String("example"),
 /// 						},
 /// 					},
+/// 					QueryStringBehavior: pulumi.String("whitelist"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("example-policy"),
+/// 			Comment:    pulumi.String("test comment"),
+/// 			DefaultTtl: pulumi.Int(50),
+/// 			MaxTtl:     pulumi.Int(100),
+/// 			MinTtl:     pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -186,31 +186,31 @@ import 'cache_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_cachepolicy" "example" {
+///   parameters_in_cache_key_and_forwarded_to_origin = {
+///     cookies_config = {
+///       cookies = {
+///         items = ["example"]
+///       }
+///       cookie_behavior = "whitelist"
+///     }
+///     headers_config = {
+///       headers = {
+///         items = ["example"]
+///       }
+///       header_behavior = "whitelist"
+///     }
+///     query_strings_config = {
+///       query_strings = {
+///         items = ["example"]
+///       }
+///       query_string_behavior = "whitelist"
+///     }
+///   }
 ///   name        = "example-policy"
 ///   comment     = "test comment"
 ///   default_ttl = 50
 ///   max_ttl     = 100
 ///   min_ttl     = 1
-///   parameters_in_cache_key_and_forwarded_to_origin = {
-///     cookies_config = {
-///       cookie_behavior = "whitelist"
-///       cookies = {
-///         items = ["example"]
-///       }
-///     }
-///     headers_config = {
-///       header_behavior = "whitelist"
-///       headers = {
-///         items = ["example"]
-///       }
-///     }
-///     query_strings_config = {
-///       query_string_behavior = "whitelist"
-///       query_strings = {
-///         items = ["example"]
-///       }
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -242,31 +242,31 @@ import 'cache_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CachePolicy("example", CachePolicyArgs.builder()
+///             .parametersInCacheKeyAndForwardedToOrigin(CachePolicyParametersInCacheKeyAndForwardedToOriginArgs.builder()
+///                 .cookiesConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigArgs.builder()
+///                     .cookies(CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesArgs.builder()
+///                         .items("example")
+///                         .build())
+///                     .cookieBehavior("whitelist")
+///                     .build())
+///                 .headersConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigArgs.builder()
+///                     .headers(CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersArgs.builder()
+///                         .items("example")
+///                         .build())
+///                     .headerBehavior("whitelist")
+///                     .build())
+///                 .queryStringsConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigArgs.builder()
+///                     .queryStrings(CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsArgs.builder()
+///                         .items("example")
+///                         .build())
+///                     .queryStringBehavior("whitelist")
+///                     .build())
+///                 .build())
 ///             .name("example-policy")
 ///             .comment("test comment")
 ///             .defaultTtl(50)
 ///             .maxTtl(100)
 ///             .minTtl(1)
-///             .parametersInCacheKeyAndForwardedToOrigin(CachePolicyParametersInCacheKeyAndForwardedToOriginArgs.builder()
-///                 .cookiesConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigArgs.builder()
-///                     .cookieBehavior("whitelist")
-///                     .cookies(CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesArgs.builder()
-///                         .items("example")
-///                         .build())
-///                     .build())
-///                 .headersConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigArgs.builder()
-///                     .headerBehavior("whitelist")
-///                     .headers(CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersArgs.builder()
-///                         .items("example")
-///                         .build())
-///                     .build())
-///                 .queryStringsConfig(CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigArgs.builder()
-///                     .queryStringBehavior("whitelist")
-///                     .queryStrings(CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsArgs.builder()
-///                         .items("example")
-///                         .build())
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -277,27 +277,27 @@ import 'cache_policy_state.dart';
 ///   example:
 ///     type: aws:cloudfront:CachePolicy
 ///     properties:
+///       parametersInCacheKeyAndForwardedToOrigin:
+///         cookiesConfig:
+///           cookies:
+///             items:
+///               - example
+///           cookieBehavior: whitelist
+///         headersConfig:
+///           headers:
+///             items:
+///               - example
+///           headerBehavior: whitelist
+///         queryStringsConfig:
+///           queryStrings:
+///             items:
+///               - example
+///           queryStringBehavior: whitelist
 ///       name: example-policy
 ///       comment: test comment
 ///       defaultTtl: 50
 ///       maxTtl: 100
 ///       minTtl: 1
-///       parametersInCacheKeyAndForwardedToOrigin:
-///         cookiesConfig:
-///           cookieBehavior: whitelist
-///           cookies:
-///             items:
-///               - example
-///         headersConfig:
-///           headerBehavior: whitelist
-///           headers:
-///             items:
-///               - example
-///         queryStringsConfig:
-///           queryStringBehavior: whitelist
-///           queryStrings:
-///             items:
-///               - example
 /// ```
 ///
 ///
@@ -338,7 +338,7 @@ class CachePolicy extends pulumi.CustomResource {
           'aws:cloudfront/cachePolicy:CachePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
@@ -355,11 +355,12 @@ class CachePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CachePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CachePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -373,6 +374,25 @@ class CachePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    etag = registerOutput<String>('etag');
+    maxTtl = registerOutput<int?>('maxTtl');
+    minTtl = registerOutput<int?>('minTtl');
+    this.name = registerOutput<String>('name');
+    parametersInCacheKeyAndForwardedToOrigin = registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>('parametersInCacheKeyAndForwardedToOrigin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CachePolicy] resource.
+  CachePolicy.reference(String urn)
+    : super(
+        'aws:cloudfront/cachePolicy:CachePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     defaultTtl = registerOutput<int?>('defaultTtl');

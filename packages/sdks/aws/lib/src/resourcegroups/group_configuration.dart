@@ -5,7 +5,7 @@ import 'group_configuration_parameter.dart';
 
 class GroupConfiguration {
   /// A collection of parameters for this group configuration item. See below for details.
-  final pulumi.Input<List<GroupConfigurationParameter>>? parameters;
+  final pulumi.Input<List<GroupConfigurationParameter>?>? parameters;
   /// Specifies the type of group configuration item.
   final pulumi.Input<String> type;
 

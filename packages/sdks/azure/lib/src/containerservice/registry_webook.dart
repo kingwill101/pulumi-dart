@@ -323,10 +323,10 @@ class RegistryWebook extends pulumi.CustomResource {
           'azure:containerservice/registryWebook:RegistryWebook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actions = registerOutput<List<String>>('actions');
-    customHeaders = registerOutput<Map<String, String>?>('customHeaders');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customHeaders = registerOutput<Map<String, String>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     registryName = registerOutput<String>('registryName');
@@ -334,7 +334,7 @@ class RegistryWebook extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     serviceUri = registerOutput<String>('serviceUri');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RegistryWebook] resource's state with the given [name] and [id].
@@ -342,11 +342,12 @@ class RegistryWebook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryWebookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryWebook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -360,8 +361,8 @@ class RegistryWebook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<String>>('actions');
-    customHeaders = registerOutput<Map<String, String>?>('customHeaders');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customHeaders = registerOutput<Map<String, String>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     registryName = registerOutput<String>('registryName');
@@ -369,6 +370,27 @@ class RegistryWebook extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     serviceUri = registerOutput<String>('serviceUri');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegistryWebook] resource.
+  RegistryWebook.reference(String urn)
+    : super(
+        'azure:containerservice/registryWebook:RegistryWebook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customHeaders = registerOutput<Map<String, String>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    registryName = registerOutput<String>('registryName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<String?>('scope');
+    serviceUri = registerOutput<String>('serviceUri');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -11,33 +11,36 @@ import 'endpoint_private_service_connection.dart';
 /// Input properties used for looking up and filtering Endpoint resources.
 class EndpointState {
   /// A `customDnsConfigs` block as defined below.
-  final pulumi.Input<List<EndpointCustomDnsConfig>>? customDnsConfigs;
+  final pulumi.Input<List<EndpointCustomDnsConfig>?>? customDnsConfigs;
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customNetworkInterfaceName;
+  final pulumi.Input<String?>? customNetworkInterfaceName;
+  /// Specifies the Edge Zone within the Azure Region where this Private Endpoint should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String?>? edgeZone;
   /// One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
-  final pulumi.Input<List<EndpointIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<EndpointIpConfiguration>?>? ipConfigurations;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkInterface` block as defined below.
-  final pulumi.Input<List<EndpointNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<EndpointNetworkInterface>?>? networkInterfaces;
   /// A `privateDnsZoneConfigs` block as defined below.
-  final pulumi.Input<List<EndpointPrivateDnsZoneConfig>>? privateDnsZoneConfigs;
+  final pulumi.Input<List<EndpointPrivateDnsZoneConfig>?>? privateDnsZoneConfigs;
   /// A `privateDnsZoneGroup` block as defined below.
-  final pulumi.Input<EndpointPrivateDnsZoneGroup>? privateDnsZoneGroup;
+  final pulumi.Input<EndpointPrivateDnsZoneGroup?>? privateDnsZoneGroup;
   /// A `privateServiceConnection` block as defined below.
-  final pulumi.Input<EndpointPrivateServiceConnection>? privateServiceConnection;
+  final pulumi.Input<EndpointPrivateServiceConnection?>? privateServiceConnection;
   /// Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EndpointState].
   /// [customDnsConfigs] A `customDnsConfigs` block as defined below.
   /// [customNetworkInterfaceName] The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
+  /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Private Endpoint should exist. Changing this forces a new resource to be created.
   /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
@@ -51,6 +54,7 @@ class EndpointState {
   const EndpointState({
     this.customDnsConfigs,
     this.customNetworkInterfaceName,
+    this.edgeZone,
     this.ipConfigurations,
     this.location,
     this.name,
@@ -67,6 +71,7 @@ class EndpointState {
     return <String, dynamic>{
       'customDnsConfigs': ?pulumi.Input.mapOptionalInputValue<List<EndpointCustomDnsConfig>, List<Map<String, dynamic>>>(customDnsConfigs, (value) => pulumi.Input.encodeList<EndpointCustomDnsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customNetworkInterfaceName': ?customNetworkInterfaceName,
+      'edgeZone': ?edgeZone,
       'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<EndpointIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<EndpointIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': ?name,
@@ -84,6 +89,7 @@ class EndpointState {
     return EndpointState(
       customDnsConfigs: (() { final guardedValue = map['customDnsConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointCustomDnsConfig>(guardedValue, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customNetworkInterfaceName: (() { final guardedValue = map['customNetworkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edgeZone: (() { final guardedValue = map['edgeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointIpConfiguration>(guardedValue, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

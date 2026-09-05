@@ -50,7 +50,7 @@ class HciCluster extends pulumi.CustomResource {
           'azure:stack/hciCluster:HciCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automanageConfigurationId = registerOutput<String?>('automanageConfigurationId');
     clientId = registerOutput<String?>('clientId');
@@ -61,7 +61,7 @@ class HciCluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -70,11 +70,12 @@ class HciCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -97,7 +98,29 @@ class HciCluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [HciCluster] resource.
+  HciCluster.reference(String urn)
+    : super(
+        'azure:stack/hciCluster:HciCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automanageConfigurationId = registerOutput<String?>('automanageConfigurationId');
+    clientId = registerOutput<String?>('clientId');
+    cloudId = registerOutput<String>('cloudId');
+    identity = registerOutput<HciClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceProviderObjectId = registerOutput<String>('resourceProviderObjectId');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

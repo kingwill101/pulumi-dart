@@ -10,9 +10,9 @@ class GetQueueArgs {
   /// The name of this Service Bus Queue.
   final pulumi.Input<String> name;
   /// The ID of the ServiceBus Namespace where the Service Bus Queue exists.
-  final pulumi.Input<String>? namespaceId;
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? namespaceId;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetQueueArgs].
   /// [name] The name of this Service Bus Queue.

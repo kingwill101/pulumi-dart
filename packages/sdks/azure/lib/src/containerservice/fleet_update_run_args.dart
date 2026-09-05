@@ -10,15 +10,15 @@ import 'fleet_update_run_stage.dart';
 /// {@macro pulumi_containerservice_fleet_update_run_fleet_update_run_args_doc}
 class FleetUpdateRunArgs {
   /// The ID of the Fleet Update Strategy. Only one of `fleetUpdateStrategyId` or `stage` can be specified.
-  final pulumi.Input<String>? fleetUpdateStrategyId;
+  final pulumi.Input<String?>? fleetUpdateStrategyId;
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Run to be created.
   final pulumi.Input<String> kubernetesFleetManagerId;
   /// A `managedClusterUpdate` block as defined below.
   final pulumi.Input<FleetUpdateRunManagedClusterUpdate> managedClusterUpdate;
   /// The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `stage` blocks as defined below. Only one of `stage` or `fleetUpdateStrategyId` can be specified.
-  final pulumi.Input<List<FleetUpdateRunStage>>? stages;
+  final pulumi.Input<List<FleetUpdateRunStage>?>? stages;
 
   /// Creates a new [FleetUpdateRunArgs].
   /// [fleetUpdateStrategyId] The ID of the Fleet Update Strategy. Only one of `fleetUpdateStrategyId` or `stage` can be specified.

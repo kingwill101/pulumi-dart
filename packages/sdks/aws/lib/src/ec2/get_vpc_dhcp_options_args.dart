@@ -9,13 +9,13 @@ import 'get_vpc_dhcp_options_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_dhcp_options_get_vpc_dhcp_options_args_doc}
 class GetVpcDhcpOptionsArgs {
   /// EC2 DHCP Options ID.
-  final pulumi.Input<String>? dhcpOptionsId;
+  final pulumi.Input<String?>? dhcpOptionsId;
   /// List of custom filters as described below.
-  final pulumi.Input<List<GetVpcDhcpOptionsFilter>>? filters;
+  final pulumi.Input<List<GetVpcDhcpOptionsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcDhcpOptionsArgs].
   /// [dhcpOptionsId] EC2 DHCP Options ID.

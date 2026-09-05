@@ -8,7 +8,7 @@ class RiskConfigurationAccountTakeoverRiskConfiguration {
   /// Account takeover risk configuration actions. See details below.
   final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationActions> actions;
   /// The notify configuration used to construct email notifications. See details below.
-  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration>? notifyConfiguration;
+  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration?>? notifyConfiguration;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfiguration].
   /// [actions] Account takeover risk configuration actions. See details below.

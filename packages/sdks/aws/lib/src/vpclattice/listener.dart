@@ -16,14 +16,14 @@ import 'listener_state.dart';
 ///
 /// const example = new aws.vpclattice.Service("example", {name: "example"});
 /// const exampleListener = new aws.vpclattice.Listener("example", {
-///     name: "example",
-///     protocol: "HTTPS",
-///     serviceIdentifier: example.id,
 ///     defaultAction: {
 ///         fixedResponse: {
 ///             statusCode: 404,
 ///         },
 ///     },
+///     name: "example",
+///     protocol: "HTTPS",
+///     serviceIdentifier: example.id,
 /// });
 /// ```
 /// ```python
@@ -32,14 +32,14 @@ import 'listener_state.dart';
 ///
 /// example = aws.vpclattice.Service("example", name="example")
 /// example_listener = aws.vpclattice.Listener("example",
-///     name="example",
-///     protocol="HTTPS",
-///     service_identifier=example.id,
 ///     default_action={
 ///         "fixed_response": {
 ///             "status_code": 404,
 ///         },
-///     })
+///     },
+///     name="example",
+///     protocol="HTTPS",
+///     service_identifier=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,9 +56,6 @@ import 'listener_state.dart';
 ///
 ///     var exampleListener = new Aws.VpcLattice.Listener("example", new()
 ///     {
-///         Name = "example",
-///         Protocol = "HTTPS",
-///         ServiceIdentifier = example.Id,
 ///         DefaultAction = new Aws.VpcLattice.Inputs.ListenerDefaultActionArgs
 ///         {
 ///             FixedResponse = new Aws.VpcLattice.Inputs.ListenerDefaultActionFixedResponseArgs
@@ -66,6 +63,9 @@ import 'listener_state.dart';
 ///                 StatusCode = 404,
 ///             },
 ///         },
+///         Name = "example",
+///         Protocol = "HTTPS",
+///         ServiceIdentifier = example.Id,
 ///     });
 ///
 /// });
@@ -87,14 +87,14 @@ import 'listener_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Protocol:          pulumi.String("HTTPS"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				FixedResponse: &vpclattice.ListenerDefaultActionFixedResponseArgs{
 /// 					StatusCode: pulumi.Int(404),
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			Protocol:          pulumi.String("HTTPS"),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,14 +116,14 @@ import 'listener_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   name               = "example"
-///   protocol           = "HTTPS"
-///   service_identifier = aws_vpclattice_service.example.id
 ///   default_action = {
 ///     fixed_response = {
 ///       status_code = 404
 ///     }
 ///   }
+///   name               = "example"
+///   protocol           = "HTTPS"
+///   service_identifier = aws_vpclattice_service.example.id
 /// }
 /// ```
 /// ```java
@@ -156,14 +156,14 @@ import 'listener_state.dart';
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
-///             .name("example")
-///             .protocol("HTTPS")
-///             .serviceIdentifier(example.id())
 ///             .defaultAction(ListenerDefaultActionArgs.builder()
 ///                 .fixedResponse(ListenerDefaultActionFixedResponseArgs.builder()
 ///                     .statusCode(404)
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .protocol("HTTPS")
+///             .serviceIdentifier(example.id())
 ///             .build());
 ///
 ///     }
@@ -179,12 +179,12 @@ import 'listener_state.dart';
 ///     type: aws:vpclattice:Listener
 ///     name: example
 ///     properties:
-///       name: example
-///       protocol: HTTPS
-///       serviceIdentifier: ${example.id}
 ///       defaultAction:
 ///         fixedResponse:
 ///           statusCode: 404
+///       name: example
+///       protocol: HTTPS
+///       serviceIdentifier: ${example.id}
 /// ```
 ///
 ///
@@ -197,18 +197,15 @@ import 'listener_state.dart';
 ///
 /// const example = new aws.vpclattice.Service("example", {name: "example"});
 /// const exampleTargetGroup = new aws.vpclattice.TargetGroup("example", {
-///     name: "example-target-group-1",
-///     type: "INSTANCE",
 ///     config: {
 ///         port: 80,
 ///         protocol: "HTTP",
 ///         vpcIdentifier: exampleAwsVpc.id,
 ///     },
+///     name: "example-target-group-1",
+///     type: "INSTANCE",
 /// });
 /// const exampleListener = new aws.vpclattice.Listener("example", {
-///     name: "example",
-///     protocol: "HTTP",
-///     serviceIdentifier: example.id,
 ///     defaultAction: {
 ///         forwards: [{
 ///             targetGroups: [{
@@ -216,6 +213,9 @@ import 'listener_state.dart';
 ///             }],
 ///         }],
 ///     },
+///     name: "example",
+///     protocol: "HTTP",
+///     serviceIdentifier: example.id,
 /// });
 /// ```
 /// ```python
@@ -224,24 +224,24 @@ import 'listener_state.dart';
 ///
 /// example = aws.vpclattice.Service("example", name="example")
 /// example_target_group = aws.vpclattice.TargetGroup("example",
-///     name="example-target-group-1",
-///     type="INSTANCE",
 ///     config={
 ///         "port": 80,
 ///         "protocol": "HTTP",
 ///         "vpc_identifier": example_aws_vpc["id"],
-///     })
+///     },
+///     name="example-target-group-1",
+///     type="INSTANCE")
 /// example_listener = aws.vpclattice.Listener("example",
-///     name="example",
-///     protocol="HTTP",
-///     service_identifier=example.id,
 ///     default_action={
 ///         "forwards": [{
 ///             "target_groups": [{
 ///                 "target_group_identifier": example_target_group.id,
 ///             }],
 ///         }],
-///     })
+///     },
+///     name="example",
+///     protocol="HTTP",
+///     service_identifier=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -258,21 +258,18 @@ import 'listener_state.dart';
 ///
 ///     var exampleTargetGroup = new Aws.VpcLattice.TargetGroup("example", new()
 ///     {
-///         Name = "example-target-group-1",
-///         Type = "INSTANCE",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
 ///             Port = 80,
 ///             Protocol = "HTTP",
 ///             VpcIdentifier = exampleAwsVpc.Id,
 ///         },
+///         Name = "example-target-group-1",
+///         Type = "INSTANCE",
 ///     });
 ///
 ///     var exampleListener = new Aws.VpcLattice.Listener("example", new()
 ///     {
-///         Name = "example",
-///         Protocol = "HTTP",
-///         ServiceIdentifier = example.Id,
 ///         DefaultAction = new Aws.VpcLattice.Inputs.ListenerDefaultActionArgs
 ///         {
 ///             Forwards = new[]
@@ -289,6 +286,9 @@ import 'listener_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         Protocol = "HTTP",
+///         ServiceIdentifier = example.Id,
 ///     });
 ///
 /// });
@@ -310,21 +310,18 @@ import 'listener_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTargetGroup, err := vpclattice.NewTargetGroup(ctx, "example", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example-target-group-1"),
-/// 			Type: pulumi.String("INSTANCE"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
 /// 				Port:          pulumi.Int(80),
 /// 				Protocol:      pulumi.String("HTTP"),
 /// 				VpcIdentifier: pulumi.Any(exampleAwsVpc.Id),
 /// 			},
+/// 			Name: pulumi.String("example-target-group-1"),
+/// 			Type: pulumi.String("INSTANCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				Forwards: vpclattice.ListenerDefaultActionForwardArray{
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
@@ -336,6 +333,9 @@ import 'listener_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			Protocol:          pulumi.String("HTTP"),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,18 +357,15 @@ import 'listener_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_vpclattice_targetgroup" "example" {
-///   name = "example-target-group-1"
-///   type = "INSTANCE"
 ///   config = {
 ///     port           = 80
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
 ///   }
+///   name = "example-target-group-1"
+///   type = "INSTANCE"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   name               = "example"
-///   protocol           = "HTTP"
-///   service_identifier = aws_vpclattice_service.example.id
 ///   default_action = {
 ///     forwards = [{
 ///       "targetGroups" = [{
@@ -376,6 +373,9 @@ import 'listener_state.dart';
 ///       }]
 ///     }]
 ///   }
+///   name               = "example"
+///   protocol           = "HTTP"
+///   service_identifier = aws_vpclattice_service.example.id
 /// }
 /// ```
 /// ```java
@@ -412,19 +412,16 @@ import 'listener_state.dart';
 ///             .build());
 ///
 ///         var exampleTargetGroup = new TargetGroup("exampleTargetGroup", TargetGroupArgs.builder()
-///             .name("example-target-group-1")
-///             .type("INSTANCE")
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(80)
 ///                 .protocol("HTTP")
 ///                 .vpcIdentifier(exampleAwsVpc.id())
 ///                 .build())
+///             .name("example-target-group-1")
+///             .type("INSTANCE")
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
-///             .name("example")
-///             .protocol("HTTP")
-///             .serviceIdentifier(example.id())
 ///             .defaultAction(ListenerDefaultActionArgs.builder()
 ///                 .forwards(ListenerDefaultActionForwardArgs.builder()
 ///                     .targetGroups(ListenerDefaultActionForwardTargetGroupArgs.builder()
@@ -432,6 +429,9 @@ import 'listener_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .protocol("HTTP")
+///             .serviceIdentifier(example.id())
 ///             .build());
 ///
 ///     }
@@ -447,23 +447,23 @@ import 'listener_state.dart';
 ///     type: aws:vpclattice:TargetGroup
 ///     name: example
 ///     properties:
-///       name: example-target-group-1
-///       type: INSTANCE
 ///       config:
 ///         port: 80
 ///         protocol: HTTP
 ///         vpcIdentifier: ${exampleAwsVpc.id}
+///       name: example-target-group-1
+///       type: INSTANCE
 ///   exampleListener:
 ///     type: aws:vpclattice:Listener
 ///     name: example
 ///     properties:
-///       name: example
-///       protocol: HTTP
-///       serviceIdentifier: ${example.id}
 ///       defaultAction:
 ///         forwards:
 ///           - targetGroups:
 ///               - targetGroupIdentifier: ${exampleTargetGroup.id}
+///       name: example
+///       protocol: HTTP
+///       serviceIdentifier: ${example.id}
 /// ```
 ///
 ///
@@ -476,27 +476,24 @@ import 'listener_state.dart';
 ///
 /// const example = new aws.vpclattice.Service("example", {name: "example"});
 /// const example1 = new aws.vpclattice.TargetGroup("example1", {
-///     name: "example-target-group-1",
-///     type: "INSTANCE",
 ///     config: {
 ///         port: 80,
 ///         protocol: "HTTP",
 ///         vpcIdentifier: exampleAwsVpc.id,
 ///     },
+///     name: "example-target-group-1",
+///     type: "INSTANCE",
 /// });
 /// const example2 = new aws.vpclattice.TargetGroup("example2", {
-///     name: "example-target-group-2",
-///     type: "INSTANCE",
 ///     config: {
 ///         port: 8080,
 ///         protocol: "HTTP",
 ///         vpcIdentifier: exampleAwsVpc.id,
 ///     },
+///     name: "example-target-group-2",
+///     type: "INSTANCE",
 /// });
 /// const exampleListener = new aws.vpclattice.Listener("example", {
-///     name: "example",
-///     protocol: "HTTP",
-///     serviceIdentifier: example.id,
 ///     defaultAction: {
 ///         forwards: [{
 ///             targetGroups: [
@@ -511,6 +508,9 @@ import 'listener_state.dart';
 ///             ],
 ///         }],
 ///     },
+///     name: "example",
+///     protocol: "HTTP",
+///     serviceIdentifier: example.id,
 /// });
 /// ```
 /// ```python
@@ -519,25 +519,22 @@ import 'listener_state.dart';
 ///
 /// example = aws.vpclattice.Service("example", name="example")
 /// example1 = aws.vpclattice.TargetGroup("example1",
-///     name="example-target-group-1",
-///     type="INSTANCE",
 ///     config={
 ///         "port": 80,
 ///         "protocol": "HTTP",
 ///         "vpc_identifier": example_aws_vpc["id"],
-///     })
+///     },
+///     name="example-target-group-1",
+///     type="INSTANCE")
 /// example2 = aws.vpclattice.TargetGroup("example2",
-///     name="example-target-group-2",
-///     type="INSTANCE",
 ///     config={
 ///         "port": 8080,
 ///         "protocol": "HTTP",
 ///         "vpc_identifier": example_aws_vpc["id"],
-///     })
+///     },
+///     name="example-target-group-2",
+///     type="INSTANCE")
 /// example_listener = aws.vpclattice.Listener("example",
-///     name="example",
-///     protocol="HTTP",
-///     service_identifier=example.id,
 ///     default_action={
 ///         "forwards": [{
 ///             "target_groups": [
@@ -551,7 +548,10 @@ import 'listener_state.dart';
 ///                 },
 ///             ],
 ///         }],
-///     })
+///     },
+///     name="example",
+///     protocol="HTTP",
+///     service_identifier=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -568,33 +568,30 @@ import 'listener_state.dart';
 ///
 ///     var example1 = new Aws.VpcLattice.TargetGroup("example1", new()
 ///     {
-///         Name = "example-target-group-1",
-///         Type = "INSTANCE",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
 ///             Port = 80,
 ///             Protocol = "HTTP",
 ///             VpcIdentifier = exampleAwsVpc.Id,
 ///         },
+///         Name = "example-target-group-1",
+///         Type = "INSTANCE",
 ///     });
 ///
 ///     var example2 = new Aws.VpcLattice.TargetGroup("example2", new()
 ///     {
-///         Name = "example-target-group-2",
-///         Type = "INSTANCE",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
 ///             Port = 8080,
 ///             Protocol = "HTTP",
 ///             VpcIdentifier = exampleAwsVpc.Id,
 ///         },
+///         Name = "example-target-group-2",
+///         Type = "INSTANCE",
 ///     });
 ///
 ///     var exampleListener = new Aws.VpcLattice.Listener("example", new()
 ///     {
-///         Name = "example",
-///         Protocol = "HTTP",
-///         ServiceIdentifier = example.Id,
 ///         DefaultAction = new Aws.VpcLattice.Inputs.ListenerDefaultActionArgs
 ///         {
 ///             Forwards = new[]
@@ -617,6 +614,9 @@ import 'listener_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
+///         Protocol = "HTTP",
+///         ServiceIdentifier = example.Id,
 ///     });
 ///
 /// });
@@ -638,33 +638,30 @@ import 'listener_state.dart';
 /// 			return err
 /// 		}
 /// 		example1, err := vpclattice.NewTargetGroup(ctx, "example1", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example-target-group-1"),
-/// 			Type: pulumi.String("INSTANCE"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
 /// 				Port:          pulumi.Int(80),
 /// 				Protocol:      pulumi.String("HTTP"),
 /// 				VpcIdentifier: pulumi.Any(exampleAwsVpc.Id),
 /// 			},
+/// 			Name: pulumi.String("example-target-group-1"),
+/// 			Type: pulumi.String("INSTANCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example2, err := vpclattice.NewTargetGroup(ctx, "example2", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example-target-group-2"),
-/// 			Type: pulumi.String("INSTANCE"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
 /// 				Port:          pulumi.Int(8080),
 /// 				Protocol:      pulumi.String("HTTP"),
 /// 				VpcIdentifier: pulumi.Any(exampleAwsVpc.Id),
 /// 			},
+/// 			Name: pulumi.String("example-target-group-2"),
+/// 			Type: pulumi.String("INSTANCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = vpclattice.NewListener(ctx, "example", &vpclattice.ListenerArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Protocol:          pulumi.String("HTTP"),
-/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction: &vpclattice.ListenerDefaultActionArgs{
 /// 				Forwards: vpclattice.ListenerDefaultActionForwardArray{
 /// 					&vpclattice.ListenerDefaultActionForwardArgs{
@@ -681,6 +678,9 @@ import 'listener_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			Protocol:          pulumi.String("HTTP"),
+/// 			ServiceIdentifier: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -702,27 +702,24 @@ import 'listener_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_vpclattice_targetgroup" "example1" {
-///   name = "example-target-group-1"
-///   type = "INSTANCE"
 ///   config = {
 ///     port           = 80
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
 ///   }
+///   name = "example-target-group-1"
+///   type = "INSTANCE"
 /// }
 /// resource "aws_vpclattice_targetgroup" "example2" {
-///   name = "example-target-group-2"
-///   type = "INSTANCE"
 ///   config = {
 ///     port           = 8080
 ///     protocol       = "HTTP"
 ///     vpc_identifier = exampleAwsVpc.id
 ///   }
+///   name = "example-target-group-2"
+///   type = "INSTANCE"
 /// }
 /// resource "aws_vpclattice_listener" "example" {
-///   name               = "example"
-///   protocol           = "HTTP"
-///   service_identifier = aws_vpclattice_service.example.id
 ///   default_action = {
 ///     forwards = [{
 ///       "targetGroups" = [{
@@ -734,6 +731,9 @@ import 'listener_state.dart';
 ///       }]
 ///     }]
 ///   }
+///   name               = "example"
+///   protocol           = "HTTP"
+///   service_identifier = aws_vpclattice_service.example.id
 /// }
 /// ```
 /// ```java
@@ -770,29 +770,26 @@ import 'listener_state.dart';
 ///             .build());
 ///
 ///         var example1 = new TargetGroup("example1", TargetGroupArgs.builder()
-///             .name("example-target-group-1")
-///             .type("INSTANCE")
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(80)
 ///                 .protocol("HTTP")
 ///                 .vpcIdentifier(exampleAwsVpc.id())
 ///                 .build())
+///             .name("example-target-group-1")
+///             .type("INSTANCE")
 ///             .build());
 ///
 ///         var example2 = new TargetGroup("example2", TargetGroupArgs.builder()
-///             .name("example-target-group-2")
-///             .type("INSTANCE")
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .port(8080)
 ///                 .protocol("HTTP")
 ///                 .vpcIdentifier(exampleAwsVpc.id())
 ///                 .build())
+///             .name("example-target-group-2")
+///             .type("INSTANCE")
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
-///             .name("example")
-///             .protocol("HTTP")
-///             .serviceIdentifier(example.id())
 ///             .defaultAction(ListenerDefaultActionArgs.builder()
 ///                 .forwards(ListenerDefaultActionForwardArgs.builder()
 ///                     .targetGroups(
@@ -806,6 +803,9 @@ import 'listener_state.dart';
 ///                             .build())
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .protocol("HTTP")
+///             .serviceIdentifier(example.id())
 ///             .build());
 ///
 ///     }
@@ -820,28 +820,25 @@ import 'listener_state.dart';
 ///   example1:
 ///     type: aws:vpclattice:TargetGroup
 ///     properties:
-///       name: example-target-group-1
-///       type: INSTANCE
 ///       config:
 ///         port: 80
 ///         protocol: HTTP
 ///         vpcIdentifier: ${exampleAwsVpc.id}
+///       name: example-target-group-1
+///       type: INSTANCE
 ///   example2:
 ///     type: aws:vpclattice:TargetGroup
 ///     properties:
-///       name: example-target-group-2
-///       type: INSTANCE
 ///       config:
 ///         port: 8080
 ///         protocol: HTTP
 ///         vpcIdentifier: ${exampleAwsVpc.id}
+///       name: example-target-group-2
+///       type: INSTANCE
 ///   exampleListener:
 ///     type: aws:vpclattice:Listener
 ///     name: example
 ///     properties:
-///       name: example
-///       protocol: HTTP
-///       serviceIdentifier: ${example.id}
 ///       defaultAction:
 ///         forwards:
 ///           - targetGroups:
@@ -849,6 +846,9 @@ import 'listener_state.dart';
 ///                 weight: 80
 ///               - targetGroupIdentifier: ${example2.id}
 ///                 weight: 20
+///       name: example
+///       protocol: HTTP
+///       serviceIdentifier: ${example.id}
 /// ```
 ///
 ///
@@ -878,7 +878,7 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
+  /// ARN of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
   late final pulumi.Output<String> serviceArn;
   /// ID of the VPC Lattice service. You must include either the `serviceArn` or `serviceIdentifier` arguments.
   /// &gt; **NOTE:** You must specify one of the following arguments: `serviceArn` or `serviceIdentifier`.
@@ -899,7 +899,7 @@ class Listener extends pulumi.CustomResource {
           'aws:vpclattice/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -912,8 +912,8 @@ class Listener extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -921,11 +921,12 @@ class Listener extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ListenerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Listener._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -950,7 +951,31 @@ class Listener extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Listener] resource.
+  Listener.reference(String urn)
+    : super(
+        'aws:vpclattice/listener:Listener',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    defaultAction = registerOutput<ListenerDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListenerDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
+    listenerId = registerOutput<String>('listenerId');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    serviceIdentifier = registerOutput<String>('serviceIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

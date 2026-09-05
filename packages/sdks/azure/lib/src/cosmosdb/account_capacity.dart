@@ -20,7 +20,7 @@ class AccountCapacity {
 
   factory AccountCapacity.fromMap(Map<String, dynamic> map) {
     return AccountCapacity(
-      totalThroughputLimit: pulumi.Input.fromValue(map['totalThroughputLimit'] as int),
+      totalThroughputLimit: pulumi.Input.fromValue((map['totalThroughputLimit'] as num).toInt()),
     );
   }
 }

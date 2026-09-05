@@ -145,7 +145,7 @@ import 'environment_certificate_state.dart';
 /// 			Name:                    pulumi.String("myEnvironment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -158,7 +158,7 @@ import 'environment_certificate_state.dart';
 /// 		}
 /// 		_, err = containerapp.NewEnvironmentCertificate(ctx, "example", &containerapp.EnvironmentCertificateArgs{
 /// 			Name:                      pulumi.String("myfriendlyname"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateBlobBase64:     pulumi.String(invokeFilebase64.Result),
 /// 			CertificatePassword:       pulumi.String("$3cretSqu1rreL"),
 /// 		})
@@ -347,7 +347,7 @@ import 'environment_certificate_state.dart';
 ///     resourceGroupName: example.name,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
-///     enableRbacAuthorization: true,
+///     rbacAuthorizationEnabled: true,
 /// });
 /// const userKeyvaultAdmin = new azure.authorization.Assignment("user_keyvault_admin", {
 ///     scope: exampleKeyVault.id,
@@ -419,7 +419,7 @@ import 'environment_certificate_state.dart';
 ///     resource_group_name=example.name,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
-///     enable_rbac_authorization=True)
+///     rbac_authorization_enabled=True)
 /// user_keyvault_admin = azure.authorization.Assignment("user_keyvault_admin",
 ///     scope=example_key_vault.id,
 ///     role_definition_name="Key Vault Administrator",
@@ -504,7 +504,7 @@ import 'environment_certificate_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
-///         EnableRbacAuthorization = true,
+///         RbacAuthorizationEnabled = true,
 ///     });
 ///
 ///     var userKeyvaultAdmin = new Azure.Authorization.Assignment("user_keyvault_admin", new()
@@ -609,11 +609,11 @@ import 'environment_certificate_state.dart';
 /// 			Name:                    pulumi.String("example-environment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &containerapp.EnvironmentIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -621,18 +621,18 @@ import 'environment_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example-keyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			EnableRbacAuthorization: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-keyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			RbacAuthorizationEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		userKeyvaultAdmin, err := authorization.NewAssignment(ctx, "user_keyvault_admin", &authorization.AssignmentArgs{
-/// 			Scope:              exampleKeyVault.ID(),
+/// 			Scope:              exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Administrator"),
 /// 			PrincipalId:        pulumi.String(current.ObjectId),
 /// 		})
@@ -640,11 +640,9 @@ import 'environment_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleKeyVault.ID(),
+/// 			Scope:              exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Key Vault Secrets User"),
-/// 			PrincipalId: pulumi.String(exampleEnvironment.Identity.ApplyT(func(identity containerapp.EnvironmentIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleEnvironment.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -657,7 +655,7 @@ import 'environment_certificate_state.dart';
 /// 		}
 /// 		exampleCertificate, err := keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("example-certificate"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Certificate: &keyvault.CertificateCertificateArgs{
 /// 				Contents: pulumi.String(invokeFilebase64.Result),
 /// 				Password: pulumi.String(""),
@@ -671,9 +669,9 @@ import 'environment_certificate_state.dart';
 /// 		}
 /// 		_, err = containerapp.NewEnvironmentCertificate(ctx, "example", &containerapp.EnvironmentCertificateArgs{
 /// 			Name:                      pulumi.String("example-certificate"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateKeyVault: &containerapp.EnvironmentCertificateCertificateKeyVaultArgs{
-/// 				Identity:         exampleUserAssignedIdentity.ID(),
+/// 				Identity:         exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				KeyVaultSecretId: exampleCertificate.VersionlessSecretId,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -728,12 +726,12 @@ import 'environment_certificate_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                      = "example-keyvault"
-///   location                  = azure_core_resourcegroup.example.location
-///   resource_group_name       = azure_core_resourcegroup.example.name
-///   tenant_id                 = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                  = "standard"
-///   enable_rbac_authorization = true
+///   name                       = "example-keyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   rbac_authorization_enabled = true
 /// }
 /// resource "azure_authorization_assignment" "user_keyvault_admin" {
 ///   scope                = azure_keyvault_keyvault.example.id
@@ -844,7 +842,7 @@ import 'environment_certificate_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
-///             .enableRbacAuthorization(true)
+///             .rbacAuthorizationEnabled(true)
 ///             .build());
 ///
 ///         var userKeyvaultAdmin = new Assignment("userKeyvaultAdmin", AssignmentArgs.builder()
@@ -932,7 +930,7 @@ import 'environment_certificate_state.dart';
 ///       resourceGroupName: ${example.name}
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
-///       enableRbacAuthorization: true
+///       rbacAuthorizationEnabled: true
 ///   userKeyvaultAdmin:
 ///     type: azure:authorization:Assignment
 ///     name: user_keyvault_admin
@@ -1041,18 +1039,19 @@ class EnvironmentCertificate extends pulumi.CustomResource {
           'azure:containerapp/environmentCertificate:EnvironmentCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['certificatePassword'],
         ) {
     certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
     certificateKeyVault = registerOutput<EnvironmentCertificateCertificateKeyVault?>('certificateKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentCertificateCertificateKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificatePassword = registerOutput<String?>('certificatePassword');
+    certificatePassword = registerOutput<String?>('certificatePassword', isSecret: true);
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
     expirationDate = registerOutput<String>('expirationDate');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
   }
 
@@ -1061,11 +1060,12 @@ class EnvironmentCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1081,14 +1081,37 @@ class EnvironmentCertificate extends pulumi.CustomResource {
         ) {
     certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
     certificateKeyVault = registerOutput<EnvironmentCertificateCertificateKeyVault?>('certificateKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentCertificateCertificateKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificatePassword = registerOutput<String?>('certificatePassword');
+    certificatePassword = registerOutput<String?>('certificatePassword', isSecret: true);
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
     expirationDate = registerOutput<String>('expirationDate');
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentCertificate] resource.
+  EnvironmentCertificate.reference(String urn)
+    : super(
+        'azure:containerapp/environmentCertificate:EnvironmentCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificatePassword'],
+        isResourceReference: true,
+      ) {
+    certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');
+    certificateKeyVault = registerOutput<EnvironmentCertificateCertificateKeyVault?>('certificateKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentCertificateCertificateKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificatePassword = registerOutput<String?>('certificatePassword', isSecret: true);
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    expirationDate = registerOutput<String>('expirationDate');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
   }
 }

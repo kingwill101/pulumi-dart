@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_group_reference_sets_ip_set_reference.dart';
 
 class RuleGroupRuleGroupReferenceSets {
-  final pulumi.Input<List<RuleGroupRuleGroupReferenceSetsIpSetReference>>? ipSetReferences;
+  final pulumi.Input<List<RuleGroupRuleGroupReferenceSetsIpSetReference>?>? ipSetReferences;
 
   /// Creates a new [RuleGroupRuleGroupReferenceSets].
   /// [ipSetReferences] Optional.

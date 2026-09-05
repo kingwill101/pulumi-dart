@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_queue_properties_args.dart';
+import 'account_queue_properties_cors_rule.dart';
 import 'account_queue_properties_hour_metrics.dart';
 import 'account_queue_properties_logging.dart';
 import 'account_queue_properties_minute_metrics.dart';
@@ -209,7 +210,7 @@ import 'account_queue_properties_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewAccountQueueProperties(ctx, "example", &storage.AccountQueuePropertiesArgs{
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			CorsRules: storage.AccountQueuePropertiesCorsRuleArray{
 /// 				&storage.AccountQueuePropertiesCorsRuleArgs{
 /// 					AllowedOrigins: pulumi.StringArray{
@@ -432,7 +433,7 @@ import 'account_queue_properties_state.dart';
 /// ```
 class AccountQueuePropertiesStorage extends pulumi.CustomResource {
   /// A `corsRule` block as defined above.
-  late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
+  late final pulumi.Output<List<AccountQueuePropertiesCorsRule>?> corsRules;
   /// A `hourMetrics` block as defined below.
   ///
   /// &gt; **Note:** At least one of `corsRule`, `logging`, `minuteMetrics`, or `hourMetrics` must be specified.
@@ -456,9 +457,9 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
           'azure:storage/accountQueueProperties:AccountQueueProperties',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    corsRules = registerOutput<List<AccountQueuePropertiesCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(guardedValue, (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesHourMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logging = registerOutput<AccountQueuePropertiesLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesMinuteMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -470,11 +471,12 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountQueuePropertiesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountQueuePropertiesStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -488,7 +490,23 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    corsRules = registerOutput<List<AccountQueuePropertiesCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(guardedValue, (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
+    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesHourMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logging = registerOutput<AccountQueuePropertiesLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesMinuteMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [AccountQueuePropertiesStorage] resource.
+  AccountQueuePropertiesStorage.reference(String urn)
+    : super(
+        'azure:storage/accountQueueProperties:AccountQueueProperties',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    corsRules = registerOutput<List<AccountQueuePropertiesCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(guardedValue, (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesHourMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logging = registerOutput<AccountQueuePropertiesLogging>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountQueuePropertiesMinuteMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });

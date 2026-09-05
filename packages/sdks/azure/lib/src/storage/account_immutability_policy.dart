@@ -31,7 +31,7 @@ class AccountImmutabilityPolicy {
   factory AccountImmutabilityPolicy.fromMap(Map<String, dynamic> map) {
     return AccountImmutabilityPolicy(
       allowProtectedAppendWrites: pulumi.Input.fromValue(map['allowProtectedAppendWrites'] as bool),
-      periodSinceCreationInDays: pulumi.Input.fromValue(map['periodSinceCreationInDays'] as int),
+      periodSinceCreationInDays: pulumi.Input.fromValue((map['periodSinceCreationInDays'] as num).toInt()),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }

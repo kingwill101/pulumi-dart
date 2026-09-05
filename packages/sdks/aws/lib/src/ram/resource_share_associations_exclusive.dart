@@ -514,14 +514,14 @@ import 'resource_share_associations_exclusive_state.dart';
 ///     allowExternalPrincipals: true,
 /// });
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {
-///     type: "ROOT",
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
+///     type: "ROOT",
 /// });
 /// const exampleResourceShareAssociationsExclusive = new aws.ram.ResourceShareAssociationsExclusive("example", {
 ///     resourceShareArn: example.arn,
@@ -541,14 +541,14 @@ import 'resource_share_associations_exclusive_state.dart';
 ///     name="example-service-share",
 ///     allow_external_principals=True)
 /// example_certificate_authority = aws.acmpca.CertificateAuthority("example",
-///     type="ROOT",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
-///     })
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
+///     },
+///     type="ROOT")
 /// example_resource_share_associations_exclusive = aws.ram.ResourceShareAssociationsExclusive("example",
 ///     resource_share_arn=example.arn,
 ///     principals=["pca-connector-ad.amazonaws.com"],
@@ -574,16 +574,16 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 ///     var exampleCertificateAuthority = new Aws.Acmpca.CertificateAuthority("example", new()
 ///     {
-///         Type = "ROOT",
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
+///         Type = "ROOT",
 ///     });
 ///
 ///     var exampleResourceShareAssociationsExclusive = new Aws.Ram.ResourceShareAssociationsExclusive("example", new()
@@ -625,14 +625,14 @@ import 'resource_share_associations_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
-/// 			Type: pulumi.String("ROOT"),
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
+/// 			Type: pulumi.String("ROOT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -671,14 +671,14 @@ import 'resource_share_associations_exclusive_state.dart';
 ///   allow_external_principals = true
 /// }
 /// resource "aws_acmpca_certificateauthority" "example" {
-///   type = "ROOT"
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
+///   type = "ROOT"
 /// }
 /// resource "aws_ram_resourceshareassociationsexclusive" "example" {
 ///   resource_share_arn = aws_ram_resourceshare.example.arn
@@ -720,14 +720,14 @@ import 'resource_share_associations_exclusive_state.dart';
 ///             .build());
 ///
 ///         var exampleCertificateAuthority = new CertificateAuthority("exampleCertificateAuthority", CertificateAuthorityArgs.builder()
-///             .type("ROOT")
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
+///             .type("ROOT")
 ///             .build());
 ///
 ///         var exampleResourceShareAssociationsExclusive = new ResourceShareAssociationsExclusive("exampleResourceShareAssociationsExclusive", ResourceShareAssociationsExclusiveArgs.builder()
@@ -753,12 +753,12 @@ import 'resource_share_associations_exclusive_state.dart';
 ///     type: aws:acmpca:CertificateAuthority
 ///     name: example
 ///     properties:
-///       type: ROOT
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
+///       type: ROOT
 ///   exampleResourceShareAssociationsExclusive:
 ///     type: aws:ram:ResourceShareAssociationsExclusive
 ///     name: example
@@ -884,7 +884,7 @@ import 'resource_share_associations_exclusive_state.dart';
 ///
 /// #### Required
 ///
-/// - `resourceShareArn` (String) Amazon Resource Name (ARN) of the RAM resource share.
+/// - `resourceShareArn` (String) ARN of the RAM resource share.
 ///
 ///
 /// Using `pulumi import`, import RAM Resource Share Association Exclusive using the `resourceShareArn`. For example:
@@ -897,9 +897,9 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> principals;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
+  /// Set of ARNs of resources to associate with the resource share. Resources not configured in this argument will be removed.
   late final pulumi.Output<List<String>?> resourceArns;
-  /// Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
+  /// ARN of the resource share. Changing this value forces creation of a new resource.
   late final pulumi.Output<String> resourceShareArn;
   /// Set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   late final pulumi.Output<List<String>?> sources;
@@ -916,13 +916,13 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
           'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    principals = registerOutput<List<String>?>('principals');
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceArns = registerOutput<List<String>?>('resourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceShareArn = registerOutput<String>('resourceShareArn');
-    sources = registerOutput<List<String>?>('sources');
+    sources = registerOutput<List<String>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ResourceShareAssociationsExclusive] resource's state with the given [name] and [id].
@@ -930,11 +930,12 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceShareAssociationsExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceShareAssociationsExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -948,10 +949,26 @@ class ResourceShareAssociationsExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    principals = registerOutput<List<String>?>('principals');
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    resourceArns = registerOutput<List<String>?>('resourceArns');
+    resourceArns = registerOutput<List<String>?>('resourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceShareArn = registerOutput<String>('resourceShareArn');
-    sources = registerOutput<List<String>?>('sources');
+    sources = registerOutput<List<String>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceShareAssociationsExclusive] resource.
+  ResourceShareAssociationsExclusive.reference(String urn)
+    : super(
+        'aws:ram/resourceShareAssociationsExclusive:ResourceShareAssociationsExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    resourceArns = registerOutput<List<String>?>('resourceArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+    sources = registerOutput<List<String>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

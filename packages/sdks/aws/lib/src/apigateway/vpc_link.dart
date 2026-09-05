@@ -15,12 +15,12 @@ import 'vpc_link_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lb.LoadBalancer("example", {
-///     name: "example",
-///     internal: true,
-///     loadBalancerType: "network",
 ///     subnetMappings: [{
 ///         subnetId: "12345",
 ///     }],
+///     name: "example",
+///     internal: true,
+///     loadBalancerType: "network",
 /// });
 /// const exampleVpcLink = new aws.apigateway.VpcLink("example", {
 ///     name: "example",
@@ -33,12 +33,12 @@ import 'vpc_link_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lb.LoadBalancer("example",
-///     name="example",
-///     internal=True,
-///     load_balancer_type="network",
 ///     subnet_mappings=[{
 ///         "subnet_id": "12345",
-///     }])
+///     }],
+///     name="example",
+///     internal=True,
+///     load_balancer_type="network")
 /// example_vpc_link = aws.apigateway.VpcLink("example",
 ///     name="example",
 ///     description="example description",
@@ -54,9 +54,6 @@ import 'vpc_link_state.dart';
 /// {
 ///     var example = new Aws.LB.LoadBalancer("example", new()
 ///     {
-///         Name = "example",
-///         Internal = true,
-///         LoadBalancerType = "network",
 ///         SubnetMappings = new[]
 ///         {
 ///             new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
@@ -64,6 +61,9 @@ import 'vpc_link_state.dart';
 ///                 SubnetId = "12345",
 ///             },
 ///         },
+///         Name = "example",
+///         Internal = true,
+///         LoadBalancerType = "network",
 ///     });
 ///
 ///     var exampleVpcLink = new Aws.ApiGateway.VpcLink("example", new()
@@ -87,14 +87,14 @@ import 'vpc_link_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			Internal:         pulumi.Bool(true),
-/// 			LoadBalancerType: pulumi.String("network"),
 /// 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
 /// 				&lb.LoadBalancerSubnetMappingArgs{
 /// 					SubnetId: pulumi.String("12345"),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			Internal:         pulumi.Bool(true),
+/// 			LoadBalancerType: pulumi.String("network"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,12 +121,12 @@ import 'vpc_link_state.dart';
 /// }
 ///
 /// resource "aws_lb_loadbalancer" "example" {
-///   name               = "example"
-///   internal           = true
-///   load_balancer_type = "network"
 ///   subnet_mappings {
 ///     subnet_id = "12345"
 ///   }
+///   name               = "example"
+///   internal           = true
+///   load_balancer_type = "network"
 /// }
 /// resource "aws_apigateway_vpclink" "example" {
 ///   name        = "example"
@@ -159,12 +159,12 @@ import 'vpc_link_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
-///             .name("example")
-///             .internal(true)
-///             .loadBalancerType("network")
 ///             .subnetMappings(LoadBalancerSubnetMappingArgs.builder()
 ///                 .subnetId("12345")
 ///                 .build())
+///             .name("example")
+///             .internal(true)
+///             .loadBalancerType("network")
 ///             .build());
 ///
 ///         var exampleVpcLink = new VpcLink("exampleVpcLink", VpcLinkArgs.builder()
@@ -181,11 +181,11 @@ import 'vpc_link_state.dart';
 ///   example:
 ///     type: aws:lb:LoadBalancer
 ///     properties:
+///       subnetMappings:
+///         - subnetId: '12345'
 ///       name: example
 ///       internal: true
 ///       loadBalancerType: network
-///       subnetMappings:
-///         - subnetId: '12345'
 ///   exampleVpcLink:
 ///     type: aws:apigateway:VpcLink
 ///     name: example
@@ -231,14 +231,14 @@ class VpcLink extends pulumi.CustomResource {
           'aws:apigateway/vpcLink:VpcLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 
@@ -247,11 +247,12 @@ class VpcLink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcLinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcLink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,8 +270,26 @@ class VpcLink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+  }
+
+  /// Creates a typed reference to an existing [VpcLink] resource.
+  VpcLink.reference(String urn)
+    : super(
+        'aws:apigateway/vpcLink:VpcLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 }

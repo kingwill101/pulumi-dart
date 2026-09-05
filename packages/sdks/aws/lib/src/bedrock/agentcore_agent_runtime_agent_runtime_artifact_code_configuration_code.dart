@@ -5,7 +5,7 @@ import 'agentcore_agent_runtime_agent_runtime_artifact_code_configuration_code_s
 
 class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode {
   /// Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See `s3` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3>? s3;
+  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3?>? s3;
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode].
   /// [s3] Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See `s3` below.

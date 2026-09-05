@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_lake_gen2_filesystem_ace.dart';
 import 'data_lake_gen2_filesystem_args.dart';
 import 'data_lake_gen2_filesystem_state.dart';
 
@@ -125,7 +126,7 @@ import 'data_lake_gen2_filesystem_state.dart';
 /// 		}
 /// 		_, err = storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Properties: pulumi.StringMap{
 /// 				"hello": pulumi.String("aGVsbG8="),
 /// 			},
@@ -254,7 +255,7 @@ import 'data_lake_gen2_filesystem_state.dart';
 /// ```
 class DataLakeGen2Filesystem extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
-  late final pulumi.Output<List<Map<String, dynamic>>> aces;
+  late final pulumi.Output<List<DataLakeGen2FilesystemAce>> aces;
   /// The default encryption scope to use for this filesystem. Changing this forces a new resource to be created.
   late final pulumi.Output<String> defaultEncryptionScope;
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
@@ -282,14 +283,14 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
           'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    aces = registerOutput<List<DataLakeGen2FilesystemAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(guardedValue, (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>())); });
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 
@@ -298,11 +299,12 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataLakeGen2FilesystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataLakeGen2Filesystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,12 +318,30 @@ class DataLakeGen2Filesystem extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    aces = registerOutput<List<DataLakeGen2FilesystemAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(guardedValue, (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>())); });
     defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [DataLakeGen2Filesystem] resource.
+  DataLakeGen2Filesystem.reference(String urn)
+    : super(
+        'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aces = registerOutput<List<DataLakeGen2FilesystemAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(guardedValue, (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultEncryptionScope = registerOutput<String>('defaultEncryptionScope');
+    group = registerOutput<String>('group');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

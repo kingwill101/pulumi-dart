@@ -183,7 +183,7 @@ class PublicKey extends pulumi.CustomResource {
           'aws:cloudfront/publicKey:PublicKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
@@ -198,11 +198,12 @@ class PublicKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,6 +217,23 @@ class PublicKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String?>('comment');
+    encodedKey = registerOutput<String>('encodedKey');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+  }
+
+  /// Creates a typed reference to an existing [PublicKey] resource.
+  PublicKey.reference(String urn)
+    : super(
+        'aws:cloudfront/publicKey:PublicKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');
     encodedKey = registerOutput<String>('encodedKey');

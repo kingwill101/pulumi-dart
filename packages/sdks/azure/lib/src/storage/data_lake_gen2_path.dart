@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_lake_gen2_path_ace.dart';
 import 'data_lake_gen2_path_args.dart';
 import 'data_lake_gen2_path_state.dart';
 
@@ -134,7 +135,7 @@ import 'data_lake_gen2_path_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,7 +143,7 @@ import 'data_lake_gen2_path_state.dart';
 /// 		_, err = storage.NewDataLakeGen2Path(ctx, "example", &storage.DataLakeGen2PathArgs{
 /// 			Path:             pulumi.String("example"),
 /// 			FilesystemName:   exampleDataLakeGen2Filesystem.Name,
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Resource:         pulumi.String("directory"),
 /// 		})
 /// 		if err != nil {
@@ -286,7 +287,7 @@ import 'data_lake_gen2_path_state.dart';
 /// ```
 class DataLakeGen2Path extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
-  late final pulumi.Output<List<Map<String, dynamic>>> aces;
+  late final pulumi.Output<List<DataLakeGen2PathAce>> aces;
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> filesystemName;
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group. Possible values also include `$superuser`.
@@ -312,9 +313,9 @@ class DataLakeGen2Path extends pulumi.CustomResource {
           'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    aces = registerOutput<List<DataLakeGen2PathAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2PathAce>(guardedValue, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>())); });
     filesystemName = registerOutput<String>('filesystemName');
     group = registerOutput<String>('group');
     owner = registerOutput<String>('owner');
@@ -328,11 +329,12 @@ class DataLakeGen2Path extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataLakeGen2PathState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataLakeGen2Path._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,7 +348,25 @@ class DataLakeGen2Path extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    aces = registerOutput<List<DataLakeGen2PathAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2PathAce>(guardedValue, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>())); });
+    filesystemName = registerOutput<String>('filesystemName');
+    group = registerOutput<String>('group');
+    owner = registerOutput<String>('owner');
+    path = registerOutput<String>('path');
+    resource = registerOutput<String>('resource');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [DataLakeGen2Path] resource.
+  DataLakeGen2Path.reference(String urn)
+    : super(
+        'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aces = registerOutput<List<DataLakeGen2PathAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2PathAce>(guardedValue, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>())); });
     filesystemName = registerOutput<String>('filesystemName');
     group = registerOutput<String>('group');
     owner = registerOutput<String>('owner');

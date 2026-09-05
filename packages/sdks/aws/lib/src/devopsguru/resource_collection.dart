@@ -18,10 +18,10 @@ import 'resource_collection_tags.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devopsguru.ResourceCollection("example", {
-///     type: "AWS_SERVICE",
 ///     cloudformation: {
 ///         stackNames: ["*"],
 ///     },
+///     type: "AWS_SERVICE",
 /// });
 /// ```
 /// ```python
@@ -29,10 +29,10 @@ import 'resource_collection_tags.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devopsguru.ResourceCollection("example",
-///     type="AWS_SERVICE",
 ///     cloudformation={
 ///         "stack_names": ["*"],
-///     })
+///     },
+///     type="AWS_SERVICE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,7 +44,6 @@ import 'resource_collection_tags.dart';
 /// {
 ///     var example = new Aws.DevOpsGuru.ResourceCollection("example", new()
 ///     {
-///         Type = "AWS_SERVICE",
 ///         Cloudformation = new Aws.DevOpsGuru.Inputs.ResourceCollectionCloudformationArgs
 ///         {
 ///             StackNames = new[]
@@ -52,6 +51,7 @@ import 'resource_collection_tags.dart';
 ///                 "*",
 ///             },
 ///         },
+///         Type = "AWS_SERVICE",
 ///     });
 ///
 /// });
@@ -67,12 +67,12 @@ import 'resource_collection_tags.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := devopsguru.NewResourceCollection(ctx, "example", &devopsguru.ResourceCollectionArgs{
-/// 			Type: pulumi.String("AWS_SERVICE"),
 /// 			Cloudformation: &devopsguru.ResourceCollectionCloudformationArgs{
 /// 				StackNames: pulumi.StringArray{
 /// 					pulumi.String("*"),
 /// 				},
 /// 			},
+/// 			Type: pulumi.String("AWS_SERVICE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,10 +91,10 @@ import 'resource_collection_tags.dart';
 /// }
 ///
 /// resource "aws_devopsguru_resourcecollection" "example" {
-///   type = "AWS_SERVICE"
 ///   cloudformation = {
 ///     stack_names = ["*"]
 ///   }
+///   type = "AWS_SERVICE"
 /// }
 /// ```
 /// ```java
@@ -120,10 +120,10 @@ import 'resource_collection_tags.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceCollection("example", ResourceCollectionArgs.builder()
-///             .type("AWS_SERVICE")
 ///             .cloudformation(ResourceCollectionCloudformationArgs.builder()
 ///                 .stackNames("*")
 ///                 .build())
+///             .type("AWS_SERVICE")
 ///             .build());
 ///
 ///     }
@@ -134,10 +134,10 @@ import 'resource_collection_tags.dart';
 ///   example:
 ///     type: aws:devopsguru:ResourceCollection
 ///     properties:
-///       type: AWS_SERVICE
 ///       cloudformation:
 ///         stackNames:
 ///           - '*'
+///       type: AWS_SERVICE
 /// ```
 ///
 ///
@@ -149,10 +149,10 @@ import 'resource_collection_tags.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devopsguru.ResourceCollection("example", {
-///     type: "AWS_CLOUD_FORMATION",
 ///     cloudformation: {
 ///         stackNames: ["ExampleStack"],
 ///     },
+///     type: "AWS_CLOUD_FORMATION",
 /// });
 /// ```
 /// ```python
@@ -160,10 +160,10 @@ import 'resource_collection_tags.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devopsguru.ResourceCollection("example",
-///     type="AWS_CLOUD_FORMATION",
 ///     cloudformation={
 ///         "stack_names": ["ExampleStack"],
-///     })
+///     },
+///     type="AWS_CLOUD_FORMATION")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -175,7 +175,6 @@ import 'resource_collection_tags.dart';
 /// {
 ///     var example = new Aws.DevOpsGuru.ResourceCollection("example", new()
 ///     {
-///         Type = "AWS_CLOUD_FORMATION",
 ///         Cloudformation = new Aws.DevOpsGuru.Inputs.ResourceCollectionCloudformationArgs
 ///         {
 ///             StackNames = new[]
@@ -183,6 +182,7 @@ import 'resource_collection_tags.dart';
 ///                 "ExampleStack",
 ///             },
 ///         },
+///         Type = "AWS_CLOUD_FORMATION",
 ///     });
 ///
 /// });
@@ -198,12 +198,12 @@ import 'resource_collection_tags.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := devopsguru.NewResourceCollection(ctx, "example", &devopsguru.ResourceCollectionArgs{
-/// 			Type: pulumi.String("AWS_CLOUD_FORMATION"),
 /// 			Cloudformation: &devopsguru.ResourceCollectionCloudformationArgs{
 /// 				StackNames: pulumi.StringArray{
 /// 					pulumi.String("ExampleStack"),
 /// 				},
 /// 			},
+/// 			Type: pulumi.String("AWS_CLOUD_FORMATION"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -222,10 +222,10 @@ import 'resource_collection_tags.dart';
 /// }
 ///
 /// resource "aws_devopsguru_resourcecollection" "example" {
-///   type = "AWS_CLOUD_FORMATION"
 ///   cloudformation = {
 ///     stack_names = ["ExampleStack"]
 ///   }
+///   type = "AWS_CLOUD_FORMATION"
 /// }
 /// ```
 /// ```java
@@ -251,10 +251,10 @@ import 'resource_collection_tags.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceCollection("example", ResourceCollectionArgs.builder()
-///             .type("AWS_CLOUD_FORMATION")
 ///             .cloudformation(ResourceCollectionCloudformationArgs.builder()
 ///                 .stackNames("ExampleStack")
 ///                 .build())
+///             .type("AWS_CLOUD_FORMATION")
 ///             .build());
 ///
 ///     }
@@ -265,10 +265,10 @@ import 'resource_collection_tags.dart';
 ///   example:
 ///     type: aws:devopsguru:ResourceCollection
 ///     properties:
-///       type: AWS_CLOUD_FORMATION
 ///       cloudformation:
 ///         stackNames:
 ///           - ExampleStack
+///       type: AWS_CLOUD_FORMATION
 /// ```
 ///
 ///
@@ -280,11 +280,11 @@ import 'resource_collection_tags.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devopsguru.ResourceCollection("example", {
-///     type: "AWS_TAGS",
 ///     tags: {
 ///         appBoundaryKey: "DevOps-Guru-Example",
 ///         tagValues: ["Example-Value"],
 ///     },
+///     type: "AWS_TAGS",
 /// });
 /// ```
 /// ```python
@@ -292,11 +292,11 @@ import 'resource_collection_tags.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devopsguru.ResourceCollection("example",
-///     type="AWS_TAGS",
 ///     tags={
 ///         "app_boundary_key": "DevOps-Guru-Example",
 ///         "tag_values": ["Example-Value"],
-///     })
+///     },
+///     type="AWS_TAGS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -308,7 +308,6 @@ import 'resource_collection_tags.dart';
 /// {
 ///     var example = new Aws.DevOpsGuru.ResourceCollection("example", new()
 ///     {
-///         Type = "AWS_TAGS",
 ///         Tags = new Aws.DevOpsGuru.Inputs.ResourceCollectionTagsArgs
 ///         {
 ///             AppBoundaryKey = "DevOps-Guru-Example",
@@ -317,6 +316,7 @@ import 'resource_collection_tags.dart';
 ///                 "Example-Value",
 ///             },
 ///         },
+///         Type = "AWS_TAGS",
 ///     });
 ///
 /// });
@@ -332,13 +332,13 @@ import 'resource_collection_tags.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := devopsguru.NewResourceCollection(ctx, "example", &devopsguru.ResourceCollectionArgs{
-/// 			Type: pulumi.String("AWS_TAGS"),
 /// 			Tags: &devopsguru.ResourceCollectionTagsArgs{
 /// 				AppBoundaryKey: pulumi.String("DevOps-Guru-Example"),
 /// 				TagValues: pulumi.StringArray{
 /// 					pulumi.String("Example-Value"),
 /// 				},
 /// 			},
+/// 			Type: pulumi.String("AWS_TAGS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,11 +357,11 @@ import 'resource_collection_tags.dart';
 /// }
 ///
 /// resource "aws_devopsguru_resourcecollection" "example" {
-///   type = "AWS_TAGS"
 ///   tags = {
 ///     app_boundary_key = "DevOps-Guru-Example"
 ///     tag_values       = ["Example-Value"]
 ///   }
+///   type = "AWS_TAGS"
 /// }
 /// ```
 /// ```java
@@ -387,11 +387,11 @@ import 'resource_collection_tags.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceCollection("example", ResourceCollectionArgs.builder()
-///             .type("AWS_TAGS")
 ///             .tags(ResourceCollectionTagsArgs.builder()
 ///                 .appBoundaryKey("DevOps-Guru-Example")
 ///                 .tagValues("Example-Value")
 ///                 .build())
+///             .type("AWS_TAGS")
 ///             .build());
 ///
 ///     }
@@ -402,11 +402,11 @@ import 'resource_collection_tags.dart';
 ///   example:
 ///     type: aws:devopsguru:ResourceCollection
 ///     properties:
-///       type: AWS_TAGS
 ///       tags:
 ///         appBoundaryKey: DevOps-Guru-Example
 ///         tagValues:
 ///           - Example-Value
+///       type: AWS_TAGS
 /// ```
 ///
 ///
@@ -420,11 +420,11 @@ import 'resource_collection_tags.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devopsguru.ResourceCollection("example", {
-///     type: "AWS_TAGS",
 ///     tags: {
 ///         appBoundaryKey: "DevOps-Guru-Example",
 ///         tagValues: ["*"],
 ///     },
+///     type: "AWS_TAGS",
 /// });
 /// ```
 /// ```python
@@ -432,11 +432,11 @@ import 'resource_collection_tags.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devopsguru.ResourceCollection("example",
-///     type="AWS_TAGS",
 ///     tags={
 ///         "app_boundary_key": "DevOps-Guru-Example",
 ///         "tag_values": ["*"],
-///     })
+///     },
+///     type="AWS_TAGS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -448,7 +448,6 @@ import 'resource_collection_tags.dart';
 /// {
 ///     var example = new Aws.DevOpsGuru.ResourceCollection("example", new()
 ///     {
-///         Type = "AWS_TAGS",
 ///         Tags = new Aws.DevOpsGuru.Inputs.ResourceCollectionTagsArgs
 ///         {
 ///             AppBoundaryKey = "DevOps-Guru-Example",
@@ -457,6 +456,7 @@ import 'resource_collection_tags.dart';
 ///                 "*",
 ///             },
 ///         },
+///         Type = "AWS_TAGS",
 ///     });
 ///
 /// });
@@ -472,13 +472,13 @@ import 'resource_collection_tags.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := devopsguru.NewResourceCollection(ctx, "example", &devopsguru.ResourceCollectionArgs{
-/// 			Type: pulumi.String("AWS_TAGS"),
 /// 			Tags: &devopsguru.ResourceCollectionTagsArgs{
 /// 				AppBoundaryKey: pulumi.String("DevOps-Guru-Example"),
 /// 				TagValues: pulumi.StringArray{
 /// 					pulumi.String("*"),
 /// 				},
 /// 			},
+/// 			Type: pulumi.String("AWS_TAGS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -497,11 +497,11 @@ import 'resource_collection_tags.dart';
 /// }
 ///
 /// resource "aws_devopsguru_resourcecollection" "example" {
-///   type = "AWS_TAGS"
 ///   tags = {
 ///     app_boundary_key = "DevOps-Guru-Example"
 ///     tag_values       = ["*"]
 ///   }
+///   type = "AWS_TAGS"
 /// }
 /// ```
 /// ```java
@@ -527,11 +527,11 @@ import 'resource_collection_tags.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceCollection("example", ResourceCollectionArgs.builder()
-///             .type("AWS_TAGS")
 ///             .tags(ResourceCollectionTagsArgs.builder()
 ///                 .appBoundaryKey("DevOps-Guru-Example")
 ///                 .tagValues("*")
 ///                 .build())
+///             .type("AWS_TAGS")
 ///             .build());
 ///
 ///     }
@@ -542,11 +542,11 @@ import 'resource_collection_tags.dart';
 ///   example:
 ///     type: aws:devopsguru:ResourceCollection
 ///     properties:
-///       type: AWS_TAGS
 ///       tags:
 ///         appBoundaryKey: DevOps-Guru-Example
 ///         tagValues:
 ///           - '*'
+///       type: AWS_TAGS
 /// ```
 ///
 ///
@@ -581,7 +581,7 @@ class ResourceCollection extends pulumi.CustomResource {
           'aws:devopsguru/resourceCollection:ResourceCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionCloudformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -594,11 +594,12 @@ class ResourceCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -612,6 +613,21 @@ class ResourceCollection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionCloudformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<ResourceCollectionTags?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionTags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ResourceCollection] resource.
+  ResourceCollection.reference(String urn)
+    : super(
+        'aws:devopsguru/resourceCollection:ResourceCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionCloudformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<ResourceCollectionTags?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionTags.fromMap((guardedValue as Map).cast<String, dynamic>()); });

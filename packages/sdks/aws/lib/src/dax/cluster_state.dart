@@ -7,67 +7,67 @@ import 'cluster_server_side_encryption.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// The ARN of the DAX cluster
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// List of Availability Zones in which the
   /// nodes will be created
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The DNS name of the DAX cluster without the port appended
-  final pulumi.Input<String>? clusterAddress;
+  final pulumi.Input<String?>? clusterAddress;
   /// The type of encryption the
   /// cluster's endpoint should support. Valid values are: `NONE` and `TLS`.
   /// Default value is `NONE`.
-  final pulumi.Input<String>? clusterEndpointEncryptionType;
+  final pulumi.Input<String?>? clusterEndpointEncryptionType;
   /// Group identifier. DAX converts this name to
   /// lowercase
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The configuration endpoint for this DAX cluster,
   /// consisting of a DNS name and a port number
-  final pulumi.Input<String>? configurationEndpoint;
+  final pulumi.Input<String?>? configurationEndpoint;
   /// Description for the cluster
-  final pulumi.Input<String>? description;
-  /// A valid Amazon Resource Name (ARN) that identifies
+  final pulumi.Input<String?>? description;
+  /// Valid ARN that identifies
   /// an IAM role. At runtime, DAX will assume this role and use the role's
   /// permissions to access DynamoDB on your behalf
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// Specifies the weekly time range for when
   /// maintenance on the cluster is performed. The format is `ddd:hh24:mi-ddd:hh24:mi`
   /// (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example:
   /// `sun:05:00-sun:09:00`
-  final pulumi.Input<String>? maintenanceWindow;
+  final pulumi.Input<String?>? maintenanceWindow;
   /// The compute and memory capacity of the nodes. See
   /// [Nodes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.concepts.cluster.html#DAX.concepts.nodes) for supported node types
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// List of node objects including `id`, `address`, `port` and
   /// `availabilityZone`. Referenceable e.g., as
   /// `${aws_dax_cluster.test.nodes.0.address}`
-  final pulumi.Input<List<ClusterNode>>? nodes;
-  /// An Amazon Resource Name (ARN) of an
+  final pulumi.Input<List<ClusterNode>?>? nodes;
+  /// ARN of an
   /// SNS topic to send DAX notifications to. Example:
   /// `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
-  final pulumi.Input<String>? notificationTopicArn;
+  final pulumi.Input<String?>? notificationTopicArn;
   /// Name of the parameter group to associate
   /// with this DAX cluster
-  final pulumi.Input<String>? parameterGroupName;
+  final pulumi.Input<String?>? parameterGroupName;
   /// The port used by the configuration endpoint
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The number of nodes in the DAX cluster. A
   /// replication factor of 1 will create a single-node cluster, without any read
   /// replicas
-  final pulumi.Input<int>? replicationFactor;
+  final pulumi.Input<int?>? replicationFactor;
   /// One or more VPC security groups associated
   /// with the cluster
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Encrypt at rest options
-  final pulumi.Input<ClusterServerSideEncryption>? serverSideEncryption;
+  final pulumi.Input<ClusterServerSideEncryption?>? serverSideEncryption;
   /// Name of the subnet group to be used for the
   /// cluster
-  final pulumi.Input<String>? subnetGroupName;
+  final pulumi.Input<String?>? subnetGroupName;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ClusterState].
   /// [arn] The ARN of the DAX cluster
@@ -77,11 +77,11 @@ class ClusterState {
   /// [clusterName] Group identifier. DAX converts this name to
   /// [configurationEndpoint] The configuration endpoint for this DAX cluster,
   /// [description] Description for the cluster
-  /// [iamRoleArn] A valid Amazon Resource Name (ARN) that identifies
+  /// [iamRoleArn] Valid ARN that identifies
   /// [maintenanceWindow] Specifies the weekly time range for when
   /// [nodeType] The compute and memory capacity of the nodes. See
   /// [nodes] List of node objects including `id`, `address`, `port` and
-  /// [notificationTopicArn] An Amazon Resource Name (ARN) of an
+  /// [notificationTopicArn] ARN of an
   /// [parameterGroupName] Name of the parameter group to associate
   /// [port] The port used by the configuration endpoint
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -156,9 +156,9 @@ class ClusterState {
       nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNode>(guardedValue, (value) => ClusterNode.fromMap((value as Map).cast<String, dynamic>()))); })(),
       notificationTopicArn: (() { final guardedValue = map['notificationTopicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       serverSideEncryption: (() { final guardedValue = map['serverSideEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnetGroupName: (() { final guardedValue = map['subnetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

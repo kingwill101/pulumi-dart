@@ -13,24 +13,24 @@ import 'scraper_timeouts.dart';
 /// {@macro pulumi_amp_scraper_scraper_args_doc}
 class ScraperArgs {
   /// Name to associate with the managed scraper. This is for your use, and does not need to be unique.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Configuration block for the managed scraper to send metrics to. See `destination` Block for details.
   final pulumi.Input<ScraperDestination> destination;
   /// Configuration block for additional exporters. See `exporter` Block for details.
-  final pulumi.Input<ScraperExporter>? exporter;
+  final pulumi.Input<ScraperExporter?>? exporter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `roleConfiguration` Block for details.
-  final pulumi.Input<ScraperRoleConfiguration>? roleConfiguration;
+  final pulumi.Input<ScraperRoleConfiguration?>? roleConfiguration;
   /// Configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
   final pulumi.Input<String> scrapeConfiguration;
   /// Configuration block to specify where the managed scraper will collect metrics from. See `source` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ScraperSource>? source;
+  final pulumi.Input<ScraperSource?>? source;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ScraperTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ScraperTimeouts?>? timeouts;
 
   /// Creates a new [ScraperArgs].
   /// [alias] Name to associate with the managed scraper. This is for your use, and does not need to be unique.

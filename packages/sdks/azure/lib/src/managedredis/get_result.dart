@@ -8,28 +8,28 @@ import 'get_identity.dart';
 /// Result data returned by get.
 class GetResult {
   /// A `customerManagedKey` block as defined below.
-  final List<GetCustomerManagedKey> customerManagedKeys;
+  final List<GetCustomerManagedKey>? customerManagedKeys;
   /// A `defaultDatabase` block as defined below.
-  final List<GetDefaultDatabase> defaultDatabases;
+  final List<GetDefaultDatabase>? defaultDatabases;
   /// Whether high availability is enabled for the Managed Redis instance.
-  final bool highAvailabilityEnabled;
+  final bool? highAvailabilityEnabled;
   /// The DNS hostname of the Managed Redis instance.
-  final String hostname;
+  final String? hostname;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetIdentity> identities;
+  final List<GetIdentity>? identities;
   /// The Azure Region where the Managed Redis instance exists.
-  final String location;
+  final String? location;
   /// The name of the Redis module.
-  final String name;
+  final String? name;
   /// The public network access setting for the Managed Redis instance.
-  final String publicNetworkAccess;
-  final String resourceGroupName;
+  final String? publicNetworkAccess;
+  final String? resourceGroupName;
   /// The SKU name of the Managed Redis instance.
-  final String skuName;
+  final String? skuName;
   /// A mapping of tags assigned to the Managed Redis instance.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetResult].
   /// [customerManagedKeys] A `customerManagedKey` block as defined below.
@@ -41,55 +41,55 @@ class GetResult {
   /// [location] The Azure Region where the Managed Redis instance exists.
   /// [name] The name of the Redis module.
   /// [publicNetworkAccess] The public network access setting for the Managed Redis instance.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [skuName] The SKU name of the Managed Redis instance.
   /// [tags] A mapping of tags assigned to the Managed Redis instance.
   const GetResult({
-    required this.customerManagedKeys,
-    required this.defaultDatabases,
-    required this.highAvailabilityEnabled,
-    required this.hostname,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.name,
-    required this.publicNetworkAccess,
-    required this.resourceGroupName,
-    required this.skuName,
-    required this.tags,
+    this.customerManagedKeys,
+    this.defaultDatabases,
+    this.highAvailabilityEnabled,
+    this.hostname,
+    this.id,
+    this.identities,
+    this.location,
+    this.name,
+    this.publicNetworkAccess,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedKeys': pulumi.Input.encodeList<GetCustomerManagedKey, Map<String, dynamic>>(customerManagedKeys, (value) => value.toMap()),
-      'defaultDatabases': pulumi.Input.encodeList<GetDefaultDatabase, Map<String, dynamic>>(defaultDatabases, (value) => value.toMap()),
-      'highAvailabilityEnabled': highAvailabilityEnabled,
-      'hostname': hostname,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'publicNetworkAccess': publicNetworkAccess,
-      'resourceGroupName': resourceGroupName,
-      'skuName': skuName,
-      'tags': tags,
+      'customerManagedKeys': ?(() { final guardedValue = customerManagedKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCustomerManagedKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'defaultDatabases': ?(() { final guardedValue = defaultDatabases; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDefaultDatabase, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'highAvailabilityEnabled': ?highAvailabilityEnabled,
+      'hostname': ?hostname,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'publicNetworkAccess': ?publicNetworkAccess,
+      'resourceGroupName': ?resourceGroupName,
+      'skuName': ?skuName,
+      'tags': ?tags,
     };
   }
 
   factory GetResult.fromMap(Map<String, dynamic> map) {
     return GetResult(
-      customerManagedKeys: pulumi.Input.decodeList<GetCustomerManagedKey>(map['customerManagedKeys']!, (value) => GetCustomerManagedKey.fromMap((value as Map).cast<String, dynamic>())),
-      defaultDatabases: pulumi.Input.decodeList<GetDefaultDatabase>(map['defaultDatabases']!, (value) => GetDefaultDatabase.fromMap((value as Map).cast<String, dynamic>())),
-      highAvailabilityEnabled: map['highAvailabilityEnabled'] as bool,
-      hostname: map['hostname'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetIdentity>(map['identities']!, (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      skuName: map['skuName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      customerManagedKeys: (() { final guardedValue = map['customerManagedKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCustomerManagedKey>(guardedValue, (value) => GetCustomerManagedKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      defaultDatabases: (() { final guardedValue = map['defaultDatabases']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDefaultDatabase>(guardedValue, (value) => GetDefaultDatabase.fromMap((value as Map).cast<String, dynamic>())); })(),
+      highAvailabilityEnabled: (() { final guardedValue = map['highAvailabilityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetIdentity>(guardedValue, (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

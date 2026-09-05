@@ -14,19 +14,20 @@ class GetMoqRelayFilter {
   /// RFC 3339 timestamp (typically the `created` value of the first item
   /// on the current page, to fetch the previous page).
   final pulumi.Input<String?>? createdBefore;
-  /// Maximum number of relays to return per page.
-  final pulumi.Input<int?>? perPage;
+  /// Maximum number of relays to return per page. Values above the maximum are
+  /// clamped to it rather than rejected.
+  final pulumi.Input<int> perPage;
 
   /// Creates a new [GetMoqRelayFilter].
   /// [asc] Sort order by `created`. When true, results are returned oldest-first
   /// [createdAfter] Cursor for pagination. Returns relays created strictly after this
   /// [createdBefore] Cursor for pagination. Returns relays created strictly before this
-  /// [perPage] Maximum number of relays to return per page.
+  /// [perPage] Maximum number of relays to return per page. Values above the maximum are
   const GetMoqRelayFilter({
     required this.asc,
     this.createdAfter,
     this.createdBefore,
-    this.perPage,
+    required this.perPage,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,7 +35,7 @@ class GetMoqRelayFilter {
       'asc': asc,
       'createdAfter': ?createdAfter,
       'createdBefore': ?createdBefore,
-      'perPage': ?perPage,
+      'perPage': perPage,
     };
   }
 
@@ -43,7 +44,7 @@ class GetMoqRelayFilter {
       asc: pulumi.Input.fromValue(map['asc'] as bool),
       createdAfter: (() { final guardedValue = map['createdAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdBefore: (() { final guardedValue = map['createdBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      perPage: (() { final guardedValue = map['perPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      perPage: pulumi.Input.fromValue((map['perPage'] as num).toInt()),
     );
   }
 }

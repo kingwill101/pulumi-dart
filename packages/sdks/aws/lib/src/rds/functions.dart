@@ -152,6 +152,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Provides information about an RDS cluster.
 ///
 /// ## Example Usage
@@ -268,6 +279,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Information about an RDS cluster parameter group.
@@ -388,6 +410,17 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
   return GetClusterParameterGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterParameterGroupResult> getClusterParameterGroupOutput(
+  GetClusterParameterGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getClusterParameterGroup:getClusterParameterGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterParameterGroupResult.fromMap);
+}
+
 /// Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 ///
 /// &gt; **NOTE:** This data source does not apply to snapshots created on DB Instances.
@@ -410,6 +443,8 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 ///     clusterIdentifier: "development_cluster",
 ///     snapshotIdentifier: developmentFinalSnapshot.then(developmentFinalSnapshot => developmentFinalSnapshot.id),
 ///     dbSubnetGroupName: "my_db_subnet_group",
+/// }, {
+///     ignoreChanges: ["snapshotIdentifier"],
 /// });
 /// const auroraClusterInstance = new aws.rds.ClusterInstance("aurora", {
 ///     clusterIdentifier: aurora.id,
@@ -428,7 +463,8 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// aurora = aws.rds.Cluster("aurora",
 ///     cluster_identifier="development_cluster",
 ///     snapshot_identifier=development_final_snapshot.id,
-///     db_subnet_group_name="my_db_subnet_group")
+///     db_subnet_group_name="my_db_subnet_group",
+///     opts = pulumi.ResourceOptions(ignore_changes=["snapshotIdentifier"]))
 /// aurora_cluster_instance = aws.rds.ClusterInstance("aurora",
 ///     cluster_identifier=aurora.id,
 ///     instance_class=aws.rds.InstanceType.T2_SMALL,
@@ -455,6 +491,12 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 ///         ClusterIdentifier = "development_cluster",
 ///         SnapshotIdentifier = developmentFinalSnapshot.Apply(getClusterSnapshotResult => getClusterSnapshotResult.Id),
 ///         DbSubnetGroupName = "my_db_subnet_group",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "snapshotIdentifier",
+///         },
 ///     });
 ///
 ///     var auroraClusterInstance = new Aws.Rds.ClusterInstance("aurora", new()
@@ -489,7 +531,9 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// 			ClusterIdentifier:  pulumi.String("development_cluster"),
 /// 			SnapshotIdentifier: pulumi.String(developmentFinalSnapshot.Id),
 /// 			DbSubnetGroupName:  pulumi.String("my_db_subnet_group"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"snapshotIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -522,6 +566,9 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// # Use the last snapshot of the dev database before it was destroyed to create
 /// # a new dev database.
 /// resource "aws_rds_cluster" "aurora" {
+///   lifecycle {
+///     ignore_changes = [snapshotIdentifier]
+///   }
 ///   cluster_identifier   = "development_cluster"
 ///   snapshot_identifier  = data.aws_rds_getclustersnapshot.developmentFinalSnapshot.id
 ///   db_subnet_group_name = "my_db_subnet_group"
@@ -544,6 +591,7 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 /// import com.pulumi.aws.rds.ClusterArgs;
 /// import com.pulumi.aws.rds.ClusterInstance;
 /// import com.pulumi.aws.rds.ClusterInstanceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -568,7 +616,9 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 ///             .clusterIdentifier("development_cluster")
 ///             .snapshotIdentifier(developmentFinalSnapshot.id())
 ///             .dbSubnetGroupName("my_db_subnet_group")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("snapshotIdentifier")
+///                 .build());
 ///
 ///         var auroraClusterInstance = new ClusterInstance("auroraClusterInstance", ClusterInstanceArgs.builder()
 ///             .clusterIdentifier(aurora.id())
@@ -589,6 +639,9 @@ Future<GetClusterParameterGroupResult> getClusterParameterGroup(
 ///       clusterIdentifier: development_cluster
 ///       snapshotIdentifier: ${developmentFinalSnapshot.id}
 ///       dbSubnetGroupName: my_db_subnet_group
+///     options:
+///       ignoreChanges:
+///         - snapshotIdentifier
 ///   auroraClusterInstance:
 ///     type: aws:rds:ClusterInstance
 ///     name: aurora
@@ -617,6 +670,17 @@ Future<GetClusterSnapshotResult> getClusterSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterSnapshotResult> getClusterSnapshotOutput(
+  GetClusterSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getClusterSnapshot:getClusterSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterSnapshotResult.fromMap);
 }
 
 /// Data source for managing an AWS RDS (Relational Database) Clusters.
@@ -772,6 +836,17 @@ Future<GetClustersResult> getClusters(
   return GetClustersResult.fromMap(result);
 }
 
+pulumi.Output<GetClustersResult> getClustersOutput(
+  GetClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getClusters:getClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClustersResult.fromMap);
+}
+
 /// Information about an RDS engine version.
 ///
 /// ## Example Usage
@@ -911,26 +986,26 @@ Future<GetClustersResult> getClusters(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = aws.rds.getEngineVersion({
-///     engine: "aurora-postgresql",
-///     version: "10.14",
-///     includeAll: true,
 ///     filters: [{
 ///         name: "engine-mode",
 ///         values: ["serverless"],
 ///     }],
+///     engine: "aurora-postgresql",
+///     version: "10.14",
+///     includeAll: true,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.rds.get_engine_version(engine="aurora-postgresql",
-///     version="10.14",
-///     include_all=True,
-///     filters=[{
+/// test = aws.rds.get_engine_version(filters=[{
 ///         "name": "engine-mode",
 ///         "values": ["serverless"],
-///     }])
+///     }],
+///     engine="aurora-postgresql",
+///     version="10.14",
+///     include_all=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -942,9 +1017,6 @@ Future<GetClustersResult> getClusters(
 /// {
 ///     var test = Aws.Rds.GetEngineVersion.Invoke(new()
 ///     {
-///         Engine = "aurora-postgresql",
-///         Version = "10.14",
-///         IncludeAll = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.GetEngineVersionFilterInputArgs
@@ -956,6 +1028,9 @@ Future<GetClustersResult> getClusters(
 ///                 },
 ///             },
 ///         },
+///         Engine = "aurora-postgresql",
+///         Version = "10.14",
+///         IncludeAll = true,
 ///     });
 ///
 /// });
@@ -971,9 +1046,6 @@ Future<GetClustersResult> getClusters(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.GetEngineVersion(ctx, &rds.GetEngineVersionArgs{
-/// 			Engine:     "aurora-postgresql",
-/// 			Version:    pulumi.StringRef("10.14"),
-/// 			IncludeAll: pulumi.BoolRef(true),
 /// 			Filters: []rds.GetEngineVersionFilter{
 /// 				{
 /// 					Name: "engine-mode",
@@ -982,6 +1054,9 @@ Future<GetClustersResult> getClusters(
 /// 					},
 /// 				},
 /// 			},
+/// 			Engine:     "aurora-postgresql",
+/// 			Version:    pulumi.StringRef("10.14"),
+/// 			IncludeAll: pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -1000,13 +1075,13 @@ Future<GetClustersResult> getClusters(
 /// }
 ///
 /// data "aws_rds_getengineversion" "test" {
-///   engine      = "aurora-postgresql"
-///   version     = "10.14"
-///   include_all = true
 ///   filters {
 ///     name   = "engine-mode"
 ///     values = ["serverless"]
 ///   }
+///   engine      = "aurora-postgresql"
+///   version     = "10.14"
+///   include_all = true
 /// }
 /// ```
 /// ```java
@@ -1032,13 +1107,13 @@ Future<GetClustersResult> getClusters(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = RdsFunctions.getEngineVersion(GetEngineVersionArgs.builder()
-///             .engine("aurora-postgresql")
-///             .version("10.14")
-///             .includeAll(true)
 ///             .filters(GetEngineVersionFilterArgs.builder()
 ///                 .name("engine-mode")
 ///                 .values("serverless")
 ///                 .build())
+///             .engine("aurora-postgresql")
+///             .version("10.14")
+///             .includeAll(true)
 ///             .build());
 ///
 ///     }
@@ -1050,13 +1125,13 @@ Future<GetClustersResult> getClusters(
 ///     fn::invoke:
 ///       function: aws:rds:getEngineVersion
 ///       arguments:
-///         engine: aurora-postgresql
-///         version: '10.14'
-///         includeAll: true
 ///         filters:
 ///           - name: engine-mode
 ///             values:
 ///               - serverless
+///         engine: aurora-postgresql
+///         version: '10.14'
+///         includeAll: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_rds_get_engine_version_get_engine_version_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1071,6 +1146,17 @@ Future<GetEngineVersionResult> getEngineVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEngineVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetEngineVersionResult> getEngineVersionOutput(
+  GetEngineVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getEngineVersion:getEngineVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEngineVersionResult.fromMap);
 }
 
 /// ## Example Usage
@@ -1320,6 +1406,17 @@ Future<GetEventCategoriesResult> getEventCategories(
   return GetEventCategoriesResult.fromMap(result);
 }
 
+pulumi.Output<GetEventCategoriesResult> getEventCategoriesOutput(
+  GetEventCategoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getEventCategories:getEventCategories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventCategoriesResult.fromMap);
+}
+
 /// Data source for managing an AWS RDS (Relational Database) Global Cluster.
 ///
 /// ## Example Usage
@@ -1440,6 +1537,17 @@ Future<GetGlobalClusterResult> getGlobalCluster(
   return GetGlobalClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalClusterResult> getGlobalClusterOutput(
+  GetGlobalClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getGlobalCluster:getGlobalCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalClusterResult.fromMap);
+}
+
 /// Use this data source to get information about an RDS instance
 ///
 /// ## Example Usage
@@ -1556,6 +1664,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Data source for listing RDS Database Instances.
@@ -1824,6 +1943,17 @@ Future<GetInstancesResult> getInstances(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstancesResult.fromMap(result);
+}
+
+pulumi.Output<GetInstancesResult> getInstancesOutput(
+  GetInstancesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getInstances:getInstances',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstancesResult.fromMap);
 }
 
 /// Information about RDS orderable DB instances and valid parameter combinations.
@@ -2165,6 +2295,17 @@ Future<GetOrderableDbInstanceResult> getOrderableDbInstance(
   return GetOrderableDbInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetOrderableDbInstanceResult> getOrderableDbInstanceOutput(
+  GetOrderableDbInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getOrderableDbInstance:getOrderableDbInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrderableDbInstanceResult.fromMap);
+}
+
 /// Information about a database parameter group.
 ///
 /// ## Example Usage
@@ -2283,6 +2424,17 @@ Future<GetParameterGroupResult> getParameterGroup(
   return GetParameterGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
+  GetParameterGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getParameterGroup:getParameterGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterGroupResult.fromMap);
+}
+
 /// Use this data source to get information about a DB Proxy.
 ///
 /// ## Example Usage
@@ -2399,6 +2551,17 @@ Future<GetProxyResult> getProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetProxyResult> getProxyOutput(
+  GetProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getProxy:getProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProxyResult.fromMap);
 }
 
 /// Information about a single RDS Reserved Instance Offering.
@@ -2547,6 +2710,17 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
   return GetReservedInstanceOfferingResult.fromMap(result);
 }
 
+pulumi.Output<GetReservedInstanceOfferingResult> getReservedInstanceOfferingOutput(
+  GetReservedInstanceOfferingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getReservedInstanceOffering:getReservedInstanceOffering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservedInstanceOfferingResult.fromMap);
+}
+
 /// Use this data source to get information about a DB Snapshot for use when provisioning DB instances
 ///
 /// &gt; **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
@@ -2579,6 +2753,8 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 ///     instanceClass: aws.rds.InstanceType.T2_Micro,
 ///     dbName: "mydbdev",
 ///     snapshotIdentifier: latestProdSnapshot.id,
+/// }, {
+///     ignoreChanges: ["snapshotIdentifier"],
 /// });
 /// ```
 /// ```python
@@ -2601,7 +2777,8 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// dev = aws.rds.Instance("dev",
 ///     instance_class=aws.rds.InstanceType.T2_MICRO,
 ///     db_name="mydbdev",
-///     snapshot_identifier=latest_prod_snapshot.id)
+///     snapshot_identifier=latest_prod_snapshot.id,
+///     opts = pulumi.ResourceOptions(ignore_changes=["snapshotIdentifier"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2636,6 +2813,12 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 ///         InstanceClass = Aws.Rds.InstanceType.T2_Micro,
 ///         DbName = "mydbdev",
 ///         SnapshotIdentifier = latestProdSnapshot.Apply(getSnapshotResult => getSnapshotResult.Id),
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "snapshotIdentifier",
+///         },
 ///     });
 ///
 /// });
@@ -2673,7 +2856,9 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// 			InstanceClass:      pulumi.String(rds.InstanceType_T2_Micro),
 /// 			DbName:             pulumi.String("mydbdev"),
 /// 			SnapshotIdentifier: latestProdSnapshot.Id(),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"snapshotIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -2708,6 +2893,9 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// }
 /// # Use the latest production snapshot to create a dev instance.
 /// resource "aws_rds_instance" "dev" {
+///   lifecycle {
+///     ignore_changes = [snapshotIdentifier]
+///   }
 ///   instance_class      = "db.t2.micro"
 ///   db_name             = "mydbdev"
 ///   snapshot_identifier = data.aws_rds_getsnapshot.latestProdSnapshot.id
@@ -2723,6 +2911,7 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 /// import com.pulumi.aws.rds.InstanceArgs;
 /// import com.pulumi.aws.rds.RdsFunctions;
 /// import com.pulumi.aws.rds.inputs.GetSnapshotArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -2758,7 +2947,9 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 ///             .instanceClass("db.t2.micro")
 ///             .dbName("mydbdev")
 ///             .snapshotIdentifier(latestProdSnapshot.applyValue(_latestProdSnapshot -> _latestProdSnapshot.id()))
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("snapshotIdentifier")
+///                 .build());
 ///
 ///     }
 /// }
@@ -2784,6 +2975,9 @@ Future<GetReservedInstanceOfferingResult> getReservedInstanceOffering(
 ///       instanceClass: db.t2.micro
 ///       dbName: mydbdev
 ///       snapshotIdentifier: ${latestProdSnapshot.id}
+///     options:
+///       ignoreChanges:
+///         - snapshotIdentifier
 /// variables:
 ///   latestProdSnapshot:
 ///     fn::invoke:
@@ -2805,6 +2999,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Provides details about an AWS RDS (Relational Database) Snapshots.
@@ -3063,6 +3268,17 @@ Future<GetSnapshotsResult> getSnapshots(
   return GetSnapshotsResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotsResult> getSnapshotsOutput(
+  GetSnapshotsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getSnapshots:getSnapshots',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotsResult.fromMap);
+}
+
 /// Use this data source to get information about an RDS subnet group.
 ///
 /// ## Example Usage
@@ -3179,4 +3395,15 @@ Future<GetSubnetGroupResult> getSubnetGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
+  GetSubnetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:rds/getSubnetGroup:getSubnetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetGroupResult.fromMap);
 }

@@ -5,8 +5,8 @@ import 'agentcore_gateway_target_target_configuration_mcp_smithy_model_inline_pa
 import 'agentcore_gateway_target_target_configuration_mcp_smithy_model_s3.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel {
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload>? inlinePayload;
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3>? s3;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload?>? inlinePayload;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3?>? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel].
   /// [inlinePayload] Optional.

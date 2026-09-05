@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EndpointServicebus resources.
 class EndpointServicebusState {
   /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
-  final pulumi.Input<String>? deadLetterStorageSecret;
+  final pulumi.Input<String?>? deadLetterStorageSecret;
   /// The ID of the Digital Twins Instance. Changing this forces a new Digital Twins Service Bus Endpoint to be created.
-  final pulumi.Input<String>? digitalTwinsId;
+  final pulumi.Input<String?>? digitalTwinsId;
   /// The name which should be used for this Digital Twins Service Bus Endpoint. Changing this forces a new Digital Twins Service Bus Endpoint to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission. .
-  final pulumi.Input<String>? servicebusPrimaryConnectionString;
+  final pulumi.Input<String?>? servicebusPrimaryConnectionString;
   /// The secondary connection string of the Service Bus Topic Authorization Rule with a minimum of `send` permission.
-  final pulumi.Input<String>? servicebusSecondaryConnectionString;
+  final pulumi.Input<String?>? servicebusSecondaryConnectionString;
 
   /// Creates a new [EndpointServicebusState].
   /// [deadLetterStorageSecret] The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.

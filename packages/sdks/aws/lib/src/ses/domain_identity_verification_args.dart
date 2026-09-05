@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ses_domain_identity_verification_domain_identity_verification_args_doc}
 class DomainIdentityVerificationArgs {
-  /// The domain name of the SES domain identity to verify.
+  /// Domain name of the SES domain identity to verify.
   final pulumi.Input<String> domain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainIdentityVerificationArgs].
-  /// [domain] The domain name of the SES domain identity to verify.
+  /// [domain] Domain name of the SES domain identity to verify.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const DomainIdentityVerificationArgs({
     required this.domain,

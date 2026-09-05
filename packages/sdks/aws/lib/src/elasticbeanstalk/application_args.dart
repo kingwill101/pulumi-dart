@@ -8,15 +8,15 @@ import 'application_appversion_lifecycle.dart';
 /// {@endtemplate}
 /// {@macro pulumi_elasticbeanstalk_application_application_args_doc}
 class ApplicationArgs {
-  final pulumi.Input<ApplicationAppversionLifecycle>? appversionLifecycle;
+  final pulumi.Input<ApplicationAppversionLifecycle?>? appversionLifecycle;
   /// Short description of the application
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the application, must be unique within your account
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of tags for the Elastic Beanstalk Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationArgs].
   /// [appversionLifecycle] Optional.

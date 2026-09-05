@@ -94,7 +94,7 @@ import 'group_state.dart';
 /// 		}
 /// 		_, err = management.NewGroup(ctx, "example_child", &management.GroupArgs{
 /// 			DisplayName:             pulumi.String("ChildGroup"),
-/// 			ParentManagementGroupId: exampleParent.ID(),
+/// 			ParentManagementGroupId: exampleParent.ID().ToIDOutput().ToStringOutput(),
 /// 			SubscriptionIds: pulumi.StringArray{
 /// 				pulumi.String(current.SubscriptionId),
 /// 			},
@@ -233,12 +233,12 @@ class Group extends pulumi.CustomResource {
           'azure:management/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
-    subscriptionIds = registerOutput<List<String>>('subscriptionIds');
+    subscriptionIds = registerOutput<List<String>>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tenantScopedId = registerOutput<String>('tenantScopedId');
   }
 
@@ -247,11 +247,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,7 +269,23 @@ class Group extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
-    subscriptionIds = registerOutput<List<String>>('subscriptionIds');
+    subscriptionIds = registerOutput<List<String>>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tenantScopedId = registerOutput<String>('tenantScopedId');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'azure:management/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
+    subscriptionIds = registerOutput<List<String>>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tenantScopedId = registerOutput<String>('tenantScopedId');
   }
 }

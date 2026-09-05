@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
   /// A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use `s3Prefix` to include only the desired metadata files.
-  final pulumi.Input<String>? s3Prefix;
+  final pulumi.Input<String?>? s3Prefix;
 
   /// Creates a new [DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration].
   /// [s3Prefix] A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use `s3Prefix` to include only the desired metadata files.

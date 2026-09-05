@@ -200,12 +200,12 @@ class Connect extends pulumi.CustomResource {
           'aws:ec2transitgateway/connect:Connect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
     transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
     transitGatewayId = registerOutput<String>('transitGatewayId');
@@ -217,11 +217,12 @@ class Connect extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connect._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,8 +238,27 @@ class Connect extends pulumi.CustomResource {
         ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
+    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+    transportAttachmentId = registerOutput<String>('transportAttachmentId');
+  }
+
+  /// Creates a typed reference to an existing [Connect] resource.
+  Connect.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/connect:Connect',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    protocol = registerOutput<String?>('protocol');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
     transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
     transitGatewayId = registerOutput<String>('transitGatewayId');

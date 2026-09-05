@@ -10,14 +10,14 @@ class UserHierarchyGroupArgs {
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
   /// The name of the user hierarchy group. Must not be more than 100 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
-  final pulumi.Input<String>? parentGroupId;
+  final pulumi.Input<String?>? parentGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the hierarchy group. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [UserHierarchyGroupArgs].
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.

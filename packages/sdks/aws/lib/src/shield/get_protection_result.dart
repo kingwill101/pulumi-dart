@@ -3,45 +3,45 @@
 
 /// Result data returned by getProtection.
 class GetProtectionResult {
-  final String id;
+  final String? id;
   /// Name of the protection.
-  final String name;
+  final String? name;
   /// ARN of the protection.
-  final String protectionArn;
-  final String protectionId;
-  final String resourceArn;
+  final String? protectionArn;
+  final String? protectionId;
+  final String? resourceArn;
 
   /// Creates a new [GetProtectionResult].
-  /// [id] Required.
+  /// [id] Optional.
   /// [name] Name of the protection.
   /// [protectionArn] ARN of the protection.
-  /// [protectionId] Required.
-  /// [resourceArn] Required.
+  /// [protectionId] Optional.
+  /// [resourceArn] Optional.
   const GetProtectionResult({
-    required this.id,
-    required this.name,
-    required this.protectionArn,
-    required this.protectionId,
-    required this.resourceArn,
+    this.id,
+    this.name,
+    this.protectionArn,
+    this.protectionId,
+    this.resourceArn,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'protectionArn': protectionArn,
-      'protectionId': protectionId,
-      'resourceArn': resourceArn,
+      'id': ?id,
+      'name': ?name,
+      'protectionArn': ?protectionArn,
+      'protectionId': ?protectionId,
+      'resourceArn': ?resourceArn,
     };
   }
 
   factory GetProtectionResult.fromMap(Map<String, dynamic> map) {
     return GetProtectionResult(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      protectionArn: map['protectionArn'] as String,
-      protectionId: map['protectionId'] as String,
-      resourceArn: map['resourceArn'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protectionArn: (() { final guardedValue = map['protectionArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protectionId: (() { final guardedValue = map['protectionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceArn: (() { final guardedValue = map['resourceArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -222,7 +222,7 @@ class Workspace extends pulumi.CustomResource {
           'azure:monitoring/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     defaultDataCollectionEndpointId = registerOutput<String>('defaultDataCollectionEndpointId');
     defaultDataCollectionRuleId = registerOutput<String>('defaultDataCollectionRuleId');
@@ -231,7 +231,7 @@ class Workspace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queryEndpoint = registerOutput<String>('queryEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -239,11 +239,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +265,25 @@ class Workspace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     queryEndpoint = registerOutput<String>('queryEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:monitoring/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    defaultDataCollectionEndpointId = registerOutput<String>('defaultDataCollectionEndpointId');
+    defaultDataCollectionRuleId = registerOutput<String>('defaultDataCollectionRuleId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    queryEndpoint = registerOutput<String>('queryEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_nfs_target_args.dart';
+import 'cache_nfs_target_namespace_junction.dart';
 import 'cache_nfs_target_state.dart';
 
 /// Manages a NFS Target within a HPC Cache.
@@ -408,7 +409,7 @@ import 'cache_nfs_target_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			CacheSizeInGb:     pulumi.Int(3072),
-/// 			SubnetId:          exampleHpc.ID(),
+/// 			SubnetId:          exampleHpc.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:           pulumi.String("Standard_2G"),
 /// 		})
 /// 		if err != nil {
@@ -432,7 +433,7 @@ import 'cache_nfs_target_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleVm.ID(),
+/// 					SubnetId:                   exampleVm.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -472,7 +473,7 @@ import 'cache_nfs_target_state.dart';
 /// 			Size:              pulumi.String("Standard_F2"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -894,7 +895,7 @@ class CacheNfsTarget extends pulumi.CustomResource {
   /// The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Can be specified multiple times to define multiple `namespaceJunction`. Each `namespaceJunction` block supports fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> namespaceJunctions;
+  late final pulumi.Output<List<CacheNfsTargetNamespaceJunction>> namespaceJunctions;
   /// The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// The IP address or fully qualified domain name (FQDN) of the HPC Cache NFS target. Changing this forces a new resource to be created.
@@ -918,11 +919,11 @@ class CacheNfsTarget extends pulumi.CustomResource {
           'azure:hpc/cacheNfsTarget:CacheNfsTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');
-    namespaceJunctions = registerOutput<List<Map<String, dynamic>>>('namespaceJunctions');
+    namespaceJunctions = registerOutput<List<CacheNfsTargetNamespaceJunction>>('namespaceJunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(guardedValue, (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     targetHostName = registerOutput<String>('targetHostName');
     usageModel = registerOutput<String>('usageModel');
@@ -935,11 +936,12 @@ class CacheNfsTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheNfsTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CacheNfsTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -955,7 +957,26 @@ class CacheNfsTarget extends pulumi.CustomResource {
         ) {
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');
-    namespaceJunctions = registerOutput<List<Map<String, dynamic>>>('namespaceJunctions');
+    namespaceJunctions = registerOutput<List<CacheNfsTargetNamespaceJunction>>('namespaceJunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(guardedValue, (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    targetHostName = registerOutput<String>('targetHostName');
+    usageModel = registerOutput<String>('usageModel');
+    verificationTimerInSeconds = registerOutput<int?>('verificationTimerInSeconds');
+    writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
+  }
+
+  /// Creates a typed reference to an existing [CacheNfsTarget] resource.
+  CacheNfsTarget.reference(String urn)
+    : super(
+        'azure:hpc/cacheNfsTarget:CacheNfsTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cacheName = registerOutput<String>('cacheName');
+    this.name = registerOutput<String>('name');
+    namespaceJunctions = registerOutput<List<CacheNfsTargetNamespaceJunction>>('namespaceJunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(guardedValue, (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     targetHostName = registerOutput<String>('targetHostName');
     usageModel = registerOutput<String>('usageModel');

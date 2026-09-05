@@ -7,17 +7,17 @@ import 'indexing_configuration_thing_indexing_configuration_managed_field.dart';
 
 class IndexingConfigurationThingIndexingConfiguration {
   /// Contains custom field names and their data type. See below.
-  final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationCustomField>>? customFields;
+  final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationCustomField>?>? customFields;
   /// Device Defender indexing mode. Valid values: `VIOLATIONS`, `OFF`. Default: `OFF`.
-  final pulumi.Input<String>? deviceDefenderIndexingMode;
+  final pulumi.Input<String?>? deviceDefenderIndexingMode;
   /// Required if `namedShadowIndexingMode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
-  final pulumi.Input<IndexingConfigurationThingIndexingConfigurationFilter>? filter;
+  final pulumi.Input<IndexingConfigurationThingIndexingConfigurationFilter?>? filter;
   /// Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.
-  final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationManagedField>>? managedFields;
+  final pulumi.Input<List<IndexingConfigurationThingIndexingConfigurationManagedField>?>? managedFields;
   /// [Named shadow](https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html) indexing mode. Valid values: `ON`, `OFF`. Default: `OFF`.
-  final pulumi.Input<String>? namedShadowIndexingMode;
+  final pulumi.Input<String?>? namedShadowIndexingMode;
   /// Thing connectivity indexing mode. Valid values: `STATUS`, `OFF`. Default: `OFF`.
-  final pulumi.Input<String>? thingConnectivityIndexingMode;
+  final pulumi.Input<String?>? thingConnectivityIndexingMode;
   /// Thing indexing mode. Valid values: `REGISTRY`, `REGISTRY_AND_SHADOW`, `OFF`.
   final pulumi.Input<String> thingIndexingMode;
 

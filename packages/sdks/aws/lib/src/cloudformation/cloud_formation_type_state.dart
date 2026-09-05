@@ -5,50 +5,50 @@ import 'cloud_formation_type_logging_config.dart';
 
 /// Input properties used for looking up and filtering CloudFormationType resources.
 class CloudFormationTypeState {
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
-  final pulumi.Input<String>? arn;
+  /// (Optional) ARN of the CloudFormation Type version. See also `typeArn`.
+  final pulumi.Input<String?>? arn;
   /// Identifier of the CloudFormation Type default version.
-  final pulumi.Input<String>? defaultVersionId;
+  final pulumi.Input<String?>? defaultVersionId;
   /// Deprecation status of the version.
-  final pulumi.Input<String>? deprecatedStatus;
+  final pulumi.Input<String?>? deprecatedStatus;
   /// Description of the version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// URL of the documentation for the CloudFormation Type.
-  final pulumi.Input<String>? documentationUrl;
-  /// Amazon Resource Name (ARN) of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? documentationUrl;
+  /// ARN of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
+  final pulumi.Input<String?>? executionRoleArn;
   /// Whether the CloudFormation Type version is the default version.
-  final pulumi.Input<bool>? isDefaultVersion;
+  final pulumi.Input<bool?>? isDefaultVersion;
   /// Configuration block containing logging configuration.
-  final pulumi.Input<CloudFormationTypeLoggingConfig>? loggingConfig;
+  final pulumi.Input<CloudFormationTypeLoggingConfig?>? loggingConfig;
   /// Provisioning behavior of the CloudFormation Type.
-  final pulumi.Input<String>? provisioningType;
+  final pulumi.Input<String?>? provisioningType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// JSON document of the CloudFormation Type schema.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// URL to the S3 bucket containing the extension project package that contains the necessary files for the extension you want to register. Must begin with `s3://` or `https://`. For example, `s3://example-bucket/example-object`.
-  final pulumi.Input<String>? schemaHandlerPackage;
+  final pulumi.Input<String?>? schemaHandlerPackage;
   /// URL of the source code for the CloudFormation Type.
-  final pulumi.Input<String>? sourceUrl;
+  final pulumi.Input<String?>? sourceUrl;
   /// CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
-  final pulumi.Input<String>? type;
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also `arn`.
-  final pulumi.Input<String>? typeArn;
+  final pulumi.Input<String?>? type;
+  /// (Optional) ARN of the CloudFormation Type. See also `arn`.
+  final pulumi.Input<String?>? typeArn;
   /// CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
   /// (Optional) Identifier of the CloudFormation Type version.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
   /// Scope of the CloudFormation Type.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [CloudFormationTypeState].
-  /// [arn] (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `typeArn`.
+  /// [arn] (Optional) ARN of the CloudFormation Type version. See also `typeArn`.
   /// [defaultVersionId] Identifier of the CloudFormation Type default version.
   /// [deprecatedStatus] Deprecation status of the version.
   /// [description] Description of the version.
   /// [documentationUrl] URL of the documentation for the CloudFormation Type.
-  /// [executionRoleArn] Amazon Resource Name (ARN) of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
+  /// [executionRoleArn] ARN of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
   /// [isDefaultVersion] Whether the CloudFormation Type version is the default version.
   /// [loggingConfig] Configuration block containing logging configuration.
   /// [provisioningType] Provisioning behavior of the CloudFormation Type.
@@ -57,7 +57,7 @@ class CloudFormationTypeState {
   /// [schemaHandlerPackage] URL to the S3 bucket containing the extension project package that contains the necessary files for the extension you want to register. Must begin with `s3://` or `https://`. For example, `s3://example-bucket/example-object`.
   /// [sourceUrl] URL of the source code for the CloudFormation Type.
   /// [type] CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
-  /// [typeArn] (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also `arn`.
+  /// [typeArn] (Optional) ARN of the CloudFormation Type. See also `arn`.
   /// [typeName] CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
   /// [versionId] (Optional) Identifier of the CloudFormation Type version.
   /// [visibility] Scope of the CloudFormation Type.

@@ -5,41 +5,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TopicSubscription resources.
 class TopicSubscriptionState {
   /// ARN of the subscription.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Integer indicating number of minutes to wait in retrying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols. Default is `1`.
-  final pulumi.Input<int>? confirmationTimeoutInMinutes;
+  final pulumi.Input<int?>? confirmationTimeoutInMinutes;
   /// Whether the subscription confirmation request was authenticated.
-  final pulumi.Input<bool>? confirmationWasAuthenticated;
+  final pulumi.Input<bool?>? confirmationWasAuthenticated;
   /// JSON String with the delivery policy (retries, backoff, etc.) that will be used in the subscription - this only applies to HTTP/S subscriptions. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/DeliveryPolicies.html) for more details.
-  final pulumi.Input<String>? deliveryPolicy;
+  final pulumi.Input<String?>? deliveryPolicy;
   /// Endpoint to send data to. The contents vary with the protocol. See details below.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Whether the endpoint is capable of [auto confirming subscription](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.prepare) (e.g., PagerDuty). Default is `false`.
-  final pulumi.Input<bool>? endpointAutoConfirms;
+  final pulumi.Input<bool?>? endpointAutoConfirms;
   /// JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
-  final pulumi.Input<String>? filterPolicy;
+  final pulumi.Input<String?>? filterPolicy;
   /// Whether the `filterPolicy` applies to `MessageAttributes` (default) or `MessageBody`.
-  final pulumi.Input<String>? filterPolicyScope;
+  final pulumi.Input<String?>? filterPolicyScope;
   /// AWS account ID of the subscription's owner.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Whether the subscription has not been confirmed.
-  final pulumi.Input<bool>? pendingConfirmation;
+  final pulumi.Input<bool?>? pendingConfirmation;
   /// Protocol to use. Valid values are: `sqs`, `sms`, `lambda`, `firehose`, and `application`. Protocols `email`, `email-json`, `http` and `https` are also valid but partially supported. See details below.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Whether to enable raw message delivery (the original message is directly passed, not wrapped in JSON with the original message in the message property). Default is `false`.
-  final pulumi.Input<bool>? rawMessageDelivery;
+  final pulumi.Input<bool?>? rawMessageDelivery;
   /// JSON String with the redrive policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-dead-letter-queues.html#how-messages-moved-into-dead-letter-queue) for more details.
-  final pulumi.Input<String>? redrivePolicy;
+  final pulumi.Input<String?>? redrivePolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// JSON String with the archived message replay policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-archiving-and-replay-subscriber.html) for more details.
-  final pulumi.Input<String>? replayPolicy;
+  final pulumi.Input<String?>? replayPolicy;
   /// ARN of the IAM role to publish to Kinesis Data Firehose delivery stream. Refer to [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html).
-  final pulumi.Input<String>? subscriptionRoleArn;
+  final pulumi.Input<String?>? subscriptionRoleArn;
   /// ARN of the SNS topic to subscribe to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<dynamic>? topic;
 
   /// Creates a new [TopicSubscriptionState].
   /// [arn] ARN of the subscription.
@@ -104,7 +104,7 @@ class TopicSubscriptionState {
   factory TopicSubscriptionState.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       confirmationWasAuthenticated: (() { final guardedValue = map['confirmationWasAuthenticated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deliveryPolicy: (() { final guardedValue = map['deliveryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -119,7 +119,7 @@ class TopicSubscriptionState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replayPolicy: (() { final guardedValue = map['replayPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionRoleArn: (() { final guardedValue = map['subscriptionRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      topic: (() { final guardedValue = map['topic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

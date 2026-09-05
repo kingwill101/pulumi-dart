@@ -17,39 +17,39 @@ class FunctionAppArgs {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
   /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// A `authSettings` block as defined below.
-  final pulumi.Input<FunctionAppAuthSettings>? authSettings;
+  final pulumi.Input<FunctionAppAuthSettings?>? authSettings;
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required` and `Optional`.
-  final pulumi.Input<String>? clientCertMode;
+  final pulumi.Input<String?>? clientCertMode;
   /// An `connectionString` block as defined below.
-  final pulumi.Input<List<FunctionAppConnectionString>>? connectionStrings;
+  final pulumi.Input<List<FunctionAppConnectionString>?>? connectionStrings;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
-  final pulumi.Input<int>? dailyMemoryTimeQuota;
+  final pulumi.Input<int?>? dailyMemoryTimeQuota;
   /// Should the built-in logging of this Function App be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enableBuiltinLogging;
+  final pulumi.Input<bool?>? enableBuiltinLogging;
   /// Is the Function App enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Can the Function App only be accessed via HTTPS? Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<FunctionAppIdentity>? identity;
+  final pulumi.Input<FunctionAppIdentity?>? identity;
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. See [Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity) for more information.
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Function App. Changing this forces a new resource to be created. Limit the function name to 32 characters to avoid naming collisions. For more information about [Function App naming rule](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftweb).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A string indicating the Operating System type for this function app. Possible values are `linux` and ``(empty string). Changing this forces a new resource to be created. Defaults to `""`.
   ///
   /// &gt; **NOTE:** This value will be `linux` for Linux derivatives, or an empty string for Windows (default). When set to `linux` you must also set `azure.appservice.Plan` arguments as `kind = "Linux"` and `reserved = true`
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The name of the resource group in which to create the Function App. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `siteConfig` object as defined below.
-  final pulumi.Input<FunctionAppSiteConfig>? siteConfig;
+  final pulumi.Input<FunctionAppSiteConfig?>? siteConfig;
   /// A `sourceControl` block, as defined below.
-  final pulumi.Input<FunctionAppSourceControl>? sourceControl;
+  final pulumi.Input<FunctionAppSourceControl?>? sourceControl;
   /// The access key which will be used to access the backend storage account for the Function App.
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
@@ -59,9 +59,9 @@ class FunctionAppArgs {
   /// The backend storage account name which will be used by this Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The runtime version associated with the Function App. Defaults to `~1`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FunctionAppArgs].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this Function App.
@@ -142,7 +142,7 @@ class FunctionAppArgs {
       authSettings: (() { final guardedValue = map['authSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FunctionAppAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientCertMode: (() { final guardedValue = map['clientCertMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectionStrings: (() { final guardedValue = map['connectionStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FunctionAppConnectionString>(guardedValue, (value) => FunctionAppConnectionString.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      dailyMemoryTimeQuota: (() { final guardedValue = map['dailyMemoryTimeQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dailyMemoryTimeQuota: (() { final guardedValue = map['dailyMemoryTimeQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enableBuiltinLogging: (() { final guardedValue = map['enableBuiltinLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

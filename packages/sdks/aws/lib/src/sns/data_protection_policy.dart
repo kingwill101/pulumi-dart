@@ -271,7 +271,7 @@ import 'data_protection_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the SNS topic.
+/// - `arn` (String) ARN of the SNS topic.
 ///
 ///
 /// Using `pulumi import`, import SNS Data Protection Topic Policy using the topic ARN. For example:
@@ -299,7 +299,7 @@ class DataProtectionPolicy extends pulumi.CustomResource {
           'aws:sns/dataProtectionPolicy:DataProtectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     policy = registerOutput<String>('policy');
@@ -311,11 +311,12 @@ class DataProtectionPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataProtectionPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataProtectionPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,6 +330,20 @@ class DataProtectionPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DataProtectionPolicy] resource.
+  DataProtectionPolicy.reference(String urn)
+    : super(
+        'aws:sns/dataProtectionPolicy:DataProtectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

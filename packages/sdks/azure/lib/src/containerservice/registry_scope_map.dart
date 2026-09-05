@@ -331,9 +331,9 @@ class RegistryScopeMap extends pulumi.CustomResource {
           'azure:containerservice/registryScopeMap:RegistryScopeMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actions = registerOutput<List<String>>('actions');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerRegistryName = registerOutput<String>('containerRegistryName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -345,11 +345,12 @@ class RegistryScopeMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryScopeMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryScopeMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -363,7 +364,23 @@ class RegistryScopeMap extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<String>>('actions');
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    containerRegistryName = registerOutput<String>('containerRegistryName');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [RegistryScopeMap] resource.
+  RegistryScopeMap.reference(String urn)
+    : super(
+        'azure:containerservice/registryScopeMap:RegistryScopeMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerRegistryName = registerOutput<String>('containerRegistryName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

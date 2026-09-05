@@ -12,7 +12,6 @@ import 'user_in_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cognito.UserPool("example", {
-///     name: "example",
 ///     passwordPolicy: {
 ///         temporaryPasswordValidityDays: 7,
 ///         minimumLength: 6,
@@ -20,6 +19,7 @@ import 'user_in_group_state.dart';
 ///         requireSymbols: false,
 ///         requireNumbers: false,
 ///     },
+///     name: "example",
 /// });
 /// const exampleUser = new aws.cognito.User("example", {
 ///     userPoolId: example.id,
@@ -40,14 +40,14 @@ import 'user_in_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cognito.UserPool("example",
-///     name="example",
 ///     password_policy={
 ///         "temporary_password_validity_days": 7,
 ///         "minimum_length": 6,
 ///         "require_uppercase": False,
 ///         "require_symbols": False,
 ///         "require_numbers": False,
-///     })
+///     },
+///     name="example")
 /// example_user = aws.cognito.User("example",
 ///     user_pool_id=example.id,
 ///     username="example")
@@ -69,7 +69,6 @@ import 'user_in_group_state.dart';
 /// {
 ///     var example = new Aws.Cognito.UserPool("example", new()
 ///     {
-///         Name = "example",
 ///         PasswordPolicy = new Aws.Cognito.Inputs.UserPoolPasswordPolicyArgs
 ///         {
 ///             TemporaryPasswordValidityDays = 7,
@@ -78,6 +77,7 @@ import 'user_in_group_state.dart';
 ///             RequireSymbols = false,
 ///             RequireNumbers = false,
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var exampleUser = new Aws.Cognito.User("example", new()
@@ -112,7 +112,6 @@ import 'user_in_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-/// 			Name: pulumi.String("example"),
 /// 			PasswordPolicy: &cognito.UserPoolPasswordPolicyArgs{
 /// 				TemporaryPasswordValidityDays: pulumi.Int(7),
 /// 				MinimumLength:                 pulumi.Int(6),
@@ -120,6 +119,7 @@ import 'user_in_group_state.dart';
 /// 				RequireSymbols:                pulumi.Bool(false),
 /// 				RequireNumbers:                pulumi.Bool(false),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -160,7 +160,6 @@ import 'user_in_group_state.dart';
 /// }
 ///
 /// resource "aws_cognito_userpool" "example" {
-///   name = "example"
 ///   password_policy = {
 ///     temporary_password_validity_days = 7
 ///     minimum_length                   = 6
@@ -168,6 +167,7 @@ import 'user_in_group_state.dart';
 ///     require_symbols                  = false
 ///     require_numbers                  = false
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_cognito_user" "example" {
 ///   user_pool_id = aws_cognito_userpool.example.id
@@ -212,7 +212,6 @@ import 'user_in_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPool("example", UserPoolArgs.builder()
-///             .name("example")
 ///             .passwordPolicy(UserPoolPasswordPolicyArgs.builder()
 ///                 .temporaryPasswordValidityDays(7)
 ///                 .minimumLength(6)
@@ -220,6 +219,7 @@ import 'user_in_group_state.dart';
 ///                 .requireSymbols(false)
 ///                 .requireNumbers(false)
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
@@ -246,13 +246,13 @@ import 'user_in_group_state.dart';
 ///   example:
 ///     type: aws:cognito:UserPool
 ///     properties:
-///       name: example
 ///       passwordPolicy:
 ///         temporaryPasswordValidityDays: 7
 ///         minimumLength: 6
 ///         requireUppercase: false
 ///         requireSymbols: false
 ///         requireNumbers: false
+///       name: example
 ///   exampleUser:
 ///     type: aws:cognito:User
 ///     name: example
@@ -304,7 +304,7 @@ class UserInGroup extends pulumi.CustomResource {
           'aws:cognito/userInGroup:UserInGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
     region = registerOutput<String>('region');
@@ -317,11 +317,12 @@ class UserInGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserInGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserInGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,6 +336,21 @@ class UserInGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupName = registerOutput<String>('groupName');
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [UserInGroup] resource.
+  UserInGroup.reference(String urn)
+    : super(
+        'aws:cognito/userInGroup:UserInGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupName = registerOutput<String>('groupName');
     region = registerOutput<String>('region');
     userPoolId = registerOutput<String>('userPoolId');

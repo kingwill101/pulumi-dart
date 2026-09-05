@@ -10,29 +10,29 @@ import 'event_bus_log_config.dart';
 /// {@macro pulumi_cloudwatch_event_bus_event_bus_args_doc}
 class EventBusArgs {
   /// Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ). This block supports the following arguments:
-  final pulumi.Input<EventBusDeadLetterConfig>? deadLetterConfig;
+  final pulumi.Input<EventBusDeadLetterConfig?>? deadLetterConfig;
   /// Event bus description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Partner event source that the new event bus will be matched with. Must match `name`.
-  final pulumi.Input<String>? eventSourceName;
-  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
-  final pulumi.Input<String>? kmsKeyIdentifier;
+  final pulumi.Input<String?>? eventSourceName;
+  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
+  final pulumi.Input<String?>? kmsKeyIdentifier;
   /// Block for logging configuration settings for the event bus.
-  final pulumi.Input<EventBusLogConfig>? logConfig;
+  final pulumi.Input<EventBusLogConfig?>? logConfig;
   /// Name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure that the `name` matches the `eventSourceName`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EventBusArgs].
   /// [deadLetterConfig] Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ). This block supports the following arguments:
   /// [description] Event bus description.
   /// [eventSourceName] Partner event source that the new event bus will be matched with. Must match `name`.
-  /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
+  /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
   /// [logConfig] Block for logging configuration settings for the event bus.
   /// [name] Name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure that the `name` matches the `eventSourceName`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

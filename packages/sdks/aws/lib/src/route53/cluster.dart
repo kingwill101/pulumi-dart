@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_cluster_endpoint.dart';
 import 'cluster_state.dart';
 
 /// Provides an AWS Route 53 Recovery Control Config Cluster.
@@ -115,7 +116,7 @@ class Cluster extends pulumi.CustomResource {
   /// ARN of the cluster
   late final pulumi.Output<String> arn;
   /// List of 5 endpoints in 5 regions that can be used to talk to the cluster. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterEndpoints;
+  late final pulumi.Output<List<ClusterClusterEndpoint>> clusterEndpoints;
   /// Unique name describing the cluster.
   late final pulumi.Output<String> name;
   /// Network type of cluster. Valid values are `IPV4` and `DUALSTACK`. Defaults to `IPV4`.
@@ -141,15 +142,15 @@ class Cluster extends pulumi.CustomResource {
           'aws:route53recoverycontrol/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -157,11 +158,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,11 +178,29 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:route53recoverycontrol/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkType = registerOutput<String>('networkType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

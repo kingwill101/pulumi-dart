@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TransitGatewayRegistration resources.
 class TransitGatewayRegistrationState {
   /// ID of the Global Network to register to.
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// ARN of the Transit Gateway to register.
-  final pulumi.Input<String>? transitGatewayArn;
+  final pulumi.Input<String?>? transitGatewayArn;
 
   /// Creates a new [TransitGatewayRegistrationState].
   /// [globalNetworkId] ID of the Global Network to register to.

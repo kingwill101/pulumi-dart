@@ -6,15 +6,15 @@ class TrustStoreCertificate {
   /// Certificate body in PEM format.
   final pulumi.Input<String> body;
   /// Certificate issuer.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// Date and time when the certificate expires in RFC3339 format.
-  final pulumi.Input<String>? notValidAfter;
+  final pulumi.Input<String?>? notValidAfter;
   /// Date and time when the certificate becomes valid in RFC3339 format.
-  final pulumi.Input<String>? notValidBefore;
+  final pulumi.Input<String?>? notValidBefore;
   /// Certificate subject.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// Certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [TrustStoreCertificate].
   /// [body] Certificate body in PEM format.

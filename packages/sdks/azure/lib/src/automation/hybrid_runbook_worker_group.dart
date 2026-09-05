@@ -246,7 +246,7 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
           'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     credentialName = registerOutput<String?>('credentialName');
@@ -259,11 +259,12 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HybridRunbookWorkerGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HybridRunbookWorkerGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,6 +278,21 @@ class HybridRunbookWorkerGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    credentialName = registerOutput<String?>('credentialName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [HybridRunbookWorkerGroup] resource.
+  HybridRunbookWorkerGroup.reference(String urn)
+    : super(
+        'azure:automation/hybridRunbookWorkerGroup:HybridRunbookWorkerGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     credentialName = registerOutput<String?>('credentialName');
     this.name = registerOutput<String>('name');

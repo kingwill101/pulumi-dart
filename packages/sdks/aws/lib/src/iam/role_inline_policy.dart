@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoleInlinePolicy {
   /// Name of the role policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Policy document as a JSON formatted string.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [RoleInlinePolicy].
   /// [name] Name of the role policy.

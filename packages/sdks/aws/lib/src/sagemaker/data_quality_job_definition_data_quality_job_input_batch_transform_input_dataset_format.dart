@@ -6,9 +6,9 @@ import 'data_quality_job_definition_data_quality_job_input_batch_transform_input
 
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat {
   /// The CSV dataset used in the monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv>? csv;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv?>? csv;
   /// The JSON dataset used in the monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson>? json;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson?>? json;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormat].
   /// [csv] The CSV dataset used in the monitoring job. Fields are documented below.

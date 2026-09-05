@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageBuilderVpcConfig {
   /// Identifiers of the security groups for the image builder or image builder.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Identifier of the subnet to which a network interface is attached from the image builder instance.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [ImageBuilderVpcConfig].
   /// [securityGroupIds] Identifiers of the security groups for the image builder or image builder.

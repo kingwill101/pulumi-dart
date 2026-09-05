@@ -12,9 +12,9 @@ class ContainerServiceDeploymentVersionArgs {
   /// Set of configuration blocks that describe the settings of the containers that will be launched on the container service. Maximum of 53. See below.
   final pulumi.Input<List<ContainerServiceDeploymentVersionContainer>> containers;
   /// Configuration block that describes the settings of the public endpoint for the container service. See below.
-  final pulumi.Input<ContainerServiceDeploymentVersionPublicEndpoint>? publicEndpoint;
+  final pulumi.Input<ContainerServiceDeploymentVersionPublicEndpoint?>? publicEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the container service.
   ///
   /// The following arguments are optional:

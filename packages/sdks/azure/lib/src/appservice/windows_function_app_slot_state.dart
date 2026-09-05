@@ -13,101 +13,101 @@ import 'windows_function_app_slot_storage_account.dart';
 /// Input properties used for looking up and filtering WindowsFunctionAppSlot resources.
 class WindowsFunctionAppSlotState {
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// an `authSettings` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotAuthSettings>? authSettings;
+  final pulumi.Input<WindowsFunctionAppSlotAuthSettings?>? authSettings;
   /// an `authSettingsV2` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotAuthSettingsV2>? authSettingsV2;
+  final pulumi.Input<WindowsFunctionAppSlotAuthSettingsV2?>? authSettingsV2;
   /// a `backup` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotBackup>? backup;
+  final pulumi.Input<WindowsFunctionAppSlotBackup?>? backup;
   /// Should built-in logging be enabled. Configures `AzureWebJobsDashboard` app setting based on the configured storage setting. Defaults to `true`.
-  final pulumi.Input<bool>? builtinLoggingEnabled;
+  final pulumi.Input<bool?>? builtinLoggingEnabled;
   /// Should the Function App Slot use Client Certificates.
-  final pulumi.Input<bool>? clientCertificateEnabled;
+  final pulumi.Input<bool?>? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
   ///
   /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
-  final pulumi.Input<String>? clientCertificateExclusionPaths;
+  final pulumi.Input<String?>? clientCertificateExclusionPaths;
   /// The mode of the Function App Slot's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
-  final pulumi.Input<String>? clientCertificateMode;
+  final pulumi.Input<String?>? clientCertificateMode;
   /// a `connectionString` block as detailed below.
-  final pulumi.Input<List<WindowsFunctionAppSlotConnectionString>>? connectionStrings;
+  final pulumi.Input<List<WindowsFunctionAppSlotConnectionString>?>? connectionStrings;
   /// Force disable the content share settings.
-  final pulumi.Input<bool>? contentShareForceDisabled;
+  final pulumi.Input<bool?>? contentShareForceDisabled;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
-  final pulumi.Input<String>? customDomainVerificationId;
+  final pulumi.Input<String?>? customDomainVerificationId;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps in Consumption Plans. Defaults to `0`.
-  final pulumi.Input<int>? dailyMemoryTimeQuota;
+  final pulumi.Input<int?>? dailyMemoryTimeQuota;
   /// The default hostname of the Windows Function App Slot.
-  final pulumi.Input<String>? defaultHostname;
+  final pulumi.Input<String?>? defaultHostname;
   /// Is the Windows Function App Slot enabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Should the default FTP Basic Authentication publishing profile be enabled. Defaults to `true`.
-  final pulumi.Input<bool>? ftpPublishBasicAuthenticationEnabled;
+  final pulumi.Input<bool?>? ftpPublishBasicAuthenticationEnabled;
   /// The name of the Windows Function App this Slot is a member of. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? functionAppId;
+  final pulumi.Input<String?>? functionAppId;
   /// The runtime version associated with the Function App Slot. Defaults to `~4`.
-  final pulumi.Input<String>? functionsExtensionVersion;
+  final pulumi.Input<String?>? functionsExtensionVersion;
   /// The ID of the App Service Environment used by Function App Slot.
-  final pulumi.Input<String>? hostingEnvironmentId;
+  final pulumi.Input<String?>? hostingEnvironmentId;
   /// Can the Function App Slot only be accessed via HTTPS?. Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// an `identity` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotIdentity>? identity;
+  final pulumi.Input<WindowsFunctionAppSlotIdentity?>? identity;
   /// The User Assigned Identity ID used for accessing KeyVault secrets. The identity must be assigned to the application in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// The Kind value for this Windows Function App Slot.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the name of the Windows Function App Slot. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of outbound IP addresses. For example `["52.23.25.3", "52.143.43.12"]`.
-  final pulumi.Input<List<String>>? outboundIpAddressLists;
+  final pulumi.Input<List<String>?>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12`.
-  final pulumi.Input<String>? outboundIpAddresses;
+  final pulumi.Input<String?>? outboundIpAddresses;
   /// A list of possible outbound IP addresses, not all of which are necessarily in use. This is a superset of `outboundIpAddressList`. For example `["52.23.25.3", "52.143.43.12"]`.
-  final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
+  final pulumi.Input<List<String>?>? possibleOutboundIpAddressLists;
   /// A comma separated list of possible outbound IP addresses as a string. For example `52.23.25.3,52.143.43.12,52.143.43.17`. This is a superset of `outboundIpAddresses`. For example `["52.23.25.3", "52.143.43.12","52.143.43.17"]`.
-  final pulumi.Input<String>? possibleOutboundIpAddresses;
+  final pulumi.Input<String?>? possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Function App. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Function App will be used.
-  final pulumi.Input<String>? servicePlanId;
+  final pulumi.Input<String?>? servicePlanId;
   /// a `siteConfig` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotSiteConfig>? siteConfig;
+  final pulumi.Input<WindowsFunctionAppSlotSiteConfig?>? siteConfig;
   /// A `siteCredential` block as defined below.
-  final pulumi.Input<List<WindowsFunctionAppSlotSiteCredential>>? siteCredentials;
+  final pulumi.Input<List<WindowsFunctionAppSlotSiteCredential>?>? siteCredentials;
   /// The access key which will be used to access the storage account for the Function App Slot.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App Slot.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// One or more `storageAccount` blocks as defined below.
-  final pulumi.Input<List<WindowsFunctionAppSlotStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<WindowsFunctionAppSlotStorageAccount>?>? storageAccounts;
   /// The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App Slot.
   ///
   /// &gt; **Note:** `storageKeyVaultSecretId` cannot be used with `storageAccountName`.
   ///
   /// &gt; **Note:** `storageKeyVaultSecretId` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
-  final pulumi.Input<String>? storageKeyVaultSecretId;
+  final pulumi.Input<String?>? storageKeyVaultSecretId;
   /// Should the Function App Slot use its Managed Identity to access storage.
   ///
   /// &gt; **Note:** One of `storageAccountAccessKey` or `storageUsesManagedIdentity` must be specified when using `storageAccountName`.
-  final pulumi.Input<bool>? storageUsesManagedIdentity;
+  final pulumi.Input<bool?>? storageUsesManagedIdentity;
   /// A mapping of tags which should be assigned to the Windows Function App Slot.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? virtualNetworkBackupRestoreEnabled;
+  final pulumi.Input<bool?>? virtualNetworkBackupRestoreEnabled;
   /// The subnet id which will be used by this Function App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the function app slot configuration.
   ///
   /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
-  final pulumi.Input<String>? virtualNetworkSubnetId;
+  final pulumi.Input<String?>? virtualNetworkSubnetId;
   /// Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   ///
   /// &gt; **Note:** The feature can also be enabled via the app setting `WEBSITE_PULL_IMAGE_OVER_VNET`. The Setting is enabled by default for app running in the App Service Environment.
-  final pulumi.Input<bool>? vnetImagePullEnabled;
+  final pulumi.Input<bool?>? vnetImagePullEnabled;
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
-  final pulumi.Input<bool>? webdeployPublishBasicAuthenticationEnabled;
+  final pulumi.Input<bool?>? webdeployPublishBasicAuthenticationEnabled;
 
   /// Creates a new [WindowsFunctionAppSlotState].
   /// [appSettings] A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
@@ -254,7 +254,7 @@ class WindowsFunctionAppSlotState {
       connectionStrings: (() { final guardedValue = map['connectionStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsFunctionAppSlotConnectionString>(guardedValue, (value) => WindowsFunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>()))); })(),
       contentShareForceDisabled: (() { final guardedValue = map['contentShareForceDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       customDomainVerificationId: (() { final guardedValue = map['customDomainVerificationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dailyMemoryTimeQuota: (() { final guardedValue = map['dailyMemoryTimeQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dailyMemoryTimeQuota: (() { final guardedValue = map['dailyMemoryTimeQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       defaultHostname: (() { final guardedValue = map['defaultHostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ftpPublishBasicAuthenticationEnabled: (() { final guardedValue = map['ftpPublishBasicAuthenticationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

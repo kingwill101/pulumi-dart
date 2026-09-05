@@ -6,21 +6,21 @@ import 'training_job_algorithm_specification_training_image_config.dart';
 
 class TrainingJobAlgorithmSpecification {
   /// Name or ARN of the algorithm resource to use for the training job.
-  final pulumi.Input<String>? algorithmName;
+  final pulumi.Input<String?>? algorithmName;
   /// List of arguments for the container entrypoint. Maximum of 100 entries.
-  final pulumi.Input<List<String>>? containerArguments;
+  final pulumi.Input<List<String>?>? containerArguments;
   /// List of entrypoint commands for the container. Maximum of 100 entries.
-  final pulumi.Input<List<String>>? containerEntrypoints;
+  final pulumi.Input<List<String>?>? containerEntrypoints;
   /// Whether to enable SageMaker AI metrics time series collection.
-  final pulumi.Input<bool>? enableSagemakerMetricsTimeSeries;
+  final pulumi.Input<bool?>? enableSagemakerMetricsTimeSeries;
   /// List of metric definitions for the training job. Maximum of 40. Use this to extract custom metrics from your own training container logs. SageMaker can still publish built-in metrics for built-in algorithms and supported prebuilt images when this block is omitted. See `metricDefinitions` below.
-  final pulumi.Input<List<TrainingJobAlgorithmSpecificationMetricDefinition>>? metricDefinitions;
+  final pulumi.Input<List<TrainingJobAlgorithmSpecificationMetricDefinition>?>? metricDefinitions;
   /// Registry path of the Docker image that contains the training algorithm.
-  final pulumi.Input<String>? trainingImage;
+  final pulumi.Input<String?>? trainingImage;
   /// Training image configuration. See `trainingImageConfig` below.
-  final pulumi.Input<TrainingJobAlgorithmSpecificationTrainingImageConfig>? trainingImageConfig;
+  final pulumi.Input<TrainingJobAlgorithmSpecificationTrainingImageConfig?>? trainingImageConfig;
   /// Input mode for the training data. Valid values: `File`, `Pipe`, `FastFile`.
-  final pulumi.Input<String>? trainingInputMode;
+  final pulumi.Input<String?>? trainingInputMode;
 
   /// Creates a new [TrainingJobAlgorithmSpecification].
   /// [algorithmName] Name or ARN of the algorithm resource to use for the training job.

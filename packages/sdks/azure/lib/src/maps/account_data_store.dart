@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountDataStore {
   /// The ID of the Storage Account that should be linked to this Azure Maps Account.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The name given to the linked Storage Account.
   final pulumi.Input<String> uniqueName;
 

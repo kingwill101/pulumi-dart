@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentDaprComponentSecret {
   /// The identity to use for accessing key vault reference. Possible values are the Resource ID of a User Assigned Managed Identity, or `System` to use the System Assigned Managed Identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The Key Vault Secret ID.
-  final pulumi.Input<String>? keyVaultSecretId;
+  final pulumi.Input<String?>? keyVaultSecretId;
   /// The Secret name.
   final pulumi.Input<String> name;
   /// The value for this secret.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentDaprComponentSecret].
   /// [identity] The identity to use for accessing key vault reference. Possible values are the Resource ID of a User Assigned Managed Identity, or `System` to use the System Assigned Managed Identity.

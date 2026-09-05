@@ -5,7 +5,7 @@ import 'web_acl_rule_action_captcha_custom_request_handling.dart';
 
 class WebAclRuleActionCaptcha {
   /// Custom request handling configuration. See Custom Request Handling below.
-  final pulumi.Input<WebAclRuleActionCaptchaCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleActionCaptchaCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleActionCaptcha].
   /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.

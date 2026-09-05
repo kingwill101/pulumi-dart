@@ -3,59 +3,59 @@
 
 /// Result data returned by getLedger.
 class GetLedgerResult {
-  final String arn;
-  final bool deletionProtection;
+  final String? arn;
+  final bool? deletionProtection;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKey;
-  final String name;
-  final String permissionsMode;
-  final String region;
-  final Map<String, String> tags;
+  final String? id;
+  final String? kmsKey;
+  final String? name;
+  final String? permissionsMode;
+  final String? region;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetLedgerResult].
-  /// [arn] Required.
-  /// [deletionProtection] Required.
+  /// [arn] Optional.
+  /// [deletionProtection] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKey] Required.
-  /// [name] Required.
-  /// [permissionsMode] Required.
-  /// [region] Required.
-  /// [tags] Required.
+  /// [kmsKey] Optional.
+  /// [name] Optional.
+  /// [permissionsMode] Optional.
+  /// [region] Optional.
+  /// [tags] Optional.
   const GetLedgerResult({
-    required this.arn,
-    required this.deletionProtection,
-    required this.id,
-    required this.kmsKey,
-    required this.name,
-    required this.permissionsMode,
-    required this.region,
-    required this.tags,
+    this.arn,
+    this.deletionProtection,
+    this.id,
+    this.kmsKey,
+    this.name,
+    this.permissionsMode,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'deletionProtection': deletionProtection,
-      'id': id,
-      'kmsKey': kmsKey,
-      'name': name,
-      'permissionsMode': permissionsMode,
-      'region': region,
-      'tags': tags,
+      'arn': ?arn,
+      'deletionProtection': ?deletionProtection,
+      'id': ?id,
+      'kmsKey': ?kmsKey,
+      'name': ?name,
+      'permissionsMode': ?permissionsMode,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetLedgerResult.fromMap(Map<String, dynamic> map) {
     return GetLedgerResult(
-      arn: map['arn'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      id: map['id'] as String,
-      kmsKey: map['kmsKey'] as String,
-      name: map['name'] as String,
-      permissionsMode: map['permissionsMode'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      permissionsMode: (() { final guardedValue = map['permissionsMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

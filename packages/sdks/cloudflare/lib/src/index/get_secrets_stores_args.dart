@@ -7,6 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_secrets_stores_get_secrets_stores_args_doc}
 class GetSecretsStoresArgs {
+  /// Account Identifier.
   final pulumi.Input<String> accountId;
   /// Direction to sort objects.
   /// Available values: "asc", "desc".
@@ -18,7 +19,7 @@ class GetSecretsStoresArgs {
   final pulumi.Input<String?>? order;
 
   /// Creates a new [GetSecretsStoresArgs].
-  /// [accountId] Required.
+  /// [accountId] Account Identifier.
   /// [direction] Direction to sort objects.
   /// [maxItems] Max items to fetch, default: 1000
   /// [order] Order stores by values in the given field.

@@ -9,27 +9,27 @@ import 'user_profile_user_settings_jupyter_lab_app_settings_emr_settings.dart';
 
 class UserProfileUserSettingsJupyterLabAppSettings {
   /// Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement>? appLifecycleManagement;
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement?>? appLifecycleManagement;
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
-  final pulumi.Input<String>? builtInLifecycleConfigArn;
+  final pulumi.Input<String?>? builtInLifecycleConfigArn;
   /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
-  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>>? codeRepositories;
-  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>?>? codeRepositories;
+  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
   /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emrSettings` Block below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsEmrSettings>? emrSettings;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsEmrSettings?>? emrSettings;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettings].
   /// [appLifecycleManagement] Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
   /// [builtInLifecycleConfigArn] The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
   /// [customImages] Optional.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
   /// [emrSettings] The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emrSettings` Block below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const UserProfileUserSettingsJupyterLabAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,

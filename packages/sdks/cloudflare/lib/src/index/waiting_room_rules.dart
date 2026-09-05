@@ -190,7 +190,7 @@ class WaitingRoomRules extends pulumi.CustomResource {
           'cloudflare:index/waitingRoomRules:WaitingRoomRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     rules = registerOutput<List<WaitingRoomRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WaitingRoomRulesRule>(guardedValue, (value) => WaitingRoomRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     waitingRoomId = registerOutput<String>('waitingRoomId');

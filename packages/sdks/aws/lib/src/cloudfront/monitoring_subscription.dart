@@ -13,12 +13,12 @@ import 'monitoring_subscription_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.MonitoringSubscription("example", {
-///     distributionId: exampleAwsCloudfrontDistribution.id,
 ///     monitoringSubscription: {
 ///         realtimeMetricsSubscriptionConfig: {
 ///             realtimeMetricsSubscriptionStatus: "Enabled",
 ///         },
 ///     },
+///     distributionId: exampleAwsCloudfrontDistribution.id,
 /// });
 /// ```
 /// ```python
@@ -26,12 +26,12 @@ import 'monitoring_subscription_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.MonitoringSubscription("example",
-///     distribution_id=example_aws_cloudfront_distribution["id"],
 ///     monitoring_subscription={
 ///         "realtime_metrics_subscription_config": {
 ///             "realtime_metrics_subscription_status": "Enabled",
 ///         },
-///     })
+///     },
+///     distribution_id=example_aws_cloudfront_distribution["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,7 +43,6 @@ import 'monitoring_subscription_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.MonitoringSubscription("example", new()
 ///     {
-///         DistributionId = exampleAwsCloudfrontDistribution.Id,
 ///         MonitoringSubscriptionDetails = new Aws.CloudFront.Inputs.MonitoringSubscriptionMonitoringSubscriptionArgs
 ///         {
 ///             RealtimeMetricsSubscriptionConfig = new Aws.CloudFront.Inputs.MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigArgs
@@ -51,6 +50,7 @@ import 'monitoring_subscription_state.dart';
 ///                 RealtimeMetricsSubscriptionStatus = "Enabled",
 ///             },
 ///         },
+///         DistributionId = exampleAwsCloudfrontDistribution.Id,
 ///     });
 ///
 /// });
@@ -66,12 +66,12 @@ import 'monitoring_subscription_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewMonitoringSubscription(ctx, "example", &cloudfront.MonitoringSubscriptionArgs{
-/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontDistribution.Id),
 /// 			MonitoringSubscription: &cloudfront.MonitoringSubscriptionMonitoringSubscriptionArgs{
 /// 				RealtimeMetricsSubscriptionConfig: &cloudfront.MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigArgs{
 /// 					RealtimeMetricsSubscriptionStatus: pulumi.String("Enabled"),
 /// 				},
 /// 			},
+/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontDistribution.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,12 +90,12 @@ import 'monitoring_subscription_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_monitoringsubscription" "example" {
-///   distribution_id = exampleAwsCloudfrontDistribution.id
 ///   monitoring_subscription = {
 ///     realtime_metrics_subscription_config = {
 ///       realtime_metrics_subscription_status = "Enabled"
 ///     }
 ///   }
+///   distribution_id = exampleAwsCloudfrontDistribution.id
 /// }
 /// ```
 /// ```java
@@ -122,12 +122,12 @@ import 'monitoring_subscription_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MonitoringSubscription("example", MonitoringSubscriptionArgs.builder()
-///             .distributionId(exampleAwsCloudfrontDistribution.id())
 ///             .monitoringSubscription(MonitoringSubscriptionMonitoringSubscriptionArgs.builder()
 ///                 .realtimeMetricsSubscriptionConfig(MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfigArgs.builder()
 ///                     .realtimeMetricsSubscriptionStatus("Enabled")
 ///                     .build())
 ///                 .build())
+///             .distributionId(exampleAwsCloudfrontDistribution.id())
 ///             .build());
 ///
 ///     }
@@ -138,10 +138,10 @@ import 'monitoring_subscription_state.dart';
 ///   example:
 ///     type: aws:cloudfront:MonitoringSubscription
 ///     properties:
-///       distributionId: ${exampleAwsCloudfrontDistribution.id}
 ///       monitoringSubscription:
 ///         realtimeMetricsSubscriptionConfig:
 ///           realtimeMetricsSubscriptionStatus: Enabled
+///       distributionId: ${exampleAwsCloudfrontDistribution.id}
 /// ```
 ///
 ///
@@ -170,7 +170,7 @@ class MonitoringSubscription extends pulumi.CustomResource {
           'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     distributionId = registerOutput<String>('distributionId');
     monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringSubscriptionMonitoringSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -181,11 +181,12 @@ class MonitoringSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitoringSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MonitoringSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,6 +200,19 @@ class MonitoringSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    distributionId = registerOutput<String>('distributionId');
+    monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringSubscriptionMonitoringSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MonitoringSubscription] resource.
+  MonitoringSubscription.reference(String urn)
+    : super(
+        'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     distributionId = registerOutput<String>('distributionId');
     monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringSubscriptionMonitoringSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

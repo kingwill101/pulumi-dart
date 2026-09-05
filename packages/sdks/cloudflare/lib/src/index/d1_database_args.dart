@@ -11,7 +11,7 @@ class D1DatabaseArgs {
   /// Account identifier tag.
   final pulumi.Input<String> accountId;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-  /// Available values: "eu", "fedramp".
+  /// Available values: "eu", "fedramp", "us".
   final pulumi.Input<String?>? jurisdiction;
   /// D1 database name.
   final pulumi.Input<String> name;

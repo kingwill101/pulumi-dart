@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate {
   /// The ID of the launch template to use for faster launching for a Windows AMI.
-  final pulumi.Input<String>? launchTemplateId;
+  final pulumi.Input<String?>? launchTemplateId;
   /// The name of the launch template to use for faster launching for a Windows AMI.
-  final pulumi.Input<String>? launchTemplateName;
+  final pulumi.Input<String?>? launchTemplateName;
   /// The version of the launch template to use for faster launching for a Windows AMI.
-  final pulumi.Input<String>? launchTemplateVersion;
+  final pulumi.Input<String?>? launchTemplateVersion;
 
   /// Creates a new [DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate].
   /// [launchTemplateId] The ID of the launch template to use for faster launching for a Windows AMI.

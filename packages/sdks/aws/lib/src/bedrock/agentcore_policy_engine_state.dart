@@ -6,24 +6,24 @@ import 'agentcore_policy_engine_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcorePolicyEngine resources.
 class AgentcorePolicyEngineState {
   /// Description of the policy engine.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
-  final pulumi.Input<String>? encryptionKeyArn;
+  final pulumi.Input<String?>? encryptionKeyArn;
   /// Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the Policy Engine.
-  final pulumi.Input<String>? policyEngineArn;
+  final pulumi.Input<String?>? policyEngineArn;
   /// Unique identifier of the Policy Engine.
-  final pulumi.Input<String>? policyEngineId;
+  final pulumi.Input<String?>? policyEngineId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcorePolicyEngineTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcorePolicyEngineTimeouts?>? timeouts;
 
   /// Creates a new [AgentcorePolicyEngineState].
   /// [description] Description of the policy engine.

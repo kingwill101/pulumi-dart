@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassifierCsvClassifier {
   /// Enables the processing of files that contain only one column.
-  final pulumi.Input<bool>? allowSingleColumn;
+  final pulumi.Input<bool?>? allowSingleColumn;
   /// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
-  final pulumi.Input<String>? containsHeader;
+  final pulumi.Input<String?>? containsHeader;
   /// Enables the custom datatype to be configured.
-  final pulumi.Input<bool>? customDatatypeConfigured;
+  final pulumi.Input<bool?>? customDatatypeConfigured;
   /// A list of supported custom datatypes. Valid values are `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INT`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`.
-  final pulumi.Input<List<String>>? customDatatypes;
+  final pulumi.Input<List<String>?>? customDatatypes;
   /// The delimiter used in the CSV to separate columns.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// Specifies whether to trim column values.
-  final pulumi.Input<bool>? disableValueTrimming;
+  final pulumi.Input<bool?>? disableValueTrimming;
   /// A list of strings representing column names.
-  final pulumi.Input<List<String>>? headers;
+  final pulumi.Input<List<String>?>? headers;
   /// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
-  final pulumi.Input<String>? quoteSymbol;
+  final pulumi.Input<String?>? quoteSymbol;
   /// The SerDe for processing CSV. Valid values are `OpenCSVSerDe`, `LazySimpleSerDe`, `None`.
-  final pulumi.Input<String>? serde;
+  final pulumi.Input<String?>? serde;
 
   /// Creates a new [ClassifierCsvClassifier].
   /// [allowSingleColumn] Enables the processing of files that contain only one column.

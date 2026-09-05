@@ -7,7 +7,7 @@ import 'endpoint_rds_options.dart';
 import 'endpoint_sse_specification.dart';
 import 'endpoint_state.dart';
 
-/// Resource for managing an AWS EC2 (Elastic Compute Cloud) Verified Access Endpoint.
+/// Resource for managing an AWS EC2 Verified Access Endpoint.
 ///
 /// ## Example Usage
 ///
@@ -19,18 +19,18 @@ import 'endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.verifiedaccess.Endpoint("example", {
-///     applicationDomain: "example.com",
-///     attachmentType: "vpc",
-///     description: "example",
-///     domainCertificateArn: exampleAwsAcmCertificate.arn,
-///     endpointDomainPrefix: "example",
-///     endpointType: "load-balancer",
 ///     loadBalancerOptions: {
 ///         loadBalancerArn: exampleAwsLb.arn,
 ///         port: 443,
 ///         protocol: "https",
 ///         subnetIds: .map(subnet => (subnet.id)),
 ///     },
+///     applicationDomain: "example.com",
+///     attachmentType: "vpc",
+///     description: "example",
+///     domainCertificateArn: exampleAwsAcmCertificate.arn,
+///     endpointDomainPrefix: "example",
+///     endpointType: "load-balancer",
 ///     securityGroupIds: [exampleAwsSecurityGroup.id],
 ///     verifiedAccessGroupId: exampleAwsVerifiedaccessGroup.id,
 /// });
@@ -40,18 +40,18 @@ import 'endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.verifiedaccess.Endpoint("example",
-///     application_domain="example.com",
-///     attachment_type="vpc",
-///     description="example",
-///     domain_certificate_arn=example_aws_acm_certificate["arn"],
-///     endpoint_domain_prefix="example",
-///     endpoint_type="load-balancer",
 ///     load_balancer_options={
 ///         "load_balancer_arn": example_aws_lb["arn"],
 ///         "port": 443,
 ///         "protocol": "https",
 ///         "subnet_ids": [subnet["id"] for subnet in public],
 ///     },
+///     application_domain="example.com",
+///     attachment_type="vpc",
+///     description="example",
+///     domain_certificate_arn=example_aws_acm_certificate["arn"],
+///     endpoint_domain_prefix="example",
+///     endpoint_type="load-balancer",
 ///     security_group_ids=[example_aws_security_group["id"]],
 ///     verified_access_group_id=example_aws_verifiedaccess_group["id"])
 /// ```
@@ -65,12 +65,6 @@ import 'endpoint_state.dart';
 /// {
 ///     var example = new Aws.VerifiedAccess.Endpoint("example", new()
 ///     {
-///         ApplicationDomain = "example.com",
-///         AttachmentType = "vpc",
-///         Description = "example",
-///         DomainCertificateArn = exampleAwsAcmCertificate.Arn,
-///         EndpointDomainPrefix = "example",
-///         EndpointType = "load-balancer",
 ///         LoadBalancerOptions = new Aws.VerifiedAccess.Inputs.EndpointLoadBalancerOptionsArgs
 ///         {
 ///             LoadBalancerArn = exampleAwsLb.Arn,
@@ -81,6 +75,12 @@ import 'endpoint_state.dart';
 ///                 return subnet.Id;
 ///             }).ToList(),
 ///         },
+///         ApplicationDomain = "example.com",
+///         AttachmentType = "vpc",
+///         Description = "example",
+///         DomainCertificateArn = exampleAwsAcmCertificate.Arn,
+///         EndpointDomainPrefix = "example",
+///         EndpointType = "load-balancer",
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
@@ -100,18 +100,18 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   application_domain     = "example.com"
-///   attachment_type        = "vpc"
-///   description            = "example"
-///   domain_certificate_arn = exampleAwsAcmCertificate.arn
-///   endpoint_domain_prefix = "example"
-///   endpoint_type          = "load-balancer"
 ///   load_balancer_options = {
 ///     load_balancer_arn = exampleAwsLb.arn
 ///     port              = 443
 ///     protocol          = "https"
 ///     subnet_ids        = [for subnet in public : subnet.id]
 ///   }
+///   application_domain       = "example.com"
+///   attachment_type          = "vpc"
+///   description              = "example"
+///   domain_certificate_arn   = exampleAwsAcmCertificate.arn
+///   endpoint_domain_prefix   = "example"
+///   endpoint_type            = "load-balancer"
 ///   security_group_ids       = [exampleAwsSecurityGroup.id]
 ///   verified_access_group_id = exampleAwsVerifiedaccessGroup.id
 /// }
@@ -126,17 +126,17 @@ import 'endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.verifiedaccess.Endpoint("example", {
+///     networkInterfaceOptions: {
+///         networkInterfaceId: exampleAwsNetworkInterface.id,
+///         port: 443,
+///         protocol: "https",
+///     },
 ///     applicationDomain: "example.com",
 ///     attachmentType: "vpc",
 ///     description: "example",
 ///     domainCertificateArn: exampleAwsAcmCertificate.arn,
 ///     endpointDomainPrefix: "example",
 ///     endpointType: "network-interface",
-///     networkInterfaceOptions: {
-///         networkInterfaceId: exampleAwsNetworkInterface.id,
-///         port: 443,
-///         protocol: "https",
-///     },
 ///     securityGroupIds: [exampleAwsSecurityGroup.id],
 ///     verifiedAccessGroupId: exampleAwsVerifiedaccessGroup.id,
 /// });
@@ -146,17 +146,17 @@ import 'endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.verifiedaccess.Endpoint("example",
+///     network_interface_options={
+///         "network_interface_id": example_aws_network_interface["id"],
+///         "port": 443,
+///         "protocol": "https",
+///     },
 ///     application_domain="example.com",
 ///     attachment_type="vpc",
 ///     description="example",
 ///     domain_certificate_arn=example_aws_acm_certificate["arn"],
 ///     endpoint_domain_prefix="example",
 ///     endpoint_type="network-interface",
-///     network_interface_options={
-///         "network_interface_id": example_aws_network_interface["id"],
-///         "port": 443,
-///         "protocol": "https",
-///     },
 ///     security_group_ids=[example_aws_security_group["id"]],
 ///     verified_access_group_id=example_aws_verifiedaccess_group["id"])
 /// ```
@@ -170,18 +170,18 @@ import 'endpoint_state.dart';
 /// {
 ///     var example = new Aws.VerifiedAccess.Endpoint("example", new()
 ///     {
-///         ApplicationDomain = "example.com",
-///         AttachmentType = "vpc",
-///         Description = "example",
-///         DomainCertificateArn = exampleAwsAcmCertificate.Arn,
-///         EndpointDomainPrefix = "example",
-///         EndpointType = "network-interface",
 ///         NetworkInterfaceOptions = new Aws.VerifiedAccess.Inputs.EndpointNetworkInterfaceOptionsArgs
 ///         {
 ///             NetworkInterfaceId = exampleAwsNetworkInterface.Id,
 ///             Port = 443,
 ///             Protocol = "https",
 ///         },
+///         ApplicationDomain = "example.com",
+///         AttachmentType = "vpc",
+///         Description = "example",
+///         DomainCertificateArn = exampleAwsAcmCertificate.Arn,
+///         EndpointDomainPrefix = "example",
+///         EndpointType = "network-interface",
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
@@ -202,17 +202,17 @@ import 'endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := verifiedaccess.NewEndpoint(ctx, "example", &verifiedaccess.EndpointArgs{
+/// 			NetworkInterfaceOptions: &verifiedaccess.EndpointNetworkInterfaceOptionsArgs{
+/// 				NetworkInterfaceId: pulumi.Any(exampleAwsNetworkInterface.Id),
+/// 				Port:               pulumi.Int(443),
+/// 				Protocol:           pulumi.String("https"),
+/// 			},
 /// 			ApplicationDomain:    pulumi.String("example.com"),
 /// 			AttachmentType:       pulumi.String("vpc"),
 /// 			Description:          pulumi.String("example"),
 /// 			DomainCertificateArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
 /// 			EndpointDomainPrefix: pulumi.String("example"),
 /// 			EndpointType:         pulumi.String("network-interface"),
-/// 			NetworkInterfaceOptions: &verifiedaccess.EndpointNetworkInterfaceOptionsArgs{
-/// 				NetworkInterfaceId: pulumi.Any(exampleAwsNetworkInterface.Id),
-/// 				Port:               pulumi.Int(443),
-/// 				Protocol:           pulumi.String("https"),
-/// 			},
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
@@ -235,17 +235,17 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   application_domain     = "example.com"
-///   attachment_type        = "vpc"
-///   description            = "example"
-///   domain_certificate_arn = exampleAwsAcmCertificate.arn
-///   endpoint_domain_prefix = "example"
-///   endpoint_type          = "network-interface"
 ///   network_interface_options = {
 ///     network_interface_id = exampleAwsNetworkInterface.id
 ///     port                 = 443
 ///     protocol             = "https"
 ///   }
+///   application_domain       = "example.com"
+///   attachment_type          = "vpc"
+///   description              = "example"
+///   domain_certificate_arn   = exampleAwsAcmCertificate.arn
+///   endpoint_domain_prefix   = "example"
+///   endpoint_type            = "network-interface"
 ///   security_group_ids       = [exampleAwsSecurityGroup.id]
 ///   verified_access_group_id = exampleAwsVerifiedaccessGroup.id
 /// }
@@ -273,17 +273,17 @@ import 'endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Endpoint("example", EndpointArgs.builder()
+///             .networkInterfaceOptions(EndpointNetworkInterfaceOptionsArgs.builder()
+///                 .networkInterfaceId(exampleAwsNetworkInterface.id())
+///                 .port(443)
+///                 .protocol("https")
+///                 .build())
 ///             .applicationDomain("example.com")
 ///             .attachmentType("vpc")
 ///             .description("example")
 ///             .domainCertificateArn(exampleAwsAcmCertificate.arn())
 ///             .endpointDomainPrefix("example")
 ///             .endpointType("network-interface")
-///             .networkInterfaceOptions(EndpointNetworkInterfaceOptionsArgs.builder()
-///                 .networkInterfaceId(exampleAwsNetworkInterface.id())
-///                 .port(443)
-///                 .protocol("https")
-///                 .build())
 ///             .securityGroupIds(exampleAwsSecurityGroup.id())
 ///             .verifiedAccessGroupId(exampleAwsVerifiedaccessGroup.id())
 ///             .build());
@@ -296,16 +296,16 @@ import 'endpoint_state.dart';
 ///   example:
 ///     type: aws:verifiedaccess:Endpoint
 ///     properties:
+///       networkInterfaceOptions:
+///         networkInterfaceId: ${exampleAwsNetworkInterface.id}
+///         port: 443
+///         protocol: https
 ///       applicationDomain: example.com
 ///       attachmentType: vpc
 ///       description: example
 ///       domainCertificateArn: ${exampleAwsAcmCertificate.arn}
 ///       endpointDomainPrefix: example
 ///       endpointType: network-interface
-///       networkInterfaceOptions:
-///         networkInterfaceId: ${exampleAwsNetworkInterface.id}
-///         port: 443
-///         protocol: https
 ///       securityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
 ///       verifiedAccessGroupId: ${exampleAwsVerifiedaccessGroup.id}
@@ -320,18 +320,18 @@ import 'endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.verifiedaccess.Endpoint("example", {
-///     attachmentType: "vpc",
-///     description: "example",
-///     endpointType: "cidr",
 ///     cidrOptions: {
-///         cidr: test[0].cidrBlock,
 ///         portRanges: [{
 ///             fromPort: 443,
 ///             toPort: 443,
 ///         }],
+///         cidr: test[0].cidrBlock,
 ///         protocol: "tcp",
 ///         subnetIds: .map(subnet => (subnet.id)),
 ///     },
+///     attachmentType: "vpc",
+///     description: "example",
+///     endpointType: "cidr",
 ///     securityGroupIds: [testAwsSecurityGroup.id],
 ///     verifiedAccessGroupId: testAwsVerifiedaccessGroup.id,
 /// });
@@ -341,18 +341,18 @@ import 'endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.verifiedaccess.Endpoint("example",
-///     attachment_type="vpc",
-///     description="example",
-///     endpoint_type="cidr",
 ///     cidr_options={
-///         "cidr": test[0]["cidrBlock"],
 ///         "port_ranges": [{
 ///             "from_port": 443,
 ///             "to_port": 443,
 ///         }],
+///         "cidr": test[0]["cidrBlock"],
 ///         "protocol": "tcp",
 ///         "subnet_ids": [subnet["id"] for subnet in test],
 ///     },
+///     attachment_type="vpc",
+///     description="example",
+///     endpoint_type="cidr",
 ///     security_group_ids=[test_aws_security_group["id"]],
 ///     verified_access_group_id=test_aws_verifiedaccess_group["id"])
 /// ```
@@ -366,12 +366,8 @@ import 'endpoint_state.dart';
 /// {
 ///     var example = new Aws.VerifiedAccess.Endpoint("example", new()
 ///     {
-///         AttachmentType = "vpc",
-///         Description = "example",
-///         EndpointType = "cidr",
 ///         CidrOptions = new Aws.VerifiedAccess.Inputs.EndpointCidrOptionsArgs
 ///         {
-///             Cidr = test[0].CidrBlock,
 ///             PortRanges = new[]
 ///             {
 ///                 new Aws.VerifiedAccess.Inputs.EndpointCidrOptionsPortRangeArgs
@@ -380,12 +376,16 @@ import 'endpoint_state.dart';
 ///                     ToPort = 443,
 ///                 },
 ///             },
+///             Cidr = test[0].CidrBlock,
 ///             Protocol = "tcp",
 ///             SubnetIds = .Select(subnet =>
 ///             {
 ///                 return subnet.Id;
 ///             }).ToList(),
 ///         },
+///         AttachmentType = "vpc",
+///         Description = "example",
+///         EndpointType = "cidr",
 ///         SecurityGroupIds = new[]
 ///         {
 ///             testAwsSecurityGroup.Id,
@@ -405,18 +405,18 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_verifiedaccess_endpoint" "example" {
-///   attachment_type = "vpc"
-///   description     = "example"
-///   endpoint_type   = "cidr"
 ///   cidr_options = {
-///     cidr = test[0].cidrBlock
 ///     port_ranges = [{
 ///       "fromPort" = 443
 ///       "toPort"   = 443
 ///     }]
+///     cidr       = test[0].cidrBlock
 ///     protocol   = "tcp"
 ///     subnet_ids = [for subnet in test : subnet.id]
 ///   }
+///   attachment_type          = "vpc"
+///   description              = "example"
+///   endpoint_type            = "cidr"
 ///   security_group_ids       = [testAwsSecurityGroup.id]
 ///   verified_access_group_id = testAwsVerifiedaccessGroup.id
 /// }
@@ -483,7 +483,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:verifiedaccess/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');
@@ -499,10 +499,10 @@ class Endpoint extends pulumi.CustomResource {
     policyDocument = registerOutput<String?>('policyDocument');
     rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRdsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sseSpecification = registerOutput<EndpointSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verifiedAccessGroupId = registerOutput<String>('verifiedAccessGroupId');
     verifiedAccessInstanceId = registerOutput<String>('verifiedAccessInstanceId');
   }
@@ -512,11 +512,12 @@ class Endpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Endpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,10 +545,41 @@ class Endpoint extends pulumi.CustomResource {
     policyDocument = registerOutput<String?>('policyDocument');
     rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRdsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sseSpecification = registerOutput<EndpointSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verifiedAccessGroupId = registerOutput<String>('verifiedAccessGroupId');
+    verifiedAccessInstanceId = registerOutput<String>('verifiedAccessInstanceId');
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'aws:verifiedaccess/endpoint:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationDomain = registerOutput<String?>('applicationDomain');
+    attachmentType = registerOutput<String>('attachmentType');
+    cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCidrOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    deviceValidationDomain = registerOutput<String>('deviceValidationDomain');
+    domainCertificateArn = registerOutput<String?>('domainCertificateArn');
+    endpointDomain = registerOutput<String>('endpointDomain');
+    endpointDomainPrefix = registerOutput<String?>('endpointDomainPrefix');
+    endpointType = registerOutput<String>('endpointType');
+    loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>('loadBalancerOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointLoadBalancerOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>('networkInterfaceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointNetworkInterfaceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyDocument = registerOutput<String?>('policyDocument');
+    rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointRdsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sseSpecification = registerOutput<EndpointSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verifiedAccessGroupId = registerOutput<String>('verifiedAccessGroupId');
     verifiedAccessInstanceId = registerOutput<String>('verifiedAccessInstanceId');
   }

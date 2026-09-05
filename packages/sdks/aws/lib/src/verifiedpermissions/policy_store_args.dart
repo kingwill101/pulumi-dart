@@ -9,13 +9,13 @@ import 'policy_store_validation_settings.dart';
 /// {@macro pulumi_verifiedpermissions_policy_store_policy_store_args_doc}
 class PolicyStoreArgs {
   /// Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
-  final pulumi.Input<String>? deletionProtection;
+  final pulumi.Input<String?>? deletionProtection;
   /// A description of the Policy Store.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Validation settings for the policy store.
   final pulumi.Input<PolicyStoreValidationSettings> validationSettings;
 

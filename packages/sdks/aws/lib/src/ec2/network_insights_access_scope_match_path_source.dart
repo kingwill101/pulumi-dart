@@ -7,11 +7,11 @@ import 'network_insights_access_scope_match_path_source_resource_statement.dart'
 class NetworkInsightsAccessScopeMatchPathSource {
   /// Packet header statement.
   /// See `packetHeaderStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSourcePacketHeaderStatement>? packetHeaderStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSourcePacketHeaderStatement?>? packetHeaderStatement;
   /// Resource statement.
   /// Exactly one of `resources` or `resourceTypes` must be specified.
   /// See `resourceStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSourceResourceStatement>? resourceStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeMatchPathSourceResourceStatement?>? resourceStatement;
 
   /// Creates a new [NetworkInsightsAccessScopeMatchPathSource].
   /// [packetHeaderStatement] Packet header statement.

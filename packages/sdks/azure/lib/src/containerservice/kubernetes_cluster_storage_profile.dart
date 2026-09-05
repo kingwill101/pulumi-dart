@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterStorageProfile {
   /// Is the Blob CSI driver enabled? Defaults to `false`.
-  final pulumi.Input<bool>? blobDriverEnabled;
+  final pulumi.Input<bool?>? blobDriverEnabled;
   /// Is the Disk CSI driver enabled? Defaults to `true`.
-  final pulumi.Input<bool>? diskDriverEnabled;
+  final pulumi.Input<bool?>? diskDriverEnabled;
   /// Is the File CSI driver enabled? Defaults to `true`.
-  final pulumi.Input<bool>? fileDriverEnabled;
+  final pulumi.Input<bool?>? fileDriverEnabled;
   /// Is the Snapshot Controller enabled? Defaults to `true`.
-  final pulumi.Input<bool>? snapshotControllerEnabled;
+  final pulumi.Input<bool?>? snapshotControllerEnabled;
 
   /// Creates a new [KubernetesClusterStorageProfile].
   /// [blobDriverEnabled] Is the Blob CSI driver enabled? Defaults to `false`.

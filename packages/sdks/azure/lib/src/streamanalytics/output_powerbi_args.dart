@@ -14,15 +14,15 @@ class OutputPowerbiArgs {
   /// The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
   final pulumi.Input<String> groupName;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;
   /// The name of the Power BI table under the specified dataset.
   final pulumi.Input<String> table;
   /// The user display name of the user that was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserDisplayName;
+  final pulumi.Input<String?>? tokenUserDisplayName;
   /// The user principal name (UPN) of the user that was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserPrincipalName;
+  final pulumi.Input<String?>? tokenUserPrincipalName;
 
   /// Creates a new [OutputPowerbiArgs].
   /// [dataset] The name of the Power BI dataset.

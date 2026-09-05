@@ -275,7 +275,7 @@ class PrincipalAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the resource share.
+  /// ARN of the resource share.
   late final pulumi.Output<String> resourceShareArn;
 
   /// Creates a new [PrincipalAssociation].
@@ -290,7 +290,7 @@ class PrincipalAssociation extends pulumi.CustomResource {
           'aws:ram/principalAssociation:PrincipalAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
@@ -302,11 +302,12 @@ class PrincipalAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrincipalAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrincipalAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -320,6 +321,20 @@ class PrincipalAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+  }
+
+  /// Creates a typed reference to an existing [PrincipalAssociation] resource.
+  PrincipalAssociation.reference(String urn)
+    : super(
+        'aws:ram/principalAssociation:PrincipalAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
     resourceShareArn = registerOutput<String>('resourceShareArn');

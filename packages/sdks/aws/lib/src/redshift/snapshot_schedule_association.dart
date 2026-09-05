@@ -247,7 +247,7 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
           'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     region = registerOutput<String>('region');
@@ -259,11 +259,12 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotScheduleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotScheduleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,6 +278,20 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    region = registerOutput<String>('region');
+    scheduleIdentifier = registerOutput<String>('scheduleIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [SnapshotScheduleAssociation] resource.
+  SnapshotScheduleAssociation.reference(String urn)
+    : super(
+        'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     region = registerOutput<String>('region');
     scheduleIdentifier = registerOutput<String>('scheduleIdentifier');

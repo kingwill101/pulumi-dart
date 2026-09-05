@@ -158,13 +158,13 @@ import 'smart_detector_alert_rule_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Severity:          pulumi.String("Sev0"),
 /// 			ScopeResourceIds: pulumi.StringArray{
-/// 				exampleInsights.ID(),
+/// 				exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Frequency:    pulumi.String("PT1M"),
 /// 			DetectorType: pulumi.String("FailureAnomaliesDetector"),
 /// 			ActionGroup: &monitoring.SmartDetectorAlertRuleActionGroupArgs{
 /// 				Ids: pulumi.StringArray{
-/// 					exampleActionGroup.ID(),
+/// 					exampleActionGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -361,7 +361,7 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
           'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>('actionGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmartDetectorAlertRuleActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
@@ -370,9 +370,9 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     frequency = registerOutput<String>('frequency');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopeResourceIds = registerOutput<List<String>>('scopeResourceIds');
+    scopeResourceIds = registerOutput<List<String>>('scopeResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<String>('severity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttlingDuration = registerOutput<String?>('throttlingDuration');
   }
 
@@ -381,11 +381,12 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SmartDetectorAlertRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SmartDetectorAlertRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -406,9 +407,31 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     frequency = registerOutput<String>('frequency');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopeResourceIds = registerOutput<List<String>>('scopeResourceIds');
+    scopeResourceIds = registerOutput<List<String>>('scopeResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<String>('severity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throttlingDuration = registerOutput<String?>('throttlingDuration');
+  }
+
+  /// Creates a typed reference to an existing [SmartDetectorAlertRule] resource.
+  SmartDetectorAlertRule.reference(String urn)
+    : super(
+        'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>('actionGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmartDetectorAlertRuleActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    detectorType = registerOutput<String>('detectorType');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<String>('frequency');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeResourceIds = registerOutput<List<String>>('scopeResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    severity = registerOutput<String>('severity');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttlingDuration = registerOutput<String?>('throttlingDuration');
   }
 }

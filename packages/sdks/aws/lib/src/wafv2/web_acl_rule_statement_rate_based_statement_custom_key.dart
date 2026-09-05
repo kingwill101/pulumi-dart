@@ -11,29 +11,29 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_query_string.dart
 import 'web_acl_rule_statement_rate_based_statement_custom_key_uri_path.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKey {
-  final pulumi.Input<Map<String, dynamic>>? asn;
+  final pulumi.Input<Map<String, dynamic>?>? asn;
   /// Use a cookie as an aggregate key. See Custom Key Cookie below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyCookie>? cookie;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyCookie?>? cookie;
   /// Use the forwarded IP address as an aggregate key.
-  final pulumi.Input<Map<String, dynamic>>? forwardedIp;
+  final pulumi.Input<Map<String, dynamic>?>? forwardedIp;
   /// Use a header as an aggregate key. See Custom Key Header below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyHeader>? header;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyHeader?>? header;
   /// Use the HTTP method as an aggregate key.
-  final pulumi.Input<Map<String, dynamic>>? httpMethod;
+  final pulumi.Input<Map<String, dynamic>?>? httpMethod;
   /// Use the IP address as an aggregate key.
-  final pulumi.Input<Map<String, dynamic>>? ip;
+  final pulumi.Input<Map<String, dynamic>?>? ip;
   /// Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyJa3Fingerprint?>? ja3Fingerprint;
   /// Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyJa4Fingerprint?>? ja4Fingerprint;
   /// Use a label namespace as an aggregate key. See Custom Key Label Namespace below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace>? labelNamespace;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyLabelNamespace?>? labelNamespace;
   /// Use a query argument as an aggregate key. See Custom Key Query Argument below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyQueryArgument>? queryArgument;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyQueryArgument?>? queryArgument;
   /// Use the query string as an aggregate key.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyQueryString>? queryString;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyQueryString?>? queryString;
   /// Use the URI path as an aggregate key.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyUriPath>? uriPath;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatementCustomKeyUriPath?>? uriPath;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKey].
   /// [asn] Optional.

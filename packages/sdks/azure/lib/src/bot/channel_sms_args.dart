@@ -10,7 +10,7 @@ class ChannelSmsArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The phone number for the SMS Channel.
   final pulumi.Input<String> phoneNumber;
   /// The name of the resource group where the SMS Channel should be created. Changing this forces a new resource to be created.

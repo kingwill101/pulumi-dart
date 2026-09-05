@@ -25,16 +25,16 @@ import 'table_export_state.dart';
 ///     forceDestroy: true,
 /// });
 /// const exampleTable = new aws.dynamodb.Table("example", {
-///     name: "example-table-1",
-///     billingMode: "PAY_PER_REQUEST",
-///     hashKey: "user_id",
+///     pointInTimeRecovery: {
+///         enabled: true,
+///     },
 ///     attributes: [{
 ///         name: "user_id",
 ///         type: "S",
 ///     }],
-///     pointInTimeRecovery: {
-///         enabled: true,
-///     },
+///     name: "example-table-1",
+///     billingMode: "PAY_PER_REQUEST",
+///     hashKey: "user_id",
 /// });
 /// const exampleTableExport = new aws.dynamodb.TableExport("example", {
 ///     tableArn: exampleTable.arn,
@@ -49,16 +49,16 @@ import 'table_export_state.dart';
 ///     bucket_prefix="example",
 ///     force_destroy=True)
 /// example_table = aws.dynamodb.Table("example",
-///     name="example-table-1",
-///     billing_mode="PAY_PER_REQUEST",
-///     hash_key="user_id",
+///     point_in_time_recovery={
+///         "enabled": True,
+///     },
 ///     attributes=[{
 ///         "name": "user_id",
 ///         "type": "S",
 ///     }],
-///     point_in_time_recovery={
-///         "enabled": True,
-///     })
+///     name="example-table-1",
+///     billing_mode="PAY_PER_REQUEST",
+///     hash_key="user_id")
 /// example_table_export = aws.dynamodb.TableExport("example",
 ///     table_arn=example_table.arn,
 ///     s3_bucket=example.id)
@@ -79,9 +79,10 @@ import 'table_export_state.dart';
 ///
 ///     var exampleTable = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example-table-1",
-///         BillingMode = "PAY_PER_REQUEST",
-///         HashKey = "user_id",
+///         PointInTimeRecovery = new Aws.DynamoDB.Inputs.TablePointInTimeRecoveryArgs
+///         {
+///             Enabled = true,
+///         },
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -90,10 +91,9 @@ import 'table_export_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
-///         PointInTimeRecovery = new Aws.DynamoDB.Inputs.TablePointInTimeRecoveryArgs
-///         {
-///             Enabled = true,
-///         },
+///         Name = "example-table-1",
+///         BillingMode = "PAY_PER_REQUEST",
+///         HashKey = "user_id",
 ///     });
 ///
 ///     var exampleTableExport = new Aws.DynamoDB.TableExport("example", new()
@@ -123,18 +123,18 @@ import 'table_export_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTable, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:        pulumi.String("example-table-1"),
-/// 			BillingMode: pulumi.String("PAY_PER_REQUEST"),
-/// 			HashKey:     pulumi.String("user_id"),
+/// 			PointInTimeRecovery: &dynamodb.TablePointInTimeRecoveryArgs{
+/// 				Enabled: pulumi.Bool(true),
+/// 			},
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("user_id"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
-/// 			PointInTimeRecovery: &dynamodb.TablePointInTimeRecoveryArgs{
-/// 				Enabled: pulumi.Bool(true),
-/// 			},
+/// 			Name:        pulumi.String("example-table-1"),
+/// 			BillingMode: pulumi.String("PAY_PER_REQUEST"),
+/// 			HashKey:     pulumi.String("user_id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,16 +164,16 @@ import 'table_export_state.dart';
 ///   force_destroy = true
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   name         = "example-table-1"
-///   billing_mode = "PAY_PER_REQUEST"
-///   hash_key     = "user_id"
+///   point_in_time_recovery = {
+///     enabled = true
+///   }
 ///   attributes {
 ///     name = "user_id"
 ///     type = "S"
 ///   }
-///   point_in_time_recovery = {
-///     enabled = true
-///   }
+///   name         = "example-table-1"
+///   billing_mode = "PAY_PER_REQUEST"
+///   hash_key     = "user_id"
 /// }
 /// resource "aws_dynamodb_tableexport" "example" {
 ///   table_arn = aws_dynamodb_table.example.arn
@@ -190,8 +190,8 @@ import 'table_export_state.dart';
 /// import com.pulumi.aws.s3.BucketArgs;
 /// import com.pulumi.aws.dynamodb.Table;
 /// import com.pulumi.aws.dynamodb.TableArgs;
-/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TablePointInTimeRecoveryArgs;
+/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.TableExport;
 /// import com.pulumi.aws.dynamodb.TableExportArgs;
 /// import java.util.ArrayList;
@@ -213,16 +213,16 @@ import 'table_export_state.dart';
 ///             .build());
 ///
 ///         var exampleTable = new Table("exampleTable", TableArgs.builder()
-///             .name("example-table-1")
-///             .billingMode("PAY_PER_REQUEST")
-///             .hashKey("user_id")
+///             .pointInTimeRecovery(TablePointInTimeRecoveryArgs.builder()
+///                 .enabled(true)
+///                 .build())
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("user_id")
 ///                 .type("S")
 ///                 .build())
-///             .pointInTimeRecovery(TablePointInTimeRecoveryArgs.builder()
-///                 .enabled(true)
-///                 .build())
+///             .name("example-table-1")
+///             .billingMode("PAY_PER_REQUEST")
+///             .hashKey("user_id")
 ///             .build());
 ///
 ///         var exampleTableExport = new TableExport("exampleTableExport", TableExportArgs.builder()
@@ -244,14 +244,14 @@ import 'table_export_state.dart';
 ///     type: aws:dynamodb:Table
 ///     name: example
 ///     properties:
-///       name: example-table-1
-///       billingMode: PAY_PER_REQUEST
-///       hashKey: user_id
+///       pointInTimeRecovery:
+///         enabled: true
 ///       attributes:
 ///         - name: user_id
 ///           type: S
-///       pointInTimeRecovery:
-///         enabled: true
+///       name: example-table-1
+///       billingMode: PAY_PER_REQUEST
+///       hashKey: user_id
 ///   exampleTableExport:
 ///     type: aws:dynamodb:TableExport
 ///     name: example
@@ -386,13 +386,13 @@ import 'table_export_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.TableExport("example", {
-///     exportType: "INCREMENTAL_EXPORT",
-///     s3Bucket: exampleAwsS3Bucket.id,
-///     tableArn: exampleAwsDynamodbTable.arn,
 ///     incrementalExportSpecification: {
 ///         exportFromTime: "2025-02-09T12:00:00+01:00",
 ///         exportToTime: "2025-02-09T13:00:00+01:00",
 ///     },
+///     exportType: "INCREMENTAL_EXPORT",
+///     s3Bucket: exampleAwsS3Bucket.id,
+///     tableArn: exampleAwsDynamodbTable.arn,
 /// });
 /// ```
 /// ```python
@@ -400,13 +400,13 @@ import 'table_export_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.TableExport("example",
-///     export_type="INCREMENTAL_EXPORT",
-///     s3_bucket=example_aws_s3_bucket["id"],
-///     table_arn=example_aws_dynamodb_table["arn"],
 ///     incremental_export_specification={
 ///         "export_from_time": "2025-02-09T12:00:00+01:00",
 ///         "export_to_time": "2025-02-09T13:00:00+01:00",
-///     })
+///     },
+///     export_type="INCREMENTAL_EXPORT",
+///     s3_bucket=example_aws_s3_bucket["id"],
+///     table_arn=example_aws_dynamodb_table["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -418,14 +418,14 @@ import 'table_export_state.dart';
 /// {
 ///     var example = new Aws.DynamoDB.TableExport("example", new()
 ///     {
-///         ExportType = "INCREMENTAL_EXPORT",
-///         S3Bucket = exampleAwsS3Bucket.Id,
-///         TableArn = exampleAwsDynamodbTable.Arn,
 ///         IncrementalExportSpecification = new Aws.DynamoDB.Inputs.TableExportIncrementalExportSpecificationArgs
 ///         {
 ///             ExportFromTime = "2025-02-09T12:00:00+01:00",
 ///             ExportToTime = "2025-02-09T13:00:00+01:00",
 ///         },
+///         ExportType = "INCREMENTAL_EXPORT",
+///         S3Bucket = exampleAwsS3Bucket.Id,
+///         TableArn = exampleAwsDynamodbTable.Arn,
 ///     });
 ///
 /// });
@@ -441,13 +441,13 @@ import 'table_export_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTableExport(ctx, "example", &dynamodb.TableExportArgs{
-/// 			ExportType: pulumi.String("INCREMENTAL_EXPORT"),
-/// 			S3Bucket:   pulumi.Any(exampleAwsS3Bucket.Id),
-/// 			TableArn:   pulumi.Any(exampleAwsDynamodbTable.Arn),
 /// 			IncrementalExportSpecification: &dynamodb.TableExportIncrementalExportSpecificationArgs{
 /// 				ExportFromTime: pulumi.String("2025-02-09T12:00:00+01:00"),
 /// 				ExportToTime:   pulumi.String("2025-02-09T13:00:00+01:00"),
 /// 			},
+/// 			ExportType: pulumi.String("INCREMENTAL_EXPORT"),
+/// 			S3Bucket:   pulumi.Any(exampleAwsS3Bucket.Id),
+/// 			TableArn:   pulumi.Any(exampleAwsDynamodbTable.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -466,13 +466,13 @@ import 'table_export_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_tableexport" "example" {
-///   export_type = "INCREMENTAL_EXPORT"
-///   s3_bucket   = exampleAwsS3Bucket.id
-///   table_arn   = exampleAwsDynamodbTable.arn
 ///   incremental_export_specification = {
 ///     export_from_time = "2025-02-09T12:00:00+01:00"
 ///     export_to_time   = "2025-02-09T13:00:00+01:00"
 ///   }
+///   export_type = "INCREMENTAL_EXPORT"
+///   s3_bucket   = exampleAwsS3Bucket.id
+///   table_arn   = exampleAwsDynamodbTable.arn
 /// }
 /// ```
 /// ```java
@@ -498,13 +498,13 @@ import 'table_export_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TableExport("example", TableExportArgs.builder()
-///             .exportType("INCREMENTAL_EXPORT")
-///             .s3Bucket(exampleAwsS3Bucket.id())
-///             .tableArn(exampleAwsDynamodbTable.arn())
 ///             .incrementalExportSpecification(TableExportIncrementalExportSpecificationArgs.builder()
 ///                 .exportFromTime("2025-02-09T12:00:00+01:00")
 ///                 .exportToTime("2025-02-09T13:00:00+01:00")
 ///                 .build())
+///             .exportType("INCREMENTAL_EXPORT")
+///             .s3Bucket(exampleAwsS3Bucket.id())
+///             .tableArn(exampleAwsDynamodbTable.arn())
 ///             .build());
 ///
 ///     }
@@ -515,12 +515,12 @@ import 'table_export_state.dart';
 ///   example:
 ///     type: aws:dynamodb:TableExport
 ///     properties:
-///       exportType: INCREMENTAL_EXPORT
-///       s3Bucket: ${exampleAwsS3Bucket.id}
-///       tableArn: ${exampleAwsDynamodbTable.arn}
 ///       incrementalExportSpecification:
 ///         exportFromTime: 2025-02-09T12:00:00+01:00
 ///         exportToTime: 2025-02-09T13:00:00+01:00
+///       exportType: INCREMENTAL_EXPORT
+///       s3Bucket: ${exampleAwsS3Bucket.id}
+///       tableArn: ${exampleAwsDynamodbTable.arn}
 /// ```
 ///
 ///
@@ -530,7 +530,7 @@ import 'table_export_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DynamoDB table export.
+/// - `arn` (String) ARN of the DynamoDB table export.
 ///
 ///
 /// Using `pulumi import`, import DynamoDB table exports using the `arn`. For example:
@@ -590,7 +590,7 @@ class TableExport extends pulumi.CustomResource {
           'aws:dynamodb/tableExport:TableExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billedSizeInBytes = registerOutput<int>('billedSizeInBytes');
@@ -617,11 +617,12 @@ class TableExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TableExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,6 +636,35 @@ class TableExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    billedSizeInBytes = registerOutput<int>('billedSizeInBytes');
+    endTime = registerOutput<String>('endTime');
+    exportFormat = registerOutput<String?>('exportFormat');
+    exportStatus = registerOutput<String>('exportStatus');
+    exportTime = registerOutput<String>('exportTime');
+    exportType = registerOutput<String>('exportType');
+    incrementalExportSpecification = registerOutput<TableExportIncrementalExportSpecification?>('incrementalExportSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableExportIncrementalExportSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    itemCount = registerOutput<int>('itemCount');
+    manifestFilesS3Key = registerOutput<String>('manifestFilesS3Key');
+    region = registerOutput<String>('region');
+    s3Bucket = registerOutput<String>('s3Bucket');
+    s3BucketOwner = registerOutput<String>('s3BucketOwner');
+    s3Prefix = registerOutput<String>('s3Prefix');
+    s3SseAlgorithm = registerOutput<String>('s3SseAlgorithm');
+    s3SseKmsKeyId = registerOutput<String?>('s3SseKmsKeyId');
+    startTime = registerOutput<String>('startTime');
+    tableArn = registerOutput<String>('tableArn');
+  }
+
+  /// Creates a typed reference to an existing [TableExport] resource.
+  TableExport.reference(String urn)
+    : super(
+        'aws:dynamodb/tableExport:TableExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     billedSizeInBytes = registerOutput<int>('billedSizeInBytes');
     endTime = registerOutput<String>('endTime');

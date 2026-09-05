@@ -7,15 +7,15 @@ class LifecyclePolicySelection {
   /// The count number to use with the count type.
   final pulumi.Input<int> countNumber;
   /// The type of count to perform. Either 'imageCountMoreThan', 'sinceImagePushed', 'sinceImagePulled', or 'sinceImageTransitioned'.
-  final pulumi.Input<String> countType;
+  final pulumi.Input<dynamic> countType;
   /// The unit of time for count types based on image age. Required when 'countType' is 'sinceImagePushed', 'sinceImagePulled', or 'sinceImageTransitioned'. The only supported value is 'days'.
-  final pulumi.Input<String>? countUnit;
+  final pulumi.Input<String?>? countUnit;
   /// The image storage class to select. Required when 'countType' is 'sinceImageTransitioned' (must be 'archive'). For 'imageCountMoreThan', 'sinceImagePushed', and 'sinceImagePulled', the only supported value is 'standard'. If omitted, ECR uses 'standard'.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// A list of image tag prefixes on which to take action.
-  final pulumi.Input<List<String>>? tagPrefixList;
+  final pulumi.Input<List<String>?>? tagPrefixList;
   /// The tag status of the image. Either 'tagged', 'untagged', or 'any'.
-  final pulumi.Input<String> tagStatus;
+  final pulumi.Input<dynamic> tagStatus;
 
   /// Creates a new [LifecyclePolicySelection].
   /// [countNumber] The count number to use with the count type.
@@ -46,12 +46,12 @@ class LifecyclePolicySelection {
 
   factory LifecyclePolicySelection.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicySelection(
-      countNumber: pulumi.Input.fromValue(map['countNumber'] as int),
-      countType: pulumi.Input.fromValue(map['countType'] as String),
+      countNumber: pulumi.Input.fromValue((map['countNumber'] as num).toInt()),
+      countType: pulumi.Input.fromValue(map['countType']),
       countUnit: (() { final guardedValue = map['countUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tagPrefixList: (() { final guardedValue = map['tagPrefixList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      tagStatus: pulumi.Input.fromValue(map['tagStatus'] as String),
+      tagStatus: pulumi.Input.fromValue(map['tagStatus']),
     );
   }
 }

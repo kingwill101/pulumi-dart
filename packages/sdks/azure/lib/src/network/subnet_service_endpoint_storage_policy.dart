@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_service_endpoint_storage_policy_args.dart';
+import 'subnet_service_endpoint_storage_policy_definition.dart';
 import 'subnet_service_endpoint_storage_policy_state.dart';
 
 /// Manages a Subnet Service Endpoint Storage Policy.
@@ -197,8 +198,8 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 /// 					Description: pulumi.String("definition1"),
 /// 					Service:     pulumi.String("Microsoft.Storage"),
 /// 					ServiceResources: pulumi.StringArray{
-/// 						example.ID(),
-/// 						exampleAccount.ID(),
+/// 						example.ID().ToIDOutput().ToStringOutput(),
+/// 						exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				&network.SubnetServiceEndpointStoragePolicyDefinitionArgs{
@@ -392,7 +393,7 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 /// ```
 class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
   /// A `definition` block as defined below
-  late final pulumi.Output<List<Map<String, dynamic>>?> definitions;
+  late final pulumi.Output<List<SubnetServiceEndpointStoragePolicyDefinition>?> definitions;
   /// The Azure Region where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Subnet Service Endpoint Storage Policy. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
@@ -414,13 +415,13 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
           'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    definitions = registerOutput<List<Map<String, dynamic>>?>('definitions');
+    definitions = registerOutput<List<SubnetServiceEndpointStoragePolicyDefinition>?>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(guardedValue, (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SubnetServiceEndpointStoragePolicy] resource's state with the given [name] and [id].
@@ -428,11 +429,12 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetServiceEndpointStoragePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetServiceEndpointStoragePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,10 +448,26 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    definitions = registerOutput<List<Map<String, dynamic>>?>('definitions');
+    definitions = registerOutput<List<SubnetServiceEndpointStoragePolicyDefinition>?>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(guardedValue, (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SubnetServiceEndpointStoragePolicy] resource.
+  SubnetServiceEndpointStoragePolicy.reference(String urn)
+    : super(
+        'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    definitions = registerOutput<List<SubnetServiceEndpointStoragePolicyDefinition>?>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(guardedValue, (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

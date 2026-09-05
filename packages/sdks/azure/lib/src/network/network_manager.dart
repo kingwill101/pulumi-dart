@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_manager_args.dart';
+import 'network_manager_cross_tenant_scope.dart';
 import 'network_manager_scope.dart';
 import 'network_manager_state.dart';
 
@@ -275,7 +276,7 @@ import 'network_manager_state.dart';
 /// ```
 class NetworkManager extends pulumi.CustomResource {
   /// One or more `crossTenantScopes` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> crossTenantScopes;
+  late final pulumi.Output<List<NetworkManagerCrossTenantScope>> crossTenantScopes;
   /// A description of the Network Manager.
   late final pulumi.Output<String?> description;
   /// Specifies the Azure Region where the Network Manager should exist. Changing this forces a new resource to be created.
@@ -303,16 +304,16 @@ class NetworkManager extends pulumi.CustomResource {
           'azure:network/networkManager:NetworkManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    crossTenantScopes = registerOutput<List<Map<String, dynamic>>>('crossTenantScopes');
+    crossTenantScopes = registerOutput<List<NetworkManagerCrossTenantScope>>('crossTenantScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerCrossTenantScope>(guardedValue, (value) => NetworkManagerCrossTenantScope.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scope = registerOutput<NetworkManagerScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopeAccesses = registerOutput<List<String>?>('scopeAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkManager] resource's state with the given [name] and [id].
@@ -320,11 +321,12 @@ class NetworkManager extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManager._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,13 +340,32 @@ class NetworkManager extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    crossTenantScopes = registerOutput<List<Map<String, dynamic>>>('crossTenantScopes');
+    crossTenantScopes = registerOutput<List<NetworkManagerCrossTenantScope>>('crossTenantScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerCrossTenantScope>(guardedValue, (value) => NetworkManagerCrossTenantScope.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scope = registerOutput<NetworkManagerScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopeAccesses = registerOutput<List<String>?>('scopeAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkManager] resource.
+  NetworkManager.reference(String urn)
+    : super(
+        'azure:network/networkManager:NetworkManager',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    crossTenantScopes = registerOutput<List<NetworkManagerCrossTenantScope>>('crossTenantScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerCrossTenantScope>(guardedValue, (value) => NetworkManagerCrossTenantScope.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<NetworkManagerScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopeAccesses = registerOutput<List<String>?>('scopeAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

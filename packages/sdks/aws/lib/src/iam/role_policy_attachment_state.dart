@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RolePolicyAttachment resources.
 class RolePolicyAttachmentState {
   /// The ARN of the policy you want to apply
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// The name of the IAM role to which the policy should be applied
-  final pulumi.Input<String>? role;
+  final pulumi.Input<dynamic>? role;
 
   /// Creates a new [RolePolicyAttachmentState].
   /// [policyArn] The ARN of the policy you want to apply
@@ -27,7 +27,7 @@ class RolePolicyAttachmentState {
   factory RolePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentState(
       policyArn: (() { final guardedValue = map['policyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

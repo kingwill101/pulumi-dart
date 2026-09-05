@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_plugin_get_plugin_args_doc}
 class GetPluginArgs {
   /// The alias of the Docker plugin. If the tag is omitted, `:latest` is complemented to the attribute value.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// The ID of the plugin, which has precedence over the `alias` of both are given
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetPluginArgs].
   /// [alias] The alias of the Docker plugin. If the tag is omitted, `:latest` is complemented to the attribute value.

@@ -4,34 +4,34 @@
 /// Result data returned by getRegistrationCode.
 class GetRegistrationCodeResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// The CA certificate registration code.
-  final String registrationCode;
+  final String? registrationCode;
 
   /// Creates a new [GetRegistrationCodeResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [registrationCode] The CA certificate registration code.
   const GetRegistrationCodeResult({
-    required this.id,
-    required this.region,
-    required this.registrationCode,
+    this.id,
+    this.region,
+    this.registrationCode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
-      'registrationCode': registrationCode,
+      'id': ?id,
+      'region': ?region,
+      'registrationCode': ?registrationCode,
     };
   }
 
   factory GetRegistrationCodeResult.fromMap(Map<String, dynamic> map) {
     return GetRegistrationCodeResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
-      registrationCode: map['registrationCode'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      registrationCode: (() { final guardedValue = map['registrationCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

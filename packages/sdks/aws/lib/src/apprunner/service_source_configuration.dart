@@ -7,13 +7,13 @@ import 'service_source_configuration_image_repository.dart';
 
 class ServiceSourceConfiguration {
   /// Configuration for resources needed to authenticate access to some source repositories. See `authenticationConfiguration` below.
-  final pulumi.Input<ServiceSourceConfigurationAuthenticationConfiguration>? authenticationConfiguration;
+  final pulumi.Input<ServiceSourceConfigurationAuthenticationConfiguration?>? authenticationConfiguration;
   /// Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
-  final pulumi.Input<bool>? autoDeploymentsEnabled;
+  final pulumi.Input<bool?>? autoDeploymentsEnabled;
   /// Description of a source code repository. See `codeRepository` below.
-  final pulumi.Input<ServiceSourceConfigurationCodeRepository>? codeRepository;
+  final pulumi.Input<ServiceSourceConfigurationCodeRepository?>? codeRepository;
   /// Description of a source image repository. See `imageRepository` below.
-  final pulumi.Input<ServiceSourceConfigurationImageRepository>? imageRepository;
+  final pulumi.Input<ServiceSourceConfigurationImageRepository?>? imageRepository;
 
   /// Creates a new [ServiceSourceConfiguration].
   /// [authenticationConfiguration] Configuration for resources needed to authenticate access to some source repositories. See `authenticationConfiguration` below.

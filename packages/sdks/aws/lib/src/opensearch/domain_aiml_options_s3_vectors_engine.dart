@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainAimlOptionsS3VectorsEngine {
   /// Enables S3 vectors engine features.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DomainAimlOptionsS3VectorsEngine].
   /// [enabled] Enables S3 vectors engine features.

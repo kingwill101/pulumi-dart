@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering InboundConnectionAccepter resources.
 class InboundConnectionAccepterState {
   /// Specifies the ID of the connection to accept.
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// Status of the connection request.
-  final pulumi.Input<String>? connectionStatus;
+  final pulumi.Input<String?>? connectionStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InboundConnectionAccepterState].
   /// [connectionId] Specifies the ID of the connection to accept.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_vpn_gateway_route_propagation_vpn_gateway_route_propagation_args_doc}
 class VpnGatewayRoutePropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The id of the `aws.ec2.RouteTable` to propagate routes into.
   final pulumi.Input<String> routeTableId;
   /// The id of the `aws.ec2.VpnGateway` to propagate routes from.

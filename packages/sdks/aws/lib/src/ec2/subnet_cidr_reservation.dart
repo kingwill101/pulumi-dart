@@ -154,7 +154,7 @@ class SubnetCidrReservation extends pulumi.CustomResource {
           'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     description = registerOutput<String?>('description');
@@ -169,11 +169,12 @@ class SubnetCidrReservation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetCidrReservationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetCidrReservation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,6 +188,23 @@ class SubnetCidrReservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    description = registerOutput<String?>('description');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    reservationType = registerOutput<String>('reservationType');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [SubnetCidrReservation] resource.
+  SubnetCidrReservation.reference(String urn)
+    : super(
+        'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     description = registerOutput<String?>('description');
     ownerId = registerOutput<String>('ownerId');

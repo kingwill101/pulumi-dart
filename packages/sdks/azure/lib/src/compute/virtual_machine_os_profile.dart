@@ -6,13 +6,13 @@ class VirtualMachineOsProfile {
   /// (Optional for Windows, Optional for Linux) The password associated with the local administrator account.
   ///
   /// &gt; **NOTE:** If using Linux, it may be preferable to use SSH Key authentication (available in the `osProfileLinuxConfig` block) instead of password authentication.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// Specifies the name of the local administrator account.
   final pulumi.Input<String> adminUsername;
   /// Specifies the name of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> computerName;
   /// Specifies custom data to supply to the machine. On Linux-based systems, this can be used as a cloud-init script. On other systems, this will be copied as a file on disk. Internally, this provider will base64 encode this value before sending it to the API. The maximum length of the binary array is 65535 bytes. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customData;
+  final pulumi.Input<String?>? customData;
 
   /// Creates a new [VirtualMachineOsProfile].
   /// [adminPassword] (Optional for Windows, Optional for Linux) The password associated with the local administrator account.

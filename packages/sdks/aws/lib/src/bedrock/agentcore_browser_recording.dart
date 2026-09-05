@@ -5,9 +5,9 @@ import 'agentcore_browser_recording_s3_location.dart';
 
 class AgentcoreBrowserRecording {
   /// Whether to enable recording for browser sessions. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// S3 location where browser session recordings are stored. See `s3Location` below.
-  final pulumi.Input<AgentcoreBrowserRecordingS3Location>? s3Location;
+  final pulumi.Input<AgentcoreBrowserRecordingS3Location?>? s3Location;
 
   /// Creates a new [AgentcoreBrowserRecording].
   /// [enabled] Whether to enable recording for browser sessions. Defaults to `false`.

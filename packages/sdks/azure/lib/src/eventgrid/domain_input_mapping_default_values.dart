@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainInputMappingDefaultValues {
   /// Specifies the default data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataVersion;
+  final pulumi.Input<String?>? dataVersion;
   /// Specifies the default event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventType;
+  final pulumi.Input<String?>? eventType;
   /// Specifies the default subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
 
   /// Creates a new [DomainInputMappingDefaultValues].
   /// [dataVersion] Specifies the default data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.

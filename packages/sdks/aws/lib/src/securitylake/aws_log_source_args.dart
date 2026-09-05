@@ -9,7 +9,7 @@ import 'aws_log_source_source.dart';
 /// {@macro pulumi_securitylake_aws_log_source_aws_log_source_args_doc}
 class AwsLogSourceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specify the natively-supported AWS service to add as a source in Security Lake.
   final pulumi.Input<AwsLogSourceSource> source;
 

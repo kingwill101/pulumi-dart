@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
   final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>> recordColumns;
   /// Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
-  final pulumi.Input<String>? recordEncoding;
+  final pulumi.Input<String?>? recordEncoding;
   /// Specifies the format of the records on the streaming source.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat> recordFormat;
 

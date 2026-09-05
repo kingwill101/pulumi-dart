@@ -6,17 +6,17 @@ import 'invocation_logging_configuration_logging_config_s3_config.dart';
 
 class InvocationLoggingConfigurationLoggingConfig {
   /// CloudWatch logging configuration. See `cloudwatchConfig` Block for details.
-  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfig>? cloudwatchConfig;
+  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfig?>? cloudwatchConfig;
   /// Set to include embeddings data in the log delivery. Defaults to `true`.
-  final pulumi.Input<bool>? embeddingDataDeliveryEnabled;
+  final pulumi.Input<bool?>? embeddingDataDeliveryEnabled;
   /// Set to include image data in the log delivery. Defaults to `true`.
-  final pulumi.Input<bool>? imageDataDeliveryEnabled;
+  final pulumi.Input<bool?>? imageDataDeliveryEnabled;
   /// S3 configuration for storing log data. See `s3Config` Block for details.
-  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigS3Config>? s3Config;
+  final pulumi.Input<InvocationLoggingConfigurationLoggingConfigS3Config?>? s3Config;
   /// Set to include text data in the log delivery. Defaults to `true`.
-  final pulumi.Input<bool>? textDataDeliveryEnabled;
+  final pulumi.Input<bool?>? textDataDeliveryEnabled;
   /// Set to include text data in the log delivery. Defaults to `true`.
-  final pulumi.Input<bool>? videoDataDeliveryEnabled;
+  final pulumi.Input<bool?>? videoDataDeliveryEnabled;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfig].
   /// [cloudwatchConfig] CloudWatch logging configuration. See `cloudwatchConfig` Block for details.

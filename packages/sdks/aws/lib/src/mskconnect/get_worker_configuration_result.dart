@@ -4,63 +4,63 @@
 /// Result data returned by getWorkerConfiguration.
 class GetWorkerConfigurationResult {
   /// the ARN of the worker configuration.
-  final String arn;
+  final String? arn;
   /// a summary description of the worker configuration.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// an ID of the latest successfully created revision of the worker configuration.
-  final int latestRevision;
-  final String name;
+  final int? latestRevision;
+  final String? name;
   /// contents of connect-distributed.properties file.
-  final String propertiesFileContent;
-  final String region;
+  final String? propertiesFileContent;
+  final String? region;
   /// A map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetWorkerConfigurationResult].
   /// [arn] the ARN of the worker configuration.
   /// [description] a summary description of the worker configuration.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [latestRevision] an ID of the latest successfully created revision of the worker configuration.
-  /// [name] Required.
+  /// [name] Optional.
   /// [propertiesFileContent] contents of connect-distributed.properties file.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] A map of tags assigned to the resource.
   const GetWorkerConfigurationResult({
-    required this.arn,
-    required this.description,
-    required this.id,
-    required this.latestRevision,
-    required this.name,
-    required this.propertiesFileContent,
-    required this.region,
-    required this.tags,
+    this.arn,
+    this.description,
+    this.id,
+    this.latestRevision,
+    this.name,
+    this.propertiesFileContent,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'id': id,
-      'latestRevision': latestRevision,
-      'name': name,
-      'propertiesFileContent': propertiesFileContent,
-      'region': region,
-      'tags': tags,
+      'arn': ?arn,
+      'description': ?description,
+      'id': ?id,
+      'latestRevision': ?latestRevision,
+      'name': ?name,
+      'propertiesFileContent': ?propertiesFileContent,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetWorkerConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetWorkerConfigurationResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      latestRevision: map['latestRevision'] as int,
-      name: map['name'] as String,
-      propertiesFileContent: map['propertiesFileContent'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      propertiesFileContent: (() { final guardedValue = map['propertiesFileContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

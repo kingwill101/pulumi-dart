@@ -197,7 +197,7 @@ class Filter extends pulumi.CustomResource {
           'cloudflare:index/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     bodies = registerOutput<List<FilterBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilterBody>(guardedValue, (value) => FilterBody.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

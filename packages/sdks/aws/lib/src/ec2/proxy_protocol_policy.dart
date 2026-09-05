@@ -12,8 +12,6 @@ import 'proxy_protocol_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const lb = new aws.elb.LoadBalancer("lb", {
-///     name: "test-lb",
-///     availabilityZones: ["us-east-1a"],
 ///     listeners: [
 ///         {
 ///             instancePort: 25,
@@ -28,6 +26,8 @@ import 'proxy_protocol_policy_state.dart';
 ///             lbProtocol: "tcp",
 ///         },
 ///     ],
+///     name: "test-lb",
+///     availabilityZones: ["us-east-1a"],
 /// });
 /// const smtp = new aws.ec2.ProxyProtocolPolicy("smtp", {
 ///     loadBalancer: lb.name,
@@ -42,8 +42,6 @@ import 'proxy_protocol_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// lb = aws.elb.LoadBalancer("lb",
-///     name="test-lb",
-///     availability_zones=["us-east-1a"],
 ///     listeners=[
 ///         {
 ///             "instance_port": 25,
@@ -57,7 +55,9 @@ import 'proxy_protocol_policy_state.dart';
 ///             "lb_port": 587,
 ///             "lb_protocol": "tcp",
 ///         },
-///     ])
+///     ],
+///     name="test-lb",
+///     availability_zones=["us-east-1a"])
 /// smtp = aws.ec2.ProxyProtocolPolicy("smtp",
 ///     load_balancer=lb.name,
 ///     instance_ports=[
@@ -75,11 +75,6 @@ import 'proxy_protocol_policy_state.dart';
 /// {
 ///     var lb = new Aws.Elb.LoadBalancer("lb", new()
 ///     {
-///         Name = "test-lb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
 ///         Listeners = new[]
 ///         {
 ///             new Aws.Elb.Inputs.LoadBalancerListenerArgs
@@ -96,6 +91,11 @@ import 'proxy_protocol_policy_state.dart';
 ///                 LbPort = 587,
 ///                 LbProtocol = "tcp",
 ///             },
+///         },
+///         Name = "test-lb",
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
 ///         },
 ///     });
 ///
@@ -123,10 +123,6 @@ import 'proxy_protocol_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		lb, err := elb.NewLoadBalancer(ctx, "lb", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("test-lb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
 /// 					InstancePort:     pulumi.Int(25),
@@ -140,6 +136,10 @@ import 'proxy_protocol_policy_state.dart';
 /// 					LbPort:           pulumi.Int(587),
 /// 					LbProtocol:       pulumi.String("tcp"),
 /// 				},
+/// 			},
+/// 			Name: pulumi.String("test-lb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -169,8 +169,6 @@ import 'proxy_protocol_policy_state.dart';
 /// }
 ///
 /// resource "aws_elb_loadbalancer" "lb" {
-///   name               = "test-lb"
-///   availability_zones = ["us-east-1a"]
 ///   listeners {
 ///     instance_port     = 25
 ///     instance_protocol = "tcp"
@@ -183,6 +181,8 @@ import 'proxy_protocol_policy_state.dart';
 ///     lb_port           = 587
 ///     lb_protocol       = "tcp"
 ///   }
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
 /// }
 /// resource "aws_ec2_proxyprotocolpolicy" "smtp" {
 ///   load_balancer  = aws_elb_loadbalancer.lb.name
@@ -214,8 +214,6 @@ import 'proxy_protocol_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var lb = new LoadBalancer("lb", LoadBalancerArgs.builder()
-///             .name("test-lb")
-///             .availabilityZones("us-east-1a")
 ///             .listeners(
 ///                 LoadBalancerListenerArgs.builder()
 ///                     .instancePort(25)
@@ -229,6 +227,8 @@ import 'proxy_protocol_policy_state.dart';
 ///                     .lbPort(587)
 ///                     .lbProtocol("tcp")
 ///                     .build())
+///             .name("test-lb")
+///             .availabilityZones("us-east-1a")
 ///             .build());
 ///
 ///         var smtp = new ProxyProtocolPolicy("smtp", ProxyProtocolPolicyArgs.builder()
@@ -246,9 +246,6 @@ import 'proxy_protocol_policy_state.dart';
 ///   lb:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: test-lb
-///       availabilityZones:
-///         - us-east-1a
 ///       listeners:
 ///         - instancePort: 25
 ///           instanceProtocol: tcp
@@ -258,6 +255,9 @@ import 'proxy_protocol_policy_state.dart';
 ///           instanceProtocol: tcp
 ///           lbPort: 587
 ///           lbProtocol: tcp
+///       name: test-lb
+///       availabilityZones:
+///         - us-east-1a
 ///   smtp:
 ///     type: aws:ec2:ProxyProtocolPolicy
 ///     properties:
@@ -288,9 +288,9 @@ class ProxyProtocolPolicy extends pulumi.CustomResource {
           'aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    instancePorts = registerOutput<List<String>>('instancePorts');
+    instancePorts = registerOutput<List<String>>('instancePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancer = registerOutput<String>('loadBalancer');
     region = registerOutput<String>('region');
   }
@@ -300,11 +300,12 @@ class ProxyProtocolPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProxyProtocolPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProxyProtocolPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,7 +319,21 @@ class ProxyProtocolPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    instancePorts = registerOutput<List<String>>('instancePorts');
+    instancePorts = registerOutput<List<String>>('instancePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancer = registerOutput<String>('loadBalancer');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ProxyProtocolPolicy] resource.
+  ProxyProtocolPolicy.reference(String urn)
+    : super(
+        'aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    instancePorts = registerOutput<List<String>>('instancePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancer = registerOutput<String>('loadBalancer');
     region = registerOutput<String>('region');
   }

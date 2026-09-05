@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetResourceCreationLimitPolicy {
   /// Maximum number of game sessions that an individual can create during the policy period.
-  final pulumi.Input<int>? newGameSessionsPerCreator;
+  final pulumi.Input<int?>? newGameSessionsPerCreator;
   /// Time span used in evaluating the resource creation limit policy.
-  final pulumi.Input<int>? policyPeriodInMinutes;
+  final pulumi.Input<int?>? policyPeriodInMinutes;
 
   /// Creates a new [FleetResourceCreationLimitPolicy].
   /// [newGameSessionsPerCreator] Maximum number of game sessions that an individual can create during the policy period.
@@ -25,8 +25,8 @@ class FleetResourceCreationLimitPolicy {
 
   factory FleetResourceCreationLimitPolicy.fromMap(Map<String, dynamic> map) {
     return FleetResourceCreationLimitPolicy(
-      newGameSessionsPerCreator: (() { final guardedValue = map['newGameSessionsPerCreator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      policyPeriodInMinutes: (() { final guardedValue = map['policyPeriodInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      newGameSessionsPerCreator: (() { final guardedValue = map['newGameSessionsPerCreator']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      policyPeriodInMinutes: (() { final guardedValue = map['policyPeriodInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

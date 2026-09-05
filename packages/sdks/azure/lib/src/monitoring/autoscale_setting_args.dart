@@ -11,21 +11,21 @@ import 'autoscale_setting_profile.dart';
 /// {@macro pulumi_monitoring_autoscale_setting_autoscale_setting_args_doc}
 class AutoscaleSettingArgs {
   /// Specifies whether automatic scaling is enabled for the target resource. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the supported Azure location where the AutoScale Setting should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the AutoScale Setting. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a `notification` block as defined below.
-  final pulumi.Input<AutoscaleSettingNotification>? notification;
+  final pulumi.Input<AutoscaleSettingNotification?>? notification;
   /// A `predictive` block as defined below.
-  final pulumi.Input<AutoscaleSettingPredictive>? predictive;
+  final pulumi.Input<AutoscaleSettingPredictive?>? predictive;
   /// Specifies one or more (up to 20) `profile` blocks as defined below.
   final pulumi.Input<List<AutoscaleSettingProfile>> profiles;
   /// The name of the Resource Group in the AutoScale Setting should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetResourceId;
 

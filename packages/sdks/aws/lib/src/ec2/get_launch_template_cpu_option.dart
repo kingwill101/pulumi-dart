@@ -32,9 +32,9 @@ class GetLaunchTemplateCpuOption {
   factory GetLaunchTemplateCpuOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCpuOption(
       amdSevSnp: pulumi.Input.fromValue(map['amdSevSnp'] as String),
-      coreCount: pulumi.Input.fromValue(map['coreCount'] as int),
+      coreCount: pulumi.Input.fromValue((map['coreCount'] as num).toInt()),
       nestedVirtualization: pulumi.Input.fromValue(map['nestedVirtualization'] as String),
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
+      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
     );
   }
 }

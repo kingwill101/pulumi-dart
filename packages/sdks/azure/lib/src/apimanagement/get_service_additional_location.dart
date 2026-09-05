@@ -50,7 +50,7 @@ class GetServiceAdditionalLocation {
 
   factory GetServiceAdditionalLocation.fromMap(Map<String, dynamic> map) {
     return GetServiceAdditionalLocation(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       gatewayRegionalUrl: pulumi.Input.fromValue(map['gatewayRegionalUrl'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       privateIpAddresses: pulumi.Input.fromValue((map['privateIpAddresses'] as List).cast<String>()),

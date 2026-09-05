@@ -7,28 +7,28 @@ import 'invoice_unit_timeouts.dart';
 /// Input properties used for looking up and filtering InvoiceUnit resources.
 class InvoiceUnitState {
   /// ARN of the invoice unit.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the invoice unit.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// AWS account ID that receives invoices for this unit. Cannot be changed after creation.
-  final pulumi.Input<String>? invoiceReceiver;
+  final pulumi.Input<String?>? invoiceReceiver;
   /// Timestamp when the invoice unit was last modified.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// Unique name of the invoice unit. Cannot be changed after creation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for invoice unit rules. See `rule` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<InvoiceUnitRule>>? rules;
+  final pulumi.Input<List<InvoiceUnitRule>?>? rules;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Whether tax inheritance is disabled for this invoice unit.
-  final pulumi.Input<bool>? taxInheritanceDisabled;
-  final pulumi.Input<InvoiceUnitTimeouts>? timeouts;
+  final pulumi.Input<bool?>? taxInheritanceDisabled;
+  final pulumi.Input<InvoiceUnitTimeouts?>? timeouts;
 
   /// Creates a new [InvoiceUnitState].
   /// [arn] ARN of the invoice unit.

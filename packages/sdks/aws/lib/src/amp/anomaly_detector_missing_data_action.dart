@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnomalyDetectorMissingDataAction {
   /// Whether to treat missing data points as anomalies. Must be set to `true`. Conflicts with `skip`.
-  final pulumi.Input<bool>? markAsAnomaly;
+  final pulumi.Input<bool?>? markAsAnomaly;
   /// Whether to skip missing data points without reporting them as anomalies. Must be set to `true`. Conflicts with `markAsAnomaly`.
-  final pulumi.Input<bool>? skip;
+  final pulumi.Input<bool?>? skip;
 
   /// Creates a new [AnomalyDetectorMissingDataAction].
   /// [markAsAnomaly] Whether to treat missing data points as anomalies. Must be set to `true`. Conflicts with `skip`.

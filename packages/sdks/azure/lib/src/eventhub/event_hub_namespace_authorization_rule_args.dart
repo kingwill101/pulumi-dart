@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_event_hub_namespace_authorization_rule_event_hub_namespace_authorization_rule_args_doc}
 class EventHubNamespaceAuthorizationRuleArgs {
   /// Grants listen access to this this Authorization Rule. Defaults to `false`.
-  final pulumi.Input<bool>? listen;
+  final pulumi.Input<bool?>? listen;
   /// Grants manage access to this this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? manage;
   /// Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
@@ -20,7 +20,7 @@ class EventHubNamespaceAuthorizationRuleArgs {
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> resourceGroupName;
   /// Grants send access to this this Authorization Rule. Defaults to `false`.
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [EventHubNamespaceAuthorizationRuleArgs].
   /// [listen] Grants listen access to this this Authorization Rule. Defaults to `false`.

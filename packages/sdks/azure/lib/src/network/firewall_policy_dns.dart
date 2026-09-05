@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyDns {
   /// Whether to enable DNS proxy on Firewalls attached to this Firewall Policy? Defaults to `false`.
-  final pulumi.Input<bool>? proxyEnabled;
+  final pulumi.Input<bool?>? proxyEnabled;
   /// A list of custom DNS servers' IP addresses.
-  final pulumi.Input<List<String>>? servers;
+  final pulumi.Input<List<String>?>? servers;
 
   /// Creates a new [FirewallPolicyDns].
   /// [proxyEnabled] Whether to enable DNS proxy on Firewalls attached to this Firewall Policy? Defaults to `false`.

@@ -159,7 +159,7 @@ class PullThroughCacheRule extends pulumi.CustomResource {
           'aws:ecr/pullThroughCacheRule:PullThroughCacheRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     credentialArn = registerOutput<String?>('credentialArn');
     customRoleArn = registerOutput<String?>('customRoleArn');
@@ -175,11 +175,12 @@ class PullThroughCacheRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PullThroughCacheRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PullThroughCacheRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -193,6 +194,24 @@ class PullThroughCacheRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    credentialArn = registerOutput<String?>('credentialArn');
+    customRoleArn = registerOutput<String?>('customRoleArn');
+    ecrRepositoryPrefix = registerOutput<String>('ecrRepositoryPrefix');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    upstreamRegistryUrl = registerOutput<String>('upstreamRegistryUrl');
+    upstreamRepositoryPrefix = registerOutput<String?>('upstreamRepositoryPrefix');
+  }
+
+  /// Creates a typed reference to an existing [PullThroughCacheRule] resource.
+  PullThroughCacheRule.reference(String urn)
+    : super(
+        'aws:ecr/pullThroughCacheRule:PullThroughCacheRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     credentialArn = registerOutput<String?>('credentialArn');
     customRoleArn = registerOutput<String?>('customRoleArn');
     ecrRepositoryPrefix = registerOutput<String>('ecrRepositoryPrefix');

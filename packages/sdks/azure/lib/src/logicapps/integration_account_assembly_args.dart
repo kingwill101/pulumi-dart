@@ -10,17 +10,17 @@ class IntegrationAccountAssemblyArgs {
   /// The name of the Logic App Integration Account Assembly.
   final pulumi.Input<String> assemblyName;
   /// The version of the Logic App Integration Account Assembly. Defaults to `0.0.0.0`.
-  final pulumi.Input<String>? assemblyVersion;
+  final pulumi.Input<String?>? assemblyVersion;
   /// The content of the Logic App Integration Account Assembly.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The content link URI of the Logic App Integration Account Assembly.
-  final pulumi.Input<String>? contentLinkUri;
+  final pulumi.Input<String?>? contentLinkUri;
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> integrationAccountName;
   /// The metadata of the Logic App Integration Account Assembly.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name which should be used for this Logic App Integration Account Assembly Artifact. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Logic App Integration Account Assembly Artifact should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

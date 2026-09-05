@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kms_get_key_get_key_args_doc}
 class GetKeyArgs {
   /// List of grant tokens
-  final pulumi.Input<List<String>>? grantTokens;
+  final pulumi.Input<List<String>?>? grantTokens;
   /// Key identifier which can be one of the following format:
   /// * Key ID. E.g: `1234abcd-12ab-34cd-56ef-1234567890ab`
   /// * Key ARN. E.g.: `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
@@ -16,7 +16,7 @@ class GetKeyArgs {
   /// * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
   final pulumi.Input<String> keyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetKeyArgs].
   /// [grantTokens] List of grant tokens

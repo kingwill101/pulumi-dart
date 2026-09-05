@@ -5,8 +5,8 @@ import 'repository_association_s3_repository_detail_code_artifact.dart';
 
 class RepositoryAssociationS3RepositoryDetail {
   /// The name of the S3 bucket used for associating a new S3 repository. Note: The name must begin with `codeguru-reviewer-`.
-  final pulumi.Input<String>? bucketName;
-  final pulumi.Input<List<RepositoryAssociationS3RepositoryDetailCodeArtifact>>? codeArtifacts;
+  final pulumi.Input<String?>? bucketName;
+  final pulumi.Input<List<RepositoryAssociationS3RepositoryDetailCodeArtifact>?>? codeArtifacts;
 
   /// Creates a new [RepositoryAssociationS3RepositoryDetail].
   /// [bucketName] The name of the S3 bucket used for associating a new S3 repository. Note: The name must begin with `codeguru-reviewer-`.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EmailServiceDomainSenderUsername resources.
 class EmailServiceDomainSenderUsernameState {
   /// The display name for the Email Communication Service Domain Sender Username resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? emailServiceDomainId;
+  final pulumi.Input<String?>? emailServiceDomainId;
   /// The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EmailServiceDomainSenderUsernameState].
   /// [displayName] The display name for the Email Communication Service Domain Sender Username resource.

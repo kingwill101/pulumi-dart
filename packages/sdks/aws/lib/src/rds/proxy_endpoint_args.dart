@@ -12,13 +12,13 @@ class ProxyEndpointArgs {
   /// The name of the DB proxy associated with the DB proxy endpoint that you create.
   final pulumi.Input<String> dbProxyName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
-  final pulumi.Input<String>? targetRole;
+  final pulumi.Input<String?>? targetRole;
   /// One or more VPC security group IDs to associate with the new proxy.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
   /// One or more VPC subnet IDs to associate with the new proxy.
   final pulumi.Input<List<String>> vpcSubnetIds;
 

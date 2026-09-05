@@ -7,7 +7,7 @@ class ScaleSetOsProfileSecret {
   /// Specifies the key vault to use.
   final pulumi.Input<String> sourceVaultId;
   /// (Required, on Windows machines) One or more `vaultCertificates` blocks as defined below.
-  final pulumi.Input<List<ScaleSetOsProfileSecretVaultCertificate>>? vaultCertificates;
+  final pulumi.Input<List<ScaleSetOsProfileSecretVaultCertificate>?>? vaultCertificates;
 
   /// Creates a new [ScaleSetOsProfileSecret].
   /// [sourceVaultId] Specifies the key vault to use.

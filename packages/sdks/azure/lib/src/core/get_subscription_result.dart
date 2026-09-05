@@ -4,23 +4,23 @@
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// The subscription display name.
-  final String displayName;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The subscription location placement ID.
-  final String locationPlacementId;
+  final String? locationPlacementId;
   /// The subscription quota ID.
-  final String quotaId;
+  final String? quotaId;
   /// The subscription spending limit.
-  final String spendingLimit;
+  final String? spendingLimit;
   /// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
-  final String state;
+  final String? state;
   /// The subscription GUID.
-  final String subscriptionId;
+  final String? subscriptionId;
   /// A mapping of tags assigned to the Subscription.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The subscription tenant ID.
-  final String tenantId;
+  final String? tenantId;
 
   /// Creates a new [GetSubscriptionResult].
   /// [displayName] The subscription display name.
@@ -33,42 +33,42 @@ class GetSubscriptionResult {
   /// [tags] A mapping of tags assigned to the Subscription.
   /// [tenantId] The subscription tenant ID.
   const GetSubscriptionResult({
-    required this.displayName,
-    required this.id,
-    required this.locationPlacementId,
-    required this.quotaId,
-    required this.spendingLimit,
-    required this.state,
-    required this.subscriptionId,
-    required this.tags,
-    required this.tenantId,
+    this.displayName,
+    this.id,
+    this.locationPlacementId,
+    this.quotaId,
+    this.spendingLimit,
+    this.state,
+    this.subscriptionId,
+    this.tags,
+    this.tenantId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'id': id,
-      'locationPlacementId': locationPlacementId,
-      'quotaId': quotaId,
-      'spendingLimit': spendingLimit,
-      'state': state,
-      'subscriptionId': subscriptionId,
-      'tags': tags,
-      'tenantId': tenantId,
+      'displayName': ?displayName,
+      'id': ?id,
+      'locationPlacementId': ?locationPlacementId,
+      'quotaId': ?quotaId,
+      'spendingLimit': ?spendingLimit,
+      'state': ?state,
+      'subscriptionId': ?subscriptionId,
+      'tags': ?tags,
+      'tenantId': ?tenantId,
     };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      locationPlacementId: map['locationPlacementId'] as String,
-      quotaId: map['quotaId'] as String,
-      spendingLimit: map['spendingLimit'] as String,
-      state: map['state'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locationPlacementId: (() { final guardedValue = map['locationPlacementId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaId: (() { final guardedValue = map['quotaId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      spendingLimit: (() { final guardedValue = map['spendingLimit']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

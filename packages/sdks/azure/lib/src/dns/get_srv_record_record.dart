@@ -35,10 +35,10 @@ class GetSrvRecordRecord {
 
   factory GetSrvRecordRecord.fromMap(Map<String, dynamic> map) {
     return GetSrvRecordRecord(
-      port: pulumi.Input.fromValue(map['port'] as int),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       target: pulumi.Input.fromValue(map['target'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

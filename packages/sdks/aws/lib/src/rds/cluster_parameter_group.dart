@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_parameter_group_args.dart';
+import 'cluster_parameter_group_parameter.dart';
 import 'cluster_parameter_group_state.dart';
 
 /// Provides an RDS DB cluster parameter group resource. Documentation of the available parameters for various Aurora engines can be found at:
@@ -15,9 +16,6 @@ import 'cluster_parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _default = new aws.rds.ClusterParameterGroup("default", {
-///     name: "rds-cluster-pg",
-///     family: "aurora5.6",
-///     description: "RDS default cluster parameter group",
 ///     parameters: [
 ///         {
 ///             name: "character_set_server",
@@ -28,6 +26,9 @@ import 'cluster_parameter_group_state.dart';
 ///             value: "utf8",
 ///         },
 ///     ],
+///     name: "rds-cluster-pg",
+///     family: "aurora5.6",
+///     description: "RDS default cluster parameter group",
 /// });
 /// ```
 /// ```python
@@ -35,9 +36,6 @@ import 'cluster_parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// default = aws.rds.ClusterParameterGroup("default",
-///     name="rds-cluster-pg",
-///     family="aurora5.6",
-///     description="RDS default cluster parameter group",
 ///     parameters=[
 ///         {
 ///             "name": "character_set_server",
@@ -47,7 +45,10 @@ import 'cluster_parameter_group_state.dart';
 ///             "name": "character_set_client",
 ///             "value": "utf8",
 ///         },
-///     ])
+///     ],
+///     name="rds-cluster-pg",
+///     family="aurora5.6",
+///     description="RDS default cluster parameter group")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,9 +60,6 @@ import 'cluster_parameter_group_state.dart';
 /// {
 ///     var @default = new Aws.Rds.ClusterParameterGroup("default", new()
 ///     {
-///         Name = "rds-cluster-pg",
-///         Family = "aurora5.6",
-///         Description = "RDS default cluster parameter group",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ClusterParameterGroupParameterArgs
@@ -75,6 +73,9 @@ import 'cluster_parameter_group_state.dart';
 ///                 Value = "utf8",
 ///             },
 ///         },
+///         Name = "rds-cluster-pg",
+///         Family = "aurora5.6",
+///         Description = "RDS default cluster parameter group",
 ///     });
 ///
 /// });
@@ -90,9 +91,6 @@ import 'cluster_parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewClusterParameterGroup(ctx, "default", &rds.ClusterParameterGroupArgs{
-/// 			Name:        pulumi.String("rds-cluster-pg"),
-/// 			Family:      pulumi.String("aurora5.6"),
-/// 			Description: pulumi.String("RDS default cluster parameter group"),
 /// 			Parameters: rds.ClusterParameterGroupParameterArray{
 /// 				&rds.ClusterParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("character_set_server"),
@@ -103,6 +101,9 @@ import 'cluster_parameter_group_state.dart';
 /// 					Value: pulumi.String("utf8"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("rds-cluster-pg"),
+/// 			Family:      pulumi.String("aurora5.6"),
+/// 			Description: pulumi.String("RDS default cluster parameter group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,9 +122,6 @@ import 'cluster_parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_rds_clusterparametergroup" "default" {
-///   name        = "rds-cluster-pg"
-///   family      = "aurora5.6"
-///   description = "RDS default cluster parameter group"
 ///   parameters {
 ///     name  = "character_set_server"
 ///     value = "utf8"
@@ -132,6 +130,9 @@ import 'cluster_parameter_group_state.dart';
 ///     name  = "character_set_client"
 ///     value = "utf8"
 ///   }
+///   name        = "rds-cluster-pg"
+///   family      = "aurora5.6"
+///   description = "RDS default cluster parameter group"
 /// }
 /// ```
 /// ```java
@@ -157,9 +158,6 @@ import 'cluster_parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new ClusterParameterGroup("default", ClusterParameterGroupArgs.builder()
-///             .name("rds-cluster-pg")
-///             .family("aurora5.6")
-///             .description("RDS default cluster parameter group")
 ///             .parameters(
 ///                 ClusterParameterGroupParameterArgs.builder()
 ///                     .name("character_set_server")
@@ -169,6 +167,9 @@ import 'cluster_parameter_group_state.dart';
 ///                     .name("character_set_client")
 ///                     .value("utf8")
 ///                     .build())
+///             .name("rds-cluster-pg")
+///             .family("aurora5.6")
+///             .description("RDS default cluster parameter group")
 ///             .build());
 ///
 ///     }
@@ -179,14 +180,14 @@ import 'cluster_parameter_group_state.dart';
 ///   default:
 ///     type: aws:rds:ClusterParameterGroup
 ///     properties:
-///       name: rds-cluster-pg
-///       family: aurora5.6
-///       description: RDS default cluster parameter group
 ///       parameters:
 ///         - name: character_set_server
 ///           value: utf8
 ///         - name: character_set_client
 ///           value: utf8
+///       name: rds-cluster-pg
+///       family: aurora5.6
+///       description: RDS default cluster parameter group
 /// ```
 ///
 ///
@@ -209,7 +210,7 @@ class ClusterParameterGroup extends pulumi.CustomResource {
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ClusterParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -229,17 +230,17 @@ class ClusterParameterGroup extends pulumi.CustomResource {
           'aws:rds/clusterParameterGroup:ClusterParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ClusterParameterGroup] resource's state with the given [name] and [id].
@@ -247,11 +248,12 @@ class ClusterParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -270,9 +272,29 @@ class ClusterParameterGroup extends pulumi.CustomResource {
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterParameterGroup] resource.
+  ClusterParameterGroup.reference(String urn)
+    : super(
+        'aws:rds/clusterParameterGroup:ClusterParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    family = registerOutput<String>('family');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

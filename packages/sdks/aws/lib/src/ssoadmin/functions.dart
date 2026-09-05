@@ -134,6 +134,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Data source for managing AWS SSO Admin Application Assignments.
 ///
 /// ## Example Usage
@@ -254,6 +265,17 @@ Future<GetApplicationAssignmentsResult> getApplicationAssignments(
   return GetApplicationAssignmentsResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationAssignmentsResult> getApplicationAssignmentsOutput(
+  GetApplicationAssignmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getApplicationAssignments:getApplicationAssignments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationAssignmentsResult.fromMap);
+}
+
 /// Data source for managing AWS SSO Admin Application Providers.
 ///
 /// ## Example Usage
@@ -362,6 +384,17 @@ Future<GetApplicationProvidersResult> getApplicationProviders(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationProvidersResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationProvidersResult> getApplicationProvidersOutput(
+  GetApplicationProvidersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getApplicationProviders:getApplicationProviders',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationProvidersResult.fromMap);
 }
 
 /// Use this data source to get ARNs and Identity Store IDs of Single Sign-On (SSO) Instances.
@@ -493,6 +526,17 @@ Future<GetInstancesResult> getInstances(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstancesResult.fromMap(result);
+}
+
+pulumi.Output<GetInstancesResult> getInstancesOutput(
+  GetInstancesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getInstances:getInstances',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstancesResult.fromMap);
 }
 
 /// Use this data source to get a Single Sign-On (SSO) Permission Set.
@@ -652,6 +696,17 @@ Future<GetPermissionSetResult> getPermissionSet(
   return GetPermissionSetResult.fromMap(result);
 }
 
+pulumi.Output<GetPermissionSetResult> getPermissionSetOutput(
+  GetPermissionSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getPermissionSet:getPermissionSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPermissionSetResult.fromMap);
+}
+
 /// Data source returning the ARN of all AWS SSO Admin Permission Sets.
 ///
 /// ## Example Usage
@@ -790,6 +845,17 @@ Future<GetPermissionSetsResult> getPermissionSets(
   return GetPermissionSetsResult.fromMap(result);
 }
 
+pulumi.Output<GetPermissionSetsResult> getPermissionSetsOutput(
+  GetPermissionSetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getPermissionSets:getPermissionSets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPermissionSetsResult.fromMap);
+}
+
 /// Data source for viewing AWS SSO Admin Principal Application Assignments.
 ///
 /// ## Example Usage
@@ -922,4 +988,15 @@ Future<GetPrincipalApplicationAssignmentsResult> getPrincipalApplicationAssignme
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrincipalApplicationAssignmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetPrincipalApplicationAssignmentsResult> getPrincipalApplicationAssignmentsOutput(
+  GetPrincipalApplicationAssignmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssoadmin/getPrincipalApplicationAssignments:getPrincipalApplicationAssignments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrincipalApplicationAssignmentsResult.fromMap);
 }

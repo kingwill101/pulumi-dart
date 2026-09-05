@@ -4,57 +4,57 @@
 /// Result data returned by getSubnetGroup.
 class GetSubnetGroupResult {
   /// ARN of the Redshift Subnet Group name.
-  final String arn;
+  final String? arn;
   /// Description of the Redshift Subnet group.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
   /// An array of VPC subnet IDs.
-  final List<String> subnetIds;
+  final List<String>? subnetIds;
   /// Tags associated to the Subnet Group
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetSubnetGroupResult].
   /// [arn] ARN of the Redshift Subnet Group name.
   /// [description] Description of the Redshift Subnet group.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   /// [subnetIds] An array of VPC subnet IDs.
   /// [tags] Tags associated to the Subnet Group
   const GetSubnetGroupResult({
-    required this.arn,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.subnetIds,
-    required this.tags,
+    this.arn,
+    this.description,
+    this.id,
+    this.name,
+    this.region,
+    this.subnetIds,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'id': id,
-      'name': name,
-      'region': region,
-      'subnetIds': subnetIds,
-      'tags': tags,
+      'arn': ?arn,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'subnetIds': ?subnetIds,
+      'tags': ?tags,
     };
   }
 
   factory GetSubnetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetGroupResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      subnetIds: (map['subnetIds'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

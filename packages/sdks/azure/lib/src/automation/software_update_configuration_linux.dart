@@ -6,11 +6,11 @@ class SoftwareUpdateConfigurationLinux {
   /// Specifies the list of update classifications included in the Software Update Configuration. Possible values are `Unclassified`, `Critical`, `Security` and `Other`.
   final pulumi.Input<List<String>> classificationsIncludeds;
   /// Specifies a list of packages to excluded from the Software Update Configuration.
-  final pulumi.Input<List<String>>? excludedPackages;
+  final pulumi.Input<List<String>?>? excludedPackages;
   /// Specifies a list of packages to included from the Software Update Configuration.
-  final pulumi.Input<List<String>>? includedPackages;
+  final pulumi.Input<List<String>?>? includedPackages;
   /// Specifies the reboot settings after software update, possible values are `IfRequired`, `Never`, `RebootOnly` and `Always`. Defaults to `IfRequired`.
-  final pulumi.Input<String>? reboot;
+  final pulumi.Input<String?>? reboot;
 
   /// Creates a new [SoftwareUpdateConfigurationLinux].
   /// [classificationsIncludeds] Specifies the list of update classifications included in the Software Update Configuration. Possible values are `Unclassified`, `Critical`, `Security` and `Other`.

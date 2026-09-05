@@ -134,6 +134,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Use this data source to get information about an ElastiCache Replication Group.
 ///
 /// ## Example Usage
@@ -250,6 +261,17 @@ Future<GetReplicationGroupResult> getReplicationGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationGroupResult> getReplicationGroupOutput(
+  GetReplicationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getReplicationGroup:getReplicationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationGroupResult.fromMap);
 }
 
 /// Information about a single ElastiCache Reserved Cache Node Offering.
@@ -391,6 +413,17 @@ Future<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOffering(
   return GetReservedCacheNodeOfferingResult.fromMap(result);
 }
 
+pulumi.Output<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOfferingOutput(
+  GetReservedCacheNodeOfferingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getReservedCacheNodeOffering:getReservedCacheNodeOffering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservedCacheNodeOfferingResult.fromMap);
+}
+
 /// Use this data source to get information about an ElastiCache Serverless Cache.
 ///
 /// ## Example Usage
@@ -507,6 +540,17 @@ Future<GetServerlessCacheResult> getServerlessCache(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessCacheResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessCacheResult> getServerlessCacheOutput(
+  GetServerlessCacheArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getServerlessCache:getServerlessCache',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessCacheResult.fromMap);
 }
 
 /// Provides details about an AWS ElastiCache Service Update Actions for a given Cache Cluster or Replication Group.
@@ -646,6 +690,17 @@ Future<GetServiceUpdateActionsResult> getServiceUpdateActions(
   return GetServiceUpdateActionsResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceUpdateActionsResult> getServiceUpdateActionsOutput(
+  GetServiceUpdateActionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getServiceUpdateActions:getServiceUpdateActions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceUpdateActionsResult.fromMap);
+}
+
 /// Provides details about AWS ElastiCache Service Updates.
 ///
 /// ## Example Usage
@@ -772,6 +827,17 @@ Future<GetServiceUpdatesResult> getServiceUpdates(
   return GetServiceUpdatesResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceUpdatesResult> getServiceUpdatesOutput(
+  GetServiceUpdatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getServiceUpdates:getServiceUpdates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceUpdatesResult.fromMap);
+}
+
 /// Provides information about a ElastiCache Subnet Group.
 ///
 /// ## Example Usage
@@ -890,6 +956,17 @@ Future<GetSubnetGroupResult> getSubnetGroup(
   return GetSubnetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
+  GetSubnetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getSubnetGroup:getSubnetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetGroupResult.fromMap);
+}
+
 /// Use this data source to get information about an ElastiCache User.
 ///
 /// ## Example Usage
@@ -1006,4 +1083,15 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticache/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }

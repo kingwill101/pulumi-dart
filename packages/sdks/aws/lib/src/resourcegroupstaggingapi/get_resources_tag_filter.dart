@@ -6,7 +6,7 @@ class GetResourcesTagFilter {
   /// One part of a key-value pair that makes up a tag.
   final pulumi.Input<String> key;
   /// Optional part of a key-value pair that make up a tag.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GetResourcesTagFilter].
   /// [key] One part of a key-value pair that makes up a tag.

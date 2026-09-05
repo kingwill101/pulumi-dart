@@ -9,27 +9,27 @@ import 'get_ami_filter.dart';
 /// {@macro pulumi_ec2_get_ami_get_ami_args_doc}
 class GetAmiArgs {
   /// If true, allow unsafe filter values. With unsafe filters and `mostRecent` set to `true`, a third party may introduce a new image which will be returned by this data source. Consider filtering by owner or image ID rather than setting this argument.
-  final pulumi.Input<bool>? allowUnsafeFilter;
+  final pulumi.Input<bool?>? allowUnsafeFilter;
   /// Limit search to users with *explicit* launch permission on the image. Valid items are the numeric account ID or `self`.
-  final pulumi.Input<List<String>>? executableUsers;
+  final pulumi.Input<List<String>?>? executableUsers;
   /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-images in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html). See `filter` below.
-  final pulumi.Input<List<GetAmiFilter>>? filters;
+  final pulumi.Input<List<GetAmiFilter>?>? filters;
   /// If true, all deprecated AMIs are included in the response. If false, no deprecated AMIs are included in the response. If no value is specified, the default value is false.
-  final pulumi.Input<bool>? includeDeprecated;
+  final pulumi.Input<bool?>? includeDeprecated;
   /// If more than one result is returned, use the most recent AMI.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Regex string to apply to the AMI list returned by AWS. This allows more advanced filtering not supported from the AWS API. This filtering is done locally on what AWS returns, and could have a performance impact if the result is large. Combine this with other options to narrow down the list AWS returns.
-  final pulumi.Input<String>? nameRegex;
+  final pulumi.Input<String?>? nameRegex;
   /// List of AMI owners to limit search. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Any tags assigned to the image.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Base64 representation of the non-volatile UEFI variable store.
   ///
   /// &gt; **NOTE:** If more or less than a single match is returned by the search, this call will fail. Ensure that your search is specific enough to return a single AMI ID only, or use `mostRecent` to choose the most recent one. If you want to match multiple AMIs, use the `aws.ec2.getAmiIds` data source instead.
-  final pulumi.Input<String>? uefiData;
+  final pulumi.Input<String?>? uefiData;
 
   /// Creates a new [GetAmiArgs].
   /// [allowUnsafeFilter] If true, allow unsafe filter values. With unsafe filters and `mostRecent` set to `true`, a third party may introduce a new image which will be returned by this data source. Consider filtering by owner or image ID rather than setting this argument.

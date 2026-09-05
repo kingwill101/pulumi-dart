@@ -14,9 +14,9 @@ class GetDataCollectionRuleDestination {
   /// A `azureMonitorMetrics` block as defined above.
   final pulumi.Input<List<GetDataCollectionRuleDestinationAzureMonitorMetric>> azureMonitorMetrics;
   /// One or more `eventHub` blocks as defined below.
-  final pulumi.Input<GetDataCollectionRuleDestinationEventHub>? eventHub;
+  final pulumi.Input<GetDataCollectionRuleDestinationEventHub?>? eventHub;
   /// One or more `eventHubDirect` blocks as defined below.
-  final pulumi.Input<GetDataCollectionRuleDestinationEventHubDirect>? eventHubDirect;
+  final pulumi.Input<GetDataCollectionRuleDestinationEventHubDirect?>? eventHubDirect;
   /// One or more `logAnalytics` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDestinationLogAnalytic>> logAnalytics;
   /// One or more `monitorAccount` blocks as defined below.

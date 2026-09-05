@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GroupPolicyAttachmentsExclusive resources.
 class GroupPolicyAttachmentsExclusiveState {
   /// IAM group name.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
-  final pulumi.Input<List<String>>? policyArns;
+  final pulumi.Input<List<String>?>? policyArns;
 
   /// Creates a new [GroupPolicyAttachmentsExclusiveState].
   /// [groupName] IAM group name.

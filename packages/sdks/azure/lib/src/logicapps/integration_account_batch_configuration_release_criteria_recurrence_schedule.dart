@@ -5,15 +5,15 @@ import 'integration_account_batch_configuration_release_criteria_recurrence_sche
 
 class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule {
   /// A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered.
-  final pulumi.Input<List<int>>? hours;
+  final pulumi.Input<List<int>?>? hours;
   /// A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
-  final pulumi.Input<List<int>>? minutes;
+  final pulumi.Input<List<int>?>? minutes;
   /// A list of days of the month that the job should execute on.
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// A `monthly` block as documented below.
-  final pulumi.Input<List<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly>>? monthlies;
+  final pulumi.Input<List<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly>?>? monthlies;
   /// A list of days of the week that the job should execute on. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule].
   /// [hours] A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered.

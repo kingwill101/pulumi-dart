@@ -148,7 +148,7 @@ class TagOption extends pulumi.CustomResource {
           'aws:servicecatalog/tagOption:TagOption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     key = registerOutput<String>('key');
@@ -162,11 +162,12 @@ class TagOption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagOptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagOption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,6 +181,22 @@ class TagOption extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    key = registerOutput<String>('key');
+    owner = registerOutput<String>('owner');
+    region = registerOutput<String>('region');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [TagOption] resource.
+  TagOption.reference(String urn)
+    : super(
+        'aws:servicecatalog/tagOption:TagOption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     key = registerOutput<String>('key');
     owner = registerOutput<String>('owner');

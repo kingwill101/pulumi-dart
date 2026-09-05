@@ -18,6 +18,7 @@ class GetAiGatewaysResult {
   /// gateway id
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isDefault;
+  final pulumi.Input<bool> logClassification;
   final pulumi.Input<int> logManagement;
   /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
   final pulumi.Input<String> logManagementStrategy;
@@ -39,8 +40,8 @@ class GetAiGatewaysResult {
   final pulumi.Input<GetAiGatewaysResultSpendLimits> spendLimits;
   final pulumi.Input<String> storeId;
   final pulumi.Input<GetAiGatewaysResultStripe> stripe;
-  /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-  /// Available values: "postpaid".
+  /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+  /// Available values: "postpaid", "unified".
   final pulumi.Input<String> workersAiBillingMode;
   final pulumi.Input<bool> zdr;
 
@@ -54,6 +55,7 @@ class GetAiGatewaysResult {
   /// [guardrails] Required.
   /// [id] gateway id
   /// [isDefault] Required.
+  /// [logClassification] Required.
   /// [logManagement] Required.
   /// [logManagementStrategy] Available values: "STOP*INSERTING", "DELETE*OLDEST".
   /// [logpush] Required.
@@ -69,7 +71,7 @@ class GetAiGatewaysResult {
   /// [spendLimits] Required.
   /// [storeId] Required.
   /// [stripe] Required.
-  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
+  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Required.
   const GetAiGatewaysResult({
     required this.authentication,
@@ -81,6 +83,7 @@ class GetAiGatewaysResult {
     required this.guardrails,
     required this.id,
     required this.isDefault,
+    required this.logClassification,
     required this.logManagement,
     required this.logManagementStrategy,
     required this.logpush,
@@ -111,6 +114,7 @@ class GetAiGatewaysResult {
       'guardrails': pulumi.Input.mapInputValue<GetAiGatewaysResultGuardrails, Map<String, dynamic>>(guardrails, (value) => value.toMap()),
       'id': id,
       'isDefault': isDefault,
+      'logClassification': logClassification,
       'logManagement': logManagement,
       'logManagementStrategy': logManagementStrategy,
       'logpush': logpush,
@@ -142,6 +146,7 @@ class GetAiGatewaysResult {
       guardrails: pulumi.Input.fromValue(GetAiGatewaysResultGuardrails.fromMap((map['guardrails']! as Map).cast<String, dynamic>())),
       id: pulumi.Input.fromValue(map['id'] as String),
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      logClassification: pulumi.Input.fromValue(map['logClassification'] as bool),
       logManagement: pulumi.Input.fromValue((map['logManagement'] as num).toInt()),
       logManagementStrategy: pulumi.Input.fromValue(map['logManagementStrategy'] as String),
       logpush: pulumi.Input.fromValue(map['logpush'] as bool),

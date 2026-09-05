@@ -19,14 +19,14 @@ import 'event_bus_policy_state.dart';
 ///
 /// const test = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "DevAccountAccess",
-///         effect: "Allow",
-///         actions: ["events:PutEvents"],
-///         resources: ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["123456789012"],
 ///         }],
+///         sid: "DevAccountAccess",
+///         effect: "Allow",
+///         actions: ["events:PutEvents"],
+///         resources: ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///     }],
 /// });
 /// const testEventBusPolicy = new aws.cloudwatch.EventBusPolicy("test", {
@@ -39,14 +39,14 @@ import 'event_bus_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.iam.get_policy_document(statements=[{
-///     "sid": "DevAccountAccess",
-///     "effect": "Allow",
-///     "actions": ["events:PutEvents"],
-///     "resources": ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["123456789012"],
 ///     }],
+///     "sid": "DevAccountAccess",
+///     "effect": "Allow",
+///     "actions": ["events:PutEvents"],
+///     "resources": ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 /// }])
 /// test_event_bus_policy = aws.cloudwatch.EventBusPolicy("test",
 ///     policy=test.json,
@@ -66,16 +66,6 @@ import 'event_bus_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "DevAccountAccess",
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "events:PutEvents",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -86,6 +76,16 @@ import 'event_bus_policy_state.dart';
 ///                             "123456789012",
 ///                         },
 ///                     },
+///                 },
+///                 Sid = "DevAccountAccess",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "events:PutEvents",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///                 },
 ///             },
 ///         },
@@ -113,14 +113,6 @@ import 'event_bus_policy_state.dart';
 /// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("DevAccountAccess"),
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"events:PutEvents",
-/// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -128,6 +120,14 @@ import 'event_bus_policy_state.dart';
 /// 								"123456789012",
 /// 							},
 /// 						},
+/// 					},
+/// 					Sid:    pulumi.StringRef("DevAccountAccess"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"events:PutEvents",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
 /// 					},
 /// 				},
 /// 			},
@@ -157,14 +157,14 @@ import 'event_bus_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     sid       = "DevAccountAccess"
-///     effect    = "Allow"
-///     actions   = ["events:PutEvents"]
-///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     sid       = "DevAccountAccess"
+///     effect    = "Allow"
+///     actions   = ["events:PutEvents"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///   }
 /// }
 ///
@@ -200,14 +200,14 @@ import 'event_bus_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("DevAccountAccess")
-///                 .effect("Allow")
-///                 .actions("events:PutEvents")
-///                 .resources("arn:aws:events:eu-west-1:123456789012:event-bus/default")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("123456789012")
 ///                     .build())
+///                 .sid("DevAccountAccess")
+///                 .effect("Allow")
+///                 .actions("events:PutEvents")
+///                 .resources("arn:aws:events:eu-west-1:123456789012:event-bus/default")
 ///                 .build())
 ///             .build());
 ///
@@ -233,16 +233,16 @@ import 'event_bus_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: DevAccountAccess
+///           - principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '123456789012'
+///             sid: DevAccountAccess
 ///             effect: Allow
 ///             actions:
 ///               - events:PutEvents
 ///             resources:
 ///               - arn:aws:events:eu-west-1:123456789012:event-bus/default
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '123456789012'
 /// ```
 ///
 ///
@@ -255,6 +255,15 @@ import 'event_bus_policy_state.dart';
 ///
 /// const test = aws.iam.getPolicyDocument({
 ///     statements: [{
+///         conditions: [{
+///             test: "StringEquals",
+///             variable: "aws:PrincipalOrgID",
+///             values: [example.id],
+///         }],
+///         principals: [{
+///             type: "AWS",
+///             identifiers: ["*"],
+///         }],
 ///         sid: "OrganizationAccess",
 ///         effect: "Allow",
 ///         actions: [
@@ -267,15 +276,6 @@ import 'event_bus_policy_state.dart';
 ///             "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///             "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///         ],
-///         principals: [{
-///             type: "AWS",
-///             identifiers: ["*"],
-///         }],
-///         conditions: [{
-///             test: "StringEquals",
-///             variable: "aws:PrincipalOrgID",
-///             values: [example.id],
-///         }],
 ///     }],
 /// });
 /// const testEventBusPolicy = new aws.cloudwatch.EventBusPolicy("test", {
@@ -288,6 +288,15 @@ import 'event_bus_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.iam.get_policy_document(statements=[{
+///     "conditions": [{
+///         "test": "StringEquals",
+///         "variable": "aws:PrincipalOrgID",
+///         "values": [example["id"]],
+///     }],
+///     "principals": [{
+///         "type": "AWS",
+///         "identifiers": ["*"],
+///     }],
 ///     "sid": "OrganizationAccess",
 ///     "effect": "Allow",
 ///     "actions": [
@@ -300,15 +309,6 @@ import 'event_bus_policy_state.dart';
 ///         "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///         "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///     ],
-///     "principals": [{
-///         "type": "AWS",
-///         "identifiers": ["*"],
-///     }],
-///     "conditions": [{
-///         "test": "StringEquals",
-///         "variable": "aws:PrincipalOrgID",
-///         "values": [example["id"]],
-///     }],
 /// }])
 /// test_event_bus_policy = aws.cloudwatch.EventBusPolicy("test",
 ///     policy=test.json,
@@ -328,6 +328,29 @@ import 'event_bus_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Variable = "aws:PrincipalOrgID",
+///                         Values = new[]
+///                         {
+///                             example.Id,
+///                         },
+///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
 ///                 Sid = "OrganizationAccess",
 ///                 Effect = "Allow",
 ///                 Actions = new[]
@@ -342,29 +365,6 @@ import 'event_bus_policy_state.dart';
 ///                     "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Variable = "aws:PrincipalOrgID",
-///                         Values = new[]
-///                         {
-///                             example.Id,
-///                         },
-///                     },
-///                 },
 ///             },
 ///         },
 ///     });
@@ -391,6 +391,23 @@ import 'event_bus_policy_state.dart';
 /// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test:     "StringEquals",
+/// 							Variable: "aws:PrincipalOrgID",
+/// 							Values: pulumi.StringArray{
+/// 								example.Id,
+/// 							},
+/// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
 /// 					Sid:    pulumi.StringRef("OrganizationAccess"),
 /// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
@@ -402,23 +419,6 @@ import 'event_bus_policy_state.dart';
 /// 					Resources: []string{
 /// 						"arn:aws:events:eu-west-1:123456789012:rule/*",
 /// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "AWS",
-/// 							Identifiers: []string{
-/// 								"*",
-/// 							},
-/// 						},
-/// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test:     "StringEquals",
-/// 							Variable: "aws:PrincipalOrgID",
-/// 							Values: pulumi.StringArray{
-/// 								example.Id,
-/// 							},
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -448,19 +448,19 @@ import 'event_bus_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     sid       = "OrganizationAccess"
-///     effect    = "Allow"
-///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
-///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
-///     principals {
-///       type        = "AWS"
-///       identifiers = ["*"]
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
 ///       values   = [example.id]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     sid       = "OrganizationAccess"
+///     effect    = "Allow"
+///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///   }
 /// }
 ///
@@ -478,8 +478,8 @@ import 'event_bus_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicy;
 /// import com.pulumi.aws.cloudwatch.EventBusPolicyArgs;
 /// import java.util.ArrayList;
@@ -497,6 +497,15 @@ import 'event_bus_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                     .test("StringEquals")
+///                     .variable("aws:PrincipalOrgID")
+///                     .values(example.id())
+///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("AWS")
+///                     .identifiers("*")
+///                     .build())
 ///                 .sid("OrganizationAccess")
 ///                 .effect("Allow")
 ///                 .actions(
@@ -507,15 +516,6 @@ import 'event_bus_policy_state.dart';
 ///                 .resources(
 ///                     "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("AWS")
-///                     .identifiers("*")
-///                     .build())
-///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                     .test("StringEquals")
-///                     .variable("aws:PrincipalOrgID")
-///                     .values(example.id())
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -541,7 +541,16 @@ import 'event_bus_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: OrganizationAccess
+///           - conditions:
+///               - test: StringEquals
+///                 variable: aws:PrincipalOrgID
+///                 values:
+///                   - ${example.id}
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '*'
+///             sid: OrganizationAccess
 ///             effect: Allow
 ///             actions:
 ///               - events:DescribeRule
@@ -551,15 +560,6 @@ import 'event_bus_policy_state.dart';
 ///             resources:
 ///               - arn:aws:events:eu-west-1:123456789012:rule/*
 ///               - arn:aws:events:eu-west-1:123456789012:event-bus/default
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '*'
-///             conditions:
-///               - test: StringEquals
-///                 variable: aws:PrincipalOrgID
-///                 values:
-///                   - ${example.id}
 /// ```
 ///
 ///
@@ -573,16 +573,25 @@ import 'event_bus_policy_state.dart';
 /// const test = aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
-///             sid: "DevAccountAccess",
-///             effect: "Allow",
-///             actions: ["events:PutEvents"],
-///             resources: ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: ["123456789012"],
 ///             }],
+///             sid: "DevAccountAccess",
+///             effect: "Allow",
+///             actions: ["events:PutEvents"],
+///             resources: ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///         },
 ///         {
+///             conditions: [{
+///                 test: "StringEquals",
+///                 variable: "aws:PrincipalOrgID",
+///                 values: [example.id],
+///             }],
+///             principals: [{
+///                 type: "AWS",
+///                 identifiers: ["*"],
+///             }],
 ///             sid: "OrganizationAccess",
 ///             effect: "Allow",
 ///             actions: [
@@ -595,15 +604,6 @@ import 'event_bus_policy_state.dart';
 ///                 "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///                 "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///             ],
-///             principals: [{
-///                 type: "AWS",
-///                 identifiers: ["*"],
-///             }],
-///             conditions: [{
-///                 test: "StringEquals",
-///                 variable: "aws:PrincipalOrgID",
-///                 values: [example.id],
-///             }],
 ///         },
 ///     ],
 /// });
@@ -618,16 +618,25 @@ import 'event_bus_policy_state.dart';
 ///
 /// test = aws.iam.get_policy_document(statements=[
 ///     {
-///         "sid": "DevAccountAccess",
-///         "effect": "Allow",
-///         "actions": ["events:PutEvents"],
-///         "resources": ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": ["123456789012"],
 ///         }],
+///         "sid": "DevAccountAccess",
+///         "effect": "Allow",
+///         "actions": ["events:PutEvents"],
+///         "resources": ["arn:aws:events:eu-west-1:123456789012:event-bus/default"],
 ///     },
 ///     {
+///         "conditions": [{
+///             "test": "StringEquals",
+///             "variable": "aws:PrincipalOrgID",
+///             "values": [example["id"]],
+///         }],
+///         "principals": [{
+///             "type": "AWS",
+///             "identifiers": ["*"],
+///         }],
 ///         "sid": "OrganizationAccess",
 ///         "effect": "Allow",
 ///         "actions": [
@@ -640,15 +649,6 @@ import 'event_bus_policy_state.dart';
 ///             "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///             "arn:aws:events:eu-west-1:123456789012:event-bus/default",
 ///         ],
-///         "principals": [{
-///             "type": "AWS",
-///             "identifiers": ["*"],
-///         }],
-///         "conditions": [{
-///             "test": "StringEquals",
-///             "variable": "aws:PrincipalOrgID",
-///             "values": [example["id"]],
-///         }],
 ///     },
 /// ])
 /// test_event_bus_policy = aws.cloudwatch.EventBusPolicy("test",
@@ -669,16 +669,6 @@ import 'event_bus_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "DevAccountAccess",
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "events:PutEvents",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -690,9 +680,42 @@ import 'event_bus_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "DevAccountAccess",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "events:PutEvents",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
+///                 },
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Variable = "aws:PrincipalOrgID",
+///                         Values = new[]
+///                         {
+///                             example.Id,
+///                         },
+///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
 ///                 Sid = "OrganizationAccess",
 ///                 Effect = "Allow",
 ///                 Actions = new[]
@@ -706,29 +729,6 @@ import 'event_bus_policy_state.dart';
 ///                 {
 ///                     "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///                     "arn:aws:events:eu-west-1:123456789012:event-bus/default",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Variable = "aws:PrincipalOrgID",
-///                         Values = new[]
-///                         {
-///                             example.Id,
-///                         },
-///                     },
 ///                 },
 ///             },
 ///         },
@@ -756,14 +756,6 @@ import 'event_bus_policy_state.dart';
 /// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("DevAccountAccess"),
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"events:PutEvents",
-/// 					},
-/// 					Resources: []string{
-/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -772,8 +764,33 @@ import 'event_bus_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("DevAccountAccess"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"events:PutEvents",
+/// 					},
+/// 					Resources: []string{
+/// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
+/// 					},
 /// 				},
 /// 				{
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test:     "StringEquals",
+/// 							Variable: "aws:PrincipalOrgID",
+/// 							Values: pulumi.StringArray{
+/// 								example.Id,
+/// 							},
+/// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "AWS",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
 /// 					Sid:    pulumi.StringRef("OrganizationAccess"),
 /// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
@@ -785,23 +802,6 @@ import 'event_bus_policy_state.dart';
 /// 					Resources: []string{
 /// 						"arn:aws:events:eu-west-1:123456789012:rule/*",
 /// 						"arn:aws:events:eu-west-1:123456789012:event-bus/default",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "AWS",
-/// 							Identifiers: []string{
-/// 								"*",
-/// 							},
-/// 						},
-/// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test:     "StringEquals",
-/// 							Variable: "aws:PrincipalOrgID",
-/// 							Values: pulumi.StringArray{
-/// 								example.Id,
-/// 							},
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -831,29 +831,29 @@ import 'event_bus_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     sid       = "DevAccountAccess"
-///     effect    = "Allow"
-///     actions   = ["events:PutEvents"]
-///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     sid       = "DevAccountAccess"
+///     effect    = "Allow"
+///     actions   = ["events:PutEvents"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///   }
 ///   statements {
-///     sid       = "OrganizationAccess"
-///     effect    = "Allow"
-///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
-///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
-///     principals {
-///       type        = "AWS"
-///       identifiers = ["*"]
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
 ///       values   = [example.id]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     sid       = "OrganizationAccess"
+///     effect    = "Allow"
+///     actions   = ["events:DescribeRule", "events:ListRules", "events:ListTargetsByRule", "events:ListTagsForResource"]
+///     resources = ["arn:aws:events:eu-west-1:123456789012:rule/*", "arn:aws:events:eu-west-1:123456789012:event-bus/default"]
 ///   }
 /// }
 ///
@@ -891,16 +891,25 @@ import 'event_bus_policy_state.dart';
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("DevAccountAccess")
-///                     .effect("Allow")
-///                     .actions("events:PutEvents")
-///                     .resources("arn:aws:events:eu-west-1:123456789012:event-bus/default")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers("123456789012")
 ///                         .build())
+///                     .sid("DevAccountAccess")
+///                     .effect("Allow")
+///                     .actions("events:PutEvents")
+///                     .resources("arn:aws:events:eu-west-1:123456789012:event-bus/default")
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
+///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                         .test("StringEquals")
+///                         .variable("aws:PrincipalOrgID")
+///                         .values(example.id())
+///                         .build())
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("AWS")
+///                         .identifiers("*")
+///                         .build())
 ///                     .sid("OrganizationAccess")
 ///                     .effect("Allow")
 ///                     .actions(
@@ -911,15 +920,6 @@ import 'event_bus_policy_state.dart';
 ///                     .resources(
 ///                         "arn:aws:events:eu-west-1:123456789012:rule/*",
 ///                         "arn:aws:events:eu-west-1:123456789012:event-bus/default")
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("AWS")
-///                         .identifiers("*")
-///                         .build())
-///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                         .test("StringEquals")
-///                         .variable("aws:PrincipalOrgID")
-///                         .values(example.id())
-///                         .build())
 ///                     .build())
 ///             .build());
 ///
@@ -945,17 +945,26 @@ import 'event_bus_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: DevAccountAccess
+///           - principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '123456789012'
+///             sid: DevAccountAccess
 ///             effect: Allow
 ///             actions:
 ///               - events:PutEvents
 ///             resources:
 ///               - arn:aws:events:eu-west-1:123456789012:event-bus/default
+///           - conditions:
+///               - test: StringEquals
+///                 variable: aws:PrincipalOrgID
+///                 values:
+///                   - ${example.id}
 ///             principals:
 ///               - type: AWS
 ///                 identifiers:
-///                   - '123456789012'
-///           - sid: OrganizationAccess
+///                   - '*'
+///             sid: OrganizationAccess
 ///             effect: Allow
 ///             actions:
 ///               - events:DescribeRule
@@ -965,15 +974,6 @@ import 'event_bus_policy_state.dart';
 ///             resources:
 ///               - arn:aws:events:eu-west-1:123456789012:rule/*
 ///               - arn:aws:events:eu-west-1:123456789012:event-bus/default
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '*'
-///             conditions:
-///               - test: StringEquals
-///                 variable: aws:PrincipalOrgID
-///                 values:
-///                   - ${example.id}
 /// ```
 ///
 ///
@@ -1017,7 +1017,7 @@ class EventBusPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     eventBusName = registerOutput<String?>('eventBusName');
     policy = registerOutput<String>('policy');
@@ -1029,11 +1029,12 @@ class EventBusPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventBusPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventBusPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1047,6 +1048,20 @@ class EventBusPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    eventBusName = registerOutput<String?>('eventBusName');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EventBusPolicy] resource.
+  EventBusPolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventBusPolicy:EventBusPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     eventBusName = registerOutput<String?>('eventBusName');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

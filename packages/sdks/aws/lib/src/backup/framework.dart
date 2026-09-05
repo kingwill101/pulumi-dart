@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_args.dart';
+import 'framework_control.dart';
 import 'framework_state.dart';
 
 /// Provides an AWS Backup Framework resource.
@@ -14,18 +15,15 @@ import 'framework_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.Framework("Example", {
-///     name: "exampleFramework",
-///     description: "this is an example framework",
 ///     controls: [
 ///         {
-///             name: "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///             inputParameters: [{
 ///                 name: "requiredRetentionDays",
 ///                 value: "35",
 ///             }],
+///             name: "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///         },
 ///         {
-///             name: "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///             inputParameters: [
 ///                 {
 ///                     name: "requiredFrequencyUnit",
@@ -40,21 +38,24 @@ import 'framework_state.dart';
 ///                     value: "1",
 ///                 },
 ///             ],
+///             name: "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///         },
 ///         {
 ///             name: "BACKUP_RECOVERY_POINT_ENCRYPTED",
 ///         },
 ///         {
-///             name: "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///             scope: {
 ///                 complianceResourceTypes: ["EBS"],
 ///             },
+///             name: "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///         },
 ///         {
 ///             name: "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
 ///         },
 ///         {
-///             name: "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///             scope: {
+///                 complianceResourceTypes: ["EBS"],
+///             },
 ///             inputParameters: [
 ///                 {
 ///                     name: "maxRetentionDays",
@@ -65,12 +66,12 @@ import 'framework_state.dart';
 ///                     value: "1",
 ///                 },
 ///             ],
+///             name: "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///         },
+///         {
 ///             scope: {
 ///                 complianceResourceTypes: ["EBS"],
 ///             },
-///         },
-///         {
-///             name: "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///             inputParameters: [
 ///                 {
 ///                     name: "recoveryPointAgeUnit",
@@ -81,11 +82,11 @@ import 'framework_state.dart';
 ///                     value: "1",
 ///                 },
 ///             ],
-///             scope: {
-///                 complianceResourceTypes: ["EBS"],
-///             },
+///             name: "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///         },
 ///     ],
+///     name: "exampleFramework",
+///     description: "this is an example framework",
 ///     tags: {
 ///         Name: "Example Framework",
 ///     },
@@ -96,18 +97,15 @@ import 'framework_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.Framework("Example",
-///     name="exampleFramework",
-///     description="this is an example framework",
 ///     controls=[
 ///         {
-///             "name": "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///             "input_parameters": [{
 ///                 "name": "requiredRetentionDays",
 ///                 "value": "35",
 ///             }],
+///             "name": "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///         },
 ///         {
-///             "name": "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///             "input_parameters": [
 ///                 {
 ///                     "name": "requiredFrequencyUnit",
@@ -122,21 +120,24 @@ import 'framework_state.dart';
 ///                     "value": "1",
 ///                 },
 ///             ],
+///             "name": "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///         },
 ///         {
 ///             "name": "BACKUP_RECOVERY_POINT_ENCRYPTED",
 ///         },
 ///         {
-///             "name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///             "scope": {
 ///                 "compliance_resource_types": ["EBS"],
 ///             },
+///             "name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///         },
 ///         {
 ///             "name": "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED",
 ///         },
 ///         {
-///             "name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///             "scope": {
+///                 "compliance_resource_types": ["EBS"],
+///             },
 ///             "input_parameters": [
 ///                 {
 ///                     "name": "maxRetentionDays",
@@ -147,12 +148,12 @@ import 'framework_state.dart';
 ///                     "value": "1",
 ///                 },
 ///             ],
+///             "name": "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///         },
+///         {
 ///             "scope": {
 ///                 "compliance_resource_types": ["EBS"],
 ///             },
-///         },
-///         {
-///             "name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///             "input_parameters": [
 ///                 {
 ///                     "name": "recoveryPointAgeUnit",
@@ -163,11 +164,11 @@ import 'framework_state.dart';
 ///                     "value": "1",
 ///                 },
 ///             ],
-///             "scope": {
-///                 "compliance_resource_types": ["EBS"],
-///             },
+///             "name": "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///         },
 ///     ],
+///     name="exampleFramework",
+///     description="this is an example framework",
 ///     tags={
 ///         "Name": "Example Framework",
 ///     })
@@ -182,13 +183,10 @@ import 'framework_state.dart';
 /// {
 ///     var example = new Aws.Backup.Framework("Example", new()
 ///     {
-///         Name = "exampleFramework",
-///         Description = "this is an example framework",
 ///         Controls = new[]
 ///         {
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
-///                 Name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///                 InputParameters = new[]
 ///                 {
 ///                     new Aws.Backup.Inputs.FrameworkControlInputParameterArgs
@@ -197,10 +195,10 @@ import 'framework_state.dart';
 ///                         Value = "35",
 ///                     },
 ///                 },
+///                 Name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK",
 ///             },
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
-///                 Name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///                 InputParameters = new[]
 ///                 {
 ///                     new Aws.Backup.Inputs.FrameworkControlInputParameterArgs
@@ -219,6 +217,7 @@ import 'framework_state.dart';
 ///                         Value = "1",
 ///                     },
 ///                 },
+///                 Name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK",
 ///             },
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
@@ -226,7 +225,6 @@ import 'framework_state.dart';
 ///             },
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
-///                 Name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///                 Scope = new Aws.Backup.Inputs.FrameworkControlScopeArgs
 ///                 {
 ///                     ComplianceResourceTypes = new[]
@@ -234,6 +232,7 @@ import 'framework_state.dart';
 ///                         "EBS",
 ///                     },
 ///                 },
+///                 Name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN",
 ///             },
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
@@ -241,7 +240,13 @@ import 'framework_state.dart';
 ///             },
 ///             new Aws.Backup.Inputs.FrameworkControlArgs
 ///             {
-///                 Name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///                 Scope = new Aws.Backup.Inputs.FrameworkControlScopeArgs
+///                 {
+///                     ComplianceResourceTypes = new[]
+///                     {
+///                         "EBS",
+///                     },
+///                 },
 ///                 InputParameters = new[]
 ///                 {
 ///                     new Aws.Backup.Inputs.FrameworkControlInputParameterArgs
@@ -255,6 +260,10 @@ import 'framework_state.dart';
 ///                         Value = "1",
 ///                     },
 ///                 },
+///                 Name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK",
+///             },
+///             new Aws.Backup.Inputs.FrameworkControlArgs
+///             {
 ///                 Scope = new Aws.Backup.Inputs.FrameworkControlScopeArgs
 ///                 {
 ///                     ComplianceResourceTypes = new[]
@@ -262,10 +271,6 @@ import 'framework_state.dart';
 ///                         "EBS",
 ///                     },
 ///                 },
-///             },
-///             new Aws.Backup.Inputs.FrameworkControlArgs
-///             {
-///                 Name = "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///                 InputParameters = new[]
 ///                 {
 ///                     new Aws.Backup.Inputs.FrameworkControlInputParameterArgs
@@ -279,15 +284,11 @@ import 'framework_state.dart';
 ///                         Value = "1",
 ///                     },
 ///                 },
-///                 Scope = new Aws.Backup.Inputs.FrameworkControlScopeArgs
-///                 {
-///                     ComplianceResourceTypes = new[]
-///                     {
-///                         "EBS",
-///                     },
-///                 },
+///                 Name = "BACKUP_LAST_RECOVERY_POINT_CREATED",
 ///             },
 ///         },
+///         Name = "exampleFramework",
+///         Description = "this is an example framework",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Framework" },
@@ -307,20 +308,17 @@ import 'framework_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewFramework(ctx, "Example", &backup.FrameworkArgs{
-/// 			Name:        pulumi.String("exampleFramework"),
-/// 			Description: pulumi.String("this is an example framework"),
 /// 			Controls: backup.FrameworkControlArray{
 /// 				&backup.FrameworkControlArgs{
-/// 					Name: pulumi.String("BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"),
 /// 					InputParameters: backup.FrameworkControlInputParameterArray{
 /// 						&backup.FrameworkControlInputParameterArgs{
 /// 							Name:  pulumi.String("requiredRetentionDays"),
 /// 							Value: pulumi.String("35"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"),
 /// 				},
 /// 				&backup.FrameworkControlArgs{
-/// 					Name: pulumi.String("BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"),
 /// 					InputParameters: backup.FrameworkControlInputParameterArray{
 /// 						&backup.FrameworkControlInputParameterArgs{
 /// 							Name:  pulumi.String("requiredFrequencyUnit"),
@@ -335,23 +333,28 @@ import 'framework_state.dart';
 /// 							Value: pulumi.String("1"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"),
 /// 				},
 /// 				&backup.FrameworkControlArgs{
 /// 					Name: pulumi.String("BACKUP_RECOVERY_POINT_ENCRYPTED"),
 /// 				},
 /// 				&backup.FrameworkControlArgs{
-/// 					Name: pulumi.String("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"),
 /// 					Scope: &backup.FrameworkControlScopeArgs{
 /// 						ComplianceResourceTypes: pulumi.StringArray{
 /// 							pulumi.String("EBS"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"),
 /// 				},
 /// 				&backup.FrameworkControlArgs{
 /// 					Name: pulumi.String("BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED"),
 /// 				},
 /// 				&backup.FrameworkControlArgs{
-/// 					Name: pulumi.String("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"),
+/// 					Scope: &backup.FrameworkControlScopeArgs{
+/// 						ComplianceResourceTypes: pulumi.StringArray{
+/// 							pulumi.String("EBS"),
+/// 						},
+/// 					},
 /// 					InputParameters: backup.FrameworkControlInputParameterArray{
 /// 						&backup.FrameworkControlInputParameterArgs{
 /// 							Name:  pulumi.String("maxRetentionDays"),
@@ -362,14 +365,14 @@ import 'framework_state.dart';
 /// 							Value: pulumi.String("1"),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"),
+/// 				},
+/// 				&backup.FrameworkControlArgs{
 /// 					Scope: &backup.FrameworkControlScopeArgs{
 /// 						ComplianceResourceTypes: pulumi.StringArray{
 /// 							pulumi.String("EBS"),
 /// 						},
 /// 					},
-/// 				},
-/// 				&backup.FrameworkControlArgs{
-/// 					Name: pulumi.String("BACKUP_LAST_RECOVERY_POINT_CREATED"),
 /// 					InputParameters: backup.FrameworkControlInputParameterArray{
 /// 						&backup.FrameworkControlInputParameterArgs{
 /// 							Name:  pulumi.String("recoveryPointAgeUnit"),
@@ -380,13 +383,11 @@ import 'framework_state.dart';
 /// 							Value: pulumi.String("1"),
 /// 						},
 /// 					},
-/// 					Scope: &backup.FrameworkControlScopeArgs{
-/// 						ComplianceResourceTypes: pulumi.StringArray{
-/// 							pulumi.String("EBS"),
-/// 						},
-/// 					},
+/// 					Name: pulumi.String("BACKUP_LAST_RECOVERY_POINT_CREATED"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("exampleFramework"),
+/// 			Description: pulumi.String("this is an example framework"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Framework"),
 /// 			},
@@ -408,17 +409,14 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "aws_backup_framework" "Example" {
-///   name        = "exampleFramework"
-///   description = "this is an example framework"
 ///   controls {
-///     name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"
 ///     input_parameters {
 ///       name  = "requiredRetentionDays"
 ///       value = "35"
 ///     }
+///     name = "BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK"
 ///   }
 ///   controls {
-///     name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"
 ///     input_parameters {
 ///       name  = "requiredFrequencyUnit"
 ///       value = "hours"
@@ -431,21 +429,24 @@ import 'framework_state.dart';
 ///       name  = "requiredFrequencyValue"
 ///       value = "1"
 ///     }
+///     name = "BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK"
 ///   }
 ///   controls {
 ///     name = "BACKUP_RECOVERY_POINT_ENCRYPTED"
 ///   }
 ///   controls {
-///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"
 ///     scope = {
 ///       compliance_resource_types = ["EBS"]
 ///     }
+///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN"
 ///   }
 ///   controls {
 ///     name = "BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED"
 ///   }
 ///   controls {
-///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"
+///     scope = {
+///       compliance_resource_types = ["EBS"]
+///     }
 ///     input_parameters {
 ///       name  = "maxRetentionDays"
 ///       value = "100"
@@ -454,12 +455,12 @@ import 'framework_state.dart';
 ///       name  = "minRetentionDays"
 ///       value = "1"
 ///     }
+///     name = "BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK"
+///   }
+///   controls {
 ///     scope = {
 ///       compliance_resource_types = ["EBS"]
 ///     }
-///   }
-///   controls {
-///     name = "BACKUP_LAST_RECOVERY_POINT_CREATED"
 ///     input_parameters {
 ///       name  = "recoveryPointAgeUnit"
 ///       value = "days"
@@ -468,10 +469,10 @@ import 'framework_state.dart';
 ///       name  = "recoveryPointAgeValue"
 ///       value = "1"
 ///     }
-///     scope = {
-///       compliance_resource_types = ["EBS"]
-///     }
+///     name = "BACKUP_LAST_RECOVERY_POINT_CREATED"
 ///   }
+///   name        = "exampleFramework"
+///   description = "this is an example framework"
 ///   tags = {
 ///     "Name" = "Example Framework"
 ///   }
@@ -502,18 +503,15 @@ import 'framework_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Framework("example", FrameworkArgs.builder()
-///             .name("exampleFramework")
-///             .description("this is an example framework")
 ///             .controls(
 ///                 FrameworkControlArgs.builder()
-///                     .name("BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK")
 ///                     .inputParameters(FrameworkControlInputParameterArgs.builder()
 ///                         .name("requiredRetentionDays")
 ///                         .value("35")
 ///                         .build())
+///                     .name("BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK")
 ///                     .build(),
 ///                 FrameworkControlArgs.builder()
-///                     .name("BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK")
 ///                     .inputParameters(
 ///                         FrameworkControlInputParameterArgs.builder()
 ///                             .name("requiredFrequencyUnit")
@@ -527,21 +525,24 @@ import 'framework_state.dart';
 ///                             .name("requiredFrequencyValue")
 ///                             .value("1")
 ///                             .build())
+///                     .name("BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK")
 ///                     .build(),
 ///                 FrameworkControlArgs.builder()
 ///                     .name("BACKUP_RECOVERY_POINT_ENCRYPTED")
 ///                     .build(),
 ///                 FrameworkControlArgs.builder()
-///                     .name("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN")
 ///                     .scope(FrameworkControlScopeArgs.builder()
 ///                         .complianceResourceTypes("EBS")
 ///                         .build())
+///                     .name("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN")
 ///                     .build(),
 ///                 FrameworkControlArgs.builder()
 ///                     .name("BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED")
 ///                     .build(),
 ///                 FrameworkControlArgs.builder()
-///                     .name("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK")
+///                     .scope(FrameworkControlScopeArgs.builder()
+///                         .complianceResourceTypes("EBS")
+///                         .build())
 ///                     .inputParameters(
 ///                         FrameworkControlInputParameterArgs.builder()
 ///                             .name("maxRetentionDays")
@@ -551,12 +552,12 @@ import 'framework_state.dart';
 ///                             .name("minRetentionDays")
 ///                             .value("1")
 ///                             .build())
+///                     .name("BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK")
+///                     .build(),
+///                 FrameworkControlArgs.builder()
 ///                     .scope(FrameworkControlScopeArgs.builder()
 ///                         .complianceResourceTypes("EBS")
 ///                         .build())
-///                     .build(),
-///                 FrameworkControlArgs.builder()
-///                     .name("BACKUP_LAST_RECOVERY_POINT_CREATED")
 ///                     .inputParameters(
 ///                         FrameworkControlInputParameterArgs.builder()
 ///                             .name("recoveryPointAgeUnit")
@@ -566,10 +567,10 @@ import 'framework_state.dart';
 ///                             .name("recoveryPointAgeValue")
 ///                             .value("1")
 ///                             .build())
-///                     .scope(FrameworkControlScopeArgs.builder()
-///                         .complianceResourceTypes("EBS")
-///                         .build())
+///                     .name("BACKUP_LAST_RECOVERY_POINT_CREATED")
 ///                     .build())
+///             .name("exampleFramework")
+///             .description("this is an example framework")
 ///             .tags(Map.of("Name", "Example Framework"))
 ///             .build());
 ///
@@ -582,45 +583,45 @@ import 'framework_state.dart';
 ///     type: aws:backup:Framework
 ///     name: Example
 ///     properties:
-///       name: exampleFramework
-///       description: this is an example framework
 ///       controls:
-///         - name: BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK
-///           inputParameters:
+///         - inputParameters:
 ///             - name: requiredRetentionDays
 ///               value: '35'
-///         - name: BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK
-///           inputParameters:
+///           name: BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK
+///         - inputParameters:
 ///             - name: requiredFrequencyUnit
 ///               value: hours
 ///             - name: requiredRetentionDays
 ///               value: '35'
 ///             - name: requiredFrequencyValue
 ///               value: '1'
+///           name: BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK
 ///         - name: BACKUP_RECOVERY_POINT_ENCRYPTED
-///         - name: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN
-///           scope:
+///         - scope:
 ///             complianceResourceTypes:
 ///               - EBS
+///           name: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN
 ///         - name: BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED
-///         - name: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK
+///         - scope:
+///             complianceResourceTypes:
+///               - EBS
 ///           inputParameters:
 ///             - name: maxRetentionDays
 ///               value: '100'
 ///             - name: minRetentionDays
 ///               value: '1'
-///           scope:
+///           name: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK
+///         - scope:
 ///             complianceResourceTypes:
 ///               - EBS
-///         - name: BACKUP_LAST_RECOVERY_POINT_CREATED
 ///           inputParameters:
 ///             - name: recoveryPointAgeUnit
 ///               value: days
 ///             - name: recoveryPointAgeValue
 ///               value: '1'
-///           scope:
-///             complianceResourceTypes:
-///               - EBS
+///           name: BACKUP_LAST_RECOVERY_POINT_CREATED
+///       name: exampleFramework
+///       description: this is an example framework
 ///       tags:
 ///         Name: Example Framework
 /// ```
@@ -637,7 +638,7 @@ class Framework extends pulumi.CustomResource {
   /// The ARN of the backup framework.
   late final pulumi.Output<String> arn;
   /// One or more control blocks that make up the framework. Each control in the list has a name, input parameters, and scope. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> controls;
+  late final pulumi.Output<List<FrameworkControl>> controls;
   /// The date and time that a framework is created, in Unix format and Coordinated Universal Time (UTC).
   late final pulumi.Output<String> creationTime;
   /// The deployment status of a framework. The statuses are: `CREATE_IN_PROGRESS` | `UPDATE_IN_PROGRESS` | `DELETE_IN_PROGRESS` | `COMPLETED` | `FAILED`.
@@ -667,18 +668,18 @@ class Framework extends pulumi.CustomResource {
           'aws:backup/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    controls = registerOutput<List<Map<String, dynamic>>>('controls');
+    controls = registerOutput<List<FrameworkControl>>('controls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControl>(guardedValue, (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Framework] resource's state with the given [name] and [id].
@@ -686,11 +687,12 @@ class Framework extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrameworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Framework._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -705,14 +707,35 @@ class Framework extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    controls = registerOutput<List<Map<String, dynamic>>>('controls');
+    controls = registerOutput<List<FrameworkControl>>('controls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControl>(guardedValue, (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Framework] resource.
+  Framework.reference(String urn)
+    : super(
+        'aws:backup/framework:Framework',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    controls = registerOutput<List<FrameworkControl>>('controls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControl>(guardedValue, (value) => FrameworkControl.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,13 +6,13 @@ import 'space_space_settings_code_editor_app_settings_default_resource_spec.dart
 
 class SpaceSpaceSettingsCodeEditorAppSettings {
   /// Settings that are used to configure and manage the lifecycle of JupyterLab applications in a space. See `appLifecycleManagement` Block below.
-  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement>? appLifecycleManagement;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `defaultResourceSpec` Block below.
+  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement?>? appLifecycleManagement;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. See `defaultResourceSpec` Block below.
   final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsDefaultResourceSpec> defaultResourceSpec;
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettings].
   /// [appLifecycleManagement] Settings that are used to configure and manage the lifecycle of JupyterLab applications in a space. See `appLifecycleManagement` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `defaultResourceSpec` Block below.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. See `defaultResourceSpec` Block below.
   const SpaceSpaceSettingsCodeEditorAppSettings({
     this.appLifecycleManagement,
     required this.defaultResourceSpec,

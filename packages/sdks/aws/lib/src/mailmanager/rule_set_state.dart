@@ -6,23 +6,23 @@ import 'rule_set_rule.dart';
 /// Input properties used for looking up and filtering RuleSet resources.
 class RuleSetState {
   /// ARN of the rule set.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Date and time when the rule set was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Date and time when the rule set was last modified.
-  final pulumi.Input<String>? lastModificationDate;
+  final pulumi.Input<String?>? lastModificationDate;
   /// Name of the rule set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource is managed.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more rules that define filtering and action logic. Up to 40 rules are supported. See `rule` Block.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<RuleSetRule>>? rules;
+  final pulumi.Input<List<RuleSetRule>?>? rules;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RuleSetState].
   /// [arn] ARN of the rule set.

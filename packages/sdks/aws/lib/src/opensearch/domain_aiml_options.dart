@@ -7,11 +7,11 @@ import 'domain_aiml_options_serverless_vector_acceleration.dart';
 
 class DomainAimlOptions {
   /// Configuration block for parameters required for natural language query generation on the specified domain.
-  final pulumi.Input<DomainAimlOptionsNaturalLanguageQueryGenerationOptions>? naturalLanguageQueryGenerationOptions;
+  final pulumi.Input<DomainAimlOptionsNaturalLanguageQueryGenerationOptions?>? naturalLanguageQueryGenerationOptions;
   /// Configuration block for parameters required to enable S3 vectors engine features on the specified domain.
-  final pulumi.Input<DomainAimlOptionsS3VectorsEngine>? s3VectorsEngine;
+  final pulumi.Input<DomainAimlOptionsS3VectorsEngine?>? s3VectorsEngine;
   /// Configuration block for parameters required to enable GPU-accelerated vector search on the specified domain.
-  final pulumi.Input<DomainAimlOptionsServerlessVectorAcceleration>? serverlessVectorAcceleration;
+  final pulumi.Input<DomainAimlOptionsServerlessVectorAcceleration?>? serverlessVectorAcceleration;
 
   /// Creates a new [DomainAimlOptions].
   /// [naturalLanguageQueryGenerationOptions] Configuration block for parameters required for natural language query generation on the specified domain.

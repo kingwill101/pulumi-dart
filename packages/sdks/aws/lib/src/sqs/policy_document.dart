@@ -6,7 +6,7 @@ import '../iam/policy_statement.dart';
 
 /// Represents an AWS IAM policy document that defines permissions for AWS resources and actions.
 class PolicyDocument {
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   final pulumi.Input<List<PolicyStatement>> statement;
   final pulumi.Input<PolicyDocumentVersion> version;
 

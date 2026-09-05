@@ -8,17 +8,17 @@ import 'gateway_route_spec_http2_route_match_query_parameter.dart';
 
 class GatewayRouteSpecHttp2RouteMatch {
   /// Client request headers to match on. See `spec.http2_route.match.header` Block for details.
-  final pulumi.Input<List<GatewayRouteSpecHttp2RouteMatchHeader>>? headers;
+  final pulumi.Input<List<GatewayRouteSpecHttp2RouteMatchHeader>?>? headers;
   /// Host name to match on. See `spec.http2_route.match.hostname` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchHostname>? hostname;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchHostname?>? hostname;
   /// Client request path to match on. See `spec.http2_route.match.path` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchPath>? path;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteMatchPath?>? path;
   /// Port number to match from the request.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Header value sent by the client must begin with the specified characters.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Client request query parameters to match on. See `spec.http2_route.match.query_parameter` Block for details.
-  final pulumi.Input<List<GatewayRouteSpecHttp2RouteMatchQueryParameter>>? queryParameters;
+  final pulumi.Input<List<GatewayRouteSpecHttp2RouteMatchQueryParameter>?>? queryParameters;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteMatch].
   /// [headers] Client request headers to match on. See `spec.http2_route.match.header` Block for details.
@@ -52,7 +52,7 @@ class GatewayRouteSpecHttp2RouteMatch {
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchHeader>(guardedValue, (value) => GatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteSpecHttp2RouteMatchHostname.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GatewayRouteSpecHttp2RouteMatchPath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queryParameters: (() { final guardedValue = map['queryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchQueryParameter>(guardedValue, (value) => GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

@@ -9,13 +9,13 @@ class MetricAlertDynamicCriteria {
   /// The extent of deviation required to trigger an alert. Possible values are `Low`, `Medium` and `High`.
   final pulumi.Input<String> alertSensitivity;
   /// One or more `dimension` blocks as defined below.
-  final pulumi.Input<List<MetricAlertDynamicCriteriaDimension>>? dimensions;
+  final pulumi.Input<List<MetricAlertDynamicCriteriaDimension>?>? dimensions;
   /// The number of violations to trigger an alert. Should be smaller or equal to `evaluationTotalCount`. Defaults to `4`.
-  final pulumi.Input<int>? evaluationFailureCount;
+  final pulumi.Input<int?>? evaluationFailureCount;
   /// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (`windowSize`) and the selected number of aggregated points. Defaults to `4`.
-  final pulumi.Input<int>? evaluationTotalCount;
+  final pulumi.Input<int?>? evaluationTotalCount;
   /// The [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date from which to start learning the metric historical data and calculate the dynamic thresholds.
-  final pulumi.Input<String>? ignoreDataBefore;
+  final pulumi.Input<String?>? ignoreDataBefore;
   /// One of the metric names to be monitored.
   final pulumi.Input<String> metricName;
   /// One of the metric namespaces to be monitored.
@@ -23,7 +23,7 @@ class MetricAlertDynamicCriteria {
   /// The criteria operator. Possible values are `LessThan`, `GreaterThan` and `GreaterOrLessThan`.
   final pulumi.Input<String> operator;
   /// Skip the metric validation to allow creating an alert rule on a custom metric that isn't yet emitted?
-  final pulumi.Input<bool>? skipMetricValidation;
+  final pulumi.Input<bool?>? skipMetricValidation;
 
   /// Creates a new [MetricAlertDynamicCriteria].
   /// [aggregation] The statistic that runs over the metric values. Possible values are `Average`, `Count`, `Minimum`, `Maximum` and `Total`.
@@ -69,8 +69,8 @@ class MetricAlertDynamicCriteria {
       aggregation: pulumi.Input.fromValue(map['aggregation'] as String),
       alertSensitivity: pulumi.Input.fromValue(map['alertSensitivity'] as String),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricAlertDynamicCriteriaDimension>(guardedValue, (value) => MetricAlertDynamicCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      evaluationFailureCount: (() { final guardedValue = map['evaluationFailureCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      evaluationTotalCount: (() { final guardedValue = map['evaluationTotalCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationFailureCount: (() { final guardedValue = map['evaluationFailureCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      evaluationTotalCount: (() { final guardedValue = map['evaluationTotalCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ignoreDataBefore: (() { final guardedValue = map['ignoreDataBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       metricNamespace: pulumi.Input.fromValue(map['metricNamespace'] as String),

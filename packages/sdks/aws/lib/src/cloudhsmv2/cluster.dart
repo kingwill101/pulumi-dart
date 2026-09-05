@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_cluster_certificate.dart';
 import 'cluster_state.dart';
 
 /// Creates an Amazon CloudHSM v2 cluster.
@@ -297,7 +298,7 @@ import 'cluster_state.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// The list of cluster certificates.
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterCertificates;
+  late final pulumi.Output<List<ClusterClusterCertificate>> clusterCertificates;
   /// The id of the CloudHSM cluster.
   late final pulumi.Output<String> clusterId;
   /// The state of the CloudHSM cluster.
@@ -333,9 +334,9 @@ class Cluster extends pulumi.CustomResource {
           'aws:cloudhsmv2/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    clusterCertificates = registerOutput<List<Map<String, dynamic>>>('clusterCertificates');
+    clusterCertificates = registerOutput<List<ClusterClusterCertificate>>('clusterCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterCertificate>(guardedValue, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
     clusterState = registerOutput<String>('clusterState');
     hsmType = registerOutput<String>('hsmType');
@@ -343,9 +344,9 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     sourceBackupIdentifier = registerOutput<String?>('sourceBackupIdentifier');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -354,11 +355,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,7 +374,7 @@ class Cluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    clusterCertificates = registerOutput<List<Map<String, dynamic>>>('clusterCertificates');
+    clusterCertificates = registerOutput<List<ClusterClusterCertificate>>('clusterCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterCertificate>(guardedValue, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
     clusterState = registerOutput<String>('clusterState');
     hsmType = registerOutput<String>('hsmType');
@@ -380,9 +382,32 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     sourceBackupIdentifier = registerOutput<String?>('sourceBackupIdentifier');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:cloudhsmv2/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterCertificates = registerOutput<List<ClusterClusterCertificate>>('clusterCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterCertificate>(guardedValue, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterId = registerOutput<String>('clusterId');
+    clusterState = registerOutput<String>('clusterState');
+    hsmType = registerOutput<String>('hsmType');
+    mode = registerOutput<String>('mode');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    sourceBackupIdentifier = registerOutput<String?>('sourceBackupIdentifier');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

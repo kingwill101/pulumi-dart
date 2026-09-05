@@ -6,17 +6,17 @@ import 'ontap_volume_snaplock_configuration_retention_period.dart';
 
 class OntapVolumeSnaplockConfiguration {
   /// Whether to enable the audit log volume for an FSx for ONTAP SnapLock volume. The default value is `false`.
-  final pulumi.Input<bool>? auditLogVolume;
+  final pulumi.Input<bool?>? auditLogVolume;
   /// Configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock volume. See `autocommitPeriod` Block for details.
-  final pulumi.Input<OntapVolumeSnaplockConfigurationAutocommitPeriod>? autocommitPeriod;
+  final pulumi.Input<OntapVolumeSnaplockConfigurationAutocommitPeriod?>? autocommitPeriod;
   /// Whether privileged delete is enabled, disabled, or permanently disabled on an FSx for ONTAP SnapLock Enterprise volume. Valid values: `DISABLED`, `ENABLED`, `PERMANENTLY_DISABLED`. The default value is `DISABLED`.
-  final pulumi.Input<String>? privilegedDelete;
+  final pulumi.Input<String?>? privilegedDelete;
   /// Retention period of an FSx for ONTAP SnapLock volume. See `retentionPeriod` Block for details.
-  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriod>? retentionPeriod;
+  final pulumi.Input<OntapVolumeSnaplockConfigurationRetentionPeriod?>? retentionPeriod;
   /// Retention mode of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. Valid values: `COMPLIANCE`, `ENTERPRISE`.
   final pulumi.Input<String> snaplockType;
   /// Whether to enable volume-append mode on an FSx for ONTAP SnapLock volume. The default value is `false`.
-  final pulumi.Input<bool>? volumeAppendModeEnabled;
+  final pulumi.Input<bool?>? volumeAppendModeEnabled;
 
   /// Creates a new [OntapVolumeSnaplockConfiguration].
   /// [auditLogVolume] Whether to enable the audit log volume for an FSx for ONTAP SnapLock volume. The default value is `false`.

@@ -35,8 +35,8 @@ class BackendAddressPoolTunnelInterface {
 
   factory BackendAddressPoolTunnelInterface.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolTunnelInterface(
-      identifier: pulumi.Input.fromValue(map['identifier'] as int),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      identifier: pulumi.Input.fromValue((map['identifier'] as num).toInt()),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

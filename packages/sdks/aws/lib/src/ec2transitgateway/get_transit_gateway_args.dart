@@ -9,13 +9,13 @@ import 'get_transit_gateway_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_transit_gateway_get_transit_gateway_args_doc}
 class GetTransitGatewayArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetTransitGatewayFilter>>? filters;
+  final pulumi.Input<List<GetTransitGatewayFilter>?>? filters;
   /// Identifier of the EC2 Transit Gateway.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetTransitGatewayArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

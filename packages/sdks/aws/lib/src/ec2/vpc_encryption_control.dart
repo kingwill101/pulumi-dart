@@ -240,7 +240,7 @@ class VpcEncryptionControl extends pulumi.CustomResource {
           'aws:ec2/vpcEncryptionControl:VpcEncryptionControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     egressOnlyInternetGatewayExclusion = registerOutput<String>('egressOnlyInternetGatewayExclusion');
     elasticFileSystemExclusion = registerOutput<String>('elasticFileSystemExclusion');
@@ -252,8 +252,8 @@ class VpcEncryptionControl extends pulumi.CustomResource {
     resourceExclusions = registerOutput<VpcEncryptionControlResourceExclusions>('resourceExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlResourceExclusions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcEncryptionControlTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualPrivateGatewayExclusion = registerOutput<String>('virtualPrivateGatewayExclusion');
     vpcId = registerOutput<String>('vpcId');
@@ -266,11 +266,12 @@ class VpcEncryptionControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEncryptionControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEncryptionControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,8 +295,36 @@ class VpcEncryptionControl extends pulumi.CustomResource {
     resourceExclusions = registerOutput<VpcEncryptionControlResourceExclusions>('resourceExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlResourceExclusions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<VpcEncryptionControlTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualPrivateGatewayExclusion = registerOutput<String>('virtualPrivateGatewayExclusion');
+    vpcId = registerOutput<String>('vpcId');
+    vpcLatticeExclusion = registerOutput<String>('vpcLatticeExclusion');
+    vpcPeeringExclusion = registerOutput<String>('vpcPeeringExclusion');
+  }
+
+  /// Creates a typed reference to an existing [VpcEncryptionControl] resource.
+  VpcEncryptionControl.reference(String urn)
+    : super(
+        'aws:ec2/vpcEncryptionControl:VpcEncryptionControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    egressOnlyInternetGatewayExclusion = registerOutput<String>('egressOnlyInternetGatewayExclusion');
+    elasticFileSystemExclusion = registerOutput<String>('elasticFileSystemExclusion');
+    internetGatewayExclusion = registerOutput<String>('internetGatewayExclusion');
+    lambdaExclusion = registerOutput<String>('lambdaExclusion');
+    mode = registerOutput<String>('mode');
+    natGatewayExclusion = registerOutput<String>('natGatewayExclusion');
+    region = registerOutput<String>('region');
+    resourceExclusions = registerOutput<VpcEncryptionControlResourceExclusions>('resourceExclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlResourceExclusions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<VpcEncryptionControlTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEncryptionControlTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualPrivateGatewayExclusion = registerOutput<String>('virtualPrivateGatewayExclusion');
     vpcId = registerOutput<String>('vpcId');

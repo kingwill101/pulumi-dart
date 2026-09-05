@@ -226,7 +226,7 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -235,7 +235,7 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -247,7 +247,7 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 		}
 /// 		exampleSqlPool, err := synapse.NewSqlPool(ctx, "example", &synapse.SqlPoolArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:            pulumi.String("DW100c"),
 /// 			CreateMode:         pulumi.String("Default"),
 /// 		})
@@ -256,7 +256,7 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 		}
 /// 		exampleSqlPoolWorkloadGroup, err := synapse.NewSqlPoolWorkloadGroup(ctx, "example", &synapse.SqlPoolWorkloadGroupArgs{
 /// 			Name:                           pulumi.String("example"),
-/// 			SqlPoolId:                      exampleSqlPool.ID(),
+/// 			SqlPoolId:                      exampleSqlPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Importance:                     pulumi.String("normal"),
 /// 			MaxResourcePercent:             pulumi.Int(100),
 /// 			MinResourcePercent:             pulumi.Int(0),
@@ -269,7 +269,7 @@ import 'sql_pool_workload_classifier_state.dart';
 /// 		}
 /// 		_, err = synapse.NewSqlPoolWorkloadClassifier(ctx, "example", &synapse.SqlPoolWorkloadClassifierArgs{
 /// 			Name:            pulumi.String("example"),
-/// 			WorkloadGroupId: exampleSqlPoolWorkloadGroup.ID(),
+/// 			WorkloadGroupId: exampleSqlPoolWorkloadGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Context:         pulumi.String("example_context"),
 /// 			EndTime:         pulumi.String("14:00"),
 /// 			Importance:      pulumi.String("high"),
@@ -551,7 +551,7 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
           'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     context = registerOutput<String?>('context');
     endTime = registerOutput<String?>('endTime');
@@ -568,11 +568,12 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlPoolWorkloadClassifierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlPoolWorkloadClassifier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -586,6 +587,25 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    context = registerOutput<String?>('context');
+    endTime = registerOutput<String?>('endTime');
+    importance = registerOutput<String?>('importance');
+    label = registerOutput<String?>('label');
+    memberName = registerOutput<String>('memberName');
+    this.name = registerOutput<String>('name');
+    startTime = registerOutput<String?>('startTime');
+    workloadGroupId = registerOutput<String>('workloadGroupId');
+  }
+
+  /// Creates a typed reference to an existing [SqlPoolWorkloadClassifier] resource.
+  SqlPoolWorkloadClassifier.reference(String urn)
+    : super(
+        'azure:synapse/sqlPoolWorkloadClassifier:SqlPoolWorkloadClassifier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     context = registerOutput<String?>('context');
     endTime = registerOutput<String?>('endTime');
     importance = registerOutput<String?>('importance');

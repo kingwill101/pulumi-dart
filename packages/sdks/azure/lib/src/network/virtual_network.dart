@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_network_args.dart';
 import 'virtual_network_ddos_protection_plan.dart';
 import 'virtual_network_encryption.dart';
+import 'virtual_network_ip_address_pool.dart';
 import 'virtual_network_state.dart';
+import 'virtual_network_subnet.dart';
 
 /// Manages a virtual network including any configured subnets. Each subnet can
 /// optionally be configured with a security group to be associated with the subnet.
@@ -201,7 +203,7 @@ import 'virtual_network_state.dart';
 /// 					AddressPrefixes: pulumi.StringArray{
 /// 						pulumi.String("10.0.2.0/24"),
 /// 					},
-/// 					SecurityGroup: exampleNetworkSecurityGroup.ID(),
+/// 					SecurityGroup: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -393,7 +395,7 @@ class VirtualNetwork extends pulumi.CustomResource {
   /// One or more `ipAddressPool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
   ///
   /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipAddressPools;
+  late final pulumi.Output<List<VirtualNetworkIpAddressPool>?> ipAddressPools;
   /// The location/region where the virtual network is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the virtual network. Changing this forces a new resource to be created.
@@ -405,7 +407,7 @@ class VirtualNetwork extends pulumi.CustomResource {
   /// Can be specified multiple times to define multiple subnets. Each `subnet` block supports fields documented below.
   ///
   /// &gt; **NOTE** Since `subnet` can be configured both inline and via the separate `azure.network.Subnet` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+  late final pulumi.Output<List<VirtualNetworkSubnet>> subnets;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -421,23 +423,23 @@ class VirtualNetwork extends pulumi.CustomResource {
           'azure:network/virtualNetwork:VirtualNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressSpaces = registerOutput<List<String>?>('addressSpaces');
+    addressSpaces = registerOutput<List<String>?>('addressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     bgpCommunity = registerOutput<String?>('bgpCommunity');
     ddosProtectionPlan = registerOutput<VirtualNetworkDdosProtectionPlan?>('ddosProtectionPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkDdosProtectionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dnsServers = registerOutput<List<String>>('dnsServers');
+    dnsServers = registerOutput<List<String>>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edgeZone = registerOutput<String?>('edgeZone');
     encryption = registerOutput<VirtualNetworkEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
     guid = registerOutput<String>('guid');
-    ipAddressPools = registerOutput<List<Map<String, dynamic>>?>('ipAddressPools');
+    ipAddressPools = registerOutput<List<VirtualNetworkIpAddressPool>?>('ipAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(guardedValue, (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpointVnetPolicies = registerOutput<String?>('privateEndpointVnetPolicies');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subnets = registerOutput<List<VirtualNetworkSubnet>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkSubnet>(guardedValue, (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualNetwork] resource's state with the given [name] and [id].
@@ -445,11 +447,12 @@ class VirtualNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,20 +466,46 @@ class VirtualNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressSpaces = registerOutput<List<String>?>('addressSpaces');
+    addressSpaces = registerOutput<List<String>?>('addressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     bgpCommunity = registerOutput<String?>('bgpCommunity');
     ddosProtectionPlan = registerOutput<VirtualNetworkDdosProtectionPlan?>('ddosProtectionPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkDdosProtectionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dnsServers = registerOutput<List<String>>('dnsServers');
+    dnsServers = registerOutput<List<String>>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edgeZone = registerOutput<String?>('edgeZone');
     encryption = registerOutput<VirtualNetworkEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
     guid = registerOutput<String>('guid');
-    ipAddressPools = registerOutput<List<Map<String, dynamic>>?>('ipAddressPools');
+    ipAddressPools = registerOutput<List<VirtualNetworkIpAddressPool>?>('ipAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(guardedValue, (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpointVnetPolicies = registerOutput<String?>('privateEndpointVnetPolicies');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subnets = registerOutput<List<VirtualNetworkSubnet>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkSubnet>(guardedValue, (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetwork] resource.
+  VirtualNetwork.reference(String urn)
+    : super(
+        'azure:network/virtualNetwork:VirtualNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressSpaces = registerOutput<List<String>?>('addressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    bgpCommunity = registerOutput<String?>('bgpCommunity');
+    ddosProtectionPlan = registerOutput<VirtualNetworkDdosProtectionPlan?>('ddosProtectionPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkDdosProtectionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsServers = registerOutput<List<String>>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryption = registerOutput<VirtualNetworkEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
+    guid = registerOutput<String>('guid');
+    ipAddressPools = registerOutput<List<VirtualNetworkIpAddressPool>?>('ipAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(guardedValue, (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointVnetPolicies = registerOutput<String?>('privateEndpointVnetPolicies');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnets = registerOutput<List<VirtualNetworkSubnet>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkSubnet>(guardedValue, (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

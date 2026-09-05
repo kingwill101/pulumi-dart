@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2transitgateway_multicast_domain_multicast_domain_args_doc}
 class MulticastDomainArgs {
   /// Whether to automatically accept cross-account subnet associations that are associated with the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? autoAcceptSharedAssociations;
+  final pulumi.Input<String?>? autoAcceptSharedAssociations;
   /// Whether to enable Internet Group Management Protocol (IGMP) version 2 for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? igmpv2Support;
+  final pulumi.Input<String?>? igmpv2Support;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final pulumi.Input<String>? staticSourcesSupport;
+  final pulumi.Input<String?>? staticSourcesSupport;
   /// Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicastSupport` enabled.
   final pulumi.Input<String> transitGatewayId;
 

@@ -7,7 +7,7 @@ class VirtualMachineOsProfileSecret {
   /// Specifies the ID of the Key Vault to use.
   final pulumi.Input<String> sourceVaultId;
   /// One or more `vaultCertificates` blocks as defined below.
-  final pulumi.Input<List<VirtualMachineOsProfileSecretVaultCertificate>>? vaultCertificates;
+  final pulumi.Input<List<VirtualMachineOsProfileSecretVaultCertificate>?>? vaultCertificates;
 
   /// Creates a new [VirtualMachineOsProfileSecret].
   /// [sourceVaultId] Specifies the ID of the Key Vault to use.

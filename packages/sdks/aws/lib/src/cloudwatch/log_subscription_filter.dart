@@ -195,12 +195,12 @@ class LogSubscriptionFilter extends pulumi.CustomResource {
           'aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     destinationArn = registerOutput<String>('destinationArn');
     distribution = registerOutput<String?>('distribution');
-    emitSystemFields = registerOutput<List<String>?>('emitSystemFields');
+    emitSystemFields = registerOutput<List<String>?>('emitSystemFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     filterPattern = registerOutput<String>('filterPattern');
     logGroup = registerOutput<String>('logGroup');
     this.name = registerOutput<String>('name');
@@ -213,11 +213,12 @@ class LogSubscriptionFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogSubscriptionFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogSubscriptionFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,7 +235,27 @@ class LogSubscriptionFilter extends pulumi.CustomResource {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     destinationArn = registerOutput<String>('destinationArn');
     distribution = registerOutput<String?>('distribution');
-    emitSystemFields = registerOutput<List<String>?>('emitSystemFields');
+    emitSystemFields = registerOutput<List<String>?>('emitSystemFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    filterPattern = registerOutput<String>('filterPattern');
+    logGroup = registerOutput<String>('logGroup');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [LogSubscriptionFilter] resource.
+  LogSubscriptionFilter.reference(String urn)
+    : super(
+        'aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
+    destinationArn = registerOutput<String>('destinationArn');
+    distribution = registerOutput<String?>('distribution');
+    emitSystemFields = registerOutput<List<String>?>('emitSystemFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     filterPattern = registerOutput<String>('filterPattern');
     logGroup = registerOutput<String>('logGroup');
     this.name = registerOutput<String>('name');

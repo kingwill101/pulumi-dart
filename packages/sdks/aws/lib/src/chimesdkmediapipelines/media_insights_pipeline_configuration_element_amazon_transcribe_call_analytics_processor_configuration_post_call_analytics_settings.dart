@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings {
   /// Should output be redacted.
-  final pulumi.Input<String>? contentRedactionOutput;
+  final pulumi.Input<String?>? contentRedactionOutput;
   /// ARN of the role used by AWS Transcribe to upload your post call analysis.
   final pulumi.Input<String> dataAccessRoleArn;
   /// ID of the KMS key used to encrypt the output.
-  final pulumi.Input<String>? outputEncryptionKmsKeyId;
+  final pulumi.Input<String?>? outputEncryptionKmsKeyId;
   /// The Amazon S3 location where you want your Call Analytics post-call transcription output stored.
   final pulumi.Input<String> outputLocation;
 

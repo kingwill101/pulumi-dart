@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSourceMappingScalingConfig {
   /// Limits the number of concurrent instances that the Amazon SQS event source can invoke. Must be greater than or equal to 2. See [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency). You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase the concurrency beyond 1000.
-  final pulumi.Input<int>? maximumConcurrency;
+  final pulumi.Input<int?>? maximumConcurrency;
 
   /// Creates a new [EventSourceMappingScalingConfig].
   /// [maximumConcurrency] Limits the number of concurrent instances that the Amazon SQS event source can invoke. Must be greater than or equal to 2. See [Configuring maximum concurrency for Amazon SQS event sources](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency). You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase the concurrency beyond 1000.
@@ -20,7 +20,7 @@ class EventSourceMappingScalingConfig {
 
   factory EventSourceMappingScalingConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingScalingConfig(
-      maximumConcurrency: (() { final guardedValue = map['maximumConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumConcurrency: (() { final guardedValue = map['maximumConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

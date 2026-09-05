@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudAppCosmosDBAssociation resources.
 class SpringCloudAppCosmosDBAssociationState {
   /// Specifies the API type which should be used when connecting to the CosmosDB Account. Possible values are `cassandra`, `gremlin`, `mongo`, `sql` or `table`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// Specifies the CosmosDB Account access key.
-  final pulumi.Input<String>? cosmosdbAccessKey;
+  final pulumi.Input<String?>? cosmosdbAccessKey;
   /// Specifies the ID of the CosmosDB Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cosmosdbAccountId;
+  final pulumi.Input<String?>? cosmosdbAccountId;
   /// Specifies the name of the Cassandra Keyspace which the Spring Cloud App should be associated with. Should only be set when `apiType` is `cassandra`.
-  final pulumi.Input<String>? cosmosdbCassandraKeyspaceName;
+  final pulumi.Input<String?>? cosmosdbCassandraKeyspaceName;
   /// Specifies the name of the Gremlin Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `gremlin`.
-  final pulumi.Input<String>? cosmosdbGremlinDatabaseName;
+  final pulumi.Input<String?>? cosmosdbGremlinDatabaseName;
   /// Specifies the name of the Gremlin Graph which the Spring Cloud App should be associated with. Should only be set when `apiType` is `gremlin`.
-  final pulumi.Input<String>? cosmosdbGremlinGraphName;
+  final pulumi.Input<String?>? cosmosdbGremlinGraphName;
   /// Specifies the name of the Mongo Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `mongo`.
-  final pulumi.Input<String>? cosmosdbMongoDatabaseName;
+  final pulumi.Input<String?>? cosmosdbMongoDatabaseName;
   /// Specifies the name of the SQL Database which the Spring Cloud App should be associated with. Should only be set when `apiType` is `sql`.
-  final pulumi.Input<String>? cosmosdbSqlDatabaseName;
+  final pulumi.Input<String?>? cosmosdbSqlDatabaseName;
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? springCloudAppId;
+  final pulumi.Input<String?>? springCloudAppId;
 
   /// Creates a new [SpringCloudAppCosmosDBAssociationState].
   /// [apiType] Specifies the API type which should be used when connecting to the CosmosDB Account. Possible values are `cassandra`, `gremlin`, `mongo`, `sql` or `table`. Changing this forces a new resource to be created.

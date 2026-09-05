@@ -6,28 +6,28 @@ import 'get_access_policies_access_policy.dart';
 /// Result data returned by getAccessPolicies.
 class GetAccessPoliciesResult {
   /// List of available access policies.
-  final List<GetAccessPoliciesAccessPolicy> accessPolicies;
-  final String region;
+  final List<GetAccessPoliciesAccessPolicy>? accessPolicies;
+  final String? region;
 
   /// Creates a new [GetAccessPoliciesResult].
   /// [accessPolicies] List of available access policies.
-  /// [region] Required.
+  /// [region] Optional.
   const GetAccessPoliciesResult({
-    required this.accessPolicies,
-    required this.region,
+    this.accessPolicies,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicies': pulumi.Input.encodeList<GetAccessPoliciesAccessPolicy, Map<String, dynamic>>(accessPolicies, (value) => value.toMap()),
-      'region': region,
+      'accessPolicies': ?(() { final guardedValue = accessPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAccessPoliciesAccessPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetAccessPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPoliciesResult(
-      accessPolicies: pulumi.Input.decodeList<GetAccessPoliciesAccessPolicy>(map['accessPolicies']!, (value) => GetAccessPoliciesAccessPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      accessPolicies: (() { final guardedValue = map['accessPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAccessPoliciesAccessPolicy>(guardedValue, (value) => GetAccessPoliciesAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

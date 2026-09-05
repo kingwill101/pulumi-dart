@@ -15,7 +15,6 @@ import 'detector_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const myDetector = new aws.guardduty.Detector("MyDetector", {
-///     enable: true,
 ///     datasources: {
 ///         s3Logs: {
 ///             enable: true,
@@ -33,6 +32,7 @@ import 'detector_state.dart';
 ///             },
 ///         },
 ///     },
+///     enable: true,
 /// });
 /// ```
 /// ```python
@@ -40,7 +40,6 @@ import 'detector_state.dart';
 /// import pulumi_aws as aws
 ///
 /// my_detector = aws.guardduty.Detector("MyDetector",
-///     enable=True,
 ///     datasources={
 ///         "s3_logs": {
 ///             "enable": True,
@@ -57,7 +56,8 @@ import 'detector_state.dart';
 ///                 },
 ///             },
 ///         },
-///     })
+///     },
+///     enable=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -69,7 +69,6 @@ import 'detector_state.dart';
 /// {
 ///     var myDetector = new Aws.GuardDuty.Detector("MyDetector", new()
 ///     {
-///         Enable = true,
 ///         Datasources = new Aws.GuardDuty.Inputs.DetectorDatasourcesArgs
 ///         {
 ///             S3Logs = new Aws.GuardDuty.Inputs.DetectorDatasourcesS3LogsArgs
@@ -94,6 +93,7 @@ import 'detector_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Enable = true,
 ///     });
 ///
 /// });
@@ -109,7 +109,6 @@ import 'detector_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := guardduty.NewDetector(ctx, "MyDetector", &guardduty.DetectorArgs{
-/// 			Enable: pulumi.Bool(true),
 /// 			Datasources: &guardduty.DetectorDatasourcesArgs{
 /// 				S3Logs: &guardduty.DetectorDatasourcesS3LogsArgs{
 /// 					Enable: pulumi.Bool(true),
@@ -127,6 +126,7 @@ import 'detector_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Enable: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,7 +145,6 @@ import 'detector_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "MyDetector" {
-///   enable = true
 ///   datasources = {
 ///     s3_logs = {
 ///       enable = true
@@ -163,6 +162,7 @@ import 'detector_state.dart';
 ///       }
 ///     }
 ///   }
+///   enable = true
 /// }
 /// ```
 /// ```java
@@ -194,7 +194,6 @@ import 'detector_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var myDetector = new Detector("myDetector", DetectorArgs.builder()
-///             .enable(true)
 ///             .datasources(DetectorDatasourcesArgs.builder()
 ///                 .s3Logs(DetectorDatasourcesS3LogsArgs.builder()
 ///                     .enable(true)
@@ -212,6 +211,7 @@ import 'detector_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .enable(true)
 ///             .build());
 ///
 ///     }
@@ -223,7 +223,6 @@ import 'detector_state.dart';
 ///     type: aws:guardduty:Detector
 ///     name: MyDetector
 ///     properties:
-///       enable: true
 ///       datasources:
 ///         s3Logs:
 ///           enable: true
@@ -234,6 +233,7 @@ import 'detector_state.dart';
 ///           scanEc2InstanceWithFindings:
 ///             ebsVolumes:
 ///               enable: true
+///       enable: true
 /// ```
 ///
 ///
@@ -249,7 +249,7 @@ import 'detector_state.dart';
 class Detector extends pulumi.CustomResource {
   /// The AWS account ID of the GuardDuty detector
   late final pulumi.Output<String> accountId;
-  /// Amazon Resource Name (ARN) of the GuardDuty detector
+  /// ARN of the GuardDuty detector
   late final pulumi.Output<String> arn;
   /// Describes which data sources will be enabled for the detector. See Data Sources below for more details. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.DetectorFeature` resources.
   late final pulumi.Output<DetectorDatasources> datasources;
@@ -276,7 +276,7 @@ class Detector extends pulumi.CustomResource {
           'aws:guardduty/detector:Detector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
@@ -284,8 +284,8 @@ class Detector extends pulumi.CustomResource {
     enable = registerOutput<bool?>('enable');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Detector] resource's state with the given [name] and [id].
@@ -293,11 +293,12 @@ class Detector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DetectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Detector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,7 +318,26 @@ class Detector extends pulumi.CustomResource {
     enable = registerOutput<bool?>('enable');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Detector] resource.
+  Detector.reference(String urn)
+    : super(
+        'aws:guardduty/detector:Detector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    datasources = registerOutput<DetectorDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DetectorDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enable = registerOutput<bool?>('enable');
+    findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -137,8 +137,8 @@ import 'nat_gateway_public_ip_prefix_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNatGatewayPublicIpPrefixAssociation(ctx, "example", &network.NatGatewayPublicIpPrefixAssociationArgs{
-/// 			NatGatewayId:     exampleNatGateway.ID(),
-/// 			PublicIpPrefixId: examplePublicIpPrefix.ID(),
+/// 			NatGatewayId:     exampleNatGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PublicIpPrefixId: examplePublicIpPrefix.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -400,8 +400,8 @@ import 'nat_gateway_public_ip_prefix_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNatGatewayPublicIpPrefixAssociation(ctx, "example", &network.NatGatewayPublicIpPrefixAssociationArgs{
-/// 			NatGatewayId:     exampleNatGateway.ID(),
-/// 			PublicIpPrefixId: examplePublicIpPrefix.ID(),
+/// 			NatGatewayId:     exampleNatGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PublicIpPrefixId: examplePublicIpPrefix.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -570,7 +570,7 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
           'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
@@ -581,11 +581,12 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatGatewayPublicIpPrefixAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatGatewayPublicIpPrefixAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -599,6 +600,19 @@ class NatGatewayPublicIpPrefixAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
+  }
+
+  /// Creates a typed reference to an existing [NatGatewayPublicIpPrefixAssociation] resource.
+  NatGatewayPublicIpPrefixAssociation.reference(String urn)
+    : super(
+        'azure:network/natGatewayPublicIpPrefixAssociation:NatGatewayPublicIpPrefixAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpPrefixId = registerOutput<String>('publicIpPrefixId');
   }

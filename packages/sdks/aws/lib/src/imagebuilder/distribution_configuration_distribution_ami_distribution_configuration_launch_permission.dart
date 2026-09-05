@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission {
   /// Set of AWS Organization ARNs to assign.
-  final pulumi.Input<List<String>>? organizationArns;
+  final pulumi.Input<List<String>?>? organizationArns;
   /// Set of AWS Organizational Unit ARNs to assign.
-  final pulumi.Input<List<String>>? organizationalUnitArns;
+  final pulumi.Input<List<String>?>? organizationalUnitArns;
   /// Set of EC2 launch permission user groups to assign. Use `all` to distribute a public AMI.
-  final pulumi.Input<List<String>>? userGroups;
+  final pulumi.Input<List<String>?>? userGroups;
   /// Set of AWS Account identifiers to assign.
-  final pulumi.Input<List<String>>? userIds;
+  final pulumi.Input<List<String>?>? userIds;
 
   /// Creates a new [DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission].
   /// [organizationArns] Set of AWS Organization ARNs to assign.

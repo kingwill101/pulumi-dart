@@ -7,7 +7,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
   /// Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `queryStringBehavior` are `none`, `whitelist`, `allExcept`, and `all`.
   final pulumi.Input<String> queryStringBehavior;
   /// Configuration parameter that contains a list of query string names. See Items for more information.
-  final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings>? queryStrings;
+  final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings?>? queryStrings;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig].
   /// [queryStringBehavior] Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `queryStringBehavior` are `none`, `whitelist`, `allExcept`, and `all`.

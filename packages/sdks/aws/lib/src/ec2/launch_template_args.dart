@@ -28,88 +28,88 @@ import 'launch_template_tag_specification.dart';
 class LaunchTemplateArgs {
   /// Specify volumes to attach to the instance besides the volumes specified by the AMI.
   /// See Block Devices below for details.
-  final pulumi.Input<List<LaunchTemplateBlockDeviceMapping>>? blockDeviceMappings;
+  final pulumi.Input<List<LaunchTemplateBlockDeviceMapping>?>? blockDeviceMappings;
   /// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
-  final pulumi.Input<LaunchTemplateCapacityReservationSpecification>? capacityReservationSpecification;
+  final pulumi.Input<LaunchTemplateCapacityReservationSpecification?>? capacityReservationSpecification;
   /// The CPU options for the instance. See CPU Options below for more details.
-  final pulumi.Input<LaunchTemplateCpuOptions>? cpuOptions;
+  final pulumi.Input<LaunchTemplateCpuOptions?>? cpuOptions;
   /// Customize the credit specification of the instance. See Credit
   /// Specification below for more details.
-  final pulumi.Input<LaunchTemplateCreditSpecification>? creditSpecification;
+  final pulumi.Input<LaunchTemplateCreditSpecification?>? creditSpecification;
   /// Default Version of the launch template.
-  final pulumi.Input<int>? defaultVersion;
+  final pulumi.Input<int?>? defaultVersion;
   /// Description of the launch template version (`VersionDescription` in the [EC2 API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html)). Launch templates in AWS do not have a template-level description; whenever a change to this resource creates a new version, the new version is created with this description. To give each version a distinct description, update this argument in the same apply as the other changes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
-  final pulumi.Input<bool>? disableApiStop;
+  final pulumi.Input<bool?>? disableApiStop;
   /// If `true`, enables [EC2 Instance
   /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingDisableAPITermination.html)
-  final pulumi.Input<bool>? disableApiTermination;
+  final pulumi.Input<bool?>? disableApiTermination;
   /// If `true`, the launched EC2 instance will be EBS-optimized.
-  final pulumi.Input<String>? ebsOptimized;
+  final pulumi.Input<String?>? ebsOptimized;
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
-  final pulumi.Input<LaunchTemplateEnclaveOptions>? enclaveOptions;
+  final pulumi.Input<LaunchTemplateEnclaveOptions?>? enclaveOptions;
   /// The hibernation options for the instance. See Hibernation Options below for more details.
-  final pulumi.Input<LaunchTemplateHibernationOptions>? hibernationOptions;
+  final pulumi.Input<LaunchTemplateHibernationOptions?>? hibernationOptions;
   /// The IAM Instance Profile to launch the instance with. See Instance Profile
   /// below for more details.
-  final pulumi.Input<LaunchTemplateIamInstanceProfile>? iamInstanceProfile;
+  final pulumi.Input<LaunchTemplateIamInstanceProfile?>? iamInstanceProfile;
   /// The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
   /// (Default: `stop`).
-  final pulumi.Input<String>? instanceInitiatedShutdownBehavior;
+  final pulumi.Input<String?>? instanceInitiatedShutdownBehavior;
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
-  final pulumi.Input<LaunchTemplateInstanceMarketOptions>? instanceMarketOptions;
+  final pulumi.Input<LaunchTemplateInstanceMarketOptions?>? instanceMarketOptions;
   /// The attribute requirements for the type of instance. If present then `instanceType` cannot be present.
-  final pulumi.Input<LaunchTemplateInstanceRequirements>? instanceRequirements;
+  final pulumi.Input<LaunchTemplateInstanceRequirements?>? instanceRequirements;
   /// The type of the instance. If present then `instanceRequirements` cannot be present.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// The kernel ID.
-  final pulumi.Input<String>? kernelId;
+  final pulumi.Input<String?>? kernelId;
   /// The key name to use for the instance.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// A list of license specifications to associate with. See License Specification below for more details.
-  final pulumi.Input<List<LaunchTemplateLicenseSpecification>>? licenseSpecifications;
+  final pulumi.Input<List<LaunchTemplateLicenseSpecification>?>? licenseSpecifications;
   /// The maintenance options for the instance. See Maintenance Options below for more details.
-  final pulumi.Input<LaunchTemplateMaintenanceOptions>? maintenanceOptions;
+  final pulumi.Input<LaunchTemplateMaintenanceOptions?>? maintenanceOptions;
   /// Customize the metadata options for the instance. See Metadata Options below for more details.
-  final pulumi.Input<LaunchTemplateMetadataOptions>? metadataOptions;
+  final pulumi.Input<LaunchTemplateMetadataOptions?>? metadataOptions;
   /// The monitoring option for the instance. See Monitoring below for more details.
-  final pulumi.Input<LaunchTemplateMonitoring>? monitoring;
+  final pulumi.Input<LaunchTemplateMonitoring?>? monitoring;
   /// The name of the launch template. If you leave this blank, the provider will auto-generate a unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Customize network interfaces to be attached at instance boot time. See Network
   /// Interfaces below for more details.
-  final pulumi.Input<List<LaunchTemplateNetworkInterface>>? networkInterfaces;
-  final pulumi.Input<LaunchTemplateNetworkPerformanceOptions>? networkPerformanceOptions;
+  final pulumi.Input<List<LaunchTemplateNetworkInterface>?>? networkInterfaces;
+  final pulumi.Input<LaunchTemplateNetworkPerformanceOptions?>? networkPerformanceOptions;
   /// The placement of the instance. See Placement below for more details.
-  final pulumi.Input<LaunchTemplatePlacement>? placement;
+  final pulumi.Input<LaunchTemplatePlacement?>? placement;
   /// The options for the instance hostname. The default values are inherited from the subnet. See Private DNS Name Options below for more details.
-  final pulumi.Input<LaunchTemplatePrivateDnsNameOptions>? privateDnsNameOptions;
+  final pulumi.Input<LaunchTemplatePrivateDnsNameOptions?>? privateDnsNameOptions;
   /// The ID of the RAM disk.
-  final pulumi.Input<String>? ramDiskId;
+  final pulumi.Input<String?>? ramDiskId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Secondary interfaces to associate with instances launched from the template. See Secondary
   /// Interfaces below for more details.
-  final pulumi.Input<List<LaunchTemplateSecondaryInterface>>? secondaryInterfaces;
+  final pulumi.Input<List<LaunchTemplateSecondaryInterface>?>? secondaryInterfaces;
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
   /// `vpcSecurityGroupIds` instead.
-  final pulumi.Input<List<String>>? securityGroupNames;
+  final pulumi.Input<List<String>?>? securityGroupNames;
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
-  final pulumi.Input<List<LaunchTemplateTagSpecification>>? tagSpecifications;
+  final pulumi.Input<List<LaunchTemplateTagSpecification>?>? tagSpecifications;
   /// A map of tags to assign to the launch template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether to update Default Version each update. Conflicts with `defaultVersion`.
-  final pulumi.Input<bool>? updateDefaultVersion;
+  final pulumi.Input<bool?>? updateDefaultVersion;
   /// The base64-encoded user data to provide when launching the instance.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// A list of security group IDs to associate with. Conflicts with `network_interfaces.security_groups`
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [LaunchTemplateArgs].
   /// [blockDeviceMappings] Specify volumes to attach to the instance besides the volumes specified by the AMI.
@@ -240,7 +240,7 @@ class LaunchTemplateArgs {
       capacityReservationSpecification: (() { final guardedValue = map['capacityReservationSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cpuOptions: (() { final guardedValue = map['cpuOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creditSpecification: (() { final guardedValue = map['creditSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultVersion: (() { final guardedValue = map['defaultVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultVersion: (() { final guardedValue = map['defaultVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableApiStop: (() { final guardedValue = map['disableApiStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableApiTermination: (() { final guardedValue = map['disableApiTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

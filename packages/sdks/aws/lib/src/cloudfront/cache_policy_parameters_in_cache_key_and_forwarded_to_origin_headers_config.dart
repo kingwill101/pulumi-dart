@@ -5,9 +5,9 @@ import 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_con
 
 class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   /// Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `headerBehavior` are `none` and `whitelist`.
-  final pulumi.Input<String>? headerBehavior;
+  final pulumi.Input<String?>? headerBehavior;
   /// Object contains a list of header names. See Items for more information.
-  final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders>? headers;
+  final pulumi.Input<CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders?>? headers;
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig].
   /// [headerBehavior] Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `headerBehavior` are `none` and `whitelist`.

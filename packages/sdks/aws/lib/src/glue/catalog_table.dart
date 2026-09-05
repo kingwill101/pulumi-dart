@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_args.dart';
 import 'catalog_table_open_table_format_input.dart';
+import 'catalog_table_partition_index.dart';
+import 'catalog_table_partition_key.dart';
 import 'catalog_table_state.dart';
 import 'catalog_table_storage_descriptor.dart';
 import 'catalog_table_target_table.dart';
@@ -128,17 +130,7 @@ import 'catalog_table_view_definition.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.CatalogTable("example", {
-///     name: "MyCatalogTable",
-///     databaseName: "MyCatalogDatabase",
-///     tableType: "EXTERNAL_TABLE",
-///     parameters: {
-///         EXTERNAL: "TRUE",
-///         "parquet.compression": "SNAPPY",
-///     },
 ///     storageDescriptor: {
-///         location: "s3://my-bucket/event-streams/my-stream",
-///         inputFormat: "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
-///         outputFormat: "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
 ///         serDeInfo: {
 ///             name: "my-stream",
 ///             serializationLibrary: "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
@@ -171,6 +163,16 @@ import 'catalog_table_view_definition.dart';
 ///                 comment: "",
 ///             },
 ///         ],
+///         location: "s3://my-bucket/event-streams/my-stream",
+///         inputFormat: "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+///         outputFormat: "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+///     },
+///     name: "MyCatalogTable",
+///     databaseName: "MyCatalogDatabase",
+///     tableType: "EXTERNAL_TABLE",
+///     parameters: {
+///         EXTERNAL: "TRUE",
+///         "parquet.compression": "SNAPPY",
 ///     },
 /// });
 /// ```
@@ -179,17 +181,7 @@ import 'catalog_table_view_definition.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.CatalogTable("example",
-///     name="MyCatalogTable",
-///     database_name="MyCatalogDatabase",
-///     table_type="EXTERNAL_TABLE",
-///     parameters={
-///         "EXTERNAL": "TRUE",
-///         "parquet.compression": "SNAPPY",
-///     },
 ///     storage_descriptor={
-///         "location": "s3://my-bucket/event-streams/my-stream",
-///         "input_format": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
-///         "output_format": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
 ///         "ser_de_info": {
 ///             "name": "my-stream",
 ///             "serialization_library": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
@@ -222,6 +214,16 @@ import 'catalog_table_view_definition.dart';
 ///                 "comment": "",
 ///             },
 ///         ],
+///         "location": "s3://my-bucket/event-streams/my-stream",
+///         "input_format": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+///         "output_format": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+///     },
+///     name="MyCatalogTable",
+///     database_name="MyCatalogDatabase",
+///     table_type="EXTERNAL_TABLE",
+///     parameters={
+///         "EXTERNAL": "TRUE",
+///         "parquet.compression": "SNAPPY",
 ///     })
 /// ```
 /// ```csharp
@@ -234,19 +236,8 @@ import 'catalog_table_view_definition.dart';
 /// {
 ///     var example = new Aws.Glue.CatalogTable("example", new()
 ///     {
-///         Name = "MyCatalogTable",
-///         DatabaseName = "MyCatalogDatabase",
-///         TableType = "EXTERNAL_TABLE",
-///         Parameters =
-///         {
-///             { "EXTERNAL", "TRUE" },
-///             { "parquet.compression", "SNAPPY" },
-///         },
 ///         StorageDescriptor = new Aws.Glue.Inputs.CatalogTableStorageDescriptorArgs
 ///         {
-///             Location = "s3://my-bucket/event-streams/my-stream",
-///             InputFormat = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
-///             OutputFormat = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
 ///             SerDeInfo = new Aws.Glue.Inputs.CatalogTableStorageDescriptorSerDeInfoArgs
 ///             {
 ///                 Name = "my-stream",
@@ -287,6 +278,17 @@ import 'catalog_table_view_definition.dart';
 ///                     Comment = "",
 ///                 },
 ///             },
+///             Location = "s3://my-bucket/event-streams/my-stream",
+///             InputFormat = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+///             OutputFormat = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+///         },
+///         Name = "MyCatalogTable",
+///         DatabaseName = "MyCatalogDatabase",
+///         TableType = "EXTERNAL_TABLE",
+///         Parameters =
+///         {
+///             { "EXTERNAL", "TRUE" },
+///             { "parquet.compression", "SNAPPY" },
 ///         },
 ///     });
 ///
@@ -303,17 +305,7 @@ import 'catalog_table_view_definition.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCatalogTable(ctx, "example", &glue.CatalogTableArgs{
-/// 			Name:         pulumi.String("MyCatalogTable"),
-/// 			DatabaseName: pulumi.String("MyCatalogDatabase"),
-/// 			TableType:    pulumi.String("EXTERNAL_TABLE"),
-/// 			Parameters: pulumi.StringMap{
-/// 				"EXTERNAL":            pulumi.String("TRUE"),
-/// 				"parquet.compression": pulumi.String("SNAPPY"),
-/// 			},
 /// 			StorageDescriptor: &glue.CatalogTableStorageDescriptorArgs{
-/// 				Location:     pulumi.String("s3://my-bucket/event-streams/my-stream"),
-/// 				InputFormat:  pulumi.String("org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"),
-/// 				OutputFormat: pulumi.String("org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"),
 /// 				SerDeInfo: &glue.CatalogTableStorageDescriptorSerDeInfoArgs{
 /// 					Name:                 pulumi.String("my-stream"),
 /// 					SerializationLibrary: pulumi.String("org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"),
@@ -346,6 +338,16 @@ import 'catalog_table_view_definition.dart';
 /// 						Comment: pulumi.String(""),
 /// 					},
 /// 				},
+/// 				Location:     pulumi.String("s3://my-bucket/event-streams/my-stream"),
+/// 				InputFormat:  pulumi.String("org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"),
+/// 				OutputFormat: pulumi.String("org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"),
+/// 			},
+/// 			Name:         pulumi.String("MyCatalogTable"),
+/// 			DatabaseName: pulumi.String("MyCatalogDatabase"),
+/// 			TableType:    pulumi.String("EXTERNAL_TABLE"),
+/// 			Parameters: pulumi.StringMap{
+/// 				"EXTERNAL":            pulumi.String("TRUE"),
+/// 				"parquet.compression": pulumi.String("SNAPPY"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -365,17 +367,7 @@ import 'catalog_table_view_definition.dart';
 /// }
 ///
 /// resource "aws_glue_catalogtable" "example" {
-///   name          = "MyCatalogTable"
-///   database_name = "MyCatalogDatabase"
-///   table_type    = "EXTERNAL_TABLE"
-///   parameters = {
-///     "EXTERNAL"            = "TRUE"
-///     "parquet.compression" = "SNAPPY"
-///   }
 ///   storage_descriptor = {
-///     location      = "s3://my-bucket/event-streams/my-stream"
-///     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
-///     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
 ///     ser_de_info = {
 ///       name                  = "my-stream"
 ///       serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
@@ -402,6 +394,16 @@ import 'catalog_table_view_definition.dart';
 ///       "type"    = "struct<my_nested_string:string>"
 ///       "comment" = ""
 ///     }]
+///     location      = "s3://my-bucket/event-streams/my-stream"
+///     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+///     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+///   }
+///   name          = "MyCatalogTable"
+///   database_name = "MyCatalogDatabase"
+///   table_type    = "EXTERNAL_TABLE"
+///   parameters = {
+///     "EXTERNAL"            = "TRUE"
+///     "parquet.compression" = "SNAPPY"
 ///   }
 /// }
 /// ```
@@ -430,17 +432,7 @@ import 'catalog_table_view_definition.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CatalogTable("example", CatalogTableArgs.builder()
-///             .name("MyCatalogTable")
-///             .databaseName("MyCatalogDatabase")
-///             .tableType("EXTERNAL_TABLE")
-///             .parameters(Map.ofEntries(
-///                 Map.entry("EXTERNAL", "TRUE"),
-///                 Map.entry("parquet.compression", "SNAPPY")
-///             ))
 ///             .storageDescriptor(CatalogTableStorageDescriptorArgs.builder()
-///                 .location("s3://my-bucket/event-streams/my-stream")
-///                 .inputFormat("org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat")
-///                 .outputFormat("org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat")
 ///                 .serDeInfo(CatalogTableStorageDescriptorSerDeInfoArgs.builder()
 ///                     .name("my-stream")
 ///                     .serializationLibrary("org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe")
@@ -470,7 +462,17 @@ import 'catalog_table_view_definition.dart';
 ///                         .type("struct<my_nested_string:string>")
 ///                         .comment("")
 ///                         .build())
+///                 .location("s3://my-bucket/event-streams/my-stream")
+///                 .inputFormat("org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat")
+///                 .outputFormat("org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat")
 ///                 .build())
+///             .name("MyCatalogTable")
+///             .databaseName("MyCatalogDatabase")
+///             .tableType("EXTERNAL_TABLE")
+///             .parameters(Map.ofEntries(
+///                 Map.entry("EXTERNAL", "TRUE"),
+///                 Map.entry("parquet.compression", "SNAPPY")
+///             ))
 ///             .build());
 ///
 ///     }
@@ -481,16 +483,7 @@ import 'catalog_table_view_definition.dart';
 ///   example:
 ///     type: aws:glue:CatalogTable
 ///     properties:
-///       name: MyCatalogTable
-///       databaseName: MyCatalogDatabase
-///       tableType: EXTERNAL_TABLE
-///       parameters:
-///         EXTERNAL: TRUE
-///         parquet.compression: SNAPPY
 ///       storageDescriptor:
-///         location: s3://my-bucket/event-streams/my-stream
-///         inputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
-///         outputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
 ///         serDeInfo:
 ///           name: my-stream
 ///           serializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
@@ -510,6 +503,15 @@ import 'catalog_table_view_definition.dart';
 ///           - name: my_struct
 ///             type: struct<my_nested_string:string>
 ///             comment: ""
+///         location: s3://my-bucket/event-streams/my-stream
+///         inputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+///         outputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+///       name: MyCatalogTable
+///       databaseName: MyCatalogDatabase
+///       tableType: EXTERNAL_TABLE
+///       parameters:
+///         EXTERNAL: TRUE
+///         parquet.compression: SNAPPY
 /// ```
 ///
 ///
@@ -521,17 +523,10 @@ import 'catalog_table_view_definition.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.CatalogTable("example", {
-///     name: "transactiontable1",
-///     databaseName: "bankdata_icebergdb",
 ///     openTableFormatInput: {
 ///         icebergInput: {
-///             metadataOperation: "CREATE",
-///             version: "2",
 ///             icebergTableInput: {
-///                 location: "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///                 schema: {
-///                     schemaId: 0,
-///                     type: "struct",
 ///                     fields: [
 ///                         {
 ///                             id: 1,
@@ -552,6 +547,8 @@ import 'catalog_table_view_definition.dart';
 ///                             type: "            \\\"float\\\"\n",
 ///                         },
 ///                     ],
+///                     schemaId: 0,
+///                     type: "struct",
 ///                 },
 ///                 partitionSpec: {
 ///                     fields: [{
@@ -570,9 +567,14 @@ import 'catalog_table_view_definition.dart';
 ///                     }],
 ///                     orderId: 1,
 ///                 },
+///                 location: "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///             },
+///             metadataOperation: "CREATE",
+///             version: "2",
 ///         },
 ///     },
+///     name: "transactiontable1",
+///     databaseName: "bankdata_icebergdb",
 /// });
 /// ```
 /// ```python
@@ -580,17 +582,10 @@ import 'catalog_table_view_definition.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.CatalogTable("example",
-///     name="transactiontable1",
-///     database_name="bankdata_icebergdb",
 ///     open_table_format_input={
 ///         "iceberg_input": {
-///             "metadata_operation": "CREATE",
-///             "version": "2",
 ///             "iceberg_table_input": {
-///                 "location": "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///                 "schema": {
-///                     "schema_id": 0,
-///                     "type": "struct",
 ///                     "fields": [
 ///                         {
 ///                             "id": 1,
@@ -611,6 +606,8 @@ import 'catalog_table_view_definition.dart';
 ///                             "type": "            \\\"float\\\"\n",
 ///                         },
 ///                     ],
+///                     "schema_id": 0,
+///                     "type": "struct",
 ///                 },
 ///                 "partition_spec": {
 ///                     "fields": [{
@@ -629,9 +626,14 @@ import 'catalog_table_view_definition.dart';
 ///                     }],
 ///                     "order_id": 1,
 ///                 },
+///                 "location": "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///             },
+///             "metadata_operation": "CREATE",
+///             "version": "2",
 ///         },
-///     })
+///     },
+///     name="transactiontable1",
+///     database_name="bankdata_icebergdb")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -643,21 +645,14 @@ import 'catalog_table_view_definition.dart';
 /// {
 ///     var example = new Aws.Glue.CatalogTable("example", new()
 ///     {
-///         Name = "transactiontable1",
-///         DatabaseName = "bankdata_icebergdb",
 ///         OpenTableFormatInput = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputArgs
 ///         {
 ///             IcebergInput = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputArgs
 ///             {
-///                 MetadataOperation = "CREATE",
-///                 Version = "2",
 ///                 IcebergTableInput = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputArgs
 ///                 {
-///                     Location = "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///                     Schema = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaArgs
 ///                     {
-///                         SchemaId = 0,
-///                         Type = "struct",
 ///                         Fields = new[]
 ///                         {
 ///                             new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaFieldArgs
@@ -685,6 +680,8 @@ import 'catalog_table_view_definition.dart';
 /// ",
 ///                             },
 ///                         },
+///                         SchemaId = 0,
+///                         Type = "struct",
 ///                     },
 ///                     PartitionSpec = new Aws.Glue.Inputs.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecArgs
 ///                     {
@@ -713,9 +710,14 @@ import 'catalog_table_view_definition.dart';
 ///                         },
 ///                         OrderId = 1,
 ///                     },
+///                     Location = "s3://sampledatabucket/bankdataiceberg/transactiontable1/",
 ///                 },
+///                 MetadataOperation = "CREATE",
+///                 Version = "2",
 ///             },
 ///         },
+///         Name = "transactiontable1",
+///         DatabaseName = "bankdata_icebergdb",
 ///     });
 ///
 /// });
@@ -731,17 +733,10 @@ import 'catalog_table_view_definition.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCatalogTable(ctx, "example", &glue.CatalogTableArgs{
-/// 			Name:         pulumi.String("transactiontable1"),
-/// 			DatabaseName: pulumi.String("bankdata_icebergdb"),
 /// 			OpenTableFormatInput: &glue.CatalogTableOpenTableFormatInputArgs{
 /// 				IcebergInput: &glue.CatalogTableOpenTableFormatInputIcebergInputArgs{
-/// 					MetadataOperation: pulumi.String("CREATE"),
-/// 					Version:           pulumi.String("2"),
 /// 					IcebergTableInput: &glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputArgs{
-/// 						Location: pulumi.String("s3://sampledatabucket/bankdataiceberg/transactiontable1/"),
 /// 						Schema: &glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaArgs{
-/// 							SchemaId: pulumi.Int(0),
-/// 							Type:     pulumi.String("struct"),
 /// 							Fields: glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaFieldArray{
 /// 								&glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaFieldArgs{
 /// 									Id:       pulumi.Int(1),
@@ -762,6 +757,8 @@ import 'catalog_table_view_definition.dart';
 /// 									Type:     pulumi.String("            \\\"float\\\"\n"),
 /// 								},
 /// 							},
+/// 							SchemaId: pulumi.Int(0),
+/// 							Type:     pulumi.String("struct"),
 /// 						},
 /// 						PartitionSpec: &glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecArgs{
 /// 							Fields: glue.CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecFieldArray{
@@ -784,9 +781,14 @@ import 'catalog_table_view_definition.dart';
 /// 							},
 /// 							OrderId: pulumi.Int(1),
 /// 						},
+/// 						Location: pulumi.String("s3://sampledatabucket/bankdataiceberg/transactiontable1/"),
 /// 					},
+/// 					MetadataOperation: pulumi.String("CREATE"),
+/// 					Version:           pulumi.String("2"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("transactiontable1"),
+/// 			DatabaseName: pulumi.String("bankdata_icebergdb"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -805,17 +807,10 @@ import 'catalog_table_view_definition.dart';
 /// }
 ///
 /// resource "aws_glue_catalogtable" "example" {
-///   name          = "transactiontable1"
-///   database_name = "bankdata_icebergdb"
 ///   open_table_format_input = {
 ///     iceberg_input = {
-///       metadata_operation = "CREATE"
-///       version            = 2
 ///       iceberg_table_input = {
-///         location = "s3://sampledatabucket/bankdataiceberg/transactiontable1/"
 ///         schema = {
-///           schema_id = 0
-///           type      = "struct"
 ///           fields = [{
 ///             "id"       = 1
 ///             "name"     = "transaction_id"
@@ -832,6 +827,8 @@ import 'catalog_table_view_definition.dart';
 ///             "required" = true
 ///             "type"     = "            \\\"float\\\"\n"
 ///           }]
+///           schema_id = 0
+///           type      = "struct"
 ///         }
 ///         partition_spec = {
 ///           fields = [{
@@ -850,9 +847,14 @@ import 'catalog_table_view_definition.dart';
 ///           }]
 ///           order_id = 1
 ///         }
+///         location = "s3://sampledatabucket/bankdataiceberg/transactiontable1/"
 ///       }
+///       metadata_operation = "CREATE"
+///       version            = 2
 ///     }
 ///   }
+///   name          = "transactiontable1"
+///   database_name = "bankdata_icebergdb"
 /// }
 /// ```
 /// ```java
@@ -886,17 +888,10 @@ import 'catalog_table_view_definition.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CatalogTable("example", CatalogTableArgs.builder()
-///             .name("transactiontable1")
-///             .databaseName("bankdata_icebergdb")
 ///             .openTableFormatInput(CatalogTableOpenTableFormatInputArgs.builder()
 ///                 .icebergInput(CatalogTableOpenTableFormatInputIcebergInputArgs.builder()
-///                     .metadataOperation("CREATE")
-///                     .version("2")
 ///                     .icebergTableInput(CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputArgs.builder()
-///                         .location("s3://sampledatabucket/bankdataiceberg/transactiontable1/")
 ///                         .schema(CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaArgs.builder()
-///                             .schemaId(0)
-///                             .type("struct")
 ///                             .fields(
 ///                                 CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaFieldArgs.builder()
 ///                                     .id(1)
@@ -922,6 +917,8 @@ import 'catalog_table_view_definition.dart';
 ///             \"float\"
 ///                                     """)
 ///                                     .build())
+///                             .schemaId(0)
+///                             .type("struct")
 ///                             .build())
 ///                         .partitionSpec(CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecArgs.builder()
 ///                             .fields(CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecFieldArgs.builder()
@@ -940,9 +937,14 @@ import 'catalog_table_view_definition.dart';
 ///                                 .build())
 ///                             .orderId(1)
 ///                             .build())
+///                         .location("s3://sampledatabucket/bankdataiceberg/transactiontable1/")
 ///                         .build())
+///                     .metadataOperation("CREATE")
+///                     .version("2")
 ///                     .build())
 ///                 .build())
+///             .name("transactiontable1")
+///             .databaseName("bankdata_icebergdb")
 ///             .build());
 ///
 ///     }
@@ -953,17 +955,10 @@ import 'catalog_table_view_definition.dart';
 ///   example:
 ///     type: aws:glue:CatalogTable
 ///     properties:
-///       name: transactiontable1
-///       databaseName: bankdata_icebergdb
 ///       openTableFormatInput:
 ///         icebergInput:
-///           metadataOperation: CREATE
-///           version: 2
 ///           icebergTableInput:
-///             location: s3://sampledatabucket/bankdataiceberg/transactiontable1/
 ///             schema:
-///               schemaId: 0
-///               type: struct
 ///               fields:
 ///                 - id: 1
 ///                   name: transaction_id
@@ -980,6 +975,8 @@ import 'catalog_table_view_definition.dart';
 ///                   required: true
 ///                   type: |2
 ///                                 \"float\"
+///               schemaId: 0
+///               type: struct
 ///             partitionSpec:
 ///               fields:
 ///                 - name: by_year
@@ -993,6 +990,11 @@ import 'catalog_table_view_definition.dart';
 ///                   sourceId: 1
 ///                   transform: none
 ///               orderId: 1
+///             location: s3://sampledatabucket/bankdataiceberg/transactiontable1/
+///           metadataOperation: CREATE
+///           version: 2
+///       name: transactiontable1
+///       databaseName: bankdata_icebergdb
 /// ```
 ///
 ///
@@ -1004,18 +1006,18 @@ import 'catalog_table_view_definition.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.CatalogTable("example", {
-///     name: "multidialect_view",
-///     databaseName: "catalog_database",
-///     tableType: "VIRTUAL_VIEW",
 ///     viewDefinition: {
-///         isProtected: true,
 ///         representations: [{
 ///             dialect: "ATHENA",
 ///             dialectVersion: "3",
 ///             viewOriginalText: "SELECT * FROM catalog_database.base_table",
 ///             validationConnection: exampleAwsGlueConnection.name,
 ///         }],
+///         isProtected: true,
 ///     },
+///     name: "multidialect_view",
+///     databaseName: "catalog_database",
+///     tableType: "VIRTUAL_VIEW",
 /// });
 /// ```
 /// ```python
@@ -1023,18 +1025,18 @@ import 'catalog_table_view_definition.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.CatalogTable("example",
-///     name="multidialect_view",
-///     database_name="catalog_database",
-///     table_type="VIRTUAL_VIEW",
 ///     view_definition={
-///         "is_protected": True,
 ///         "representations": [{
 ///             "dialect": "ATHENA",
 ///             "dialect_version": "3",
 ///             "view_original_text": "SELECT * FROM catalog_database.base_table",
 ///             "validation_connection": example_aws_glue_connection["name"],
 ///         }],
-///     })
+///         "is_protected": True,
+///     },
+///     name="multidialect_view",
+///     database_name="catalog_database",
+///     table_type="VIRTUAL_VIEW")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1046,12 +1048,8 @@ import 'catalog_table_view_definition.dart';
 /// {
 ///     var example = new Aws.Glue.CatalogTable("example", new()
 ///     {
-///         Name = "multidialect_view",
-///         DatabaseName = "catalog_database",
-///         TableType = "VIRTUAL_VIEW",
 ///         ViewDefinition = new Aws.Glue.Inputs.CatalogTableViewDefinitionArgs
 ///         {
-///             IsProtected = true,
 ///             Representations = new[]
 ///             {
 ///                 new Aws.Glue.Inputs.CatalogTableViewDefinitionRepresentationArgs
@@ -1062,7 +1060,11 @@ import 'catalog_table_view_definition.dart';
 ///                     ValidationConnection = exampleAwsGlueConnection.Name,
 ///                 },
 ///             },
+///             IsProtected = true,
 ///         },
+///         Name = "multidialect_view",
+///         DatabaseName = "catalog_database",
+///         TableType = "VIRTUAL_VIEW",
 ///     });
 ///
 /// });
@@ -1078,11 +1080,7 @@ import 'catalog_table_view_definition.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCatalogTable(ctx, "example", &glue.CatalogTableArgs{
-/// 			Name:         pulumi.String("multidialect_view"),
-/// 			DatabaseName: pulumi.String("catalog_database"),
-/// 			TableType:    pulumi.String("VIRTUAL_VIEW"),
 /// 			ViewDefinition: &glue.CatalogTableViewDefinitionArgs{
-/// 				IsProtected: pulumi.Bool(true),
 /// 				Representations: glue.CatalogTableViewDefinitionRepresentationArray{
 /// 					&glue.CatalogTableViewDefinitionRepresentationArgs{
 /// 						Dialect:              pulumi.String("ATHENA"),
@@ -1091,7 +1089,11 @@ import 'catalog_table_view_definition.dart';
 /// 						ValidationConnection: pulumi.Any(exampleAwsGlueConnection.Name),
 /// 					},
 /// 				},
+/// 				IsProtected: pulumi.Bool(true),
 /// 			},
+/// 			Name:         pulumi.String("multidialect_view"),
+/// 			DatabaseName: pulumi.String("catalog_database"),
+/// 			TableType:    pulumi.String("VIRTUAL_VIEW"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1110,18 +1112,18 @@ import 'catalog_table_view_definition.dart';
 /// }
 ///
 /// resource "aws_glue_catalogtable" "example" {
-///   name          = "multidialect_view"
-///   database_name = "catalog_database"
-///   table_type    = "VIRTUAL_VIEW"
 ///   view_definition = {
-///     is_protected = true
 ///     representations = [{
 ///       "dialect"              = "ATHENA"
 ///       "dialectVersion"       = "3"
 ///       "viewOriginalText"     = "SELECT * FROM catalog_database.base_table"
 ///       "validationConnection" = exampleAwsGlueConnection.name
 ///     }]
+///     is_protected = true
 ///   }
+///   name          = "multidialect_view"
+///   database_name = "catalog_database"
+///   table_type    = "VIRTUAL_VIEW"
 /// }
 /// ```
 /// ```java
@@ -1148,18 +1150,18 @@ import 'catalog_table_view_definition.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CatalogTable("example", CatalogTableArgs.builder()
-///             .name("multidialect_view")
-///             .databaseName("catalog_database")
-///             .tableType("VIRTUAL_VIEW")
 ///             .viewDefinition(CatalogTableViewDefinitionArgs.builder()
-///                 .isProtected(true)
 ///                 .representations(CatalogTableViewDefinitionRepresentationArgs.builder()
 ///                     .dialect("ATHENA")
 ///                     .dialectVersion("3")
 ///                     .viewOriginalText("SELECT * FROM catalog_database.base_table")
 ///                     .validationConnection(exampleAwsGlueConnection.name())
 ///                     .build())
+///                 .isProtected(true)
 ///                 .build())
+///             .name("multidialect_view")
+///             .databaseName("catalog_database")
+///             .tableType("VIRTUAL_VIEW")
 ///             .build());
 ///
 ///     }
@@ -1170,16 +1172,16 @@ import 'catalog_table_view_definition.dart';
 ///   example:
 ///     type: aws:glue:CatalogTable
 ///     properties:
-///       name: multidialect_view
-///       databaseName: catalog_database
-///       tableType: VIRTUAL_VIEW
 ///       viewDefinition:
-///         isProtected: true
 ///         representations:
 ///           - dialect: ATHENA
 ///             dialectVersion: '3'
 ///             viewOriginalText: SELECT * FROM catalog_database.base_table
 ///             validationConnection: ${exampleAwsGlueConnection.name}
+///         isProtected: true
+///       name: multidialect_view
+///       databaseName: catalog_database
+///       tableType: VIRTUAL_VIEW
 /// ```
 ///
 ///
@@ -1210,9 +1212,9 @@ class CatalogTable extends pulumi.CustomResource {
   /// Properties associated with this table, as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>> parameters;
   /// Configuration block for a maximum of 3 partition indexes. See `partitionIndex` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> partitionIndices;
+  late final pulumi.Output<List<CatalogTablePartitionIndex>> partitionIndices;
   /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partitionKeys` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> partitionKeys;
+  late final pulumi.Output<List<CatalogTablePartitionKey>?> partitionKeys;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Retention time for this table.
@@ -1242,7 +1244,7 @@ class CatalogTable extends pulumi.CustomResource {
           'aws:glue/catalogTable:CatalogTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
@@ -1251,9 +1253,9 @@ class CatalogTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openTableFormatInput = registerOutput<CatalogTableOpenTableFormatInput?>('openTableFormatInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableOpenTableFormatInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String?>('owner');
-    parameters = registerOutput<Map<String, String>>('parameters');
-    partitionIndices = registerOutput<List<Map<String, dynamic>>>('partitionIndices');
-    partitionKeys = registerOutput<List<Map<String, dynamic>>?>('partitionKeys');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionIndices = registerOutput<List<CatalogTablePartitionIndex>>('partitionIndices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionIndex>(guardedValue, (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    partitionKeys = registerOutput<List<CatalogTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionKey>(guardedValue, (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     retention = registerOutput<int?>('retention');
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1269,11 +1271,12 @@ class CatalogTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CatalogTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CatalogTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1294,9 +1297,38 @@ class CatalogTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openTableFormatInput = registerOutput<CatalogTableOpenTableFormatInput?>('openTableFormatInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableOpenTableFormatInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String?>('owner');
-    parameters = registerOutput<Map<String, String>>('parameters');
-    partitionIndices = registerOutput<List<Map<String, dynamic>>>('partitionIndices');
-    partitionKeys = registerOutput<List<Map<String, dynamic>>?>('partitionKeys');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionIndices = registerOutput<List<CatalogTablePartitionIndex>>('partitionIndices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionIndex>(guardedValue, (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    partitionKeys = registerOutput<List<CatalogTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionKey>(guardedValue, (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    retention = registerOutput<int?>('retention');
+    storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableType = registerOutput<String>('tableType');
+    targetTable = registerOutput<CatalogTableTargetTable?>('targetTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableTargetTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewDefinition = registerOutput<CatalogTableViewDefinition?>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewExpandedText = registerOutput<String?>('viewExpandedText');
+    viewOriginalText = registerOutput<String?>('viewOriginalText');
+  }
+
+  /// Creates a typed reference to an existing [CatalogTable] resource.
+  CatalogTable.reference(String urn)
+    : super(
+        'aws:glue/catalogTable:CatalogTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    catalogId = registerOutput<String>('catalogId');
+    databaseName = registerOutput<String>('databaseName');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    openTableFormatInput = registerOutput<CatalogTableOpenTableFormatInput?>('openTableFormatInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableOpenTableFormatInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    owner = registerOutput<String?>('owner');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionIndices = registerOutput<List<CatalogTablePartitionIndex>>('partitionIndices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionIndex>(guardedValue, (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    partitionKeys = registerOutput<List<CatalogTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogTablePartitionKey>(guardedValue, (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     retention = registerOutput<int?>('retention');
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });

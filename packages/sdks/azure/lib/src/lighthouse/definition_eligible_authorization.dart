@@ -5,9 +5,9 @@ import 'definition_eligible_authorization_just_in_time_access_policy.dart';
 
 class DefinitionEligibleAuthorization {
   /// A `justInTimeAccessPolicy` block as defined below.
-  final pulumi.Input<DefinitionEligibleAuthorizationJustInTimeAccessPolicy>? justInTimeAccessPolicy;
+  final pulumi.Input<DefinitionEligibleAuthorizationJustInTimeAccessPolicy?>? justInTimeAccessPolicy;
   /// The display name of the Azure Active Directory Principal.
-  final pulumi.Input<String>? principalDisplayName;
+  final pulumi.Input<String?>? principalDisplayName;
   /// Principal ID of the security group/service principal/user that would be assigned permissions to the projected subscription.
   final pulumi.Input<String> principalId;
   /// The Principal ID of the Azure built-in role that defines the permissions that the Azure Active Directory will have on the projected scope.

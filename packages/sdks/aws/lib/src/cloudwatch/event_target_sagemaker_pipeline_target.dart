@@ -5,7 +5,7 @@ import 'event_target_sagemaker_pipeline_target_pipeline_parameter_list.dart';
 
 class EventTargetSagemakerPipelineTarget {
   /// List of Parameter names and values for SageMaker AI Model Building Pipeline execution.
-  final pulumi.Input<List<EventTargetSagemakerPipelineTargetPipelineParameterList>>? pipelineParameterLists;
+  final pulumi.Input<List<EventTargetSagemakerPipelineTargetPipelineParameterList>?>? pipelineParameterLists;
 
   /// Creates a new [EventTargetSagemakerPipelineTarget].
   /// [pipelineParameterLists] List of Parameter names and values for SageMaker AI Model Building Pipeline execution.

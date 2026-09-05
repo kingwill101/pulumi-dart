@@ -20,7 +20,7 @@ class BucketReplicationConfigRuleDestinationMetricsEventThreshold {
 
   factory BucketReplicationConfigRuleDestinationMetricsEventThreshold.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationMetricsEventThreshold(
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
     );
   }
 }

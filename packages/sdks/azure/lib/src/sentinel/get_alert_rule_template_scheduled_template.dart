@@ -62,7 +62,7 @@ class GetAlertRuleTemplateScheduledTemplate {
       severity: pulumi.Input.fromValue(map['severity'] as String),
       tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
       triggerOperator: pulumi.Input.fromValue(map['triggerOperator'] as String),
-      triggerThreshold: pulumi.Input.fromValue(map['triggerThreshold'] as int),
+      triggerThreshold: pulumi.Input.fromValue((map['triggerThreshold'] as num).toInt()),
     );
   }
 }

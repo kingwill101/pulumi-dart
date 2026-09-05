@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationEngineVersion {
   /// The engine version on which the query runs. If `selectedEngineVersion` is set to `AUTO`, the effective engine version is chosen by Athena.
-  final pulumi.Input<String>? effectiveEngineVersion;
+  final pulumi.Input<String?>? effectiveEngineVersion;
   /// Requested engine version. Defaults to `AUTO`.
-  final pulumi.Input<String>? selectedEngineVersion;
+  final pulumi.Input<String?>? selectedEngineVersion;
 
   /// Creates a new [WorkgroupConfigurationEngineVersion].
   /// [effectiveEngineVersion] The engine version on which the query runs. If `selectedEngineVersion` is set to `AUTO`, the effective engine version is chosen by Athena.

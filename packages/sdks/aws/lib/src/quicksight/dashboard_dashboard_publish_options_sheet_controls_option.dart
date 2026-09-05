@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardDashboardPublishOptionsSheetControlsOption {
   /// Visibility state. Possibles values: EXPANDED, COLLAPSED.
-  final pulumi.Input<String>? visibilityState;
+  final pulumi.Input<String?>? visibilityState;
 
   /// Creates a new [DashboardDashboardPublishOptionsSheetControlsOption].
   /// [visibilityState] Visibility state. Possibles values: EXPANDED, COLLAPSED.

@@ -6,14 +6,14 @@ import 'cluster_peering_timeouts.dart';
 /// Input properties used for looking up and filtering ClusterPeering resources.
 class ClusterPeeringState {
   /// List of DSQL Cluster ARNs to be peered to this cluster.
-  final pulumi.Input<List<String>>? clusters;
+  final pulumi.Input<List<String>?>? clusters;
   /// DSQL Cluster Identifier.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ClusterPeeringTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ClusterPeeringTimeouts?>? timeouts;
   /// Witness region for a multi-region cluster.
-  final pulumi.Input<String>? witnessRegion;
+  final pulumi.Input<String?>? witnessRegion;
 
   /// Creates a new [ClusterPeeringState].
   /// [clusters] List of DSQL Cluster ARNs to be peered to this cluster.

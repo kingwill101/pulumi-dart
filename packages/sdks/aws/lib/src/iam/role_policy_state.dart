@@ -6,16 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolePolicyState {
   /// The name of the role policy.
   /// If omitted, the provider will assign a random, unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix.
   /// Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// The inline policy document.
   /// This is a JSON formatted string.
   /// For more information about building IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<dynamic>? policy;
   /// The name of the IAM role to attach to the policy.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<dynamic>? role;
 
   /// Creates a new [RolePolicyState].
   /// [name] The name of the role policy.
@@ -42,8 +42,8 @@ class RolePolicyState {
     return RolePolicyState(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

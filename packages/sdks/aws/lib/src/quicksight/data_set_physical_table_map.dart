@@ -7,13 +7,13 @@ import 'data_set_physical_table_map_s3_source.dart';
 
 class DataSetPhysicalTableMap {
   /// A physical table type built from the results of the custom SQL query. See custom_sql.
-  final pulumi.Input<DataSetPhysicalTableMapCustomSql>? customSql;
+  final pulumi.Input<DataSetPhysicalTableMapCustomSql?>? customSql;
   /// Key of the physical table map.
   final pulumi.Input<String> physicalTableMapId;
   /// A physical table type for relational data sources. See relational_table.
-  final pulumi.Input<DataSetPhysicalTableMapRelationalTable>? relationalTable;
+  final pulumi.Input<DataSetPhysicalTableMapRelationalTable?>? relationalTable;
   /// A physical table type for as S3 data source. See s3_source.
-  final pulumi.Input<DataSetPhysicalTableMapS3Source>? s3Source;
+  final pulumi.Input<DataSetPhysicalTableMapS3Source?>? s3Source;
 
   /// Creates a new [DataSetPhysicalTableMap].
   /// [customSql] A physical table type built from the results of the custom SQL query. See custom_sql.

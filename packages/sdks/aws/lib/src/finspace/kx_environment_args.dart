@@ -10,21 +10,21 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// {@macro pulumi_finspace_kx_environment_kx_environment_args_doc}
 class KxEnvironmentArgs {
   /// List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.
-  final pulumi.Input<List<KxEnvironmentCustomDnsConfiguration>>? customDnsConfigurations;
+  final pulumi.Input<List<KxEnvironmentCustomDnsConfiguration>?>? customDnsConfigurations;
   /// Description for the KX environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS key ID to encrypt your data in the FinSpace environment.
   final pulumi.Input<String> kmsKeyId;
   /// Name of the KX environment that you want to create.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Transit gateway and network configuration that is used to connect the KX environment to an internal network. Defined below.
-  final pulumi.Input<KxEnvironmentTransitGatewayConfiguration>? transitGatewayConfiguration;
+  final pulumi.Input<KxEnvironmentTransitGatewayConfiguration?>? transitGatewayConfiguration;
 
   /// Creates a new [KxEnvironmentArgs].
   /// [customDnsConfigurations] List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.

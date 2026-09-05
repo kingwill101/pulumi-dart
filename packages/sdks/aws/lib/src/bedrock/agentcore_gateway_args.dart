@@ -13,34 +13,34 @@ import 'agentcore_gateway_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_gateway_agentcore_gateway_args_doc}
 class AgentcoreGatewayArgs {
   /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration>? authorizerConfiguration;
+  final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration?>? authorizerConfiguration;
   /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   final pulumi.Input<String> authorizerType;
   /// Description of the gateway.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Exception level for the gateway. Valid values: `DEBUG`.
-  final pulumi.Input<String>? exceptionLevel;
+  final pulumi.Input<String?>? exceptionLevel;
   /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptorConfiguration` below.
-  final pulumi.Input<List<AgentcoreGatewayInterceptorConfiguration>>? interceptorConfigurations;
+  final pulumi.Input<List<AgentcoreGatewayInterceptorConfiguration>?>? interceptorConfigurations;
   /// ARN of the KMS key used to encrypt the gateway data.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for a policy engine associated with the gateway. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with a gateway, the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. See `policyEngineConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayPolicyEngineConfiguration>? policyEngineConfiguration;
+  final pulumi.Input<AgentcoreGatewayPolicyEngineConfiguration?>? policyEngineConfiguration;
   /// Protocol-specific configuration for the gateway. See `protocolConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayProtocolConfiguration>? protocolConfiguration;
+  final pulumi.Input<AgentcoreGatewayProtocolConfiguration?>? protocolConfiguration;
   /// Protocol type for the gateway. Valid values: `MCP`. Omit this argument to create a gateway that routes traffic directly to HTTP targets such as AgentCore Runtime agents (see `aws.bedrock.AgentcoreGatewayTarget` `target_configuration.http`).
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<String?>? protocolType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM role that the gateway assumes to access AWS services.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcoreGatewayTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcoreGatewayTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreGatewayArgs].
   /// [authorizerConfiguration] Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.

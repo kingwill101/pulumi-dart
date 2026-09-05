@@ -8,21 +8,21 @@ import 'network_connection_monitor_test_configuration_tcp_configuration.dart';
 
 class NetworkConnectionMonitorTestConfiguration {
   /// A `httpConfiguration` block as defined below.
-  final pulumi.Input<NetworkConnectionMonitorTestConfigurationHttpConfiguration>? httpConfiguration;
+  final pulumi.Input<NetworkConnectionMonitorTestConfigurationHttpConfiguration?>? httpConfiguration;
   /// A `icmpConfiguration` block as defined below.
-  final pulumi.Input<NetworkConnectionMonitorTestConfigurationIcmpConfiguration>? icmpConfiguration;
+  final pulumi.Input<NetworkConnectionMonitorTestConfigurationIcmpConfiguration?>? icmpConfiguration;
   /// The name of test configuration for the Network Connection Monitor.
   final pulumi.Input<String> name;
   /// The preferred IP version which is used in the test evaluation. Possible values are `IPv4` and `IPv6`.
-  final pulumi.Input<String>? preferredIpVersion;
+  final pulumi.Input<String?>? preferredIpVersion;
   /// The protocol used to evaluate tests. Possible values are `Tcp`, `Http` and `Icmp`.
   final pulumi.Input<String> protocol;
   /// A `successThreshold` block as defined below.
-  final pulumi.Input<NetworkConnectionMonitorTestConfigurationSuccessThreshold>? successThreshold;
+  final pulumi.Input<NetworkConnectionMonitorTestConfigurationSuccessThreshold?>? successThreshold;
   /// A `tcpConfiguration` block as defined below.
-  final pulumi.Input<NetworkConnectionMonitorTestConfigurationTcpConfiguration>? tcpConfiguration;
+  final pulumi.Input<NetworkConnectionMonitorTestConfigurationTcpConfiguration?>? tcpConfiguration;
   /// The time interval in seconds at which the test evaluation will happen. Defaults to `60`.
-  final pulumi.Input<int>? testFrequencyInSeconds;
+  final pulumi.Input<int?>? testFrequencyInSeconds;
 
   /// Creates a new [NetworkConnectionMonitorTestConfiguration].
   /// [httpConfiguration] A `httpConfiguration` block as defined below.
@@ -66,7 +66,7 @@ class NetworkConnectionMonitorTestConfiguration {
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcpConfiguration: (() { final guardedValue = map['tcpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      testFrequencyInSeconds: (() { final guardedValue = map['testFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      testFrequencyInSeconds: (() { final guardedValue = map['testFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

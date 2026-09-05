@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ContactFlowModule resources.
 class ContactFlowModuleState {
-  /// The Amazon Resource Name (ARN) of the Contact Flow Module.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Contact Flow Module.
+  final pulumi.Input<String?>? arn;
   /// The identifier of the Contact Flow Module.
-  final pulumi.Input<String>? contactFlowModuleId;
+  final pulumi.Input<String?>? contactFlowModuleId;
   /// Specifies the content of the Contact Flow Module, provided as a JSON string, written in Amazon Connect Contact Flow Language. If defined, the `filename` argument cannot be used.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the Contact Flow Module source specified with `filename`.
-  final pulumi.Input<String>? contentHash;
+  final pulumi.Input<String?>? contentHash;
   /// Specifies the description of the Contact Flow Module.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The path to the Contact Flow Module source within the local filesystem. Conflicts with `content`.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Specifies the name of the Contact Flow Module.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Contact Flow Module. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ContactFlowModuleState].
-  /// [arn] The Amazon Resource Name (ARN) of the Contact Flow Module.
+  /// [arn] ARN of the Contact Flow Module.
   /// [contactFlowModuleId] The identifier of the Contact Flow Module.
   /// [content] Specifies the content of the Contact Flow Module, provided as a JSON string, written in Amazon Connect Contact Flow Language. If defined, the `filename` argument cannot be used.
   /// [contentHash] Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the Contact Flow Module source specified with `filename`.

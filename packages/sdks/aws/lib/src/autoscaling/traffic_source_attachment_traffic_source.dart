@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrafficSourceAttachmentTrafficSource {
-  /// Identifies the traffic source. For Application Load Balancers, Gateway Load Balancers, Network Load Balancers, and VPC Lattice, this will be the Amazon Resource Name (ARN) for a target group in this account and Region. For Classic Load Balancers, this will be the name of the Classic Load Balancer in this account and Region.
+  /// Identifies the traffic source. For Application Load Balancers, Gateway Load Balancers, Network Load Balancers, and VPC Lattice, this will be the ARN for a target group in this account and Region. For Classic Load Balancers, this will be the name of the Classic Load Balancer in this account and Region.
   final pulumi.Input<String> identifier;
   /// Provides additional context for the value of `identifier`.
   /// The following lists the valid values:
@@ -13,7 +13,7 @@ class TrafficSourceAttachmentTrafficSource {
   final pulumi.Input<String> type;
 
   /// Creates a new [TrafficSourceAttachmentTrafficSource].
-  /// [identifier] Identifies the traffic source. For Application Load Balancers, Gateway Load Balancers, Network Load Balancers, and VPC Lattice, this will be the Amazon Resource Name (ARN) for a target group in this account and Region. For Classic Load Balancers, this will be the name of the Classic Load Balancer in this account and Region.
+  /// [identifier] Identifies the traffic source. For Application Load Balancers, Gateway Load Balancers, Network Load Balancers, and VPC Lattice, this will be the ARN for a target group in this account and Region. For Classic Load Balancers, this will be the name of the Classic Load Balancer in this account and Region.
   /// [type] Provides additional context for the value of `identifier`.
   const TrafficSourceAttachmentTrafficSource({
     required this.identifier,

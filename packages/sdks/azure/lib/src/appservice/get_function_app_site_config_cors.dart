@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionAppSiteConfigCors {
   final pulumi.Input<List<String>> allowedOrigins;
-  final pulumi.Input<bool>? supportCredentials;
+  final pulumi.Input<bool?>? supportCredentials;
 
   /// Creates a new [GetFunctionAppSiteConfigCors].
   /// [allowedOrigins] Required.

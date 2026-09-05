@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
-  final pulumi.Input<String>? dataTransferApi;
+  final pulumi.Input<String?>? dataTransferApi;
   /// Whether to enable dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
-  final pulumi.Input<bool>? enableDynamicFieldUpdate;
+  final pulumi.Input<bool?>? enableDynamicFieldUpdate;
   /// Whether to include deleted files in the flow run.
-  final pulumi.Input<bool>? includeDeletedRecords;
+  final pulumi.Input<bool?>? includeDeletedRecords;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSalesforce].

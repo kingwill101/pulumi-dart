@@ -8,50 +8,50 @@ class SavingsPlanState {
   /// The hourly commitment, in USD. This is the amount you commit to pay per hour, regardless of actual usage.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? commitment;
+  final pulumi.Input<String?>? commitment;
   /// The currency of the Savings Plan (e.g., `USD`).
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The EC2 instance family for the Savings Plan (only applicable to EC2 Instance Savings Plans).
-  final pulumi.Input<String>? ec2InstanceFamily;
+  final pulumi.Input<String?>? ec2InstanceFamily;
   /// The end time of the Savings Plan in RFC3339 format.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// The ID of the offering.
-  final pulumi.Input<String>? offeringId;
+  final pulumi.Input<String?>? offeringId;
   /// The payment option for the Savings Plan (e.g., `All Upfront`, `Partial Upfront`, `No Upfront`).
-  final pulumi.Input<String>? paymentOption;
+  final pulumi.Input<String?>? paymentOption;
   /// The product types.
-  final pulumi.Input<List<String>>? productTypes;
-  /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
-  final pulumi.Input<String>? purchaseTime;
+  final pulumi.Input<List<String>?>? productTypes;
+  /// The time at which to purchase the Savings Plan, in UTC format (`YYYY-MM-DDTHH:MM:SSZ`). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
+  final pulumi.Input<String?>? purchaseTime;
   /// The recurring payment amount.
-  final pulumi.Input<String>? recurringPaymentAmount;
+  final pulumi.Input<String?>? recurringPaymentAmount;
   /// The AWS Region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The recurring payment amount.
-  final pulumi.Input<String>? returnableUntil;
+  final pulumi.Input<String?>? returnableUntil;
   /// The ARN of the Savings Plan.
-  final pulumi.Input<String>? savingsPlanArn;
+  final pulumi.Input<String?>? savingsPlanArn;
   /// The ID of the Savings Plan.
-  final pulumi.Input<String>? savingsPlanId;
+  final pulumi.Input<String?>? savingsPlanId;
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
-  final pulumi.Input<String>? savingsPlanOfferingId;
+  final pulumi.Input<String?>? savingsPlanOfferingId;
   /// The type of Savings Plan (e.g., `Compute`, `EC2Instance`).
-  final pulumi.Input<String>? savingsPlanType;
+  final pulumi.Input<String?>? savingsPlanType;
   /// The start time of the Savings Plan in RFC3339 format.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
   /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The duration of the term, in seconds.
-  final pulumi.Input<int>? termDurationInSeconds;
-  final pulumi.Input<SavingsPlanTimeouts>? timeouts;
-  /// The up-front payment amount.
-  final pulumi.Input<String>? upfrontPaymentAmount;
+  final pulumi.Input<int?>? termDurationInSeconds;
+  final pulumi.Input<SavingsPlanTimeouts?>? timeouts;
+  /// The up-front payment amount. Required for offerings with an `All Upfront` or `Partial Upfront` payment option. Must be omitted for `No Upfront` offerings.
+  final pulumi.Input<String?>? upfrontPaymentAmount;
 
   /// Creates a new [SavingsPlanState].
   /// [commitment] The hourly commitment, in USD. This is the amount you commit to pay per hour, regardless of actual usage.
@@ -62,7 +62,7 @@ class SavingsPlanState {
   /// [offeringId] The ID of the offering.
   /// [paymentOption] The payment option for the Savings Plan (e.g., `All Upfront`, `Partial Upfront`, `No Upfront`).
   /// [productTypes] The product types.
-  /// [purchaseTime] The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
+  /// [purchaseTime] The time at which to purchase the Savings Plan, in UTC format (`YYYY-MM-DDTHH:MM:SSZ`). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
   /// [recurringPaymentAmount] The recurring payment amount.
   /// [region] The AWS Region.
   /// [returnableUntil] The recurring payment amount.
@@ -76,7 +76,7 @@ class SavingsPlanState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [termDurationInSeconds] The duration of the term, in seconds.
   /// [timeouts] Optional.
-  /// [upfrontPaymentAmount] The up-front payment amount.
+  /// [upfrontPaymentAmount] The up-front payment amount. Required for offerings with an `All Upfront` or `Partial Upfront` payment option. Must be omitted for `No Upfront` offerings.
   const SavingsPlanState({
     this.commitment,
     this.currency,
@@ -153,7 +153,7 @@ class SavingsPlanState {
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      termDurationInSeconds: (() { final guardedValue = map['termDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      termDurationInSeconds: (() { final guardedValue = map['termDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       upfrontPaymentAmount: (() { final guardedValue = map['upfrontPaymentAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecMountTmpfsOptions {
   /// The permission mode for the tmpfs mount in an integer
-  final pulumi.Input<int>? mode;
+  final pulumi.Input<int?>? mode;
   /// The size for the tmpfs mount in bytes
-  final pulumi.Input<int>? sizeBytes;
+  final pulumi.Input<int?>? sizeBytes;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMountTmpfsOptions].
   /// [mode] The permission mode for the tmpfs mount in an integer
@@ -25,8 +25,8 @@ class ServiceTaskSpecContainerSpecMountTmpfsOptions {
 
   factory ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMountTmpfsOptions(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

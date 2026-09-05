@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGrafanaIdentity {
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   final pulumi.Input<String> principalId;
   final pulumi.Input<String> tenantId;
   final pulumi.Input<String> type;

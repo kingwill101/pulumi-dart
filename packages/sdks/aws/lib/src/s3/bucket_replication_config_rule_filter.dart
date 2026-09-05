@@ -6,11 +6,11 @@ import 'bucket_replication_config_rule_filter_tag.dart';
 
 class BucketReplicationConfigRuleFilter {
   /// Configuration block for specifying rule filters. This element is required only if you specify more than one filter. See and below for more details.
-  final pulumi.Input<BucketReplicationConfigRuleFilterAnd>? and;
+  final pulumi.Input<BucketReplicationConfigRuleFilterAnd?>? and;
   /// Object key name prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Configuration block for specifying a tag key and value. See below.
-  final pulumi.Input<BucketReplicationConfigRuleFilterTag>? tag;
+  final pulumi.Input<BucketReplicationConfigRuleFilterTag?>? tag;
 
   /// Creates a new [BucketReplicationConfigRuleFilter].
   /// [and] Configuration block for specifying rule filters. This element is required only if you specify more than one filter. See and below for more details.

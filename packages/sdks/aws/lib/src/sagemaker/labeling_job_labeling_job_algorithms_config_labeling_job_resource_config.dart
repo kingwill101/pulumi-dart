@@ -5,9 +5,9 @@ import 'labeling_job_labeling_job_algorithms_config_labeling_job_resource_config
 
 class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig {
   /// ID of the key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training and inference jobs used for automated data labeling.
-  final pulumi.Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String?>? volumeKmsKeyId;
   /// VPC that SageMaker jobs, hosted models, and compute resources have access to. Fields are documented below.
-  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig>? vpcConfig;
+  final pulumi.Input<LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig?>? vpcConfig;
 
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig].
   /// [volumeKmsKeyId] ID of the key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training and inference jobs used for automated data labeling.

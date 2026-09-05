@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionTenancyConfig {
-  /// (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
+  /// Tenant Isolation Mode. Valid values: `PER_TENANT`.
   final pulumi.Input<String> tenantIsolationMode;
 
   /// Creates a new [GetFunctionTenancyConfig].
-  /// [tenantIsolationMode] (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
+  /// [tenantIsolationMode] Tenant Isolation Mode. Valid values: `PER_TENANT`.
   const GetFunctionTenancyConfig({
     required this.tenantIsolationMode,
   });

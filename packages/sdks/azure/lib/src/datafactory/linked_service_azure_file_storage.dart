@@ -28,7 +28,7 @@ import 'linked_service_azure_file_storage_state.dart';
 /// const exampleLinkedServiceAzureFileStorage = new azure.datafactory.LinkedServiceAzureFileStorage("example", {
 ///     name: "example",
 ///     dataFactoryId: exampleFactory.id,
-///     connectionString: example.apply(example => example.primaryConnectionString),
+///     connectionString: example.primaryConnectionString,
 /// });
 /// ```
 /// ```python
@@ -117,11 +117,9 @@ import 'linked_service_azure_file_storage_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureFileStorage(ctx, "example", &datafactory.LinkedServiceAzureFileStorageArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return example.PrimaryConnectionString, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:             pulumi.String("example"),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionString: example.PrimaryConnectionString(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -292,11 +290,12 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString', 'password'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     fileShare = registerOutput<String?>('fileShare');
@@ -304,8 +303,8 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     userId = registerOutput<String?>('userId');
   }
 
@@ -314,11 +313,12 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureFileStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureFileStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,9 +332,9 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     fileShare = registerOutput<String?>('fileShare');
@@ -342,8 +342,33 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
+    userId = registerOutput<String?>('userId');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureFileStorage] resource.
+  LinkedServiceAzureFileStorage.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString', 'password'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    fileShare = registerOutput<String?>('fileShare');
+    host = registerOutput<String?>('host');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword = registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     userId = registerOutput<String?>('userId');
   }
 }

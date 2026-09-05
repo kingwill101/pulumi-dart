@@ -30,9 +30,9 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
 
   factory GetBucketObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationRuleDefaultRetention(
-      days: pulumi.Input.fromValue(map['days'] as int),
+      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      years: pulumi.Input.fromValue(map['years'] as int),
+      years: pulumi.Input.fromValue((map['years'] as num).toInt()),
     );
   }
 }

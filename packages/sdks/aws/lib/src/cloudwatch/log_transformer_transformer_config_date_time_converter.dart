@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigDateTimeConverter {
   /// Specifies the locale of the source field. Defaults to `locale.ROOT`.
-  final pulumi.Input<String>? locale;
+  final pulumi.Input<String?>? locale;
   /// Specifies the list of patterns to match against the `source` field.
   final pulumi.Input<List<String>> matchPatterns;
   /// Specifies the key to apply the date conversion to.
   final pulumi.Input<String> source;
   /// Specifies the time zone of the source field. Defaults to `UTC`.
-  final pulumi.Input<String>? sourceTimezone;
+  final pulumi.Input<String?>? sourceTimezone;
   /// Specifies the JSON field to store the result in.
   final pulumi.Input<String> target;
   /// Specifies the datetime format to use for the converted data in the target field. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSS'Z`.
-  final pulumi.Input<String>? targetFormat;
+  final pulumi.Input<String?>? targetFormat;
   /// Specifies the time zone of the target field. Defaults to `UTC`.
-  final pulumi.Input<String>? targetTimezone;
+  final pulumi.Input<String?>? targetTimezone;
 
   /// Creates a new [LogTransformerTransformerConfigDateTimeConverter].
   /// [locale] Specifies the locale of the source field. Defaults to `locale.ROOT`.

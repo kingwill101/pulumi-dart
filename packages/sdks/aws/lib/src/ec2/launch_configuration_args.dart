@@ -12,17 +12,17 @@ import 'launch_configuration_root_block_device.dart';
 /// {@macro pulumi_ec2_launch_configuration_launch_configuration_args_doc}
 class LaunchConfigurationArgs {
   /// Associate a public ip address with an instance in a VPC.
-  final pulumi.Input<bool>? associatePublicIpAddress;
+  final pulumi.Input<bool?>? associatePublicIpAddress;
   /// Additional EBS block devices to attach to the instance. See Block Devices below for details.
-  final pulumi.Input<List<LaunchConfigurationEbsBlockDevice>>? ebsBlockDevices;
+  final pulumi.Input<List<LaunchConfigurationEbsBlockDevice>?>? ebsBlockDevices;
   /// If true, the launched EC2 instance will be EBS-optimized.
-  final pulumi.Input<bool>? ebsOptimized;
+  final pulumi.Input<bool?>? ebsOptimized;
   /// Enables/disables detailed monitoring. This is enabled by default.
-  final pulumi.Input<bool>? enableMonitoring;
+  final pulumi.Input<bool?>? enableMonitoring;
   /// Customize Ephemeral (also known as "Instance Store") volumes on the instance. See Block Devices below for details.
-  final pulumi.Input<List<LaunchConfigurationEphemeralBlockDevice>>? ephemeralBlockDevices;
+  final pulumi.Input<List<LaunchConfigurationEphemeralBlockDevice>?>? ephemeralBlockDevices;
   /// The name attribute of the IAM instance profile to associate with launched instances.
-  final pulumi.Input<String>? iamInstanceProfile;
+  final pulumi.Input<dynamic>? iamInstanceProfile;
   /// The EC2 image ID to launch.
   final pulumi.Input<String> imageId;
   /// The size of instance to launch.
@@ -30,27 +30,27 @@ class LaunchConfigurationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> instanceType;
   /// The key name that should be used for the instance.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The metadata options for the instance.
-  final pulumi.Input<LaunchConfigurationMetadataOptions>? metadataOptions;
+  final pulumi.Input<LaunchConfigurationMetadataOptions?>? metadataOptions;
   /// The name of the launch configuration. If you leave this blank, this provider will auto-generate a unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// The tenancy of the instance. Valid values are `default` or `dedicated`, see [AWS's Create Launch Configuration](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_CreateLaunchConfiguration.html) for more details.
-  final pulumi.Input<String>? placementTenancy;
+  final pulumi.Input<String?>? placementTenancy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Customize details about the root block device of the instance. See Block Devices below for details.
-  final pulumi.Input<LaunchConfigurationRootBlockDevice>? rootBlockDevice;
+  final pulumi.Input<LaunchConfigurationRootBlockDevice?>? rootBlockDevice;
   /// A list of associated security group IDS.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The maximum price to use for reserving spot instances.
-  final pulumi.Input<String>? spotPrice;
+  final pulumi.Input<String?>? spotPrice;
   /// The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
-  final pulumi.Input<String>? userDataBase64;
+  final pulumi.Input<String?>? userDataBase64;
 
   /// Creates a new [LaunchConfigurationArgs].
   /// [associatePublicIpAddress] Associate a public ip address with an instance in a VPC.
@@ -125,7 +125,7 @@ class LaunchConfigurationArgs {
       ebsOptimized: (() { final guardedValue = map['ebsOptimized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableMonitoring: (() { final guardedValue = map['enableMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ephemeralBlockDevices: (() { final guardedValue = map['ephemeralBlockDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LaunchConfigurationEphemeralBlockDevice>(guardedValue, (value) => LaunchConfigurationEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      iamInstanceProfile: (() { final guardedValue = map['iamInstanceProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iamInstanceProfile: (() { final guardedValue = map['iamInstanceProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

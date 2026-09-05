@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Service resources.
 class ServiceState {
   /// The location where the Communication service stores its data at rest. Possible values are `Africa`, `Asia Pacific`, `Australia`, `Brazil`, `Canada`, `Europe`, `France`, `Germany`, `India`, `Japan`, `Korea`, `Norway`, `Switzerland`, `UAE`, `UK`, `usgov` and `United States`. Changing this forces a new Communication Service to be created.
-  final pulumi.Input<String>? dataLocation;
+  final pulumi.Input<String?>? dataLocation;
   /// The hostname of the Communication Service
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The name of the Communication Service resource. Changing this forces a new Communication Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary connection string of the Communication Service.
-  final pulumi.Input<String>? primaryConnectionString;
+  final pulumi.Input<String?>? primaryConnectionString;
   /// The primary key of the Communication Service.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the Resource Group where the Communication Service should exist. Changing this forces a new Communication Service to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The secondary connection string of the Communication Service.
-  final pulumi.Input<String>? secondaryConnectionString;
+  final pulumi.Input<String?>? secondaryConnectionString;
   /// The secondary key of the Communication Service.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// A mapping of tags which should be assigned to the Communication Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceState].
   /// [dataLocation] The location where the Communication service stores its data at rest. Possible values are `Africa`, `Asia Pacific`, `Australia`, `Brazil`, `Canada`, `Europe`, `France`, `Germany`, `India`, `Japan`, `Korea`, `Norway`, `Switzerland`, `UAE`, `UK`, `usgov` and `United States`. Changing this forces a new Communication Service to be created.

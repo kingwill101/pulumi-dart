@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubS3StorageConfig {
   /// The Amazon S3 bucket prefix for hosting hub content.interface.
-  final pulumi.Input<String>? s3OutputPath;
+  final pulumi.Input<String?>? s3OutputPath;
 
   /// Creates a new [HubS3StorageConfig].
   /// [s3OutputPath] The Amazon S3 bucket prefix for hosting hub content.interface.

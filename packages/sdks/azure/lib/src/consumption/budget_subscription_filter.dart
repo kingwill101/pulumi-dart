@@ -6,9 +6,9 @@ import 'budget_subscription_filter_tag.dart';
 
 class BudgetSubscriptionFilter {
   /// One or more `dimension` blocks as defined below to filter the budget on.
-  final pulumi.Input<List<BudgetSubscriptionFilterDimension>>? dimensions;
+  final pulumi.Input<List<BudgetSubscriptionFilterDimension>?>? dimensions;
   /// One or more `tag` blocks as defined below to filter the budget on.
-  final pulumi.Input<List<BudgetSubscriptionFilterTag>>? tags;
+  final pulumi.Input<List<BudgetSubscriptionFilterTag>?>? tags;
 
   /// Creates a new [BudgetSubscriptionFilter].
   /// [dimensions] One or more `dimension` blocks as defined below to filter the budget on.

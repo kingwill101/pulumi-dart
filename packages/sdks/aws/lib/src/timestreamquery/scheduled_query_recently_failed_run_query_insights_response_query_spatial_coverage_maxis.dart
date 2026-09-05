@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis {
   /// Partition key used for partitioning, which can be a default measureName or a customer defined partition key.
-  final pulumi.Input<List<String>>? partitionKeys;
+  final pulumi.Input<List<String>?>? partitionKeys;
   /// ARN of the table which is queried with the largest time range.
-  final pulumi.Input<String>? tableArn;
+  final pulumi.Input<String?>? tableArn;
   /// Maximum duration in nanoseconds between the start and end of the query.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis].
   /// [partitionKeys] Partition key used for partitioning, which can be a default measureName or a customer defined partition key.
@@ -32,7 +32,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMa
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis(
       partitionKeys: (() { final guardedValue = map['partitionKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tableArn: (() { final guardedValue = map['tableArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

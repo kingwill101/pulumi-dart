@@ -158,7 +158,7 @@ class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource {
           'cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdBy = registerOutput<String>('createdBy');

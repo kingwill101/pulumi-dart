@@ -158,7 +158,7 @@ import 'studio_lifecycle_config_state.dart';
 /// $ pulumi import aws:sagemaker/studioLifecycleConfig:StudioLifecycleConfig example example
 /// ```
 class StudioLifecycleConfig extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Studio Lifecycle Config.
+  /// The ARN assigned by AWS to this Studio Lifecycle Config.
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -185,15 +185,15 @@ class StudioLifecycleConfig extends pulumi.CustomResource {
           'aws:sagemaker/studioLifecycleConfig:StudioLifecycleConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     studioLifecycleConfigAppType = registerOutput<String>('studioLifecycleConfigAppType');
     studioLifecycleConfigContent = registerOutput<String>('studioLifecycleConfigContent');
     studioLifecycleConfigName = registerOutput<String>('studioLifecycleConfigName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [StudioLifecycleConfig] resource's state with the given [name] and [id].
@@ -201,11 +201,12 @@ class StudioLifecycleConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StudioLifecycleConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StudioLifecycleConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -224,7 +225,25 @@ class StudioLifecycleConfig extends pulumi.CustomResource {
     studioLifecycleConfigAppType = registerOutput<String>('studioLifecycleConfigAppType');
     studioLifecycleConfigContent = registerOutput<String>('studioLifecycleConfigContent');
     studioLifecycleConfigName = registerOutput<String>('studioLifecycleConfigName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StudioLifecycleConfig] resource.
+  StudioLifecycleConfig.reference(String urn)
+    : super(
+        'aws:sagemaker/studioLifecycleConfig:StudioLifecycleConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    studioLifecycleConfigAppType = registerOutput<String>('studioLifecycleConfigAppType');
+    studioLifecycleConfigContent = registerOutput<String>('studioLifecycleConfigContent');
+    studioLifecycleConfigName = registerOutput<String>('studioLifecycleConfigName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

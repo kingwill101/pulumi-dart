@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudAppMysqlAssociation resources.
 class SpringCloudAppMysqlAssociationState {
   /// Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? mysqlServerId;
+  final pulumi.Input<String?>? mysqlServerId;
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? springCloudAppId;
+  final pulumi.Input<String?>? springCloudAppId;
   /// Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SpringCloudAppMysqlAssociationState].
   /// [databaseName] Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.

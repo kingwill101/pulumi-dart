@@ -26,7 +26,7 @@ class GetImagePipelineImageTestsConfiguration {
   factory GetImagePipelineImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImagePipelineImageTestsConfiguration(
       imageTestsEnabled: pulumi.Input.fromValue(map['imageTestsEnabled'] as bool),
-      timeoutMinutes: pulumi.Input.fromValue(map['timeoutMinutes'] as int),
+      timeoutMinutes: pulumi.Input.fromValue((map['timeoutMinutes'] as num).toInt()),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerConfiguration {
   /// Configuration ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Revision of the Configuration.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
 
   /// Creates a new [BrokerConfiguration].
   /// [id] Configuration ID.
@@ -26,7 +26,7 @@ class BrokerConfiguration {
   factory BrokerConfiguration.fromMap(Map<String, dynamic> map) {
     return BrokerConfiguration(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

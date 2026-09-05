@@ -21,6 +21,8 @@ import 'model_agreement_timeouts.dart';
 /// const exampleModelAgreement = new aws.bedrockfoundation.ModelAgreement("example", {
 ///     modelId: example.then(example => example.modelId),
 ///     offerToken: example.then(example => example.offers?.[0]?.offerToken),
+/// }, {
+///     ignoreChanges: ["offerToken"],
 /// });
 /// ```
 /// ```python
@@ -31,7 +33,8 @@ import 'model_agreement_timeouts.dart';
 ///     offer_type="PUBLIC")
 /// example_model_agreement = aws.bedrockfoundation.ModelAgreement("example",
 ///     model_id=example.model_id,
-///     offer_token=example.offers[0].offer_token)
+///     offer_token=example.offers[0].offer_token,
+///     opts = pulumi.ResourceOptions(ignore_changes=["offerToken"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,6 +54,12 @@ import 'model_agreement_timeouts.dart';
 ///     {
 ///         ModelId = example.Apply(getModelAgreementOffersResult => getModelAgreementOffersResult.ModelId),
 ///         OfferToken = example.Apply(getModelAgreementOffersResult => getModelAgreementOffersResult.Offers[0]?.OfferToken),
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "offerToken",
+///         },
 ///     });
 ///
 /// });
@@ -75,7 +84,9 @@ import 'model_agreement_timeouts.dart';
 /// 		_, err = bedrockfoundation.NewModelAgreement(ctx, "example", &bedrockfoundation.ModelAgreementArgs{
 /// 			ModelId:    pulumi.String(example.ModelId),
 /// 			OfferToken: pulumi.String(example.Offers[0].OfferToken),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"offerToken",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -98,6 +109,9 @@ import 'model_agreement_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrockfoundation_modelagreement" "example" {
+///   lifecycle {
+///     ignore_changes = [offerToken]
+///   }
 ///   model_id    = data.aws_bedrockfoundation_getmodelagreementoffers.example.model_id
 ///   offer_token = data.aws_bedrockfoundation_getmodelagreementoffers.example.offers[0].offer_token
 /// }
@@ -112,6 +126,7 @@ import 'model_agreement_timeouts.dart';
 /// import com.pulumi.aws.bedrockfoundation.inputs.GetModelAgreementOffersArgs;
 /// import com.pulumi.aws.bedrockfoundation.ModelAgreement;
 /// import com.pulumi.aws.bedrockfoundation.ModelAgreementArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -133,7 +148,9 @@ import 'model_agreement_timeouts.dart';
 ///         var exampleModelAgreement = new ModelAgreement("exampleModelAgreement", ModelAgreementArgs.builder()
 ///             .modelId(example.modelId())
 ///             .offerToken(example.offers()[0].offerToken())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("offerToken")
+///                 .build());
 ///
 ///     }
 /// }
@@ -146,6 +163,9 @@ import 'model_agreement_timeouts.dart';
 ///     properties:
 ///       modelId: ${example.modelId}
 ///       offerToken: ${example.offers[0].offerToken}
+///     options:
+///       ignoreChanges:
+///         - offerToken
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -198,7 +218,7 @@ class ModelAgreement extends pulumi.CustomResource {
           'aws:bedrockfoundation/modelAgreement:ModelAgreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     modelId = registerOutput<String>('modelId');
     offerToken = registerOutput<String>('offerToken');
@@ -211,11 +231,12 @@ class ModelAgreement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelAgreementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ModelAgreement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,6 +250,21 @@ class ModelAgreement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    modelId = registerOutput<String>('modelId');
+    offerToken = registerOutput<String>('offerToken');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<ModelAgreementTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelAgreementTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ModelAgreement] resource.
+  ModelAgreement.reference(String urn)
+    : super(
+        'aws:bedrockfoundation/modelAgreement:ModelAgreement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     modelId = registerOutput<String>('modelId');
     offerToken = registerOutput<String>('offerToken');
     region = registerOutput<String>('region');

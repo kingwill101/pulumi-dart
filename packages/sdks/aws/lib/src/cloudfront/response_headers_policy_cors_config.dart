@@ -16,9 +16,9 @@ class ResponseHeadersPolicyCorsConfig {
   /// Object that contains an attribute `items` that contains a list of origins that CloudFront can use as the value for the `Access-Control-Allow-Origin` HTTP response header.
   final pulumi.Input<ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins> accessControlAllowOrigins;
   /// Object that contains an attribute `items` that contains a list of HTTP headers that CloudFront includes as values for the `Access-Control-Expose-Headers` HTTP response header.
-  final pulumi.Input<ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders>? accessControlExposeHeaders;
+  final pulumi.Input<ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders?>? accessControlExposeHeaders;
   /// A number that CloudFront uses as the value for the `Access-Control-Max-Age` HTTP response header.
-  final pulumi.Input<int>? accessControlMaxAgeSec;
+  final pulumi.Input<int?>? accessControlMaxAgeSec;
   /// A Boolean value that determines how CloudFront behaves for the HTTP response header.
   final pulumi.Input<bool> originOverride;
 
@@ -59,7 +59,7 @@ class ResponseHeadersPolicyCorsConfig {
       accessControlAllowMethods: pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlAllowMethods.fromMap((map['accessControlAllowMethods']! as Map).cast<String, dynamic>())),
       accessControlAllowOrigins: pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins.fromMap((map['accessControlAllowOrigins']! as Map).cast<String, dynamic>())),
       accessControlExposeHeaders: (() { final guardedValue = map['accessControlExposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      accessControlMaxAgeSec: (() { final guardedValue = map['accessControlMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      accessControlMaxAgeSec: (() { final guardedValue = map['accessControlMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       originOverride: pulumi.Input.fromValue(map['originOverride'] as bool),
     );
   }

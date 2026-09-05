@@ -18,12 +18,12 @@ import 'user_state.dart';
 ///
 /// const example = new random.index.Password("example", {length: 16});
 /// const exampleUser = new aws.memorydb.User("example", {
-///     userName: "my-user",
-///     accessString: "on ~* &* +@all",
 ///     authenticationMode: {
 ///         type: "password",
 ///         passwords: [example.result],
 ///     },
+///     userName: "my-user",
+///     accessString: "on ~* &* +@all",
 /// });
 /// ```
 /// ```python
@@ -33,12 +33,12 @@ import 'user_state.dart';
 ///
 /// example = random.Password("example", length=16)
 /// example_user = aws.memorydb.User("example",
-///     user_name="my-user",
-///     access_string="on ~* &* +@all",
 ///     authentication_mode={
 ///         "type": "password",
 ///         "passwords": [example["result"]],
-///     })
+///     },
+///     user_name="my-user",
+///     access_string="on ~* &* +@all")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,8 +56,6 @@ import 'user_state.dart';
 ///
 ///     var exampleUser = new Aws.MemoryDb.User("example", new()
 ///     {
-///         UserName = "my-user",
-///         AccessString = "on ~* &* +@all",
 ///         AuthenticationMode = new Aws.MemoryDb.Inputs.UserAuthenticationModeArgs
 ///         {
 ///             Type = "password",
@@ -66,6 +64,8 @@ import 'user_state.dart';
 ///                 example.Result,
 ///             },
 ///         },
+///         UserName = "my-user",
+///         AccessString = "on ~* &* +@all",
 ///     });
 ///
 /// });
@@ -88,14 +88,14 @@ import 'user_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = memorydb.NewUser(ctx, "example", &memorydb.UserArgs{
-/// 			UserName:     pulumi.String("my-user"),
-/// 			AccessString: pulumi.String("on ~* &* +@all"),
 /// 			AuthenticationMode: &memorydb.UserAuthenticationModeArgs{
 /// 				Type: pulumi.String("password"),
 /// 				Passwords: pulumi.StringArray{
 /// 					example.Result,
 /// 				},
 /// 			},
+/// 			UserName:     pulumi.String("my-user"),
+/// 			AccessString: pulumi.String("on ~* &* +@all"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,12 +120,12 @@ import 'user_state.dart';
 ///   length = 16
 /// }
 /// resource "aws_memorydb_user" "example" {
-///   user_name     = "my-user"
-///   access_string = "on ~* &* +@all"
 ///   authentication_mode = {
 ///     type      = "password"
 ///     passwords = [random_password.example.result]
 ///   }
+///   user_name     = "my-user"
+///   access_string = "on ~* &* +@all"
 /// }
 /// ```
 /// ```java
@@ -157,12 +157,12 @@ import 'user_state.dart';
 ///             .build());
 ///
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
-///             .userName("my-user")
-///             .accessString("on ~* &* +@all")
 ///             .authenticationMode(UserAuthenticationModeArgs.builder()
 ///                 .type("password")
 ///                 .passwords(example.result())
 ///                 .build())
+///             .userName("my-user")
+///             .accessString("on ~* &* +@all")
 ///             .build());
 ///
 ///     }
@@ -178,12 +178,12 @@ import 'user_state.dart';
 ///     type: aws:memorydb:User
 ///     name: example
 ///     properties:
-///       userName: my-user
-///       accessString: on ~* &* +@all
 ///       authenticationMode:
 ///         type: password
 ///         passwords:
 ///           - ${example.result}
+///       userName: my-user
+///       accessString: on ~* &* +@all
 /// ```
 ///
 ///
@@ -228,15 +228,15 @@ class User extends pulumi.CustomResource {
           'aws:memorydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
   }
 
@@ -245,11 +245,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,8 +269,27 @@ class User extends pulumi.CustomResource {
     authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:memorydb/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessString = registerOutput<String>('accessString');
+    arn = registerOutput<String>('arn');
+    authenticationMode = registerOutput<UserAuthenticationMode>('authenticationMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAuthenticationMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
   }
 }

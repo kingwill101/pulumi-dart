@@ -8,7 +8,7 @@ class EndpointConfigurationShadowProductionVariantServerlessConfig {
   /// Memory size of your serverless endpoint. Valid values are in 1 GB increments: `1024` MB, `2048` MB, `3072` MB, `4096` MB, `5120` MB, or `6144` MB.
   final pulumi.Input<int> memorySizeInMb;
   /// Amount of provisioned concurrency to allocate for the serverless endpoint. Should be less than or equal to `maxConcurrency`. Valid values are between `1` and `200`.
-  final pulumi.Input<int>? provisionedConcurrency;
+  final pulumi.Input<int?>? provisionedConcurrency;
 
   /// Creates a new [EndpointConfigurationShadowProductionVariantServerlessConfig].
   /// [maxConcurrency] Maximum number of concurrent invocations your serverless endpoint can process. Valid values are between `1` and `200`.
@@ -30,9 +30,9 @@ class EndpointConfigurationShadowProductionVariantServerlessConfig {
 
   factory EndpointConfigurationShadowProductionVariantServerlessConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariantServerlessConfig(
-      maxConcurrency: pulumi.Input.fromValue(map['maxConcurrency'] as int),
-      memorySizeInMb: pulumi.Input.fromValue(map['memorySizeInMb'] as int),
-      provisionedConcurrency: (() { final guardedValue = map['provisionedConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrency: pulumi.Input.fromValue((map['maxConcurrency'] as num).toInt()),
+      memorySizeInMb: pulumi.Input.fromValue((map['memorySizeInMb'] as num).toInt()),
+      provisionedConcurrency: (() { final guardedValue = map['provisionedConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

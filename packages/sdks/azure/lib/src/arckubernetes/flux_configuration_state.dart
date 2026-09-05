@@ -9,23 +9,23 @@ import 'flux_configuration_kustomization.dart';
 /// Input properties used for looking up and filtering FluxConfiguration resources.
 class FluxConfigurationState {
   /// An `blobStorage` block as defined below.
-  final pulumi.Input<FluxConfigurationBlobStorage>? blobStorage;
+  final pulumi.Input<FluxConfigurationBlobStorage?>? blobStorage;
   /// A `bucket` block as defined below.
-  final pulumi.Input<FluxConfigurationBucket>? bucket;
+  final pulumi.Input<FluxConfigurationBucket?>? bucket;
   /// Specifies the Cluster ID. Changing this forces a new Arc Kubernetes Cluster Extension to be created.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
-  final pulumi.Input<bool>? continuousReconciliationEnabled;
+  final pulumi.Input<bool?>? continuousReconciliationEnabled;
   /// A `gitRepository` block as defined below.
-  final pulumi.Input<FluxConfigurationGitRepository>? gitRepository;
+  final pulumi.Input<FluxConfigurationGitRepository?>? gitRepository;
   /// A `kustomizations` block as defined below.
-  final pulumi.Input<List<FluxConfigurationKustomization>>? kustomizations;
+  final pulumi.Input<List<FluxConfigurationKustomization>?>? kustomizations;
   /// Specifies the name which should be used for this Arc Kubernetes Flux Configuration. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the namespace to which this configuration is installed to. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Specifies the scope at which the operator will be installed. Possible values are `cluster` and `namespace`. Defaults to `namespace`. Changing this forces a new Arc Kubernetes Flux Configuration to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [FluxConfigurationState].
   /// [blobStorage] An `blobStorage` block as defined below.

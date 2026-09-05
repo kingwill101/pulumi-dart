@@ -4,86 +4,86 @@
 /// Result data returned by getPolicyDefintionBuiltIn.
 class GetPolicyDefintionBuiltInResult {
   /// The Description of the Policy.
-  final String description;
-  final String displayName;
+  final String? description;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? managementGroupName;
   /// Any Metadata defined in the Policy.
-  final String metadata;
+  final String? metadata;
   /// The Mode of the Policy.
-  final String mode;
-  final String name;
+  final String? mode;
+  final String? name;
   /// Any Parameters defined in the Policy.
-  final String parameters;
+  final String? parameters;
   /// The Rule as defined (in JSON) in the Policy.
-  final String policyRule;
+  final String? policyRule;
   /// The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
-  final String policyType;
+  final String? policyType;
   /// A list of role definition id extracted from `policyRule` required for remediation.
-  final List<String> roleDefinitionIds;
+  final List<String>? roleDefinitionIds;
   /// The Type of Policy.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPolicyDefintionBuiltInResult].
   /// [description] The Description of the Policy.
-  /// [displayName] Required.
+  /// [displayName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [managementGroupName] Optional.
   /// [metadata] Any Metadata defined in the Policy.
   /// [mode] The Mode of the Policy.
-  /// [name] Required.
+  /// [name] Optional.
   /// [parameters] Any Parameters defined in the Policy.
   /// [policyRule] The Rule as defined (in JSON) in the Policy.
   /// [policyType] The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
   /// [roleDefinitionIds] A list of role definition id extracted from `policyRule` required for remediation.
   /// [type] The Type of Policy.
   const GetPolicyDefintionBuiltInResult({
-    required this.description,
-    required this.displayName,
-    required this.id,
+    this.description,
+    this.displayName,
+    this.id,
     this.managementGroupName,
-    required this.metadata,
-    required this.mode,
-    required this.name,
-    required this.parameters,
-    required this.policyRule,
-    required this.policyType,
-    required this.roleDefinitionIds,
-    required this.type,
+    this.metadata,
+    this.mode,
+    this.name,
+    this.parameters,
+    this.policyRule,
+    this.policyType,
+    this.roleDefinitionIds,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'displayName': displayName,
-      'id': id,
+      'description': ?description,
+      'displayName': ?displayName,
+      'id': ?id,
       'managementGroupName': ?managementGroupName,
-      'metadata': metadata,
-      'mode': mode,
-      'name': name,
-      'parameters': parameters,
-      'policyRule': policyRule,
-      'policyType': policyType,
-      'roleDefinitionIds': roleDefinitionIds,
-      'type': type,
+      'metadata': ?metadata,
+      'mode': ?mode,
+      'name': ?name,
+      'parameters': ?parameters,
+      'policyRule': ?policyRule,
+      'policyType': ?policyType,
+      'roleDefinitionIds': ?roleDefinitionIds,
+      'type': ?type,
     };
   }
 
   factory GetPolicyDefintionBuiltInResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefintionBuiltInResult(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managementGroupName: (() { final guardedValue = map['managementGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      metadata: map['metadata'] as String,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      parameters: map['parameters'] as String,
-      policyRule: map['policyRule'] as String,
-      policyType: map['policyType'] as String,
-      roleDefinitionIds: (map['roleDefinitionIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyRule: (() { final guardedValue = map['policyRule']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleDefinitionIds: (() { final guardedValue = map['roleDefinitionIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

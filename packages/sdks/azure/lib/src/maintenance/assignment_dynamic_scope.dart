@@ -36,7 +36,7 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
           'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
@@ -48,11 +48,12 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentDynamicScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssignmentDynamicScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -66,6 +67,20 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [AssignmentDynamicScope] resource.
+  AssignmentDynamicScope.reference(String urn)
+    : super(
+        'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
     this.name = registerOutput<String>('name');

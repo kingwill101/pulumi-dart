@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultRouteTableRoute {
   /// The CIDR block of the route.
-  final pulumi.Input<String>? cidrBlock;
-  /// The Amazon Resource Name (ARN) of a core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? cidrBlock;
+  /// ARN of a core network.
+  final pulumi.Input<String?>? coreNetworkArn;
   /// The ID of a managed prefix list destination of the route.
   ///
   /// One of the following target arguments must be supplied:
-  final pulumi.Input<String>? destinationPrefixListId;
+  final pulumi.Input<String?>? destinationPrefixListId;
   /// Identifier of a VPC Egress Only Internet Gateway.
-  final pulumi.Input<String>? egressOnlyGatewayId;
+  final pulumi.Input<String?>? egressOnlyGatewayId;
   /// Identifier of a VPC internet gateway or a virtual private gateway.
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Identifier of an EC2 instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The Ipv6 CIDR block of the route
-  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String?>? ipv6CidrBlock;
   /// Identifier of a VPC NAT gateway.
-  final pulumi.Input<String>? natGatewayId;
+  final pulumi.Input<String?>? natGatewayId;
   /// Identifier of an EC2 network interface.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// Identifier of an EC2 Transit Gateway.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// Identifier of a VPC Endpoint. This route must be removed prior to VPC Endpoint deletion.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
-  final pulumi.Input<String>? vpcPeeringConnectionId;
+  final pulumi.Input<String?>? vpcPeeringConnectionId;
 
   /// Creates a new [DefaultRouteTableRoute].
   /// [cidrBlock] The CIDR block of the route.
-  /// [coreNetworkArn] The Amazon Resource Name (ARN) of a core network.
+  /// [coreNetworkArn] ARN of a core network.
   /// [destinationPrefixListId] The ID of a managed prefix list destination of the route.
   /// [egressOnlyGatewayId] Identifier of a VPC Egress Only Internet Gateway.
   /// [gatewayId] Identifier of a VPC internet gateway or a virtual private gateway.

@@ -8,26 +8,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_security_group_rule_security_group_rule_args_doc}
 class SecurityGroupRuleArgs {
   /// List of CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
-  final pulumi.Input<List<String>>? cidrBlocks;
+  final pulumi.Input<List<String>?>? cidrBlocks;
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
   final pulumi.Input<int> fromPort;
   /// List of IPv6 CIDR blocks. Cannot be specified with `sourceSecurityGroupId` or `self`.
-  final pulumi.Input<List<String>>? ipv6CidrBlocks;
+  final pulumi.Input<List<String>?>? ipv6CidrBlocks;
   /// List of Prefix List IDs.
-  final pulumi.Input<List<String>>? prefixListIds;
+  final pulumi.Input<List<String>?>? prefixListIds;
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// &gt; **Note** Although `cidrBlocks`, `ipv6CidrBlocks`, `prefixListIds`, and `sourceSecurityGroupId` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Security group to apply this rule to.
   final pulumi.Input<String> securityGroupId;
   /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `sourceSecurityGroupId`.
-  final pulumi.Input<bool>? self;
+  final pulumi.Input<bool?>? self;
   /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
-  final pulumi.Input<String>? sourceSecurityGroupId;
+  final pulumi.Input<String?>? sourceSecurityGroupId;
   /// End port (or ICMP code if protocol is "icmp").
   final pulumi.Input<int> toPort;
   /// Type of rule being created. Valid options are `ingress` (inbound)
@@ -85,15 +85,15 @@ class SecurityGroupRuleArgs {
     return SecurityGroupRuleArgs(
       cidrBlocks: (() { final guardedValue = map['cidrBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
       ipv6CidrBlocks: (() { final guardedValue = map['ipv6CidrBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       prefixListIds: (() { final guardedValue = map['prefixListIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
       self: (() { final guardedValue = map['self']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sourceSecurityGroupId: (() { final guardedValue = map['sourceSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

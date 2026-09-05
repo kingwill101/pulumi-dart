@@ -10,7 +10,7 @@ class ManagedClusterLbRule {
   /// Protocol for the probe. Can be one of `tcp`, `udp`, `http`, or `https`.
   final pulumi.Input<String> probeProtocol;
   /// Path for the probe to check, when probe protocol is set to `http`.
-  final pulumi.Input<String>? probeRequestPath;
+  final pulumi.Input<String?>? probeRequestPath;
   /// The transport protocol used in this rule. Can be one of `tcp` or `udp`.
   final pulumi.Input<String> protocol;
 
@@ -40,8 +40,8 @@ class ManagedClusterLbRule {
 
   factory ManagedClusterLbRule.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLbRule(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
-      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
+      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
+      frontendPort: pulumi.Input.fromValue((map['frontendPort'] as num).toInt()),
       probeProtocol: pulumi.Input.fromValue(map['probeProtocol'] as String),
       probeRequestPath: (() { final guardedValue = map['probeRequestPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride {
   /// Override action to use for the rule. See Action below.
-  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse>? actionToUse;
+  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse?>? actionToUse;
   /// Name of the rule to override.
   final pulumi.Input<String> name;
 

@@ -61,15 +61,15 @@ class AccessPolicy extends pulumi.CustomResource {
           'azure:keyvault/accessPolicy:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationId = registerOutput<String?>('applicationId');
-    certificatePermissions = registerOutput<List<String>?>('certificatePermissions');
-    keyPermissions = registerOutput<List<String>?>('keyPermissions');
+    certificatePermissions = registerOutput<List<String>?>('certificatePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyPermissions = registerOutput<List<String>?>('keyPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyVaultId = registerOutput<String>('keyVaultId');
     objectId = registerOutput<String>('objectId');
-    secretPermissions = registerOutput<List<String>?>('secretPermissions');
-    storagePermissions = registerOutput<List<String>?>('storagePermissions');
+    secretPermissions = registerOutput<List<String>?>('secretPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storagePermissions = registerOutput<List<String>?>('storagePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -78,11 +78,12 @@ class AccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -97,12 +98,31 @@ class AccessPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String?>('applicationId');
-    certificatePermissions = registerOutput<List<String>?>('certificatePermissions');
-    keyPermissions = registerOutput<List<String>?>('keyPermissions');
+    certificatePermissions = registerOutput<List<String>?>('certificatePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyPermissions = registerOutput<List<String>?>('keyPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyVaultId = registerOutput<String>('keyVaultId');
     objectId = registerOutput<String>('objectId');
-    secretPermissions = registerOutput<List<String>?>('secretPermissions');
-    storagePermissions = registerOutput<List<String>?>('storagePermissions');
+    secretPermissions = registerOutput<List<String>?>('secretPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storagePermissions = registerOutput<List<String>?>('storagePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicy] resource.
+  AccessPolicy.reference(String urn)
+    : super(
+        'azure:keyvault/accessPolicy:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String?>('applicationId');
+    certificatePermissions = registerOutput<List<String>?>('certificatePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyPermissions = registerOutput<List<String>?>('keyPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyVaultId = registerOutput<String>('keyVaultId');
+    objectId = registerOutput<String>('objectId');
+    secretPermissions = registerOutput<List<String>?>('secretPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storagePermissions = registerOutput<List<String>?>('storagePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

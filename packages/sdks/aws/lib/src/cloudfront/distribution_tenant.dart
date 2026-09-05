@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_tenant_args.dart';
 import 'distribution_tenant_customizations.dart';
+import 'distribution_tenant_domain.dart';
 import 'distribution_tenant_managed_certificate_request.dart';
+import 'distribution_tenant_parameter.dart';
 import 'distribution_tenant_state.dart';
 import 'distribution_tenant_timeouts.dart';
 
@@ -21,12 +23,12 @@ import 'distribution_tenant_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.DistributionTenant("example", {
-///     name: "example-tenant",
-///     distributionId: exampleAwsCloudfrontMultitenantDistribution.id,
-///     enabled: true,
 ///     domains: [{
 ///         domain: "tenant.example.com",
 ///     }],
+///     name: "example-tenant",
+///     distributionId: exampleAwsCloudfrontMultitenantDistribution.id,
+///     enabled: true,
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -37,12 +39,12 @@ import 'distribution_tenant_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.DistributionTenant("example",
-///     name="example-tenant",
-///     distribution_id=example_aws_cloudfront_multitenant_distribution["id"],
-///     enabled=True,
 ///     domains=[{
 ///         "domain": "tenant.example.com",
 ///     }],
+///     name="example-tenant",
+///     distribution_id=example_aws_cloudfront_multitenant_distribution["id"],
+///     enabled=True,
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -57,9 +59,6 @@ import 'distribution_tenant_timeouts.dart';
 /// {
 ///     var example = new Aws.CloudFront.DistributionTenant("example", new()
 ///     {
-///         Name = "example-tenant",
-///         DistributionId = exampleAwsCloudfrontMultitenantDistribution.Id,
-///         Enabled = true,
 ///         Domains = new[]
 ///         {
 ///             new Aws.CloudFront.Inputs.DistributionTenantDomainArgs
@@ -67,6 +66,9 @@ import 'distribution_tenant_timeouts.dart';
 ///                 Domain = "tenant.example.com",
 ///             },
 ///         },
+///         Name = "example-tenant",
+///         DistributionId = exampleAwsCloudfrontMultitenantDistribution.Id,
+///         Enabled = true,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -86,14 +88,14 @@ import 'distribution_tenant_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewDistributionTenant(ctx, "example", &cloudfront.DistributionTenantArgs{
-/// 			Name:           pulumi.String("example-tenant"),
-/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontMultitenantDistribution.Id),
-/// 			Enabled:        pulumi.Bool(true),
 /// 			Domains: cloudfront.DistributionTenantDomainArray{
 /// 				&cloudfront.DistributionTenantDomainArgs{
 /// 					Domain: pulumi.String("tenant.example.com"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example-tenant"),
+/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontMultitenantDistribution.Id),
+/// 			Enabled:        pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -115,12 +117,12 @@ import 'distribution_tenant_timeouts.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distributiontenant" "example" {
-///   name            = "example-tenant"
-///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
-///   enabled         = true
 ///   domains {
 ///     domain = "tenant.example.com"
 ///   }
+///   name            = "example-tenant"
+///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
+///   enabled         = true
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -149,12 +151,12 @@ import 'distribution_tenant_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DistributionTenant("example", DistributionTenantArgs.builder()
-///             .name("example-tenant")
-///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
-///             .enabled(true)
 ///             .domains(DistributionTenantDomainArgs.builder()
 ///                 .domain("tenant.example.com")
 ///                 .build())
+///             .name("example-tenant")
+///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
+///             .enabled(true)
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -166,11 +168,11 @@ import 'distribution_tenant_timeouts.dart';
 ///   example:
 ///     type: aws:cloudfront:DistributionTenant
 ///     properties:
+///       domains:
+///         - domain: tenant.example.com
 ///       name: example-tenant
 ///       distributionId: ${exampleAwsCloudfrontMultitenantDistribution.id}
 ///       enabled: true
-///       domains:
-///         - domain: tenant.example.com
 ///       tags:
 ///         Environment: production
 /// ```
@@ -184,12 +186,6 @@ import 'distribution_tenant_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.DistributionTenant("example", {
-///     name: "example-tenant",
-///     distributionId: exampleAwsCloudfrontMultitenantDistribution.id,
-///     enabled: false,
-///     domains: [{
-///         domain: "tenant.example.com",
-///     }],
 ///     customizations: {
 ///         geoRestriction: {
 ///             restrictionType: "whitelist",
@@ -206,6 +202,12 @@ import 'distribution_tenant_timeouts.dart';
 ///             arn: tenantWaf.arn,
 ///         },
 ///     },
+///     domains: [{
+///         domain: "tenant.example.com",
+///     }],
+///     name: "example-tenant",
+///     distributionId: exampleAwsCloudfrontMultitenantDistribution.id,
+///     enabled: false,
 ///     tags: {
 ///         Environment: "production",
 ///         Tenant: "example",
@@ -217,12 +219,6 @@ import 'distribution_tenant_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.DistributionTenant("example",
-///     name="example-tenant",
-///     distribution_id=example_aws_cloudfront_multitenant_distribution["id"],
-///     enabled=False,
-///     domains=[{
-///         "domain": "tenant.example.com",
-///     }],
 ///     customizations={
 ///         "geo_restriction": {
 ///             "restriction_type": "whitelist",
@@ -239,6 +235,12 @@ import 'distribution_tenant_timeouts.dart';
 ///             "arn": tenant_waf["arn"],
 ///         },
 ///     },
+///     domains=[{
+///         "domain": "tenant.example.com",
+///     }],
+///     name="example-tenant",
+///     distribution_id=example_aws_cloudfront_multitenant_distribution["id"],
+///     enabled=False,
 ///     tags={
 ///         "Environment": "production",
 ///         "Tenant": "example",
@@ -254,16 +256,6 @@ import 'distribution_tenant_timeouts.dart';
 /// {
 ///     var example = new Aws.CloudFront.DistributionTenant("example", new()
 ///     {
-///         Name = "example-tenant",
-///         DistributionId = exampleAwsCloudfrontMultitenantDistribution.Id,
-///         Enabled = false,
-///         Domains = new[]
-///         {
-///             new Aws.CloudFront.Inputs.DistributionTenantDomainArgs
-///             {
-///                 Domain = "tenant.example.com",
-///             },
-///         },
 ///         Customizations = new Aws.CloudFront.Inputs.DistributionTenantCustomizationsArgs
 ///         {
 ///             GeoRestriction = new Aws.CloudFront.Inputs.DistributionTenantCustomizationsGeoRestrictionArgs
@@ -285,6 +277,16 @@ import 'distribution_tenant_timeouts.dart';
 ///                 Arn = tenantWaf.Arn,
 ///             },
 ///         },
+///         Domains = new[]
+///         {
+///             new Aws.CloudFront.Inputs.DistributionTenantDomainArgs
+///             {
+///                 Domain = "tenant.example.com",
+///             },
+///         },
+///         Name = "example-tenant",
+///         DistributionId = exampleAwsCloudfrontMultitenantDistribution.Id,
+///         Enabled = false,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -305,14 +307,6 @@ import 'distribution_tenant_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewDistributionTenant(ctx, "example", &cloudfront.DistributionTenantArgs{
-/// 			Name:           pulumi.String("example-tenant"),
-/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontMultitenantDistribution.Id),
-/// 			Enabled:        pulumi.Bool(false),
-/// 			Domains: cloudfront.DistributionTenantDomainArray{
-/// 				&cloudfront.DistributionTenantDomainArgs{
-/// 					Domain: pulumi.String("tenant.example.com"),
-/// 				},
-/// 			},
 /// 			Customizations: &cloudfront.DistributionTenantCustomizationsArgs{
 /// 				GeoRestriction: &cloudfront.DistributionTenantCustomizationsGeoRestrictionArgs{
 /// 					RestrictionType: pulumi.String("whitelist"),
@@ -329,6 +323,14 @@ import 'distribution_tenant_timeouts.dart';
 /// 					Arn:    pulumi.Any(tenantWaf.Arn),
 /// 				},
 /// 			},
+/// 			Domains: cloudfront.DistributionTenantDomainArray{
+/// 				&cloudfront.DistributionTenantDomainArgs{
+/// 					Domain: pulumi.String("tenant.example.com"),
+/// 				},
+/// 			},
+/// 			Name:           pulumi.String("example-tenant"),
+/// 			DistributionId: pulumi.Any(exampleAwsCloudfrontMultitenantDistribution.Id),
+/// 			Enabled:        pulumi.Bool(false),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Tenant":      pulumi.String("example"),
@@ -351,12 +353,6 @@ import 'distribution_tenant_timeouts.dart';
 /// }
 ///
 /// resource "aws_cloudfront_distributiontenant" "example" {
-///   name            = "example-tenant"
-///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
-///   enabled         = false
-///   domains {
-///     domain = "tenant.example.com"
-///   }
 ///   customizations = {
 ///     geo_restriction = {
 ///       restriction_type = "whitelist"
@@ -370,6 +366,12 @@ import 'distribution_tenant_timeouts.dart';
 ///       arn    = tenantWaf.arn
 ///     }
 ///   }
+///   domains {
+///     domain = "tenant.example.com"
+///   }
+///   name            = "example-tenant"
+///   distribution_id = exampleAwsCloudfrontMultitenantDistribution.id
+///   enabled         = false
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Tenant"      = "example"
@@ -384,11 +386,11 @@ import 'distribution_tenant_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.DistributionTenant;
 /// import com.pulumi.aws.cloudfront.DistributionTenantArgs;
-/// import com.pulumi.aws.cloudfront.inputs.DistributionTenantDomainArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsGeoRestrictionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsCertificateArgs;
 /// import com.pulumi.aws.cloudfront.inputs.DistributionTenantCustomizationsWebAclArgs;
+/// import com.pulumi.aws.cloudfront.inputs.DistributionTenantDomainArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -403,12 +405,6 @@ import 'distribution_tenant_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DistributionTenant("example", DistributionTenantArgs.builder()
-///             .name("example-tenant")
-///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
-///             .enabled(false)
-///             .domains(DistributionTenantDomainArgs.builder()
-///                 .domain("tenant.example.com")
-///                 .build())
 ///             .customizations(DistributionTenantCustomizationsArgs.builder()
 ///                 .geoRestriction(DistributionTenantCustomizationsGeoRestrictionArgs.builder()
 ///                     .restrictionType("whitelist")
@@ -424,6 +420,12 @@ import 'distribution_tenant_timeouts.dart';
 ///                     .arn(tenantWaf.arn())
 ///                     .build())
 ///                 .build())
+///             .domains(DistributionTenantDomainArgs.builder()
+///                 .domain("tenant.example.com")
+///                 .build())
+///             .name("example-tenant")
+///             .distributionId(exampleAwsCloudfrontMultitenantDistribution.id())
+///             .enabled(false)
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Tenant", "example")
@@ -438,11 +440,6 @@ import 'distribution_tenant_timeouts.dart';
 ///   example:
 ///     type: aws:cloudfront:DistributionTenant
 ///     properties:
-///       name: example-tenant
-///       distributionId: ${exampleAwsCloudfrontMultitenantDistribution.id}
-///       enabled: false
-///       domains:
-///         - domain: tenant.example.com
 ///       customizations:
 ///         geoRestriction:
 ///           restrictionType: whitelist
@@ -454,6 +451,11 @@ import 'distribution_tenant_timeouts.dart';
 ///         webAcl:
 ///           action: override
 ///           arn: ${tenantWaf.arn}
+///       domains:
+///         - domain: tenant.example.com
+///       name: example-tenant
+///       distributionId: ${exampleAwsCloudfrontMultitenantDistribution.id}
+///       enabled: false
 ///       tags:
 ///         Environment: production
 ///         Tenant: example
@@ -477,7 +479,7 @@ class DistributionTenant extends pulumi.CustomResource {
   /// ID of the multi-tenant distribution.
   late final pulumi.Output<String> distributionId;
   /// Set of domains associated with the distribution tenant.
-  late final pulumi.Output<List<Map<String, dynamic>>?> domains;
+  late final pulumi.Output<List<DistributionTenantDomain>?> domains;
   /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
   late final pulumi.Output<bool> enabled;
   /// Current version of the distribution tenant.
@@ -487,7 +489,7 @@ class DistributionTenant extends pulumi.CustomResource {
   /// Name of the distribution tenant.
   late final pulumi.Output<String> name;
   /// Set of parameter values for the distribution tenant.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<DistributionTenantParameter>?> parameters;
   /// Current status of the distribution tenant.
   late final pulumi.Output<String> status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -510,21 +512,21 @@ class DistributionTenant extends pulumi.CustomResource {
           'aws:cloudfront/distributionTenant:DistributionTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionGroupId = registerOutput<String>('connectionGroupId');
     customizations = registerOutput<DistributionTenantCustomizations?>('customizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     distributionId = registerOutput<String>('distributionId');
-    domains = registerOutput<List<Map<String, dynamic>>?>('domains');
+    domains = registerOutput<List<DistributionTenantDomain>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantDomain>(guardedValue, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     managedCertificateRequest = registerOutput<DistributionTenantManagedCertificateRequest?>('managedCertificateRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantManagedCertificateRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<DistributionTenantParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantParameter>(guardedValue, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
@@ -534,11 +536,12 @@ class DistributionTenant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DistributionTenantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DistributionTenant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -556,15 +559,41 @@ class DistributionTenant extends pulumi.CustomResource {
     connectionGroupId = registerOutput<String>('connectionGroupId');
     customizations = registerOutput<DistributionTenantCustomizations?>('customizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     distributionId = registerOutput<String>('distributionId');
-    domains = registerOutput<List<Map<String, dynamic>>?>('domains');
+    domains = registerOutput<List<DistributionTenantDomain>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantDomain>(guardedValue, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     managedCertificateRequest = registerOutput<DistributionTenantManagedCertificateRequest?>('managedCertificateRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantManagedCertificateRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<DistributionTenantParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantParameter>(guardedValue, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    waitForDeployment = registerOutput<bool>('waitForDeployment');
+  }
+
+  /// Creates a typed reference to an existing [DistributionTenant] resource.
+  DistributionTenant.reference(String urn)
+    : super(
+        'aws:cloudfront/distributionTenant:DistributionTenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    connectionGroupId = registerOutput<String>('connectionGroupId');
+    customizations = registerOutput<DistributionTenantCustomizations?>('customizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    distributionId = registerOutput<String>('distributionId');
+    domains = registerOutput<List<DistributionTenantDomain>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantDomain>(guardedValue, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    managedCertificateRequest = registerOutput<DistributionTenantManagedCertificateRequest?>('managedCertificateRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantManagedCertificateRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<DistributionTenantParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionTenantParameter>(guardedValue, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionTenantTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }

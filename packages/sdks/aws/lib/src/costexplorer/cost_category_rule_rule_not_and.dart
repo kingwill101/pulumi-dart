@@ -7,11 +7,11 @@ import 'cost_category_rule_rule_not_and_tags.dart';
 
 class CostCategoryRuleRuleNotAnd {
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
-  final pulumi.Input<CostCategoryRuleRuleNotAndCostCategory>? costCategory;
+  final pulumi.Input<CostCategoryRuleRuleNotAndCostCategory?>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
-  final pulumi.Input<CostCategoryRuleRuleNotAndDimension>? dimension;
+  final pulumi.Input<CostCategoryRuleRuleNotAndDimension?>? dimension;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<CostCategoryRuleRuleNotAndTags>? tags;
+  final pulumi.Input<CostCategoryRuleRuleNotAndTags?>? tags;
 
   /// Creates a new [CostCategoryRuleRuleNotAnd].
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See below.

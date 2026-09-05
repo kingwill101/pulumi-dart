@@ -8,25 +8,25 @@ import 'workforce_workforce_vpc_config.dart';
 
 /// Input properties used for looking up and filtering Workforce resources.
 class WorkforceState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Workforce.
-  final pulumi.Input<String>? arn;
+  /// ARN assigned by AWS to this Workforce.
+  final pulumi.Input<String?>? arn;
   /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.
-  final pulumi.Input<WorkforceCognitoConfig>? cognitoConfig;
+  final pulumi.Input<WorkforceCognitoConfig?>? cognitoConfig;
   /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognitoConfig`. see OIDC Config details below.
-  final pulumi.Input<WorkforceOidcConfig>? oidcConfig;
+  final pulumi.Input<WorkforceOidcConfig?>? oidcConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
-  final pulumi.Input<WorkforceSourceIpConfig>? sourceIpConfig;
+  final pulumi.Input<WorkforceSourceIpConfig?>? sourceIpConfig;
   /// The subdomain for your OIDC Identity Provider.
-  final pulumi.Input<String>? subdomain;
+  final pulumi.Input<String?>? subdomain;
   /// The name of the Workforce (must be unique).
-  final pulumi.Input<String>? workforceName;
+  final pulumi.Input<String?>? workforceName;
   /// configure a workforce using VPC. see Workforce VPC Config details below.
-  final pulumi.Input<WorkforceWorkforceVpcConfig>? workforceVpcConfig;
+  final pulumi.Input<WorkforceWorkforceVpcConfig?>? workforceVpcConfig;
 
   /// Creates a new [WorkforceState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Workforce.
+  /// [arn] ARN assigned by AWS to this Workforce.
   /// [cognitoConfig] Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidcConfig`. see Cognito Config details below.
   /// [oidcConfig] Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognitoConfig`. see OIDC Config details below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

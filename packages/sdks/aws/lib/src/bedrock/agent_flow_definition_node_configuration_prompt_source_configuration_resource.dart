@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource {
-  /// The Amazon Resource Name (ARN) of the prompt from Prompt management.
+  /// ARN of the prompt from Prompt management.
   final pulumi.Input<String> promptArn;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource].
-  /// [promptArn] The Amazon Resource Name (ARN) of the prompt from Prompt management.
+  /// [promptArn] ARN of the prompt from Prompt management.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource({
     required this.promptArn,
   });

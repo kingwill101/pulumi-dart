@@ -10,11 +10,11 @@ import 'peering_connection_options_requester.dart';
 /// {@macro pulumi_ec2_peering_connection_options_peering_connection_options_args_doc}
 class PeeringConnectionOptionsArgs {
   /// An optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that accepts the peering connection (a maximum of one).
-  final pulumi.Input<PeeringConnectionOptionsAccepter>? accepter;
+  final pulumi.Input<PeeringConnectionOptionsAccepter?>? accepter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
-  final pulumi.Input<PeeringConnectionOptionsRequester>? requester;
+  final pulumi.Input<PeeringConnectionOptionsRequester?>? requester;
   /// The ID of the requester VPC peering connection.
   final pulumi.Input<String> vpcPeeringConnectionId;
 

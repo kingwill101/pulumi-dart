@@ -8,20 +8,20 @@ import 'faq_s3_path.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kendra_faq_faq_args_doc}
 class FaqArgs {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? fileFormat;
   /// The identifier of the index for a FAQ.
   final pulumi.Input<String> indexId;
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The name that should be associated with the FAQ.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  final pulumi.Input<String?>? region;
+  /// ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   final pulumi.Input<String> roleArn;
   /// The S3 location of the FAQ input data. Detailed below.
   final pulumi.Input<FaqS3Path> s3Path;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FaqArgs].
   /// [description] Optional.
@@ -30,7 +30,7 @@ class FaqArgs {
   /// [languageCode] Optional.
   /// [name] The name that should be associated with the FAQ.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  /// [roleArn] The Amazon Resource Name (ARN) of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  /// [roleArn] ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   /// [s3Path] The S3 location of the FAQ input data. Detailed below.
   /// [tags] Optional.
   const FaqArgs({

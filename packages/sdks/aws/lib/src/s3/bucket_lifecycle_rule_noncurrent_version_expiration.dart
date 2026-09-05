@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleRuleNoncurrentVersionExpiration {
   /// Number of days noncurrent object versions expire.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
 
   /// Creates a new [BucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Number of days noncurrent object versions expire.
@@ -20,7 +20,7 @@ class BucketLifecycleRuleNoncurrentVersionExpiration {
 
   factory BucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleNoncurrentVersionExpiration(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

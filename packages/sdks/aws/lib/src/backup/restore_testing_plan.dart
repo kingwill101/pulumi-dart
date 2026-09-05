@@ -15,12 +15,12 @@ import 'restore_testing_plan_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.RestoreTestingPlan("example", {
-///     name: "example_restore_testing_plan",
 ///     recoveryPointSelection: {
 ///         algorithm: "LATEST_WITHIN_WINDOW",
 ///         includeVaults: ["*"],
 ///         recoveryPointTypes: ["CONTINUOUS"],
 ///     },
+///     name: "example_restore_testing_plan",
 ///     scheduleExpression: "cron(0 12 ? * * *)",
 /// });
 /// ```
@@ -29,12 +29,12 @@ import 'restore_testing_plan_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.RestoreTestingPlan("example",
-///     name="example_restore_testing_plan",
 ///     recovery_point_selection={
 ///         "algorithm": "LATEST_WITHIN_WINDOW",
 ///         "include_vaults": ["*"],
 ///         "recovery_point_types": ["CONTINUOUS"],
 ///     },
+///     name="example_restore_testing_plan",
 ///     schedule_expression="cron(0 12 ? * * *)")
 /// ```
 /// ```csharp
@@ -47,7 +47,6 @@ import 'restore_testing_plan_state.dart';
 /// {
 ///     var example = new Aws.Backup.RestoreTestingPlan("example", new()
 ///     {
-///         Name = "example_restore_testing_plan",
 ///         RecoveryPointSelection = new Aws.Backup.Inputs.RestoreTestingPlanRecoveryPointSelectionArgs
 ///         {
 ///             Algorithm = "LATEST_WITHIN_WINDOW",
@@ -60,6 +59,7 @@ import 'restore_testing_plan_state.dart';
 ///                 "CONTINUOUS",
 ///             },
 ///         },
+///         Name = "example_restore_testing_plan",
 ///         ScheduleExpression = "cron(0 12 ? * * *)",
 ///     });
 ///
@@ -76,7 +76,6 @@ import 'restore_testing_plan_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewRestoreTestingPlan(ctx, "example", &backup.RestoreTestingPlanArgs{
-/// 			Name: pulumi.String("example_restore_testing_plan"),
 /// 			RecoveryPointSelection: &backup.RestoreTestingPlanRecoveryPointSelectionArgs{
 /// 				Algorithm: pulumi.String("LATEST_WITHIN_WINDOW"),
 /// 				IncludeVaults: pulumi.StringArray{
@@ -86,6 +85,7 @@ import 'restore_testing_plan_state.dart';
 /// 					pulumi.String("CONTINUOUS"),
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example_restore_testing_plan"),
 /// 			ScheduleExpression: pulumi.String("cron(0 12 ? * * *)"),
 /// 		})
 /// 		if err != nil {
@@ -105,12 +105,12 @@ import 'restore_testing_plan_state.dart';
 /// }
 ///
 /// resource "aws_backup_restoretestingplan" "example" {
-///   name = "example_restore_testing_plan"
 ///   recovery_point_selection = {
 ///     algorithm            = "LATEST_WITHIN_WINDOW"
 ///     include_vaults       = ["*"]
 ///     recovery_point_types = ["CONTINUOUS"]
 ///   }
+///   name                = "example_restore_testing_plan"
 ///   schedule_expression = "cron(0 12 ? * * *)"
 /// }
 /// ```
@@ -137,12 +137,12 @@ import 'restore_testing_plan_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RestoreTestingPlan("example", RestoreTestingPlanArgs.builder()
-///             .name("example_restore_testing_plan")
 ///             .recoveryPointSelection(RestoreTestingPlanRecoveryPointSelectionArgs.builder()
 ///                 .algorithm("LATEST_WITHIN_WINDOW")
 ///                 .includeVaults("*")
 ///                 .recoveryPointTypes("CONTINUOUS")
 ///                 .build())
+///             .name("example_restore_testing_plan")
 ///             .scheduleExpression("cron(0 12 ? * * *)")
 ///             .build());
 ///
@@ -154,13 +154,13 @@ import 'restore_testing_plan_state.dart';
 ///   example:
 ///     type: aws:backup:RestoreTestingPlan
 ///     properties:
-///       name: example_restore_testing_plan
 ///       recoveryPointSelection:
 ///         algorithm: LATEST_WITHIN_WINDOW
 ///         includeVaults:
 ///           - '*'
 ///         recoveryPointTypes:
 ///           - CONTINUOUS
+///       name: example_restore_testing_plan
 ///       scheduleExpression: cron(0 12 ? * * *)
 /// ```
 ///
@@ -203,7 +203,7 @@ class RestoreTestingPlan extends pulumi.CustomResource {
           'aws:backup/restoreTestingPlan:RestoreTestingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
@@ -212,8 +212,8 @@ class RestoreTestingPlan extends pulumi.CustomResource {
     scheduleExpression = registerOutput<String>('scheduleExpression');
     scheduleExpressionTimezone = registerOutput<String>('scheduleExpressionTimezone');
     startWindowHours = registerOutput<int>('startWindowHours');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RestoreTestingPlan] resource's state with the given [name] and [id].
@@ -221,11 +221,12 @@ class RestoreTestingPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestoreTestingPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestoreTestingPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -246,7 +247,27 @@ class RestoreTestingPlan extends pulumi.CustomResource {
     scheduleExpression = registerOutput<String>('scheduleExpression');
     scheduleExpressionTimezone = registerOutput<String>('scheduleExpressionTimezone');
     startWindowHours = registerOutput<int>('startWindowHours');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RestoreTestingPlan] resource.
+  RestoreTestingPlan.reference(String urn)
+    : super(
+        'aws:backup/restoreTestingPlan:RestoreTestingPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    recoveryPointSelection = registerOutput<RestoreTestingPlanRecoveryPointSelection>('recoveryPointSelection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreTestingPlanRecoveryPointSelection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleExpressionTimezone = registerOutput<String>('scheduleExpressionTimezone');
+    startWindowHours = registerOutput<int>('startWindowHours');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

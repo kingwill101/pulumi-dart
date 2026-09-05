@@ -12,27 +12,27 @@ import 'event_grid_topic_input_mapping_fields.dart';
 /// {@macro pulumi_eventhub_event_grid_topic_event_grid_topic_args_doc}
 class EventGridTopicArgs {
   /// An `identity` block as defined below.
-  final pulumi.Input<EventGridTopicIdentity>? identity;
+  final pulumi.Input<EventGridTopicIdentity?>? identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  final pulumi.Input<List<EventGridTopicInboundIpRule>>? inboundIpRules;
+  final pulumi.Input<List<EventGridTopicInboundIpRule>?>? inboundIpRules;
   /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<EventGridTopicInputMappingDefaultValues>? inputMappingDefaultValues;
+  final pulumi.Input<EventGridTopicInputMappingDefaultValues?>? inputMappingDefaultValues;
   /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<EventGridTopicInputMappingFields>? inputMappingFields;
+  final pulumi.Input<EventGridTopicInputMappingFields?>? inputMappingFields;
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? inputSchema;
+  final pulumi.Input<String?>? inputSchema;
   /// Whether local authentication methods is enabled for the EventGrid Topic. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the EventGrid Topic resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether or not public network access is allowed for this server. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group in which the EventGrid Topic exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EventGridTopicArgs].
   /// [identity] An `identity` block as defined below.

@@ -4,23 +4,23 @@
 /// Result data returned by getServices.
 class GetServicesResult {
   /// List of AWS service identifiers available in UXC.
-  final List<String> services;
+  final List<String>? services;
 
   /// Creates a new [GetServicesResult].
   /// [services] List of AWS service identifiers available in UXC.
   const GetServicesResult({
-    required this.services,
+    this.services,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'services': services,
+      'services': ?services,
     };
   }
 
   factory GetServicesResult.fromMap(Map<String, dynamic> map) {
     return GetServicesResult(
-      services: (map['services'] as List).cast<String>(),
+      services: (() { final guardedValue = map['services']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

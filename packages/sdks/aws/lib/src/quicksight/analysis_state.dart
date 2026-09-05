@@ -8,38 +8,38 @@ import 'analysis_source_entity.dart';
 /// Input properties used for looking up and filtering Analysis resources.
 class AnalysisState {
   /// Identifier for the analysis.
-  final pulumi.Input<String>? analysisId;
+  final pulumi.Input<String?>? analysisId;
   /// ARN of the analysis.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The time that the analysis was created.
-  final pulumi.Input<String>? createdTime;
-  final pulumi.Input<String>? lastPublishedTime;
+  final pulumi.Input<String?>? createdTime;
+  final pulumi.Input<String?>? lastPublishedTime;
   /// The time that the analysis was last updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// Display name for the analysis.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parameters for the creation of the analysis, which you want to use to override the default settings. An analysis can have any type of parameters, and some parameters might accept multiple values. See parameters.
-  final pulumi.Input<AnalysisParameters>? parameters;
+  final pulumi.Input<AnalysisParameters?>? parameters;
   /// A set of resource permissions on the analysis. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<AnalysisPermission>>? permissions;
+  final pulumi.Input<List<AnalysisPermission>?>? permissions;
   /// A value that specifies the number of days that Amazon QuickSight waits before it deletes the analysis. Use `0` to force deletion without recovery. Minimum value of `7`. Maximum value of `30`. Default to `30`.
-  final pulumi.Input<int>? recoveryWindowInDays;
+  final pulumi.Input<int?>? recoveryWindowInDays;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The entity that you are using as a source when you create the analysis (template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
-  final pulumi.Input<AnalysisSourceEntity>? sourceEntity;
+  final pulumi.Input<AnalysisSourceEntity?>? sourceEntity;
   /// The analysis creation status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  /// The Amazon Resource Name (ARN) of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
-  final pulumi.Input<String>? themeArn;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// ARN of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
+  final pulumi.Input<String?>? themeArn;
 
   /// Creates a new [AnalysisState].
   /// [analysisId] Identifier for the analysis.
@@ -57,7 +57,7 @@ class AnalysisState {
   /// [status] The analysis creation status.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [themeArn] The Amazon Resource Name (ARN) of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
+  /// [themeArn] ARN of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
   const AnalysisState({
     this.analysisId,
     this.arn,
@@ -109,7 +109,7 @@ class AnalysisState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalysisParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalysisPermission>(guardedValue, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      recoveryWindowInDays: (() { final guardedValue = map['recoveryWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryWindowInDays: (() { final guardedValue = map['recoveryWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceEntity: (() { final guardedValue = map['sourceEntity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalysisSourceEntity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

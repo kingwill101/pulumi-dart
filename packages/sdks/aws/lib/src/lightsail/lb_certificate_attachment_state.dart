@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LbCertificateAttachment resources.
 class LbCertificateAttachmentState {
   /// Name of your SSL/TLS certificate.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// Name of the load balancer to which you want to associate the SSL/TLS certificate.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? lbName;
+  final pulumi.Input<String?>? lbName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LbCertificateAttachmentState].
   /// [certificateName] Name of your SSL/TLS certificate.

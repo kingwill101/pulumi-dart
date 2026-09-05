@@ -9,15 +9,15 @@ import 'instance_identity.dart';
 /// {@macro pulumi_digitaltwins_instance_instance_args_doc}
 class InstanceArgs {
   /// An `identity` block as defined below.
-  final pulumi.Input<InstanceIdentity>? identity;
+  final pulumi.Input<InstanceIdentity?>? identity;
   /// The Azure Region where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Digital Twins instance. Changing this forces a new Digital Twins instance to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Digital Twins instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceArgs].
   /// [identity] An `identity` block as defined below.

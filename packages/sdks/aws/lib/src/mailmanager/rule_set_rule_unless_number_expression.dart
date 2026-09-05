@@ -5,7 +5,7 @@ import 'rule_set_rule_unless_number_expression_evaluate.dart';
 
 class RuleSetRuleUnlessNumberExpression {
   /// Left-hand operand of the expression.
-  final pulumi.Input<RuleSetRuleUnlessNumberExpressionEvaluate>? evaluate;
+  final pulumi.Input<RuleSetRuleUnlessNumberExpressionEvaluate?>? evaluate;
   /// Numeric comparison operator. Valid values are `EQUALS`, `NOT_EQUALS`, `LESS_THAN`, `GREATER_THAN`, `LESS_THAN_OR_EQUAL`, and `GREATER_THAN_OR_EQUAL`.
   final pulumi.Input<String> operator;
   /// Numeric value to compare against.
@@ -33,7 +33,7 @@ class RuleSetRuleUnlessNumberExpression {
     return RuleSetRuleUnlessNumberExpression(
       evaluate: (() { final guardedValue = map['evaluate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleSetRuleUnlessNumberExpressionEvaluate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

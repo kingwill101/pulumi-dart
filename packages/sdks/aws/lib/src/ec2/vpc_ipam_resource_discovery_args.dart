@@ -10,15 +10,15 @@ import 'vpc_ipam_resource_discovery_organizational_unit_exclusion.dart';
 /// {@macro pulumi_ec2_vpc_ipam_resource_discovery_vpc_ipam_resource_discovery_args_doc}
 class VpcIpamResourceDiscoveryArgs {
   /// A description for the IPAM Resource Discovery.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determines which regions the Resource Discovery will enable IPAM features for usage and monitoring. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM Resource Discovery. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. **You must set your provider block region as an operating_region.**
   final pulumi.Input<List<VpcIpamResourceDiscoveryOperatingRegion>> operatingRegions;
   /// Add an Organizational Unit (OU) exclusion to IPAM. If IPAM is integrated with AWS Organizations and OU exclusion is added, IPAM will not manage the IP addresses in accounts in the OU exclusion. Refer to [IPAM Quotas](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) for the limit of exclusions that can be created.
-  final pulumi.Input<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>>? organizationalUnitExclusions;
+  final pulumi.Input<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>? organizationalUnitExclusions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VpcIpamResourceDiscoveryArgs].
   /// [description] A description for the IPAM Resource Discovery.

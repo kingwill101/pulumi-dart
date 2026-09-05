@@ -9,33 +9,33 @@ import 'catalog_table_storage_descriptor_sort_column.dart';
 
 class CatalogTableStorageDescriptor {
   /// List of locations that point to the path where a Delta table is located.
-  final pulumi.Input<List<String>>? additionalLocations;
+  final pulumi.Input<List<String>?>? additionalLocations;
   /// List of reducer grouping columns, clustering columns, and bucketing columns in the table.
-  final pulumi.Input<List<String>>? bucketColumns;
+  final pulumi.Input<List<String>?>? bucketColumns;
   /// Configuration block for columns in the table. See `columns` below.
-  final pulumi.Input<List<CatalogTableStorageDescriptorColumn>>? columns;
+  final pulumi.Input<List<CatalogTableStorageDescriptorColumn>?>? columns;
   /// Whether the data in the table is compressed.
-  final pulumi.Input<bool>? compressed;
+  final pulumi.Input<bool?>? compressed;
   /// Input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Must be specified if the table contains any dimension columns.
-  final pulumi.Input<int>? numberOfBuckets;
+  final pulumi.Input<int?>? numberOfBuckets;
   /// Output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// User-supplied properties in key-value form.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Object that references a schema stored in the AWS Glue Schema Registry. When creating a table, you can pass an empty list of columns for the schema, and instead use a schema reference. See Schema Reference below.
-  final pulumi.Input<CatalogTableStorageDescriptorSchemaReference>? schemaReference;
+  final pulumi.Input<CatalogTableStorageDescriptorSchemaReference?>? schemaReference;
   /// Configuration block for serialization and deserialization ("SerDe") information. See `serDeInfo` below.
-  final pulumi.Input<CatalogTableStorageDescriptorSerDeInfo>? serDeInfo;
+  final pulumi.Input<CatalogTableStorageDescriptorSerDeInfo?>? serDeInfo;
   /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewedInfo` below.
-  final pulumi.Input<CatalogTableStorageDescriptorSkewedInfo>? skewedInfo;
+  final pulumi.Input<CatalogTableStorageDescriptorSkewedInfo?>? skewedInfo;
   /// Configuration block for the sort order of each bucket in the table. See `sortColumns` below.
-  final pulumi.Input<List<CatalogTableStorageDescriptorSortColumn>>? sortColumns;
+  final pulumi.Input<List<CatalogTableStorageDescriptorSortColumn>?>? sortColumns;
   /// Whether the table data is stored in subdirectories.
-  final pulumi.Input<bool>? storedAsSubDirectories;
+  final pulumi.Input<bool?>? storedAsSubDirectories;
 
   /// Creates a new [CatalogTableStorageDescriptor].
   /// [additionalLocations] List of locations that point to the path where a Delta table is located.
@@ -96,7 +96,7 @@ class CatalogTableStorageDescriptor {
       compressed: (() { final guardedValue = map['compressed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inputFormat: (() { final guardedValue = map['inputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfBuckets: (() { final guardedValue = map['numberOfBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfBuckets: (() { final guardedValue = map['numberOfBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       outputFormat: (() { final guardedValue = map['outputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       schemaReference: (() { final guardedValue = map['schemaReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogTableStorageDescriptorSchemaReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

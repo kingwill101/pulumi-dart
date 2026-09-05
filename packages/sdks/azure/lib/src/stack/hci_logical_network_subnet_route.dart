@@ -6,7 +6,7 @@ class HciLogicalNetworkSubnetRoute {
   /// The Address in CIDR notation. Changing this forces a new resource to be created.
   final pulumi.Input<String> addressPrefix;
   /// The name of the route. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The IPv4 address of the next hop. Changing this forces a new resource to be created.
   final pulumi.Input<String> nextHopIpAddress;
 

@@ -6,21 +6,21 @@ import 'custom_permissions_capabilities.dart';
 /// Input properties used for looking up and filtering CustomPermissions resources.
 class CustomPermissionsState {
   /// ARN of the custom permissions profile.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Actions to include in the custom permissions profile. See capabilities.
-  final pulumi.Input<CustomPermissionsCapabilities>? capabilities;
+  final pulumi.Input<CustomPermissionsCapabilities?>? capabilities;
   /// Custom permissions profile name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? customPermissionsName;
+  final pulumi.Input<String?>? customPermissionsName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CustomPermissionsState].
   /// [arn] ARN of the custom permissions profile.

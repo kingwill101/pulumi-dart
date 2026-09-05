@@ -193,8 +193,8 @@ import 'medtech_service_state.dart';
 /// 						"typeMatchExpression": "$..[?(@heartrate)]",
 /// 						"deviceIdExpression":  "$.deviceid",
 /// 						"timestampExpression": "$.measurementdatetime",
-/// 						"values": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"values": []map[string]string{
+/// 							{
 /// 								"required":        "true",
 /// 								"valueExpression": "$.heartrate",
 /// 								"valueName":       "hr",
@@ -210,7 +210,7 @@ import 'medtech_service_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = healthcare.NewMedtechService(ctx, "example", &healthcare.MedtechServiceArgs{
 /// 			Name:        pulumi.String("examplemed"),
-/// 			WorkspaceId: exampleWorkspace.ID(),
+/// 			WorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:    pulumi.String("east us"),
 /// 			Identity: &healthcare.MedtechServiceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -434,7 +434,7 @@ class MedtechService extends pulumi.CustomResource {
           'azure:healthcare/medtechService:MedtechService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     deviceMappingJson = registerOutput<String>('deviceMappingJson');
     eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
@@ -443,7 +443,7 @@ class MedtechService extends pulumi.CustomResource {
     identity = registerOutput<MedtechServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MedtechServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -452,11 +452,12 @@ class MedtechService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MedtechServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MedtechService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,7 +478,27 @@ class MedtechService extends pulumi.CustomResource {
     identity = registerOutput<MedtechServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MedtechServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [MedtechService] resource.
+  MedtechService.reference(String urn)
+    : super(
+        'azure:healthcare/medtechService:MedtechService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deviceMappingJson = registerOutput<String>('deviceMappingJson');
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
+    eventhubName = registerOutput<String>('eventhubName');
+    eventhubNamespaceName = registerOutput<String>('eventhubNamespaceName');
+    identity = registerOutput<MedtechServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MedtechServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

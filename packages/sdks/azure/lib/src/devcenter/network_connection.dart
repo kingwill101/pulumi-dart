@@ -152,7 +152,7 @@ import 'network_connection_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			DomainJoinType:    pulumi.String("AzureADJoin"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -336,18 +336,19 @@ class NetworkConnection extends pulumi.CustomResource {
           'azure:devcenter/networkConnection:NetworkConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['domainPassword'],
         ) {
     domainJoinType = registerOutput<String>('domainJoinType');
     domainName = registerOutput<String?>('domainName');
-    domainPassword = registerOutput<String?>('domainPassword');
+    domainPassword = registerOutput<String?>('domainPassword', isSecret: true);
     domainUsername = registerOutput<String?>('domainUsername');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationUnit = registerOutput<String?>('organizationUnit');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkConnection] resource's state with the given [name] and [id].
@@ -355,11 +356,12 @@ class NetworkConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,13 +377,35 @@ class NetworkConnection extends pulumi.CustomResource {
         ) {
     domainJoinType = registerOutput<String>('domainJoinType');
     domainName = registerOutput<String?>('domainName');
-    domainPassword = registerOutput<String?>('domainPassword');
+    domainPassword = registerOutput<String?>('domainPassword', isSecret: true);
     domainUsername = registerOutput<String?>('domainUsername');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationUnit = registerOutput<String?>('organizationUnit');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkConnection] resource.
+  NetworkConnection.reference(String urn)
+    : super(
+        'azure:devcenter/networkConnection:NetworkConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['domainPassword'],
+        isResourceReference: true,
+      ) {
+    domainJoinType = registerOutput<String>('domainJoinType');
+    domainName = registerOutput<String?>('domainName');
+    domainPassword = registerOutput<String?>('domainPassword', isSecret: true);
+    domainUsername = registerOutput<String?>('domainUsername');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationUnit = registerOutput<String?>('organizationUnit');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

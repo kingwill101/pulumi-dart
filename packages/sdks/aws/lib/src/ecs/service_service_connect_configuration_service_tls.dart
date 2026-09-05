@@ -7,9 +7,9 @@ class ServiceServiceConnectConfigurationServiceTls {
   /// Details of the certificate authority which will issue the certificate.
   final pulumi.Input<ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority> issuerCertAuthority;
   /// KMS key used to encrypt the private key in Secrets Manager.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// ARN of the IAM Role that's associated with the Service Connect TLS.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceTls].
   /// [issuerCertAuthority] Details of the certificate authority which will issue the certificate.

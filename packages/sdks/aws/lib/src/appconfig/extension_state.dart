@@ -7,22 +7,22 @@ import 'extension_parameter.dart';
 /// Input properties used for looking up and filtering Extension resources.
 class ExtensionState {
   /// Action points defined in the extension. Detailed below.
-  final pulumi.Input<List<ExtensionActionPoint>>? actionPoints;
+  final pulumi.Input<List<ExtensionActionPoint>?>? actionPoints;
   /// ARN of the AppConfig Extension.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Information about the extension.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
-  final pulumi.Input<List<ExtensionParameter>>? parameters;
+  final pulumi.Input<List<ExtensionParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Version number for the extension.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [ExtensionState].
   /// [actionPoints] Action points defined in the extension. Detailed below.
@@ -70,7 +70,7 @@ class ExtensionState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

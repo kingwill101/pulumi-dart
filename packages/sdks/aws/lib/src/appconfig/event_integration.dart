@@ -13,12 +13,12 @@ import 'event_integration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appconfig.EventIntegration("example", {
-///     name: "example-name",
-///     description: "Example Description",
-///     eventbridgeBus: "default",
 ///     eventFilter: {
 ///         source: "aws.partner/example.com",
 ///     },
+///     name: "example-name",
+///     description: "Example Description",
+///     eventbridgeBus: "default",
 ///     tags: {
 ///         Name: "Example Event Integration",
 ///     },
@@ -29,12 +29,12 @@ import 'event_integration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appconfig.EventIntegration("example",
-///     name="example-name",
-///     description="Example Description",
-///     eventbridge_bus="default",
 ///     event_filter={
 ///         "source": "aws.partner/example.com",
 ///     },
+///     name="example-name",
+///     description="Example Description",
+///     eventbridge_bus="default",
 ///     tags={
 ///         "Name": "Example Event Integration",
 ///     })
@@ -49,13 +49,13 @@ import 'event_integration_state.dart';
 /// {
 ///     var example = new Aws.AppConfig.EventIntegration("example", new()
 ///     {
-///         Name = "example-name",
-///         Description = "Example Description",
-///         EventbridgeBus = "default",
 ///         EventFilter = new Aws.AppConfig.Inputs.EventIntegrationEventFilterArgs
 ///         {
 ///             Source = "aws.partner/example.com",
 ///         },
+///         Name = "example-name",
+///         Description = "Example Description",
+///         EventbridgeBus = "default",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Event Integration" },
@@ -75,12 +75,12 @@ import 'event_integration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appconfig.NewEventIntegration(ctx, "example", &appconfig.EventIntegrationArgs{
-/// 			Name:           pulumi.String("example-name"),
-/// 			Description:    pulumi.String("Example Description"),
-/// 			EventbridgeBus: pulumi.String("default"),
 /// 			EventFilter: &appconfig.EventIntegrationEventFilterArgs{
 /// 				Source: pulumi.String("aws.partner/example.com"),
 /// 			},
+/// 			Name:           pulumi.String("example-name"),
+/// 			Description:    pulumi.String("Example Description"),
+/// 			EventbridgeBus: pulumi.String("default"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Event Integration"),
 /// 			},
@@ -102,12 +102,12 @@ import 'event_integration_state.dart';
 /// }
 ///
 /// resource "aws_appconfig_eventintegration" "example" {
-///   name            = "example-name"
-///   description     = "Example Description"
-///   eventbridge_bus = "default"
 ///   event_filter = {
 ///     source = "aws.partner/example.com"
 ///   }
+///   name            = "example-name"
+///   description     = "Example Description"
+///   eventbridge_bus = "default"
 ///   tags = {
 ///     "Name" = "Example Event Integration"
 ///   }
@@ -136,12 +136,12 @@ import 'event_integration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventIntegration("example", EventIntegrationArgs.builder()
-///             .name("example-name")
-///             .description("Example Description")
-///             .eventbridgeBus("default")
 ///             .eventFilter(EventIntegrationEventFilterArgs.builder()
 ///                 .source("aws.partner/example.com")
 ///                 .build())
+///             .name("example-name")
+///             .description("Example Description")
+///             .eventbridgeBus("default")
 ///             .tags(Map.of("Name", "Example Event Integration"))
 ///             .build());
 ///
@@ -153,11 +153,11 @@ import 'event_integration_state.dart';
 ///   example:
 ///     type: aws:appconfig:EventIntegration
 ///     properties:
+///       eventFilter:
+///         source: aws.partner/example.com
 ///       name: example-name
 ///       description: Example Description
 ///       eventbridgeBus: default
-///       eventFilter:
-///         source: aws.partner/example.com
 ///       tags:
 ///         Name: Example Event Integration
 /// ```
@@ -200,7 +200,7 @@ class EventIntegration extends pulumi.CustomResource {
           'aws:appconfig/eventIntegration:EventIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -208,8 +208,8 @@ class EventIntegration extends pulumi.CustomResource {
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventIntegration] resource's state with the given [name] and [id].
@@ -217,11 +217,12 @@ class EventIntegration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventIntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventIntegration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,7 +242,26 @@ class EventIntegration extends pulumi.CustomResource {
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventIntegration] resource.
+  EventIntegration.reference(String urn)
+    : super(
+        'aws:appconfig/eventIntegration:EventIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    eventFilter = registerOutput<EventIntegrationEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventIntegrationEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventbridgeBus = registerOutput<String>('eventbridgeBus');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaCertificateRegistrationConfig {
   /// The ARN of the role.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The template body.
-  final pulumi.Input<String>? templateBody;
+  final pulumi.Input<String?>? templateBody;
   /// The name of the provisioning template.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [CaCertificateRegistrationConfig].
   /// [roleArn] The ARN of the role.

@@ -304,7 +304,7 @@ import 'resource_policy_state.dart';
 /// $ pulumi import aws:organizations/resourcePolicy:ResourcePolicy example rp-12345678
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the resource policy.
+  /// ARN of the resource policy.
   late final pulumi.Output<String> arn;
   /// Content for the resource policy. The text must be correctly formatted JSON that complies with the syntax for the resource policy's type. See the [_AWS Organizations User Guide_](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_delegate_examples.html) for examples.
   late final pulumi.Output<String> content;
@@ -325,12 +325,12 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:organizations/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResourcePolicy] resource's state with the given [name] and [id].
@@ -338,11 +338,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,7 +359,22 @@ class ResourcePolicy extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     content = registerOutput<String>('content');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:organizations/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    content = registerOutput<String>('content');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

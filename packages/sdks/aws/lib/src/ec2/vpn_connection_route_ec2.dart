@@ -279,7 +279,7 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
           'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');
@@ -291,11 +291,12 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnConnectionRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnConnectionRouteEc2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -309,6 +310,20 @@ class VpnConnectionRouteEc2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    region = registerOutput<String>('region');
+    vpnConnectionId = registerOutput<String>('vpnConnectionId');
+  }
+
+  /// Creates a typed reference to an existing [VpnConnectionRouteEc2] resource.
+  VpnConnectionRouteEc2.reference(String urn)
+    : super(
+        'aws:ec2/vpnConnectionRoute:VpnConnectionRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     region = registerOutput<String>('region');
     vpnConnectionId = registerOutput<String>('vpnConnectionId');

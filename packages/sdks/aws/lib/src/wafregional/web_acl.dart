@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_args.dart';
 import 'web_acl_default_action.dart';
 import 'web_acl_logging_configuration.dart';
+import 'web_acl_rule.dart';
 import 'web_acl_state.dart';
 
 /// Provides a WAF Regional Web ACL Resource for use with Application Load Balancer.
@@ -16,24 +17,22 @@ import 'web_acl_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ipset = new aws.wafregional.IpSet("ipset", {
-///     name: "tfIPSet",
 ///     ipSetDescriptors: [{
 ///         type: "IPV4",
 ///         value: "192.0.7.0/24",
 ///     }],
+///     name: "tfIPSet",
 /// });
 /// const wafrule = new aws.wafregional.Rule("wafrule", {
-///     name: "tfWAFRule",
-///     metricName: "tfWAFRule",
 ///     predicates: [{
 ///         dataId: ipset.id,
 ///         negated: false,
 ///         type: "IPMatch",
 ///     }],
+///     name: "tfWAFRule",
+///     metricName: "tfWAFRule",
 /// });
 /// const wafacl = new aws.wafregional.WebAcl("wafacl", {
-///     name: "tfWebACL",
-///     metricName: "tfWebACL",
 ///     defaultAction: {
 ///         type: "ALLOW",
 ///     },
@@ -45,6 +44,8 @@ import 'web_acl_state.dart';
 ///         ruleId: wafrule.id,
 ///         type: "REGULAR",
 ///     }],
+///     name: "tfWebACL",
+///     metricName: "tfWebACL",
 /// });
 /// ```
 /// ```python
@@ -52,22 +53,20 @@ import 'web_acl_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ipset = aws.wafregional.IpSet("ipset",
-///     name="tfIPSet",
 ///     ip_set_descriptors=[{
 ///         "type": "IPV4",
 ///         "value": "192.0.7.0/24",
-///     }])
+///     }],
+///     name="tfIPSet")
 /// wafrule = aws.wafregional.Rule("wafrule",
-///     name="tfWAFRule",
-///     metric_name="tfWAFRule",
 ///     predicates=[{
 ///         "data_id": ipset.id,
 ///         "negated": False,
 ///         "type": "IPMatch",
-///     }])
+///     }],
+///     name="tfWAFRule",
+///     metric_name="tfWAFRule")
 /// wafacl = aws.wafregional.WebAcl("wafacl",
-///     name="tfWebACL",
-///     metric_name="tfWebACL",
 ///     default_action={
 ///         "type": "ALLOW",
 ///     },
@@ -78,7 +77,9 @@ import 'web_acl_state.dart';
 ///         "priority": 1,
 ///         "rule_id": wafrule.id,
 ///         "type": "REGULAR",
-///     }])
+///     }],
+///     name="tfWebACL",
+///     metric_name="tfWebACL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -90,7 +91,6 @@ import 'web_acl_state.dart';
 /// {
 ///     var ipset = new Aws.WafRegional.IpSet("ipset", new()
 ///     {
-///         Name = "tfIPSet",
 ///         IpSetDescriptors = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.IpSetIpSetDescriptorArgs
@@ -99,12 +99,11 @@ import 'web_acl_state.dart';
 ///                 Value = "192.0.7.0/24",
 ///             },
 ///         },
+///         Name = "tfIPSet",
 ///     });
 ///
 ///     var wafrule = new Aws.WafRegional.Rule("wafrule", new()
 ///     {
-///         Name = "tfWAFRule",
-///         MetricName = "tfWAFRule",
 ///         Predicates = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.RulePredicateArgs
@@ -114,12 +113,12 @@ import 'web_acl_state.dart';
 ///                 Type = "IPMatch",
 ///             },
 ///         },
+///         Name = "tfWAFRule",
+///         MetricName = "tfWAFRule",
 ///     });
 ///
 ///     var wafacl = new Aws.WafRegional.WebAcl("wafacl", new()
 ///     {
-///         Name = "tfWebACL",
-///         MetricName = "tfWebACL",
 ///         DefaultAction = new Aws.WafRegional.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Type = "ALLOW",
@@ -137,6 +136,8 @@ import 'web_acl_state.dart';
 ///                 Type = "REGULAR",
 ///             },
 ///         },
+///         Name = "tfWebACL",
+///         MetricName = "tfWebACL",
 ///     });
 ///
 /// });
@@ -152,20 +153,18 @@ import 'web_acl_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ipset, err := wafregional.NewIpSet(ctx, "ipset", &wafregional.IpSetArgs{
-/// 			Name: pulumi.String("tfIPSet"),
 /// 			IpSetDescriptors: wafregional.IpSetIpSetDescriptorArray{
 /// 				&wafregional.IpSetIpSetDescriptorArgs{
 /// 					Type:  pulumi.String("IPV4"),
 /// 					Value: pulumi.String("192.0.7.0/24"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfIPSet"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		wafrule, err := wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
-/// 			Name:       pulumi.String("tfWAFRule"),
-/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
 /// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
@@ -173,13 +172,13 @@ import 'web_acl_state.dart';
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("tfWAFRule"),
+/// 			MetricName: pulumi.String("tfWAFRule"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = wafregional.NewWebAcl(ctx, "wafacl", &wafregional.WebAclArgs{
-/// 			Name:       pulumi.String("tfWebACL"),
-/// 			MetricName: pulumi.String("tfWebACL"),
 /// 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 /// 				Type: pulumi.String("ALLOW"),
 /// 			},
@@ -193,6 +192,8 @@ import 'web_acl_state.dart';
 /// 					Type:     pulumi.String("REGULAR"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("tfWebACL"),
+/// 			MetricName: pulumi.String("tfWebACL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -211,24 +212,22 @@ import 'web_acl_state.dart';
 /// }
 ///
 /// resource "aws_wafregional_ipset" "ipset" {
-///   name = "tfIPSet"
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
+///   name = "tfIPSet"
 /// }
 /// resource "aws_wafregional_rule" "wafrule" {
-///   name        = "tfWAFRule"
-///   metric_name = "tfWAFRule"
 ///   predicates {
 ///     data_id = aws_wafregional_ipset.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
 /// }
 /// resource "aws_wafregional_webacl" "wafacl" {
-///   name        = "tfWebACL"
-///   metric_name = "tfWebACL"
 ///   default_action = {
 ///     type = "ALLOW"
 ///   }
@@ -240,6 +239,8 @@ import 'web_acl_state.dart';
 ///     rule_id  = aws_wafregional_rule.wafrule.id
 ///     type     = "REGULAR"
 ///   }
+///   name        = "tfWebACL"
+///   metric_name = "tfWebACL"
 /// }
 /// ```
 /// ```java
@@ -273,26 +274,24 @@ import 'web_acl_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ipset = new IpSet("ipset", IpSetArgs.builder()
-///             .name("tfIPSet")
 ///             .ipSetDescriptors(IpSetIpSetDescriptorArgs.builder()
 ///                 .type("IPV4")
 ///                 .value("192.0.7.0/24")
 ///                 .build())
+///             .name("tfIPSet")
 ///             .build());
 ///
 ///         var wafrule = new Rule("wafrule", RuleArgs.builder()
-///             .name("tfWAFRule")
-///             .metricName("tfWAFRule")
 ///             .predicates(RulePredicateArgs.builder()
 ///                 .dataId(ipset.id())
 ///                 .negated(false)
 ///                 .type("IPMatch")
 ///                 .build())
+///             .name("tfWAFRule")
+///             .metricName("tfWAFRule")
 ///             .build());
 ///
 ///         var wafacl = new WebAcl("wafacl", WebAclArgs.builder()
-///             .name("tfWebACL")
-///             .metricName("tfWebACL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .type("ALLOW")
 ///                 .build())
@@ -304,6 +303,8 @@ import 'web_acl_state.dart';
 ///                 .ruleId(wafrule.id())
 ///                 .type("REGULAR")
 ///                 .build())
+///             .name("tfWebACL")
+///             .metricName("tfWebACL")
 ///             .build());
 ///
 ///     }
@@ -314,24 +315,22 @@ import 'web_acl_state.dart';
 ///   ipset:
 ///     type: aws:wafregional:IpSet
 ///     properties:
-///       name: tfIPSet
 ///       ipSetDescriptors:
 ///         - type: IPV4
 ///           value: 192.0.7.0/24
+///       name: tfIPSet
 ///   wafrule:
 ///     type: aws:wafregional:Rule
 ///     properties:
-///       name: tfWAFRule
-///       metricName: tfWAFRule
 ///       predicates:
 ///         - dataId: ${ipset.id}
 ///           negated: false
 ///           type: IPMatch
+///       name: tfWAFRule
+///       metricName: tfWAFRule
 ///   wafacl:
 ///     type: aws:wafregional:WebAcl
 ///     properties:
-///       name: tfWebACL
-///       metricName: tfWebACL
 ///       defaultAction:
 ///         type: ALLOW
 ///       rules:
@@ -340,6 +339,8 @@ import 'web_acl_state.dart';
 ///           priority: 1
 ///           ruleId: ${wafrule.id}
 ///           type: REGULAR
+///       name: tfWebACL
+///       metricName: tfWebACL
 /// ```
 ///
 ///
@@ -351,19 +352,19 @@ import 'web_acl_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafregional.WebAcl("example", {
-///     name: "example",
-///     metricName: "example",
 ///     defaultAction: {
 ///         type: "ALLOW",
 ///     },
 ///     rules: [{
-///         priority: 1,
-///         ruleId: exampleAwsWafregionalRuleGroup.id,
-///         type: "GROUP",
 ///         overrideAction: {
 ///             type: "NONE",
 ///         },
+///         priority: 1,
+///         ruleId: exampleAwsWafregionalRuleGroup.id,
+///         type: "GROUP",
 ///     }],
+///     name: "example",
+///     metricName: "example",
 /// });
 /// ```
 /// ```python
@@ -371,19 +372,19 @@ import 'web_acl_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafregional.WebAcl("example",
-///     name="example",
-///     metric_name="example",
 ///     default_action={
 ///         "type": "ALLOW",
 ///     },
 ///     rules=[{
-///         "priority": 1,
-///         "rule_id": example_aws_wafregional_rule_group["id"],
-///         "type": "GROUP",
 ///         "override_action": {
 ///             "type": "NONE",
 ///         },
-///     }])
+///         "priority": 1,
+///         "rule_id": example_aws_wafregional_rule_group["id"],
+///         "type": "GROUP",
+///     }],
+///     name="example",
+///     metric_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -395,8 +396,6 @@ import 'web_acl_state.dart';
 /// {
 ///     var example = new Aws.WafRegional.WebAcl("example", new()
 ///     {
-///         Name = "example",
-///         MetricName = "example",
 ///         DefaultAction = new Aws.WafRegional.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Type = "ALLOW",
@@ -405,15 +404,17 @@ import 'web_acl_state.dart';
 ///         {
 ///             new Aws.WafRegional.Inputs.WebAclRuleArgs
 ///             {
-///                 Priority = 1,
-///                 RuleId = exampleAwsWafregionalRuleGroup.Id,
-///                 Type = "GROUP",
 ///                 OverrideAction = new Aws.WafRegional.Inputs.WebAclRuleOverrideActionArgs
 ///                 {
 ///                     Type = "NONE",
 ///                 },
+///                 Priority = 1,
+///                 RuleId = exampleAwsWafregionalRuleGroup.Id,
+///                 Type = "GROUP",
 ///             },
 ///         },
+///         Name = "example",
+///         MetricName = "example",
 ///     });
 ///
 /// });
@@ -429,21 +430,21 @@ import 'web_acl_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			MetricName: pulumi.String("example"),
 /// 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 /// 				Type: pulumi.String("ALLOW"),
 /// 			},
 /// 			Rules: wafregional.WebAclRuleArray{
 /// 				&wafregional.WebAclRuleArgs{
-/// 					Priority: pulumi.Int(1),
-/// 					RuleId:   pulumi.Any(exampleAwsWafregionalRuleGroup.Id),
-/// 					Type:     pulumi.String("GROUP"),
 /// 					OverrideAction: &wafregional.WebAclRuleOverrideActionArgs{
 /// 						Type: pulumi.String("NONE"),
 /// 					},
+/// 					Priority: pulumi.Int(1),
+/// 					RuleId:   pulumi.Any(exampleAwsWafregionalRuleGroup.Id),
+/// 					Type:     pulumi.String("GROUP"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			MetricName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -462,19 +463,19 @@ import 'web_acl_state.dart';
 /// }
 ///
 /// resource "aws_wafregional_webacl" "example" {
-///   name        = "example"
-///   metric_name = "example"
 ///   default_action = {
 ///     type = "ALLOW"
 ///   }
 ///   rules {
-///     priority = 1
-///     rule_id  = exampleAwsWafregionalRuleGroup.id
-///     type     = "GROUP"
 ///     override_action = {
 ///       type = "NONE"
 ///     }
+///     priority = 1
+///     rule_id  = exampleAwsWafregionalRuleGroup.id
+///     type     = "GROUP"
 ///   }
+///   name        = "example"
+///   metric_name = "example"
 /// }
 /// ```
 /// ```java
@@ -502,19 +503,19 @@ import 'web_acl_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAcl("example", WebAclArgs.builder()
-///             .name("example")
-///             .metricName("example")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .type("ALLOW")
 ///                 .build())
 ///             .rules(WebAclRuleArgs.builder()
-///                 .priority(1)
-///                 .ruleId(exampleAwsWafregionalRuleGroup.id())
-///                 .type("GROUP")
 ///                 .overrideAction(WebAclRuleOverrideActionArgs.builder()
 ///                     .type("NONE")
 ///                     .build())
+///                 .priority(1)
+///                 .ruleId(exampleAwsWafregionalRuleGroup.id())
+///                 .type("GROUP")
 ///                 .build())
+///             .name("example")
+///             .metricName("example")
 ///             .build());
 ///
 ///     }
@@ -525,16 +526,16 @@ import 'web_acl_state.dart';
 ///   example:
 ///     type: aws:wafregional:WebAcl
 ///     properties:
-///       name: example
-///       metricName: example
 ///       defaultAction:
 ///         type: ALLOW
 ///       rules:
-///         - priority: 1
+///         - overrideAction:
+///             type: NONE
+///           priority: 1
 ///           ruleId: ${exampleAwsWafregionalRuleGroup.id}
 ///           type: GROUP
-///           overrideAction:
-///             type: NONE
+///       name: example
+///       metricName: example
 /// ```
 ///
 ///
@@ -548,7 +549,6 @@ import 'web_acl_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafregional.WebAcl("example", {loggingConfiguration: {
-///     logDestination: exampleAwsKinesisFirehoseDeliveryStream.arn,
 ///     redactedFields: {
 ///         fieldToMatches: [
 ///             {
@@ -560,6 +560,7 @@ import 'web_acl_state.dart';
 ///             },
 ///         ],
 ///     },
+///     logDestination: exampleAwsKinesisFirehoseDeliveryStream.arn,
 /// }});
 /// ```
 /// ```python
@@ -567,7 +568,6 @@ import 'web_acl_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafregional.WebAcl("example", logging_configuration={
-///     "log_destination": example_aws_kinesis_firehose_delivery_stream["arn"],
 ///     "redacted_fields": {
 ///         "field_to_matches": [
 ///             {
@@ -579,6 +579,7 @@ import 'web_acl_state.dart';
 ///             },
 ///         ],
 ///     },
+///     "log_destination": example_aws_kinesis_firehose_delivery_stream["arn"],
 /// })
 /// ```
 /// ```csharp
@@ -593,7 +594,6 @@ import 'web_acl_state.dart';
 ///     {
 ///         LoggingConfiguration = new Aws.WafRegional.Inputs.WebAclLoggingConfigurationArgs
 ///         {
-///             LogDestination = exampleAwsKinesisFirehoseDeliveryStream.Arn,
 ///             RedactedFields = new Aws.WafRegional.Inputs.WebAclLoggingConfigurationRedactedFieldsArgs
 ///             {
 ///                 FieldToMatches = new[]
@@ -609,6 +609,7 @@ import 'web_acl_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             LogDestination = exampleAwsKinesisFirehoseDeliveryStream.Arn,
 ///         },
 ///     });
 ///
@@ -626,7 +627,6 @@ import 'web_acl_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
 /// 			LoggingConfiguration: &wafregional.WebAclLoggingConfigurationArgs{
-/// 				LogDestination: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
 /// 				RedactedFields: &wafregional.WebAclLoggingConfigurationRedactedFieldsArgs{
 /// 					FieldToMatches: wafregional.WebAclLoggingConfigurationRedactedFieldsFieldToMatchArray{
 /// 						&wafregional.WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs{
@@ -638,6 +638,7 @@ import 'web_acl_state.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				LogDestination: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -658,7 +659,6 @@ import 'web_acl_state.dart';
 ///
 /// resource "aws_wafregional_webacl" "example" {
 ///   logging_configuration = {
-///     log_destination = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///     redacted_fields = {
 ///       field_to_matches = [{
 ///         "type" = "URI"
@@ -667,6 +667,7 @@ import 'web_acl_state.dart';
 ///         "type" = "HEADER"
 ///       }]
 ///     }
+///     log_destination = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///   }
 /// }
 /// ```
@@ -696,7 +697,6 @@ import 'web_acl_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAcl("example", WebAclArgs.builder()
 ///             .loggingConfiguration(WebAclLoggingConfigurationArgs.builder()
-///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.arn())
 ///                 .redactedFields(WebAclLoggingConfigurationRedactedFieldsArgs.builder()
 ///                     .fieldToMatches(
 ///                         WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs.builder()
@@ -707,6 +707,7 @@ import 'web_acl_state.dart';
 ///                             .type("HEADER")
 ///                             .build())
 ///                     .build())
+///                 .logDestination(exampleAwsKinesisFirehoseDeliveryStream.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -719,12 +720,12 @@ import 'web_acl_state.dart';
 ///     type: aws:wafregional:WebAcl
 ///     properties:
 ///       loggingConfiguration:
-///         logDestination: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
 ///         redactedFields:
 ///           fieldToMatches:
 ///             - type: URI
 ///             - data: referer
 ///               type: HEADER
+///         logDestination: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
 /// ```
 ///
 ///
@@ -736,7 +737,7 @@ import 'web_acl_state.dart';
 /// $ pulumi import aws:wafregional/webAcl:WebAcl wafacl a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class WebAcl extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the WAF Regional WebACL.
+  /// ARN of the WAF Regional WebACL.
   late final pulumi.Output<String> arn;
   /// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
   late final pulumi.Output<WebAclDefaultAction> defaultAction;
@@ -749,7 +750,7 @@ class WebAcl extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Set of configuration blocks containing rules for the web ACL. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<WebAclRule>?> rules;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -767,7 +768,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:wafregional/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -775,9 +776,9 @@ class WebAcl extends pulumi.CustomResource {
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [WebAcl] resource's state with the given [name] and [id].
@@ -785,11 +786,12 @@ class WebAcl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAcl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -809,8 +811,28 @@ class WebAcl extends pulumi.CustomResource {
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [WebAcl] resource.
+  WebAcl.reference(String urn)
+    : super(
+        'aws:wafregional/webAcl:WebAcl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<WebAclRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclRule>(guardedValue, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

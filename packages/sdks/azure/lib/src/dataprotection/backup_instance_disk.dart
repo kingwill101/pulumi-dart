@@ -221,28 +221,24 @@ import 'backup_instance_disk_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example1", &authorization.AssignmentArgs{
-/// 			Scope:              example.ID(),
+/// 			Scope:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Disk Snapshot Contributor"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example2", &authorization.AssignmentArgs{
-/// 			Scope:              exampleManagedDisk.ID(),
+/// 			Scope:              exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Disk Backup Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBackupPolicyDisk, err := dataprotection.NewBackupPolicyDisk(ctx, "example", &dataprotection.BackupPolicyDiskArgs{
 /// 			Name:    pulumi.String("example-backup-policy"),
-/// 			VaultId: exampleBackupVault.ID(),
+/// 			VaultId: exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupRepeatingTimeIntervals: pulumi.StringArray{
 /// 				pulumi.String("R/2021-05-19T06:33:16+00:00/PT4H"),
 /// 			},
@@ -254,10 +250,10 @@ import 'backup_instance_disk_state.dart';
 /// 		_, err = dataprotection.NewBackupInstanceDisk(ctx, "example", &dataprotection.BackupInstanceDiskArgs{
 /// 			Name:                      pulumi.String("example-backup-instance"),
 /// 			Location:                  exampleBackupVault.Location,
-/// 			VaultId:                   exampleBackupVault.ID(),
-/// 			DiskId:                    exampleManagedDisk.ID(),
+/// 			VaultId:                   exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			DiskId:                    exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 			SnapshotResourceGroupName: example.Name,
-/// 			BackupPolicyId:            exampleBackupPolicyDisk.ID(),
+/// 			BackupPolicyId:            exampleBackupPolicyDisk.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -516,7 +512,7 @@ class BackupInstanceDisk extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     diskId = registerOutput<String>('diskId');
@@ -533,11 +529,12 @@ class BackupInstanceDisk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstanceDiskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstanceDisk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -551,6 +548,25 @@ class BackupInstanceDisk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    diskId = registerOutput<String>('diskId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
+    snapshotSubscriptionId = registerOutput<String?>('snapshotSubscriptionId');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstanceDisk] resource.
+  BackupInstanceDisk.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     diskId = registerOutput<String>('diskId');
     location = registerOutput<String>('location');

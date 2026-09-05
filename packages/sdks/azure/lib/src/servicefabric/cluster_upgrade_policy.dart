@@ -6,23 +6,23 @@ import 'cluster_upgrade_policy_health_policy.dart';
 
 class ClusterUpgradePolicy {
   /// A `deltaHealthPolicy` block as defined below
-  final pulumi.Input<ClusterUpgradePolicyDeltaHealthPolicy>? deltaHealthPolicy;
+  final pulumi.Input<ClusterUpgradePolicyDeltaHealthPolicy?>? deltaHealthPolicy;
   /// Indicates whether to restart the Service Fabric node even if only dynamic configurations have changed.
-  final pulumi.Input<bool>? forceRestartEnabled;
+  final pulumi.Input<bool?>? forceRestartEnabled;
   /// Specifies the duration, in "hh:mm:ss" string format, after which Service Fabric retries the health check if the previous health check fails. Defaults to `00:45:00`.
-  final pulumi.Input<String>? healthCheckRetryTimeout;
+  final pulumi.Input<String?>? healthCheckRetryTimeout;
   /// Specifies the duration, in "hh:mm:ss" string format, that Service Fabric waits in order to verify that the cluster is stable before it continues to the next upgrade domain or completes the upgrade. This wait duration prevents undetected changes of health right after the health check is performed. Defaults to `00:01:00`.
-  final pulumi.Input<String>? healthCheckStableDuration;
+  final pulumi.Input<String?>? healthCheckStableDuration;
   /// Specifies the duration, in "hh:mm:ss" string format, that Service Fabric waits before it performs the initial health check after it finishes the upgrade on the upgrade domain. Defaults to `00:00:30`.
-  final pulumi.Input<String>? healthCheckWaitDuration;
+  final pulumi.Input<String?>? healthCheckWaitDuration;
   /// A `healthPolicy` block as defined below
-  final pulumi.Input<ClusterUpgradePolicyHealthPolicy>? healthPolicy;
+  final pulumi.Input<ClusterUpgradePolicyHealthPolicy?>? healthPolicy;
   /// Specifies the duration, in "hh:mm:ss" string format, that Service Fabric takes to upgrade a single upgrade domain. After this period, the upgrade fails. Defaults to `02:00:00`.
-  final pulumi.Input<String>? upgradeDomainTimeout;
+  final pulumi.Input<String?>? upgradeDomainTimeout;
   /// Specifies the duration, in "hh:mm:ss" string format, that Service Fabric waits for a replica set to reconfigure into a safe state, if it is not already in a safe state, before Service Fabric proceeds with the upgrade. Defaults to `10675199.02:48:05.4775807`.
-  final pulumi.Input<String>? upgradeReplicaSetCheckTimeout;
+  final pulumi.Input<String?>? upgradeReplicaSetCheckTimeout;
   /// Specifies the duration, in "hh:mm:ss" string format, that Service Fabric takes for the entire upgrade. After this period, the upgrade fails. Defaults to `12:00:00`.
-  final pulumi.Input<String>? upgradeTimeout;
+  final pulumi.Input<String?>? upgradeTimeout;
 
   /// Creates a new [ClusterUpgradePolicy].
   /// [deltaHealthPolicy] A `deltaHealthPolicy` block as defined below

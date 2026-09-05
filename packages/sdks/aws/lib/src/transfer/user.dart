@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
+import 'user_home_directory_mapping.dart';
 import 'user_posix_profile.dart';
 import 'user_state.dart';
 
@@ -22,11 +23,11 @@ import 'user_state.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["transfer.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -48,14 +49,14 @@ import 'user_state.dart';
 ///     policy: foo.then(foo => foo.json),
 /// });
 /// const fooUser = new aws.transfer.User("foo", {
-///     serverId: fooServer.id,
-///     userName: "tftestuser",
-///     role: fooRole.arn,
-///     homeDirectoryType: "LOGICAL",
 ///     homeDirectoryMappings: [{
 ///         entry: "/test.pdf",
 ///         target: "/bucket3/test-path/tftestuser.pdf",
 ///     }],
+///     serverId: fooServer.id,
+///     userName: "tftestuser",
+///     role: fooRole.arn,
+///     homeDirectoryType: "LOGICAL",
 /// });
 /// ```
 /// ```python
@@ -68,11 +69,11 @@ import 'user_state.dart';
 ///         "NAME": "tf-acc-test-transfer-server",
 ///     })
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["transfer.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// foo_role = aws.iam.Role("foo",
@@ -89,14 +90,14 @@ import 'user_state.dart';
 ///     role=foo_role.id,
 ///     policy=foo.json)
 /// foo_user = aws.transfer.User("foo",
-///     server_id=foo_server.id,
-///     user_name="tftestuser",
-///     role=foo_role.arn,
-///     home_directory_type="LOGICAL",
 ///     home_directory_mappings=[{
 ///         "entry": "/test.pdf",
 ///         "target": "/bucket3/test-path/tftestuser.pdf",
-///     }])
+///     }],
+///     server_id=foo_server.id,
+///     user_name="tftestuser",
+///     role=foo_role.arn,
+///     home_directory_type="LOGICAL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -121,7 +122,6 @@ import 'user_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -133,6 +133,7 @@ import 'user_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -176,10 +177,6 @@ import 'user_state.dart';
 ///
 ///     var fooUser = new Aws.Transfer.User("foo", new()
 ///     {
-///         ServerId = fooServer.Id,
-///         UserName = "tftestuser",
-///         Role = fooRole.Arn,
-///         HomeDirectoryType = "LOGICAL",
 ///         HomeDirectoryMappings = new[]
 ///         {
 ///             new Aws.Transfer.Inputs.UserHomeDirectoryMappingArgs
@@ -188,6 +185,10 @@ import 'user_state.dart';
 ///                 Target = "/bucket3/test-path/tftestuser.pdf",
 ///             },
 ///         },
+///         ServerId = fooServer.Id,
+///         UserName = "tftestuser",
+///         Role = fooRole.Arn,
+///         HomeDirectoryType = "LOGICAL",
 ///     });
 ///
 /// });
@@ -215,7 +216,6 @@ import 'user_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -224,6 +224,7 @@ import 'user_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -266,16 +267,16 @@ import 'user_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = transfer.NewUser(ctx, "foo", &transfer.UserArgs{
-/// 			ServerId:          fooServer.ID().ToIDOutput().ToStringOutput(),
-/// 			UserName:          pulumi.String("tftestuser"),
-/// 			Role:              fooRole.Arn,
-/// 			HomeDirectoryType: pulumi.String("LOGICAL"),
 /// 			HomeDirectoryMappings: transfer.UserHomeDirectoryMappingArray{
 /// 				&transfer.UserHomeDirectoryMappingArgs{
 /// 					Entry:  pulumi.String("/test.pdf"),
 /// 					Target: pulumi.String("/bucket3/test-path/tftestuser.pdf"),
 /// 				},
 /// 			},
+/// 			ServerId:          fooServer.ID().ToIDOutput().ToStringOutput(),
+/// 			UserName:          pulumi.String("tftestuser"),
+/// 			Role:              fooRole.Arn,
+/// 			HomeDirectoryType: pulumi.String("LOGICAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -295,11 +296,11 @@ import 'user_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transfer.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -328,14 +329,14 @@ import 'user_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.foo.json
 /// }
 /// resource "aws_transfer_user" "foo" {
-///   server_id           = aws_transfer_server.foo.id
-///   user_name           = "tftestuser"
-///   role                = aws_iam_role.foo.arn
-///   home_directory_type = "LOGICAL"
 ///   home_directory_mappings {
 ///     entry  = "/test.pdf"
 ///     target = "/bucket3/test-path/tftestuser.pdf"
 ///   }
+///   server_id           = aws_transfer_server.foo.id
+///   user_name           = "tftestuser"
+///   role                = aws_iam_role.foo.arn
+///   home_directory_type = "LOGICAL"
 /// }
 /// ```
 /// ```java
@@ -377,11 +378,11 @@ import 'user_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("transfer.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -407,14 +408,14 @@ import 'user_state.dart';
 ///             .build());
 ///
 ///         var fooUser = new User("fooUser", UserArgs.builder()
-///             .serverId(fooServer.id())
-///             .userName("tftestuser")
-///             .role(fooRole.arn())
-///             .homeDirectoryType("LOGICAL")
 ///             .homeDirectoryMappings(UserHomeDirectoryMappingArgs.builder()
 ///                 .entry("/test.pdf")
 ///                 .target("/bucket3/test-path/tftestuser.pdf")
 ///                 .build())
+///             .serverId(fooServer.id())
+///             .userName("tftestuser")
+///             .role(fooRole.arn())
+///             .homeDirectoryType("LOGICAL")
 ///             .build());
 ///
 ///     }
@@ -446,24 +447,24 @@ import 'user_state.dart';
 ///     type: aws:transfer:User
 ///     name: foo
 ///     properties:
+///       homeDirectoryMappings:
+///         - entry: /test.pdf
+///           target: /bucket3/test-path/tftestuser.pdf
 ///       serverId: ${fooServer.id}
 ///       userName: tftestuser
 ///       role: ${fooRole.arn}
 ///       homeDirectoryType: LOGICAL
-///       homeDirectoryMappings:
-///         - entry: /test.pdf
-///           target: /bucket3/test-path/tftestuser.pdf
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - transfer.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   foo:
@@ -488,11 +489,11 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.User("example", {
-///     homeDirectoryType: "LOGICAL",
 ///     homeDirectoryMappings: [{
 ///         entry: "/",
 ///         target: `/${foo.id}/${Transfer:UserName}`,
 ///     }],
+///     homeDirectoryType: "LOGICAL",
 /// });
 /// ```
 /// ```python
@@ -500,11 +501,11 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.User("example",
-///     home_directory_type="LOGICAL",
 ///     home_directory_mappings=[{
 ///         "entry": "/",
 ///         "target": f"/{foo['id']}/${{Transfer:UserName}}",
-///     }])
+///     }],
+///     home_directory_type="LOGICAL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -516,7 +517,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Transfer.User("example", new()
 ///     {
-///         HomeDirectoryType = "LOGICAL",
 ///         HomeDirectoryMappings = new[]
 ///         {
 ///             new Aws.Transfer.Inputs.UserHomeDirectoryMappingArgs
@@ -525,6 +525,7 @@ import 'user_state.dart';
 ///                 Target = $"/{foo.Id}/${{Transfer:UserName}}",
 ///             },
 ///         },
+///         HomeDirectoryType = "LOGICAL",
 ///     });
 ///
 /// });
@@ -540,13 +541,13 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewUser(ctx, "example", &transfer.UserArgs{
-/// 			HomeDirectoryType: pulumi.String("LOGICAL"),
 /// 			HomeDirectoryMappings: transfer.UserHomeDirectoryMappingArray{
 /// 				&transfer.UserHomeDirectoryMappingArgs{
 /// 					Entry:  pulumi.String("/"),
 /// 					Target: pulumi.Sprintf("/%v/${Transfer:UserName}", foo.Id),
 /// 				},
 /// 			},
+/// 			HomeDirectoryType: pulumi.String("LOGICAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -565,11 +566,11 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_transfer_user" "example" {
-///   home_directory_type = "LOGICAL"
 ///   home_directory_mappings {
 ///     entry  = "/"
 ///     target ="/${foo.id}/${Transfer:UserName}"
 ///   }
+///   home_directory_type = "LOGICAL"
 /// }
 /// ```
 /// ```java
@@ -595,11 +596,11 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
-///             .homeDirectoryType("LOGICAL")
 ///             .homeDirectoryMappings(UserHomeDirectoryMappingArgs.builder()
 ///                 .entry("/")
 ///                 .target(String.format("/%s/${{Transfer:UserName}}", foo.id()))
 ///                 .build())
+///             .homeDirectoryType("LOGICAL")
 ///             .build());
 ///
 ///     }
@@ -610,10 +611,10 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:transfer:User
 ///     properties:
-///       homeDirectoryType: LOGICAL
 ///       homeDirectoryMappings:
 ///         - entry: /
 ///           target: /${foo.id}/$${Transfer:UserName}
+///       homeDirectoryType: LOGICAL
 /// ```
 ///
 ///
@@ -625,12 +626,12 @@ import 'user_state.dart';
 /// $ pulumi import aws:transfer/user:User bar s-12345678/test-username
 /// ```
 class User extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of Transfer User
+  /// ARN of Transfer User
   late final pulumi.Output<String> arn;
   /// Landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
   late final pulumi.Output<String?> homeDirectory;
   /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See `homeDirectoryMappings` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> homeDirectoryMappings;
+  late final pulumi.Output<List<UserHomeDirectoryMapping>?> homeDirectoryMappings;
   /// Type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
   late final pulumi.Output<String?> homeDirectoryType;
   /// IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. Since the IAM variable syntax matches Terraform's interpolation syntax, they must be escaped inside Terraform configuration strings (`$${Transfer:UserName}`).  These are evaluated on-the-fly when navigating the bucket.
@@ -639,7 +640,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<UserPosixProfile?> posixProfile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of an IAM role that allows the service to control your user’s access to your Amazon S3 bucket.
+  /// ARN of an IAM role that allows the service to control your user’s access to your Amazon S3 bucket.
   late final pulumi.Output<String> role;
   /// Server ID of the Transfer Server (e.g., `s-12345678`)
   late final pulumi.Output<String> serverId;
@@ -662,19 +663,19 @@ class User extends pulumi.CustomResource {
           'aws:transfer/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     homeDirectory = registerOutput<String?>('homeDirectory');
-    homeDirectoryMappings = registerOutput<List<Map<String, dynamic>>?>('homeDirectoryMappings');
+    homeDirectoryMappings = registerOutput<List<UserHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHomeDirectoryMapping>(guardedValue, (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
     posixProfile = registerOutput<UserPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     serverId = registerOutput<String>('serverId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
   }
 
@@ -683,11 +684,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -703,15 +705,38 @@ class User extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     homeDirectory = registerOutput<String?>('homeDirectory');
-    homeDirectoryMappings = registerOutput<List<Map<String, dynamic>>?>('homeDirectoryMappings');
+    homeDirectoryMappings = registerOutput<List<UserHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHomeDirectoryMapping>(guardedValue, (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
     posixProfile = registerOutput<UserPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     serverId = registerOutput<String>('serverId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:transfer/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    homeDirectory = registerOutput<String?>('homeDirectory');
+    homeDirectoryMappings = registerOutput<List<UserHomeDirectoryMapping>?>('homeDirectoryMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserHomeDirectoryMapping>(guardedValue, (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    homeDirectoryType = registerOutput<String?>('homeDirectoryType');
+    policy = registerOutput<String?>('policy');
+    posixProfile = registerOutput<UserPosixProfile?>('posixProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPosixProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    serverId = registerOutput<String>('serverId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
   }
 }

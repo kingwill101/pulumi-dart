@@ -12,14 +12,14 @@ class GetInternetGatewayArgs {
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<List<GetInternetGatewayFilter>>? filters;
+  final pulumi.Input<List<GetInternetGatewayFilter>?>? filters;
   /// ID of the specific Internet Gateway to retrieve.
-  final pulumi.Input<String>? internetGatewayId;
+  final pulumi.Input<String?>? internetGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired Internet Gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetInternetGatewayArgs].
   /// [filters] Custom filter block as described below.

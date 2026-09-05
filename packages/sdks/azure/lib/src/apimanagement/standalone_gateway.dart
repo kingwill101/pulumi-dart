@@ -216,7 +216,7 @@ import 'standalone_gateway_state.dart';
 /// 			ResourceGroupName:  example.Name,
 /// 			Location:           example.Location,
 /// 			VirtualNetworkType: pulumi.String("External"),
-/// 			BackendSubnetId:    exampleSubnet.ID(),
+/// 			BackendSubnetId:    exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Sku: &apimanagement.StandaloneGatewaySkuArgs{
 /// 				Capacity: pulumi.Int(1),
 /// 				Name:     pulumi.String("WorkspaceGatewayPremium"),
@@ -441,14 +441,14 @@ class StandaloneGateway extends pulumi.CustomResource {
           'azure:apimanagement/standaloneGateway:StandaloneGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backendSubnetId = registerOutput<String?>('backendSubnetId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<StandaloneGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandaloneGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
   }
 
@@ -457,11 +457,12 @@ class StandaloneGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandaloneGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StandaloneGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -480,7 +481,25 @@ class StandaloneGateway extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<StandaloneGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandaloneGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+  }
+
+  /// Creates a typed reference to an existing [StandaloneGateway] resource.
+  StandaloneGateway.reference(String urn)
+    : super(
+        'azure:apimanagement/standaloneGateway:StandaloneGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendSubnetId = registerOutput<String?>('backendSubnetId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<StandaloneGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandaloneGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
   }
 }

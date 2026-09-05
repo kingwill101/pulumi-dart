@@ -6,6 +6,7 @@ import 'features_app_configuration.dart';
 import 'features_application_insights.dart';
 import 'features_cognitive_account.dart';
 import 'features_databricks_workspace.dart';
+import 'features_enhanced_validation.dart';
 import 'features_key_vault.dart';
 import 'features_log_analytics_workspace.dart';
 import 'features_machine_learning.dart';
@@ -15,6 +16,7 @@ import 'features_postgresql_flexible_server.dart';
 import 'features_recovery_service.dart';
 import 'features_recovery_services_vaults.dart';
 import 'features_resource_group.dart';
+import 'features_servicebus.dart';
 import 'features_storage.dart';
 import 'features_subscription.dart';
 import 'features_template_deployment.dart';
@@ -22,29 +24,31 @@ import 'features_virtual_machine.dart';
 import 'features_virtual_machine_scale_set.dart';
 
 class Features {
-  final pulumi.Input<FeaturesApiManagement>? apiManagement;
-  final pulumi.Input<FeaturesAppConfiguration>? appConfiguration;
-  final pulumi.Input<FeaturesApplicationInsights>? applicationInsights;
-  final pulumi.Input<FeaturesCognitiveAccount>? cognitiveAccount;
-  final pulumi.Input<FeaturesDatabricksWorkspace>? databricksWorkspace;
-  final pulumi.Input<FeaturesKeyVault>? keyVault;
-  final pulumi.Input<FeaturesLogAnalyticsWorkspace>? logAnalyticsWorkspace;
-  final pulumi.Input<FeaturesMachineLearning>? machineLearning;
-  final pulumi.Input<FeaturesManagedDisk>? managedDisk;
-  final pulumi.Input<FeaturesNetapp>? netapp;
+  final pulumi.Input<FeaturesApiManagement?>? apiManagement;
+  final pulumi.Input<FeaturesAppConfiguration?>? appConfiguration;
+  final pulumi.Input<FeaturesApplicationInsights?>? applicationInsights;
+  final pulumi.Input<FeaturesCognitiveAccount?>? cognitiveAccount;
+  final pulumi.Input<FeaturesDatabricksWorkspace?>? databricksWorkspace;
+  final pulumi.Input<FeaturesEnhancedValidation?>? enhancedValidation;
+  final pulumi.Input<FeaturesKeyVault?>? keyVault;
+  final pulumi.Input<FeaturesLogAnalyticsWorkspace?>? logAnalyticsWorkspace;
+  final pulumi.Input<FeaturesMachineLearning?>? machineLearning;
+  final pulumi.Input<FeaturesManagedDisk?>? managedDisk;
+  final pulumi.Input<FeaturesNetapp?>? netapp;
   /// Whether to set the resource ID into state before polling asynchronous operations for completion. Defaults to `false`.
-  final pulumi.Input<bool>? persistIdOnCreateBeforePollingForCompletion;
-  final pulumi.Input<FeaturesPostgresqlFlexibleServer>? postgresqlFlexibleServer;
-  final pulumi.Input<FeaturesRecoveryService>? recoveryService;
-  final pulumi.Input<FeaturesRecoveryServicesVaults>? recoveryServicesVaults;
-  final pulumi.Input<FeaturesResourceGroup>? resourceGroup;
+  final pulumi.Input<bool?>? persistIdOnCreateBeforePollingForCompletion;
+  final pulumi.Input<FeaturesPostgresqlFlexibleServer?>? postgresqlFlexibleServer;
+  final pulumi.Input<FeaturesRecoveryService?>? recoveryService;
+  final pulumi.Input<FeaturesRecoveryServicesVaults?>? recoveryServicesVaults;
+  final pulumi.Input<FeaturesResourceGroup?>? resourceGroup;
+  final pulumi.Input<FeaturesServicebus?>? servicebus;
   /// Whether to skip the import check and allow the provider to overwrite existing remote resources if present. Defaults to `false`.
-  final pulumi.Input<bool>? skipImportCheckOnCreateAndAllowOverwritingExistingResources;
-  final pulumi.Input<FeaturesStorage>? storage;
-  final pulumi.Input<FeaturesSubscription>? subscription;
-  final pulumi.Input<FeaturesTemplateDeployment>? templateDeployment;
-  final pulumi.Input<FeaturesVirtualMachine>? virtualMachine;
-  final pulumi.Input<FeaturesVirtualMachineScaleSet>? virtualMachineScaleSet;
+  final pulumi.Input<bool?>? skipImportCheckOnCreateAndAllowOverwritingExistingResources;
+  final pulumi.Input<FeaturesStorage?>? storage;
+  final pulumi.Input<FeaturesSubscription?>? subscription;
+  final pulumi.Input<FeaturesTemplateDeployment?>? templateDeployment;
+  final pulumi.Input<FeaturesVirtualMachine?>? virtualMachine;
+  final pulumi.Input<FeaturesVirtualMachineScaleSet?>? virtualMachineScaleSet;
 
   /// Creates a new [Features].
   /// [apiManagement] Optional.
@@ -52,6 +56,7 @@ class Features {
   /// [applicationInsights] Optional.
   /// [cognitiveAccount] Optional.
   /// [databricksWorkspace] Optional.
+  /// [enhancedValidation] Optional.
   /// [keyVault] Optional.
   /// [logAnalyticsWorkspace] Optional.
   /// [machineLearning] Optional.
@@ -62,6 +67,7 @@ class Features {
   /// [recoveryService] Optional.
   /// [recoveryServicesVaults] Optional.
   /// [resourceGroup] Optional.
+  /// [servicebus] Optional.
   /// [skipImportCheckOnCreateAndAllowOverwritingExistingResources] Whether to skip the import check and allow the provider to overwrite existing remote resources if present. Defaults to `false`.
   /// [storage] Optional.
   /// [subscription] Optional.
@@ -74,6 +80,7 @@ class Features {
     this.applicationInsights,
     this.cognitiveAccount,
     this.databricksWorkspace,
+    this.enhancedValidation,
     this.keyVault,
     this.logAnalyticsWorkspace,
     this.machineLearning,
@@ -84,6 +91,7 @@ class Features {
     this.recoveryService,
     this.recoveryServicesVaults,
     this.resourceGroup,
+    this.servicebus,
     this.skipImportCheckOnCreateAndAllowOverwritingExistingResources,
     this.storage,
     this.subscription,
@@ -99,6 +107,7 @@ class Features {
       'applicationInsights': ?pulumi.Input.mapOptionalInputValue<FeaturesApplicationInsights, Map<String, dynamic>>(applicationInsights, (value) => value.toMap()),
       'cognitiveAccount': ?pulumi.Input.mapOptionalInputValue<FeaturesCognitiveAccount, Map<String, dynamic>>(cognitiveAccount, (value) => value.toMap()),
       'databricksWorkspace': ?pulumi.Input.mapOptionalInputValue<FeaturesDatabricksWorkspace, Map<String, dynamic>>(databricksWorkspace, (value) => value.toMap()),
+      'enhancedValidation': ?pulumi.Input.mapOptionalInputValue<FeaturesEnhancedValidation, Map<String, dynamic>>(enhancedValidation, (value) => value.toMap()),
       'keyVault': ?pulumi.Input.mapOptionalInputValue<FeaturesKeyVault, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'logAnalyticsWorkspace': ?pulumi.Input.mapOptionalInputValue<FeaturesLogAnalyticsWorkspace, Map<String, dynamic>>(logAnalyticsWorkspace, (value) => value.toMap()),
       'machineLearning': ?pulumi.Input.mapOptionalInputValue<FeaturesMachineLearning, Map<String, dynamic>>(machineLearning, (value) => value.toMap()),
@@ -109,6 +118,7 @@ class Features {
       'recoveryService': ?pulumi.Input.mapOptionalInputValue<FeaturesRecoveryService, Map<String, dynamic>>(recoveryService, (value) => value.toMap()),
       'recoveryServicesVaults': ?pulumi.Input.mapOptionalInputValue<FeaturesRecoveryServicesVaults, Map<String, dynamic>>(recoveryServicesVaults, (value) => value.toMap()),
       'resourceGroup': ?pulumi.Input.mapOptionalInputValue<FeaturesResourceGroup, Map<String, dynamic>>(resourceGroup, (value) => value.toMap()),
+      'servicebus': ?pulumi.Input.mapOptionalInputValue<FeaturesServicebus, Map<String, dynamic>>(servicebus, (value) => value.toMap()),
       'skipImportCheckOnCreateAndAllowOverwritingExistingResources': ?skipImportCheckOnCreateAndAllowOverwritingExistingResources,
       'storage': ?pulumi.Input.mapOptionalInputValue<FeaturesStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'subscription': ?pulumi.Input.mapOptionalInputValue<FeaturesSubscription, Map<String, dynamic>>(subscription, (value) => value.toMap()),
@@ -125,6 +135,7 @@ class Features {
       applicationInsights: (() { final guardedValue = map['applicationInsights']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cognitiveAccount: (() { final guardedValue = map['cognitiveAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesCognitiveAccount.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databricksWorkspace: (() { final guardedValue = map['databricksWorkspace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesDatabricksWorkspace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      enhancedValidation: (() { final guardedValue = map['enhancedValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesEnhancedValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logAnalyticsWorkspace: (() { final guardedValue = map['logAnalyticsWorkspace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesLogAnalyticsWorkspace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       machineLearning: (() { final guardedValue = map['machineLearning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesMachineLearning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -135,6 +146,7 @@ class Features {
       recoveryService: (() { final guardedValue = map['recoveryService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesRecoveryService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryServicesVaults: (() { final guardedValue = map['recoveryServicesVaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesRecoveryServicesVaults.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicebus: (() { final guardedValue = map['servicebus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesServicebus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skipImportCheckOnCreateAndAllowOverwritingExistingResources: (() { final guardedValue = map['skipImportCheckOnCreateAndAllowOverwritingExistingResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subscription: (() { final guardedValue = map['subscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeaturesSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

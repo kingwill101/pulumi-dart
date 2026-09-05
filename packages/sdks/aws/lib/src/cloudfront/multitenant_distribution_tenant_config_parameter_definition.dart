@@ -5,7 +5,7 @@ import 'multitenant_distribution_tenant_config_parameter_definition_definition.d
 
 class MultitenantDistributionTenantConfigParameterDefinition {
   /// Definition of the parameter schema. See Parameter Definition Schema below.
-  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinitionDefinition>>? definitions;
+  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinitionDefinition>?>? definitions;
   /// Name of the parameter.
   final pulumi.Input<String> name;
 

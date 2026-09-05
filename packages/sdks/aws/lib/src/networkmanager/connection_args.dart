@@ -10,9 +10,9 @@ class ConnectionArgs {
   /// ID of the second device in the connection.
   final pulumi.Input<String> connectedDeviceId;
   /// ID of the link for the second device.
-  final pulumi.Input<String>? connectedLinkId;
+  final pulumi.Input<String?>? connectedLinkId;
   /// Description of the connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the first device in the connection.
   final pulumi.Input<String> deviceId;
   /// ID of the global network.
@@ -20,9 +20,9 @@ class ConnectionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
   /// ID of the link for the first device.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
   /// Key-value tags for the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectionArgs].
   /// [connectedDeviceId] ID of the second device in the connection.

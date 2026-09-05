@@ -6,11 +6,11 @@ import 'frontdoor_firewall_policy_managed_rule_override_rule.dart';
 
 class FrontdoorFirewallPolicyManagedRuleOverride {
   /// One or more `exclusion` blocks as defined below.
-  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideExclusion>>? exclusions;
+  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideExclusion>?>? exclusions;
   /// The managed rule group to override.
   final pulumi.Input<String> ruleGroupName;
   /// One or more `rule` blocks as defined below. If none are specified, all of the rules in the group will be disabled.
-  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideRule>>? rules;
+  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideRule>?>? rules;
 
   /// Creates a new [FrontdoorFirewallPolicyManagedRuleOverride].
   /// [exclusions] One or more `exclusion` blocks as defined below.

@@ -5,17 +5,17 @@ import 'algorithm_training_specification_supported_hyper_parameter_range.dart';
 
 class AlgorithmTrainingSpecificationSupportedHyperParameter {
   /// Default value for the hyperparameter.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Description of the hyperparameter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the hyperparameter is required.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// Whether the hyperparameter can be tuned.
-  final pulumi.Input<bool>? isTunable;
+  final pulumi.Input<bool?>? isTunable;
   /// Hyperparameter name.
   final pulumi.Input<String> name;
   /// Allowed value range for the hyperparameter. See Parameter Range.
-  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRange>? range;
+  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRange?>? range;
   /// Hyperparameter type. Allowed values are: `Integer`, `Continuous`, `Categorical`, and `FreeText`.
   final pulumi.Input<String> type;
 

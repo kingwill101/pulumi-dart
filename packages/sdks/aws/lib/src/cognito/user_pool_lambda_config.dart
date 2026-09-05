@@ -7,33 +7,33 @@ import 'user_pool_lambda_config_pre_token_generation_config.dart';
 
 class UserPoolLambdaConfig {
   /// ARN of the lambda creating an authentication challenge.
-  final pulumi.Input<String>? createAuthChallenge;
+  final pulumi.Input<String?>? createAuthChallenge;
   /// A custom email sender AWS Lambda trigger. See customEmailSender Below.
-  final pulumi.Input<UserPoolLambdaConfigCustomEmailSender>? customEmailSender;
+  final pulumi.Input<UserPoolLambdaConfigCustomEmailSender?>? customEmailSender;
   /// Custom Message AWS Lambda trigger.
-  final pulumi.Input<String>? customMessage;
+  final pulumi.Input<String?>? customMessage;
   /// A custom SMS sender AWS Lambda trigger. See customSmsSender Below.
-  final pulumi.Input<UserPoolLambdaConfigCustomSmsSender>? customSmsSender;
+  final pulumi.Input<UserPoolLambdaConfigCustomSmsSender?>? customSmsSender;
   /// Defines the authentication challenge.
-  final pulumi.Input<String>? defineAuthChallenge;
-  /// The Amazon Resource Name of Key Management Service Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? defineAuthChallenge;
+  /// ARN of KMS Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Post-authentication AWS Lambda trigger.
-  final pulumi.Input<String>? postAuthentication;
+  final pulumi.Input<String?>? postAuthentication;
   /// Post-confirmation AWS Lambda trigger.
-  final pulumi.Input<String>? postConfirmation;
+  final pulumi.Input<String?>? postConfirmation;
   /// Pre-authentication AWS Lambda trigger.
-  final pulumi.Input<String>? preAuthentication;
+  final pulumi.Input<String?>? preAuthentication;
   /// Pre-registration AWS Lambda trigger.
-  final pulumi.Input<String>? preSignUp;
+  final pulumi.Input<String?>? preSignUp;
   /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambdaArn of `preTokenGenerationConfig`.
-  final pulumi.Input<String>? preTokenGeneration;
+  final pulumi.Input<String?>? preTokenGeneration;
   /// Allow to customize access tokens. See pre_token_configuration_type
-  final pulumi.Input<UserPoolLambdaConfigPreTokenGenerationConfig>? preTokenGenerationConfig;
+  final pulumi.Input<UserPoolLambdaConfigPreTokenGenerationConfig?>? preTokenGenerationConfig;
   /// User migration Lambda config type.
-  final pulumi.Input<String>? userMigration;
+  final pulumi.Input<String?>? userMigration;
   /// Verifies the authentication challenge response.
-  final pulumi.Input<String>? verifyAuthChallengeResponse;
+  final pulumi.Input<String?>? verifyAuthChallengeResponse;
 
   /// Creates a new [UserPoolLambdaConfig].
   /// [createAuthChallenge] ARN of the lambda creating an authentication challenge.
@@ -41,7 +41,7 @@ class UserPoolLambdaConfig {
   /// [customMessage] Custom Message AWS Lambda trigger.
   /// [customSmsSender] A custom SMS sender AWS Lambda trigger. See customSmsSender Below.
   /// [defineAuthChallenge] Defines the authentication challenge.
-  /// [kmsKeyId] The Amazon Resource Name of Key Management Service Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
+  /// [kmsKeyId] ARN of KMS Customer master keys. Amazon Cognito uses the key to encrypt codes and temporary passwords sent to CustomEmailSender and CustomSMSSender.
   /// [postAuthentication] Post-authentication AWS Lambda trigger.
   /// [postConfirmation] Post-confirmation AWS Lambda trigger.
   /// [preAuthentication] Pre-authentication AWS Lambda trigger.

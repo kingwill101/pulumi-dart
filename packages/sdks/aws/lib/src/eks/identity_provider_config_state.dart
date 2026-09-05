@@ -5,24 +5,24 @@ import 'identity_provider_config_oidc.dart';
 
 /// Input properties used for looking up and filtering IdentityProviderConfig resources.
 class IdentityProviderConfigState {
-  /// Amazon Resource Name (ARN) of the EKS Identity Provider Configuration.
-  final pulumi.Input<String>? arn;
+  /// ARN of the EKS Identity Provider Configuration.
+  final pulumi.Input<String?>? arn;
   /// Name of the EKS Cluster.
-  final pulumi.Input<String>? clusterName;
-  final pulumi.Input<String>? identityProviderConfigName;
+  final pulumi.Input<String?>? clusterName;
+  final pulumi.Input<String?>? identityProviderConfigName;
   /// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
-  final pulumi.Input<IdentityProviderConfigOidc>? oidc;
+  final pulumi.Input<IdentityProviderConfigOidc?>? oidc;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the EKS Identity Provider Configuration.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [IdentityProviderConfigState].
-  /// [arn] Amazon Resource Name (ARN) of the EKS Identity Provider Configuration.
+  /// [arn] ARN of the EKS Identity Provider Configuration.
   /// [clusterName] Name of the EKS Cluster.
   /// [identityProviderConfigName] Optional.
   /// [oidc] Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.

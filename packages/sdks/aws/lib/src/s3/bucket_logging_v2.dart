@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_logging_v2_args.dart';
 import 'bucket_logging_v2_state.dart';
+import 'bucket_logging_v2_target_grant.dart';
 import 'bucket_logging_v2_target_object_key_format.dart';
 
 /// Provides an S3 bucket (server access) logging resource. For more information, see [Logging requests using server access logging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html)
@@ -24,17 +25,17 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// const logging = new aws.s3.Bucket("logging", {bucket: "access-logging-bucket"});
 /// const loggingBucketPolicy = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
+///         conditions: [{
+///             test: "StringEquals",
+///             variable: "aws:SourceAccount",
+///             values: [current.then(current => current.accountId)],
+///         }],
 ///         principals: [{
 ///             identifiers: ["logging.s3.amazonaws.com"],
 ///             type: "Service",
 ///         }],
 ///         actions: ["s3:PutObject"],
 ///         resources: [pulumi.interpolate`${logging.arn}/*`],
-///         conditions: [{
-///             test: "StringEquals",
-///             variable: "aws:SourceAccount",
-///             values: [current.then(current => current.accountId)],
-///         }],
 ///     }],
 /// });
 /// const loggingBucketPolicy2 = new aws.s3.BucketPolicy("logging", {
@@ -43,14 +44,14 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// });
 /// const example = new aws.s3.Bucket("example", {bucket: "example-bucket"});
 /// const exampleBucketLogging = new aws.s3.BucketLogging("example", {
-///     bucket: example.bucket,
-///     targetBucket: logging.bucket,
-///     targetPrefix: "log/",
 ///     targetObjectKeyFormat: {
 ///         partitionedPrefix: {
 ///             partitionDateSource: "EventTime",
 ///         },
 ///     },
+///     bucket: example.bucket,
+///     targetBucket: logging.bucket,
+///     targetPrefix: "log/",
 /// });
 /// ```
 /// ```python
@@ -60,31 +61,31 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// current = aws.get_caller_identity()
 /// logging = aws.s3.Bucket("logging", bucket="access-logging-bucket")
 /// logging_bucket_policy = aws.iam.get_policy_document_output(statements=[{
+///     "conditions": [{
+///         "test": "StringEquals",
+///         "variable": "aws:SourceAccount",
+///         "values": [current.account_id],
+///     }],
 ///     "principals": [{
 ///         "identifiers": ["logging.s3.amazonaws.com"],
 ///         "type": "Service",
 ///     }],
 ///     "actions": ["s3:PutObject"],
 ///     "resources": [logging.arn.apply(lambda arn: f"{arn}/*")],
-///     "conditions": [{
-///         "test": "StringEquals",
-///         "variable": "aws:SourceAccount",
-///         "values": [current.account_id],
-///     }],
 /// }])
 /// logging_bucket_policy2 = aws.s3.BucketPolicy("logging",
 ///     bucket=logging.bucket,
 ///     policy=logging_bucket_policy.json)
 /// example = aws.s3.Bucket("example", bucket="example-bucket")
 /// example_bucket_logging = aws.s3.BucketLogging("example",
-///     bucket=example.bucket,
-///     target_bucket=logging.bucket,
-///     target_prefix="log/",
 ///     target_object_key_format={
 ///         "partitioned_prefix": {
 ///             "partition_date_source": "EventTime",
 ///         },
-///     })
+///     },
+///     bucket=example.bucket,
+///     target_bucket=logging.bucket,
+///     target_prefix="log/")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -107,6 +108,18 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Variable = "aws:SourceAccount",
+///                         Values = new[]
+///                         {
+///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                         },
+///                     },
+///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -126,18 +139,6 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///                 {
 ///                     $"{logging.Arn}/*",
 ///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Variable = "aws:SourceAccount",
-///                         Values = new[]
-///                         {
-///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///                         },
-///                     },
-///                 },
 ///             },
 ///         },
 ///     });
@@ -155,9 +156,6 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///
 ///     var exampleBucketLogging = new Aws.S3.BucketLogging("example", new()
 ///     {
-///         Bucket = example.BucketName,
-///         TargetBucket = logging.BucketName,
-///         TargetPrefix = "log/",
 ///         TargetObjectKeyFormat = new Aws.S3.Inputs.BucketLoggingTargetObjectKeyFormatArgs
 ///         {
 ///             PartitionedPrefix = new Aws.S3.Inputs.BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs
@@ -165,6 +163,9 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///                 PartitionDateSource = "EventTime",
 ///             },
 ///         },
+///         Bucket = example.BucketName,
+///         TargetBucket = logging.BucketName,
+///         TargetPrefix = "log/",
 ///     });
 ///
 /// });
@@ -196,6 +197,15 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// 		loggingBucketPolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("aws:SourceAccount"),
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String(current.AccountId),
+/// 							},
+/// 						},
+/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Identifiers: pulumi.StringArray{
@@ -211,15 +221,6 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// 						logging.Arn.ApplyT(func(arn string) (string, error) {
 /// 							return fmt.Sprintf("%v/*", arn), nil
 /// 						}).(pulumi.StringOutput),
-/// 					},
-/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
-/// 						&iam.GetPolicyDocumentStatementConditionArgs{
-/// 							Test:     pulumi.String("StringEquals"),
-/// 							Variable: pulumi.String("aws:SourceAccount"),
-/// 							Values: pulumi.StringArray{
-/// 								pulumi.String(current.AccountId),
-/// 							},
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -238,14 +239,14 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketLogging(ctx, "example", &s3.BucketLoggingArgs{
-/// 			Bucket:       example.Bucket,
-/// 			TargetBucket: logging.Bucket,
-/// 			TargetPrefix: pulumi.String("log/"),
 /// 			TargetObjectKeyFormat: &s3.BucketLoggingTargetObjectKeyFormatArgs{
 /// 				PartitionedPrefix: &s3.BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs{
 /// 					PartitionDateSource: pulumi.String("EventTime"),
 /// 				},
 /// 			},
+/// 			Bucket:       example.Bucket,
+/// 			TargetBucket: logging.Bucket,
+/// 			TargetPrefix: pulumi.String("log/"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -267,17 +268,17 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "loggingBucketPolicy" {
 ///   statements {
+///     conditions {
+///       test     = "StringEquals"
+///       variable = "aws:SourceAccount"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///     }
 ///     principals {
 ///       identifiers = ["logging.s3.amazonaws.com"]
 ///       type        = "Service"
 ///     }
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.logging.arn}/*"]
-///     conditions {
-///       test     = "StringEquals"
-///       variable = "aws:SourceAccount"
-///       values   = [data.aws_getcalleridentity.current.account_id]
-///     }
 ///   }
 /// }
 ///
@@ -292,14 +293,14 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///   bucket = "example-bucket"
 /// }
 /// resource "aws_s3_bucketlogging" "example" {
-///   bucket        = aws_s3_bucket.example.bucket
-///   target_bucket = aws_s3_bucket.logging.bucket
-///   target_prefix = "log/"
 ///   target_object_key_format = {
 ///     partitioned_prefix = {
 ///       partition_date_source = "EventTime"
 ///     }
 ///   }
+///   bucket        = aws_s3_bucket.example.bucket
+///   target_bucket = aws_s3_bucket.logging.bucket
+///   target_prefix = "log/"
 /// }
 /// ```
 /// ```java
@@ -315,8 +316,8 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.s3.BucketPolicy;
 /// import com.pulumi.aws.s3.BucketPolicyArgs;
 /// import com.pulumi.aws.s3.BucketLogging;
@@ -345,17 +346,17 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///
 ///         final var loggingBucketPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                     .test("StringEquals")
+///                     .variable("aws:SourceAccount")
+///                     .values(current.accountId())
+///                     .build())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("logging.s3.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
 ///                 .actions("s3:PutObject")
 ///                 .resources(logging.arn().applyValue(_arn -> String.format("%s/*", _arn)))
-///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                     .test("StringEquals")
-///                     .variable("aws:SourceAccount")
-///                     .values(current.accountId())
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -369,14 +370,14 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///             .build());
 ///
 ///         var exampleBucketLogging = new BucketLogging("exampleBucketLogging", BucketLoggingArgs.builder()
-///             .bucket(example.bucket())
-///             .targetBucket(logging.bucket())
-///             .targetPrefix("log/")
 ///             .targetObjectKeyFormat(BucketLoggingTargetObjectKeyFormatArgs.builder()
 ///                 .partitionedPrefix(BucketLoggingTargetObjectKeyFormatPartitionedPrefixArgs.builder()
 ///                     .partitionDateSource("EventTime")
 ///                     .build())
 ///                 .build())
+///             .bucket(example.bucket())
+///             .targetBucket(logging.bucket())
+///             .targetPrefix("log/")
 ///             .build());
 ///
 ///     }
@@ -402,12 +403,12 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///     type: aws:s3:BucketLogging
 ///     name: example
 ///     properties:
-///       bucket: ${example.bucket}
-///       targetBucket: ${logging.bucket}
-///       targetPrefix: log/
 ///       targetObjectKeyFormat:
 ///         partitionedPrefix:
 ///           partitionDateSource: EventTime
+///       bucket: ${example.bucket}
+///       targetBucket: ${logging.bucket}
+///       targetPrefix: log/
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -418,7 +419,12 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - principals:
+///           - conditions:
+///               - test: StringEquals
+///                 variable: aws:SourceAccount
+///                 values:
+///                   - ${current.accountId}
+///             principals:
 ///               - identifiers:
 ///                   - logging.s3.amazonaws.com
 ///                 type: Service
@@ -426,11 +432,6 @@ import 'bucket_logging_v2_target_object_key_format.dart';
 ///               - s3:PutObject
 ///             resources:
 ///               - ${logging.arn}/*
-///             conditions:
-///               - test: StringEquals
-///                 variable: aws:SourceAccount
-///                 values:
-///                   - ${current.accountId}
 /// ```
 ///
 ///
@@ -717,7 +718,7 @@ class BucketLoggingV2 extends pulumi.CustomResource {
   /// Name of the bucket where you want Amazon S3 to store server access logs.
   late final pulumi.Output<String> targetBucket;
   /// Set of configuration blocks with information for granting permissions. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetGrants;
+  late final pulumi.Output<List<BucketLoggingV2TargetGrant>?> targetGrants;
   /// Amazon S3 key format for log objects. See below.
   late final pulumi.Output<BucketLoggingV2TargetObjectKeyFormat?> targetObjectKeyFormat;
   /// Prefix for all log object keys.
@@ -735,13 +736,13 @@ class BucketLoggingV2 extends pulumi.CustomResource {
           'aws:s3/bucketLoggingV2:BucketLoggingV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');
-    targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
+    targetGrants = registerOutput<List<BucketLoggingV2TargetGrant>?>('targetGrants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLoggingV2TargetGrant>(guardedValue, (value) => BucketLoggingV2TargetGrant.fromMap((value as Map).cast<String, dynamic>())); });
     targetObjectKeyFormat = registerOutput<BucketLoggingV2TargetObjectKeyFormat?>('targetObjectKeyFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingV2TargetObjectKeyFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetPrefix = registerOutput<String>('targetPrefix');
   }
@@ -751,11 +752,12 @@ class BucketLoggingV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketLoggingV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketLoggingV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -773,7 +775,25 @@ class BucketLoggingV2 extends pulumi.CustomResource {
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');
-    targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
+    targetGrants = registerOutput<List<BucketLoggingV2TargetGrant>?>('targetGrants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLoggingV2TargetGrant>(guardedValue, (value) => BucketLoggingV2TargetGrant.fromMap((value as Map).cast<String, dynamic>())); });
+    targetObjectKeyFormat = registerOutput<BucketLoggingV2TargetObjectKeyFormat?>('targetObjectKeyFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingV2TargetObjectKeyFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetPrefix = registerOutput<String>('targetPrefix');
+  }
+
+  /// Creates a typed reference to an existing [BucketLoggingV2] resource.
+  BucketLoggingV2.reference(String urn)
+    : super(
+        'aws:s3/bucketLoggingV2:BucketLoggingV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetGrants = registerOutput<List<BucketLoggingV2TargetGrant>?>('targetGrants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketLoggingV2TargetGrant>(guardedValue, (value) => BucketLoggingV2TargetGrant.fromMap((value as Map).cast<String, dynamic>())); });
     targetObjectKeyFormat = registerOutput<BucketLoggingV2TargetObjectKeyFormat?>('targetObjectKeyFormat', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingV2TargetObjectKeyFormat.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetPrefix = registerOutput<String>('targetPrefix');
   }

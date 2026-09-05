@@ -9,21 +9,21 @@ import 'vpc_ipam_operating_region.dart';
 /// {@macro pulumi_ec2_vpc_ipam_vpc_ipam_args_doc}
 class VpcIpamArgs {
   /// Enables you to quickly delete an IPAM, private scopes, pools in private scopes, and any allocations in the pools in private scopes.
-  final pulumi.Input<bool>? cascade;
+  final pulumi.Input<bool?>? cascade;
   /// A description for the IPAM.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enable this option to use your own GUA ranges as private IPv6 addresses. Default: `false`.
-  final pulumi.Input<bool>? enablePrivateGua;
+  final pulumi.Input<bool?>? enablePrivateGua;
   /// AWS account that is charged for active IP addresses managed in IPAM. Valid values are `ipam-owner` (default) and `resource-owner`.
-  final pulumi.Input<String>? meteredAccount;
+  final pulumi.Input<String?>? meteredAccount;
   /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. You **must** set your provider block region as an operating_region.
   final pulumi.Input<List<VpcIpamOperatingRegion>> operatingRegions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// specifies the IPAM tier. Valid options include `free` and `advanced`. Default is `advanced`.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [VpcIpamArgs].
   /// [cascade] Enables you to quickly delete an IPAM, private scopes, pools in private scopes, and any allocations in the pools in private scopes.

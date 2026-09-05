@@ -6,76 +6,76 @@ import 'get_v2_service_permission_model.dart';
 
 /// Result data returned by getV2Service.
 class GetV2ServiceResult {
-  final String arn;
+  final String? arn;
   /// Systems associated with the service. See `associatedSystem` Block below.
-  final List<GetV2ServiceAssociatedSystem> associatedSystems;
+  final List<GetV2ServiceAssociatedSystem>? associatedSystems;
   /// Description of the service.
-  final String description;
+  final String? description;
   /// KMS key ARN.
-  final String kmsKeyId;
+  final String? kmsKeyId;
   /// Name of the service.
-  final String name;
+  final String? name;
   /// Permission model configuration. See `permissionModel` Block below.
-  final List<GetV2ServicePermissionModel> permissionModels;
+  final List<GetV2ServicePermissionModel>? permissionModels;
   /// ARN of the associated resilience policy.
-  final String policyArn;
-  final String region;
+  final String? policyArn;
+  final String? region;
   /// List of AWS regions where the service operates.
-  final List<String> regions;
+  final List<String>? regions;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetV2ServiceResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [associatedSystems] Systems associated with the service. See `associatedSystem` Block below.
   /// [description] Description of the service.
   /// [kmsKeyId] KMS key ARN.
   /// [name] Name of the service.
   /// [permissionModels] Permission model configuration. See `permissionModel` Block below.
   /// [policyArn] ARN of the associated resilience policy.
-  /// [region] Required.
+  /// [region] Optional.
   /// [regions] List of AWS regions where the service operates.
   /// [tags] Map of tags assigned to the resource.
   const GetV2ServiceResult({
-    required this.arn,
-    required this.associatedSystems,
-    required this.description,
-    required this.kmsKeyId,
-    required this.name,
-    required this.permissionModels,
-    required this.policyArn,
-    required this.region,
-    required this.regions,
-    required this.tags,
+    this.arn,
+    this.associatedSystems,
+    this.description,
+    this.kmsKeyId,
+    this.name,
+    this.permissionModels,
+    this.policyArn,
+    this.region,
+    this.regions,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'associatedSystems': pulumi.Input.encodeList<GetV2ServiceAssociatedSystem, Map<String, dynamic>>(associatedSystems, (value) => value.toMap()),
-      'description': description,
-      'kmsKeyId': kmsKeyId,
-      'name': name,
-      'permissionModels': pulumi.Input.encodeList<GetV2ServicePermissionModel, Map<String, dynamic>>(permissionModels, (value) => value.toMap()),
-      'policyArn': policyArn,
-      'region': region,
-      'regions': regions,
-      'tags': tags,
+      'arn': ?arn,
+      'associatedSystems': ?(() { final guardedValue = associatedSystems; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetV2ServiceAssociatedSystem, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'description': ?description,
+      'kmsKeyId': ?kmsKeyId,
+      'name': ?name,
+      'permissionModels': ?(() { final guardedValue = permissionModels; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetV2ServicePermissionModel, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'policyArn': ?policyArn,
+      'region': ?region,
+      'regions': ?regions,
+      'tags': ?tags,
     };
   }
 
   factory GetV2ServiceResult.fromMap(Map<String, dynamic> map) {
     return GetV2ServiceResult(
-      arn: map['arn'] as String,
-      associatedSystems: pulumi.Input.decodeList<GetV2ServiceAssociatedSystem>(map['associatedSystems']!, (value) => GetV2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      name: map['name'] as String,
-      permissionModels: pulumi.Input.decodeList<GetV2ServicePermissionModel>(map['permissionModels']!, (value) => GetV2ServicePermissionModel.fromMap((value as Map).cast<String, dynamic>())),
-      policyArn: map['policyArn'] as String,
-      region: map['region'] as String,
-      regions: (map['regions'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      associatedSystems: (() { final guardedValue = map['associatedSystems']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetV2ServiceAssociatedSystem>(guardedValue, (value) => GetV2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      permissionModels: (() { final guardedValue = map['permissionModels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetV2ServicePermissionModel>(guardedValue, (value) => GetV2ServicePermissionModel.fromMap((value as Map).cast<String, dynamic>())); })(),
+      policyArn: (() { final guardedValue = map['policyArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

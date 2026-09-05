@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNotifications {
   /// A list of additional email addresses to notify when there are alerts in the managed domain.
-  final pulumi.Input<List<String>>? additionalRecipients;
+  final pulumi.Input<List<String>?>? additionalRecipients;
   /// Whether to notify members of the _AAD DC Administrators_ group when there are alerts in the managed domain.
-  final pulumi.Input<bool>? notifyDcAdmins;
+  final pulumi.Input<bool?>? notifyDcAdmins;
   /// Whether to notify all Global Administrators when there are alerts in the managed domain.
-  final pulumi.Input<bool>? notifyGlobalAdmins;
+  final pulumi.Input<bool?>? notifyGlobalAdmins;
 
   /// Creates a new [ServiceNotifications].
   /// [additionalRecipients] A list of additional email addresses to notify when there are alerts in the managed domain.

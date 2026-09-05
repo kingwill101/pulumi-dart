@@ -10,9 +10,9 @@ class GetPlaceIndexArgs {
   /// Name of the place index resource.
   final pulumi.Input<String> indexName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the place index.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPlaceIndexArgs].
   /// [indexName] Name of the place index resource.

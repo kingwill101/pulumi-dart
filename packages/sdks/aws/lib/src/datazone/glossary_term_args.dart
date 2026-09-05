@@ -10,24 +10,24 @@ import 'glossary_term_timeouts.dart';
 /// {@macro pulumi_datazone_glossary_term_glossary_term_args_doc}
 class GlossaryTermArgs {
   /// Identifier of domain.
-  final pulumi.Input<String>? domainIdentifier;
+  final pulumi.Input<String?>? domainIdentifier;
   /// Identifier of glossary.
   final pulumi.Input<String> glossaryIdentifier;
   /// Long description of entry.
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// Name of glossary term.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Short description of entry.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
   /// If glossary term is ENABLED or DISABLED.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Object classifying the term relations through the following attributes:
-  final pulumi.Input<GlossaryTermTermRelations>? termRelations;
-  final pulumi.Input<GlossaryTermTimeouts>? timeouts;
+  final pulumi.Input<GlossaryTermTermRelations?>? termRelations;
+  final pulumi.Input<GlossaryTermTimeouts?>? timeouts;
 
   /// Creates a new [GlossaryTermArgs].
   /// [domainIdentifier] Identifier of domain.

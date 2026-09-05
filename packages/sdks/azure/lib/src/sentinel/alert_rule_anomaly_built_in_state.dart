@@ -10,41 +10,41 @@ import 'alert_rule_anomaly_built_in_threshold_observation.dart';
 /// Input properties used for looking up and filtering AlertRuleAnomalyBuiltIn resources.
 class AlertRuleAnomalyBuiltInState {
   /// The version of the Anomaly Security ML Analytics Settings.
-  final pulumi.Input<int>? anomalySettingsVersion;
+  final pulumi.Input<int?>? anomalySettingsVersion;
   /// The anomaly version of the Anomaly Alert Rule.
-  final pulumi.Input<String>? anomalyVersion;
+  final pulumi.Input<String?>? anomalyVersion;
   /// The description of the threshold observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
   /// &gt; **Note:** One of `name` or `displayName` block must be specified.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Should the Built-in Anomaly Alert Rule be enabled?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The frequency the Anomaly Alert Rule will be run.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// A list of `multiSelectObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>? multiSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInMultiSelectObservation>?>? multiSelectObservations;
   /// The Name of the built-in Anomaly Alert Rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of `prioritizedExcludeObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>? prioritizedExcludeObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>?>? prioritizedExcludeObservations;
   /// A `requiredDataConnector` block as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>? requiredDataConnectors;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInRequiredDataConnector>?>? requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
-  final pulumi.Input<String>? settingsDefinitionId;
+  final pulumi.Input<String?>? settingsDefinitionId;
   /// A list of `singleSelectObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>? singleSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInSingleSelectObservation>?>? singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
-  final pulumi.Input<List<String>>? tactics;
+  final pulumi.Input<List<String>?>? tactics;
   /// A list of techniques of attacks by which to classify the rule.
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// A list of `thresholdObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyBuiltInThresholdObservation>>? thresholdObservations;
+  final pulumi.Input<List<AlertRuleAnomalyBuiltInThresholdObservation>?>? thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyBuiltInState].
   /// [anomalySettingsVersion] The version of the Anomaly Security ML Analytics Settings.
@@ -108,7 +108,7 @@ class AlertRuleAnomalyBuiltInState {
 
   factory AlertRuleAnomalyBuiltInState.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInState(
-      anomalySettingsVersion: (() { final guardedValue = map['anomalySettingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      anomalySettingsVersion: (() { final guardedValue = map['anomalySettingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       anomalyVersion: (() { final guardedValue = map['anomalyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

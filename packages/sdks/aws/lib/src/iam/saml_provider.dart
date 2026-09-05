@@ -147,7 +147,7 @@ import 'saml_provider_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the IAM SAML provider.
+/// - `arn` (String) ARN of the IAM SAML provider.
 ///
 ///
 /// Using `pulumi import`, import IAM SAML Providers using the `arn`. For example:
@@ -183,14 +183,14 @@ class SamlProvider extends pulumi.CustomResource {
           'aws:iam/samlProvider:SamlProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     samlMetadataDocument = registerOutput<String>('samlMetadataDocument');
     samlProviderUuid = registerOutput<String>('samlProviderUuid');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validUntil = registerOutput<String>('validUntil');
   }
 
@@ -199,11 +199,12 @@ class SamlProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SamlProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SamlProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,8 +222,26 @@ class SamlProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     samlMetadataDocument = registerOutput<String>('samlMetadataDocument');
     samlProviderUuid = registerOutput<String>('samlProviderUuid');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validUntil = registerOutput<String>('validUntil');
+  }
+
+  /// Creates a typed reference to an existing [SamlProvider] resource.
+  SamlProvider.reference(String urn)
+    : super(
+        'aws:iam/samlProvider:SamlProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    samlMetadataDocument = registerOutput<String>('samlMetadataDocument');
+    samlProviderUuid = registerOutput<String>('samlProviderUuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validUntil = registerOutput<String>('validUntil');
   }
 }

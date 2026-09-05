@@ -167,16 +167,16 @@ class AssessmentPolicy extends pulumi.CustomResource {
           'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    categories = registerOutput<List<String>>('categories');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     implementationEffort = registerOutput<String?>('implementationEffort');
     this.name = registerOutput<String>('name');
     remediationDescription = registerOutput<String?>('remediationDescription');
     severity = registerOutput<String?>('severity');
-    threats = registerOutput<List<String>?>('threats');
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userImpact = registerOutput<String?>('userImpact');
   }
 
@@ -185,11 +185,12 @@ class AssessmentPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -203,14 +204,34 @@ class AssessmentPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    categories = registerOutput<List<String>>('categories');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     implementationEffort = registerOutput<String?>('implementationEffort');
     this.name = registerOutput<String>('name');
     remediationDescription = registerOutput<String?>('remediationDescription');
     severity = registerOutput<String?>('severity');
-    threats = registerOutput<List<String>?>('threats');
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userImpact = registerOutput<String?>('userImpact');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentPolicy] resource.
+  AssessmentPolicy.reference(String urn)
+    : super(
+        'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    implementationEffort = registerOutput<String?>('implementationEffort');
+    this.name = registerOutput<String>('name');
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    severity = registerOutput<String?>('severity');
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userImpact = registerOutput<String?>('userImpact');
   }
 }

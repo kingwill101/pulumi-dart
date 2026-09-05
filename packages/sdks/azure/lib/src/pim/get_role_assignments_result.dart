@@ -6,13 +6,13 @@ import 'get_role_assignments_role_assignment.dart';
 /// Result data returned by getRoleAssignments.
 class GetRoleAssignmentsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? limitAtScope;
   /// The principal ID.
   final String? principalId;
   /// A `roleAssignments` block as defined below.
-  final List<GetRoleAssignmentsRoleAssignment> roleAssignments;
-  final String scope;
+  final List<GetRoleAssignmentsRoleAssignment>? roleAssignments;
+  final String? scope;
   final String? tenantId;
 
   /// Creates a new [GetRoleAssignmentsResult].
@@ -20,35 +20,35 @@ class GetRoleAssignmentsResult {
   /// [limitAtScope] Optional.
   /// [principalId] The principal ID.
   /// [roleAssignments] A `roleAssignments` block as defined below.
-  /// [scope] Required.
+  /// [scope] Optional.
   /// [tenantId] Optional.
   const GetRoleAssignmentsResult({
-    required this.id,
+    this.id,
     this.limitAtScope,
     this.principalId,
-    required this.roleAssignments,
-    required this.scope,
+    this.roleAssignments,
+    this.scope,
     this.tenantId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'limitAtScope': ?limitAtScope,
       'principalId': ?principalId,
-      'roleAssignments': pulumi.Input.encodeList<GetRoleAssignmentsRoleAssignment, Map<String, dynamic>>(roleAssignments, (value) => value.toMap()),
-      'scope': scope,
+      'roleAssignments': ?(() { final guardedValue = roleAssignments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRoleAssignmentsRoleAssignment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'scope': ?scope,
       'tenantId': ?tenantId,
     };
   }
 
   factory GetRoleAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       limitAtScope: (() { final guardedValue = map['limitAtScope']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      roleAssignments: pulumi.Input.decodeList<GetRoleAssignmentsRoleAssignment>(map['roleAssignments']!, (value) => GetRoleAssignmentsRoleAssignment.fromMap((value as Map).cast<String, dynamic>())),
-      scope: map['scope'] as String,
+      roleAssignments: (() { final guardedValue = map['roleAssignments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRoleAssignmentsRoleAssignment>(guardedValue, (value) => GetRoleAssignmentsRoleAssignment.fromMap((value as Map).cast<String, dynamic>())); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

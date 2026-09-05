@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rate_based_rule_args.dart';
+import 'rate_based_rule_predicate.dart';
 import 'rate_based_rule_state.dart';
 
 /// Provides a WAF Rate Based Rule Resource
@@ -12,22 +13,22 @@ import 'rate_based_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ipset = new aws.waf.IpSet("ipset", {
-///     name: "tfIPSet",
 ///     ipSetDescriptors: [{
 ///         type: "IPV4",
 ///         value: "192.0.7.0/24",
 ///     }],
+///     name: "tfIPSet",
 /// });
 /// const wafrule = new aws.waf.RateBasedRule("wafrule", {
-///     name: "tfWAFRule",
-///     metricName: "tfWAFRule",
-///     rateKey: "IP",
-///     rateLimit: 100,
 ///     predicates: [{
 ///         dataId: ipset.id,
 ///         negated: false,
 ///         type: "IPMatch",
 ///     }],
+///     name: "tfWAFRule",
+///     metricName: "tfWAFRule",
+///     rateKey: "IP",
+///     rateLimit: 100,
 /// }, {
 ///     dependsOn: [ipset],
 /// });
@@ -37,21 +38,21 @@ import 'rate_based_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ipset = aws.waf.IpSet("ipset",
-///     name="tfIPSet",
 ///     ip_set_descriptors=[{
 ///         "type": "IPV4",
 ///         "value": "192.0.7.0/24",
-///     }])
+///     }],
+///     name="tfIPSet")
 /// wafrule = aws.waf.RateBasedRule("wafrule",
-///     name="tfWAFRule",
-///     metric_name="tfWAFRule",
-///     rate_key="IP",
-///     rate_limit=100,
 ///     predicates=[{
 ///         "data_id": ipset.id,
 ///         "negated": False,
 ///         "type": "IPMatch",
 ///     }],
+///     name="tfWAFRule",
+///     metric_name="tfWAFRule",
+///     rate_key="IP",
+///     rate_limit=100,
 ///     opts = pulumi.ResourceOptions(depends_on=[ipset]))
 /// ```
 /// ```csharp
@@ -64,7 +65,6 @@ import 'rate_based_rule_state.dart';
 /// {
 ///     var ipset = new Aws.Waf.IpSet("ipset", new()
 ///     {
-///         Name = "tfIPSet",
 ///         IpSetDescriptors = new[]
 ///         {
 ///             new Aws.Waf.Inputs.IpSetIpSetDescriptorArgs
@@ -73,14 +73,11 @@ import 'rate_based_rule_state.dart';
 ///                 Value = "192.0.7.0/24",
 ///             },
 ///         },
+///         Name = "tfIPSet",
 ///     });
 ///
 ///     var wafrule = new Aws.Waf.RateBasedRule("wafrule", new()
 ///     {
-///         Name = "tfWAFRule",
-///         MetricName = "tfWAFRule",
-///         RateKey = "IP",
-///         RateLimit = 100,
 ///         Predicates = new[]
 ///         {
 ///             new Aws.Waf.Inputs.RateBasedRulePredicateArgs
@@ -90,6 +87,10 @@ import 'rate_based_rule_state.dart';
 ///                 Type = "IPMatch",
 ///             },
 ///         },
+///         Name = "tfWAFRule",
+///         MetricName = "tfWAFRule",
+///         RateKey = "IP",
+///         RateLimit = 100,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -111,22 +112,18 @@ import 'rate_based_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ipset, err := waf.NewIpSet(ctx, "ipset", &waf.IpSetArgs{
-/// 			Name: pulumi.String("tfIPSet"),
 /// 			IpSetDescriptors: waf.IpSetIpSetDescriptorArray{
 /// 				&waf.IpSetIpSetDescriptorArgs{
 /// 					Type:  pulumi.String("IPV4"),
 /// 					Value: pulumi.String("192.0.7.0/24"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfIPSet"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
-/// 			Name:       pulumi.String("tfWAFRule"),
-/// 			MetricName: pulumi.String("tfWAFRule"),
-/// 			RateKey:    pulumi.String("IP"),
-/// 			RateLimit:  pulumi.Int(100),
 /// 			Predicates: waf.RateBasedRulePredicateArray{
 /// 				&waf.RateBasedRulePredicateArgs{
 /// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
@@ -134,6 +131,10 @@ import 'rate_based_rule_state.dart';
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("tfWAFRule"),
+/// 			MetricName: pulumi.String("tfWAFRule"),
+/// 			RateKey:    pulumi.String("IP"),
+/// 			RateLimit:  pulumi.Int(100),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			ipset,
 /// 		}))
@@ -154,23 +155,23 @@ import 'rate_based_rule_state.dart';
 /// }
 ///
 /// resource "aws_waf_ipset" "ipset" {
-///   name = "tfIPSet"
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
 ///   }
+///   name = "tfIPSet"
 /// }
 /// resource "aws_waf_ratebasedrule" "wafrule" {
-///   depends_on  = [aws_waf_ipset.ipset]
-///   name        = "tfWAFRule"
-///   metric_name = "tfWAFRule"
-///   rate_key    = "IP"
-///   rate_limit  = 100
+///   depends_on = [aws_waf_ipset.ipset]
 ///   predicates {
 ///     data_id = aws_waf_ipset.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
+///   name        = "tfWAFRule"
+///   metric_name = "tfWAFRule"
+///   rate_key    = "IP"
+///   rate_limit  = 100
 /// }
 /// ```
 /// ```java
@@ -200,23 +201,23 @@ import 'rate_based_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ipset = new IpSet("ipset", IpSetArgs.builder()
-///             .name("tfIPSet")
 ///             .ipSetDescriptors(IpSetIpSetDescriptorArgs.builder()
 ///                 .type("IPV4")
 ///                 .value("192.0.7.0/24")
 ///                 .build())
+///             .name("tfIPSet")
 ///             .build());
 ///
 ///         var wafrule = new RateBasedRule("wafrule", RateBasedRuleArgs.builder()
-///             .name("tfWAFRule")
-///             .metricName("tfWAFRule")
-///             .rateKey("IP")
-///             .rateLimit(100)
 ///             .predicates(RateBasedRulePredicateArgs.builder()
 ///                 .dataId(ipset.id())
 ///                 .negated(false)
 ///                 .type("IPMatch")
 ///                 .build())
+///             .name("tfWAFRule")
+///             .metricName("tfWAFRule")
+///             .rateKey("IP")
+///             .rateLimit(100)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(ipset)
 ///                 .build());
@@ -229,21 +230,21 @@ import 'rate_based_rule_state.dart';
 ///   ipset:
 ///     type: aws:waf:IpSet
 ///     properties:
-///       name: tfIPSet
 ///       ipSetDescriptors:
 ///         - type: IPV4
 ///           value: 192.0.7.0/24
+///       name: tfIPSet
 ///   wafrule:
 ///     type: aws:waf:RateBasedRule
 ///     properties:
-///       name: tfWAFRule
-///       metricName: tfWAFRule
-///       rateKey: IP
-///       rateLimit: 100
 ///       predicates:
 ///         - dataId: ${ipset.id}
 ///           negated: false
 ///           type: IPMatch
+///       name: tfWAFRule
+///       metricName: tfWAFRule
+///       rateKey: IP
+///       rateLimit: 100
 ///     options:
 ///       dependsOn:
 ///         - ${ipset}
@@ -258,14 +259,14 @@ import 'rate_based_rule_state.dart';
 /// $ pulumi import aws:waf/rateBasedRule:RateBasedRule wafrule a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class RateBasedRule extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN)
+  /// ARN
   late final pulumi.Output<String> arn;
   /// The name or description for the Amazon CloudWatch metric of this rule.
   late final pulumi.Output<String> metricName;
   /// The name or description of the rule.
   late final pulumi.Output<String> name;
   /// The objects to include in a rule (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> predicates;
+  late final pulumi.Output<List<RateBasedRulePredicate>?> predicates;
   /// Valid value is IP.
   late final pulumi.Output<String> rateKey;
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
@@ -287,16 +288,16 @@ class RateBasedRule extends pulumi.CustomResource {
           'aws:waf/rateBasedRule:RateBasedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
+    predicates = registerOutput<List<RateBasedRulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateBasedRulePredicate>(guardedValue, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
     rateKey = registerOutput<String>('rateKey');
     rateLimit = registerOutput<int>('rateLimit');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RateBasedRule] resource's state with the given [name] and [id].
@@ -304,11 +305,12 @@ class RateBasedRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RateBasedRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RateBasedRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,10 +327,29 @@ class RateBasedRule extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    predicates = registerOutput<List<Map<String, dynamic>>?>('predicates');
+    predicates = registerOutput<List<RateBasedRulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateBasedRulePredicate>(guardedValue, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
     rateKey = registerOutput<String>('rateKey');
     rateLimit = registerOutput<int>('rateLimit');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RateBasedRule] resource.
+  RateBasedRule.reference(String urn)
+    : super(
+        'aws:waf/rateBasedRule:RateBasedRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    predicates = registerOutput<List<RateBasedRulePredicate>?>('predicates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateBasedRulePredicate>(guardedValue, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>())); });
+    rateKey = registerOutput<String>('rateKey');
+    rateLimit = registerOutput<int>('rateLimit');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_blue_green_update.dart';
+import 'instance_listener_endpoint.dart';
+import 'instance_master_user_secret.dart';
 import 'instance_restore_to_point_in_time.dart';
 import 'instance_s3_import.dart';
 import 'instance_state.dart';
@@ -231,6 +233,12 @@ import 'instance_state.dart';
 ///     password: "avoid-plaintext-passwords",
 ///     username: "test",
 ///     storageEncrypted: true,
+/// }, {
+///     customTimeouts: {
+///         create: "3h",
+///         "delete": "3h",
+///         update: "3h",
+///     },
 /// });
 /// const test_replica = new aws.rds.Instance("test-replica", {
 ///     replicateSourceDb: _default.identifier,
@@ -244,6 +252,12 @@ import 'instance_state.dart';
 ///     multiAz: false,
 ///     skipFinalSnapshot: true,
 ///     storageEncrypted: true,
+/// }, {
+///     customTimeouts: {
+///         create: "3h",
+///         "delete": "3h",
+///         update: "3h",
+///     },
 /// });
 /// ```
 /// ```python
@@ -277,7 +291,8 @@ import 'instance_state.dart';
 ///     multi_az=False,
 ///     password="avoid-plaintext-passwords",
 ///     username="test",
-///     storage_encrypted=True)
+///     storage_encrypted=True,
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="3h", delete="3h", update="3h")))
 /// test_replica = aws.rds.Instance("test-replica",
 ///     replicate_source_db=default.identifier,
 ///     replica_mode="mounted",
@@ -289,7 +304,8 @@ import 'instance_state.dart';
 ///     kms_key_id=by_id.arn,
 ///     multi_az=False,
 ///     skip_final_snapshot=True,
-///     storage_encrypted=True)
+///     storage_encrypted=True,
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="3h", delete="3h", update="3h")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -405,7 +421,7 @@ import 'instance_state.dart';
 /// 			Password:                 pulumi.String("avoid-plaintext-passwords"),
 /// 			Username:                 pulumi.String("test"),
 /// 			StorageEncrypted:         pulumi.Bool(true),
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "3h", Delete: "3h", Update: "3h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -421,7 +437,7 @@ import 'instance_state.dart';
 /// 			MultiAz:                  pulumi.Bool(false),
 /// 			SkipFinalSnapshot:        pulumi.Bool(true),
 /// 			StorageEncrypted:         pulumi.Bool(true),
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "3h", Delete: "3h", Update: "3h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -450,6 +466,11 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "default" {
+///   timeouts {
+///     create = "3h"
+///     delete = "3h"
+///     update = "3h"
+///   }
 ///   allocated_storage           = 50
 ///   auto_minor_version_upgrade  = false # Custom for Oracle does not support minor version upgrades
 ///   custom_iam_instance_profile = "AWSRDSCustomInstanceProfile"
@@ -467,6 +488,11 @@ import 'instance_state.dart';
 ///   storage_encrypted           = true
 /// }
 /// resource "aws_rds_instance" "test-replica" {
+///   timeouts {
+///     create = "3h"
+///     delete = "3h"
+///     update = "3h"
+///   }
 ///   replicate_source_db         = aws_rds_instance.default.identifier
 ///   replica_mode                = "mounted"
 ///   auto_minor_version_upgrade  = false
@@ -496,6 +522,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.kms.inputs.GetKeyArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -542,7 +570,13 @@ import 'instance_state.dart';
 ///             .password("avoid-plaintext-passwords")
 ///             .username("test")
 ///             .storageEncrypted(true)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("3h"))
+///                     .delete(CustomTimeouts.parseTimeoutString("3h"))
+///                     .update(CustomTimeouts.parseTimeoutString("3h"))
+///                 .build())
+///                 .build());
 ///
 ///         var test_replica = new Instance("test-replica", InstanceArgs.builder()
 ///             .replicateSourceDb(default_.identifier())
@@ -556,7 +590,13 @@ import 'instance_state.dart';
 ///             .multiAz(false)
 ///             .skipFinalSnapshot(true)
 ///             .storageEncrypted(true)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("3h"))
+///                     .delete(CustomTimeouts.parseTimeoutString("3h"))
+///                     .update(CustomTimeouts.parseTimeoutString("3h"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -581,6 +621,11 @@ import 'instance_state.dart';
 ///       password: avoid-plaintext-passwords
 ///       username: test
 ///       storageEncrypted: true
+///     options:
+///       customTimeouts:
+///         create: 3h
+///         delete: 3h
+///         update: 3h
 ///   test-replica:
 ///     type: aws:rds:Instance
 ///     properties:
@@ -595,6 +640,11 @@ import 'instance_state.dart';
 ///       multiAz: false # Custom for Oracle does not support multi-az
 ///       skipFinalSnapshot: true
 ///       storageEncrypted: true
+///     options:
+///       customTimeouts:
+///         create: 3h
+///         delete: 3h
+///         update: 3h
 /// variables:
 ///   # Lookup the available instance classes for the custom engine for the region being operated in
 ///   custom-oracle:
@@ -655,6 +705,12 @@ import 'instance_state.dart';
 ///     password: "avoid-plaintext-passwords",
 ///     storageEncrypted: true,
 ///     username: "test",
+/// }, {
+///     customTimeouts: {
+///         create: "3h",
+///         "delete": "3h",
+///         update: "3h",
+///     },
 /// });
 /// ```
 /// ```python
@@ -686,7 +742,8 @@ import 'instance_state.dart';
 ///     multi_az=False,
 ///     password="avoid-plaintext-passwords",
 ///     storage_encrypted=True,
-///     username="test")
+///     username="test",
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="3h", delete="3h", update="3h")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -783,7 +840,7 @@ import 'instance_state.dart';
 /// 			Password:                 pulumi.String("avoid-plaintext-passwords"),
 /// 			StorageEncrypted:         pulumi.Bool(true),
 /// 			Username:                 pulumi.String("test"),
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "3h", Delete: "3h", Update: "3h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -811,6 +868,11 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "aws_rds_instance" "example" {
+///   timeouts {
+///     create = "3h"
+///     delete = "3h"
+///     update = "3h"
+///   }
 ///   allocated_storage           = 500
 ///   auto_minor_version_upgrade  = false # Custom for SQL Server does not support minor version upgrades
 ///   custom_iam_instance_profile = "AWSRDSCustomSQLServerInstanceProfile"
@@ -843,6 +905,8 @@ import 'instance_state.dart';
 /// import com.pulumi.aws.kms.inputs.GetKeyArgs;
 /// import com.pulumi.aws.rds.Instance;
 /// import com.pulumi.aws.rds.InstanceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -887,7 +951,13 @@ import 'instance_state.dart';
 ///             .password("avoid-plaintext-passwords")
 ///             .storageEncrypted(true)
 ///             .username("test")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("3h"))
+///                     .delete(CustomTimeouts.parseTimeoutString("3h"))
+///                     .update(CustomTimeouts.parseTimeoutString("3h"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -911,6 +981,11 @@ import 'instance_state.dart';
 ///       password: avoid-plaintext-passwords
 ///       storageEncrypted: true
 ///       username: test
+///     options:
+///       customTimeouts:
+///         create: 3h
+///         delete: 3h
+///         update: 3h
 /// variables:
 ///   # Lookup the available instance classes for the custom engine for the region being operated in
 ///   custom-sqlserver:
@@ -958,8 +1033,6 @@ import 'instance_state.dart';
 /// }));
 /// // The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 /// const exampleParameterGroup = new aws.rds.ParameterGroup("example", {
-///     name: "db-db2-params",
-///     family: _default.then(_default => _default.parameterGroupFamily),
 ///     parameters: [
 ///         {
 ///             applyMethod: "immediate",
@@ -972,6 +1045,8 @@ import 'instance_state.dart';
 ///             value: "0",
 ///         },
 ///     ],
+///     name: "db-db2-params",
+///     family: _default.then(_default => _default.parameterGroupFamily),
 /// });
 /// // Create the RDS Db2 instance, use the data sources defined to set attributes
 /// const exampleInstance = new aws.rds.Instance("example", {
@@ -1005,8 +1080,6 @@ import 'instance_state.dart';
 ///     ])
 /// # The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 /// example_parameter_group = aws.rds.ParameterGroup("example",
-///     name="db-db2-params",
-///     family=default.parameter_group_family,
 ///     parameters=[
 ///         {
 ///             "apply_method": "immediate",
@@ -1018,7 +1091,9 @@ import 'instance_state.dart';
 ///             "name": "rds.ibm_site_id",
 ///             "value": "0",
 ///         },
-///     ])
+///     ],
+///     name="db-db2-params",
+///     family=default.parameter_group_family)
 /// # Create the RDS Db2 instance, use the data sources defined to set attributes
 /// example_instance = aws.rds.Instance("example",
 ///     allocated_storage=100,
@@ -1064,8 +1139,6 @@ import 'instance_state.dart';
 ///     // The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 ///     var exampleParameterGroup = new Aws.Rds.ParameterGroup("example", new()
 ///     {
-///         Name = "db-db2-params",
-///         Family = @default.Apply(@default => @default.Apply(getEngineVersionResult => getEngineVersionResult.ParameterGroupFamily)),
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Rds.Inputs.ParameterGroupParameterArgs
@@ -1081,6 +1154,8 @@ import 'instance_state.dart';
 ///                 Value = "0",
 ///             },
 ///         },
+///         Name = "db-db2-params",
+///         Family = @default.Apply(@default => @default.Apply(getEngineVersionResult => getEngineVersionResult.ParameterGroupFamily)),
 ///     });
 ///
 ///     // Create the RDS Db2 instance, use the data sources defined to set attributes
@@ -1134,8 +1209,6 @@ import 'instance_state.dart';
 /// 		}
 /// 		// The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 /// 		exampleParameterGroup, err := rds.NewParameterGroup(ctx, "example", &rds.ParameterGroupArgs{
-/// 			Name:   pulumi.String("db-db2-params"),
-/// 			Family: pulumi.String(_default.ParameterGroupFamily),
 /// 			Parameters: rds.ParameterGroupParameterArray{
 /// 				&rds.ParameterGroupParameterArgs{
 /// 					ApplyMethod: pulumi.String("immediate"),
@@ -1148,6 +1221,8 @@ import 'instance_state.dart';
 /// 					Value:       pulumi.String("0"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("db-db2-params"),
+/// 			Family: pulumi.String(_default.ParameterGroupFamily),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1194,8 +1269,6 @@ import 'instance_state.dart';
 ///
 /// # The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 /// resource "aws_rds_parametergroup" "example" {
-///   name   = "db-db2-params"
-///   family = data.aws_rds_getengineversion.default.parameter_group_family
 ///   parameters {
 ///     apply_method = "immediate"
 ///     name         = "rds.ibm_customer_id"
@@ -1206,6 +1279,8 @@ import 'instance_state.dart';
 ///     name         = "rds.ibm_site_id"
 ///     value        = 0
 ///   }
+///   name   = "db-db2-params"
+///   family = data.aws_rds_getengineversion.default.parameter_group_family
 /// }
 /// # Create the RDS Db2 instance, use the data sources defined to set attributes
 /// resource "aws_rds_instance" "example" {
@@ -1269,8 +1344,6 @@ import 'instance_state.dart';
 ///
 ///         // The RDS Db2 instance resource requires licensing information. Create a new parameter group using the default paramater group as a source, and set license information.
 ///         var exampleParameterGroup = new ParameterGroup("exampleParameterGroup", ParameterGroupArgs.builder()
-///             .name("db-db2-params")
-///             .family(default_.parameterGroupFamily())
 ///             .parameters(
 ///                 ParameterGroupParameterArgs.builder()
 ///                     .applyMethod("immediate")
@@ -1282,6 +1355,8 @@ import 'instance_state.dart';
 ///                     .name("rds.ibm_site_id")
 ///                     .value("0")
 ///                     .build())
+///             .name("db-db2-params")
+///             .family(default_.parameterGroupFamily())
 ///             .build());
 ///
 ///         // Create the RDS Db2 instance, use the data sources defined to set attributes
@@ -1308,8 +1383,6 @@ import 'instance_state.dart';
 ///     type: aws:rds:ParameterGroup
 ///     name: example
 ///     properties:
-///       name: db-db2-params
-///       family: ${default.parameterGroupFamily}
 ///       parameters:
 ///         - applyMethod: immediate
 ///           name: rds.ibm_customer_id
@@ -1317,6 +1390,8 @@ import 'instance_state.dart';
 ///         - applyMethod: immediate
 ///           name: rds.ibm_site_id
 ///           value: 0
+///       name: db-db2-params
+///       family: ${default.parameterGroupFamily}
 ///   # Create the RDS Db2 instance, use the data sources defined to set attributes
 ///   exampleInstance:
 ///     type: aws:rds:Instance
@@ -1813,7 +1888,215 @@ import 'instance_state.dart';
 /// ```
 ///
 ///
+/// ### Disabling Master Password Rotation
+///
+/// When `manageMasterUserPassword` is enabled, Secrets Manager rotates the master user password automatically (every 7 days by default). To disable that rotation while keeping the managed secret, manage the secret's rotation with `aws.secretsmanager.SecretRotation` and set `rotationEnabled = false`.
+///
+/// Referencing `aws_db_instance.default.master_user_secret[0].secret_arn` (as in the example below) ensures the rotation change is applied after the instance is available. Avoid hardcoding the secret ARN, which would remove that ordering.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const _default = new aws.rds.Instance("default", {
+///     allocatedStorage: 10,
+///     dbName: "mydb",
+///     engine: "mysql",
+///     engineVersion: "8.0",
+///     instanceClass: aws.rds.InstanceType.T3_Micro,
+///     manageMasterUserPassword: true,
+///     username: "foo",
+///     parameterGroupName: "default.mysql8.0",
+/// });
+/// const defaultSecretRotation = new aws.secretsmanager.SecretRotation("default", {
+///     secretId: _default.masterUserSecrets[0].secretArn,
+///     rotationEnabled: false,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// default = aws.rds.Instance("default",
+///     allocated_storage=10,
+///     db_name="mydb",
+///     engine="mysql",
+///     engine_version="8.0",
+///     instance_class=aws.rds.InstanceType.T3_MICRO,
+///     manage_master_user_password=True,
+///     username="foo",
+///     parameter_group_name="default.mysql8.0")
+/// default_secret_rotation = aws.secretsmanager.SecretRotation("default",
+///     secret_id=default.master_user_secrets[0].secret_arn,
+///     rotation_enabled=False)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Aws.Rds.Instance("default", new()
+///     {
+///         AllocatedStorage = 10,
+///         DbName = "mydb",
+///         Engine = "mysql",
+///         EngineVersion = "8.0",
+///         InstanceClass = Aws.Rds.InstanceType.T3_Micro,
+///         ManageMasterUserPassword = true,
+///         Username = "foo",
+///         ParameterGroupName = "default.mysql8.0",
+///     });
+///
+///     var defaultSecretRotation = new Aws.SecretsManager.SecretRotation("default", new()
+///     {
+///         SecretId = @default.MasterUserSecrets.Apply(masterUserSecrets => masterUserSecrets[0].SecretArn),
+///         RotationEnabled = false,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/secretsmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
+/// 			AllocatedStorage:         pulumi.Int(10),
+/// 			DbName:                   pulumi.String("mydb"),
+/// 			Engine:                   pulumi.String("mysql"),
+/// 			EngineVersion:            pulumi.String("8.0"),
+/// 			InstanceClass:            pulumi.String(rds.InstanceType_T3_Micro),
+/// 			ManageMasterUserPassword: pulumi.Bool(true),
+/// 			Username:                 pulumi.String("foo"),
+/// 			ParameterGroupName:       pulumi.String("default.mysql8.0"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretsmanager.NewSecretRotation(ctx, "default", &secretsmanager.SecretRotationArgs{
+/// 			SecretId: _default.MasterUserSecrets.ApplyT(func(masterUserSecrets []rds.InstanceMasterUserSecret) (*string, error) {
+/// 				return masterUserSecrets[0].SecretArn, nil
+/// 			}).(pulumi.StringPtrOutput),
+/// 			RotationEnabled: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "default" {
+///   allocated_storage           = 10
+///   db_name                     = "mydb"
+///   engine                      = "mysql"
+///   engine_version              = "8.0"
+///   instance_class              = "db.t3.micro"
+///   manage_master_user_password = true
+///   username                    = "foo"
+///   parameter_group_name        = "default.mysql8.0"
+/// }
+/// resource "aws_secretsmanager_secretrotation" "default" {
+///   secret_id        = aws_rds_instance.default.master_user_secrets[0].secret_arn
+///   rotation_enabled = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.rds.Instance;
+/// import com.pulumi.aws.rds.InstanceArgs;
+/// import com.pulumi.aws.secretsmanager.SecretRotation;
+/// import com.pulumi.aws.secretsmanager.SecretRotationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Instance("default", InstanceArgs.builder()
+///             .allocatedStorage(10)
+///             .dbName("mydb")
+///             .engine("mysql")
+///             .engineVersion("8.0")
+///             .instanceClass("db.t3.micro")
+///             .manageMasterUserPassword(true)
+///             .username("foo")
+///             .parameterGroupName("default.mysql8.0")
+///             .build());
+///
+///         var defaultSecretRotation = new SecretRotation("defaultSecretRotation", SecretRotationArgs.builder()
+///             .secretId(default_.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .rotationEnabled(false)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: aws:rds:Instance
+///     properties:
+///       allocatedStorage: 10
+///       dbName: mydb
+///       engine: mysql
+///       engineVersion: '8.0'
+///       instanceClass: db.t3.micro
+///       manageMasterUserPassword: true
+///       username: foo
+///       parameterGroupName: default.mysql8.0
+///   defaultSecretRotation:
+///     type: aws:secretsmanager:SecretRotation
+///     name: default
+///     properties:
+///       secretId: ${default.masterUserSecrets[0].secretArn}
+///       rotationEnabled: false
+/// ```
+///
+///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `identifier` (String) Identifier of the DB Instance.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import DB Instances using the `identifier`. For example:
 ///
@@ -1952,7 +2235,7 @@ class Instance extends pulumi.CustomResource {
   /// * RDS for PostgreSQL: `postgresql-license`
   late final pulumi.Output<String> licenseModel;
   /// Specifies the listener connection endpoint for SQL Server Always On. See endpoint below.
-  late final pulumi.Output<List<Map<String, dynamic>>> listenerEndpoints;
+  late final pulumi.Output<List<InstanceListenerEndpoint>> listenerEndpoints;
   /// The window to perform maintenance in.
   /// Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00". See [RDS
   /// Maintenance Window
@@ -1964,7 +2247,7 @@ class Instance extends pulumi.CustomResource {
   /// The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used.
   late final pulumi.Output<String> masterUserSecretKmsKeyId;
   /// A block that specifies the master user secret. Only available when `manageMasterUserPassword` is set to true. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> masterUserSecrets;
+  late final pulumi.Output<List<InstanceMasterUserSecret>> masterUserSecrets;
   /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set `maxAllocatedStorage` to **greater than or equal to** `allocatedStorage`. Setting `maxAllocatedStorage` to 0 explicitly disables Storage Autoscaling. When configured, changes to `allocatedStorage` will be automatically ignored as the storage can dynamically scale.
   late final pulumi.Output<int?> maxAllocatedStorage;
   /// The interval, in seconds, between points
@@ -2085,7 +2368,8 @@ class Instance extends pulumi.CustomResource {
           'aws:rds/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     address = registerOutput<String>('address');
     allocatedStorage = registerOutput<int>('allocatedStorage');
@@ -2111,11 +2395,11 @@ class Instance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     domain = registerOutput<String?>('domain');
     domainAuthSecretArn = registerOutput<String?>('domainAuthSecretArn');
-    domainDnsIps = registerOutput<List<String>?>('domainDnsIps');
+    domainDnsIps = registerOutput<List<String>?>('domainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainFqdn = registerOutput<String>('domainFqdn');
     domainIamRoleName = registerOutput<String?>('domainIamRoleName');
     domainOu = registerOutput<String?>('domainOu');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
@@ -2131,11 +2415,11 @@ class Instance extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     latestRestorableTime = registerOutput<String>('latestRestorableTime');
     licenseModel = registerOutput<String>('licenseModel');
-    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>('listenerEndpoints');
+    listenerEndpoints = registerOutput<List<InstanceListenerEndpoint>>('listenerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceListenerEndpoint>(guardedValue, (value) => InstanceListenerEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
     masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
+    masterUserSecrets = registerOutput<List<InstanceMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMasterUserSecret>(guardedValue, (value) => InstanceMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
     maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -2144,8 +2428,8 @@ class Instance extends pulumi.CustomResource {
     networkType = registerOutput<String>('networkType');
     optionGroupName = registerOutput<String>('optionGroupName');
     parameterGroupName = registerOutput<String>('parameterGroupName');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
     performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
@@ -2154,7 +2438,7 @@ class Instance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
     replicaMode = registerOutput<String>('replicaMode');
-    replicas = registerOutput<List<String>>('replicas');
+    replicas = registerOutput<List<String>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicateSourceDb = registerOutput<String?>('replicateSourceDb');
     resourceId = registerOutput<String>('resourceId');
     restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2165,13 +2449,13 @@ class Instance extends pulumi.CustomResource {
     storageEncrypted = registerOutput<bool?>('storageEncrypted');
     storageThroughput = registerOutput<int>('storageThroughput');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezone = registerOutput<String>('timezone');
     upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
     upgradeStorageConfig = registerOutput<bool?>('upgradeStorageConfig');
     username = registerOutput<String>('username');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -2179,11 +2463,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2221,11 +2506,11 @@ class Instance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     domain = registerOutput<String?>('domain');
     domainAuthSecretArn = registerOutput<String?>('domainAuthSecretArn');
-    domainDnsIps = registerOutput<List<String>?>('domainDnsIps');
+    domainDnsIps = registerOutput<List<String>?>('domainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainFqdn = registerOutput<String>('domainFqdn');
     domainIamRoleName = registerOutput<String?>('domainIamRoleName');
     domainOu = registerOutput<String?>('domainOu');
-    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String>('engine');
     engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
@@ -2241,11 +2526,11 @@ class Instance extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     latestRestorableTime = registerOutput<String>('latestRestorableTime');
     licenseModel = registerOutput<String>('licenseModel');
-    listenerEndpoints = registerOutput<List<Map<String, dynamic>>>('listenerEndpoints');
+    listenerEndpoints = registerOutput<List<InstanceListenerEndpoint>>('listenerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceListenerEndpoint>(guardedValue, (value) => InstanceListenerEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
     masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
-    masterUserSecrets = registerOutput<List<Map<String, dynamic>>>('masterUserSecrets');
+    masterUserSecrets = registerOutput<List<InstanceMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMasterUserSecret>(guardedValue, (value) => InstanceMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
     maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
     monitoringInterval = registerOutput<int?>('monitoringInterval');
     monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
@@ -2254,8 +2539,8 @@ class Instance extends pulumi.CustomResource {
     networkType = registerOutput<String>('networkType');
     optionGroupName = registerOutput<String>('optionGroupName');
     parameterGroupName = registerOutput<String>('parameterGroupName');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
     performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
@@ -2264,7 +2549,7 @@ class Instance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
     replicaMode = registerOutput<String>('replicaMode');
-    replicas = registerOutput<List<String>>('replicas');
+    replicas = registerOutput<List<String>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicateSourceDb = registerOutput<String?>('replicateSourceDb');
     resourceId = registerOutput<String>('resourceId');
     restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2275,12 +2560,109 @@ class Instance extends pulumi.CustomResource {
     storageEncrypted = registerOutput<bool?>('storageEncrypted');
     storageThroughput = registerOutput<int>('storageThroughput');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezone = registerOutput<String>('timezone');
     upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
     upgradeStorageConfig = registerOutput<bool?>('upgradeStorageConfig');
     username = registerOutput<String>('username');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'aws:rds/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    allocatedStorage = registerOutput<int>('allocatedStorage');
+    allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');
+    applyImmediately = registerOutput<bool?>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    backupTarget = registerOutput<String>('backupTarget');
+    backupWindow = registerOutput<String>('backupWindow');
+    blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>('blueGreenUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceBlueGreenUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    caCertIdentifier = registerOutput<String>('caCertIdentifier');
+    characterSetName = registerOutput<String>('characterSetName');
+    copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    customIamInstanceProfile = registerOutput<String?>('customIamInstanceProfile');
+    customerOwnedIpEnabled = registerOutput<bool?>('customerOwnedIpEnabled');
+    databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
+    dbName = registerOutput<String>('dbName');
+    dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    dedicatedLogVolume = registerOutput<bool?>('dedicatedLogVolume');
+    deleteAutomatedBackups = registerOutput<bool?>('deleteAutomatedBackups');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    domain = registerOutput<String?>('domain');
+    domainAuthSecretArn = registerOutput<String?>('domainAuthSecretArn');
+    domainDnsIps = registerOutput<List<String>?>('domainDnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    domainFqdn = registerOutput<String>('domainFqdn');
+    domainIamRoleName = registerOutput<String?>('domainIamRoleName');
+    domainOu = registerOutput<String?>('domainOu');
+    enabledCloudwatchLogsExports = registerOutput<List<String>?>('enabledCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String>('engine');
+    engineLifecycleSupport = registerOutput<String>('engineLifecycleSupport');
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    identifier = registerOutput<String>('identifier');
+    identifierPrefix = registerOutput<String>('identifierPrefix');
+    instanceClass = registerOutput<String>('instanceClass');
+    iops = registerOutput<int>('iops');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    latestRestorableTime = registerOutput<String>('latestRestorableTime');
+    licenseModel = registerOutput<String>('licenseModel');
+    listenerEndpoints = registerOutput<List<InstanceListenerEndpoint>>('listenerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceListenerEndpoint>(guardedValue, (value) => InstanceListenerEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    manageMasterUserPassword = registerOutput<bool?>('manageMasterUserPassword');
+    masterUserSecretKmsKeyId = registerOutput<String>('masterUserSecretKmsKeyId');
+    masterUserSecrets = registerOutput<List<InstanceMasterUserSecret>>('masterUserSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMasterUserSecret>(guardedValue, (value) => InstanceMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
+    monitoringInterval = registerOutput<int?>('monitoringInterval');
+    monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    multiAz = registerOutput<bool>('multiAz');
+    ncharCharacterSetName = registerOutput<String>('ncharCharacterSetName');
+    networkType = registerOutput<String>('networkType');
+    optionGroupName = registerOutput<String>('optionGroupName');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
+    passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    performanceInsightsEnabled = registerOutput<bool?>('performanceInsightsEnabled');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    performanceInsightsRetentionPeriod = registerOutput<int>('performanceInsightsRetentionPeriod');
+    port = registerOutput<int>('port');
+    publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    replicaMode = registerOutput<String>('replicaMode');
+    replicas = registerOutput<List<String>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicateSourceDb = registerOutput<String?>('replicateSourceDb');
+    resourceId = registerOutput<String>('resourceId');
+    restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRestoreToPointInTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3Import = registerOutput<InstanceS3Import?>('s3Import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceS3Import.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
+    status = registerOutput<String>('status');
+    storageEncrypted = registerOutput<bool?>('storageEncrypted');
+    storageThroughput = registerOutput<int>('storageThroughput');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timezone = registerOutput<String>('timezone');
+    upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
+    upgradeStorageConfig = registerOutput<bool?>('upgradeStorageConfig');
+    username = registerOutput<String>('username');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

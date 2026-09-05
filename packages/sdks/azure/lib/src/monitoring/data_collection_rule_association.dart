@@ -346,7 +346,7 @@ import 'data_collection_rule_association_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -361,7 +361,7 @@ import 'data_collection_rule_association_state.dart';
 /// 			Size:              pulumi.String("Standard_B1ls"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminPassword:                 pulumi.String("example-Password@7890"),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
@@ -413,8 +413,8 @@ import 'data_collection_rule_association_state.dart';
 /// 		// associate to a Data Collection Rule
 /// 		_, err = monitoring.NewDataCollectionRuleAssociation(ctx, "example1", &monitoring.DataCollectionRuleAssociationArgs{
 /// 			Name:                 pulumi.String("example1-dcra"),
-/// 			TargetResourceId:     exampleLinuxVirtualMachine.ID(),
-/// 			DataCollectionRuleId: exampleDataCollectionRule.ID(),
+/// 			TargetResourceId:     exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			DataCollectionRuleId: exampleDataCollectionRule.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:          pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -422,8 +422,8 @@ import 'data_collection_rule_association_state.dart';
 /// 		}
 /// 		// associate to a Data Collection Endpoint
 /// 		_, err = monitoring.NewDataCollectionRuleAssociation(ctx, "example2", &monitoring.DataCollectionRuleAssociationArgs{
-/// 			TargetResourceId:         exampleLinuxVirtualMachine.ID(),
-/// 			DataCollectionEndpointId: exampleDataCollectionEndpoint.ID(),
+/// 			TargetResourceId:         exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			DataCollectionEndpointId: exampleDataCollectionEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:              pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -791,7 +791,7 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
           'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
@@ -805,11 +805,12 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataCollectionRuleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataCollectionRuleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -823,6 +824,22 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
+    dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [DataCollectionRuleAssociation] resource.
+  DataCollectionRuleAssociation.reference(String urn)
+    : super(
+        'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
     description = registerOutput<String?>('description');

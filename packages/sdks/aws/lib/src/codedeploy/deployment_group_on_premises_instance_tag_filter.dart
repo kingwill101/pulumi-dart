@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupOnPremisesInstanceTagFilter {
   /// The key of the tag filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the tag filter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DeploymentGroupOnPremisesInstanceTagFilter].
   /// [key] The key of the tag filter.

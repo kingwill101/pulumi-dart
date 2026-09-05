@@ -3,44 +3,44 @@
 
 /// Result data returned by getOutpostInstanceType.
 class GetOutpostInstanceTypeResult {
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instanceType;
+  final String? id;
+  final String? instanceType;
   final List<String>? preferredInstanceTypes;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetOutpostInstanceTypeResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceType] Required.
+  /// [instanceType] Optional.
   /// [preferredInstanceTypes] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   const GetOutpostInstanceTypeResult({
-    required this.arn,
-    required this.id,
-    required this.instanceType,
+    this.arn,
+    this.id,
+    this.instanceType,
     this.preferredInstanceTypes,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'instanceType': instanceType,
+      'arn': ?arn,
+      'id': ?id,
+      'instanceType': ?instanceType,
       'preferredInstanceTypes': ?preferredInstanceTypes,
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetOutpostInstanceTypeResult.fromMap(Map<String, dynamic> map) {
     return GetOutpostInstanceTypeResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      instanceType: map['instanceType'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preferredInstanceTypes: (() { final guardedValue = map['preferredInstanceTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

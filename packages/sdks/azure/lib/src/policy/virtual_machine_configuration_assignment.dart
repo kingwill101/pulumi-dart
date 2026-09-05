@@ -370,7 +370,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -386,7 +386,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			AdminPassword:     pulumi.String("P@$$w0rd1234!"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Identity: &compute.WindowsVirtualMachineIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -407,7 +407,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 		}
 /// 		_, err = compute.NewExtension(ctx, "example", &compute.ExtensionArgs{
 /// 			Name:                    pulumi.String("AzurePolicyforWindows"),
-/// 			VirtualMachineId:        exampleWindowsVirtualMachine.ID(),
+/// 			VirtualMachineId:        exampleWindowsVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Publisher:               pulumi.String("Microsoft.GuestConfiguration"),
 /// 			Type:                    pulumi.String("ConfigurationforWindows"),
 /// 			TypeHandlerVersion:      pulumi.String("1.29"),
@@ -419,7 +419,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// 		_, err = policy.NewVirtualMachineConfigurationAssignment(ctx, "example", &policy.VirtualMachineConfigurationAssignmentArgs{
 /// 			Name:             pulumi.String("AzureWindowsBaseline"),
 /// 			Location:         exampleWindowsVirtualMachine.Location,
-/// 			VirtualMachineId: exampleWindowsVirtualMachine.ID(),
+/// 			VirtualMachineId: exampleWindowsVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &policy.VirtualMachineConfigurationAssignmentConfigurationArgs{
 /// 				AssignmentType: pulumi.String("ApplyAndMonitor"),
 /// 				Version:        pulumi.String("1.*"),
@@ -808,7 +808,7 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
           'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -821,11 +821,12 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineConfigurationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineConfigurationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -839,6 +840,21 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineConfigurationAssignment] resource.
+  VirtualMachineConfigurationAssignment.reference(String urn)
+    : super(
+        'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -6,17 +6,17 @@ import 'object_replication_rule.dart';
 /// Input properties used for looking up and filtering ObjectReplication resources.
 class ObjectReplicationState {
   /// The ID of the Object Replication in the destination storage account.
-  final pulumi.Input<String>? destinationObjectReplicationId;
+  final pulumi.Input<String?>? destinationObjectReplicationId;
   /// The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
-  final pulumi.Input<String>? destinationStorageAccountId;
+  final pulumi.Input<String?>? destinationStorageAccountId;
   /// Whether metrics are enabled for this object replication. Defaults to `false`.
-  final pulumi.Input<bool>? metricsEnabled;
+  final pulumi.Input<bool?>? metricsEnabled;
   /// One or more `rules` blocks as defined below.
-  final pulumi.Input<List<ObjectReplicationRule>>? rules;
+  final pulumi.Input<List<ObjectReplicationRule>?>? rules;
   /// The ID of the Object Replication in the source storage account.
-  final pulumi.Input<String>? sourceObjectReplicationId;
+  final pulumi.Input<String?>? sourceObjectReplicationId;
   /// The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
-  final pulumi.Input<String>? sourceStorageAccountId;
+  final pulumi.Input<String?>? sourceStorageAccountId;
 
   /// Creates a new [ObjectReplicationState].
   /// [destinationObjectReplicationId] The ID of the Object Replication in the destination storage account.

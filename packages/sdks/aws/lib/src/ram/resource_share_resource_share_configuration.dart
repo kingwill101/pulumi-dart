@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceShareResourceShareConfiguration {
   /// Whether consumer account retains access to resource share after leaving AWS organization.
-  final pulumi.Input<bool>? retainSharingOnAccountLeaveOrganization;
+  final pulumi.Input<bool?>? retainSharingOnAccountLeaveOrganization;
 
   /// Creates a new [ResourceShareResourceShareConfiguration].
   /// [retainSharingOnAccountLeaveOrganization] Whether consumer account retains access to resource share after leaving AWS organization.

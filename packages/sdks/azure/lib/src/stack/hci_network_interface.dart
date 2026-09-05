@@ -197,7 +197,7 @@ import 'hci_network_interface_state.dart';
 /// 			Subnet: &stack.HciLogicalNetworkSubnetArgs{
 /// 				IpAllocationMethod: pulumi.String("Static"),
 /// 				AddressPrefix:      pulumi.String("10.0.0.0/24"),
-/// 				Route: map[string]interface{}{
+/// 				Route: map[string]string{
 /// 					"name":             "example-route",
 /// 					"addressPrefix":    "0.0.0.0/0",
 /// 					"nextHopIpAddress": "10.0.20.1",
@@ -446,16 +446,16 @@ class HciNetworkInterface extends pulumi.CustomResource {
           'azure:stack/hciNetworkInterface:HciNetworkInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciNetworkInterfaceIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [HciNetworkInterface] resource's state with the given [name] and [id].
@@ -463,11 +463,12 @@ class HciNetworkInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciNetworkInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciNetworkInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -482,12 +483,31 @@ class HciNetworkInterface extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciNetworkInterfaceIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [HciNetworkInterface] resource.
+  HciNetworkInterface.reference(String urn)
+    : super(
+        'azure:stack/hciNetworkInterface:HciNetworkInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciNetworkInterfaceIpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    macAddress = registerOutput<String?>('macAddress');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

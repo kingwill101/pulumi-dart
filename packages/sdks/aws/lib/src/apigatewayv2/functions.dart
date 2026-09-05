@@ -126,6 +126,17 @@ Future<GetApiResult> getApi(
   return GetApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigatewayv2/getApi:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
+}
+
 /// Provides details about multiple Amazon API Gateway Version 2 APIs.
 ///
 /// ## Example Usage
@@ -242,6 +253,17 @@ Future<GetApisResult> getApis(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApisResult.fromMap(result);
+}
+
+pulumi.Output<GetApisResult> getApisOutput(
+  GetApisArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigatewayv2/getApis:getApis',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApisResult.fromMap);
 }
 
 /// Exports a definition of an API in a particular output format and specification.
@@ -376,6 +398,17 @@ Future<GetExportResult> getExport(
   return GetExportResult.fromMap(result);
 }
 
+pulumi.Output<GetExportResult> getExportOutput(
+  GetExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigatewayv2/getExport:getExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportResult.fromMap);
+}
+
 /// Data source for managing an AWS API Gateway V2 VPC Link.
 ///
 /// ## Example Usage
@@ -494,4 +527,15 @@ Future<GetVpcLinkResult> getVpcLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcLinkResult> getVpcLinkOutput(
+  GetVpcLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apigatewayv2/getVpcLink:getVpcLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcLinkResult.fromMap);
 }

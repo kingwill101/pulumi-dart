@@ -9,7 +9,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetri
   /// Statistic of the metrics to return.
   final pulumi.Input<String> stat;
   /// Unit of the metrics to return.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat].
   /// [metric] Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.

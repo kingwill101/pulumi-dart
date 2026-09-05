@@ -5,6 +5,7 @@ import 'account_identity.dart';
 import 'account_network_acls.dart';
 import 'account_network_injection.dart';
 import 'account_state.dart';
+import 'account_storage.dart';
 
 /// Manages a Cognitive Services Account.
 ///
@@ -282,7 +283,7 @@ class Account extends pulumi.CustomResource {
   /// &gt; **Note:** SKU `DC0` is the commitment tier for Cognitive Services containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   late final pulumi.Output<String> skuName;
   /// A `storage` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storages;
+  late final pulumi.Output<List<AccountStorage>?> storages;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -298,15 +299,16 @@ class Account extends pulumi.CustomResource {
           'azure:cognitive/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['customQuestionAnsweringSearchServiceKey', 'primaryAccessKey', 'secondaryAccessKey'],
         ) {
     customQuestionAnsweringSearchServiceId = registerOutput<String?>('customQuestionAnsweringSearchServiceId');
-    customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey');
+    customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey', isSecret: true);
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
     endpoint = registerOutput<String>('endpoint');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
@@ -319,15 +321,15 @@ class Account extends pulumi.CustomResource {
     networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkInjection = registerOutput<AccountNetworkInjection?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     projectManagementEnabled = registerOutput<bool?>('projectManagementEnabled');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storages = registerOutput<List<AccountStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountStorage>(guardedValue, (value) => AccountStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -335,11 +337,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,12 +357,12 @@ class Account extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     customQuestionAnsweringSearchServiceId = registerOutput<String?>('customQuestionAnsweringSearchServiceId');
-    customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey');
+    customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey', isSecret: true);
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
     endpoint = registerOutput<String>('endpoint');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
@@ -372,14 +375,54 @@ class Account extends pulumi.CustomResource {
     networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     networkInjection = registerOutput<AccountNetworkInjection?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     projectManagementEnabled = registerOutput<bool?>('projectManagementEnabled');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storages = registerOutput<List<AccountStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountStorage>(guardedValue, (value) => AccountStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:cognitive/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customQuestionAnsweringSearchServiceKey', 'primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    customQuestionAnsweringSearchServiceId = registerOutput<String?>('customQuestionAnsweringSearchServiceId');
+    customQuestionAnsweringSearchServiceKey = registerOutput<String?>('customQuestionAnsweringSearchServiceKey', isSecret: true);
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AccountCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    metricsAdvisorAadClientId = registerOutput<String?>('metricsAdvisorAadClientId');
+    metricsAdvisorAadTenantId = registerOutput<String?>('metricsAdvisorAadTenantId');
+    metricsAdvisorSuperUserName = registerOutput<String?>('metricsAdvisorSuperUserName');
+    metricsAdvisorWebsiteName = registerOutput<String?>('metricsAdvisorWebsiteName');
+    this.name = registerOutput<String>('name');
+    networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkInjection = registerOutput<AccountNetworkInjection?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    projectManagementEnabled = registerOutput<bool?>('projectManagementEnabled');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    qnaRuntimeEndpoint = registerOutput<String?>('qnaRuntimeEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<AccountStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountStorage>(guardedValue, (value) => AccountStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

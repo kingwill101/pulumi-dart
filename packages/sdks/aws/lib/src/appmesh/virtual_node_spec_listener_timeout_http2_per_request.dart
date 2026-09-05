@@ -26,7 +26,7 @@ class VirtualNodeSpecListenerTimeoutHttp2PerRequest {
   factory VirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutHttp2PerRequest(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

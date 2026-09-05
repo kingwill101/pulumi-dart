@@ -25,7 +25,7 @@ class WebAclRuleStatementSizeConstraintStatementPreParseTextTransformation {
 
   factory WebAclRuleStatementSizeConstraintStatementPreParseTextTransformation.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSizeConstraintStatementPreParseTextTransformation(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

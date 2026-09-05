@@ -8,7 +8,7 @@ class RuleExcludeResourceTag {
   /// The following argument is optional:
   final pulumi.Input<String> resourceTagKey;
   /// Tag value.
-  final pulumi.Input<String>? resourceTagValue;
+  final pulumi.Input<String?>? resourceTagValue;
 
   /// Creates a new [RuleExcludeResourceTag].
   /// [resourceTagKey] Tag key.

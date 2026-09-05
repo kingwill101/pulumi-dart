@@ -7,7 +7,7 @@ class HBaseClusterRolesWorkerNodeAutoscale {
   /// A `recurrence` block as defined below.
   ///
   /// &gt; **Note:** Either a `capacity` or `recurrence` block must be specified - but not both.
-  final pulumi.Input<HBaseClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
+  final pulumi.Input<HBaseClusterRolesWorkerNodeAutoscaleRecurrence?>? recurrence;
 
   /// Creates a new [HBaseClusterRolesWorkerNodeAutoscale].
   /// [recurrence] A `recurrence` block as defined below.

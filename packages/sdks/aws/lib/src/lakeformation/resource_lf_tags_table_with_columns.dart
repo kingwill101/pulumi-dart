@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceLfTagsTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Set of column names for the table.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final pulumi.Input<String> databaseName;
   /// Set of column names for the table to exclude. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
-  final pulumi.Input<List<String>>? excludedColumnNames;
+  final pulumi.Input<List<String>?>? excludedColumnNames;
   /// Name of the table resource.
   final pulumi.Input<String> name;
   /// Whether to use a column wildcard. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<bool>? wildcard;
+  final pulumi.Input<bool?>? wildcard;
 
   /// Creates a new [ResourceLfTagsTableWithColumns].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.

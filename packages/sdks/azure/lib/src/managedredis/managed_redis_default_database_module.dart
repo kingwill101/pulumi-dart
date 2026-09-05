@@ -8,13 +8,13 @@ class ManagedRedisDefaultDatabaseModule {
   /// &gt; **Note:** Changing `args` forces database recreation. Data will be lost and Managed Redis will be unavailable during the operation.
   ///
   /// &gt; **Note:** Only `RediSearch` and `RedisJSON` modules are allowed with geo-replication.
-  final pulumi.Input<String>? args;
+  final pulumi.Input<String?>? args;
   /// The name which should be used for this module. Possible values are `RedisBloom`, `RedisTimeSeries`, `RediSearch` and `RedisJSON`.
   ///
   /// &gt; **Note:** Changing `name` forces database recreation. Data will be lost and Managed Redis will be unavailable during the operation.
   final pulumi.Input<String> name;
   /// Version of the module to be used.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ManagedRedisDefaultDatabaseModule].
   /// [args] Configuration options for the module (e.g. `ERROR_RATE 0.00 INITIAL_SIZE 400`).

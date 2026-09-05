@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyIntrusionDetectionTrafficBypass {
   /// The description for this bypass traffic setting.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies a list of destination IP addresses that shall be bypassed by intrusion detection.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// Specifies a list of destination IP groups that shall be bypassed by intrusion detection.
-  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>?>? destinationIpGroups;
   /// Specifies a list of destination IP ports that shall be bypassed by intrusion detection.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// The name which should be used for this bypass traffic setting.
   final pulumi.Input<String> name;
   /// The protocols any of `ANY`, `TCP`, `ICMP`, `UDP` that shall be bypassed by intrusion detection.
   final pulumi.Input<String> protocol;
   /// Specifies a list of source addresses that shall be bypassed by intrusion detection.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// Specifies a list of source IP groups that shall be bypassed by intrusion detection.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionTrafficBypass].
   /// [description] The description for this bypass traffic setting.

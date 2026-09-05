@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'traffic_manager_nested_endpoint_args.dart';
+import 'traffic_manager_nested_endpoint_custom_header.dart';
 import 'traffic_manager_nested_endpoint_state.dart';
+import 'traffic_manager_nested_endpoint_subnet.dart';
 
 /// Manages a Nested Endpoint within a Traffic Manager Profile.
 ///
@@ -266,9 +268,9 @@ import 'traffic_manager_nested_endpoint_state.dart';
 /// 		}
 /// 		_, err = network.NewTrafficManagerNestedEndpoint(ctx, "example", &network.TrafficManagerNestedEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			TargetResourceId:      nested.ID(),
+/// 			TargetResourceId:      nested.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:              pulumi.Int(1),
-/// 			ProfileId:             parent.ID(),
+/// 			ProfileId:             parent.ID().ToIDOutput().ToStringOutput(),
 /// 			MinimumChildEndpoints: pulumi.Int(9),
 /// 			Weight:                pulumi.Int(5),
 /// 		})
@@ -506,7 +508,7 @@ import 'traffic_manager_nested_endpoint_state.dart';
 /// ```
 class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
   /// One or more `customHeader` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
+  late final pulumi.Output<List<TrafficManagerNestedEndpointCustomHeader>?> customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
@@ -528,7 +530,7 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
   /// The ID of the Traffic Manager Profile that this External Endpoint should be created within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileId;
   /// One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<TrafficManagerNestedEndpointSubnet>?> subnets;
   /// The resource id of an Azure resource to target.
   late final pulumi.Output<String> targetResourceId;
   /// Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
@@ -546,19 +548,19 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
           'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
+    customHeaders = registerOutput<List<TrafficManagerNestedEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(guardedValue, (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
-    geoMappings = registerOutput<List<String>?>('geoMappings');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     minimumChildEndpoints = registerOutput<int>('minimumChildEndpoints');
     minimumRequiredChildEndpointsIpv4 = registerOutput<int?>('minimumRequiredChildEndpointsIpv4');
     minimumRequiredChildEndpointsIpv6 = registerOutput<int?>('minimumRequiredChildEndpointsIpv6');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<TrafficManagerNestedEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(guardedValue, (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     targetResourceId = registerOutput<String>('targetResourceId');
     weight = registerOutput<int?>('weight');
   }
@@ -568,11 +570,12 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficManagerNestedEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficManagerNestedEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -586,17 +589,41 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
+    customHeaders = registerOutput<List<TrafficManagerNestedEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(guardedValue, (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
-    geoMappings = registerOutput<List<String>?>('geoMappings');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     minimumChildEndpoints = registerOutput<int>('minimumChildEndpoints');
     minimumRequiredChildEndpointsIpv4 = registerOutput<int?>('minimumRequiredChildEndpointsIpv4');
     minimumRequiredChildEndpointsIpv6 = registerOutput<int?>('minimumRequiredChildEndpointsIpv6');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<TrafficManagerNestedEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(guardedValue, (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+    weight = registerOutput<int?>('weight');
+  }
+
+  /// Creates a typed reference to an existing [TrafficManagerNestedEndpoint] resource.
+  TrafficManagerNestedEndpoint.reference(String urn)
+    : super(
+        'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customHeaders = registerOutput<List<TrafficManagerNestedEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(guardedValue, (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    endpointLocation = registerOutput<String>('endpointLocation');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    minimumChildEndpoints = registerOutput<int>('minimumChildEndpoints');
+    minimumRequiredChildEndpointsIpv4 = registerOutput<int?>('minimumRequiredChildEndpointsIpv4');
+    minimumRequiredChildEndpointsIpv6 = registerOutput<int?>('minimumRequiredChildEndpointsIpv6');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    profileId = registerOutput<String>('profileId');
+    subnets = registerOutput<List<TrafficManagerNestedEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(guardedValue, (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     targetResourceId = registerOutput<String>('targetResourceId');
     weight = registerOutput<int?>('weight');
   }

@@ -10,12 +10,12 @@ class AssessmentDelegationArgs {
   /// Identifier for the assessment.
   final pulumi.Input<String> assessmentId;
   /// Comment describing the delegation request.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   final pulumi.Input<String> controlSetId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the IAM role.
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role.
   final pulumi.Input<String> roleArn;
   /// Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   ///
@@ -27,7 +27,7 @@ class AssessmentDelegationArgs {
   /// [comment] Comment describing the delegation request.
   /// [controlSetId] Assessment control set name. This value is the control set name used during assessment creation (not the AWS-generated ID). The `_id` suffix on this attribute has been preserved to be consistent with the underlying AWS API.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
+  /// [roleArn] ARN of the IAM role.
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   const AssessmentDelegationArgs({
     required this.assessmentId,

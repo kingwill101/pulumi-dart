@@ -6,9 +6,9 @@ import 'service_task_spec_container_spec_privileges_se_linux_context.dart';
 
 class ServiceTaskSpecContainerSpecPrivileges {
   /// CredentialSpec for managed service account (Windows only)
-  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesCredentialSpec>? credentialSpec;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesCredentialSpec?>? credentialSpec;
   /// SELinux labels of the container
-  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext>? seLinuxContext;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext?>? seLinuxContext;
 
   /// Creates a new [ServiceTaskSpecContainerSpecPrivileges].
   /// [credentialSpec] CredentialSpec for managed service account (Windows only)

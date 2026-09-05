@@ -3,6 +3,7 @@ import 'web_app_args.dart';
 import 'web_app_endpoint_details.dart';
 import 'web_app_identity_provider_details.dart';
 import 'web_app_state.dart';
+import 'web_app_web_app_unit.dart';
 
 /// Resource for managing an AWS Transfer Family Web App.
 ///
@@ -21,50 +22,50 @@ import 'web_app_state.dart';
 /// const example = aws.ssoadmin.getInstances({});
 /// const assumeRoleTransfer = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: [
-///             "sts:AssumeRole",
-///             "sts:SetContext",
-///         ],
-///         principals: [{
-///             type: "Service",
-///             identifiers: ["transfer.amazonaws.com"],
-///         }],
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             values: [current.accountId],
 ///             variable: "aws:SourceAccount",
 ///         }],
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["transfer.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: [
+///             "sts:AssumeRole",
+///             "sts:SetContext",
+///         ],
 ///     }],
 /// }));
 /// const exampleRole = new aws.iam.Role("example", {
 ///     name: "example",
 ///     assumeRolePolicy: assumeRoleTransfer.then(assumeRoleTransfer => assumeRoleTransfer.json),
 /// });
-/// const exampleGetPolicyDocument = Promise.all([currentGetPartition, currentGetRegion, current]).then(([currentGetPartition, currentGetRegion, current]) => aws.iam.getPolicyDocument({
+/// const exampleGetPolicyDocument = Promise.all([current, currentGetPartition, currentGetRegion]).then(([current, currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
+///             conditions: [{
+///                 test: "StringEquals",
+///                 values: [current.accountId],
+///                 variable: "s3:ResourceAccount",
+///             }],
 ///             effect: "Allow",
 ///             actions: [
 ///                 "s3:GetDataAccess",
 ///                 "s3:ListCallerAccessGrants",
 ///             ],
 ///             resources: [`arn:${currentGetPartition.partition}:s3:${currentGetRegion.region}:${current.accountId}:access-grants/*`],
+///         },
+///         {
 ///             conditions: [{
 ///                 test: "StringEquals",
 ///                 values: [current.accountId],
 ///                 variable: "s3:ResourceAccount",
 ///             }],
-///         },
-///         {
 ///             effect: "Allow",
 ///             actions: ["s3:ListAccessGrantsInstances"],
 ///             resources: ["*"],
-///             conditions: [{
-///                 test: "StringEquals",
-///                 values: [current.accountId],
-///                 variable: "s3:ResourceAccount",
-///             }],
 ///         },
 ///     ],
 /// }));
@@ -96,47 +97,47 @@ import 'web_app_state.dart';
 /// current_get_partition = aws.get_partition()
 /// example = aws.ssoadmin.get_instances()
 /// assume_role_transfer = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": [
-///         "sts:AssumeRole",
-///         "sts:SetContext",
-///     ],
-///     "principals": [{
-///         "type": "Service",
-///         "identifiers": ["transfer.amazonaws.com"],
-///     }],
 ///     "conditions": [{
 ///         "test": "StringEquals",
 ///         "values": [current.account_id],
 ///         "variable": "aws:SourceAccount",
 ///     }],
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["transfer.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": [
+///         "sts:AssumeRole",
+///         "sts:SetContext",
+///     ],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="example",
 ///     assume_role_policy=assume_role_transfer.json)
 /// example_get_policy_document = aws.iam.get_policy_document(statements=[
 ///     {
+///         "conditions": [{
+///             "test": "StringEquals",
+///             "values": [current.account_id],
+///             "variable": "s3:ResourceAccount",
+///         }],
 ///         "effect": "Allow",
 ///         "actions": [
 ///             "s3:GetDataAccess",
 ///             "s3:ListCallerAccessGrants",
 ///         ],
 ///         "resources": [f"arn:{current_get_partition.partition}:s3:{current_get_region.region}:{current.account_id}:access-grants/*"],
+///     },
+///     {
 ///         "conditions": [{
 ///             "test": "StringEquals",
 ///             "values": [current.account_id],
 ///             "variable": "s3:ResourceAccount",
 ///         }],
-///     },
-///     {
 ///         "effect": "Allow",
 ///         "actions": ["s3:ListAccessGrantsInstances"],
 ///         "resources": ["*"],
-///         "conditions": [{
-///             "test": "StringEquals",
-///             "values": [current.account_id],
-///             "variable": "s3:ResourceAccount",
-///         }],
 ///     },
 /// ])
 /// example_role_policy = aws.iam.RolePolicy("example",
@@ -178,11 +179,17 @@ import 'web_app_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
+///                 Conditions = new[]
 ///                 {
-///                     "sts:AssumeRole",
-///                     "sts:SetContext",
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Values = new[]
+///                         {
+///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                         },
+///                         Variable = "aws:SourceAccount",
+///                     },
 ///                 },
 ///                 Principals = new[]
 ///                 {
@@ -195,17 +202,11 @@ import 'web_app_state.dart';
 ///                         },
 ///                     },
 ///                 },
-///                 Conditions = new[]
+///                 Effect = "Allow",
+///                 Actions = new[]
 ///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Values = new[]
-///                         {
-///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///                         },
-///                         Variable = "aws:SourceAccount",
-///                     },
+///                     "sts:AssumeRole",
+///                     "sts:SetContext",
 ///                 },
 ///             },
 ///         },
@@ -223,6 +224,18 @@ import 'web_app_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Conditions = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Values = new[]
+///                         {
+///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                         },
+///                         Variable = "s3:ResourceAccount",
+///                     },
+///                 },
 ///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
@@ -233,6 +246,9 @@ import 'web_app_state.dart';
 ///                 {
 ///                     $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:s3:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:access-grants/*",
 ///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -245,9 +261,6 @@ import 'web_app_state.dart';
 ///                         Variable = "s3:ResourceAccount",
 ///                     },
 ///                 },
-///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-///             {
 ///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
@@ -256,18 +269,6 @@ import 'web_app_state.dart';
 ///                 Resources = new[]
 ///                 {
 ///                     "*",
-///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Values = new[]
-///                         {
-///                             current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///                         },
-///                         Variable = "s3:ResourceAccount",
-///                     },
 ///                 },
 ///             },
 ///         },
@@ -338,10 +339,14 @@ import 'web_app_state.dart';
 /// 		assumeRoleTransfer, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 						"sts:SetContext",
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "aws:SourceAccount",
+/// 						},
 /// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
@@ -351,14 +356,10 @@ import 'web_app_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
-/// 								current.AccountId,
-/// 							},
-/// 							Variable: "aws:SourceAccount",
-/// 						},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 						"sts:SetContext",
 /// 					},
 /// 				},
 /// 			},
@@ -376,6 +377,15 @@ import 'web_app_state.dart';
 /// 		exampleGetPolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
+/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
+/// 						{
+/// 							Test: "StringEquals",
+/// 							Values: pulumi.StringArray{
+/// 								current.AccountId,
+/// 							},
+/// 							Variable: "s3:ResourceAccount",
+/// 						},
+/// 					},
 /// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"s3:GetDataAccess",
@@ -384,6 +394,8 @@ import 'web_app_state.dart';
 /// 					Resources: []string{
 /// 						fmt.Sprintf("arn:%v:s3:%v:%v:access-grants/*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
 /// 					},
+/// 				},
+/// 				{
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
@@ -393,23 +405,12 @@ import 'web_app_state.dart';
 /// 							Variable: "s3:ResourceAccount",
 /// 						},
 /// 					},
-/// 				},
-/// 				{
 /// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"s3:ListAccessGrantsInstances",
 /// 					},
 /// 					Resources: []string{
 /// 						"*",
-/// 					},
-/// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
-/// 						{
-/// 							Test: "StringEquals",
-/// 							Values: pulumi.StringArray{
-/// 								current.AccountId,
-/// 							},
-/// 							Variable: "s3:ResourceAccount",
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -466,39 +467,39 @@ import 'web_app_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRoleTransfer" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole", "sts:SetContext"]
-///     principals {
-///       type        = "Service"
-///       identifiers = ["transfer.amazonaws.com"]
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
 ///       variable = "aws:SourceAccount"
 ///     }
+///     principals {
+///       type        = "Service"
+///       identifiers = ["transfer.amazonaws.com"]
+///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole", "sts:SetContext"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "exampleGetPolicyDocument" {
 ///   statements {
+///     conditions {
+///       test     = "StringEquals"
+///       values   = [data.aws_getcalleridentity.current.account_id]
+///       variable = "s3:ResourceAccount"
+///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetDataAccess", "s3:ListCallerAccessGrants"]
 ///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:s3:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:access-grants/*"]
+///   }
+///   statements {
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
 ///       variable = "s3:ResourceAccount"
 ///     }
-///   }
-///   statements {
 ///     effect    = "Allow"
 ///     actions   = ["s3:ListAccessGrantsInstances"]
 ///     resources = ["*"]
-///     conditions {
-///       test     = "StringEquals"
-///       values   = [data.aws_getcalleridentity.current.account_id]
-///       variable = "s3:ResourceAccount"
-///     }
 ///   }
 /// }
 ///
@@ -540,8 +541,8 @@ import 'web_app_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -578,19 +579,19 @@ import 'web_app_state.dart';
 ///
 ///         final var assumeRoleTransfer = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions(
-///                     "sts:AssumeRole",
-///                     "sts:SetContext")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Service")
-///                     .identifiers("transfer.amazonaws.com")
-///                     .build())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .values(current.accountId())
 ///                     .variable("aws:SourceAccount")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("transfer.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions(
+///                     "sts:AssumeRole",
+///                     "sts:SetContext")
 ///                 .build())
 ///             .build());
 ///
@@ -602,26 +603,26 @@ import 'web_app_state.dart';
 ///         final var exampleGetPolicyDocument = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
+///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+///                         .test("StringEquals")
+///                         .values(current.accountId())
+///                         .variable("s3:ResourceAccount")
+///                         .build())
 ///                     .effect("Allow")
 ///                     .actions(
 ///                         "s3:GetDataAccess",
 ///                         "s3:ListCallerAccessGrants")
 ///                     .resources(String.format("arn:%s:s3:%s:%s:access-grants/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
 ///                         .values(current.accountId())
 ///                         .variable("s3:ResourceAccount")
 ///                         .build())
-///                     .build(),
-///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .effect("Allow")
 ///                     .actions("s3:ListAccessGrantsInstances")
 ///                     .resources("*")
-///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-///                         .test("StringEquals")
-///                         .values(current.accountId())
-///                         .variable("s3:ResourceAccount")
-///                         .build())
 ///                     .build())
 ///             .build());
 ///
@@ -694,45 +695,45 @@ import 'web_app_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///               - sts:SetContext
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - transfer.amazonaws.com
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
 ///                 variable: aws:SourceAccount
+///             principals:
+///               - type: Service
+///                 identifiers:
+///                   - transfer.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
+///               - sts:SetContext
 ///   exampleGetPolicyDocument:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
+///           - conditions:
+///               - test: StringEquals
+///                 values:
+///                   - ${current.accountId}
+///                 variable: s3:ResourceAccount
+///             effect: Allow
 ///             actions:
 ///               - s3:GetDataAccess
 ///               - s3:ListCallerAccessGrants
 ///             resources:
 ///               - arn:${currentGetPartition.partition}:s3:${currentGetRegion.region}:${current.accountId}:access-grants/*
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
 ///                 variable: s3:ResourceAccount
-///           - effect: Allow
+///             effect: Allow
 ///             actions:
 ///               - s3:ListAccessGrantsInstances
 ///             resources:
 ///               - '*'
-///             conditions:
-///               - test: StringEquals
-///                 values:
-///                   - ${current.accountId}
-///                 variable: s3:ResourceAccount
 /// ```
 ///
 ///
@@ -764,7 +765,7 @@ class WebApp extends pulumi.CustomResource {
   /// ID of the Web App resource.
   late final pulumi.Output<String> webAppId;
   /// Block for number of concurrent connections or the user sessions on the web app. See `webAppUnits` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> webAppUnits;
+  late final pulumi.Output<List<WebAppWebAppUnit>> webAppUnits;
 
   /// Creates a new [WebApp].
   /// [name] The Pulumi resource name.
@@ -778,18 +779,18 @@ class WebApp extends pulumi.CustomResource {
           'aws:transfer/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessEndpoint = registerOutput<String>('accessEndpoint');
     arn = registerOutput<String>('arn');
     endpointDetails = registerOutput<WebAppEndpointDetails?>('endpointDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identityProviderDetails = registerOutput<WebAppIdentityProviderDetails>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppIdentityProviderDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webAppEndpointPolicy = registerOutput<String>('webAppEndpointPolicy');
     webAppId = registerOutput<String>('webAppId');
-    webAppUnits = registerOutput<List<Map<String, dynamic>>>('webAppUnits');
+    webAppUnits = registerOutput<List<WebAppWebAppUnit>>('webAppUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAppWebAppUnit>(guardedValue, (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [WebApp] resource's state with the given [name] and [id].
@@ -797,11 +798,12 @@ class WebApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -820,10 +822,31 @@ class WebApp extends pulumi.CustomResource {
     endpointDetails = registerOutput<WebAppEndpointDetails?>('endpointDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identityProviderDetails = registerOutput<WebAppIdentityProviderDetails>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppIdentityProviderDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     webAppEndpointPolicy = registerOutput<String>('webAppEndpointPolicy');
     webAppId = registerOutput<String>('webAppId');
-    webAppUnits = registerOutput<List<Map<String, dynamic>>>('webAppUnits');
+    webAppUnits = registerOutput<List<WebAppWebAppUnit>>('webAppUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAppWebAppUnit>(guardedValue, (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [WebApp] resource.
+  WebApp.reference(String urn)
+    : super(
+        'aws:transfer/webApp:WebApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessEndpoint = registerOutput<String>('accessEndpoint');
+    arn = registerOutput<String>('arn');
+    endpointDetails = registerOutput<WebAppEndpointDetails?>('endpointDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identityProviderDetails = registerOutput<WebAppIdentityProviderDetails>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAppIdentityProviderDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    webAppEndpointPolicy = registerOutput<String>('webAppEndpointPolicy');
+    webAppId = registerOutput<String>('webAppId');
+    webAppUnits = registerOutput<List<WebAppWebAppUnit>>('webAppUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAppWebAppUnit>(guardedValue, (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowLogDestinationOptions {
   /// File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// Whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
-  final pulumi.Input<bool>? hiveCompatiblePartitions;
+  final pulumi.Input<bool?>? hiveCompatiblePartitions;
   /// Whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
-  final pulumi.Input<bool>? perHourPartition;
+  final pulumi.Input<bool?>? perHourPartition;
 
   /// Creates a new [FlowLogDestinationOptions].
   /// [fileFormat] File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.

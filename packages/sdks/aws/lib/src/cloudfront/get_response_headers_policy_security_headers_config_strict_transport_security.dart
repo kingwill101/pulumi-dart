@@ -35,7 +35,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
 
   factory GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
-      accessControlMaxAgeSec: pulumi.Input.fromValue(map['accessControlMaxAgeSec'] as int),
+      accessControlMaxAgeSec: pulumi.Input.fromValue((map['accessControlMaxAgeSec'] as num).toInt()),
       includeSubdomains: pulumi.Input.fromValue(map['includeSubdomains'] as bool),
       override: pulumi.Input.fromValue(map['override'] as bool),
       preload: pulumi.Input.fromValue(map['preload'] as bool),

@@ -8,7 +8,7 @@ class ManagedDiskEncryptionSettings {
   /// A `diskEncryptionKey` block as defined above.
   final pulumi.Input<ManagedDiskEncryptionSettingsDiskEncryptionKey> diskEncryptionKey;
   /// A `keyEncryptionKey` block as defined below.
-  final pulumi.Input<ManagedDiskEncryptionSettingsKeyEncryptionKey>? keyEncryptionKey;
+  final pulumi.Input<ManagedDiskEncryptionSettingsKeyEncryptionKey?>? keyEncryptionKey;
 
   /// Creates a new [ManagedDiskEncryptionSettings].
   /// [diskEncryptionKey] A `diskEncryptionKey` block as defined above.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'key_vault_access_policy.dart';
 import 'key_vault_args.dart';
+import 'key_vault_contact.dart';
 import 'key_vault_network_acls.dart';
 import 'key_vault_state.dart';
 
@@ -27,6 +29,7 @@ import 'key_vault_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -53,6 +56,7 @@ import 'key_vault_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -87,6 +91,7 @@ import 'key_vault_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -142,6 +147,7 @@ import 'key_vault_state.dart';
 /// 			Name:                     pulumi.String("examplekeyvault"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -190,6 +196,7 @@ import 'key_vault_state.dart';
 ///   name                        = "examplekeyvault"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -240,6 +247,7 @@ import 'key_vault_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -271,6 +279,7 @@ import 'key_vault_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -293,6 +302,13 @@ import 'key_vault_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.KeyVault` - 2026-02-01
+///
 /// ## Import
 ///
 /// Key Vault's can be imported using the `resource id`, e.g.
@@ -304,8 +320,8 @@ class KeyVault extends pulumi.CustomResource {
   /// A list of up to 1024 objects describing access policies, as described below.
   ///
   /// &gt; **Note:** Since `accessPolicy` can be configured both inline and via the separate `azure.keyvault.AccessPolicy` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  late final pulumi.Output<List<Map<String, dynamic>>> accessPolicies;
-  late final pulumi.Output<List<Map<String, dynamic>>> contacts;
+  late final pulumi.Output<List<KeyVaultAccessPolicy>> accessPolicies;
+  late final pulumi.Output<List<KeyVaultContact>> contacts;
   late final pulumi.Output<bool> enableRbacAuthorization;
   /// Boolean flag to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
   late final pulumi.Output<bool?> enabledForDeployment;
@@ -325,7 +341,7 @@ class KeyVault extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** Once Purge Protection has been Enabled it's not possible to Disable it. Support for [disabling purge protection is being tracked in this Azure API issue](https://github.com/Azure/azure-rest-api-specs/issues/8075). Deleting the Key Vault with Purge Protection Enabled will schedule the Key Vault to be deleted (which will happen by Azure in the configured number of days, currently 90 days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
-  /// Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions.
+  /// Boolean flag to specify whether Azure Key Vault uses Role Based Access Control (RBAC) for authorization of data actions. Defaults to `false`.
   ///
   /// &gt; **Note:** Changing the permission model requires unrestricted (no conditions on the role assignment) `Microsoft.Authorization/roleAssignments/write` permission, which is part of the `Owner` and `User Access Administrator` roles. Classic subscription administrator roles like `Service Administrator` and `Co-Administrator`, or restricted `Key Vault Data Access Administrator` cannot be used to change the permission model. For more information, please see the [product documentation](https://learn.microsoft.com/azure/key-vault/general/rbac-guide?tabs=azure-cli#using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault:~:text=Enable%20Azure%20RBAC,change%20permission%20model).
   late final pulumi.Output<bool> rbacAuthorizationEnabled;
@@ -356,10 +372,10 @@ class KeyVault extends pulumi.CustomResource {
           'azure:keyvault/keyVault:KeyVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    accessPolicies = registerOutput<List<Map<String, dynamic>>>('accessPolicies');
-    contacts = registerOutput<List<Map<String, dynamic>>>('contacts');
+    accessPolicies = registerOutput<List<KeyVaultAccessPolicy>>('accessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultAccessPolicy>(guardedValue, (value) => KeyVaultAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    contacts = registerOutput<List<KeyVaultContact>>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultContact>(guardedValue, (value) => KeyVaultContact.fromMap((value as Map).cast<String, dynamic>())); });
     enableRbacAuthorization = registerOutput<bool>('enableRbacAuthorization');
     enabledForDeployment = registerOutput<bool?>('enabledForDeployment');
     enabledForDiskEncryption = registerOutput<bool?>('enabledForDiskEncryption');
@@ -373,7 +389,7 @@ class KeyVault extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     vaultUri = registerOutput<String>('vaultUri');
   }
@@ -383,11 +399,12 @@ class KeyVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -401,8 +418,8 @@ class KeyVault extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessPolicies = registerOutput<List<Map<String, dynamic>>>('accessPolicies');
-    contacts = registerOutput<List<Map<String, dynamic>>>('contacts');
+    accessPolicies = registerOutput<List<KeyVaultAccessPolicy>>('accessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultAccessPolicy>(guardedValue, (value) => KeyVaultAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    contacts = registerOutput<List<KeyVaultContact>>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultContact>(guardedValue, (value) => KeyVaultContact.fromMap((value as Map).cast<String, dynamic>())); });
     enableRbacAuthorization = registerOutput<bool>('enableRbacAuthorization');
     enabledForDeployment = registerOutput<bool?>('enabledForDeployment');
     enabledForDiskEncryption = registerOutput<bool?>('enabledForDiskEncryption');
@@ -416,7 +433,36 @@ class KeyVault extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    vaultUri = registerOutput<String>('vaultUri');
+  }
+
+  /// Creates a typed reference to an existing [KeyVault] resource.
+  KeyVault.reference(String urn)
+    : super(
+        'azure:keyvault/keyVault:KeyVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPolicies = registerOutput<List<KeyVaultAccessPolicy>>('accessPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultAccessPolicy>(guardedValue, (value) => KeyVaultAccessPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    contacts = registerOutput<List<KeyVaultContact>>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyVaultContact>(guardedValue, (value) => KeyVaultContact.fromMap((value as Map).cast<String, dynamic>())); });
+    enableRbacAuthorization = registerOutput<bool>('enableRbacAuthorization');
+    enabledForDeployment = registerOutput<bool?>('enabledForDeployment');
+    enabledForDiskEncryption = registerOutput<bool?>('enabledForDiskEncryption');
+    enabledForTemplateDeployment = registerOutput<bool?>('enabledForTemplateDeployment');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkAcls = registerOutput<KeyVaultNetworkAcls>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
+    rbacAuthorizationEnabled = registerOutput<bool>('rbacAuthorizationEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     vaultUri = registerOutput<String>('vaultUri');
   }

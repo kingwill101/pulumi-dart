@@ -32,7 +32,7 @@ class GetScheduledQueryRulesAlertTrigger {
     return GetScheduledQueryRulesAlertTrigger(
       metricTriggers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetScheduledQueryRulesAlertTriggerMetricTrigger>(map['metricTriggers']!, (value) => GetScheduledQueryRulesAlertTriggerMetricTrigger.fromMap((value as Map).cast<String, dynamic>()))),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
     );
   }
 }

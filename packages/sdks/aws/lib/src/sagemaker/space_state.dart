@@ -7,33 +7,33 @@ import 'space_space_sharing_settings.dart';
 
 /// Input properties used for looking up and filtering Space resources.
 class SpaceState {
-  /// The space's Amazon Resource Name (ARN).
-  final pulumi.Input<String>? arn;
+  /// Space's ARN.
+  final pulumi.Input<String?>? arn;
   /// The ID of the associated Domain.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// The ID of the space's profile in the Amazon Elastic File System volume.
-  final pulumi.Input<String>? homeEfsFileSystemUid;
+  final pulumi.Input<String?>? homeEfsFileSystemUid;
   /// A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.
-  final pulumi.Input<SpaceOwnershipSettings>? ownershipSettings;
+  final pulumi.Input<SpaceOwnershipSettings?>? ownershipSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the space that appears in the SageMaker AI Studio UI.
-  final pulumi.Input<String>? spaceDisplayName;
+  final pulumi.Input<String?>? spaceDisplayName;
   /// The name of the space.
-  final pulumi.Input<String>? spaceName;
+  final pulumi.Input<String?>? spaceName;
   /// A collection of space settings. See `spaceSettings` Block below.
-  final pulumi.Input<SpaceSpaceSettings>? spaceSettings;
+  final pulumi.Input<SpaceSpaceSettings?>? spaceSettings;
   /// A collection of space sharing settings. Required if `ownershipSettings` is set. See `spaceSharingSettings` Block below.
-  final pulumi.Input<SpaceSpaceSharingSettings>? spaceSharingSettings;
+  final pulumi.Input<SpaceSpaceSharingSettings?>? spaceSharingSettings;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Returns the URL of the space. If the space is created with Amazon Web Services IAM Identity Center (Successor to Amazon Web Services Single Sign-On) authentication, users can navigate to the URL after appending the respective redirect parameter for the application type to be federated through Amazon Web Services IAM Identity Center.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [SpaceState].
-  /// [arn] The space's Amazon Resource Name (ARN).
+  /// [arn] Space's ARN.
   /// [domainId] The ID of the associated Domain.
   /// [homeEfsFileSystemUid] The ID of the space's profile in the Amazon Elastic File System volume.
   /// [ownershipSettings] A collection of ownership settings. Required if `spaceSharingSettings` is set. See `ownershipSettings` Block below.

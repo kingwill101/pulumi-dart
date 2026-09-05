@@ -10,13 +10,13 @@ class BackupInstancePostgresqlArgs {
   /// The ID of the Backup Policy.
   final pulumi.Input<String> backupPolicyId;
   /// The ID or versionless ID of the key vault secret which stores the connection string of the database.
-  final pulumi.Input<String>? databaseCredentialKeyVaultSecretId;
+  final pulumi.Input<String?>? databaseCredentialKeyVaultSecretId;
   /// The ID of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String> databaseId;
   /// The location of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String> vaultId;
 

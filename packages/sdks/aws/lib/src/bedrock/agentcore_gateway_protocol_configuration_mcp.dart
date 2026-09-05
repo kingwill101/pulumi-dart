@@ -6,15 +6,15 @@ import 'agentcore_gateway_protocol_configuration_mcp_streaming_configuration.dar
 
 class AgentcoreGatewayProtocolConfigurationMcp {
   /// Instructions for the MCP protocol configuration.
-  final pulumi.Input<String>? instructions;
+  final pulumi.Input<String?>? instructions;
   /// Search type for MCP. Valid values: `SEMANTIC`.
-  final pulumi.Input<String>? searchType;
+  final pulumi.Input<String?>? searchType;
   /// Configuration block for session settings of the MCP gateway. See `sessionConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayProtocolConfigurationMcpSessionConfiguration>? sessionConfiguration;
+  final pulumi.Input<AgentcoreGatewayProtocolConfigurationMcpSessionConfiguration?>? sessionConfiguration;
   /// Configuration block for streaming settings of the MCP gateway. See `streamingConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayProtocolConfigurationMcpStreamingConfiguration>? streamingConfiguration;
+  final pulumi.Input<AgentcoreGatewayProtocolConfigurationMcpStreamingConfiguration?>? streamingConfiguration;
   /// Set of supported MCP protocol versions.
-  final pulumi.Input<List<String>>? supportedVersions;
+  final pulumi.Input<List<String>?>? supportedVersions;
 
   /// Creates a new [AgentcoreGatewayProtocolConfigurationMcp].
   /// [instructions] Instructions for the MCP protocol configuration.

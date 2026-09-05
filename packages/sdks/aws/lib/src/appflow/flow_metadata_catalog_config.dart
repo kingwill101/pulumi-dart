@@ -5,7 +5,7 @@ import 'flow_metadata_catalog_config_glue_data_catalog.dart';
 
 class FlowMetadataCatalogConfig {
   /// Configuration that determines how Amazon AppFlow catalogs data with the AWS Glue Data Catalog. See the `metadata_catalog_config.glue_data_catalog` Block for details.
-  final pulumi.Input<FlowMetadataCatalogConfigGlueDataCatalog>? glueDataCatalog;
+  final pulumi.Input<FlowMetadataCatalogConfigGlueDataCatalog?>? glueDataCatalog;
 
   /// Creates a new [FlowMetadataCatalogConfig].
   /// [glueDataCatalog] Configuration that determines how Amazon AppFlow catalogs data with the AWS Glue Data Catalog. See the `metadata_catalog_config.glue_data_catalog` Block for details.

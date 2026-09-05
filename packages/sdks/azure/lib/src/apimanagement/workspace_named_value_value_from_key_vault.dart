@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceNamedValueValueFromKeyVault {
   /// The client ID of the User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used if not specified.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The resource ID of the Key Vault Secret.
   final pulumi.Input<String> secretId;
 

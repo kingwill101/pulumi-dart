@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Profile resources.
 class ProfileState {
   /// Whether or not a custom role session name is accepted.
-  final pulumi.Input<bool>? acceptRoleSessionName;
-  /// Amazon Resource Name (ARN) of the Profile
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<bool?>? acceptRoleSessionName;
+  /// ARN of the Profile
+  final pulumi.Input<String?>? arn;
   /// The number of seconds the vended session credentials are valid for. Defaults to 3600.
-  final pulumi.Input<int>? durationSeconds;
+  final pulumi.Input<int?>? durationSeconds;
   /// Whether or not the Profile is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A list of managed policy ARNs that apply to the vended session credentials.
-  final pulumi.Input<List<String>>? managedPolicyArns;
+  final pulumi.Input<List<String>?>? managedPolicyArns;
   /// The name of the Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies whether instance properties are required in [CreateSession](https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/API_CreateSession.html) requests with this profile.
-  final pulumi.Input<bool>? requireInstanceProperties;
+  final pulumi.Input<bool?>? requireInstanceProperties;
   /// A list of IAM roles that this profile can assume
-  final pulumi.Input<List<String>>? roleArns;
+  final pulumi.Input<List<String>?>? roleArns;
   /// A session policy that applies to the trust boundary of the vended session credentials.
-  final pulumi.Input<String>? sessionPolicy;
+  final pulumi.Input<String?>? sessionPolicy;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ProfileState].
   /// [acceptRoleSessionName] Whether or not a custom role session name is accepted.
-  /// [arn] Amazon Resource Name (ARN) of the Profile
+  /// [arn] ARN of the Profile
   /// [durationSeconds] The number of seconds the vended session credentials are valid for. Defaults to 3600.
   /// [enabled] Whether or not the Profile is enabled.
   /// [managedPolicyArns] A list of managed policy ARNs that apply to the vended session credentials.
@@ -73,7 +73,7 @@ class ProfileState {
     return ProfileState(
       acceptRoleSessionName: (() { final guardedValue = map['acceptRoleSessionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       managedPolicyArns: (() { final guardedValue = map['managedPolicyArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

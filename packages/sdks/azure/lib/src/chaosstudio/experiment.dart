@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experiment_args.dart';
 import 'experiment_identity.dart';
+import 'experiment_selector.dart';
 import 'experiment_state.dart';
+import 'experiment_step.dart';
 
 /// Manages a Chaos Studio Experiment.
 ///
@@ -392,7 +394,7 @@ import 'experiment_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("example"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -409,7 +411,7 @@ import 'experiment_state.dart';
 /// 			AdminPassword:                 pulumi.String("example"),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			OsDisk: &compute.LinuxVirtualMachineOsDiskArgs{
 /// 				Caching:            pulumi.String("ReadWrite"),
@@ -427,14 +429,14 @@ import 'experiment_state.dart';
 /// 		}
 /// 		exampleTarget, err := chaosstudio.NewTarget(ctx, "example", &chaosstudio.TargetArgs{
 /// 			Location:         example.Location,
-/// 			TargetResourceId: exampleLinuxVirtualMachine.ID(),
+/// 			TargetResourceId: exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetType:       pulumi.String("Microsoft-VirtualMachine"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleCapability, err := chaosstudio.NewCapability(ctx, "example", &chaosstudio.CapabilityArgs{
-/// 			ChaosStudioTargetId: exampleTarget.ID(),
+/// 			ChaosStudioTargetId: exampleTarget.ID().ToIDOutput().ToStringOutput(),
 /// 			CapabilityType:      pulumi.String("Shutdown-1.0"),
 /// 		})
 /// 		if err != nil {
@@ -451,7 +453,7 @@ import 'experiment_state.dart';
 /// 				&chaosstudio.ExperimentSelectorArgs{
 /// 					Name: pulumi.String("Selector1"),
 /// 					ChaosStudioTargetIds: pulumi.StringArray{
-/// 						exampleTarget.ID(),
+/// 						exampleTarget.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -851,9 +853,9 @@ class Experiment extends pulumi.CustomResource {
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `selectors` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> selectors;
+  late final pulumi.Output<List<ExperimentSelector>> selectors;
   /// One or more `steps` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<ExperimentStep>> steps;
 
   /// Creates a new [Experiment].
   /// [name] The Pulumi resource name.
@@ -867,14 +869,14 @@ class Experiment extends pulumi.CustomResource {
           'azure:chaosstudio/experiment:Experiment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     identity = registerOutput<ExperimentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
+    selectors = registerOutput<List<ExperimentSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentSelector>(guardedValue, (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    steps = registerOutput<List<ExperimentStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentStep>(guardedValue, (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Experiment] resource's state with the given [name] and [id].
@@ -882,11 +884,12 @@ class Experiment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExperimentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Experiment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -904,7 +907,24 @@ class Experiment extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
+    selectors = registerOutput<List<ExperimentSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentSelector>(guardedValue, (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    steps = registerOutput<List<ExperimentStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentStep>(guardedValue, (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Experiment] resource.
+  Experiment.reference(String urn)
+    : super(
+        'azure:chaosstudio/experiment:Experiment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identity = registerOutput<ExperimentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    selectors = registerOutput<List<ExperimentSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentSelector>(guardedValue, (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    steps = registerOutput<List<ExperimentStep>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentStep>(guardedValue, (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

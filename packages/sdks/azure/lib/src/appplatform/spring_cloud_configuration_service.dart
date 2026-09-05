@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_configuration_service_args.dart';
+import 'spring_cloud_configuration_service_repository.dart';
 import 'spring_cloud_configuration_service_state.dart';
 
 /// Manages a Spring Cloud Configuration Service.
@@ -152,7 +153,7 @@ import 'spring_cloud_configuration_service_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudConfigurationService(ctx, "example", &appplatform.SpringCloudConfigurationServiceArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			Repositories: appplatform.SpringCloudConfigurationServiceRepositoryArray{
 /// 				&appplatform.SpringCloudConfigurationServiceRepositoryArgs{
 /// 					Name:  pulumi.String("fake"),
@@ -328,7 +329,7 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
   /// Specifies how often to check repository updates. Minimum value is 0.
   late final pulumi.Output<int?> refreshIntervalInSeconds;
   /// One or more `repository` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> repositories;
+  late final pulumi.Output<List<SpringCloudConfigurationServiceRepository>?> repositories;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -344,12 +345,12 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
           'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     generation = registerOutput<String?>('generation');
     this.name = registerOutput<String>('name');
     refreshIntervalInSeconds = registerOutput<int?>('refreshIntervalInSeconds');
-    repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
+    repositories = registerOutput<List<SpringCloudConfigurationServiceRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(guardedValue, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>())); });
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
@@ -358,11 +359,12 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudConfigurationServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudConfigurationService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -379,7 +381,23 @@ class SpringCloudConfigurationService extends pulumi.CustomResource {
     generation = registerOutput<String?>('generation');
     this.name = registerOutput<String>('name');
     refreshIntervalInSeconds = registerOutput<int?>('refreshIntervalInSeconds');
-    repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
+    repositories = registerOutput<List<SpringCloudConfigurationServiceRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(guardedValue, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>())); });
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudConfigurationService] resource.
+  SpringCloudConfigurationService.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudConfigurationService:SpringCloudConfigurationService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    generation = registerOutput<String?>('generation');
+    this.name = registerOutput<String>('name');
+    refreshIntervalInSeconds = registerOutput<int?>('refreshIntervalInSeconds');
+    repositories = registerOutput<List<SpringCloudConfigurationServiceRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(guardedValue, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>())); });
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

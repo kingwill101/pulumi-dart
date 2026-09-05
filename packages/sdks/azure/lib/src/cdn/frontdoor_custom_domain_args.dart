@@ -17,7 +17,7 @@ class FrontdoorCustomDomainArgs {
   /// &lt;!-- * `preValidatedCdnFrontdoorCustomDomainId` - (Optional) The resource ID of the pre-validated Front Door Custom Domain. This domain type is used when you wish to onboard a validated Azure service domain, and then configure the Azure service behind an Azure Front Door.
   ///
   /// &gt; **Note:** Currently `preValidatedCdnFrontdoorCustomDomainId` only supports domains validated by Static Web App. --&gt;
-  final pulumi.Input<String>? dnsZoneId;
+  final pulumi.Input<String?>? dnsZoneId;
   /// The host name of the domain. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `hostName` field must be the FQDN of your domain (e.g. `contoso.fabrikam.com`).
@@ -25,7 +25,7 @@ class FrontdoorCustomDomainArgs {
   /// The name which should be used for this Front Door Custom Domain. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `name` must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number, and contain only letters, numbers, and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `tls` block as defined below.
   final pulumi.Input<FrontdoorCustomDomainTls> tls;
 

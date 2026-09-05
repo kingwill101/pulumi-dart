@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// A description for this Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The type of the Connection - can be either builtin type such as `Azure`, `AzureClassicCertificate`, and `AzureServicePrincipal`, or a user defined types. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A mapping of key value pairs passed to the connection. Different `type` needs different parameters in the `values`. Builtin types have required field values as below:
   ///
   /// * `Azure`: parameters `AutomationCertificateName` and `SubscriptionID`.
@@ -21,7 +21,7 @@ class ConnectionState {
   /// * `AzureClassicCertificate`: parameters `SubscriptionName`, `SubscriptionId` and `CertificateAssetName`.
   ///
   /// * `AzureServicePrincipal`: parameters `ApplicationId`, `CertificateThumbprint`, `SubscriptionId` and `TenantId`.
-  final pulumi.Input<Map<String, String>>? values;
+  final pulumi.Input<Map<String, String>?>? values;
 
   /// Creates a new [ConnectionState].
   /// [automationAccountName] The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.

@@ -27,17 +27,17 @@ import 'capacity_provider_state.dart';
 ///     propagateAtLaunch: true,
 /// }]});
 /// const exampleCapacityProvider = new aws.ecs.CapacityProvider("example", {
-///     name: "example",
 ///     autoScalingGroupProvider: {
-///         autoScalingGroupArn: example.arn,
-///         managedTerminationProtection: "ENABLED",
 ///         managedScaling: {
 ///             maximumScalingStepSize: 1000,
 ///             minimumScalingStepSize: 1,
 ///             status: "ENABLED",
 ///             targetCapacity: 10,
 ///         },
+///         autoScalingGroupArn: example.arn,
+///         managedTerminationProtection: "ENABLED",
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -50,17 +50,17 @@ import 'capacity_provider_state.dart';
 ///     "propagate_at_launch": True,
 /// }])
 /// example_capacity_provider = aws.ecs.CapacityProvider("example",
-///     name="example",
 ///     auto_scaling_group_provider={
-///         "auto_scaling_group_arn": example.arn,
-///         "managed_termination_protection": "ENABLED",
 ///         "managed_scaling": {
 ///             "maximum_scaling_step_size": 1000,
 ///             "minimum_scaling_step_size": 1,
 ///             "status": "ENABLED",
 ///             "target_capacity": 10,
 ///         },
-///     })
+///         "auto_scaling_group_arn": example.arn,
+///         "managed_termination_protection": "ENABLED",
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -85,11 +85,8 @@ import 'capacity_provider_state.dart';
 ///
 ///     var exampleCapacityProvider = new Aws.Ecs.CapacityProvider("example", new()
 ///     {
-///         Name = "example",
 ///         AutoScalingGroupProvider = new Aws.Ecs.Inputs.CapacityProviderAutoScalingGroupProviderArgs
 ///         {
-///             AutoScalingGroupArn = example.Arn,
-///             ManagedTerminationProtection = "ENABLED",
 ///             ManagedScaling = new Aws.Ecs.Inputs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs
 ///             {
 ///                 MaximumScalingStepSize = 1000,
@@ -97,7 +94,10 @@ import 'capacity_provider_state.dart';
 ///                 Status = "ENABLED",
 ///                 TargetCapacity = 10,
 ///             },
+///             AutoScalingGroupArn = example.Arn,
+///             ManagedTerminationProtection = "ENABLED",
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -126,17 +126,17 @@ import 'capacity_provider_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewCapacityProvider(ctx, "example", &ecs.CapacityProviderArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AutoScalingGroupProvider: &ecs.CapacityProviderAutoScalingGroupProviderArgs{
-/// 				AutoScalingGroupArn:          example.Arn,
-/// 				ManagedTerminationProtection: pulumi.String("ENABLED"),
 /// 				ManagedScaling: &ecs.CapacityProviderAutoScalingGroupProviderManagedScalingArgs{
 /// 					MaximumScalingStepSize: pulumi.Int(1000),
 /// 					MinimumScalingStepSize: pulumi.Int(1),
 /// 					Status:                 pulumi.String("ENABLED"),
 /// 					TargetCapacity:         pulumi.Int(10),
 /// 				},
+/// 				AutoScalingGroupArn:          example.Arn,
+/// 				ManagedTerminationProtection: pulumi.String("ENABLED"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -162,17 +162,17 @@ import 'capacity_provider_state.dart';
 ///   }
 /// }
 /// resource "aws_ecs_capacityprovider" "example" {
-///   name = "example"
 ///   auto_scaling_group_provider = {
-///     auto_scaling_group_arn         = aws_autoscaling_group.example.arn
-///     managed_termination_protection = "ENABLED"
 ///     managed_scaling = {
 ///       maximum_scaling_step_size = 1000
 ///       minimum_scaling_step_size = 1
 ///       status                    = "ENABLED"
 ///       target_capacity           = 10
 ///     }
+///     auto_scaling_group_arn         = aws_autoscaling_group.example.arn
+///     managed_termination_protection = "ENABLED"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -210,17 +210,17 @@ import 'capacity_provider_state.dart';
 ///             .build());
 ///
 ///         var exampleCapacityProvider = new CapacityProvider("exampleCapacityProvider", CapacityProviderArgs.builder()
-///             .name("example")
 ///             .autoScalingGroupProvider(CapacityProviderAutoScalingGroupProviderArgs.builder()
-///                 .autoScalingGroupArn(example.arn())
-///                 .managedTerminationProtection("ENABLED")
 ///                 .managedScaling(CapacityProviderAutoScalingGroupProviderManagedScalingArgs.builder()
 ///                     .maximumScalingStepSize(1000)
 ///                     .minimumScalingStepSize(1)
 ///                     .status("ENABLED")
 ///                     .targetCapacity(10)
 ///                     .build())
+///                 .autoScalingGroupArn(example.arn())
+///                 .managedTerminationProtection("ENABLED")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -239,15 +239,15 @@ import 'capacity_provider_state.dart';
 ///     type: aws:ecs:CapacityProvider
 ///     name: example
 ///     properties:
-///       name: example
 ///       autoScalingGroupProvider:
-///         autoScalingGroupArn: ${example.arn}
-///         managedTerminationProtection: ENABLED
 ///         managedScaling:
 ///           maximumScalingStepSize: 1000
 ///           minimumScalingStepSize: 1
 ///           status: ENABLED
 ///           targetCapacity: 10
+///         autoScalingGroupArn: ${example.arn}
+///         managedTerminationProtection: ENABLED
+///       name: example
 /// ```
 ///
 ///
@@ -259,14 +259,8 @@ import 'capacity_provider_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.CapacityProvider("example", {
-///     name: "example",
-///     cluster: "my-cluster",
 ///     managedInstancesProvider: {
-///         infrastructureRoleArn: ecsInfrastructure.arn,
-///         propagateTags: "CAPACITY_PROVIDER",
 ///         instanceLaunchTemplate: {
-///             ec2InstanceProfileArn: ecsInstance.arn,
-///             monitoring: "DETAILED",
 ///             networkConfiguration: {
 ///                 subnets: [exampleAwsSubnet.id],
 ///                 securityGroups: [exampleAwsSecurityGroup.id],
@@ -289,8 +283,14 @@ import 'capacity_provider_state.dart';
 ///                     "amd",
 ///                 ],
 ///             },
+///             ec2InstanceProfileArn: ecsInstance.arn,
+///             monitoring: "DETAILED",
 ///         },
+///         infrastructureRoleArn: ecsInfrastructure.arn,
+///         propagateTags: "CAPACITY_PROVIDER",
 ///     },
+///     name: "example",
+///     cluster: "my-cluster",
 /// });
 /// ```
 /// ```python
@@ -298,14 +298,8 @@ import 'capacity_provider_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.CapacityProvider("example",
-///     name="example",
-///     cluster="my-cluster",
 ///     managed_instances_provider={
-///         "infrastructure_role_arn": ecs_infrastructure["arn"],
-///         "propagate_tags": "CAPACITY_PROVIDER",
 ///         "instance_launch_template": {
-///             "ec2_instance_profile_arn": ecs_instance["arn"],
-///             "monitoring": "DETAILED",
 ///             "network_configuration": {
 ///                 "subnets": [example_aws_subnet["id"]],
 ///                 "security_groups": [example_aws_security_group["id"]],
@@ -328,8 +322,14 @@ import 'capacity_provider_state.dart';
 ///                     "amd",
 ///                 ],
 ///             },
+///             "ec2_instance_profile_arn": ecs_instance["arn"],
+///             "monitoring": "DETAILED",
 ///         },
-///     })
+///         "infrastructure_role_arn": ecs_infrastructure["arn"],
+///         "propagate_tags": "CAPACITY_PROVIDER",
+///     },
+///     name="example",
+///     cluster="my-cluster")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -341,16 +341,10 @@ import 'capacity_provider_state.dart';
 /// {
 ///     var example = new Aws.Ecs.CapacityProvider("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = "my-cluster",
 ///         ManagedInstancesProvider = new Aws.Ecs.Inputs.CapacityProviderManagedInstancesProviderArgs
 ///         {
-///             InfrastructureRoleArn = ecsInfrastructure.Arn,
-///             PropagateTags = "CAPACITY_PROVIDER",
 ///             InstanceLaunchTemplate = new Aws.Ecs.Inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs
 ///             {
-///                 Ec2InstanceProfileArn = ecsInstance.Arn,
-///                 Monitoring = "DETAILED",
 ///                 NetworkConfiguration = new Aws.Ecs.Inputs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs
 ///                 {
 ///                     Subnets = new[]
@@ -388,8 +382,14 @@ import 'capacity_provider_state.dart';
 ///                         "amd",
 ///                     },
 ///                 },
+///                 Ec2InstanceProfileArn = ecsInstance.Arn,
+///                 Monitoring = "DETAILED",
 ///             },
+///             InfrastructureRoleArn = ecsInfrastructure.Arn,
+///             PropagateTags = "CAPACITY_PROVIDER",
 ///         },
+///         Name = "example",
+///         Cluster = "my-cluster",
 ///     });
 ///
 /// });
@@ -405,14 +405,8 @@ import 'capacity_provider_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewCapacityProvider(ctx, "example", &ecs.CapacityProviderArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.String("my-cluster"),
 /// 			ManagedInstancesProvider: &ecs.CapacityProviderManagedInstancesProviderArgs{
-/// 				InfrastructureRoleArn: pulumi.Any(ecsInfrastructure.Arn),
-/// 				PropagateTags:         pulumi.String("CAPACITY_PROVIDER"),
 /// 				InstanceLaunchTemplate: &ecs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs{
-/// 					Ec2InstanceProfileArn: pulumi.Any(ecsInstance.Arn),
-/// 					Monitoring:            pulumi.String("DETAILED"),
 /// 					NetworkConfiguration: &ecs.CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs{
 /// 						Subnets: pulumi.StringArray{
 /// 							exampleAwsSubnet.Id,
@@ -441,8 +435,14 @@ import 'capacity_provider_state.dart';
 /// 							pulumi.String("amd"),
 /// 						},
 /// 					},
+/// 					Ec2InstanceProfileArn: pulumi.Any(ecsInstance.Arn),
+/// 					Monitoring:            pulumi.String("DETAILED"),
 /// 				},
+/// 				InfrastructureRoleArn: pulumi.Any(ecsInfrastructure.Arn),
+/// 				PropagateTags:         pulumi.String("CAPACITY_PROVIDER"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Cluster: pulumi.String("my-cluster"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -461,14 +461,8 @@ import 'capacity_provider_state.dart';
 /// }
 ///
 /// resource "aws_ecs_capacityprovider" "example" {
-///   name    = "example"
-///   cluster = "my-cluster"
 ///   managed_instances_provider = {
-///     infrastructure_role_arn = ecsInfrastructure.arn
-///     propagate_tags          = "CAPACITY_PROVIDER"
 ///     instance_launch_template = {
-///       ec2_instance_profile_arn = ecsInstance.arn
-///       monitoring               = "DETAILED"
 ///       network_configuration = {
 ///         subnets         = [exampleAwsSubnet.id]
 ///         security_groups = [exampleAwsSecurityGroup.id]
@@ -488,8 +482,14 @@ import 'capacity_provider_state.dart';
 ///         instance_generations = ["current"]
 ///         cpu_manufacturers    = ["intel", "amd"]
 ///       }
+///       ec2_instance_profile_arn = ecsInstance.arn
+///       monitoring               = "DETAILED"
 ///     }
+///     infrastructure_role_arn = ecsInfrastructure.arn
+///     propagate_tags          = "CAPACITY_PROVIDER"
 ///   }
+///   name    = "example"
+///   cluster = "my-cluster"
 /// }
 /// ```
 /// ```java
@@ -521,14 +521,8 @@ import 'capacity_provider_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CapacityProvider("example", CapacityProviderArgs.builder()
-///             .name("example")
-///             .cluster("my-cluster")
 ///             .managedInstancesProvider(CapacityProviderManagedInstancesProviderArgs.builder()
-///                 .infrastructureRoleArn(ecsInfrastructure.arn())
-///                 .propagateTags("CAPACITY_PROVIDER")
 ///                 .instanceLaunchTemplate(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateArgs.builder()
-///                     .ec2InstanceProfileArn(ecsInstance.arn())
-///                     .monitoring("DETAILED")
 ///                     .networkConfiguration(CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfigurationArgs.builder()
 ///                         .subnets(exampleAwsSubnet.id())
 ///                         .securityGroups(exampleAwsSecurityGroup.id())
@@ -550,8 +544,14 @@ import 'capacity_provider_state.dart';
 ///                             "intel",
 ///                             "amd")
 ///                         .build())
+///                     .ec2InstanceProfileArn(ecsInstance.arn())
+///                     .monitoring("DETAILED")
 ///                     .build())
+///                 .infrastructureRoleArn(ecsInfrastructure.arn())
+///                 .propagateTags("CAPACITY_PROVIDER")
 ///                 .build())
+///             .name("example")
+///             .cluster("my-cluster")
 ///             .build());
 ///
 ///     }
@@ -562,14 +562,8 @@ import 'capacity_provider_state.dart';
 ///   example:
 ///     type: aws:ecs:CapacityProvider
 ///     properties:
-///       name: example
-///       cluster: my-cluster
 ///       managedInstancesProvider:
-///         infrastructureRoleArn: ${ecsInfrastructure.arn}
-///         propagateTags: CAPACITY_PROVIDER
 ///         instanceLaunchTemplate:
-///           ec2InstanceProfileArn: ${ecsInstance.arn}
-///           monitoring: DETAILED
 ///           networkConfiguration:
 ///             subnets:
 ///               - ${exampleAwsSubnet.id}
@@ -589,6 +583,12 @@ import 'capacity_provider_state.dart';
 ///             cpuManufacturers:
 ///               - intel
 ///               - amd
+///           ec2InstanceProfileArn: ${ecsInstance.arn}
+///           monitoring: DETAILED
+///         infrastructureRoleArn: ${ecsInfrastructure.arn}
+///         propagateTags: CAPACITY_PROVIDER
+///       name: example
+///       cluster: my-cluster
 /// ```
 ///
 ///
@@ -598,7 +598,7 @@ import 'capacity_provider_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the ECS capacity provider.
+/// - `arn` (String) ARN of the ECS capacity provider.
 ///
 ///
 /// Using `pulumi import`, import ECS Capacity Providers using the `arn`. For example:
@@ -636,7 +636,7 @@ class CapacityProvider extends pulumi.CustomResource {
           'aws:ecs/capacityProvider:CapacityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderAutoScalingGroupProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -644,8 +644,8 @@ class CapacityProvider extends pulumi.CustomResource {
     managedInstancesProvider = registerOutput<CapacityProviderManagedInstancesProvider?>('managedInstancesProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderManagedInstancesProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CapacityProvider] resource's state with the given [name] and [id].
@@ -653,11 +653,12 @@ class CapacityProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapacityProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CapacityProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -677,7 +678,26 @@ class CapacityProvider extends pulumi.CustomResource {
     managedInstancesProvider = registerOutput<CapacityProviderManagedInstancesProvider?>('managedInstancesProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderManagedInstancesProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CapacityProvider] resource.
+  CapacityProvider.reference(String urn)
+    : super(
+        'aws:ecs/capacityProvider:CapacityProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderAutoScalingGroupProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String?>('cluster');
+    managedInstancesProvider = registerOutput<CapacityProviderManagedInstancesProvider?>('managedInstancesProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderManagedInstancesProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

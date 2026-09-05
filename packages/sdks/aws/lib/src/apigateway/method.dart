@@ -597,17 +597,17 @@ class Method extends pulumi.CustomResource {
           'aws:apigateway/method:Method',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
     authorization = registerOutput<String>('authorization');
-    authorizationScopes = registerOutput<List<String>?>('authorizationScopes');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authorizerId = registerOutput<String?>('authorizerId');
     httpMethod = registerOutput<String>('httpMethod');
     operationName = registerOutput<String?>('operationName');
     region = registerOutput<String>('region');
-    requestModels = registerOutput<Map<String, String>?>('requestModels');
-    requestParameters = registerOutput<Map<String, bool>?>('requestParameters');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<Map<String, bool>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     requestValidatorId = registerOutput<String?>('requestValidatorId');
     resourceId = registerOutput<String>('resourceId');
     restApi = registerOutput<String>('restApi');
@@ -618,11 +618,12 @@ class Method extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MethodState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Method._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -638,13 +639,36 @@ class Method extends pulumi.CustomResource {
         ) {
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
     authorization = registerOutput<String>('authorization');
-    authorizationScopes = registerOutput<List<String>?>('authorizationScopes');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authorizerId = registerOutput<String?>('authorizerId');
     httpMethod = registerOutput<String>('httpMethod');
     operationName = registerOutput<String?>('operationName');
     region = registerOutput<String>('region');
-    requestModels = registerOutput<Map<String, String>?>('requestModels');
-    requestParameters = registerOutput<Map<String, bool>?>('requestParameters');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<Map<String, bool>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
+    requestValidatorId = registerOutput<String?>('requestValidatorId');
+    resourceId = registerOutput<String>('resourceId');
+    restApi = registerOutput<String>('restApi');
+  }
+
+  /// Creates a typed reference to an existing [Method] resource.
+  Method.reference(String urn)
+    : super(
+        'aws:apigateway/method:Method',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
+    authorization = registerOutput<String>('authorization');
+    authorizationScopes = registerOutput<List<String>?>('authorizationScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorizerId = registerOutput<String?>('authorizerId');
+    httpMethod = registerOutput<String>('httpMethod');
+    operationName = registerOutput<String?>('operationName');
+    region = registerOutput<String>('region');
+    requestModels = registerOutput<Map<String, String>?>('requestModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestParameters = registerOutput<Map<String, bool>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     requestValidatorId = registerOutput<String?>('requestValidatorId');
     resourceId = registerOutput<String>('resourceId');
     restApi = registerOutput<String>('restApi');

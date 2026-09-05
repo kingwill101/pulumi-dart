@@ -42,7 +42,7 @@ class GetClusterCacheNode {
       availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       outpostArn: pulumi.Input.fromValue(map['outpostArn'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

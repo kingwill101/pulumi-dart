@@ -9,29 +9,29 @@ import 'get_vpc_peering_connection_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_peering_connection_get_vpc_peering_connection_args_doc}
 class GetVpcPeeringConnectionArgs {
   /// Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetVpcPeeringConnectionFilter>>? filters;
+  final pulumi.Input<List<GetVpcPeeringConnectionFilter>?>? filters;
   /// ID of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// AWS account ID of the owner of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Primary CIDR block of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? peerCidrBlock;
+  final pulumi.Input<String?>? peerCidrBlock;
   /// AWS account ID of the owner of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? peerOwnerId;
+  final pulumi.Input<String?>? peerOwnerId;
   /// ID of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? peerVpcId;
+  final pulumi.Input<String?>? peerVpcId;
   /// Status of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired VPC Peering Connection.
   ///
   /// The arguments of this data source act as filters for querying the available VPC peering connection.
   /// The given filters must match exactly one VPC peering connection whose data will be exported as attributes.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetVpcPeeringConnectionArgs].
   /// [cidrBlock] Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.

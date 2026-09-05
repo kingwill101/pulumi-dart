@@ -9,21 +9,21 @@ import 'role_management_policy_notification_rules.dart';
 /// Input properties used for looking up and filtering RoleManagementPolicy resources.
 class RoleManagementPolicyState {
   /// An `activationRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyActivationRules>? activationRules;
+  final pulumi.Input<RoleManagementPolicyActivationRules?>? activationRules;
   /// An `activeAssignmentRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
+  final pulumi.Input<RoleManagementPolicyActiveAssignmentRules?>? activeAssignmentRules;
   /// (String) The description of this policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `eligibleAssignmentRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
+  final pulumi.Input<RoleManagementPolicyEligibleAssignmentRules?>? eligibleAssignmentRules;
   /// (String) The name of this policy, which is typically a UUID and may change over time.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `notificationRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyNotificationRules>? notificationRules;
+  final pulumi.Input<RoleManagementPolicyNotificationRules?>? notificationRules;
   /// The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [RoleManagementPolicyState].
   /// [activationRules] An `activationRules` block as defined below.

@@ -7,53 +7,53 @@ import 'container_recipe_target_repository.dart';
 
 /// Input properties used for looking up and filtering ContainerRecipe resources.
 class ContainerRecipeState {
-  /// (Required) Amazon Resource Name (ARN) of the container recipe.
-  final pulumi.Input<String>? arn;
+  /// (Required) ARN of the container recipe.
+  final pulumi.Input<String?>? arn;
   /// Ordered configuration block(s) with components for the container recipe. Detailed below.
-  final pulumi.Input<List<ContainerRecipeComponent>>? components;
+  final pulumi.Input<List<ContainerRecipeComponent>?>? components;
   /// The type of the container to create. Valid values: `DOCKER`.
-  final pulumi.Input<String>? containerType;
+  final pulumi.Input<String?>? containerType;
   /// Date the container recipe was created.
-  final pulumi.Input<String>? dateCreated;
+  final pulumi.Input<String?>? dateCreated;
   /// The description of the container recipe.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Dockerfile template used to build the image as an inline data blob.
-  final pulumi.Input<String>? dockerfileTemplateData;
+  final pulumi.Input<String?>? dockerfileTemplateData;
   /// The Amazon S3 URI for the Dockerfile that will be used to build the container image.
-  final pulumi.Input<String>? dockerfileTemplateUri;
+  final pulumi.Input<String?>? dockerfileTemplateUri;
   /// A flag that indicates if the target container is encrypted.
-  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<bool?>? encrypted;
   /// Configuration block used to configure an instance for building and testing container images. Detailed below.
-  final pulumi.Input<ContainerRecipeInstanceConfiguration>? instanceConfiguration;
+  final pulumi.Input<ContainerRecipeInstanceConfiguration?>? instanceConfiguration;
   /// The KMS key used to encrypt the container image.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The name of the container recipe.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the container recipe.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The base image for the container recipe.
-  final pulumi.Input<String>? parentImage;
+  final pulumi.Input<String?>? parentImage;
   /// Platform of the container recipe.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Specifies the operating system platform when you use a custom base image.
-  final pulumi.Input<String>? platformOverride;
+  final pulumi.Input<String?>? platformOverride;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the container recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The destination repository for the container image. Detailed below.
-  final pulumi.Input<ContainerRecipeTargetRepository>? targetRepository;
+  final pulumi.Input<ContainerRecipeTargetRepository?>? targetRepository;
   /// Version of the container recipe.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The working directory to be used during build and test workflows.
-  final pulumi.Input<String>? workingDirectory;
+  final pulumi.Input<String?>? workingDirectory;
 
   /// Creates a new [ContainerRecipeState].
-  /// [arn] (Required) Amazon Resource Name (ARN) of the container recipe.
+  /// [arn] (Required) ARN of the container recipe.
   /// [components] Ordered configuration block(s) with components for the container recipe. Detailed below.
   /// [containerType] The type of the container to create. Valid values: `DOCKER`.
   /// [dateCreated] Date the container recipe was created.

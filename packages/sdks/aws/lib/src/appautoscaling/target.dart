@@ -551,6 +551,8 @@ import 'target_suspended_state.dart';
 ///     resourceId: `service/${example.name}/${exampleAwsEcsService.name}`,
 ///     scalableDimension: "ecs:service:DesiredCount",
 ///     serviceNamespace: "ecs",
+/// }, {
+///     ignoreChanges: [tagsAll],
 /// });
 /// ```
 /// ```python
@@ -562,7 +564,8 @@ import 'target_suspended_state.dart';
 ///     min_capacity=1,
 ///     resource_id=f"service/{example['name']}/{example_aws_ecs_service['name']}",
 ///     scalable_dimension="ecs:service:DesiredCount",
-///     service_namespace="ecs")
+///     service_namespace="ecs",
+///     opts = pulumi.ResourceOptions(ignore_changes=[tags_all]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -579,6 +582,12 @@ import 'target_suspended_state.dart';
 ///         ResourceId = $"service/{example.Name}/{exampleAwsEcsService.Name}",
 ///         ScalableDimension = "ecs:service:DesiredCount",
 ///         ServiceNamespace = "ecs",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tagsAll",
+///         },
 ///     });
 ///
 /// });
@@ -599,7 +608,9 @@ import 'target_suspended_state.dart';
 /// 			ResourceId:        pulumi.Sprintf("service/%v/%v", example.Name, exampleAwsEcsService.Name),
 /// 			ScalableDimension: pulumi.String("ecs:service:DesiredCount"),
 /// 			ServiceNamespace:  pulumi.String("ecs"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			tagsAll,
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -617,6 +628,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "ecs_target" {
+///   lifecycle {
+///     ignore_changes = [tagsAll]
+///   }
 ///   max_capacity       = 4
 ///   min_capacity       = 1
 ///   resource_id        ="service/${example.name}/${exampleAwsEcsService.name}"
@@ -632,6 +646,7 @@ import 'target_suspended_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appautoscaling.Target;
 /// import com.pulumi.aws.appautoscaling.TargetArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -651,7 +666,9 @@ import 'target_suspended_state.dart';
 ///             .resourceId(String.format("service/%s/%s", example.name(),exampleAwsEcsService.name()))
 ///             .scalableDimension("ecs:service:DesiredCount")
 ///             .serviceNamespace("ecs")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges(tagsAll)
+///                 .build());
 ///
 ///     }
 /// }
@@ -667,6 +684,9 @@ import 'target_suspended_state.dart';
 ///       resourceId: service/${example.name}/${exampleAwsEcsService.name}
 ///       scalableDimension: ecs:service:DesiredCount
 ///       serviceNamespace: ecs
+///     options:
+///       ignoreChanges:
+///         - tagsAll
 /// ```
 ///
 ///
@@ -859,7 +879,7 @@ class Target extends pulumi.CustomResource {
           'aws:appautoscaling/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');
@@ -870,8 +890,8 @@ class Target extends pulumi.CustomResource {
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
     suspendedState = registerOutput<TargetSuspendedState>('suspendedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetSuspendedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Target] resource's state with the given [name] and [id].
@@ -879,11 +899,12 @@ class Target extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Target._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -906,7 +927,29 @@ class Target extends pulumi.CustomResource {
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
     suspendedState = registerOutput<TargetSuspendedState>('suspendedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetSuspendedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Target] resource.
+  Target.reference(String urn)
+    : super(
+        'aws:appautoscaling/target:Target',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    maxCapacity = registerOutput<int>('maxCapacity');
+    minCapacity = registerOutput<int>('minCapacity');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    roleArn = registerOutput<String>('roleArn');
+    scalableDimension = registerOutput<String>('scalableDimension');
+    serviceNamespace = registerOutput<String>('serviceNamespace');
+    suspendedState = registerOutput<TargetSuspendedState>('suspendedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetSuspendedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,15 +6,15 @@ import 'subnet_service_endpoint_storage_policy_definition.dart';
 /// Input properties used for looking up and filtering SubnetServiceEndpointStoragePolicy resources.
 class SubnetServiceEndpointStoragePolicyState {
   /// A `definition` block as defined below
-  final pulumi.Input<List<SubnetServiceEndpointStoragePolicyDefinition>>? definitions;
+  final pulumi.Input<List<SubnetServiceEndpointStoragePolicyDefinition>?>? definitions;
   /// The Azure Region where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Subnet Service Endpoint Storage Policy. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Subnet Service Endpoint Storage Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SubnetServiceEndpointStoragePolicyState].
   /// [definitions] A `definition` block as defined below

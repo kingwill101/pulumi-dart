@@ -6,11 +6,11 @@ class CertificateIssuerAdmin {
   /// E-mail address of the admin.
   final pulumi.Input<String> emailAddress;
   /// First name of the admin.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Last name of the admin.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// Phone number of the admin.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [CertificateIssuerAdmin].
   /// [emailAddress] E-mail address of the admin.

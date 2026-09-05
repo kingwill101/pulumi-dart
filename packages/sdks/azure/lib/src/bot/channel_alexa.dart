@@ -274,7 +274,7 @@ class ChannelAlexa extends pulumi.CustomResource {
           'azure:bot/channelAlexa:ChannelAlexa',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
@@ -287,11 +287,12 @@ class ChannelAlexa extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelAlexaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelAlexa._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,6 +306,21 @@ class ChannelAlexa extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skillId = registerOutput<String>('skillId');
+  }
+
+  /// Creates a typed reference to an existing [ChannelAlexa] resource.
+  ChannelAlexa.reference(String urn)
+    : super(
+        'azure:bot/channelAlexa:ChannelAlexa',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');

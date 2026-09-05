@@ -9,11 +9,11 @@ import 'voice_connector_group_connector.dart';
 /// {@macro pulumi_chime_voice_connector_group_voice_connector_group_args_doc}
 class VoiceConnectorGroupArgs {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
-  final pulumi.Input<List<VoiceConnectorGroupConnector>>? connectors;
+  final pulumi.Input<List<VoiceConnectorGroupConnector>?>? connectors;
   /// The name of the Amazon Chime Voice Connector group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [VoiceConnectorGroupArgs].
   /// [connectors] The Amazon Chime Voice Connectors to route inbound calls to.

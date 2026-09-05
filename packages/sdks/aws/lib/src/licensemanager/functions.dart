@@ -181,6 +181,17 @@ Future<GetLicenseGrantsResult> getLicenseGrants(
   return GetLicenseGrantsResult.fromMap(result);
 }
 
+pulumi.Output<GetLicenseGrantsResult> getLicenseGrantsOutput(
+  GetLicenseGrantsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:licensemanager/getLicenseGrants:getLicenseGrants',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseGrantsResult.fromMap);
+}
+
 /// This resource can be used to get data on a received license using an ARN. This can be helpful for pulling in data on a license from the AWS marketplace and sharing that license with another account.
 ///
 /// ## Example Usage
@@ -299,6 +310,17 @@ Future<GetReceivedLicenseResult> getReceivedLicense(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReceivedLicenseResult.fromMap(result);
+}
+
+pulumi.Output<GetReceivedLicenseResult> getReceivedLicenseOutput(
+  GetReceivedLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:licensemanager/getReceivedLicense:getReceivedLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReceivedLicenseResult.fromMap);
 }
 
 /// This resource can be used to get a set of license ARNs matching a filter.
@@ -452,4 +474,15 @@ Future<GetReceivedLicensesResult> getReceivedLicenses(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReceivedLicensesResult.fromMap(result);
+}
+
+pulumi.Output<GetReceivedLicensesResult> getReceivedLicensesOutput(
+  GetReceivedLicensesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:licensemanager/getReceivedLicenses:getReceivedLicenses',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReceivedLicensesResult.fromMap);
 }

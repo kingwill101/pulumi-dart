@@ -5,33 +5,33 @@
 class GetProductResult {
   final String? acceptLanguage;
   /// ARN of the product.
-  final String arn;
+  final String? arn;
   /// Time when the product was created.
-  final String createdTime;
+  final String? createdTime;
   /// Description of the product.
-  final String description;
+  final String? description;
   /// Vendor of the product.
-  final String distributor;
+  final String? distributor;
   /// Whether the product has a default path.
-  final bool hasDefaultPath;
-  final String id;
+  final bool? hasDefaultPath;
+  final String? id;
   /// Name of the product.
-  final String name;
+  final String? name;
   /// Owner of the product.
-  final String owner;
-  final String region;
+  final String? owner;
+  final String? region;
   /// Status of the product.
-  final String status;
+  final String? status;
   /// Field that provides support information about the product.
-  final String supportDescription;
+  final String? supportDescription;
   /// Contact email for product support.
-  final String supportEmail;
+  final String? supportEmail;
   /// Contact URL for product support.
-  final String supportUrl;
+  final String? supportUrl;
   /// Tags applied to the product.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Type of product.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetProductResult].
   /// [acceptLanguage] Optional.
@@ -40,10 +40,10 @@ class GetProductResult {
   /// [description] Description of the product.
   /// [distributor] Vendor of the product.
   /// [hasDefaultPath] Whether the product has a default path.
-  /// [id] Required.
+  /// [id] Optional.
   /// [name] Name of the product.
   /// [owner] Owner of the product.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Status of the product.
   /// [supportDescription] Field that provides support information about the product.
   /// [supportEmail] Contact email for product support.
@@ -52,62 +52,62 @@ class GetProductResult {
   /// [type] Type of product.
   const GetProductResult({
     this.acceptLanguage,
-    required this.arn,
-    required this.createdTime,
-    required this.description,
-    required this.distributor,
-    required this.hasDefaultPath,
-    required this.id,
-    required this.name,
-    required this.owner,
-    required this.region,
-    required this.status,
-    required this.supportDescription,
-    required this.supportEmail,
-    required this.supportUrl,
-    required this.tags,
-    required this.type,
+    this.arn,
+    this.createdTime,
+    this.description,
+    this.distributor,
+    this.hasDefaultPath,
+    this.id,
+    this.name,
+    this.owner,
+    this.region,
+    this.status,
+    this.supportDescription,
+    this.supportEmail,
+    this.supportUrl,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceptLanguage': ?acceptLanguage,
-      'arn': arn,
-      'createdTime': createdTime,
-      'description': description,
-      'distributor': distributor,
-      'hasDefaultPath': hasDefaultPath,
-      'id': id,
-      'name': name,
-      'owner': owner,
-      'region': region,
-      'status': status,
-      'supportDescription': supportDescription,
-      'supportEmail': supportEmail,
-      'supportUrl': supportUrl,
-      'tags': tags,
-      'type': type,
+      'arn': ?arn,
+      'createdTime': ?createdTime,
+      'description': ?description,
+      'distributor': ?distributor,
+      'hasDefaultPath': ?hasDefaultPath,
+      'id': ?id,
+      'name': ?name,
+      'owner': ?owner,
+      'region': ?region,
+      'status': ?status,
+      'supportDescription': ?supportDescription,
+      'supportEmail': ?supportEmail,
+      'supportUrl': ?supportUrl,
+      'tags': ?tags,
+      'type': ?type,
     };
   }
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
       acceptLanguage: (() { final guardedValue = map['acceptLanguage']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      arn: map['arn'] as String,
-      createdTime: map['createdTime'] as String,
-      description: map['description'] as String,
-      distributor: map['distributor'] as String,
-      hasDefaultPath: map['hasDefaultPath'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      owner: map['owner'] as String,
-      region: map['region'] as String,
-      status: map['status'] as String,
-      supportDescription: map['supportDescription'] as String,
-      supportEmail: map['supportEmail'] as String,
-      supportUrl: map['supportUrl'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      distributor: (() { final guardedValue = map['distributor']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hasDefaultPath: (() { final guardedValue = map['hasDefaultPath']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportDescription: (() { final guardedValue = map['supportDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportEmail: (() { final guardedValue = map['supportEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

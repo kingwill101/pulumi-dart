@@ -297,7 +297,7 @@ class Backend extends pulumi.CustomResource {
           'azure:apimanagement/backend:Backend',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>('circuitBreakerRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCircuitBreakerRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -319,11 +319,12 @@ class Backend extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Backend._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,6 +338,30 @@ class Backend extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>('circuitBreakerRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCircuitBreakerRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentials = registerOutput<BackendCredentials?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    protocol = registerOutput<String>('protocol');
+    proxy = registerOutput<BackendProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String?>('resourceId');
+    serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>('serviceFabricCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceFabricCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String?>('title');
+    tls = registerOutput<BackendTls?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendTls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Backend] resource.
+  Backend.reference(String urn)
+    : super(
+        'azure:apimanagement/backend:Backend',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>('circuitBreakerRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCircuitBreakerRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     credentials = registerOutput<BackendCredentials?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });

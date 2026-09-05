@@ -8,9 +8,9 @@ class ListenerDefaultActionFixedResponse {
   /// The following arguments are optional:
   final pulumi.Input<String> contentType;
   /// Message body.
-  final pulumi.Input<String>? messageBody;
+  final pulumi.Input<String?>? messageBody;
   /// HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [ListenerDefaultActionFixedResponse].
   /// [contentType] Content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.

@@ -5,9 +5,9 @@ import 'image_pipeline_image_scanning_configuration_ecr_configuration.dart';
 
 class ImagePipelineImageScanningConfiguration {
   /// Configuration block with ECR configuration for image scanning. Detailed below.
-  final pulumi.Input<ImagePipelineImageScanningConfigurationEcrConfiguration>? ecrConfiguration;
+  final pulumi.Input<ImagePipelineImageScanningConfigurationEcrConfiguration?>? ecrConfiguration;
   /// Whether image scans are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? imageScanningEnabled;
+  final pulumi.Input<bool?>? imageScanningEnabled;
 
   /// Creates a new [ImagePipelineImageScanningConfiguration].
   /// [ecrConfiguration] Configuration block with ECR configuration for image scanning. Detailed below.

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInferenceProfilesInferenceProfileSummaryModel {
-  /// Amazon Resource Name (ARN) of the model.
+  /// ARN of the model.
   final pulumi.Input<String> modelArn;
 
   /// Creates a new [GetInferenceProfilesInferenceProfileSummaryModel].
-  /// [modelArn] Amazon Resource Name (ARN) of the model.
+  /// [modelArn] ARN of the model.
   const GetInferenceProfilesInferenceProfileSummaryModel({
     required this.modelArn,
   });

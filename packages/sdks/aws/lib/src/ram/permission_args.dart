@@ -9,16 +9,16 @@ import 'permission_timeouts.dart';
 /// {@macro pulumi_ram_permission_permission_args_doc}
 class PermissionArgs {
   /// Name of the customer managed permission. The name must be unique within the AWS Region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
   final pulumi.Input<String> policyTemplate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   final pulumi.Input<String> resourceType;
   /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<PermissionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<PermissionTimeouts?>? timeouts;
 
   /// Creates a new [PermissionArgs].
   /// [name] Name of the customer managed permission. The name must be unique within the AWS Region.

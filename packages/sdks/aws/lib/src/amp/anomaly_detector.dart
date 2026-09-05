@@ -18,8 +18,6 @@ import 'anomaly_detector_timeouts.dart';
 ///
 /// const example = new aws.amp.Workspace("example", {});
 /// const exampleAnomalyDetector = new aws.amp.AnomalyDetector("example", {
-///     alias: "example",
-///     workspaceId: example.id,
 ///     configuration: {
 ///         randomCutForest: {
 ///             query: "avg(up)",
@@ -28,6 +26,8 @@ import 'anomaly_detector_timeouts.dart';
 ///     missingDataAction: {
 ///         skip: true,
 ///     },
+///     alias: "example",
+///     workspaceId: example.id,
 /// });
 /// ```
 /// ```python
@@ -36,8 +36,6 @@ import 'anomaly_detector_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example")
 /// example_anomaly_detector = aws.amp.AnomalyDetector("example",
-///     alias="example",
-///     workspace_id=example.id,
 ///     configuration={
 ///         "random_cut_forest": {
 ///             "query": "avg(up)",
@@ -45,7 +43,9 @@ import 'anomaly_detector_timeouts.dart';
 ///     },
 ///     missing_data_action={
 ///         "skip": True,
-///     })
+///     },
+///     alias="example",
+///     workspace_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,8 +59,6 @@ import 'anomaly_detector_timeouts.dart';
 ///
 ///     var exampleAnomalyDetector = new Aws.Amp.AnomalyDetector("example", new()
 ///     {
-///         Alias = "example",
-///         WorkspaceId = example.Id,
 ///         Configuration = new Aws.Amp.Inputs.AnomalyDetectorConfigurationArgs
 ///         {
 ///             RandomCutForest = new Aws.Amp.Inputs.AnomalyDetectorConfigurationRandomCutForestArgs
@@ -72,6 +70,8 @@ import 'anomaly_detector_timeouts.dart';
 ///         {
 ///             Skip = true,
 ///         },
+///         Alias = "example",
+///         WorkspaceId = example.Id,
 ///     });
 ///
 /// });
@@ -91,8 +91,6 @@ import 'anomaly_detector_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewAnomalyDetector(ctx, "example", &amp.AnomalyDetectorArgs{
-/// 			Alias:       pulumi.String("example"),
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Configuration: &amp.AnomalyDetectorConfigurationArgs{
 /// 				RandomCutForest: &amp.AnomalyDetectorConfigurationRandomCutForestArgs{
 /// 					Query: pulumi.String("avg(up)"),
@@ -101,6 +99,8 @@ import 'anomaly_detector_timeouts.dart';
 /// 			MissingDataAction: &amp.AnomalyDetectorMissingDataActionArgs{
 /// 				Skip: pulumi.Bool(true),
 /// 			},
+/// 			Alias:       pulumi.String("example"),
+/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,8 +121,6 @@ import 'anomaly_detector_timeouts.dart';
 /// resource "aws_amp_workspace" "example" {
 /// }
 /// resource "aws_amp_anomalydetector" "example" {
-///   alias        = "example"
-///   workspace_id = aws_amp_workspace.example.id
 ///   configuration = {
 ///     random_cut_forest = {
 ///       query = "avg(up)"
@@ -131,6 +129,8 @@ import 'anomaly_detector_timeouts.dart';
 ///   missing_data_action = {
 ///     skip = true
 ///   }
+///   alias        = "example"
+///   workspace_id = aws_amp_workspace.example.id
 /// }
 /// ```
 /// ```java
@@ -161,8 +161,6 @@ import 'anomaly_detector_timeouts.dart';
 ///         var example = new Workspace("example");
 ///
 ///         var exampleAnomalyDetector = new AnomalyDetector("exampleAnomalyDetector", AnomalyDetectorArgs.builder()
-///             .alias("example")
-///             .workspaceId(example.id())
 ///             .configuration(AnomalyDetectorConfigurationArgs.builder()
 ///                 .randomCutForest(AnomalyDetectorConfigurationRandomCutForestArgs.builder()
 ///                     .query("avg(up)")
@@ -171,6 +169,8 @@ import 'anomaly_detector_timeouts.dart';
 ///             .missingDataAction(AnomalyDetectorMissingDataActionArgs.builder()
 ///                 .skip(true)
 ///                 .build())
+///             .alias("example")
+///             .workspaceId(example.id())
 ///             .build());
 ///
 ///     }
@@ -184,13 +184,13 @@ import 'anomaly_detector_timeouts.dart';
 ///     type: aws:amp:AnomalyDetector
 ///     name: example
 ///     properties:
-///       alias: example
-///       workspaceId: ${example.id}
 ///       configuration:
 ///         randomCutForest:
 ///           query: avg(up)
 ///       missingDataAction:
 ///         skip: true
+///       alias: example
+///       workspaceId: ${example.id}
 /// ```
 ///
 ///
@@ -203,28 +203,28 @@ import 'anomaly_detector_timeouts.dart';
 ///
 /// const example = new aws.amp.Workspace("example", {});
 /// const exampleAnomalyDetector = new aws.amp.AnomalyDetector("example", {
-///     alias: "example",
-///     workspaceId: example.id,
-///     evaluationIntervalInSeconds: 120,
-///     labels: {
-///         env: "production",
-///         team: "platform",
-///     },
 ///     configuration: {
 ///         randomCutForest: {
-///             query: "avg(up)",
-///             sampleSize: 256,
-///             shingleSize: 4,
 ///             ignoreNearExpectedFromAbove: {
 ///                 ratio: 1.5,
 ///             },
 ///             ignoreNearExpectedFromBelow: {
 ///                 amount: 2,
 ///             },
+///             query: "avg(up)",
+///             sampleSize: 256,
+///             shingleSize: 4,
 ///         },
 ///     },
 ///     missingDataAction: {
 ///         markAsAnomaly: true,
+///     },
+///     alias: "example",
+///     workspaceId: example.id,
+///     evaluationIntervalInSeconds: 120,
+///     labels: {
+///         env: "production",
+///         team: "platform",
 ///     },
 /// });
 /// ```
@@ -234,28 +234,28 @@ import 'anomaly_detector_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example")
 /// example_anomaly_detector = aws.amp.AnomalyDetector("example",
-///     alias="example",
-///     workspace_id=example.id,
-///     evaluation_interval_in_seconds=120,
-///     labels={
-///         "env": "production",
-///         "team": "platform",
-///     },
 ///     configuration={
 ///         "random_cut_forest": {
-///             "query": "avg(up)",
-///             "sample_size": 256,
-///             "shingle_size": 4,
 ///             "ignore_near_expected_from_above": {
 ///                 "ratio": 1.5,
 ///             },
 ///             "ignore_near_expected_from_below": {
 ///                 "amount": float(2),
 ///             },
+///             "query": "avg(up)",
+///             "sample_size": 256,
+///             "shingle_size": 4,
 ///         },
 ///     },
 ///     missing_data_action={
 ///         "mark_as_anomaly": True,
+///     },
+///     alias="example",
+///     workspace_id=example.id,
+///     evaluation_interval_in_seconds=120,
+///     labels={
+///         "env": "production",
+///         "team": "platform",
 ///     })
 /// ```
 /// ```csharp
@@ -270,21 +270,10 @@ import 'anomaly_detector_timeouts.dart';
 ///
 ///     var exampleAnomalyDetector = new Aws.Amp.AnomalyDetector("example", new()
 ///     {
-///         Alias = "example",
-///         WorkspaceId = example.Id,
-///         EvaluationIntervalInSeconds = 120,
-///         Labels =
-///         {
-///             { "env", "production" },
-///             { "team", "platform" },
-///         },
 ///         Configuration = new Aws.Amp.Inputs.AnomalyDetectorConfigurationArgs
 ///         {
 ///             RandomCutForest = new Aws.Amp.Inputs.AnomalyDetectorConfigurationRandomCutForestArgs
 ///             {
-///                 Query = "avg(up)",
-///                 SampleSize = 256,
-///                 ShingleSize = 4,
 ///                 IgnoreNearExpectedFromAbove = new Aws.Amp.Inputs.AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromAboveArgs
 ///                 {
 ///                     Ratio = 1.5,
@@ -293,11 +282,22 @@ import 'anomaly_detector_timeouts.dart';
 ///                 {
 ///                     Amount = 2,
 ///                 },
+///                 Query = "avg(up)",
+///                 SampleSize = 256,
+///                 ShingleSize = 4,
 ///             },
 ///         },
 ///         MissingDataAction = new Aws.Amp.Inputs.AnomalyDetectorMissingDataActionArgs
 ///         {
 ///             MarkAsAnomaly = true,
+///         },
+///         Alias = "example",
+///         WorkspaceId = example.Id,
+///         EvaluationIntervalInSeconds = 120,
+///         Labels =
+///         {
+///             { "env", "production" },
+///             { "team", "platform" },
 ///         },
 ///     });
 ///
@@ -318,28 +318,28 @@ import 'anomaly_detector_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewAnomalyDetector(ctx, "example", &amp.AnomalyDetectorArgs{
-/// 			Alias:                       pulumi.String("example"),
-/// 			WorkspaceId:                 example.ID().ToIDOutput().ToStringOutput(),
-/// 			EvaluationIntervalInSeconds: pulumi.Int(120),
-/// 			Labels: pulumi.StringMap{
-/// 				"env":  pulumi.String("production"),
-/// 				"team": pulumi.String("platform"),
-/// 			},
 /// 			Configuration: &amp.AnomalyDetectorConfigurationArgs{
 /// 				RandomCutForest: &amp.AnomalyDetectorConfigurationRandomCutForestArgs{
-/// 					Query:       pulumi.String("avg(up)"),
-/// 					SampleSize:  pulumi.Int(256),
-/// 					ShingleSize: pulumi.Int(4),
 /// 					IgnoreNearExpectedFromAbove: &amp.AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromAboveArgs{
 /// 						Ratio: pulumi.Float64(1.5),
 /// 					},
 /// 					IgnoreNearExpectedFromBelow: &amp.AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelowArgs{
 /// 						Amount: pulumi.Float64(2),
 /// 					},
+/// 					Query:       pulumi.String("avg(up)"),
+/// 					SampleSize:  pulumi.Int(256),
+/// 					ShingleSize: pulumi.Int(4),
 /// 				},
 /// 			},
 /// 			MissingDataAction: &amp.AnomalyDetectorMissingDataActionArgs{
 /// 				MarkAsAnomaly: pulumi.Bool(true),
+/// 			},
+/// 			Alias:                       pulumi.String("example"),
+/// 			WorkspaceId:                 example.ID().ToIDOutput().ToStringOutput(),
+/// 			EvaluationIntervalInSeconds: pulumi.Int(120),
+/// 			Labels: pulumi.StringMap{
+/// 				"env":  pulumi.String("production"),
+/// 				"team": pulumi.String("platform"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -361,28 +361,28 @@ import 'anomaly_detector_timeouts.dart';
 /// resource "aws_amp_workspace" "example" {
 /// }
 /// resource "aws_amp_anomalydetector" "example" {
-///   alias                          = "example"
-///   workspace_id                   = aws_amp_workspace.example.id
-///   evaluation_interval_in_seconds = 120
-///   labels = {
-///     "env"  = "production"
-///     "team" = "platform"
-///   }
 ///   configuration = {
 ///     random_cut_forest = {
-///       query        = "avg(up)"
-///       sample_size  = 256
-///       shingle_size = 4
 ///       ignore_near_expected_from_above = {
 ///         ratio = 1.5
 ///       }
 ///       ignore_near_expected_from_below = {
 ///         amount = 2
 ///       }
+///       query        = "avg(up)"
+///       sample_size  = 256
+///       shingle_size = 4
 ///     }
 ///   }
 ///   missing_data_action = {
 ///     mark_as_anomaly = true
+///   }
+///   alias                          = "example"
+///   workspace_id                   = aws_amp_workspace.example.id
+///   evaluation_interval_in_seconds = 120
+///   labels = {
+///     "env"  = "production"
+///     "team" = "platform"
 ///   }
 /// }
 /// ```
@@ -416,6 +416,22 @@ import 'anomaly_detector_timeouts.dart';
 ///         var example = new Workspace("example");
 ///
 ///         var exampleAnomalyDetector = new AnomalyDetector("exampleAnomalyDetector", AnomalyDetectorArgs.builder()
+///             .configuration(AnomalyDetectorConfigurationArgs.builder()
+///                 .randomCutForest(AnomalyDetectorConfigurationRandomCutForestArgs.builder()
+///                     .ignoreNearExpectedFromAbove(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromAboveArgs.builder()
+///                         .ratio(1.5)
+///                         .build())
+///                     .ignoreNearExpectedFromBelow(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelowArgs.builder()
+///                         .amount(2.0)
+///                         .build())
+///                     .query("avg(up)")
+///                     .sampleSize(256)
+///                     .shingleSize(4)
+///                     .build())
+///                 .build())
+///             .missingDataAction(AnomalyDetectorMissingDataActionArgs.builder()
+///                 .markAsAnomaly(true)
+///                 .build())
 ///             .alias("example")
 ///             .workspaceId(example.id())
 ///             .evaluationIntervalInSeconds(120)
@@ -423,22 +439,6 @@ import 'anomaly_detector_timeouts.dart';
 ///                 Map.entry("env", "production"),
 ///                 Map.entry("team", "platform")
 ///             ))
-///             .configuration(AnomalyDetectorConfigurationArgs.builder()
-///                 .randomCutForest(AnomalyDetectorConfigurationRandomCutForestArgs.builder()
-///                     .query("avg(up)")
-///                     .sampleSize(256)
-///                     .shingleSize(4)
-///                     .ignoreNearExpectedFromAbove(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromAboveArgs.builder()
-///                         .ratio(1.5)
-///                         .build())
-///                     .ignoreNearExpectedFromBelow(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelowArgs.builder()
-///                         .amount(2.0)
-///                         .build())
-///                     .build())
-///                 .build())
-///             .missingDataAction(AnomalyDetectorMissingDataActionArgs.builder()
-///                 .markAsAnomaly(true)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -452,23 +452,23 @@ import 'anomaly_detector_timeouts.dart';
 ///     type: aws:amp:AnomalyDetector
 ///     name: example
 ///     properties:
+///       configuration:
+///         randomCutForest:
+///           ignoreNearExpectedFromAbove:
+///             ratio: 1.5
+///           ignoreNearExpectedFromBelow:
+///             amount: 2
+///           query: avg(up)
+///           sampleSize: 256
+///           shingleSize: 4
+///       missingDataAction:
+///         markAsAnomaly: true
 ///       alias: example
 ///       workspaceId: ${example.id}
 ///       evaluationIntervalInSeconds: 120
 ///       labels:
 ///         env: production
 ///         team: platform
-///       configuration:
-///         randomCutForest:
-///           query: avg(up)
-///           sampleSize: 256
-///           shingleSize: 4
-///           ignoreNearExpectedFromAbove:
-///             ratio: 1.5
-///           ignoreNearExpectedFromBelow:
-///             amount: 2
-///       missingDataAction:
-///         markAsAnomaly: true
 /// ```
 ///
 ///
@@ -531,18 +531,18 @@ class AnomalyDetector extends pulumi.CustomResource {
           'aws:amp/anomalyDetector:AnomalyDetector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
     configuration = registerOutput<AnomalyDetectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     evaluationIntervalInSeconds = registerOutput<int>('evaluationIntervalInSeconds');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     missingDataAction = registerOutput<AnomalyDetectorMissingDataAction>('missingDataAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorMissingDataAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AnomalyDetectorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -552,11 +552,12 @@ class AnomalyDetector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnomalyDetectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnomalyDetector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -575,11 +576,34 @@ class AnomalyDetector extends pulumi.CustomResource {
     configuration = registerOutput<AnomalyDetectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     evaluationIntervalInSeconds = registerOutput<int>('evaluationIntervalInSeconds');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     missingDataAction = registerOutput<AnomalyDetectorMissingDataAction>('missingDataAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorMissingDataAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AnomalyDetectorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [AnomalyDetector] resource.
+  AnomalyDetector.reference(String urn)
+    : super(
+        'aws:amp/anomalyDetector:AnomalyDetector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<AnomalyDetectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    evaluationIntervalInSeconds = registerOutput<int>('evaluationIntervalInSeconds');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    missingDataAction = registerOutput<AnomalyDetectorMissingDataAction>('missingDataAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorMissingDataAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AnomalyDetectorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnomalyDetectorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String>('workspaceId');
   }

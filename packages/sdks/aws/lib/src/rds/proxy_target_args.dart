@@ -10,13 +10,13 @@ class ProxyTargetArgs {
   /// DB cluster identifier.
   ///
   /// **NOTE:** Either `dbInstanceIdentifier` or `dbClusterIdentifier` should be specified and both should not be specified together
-  final pulumi.Input<String>? dbClusterIdentifier;
+  final pulumi.Input<String?>? dbClusterIdentifier;
   /// DB instance identifier.
-  final pulumi.Input<String>? dbInstanceIdentifier;
+  final pulumi.Input<String?>? dbInstanceIdentifier;
   /// The name of the DB proxy.
   final pulumi.Input<String> dbProxyName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the target group.
   final pulumi.Input<String> targetGroupName;
 

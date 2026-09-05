@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerCustomerManagedKey {
   /// The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.
-  final pulumi.Input<String>? geoBackupKeyVaultKeyId;
+  final pulumi.Input<String?>? geoBackupKeyVaultKeyId;
   /// The geo backup user managed identity id for a Customer Managed Key. Should be added with `identityIds`. It can't cross region and need identity in same region as geo backup.
   ///
   /// &gt; **Note:** `primaryUserAssignedIdentityId` or `geoBackupUserAssignedIdentityId` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
+  final pulumi.Input<String?>? geoBackupUserAssignedIdentityId;
   /// The ID of the Key Vault Key.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The ID of the Managed HSM Key.
-  final pulumi.Input<String>? managedHsmKeyId;
+  final pulumi.Input<String?>? managedHsmKeyId;
   /// Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identityIds`.
-  final pulumi.Input<String>? primaryUserAssignedIdentityId;
+  final pulumi.Input<String?>? primaryUserAssignedIdentityId;
 
   /// Creates a new [FlexibleServerCustomerManagedKey].
   /// [geoBackupKeyVaultKeyId] The ID of the geo backup Key Vault Key. It can't cross region and need Customer Managed Key in same region as geo backup.

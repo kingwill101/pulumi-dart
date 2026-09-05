@@ -10,11 +10,11 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 /// {@macro pulumi_iot_indexing_configuration_indexing_configuration_args_doc}
 class IndexingConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Thing group indexing configuration. See below.
-  final pulumi.Input<IndexingConfigurationThingGroupIndexingConfiguration>? thingGroupIndexingConfiguration;
+  final pulumi.Input<IndexingConfigurationThingGroupIndexingConfiguration?>? thingGroupIndexingConfiguration;
   /// Thing indexing configuration. See below.
-  final pulumi.Input<IndexingConfigurationThingIndexingConfiguration>? thingIndexingConfiguration;
+  final pulumi.Input<IndexingConfigurationThingIndexingConfiguration?>? thingIndexingConfiguration;
 
   /// Creates a new [IndexingConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

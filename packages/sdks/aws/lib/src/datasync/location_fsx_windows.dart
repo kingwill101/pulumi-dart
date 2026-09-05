@@ -142,19 +142,19 @@ import 'location_fsx_windows_state.dart';
 /// $ pulumi import aws:datasync/locationFsxWindows:LocationFsxWindows example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:476956259333:file-system/fs-08e04cd442c1bb94a
 /// ```
 class LocationFsxWindows extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The time that the FSx for Windows location was created.
   late final pulumi.Output<String> creationTime;
   /// The name of the Windows domain that the FSx for Windows server belongs to.
   late final pulumi.Output<String?> domain;
-  /// The Amazon Resource Name (ARN) for the FSx for Windows file system.
+  /// ARN for the FSx for Windows file system.
   late final pulumi.Output<String> fsxFilesystemArn;
   /// The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
   late final pulumi.Output<String> password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
+  /// ARNs of the security groups that are to use to configure the FSx for Windows file system.
   late final pulumi.Output<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
@@ -179,18 +179,19 @@ class LocationFsxWindows extends pulumi.CustomResource {
           'aws:datasync/locationFsxWindows:LocationFsxWindows',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     domain = registerOutput<String?>('domain');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
     user = registerOutput<String>('user');
   }
@@ -200,11 +201,12 @@ class LocationFsxWindows extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationFsxWindowsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationFsxWindows._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,12 +224,36 @@ class LocationFsxWindows extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     domain = registerOutput<String?>('domain');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [LocationFsxWindows] resource.
+  LocationFsxWindows.reference(String urn)
+    : super(
+        'aws:datasync/locationFsxWindows:LocationFsxWindows',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    domain = registerOutput<String?>('domain');
+    fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    password = registerOutput<String>('password', isSecret: true);
+    region = registerOutput<String>('region');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
     user = registerOutput<String>('user');
   }

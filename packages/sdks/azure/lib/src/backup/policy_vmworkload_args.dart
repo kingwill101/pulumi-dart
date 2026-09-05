@@ -10,7 +10,7 @@ import 'policy_vmworkload_settings.dart';
 /// {@macro pulumi_backup_policy_vmworkload_policy_vmworkload_args_doc}
 class PolicyVMWorkloadArgs {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `protectionPolicy` blocks as defined below.
   final pulumi.Input<List<PolicyVMWorkloadProtectionPolicy>> protectionPolicies;
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.

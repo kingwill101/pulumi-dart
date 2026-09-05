@@ -17,31 +17,31 @@ class ClusterArgs {
   /// Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
   final pulumi.Input<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
   /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
-  final pulumi.Input<ClusterClientAuthentication>? clientAuthentication;
+  final pulumi.Input<ClusterClientAuthentication?>? clientAuthentication;
   /// Name of the MSK cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
-  final pulumi.Input<ClusterConfigurationInfo>? configurationInfo;
+  final pulumi.Input<ClusterConfigurationInfo?>? configurationInfo;
   /// Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
-  final pulumi.Input<ClusterEncryptionInfo>? encryptionInfo;
+  final pulumi.Input<ClusterEncryptionInfo?>? encryptionInfo;
   /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-  final pulumi.Input<String>? enhancedMonitoring;
+  final pulumi.Input<String?>? enhancedMonitoring;
   /// Specify the desired Kafka software version.
   final pulumi.Input<String> kafkaVersion;
   /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
-  final pulumi.Input<ClusterLoggingInfo>? loggingInfo;
+  final pulumi.Input<ClusterLoggingInfo?>? loggingInfo;
   /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
   final pulumi.Input<int> numberOfBrokerNodes;
   /// Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
-  final pulumi.Input<ClusterOpenMonitoring>? openMonitoring;
+  final pulumi.Input<ClusterOpenMonitoring?>? openMonitoring;
   /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
-  final pulumi.Input<ClusterRebalancing>? rebalancing;
+  final pulumi.Input<ClusterRebalancing?>? rebalancing;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
-  final pulumi.Input<String>? storageMode;
+  final pulumi.Input<String?>? storageMode;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [brokerNodeGroupInfo] Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
@@ -104,7 +104,7 @@ class ClusterArgs {
       enhancedMonitoring: (() { final guardedValue = map['enhancedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kafkaVersion: pulumi.Input.fromValue(map['kafkaVersion'] as String),
       loggingInfo: (() { final guardedValue = map['loggingInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfBrokerNodes: pulumi.Input.fromValue(map['numberOfBrokerNodes'] as int),
+      numberOfBrokerNodes: pulumi.Input.fromValue((map['numberOfBrokerNodes'] as num).toInt()),
       openMonitoring: (() { final guardedValue = map['openMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rebalancing: (() { final guardedValue = map['rebalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

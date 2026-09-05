@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IntegrationRuntimeSelfHosted resources.
 class IntegrationRuntimeSelfHostedState {
   /// The primary integration runtime authentication key.
-  final pulumi.Input<String>? authorizationKeyPrimary;
+  final pulumi.Input<String?>? authorizationKeyPrimary;
   /// The secondary integration runtime authentication key.
-  final pulumi.Input<String>? authorizationKeySecondary;
+  final pulumi.Input<String?>? authorizationKeySecondary;
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Synapse Self-hosted Integration Runtime. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
-  final pulumi.Input<String>? synapseWorkspaceId;
+  final pulumi.Input<String?>? synapseWorkspaceId;
 
   /// Creates a new [IntegrationRuntimeSelfHostedState].
   /// [authorizationKeyPrimary] The primary integration runtime authentication key.

@@ -9,23 +9,23 @@ import 'source_control_slot_github_action_configuration.dart';
 /// {@macro pulumi_appservice_source_control_slot_source_control_slot_args_doc}
 class SourceControlSlotArgs {
   /// The URL for the repository. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A `githubActionConfiguration` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<SourceControlSlotGithubActionConfiguration>? githubActionConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfiguration?>? githubActionConfiguration;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// Should the Deployment Rollback be enabled? Defaults to `false` Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? rollbackEnabled;
+  final pulumi.Input<bool?>? rollbackEnabled;
   /// The ID of the Linux or Windows Web App Slot. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Function App Slots are not supported at this time.
   final pulumi.Input<String> slotId;
   /// Should the Slot use local Git configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useLocalGit;
+  final pulumi.Input<bool?>? useLocalGit;
   /// Should code be deployed manually. Set to `true` to disable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useManualIntegration;
+  final pulumi.Input<bool?>? useManualIntegration;
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useMercurial;
+  final pulumi.Input<bool?>? useMercurial;
 
   /// Creates a new [SourceControlSlotArgs].
   /// [branch] The URL for the repository. Changing this forces a new resource to be created.

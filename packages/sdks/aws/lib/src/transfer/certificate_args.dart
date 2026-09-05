@@ -10,15 +10,15 @@ class CertificateArgs {
   /// Valid certificate file required for the transfer.
   final pulumi.Input<String> certificate;
   /// Optional list of certificate that make up the chain for the certificate that is being imported.
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// Short description that helps identify the certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Private key associated with the certificate being imported.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
   final pulumi.Input<String> usage;
 

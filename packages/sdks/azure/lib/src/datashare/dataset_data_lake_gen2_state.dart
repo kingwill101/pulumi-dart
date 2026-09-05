@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DatasetDataLakeGen2 resources.
 class DatasetDataLakeGen2State {
   /// The name of the Data Share Dataset.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The path of the file in the data lake file system to be shared with the receiver. Conflicts with `folderPath` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// The name of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? fileSystemName;
+  final pulumi.Input<String?>? fileSystemName;
   /// The folder path in the data lake file system to be shared with the receiver. Conflicts with `filePath` Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The name which should be used for this Data Share Data Lake Gen2 Dataset. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// The resource id of the storage account of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [DatasetDataLakeGen2State].
   /// [displayName] The name of the Data Share Dataset.

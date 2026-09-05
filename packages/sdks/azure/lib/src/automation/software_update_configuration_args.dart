@@ -16,27 +16,27 @@ class SoftwareUpdateConfigurationArgs {
   /// The ID of Automation Account to manage this Source Control. Changing this forces a new Automation Source Control to be created.
   final pulumi.Input<String> automationAccountId;
   /// Maximum time allowed for the software update configuration run. using format `PT[n]H[n]M[n]S` as per ISO8601. Defaults to `PT2H`.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// A `linux` block as defined below.
-  final pulumi.Input<SoftwareUpdateConfigurationLinux>? linux;
+  final pulumi.Input<SoftwareUpdateConfigurationLinux?>? linux;
   /// The name which should be used for this Automation. Changing this forces a new Automation to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a list of names of non-Azure machines for the software update configuration.
-  final pulumi.Input<List<String>>? nonAzureComputerNames;
+  final pulumi.Input<List<String>?>? nonAzureComputerNames;
   /// A `postTask` blocks as defined below.
-  final pulumi.Input<SoftwareUpdateConfigurationPostTask>? postTask;
+  final pulumi.Input<SoftwareUpdateConfigurationPostTask?>? postTask;
   /// A `preTask` blocks as defined below.
-  final pulumi.Input<SoftwareUpdateConfigurationPreTask>? preTask;
+  final pulumi.Input<SoftwareUpdateConfigurationPreTask?>? preTask;
   /// A `schedule` blocks as defined below.
   final pulumi.Input<SoftwareUpdateConfigurationSchedule> schedule;
   /// A `target` blocks as defined below.
-  final pulumi.Input<SoftwareUpdateConfigurationTarget>? target;
+  final pulumi.Input<SoftwareUpdateConfigurationTarget?>? target;
   /// Specifies a list of Azure Resource IDs of azure virtual machines.
-  final pulumi.Input<List<String>>? virtualMachineIds;
+  final pulumi.Input<List<String>?>? virtualMachineIds;
   /// A `windows` block as defined below.
   ///
   /// &gt; **Note:** One of `linux` or `windows` must be specified.
-  final pulumi.Input<SoftwareUpdateConfigurationWindows>? windows;
+  final pulumi.Input<SoftwareUpdateConfigurationWindows?>? windows;
 
   /// Creates a new [SoftwareUpdateConfigurationArgs].
   /// [automationAccountId] The ID of Automation Account to manage this Source Control. Changing this forces a new Automation Source Control to be created.

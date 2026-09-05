@@ -144,7 +144,7 @@ class RetentionConfiguration extends pulumi.CustomResource {
           'aws:cfg/retentionConfiguration:RetentionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -156,11 +156,12 @@ class RetentionConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RetentionConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RetentionConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -174,6 +175,20 @@ class RetentionConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+  }
+
+  /// Creates a typed reference to an existing [RetentionConfiguration] resource.
+  RetentionConfiguration.reference(String urn)
+    : super(
+        'aws:cfg/retentionConfiguration:RetentionConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');

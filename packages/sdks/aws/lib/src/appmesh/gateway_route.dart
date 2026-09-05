@@ -13,9 +13,6 @@ import 'gateway_route_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appmesh.GatewayRoute("example", {
-///     name: "example-gateway-route",
-///     meshName: "example-service-mesh",
-///     virtualGatewayName: exampleAwsAppmeshVirtualGateway.name,
 ///     spec: {
 ///         httpRoute: {
 ///             action: {
@@ -30,6 +27,9 @@ import 'gateway_route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example-gateway-route",
+///     meshName: "example-service-mesh",
+///     virtualGatewayName: exampleAwsAppmeshVirtualGateway.name,
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -40,9 +40,6 @@ import 'gateway_route_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appmesh.GatewayRoute("example",
-///     name="example-gateway-route",
-///     mesh_name="example-service-mesh",
-///     virtual_gateway_name=example_aws_appmesh_virtual_gateway["name"],
 ///     spec={
 ///         "http_route": {
 ///             "action": {
@@ -57,6 +54,9 @@ import 'gateway_route_state.dart';
 ///             },
 ///         },
 ///     },
+///     name="example-gateway-route",
+///     mesh_name="example-service-mesh",
+///     virtual_gateway_name=example_aws_appmesh_virtual_gateway["name"],
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -71,9 +71,6 @@ import 'gateway_route_state.dart';
 /// {
 ///     var example = new Aws.AppMesh.GatewayRoute("example", new()
 ///     {
-///         Name = "example-gateway-route",
-///         MeshName = "example-service-mesh",
-///         VirtualGatewayName = exampleAwsAppmeshVirtualGateway.Name,
 ///         Spec = new Aws.AppMesh.Inputs.GatewayRouteSpecArgs
 ///         {
 ///             HttpRoute = new Aws.AppMesh.Inputs.GatewayRouteSpecHttpRouteArgs
@@ -94,6 +91,9 @@ import 'gateway_route_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-gateway-route",
+///         MeshName = "example-service-mesh",
+///         VirtualGatewayName = exampleAwsAppmeshVirtualGateway.Name,
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -113,9 +113,6 @@ import 'gateway_route_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewGatewayRoute(ctx, "example", &appmesh.GatewayRouteArgs{
-/// 			Name:               pulumi.String("example-gateway-route"),
-/// 			MeshName:           pulumi.String("example-service-mesh"),
-/// 			VirtualGatewayName: pulumi.Any(exampleAwsAppmeshVirtualGateway.Name),
 /// 			Spec: &appmesh.GatewayRouteSpecArgs{
 /// 				HttpRoute: &appmesh.GatewayRouteSpecHttpRouteArgs{
 /// 					Action: &appmesh.GatewayRouteSpecHttpRouteActionArgs{
@@ -130,6 +127,9 @@ import 'gateway_route_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("example-gateway-route"),
+/// 			MeshName:           pulumi.String("example-service-mesh"),
+/// 			VirtualGatewayName: pulumi.Any(exampleAwsAppmeshVirtualGateway.Name),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
 /// 			},
@@ -151,9 +151,6 @@ import 'gateway_route_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_gatewayroute" "example" {
-///   name                 = "example-gateway-route"
-///   mesh_name            = "example-service-mesh"
-///   virtual_gateway_name = exampleAwsAppmeshVirtualGateway.name
 ///   spec = {
 ///     http_route = {
 ///       action = {
@@ -168,6 +165,9 @@ import 'gateway_route_state.dart';
 ///       }
 ///     }
 ///   }
+///   name                 = "example-gateway-route"
+///   mesh_name            = "example-service-mesh"
+///   virtual_gateway_name = exampleAwsAppmeshVirtualGateway.name
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -201,9 +201,6 @@ import 'gateway_route_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GatewayRoute("example", GatewayRouteArgs.builder()
-///             .name("example-gateway-route")
-///             .meshName("example-service-mesh")
-///             .virtualGatewayName(exampleAwsAppmeshVirtualGateway.name())
 ///             .spec(GatewayRouteSpecArgs.builder()
 ///                 .httpRoute(GatewayRouteSpecHttpRouteArgs.builder()
 ///                     .action(GatewayRouteSpecHttpRouteActionArgs.builder()
@@ -218,6 +215,9 @@ import 'gateway_route_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example-gateway-route")
+///             .meshName("example-service-mesh")
+///             .virtualGatewayName(exampleAwsAppmeshVirtualGateway.name())
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -229,9 +229,6 @@ import 'gateway_route_state.dart';
 ///   example:
 ///     type: aws:appmesh:GatewayRoute
 ///     properties:
-///       name: example-gateway-route
-///       meshName: example-service-mesh
-///       virtualGatewayName: ${exampleAwsAppmeshVirtualGateway.name}
 ///       spec:
 ///         httpRoute:
 ///           action:
@@ -240,6 +237,9 @@ import 'gateway_route_state.dart';
 ///                 virtualServiceName: ${exampleAwsAppmeshVirtualService.name}
 ///           match:
 ///             prefix: /
+///       name: example-gateway-route
+///       meshName: example-service-mesh
+///       virtualGatewayName: ${exampleAwsAppmeshVirtualGateway.name}
 ///       tags:
 ///         Environment: test
 /// ```
@@ -290,7 +290,7 @@ class GatewayRoute extends pulumi.CustomResource {
           'aws:appmesh/gatewayRoute:GatewayRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -301,8 +301,8 @@ class GatewayRoute extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<GatewayRouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayRouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualGatewayName = registerOutput<String>('virtualGatewayName');
   }
 
@@ -311,11 +311,12 @@ class GatewayRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,8 +339,31 @@ class GatewayRoute extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<GatewayRouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayRouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualGatewayName = registerOutput<String>('virtualGatewayName');
+  }
+
+  /// Creates a typed reference to an existing [GatewayRoute] resource.
+  GatewayRoute.reference(String urn)
+    : super(
+        'aws:appmesh/gatewayRoute:GatewayRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<GatewayRouteSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayRouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualGatewayName = registerOutput<String>('virtualGatewayName');
   }
 }

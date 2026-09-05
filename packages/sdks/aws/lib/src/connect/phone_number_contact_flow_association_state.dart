@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PhoneNumberContactFlowAssociation resources.
 class PhoneNumberContactFlowAssociationState {
   /// Contact flow ID.
-  final pulumi.Input<String>? contactFlowId;
+  final pulumi.Input<String?>? contactFlowId;
   /// Amazon Connect instance ID.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Phone number ID.
-  final pulumi.Input<String>? phoneNumberId;
+  final pulumi.Input<String?>? phoneNumberId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PhoneNumberContactFlowAssociationState].
   /// [contactFlowId] Contact flow ID.

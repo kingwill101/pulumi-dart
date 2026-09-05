@@ -45,12 +45,12 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       statusCodeRange: pulumi.Input.fromValue(map['statusCodeRange'] as String),
-      subStatus: pulumi.Input.fromValue(map['subStatus'] as int),
-      win32StatusCode: pulumi.Input.fromValue(map['win32StatusCode'] as int),
+      subStatus: pulumi.Input.fromValue((map['subStatus'] as num).toInt()),
+      win32StatusCode: pulumi.Input.fromValue((map['win32StatusCode'] as num).toInt()),
     );
   }
 }

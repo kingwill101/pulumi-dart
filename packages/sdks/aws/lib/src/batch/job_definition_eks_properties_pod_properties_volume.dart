@@ -7,13 +7,13 @@ import 'job_definition_eks_properties_pod_properties_volume_secret.dart';
 
 class JobDefinitionEksPropertiesPodPropertiesVolume {
   /// Empty directory to mount on the pod. See `emptyDir` below.
-  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir>? emptyDir;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir?>? emptyDir;
   /// Path on the host that's mounted to the pod. See `hostPath` below.
-  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeHostPath>? hostPath;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeHostPath?>? hostPath;
   /// Name of the volume. The name must be allowed as a DNS subdomain name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Secret to mount as a volume. See `secret` below.
-  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeSecret>? secret;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesVolumeSecret?>? secret;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesVolume].
   /// [emptyDir] Empty directory to mount on the pod. See `emptyDir` below.

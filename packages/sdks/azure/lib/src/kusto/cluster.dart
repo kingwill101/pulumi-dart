@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_identity.dart';
+import 'cluster_language_extension.dart';
 import 'cluster_optimized_auto_scale.dart';
 import 'cluster_sku.dart';
 import 'cluster_state.dart';
@@ -241,8 +242,8 @@ class Cluster extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<ClusterIdentity?> identity;
   /// A `languageExtension` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> languageExtension;
-  late final pulumi.Output<List<Map<String, dynamic>>> languageExtensions;
+  late final pulumi.Output<List<ClusterLanguageExtension>> languageExtension;
+  late final pulumi.Output<List<ClusterLanguageExtension>> languageExtensions;
   /// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
@@ -287,17 +288,17 @@ class Cluster extends pulumi.CustomResource {
           'azure:kusto/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    allowedFqdns = registerOutput<List<String>?>('allowedFqdns');
-    allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges');
+    allowedFqdns = registerOutput<List<String>?>('allowedFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoStopEnabled = registerOutput<bool?>('autoStopEnabled');
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
     identity = registerOutput<ClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    languageExtension = registerOutput<List<Map<String, dynamic>>>('languageExtension');
-    languageExtensions = registerOutput<List<Map<String, dynamic>>>('languageExtensions');
+    languageExtension = registerOutput<List<ClusterLanguageExtension>>('languageExtension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    languageExtensions = registerOutput<List<ClusterLanguageExtension>>('languageExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>('optimizedAutoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOptimizedAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -308,11 +309,11 @@ class Cluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<ClusterSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamingIngestionEnabled = registerOutput<bool?>('streamingIngestionEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uri = registerOutput<String>('uri');
     virtualNetworkConfiguration = registerOutput<ClusterVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -320,11 +321,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,15 +340,15 @@ class Cluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedFqdns = registerOutput<List<String>?>('allowedFqdns');
-    allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges');
+    allowedFqdns = registerOutput<List<String>?>('allowedFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoStopEnabled = registerOutput<bool?>('autoStopEnabled');
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
     identity = registerOutput<ClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    languageExtension = registerOutput<List<Map<String, dynamic>>>('languageExtension');
-    languageExtensions = registerOutput<List<Map<String, dynamic>>>('languageExtensions');
+    languageExtension = registerOutput<List<ClusterLanguageExtension>>('languageExtension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    languageExtensions = registerOutput<List<ClusterLanguageExtension>>('languageExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>('optimizedAutoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOptimizedAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -357,10 +359,45 @@ class Cluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<ClusterSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     streamingIngestionEnabled = registerOutput<bool?>('streamingIngestionEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uri = registerOutput<String>('uri');
     virtualNetworkConfiguration = registerOutput<ClusterVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'azure:kusto/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedFqdns = registerOutput<List<String>?>('allowedFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedIpRanges = registerOutput<List<String>?>('allowedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoStopEnabled = registerOutput<bool?>('autoStopEnabled');
+    dataIngestionUri = registerOutput<String>('dataIngestionUri');
+    diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
+    doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
+    identity = registerOutput<ClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageExtension = registerOutput<List<ClusterLanguageExtension>>('languageExtension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    languageExtensions = registerOutput<List<ClusterLanguageExtension>>('languageExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterLanguageExtension>(guardedValue, (value) => ClusterLanguageExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>('optimizedAutoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOptimizedAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
+    publicIpType = registerOutput<String?>('publicIpType');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    purgeEnabled = registerOutput<bool?>('purgeEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<ClusterSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamingIngestionEnabled = registerOutput<bool?>('streamingIngestionEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedExternalTenants = registerOutput<List<String>>('trustedExternalTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uri = registerOutput<String>('uri');
+    virtualNetworkConfiguration = registerOutput<ClusterVirtualNetworkConfiguration?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -9,17 +9,17 @@ class PoolStartTask {
   /// The command line executed by the start task.
   final pulumi.Input<String> commandLine;
   /// A map of strings (key,value) that represents the environment variables to set in the start task.
-  final pulumi.Input<Map<String, String>>? commonEnvironmentProperties;
+  final pulumi.Input<Map<String, String>?>? commonEnvironmentProperties;
   /// A `container` block is the settings for the container under which the start task runs as defined below. When this is specified, all directories recursively below the `AZ_BATCH_NODE_ROOT_DIR` (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
-  final pulumi.Input<List<PoolStartTaskContainer>>? containers;
+  final pulumi.Input<List<PoolStartTaskContainer>?>? containers;
   /// One or more `resourceFile` blocks that describe the files to be downloaded to a compute node as defined below.
-  final pulumi.Input<List<PoolStartTaskResourceFile>>? resourceFiles;
+  final pulumi.Input<List<PoolStartTaskResourceFile>?>? resourceFiles;
   /// The number of retry count. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
-  final pulumi.Input<int>? taskRetryMaximum;
+  final pulumi.Input<int?>? taskRetryMaximum;
   /// A `userIdentity` block that describes the user identity under which the start task runs as defined below.
   final pulumi.Input<PoolStartTaskUserIdentity> userIdentity;
   /// A flag that indicates if the Batch pool should wait for the start task to be completed. Default to `false`.
-  final pulumi.Input<bool>? waitForSuccess;
+  final pulumi.Input<bool?>? waitForSuccess;
 
   /// Creates a new [PoolStartTask].
   /// [commandLine] The command line executed by the start task.
@@ -57,7 +57,7 @@ class PoolStartTask {
       commonEnvironmentProperties: (() { final guardedValue = map['commonEnvironmentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolStartTaskContainer>(guardedValue, (value) => PoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceFiles: (() { final guardedValue = map['resourceFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolStartTaskResourceFile>(guardedValue, (value) => PoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      taskRetryMaximum: (() { final guardedValue = map['taskRetryMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      taskRetryMaximum: (() { final guardedValue = map['taskRetryMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       userIdentity: pulumi.Input.fromValue(PoolStartTaskUserIdentity.fromMap((map['userIdentity']! as Map).cast<String, dynamic>())),
       waitForSuccess: (() { final guardedValue = map['waitForSuccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

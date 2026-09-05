@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFleetInstanceTypeConfigConfiguration {
   /// The classification within a configuration.
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<String?>? classification;
   /// A map of properties specified within a configuration classification
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [InstanceFleetInstanceTypeConfigConfiguration].
   /// [classification] The classification within a configuration.

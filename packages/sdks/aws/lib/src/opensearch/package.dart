@@ -25,11 +25,11 @@ import 'package_state.dart';
 ///     }).then(invoke => invoke.result),
 /// });
 /// const examplePackage = new aws.opensearch.Package("example", {
-///     packageName: "example-txt",
 ///     packageSource: {
 ///         s3BucketName: myOpensearchPackages.bucket,
 ///         s3Key: example.key,
 ///     },
+///     packageName: "example-txt",
 ///     packageType: "TXT-DICTIONARY",
 /// });
 /// ```
@@ -45,11 +45,11 @@ import 'package_state.dart';
 ///     source=pulumi.FileAsset("./example.txt"),
 ///     etag=std.filemd5(input="./example.txt").result)
 /// example_package = aws.opensearch.Package("example",
-///     package_name="example-txt",
 ///     package_source={
 ///         "s3_bucket_name": my_opensearch_packages.bucket,
 ///         "s3_key": example.key,
 ///     },
+///     package_name="example-txt",
 ///     package_type="TXT-DICTIONARY")
 /// ```
 /// ```csharp
@@ -79,12 +79,12 @@ import 'package_state.dart';
 ///
 ///     var examplePackage = new Aws.OpenSearch.Package("example", new()
 ///     {
-///         PackageName = "example-txt",
 ///         PackageSource = new Aws.OpenSearch.Inputs.PackagePackageSourceArgs
 ///         {
 ///             S3BucketName = myOpensearchPackages.BucketName,
 ///             S3Key = example.Key,
 ///         },
+///         PackageName = "example-txt",
 ///         PackageType = "TXT-DICTIONARY",
 ///     });
 ///
@@ -124,11 +124,11 @@ import 'package_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewPackage(ctx, "example", &opensearch.PackageArgs{
-/// 			PackageName: pulumi.String("example-txt"),
 /// 			PackageSource: &opensearch.PackagePackageSourceArgs{
 /// 				S3BucketName: myOpensearchPackages.Bucket,
 /// 				S3Key:        example.Key,
 /// 			},
+/// 			PackageName: pulumi.String("example-txt"),
 /// 			PackageType: pulumi.String("TXT-DICTIONARY"),
 /// 		})
 /// 		if err != nil {
@@ -160,11 +160,11 @@ import 'package_state.dart';
 ///   etag   = filemd5("./example.txt")
 /// }
 /// resource "aws_opensearch_package" "example" {
-///   package_name = "example-txt"
 ///   package_source = {
 ///     s3_bucket_name = aws_s3_bucket.my_opensearch_packages.bucket
 ///     s3_key         = aws_s3_bucketobjectv2.example.key
 ///   }
+///   package_name = "example-txt"
 ///   package_type = "TXT-DICTIONARY"
 /// }
 /// ```
@@ -211,11 +211,11 @@ import 'package_state.dart';
 ///             .build());
 ///
 ///         var examplePackage = new Package("examplePackage", PackageArgs.builder()
-///             .packageName("example-txt")
 ///             .packageSource(PackagePackageSourceArgs.builder()
 ///                 .s3BucketName(myOpensearchPackages.bucket())
 ///                 .s3Key(example.key())
 ///                 .build())
+///             .packageName("example-txt")
 ///             .packageType("TXT-DICTIONARY")
 ///             .build());
 ///
@@ -246,10 +246,10 @@ import 'package_state.dart';
 ///     type: aws:opensearch:Package
 ///     name: example
 ///     properties:
-///       packageName: example-txt
 ///       packageSource:
 ///         s3BucketName: ${myOpensearchPackages.bucket}
 ///         s3Key: ${example.key}
+///       packageName: example-txt
 ///       packageType: TXT-DICTIONARY
 /// ```
 ///
@@ -290,7 +290,7 @@ class Package extends pulumi.CustomResource {
           'aws:opensearch/package:Package',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availablePackageVersion = registerOutput<String>('availablePackageVersion');
     engineVersion = registerOutput<String?>('engineVersion');
@@ -307,11 +307,12 @@ class Package extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PackageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Package._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,6 +326,25 @@ class Package extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    availablePackageVersion = registerOutput<String>('availablePackageVersion');
+    engineVersion = registerOutput<String?>('engineVersion');
+    packageDescription = registerOutput<String?>('packageDescription');
+    packageId = registerOutput<String>('packageId');
+    packageName = registerOutput<String>('packageName');
+    packageSource = registerOutput<PackagePackageSource>('packageSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackagePackageSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    packageType = registerOutput<String>('packageType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Package] resource.
+  Package.reference(String urn)
+    : super(
+        'aws:opensearch/package:Package',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     availablePackageVersion = registerOutput<String>('availablePackageVersion');
     engineVersion = registerOutput<String?>('engineVersion');
     packageDescription = registerOutput<String?>('packageDescription');

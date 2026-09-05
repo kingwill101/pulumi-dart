@@ -9,15 +9,15 @@ import 'traffic_policy_policy_statement_condition_tls_expression.dart';
 
 class TrafficPolicyPolicyStatementCondition {
   /// Boolean comparison. See `booleanExpression` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpression>? booleanExpression;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionBooleanExpression?>? booleanExpression;
   /// IPv4 address comparison. See `ipExpression` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpExpression>? ipExpression;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpExpression?>? ipExpression;
   /// IPv6 address comparison. See `ipv6Expression` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpv6Expression>? ipv6Expression;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionIpv6Expression?>? ipv6Expression;
   /// String comparison. See `stringExpression` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpression>? stringExpression;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpression?>? stringExpression;
   /// TLS policy comparison. See `tlsExpression` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionTlsExpression>? tlsExpression;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionTlsExpression?>? tlsExpression;
 
   /// Creates a new [TrafficPolicyPolicyStatementCondition].
   /// [booleanExpression] Boolean comparison. See `booleanExpression` Block below.

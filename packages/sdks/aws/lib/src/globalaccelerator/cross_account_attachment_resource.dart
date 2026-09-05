@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrossAccountAttachmentResource {
   /// IP address range, in CIDR format, that is specified as resource.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// The endpoint ID for the endpoint that is specified as a AWS resource.
-  final pulumi.Input<String>? endpointId;
+  final pulumi.Input<String?>? endpointId;
   /// The AWS Region where a shared endpoint resource is located.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CrossAccountAttachmentResource].
   /// [cidrBlock] IP address range, in CIDR format, that is specified as resource.

@@ -6,8 +6,8 @@ class PoolCertificate {
   /// The ID of the Batch Pool.
   final pulumi.Input<String> id;
   final pulumi.Input<String> storeLocation;
-  final pulumi.Input<String>? storeName;
-  final pulumi.Input<List<String>>? visibilities;
+  final pulumi.Input<String?>? storeName;
+  final pulumi.Input<List<String>?>? visibilities;
 
   /// Creates a new [PoolCertificate].
   /// [id] The ID of the Batch Pool.

@@ -10,34 +10,34 @@ import 'distribution_tenant_timeouts.dart';
 /// Input properties used for looking up and filtering DistributionTenant resources.
 class DistributionTenantState {
   /// ARN of the distribution tenant.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the connection group for the distribution tenant. If not specified, CloudFront uses the default connection group.
-  final pulumi.Input<String>? connectionGroupId;
+  final pulumi.Input<String?>? connectionGroupId;
   /// Customizations for the distribution tenant (maximum one).
-  final pulumi.Input<DistributionTenantCustomizations>? customizations;
+  final pulumi.Input<DistributionTenantCustomizations?>? customizations;
   /// ID of the multi-tenant distribution.
-  final pulumi.Input<String>? distributionId;
+  final pulumi.Input<String?>? distributionId;
   /// Set of domains associated with the distribution tenant.
-  final pulumi.Input<List<DistributionTenantDomain>>? domains;
+  final pulumi.Input<List<DistributionTenantDomain>?>? domains;
   /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Current version of the distribution tenant.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Managed certificate request for CloudFront managed ACM certificate (maximum one).
-  final pulumi.Input<DistributionTenantManagedCertificateRequest>? managedCertificateRequest;
+  final pulumi.Input<DistributionTenantManagedCertificateRequest?>? managedCertificateRequest;
   /// Name of the distribution tenant.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Set of parameter values for the distribution tenant.
-  final pulumi.Input<List<DistributionTenantParameter>>? parameters;
+  final pulumi.Input<List<DistributionTenantParameter>?>? parameters;
   /// Current status of the distribution tenant.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<DistributionTenantTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<DistributionTenantTimeouts?>? timeouts;
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
-  final pulumi.Input<bool>? waitForDeployment;
+  final pulumi.Input<bool?>? waitForDeployment;
 
   /// Creates a new [DistributionTenantState].
   /// [arn] ARN of the distribution tenant.

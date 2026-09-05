@@ -850,7 +850,7 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
           'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
@@ -858,7 +858,7 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
@@ -868,11 +868,12 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupTemplateDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupTemplateDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -892,7 +893,27 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+  }
+
+  /// Creates a typed reference to an existing [GroupTemplateDeployment] resource.
+  GroupTemplateDeployment.reference(String urn)
+    : super(
+        'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    location = registerOutput<String>('location');
+    managementGroupId = registerOutput<String>('managementGroupId');
+    this.name = registerOutput<String>('name');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }

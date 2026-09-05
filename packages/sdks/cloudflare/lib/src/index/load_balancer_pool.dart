@@ -430,6 +430,8 @@ class LoadBalancerPool extends pulumi.CustomResource {
   late final pulumi.Output<String> disabledAt;
   /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
   late final pulumi.Output<bool> enabled;
+  /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+  late final pulumi.Output<List<String>?> healthSources;
   /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
   late final pulumi.Output<double?> latitude;
   /// Configures load shedding policies and percentages for the pool.
@@ -468,7 +470,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
           'cloudflare:index/loadBalancerPool:LoadBalancerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     checkRegions = registerOutput<List<String>?>('checkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -476,6 +478,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabledAt = registerOutput<String>('disabledAt');
     enabled = registerOutput<bool>('enabled');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latitude = registerOutput<double?>('latitude');
     loadShedding = registerOutput<LoadBalancerPoolLoadShedding>('loadShedding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     longitude = registerOutput<double?>('longitude');
@@ -521,6 +524,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabledAt = registerOutput<String>('disabledAt');
     enabled = registerOutput<bool>('enabled');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latitude = registerOutput<double?>('latitude');
     loadShedding = registerOutput<LoadBalancerPoolLoadShedding>('loadShedding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     longitude = registerOutput<double?>('longitude');
@@ -551,6 +555,7 @@ class LoadBalancerPool extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabledAt = registerOutput<String>('disabledAt');
     enabled = registerOutput<bool>('enabled');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latitude = registerOutput<double?>('latitude');
     loadShedding = registerOutput<LoadBalancerPoolLoadShedding>('loadShedding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     longitude = registerOutput<double?>('longitude');

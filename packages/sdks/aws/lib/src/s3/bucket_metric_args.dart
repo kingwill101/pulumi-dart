@@ -11,11 +11,11 @@ class BucketMetricArgs {
   /// Name of the bucket to put metric configuration.
   final pulumi.Input<String> bucket;
   /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags. See below.
-  final pulumi.Input<BucketMetricFilter>? filter;
+  final pulumi.Input<BucketMetricFilter?>? filter;
   /// Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketMetricArgs].
   /// [bucket] Name of the bucket to put metric configuration.

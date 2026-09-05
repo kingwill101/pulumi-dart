@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NatGatewayRegionalNatGatewayAddress {
   /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivityType` is set to `public` and `availabilityMode` is set to `zonal`. When `availabilityMode` is set to `regional`, this must not be set; instead, use the `availabilityZoneAddress` block to specify EIPs for each AZ.
-  final pulumi.Input<String>? allocationId;
+  final pulumi.Input<String?>? allocationId;
   /// Association ID of the Elastic IP address.
-  final pulumi.Input<String>? associationId;
+  final pulumi.Input<String?>? associationId;
   /// Availability Zone where this specific NAT gateway configuration is active.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Availability Zone ID where this specific NAT gateway configuration is active
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// ID of the network interface.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// Public IP address.
-  final pulumi.Input<String>? publicIp;
+  final pulumi.Input<String?>? publicIp;
   /// Status of the NAT gateway address.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [NatGatewayRegionalNatGatewayAddress].
   /// [allocationId] The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivityType` is set to `public` and `availabilityMode` is set to `zonal`. When `availabilityMode` is set to `regional`, this must not be set; instead, use the `availabilityZoneAddress` block to specify EIPs for each AZ.

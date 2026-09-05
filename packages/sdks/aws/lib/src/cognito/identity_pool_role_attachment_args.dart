@@ -11,9 +11,9 @@ class IdentityPoolRoleAttachmentArgs {
   /// An identity pool ID in the format `REGION_GUID`.
   final pulumi.Input<String> identityPoolId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A List of Role Mapping.
-  final pulumi.Input<List<IdentityPoolRoleAttachmentRoleMapping>>? roleMappings;
+  final pulumi.Input<List<IdentityPoolRoleAttachmentRoleMapping>?>? roleMappings;
   /// The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   final pulumi.Input<Map<String, String>> roles;
 

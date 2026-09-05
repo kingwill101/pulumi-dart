@@ -5,24 +5,24 @@ import 'application_gateway_url_path_map_path_rule.dart';
 
 class ApplicationGatewayUrlPathMap {
   /// The ID of the Default Backend Address Pool.
-  final pulumi.Input<String>? defaultBackendAddressPoolId;
+  final pulumi.Input<String?>? defaultBackendAddressPoolId;
   /// The Name of the Default Backend Address Pool which should be used for this URL Path Map. Cannot be set if `defaultRedirectConfigurationName` is set.
-  final pulumi.Input<String>? defaultBackendAddressPoolName;
+  final pulumi.Input<String?>? defaultBackendAddressPoolName;
   /// The ID of the Default Backend HTTP Settings Collection.
-  final pulumi.Input<String>? defaultBackendHttpSettingsId;
+  final pulumi.Input<String?>? defaultBackendHttpSettingsId;
   /// The Name of the Default Backend HTTP Settings Collection which should be used for this URL Path Map. Cannot be set if `defaultRedirectConfigurationName` is set.
-  final pulumi.Input<String>? defaultBackendHttpSettingsName;
+  final pulumi.Input<String?>? defaultBackendHttpSettingsName;
   /// The ID of the Default Redirect Configuration.
-  final pulumi.Input<String>? defaultRedirectConfigurationId;
+  final pulumi.Input<String?>? defaultRedirectConfigurationId;
   /// The Name of the Default Redirect Configuration which should be used for this URL Path Map. Cannot be set if either `defaultBackendAddressPoolName` or `defaultBackendHttpSettingsName` is set.
   ///
   /// &gt; **Note:** Both `defaultBackendAddressPoolName` and `defaultBackendHttpSettingsName` or `defaultRedirectConfigurationName` should be specified.
-  final pulumi.Input<String>? defaultRedirectConfigurationName;
-  final pulumi.Input<String>? defaultRewriteRuleSetId;
+  final pulumi.Input<String?>? defaultRedirectConfigurationName;
+  final pulumi.Input<String?>? defaultRewriteRuleSetId;
   /// The Name of the Default Rewrite Rule Set which should be used for this URL Path Map. Only valid for v2 SKUs.
-  final pulumi.Input<String>? defaultRewriteRuleSetName;
+  final pulumi.Input<String?>? defaultRewriteRuleSetName;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the URL Path Map.
   final pulumi.Input<String> name;
   /// One or more `pathRule` blocks as defined above.

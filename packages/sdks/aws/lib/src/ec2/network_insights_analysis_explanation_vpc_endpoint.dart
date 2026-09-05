@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisExplanationVpcEndpoint {
   /// ARN of the Network Insights Analysis.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the Network Insights Analysis.
-  final pulumi.Input<String>? id;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? id;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NetworkInsightsAnalysisExplanationVpcEndpoint].
   /// [arn] ARN of the Network Insights Analysis.

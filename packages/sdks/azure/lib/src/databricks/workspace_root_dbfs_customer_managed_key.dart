@@ -20,6 +20,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     purgeProtectionEnabled: true,
@@ -67,8 +68,8 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// });
 /// const databricks = new azure.keyvault.AccessPolicy("databricks", {
 ///     keyVaultId: exampleKeyVault.id,
-///     tenantId: exampleWorkspace.storageAccountIdentities.apply(storageAccountIdentities => storageAccountIdentities[0].tenantId),
-///     objectId: exampleWorkspace.storageAccountIdentities.apply(storageAccountIdentities => storageAccountIdentities[0].principalId),
+///     tenantId: exampleWorkspace.storageAccountIdentities[0].tenantId,
+///     objectId: exampleWorkspace.storageAccountIdentities[0].principalId,
 ///     keyPermissions: [
 ///         "Create",
 ///         "Delete",
@@ -102,6 +103,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     purge_protection_enabled=True,
@@ -184,6 +186,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         PurgeProtectionEnabled = true,
@@ -305,19 +308,20 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("premium"),
-/// 			PurgeProtectionEnabled:  pulumi.Bool(true),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		terraform, err := keyvault.NewAccessPolicy(ctx, "terraform", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   exampleKeyVault.TenantId,
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -338,7 +342,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-certificate"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -366,13 +370,13 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		databricks2, err := keyvault.NewAccessPolicy(ctx, "databricks", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId: exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
 /// 				return storageAccountIdentities[0].TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
+/// 			}).(pulumi.StringPtrOutput),
+/// 			ObjectId: exampleWorkspace.StorageAccountIdentities.ApplyT(func(storageAccountIdentities []databricks.WorkspaceStorageAccountIdentity) (*string, error) {
 /// 				return storageAccountIdentities[0].PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
 /// 				pulumi.String("Delete"),
@@ -391,8 +395,8 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = databricks.NewWorkspaceRootDbfsCustomerManagedKey(ctx, "example", &databricks.WorkspaceRootDbfsCustomerManagedKeyArgs{
-/// 			WorkspaceId:   exampleWorkspace.ID(),
-/// 			KeyVaultKeyId: exampleKey.ID(),
+/// 			WorkspaceId:   exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			databricks2,
 /// 		}))
@@ -423,6 +427,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "premium"
 ///   purge_protection_enabled   = true
@@ -506,6 +511,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .purgeProtectionEnabled(true)
@@ -595,6 +601,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       purgeProtectionEnabled: true
@@ -723,7 +730,7 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
           'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     keyVaultId = registerOutput<String?>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
@@ -735,11 +742,12 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceRootDbfsCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceRootDbfsCustomerManagedKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -753,6 +761,20 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyVaultId = registerOutput<String?>('keyVaultId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceRootDbfsCustomerManagedKey] resource.
+  WorkspaceRootDbfsCustomerManagedKey.reference(String urn)
+    : super(
+        'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyVaultId = registerOutput<String?>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     workspaceId = registerOutput<String>('workspaceId');

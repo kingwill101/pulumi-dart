@@ -25,7 +25,7 @@ class KxClusterCacheStorageConfiguration {
 
   factory KxClusterCacheStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterCacheStorageConfiguration(
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

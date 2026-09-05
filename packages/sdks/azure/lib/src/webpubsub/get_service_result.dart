@@ -3,127 +3,127 @@
 
 /// Result data returned by getService.
 class GetServiceResult {
-  final bool aadAuthEnabled;
-  final int capacity;
-  final String externalIp;
+  final bool? aadAuthEnabled;
+  final int? capacity;
+  final String? externalIp;
   /// The FQDN of the Web Pubsub service.
-  final String hostname;
+  final String? hostname;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final bool localAuthEnabled;
+  final String? id;
+  final bool? localAuthEnabled;
   /// The Azure location where the Web Pubsub service exists.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// The primary access key of the Web Pubsub service.
-  final String primaryAccessKey;
+  final String? primaryAccessKey;
   /// The primary connection string of the Web Pubsub service.
-  final String primaryConnectionString;
-  final bool publicNetworkAccessEnabled;
+  final String? primaryConnectionString;
+  final bool? publicNetworkAccessEnabled;
   /// The publicly accessible port of the Web Pubsub service which is designed for browser/client use.
-  final int publicPort;
-  final String resourceGroupName;
+  final int? publicPort;
+  final String? resourceGroupName;
   /// The secondary access key of the Web Pubsub service.
-  final String secondaryAccessKey;
+  final String? secondaryAccessKey;
   /// The secondary connection string of the Web Pubsub service.
-  final String secondaryConnectionString;
+  final String? secondaryConnectionString;
   /// The publicly accessible port of the Web Pubsub service which is designed for customer server side use.
-  final int serverPort;
-  final String sku;
-  final Map<String, String> tags;
-  final bool tlsClientCertEnabled;
-  final String version;
+  final int? serverPort;
+  final String? sku;
+  final Map<String, String>? tags;
+  final bool? tlsClientCertEnabled;
+  final String? version;
 
   /// Creates a new [GetServiceResult].
-  /// [aadAuthEnabled] Required.
-  /// [capacity] Required.
-  /// [externalIp] Required.
+  /// [aadAuthEnabled] Optional.
+  /// [capacity] Optional.
+  /// [externalIp] Optional.
   /// [hostname] The FQDN of the Web Pubsub service.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [localAuthEnabled] Required.
+  /// [localAuthEnabled] Optional.
   /// [location] The Azure location where the Web Pubsub service exists.
-  /// [name] Required.
+  /// [name] Optional.
   /// [primaryAccessKey] The primary access key of the Web Pubsub service.
   /// [primaryConnectionString] The primary connection string of the Web Pubsub service.
-  /// [publicNetworkAccessEnabled] Required.
+  /// [publicNetworkAccessEnabled] Optional.
   /// [publicPort] The publicly accessible port of the Web Pubsub service which is designed for browser/client use.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [secondaryAccessKey] The secondary access key of the Web Pubsub service.
   /// [secondaryConnectionString] The secondary connection string of the Web Pubsub service.
   /// [serverPort] The publicly accessible port of the Web Pubsub service which is designed for customer server side use.
-  /// [sku] Required.
-  /// [tags] Required.
-  /// [tlsClientCertEnabled] Required.
-  /// [version] Required.
+  /// [sku] Optional.
+  /// [tags] Optional.
+  /// [tlsClientCertEnabled] Optional.
+  /// [version] Optional.
   const GetServiceResult({
-    required this.aadAuthEnabled,
-    required this.capacity,
-    required this.externalIp,
-    required this.hostname,
-    required this.id,
-    required this.localAuthEnabled,
-    required this.location,
-    required this.name,
-    required this.primaryAccessKey,
-    required this.primaryConnectionString,
-    required this.publicNetworkAccessEnabled,
-    required this.publicPort,
-    required this.resourceGroupName,
-    required this.secondaryAccessKey,
-    required this.secondaryConnectionString,
-    required this.serverPort,
-    required this.sku,
-    required this.tags,
-    required this.tlsClientCertEnabled,
-    required this.version,
+    this.aadAuthEnabled,
+    this.capacity,
+    this.externalIp,
+    this.hostname,
+    this.id,
+    this.localAuthEnabled,
+    this.location,
+    this.name,
+    this.primaryAccessKey,
+    this.primaryConnectionString,
+    this.publicNetworkAccessEnabled,
+    this.publicPort,
+    this.resourceGroupName,
+    this.secondaryAccessKey,
+    this.secondaryConnectionString,
+    this.serverPort,
+    this.sku,
+    this.tags,
+    this.tlsClientCertEnabled,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aadAuthEnabled': aadAuthEnabled,
-      'capacity': capacity,
-      'externalIp': externalIp,
-      'hostname': hostname,
-      'id': id,
-      'localAuthEnabled': localAuthEnabled,
-      'location': location,
-      'name': name,
-      'primaryAccessKey': primaryAccessKey,
-      'primaryConnectionString': primaryConnectionString,
-      'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
-      'publicPort': publicPort,
-      'resourceGroupName': resourceGroupName,
-      'secondaryAccessKey': secondaryAccessKey,
-      'secondaryConnectionString': secondaryConnectionString,
-      'serverPort': serverPort,
-      'sku': sku,
-      'tags': tags,
-      'tlsClientCertEnabled': tlsClientCertEnabled,
-      'version': version,
+      'aadAuthEnabled': ?aadAuthEnabled,
+      'capacity': ?capacity,
+      'externalIp': ?externalIp,
+      'hostname': ?hostname,
+      'id': ?id,
+      'localAuthEnabled': ?localAuthEnabled,
+      'location': ?location,
+      'name': ?name,
+      'primaryAccessKey': ?primaryAccessKey,
+      'primaryConnectionString': ?primaryConnectionString,
+      'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
+      'publicPort': ?publicPort,
+      'resourceGroupName': ?resourceGroupName,
+      'secondaryAccessKey': ?secondaryAccessKey,
+      'secondaryConnectionString': ?secondaryConnectionString,
+      'serverPort': ?serverPort,
+      'sku': ?sku,
+      'tags': ?tags,
+      'tlsClientCertEnabled': ?tlsClientCertEnabled,
+      'version': ?version,
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      aadAuthEnabled: map['aadAuthEnabled'] as bool,
-      capacity: map['capacity'] as int,
-      externalIp: map['externalIp'] as String,
-      hostname: map['hostname'] as String,
-      id: map['id'] as String,
-      localAuthEnabled: map['localAuthEnabled'] as bool,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      primaryAccessKey: map['primaryAccessKey'] as String,
-      primaryConnectionString: map['primaryConnectionString'] as String,
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
-      publicPort: map['publicPort'] as int,
-      resourceGroupName: map['resourceGroupName'] as String,
-      secondaryAccessKey: map['secondaryAccessKey'] as String,
-      secondaryConnectionString: map['secondaryConnectionString'] as String,
-      serverPort: map['serverPort'] as int,
-      sku: map['sku'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tlsClientCertEnabled: map['tlsClientCertEnabled'] as bool,
-      version: map['version'] as String,
+      aadAuthEnabled: (() { final guardedValue = map['aadAuthEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      localAuthEnabled: (() { final guardedValue = map['localAuthEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryAccessKey: (() { final guardedValue = map['primaryAccessKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryAccessKey: (() { final guardedValue = map['secondaryAccessKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverPort: (() { final guardedValue = map['serverPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tlsClientCertEnabled: (() { final guardedValue = map['tlsClientCertEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -13,10 +13,10 @@ import 'observability_configuration_trace_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apprunner.ObservabilityConfiguration("example", {
-///     observabilityConfigurationName: "example",
 ///     traceConfiguration: {
 ///         vendor: "AWSXRAY",
 ///     },
+///     observabilityConfigurationName: "example",
 ///     tags: {
 ///         Name: "example-apprunner-observability-configuration",
 ///     },
@@ -27,10 +27,10 @@ import 'observability_configuration_trace_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apprunner.ObservabilityConfiguration("example",
-///     observability_configuration_name="example",
 ///     trace_configuration={
 ///         "vendor": "AWSXRAY",
 ///     },
+///     observability_configuration_name="example",
 ///     tags={
 ///         "Name": "example-apprunner-observability-configuration",
 ///     })
@@ -45,11 +45,11 @@ import 'observability_configuration_trace_configuration.dart';
 /// {
 ///     var example = new Aws.AppRunner.ObservabilityConfiguration("example", new()
 ///     {
-///         ObservabilityConfigurationName = "example",
 ///         TraceConfiguration = new Aws.AppRunner.Inputs.ObservabilityConfigurationTraceConfigurationArgs
 ///         {
 ///             Vendor = "AWSXRAY",
 ///         },
+///         ObservabilityConfigurationName = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "example-apprunner-observability-configuration" },
@@ -69,10 +69,10 @@ import 'observability_configuration_trace_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apprunner.NewObservabilityConfiguration(ctx, "example", &apprunner.ObservabilityConfigurationArgs{
-/// 			ObservabilityConfigurationName: pulumi.String("example"),
 /// 			TraceConfiguration: &apprunner.ObservabilityConfigurationTraceConfigurationArgs{
 /// 				Vendor: pulumi.String("AWSXRAY"),
 /// 			},
+/// 			ObservabilityConfigurationName: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-apprunner-observability-configuration"),
 /// 			},
@@ -94,10 +94,10 @@ import 'observability_configuration_trace_configuration.dart';
 /// }
 ///
 /// resource "aws_apprunner_observabilityconfiguration" "example" {
-///   observability_configuration_name = "example"
 ///   trace_configuration = {
 ///     vendor = "AWSXRAY"
 ///   }
+///   observability_configuration_name = "example"
 ///   tags = {
 ///     "Name" = "example-apprunner-observability-configuration"
 ///   }
@@ -126,10 +126,10 @@ import 'observability_configuration_trace_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ObservabilityConfiguration("example", ObservabilityConfigurationArgs.builder()
-///             .observabilityConfigurationName("example")
 ///             .traceConfiguration(ObservabilityConfigurationTraceConfigurationArgs.builder()
 ///                 .vendor("AWSXRAY")
 ///                 .build())
+///             .observabilityConfigurationName("example")
 ///             .tags(Map.of("Name", "example-apprunner-observability-configuration"))
 ///             .build());
 ///
@@ -141,9 +141,9 @@ import 'observability_configuration_trace_configuration.dart';
 ///   example:
 ///     type: aws:apprunner:ObservabilityConfiguration
 ///     properties:
-///       observabilityConfigurationName: example
 ///       traceConfiguration:
 ///         vendor: AWSXRAY
+///       observabilityConfigurationName: example
 ///       tags:
 ///         Name: example-apprunner-observability-configuration
 /// ```
@@ -155,7 +155,7 @@ import 'observability_configuration_trace_configuration.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the App Runner observability configuration.
+/// - `arn` (String) ARN of the App Runner observability configuration.
 ///
 ///
 /// Using `pulumi import`, import App Runner Observability Configuration using the `arn`. For example:
@@ -195,7 +195,7 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
           'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     latest = registerOutput<bool>('latest');
@@ -203,8 +203,8 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     observabilityConfigurationRevision = registerOutput<int>('observabilityConfigurationRevision');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     traceConfiguration = registerOutput<ObservabilityConfigurationTraceConfiguration?>('traceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObservabilityConfigurationTraceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -213,11 +213,12 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ObservabilityConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ObservabilityConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,8 +238,28 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     observabilityConfigurationRevision = registerOutput<int>('observabilityConfigurationRevision');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    traceConfiguration = registerOutput<ObservabilityConfigurationTraceConfiguration?>('traceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObservabilityConfigurationTraceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ObservabilityConfiguration] resource.
+  ObservabilityConfiguration.reference(String urn)
+    : super(
+        'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    latest = registerOutput<bool>('latest');
+    observabilityConfigurationName = registerOutput<String>('observabilityConfigurationName');
+    observabilityConfigurationRevision = registerOutput<int>('observabilityConfigurationRevision');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     traceConfiguration = registerOutput<ObservabilityConfigurationTraceConfiguration?>('traceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObservabilityConfigurationTraceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -19,32 +19,32 @@ import 'multiplex_program_timeouts.dart';
 ///     state: "available",
 /// });
 /// const example = new aws.medialive.Multiplex("example", {
-///     name: "example-multiplex-changed",
-///     availabilityZones: [
-///         available.then(available => available.names?.[0]),
-///         available.then(available => available.names?.[1]),
-///     ],
 ///     multiplexSettings: {
 ///         transportStreamBitrate: 1000000,
 ///         transportStreamId: 1,
 ///         transportStreamReservedBitrate: 1,
 ///         maximumVideoBufferDelayMilliseconds: 1000,
 ///     },
+///     name: "example-multiplex-changed",
+///     availabilityZones: [
+///         available.then(available => available.names?.[0]),
+///         available.then(available => available.names?.[1]),
+///     ],
 ///     startMultiplex: true,
 ///     tags: {
 ///         tag1: "value1",
 ///     },
 /// });
 /// const exampleMultiplexProgram = new aws.medialive.MultiplexProgram("example", {
-///     programName: "example_program",
-///     multiplexId: example.id,
 ///     multiplexProgramSettings: {
-///         programNumber: 1,
-///         preferredChannelPipeline: "CURRENTLY_ACTIVE",
 ///         videoSettings: {
 ///             constantBitrate: 100000,
 ///         },
+///         programNumber: 1,
+///         preferredChannelPipeline: "CURRENTLY_ACTIVE",
 ///     },
+///     programName: "example_program",
+///     multiplexId: example.id,
 /// });
 /// ```
 /// ```python
@@ -53,31 +53,31 @@ import 'multiplex_program_timeouts.dart';
 ///
 /// available = aws.get_availability_zones(state="available")
 /// example = aws.medialive.Multiplex("example",
-///     name="example-multiplex-changed",
-///     availability_zones=[
-///         available.names[0],
-///         available.names[1],
-///     ],
 ///     multiplex_settings={
 ///         "transport_stream_bitrate": 1000000,
 ///         "transport_stream_id": 1,
 ///         "transport_stream_reserved_bitrate": 1,
 ///         "maximum_video_buffer_delay_milliseconds": 1000,
 ///     },
+///     name="example-multiplex-changed",
+///     availability_zones=[
+///         available.names[0],
+///         available.names[1],
+///     ],
 ///     start_multiplex=True,
 ///     tags={
 ///         "tag1": "value1",
 ///     })
 /// example_multiplex_program = aws.medialive.MultiplexProgram("example",
-///     program_name="example_program",
-///     multiplex_id=example.id,
 ///     multiplex_program_settings={
-///         "program_number": 1,
-///         "preferred_channel_pipeline": "CURRENTLY_ACTIVE",
 ///         "video_settings": {
 ///             "constant_bitrate": 100000,
 ///         },
-///     })
+///         "program_number": 1,
+///         "preferred_channel_pipeline": "CURRENTLY_ACTIVE",
+///     },
+///     program_name="example_program",
+///     multiplex_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -94,18 +94,18 @@ import 'multiplex_program_timeouts.dart';
 ///
 ///     var example = new Aws.MediaLive.Multiplex("example", new()
 ///     {
-///         Name = "example-multiplex-changed",
-///         AvailabilityZones = new[]
-///         {
-///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[0]),
-///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
-///         },
 ///         MultiplexSettings = new Aws.MediaLive.Inputs.MultiplexMultiplexSettingsArgs
 ///         {
 ///             TransportStreamBitrate = 1000000,
 ///             TransportStreamId = 1,
 ///             TransportStreamReservedBitrate = 1,
 ///             MaximumVideoBufferDelayMilliseconds = 1000,
+///         },
+///         Name = "example-multiplex-changed",
+///         AvailabilityZones = new[]
+///         {
+///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[0]),
+///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
 ///         },
 ///         StartMultiplex = true,
 ///         Tags =
@@ -116,17 +116,17 @@ import 'multiplex_program_timeouts.dart';
 ///
 ///     var exampleMultiplexProgram = new Aws.MediaLive.MultiplexProgram("example", new()
 ///     {
-///         ProgramName = "example_program",
-///         MultiplexId = example.Id,
 ///         MultiplexProgramSettings = new Aws.MediaLive.Inputs.MultiplexProgramMultiplexProgramSettingsArgs
 ///         {
-///             ProgramNumber = 1,
-///             PreferredChannelPipeline = "CURRENTLY_ACTIVE",
 ///             VideoSettings = new Aws.MediaLive.Inputs.MultiplexProgramMultiplexProgramSettingsVideoSettingsArgs
 ///             {
 ///                 ConstantBitrate = 100000,
 ///             },
+///             ProgramNumber = 1,
+///             PreferredChannelPipeline = "CURRENTLY_ACTIVE",
 ///         },
+///         ProgramName = "example_program",
+///         MultiplexId = example.Id,
 ///     });
 ///
 /// });
@@ -149,16 +149,16 @@ import 'multiplex_program_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		example, err := medialive.NewMultiplex(ctx, "example", &medialive.MultiplexArgs{
-/// 			Name: pulumi.String("example-multiplex-changed"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String(available.Names[0]),
-/// 				pulumi.String(available.Names[1]),
-/// 			},
 /// 			MultiplexSettings: &medialive.MultiplexMultiplexSettingsArgs{
 /// 				TransportStreamBitrate:              pulumi.Int(1000000),
 /// 				TransportStreamId:                   pulumi.Int(1),
 /// 				TransportStreamReservedBitrate:      pulumi.Int(1),
 /// 				MaximumVideoBufferDelayMilliseconds: pulumi.Int(1000),
+/// 			},
+/// 			Name: pulumi.String("example-multiplex-changed"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String(available.Names[0]),
+/// 				pulumi.String(available.Names[1]),
 /// 			},
 /// 			StartMultiplex: pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
@@ -169,15 +169,15 @@ import 'multiplex_program_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = medialive.NewMultiplexProgram(ctx, "example", &medialive.MultiplexProgramArgs{
-/// 			ProgramName: pulumi.String("example_program"),
-/// 			MultiplexId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			MultiplexProgramSettings: &medialive.MultiplexProgramMultiplexProgramSettingsArgs{
-/// 				ProgramNumber:            pulumi.Int(1),
-/// 				PreferredChannelPipeline: pulumi.String("CURRENTLY_ACTIVE"),
 /// 				VideoSettings: &medialive.MultiplexProgramMultiplexProgramSettingsVideoSettingsArgs{
 /// 					ConstantBitrate: pulumi.Int(100000),
 /// 				},
+/// 				ProgramNumber:            pulumi.Int(1),
+/// 				PreferredChannelPipeline: pulumi.String("CURRENTLY_ACTIVE"),
 /// 			},
+/// 			ProgramName: pulumi.String("example_program"),
+/// 			MultiplexId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -200,29 +200,29 @@ import 'multiplex_program_timeouts.dart';
 /// }
 ///
 /// resource "aws_medialive_multiplex" "example" {
-///   name               = "example-multiplex-changed"
-///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
 ///   multiplex_settings = {
 ///     transport_stream_bitrate                = 1000000
 ///     transport_stream_id                     = 1
 ///     transport_stream_reserved_bitrate       = 1
 ///     maximum_video_buffer_delay_milliseconds = 1000
 ///   }
-///   start_multiplex = true
+///   name               = "example-multiplex-changed"
+///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   start_multiplex    = true
 ///   tags = {
 ///     "tag1" = "value1"
 ///   }
 /// }
 /// resource "aws_medialive_multiplexprogram" "example" {
-///   program_name = "example_program"
-///   multiplex_id = aws_medialive_multiplex.example.id
 ///   multiplex_program_settings = {
-///     program_number             = 1
-///     preferred_channel_pipeline = "CURRENTLY_ACTIVE"
 ///     video_settings = {
 ///       constant_bitrate = 100000
 ///     }
+///     program_number             = 1
+///     preferred_channel_pipeline = "CURRENTLY_ACTIVE"
 ///   }
+///   program_name = "example_program"
+///   multiplex_id = aws_medialive_multiplex.example.id
 /// }
 /// ```
 /// ```java
@@ -258,30 +258,30 @@ import 'multiplex_program_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new Multiplex("example", MultiplexArgs.builder()
-///             .name("example-multiplex-changed")
-///             .availabilityZones(
-///                 available.names()[0],
-///                 available.names()[1])
 ///             .multiplexSettings(MultiplexMultiplexSettingsArgs.builder()
 ///                 .transportStreamBitrate(1000000)
 ///                 .transportStreamId(1)
 ///                 .transportStreamReservedBitrate(1)
 ///                 .maximumVideoBufferDelayMilliseconds(1000)
 ///                 .build())
+///             .name("example-multiplex-changed")
+///             .availabilityZones(
+///                 available.names()[0],
+///                 available.names()[1])
 ///             .startMultiplex(true)
 ///             .tags(Map.of("tag1", "value1"))
 ///             .build());
 ///
 ///         var exampleMultiplexProgram = new MultiplexProgram("exampleMultiplexProgram", MultiplexProgramArgs.builder()
-///             .programName("example_program")
-///             .multiplexId(example.id())
 ///             .multiplexProgramSettings(MultiplexProgramMultiplexProgramSettingsArgs.builder()
-///                 .programNumber(1)
-///                 .preferredChannelPipeline("CURRENTLY_ACTIVE")
 ///                 .videoSettings(MultiplexProgramMultiplexProgramSettingsVideoSettingsArgs.builder()
 ///                     .constantBitrate(100000)
 ///                     .build())
+///                 .programNumber(1)
+///                 .preferredChannelPipeline("CURRENTLY_ACTIVE")
 ///                 .build())
+///             .programName("example_program")
+///             .multiplexId(example.id())
 ///             .build());
 ///
 ///     }
@@ -292,15 +292,15 @@ import 'multiplex_program_timeouts.dart';
 ///   example:
 ///     type: aws:medialive:Multiplex
 ///     properties:
-///       name: example-multiplex-changed
-///       availabilityZones:
-///         - ${available.names[0]}
-///         - ${available.names[1]}
 ///       multiplexSettings:
 ///         transportStreamBitrate: 1e+06
 ///         transportStreamId: 1
 ///         transportStreamReservedBitrate: 1
 ///         maximumVideoBufferDelayMilliseconds: 1000
+///       name: example-multiplex-changed
+///       availabilityZones:
+///         - ${available.names[0]}
+///         - ${available.names[1]}
 ///       startMultiplex: true
 ///       tags:
 ///         tag1: value1
@@ -308,13 +308,13 @@ import 'multiplex_program_timeouts.dart';
 ///     type: aws:medialive:MultiplexProgram
 ///     name: example
 ///     properties:
-///       programName: example_program
-///       multiplexId: ${example.id}
 ///       multiplexProgramSettings:
-///         programNumber: 1
-///         preferredChannelPipeline: CURRENTLY_ACTIVE
 ///         videoSettings:
 ///           constantBitrate: 100000
+///         programNumber: 1
+///         preferredChannelPipeline: CURRENTLY_ACTIVE
+///       programName: example_program
+///       multiplexId: ${example.id}
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -369,7 +369,7 @@ class MultiplexProgram extends pulumi.CustomResource {
           'aws:medialive/multiplexProgram:MultiplexProgram',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     multiplexId = registerOutput<String>('multiplexId');
     multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -383,11 +383,12 @@ class MultiplexProgram extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MultiplexProgramState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MultiplexProgram._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -401,6 +402,22 @@ class MultiplexProgram extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    multiplexId = registerOutput<String>('multiplexId');
+    multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    programName = registerOutput<String>('programName');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MultiplexProgram] resource.
+  MultiplexProgram.reference(String urn)
+    : super(
+        'aws:medialive/multiplexProgram:MultiplexProgram',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     multiplexId = registerOutput<String>('multiplexId');
     multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     programName = registerOutput<String>('programName');

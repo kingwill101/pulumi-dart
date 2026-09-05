@@ -221,7 +221,7 @@ class UserSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
@@ -233,11 +233,12 @@ class UserSettingsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserSettingsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserSettingsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,6 +252,20 @@ class UserSettingsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    userSettingsArn = registerOutput<String>('userSettingsArn');
+  }
+
+  /// Creates a typed reference to an existing [UserSettingsAssociation] resource.
+  UserSettingsAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     userSettingsArn = registerOutput<String>('userSettingsArn');

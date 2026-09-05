@@ -7,11 +7,11 @@ import 'account_share_properties_smb.dart';
 
 class AccountShareProperties {
   /// A `corsRule` block as defined below.
-  final pulumi.Input<List<AccountSharePropertiesCorsRule>>? corsRules;
+  final pulumi.Input<List<AccountSharePropertiesCorsRule>?>? corsRules;
   /// A `retentionPolicy` block as defined below.
-  final pulumi.Input<AccountSharePropertiesRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<AccountSharePropertiesRetentionPolicy?>? retentionPolicy;
   /// A `smb` block as defined below.
-  final pulumi.Input<AccountSharePropertiesSmb>? smb;
+  final pulumi.Input<AccountSharePropertiesSmb?>? smb;
 
   /// Creates a new [AccountShareProperties].
   /// [corsRules] A `corsRule` block as defined below.

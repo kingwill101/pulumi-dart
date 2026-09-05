@@ -9,13 +9,13 @@ import 'txt_record_record.dart';
 /// {@macro pulumi_dns_txt_record_txt_record_args_doc}
 class TxtRecordArgs {
   /// The name of the DNS TXT Record. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of values that make up the txt record. Each `record` block supports fields documented below.
   final pulumi.Input<List<TxtRecordRecord>> records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Time To Live (TTL) of the DNS record in seconds.
   final pulumi.Input<int> ttl;
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
@@ -54,7 +54,7 @@ class TxtRecordArgs {
       records: pulumi.Input.fromValue(pulumi.Input.decodeList<TxtRecordRecord>(map['records']!, (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>()))),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }

@@ -11,34 +11,34 @@ import 'agentcore_browser_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreBrowser resources.
 class AgentcoreBrowserState {
   /// ARN of the Browser.
-  final pulumi.Input<String>? browserArn;
+  final pulumi.Input<String?>? browserArn;
   /// Unique identifier of the Browser.
-  final pulumi.Input<String>? browserId;
+  final pulumi.Input<String?>? browserId;
   /// Browser signing configuration that enables cryptographic agent identification using HTTP message signatures. See `browserSigning` below.
-  final pulumi.Input<AgentcoreBrowserBrowserSigning>? browserSigning;
+  final pulumi.Input<AgentcoreBrowserBrowserSigning?>? browserSigning;
   /// Certificates to install in the browser. See `certificate` below.
-  final pulumi.Input<List<AgentcoreBrowserCertificate>>? certificates;
+  final pulumi.Input<List<AgentcoreBrowserCertificate>?>? certificates;
   /// Description of the browser.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enterprise policy files to apply to the browser. See `enterprisePolicy` below.
-  final pulumi.Input<List<AgentcoreBrowserEnterprisePolicy>>? enterprisePolicies;
+  final pulumi.Input<List<AgentcoreBrowserEnterprisePolicy>?>? enterprisePolicies;
   /// ARN of the IAM role that the browser assumes for execution.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Name of the browser.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the browser. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreBrowserNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<AgentcoreBrowserNetworkConfiguration?>? networkConfiguration;
   /// Recording configuration for browser sessions. See `recording` below.
-  final pulumi.Input<AgentcoreBrowserRecording>? recording;
+  final pulumi.Input<AgentcoreBrowserRecording?>? recording;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreBrowserTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreBrowserTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreBrowserState].
   /// [browserArn] ARN of the Browser.

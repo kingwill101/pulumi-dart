@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AwsServiceAccess resources.
 class AwsServiceAccessState {
   /// Date and time that the service was enabled, in RFC 3339 format.
-  final pulumi.Input<String>? dateEnabled;
+  final pulumi.Input<String?>? dateEnabled;
   /// Service principal of the AWS service to enable. For example, `tagpolicies.tag.amazonaws.com`. Changing this value will force a new resource.
-  final pulumi.Input<String>? servicePrincipal;
+  final pulumi.Input<String?>? servicePrincipal;
 
   /// Creates a new [AwsServiceAccessState].
   /// [dateEnabled] Date and time that the service was enabled, in RFC 3339 format.

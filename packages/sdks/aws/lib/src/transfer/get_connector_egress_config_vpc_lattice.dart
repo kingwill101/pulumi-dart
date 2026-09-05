@@ -25,7 +25,7 @@ class GetConnectorEgressConfigVpcLattice {
 
   factory GetConnectorEgressConfigVpcLattice.fromMap(Map<String, dynamic> map) {
     return GetConnectorEgressConfigVpcLattice(
-      portNumber: pulumi.Input.fromValue(map['portNumber'] as int),
+      portNumber: pulumi.Input.fromValue((map['portNumber'] as num).toInt()),
       resourceConfigurationArn: pulumi.Input.fromValue(map['resourceConfigurationArn'] as String),
     );
   }

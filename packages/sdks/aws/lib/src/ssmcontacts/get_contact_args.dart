@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ssmcontacts_get_contact_get_contact_args_doc}
 class GetContactArgs {
-  /// The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// ARN of the contact or escalation plan.
   final pulumi.Input<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetContactArgs].
-  /// [arn] The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// [arn] ARN of the contact or escalation plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource.
   const GetContactArgs({

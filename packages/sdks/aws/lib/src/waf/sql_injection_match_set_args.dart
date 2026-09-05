@@ -9,9 +9,9 @@ import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 /// {@macro pulumi_waf_sql_injection_match_set_sql_injection_match_set_args_doc}
 class SqlInjectionMatchSetArgs {
   /// The name or description of the SQL Injection Match Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  final pulumi.Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>? sqlInjectionMatchTuples;
+  final pulumi.Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>? sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSetArgs].
   /// [name] The name or description of the SQL Injection Match Set.

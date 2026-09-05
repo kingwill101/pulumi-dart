@@ -5,7 +5,7 @@ import 'linux_web_app_logs_application_logs_azure_blob_storage.dart';
 
 class LinuxWebAppLogsApplicationLogs {
   /// An `azureBlobStorage` block as defined below.
-  final pulumi.Input<LinuxWebAppLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<LinuxWebAppLogsApplicationLogsAzureBlobStorage?>? azureBlobStorage;
   /// Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
   final pulumi.Input<String> fileSystemLevel;
 

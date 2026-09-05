@@ -16,11 +16,11 @@ import 'email_channel_state.dart';
 /// const app = new aws.pinpoint.App("app", {});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["pinpoint.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -53,11 +53,11 @@ import 'email_channel_state.dart';
 ///
 /// app = aws.pinpoint.App("app")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["pinpoint.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// role = aws.iam.Role("role", assume_role_policy=assume_role.json)
@@ -95,7 +95,6 @@ import 'email_channel_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -107,6 +106,7 @@ import 'email_channel_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -180,7 +180,6 @@ import 'email_channel_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -189,6 +188,7 @@ import 'email_channel_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -258,11 +258,11 @@ import 'email_channel_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["pinpoint.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -329,11 +329,11 @@ import 'email_channel_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("pinpoint.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -402,11 +402,11 @@ import 'email_channel_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - pinpoint.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   rolePolicy:
@@ -462,7 +462,7 @@ class EmailChannel extends pulumi.CustomResource {
           'aws:pinpoint/emailChannel:EmailChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     configurationSet = registerOutput<String?>('configurationSet');
@@ -480,11 +480,12 @@ class EmailChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -498,6 +499,26 @@ class EmailChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    configurationSet = registerOutput<String?>('configurationSet');
+    enabled = registerOutput<bool?>('enabled');
+    fromAddress = registerOutput<String>('fromAddress');
+    identity = registerOutput<String>('identity');
+    messagesPerSecond = registerOutput<int>('messagesPerSecond');
+    orchestrationSendingRoleArn = registerOutput<String?>('orchestrationSendingRoleArn');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [EmailChannel] resource.
+  EmailChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/emailChannel:EmailChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     configurationSet = registerOutput<String?>('configurationSet');
     enabled = registerOutput<bool?>('enabled');

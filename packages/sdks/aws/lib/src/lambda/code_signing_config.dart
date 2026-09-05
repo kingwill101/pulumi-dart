@@ -34,7 +34,6 @@ import 'code_signing_config_state.dart';
 /// });
 /// // Code signing configuration with enforcement
 /// const example = new aws.lambda.CodeSigningConfig("example", {
-///     description: "Code signing configuration for Lambda functions",
 ///     allowedPublishers: {
 ///         signingProfileVersionArns: [
 ///             prod.versionArn,
@@ -44,6 +43,7 @@ import 'code_signing_config_state.dart';
 ///     policies: {
 ///         untrustedArtifactOnDeployment: "Enforce",
 ///     },
+///     description: "Code signing configuration for Lambda functions",
 ///     tags: {
 ///         Environment: "production",
 ///         Purpose: "code-signing",
@@ -69,7 +69,6 @@ import 'code_signing_config_state.dart';
 ///     })
 /// # Code signing configuration with enforcement
 /// example = aws.lambda_.CodeSigningConfig("example",
-///     description="Code signing configuration for Lambda functions",
 ///     allowed_publishers={
 ///         "signing_profile_version_arns": [
 ///             prod.version_arn,
@@ -79,6 +78,7 @@ import 'code_signing_config_state.dart';
 ///     policies={
 ///         "untrusted_artifact_on_deployment": "Enforce",
 ///     },
+///     description="Code signing configuration for Lambda functions",
 ///     tags={
 ///         "Environment": "production",
 ///         "Purpose": "code-signing",
@@ -116,7 +116,6 @@ import 'code_signing_config_state.dart';
 ///     // Code signing configuration with enforcement
 ///     var example = new Aws.Lambda.CodeSigningConfig("example", new()
 ///     {
-///         Description = "Code signing configuration for Lambda functions",
 ///         AllowedPublishers = new Aws.Lambda.Inputs.CodeSigningConfigAllowedPublishersArgs
 ///         {
 ///             SigningProfileVersionArns = new[]
@@ -129,6 +128,7 @@ import 'code_signing_config_state.dart';
 ///         {
 ///             UntrustedArtifactOnDeployment = "Enforce",
 ///         },
+///         Description = "Code signing configuration for Lambda functions",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -172,7 +172,6 @@ import 'code_signing_config_state.dart';
 /// 		}
 /// 		// Code signing configuration with enforcement
 /// 		_, err = lambda.NewCodeSigningConfig(ctx, "example", &lambda.CodeSigningConfigArgs{
-/// 			Description: pulumi.String("Code signing configuration for Lambda functions"),
 /// 			AllowedPublishers: &lambda.CodeSigningConfigAllowedPublishersArgs{
 /// 				SigningProfileVersionArns: pulumi.StringArray{
 /// 					prod.VersionArn,
@@ -182,6 +181,7 @@ import 'code_signing_config_state.dart';
 /// 			Policies: &lambda.CodeSigningConfigPoliciesArgs{
 /// 				UntrustedArtifactOnDeployment: pulumi.String("Enforce"),
 /// 			},
+/// 			Description: pulumi.String("Code signing configuration for Lambda functions"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Purpose":     pulumi.String("code-signing"),
@@ -220,13 +220,13 @@ import 'code_signing_config_state.dart';
 /// }
 /// # Code signing configuration with enforcement
 /// resource "aws_lambda_codesigningconfig" "example" {
-///   description = "Code signing configuration for Lambda functions"
 ///   allowed_publishers = {
 ///     signing_profile_version_arns = [aws_signer_signingprofile.prod.version_arn, aws_signer_signingprofile.dev.version_arn]
 ///   }
 ///   policies = {
 ///     untrusted_artifact_on_deployment = "Enforce"
 ///   }
+///   description = "Code signing configuration for Lambda functions"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Purpose"     = "code-signing"
@@ -273,7 +273,6 @@ import 'code_signing_config_state.dart';
 ///
 ///         // Code signing configuration with enforcement
 ///         var example = new CodeSigningConfig("example", CodeSigningConfigArgs.builder()
-///             .description("Code signing configuration for Lambda functions")
 ///             .allowedPublishers(CodeSigningConfigAllowedPublishersArgs.builder()
 ///                 .signingProfileVersionArns(
 ///                     prod.versionArn(),
@@ -282,6 +281,7 @@ import 'code_signing_config_state.dart';
 ///             .policies(CodeSigningConfigPoliciesArgs.builder()
 ///                 .untrustedArtifactOnDeployment("Enforce")
 ///                 .build())
+///             .description("Code signing configuration for Lambda functions")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Purpose", "code-signing")
@@ -312,13 +312,13 @@ import 'code_signing_config_state.dart';
 ///   example:
 ///     type: aws:lambda:CodeSigningConfig
 ///     properties:
-///       description: Code signing configuration for Lambda functions
 ///       allowedPublishers:
 ///         signingProfileVersionArns:
 ///           - ${prod.versionArn}
 ///           - ${dev.versionArn}
 ///       policies:
 ///         untrustedArtifactOnDeployment: Enforce
+///       description: Code signing configuration for Lambda functions
 ///       tags:
 ///         Environment: production
 ///         Purpose: code-signing
@@ -333,13 +333,13 @@ import 'code_signing_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.CodeSigningConfig("example", {
-///     description: "Development code signing configuration",
 ///     allowedPublishers: {
 ///         signingProfileVersionArns: [dev.versionArn],
 ///     },
 ///     policies: {
 ///         untrustedArtifactOnDeployment: "Warn",
 ///     },
+///     description: "Development code signing configuration",
 ///     tags: {
 ///         Environment: "development",
 ///         Purpose: "code-signing",
@@ -351,13 +351,13 @@ import 'code_signing_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.CodeSigningConfig("example",
-///     description="Development code signing configuration",
 ///     allowed_publishers={
 ///         "signing_profile_version_arns": [dev["versionArn"]],
 ///     },
 ///     policies={
 ///         "untrusted_artifact_on_deployment": "Warn",
 ///     },
+///     description="Development code signing configuration",
 ///     tags={
 ///         "Environment": "development",
 ///         "Purpose": "code-signing",
@@ -373,7 +373,6 @@ import 'code_signing_config_state.dart';
 /// {
 ///     var example = new Aws.Lambda.CodeSigningConfig("example", new()
 ///     {
-///         Description = "Development code signing configuration",
 ///         AllowedPublishers = new Aws.Lambda.Inputs.CodeSigningConfigAllowedPublishersArgs
 ///         {
 ///             SigningProfileVersionArns = new[]
@@ -385,6 +384,7 @@ import 'code_signing_config_state.dart';
 ///         {
 ///             UntrustedArtifactOnDeployment = "Warn",
 ///         },
+///         Description = "Development code signing configuration",
 ///         Tags =
 ///         {
 ///             { "Environment", "development" },
@@ -405,7 +405,6 @@ import 'code_signing_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewCodeSigningConfig(ctx, "example", &lambda.CodeSigningConfigArgs{
-/// 			Description: pulumi.String("Development code signing configuration"),
 /// 			AllowedPublishers: &lambda.CodeSigningConfigAllowedPublishersArgs{
 /// 				SigningProfileVersionArns: pulumi.StringArray{
 /// 					dev.VersionArn,
@@ -414,6 +413,7 @@ import 'code_signing_config_state.dart';
 /// 			Policies: &lambda.CodeSigningConfigPoliciesArgs{
 /// 				UntrustedArtifactOnDeployment: pulumi.String("Warn"),
 /// 			},
+/// 			Description: pulumi.String("Development code signing configuration"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("development"),
 /// 				"Purpose":     pulumi.String("code-signing"),
@@ -436,13 +436,13 @@ import 'code_signing_config_state.dart';
 /// }
 ///
 /// resource "aws_lambda_codesigningconfig" "example" {
-///   description = "Development code signing configuration"
 ///   allowed_publishers = {
 ///     signing_profile_version_arns = [dev.versionArn]
 ///   }
 ///   policies = {
 ///     untrusted_artifact_on_deployment = "Warn"
 ///   }
+///   description = "Development code signing configuration"
 ///   tags = {
 ///     "Environment" = "development"
 ///     "Purpose"     = "code-signing"
@@ -473,13 +473,13 @@ import 'code_signing_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CodeSigningConfig("example", CodeSigningConfigArgs.builder()
-///             .description("Development code signing configuration")
 ///             .allowedPublishers(CodeSigningConfigAllowedPublishersArgs.builder()
 ///                 .signingProfileVersionArns(dev.versionArn())
 ///                 .build())
 ///             .policies(CodeSigningConfigPoliciesArgs.builder()
 ///                 .untrustedArtifactOnDeployment("Warn")
 ///                 .build())
+///             .description("Development code signing configuration")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "development"),
 ///                 Map.entry("Purpose", "code-signing")
@@ -494,12 +494,12 @@ import 'code_signing_config_state.dart';
 ///   example:
 ///     type: aws:lambda:CodeSigningConfig
 ///     properties:
-///       description: Development code signing configuration
 ///       allowedPublishers:
 ///         signingProfileVersionArns:
 ///           - ${dev.versionArn}
 ///       policies:
 ///         untrustedArtifactOnDeployment: Warn
+///       description: Development code signing configuration
 ///       tags:
 ///         Environment: development
 ///         Purpose: code-signing
@@ -515,13 +515,13 @@ import 'code_signing_config_state.dart';
 ///
 /// // Production signing configuration
 /// const prod = new aws.lambda.CodeSigningConfig("prod", {
-///     description: "Production code signing configuration with strict enforcement",
 ///     allowedPublishers: {
 ///         signingProfileVersionArns: [prodAwsSignerSigningProfile.versionArn],
 ///     },
 ///     policies: {
 ///         untrustedArtifactOnDeployment: "Enforce",
 ///     },
+///     description: "Production code signing configuration with strict enforcement",
 ///     tags: {
 ///         Environment: "production",
 ///         Security: "strict",
@@ -529,7 +529,6 @@ import 'code_signing_config_state.dart';
 /// });
 /// // Development signing configuration
 /// const dev = new aws.lambda.CodeSigningConfig("dev", {
-///     description: "Development code signing configuration with warnings",
 ///     allowedPublishers: {
 ///         signingProfileVersionArns: [
 ///             devAwsSignerSigningProfile.versionArn,
@@ -539,6 +538,7 @@ import 'code_signing_config_state.dart';
 ///     policies: {
 ///         untrustedArtifactOnDeployment: "Warn",
 ///     },
+///     description: "Development code signing configuration with warnings",
 ///     tags: {
 ///         Environment: "development",
 ///         Security: "flexible",
@@ -551,20 +551,19 @@ import 'code_signing_config_state.dart';
 ///
 /// # Production signing configuration
 /// prod = aws.lambda_.CodeSigningConfig("prod",
-///     description="Production code signing configuration with strict enforcement",
 ///     allowed_publishers={
 ///         "signing_profile_version_arns": [prod_aws_signer_signing_profile["versionArn"]],
 ///     },
 ///     policies={
 ///         "untrusted_artifact_on_deployment": "Enforce",
 ///     },
+///     description="Production code signing configuration with strict enforcement",
 ///     tags={
 ///         "Environment": "production",
 ///         "Security": "strict",
 ///     })
 /// # Development signing configuration
 /// dev = aws.lambda_.CodeSigningConfig("dev",
-///     description="Development code signing configuration with warnings",
 ///     allowed_publishers={
 ///         "signing_profile_version_arns": [
 ///             dev_aws_signer_signing_profile["versionArn"],
@@ -574,6 +573,7 @@ import 'code_signing_config_state.dart';
 ///     policies={
 ///         "untrusted_artifact_on_deployment": "Warn",
 ///     },
+///     description="Development code signing configuration with warnings",
 ///     tags={
 ///         "Environment": "development",
 ///         "Security": "flexible",
@@ -590,7 +590,6 @@ import 'code_signing_config_state.dart';
 ///     // Production signing configuration
 ///     var prod = new Aws.Lambda.CodeSigningConfig("prod", new()
 ///     {
-///         Description = "Production code signing configuration with strict enforcement",
 ///         AllowedPublishers = new Aws.Lambda.Inputs.CodeSigningConfigAllowedPublishersArgs
 ///         {
 ///             SigningProfileVersionArns = new[]
@@ -602,6 +601,7 @@ import 'code_signing_config_state.dart';
 ///         {
 ///             UntrustedArtifactOnDeployment = "Enforce",
 ///         },
+///         Description = "Production code signing configuration with strict enforcement",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -612,7 +612,6 @@ import 'code_signing_config_state.dart';
 ///     // Development signing configuration
 ///     var dev = new Aws.Lambda.CodeSigningConfig("dev", new()
 ///     {
-///         Description = "Development code signing configuration with warnings",
 ///         AllowedPublishers = new Aws.Lambda.Inputs.CodeSigningConfigAllowedPublishersArgs
 ///         {
 ///             SigningProfileVersionArns = new[]
@@ -625,6 +624,7 @@ import 'code_signing_config_state.dart';
 ///         {
 ///             UntrustedArtifactOnDeployment = "Warn",
 ///         },
+///         Description = "Development code signing configuration with warnings",
 ///         Tags =
 ///         {
 ///             { "Environment", "development" },
@@ -646,7 +646,6 @@ import 'code_signing_config_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Production signing configuration
 /// 		_, err := lambda.NewCodeSigningConfig(ctx, "prod", &lambda.CodeSigningConfigArgs{
-/// 			Description: pulumi.String("Production code signing configuration with strict enforcement"),
 /// 			AllowedPublishers: &lambda.CodeSigningConfigAllowedPublishersArgs{
 /// 				SigningProfileVersionArns: pulumi.StringArray{
 /// 					prodAwsSignerSigningProfile.VersionArn,
@@ -655,6 +654,7 @@ import 'code_signing_config_state.dart';
 /// 			Policies: &lambda.CodeSigningConfigPoliciesArgs{
 /// 				UntrustedArtifactOnDeployment: pulumi.String("Enforce"),
 /// 			},
+/// 			Description: pulumi.String("Production code signing configuration with strict enforcement"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Security":    pulumi.String("strict"),
@@ -665,7 +665,6 @@ import 'code_signing_config_state.dart';
 /// 		}
 /// 		// Development signing configuration
 /// 		_, err = lambda.NewCodeSigningConfig(ctx, "dev", &lambda.CodeSigningConfigArgs{
-/// 			Description: pulumi.String("Development code signing configuration with warnings"),
 /// 			AllowedPublishers: &lambda.CodeSigningConfigAllowedPublishersArgs{
 /// 				SigningProfileVersionArns: pulumi.StringArray{
 /// 					devAwsSignerSigningProfile.VersionArn,
@@ -675,6 +674,7 @@ import 'code_signing_config_state.dart';
 /// 			Policies: &lambda.CodeSigningConfigPoliciesArgs{
 /// 				UntrustedArtifactOnDeployment: pulumi.String("Warn"),
 /// 			},
+/// 			Description: pulumi.String("Development code signing configuration with warnings"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("development"),
 /// 				"Security":    pulumi.String("flexible"),
@@ -698,13 +698,13 @@ import 'code_signing_config_state.dart';
 ///
 /// # Production signing configuration
 /// resource "aws_lambda_codesigningconfig" "prod" {
-///   description = "Production code signing configuration with strict enforcement"
 ///   allowed_publishers = {
 ///     signing_profile_version_arns = [prodAwsSignerSigningProfile.versionArn]
 ///   }
 ///   policies = {
 ///     untrusted_artifact_on_deployment = "Enforce"
 ///   }
+///   description = "Production code signing configuration with strict enforcement"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Security"    = "strict"
@@ -712,13 +712,13 @@ import 'code_signing_config_state.dart';
 /// }
 /// # Development signing configuration
 /// resource "aws_lambda_codesigningconfig" "dev" {
-///   description = "Development code signing configuration with warnings"
 ///   allowed_publishers = {
 ///     signing_profile_version_arns = [devAwsSignerSigningProfile.versionArn, test.versionArn]
 ///   }
 ///   policies = {
 ///     untrusted_artifact_on_deployment = "Warn"
 ///   }
+///   description = "Development code signing configuration with warnings"
 ///   tags = {
 ///     "Environment" = "development"
 ///     "Security"    = "flexible"
@@ -750,13 +750,13 @@ import 'code_signing_config_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Production signing configuration
 ///         var prod = new CodeSigningConfig("prod", CodeSigningConfigArgs.builder()
-///             .description("Production code signing configuration with strict enforcement")
 ///             .allowedPublishers(CodeSigningConfigAllowedPublishersArgs.builder()
 ///                 .signingProfileVersionArns(prodAwsSignerSigningProfile.versionArn())
 ///                 .build())
 ///             .policies(CodeSigningConfigPoliciesArgs.builder()
 ///                 .untrustedArtifactOnDeployment("Enforce")
 ///                 .build())
+///             .description("Production code signing configuration with strict enforcement")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Security", "strict")
@@ -765,7 +765,6 @@ import 'code_signing_config_state.dart';
 ///
 ///         // Development signing configuration
 ///         var dev = new CodeSigningConfig("dev", CodeSigningConfigArgs.builder()
-///             .description("Development code signing configuration with warnings")
 ///             .allowedPublishers(CodeSigningConfigAllowedPublishersArgs.builder()
 ///                 .signingProfileVersionArns(
 ///                     devAwsSignerSigningProfile.versionArn(),
@@ -774,6 +773,7 @@ import 'code_signing_config_state.dart';
 ///             .policies(CodeSigningConfigPoliciesArgs.builder()
 ///                 .untrustedArtifactOnDeployment("Warn")
 ///                 .build())
+///             .description("Development code signing configuration with warnings")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "development"),
 ///                 Map.entry("Security", "flexible")
@@ -789,12 +789,12 @@ import 'code_signing_config_state.dart';
 ///   prod:
 ///     type: aws:lambda:CodeSigningConfig
 ///     properties:
-///       description: Production code signing configuration with strict enforcement
 ///       allowedPublishers:
 ///         signingProfileVersionArns:
 ///           - ${prodAwsSignerSigningProfile.versionArn}
 ///       policies:
 ///         untrustedArtifactOnDeployment: Enforce
+///       description: Production code signing configuration with strict enforcement
 ///       tags:
 ///         Environment: production
 ///         Security: strict
@@ -802,13 +802,13 @@ import 'code_signing_config_state.dart';
 ///   dev:
 ///     type: aws:lambda:CodeSigningConfig
 ///     properties:
-///       description: Development code signing configuration with warnings
 ///       allowedPublishers:
 ///         signingProfileVersionArns:
 ///           - ${devAwsSignerSigningProfile.versionArn}
 ///           - ${test.versionArn}
 ///       policies:
 ///         untrustedArtifactOnDeployment: Warn
+///       description: Development code signing configuration with warnings
 ///       tags:
 ///         Environment: development
 ///         Security: flexible
@@ -856,7 +856,7 @@ class CodeSigningConfig extends pulumi.CustomResource {
           'aws:lambda/codeSigningConfig:CodeSigningConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeSigningConfigAllowedPublishers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -865,8 +865,8 @@ class CodeSigningConfig extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     policies = registerOutput<CodeSigningConfigPolicies>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeSigningConfigPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CodeSigningConfig] resource's state with the given [name] and [id].
@@ -874,11 +874,12 @@ class CodeSigningConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CodeSigningConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CodeSigningConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -899,7 +900,27 @@ class CodeSigningConfig extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     policies = registerOutput<CodeSigningConfigPolicies>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeSigningConfigPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CodeSigningConfig] resource.
+  CodeSigningConfig.reference(String urn)
+    : super(
+        'aws:lambda/codeSigningConfig:CodeSigningConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeSigningConfigAllowedPublishers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    description = registerOutput<String?>('description');
+    lastModified = registerOutput<String>('lastModified');
+    policies = registerOutput<CodeSigningConfigPolicies>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeSigningConfigPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

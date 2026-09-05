@@ -6,39 +6,39 @@ import 'connect_attachment_options.dart';
 /// Input properties used for looking up and filtering ConnectAttachment resources.
 class ConnectAttachmentState {
   /// ARN of the attachment.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the attachment.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
   /// Policy rule number associated with the attachment.
-  final pulumi.Input<int>? attachmentPolicyRuleNumber;
+  final pulumi.Input<int?>? attachmentPolicyRuleNumber;
   /// Type of attachment.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// ARN of a core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of a core network where you want to create the attachment.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Region where the edge is located.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// Options block. See options for more information.
-  final pulumi.Input<ConnectAttachmentOptions>? options;
+  final pulumi.Input<ConnectAttachmentOptions?>? options;
   /// ID of the attachment account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Attachment resource ARN.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Name of the segment attachment.
-  final pulumi.Input<String>? segmentName;
+  final pulumi.Input<String?>? segmentName;
   /// State of the attachment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the attachment between the two connections.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? transportAttachmentId;
+  final pulumi.Input<String?>? transportAttachmentId;
 
   /// Creates a new [ConnectAttachmentState].
   /// [arn] ARN of the attachment.
@@ -101,7 +101,7 @@ class ConnectAttachmentState {
     return ConnectAttachmentState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attachmentId: (() { final guardedValue = map['attachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       attachmentType: (() { final guardedValue = map['attachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

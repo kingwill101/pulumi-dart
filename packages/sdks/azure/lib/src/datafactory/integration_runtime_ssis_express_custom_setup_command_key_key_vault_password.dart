@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword {
   final pulumi.Input<String> linkedServiceName;
   /// A map of parameters to associate with the Key Vault Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Specifies the secret name in Azure Key Vault.
   final pulumi.Input<String> secretName;
   /// Specifies the secret version in Azure Key Vault.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
 
   /// Creates a new [IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword].
   /// [linkedServiceName] Required.

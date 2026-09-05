@@ -3,58 +3,58 @@
 
 /// Result data returned by getApplication.
 class GetApplicationResult {
-  final String accountName;
+  final String? accountName;
   /// May packages within the application be overwritten using the same version string.
-  final bool allowUpdates;
+  final bool? allowUpdates;
   /// The package to use if a client requests the application but does not specify a version.
-  final String defaultVersion;
+  final String? defaultVersion;
   /// The display name for the application.
-  final String displayName;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Batch application name.
-  final String name;
-  final String resourceGroupName;
+  final String? name;
+  final String? resourceGroupName;
 
   /// Creates a new [GetApplicationResult].
-  /// [accountName] Required.
+  /// [accountName] Optional.
   /// [allowUpdates] May packages within the application be overwritten using the same version string.
   /// [defaultVersion] The package to use if a client requests the application but does not specify a version.
   /// [displayName] The display name for the application.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The Batch application name.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   const GetApplicationResult({
-    required this.accountName,
-    required this.allowUpdates,
-    required this.defaultVersion,
-    required this.displayName,
-    required this.id,
-    required this.name,
-    required this.resourceGroupName,
+    this.accountName,
+    this.allowUpdates,
+    this.defaultVersion,
+    this.displayName,
+    this.id,
+    this.name,
+    this.resourceGroupName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'allowUpdates': allowUpdates,
-      'defaultVersion': defaultVersion,
-      'displayName': displayName,
-      'id': id,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
+      'accountName': ?accountName,
+      'allowUpdates': ?allowUpdates,
+      'defaultVersion': ?defaultVersion,
+      'displayName': ?displayName,
+      'id': ?id,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
     };
   }
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      accountName: map['accountName'] as String,
-      allowUpdates: map['allowUpdates'] as bool,
-      defaultVersion: map['defaultVersion'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      allowUpdates: (() { final guardedValue = map['allowUpdates']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      defaultVersion: (() { final guardedValue = map['defaultVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

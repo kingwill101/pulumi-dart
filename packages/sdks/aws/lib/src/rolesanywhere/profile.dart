@@ -286,7 +286,7 @@ import 'profile_state.dart';
 class Profile extends pulumi.CustomResource {
   /// Whether or not a custom role session name is accepted.
   late final pulumi.Output<bool?> acceptRoleSessionName;
-  /// Amazon Resource Name (ARN) of the Profile
+  /// ARN of the Profile
   late final pulumi.Output<String> arn;
   /// The number of seconds the vended session credentials are valid for. Defaults to 3600.
   late final pulumi.Output<int> durationSeconds;
@@ -319,19 +319,19 @@ class Profile extends pulumi.CustomResource {
           'aws:rolesanywhere/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
     arn = registerOutput<String>('arn');
     durationSeconds = registerOutput<int>('durationSeconds');
     enabled = registerOutput<bool?>('enabled');
-    managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns');
+    managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     requireInstanceProperties = registerOutput<bool?>('requireInstanceProperties');
-    roleArns = registerOutput<List<String>?>('roleArns');
+    roleArns = registerOutput<List<String>?>('roleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sessionPolicy = registerOutput<String?>('sessionPolicy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Profile] resource's state with the given [name] and [id].
@@ -339,11 +339,12 @@ class Profile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Profile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,12 +362,34 @@ class Profile extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     durationSeconds = registerOutput<int>('durationSeconds');
     enabled = registerOutput<bool?>('enabled');
-    managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns');
+    managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     requireInstanceProperties = registerOutput<bool?>('requireInstanceProperties');
-    roleArns = registerOutput<List<String>?>('roleArns');
+    roleArns = registerOutput<List<String>?>('roleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sessionPolicy = registerOutput<String?>('sessionPolicy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'aws:rolesanywhere/profile:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
+    arn = registerOutput<String>('arn');
+    durationSeconds = registerOutput<int>('durationSeconds');
+    enabled = registerOutput<bool?>('enabled');
+    managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    requireInstanceProperties = registerOutput<bool?>('requireInstanceProperties');
+    roleArns = registerOutput<List<String>?>('roleArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sessionPolicy = registerOutput<String?>('sessionPolicy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spot_fleet_request_args.dart';
+import 'spot_fleet_request_launch_specification.dart';
+import 'spot_fleet_request_launch_template_config.dart';
 import 'spot_fleet_request_spot_maintenance_strategies.dart';
 import 'spot_fleet_request_state.dart';
 
@@ -20,11 +22,6 @@ import 'spot_fleet_request_state.dart';
 ///
 /// // Request a Spot fleet
 /// const cheapCompute = new aws.ec2.SpotFleetRequest("cheap_compute", {
-///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
-///     spotPrice: "0.03",
-///     allocationStrategy: "diversified",
-///     targetCapacity: 6,
-///     validUntil: "2019-11-04T20:44:20Z",
 ///     launchSpecifications: [
 ///         {
 ///             instanceType: "m4.10xlarge",
@@ -34,6 +31,10 @@ import 'spot_fleet_request_state.dart';
 ///             iamInstanceProfileArn: example.arn,
 ///         },
 ///         {
+///             rootBlockDevices: [{
+///                 volumeSize: 300,
+///                 volumeType: "gp2",
+///             }],
 ///             instanceType: "m4.4xlarge",
 ///             ami: "ami-5678",
 ///             keyName: "my-key",
@@ -42,15 +43,16 @@ import 'spot_fleet_request_state.dart';
 ///             availabilityZone: "us-west-1a",
 ///             subnetId: "subnet-1234",
 ///             weightedCapacity: "35",
-///             rootBlockDevices: [{
-///                 volumeSize: 300,
-///                 volumeType: "gp2",
-///             }],
 ///             tags: {
 ///                 Name: "spot-fleet-example",
 ///             },
 ///         },
 ///     ],
+///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
+///     spotPrice: "0.03",
+///     allocationStrategy: "diversified",
+///     targetCapacity: 6,
+///     validUntil: "2019-11-04T20:44:20Z",
 /// });
 /// ```
 /// ```python
@@ -59,11 +61,6 @@ import 'spot_fleet_request_state.dart';
 ///
 /// # Request a Spot fleet
 /// cheap_compute = aws.ec2.SpotFleetRequest("cheap_compute",
-///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
-///     spot_price="0.03",
-///     allocation_strategy="diversified",
-///     target_capacity=6,
-///     valid_until="2019-11-04T20:44:20Z",
 ///     launch_specifications=[
 ///         {
 ///             "instance_type": "m4.10xlarge",
@@ -73,6 +70,10 @@ import 'spot_fleet_request_state.dart';
 ///             "iam_instance_profile_arn": example["arn"],
 ///         },
 ///         {
+///             "root_block_devices": [{
+///                 "volume_size": 300,
+///                 "volume_type": "gp2",
+///             }],
 ///             "instance_type": "m4.4xlarge",
 ///             "ami": "ami-5678",
 ///             "key_name": "my-key",
@@ -81,15 +82,16 @@ import 'spot_fleet_request_state.dart';
 ///             "availability_zone": "us-west-1a",
 ///             "subnet_id": "subnet-1234",
 ///             "weighted_capacity": "35",
-///             "root_block_devices": [{
-///                 "volume_size": 300,
-///                 "volume_type": "gp2",
-///             }],
 ///             "tags": {
 ///                 "Name": "spot-fleet-example",
 ///             },
 ///         },
-///     ])
+///     ],
+///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
+///     spot_price="0.03",
+///     allocation_strategy="diversified",
+///     target_capacity=6,
+///     valid_until="2019-11-04T20:44:20Z")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -102,11 +104,6 @@ import 'spot_fleet_request_state.dart';
 ///     // Request a Spot fleet
 ///     var cheapCompute = new Aws.Ec2.SpotFleetRequest("cheap_compute", new()
 ///     {
-///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
-///         SpotPrice = "0.03",
-///         AllocationStrategy = "diversified",
-///         TargetCapacity = 6,
-///         ValidUntil = "2019-11-04T20:44:20Z",
 ///         LaunchSpecifications = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationArgs
@@ -119,14 +116,6 @@ import 'spot_fleet_request_state.dart';
 ///             },
 ///             new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationArgs
 ///             {
-///                 InstanceType = "m4.4xlarge",
-///                 Ami = "ami-5678",
-///                 KeyName = "my-key",
-///                 SpotPrice = "1.117",
-///                 IamInstanceProfileArn = example.Arn,
-///                 AvailabilityZone = "us-west-1a",
-///                 SubnetId = "subnet-1234",
-///                 WeightedCapacity = "35",
 ///                 RootBlockDevices = new[]
 ///                 {
 ///                     new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs
@@ -135,12 +124,25 @@ import 'spot_fleet_request_state.dart';
 ///                         VolumeType = "gp2",
 ///                     },
 ///                 },
+///                 InstanceType = "m4.4xlarge",
+///                 Ami = "ami-5678",
+///                 KeyName = "my-key",
+///                 SpotPrice = "1.117",
+///                 IamInstanceProfileArn = example.Arn,
+///                 AvailabilityZone = "us-west-1a",
+///                 SubnetId = "subnet-1234",
+///                 WeightedCapacity = "35",
 ///                 Tags =
 ///                 {
 ///                     { "Name", "spot-fleet-example" },
 ///                 },
 ///             },
 ///         },
+///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
+///         SpotPrice = "0.03",
+///         AllocationStrategy = "diversified",
+///         TargetCapacity = 6,
+///         ValidUntil = "2019-11-04T20:44:20Z",
 ///     });
 ///
 /// });
@@ -157,11 +159,6 @@ import 'spot_fleet_request_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Request a Spot fleet
 /// 		_, err := ec2.NewSpotFleetRequest(ctx, "cheap_compute", &ec2.SpotFleetRequestArgs{
-/// 			IamFleetRole:       pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-/// 			SpotPrice:          pulumi.String("0.03"),
-/// 			AllocationStrategy: pulumi.String("diversified"),
-/// 			TargetCapacity:     pulumi.Int(6),
-/// 			ValidUntil:         pulumi.String("2019-11-04T20:44:20Z"),
 /// 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 /// 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 /// 					InstanceType:          pulumi.String("m4.10xlarge"),
@@ -171,6 +168,12 @@ import 'spot_fleet_request_state.dart';
 /// 					IamInstanceProfileArn: pulumi.Any(example.Arn),
 /// 				},
 /// 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
+/// 					RootBlockDevices: ec2.SpotFleetRequestLaunchSpecificationRootBlockDeviceArray{
+/// 						&ec2.SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs{
+/// 							VolumeSize: pulumi.Int(300),
+/// 							VolumeType: pulumi.String("gp2"),
+/// 						},
+/// 					},
 /// 					InstanceType:          pulumi.String("m4.4xlarge"),
 /// 					Ami:                   pulumi.String("ami-5678"),
 /// 					KeyName:               pulumi.String("my-key"),
@@ -179,17 +182,16 @@ import 'spot_fleet_request_state.dart';
 /// 					AvailabilityZone:      pulumi.String("us-west-1a"),
 /// 					SubnetId:              pulumi.String("subnet-1234"),
 /// 					WeightedCapacity:      pulumi.String("35"),
-/// 					RootBlockDevices: ec2.SpotFleetRequestLaunchSpecificationRootBlockDeviceArray{
-/// 						&ec2.SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs{
-/// 							VolumeSize: pulumi.Int(300),
-/// 							VolumeType: pulumi.String("gp2"),
-/// 						},
-/// 					},
 /// 					Tags: pulumi.StringMap{
 /// 						"Name": pulumi.String("spot-fleet-example"),
 /// 					},
 /// 				},
 /// 			},
+/// 			IamFleetRole:       pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
+/// 			SpotPrice:          pulumi.String("0.03"),
+/// 			AllocationStrategy: pulumi.String("diversified"),
+/// 			TargetCapacity:     pulumi.Int(6),
+/// 			ValidUntil:         pulumi.String("2019-11-04T20:44:20Z"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -209,11 +211,6 @@ import 'spot_fleet_request_state.dart';
 ///
 /// # Request a Spot fleet
 /// resource "aws_ec2_spotfleetrequest" "cheap_compute" {
-///   iam_fleet_role      = "arn:aws:iam::12345678:role/spot-fleet"
-///   spot_price          = "0.03"
-///   allocation_strategy = "diversified"
-///   target_capacity     = 6
-///   valid_until         = "2019-11-04T20:44:20Z"
 ///   launch_specifications {
 ///     instance_type            = "m4.10xlarge"
 ///     ami                      = "ami-1234"
@@ -222,6 +219,10 @@ import 'spot_fleet_request_state.dart';
 ///     iam_instance_profile_arn = example.arn
 ///   }
 ///   launch_specifications {
+///     root_block_devices {
+///       volume_size = "300"
+///       volume_type = "gp2"
+///     }
 ///     instance_type            = "m4.4xlarge"
 ///     ami                      = "ami-5678"
 ///     key_name                 = "my-key"
@@ -230,14 +231,15 @@ import 'spot_fleet_request_state.dart';
 ///     availability_zone        = "us-west-1a"
 ///     subnet_id                = "subnet-1234"
 ///     weighted_capacity        = 35
-///     root_block_devices {
-///       volume_size = "300"
-///       volume_type = "gp2"
-///     }
 ///     tags = {
 ///       "Name" = "spot-fleet-example"
 ///     }
 ///   }
+///   iam_fleet_role      = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price          = "0.03"
+///   allocation_strategy = "diversified"
+///   target_capacity     = 6
+///   valid_until         = "2019-11-04T20:44:20Z"
 /// }
 /// ```
 /// ```java
@@ -265,11 +267,6 @@ import 'spot_fleet_request_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Request a Spot fleet
 ///         var cheapCompute = new SpotFleetRequest("cheapCompute", SpotFleetRequestArgs.builder()
-///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
-///             .spotPrice("0.03")
-///             .allocationStrategy("diversified")
-///             .targetCapacity(6)
-///             .validUntil("2019-11-04T20:44:20Z")
 ///             .launchSpecifications(
 ///                 SpotFleetRequestLaunchSpecificationArgs.builder()
 ///                     .instanceType("m4.10xlarge")
@@ -279,6 +276,10 @@ import 'spot_fleet_request_state.dart';
 ///                     .iamInstanceProfileArn(example.arn())
 ///                     .build(),
 ///                 SpotFleetRequestLaunchSpecificationArgs.builder()
+///                     .rootBlockDevices(SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs.builder()
+///                         .volumeSize(300)
+///                         .volumeType("gp2")
+///                         .build())
 ///                     .instanceType("m4.4xlarge")
 ///                     .ami("ami-5678")
 ///                     .keyName("my-key")
@@ -287,12 +288,13 @@ import 'spot_fleet_request_state.dart';
 ///                     .availabilityZone("us-west-1a")
 ///                     .subnetId("subnet-1234")
 ///                     .weightedCapacity("35")
-///                     .rootBlockDevices(SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs.builder()
-///                         .volumeSize(300)
-///                         .volumeType("gp2")
-///                         .build())
 ///                     .tags(Map.of("Name", "spot-fleet-example"))
 ///                     .build())
+///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
+///             .spotPrice("0.03")
+///             .allocationStrategy("diversified")
+///             .targetCapacity(6)
+///             .validUntil("2019-11-04T20:44:20Z")
 ///             .build());
 ///
 ///     }
@@ -305,18 +307,16 @@ import 'spot_fleet_request_state.dart';
 ///     type: aws:ec2:SpotFleetRequest
 ///     name: cheap_compute
 ///     properties:
-///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
-///       spotPrice: '0.03'
-///       allocationStrategy: diversified
-///       targetCapacity: 6
-///       validUntil: 2019-11-04T20:44:20Z
 ///       launchSpecifications:
 ///         - instanceType: m4.10xlarge
 ///           ami: ami-1234
 ///           spotPrice: '2.793'
 ///           placementTenancy: dedicated
 ///           iamInstanceProfileArn: ${example.arn}
-///         - instanceType: m4.4xlarge
+///         - rootBlockDevices:
+///             - volumeSize: '300'
+///               volumeType: gp2
+///           instanceType: m4.4xlarge
 ///           ami: ami-5678
 ///           keyName: my-key
 ///           spotPrice: '1.117'
@@ -324,11 +324,13 @@ import 'spot_fleet_request_state.dart';
 ///           availabilityZone: us-west-1a
 ///           subnetId: subnet-1234
 ///           weightedCapacity: 35
-///           rootBlockDevices:
-///             - volumeSize: '300'
-///               volumeType: gp2
 ///           tags:
 ///             Name: spot-fleet-example
+///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
+///       spotPrice: '0.03'
+///       allocationStrategy: diversified
+///       targetCapacity: 6
+///       validUntil: 2019-11-04T20:44:20Z
 /// ```
 ///
 ///
@@ -346,16 +348,16 @@ import 'spot_fleet_request_state.dart';
 ///     keyName: "some-key",
 /// });
 /// const fooSpotFleetRequest = new aws.ec2.SpotFleetRequest("foo", {
-///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
-///     spotPrice: "0.005",
-///     targetCapacity: 2,
-///     validUntil: "2019-11-04T20:44:20Z",
 ///     launchTemplateConfigs: [{
 ///         launchTemplateSpecification: {
 ///             id: foo.id,
 ///             version: foo.latestVersion.apply(x =>String(x)),
 ///         },
 ///     }],
+///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
+///     spotPrice: "0.005",
+///     targetCapacity: 2,
+///     validUntil: "2019-11-04T20:44:20Z",
 /// }, {
 ///     dependsOn: [test_attach],
 /// });
@@ -370,16 +372,16 @@ import 'spot_fleet_request_state.dart';
 ///     instance_type="m1.small",
 ///     key_name="some-key")
 /// foo_spot_fleet_request = aws.ec2.SpotFleetRequest("foo",
-///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
-///     spot_price="0.005",
-///     target_capacity=2,
-///     valid_until="2019-11-04T20:44:20Z",
 ///     launch_template_configs=[{
 ///         "launch_template_specification": {
 ///             "id": foo.id,
 ///             "version": foo.latest_version.apply(lambda x: str(x)),
 ///         },
 ///     }],
+///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
+///     spot_price="0.005",
+///     target_capacity=2,
+///     valid_until="2019-11-04T20:44:20Z",
 ///     opts = pulumi.ResourceOptions(depends_on=[test_attach]))
 /// ```
 /// ```csharp
@@ -400,10 +402,6 @@ import 'spot_fleet_request_state.dart';
 ///
 ///     var fooSpotFleetRequest = new Aws.Ec2.SpotFleetRequest("foo", new()
 ///     {
-///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
-///         SpotPrice = "0.005",
-///         TargetCapacity = 2,
-///         ValidUntil = "2019-11-04T20:44:20Z",
 ///         LaunchTemplateConfigs = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SpotFleetRequestLaunchTemplateConfigArgs
@@ -415,6 +413,10 @@ import 'spot_fleet_request_state.dart';
 ///                 },
 ///             },
 ///         },
+///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
+///         SpotPrice = "0.005",
+///         TargetCapacity = 2,
+///         ValidUntil = "2019-11-04T20:44:20Z",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -445,10 +447,6 @@ import 'spot_fleet_request_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
-/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-/// 			SpotPrice:      pulumi.String("0.005"),
-/// 			TargetCapacity: pulumi.Int(2),
-/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
 /// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
@@ -457,6 +455,10 @@ import 'spot_fleet_request_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
+/// 			SpotPrice:      pulumi.String("0.005"),
+/// 			TargetCapacity: pulumi.Int(2),
+/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			test_attach,
 /// 		}))
@@ -483,17 +485,17 @@ import 'spot_fleet_request_state.dart';
 ///   key_name      = "some-key"
 /// }
 /// resource "aws_ec2_spotfleetrequest" "foo" {
-///   depends_on      = [test-attach]
-///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
-///   spot_price      = "0.005"
-///   target_capacity = 2
-///   valid_until     = "2019-11-04T20:44:20Z"
+///   depends_on = [test-attach]
 ///   launch_template_configs {
 ///     launch_template_specification = {
 ///       id      = aws_ec2_launchtemplate.foo.id
 ///       version = aws_ec2_launchtemplate.foo.latest_version
 ///     }
 ///   }
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
 /// }
 /// ```
 /// ```java
@@ -530,16 +532,16 @@ import 'spot_fleet_request_state.dart';
 ///             .build());
 ///
 ///         var fooSpotFleetRequest = new SpotFleetRequest("fooSpotFleetRequest", SpotFleetRequestArgs.builder()
-///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
-///             .spotPrice("0.005")
-///             .targetCapacity(2)
-///             .validUntil("2019-11-04T20:44:20Z")
 ///             .launchTemplateConfigs(SpotFleetRequestLaunchTemplateConfigArgs.builder()
 ///                 .launchTemplateSpecification(SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs.builder()
 ///                     .id(foo.id())
 ///                     .version(foo.latestVersion())
 ///                     .build())
 ///                 .build())
+///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
+///             .spotPrice("0.005")
+///             .targetCapacity(2)
+///             .validUntil("2019-11-04T20:44:20Z")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(test_attach)
 ///                 .build());
@@ -560,14 +562,14 @@ import 'spot_fleet_request_state.dart';
 ///     type: aws:ec2:SpotFleetRequest
 ///     name: foo
 ///     properties:
-///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
-///       spotPrice: '0.005'
-///       targetCapacity: 2
-///       validUntil: 2019-11-04T20:44:20Z
 ///       launchTemplateConfigs:
 ///         - launchTemplateSpecification:
 ///             id: ${foo.id}
 ///             version: ${foo.latestVersion}
+///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
+///       spotPrice: '0.005'
+///       targetCapacity: 2
+///       validUntil: 2019-11-04T20:44:20Z
 ///     options:
 ///       dependsOn:
 ///         - ${["test-attach"]}
@@ -585,10 +587,6 @@ import 'spot_fleet_request_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.ec2.SpotFleetRequest("foo", {
-///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
-///     spotPrice: "0.005",
-///     targetCapacity: 2,
-///     validUntil: "2019-11-04T20:44:20Z",
 ///     launchSpecifications: [
 ///         {
 ///             instanceType: "m1.small",
@@ -603,6 +601,10 @@ import 'spot_fleet_request_state.dart';
 ///             availabilityZone: "us-west-2a",
 ///         },
 ///     ],
+///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
+///     spotPrice: "0.005",
+///     targetCapacity: 2,
+///     validUntil: "2019-11-04T20:44:20Z",
 /// });
 /// ```
 /// ```python
@@ -610,10 +612,6 @@ import 'spot_fleet_request_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ec2.SpotFleetRequest("foo",
-///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
-///     spot_price="0.005",
-///     target_capacity=2,
-///     valid_until="2019-11-04T20:44:20Z",
 ///     launch_specifications=[
 ///         {
 ///             "instance_type": "m1.small",
@@ -627,7 +625,11 @@ import 'spot_fleet_request_state.dart';
 ///             "key_name": "my-key",
 ///             "availability_zone": "us-west-2a",
 ///         },
-///     ])
+///     ],
+///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
+///     spot_price="0.005",
+///     target_capacity=2,
+///     valid_until="2019-11-04T20:44:20Z")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -639,10 +641,6 @@ import 'spot_fleet_request_state.dart';
 /// {
 ///     var foo = new Aws.Ec2.SpotFleetRequest("foo", new()
 ///     {
-///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
-///         SpotPrice = "0.005",
-///         TargetCapacity = 2,
-///         ValidUntil = "2019-11-04T20:44:20Z",
 ///         LaunchSpecifications = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationArgs
@@ -660,6 +658,10 @@ import 'spot_fleet_request_state.dart';
 ///                 AvailabilityZone = "us-west-2a",
 ///             },
 ///         },
+///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
+///         SpotPrice = "0.005",
+///         TargetCapacity = 2,
+///         ValidUntil = "2019-11-04T20:44:20Z",
 ///     });
 ///
 /// });
@@ -675,10 +677,6 @@ import 'spot_fleet_request_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
-/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-/// 			SpotPrice:      pulumi.String("0.005"),
-/// 			TargetCapacity: pulumi.Int(2),
-/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 /// 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 /// 					InstanceType:     pulumi.String("m1.small"),
@@ -693,6 +691,10 @@ import 'spot_fleet_request_state.dart';
 /// 					AvailabilityZone: pulumi.String("us-west-2a"),
 /// 				},
 /// 			},
+/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
+/// 			SpotPrice:      pulumi.String("0.005"),
+/// 			TargetCapacity: pulumi.Int(2),
+/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -711,10 +713,6 @@ import 'spot_fleet_request_state.dart';
 /// }
 ///
 /// resource "aws_ec2_spotfleetrequest" "foo" {
-///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
-///   spot_price      = "0.005"
-///   target_capacity = 2
-///   valid_until     = "2019-11-04T20:44:20Z"
 ///   launch_specifications {
 ///     instance_type     = "m1.small"
 ///     ami               = "ami-d06a90b0"
@@ -727,6 +725,10 @@ import 'spot_fleet_request_state.dart';
 ///     key_name          = "my-key"
 ///     availability_zone = "us-west-2a"
 ///   }
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
 /// }
 /// ```
 /// ```java
@@ -752,10 +754,6 @@ import 'spot_fleet_request_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new SpotFleetRequest("foo", SpotFleetRequestArgs.builder()
-///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
-///             .spotPrice("0.005")
-///             .targetCapacity(2)
-///             .validUntil("2019-11-04T20:44:20Z")
 ///             .launchSpecifications(
 ///                 SpotFleetRequestLaunchSpecificationArgs.builder()
 ///                     .instanceType("m1.small")
@@ -769,6 +767,10 @@ import 'spot_fleet_request_state.dart';
 ///                     .keyName("my-key")
 ///                     .availabilityZone("us-west-2a")
 ///                     .build())
+///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
+///             .spotPrice("0.005")
+///             .targetCapacity(2)
+///             .validUntil("2019-11-04T20:44:20Z")
 ///             .build());
 ///
 ///     }
@@ -779,10 +781,6 @@ import 'spot_fleet_request_state.dart';
 ///   foo:
 ///     type: aws:ec2:SpotFleetRequest
 ///     properties:
-///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
-///       spotPrice: '0.005'
-///       targetCapacity: 2
-///       validUntil: 2019-11-04T20:44:20Z
 ///       launchSpecifications:
 ///         - instanceType: m1.small
 ///           ami: ami-d06a90b0
@@ -792,6 +790,10 @@ import 'spot_fleet_request_state.dart';
 ///           ami: ami-d06a90b0
 ///           keyName: my-key
 ///           availabilityZone: us-west-2a
+///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
+///       spotPrice: '0.005'
+///       targetCapacity: 2
+///       validUntil: 2019-11-04T20:44:20Z
 /// ```
 ///
 ///
@@ -807,16 +809,16 @@ import 'spot_fleet_request_state.dart';
 /// const example = new aws.ec2.SpotFleetRequest("example", {
 ///     launchSpecifications: .map(s => ({
 ///         subnetId: s[1],
-///     })).map((v, k) => ({key: k, value: v})).map(entry => ({
-///         ami: "ami-1234",
-///         instanceType: "m4.4xlarge",
-///         subnetId: entry.value.subnetId,
-///         vpcSecurityGroupIds: "sg-123456",
+///     })).map(entry => ({
 ///         rootBlockDevices: [{
 ///             volumeSize: 8,
 ///             volumeType: "gp2",
 ///             deleteOnTermination: true,
 ///         }],
+///         ami: "ami-1234",
+///         instanceType: "m4.4xlarge",
+///         subnetId: entry.subnetId,
+///         vpcSecurityGroupIds: "sg-123456",
 ///         tags: {
 ///             Name: "Spot Node",
 ///             tag_builder: "builder",
@@ -839,22 +841,22 @@ import 'spot_fleet_request_state.dart';
 /// subnets = config.require_object("subnets")
 /// example = aws.ec2.SpotFleetRequest("example",
 ///     launch_specifications=[{
-///         "ami": "ami-1234",
-///         "instance_type": "m4.4xlarge",
-///         "subnet_id": entry["value"]["subnetId"],
-///         "vpc_security_group_ids": "sg-123456",
 ///         "root_block_devices": [{
 ///             "volume_size": 8,
 ///             "volume_type": "gp2",
 ///             "delete_on_termination": True,
 ///         }],
+///         "ami": "ami-1234",
+///         "instance_type": "m4.4xlarge",
+///         "subnet_id": entry["subnetId"],
+///         "vpc_security_group_ids": "sg-123456",
 ///         "tags": {
 ///             "Name": "Spot Node",
 ///             "tag_builder": "builder",
 ///         },
-///     } for entry in [{"key": k, "value": v} for k, v in sorted([{
+///     } for entry in [{
 ///         "subnetId": s[1],
-///     } for s in subnets].items())]],
+///     } for s in subnets]],
 ///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
 ///     target_capacity=3,
 ///     valid_until="2019-11-04T20:44:20Z",
@@ -881,14 +883,10 @@ import 'spot_fleet_request_state.dart';
 ///             {
 ///                 { "subnetId", s[1] },
 ///             };
-///         }).ToList().Select((v, k) => new { Key = k, Value = v }).Select(entry =>
+///         }).ToList().Select(entry =>
 ///         {
 ///             return new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationArgs
 ///             {
-///                 Ami = "ami-1234",
-///                 InstanceType = "m4.4xlarge",
-///                 SubnetId = entry.Value.SubnetId,
-///                 VpcSecurityGroupIds = "sg-123456",
 ///                 RootBlockDevices = new[]
 ///                 {
 ///                     new Aws.Ec2.Inputs.SpotFleetRequestLaunchSpecificationRootBlockDeviceArgs
@@ -898,6 +896,10 @@ import 'spot_fleet_request_state.dart';
 ///                         DeleteOnTermination = true,
 ///                     },
 ///                 },
+///                 Ami = "ami-1234",
+///                 InstanceType = "m4.4xlarge",
+///                 SubnetId = entry.SubnetId,
+///                 VpcSecurityGroupIds = "sg-123456",
 ///                 Tags =
 ///                 {
 ///                     { "Name", "Spot Node" },
@@ -927,19 +929,19 @@ import 'spot_fleet_request_state.dart';
 ///
 /// resource "aws_ec2_spotfleetrequest" "example" {
 ///   dynamic "launch_specifications" {
-///     for_each = entries([for s in var.subnets : {
+///     for_each = [for s in var.subnets : {
 ///       "subnetId" = s[1]
-///     } ])
+///     } ]
 ///     content {
-///       ami                    = "ami-1234"
-///       instance_type          = "m4.4xlarge"
-///       subnet_id              = launch_specifications.value.value.subnetId
-///       vpc_security_group_ids = "sg-123456"
 ///       root_block_devices {
 ///         volume_size           = "8"
 ///         volume_type           = "gp2"
 ///         delete_on_termination = "true"
 ///       }
+///       ami                    = "ami-1234"
+///       instance_type          = "m4.4xlarge"
+///       subnet_id              = launch_specifications.value.subnetId
+///       vpc_security_group_ids = "sg-123456"
 ///       tags = {
 ///         "Name"        = "Spot Node"
 ///         "tag_builder" = "builder"
@@ -979,10 +981,6 @@ import 'spot_fleet_request_state.dart';
 ///     keyName: "some-key",
 /// });
 /// const fooSpotFleetRequest = new aws.ec2.SpotFleetRequest("foo", {
-///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
-///     spotPrice: "0.005",
-///     targetCapacity: 2,
-///     validUntil: "2019-11-04T20:44:20Z",
 ///     launchTemplateConfigs: [{
 ///         launchTemplateSpecification: {
 ///             id: foo.id,
@@ -1000,6 +998,10 @@ import 'spot_fleet_request_state.dart';
 ///             },
 ///         ],
 ///     }],
+///     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
+///     spotPrice: "0.005",
+///     targetCapacity: 2,
+///     validUntil: "2019-11-04T20:44:20Z",
 /// }, {
 ///     dependsOn: [test_attach],
 /// });
@@ -1018,10 +1020,6 @@ import 'spot_fleet_request_state.dart';
 ///     instance_type="m1.small",
 ///     key_name="some-key")
 /// foo_spot_fleet_request = aws.ec2.SpotFleetRequest("foo",
-///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
-///     spot_price="0.005",
-///     target_capacity=2,
-///     valid_until="2019-11-04T20:44:20Z",
 ///     launch_template_configs=[{
 ///         "launch_template_specification": {
 ///             "id": foo.id,
@@ -1039,6 +1037,10 @@ import 'spot_fleet_request_state.dart';
 ///             },
 ///         ],
 ///     }],
+///     iam_fleet_role="arn:aws:iam::12345678:role/spot-fleet",
+///     spot_price="0.005",
+///     target_capacity=2,
+///     valid_until="2019-11-04T20:44:20Z",
 ///     opts = pulumi.ResourceOptions(depends_on=[test_attach]))
 /// ```
 /// ```csharp
@@ -1074,10 +1076,6 @@ import 'spot_fleet_request_state.dart';
 ///
 ///     var fooSpotFleetRequest = new Aws.Ec2.SpotFleetRequest("foo", new()
 ///     {
-///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
-///         SpotPrice = "0.005",
-///         TargetCapacity = 2,
-///         ValidUntil = "2019-11-04T20:44:20Z",
 ///         LaunchTemplateConfigs = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SpotFleetRequestLaunchTemplateConfigArgs
@@ -1104,6 +1102,10 @@ import 'spot_fleet_request_state.dart';
 ///                 },
 ///             },
 ///         },
+///         IamFleetRole = "arn:aws:iam::12345678:role/spot-fleet",
+///         SpotPrice = "0.005",
+///         TargetCapacity = 2,
+///         ValidUntil = "2019-11-04T20:44:20Z",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1147,10 +1149,6 @@ import 'spot_fleet_request_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
-/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
-/// 			SpotPrice:      pulumi.String("0.005"),
-/// 			TargetCapacity: pulumi.Int(2),
-/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 			LaunchTemplateConfigs: ec2.SpotFleetRequestLaunchTemplateConfigArray{
 /// 				&ec2.SpotFleetRequestLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs{
@@ -1170,6 +1168,10 @@ import 'spot_fleet_request_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			IamFleetRole:   pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
+/// 			SpotPrice:      pulumi.String("0.005"),
+/// 			TargetCapacity: pulumi.Int(2),
+/// 			ValidUntil:     pulumi.String("2019-11-04T20:44:20Z"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			test_attach,
 /// 		}))
@@ -1203,11 +1205,7 @@ import 'spot_fleet_request_state.dart';
 ///   key_name      = "some-key"
 /// }
 /// resource "aws_ec2_spotfleetrequest" "foo" {
-///   depends_on      = [test-attach]
-///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
-///   spot_price      = "0.005"
-///   target_capacity = 2
-///   valid_until     = "2019-11-04T20:44:20Z"
+///   depends_on = [test-attach]
 ///   launch_template_configs {
 ///     launch_template_specification = {
 ///       id      = aws_ec2_launchtemplate.foo.id
@@ -1223,6 +1221,10 @@ import 'spot_fleet_request_state.dart';
 ///       subnet_id = data.aws_ec2_getsubnets.example.ids[2]
 ///     }
 ///   }
+///   iam_fleet_role  = "arn:aws:iam::12345678:role/spot-fleet"
+///   spot_price      = "0.005"
+///   target_capacity = 2
+///   valid_until     = "2019-11-04T20:44:20Z"
 /// }
 /// ```
 /// ```java
@@ -1270,10 +1272,6 @@ import 'spot_fleet_request_state.dart';
 ///             .build());
 ///
 ///         var fooSpotFleetRequest = new SpotFleetRequest("fooSpotFleetRequest", SpotFleetRequestArgs.builder()
-///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
-///             .spotPrice("0.005")
-///             .targetCapacity(2)
-///             .validUntil("2019-11-04T20:44:20Z")
 ///             .launchTemplateConfigs(SpotFleetRequestLaunchTemplateConfigArgs.builder()
 ///                 .launchTemplateSpecification(SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs.builder()
 ///                     .id(foo.id())
@@ -1290,6 +1288,10 @@ import 'spot_fleet_request_state.dart';
 ///                         .subnetId(example.ids()[2])
 ///                         .build())
 ///                 .build())
+///             .iamFleetRole("arn:aws:iam::12345678:role/spot-fleet")
+///             .spotPrice("0.005")
+///             .targetCapacity(2)
+///             .validUntil("2019-11-04T20:44:20Z")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(test_attach)
 ///                 .build());
@@ -1310,10 +1312,6 @@ import 'spot_fleet_request_state.dart';
 ///     type: aws:ec2:SpotFleetRequest
 ///     name: foo
 ///     properties:
-///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
-///       spotPrice: '0.005'
-///       targetCapacity: 2
-///       validUntil: 2019-11-04T20:44:20Z
 ///       launchTemplateConfigs:
 ///         - launchTemplateSpecification:
 ///             id: ${foo.id}
@@ -1322,6 +1320,10 @@ import 'spot_fleet_request_state.dart';
 ///             - subnetId: ${example.ids[0]}
 ///             - subnetId: ${example.ids[1]}
 ///             - subnetId: ${example.ids[2]}
+///       iamFleetRole: arn:aws:iam::12345678:role/spot-fleet
+///       spotPrice: '0.005'
+///       targetCapacity: 2
+///       validUntil: 2019-11-04T20:44:20Z
 ///     options:
 ///       dependsOn:
 ///         - ${["test-attach"]}
@@ -1382,9 +1384,9 @@ class SpotFleetRequest extends pulumi.CustomResource {
   /// what you can specify. See the list of officially supported inputs in the
   /// [reference documentation](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html). Any normal `aws.ec2.Instance` parameter that corresponds to those inputs may be used and it have
   /// a additional parameter `iamInstanceProfileArn` takes `aws.iam.InstanceProfile` attribute `arn` as input.
-  late final pulumi.Output<List<Map<String, dynamic>>?> launchSpecifications;
+  late final pulumi.Output<List<SpotFleetRequestLaunchSpecification>?> launchSpecifications;
   /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launchSpecification`. At least one of `launchSpecification` or `launchTemplateConfig` is required.
-  late final pulumi.Output<List<Map<String, dynamic>>?> launchTemplateConfigs;
+  late final pulumi.Output<List<SpotFleetRequestLaunchTemplateConfig>?> launchTemplateConfigs;
   /// A list of elastic load balancer names to add to the Spot fleet.
   late final pulumi.Output<List<String>> loadBalancers;
   /// The order of the launch template overrides to use in fulfilling On-Demand capacity. the possible values are: `lowestPrice` and `prioritized`. the default is `lowestPrice`.
@@ -1443,7 +1445,7 @@ class SpotFleetRequest extends pulumi.CustomResource {
           'aws:ec2/spotFleetRequest:SpotFleetRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocationStrategy = registerOutput<String?>('allocationStrategy');
     clientToken = registerOutput<String>('clientToken');
@@ -1453,9 +1455,9 @@ class SpotFleetRequest extends pulumi.CustomResource {
     iamFleetRole = registerOutput<String>('iamFleetRole');
     instanceInterruptionBehaviour = registerOutput<String?>('instanceInterruptionBehaviour');
     instancePoolsToUseCount = registerOutput<int?>('instancePoolsToUseCount');
-    launchSpecifications = registerOutput<List<Map<String, dynamic>>?>('launchSpecifications');
-    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>?>('launchTemplateConfigs');
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    launchSpecifications = registerOutput<List<SpotFleetRequestLaunchSpecification>?>('launchSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchSpecification>(guardedValue, (value) => SpotFleetRequestLaunchSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    launchTemplateConfigs = registerOutput<List<SpotFleetRequestLaunchTemplateConfig>?>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfig>(guardedValue, (value) => SpotFleetRequestLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     onDemandAllocationStrategy = registerOutput<String?>('onDemandAllocationStrategy');
     onDemandMaxTotalPrice = registerOutput<String?>('onDemandMaxTotalPrice');
     onDemandTargetCapacity = registerOutput<int?>('onDemandTargetCapacity');
@@ -1464,11 +1466,11 @@ class SpotFleetRequest extends pulumi.CustomResource {
     spotMaintenanceStrategies = registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>('spotMaintenanceStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotFleetRequestSpotMaintenanceStrategies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotPrice = registerOutput<String?>('spotPrice');
     spotRequestState = registerOutput<String>('spotRequestState');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetCapacity = registerOutput<int>('targetCapacity');
     targetCapacityUnitType = registerOutput<String?>('targetCapacityUnitType');
-    targetGroupArns = registerOutput<List<String>>('targetGroupArns');
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     terminateInstancesOnDelete = registerOutput<String?>('terminateInstancesOnDelete');
     terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
     validFrom = registerOutput<String?>('validFrom');
@@ -1481,11 +1483,12 @@ class SpotFleetRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpotFleetRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpotFleetRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1507,9 +1510,9 @@ class SpotFleetRequest extends pulumi.CustomResource {
     iamFleetRole = registerOutput<String>('iamFleetRole');
     instanceInterruptionBehaviour = registerOutput<String?>('instanceInterruptionBehaviour');
     instancePoolsToUseCount = registerOutput<int?>('instancePoolsToUseCount');
-    launchSpecifications = registerOutput<List<Map<String, dynamic>>?>('launchSpecifications');
-    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>?>('launchTemplateConfigs');
-    loadBalancers = registerOutput<List<String>>('loadBalancers');
+    launchSpecifications = registerOutput<List<SpotFleetRequestLaunchSpecification>?>('launchSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchSpecification>(guardedValue, (value) => SpotFleetRequestLaunchSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    launchTemplateConfigs = registerOutput<List<SpotFleetRequestLaunchTemplateConfig>?>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfig>(guardedValue, (value) => SpotFleetRequestLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     onDemandAllocationStrategy = registerOutput<String?>('onDemandAllocationStrategy');
     onDemandMaxTotalPrice = registerOutput<String?>('onDemandMaxTotalPrice');
     onDemandTargetCapacity = registerOutput<int?>('onDemandTargetCapacity');
@@ -1518,11 +1521,51 @@ class SpotFleetRequest extends pulumi.CustomResource {
     spotMaintenanceStrategies = registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>('spotMaintenanceStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotFleetRequestSpotMaintenanceStrategies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotPrice = registerOutput<String?>('spotPrice');
     spotRequestState = registerOutput<String>('spotRequestState');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetCapacity = registerOutput<int>('targetCapacity');
     targetCapacityUnitType = registerOutput<String?>('targetCapacityUnitType');
-    targetGroupArns = registerOutput<List<String>>('targetGroupArns');
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    terminateInstancesOnDelete = registerOutput<String?>('terminateInstancesOnDelete');
+    terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
+    validFrom = registerOutput<String?>('validFrom');
+    validUntil = registerOutput<String?>('validUntil');
+    waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
+  }
+
+  /// Creates a typed reference to an existing [SpotFleetRequest] resource.
+  SpotFleetRequest.reference(String urn)
+    : super(
+        'aws:ec2/spotFleetRequest:SpotFleetRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationStrategy = registerOutput<String?>('allocationStrategy');
+    clientToken = registerOutput<String>('clientToken');
+    context = registerOutput<String?>('context');
+    excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
+    fleetType = registerOutput<String?>('fleetType');
+    iamFleetRole = registerOutput<String>('iamFleetRole');
+    instanceInterruptionBehaviour = registerOutput<String?>('instanceInterruptionBehaviour');
+    instancePoolsToUseCount = registerOutput<int?>('instancePoolsToUseCount');
+    launchSpecifications = registerOutput<List<SpotFleetRequestLaunchSpecification>?>('launchSpecifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchSpecification>(guardedValue, (value) => SpotFleetRequestLaunchSpecification.fromMap((value as Map).cast<String, dynamic>())); });
+    launchTemplateConfigs = registerOutput<List<SpotFleetRequestLaunchTemplateConfig>?>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfig>(guardedValue, (value) => SpotFleetRequestLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancers = registerOutput<List<String>>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    onDemandAllocationStrategy = registerOutput<String?>('onDemandAllocationStrategy');
+    onDemandMaxTotalPrice = registerOutput<String?>('onDemandMaxTotalPrice');
+    onDemandTargetCapacity = registerOutput<int?>('onDemandTargetCapacity');
+    region = registerOutput<String>('region');
+    replaceUnhealthyInstances = registerOutput<bool?>('replaceUnhealthyInstances');
+    spotMaintenanceStrategies = registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>('spotMaintenanceStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotFleetRequestSpotMaintenanceStrategies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotPrice = registerOutput<String?>('spotPrice');
+    spotRequestState = registerOutput<String>('spotRequestState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetCapacity = registerOutput<int>('targetCapacity');
+    targetCapacityUnitType = registerOutput<String?>('targetCapacityUnitType');
+    targetGroupArns = registerOutput<List<String>>('targetGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     terminateInstancesOnDelete = registerOutput<String?>('terminateInstancesOnDelete');
     terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
     validFrom = registerOutput<String?>('validFrom');

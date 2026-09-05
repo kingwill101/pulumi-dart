@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cross_account_attachment_args.dart';
+import 'cross_account_attachment_resource.dart';
 import 'cross_account_attachment_state.dart';
 
 /// Resource for managing an AWS Global Accelerator Cross Account Attachment.
@@ -114,12 +115,12 @@ import 'cross_account_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.globalaccelerator.CrossAccountAttachment("example", {
-///     name: "example-cross-account-attachment",
-///     principals: ["123456789012"],
 ///     resources: [{
 ///         endpointId: "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
 ///         region: "us-west-2",
 ///     }],
+///     name: "example-cross-account-attachment",
+///     principals: ["123456789012"],
 /// });
 /// ```
 /// ```python
@@ -127,12 +128,12 @@ import 'cross_account_attachment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.globalaccelerator.CrossAccountAttachment("example",
-///     name="example-cross-account-attachment",
-///     principals=["123456789012"],
 ///     resources=[{
 ///         "endpoint_id": "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
 ///         "region": "us-west-2",
-///     }])
+///     }],
+///     name="example-cross-account-attachment",
+///     principals=["123456789012"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -144,11 +145,6 @@ import 'cross_account_attachment_state.dart';
 /// {
 ///     var example = new Aws.GlobalAccelerator.CrossAccountAttachment("example", new()
 ///     {
-///         Name = "example-cross-account-attachment",
-///         Principals = new[]
-///         {
-///             "123456789012",
-///         },
 ///         Resources = new[]
 ///         {
 ///             new Aws.GlobalAccelerator.Inputs.CrossAccountAttachmentResourceArgs
@@ -156,6 +152,11 @@ import 'cross_account_attachment_state.dart';
 ///                 EndpointId = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188",
 ///                 Region = "us-west-2",
 ///             },
+///         },
+///         Name = "example-cross-account-attachment",
+///         Principals = new[]
+///         {
+///             "123456789012",
 ///         },
 ///     });
 ///
@@ -172,15 +173,15 @@ import 'cross_account_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := globalaccelerator.NewCrossAccountAttachment(ctx, "example", &globalaccelerator.CrossAccountAttachmentArgs{
-/// 			Name: pulumi.String("example-cross-account-attachment"),
-/// 			Principals: pulumi.StringArray{
-/// 				pulumi.String("123456789012"),
-/// 			},
 /// 			Resources: globalaccelerator.CrossAccountAttachmentResourceArray{
 /// 				&globalaccelerator.CrossAccountAttachmentResourceArgs{
 /// 					EndpointId: pulumi.String("arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"),
 /// 					Region:     pulumi.String("us-west-2"),
 /// 				},
+/// 			},
+/// 			Name: pulumi.String("example-cross-account-attachment"),
+/// 			Principals: pulumi.StringArray{
+/// 				pulumi.String("123456789012"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -200,12 +201,12 @@ import 'cross_account_attachment_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_crossaccountattachment" "example" {
-///   name       = "example-cross-account-attachment"
-///   principals = ["123456789012"]
 ///   resources {
 ///     endpoint_id = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
 ///     region      = "us-west-2"
 ///   }
+///   name       = "example-cross-account-attachment"
+///   principals = ["123456789012"]
 /// }
 /// ```
 /// ```java
@@ -231,12 +232,12 @@ import 'cross_account_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CrossAccountAttachment("example", CrossAccountAttachmentArgs.builder()
-///             .name("example-cross-account-attachment")
-///             .principals("123456789012")
 ///             .resources(CrossAccountAttachmentResourceArgs.builder()
 ///                 .endpointId("arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188")
 ///                 .region("us-west-2")
 ///                 .build())
+///             .name("example-cross-account-attachment")
+///             .principals("123456789012")
 ///             .build());
 ///
 ///     }
@@ -247,12 +248,12 @@ import 'cross_account_attachment_state.dart';
 ///   example:
 ///     type: aws:globalaccelerator:CrossAccountAttachment
 ///     properties:
-///       name: example-cross-account-attachment
-///       principals:
-///         - '123456789012'
 ///       resources:
 ///         - endpointId: arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188
 ///           region: us-west-2
+///       name: example-cross-account-attachment
+///       principals:
+///         - '123456789012'
 /// ```
 ///
 ///
@@ -262,7 +263,7 @@ import 'cross_account_attachment_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Global Accelerator cross-account attachment.
+/// - `arn` (String) ARN of the Global Accelerator cross-account attachment.
 ///
 ///
 /// Using `pulumi import`, import Global Accelerator Cross Account Attachment using the `arn`. For example:
@@ -284,7 +285,7 @@ class CrossAccountAttachment extends pulumi.CustomResource {
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
   late final pulumi.Output<List<String>?> principals;
   /// List of resources to be associated with the accelerator.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
+  late final pulumi.Output<List<CrossAccountAttachmentResource>?> resources;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -302,16 +303,16 @@ class CrossAccountAttachment extends pulumi.CustomResource {
           'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    principals = registerOutput<List<String>?>('principals');
-    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resources = registerOutput<List<CrossAccountAttachmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrossAccountAttachmentResource>(guardedValue, (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CrossAccountAttachment] resource's state with the given [name] and [id].
@@ -319,11 +320,12 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CrossAccountAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CrossAccountAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,9 +343,28 @@ class CrossAccountAttachment extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    principals = registerOutput<List<String>?>('principals');
-    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resources = registerOutput<List<CrossAccountAttachmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrossAccountAttachmentResource>(guardedValue, (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CrossAccountAttachment] resource.
+  CrossAccountAttachment.reference(String urn)
+    : super(
+        'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    principals = registerOutput<List<String>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resources = registerOutput<List<CrossAccountAttachmentResource>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrossAccountAttachmentResource>(guardedValue, (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

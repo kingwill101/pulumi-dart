@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'extension_action_point.dart';
 import 'extension_args.dart';
+import 'extension_parameter.dart';
 import 'extension_state.dart';
 
 /// Provides an AppConfig Extension resource.
@@ -14,11 +16,11 @@ import 'extension_state.dart';
 /// const testTopic = new aws.sns.Topic("test", {name: "test"});
 /// const test = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["appconfig.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const testRole = new aws.iam.Role("test", {
@@ -26,16 +28,16 @@ import 'extension_state.dart';
 ///     assumeRolePolicy: test.then(test => test.json),
 /// });
 /// const testExtension = new aws.appconfig.Extension("test", {
-///     name: "test",
-///     description: "test description",
 ///     actionPoints: [{
-///         point: "ON_DEPLOYMENT_COMPLETE",
 ///         actions: [{
 ///             name: "test",
 ///             roleArn: testRole.arn,
 ///             uri: testTopic.arn,
 ///         }],
+///         point: "ON_DEPLOYMENT_COMPLETE",
 ///     }],
+///     name: "test",
+///     description: "test description",
 ///     tags: {
 ///         Type: "AppConfig Extension",
 ///     },
@@ -47,26 +49,26 @@ import 'extension_state.dart';
 ///
 /// test_topic = aws.sns.Topic("test", name="test")
 /// test = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["appconfig.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// test_role = aws.iam.Role("test",
 ///     name="test",
 ///     assume_role_policy=test.json)
 /// test_extension = aws.appconfig.Extension("test",
-///     name="test",
-///     description="test description",
 ///     action_points=[{
-///         "point": "ON_DEPLOYMENT_COMPLETE",
 ///         "actions": [{
 ///             "name": "test",
 ///             "role_arn": test_role.arn,
 ///             "uri": test_topic.arn,
 ///         }],
+///         "point": "ON_DEPLOYMENT_COMPLETE",
 ///     }],
+///     name="test",
+///     description="test description",
 ///     tags={
 ///         "Type": "AppConfig Extension",
 ///     })
@@ -90,10 +92,6 @@ import 'extension_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -104,6 +102,10 @@ import 'extension_state.dart';
 ///                             "appconfig.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -117,13 +119,10 @@ import 'extension_state.dart';
 ///
 ///     var testExtension = new Aws.AppConfig.Extension("test", new()
 ///     {
-///         Name = "test",
-///         Description = "test description",
 ///         ActionPoints = new[]
 ///         {
 ///             new Aws.AppConfig.Inputs.ExtensionActionPointArgs
 ///             {
-///                 Point = "ON_DEPLOYMENT_COMPLETE",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.AppConfig.Inputs.ExtensionActionPointActionArgs
@@ -133,8 +132,11 @@ import 'extension_state.dart';
 ///                         Uri = testTopic.Arn,
 ///                     },
 ///                 },
+///                 Point = "ON_DEPLOYMENT_COMPLETE",
 ///             },
 ///         },
+///         Name = "test",
+///         Description = "test description",
 ///         Tags =
 ///         {
 ///             { "Type", "AppConfig Extension" },
@@ -164,9 +166,6 @@ import 'extension_state.dart';
 /// 		test, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -174,6 +173,9 @@ import 'extension_state.dart';
 /// 								"appconfig.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -189,11 +191,8 @@ import 'extension_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appconfig.NewExtension(ctx, "test", &appconfig.ExtensionArgs{
-/// 			Name:        pulumi.String("test"),
-/// 			Description: pulumi.String("test description"),
 /// 			ActionPoints: appconfig.ExtensionActionPointArray{
 /// 				&appconfig.ExtensionActionPointArgs{
-/// 					Point: pulumi.String("ON_DEPLOYMENT_COMPLETE"),
 /// 					Actions: appconfig.ExtensionActionPointActionArray{
 /// 						&appconfig.ExtensionActionPointActionArgs{
 /// 							Name:    pulumi.String("test"),
@@ -201,8 +200,11 @@ import 'extension_state.dart';
 /// 							Uri:     testTopic.Arn,
 /// 						},
 /// 					},
+/// 					Point: pulumi.String("ON_DEPLOYMENT_COMPLETE"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("test"),
+/// 			Description: pulumi.String("test description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Type": pulumi.String("AppConfig Extension"),
 /// 			},
@@ -225,11 +227,11 @@ import 'extension_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appconfig.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -241,16 +243,16 @@ import 'extension_state.dart';
 ///   assume_role_policy = data.aws_iam_getpolicydocument.test.json
 /// }
 /// resource "aws_appconfig_extension" "test" {
-///   name        = "test"
-///   description = "test description"
 ///   action_points {
-///     point = "ON_DEPLOYMENT_COMPLETE"
 ///     actions {
 ///       name     = "test"
 ///       role_arn = aws_iam_role.test.arn
 ///       uri      = aws_sns_topic.test.arn
 ///     }
+///     point = "ON_DEPLOYMENT_COMPLETE"
 ///   }
+///   name        = "test"
+///   description = "test description"
 ///   tags = {
 ///     "Type" = "AppConfig Extension"
 ///   }
@@ -293,11 +295,11 @@ import 'extension_state.dart';
 ///
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("appconfig.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -307,16 +309,16 @@ import 'extension_state.dart';
 ///             .build());
 ///
 ///         var testExtension = new Extension("testExtension", ExtensionArgs.builder()
-///             .name("test")
-///             .description("test description")
 ///             .actionPoints(ExtensionActionPointArgs.builder()
-///                 .point("ON_DEPLOYMENT_COMPLETE")
 ///                 .actions(ExtensionActionPointActionArgs.builder()
 ///                     .name("test")
 ///                     .roleArn(testRole.arn())
 ///                     .uri(testTopic.arn())
 ///                     .build())
+///                 .point("ON_DEPLOYMENT_COMPLETE")
 ///                 .build())
+///             .name("test")
+///             .description("test description")
 ///             .tags(Map.of("Type", "AppConfig Extension"))
 ///             .build());
 ///
@@ -340,14 +342,14 @@ import 'extension_state.dart';
 ///     type: aws:appconfig:Extension
 ///     name: test
 ///     properties:
-///       name: test
-///       description: test description
 ///       actionPoints:
-///         - point: ON_DEPLOYMENT_COMPLETE
-///           actions:
+///         - actions:
 ///             - name: test
 ///               roleArn: ${testRole.arn}
 ///               uri: ${testTopic.arn}
+///           point: ON_DEPLOYMENT_COMPLETE
+///       name: test
+///       description: test description
 ///       tags:
 ///         Type: AppConfig Extension
 /// variables:
@@ -356,12 +358,12 @@ import 'extension_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - appconfig.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -374,7 +376,7 @@ import 'extension_state.dart';
 /// ```
 class Extension extends pulumi.CustomResource {
   /// Action points defined in the extension. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> actionPoints;
+  late final pulumi.Output<List<ExtensionActionPoint>> actionPoints;
   /// ARN of the AppConfig Extension.
   late final pulumi.Output<String> arn;
   /// Information about the extension.
@@ -382,7 +384,7 @@ class Extension extends pulumi.CustomResource {
   /// Name for the extension. Each extension name in your account must be unique. Extension versions use the same name.
   late final pulumi.Output<String> name;
   /// Parameters accepted by the extension. You specify parameter values when you associate the extension to an AppConfig resource by using the CreateExtensionAssociation API action. For Lambda extension actions, these parameters are included in the Lambda request object. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<ExtensionParameter>> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -403,16 +405,16 @@ class Extension extends pulumi.CustomResource {
           'aws:appconfig/extension:Extension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actionPoints = registerOutput<List<Map<String, dynamic>>>('actionPoints');
+    actionPoints = registerOutput<List<ExtensionActionPoint>>('actionPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionActionPoint>(guardedValue, (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<ExtensionParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionParameter>(guardedValue, (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 
@@ -421,11 +423,12 @@ class Extension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Extension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,14 +442,34 @@ class Extension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actionPoints = registerOutput<List<Map<String, dynamic>>>('actionPoints');
+    actionPoints = registerOutput<List<ExtensionActionPoint>>('actionPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionActionPoint>(guardedValue, (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<ExtensionParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionParameter>(guardedValue, (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'aws:appconfig/extension:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionPoints = registerOutput<List<ExtensionActionPoint>>('actionPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionActionPoint>(guardedValue, (value) => ExtensionActionPoint.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<ExtensionParameter>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionParameter>(guardedValue, (value) => ExtensionParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 }

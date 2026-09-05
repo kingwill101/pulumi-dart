@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'automation_rule_action.dart';
 import 'automation_rule_args.dart';
 import 'automation_rule_criteria.dart';
 import 'automation_rule_state.dart';
@@ -15,9 +16,12 @@ import 'automation_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securityhub.AutomationRule("example", {
-///     description: "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
-///     ruleName: "Elevate severity of findings that relate to important resources",
-///     ruleOrder: 1,
+///     criteria: {
+///         resourceIds: [{
+///             comparison: "EQUALS",
+///             value: "arn:aws:s3:::examplebucket/*",
+///         }],
+///     },
 ///     actions: [{
 ///         findingFieldsUpdate: {
 ///             severity: {
@@ -35,12 +39,9 @@ import 'automation_rule_state.dart';
 ///         },
 ///         type: "FINDING_FIELDS_UPDATE",
 ///     }],
-///     criteria: {
-///         resourceIds: [{
-///             comparison: "EQUALS",
-///             value: "arn:aws:s3:::examplebucket/*",
-///         }],
-///     },
+///     description: "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
+///     ruleName: "Elevate severity of findings that relate to important resources",
+///     ruleOrder: 1,
 /// });
 /// ```
 /// ```python
@@ -48,9 +49,12 @@ import 'automation_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securityhub.AutomationRule("example",
-///     description="Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
-///     rule_name="Elevate severity of findings that relate to important resources",
-///     rule_order=1,
+///     criteria={
+///         "resource_ids": [{
+///             "comparison": "EQUALS",
+///             "value": "arn:aws:s3:::examplebucket/*",
+///         }],
+///     },
 ///     actions=[{
 ///         "finding_fields_update": {
 ///             "severity": {
@@ -68,12 +72,9 @@ import 'automation_rule_state.dart';
 ///         },
 ///         "type": "FINDING_FIELDS_UPDATE",
 ///     }],
-///     criteria={
-///         "resource_ids": [{
-///             "comparison": "EQUALS",
-///             "value": "arn:aws:s3:::examplebucket/*",
-///         }],
-///     })
+///     description="Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
+///     rule_name="Elevate severity of findings that relate to important resources",
+///     rule_order=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -85,9 +86,17 @@ import 'automation_rule_state.dart';
 /// {
 ///     var example = new Aws.SecurityHub.AutomationRule("example", new()
 ///     {
-///         Description = "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
-///         RuleName = "Elevate severity of findings that relate to important resources",
-///         RuleOrder = 1,
+///         Criteria = new Aws.SecurityHub.Inputs.AutomationRuleCriteriaArgs
+///         {
+///             ResourceIds = new[]
+///             {
+///                 new Aws.SecurityHub.Inputs.AutomationRuleCriteriaResourceIdArgs
+///                 {
+///                     Comparison = "EQUALS",
+///                     Value = "arn:aws:s3:::examplebucket/*",
+///                 },
+///             },
+///         },
 ///         Actions = new[]
 ///         {
 ///             new Aws.SecurityHub.Inputs.AutomationRuleActionArgs
@@ -116,17 +125,9 @@ import 'automation_rule_state.dart';
 ///                 Type = "FINDING_FIELDS_UPDATE",
 ///             },
 ///         },
-///         Criteria = new Aws.SecurityHub.Inputs.AutomationRuleCriteriaArgs
-///         {
-///             ResourceIds = new[]
-///             {
-///                 new Aws.SecurityHub.Inputs.AutomationRuleCriteriaResourceIdArgs
-///                 {
-///                     Comparison = "EQUALS",
-///                     Value = "arn:aws:s3:::examplebucket/*",
-///                 },
-///             },
-///         },
+///         Description = "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk",
+///         RuleName = "Elevate severity of findings that relate to important resources",
+///         RuleOrder = 1,
 ///     });
 ///
 /// });
@@ -142,9 +143,14 @@ import 'automation_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securityhub.NewAutomationRule(ctx, "example", &securityhub.AutomationRuleArgs{
-/// 			Description: pulumi.String("Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk"),
-/// 			RuleName:    pulumi.String("Elevate severity of findings that relate to important resources"),
-/// 			RuleOrder:   pulumi.Int(1),
+/// 			Criteria: &securityhub.AutomationRuleCriteriaArgs{
+/// 				ResourceIds: securityhub.AutomationRuleCriteriaResourceIdArray{
+/// 					&securityhub.AutomationRuleCriteriaResourceIdArgs{
+/// 						Comparison: pulumi.String("EQUALS"),
+/// 						Value:      pulumi.String("arn:aws:s3:::examplebucket/*"),
+/// 					},
+/// 				},
+/// 			},
 /// 			Actions: securityhub.AutomationRuleActionArray{
 /// 				&securityhub.AutomationRuleActionArgs{
 /// 					FindingFieldsUpdate: &securityhub.AutomationRuleActionFindingFieldsUpdateArgs{
@@ -166,14 +172,9 @@ import 'automation_rule_state.dart';
 /// 					Type: pulumi.String("FINDING_FIELDS_UPDATE"),
 /// 				},
 /// 			},
-/// 			Criteria: &securityhub.AutomationRuleCriteriaArgs{
-/// 				ResourceIds: securityhub.AutomationRuleCriteriaResourceIdArray{
-/// 					&securityhub.AutomationRuleCriteriaResourceIdArgs{
-/// 						Comparison: pulumi.String("EQUALS"),
-/// 						Value:      pulumi.String("arn:aws:s3:::examplebucket/*"),
-/// 					},
-/// 				},
-/// 			},
+/// 			Description: pulumi.String("Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk"),
+/// 			RuleName:    pulumi.String("Elevate severity of findings that relate to important resources"),
+/// 			RuleOrder:   pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -192,9 +193,12 @@ import 'automation_rule_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_automationrule" "example" {
-///   description = "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk"
-///   rule_name   = "Elevate severity of findings that relate to important resources"
-///   rule_order  = 1
+///   criteria = {
+///     resource_ids = [{
+///       "comparison" = "EQUALS"
+///       "value"      = "arn:aws:s3:::examplebucket/*"
+///     }]
+///   }
 ///   actions {
 ///     finding_fields_update = {
 ///       severity = {
@@ -212,12 +216,9 @@ import 'automation_rule_state.dart';
 ///     }
 ///     type = "FINDING_FIELDS_UPDATE"
 ///   }
-///   criteria = {
-///     resource_ids = [{
-///       "comparison" = "EQUALS"
-///       "value"      = "arn:aws:s3:::examplebucket/*"
-///     }]
-///   }
+///   description = "Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk"
+///   rule_name   = "Elevate severity of findings that relate to important resources"
+///   rule_order  = 1
 /// }
 /// ```
 /// ```java
@@ -228,12 +229,12 @@ import 'automation_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.securityhub.AutomationRule;
 /// import com.pulumi.aws.securityhub.AutomationRuleArgs;
+/// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaArgs;
+/// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaResourceIdArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionFindingFieldsUpdateArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionFindingFieldsUpdateSeverityArgs;
 /// import com.pulumi.aws.securityhub.inputs.AutomationRuleActionFindingFieldsUpdateNoteArgs;
-/// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaArgs;
-/// import com.pulumi.aws.securityhub.inputs.AutomationRuleCriteriaResourceIdArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -248,9 +249,12 @@ import 'automation_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AutomationRule("example", AutomationRuleArgs.builder()
-///             .description("Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk")
-///             .ruleName("Elevate severity of findings that relate to important resources")
-///             .ruleOrder(1)
+///             .criteria(AutomationRuleCriteriaArgs.builder()
+///                 .resourceIds(AutomationRuleCriteriaResourceIdArgs.builder()
+///                     .comparison("EQUALS")
+///                     .value("arn:aws:s3:::examplebucket/*")
+///                     .build())
+///                 .build())
 ///             .actions(AutomationRuleActionArgs.builder()
 ///                 .findingFieldsUpdate(AutomationRuleActionFindingFieldsUpdateArgs.builder()
 ///                     .severity(AutomationRuleActionFindingFieldsUpdateSeverityArgs.builder()
@@ -266,12 +270,9 @@ import 'automation_rule_state.dart';
 ///                     .build())
 ///                 .type("FINDING_FIELDS_UPDATE")
 ///                 .build())
-///             .criteria(AutomationRuleCriteriaArgs.builder()
-///                 .resourceIds(AutomationRuleCriteriaResourceIdArgs.builder()
-///                     .comparison("EQUALS")
-///                     .value("arn:aws:s3:::examplebucket/*")
-///                     .build())
-///                 .build())
+///             .description("Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk")
+///             .ruleName("Elevate severity of findings that relate to important resources")
+///             .ruleOrder(1)
 ///             .build());
 ///
 ///     }
@@ -282,9 +283,10 @@ import 'automation_rule_state.dart';
 ///   example:
 ///     type: aws:securityhub:AutomationRule
 ///     properties:
-///       description: Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk
-///       ruleName: Elevate severity of findings that relate to important resources
-///       ruleOrder: 1
+///       criteria:
+///         resourceIds:
+///           - comparison: EQUALS
+///             value: arn:aws:s3:::examplebucket/*
 ///       actions:
 ///         - findingFieldsUpdate:
 ///             severity:
@@ -298,10 +300,9 @@ import 'automation_rule_state.dart';
 ///             userDefinedFields:
 ///               key: value
 ///           type: FINDING_FIELDS_UPDATE
-///       criteria:
-///         resourceIds:
-///           - comparison: EQUALS
-///             value: arn:aws:s3:::examplebucket/*
+///       description: Elevate finding severity to CRITICAL when specific resources such as an S3 bucket is at risk
+///       ruleName: Elevate severity of findings that relate to important resources
+///       ruleOrder: 1
 /// ```
 ///
 ///
@@ -311,7 +312,7 @@ import 'automation_rule_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Security Hub automation rule.
+/// - `arn` (String) ARN of the Security Hub automation rule.
 ///
 ///
 /// Using `pulumi import`, import Security Hub automation rules using `arn`. For example:
@@ -321,7 +322,7 @@ import 'automation_rule_state.dart';
 /// ```
 class AutomationRule extends pulumi.CustomResource {
   /// A block that specifies one or more actions to update finding fields if a finding matches the conditions specified in `Criteria`. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<AutomationRuleAction>> actions;
   /// The ARN of the Security Hub automation rule.
   late final pulumi.Output<String> arn;
   /// A block that specifies a set of ASFF finding field attributes and corresponding expected values that Security Hub uses to filter findings. Documented below.
@@ -353,9 +354,9 @@ class AutomationRule extends pulumi.CustomResource {
           'aws:securityhub/automationRule:AutomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<AutomationRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleAction>(guardedValue, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     criteria = registerOutput<AutomationRuleCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
@@ -364,8 +365,8 @@ class AutomationRule extends pulumi.CustomResource {
     ruleName = registerOutput<String>('ruleName');
     ruleOrder = registerOutput<int>('ruleOrder');
     ruleStatus = registerOutput<String>('ruleStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AutomationRule] resource's state with the given [name] and [id].
@@ -373,11 +374,12 @@ class AutomationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutomationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -391,7 +393,7 @@ class AutomationRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<AutomationRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleAction>(guardedValue, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     criteria = registerOutput<AutomationRuleCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
@@ -400,7 +402,29 @@ class AutomationRule extends pulumi.CustomResource {
     ruleName = registerOutput<String>('ruleName');
     ruleOrder = registerOutput<int>('ruleOrder');
     ruleStatus = registerOutput<String>('ruleStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AutomationRule] resource.
+  AutomationRule.reference(String urn)
+    : super(
+        'aws:securityhub/automationRule:AutomationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<AutomationRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleAction>(guardedValue, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    criteria = registerOutput<AutomationRuleCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    isTerminal = registerOutput<bool>('isTerminal');
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String>('ruleName');
+    ruleOrder = registerOutput<int>('ruleOrder');
+    ruleStatus = registerOutput<String>('ruleStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

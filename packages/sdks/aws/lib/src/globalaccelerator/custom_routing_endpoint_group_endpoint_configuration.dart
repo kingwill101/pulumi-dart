@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomRoutingEndpointGroupEndpointConfiguration {
-  /// An ID for the endpoint. For custom routing accelerators, this is the virtual private cloud (VPC) subnet ID.
-  final pulumi.Input<String>? endpointId;
+  /// ID for the endpoint. For custom routing accelerators, this is the VPC subnet ID.
+  final pulumi.Input<String?>? endpointId;
 
   /// Creates a new [CustomRoutingEndpointGroupEndpointConfiguration].
-  /// [endpointId] An ID for the endpoint. For custom routing accelerators, this is the virtual private cloud (VPC) subnet ID.
+  /// [endpointId] ID for the endpoint. For custom routing accelerators, this is the VPC subnet ID.
   const CustomRoutingEndpointGroupEndpointConfiguration({
     this.endpointId,
   });

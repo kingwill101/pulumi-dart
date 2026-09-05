@@ -6,11 +6,11 @@ class GetTrafficPolicyDocumentEndpoint {
   /// ID of an endpoint you want to assign.
   final pulumi.Input<String> id;
   /// To route traffic to an Amazon S3 bucket that is configured as a website endpoint, specify the region in which you created the bucket for `region`.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Type of the endpoint. Valid values are `value`, `cloudfront`, `elastic-load-balancer`, `s3-website`, `application-load-balancer`, `network-load-balancer` and `elastic-beanstalk`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Value of the `type`.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GetTrafficPolicyDocumentEndpoint].
   /// [id] ID of an endpoint you want to assign.

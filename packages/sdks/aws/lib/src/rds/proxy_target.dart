@@ -41,7 +41,7 @@ class ProxyTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> rdsResourceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) for the DB instance or DB cluster. Currently not returned by the RDS API.
+  /// ARN for the DB instance or DB cluster. Currently not returned by the RDS API.
   late final pulumi.Output<String> targetArn;
   /// The name of the target group.
   late final pulumi.Output<String> targetGroupName;
@@ -62,7 +62,7 @@ class ProxyTarget extends pulumi.CustomResource {
           'aws:rds/proxyTarget:ProxyTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
     dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
@@ -82,11 +82,12 @@ class ProxyTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProxyTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProxyTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -100,6 +101,28 @@ class ProxyTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
+    dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
+    dbProxyName = registerOutput<String>('dbProxyName');
+    endpoint = registerOutput<String>('endpoint');
+    port = registerOutput<int>('port');
+    rdsResourceId = registerOutput<String>('rdsResourceId');
+    region = registerOutput<String>('region');
+    targetArn = registerOutput<String>('targetArn');
+    targetGroupName = registerOutput<String>('targetGroupName');
+    trackedClusterId = registerOutput<String>('trackedClusterId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProxyTarget] resource.
+  ProxyTarget.reference(String urn)
+    : super(
+        'aws:rds/proxyTarget:ProxyTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
     dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
     dbProxyName = registerOutput<String>('dbProxyName');

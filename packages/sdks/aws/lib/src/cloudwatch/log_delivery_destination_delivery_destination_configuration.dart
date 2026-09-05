@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogDeliveryDestinationDeliveryDestinationConfiguration {
   /// The ARN of the AWS destination that this delivery destination represents. Required when `deliveryDestinationConfiguration` is specified.
-  final pulumi.Input<String>? destinationResourceArn;
+  final pulumi.Input<String?>? destinationResourceArn;
 
   /// Creates a new [LogDeliveryDestinationDeliveryDestinationConfiguration].
   /// [destinationResourceArn] The ARN of the AWS destination that this delivery destination represents. Required when `deliveryDestinationConfiguration` is specified.

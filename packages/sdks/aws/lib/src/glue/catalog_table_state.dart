@@ -11,43 +11,43 @@ import 'catalog_table_view_definition.dart';
 /// Input properties used for looking up and filtering CatalogTable resources.
 class CatalogTableState {
   /// ARN of the Glue Table.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Description of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for open table formats. See `openTableFormatInput` below.
-  final pulumi.Input<CatalogTableOpenTableFormatInput>? openTableFormatInput;
+  final pulumi.Input<CatalogTableOpenTableFormatInput?>? openTableFormatInput;
   /// Owner of the table.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Properties associated with this table, as a map of key-value pairs.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Configuration block for a maximum of 3 partition indexes. See `partitionIndex` below.
-  final pulumi.Input<List<CatalogTablePartitionIndex>>? partitionIndices;
+  final pulumi.Input<List<CatalogTablePartitionIndex>?>? partitionIndices;
   /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partitionKeys` below.
-  final pulumi.Input<List<CatalogTablePartitionKey>>? partitionKeys;
+  final pulumi.Input<List<CatalogTablePartitionKey>?>? partitionKeys;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Retention time for this table.
-  final pulumi.Input<int>? retention;
+  final pulumi.Input<int?>? retention;
   /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storageDescriptor` below.
-  final pulumi.Input<CatalogTableStorageDescriptor>? storageDescriptor;
+  final pulumi.Input<CatalogTableStorageDescriptor?>? storageDescriptor;
   /// Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
-  final pulumi.Input<String>? tableType;
+  final pulumi.Input<String?>? tableType;
   /// Configuration block of a target table for resource linking. See `targetTable` below.
-  final pulumi.Input<CatalogTableTargetTable>? targetTable;
+  final pulumi.Input<CatalogTableTargetTable?>? targetTable;
   /// Structure that contains all the information that defines the view, including the dialect or dialects for the view, and the query. See `viewDefinition` below.
-  final pulumi.Input<CatalogTableViewDefinition>? viewDefinition;
+  final pulumi.Input<CatalogTableViewDefinition?>? viewDefinition;
   /// If the table is a view, the expanded text of the view; otherwise null.
-  final pulumi.Input<String>? viewExpandedText;
+  final pulumi.Input<String?>? viewExpandedText;
   /// If the table is a view, the original text of the view; otherwise null.
-  final pulumi.Input<String>? viewOriginalText;
+  final pulumi.Input<String?>? viewOriginalText;
 
   /// Creates a new [CatalogTableState].
   /// [arn] ARN of the Glue Table.
@@ -125,7 +125,7 @@ class CatalogTableState {
       partitionIndices: (() { final guardedValue = map['partitionIndices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTablePartitionIndex>(guardedValue, (value) => CatalogTablePartitionIndex.fromMap((value as Map).cast<String, dynamic>()))); })(),
       partitionKeys: (() { final guardedValue = map['partitionKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTablePartitionKey>(guardedValue, (value) => CatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageDescriptor: (() { final guardedValue = map['storageDescriptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tableType: (() { final guardedValue = map['tableType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetTable: (() { final guardedValue = map['targetTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogTableTargetTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

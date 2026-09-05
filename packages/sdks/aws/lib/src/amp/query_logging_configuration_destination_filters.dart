@@ -20,7 +20,7 @@ class QueryLoggingConfigurationDestinationFilters {
 
   factory QueryLoggingConfigurationDestinationFilters.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationDestinationFilters(
-      qspThreshold: pulumi.Input.fromValue(map['qspThreshold'] as int),
+      qspThreshold: pulumi.Input.fromValue((map['qspThreshold'] as num).toInt()),
     );
   }
 }

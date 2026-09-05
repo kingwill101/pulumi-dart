@@ -14,11 +14,6 @@ import 'capability_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.eks.Capability("example", {
-///     clusterName: exampleAwsEksCluster.name,
-///     capabilityName: "argocd",
-///     type: "ARGOCD",
-///     roleArn: exampleAwsIamRole.arn,
-///     deletePropagationPolicy: "RETAIN",
 ///     configuration: {
 ///         argoCd: {
 ///             awsIdc: {
@@ -27,6 +22,11 @@ import 'capability_timeouts.dart';
 ///             namespace: "argocd",
 ///         },
 ///     },
+///     clusterName: exampleAwsEksCluster.name,
+///     capabilityName: "argocd",
+///     type: "ARGOCD",
+///     roleArn: exampleAwsIamRole.arn,
+///     deletePropagationPolicy: "RETAIN",
 ///     tags: {
 ///         Name: "example-capability",
 ///     },
@@ -37,11 +37,6 @@ import 'capability_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.Capability("example",
-///     cluster_name=example_aws_eks_cluster["name"],
-///     capability_name="argocd",
-///     type="ARGOCD",
-///     role_arn=example_aws_iam_role["arn"],
-///     delete_propagation_policy="RETAIN",
 ///     configuration={
 ///         "argo_cd": {
 ///             "aws_idc": {
@@ -50,6 +45,11 @@ import 'capability_timeouts.dart';
 ///             "namespace": "argocd",
 ///         },
 ///     },
+///     cluster_name=example_aws_eks_cluster["name"],
+///     capability_name="argocd",
+///     type="ARGOCD",
+///     role_arn=example_aws_iam_role["arn"],
+///     delete_propagation_policy="RETAIN",
 ///     tags={
 ///         "Name": "example-capability",
 ///     })
@@ -64,11 +64,6 @@ import 'capability_timeouts.dart';
 /// {
 ///     var example = new Aws.Eks.Capability("example", new()
 ///     {
-///         ClusterName = exampleAwsEksCluster.Name,
-///         CapabilityName = "argocd",
-///         Type = "ARGOCD",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         DeletePropagationPolicy = "RETAIN",
 ///         Configuration = new Aws.Eks.Inputs.CapabilityConfigurationArgs
 ///         {
 ///             ArgoCd = new Aws.Eks.Inputs.CapabilityConfigurationArgoCdArgs
@@ -80,6 +75,11 @@ import 'capability_timeouts.dart';
 ///                 Namespace = "argocd",
 ///             },
 ///         },
+///         ClusterName = exampleAwsEksCluster.Name,
+///         CapabilityName = "argocd",
+///         Type = "ARGOCD",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         DeletePropagationPolicy = "RETAIN",
 ///         Tags =
 ///         {
 ///             { "Name", "example-capability" },
@@ -99,11 +99,6 @@ import 'capability_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := eks.NewCapability(ctx, "example", &eks.CapabilityArgs{
-/// 			ClusterName:             pulumi.Any(exampleAwsEksCluster.Name),
-/// 			CapabilityName:          pulumi.String("argocd"),
-/// 			Type:                    pulumi.String("ARGOCD"),
-/// 			RoleArn:                 pulumi.Any(exampleAwsIamRole.Arn),
-/// 			DeletePropagationPolicy: pulumi.String("RETAIN"),
 /// 			Configuration: &eks.CapabilityConfigurationArgs{
 /// 				ArgoCd: &eks.CapabilityConfigurationArgoCdArgs{
 /// 					AwsIdc: &eks.CapabilityConfigurationArgoCdAwsIdcArgs{
@@ -112,6 +107,11 @@ import 'capability_timeouts.dart';
 /// 					Namespace: pulumi.String("argocd"),
 /// 				},
 /// 			},
+/// 			ClusterName:             pulumi.Any(exampleAwsEksCluster.Name),
+/// 			CapabilityName:          pulumi.String("argocd"),
+/// 			Type:                    pulumi.String("ARGOCD"),
+/// 			RoleArn:                 pulumi.Any(exampleAwsIamRole.Arn),
+/// 			DeletePropagationPolicy: pulumi.String("RETAIN"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-capability"),
 /// 			},
@@ -133,11 +133,6 @@ import 'capability_timeouts.dart';
 /// }
 ///
 /// resource "aws_eks_capability" "example" {
-///   cluster_name              = exampleAwsEksCluster.name
-///   capability_name           = "argocd"
-///   type                      = "ARGOCD"
-///   role_arn                  = exampleAwsIamRole.arn
-///   delete_propagation_policy = "RETAIN"
 ///   configuration = {
 ///     argo_cd = {
 ///       aws_idc = {
@@ -146,6 +141,11 @@ import 'capability_timeouts.dart';
 ///       namespace = "argocd"
 ///     }
 ///   }
+///   cluster_name              = exampleAwsEksCluster.name
+///   capability_name           = "argocd"
+///   type                      = "ARGOCD"
+///   role_arn                  = exampleAwsIamRole.arn
+///   delete_propagation_policy = "RETAIN"
 ///   tags = {
 ///     "Name" = "example-capability"
 ///   }
@@ -176,11 +176,6 @@ import 'capability_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Capability("example", CapabilityArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
-///             .capabilityName("argocd")
-///             .type("ARGOCD")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .deletePropagationPolicy("RETAIN")
 ///             .configuration(CapabilityConfigurationArgs.builder()
 ///                 .argoCd(CapabilityConfigurationArgoCdArgs.builder()
 ///                     .awsIdc(CapabilityConfigurationArgoCdAwsIdcArgs.builder()
@@ -189,6 +184,11 @@ import 'capability_timeouts.dart';
 ///                     .namespace("argocd")
 ///                     .build())
 ///                 .build())
+///             .clusterName(exampleAwsEksCluster.name())
+///             .capabilityName("argocd")
+///             .type("ARGOCD")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .deletePropagationPolicy("RETAIN")
 ///             .tags(Map.of("Name", "example-capability"))
 ///             .build());
 ///
@@ -200,16 +200,16 @@ import 'capability_timeouts.dart';
 ///   example:
 ///     type: aws:eks:Capability
 ///     properties:
-///       clusterName: ${exampleAwsEksCluster.name}
-///       capabilityName: argocd
-///       type: ARGOCD
-///       roleArn: ${exampleAwsIamRole.arn}
-///       deletePropagationPolicy: RETAIN
 ///       configuration:
 ///         argoCd:
 ///           awsIdc:
 ///             idcInstanceArn: arn:aws:sso:::instance/ssoins-1234567890abcdef0
 ///           namespace: argocd
+///       clusterName: ${exampleAwsEksCluster.name}
+///       capabilityName: argocd
+///       type: ARGOCD
+///       roleArn: ${exampleAwsIamRole.arn}
+///       deletePropagationPolicy: RETAIN
 ///       tags:
 ///         Name: example-capability
 /// ```
@@ -272,7 +272,7 @@ class Capability extends pulumi.CustomResource {
           'aws:eks/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capabilityName = registerOutput<String>('capabilityName');
@@ -281,8 +281,8 @@ class Capability extends pulumi.CustomResource {
     deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CapabilityTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapabilityTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
@@ -293,11 +293,12 @@ class Capability extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapabilityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Capability._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,8 +319,31 @@ class Capability extends pulumi.CustomResource {
     deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<CapabilityTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapabilityTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Capability] resource.
+  Capability.reference(String urn)
+    : super(
+        'aws:eks/capability:Capability',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capabilityName = registerOutput<String>('capabilityName');
+    clusterName = registerOutput<String>('clusterName');
+    configuration = registerOutput<CapabilityConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapabilityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CapabilityTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapabilityTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');

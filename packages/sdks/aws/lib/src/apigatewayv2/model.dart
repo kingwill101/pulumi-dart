@@ -238,7 +238,7 @@ class Model extends pulumi.CustomResource {
           'aws:apigatewayv2/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     contentType = registerOutput<String>('contentType');
@@ -253,11 +253,12 @@ class Model extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Model._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -271,6 +272,23 @@ class Model extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
+  }
+
+  /// Creates a typed reference to an existing [Model] resource.
+  Model.reference(String urn)
+    : super(
+        'aws:apigatewayv2/model:Model',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');

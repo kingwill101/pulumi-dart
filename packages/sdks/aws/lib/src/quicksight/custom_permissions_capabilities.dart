@@ -4,51 +4,51 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomPermissionsCapabilities {
   /// The ability to add or run anomaly detection. Valid values: `DENY`.
-  final pulumi.Input<String>? addOrRunAnomalyDetectionForAnalyses;
+  final pulumi.Input<String?>? addOrRunAnomalyDetectionForAnalyses;
   /// The ability to create and update email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? createAndUpdateDashboardEmailReports;
+  final pulumi.Input<String?>? createAndUpdateDashboardEmailReports;
   /// The ability to create and update data sources. Valid values: `DENY`.
-  final pulumi.Input<String>? createAndUpdateDataSources;
+  final pulumi.Input<String?>? createAndUpdateDataSources;
   /// The ability to create and update datasets. Valid values: `DENY`.
-  final pulumi.Input<String>? createAndUpdateDatasets;
+  final pulumi.Input<String?>? createAndUpdateDatasets;
   /// The ability to export to create and update themes. Valid values: `DENY`.
-  final pulumi.Input<String>? createAndUpdateThemes;
+  final pulumi.Input<String?>? createAndUpdateThemes;
   /// The ability to create and update threshold alerts. Valid values: `DENY`.
-  final pulumi.Input<String>? createAndUpdateThresholdAlerts;
+  final pulumi.Input<String?>? createAndUpdateThresholdAlerts;
   /// The ability to create shared folders. Valid values: `DENY`.
-  final pulumi.Input<String>? createSharedFolders;
+  final pulumi.Input<String?>? createSharedFolders;
   /// The ability to create a SPICE dataset. Valid values: `DENY`.
-  final pulumi.Input<String>? createSpiceDataset;
+  final pulumi.Input<String?>? createSpiceDataset;
   /// The ability to export to CSV files from the UI. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToCsv;
+  final pulumi.Input<String?>? exportToCsv;
   /// The ability to export to CSV files in scheduled email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToCsvInScheduledReports;
+  final pulumi.Input<String?>? exportToCsvInScheduledReports;
   /// The ability to export to Excel files from the UI. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToExcel;
+  final pulumi.Input<String?>? exportToExcel;
   /// The ability to export to Excel files in scheduled email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToExcelInScheduledReports;
+  final pulumi.Input<String?>? exportToExcelInScheduledReports;
   /// The ability to export to PDF files from the UI. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToPdf;
+  final pulumi.Input<String?>? exportToPdf;
   /// The ability to export to PDF files in scheduled email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? exportToPdfInScheduledReports;
+  final pulumi.Input<String?>? exportToPdfInScheduledReports;
   /// The ability to include content in scheduled email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? includeContentInScheduledReportsEmail;
+  final pulumi.Input<String?>? includeContentInScheduledReportsEmail;
   /// The ability to print reports. Valid values: `DENY`.
-  final pulumi.Input<String>? printReports;
+  final pulumi.Input<String?>? printReports;
   /// The ability to rename shared folders. Valid values: `DENY`.
-  final pulumi.Input<String>? renameSharedFolders;
+  final pulumi.Input<String?>? renameSharedFolders;
   /// The ability to share analyses. Valid values: `DENY`.
-  final pulumi.Input<String>? shareAnalyses;
+  final pulumi.Input<String?>? shareAnalyses;
   /// The ability to share dashboards. Valid values: `DENY`.
-  final pulumi.Input<String>? shareDashboards;
+  final pulumi.Input<String?>? shareDashboards;
   /// The ability to share data sources. Valid values: `DENY`.
-  final pulumi.Input<String>? shareDataSources;
+  final pulumi.Input<String?>? shareDataSources;
   /// The ability to share datasets. Valid values: `DENY`.
-  final pulumi.Input<String>? shareDatasets;
+  final pulumi.Input<String?>? shareDatasets;
   /// The ability to subscribe to email reports. Valid values: `DENY`.
-  final pulumi.Input<String>? subscribeDashboardEmailReports;
+  final pulumi.Input<String?>? subscribeDashboardEmailReports;
   /// The ability to view account SPICE capacity. Valid values: `DENY`.
-  final pulumi.Input<String>? viewAccountSpiceCapacity;
+  final pulumi.Input<String?>? viewAccountSpiceCapacity;
 
   /// Creates a new [CustomPermissionsCapabilities].
   /// [addOrRunAnomalyDetectionForAnalyses] The ability to add or run anomaly detection. Valid values: `DENY`.

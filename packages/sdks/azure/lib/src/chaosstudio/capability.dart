@@ -152,7 +152,7 @@ import 'capability_state.dart';
 /// 		}
 /// 		exampleTarget, err := chaosstudio.NewTarget(ctx, "example", &chaosstudio.TargetArgs{
 /// 			Location:         exampleResourceGroup.Location,
-/// 			TargetResourceId: example.ID(),
+/// 			TargetResourceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetType:       pulumi.String("example-value"),
 /// 		})
 /// 		if err != nil {
@@ -160,7 +160,7 @@ import 'capability_state.dart';
 /// 		}
 /// 		_, err = chaosstudio.NewCapability(ctx, "example", &chaosstudio.CapabilityArgs{
 /// 			CapabilityType:      pulumi.String("example-value"),
-/// 			ChaosStudioTargetId: exampleTarget.ID(),
+/// 			ChaosStudioTargetId: exampleTarget.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -344,7 +344,7 @@ class Capability extends pulumi.CustomResource {
           'azure:chaosstudio/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     capabilityType = registerOutput<String>('capabilityType');
     capabilityUrn = registerOutput<String>('capabilityUrn');
@@ -356,11 +356,12 @@ class Capability extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapabilityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Capability._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,6 +375,20 @@ class Capability extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    capabilityType = registerOutput<String>('capabilityType');
+    capabilityUrn = registerOutput<String>('capabilityUrn');
+    chaosStudioTargetId = registerOutput<String>('chaosStudioTargetId');
+  }
+
+  /// Creates a typed reference to an existing [Capability] resource.
+  Capability.reference(String urn)
+    : super(
+        'azure:chaosstudio/capability:Capability',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     capabilityType = registerOutput<String>('capabilityType');
     capabilityUrn = registerOutput<String>('capabilityUrn');
     chaosStudioTargetId = registerOutput<String>('chaosStudioTargetId');

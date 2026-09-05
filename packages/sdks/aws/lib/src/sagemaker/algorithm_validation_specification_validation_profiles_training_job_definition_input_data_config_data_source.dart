@@ -6,9 +6,9 @@ import 'algorithm_validation_specification_validation_profiles_training_job_defi
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSource {
   /// File system-backed data source. See File System Data Source.
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceFileSystemDataSource>? fileSystemDataSource;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceFileSystemDataSource?>? fileSystemDataSource;
   /// S3-backed training data source. See Training S3 Data Source.
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSource>? s3DataSource;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSource?>? s3DataSource;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSource].
   /// [fileSystemDataSource] File system-backed data source. See File System Data Source.

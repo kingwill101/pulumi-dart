@@ -7,7 +7,7 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration {
   /// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `inputFormatConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration> inputFormatConfiguration;
   /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `outputFormatConfiguration` block below for details.

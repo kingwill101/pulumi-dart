@@ -7,11 +7,11 @@ import 'budget_action_definition_ssm_action_definition.dart';
 
 class BudgetActionDefinition {
   /// The AWS Identity and Access Management (IAM) action definition details. See IAM Action Definition.
-  final pulumi.Input<BudgetActionDefinitionIamActionDefinition>? iamActionDefinition;
+  final pulumi.Input<BudgetActionDefinitionIamActionDefinition?>? iamActionDefinition;
   /// The service control policies (SCPs) action definition details. See SCP Action Definition.
-  final pulumi.Input<BudgetActionDefinitionScpActionDefinition>? scpActionDefinition;
+  final pulumi.Input<BudgetActionDefinitionScpActionDefinition?>? scpActionDefinition;
   /// The AWS Systems Manager (SSM) action definition details. See SSM Action Definition.
-  final pulumi.Input<BudgetActionDefinitionSsmActionDefinition>? ssmActionDefinition;
+  final pulumi.Input<BudgetActionDefinitionSsmActionDefinition?>? ssmActionDefinition;
 
   /// Creates a new [BudgetActionDefinition].
   /// [iamActionDefinition] The AWS Identity and Access Management (IAM) action definition details. See IAM Action Definition.

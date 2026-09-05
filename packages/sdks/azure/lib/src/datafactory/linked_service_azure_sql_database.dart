@@ -103,7 +103,7 @@ import 'linked_service_azure_sql_database_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureSqlDatabase(ctx, "example", &datafactory.LinkedServiceAzureSqlDatabaseArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30"),
 /// 		})
 /// 		if err != nil {
@@ -257,10 +257,10 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureSqlDatabase:LinkedServiceAzureSqlDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionString = registerOutput<String?>('connectionString');
     credentialName = registerOutput<String?>('credentialName');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -269,7 +269,7 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     keyVaultConnectionString = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPassword = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
     servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
     tenantId = registerOutput<String?>('tenantId');
@@ -281,11 +281,12 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureSqlDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureSqlDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -299,8 +300,8 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionString = registerOutput<String?>('connectionString');
     credentialName = registerOutput<String?>('credentialName');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -309,7 +310,33 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     keyVaultConnectionString = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPassword = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    tenantId = registerOutput<String?>('tenantId');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureSqlDatabase] resource.
+  LinkedServiceAzureSqlDatabase.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureSqlDatabase:LinkedServiceAzureSqlDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString');
+    credentialName = registerOutput<String?>('credentialName');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultConnectionString = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultPassword = registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
     servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
     tenantId = registerOutput<String?>('tenantId');

@@ -169,6 +169,17 @@ Future<GetResult> get(
   return GetResult.fromMap(result);
 }
 
+pulumi.Output<GetResult> getOutput(
+  GetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/get:get',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Attached Network.
 ///
 /// ## Example Usage
@@ -314,6 +325,17 @@ Future<GetAttachedNetworkResult> getAttachedNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAttachedNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetAttachedNetworkResult> getAttachedNetworkOutput(
+  GetAttachedNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getAttachedNetwork:getAttachedNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachedNetworkResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Dev Center Catalog.
@@ -463,6 +485,17 @@ Future<GetCatalogResult> getCatalog(
   return GetCatalogResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogResult> getCatalogOutput(
+  GetCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getCatalog:getCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Dev Box Definition.
 ///
 /// ## Example Usage
@@ -608,6 +641,17 @@ Future<GetDevBoxDefinitionResult> getDevBoxDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevBoxDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetDevBoxDefinitionResult> getDevBoxDefinitionOutput(
+  GetDevBoxDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getDevBoxDefinition:getDevBoxDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevBoxDefinitionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Dev Center Environment Type.
@@ -757,6 +801,17 @@ Future<GetEnvironmentTypeResult> getEnvironmentType(
   return GetEnvironmentTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentTypeResult> getEnvironmentTypeOutput(
+  GetEnvironmentTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getEnvironmentType:getEnvironmentType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentTypeResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Gallery.
 ///
 /// ## Example Usage
@@ -902,6 +957,17 @@ Future<GetGalleryResult> getGallery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryResult> getGalleryOutput(
+  GetGalleryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getGallery:getGallery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Managed DevOps Pool.
@@ -1051,6 +1117,17 @@ Future<GetManagedDevOpsPoolResult> getManagedDevOpsPool(
   return GetManagedDevOpsPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedDevOpsPoolResult> getManagedDevOpsPoolOutput(
+  GetManagedDevOpsPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getManagedDevOpsPool:getManagedDevOpsPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDevOpsPoolResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Network Connection.
 ///
 /// ## Example Usage
@@ -1196,6 +1273,17 @@ Future<GetNetworkConnectionResult> getNetworkConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkConnectionResult> getNetworkConnectionOutput(
+  GetNetworkConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getNetworkConnection:getNetworkConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkConnectionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Dev Center Project.
@@ -1345,6 +1433,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getProject:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Project Environment Type.
 ///
 /// ## Example Usage
@@ -1492,6 +1591,17 @@ Future<GetProjectEnvironmentTypeResult> getProjectEnvironmentType(
   return GetProjectEnvironmentTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectEnvironmentTypeResult> getProjectEnvironmentTypeOutput(
+  GetProjectEnvironmentTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getProjectEnvironmentType:getProjectEnvironmentType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectEnvironmentTypeResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Center Project Pool.
 ///
 /// ## Example Usage
@@ -1637,4 +1747,15 @@ Future<GetProjectPoolResult> getProjectPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectPoolResult> getProjectPoolOutput(
+  GetProjectPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devcenter/getProjectPool:getProjectPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectPoolResult.fromMap);
 }

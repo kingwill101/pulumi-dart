@@ -286,9 +286,9 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
           'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls');
+    allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
@@ -299,11 +299,12 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreWorkloadIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreWorkloadIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,7 +318,22 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls');
+    allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreWorkloadIdentity] resource.
+  AgentcoreWorkloadIdentity.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     workloadIdentityArn = registerOutput<String>('workloadIdentityArn');

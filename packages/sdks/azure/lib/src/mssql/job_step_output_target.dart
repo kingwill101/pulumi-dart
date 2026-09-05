@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobStepOutputTarget {
   /// The ID of the Elastic Job Credential to use when connecting to the output destination.
-  final pulumi.Input<String>? jobCredentialId;
+  final pulumi.Input<String?>? jobCredentialId;
   /// The ID of the output database.
   final pulumi.Input<String> mssqlDatabaseId;
   /// The name of the output schema. Defaults to `dbo`.
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
   /// The name of the output table.
   final pulumi.Input<String> tableName;
 

@@ -49,7 +49,7 @@ class GetRouteSpecHttpRouteMatch {
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchHeader>(map['headers']!, (value) => GetRouteSpecHttpRouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))),
       method: pulumi.Input.fromValue(map['method'] as String),
       paths: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchPath>(map['paths']!, (value) => GetRouteSpecHttpRouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
       queryParameters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttpRouteMatchQueryParameter>(map['queryParameters']!, (value) => GetRouteSpecHttpRouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))),
       scheme: pulumi.Input.fromValue(map['scheme'] as String),

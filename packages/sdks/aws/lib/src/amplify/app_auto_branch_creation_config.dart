@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAutoBranchCreationConfig {
   /// Basic authorization credentials for the autocreated branch.
-  final pulumi.Input<String>? basicAuthCredentials;
+  final pulumi.Input<String?>? basicAuthCredentials;
   /// Build specification (build spec) for the autocreated branch.
-  final pulumi.Input<String>? buildSpec;
+  final pulumi.Input<String?>? buildSpec;
   /// Enables auto building for the autocreated branch.
-  final pulumi.Input<bool>? enableAutoBuild;
+  final pulumi.Input<bool?>? enableAutoBuild;
   /// Enables basic authorization for the autocreated branch.
-  final pulumi.Input<bool>? enableBasicAuth;
+  final pulumi.Input<bool?>? enableBasicAuth;
   /// Enables performance mode for the branch.
-  final pulumi.Input<bool>? enablePerformanceMode;
+  final pulumi.Input<bool?>? enablePerformanceMode;
   /// Enables pull request previews for the autocreated branch.
-  final pulumi.Input<bool>? enablePullRequestPreview;
+  final pulumi.Input<bool?>? enablePullRequestPreview;
   /// Environment variables for the autocreated branch.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Framework for the autocreated branch.
-  final pulumi.Input<String>? framework;
+  final pulumi.Input<String?>? framework;
   /// Amplify environment name for the pull request.
-  final pulumi.Input<String>? pullRequestEnvironmentName;
+  final pulumi.Input<String?>? pullRequestEnvironmentName;
   /// Describes the current stage for the autocreated branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
 
   /// Creates a new [AppAutoBranchCreationConfig].
   /// [basicAuthCredentials] Basic authorization credentials for the autocreated branch.

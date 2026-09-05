@@ -4,30 +4,30 @@
 /// Result data returned by getReportDefinition.
 class GetReportDefinitionResult {
   /// A list of additional artifacts.
-  final List<String> additionalArtifacts;
+  final List<String>? additionalArtifacts;
   /// A list of schema elements.
-  final List<String> additionalSchemaElements;
+  final List<String>? additionalSchemaElements;
   /// Preferred format for report.
-  final String compression;
+  final String? compression;
   /// Preferred compression format for report.
-  final String format;
+  final String? format;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// If true reports are updated after they have been finalized.
-  final bool refreshClosedReports;
-  final String reportName;
+  final bool? refreshClosedReports;
+  final String? reportName;
   /// Overwrite the previous version of each report or to deliver the report in addition to the previous versions.
-  final String reportVersioning;
+  final String? reportVersioning;
   /// Name of customer S3 bucket.
-  final String s3Bucket;
+  final String? s3Bucket;
   /// Preferred report path prefix.
-  final String s3Prefix;
+  final String? s3Prefix;
   /// Region of customer S3 bucket.
-  final String s3Region;
+  final String? s3Region;
   /// Map of key-value pairs assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Frequency on which report data are measured and displayed.
-  final String timeUnit;
+  final String? timeUnit;
 
   /// Creates a new [GetReportDefinitionResult].
   /// [additionalArtifacts] A list of additional artifacts.
@@ -36,7 +36,7 @@ class GetReportDefinitionResult {
   /// [format] Preferred compression format for report.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [refreshClosedReports] If true reports are updated after they have been finalized.
-  /// [reportName] Required.
+  /// [reportName] Optional.
   /// [reportVersioning] Overwrite the previous version of each report or to deliver the report in addition to the previous versions.
   /// [s3Bucket] Name of customer S3 bucket.
   /// [s3Prefix] Preferred report path prefix.
@@ -44,54 +44,54 @@ class GetReportDefinitionResult {
   /// [tags] Map of key-value pairs assigned to the resource.
   /// [timeUnit] Frequency on which report data are measured and displayed.
   const GetReportDefinitionResult({
-    required this.additionalArtifacts,
-    required this.additionalSchemaElements,
-    required this.compression,
-    required this.format,
-    required this.id,
-    required this.refreshClosedReports,
-    required this.reportName,
-    required this.reportVersioning,
-    required this.s3Bucket,
-    required this.s3Prefix,
-    required this.s3Region,
-    required this.tags,
-    required this.timeUnit,
+    this.additionalArtifacts,
+    this.additionalSchemaElements,
+    this.compression,
+    this.format,
+    this.id,
+    this.refreshClosedReports,
+    this.reportName,
+    this.reportVersioning,
+    this.s3Bucket,
+    this.s3Prefix,
+    this.s3Region,
+    this.tags,
+    this.timeUnit,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalArtifacts': additionalArtifacts,
-      'additionalSchemaElements': additionalSchemaElements,
-      'compression': compression,
-      'format': format,
-      'id': id,
-      'refreshClosedReports': refreshClosedReports,
-      'reportName': reportName,
-      'reportVersioning': reportVersioning,
-      's3Bucket': s3Bucket,
-      's3Prefix': s3Prefix,
-      's3Region': s3Region,
-      'tags': tags,
-      'timeUnit': timeUnit,
+      'additionalArtifacts': ?additionalArtifacts,
+      'additionalSchemaElements': ?additionalSchemaElements,
+      'compression': ?compression,
+      'format': ?format,
+      'id': ?id,
+      'refreshClosedReports': ?refreshClosedReports,
+      'reportName': ?reportName,
+      'reportVersioning': ?reportVersioning,
+      's3Bucket': ?s3Bucket,
+      's3Prefix': ?s3Prefix,
+      's3Region': ?s3Region,
+      'tags': ?tags,
+      'timeUnit': ?timeUnit,
     };
   }
 
   factory GetReportDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionResult(
-      additionalArtifacts: (map['additionalArtifacts'] as List).cast<String>(),
-      additionalSchemaElements: (map['additionalSchemaElements'] as List).cast<String>(),
-      compression: map['compression'] as String,
-      format: map['format'] as String,
-      id: map['id'] as String,
-      refreshClosedReports: map['refreshClosedReports'] as bool,
-      reportName: map['reportName'] as String,
-      reportVersioning: map['reportVersioning'] as String,
-      s3Bucket: map['s3Bucket'] as String,
-      s3Prefix: map['s3Prefix'] as String,
-      s3Region: map['s3Region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      timeUnit: map['timeUnit'] as String,
+      additionalArtifacts: (() { final guardedValue = map['additionalArtifacts']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      additionalSchemaElements: (() { final guardedValue = map['additionalSchemaElements']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      refreshClosedReports: (() { final guardedValue = map['refreshClosedReports']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      reportName: (() { final guardedValue = map['reportName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reportVersioning: (() { final guardedValue = map['reportVersioning']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      s3Bucket: (() { final guardedValue = map['s3Bucket']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      s3Prefix: (() { final guardedValue = map['s3Prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      s3Region: (() { final guardedValue = map['s3Region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      timeUnit: (() { final guardedValue = map['timeUnit']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

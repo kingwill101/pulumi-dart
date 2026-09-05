@@ -235,7 +235,7 @@ import 'environment_managed_certificate_state.dart';
 /// 			Name:                    pulumi.String("example-environment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -243,7 +243,7 @@ import 'environment_managed_certificate_state.dart';
 /// 		exampleApp, err := containerapp.NewApp(ctx, "example", &containerapp.AppArgs{
 /// 			Name:                      pulumi.String("example-app"),
 /// 			ResourceGroupName:         example.Name,
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			RevisionMode:              pulumi.String("Single"),
 /// 			Template: &containerapp.AppTemplateArgs{
 /// 				Containers: containerapp.AppTemplateContainerArray{
@@ -272,14 +272,14 @@ import 'environment_managed_certificate_state.dart';
 /// 		}
 /// 		exampleCustomDomain, err := containerapp.NewCustomDomain(ctx, "example", &containerapp.CustomDomainArgs{
 /// 			Name:           pulumi.String("example.com"),
-/// 			ContainerAppId: exampleApp.ID(),
+/// 			ContainerAppId: exampleApp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = containerapp.NewEnvironmentManagedCertificate(ctx, "example", &containerapp.EnvironmentManagedCertificateArgs{
 /// 			Name:                      pulumi.String("example-managed-cert"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			SubjectName:               pulumi.String("example.com"),
 /// 			DomainControlValidation:   pulumi.String("HTTP"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -557,13 +557,13 @@ class EnvironmentManagedCertificate extends pulumi.CustomResource {
           'azure:containerapp/environmentManagedCertificate:EnvironmentManagedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
     domainControlValidation = registerOutput<String?>('domainControlValidation');
     this.name = registerOutput<String>('name');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validationToken = registerOutput<String>('validationToken');
   }
 
@@ -572,11 +572,12 @@ class EnvironmentManagedCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentManagedCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentManagedCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -594,7 +595,24 @@ class EnvironmentManagedCertificate extends pulumi.CustomResource {
     domainControlValidation = registerOutput<String?>('domainControlValidation');
     this.name = registerOutput<String>('name');
     subjectName = registerOutput<String>('subjectName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validationToken = registerOutput<String>('validationToken');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentManagedCertificate] resource.
+  EnvironmentManagedCertificate.reference(String urn)
+    : super(
+        'azure:containerapp/environmentManagedCertificate:EnvironmentManagedCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    domainControlValidation = registerOutput<String?>('domainControlValidation');
+    this.name = registerOutput<String>('name');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validationToken = registerOutput<String>('validationToken');
   }
 }

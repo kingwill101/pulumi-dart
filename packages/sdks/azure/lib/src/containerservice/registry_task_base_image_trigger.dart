@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskBaseImageTrigger {
   /// Should the trigger be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this trigger.
   final pulumi.Input<String> name;
   /// The type of the trigger. Possible values are `All` and `Runtime`.
   final pulumi.Input<String> type;
   /// The endpoint URL for receiving the trigger.
-  final pulumi.Input<String>? updateTriggerEndpoint;
+  final pulumi.Input<String?>? updateTriggerEndpoint;
   /// Type of payload body for the trigger. Possible values are `Default` and `Token`.
-  final pulumi.Input<String>? updateTriggerPayloadType;
+  final pulumi.Input<String?>? updateTriggerPayloadType;
 
   /// Creates a new [RegistryTaskBaseImageTrigger].
   /// [enabled] Should the trigger be enabled? Defaults to `true`.

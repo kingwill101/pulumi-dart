@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualHubConnectionRoutingStaticVnetRoute {
   /// A list of CIDR Ranges which should be used as Address Prefixes.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// The name which should be used for this Static Route.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The IP Address which should be used for the Next Hop.
-  final pulumi.Input<String>? nextHopIpAddress;
+  final pulumi.Input<String?>? nextHopIpAddress;
 
   /// Creates a new [VirtualHubConnectionRoutingStaticVnetRoute].
   /// [addressPrefixes] A list of CIDR Ranges which should be used as Address Prefixes.

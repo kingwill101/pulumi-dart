@@ -22,12 +22,12 @@ import 'stack_set_state.dart';
 ///
 /// const aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         effect: "Allow",
 ///         principals: [{
 ///             identifiers: ["cloudformation.amazonaws.com"],
 ///             type: "Service",
 ///         }],
+///         actions: ["sts:AssumeRole"],
+///         effect: "Allow",
 ///     }],
 /// });
 /// const aWSCloudFormationStackSetAdministrationRole = new aws.iam.Role("AWSCloudFormationStackSetAdministrationRole", {
@@ -83,12 +83,12 @@ import 'stack_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// a_ws_cloud_formation_stack_set_administration_role_assume_role_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "identifiers": ["cloudformation.amazonaws.com"],
 ///         "type": "Service",
 ///     }],
+///     "actions": ["sts:AssumeRole"],
+///     "effect": "Allow",
 /// }])
 /// a_ws_cloud_formation_stack_set_administration_role = aws.iam.Role("AWSCloudFormationStackSetAdministrationRole",
 ///     assume_role_policy=a_ws_cloud_formation_stack_set_administration_role_assume_role_policy.json,
@@ -147,11 +147,6 @@ import 'stack_set_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -163,6 +158,11 @@ import 'stack_set_state.dart';
 ///                         Type = "Service",
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                 },
+///                 Effect = "Allow",
 ///             },
 ///         },
 ///     });
@@ -262,10 +262,6 @@ import 'stack_set_state.dart';
 /// 		aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Identifiers: []string{
@@ -274,6 +270,10 @@ import 'stack_set_state.dart';
 /// 							Type: "Service",
 /// 						},
 /// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -365,12 +365,12 @@ import 'stack_set_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     effect  = "Allow"
 ///     principals {
 ///       identifiers = ["cloudformation.amazonaws.com"]
 ///       type        = "Service"
 ///     }
+///     actions = ["sts:AssumeRole"]
+///     effect  = "Allow"
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "aWSCloudFormationStackSetAdministrationRoleExecutionPolicy" {
@@ -453,12 +453,12 @@ import 'stack_set_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("cloudformation.amazonaws.com")
 ///                     .type("Service")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
+///                 .effect("Allow")
 ///                 .build())
 ///             .build());
 ///
@@ -558,13 +558,13 @@ import 'stack_set_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - identifiers:
 ///                   - cloudformation.amazonaws.com
 ///                 type: Service
+///             actions:
+///               - sts:AssumeRole
+///             effect: Allow
 ///   aWSCloudFormationStackSetAdministrationRoleExecutionPolicy:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -597,7 +597,7 @@ import 'stack_set_state.dart';
 class StackSet extends pulumi.CustomResource {
   /// Amazon Resource Number (ARN) of the IAM Role in the administrator account. This must be defined when using the `SELF_MANAGED` permission model.
   late final pulumi.Output<String?> administrationRoleArn;
-  /// Amazon Resource Name (ARN) of the StackSet.
+  /// ARN of the StackSet.
   late final pulumi.Output<String> arn;
   /// Configuration block containing the auto-deployment model for your StackSet. This can only be defined when using the `SERVICE_MANAGED` permission model.
   late final pulumi.Output<StackSetAutoDeployment?> autoDeployment;
@@ -644,24 +644,24 @@ class StackSet extends pulumi.CustomResource {
           'aws:cloudformation/stackSet:StackSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     administrationRoleArn = registerOutput<String?>('administrationRoleArn');
     arn = registerOutput<String>('arn');
     autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetAutoDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     callAs = registerOutput<String?>('callAs');
-    capabilities = registerOutput<List<String>?>('capabilities');
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');
     managedExecution = registerOutput<StackSetManagedExecution?>('managedExecution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetManagedExecution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     operationPreferences = registerOutput<StackSetOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     permissionModel = registerOutput<String?>('permissionModel');
     region = registerOutput<String>('region');
     stackSetId = registerOutput<String>('stackSetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     templateUrl = registerOutput<String?>('templateUrl');
   }
@@ -671,11 +671,12 @@ class StackSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StackSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StackSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -693,18 +694,47 @@ class StackSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetAutoDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     callAs = registerOutput<String?>('callAs');
-    capabilities = registerOutput<List<String>?>('capabilities');
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');
     managedExecution = registerOutput<StackSetManagedExecution?>('managedExecution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetManagedExecution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     operationPreferences = registerOutput<StackSetOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     permissionModel = registerOutput<String?>('permissionModel');
     region = registerOutput<String>('region');
     stackSetId = registerOutput<String>('stackSetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateBody = registerOutput<String>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
+  }
+
+  /// Creates a typed reference to an existing [StackSet] resource.
+  StackSet.reference(String urn)
+    : super(
+        'aws:cloudformation/stackSet:StackSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrationRoleArn = registerOutput<String?>('administrationRoleArn');
+    arn = registerOutput<String>('arn');
+    autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetAutoDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    callAs = registerOutput<String?>('callAs');
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    executionRoleName = registerOutput<String>('executionRoleName');
+    managedExecution = registerOutput<StackSetManagedExecution?>('managedExecution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetManagedExecution.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    operationPreferences = registerOutput<StackSetOperationPreferences?>('operationPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackSetOperationPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    permissionModel = registerOutput<String?>('permissionModel');
+    region = registerOutput<String>('region');
+    stackSetId = registerOutput<String>('stackSetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     templateUrl = registerOutput<String?>('templateUrl');
   }

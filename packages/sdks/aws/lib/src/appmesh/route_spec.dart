@@ -8,15 +8,15 @@ import 'route_spec_tcp_route.dart';
 
 class RouteSpec {
   /// GRPC routing information for the route. See `spec.grpc_route` Block for details.
-  final pulumi.Input<RouteSpecGrpcRoute>? grpcRoute;
+  final pulumi.Input<RouteSpecGrpcRoute?>? grpcRoute;
   /// HTTP/2 routing information for the route. See `spec.http2_route` Block for details.
-  final pulumi.Input<RouteSpecHttp2Route>? http2Route;
+  final pulumi.Input<RouteSpecHttp2Route?>? http2Route;
   /// HTTP routing information for the route. See `spec.http_route` Block for details.
-  final pulumi.Input<RouteSpecHttpRoute>? httpRoute;
+  final pulumi.Input<RouteSpecHttpRoute?>? httpRoute;
   /// Priority for the route, between `0` and `1000`. Routes are matched based on the specified value, where `0` is the highest priority.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// TCP routing information for the route. See `spec.tcp_route` Block for details.
-  final pulumi.Input<RouteSpecTcpRoute>? tcpRoute;
+  final pulumi.Input<RouteSpecTcpRoute?>? tcpRoute;
 
   /// Creates a new [RouteSpec].
   /// [grpcRoute] GRPC routing information for the route. See `spec.grpc_route` Block for details.
@@ -47,7 +47,7 @@ class RouteSpec {
       grpcRoute: (() { final guardedValue = map['grpcRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecGrpcRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       http2Route: (() { final guardedValue = map['http2Route']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecHttp2Route.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpRoute: (() { final guardedValue = map['httpRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecHttpRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tcpRoute: (() { final guardedValue = map['tcpRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecTcpRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

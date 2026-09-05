@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_firewall_policy_args.dart';
+import 'frontdoor_firewall_policy_custom_rule.dart';
 import 'frontdoor_firewall_policy_log_scrubbing.dart';
+import 'frontdoor_firewall_policy_managed_rule.dart';
 import 'frontdoor_firewall_policy_state.dart';
 
 /// Manages a Front Door (standard/premium) Firewall Policy instance.
@@ -940,7 +942,7 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
   /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, `429`, `990`, `991`, `992`, `993`, `994`, `995`, `996`, `997`, `998`, or `999`.
   late final pulumi.Output<int?> customBlockResponseStatusCode;
   /// One or more `customRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+  late final pulumi.Output<List<FrontdoorFirewallPolicyCustomRule>?> customRules;
   /// Is the Front Door Firewall Policy enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// The Front Door Profiles frontend endpoints associated with this Front Door Firewall Policy.
@@ -956,7 +958,7 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
   /// &gt; **Note:** Setting the`logScrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   late final pulumi.Output<FrontdoorFirewallPolicyLogScrubbing?> logScrubbing;
   /// One or more `managedRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedRules;
+  late final pulumi.Output<List<FrontdoorFirewallPolicyManagedRule>?> managedRules;
   /// The Front Door Firewall Policy mode. Possible values are `Detection`, `Prevention`.
   late final pulumi.Output<String> mode;
   /// The name of the policy. Changing this forces a new resource to be created.
@@ -988,24 +990,24 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
           'azure:cdn/frontdoorFirewallPolicy:FrontdoorFirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     captchaCookieExpirationInMinutes = registerOutput<int>('captchaCookieExpirationInMinutes');
     customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
     customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<FrontdoorFirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRule>(guardedValue, (value) => FrontdoorFirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jsChallengeCookieExpirationInMinutes = registerOutput<int>('jsChallengeCookieExpirationInMinutes');
     logScrubbing = registerOutput<FrontdoorFirewallPolicyLogScrubbing?>('logScrubbing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorFirewallPolicyLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
+    managedRules = registerOutput<List<FrontdoorFirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRule>(guardedValue, (value) => FrontdoorFirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String?>('redirectUrl');
     requestBodyCheckEnabled = registerOutput<bool?>('requestBodyCheckEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FrontdoorFirewallPolicy] resource's state with the given [name] and [id].
@@ -1013,11 +1015,12 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorFirewallPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorFirewallPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1034,18 +1037,45 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
     captchaCookieExpirationInMinutes = registerOutput<int>('captchaCookieExpirationInMinutes');
     customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
     customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    customRules = registerOutput<List<FrontdoorFirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRule>(guardedValue, (value) => FrontdoorFirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jsChallengeCookieExpirationInMinutes = registerOutput<int>('jsChallengeCookieExpirationInMinutes');
     logScrubbing = registerOutput<FrontdoorFirewallPolicyLogScrubbing?>('logScrubbing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorFirewallPolicyLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
+    managedRules = registerOutput<List<FrontdoorFirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRule>(guardedValue, (value) => FrontdoorFirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String?>('redirectUrl');
     requestBodyCheckEnabled = registerOutput<bool?>('requestBodyCheckEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorFirewallPolicy] resource.
+  FrontdoorFirewallPolicy.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorFirewallPolicy:FrontdoorFirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    captchaCookieExpirationInMinutes = registerOutput<int>('captchaCookieExpirationInMinutes');
+    customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
+    customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');
+    customRules = registerOutput<List<FrontdoorFirewallPolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRule>(guardedValue, (value) => FrontdoorFirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    frontendEndpointIds = registerOutput<List<String>>('frontendEndpointIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    jsChallengeCookieExpirationInMinutes = registerOutput<int>('jsChallengeCookieExpirationInMinutes');
+    logScrubbing = registerOutput<FrontdoorFirewallPolicyLogScrubbing?>('logScrubbing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorFirewallPolicyLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedRules = registerOutput<List<FrontdoorFirewallPolicyManagedRule>?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRule>(guardedValue, (value) => FrontdoorFirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    redirectUrl = registerOutput<String?>('redirectUrl');
+    requestBodyCheckEnabled = registerOutput<bool?>('requestBodyCheckEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

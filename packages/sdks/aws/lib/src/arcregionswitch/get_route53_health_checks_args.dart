@@ -10,7 +10,7 @@ class GetRoute53HealthChecksArgs {
   /// ARN of the ARC Region Switch Plan.
   final pulumi.Input<String> planArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetRoute53HealthChecksArgs].
   /// [planArn] ARN of the ARC Region Switch Plan.

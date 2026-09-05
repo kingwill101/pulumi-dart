@@ -20,7 +20,7 @@ class GetCustomModelTrainingMetric {
 
   factory GetCustomModelTrainingMetric.fromMap(Map<String, dynamic> map) {
     return GetCustomModelTrainingMetric(
-      trainingLoss: pulumi.Input.fromValue(map['trainingLoss'] as double),
+      trainingLoss: pulumi.Input.fromValue((map['trainingLoss'] as num).toDouble()),
     );
   }
 }

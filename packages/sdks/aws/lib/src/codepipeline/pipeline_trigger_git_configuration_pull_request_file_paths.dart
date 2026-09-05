@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineTriggerGitConfigurationPullRequestFilePaths {
   /// A list of patterns of Git repository file paths that, when a commit is pushed, are to be excluded from starting the pipeline.
-  final pulumi.Input<List<String>>? excludes;
+  final pulumi.Input<List<String>?>? excludes;
   /// A list of patterns of Git repository file paths that, when a commit is pushed, are to be included as criteria that starts the pipeline.
-  final pulumi.Input<List<String>>? includes;
+  final pulumi.Input<List<String>?>? includes;
 
   /// Creates a new [PipelineTriggerGitConfigurationPullRequestFilePaths].
   /// [excludes] A list of patterns of Git repository file paths that, when a commit is pushed, are to be excluded from starting the pipeline.

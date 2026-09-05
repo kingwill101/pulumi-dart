@@ -5,7 +5,7 @@ import 'hyper_parameter_tuning_job_config_strategy_config_hyperband_strategy_con
 
 class HyperParameterTuningJobConfigStrategyConfig {
   /// Hyperband strategy settings. See `hyperbandStrategyConfig`.
-  final pulumi.Input<HyperParameterTuningJobConfigStrategyConfigHyperbandStrategyConfig>? hyperbandStrategyConfig;
+  final pulumi.Input<HyperParameterTuningJobConfigStrategyConfigHyperbandStrategyConfig?>? hyperbandStrategyConfig;
 
   /// Creates a new [HyperParameterTuningJobConfigStrategyConfig].
   /// [hyperbandStrategyConfig] Hyperband strategy settings. See `hyperbandStrategyConfig`.

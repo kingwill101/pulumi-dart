@@ -205,7 +205,7 @@ import 'nat_rule_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -213,7 +213,7 @@ import 'nat_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleBackendAddressPool, err := lb.NewBackendAddressPool(ctx, "example", &lb.BackendAddressPoolArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("be"),
 /// 		})
 /// 		if err != nil {
@@ -221,7 +221,7 @@ import 'nat_rule_state.dart';
 /// 		}
 /// 		_, err = lb.NewNatRule(ctx, "example", &lb.NatRuleArgs{
 /// 			ResourceGroupName:           example.Name,
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                        pulumi.String("RDPAccess"),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPort:                pulumi.Int(3389),
@@ -233,13 +233,13 @@ import 'nat_rule_state.dart';
 /// 		}
 /// 		_, err = lb.NewNatRule(ctx, "example1", &lb.NatRuleArgs{
 /// 			ResourceGroupName:           example.Name,
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                        pulumi.String("RDPAccess"),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPortStart:           pulumi.Int(3000),
 /// 			FrontendPortEnd:             pulumi.Int(3389),
 /// 			BackendPort:                 pulumi.Int(3389),
-/// 			BackendAddressPoolId:        exampleBackendAddressPool.ID(),
+/// 			BackendAddressPoolId:        exampleBackendAddressPool.ID().ToIDOutput().ToStringOutput(),
 /// 			FrontendIpConfigurationName: pulumi.String("PublicIPAddress"),
 /// 		})
 /// 		if err != nil {
@@ -499,7 +499,7 @@ class NatRule extends pulumi.CustomResource {
           'azure:lb/natRule:NatRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backendAddressPoolId = registerOutput<String?>('backendAddressPoolId');
     backendIpConfigurationId = registerOutput<String>('backendIpConfigurationId');
@@ -525,11 +525,12 @@ class NatRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -543,6 +544,34 @@ class NatRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backendAddressPoolId = registerOutput<String?>('backendAddressPoolId');
+    backendIpConfigurationId = registerOutput<String>('backendIpConfigurationId');
+    backendPort = registerOutput<int>('backendPort');
+    enableFloatingIp = registerOutput<bool>('enableFloatingIp');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
+    frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
+    frontendPort = registerOutput<int?>('frontendPort');
+    frontendPortEnd = registerOutput<int?>('frontendPortEnd');
+    frontendPortStart = registerOutput<int?>('frontendPortStart');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
+    this.name = registerOutput<String>('name');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+  }
+
+  /// Creates a typed reference to an existing [NatRule] resource.
+  NatRule.reference(String urn)
+    : super(
+        'azure:lb/natRule:NatRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backendAddressPoolId = registerOutput<String?>('backendAddressPoolId');
     backendIpConfigurationId = registerOutput<String>('backendIpConfigurationId');
     backendPort = registerOutput<int>('backendPort');

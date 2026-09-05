@@ -6,9 +6,9 @@ class LoadBalancerAccessLogs {
   /// S3 bucket name to store the logs in.
   final pulumi.Input<String> bucket;
   /// Boolean to enable / disable `accessLogs`. Defaults to `false`, even when `bucket` is specified.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// S3 bucket prefix. Logs are stored in the root if not configured.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [LoadBalancerAccessLogs].
   /// [bucket] S3 bucket name to store the logs in.

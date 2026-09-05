@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceLfTagTableWithColumnsColumnWildcard {
   /// Set of column names for the table to exclude. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid Terraform reporting a difference.
-  final pulumi.Input<List<String>>? excludedColumnNames;
+  final pulumi.Input<List<String>?>? excludedColumnNames;
 
   /// Creates a new [ResourceLfTagTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Set of column names for the table to exclude. If `excludedColumnNames` is included, `wildcard` must be set to `true` to avoid Terraform reporting a difference.

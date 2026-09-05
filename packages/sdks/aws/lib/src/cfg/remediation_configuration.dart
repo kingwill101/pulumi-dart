@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remediation_configuration_args.dart';
 import 'remediation_configuration_execution_controls.dart';
+import 'remediation_configuration_parameter.dart';
 import 'remediation_configuration_state.dart';
 
 /// Provides an AWS Config Remediation Configuration.
@@ -17,18 +18,19 @@ import 'remediation_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _this = new aws.cfg.Rule("this", {
-///     name: "example",
 ///     source: {
 ///         owner: "AWS",
 ///         sourceIdentifier: "S3_BUCKET_VERSIONING_ENABLED",
 ///     },
+///     name: "example",
 /// });
 /// const thisRemediationConfiguration = new aws.cfg.RemediationConfiguration("this", {
-///     configRuleName: _this.name,
-///     resourceType: "AWS::S3::Bucket",
-///     targetType: "SSM_DOCUMENT",
-///     targetId: "AWS-EnableS3BucketEncryption",
-///     targetVersion: "1",
+///     executionControls: {
+///         ssmControls: {
+///             concurrentExecutionRatePercentage: 25,
+///             errorPercentage: 20,
+///         },
+///     },
 ///     parameters: [
 ///         {
 ///             name: "AutomationAssumeRole",
@@ -43,15 +45,14 @@ import 'remediation_configuration_state.dart';
 ///             staticValue: "AES256",
 ///         },
 ///     ],
+///     configRuleName: _this.name,
+///     resourceType: "AWS::S3::Bucket",
+///     targetType: "SSM_DOCUMENT",
+///     targetId: "AWS-EnableS3BucketEncryption",
+///     targetVersion: "1",
 ///     automatic: true,
 ///     maximumAutomaticAttempts: 10,
 ///     retryAttemptSeconds: 600,
-///     executionControls: {
-///         ssmControls: {
-///             concurrentExecutionRatePercentage: 25,
-///             errorPercentage: 20,
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -59,17 +60,18 @@ import 'remediation_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// this = aws.cfg.Rule("this",
-///     name="example",
 ///     source={
 ///         "owner": "AWS",
 ///         "source_identifier": "S3_BUCKET_VERSIONING_ENABLED",
-///     })
+///     },
+///     name="example")
 /// this_remediation_configuration = aws.cfg.RemediationConfiguration("this",
-///     config_rule_name=this.name,
-///     resource_type="AWS::S3::Bucket",
-///     target_type="SSM_DOCUMENT",
-///     target_id="AWS-EnableS3BucketEncryption",
-///     target_version="1",
+///     execution_controls={
+///         "ssm_controls": {
+///             "concurrent_execution_rate_percentage": 25,
+///             "error_percentage": 20,
+///         },
+///     },
 ///     parameters=[
 ///         {
 ///             "name": "AutomationAssumeRole",
@@ -84,15 +86,14 @@ import 'remediation_configuration_state.dart';
 ///             "static_value": "AES256",
 ///         },
 ///     ],
+///     config_rule_name=this.name,
+///     resource_type="AWS::S3::Bucket",
+///     target_type="SSM_DOCUMENT",
+///     target_id="AWS-EnableS3BucketEncryption",
+///     target_version="1",
 ///     automatic=True,
 ///     maximum_automatic_attempts=10,
-///     retry_attempt_seconds=600,
-///     execution_controls={
-///         "ssm_controls": {
-///             "concurrent_execution_rate_percentage": 25,
-///             "error_percentage": 20,
-///         },
-///     })
+///     retry_attempt_seconds=600)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -104,21 +105,24 @@ import 'remediation_configuration_state.dart';
 /// {
 ///     var @this = new Aws.Cfg.Rule("this", new()
 ///     {
-///         Name = "example",
 ///         Source = new Aws.Cfg.Inputs.RuleSourceArgs
 ///         {
 ///             Owner = "AWS",
 ///             SourceIdentifier = "S3_BUCKET_VERSIONING_ENABLED",
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var thisRemediationConfiguration = new Aws.Cfg.RemediationConfiguration("this", new()
 ///     {
-///         ConfigRuleName = @this.Name,
-///         ResourceType = "AWS::S3::Bucket",
-///         TargetType = "SSM_DOCUMENT",
-///         TargetId = "AWS-EnableS3BucketEncryption",
-///         TargetVersion = "1",
+///         ExecutionControls = new Aws.Cfg.Inputs.RemediationConfigurationExecutionControlsArgs
+///         {
+///             SsmControls = new Aws.Cfg.Inputs.RemediationConfigurationExecutionControlsSsmControlsArgs
+///             {
+///                 ConcurrentExecutionRatePercentage = 25,
+///                 ErrorPercentage = 20,
+///             },
+///         },
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Cfg.Inputs.RemediationConfigurationParameterArgs
@@ -137,17 +141,14 @@ import 'remediation_configuration_state.dart';
 ///                 StaticValue = "AES256",
 ///             },
 ///         },
+///         ConfigRuleName = @this.Name,
+///         ResourceType = "AWS::S3::Bucket",
+///         TargetType = "SSM_DOCUMENT",
+///         TargetId = "AWS-EnableS3BucketEncryption",
+///         TargetVersion = "1",
 ///         Automatic = true,
 ///         MaximumAutomaticAttempts = 10,
 ///         RetryAttemptSeconds = 600,
-///         ExecutionControls = new Aws.Cfg.Inputs.RemediationConfigurationExecutionControlsArgs
-///         {
-///             SsmControls = new Aws.Cfg.Inputs.RemediationConfigurationExecutionControlsSsmControlsArgs
-///             {
-///                 ConcurrentExecutionRatePercentage = 25,
-///                 ErrorPercentage = 20,
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -163,21 +164,22 @@ import 'remediation_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		this, err := cfg.NewRule(ctx, "this", &cfg.RuleArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Source: &cfg.RuleSourceArgs{
 /// 				Owner:            pulumi.String("AWS"),
 /// 				SourceIdentifier: pulumi.String("S3_BUCKET_VERSIONING_ENABLED"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cfg.NewRemediationConfiguration(ctx, "this", &cfg.RemediationConfigurationArgs{
-/// 			ConfigRuleName: this.Name,
-/// 			ResourceType:   pulumi.String("AWS::S3::Bucket"),
-/// 			TargetType:     pulumi.String("SSM_DOCUMENT"),
-/// 			TargetId:       pulumi.String("AWS-EnableS3BucketEncryption"),
-/// 			TargetVersion:  pulumi.String("1"),
+/// 			ExecutionControls: &cfg.RemediationConfigurationExecutionControlsArgs{
+/// 				SsmControls: &cfg.RemediationConfigurationExecutionControlsSsmControlsArgs{
+/// 					ConcurrentExecutionRatePercentage: pulumi.Int(25),
+/// 					ErrorPercentage:                   pulumi.Int(20),
+/// 				},
+/// 			},
 /// 			Parameters: cfg.RemediationConfigurationParameterArray{
 /// 				&cfg.RemediationConfigurationParameterArgs{
 /// 					Name:        pulumi.String("AutomationAssumeRole"),
@@ -192,15 +194,14 @@ import 'remediation_configuration_state.dart';
 /// 					StaticValue: pulumi.String("AES256"),
 /// 				},
 /// 			},
+/// 			ConfigRuleName:           this.Name,
+/// 			ResourceType:             pulumi.String("AWS::S3::Bucket"),
+/// 			TargetType:               pulumi.String("SSM_DOCUMENT"),
+/// 			TargetId:                 pulumi.String("AWS-EnableS3BucketEncryption"),
+/// 			TargetVersion:            pulumi.String("1"),
 /// 			Automatic:                pulumi.Bool(true),
 /// 			MaximumAutomaticAttempts: pulumi.Int(10),
 /// 			RetryAttemptSeconds:      pulumi.Int(600),
-/// 			ExecutionControls: &cfg.RemediationConfigurationExecutionControlsArgs{
-/// 				SsmControls: &cfg.RemediationConfigurationExecutionControlsSsmControlsArgs{
-/// 					ConcurrentExecutionRatePercentage: pulumi.Int(25),
-/// 					ErrorPercentage:                   pulumi.Int(20),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -219,18 +220,19 @@ import 'remediation_configuration_state.dart';
 /// }
 ///
 /// resource "aws_cfg_rule" "this" {
-///   name = "example"
 ///   source = {
 ///     owner             = "AWS"
 ///     source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_cfg_remediationconfiguration" "this" {
-///   config_rule_name = aws_cfg_rule.this.name
-///   resource_type    = "AWS::S3::Bucket"
-///   target_type      = "SSM_DOCUMENT"
-///   target_id        = "AWS-EnableS3BucketEncryption"
-///   target_version   = "1"
+///   execution_controls = {
+///     ssm_controls = {
+///       concurrent_execution_rate_percentage = 25
+///       error_percentage                     = 20
+///     }
+///   }
 ///   parameters {
 ///     name         = "AutomationAssumeRole"
 ///     static_value = "arn:aws:iam::875924563244:role/security_config"
@@ -243,15 +245,14 @@ import 'remediation_configuration_state.dart';
 ///     name         = "SSEAlgorithm"
 ///     static_value = "AES256"
 ///   }
+///   config_rule_name           = aws_cfg_rule.this.name
+///   resource_type              = "AWS::S3::Bucket"
+///   target_type                = "SSM_DOCUMENT"
+///   target_id                  = "AWS-EnableS3BucketEncryption"
+///   target_version             = "1"
 ///   automatic                  = true
 ///   maximum_automatic_attempts = 10
 ///   retry_attempt_seconds      = 600
-///   execution_controls = {
-///     ssm_controls = {
-///       concurrent_execution_rate_percentage = 25
-///       error_percentage                     = 20
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -265,9 +266,9 @@ import 'remediation_configuration_state.dart';
 /// import com.pulumi.aws.cfg.inputs.RuleSourceArgs;
 /// import com.pulumi.aws.cfg.RemediationConfiguration;
 /// import com.pulumi.aws.cfg.RemediationConfigurationArgs;
-/// import com.pulumi.aws.cfg.inputs.RemediationConfigurationParameterArgs;
 /// import com.pulumi.aws.cfg.inputs.RemediationConfigurationExecutionControlsArgs;
 /// import com.pulumi.aws.cfg.inputs.RemediationConfigurationExecutionControlsSsmControlsArgs;
+/// import com.pulumi.aws.cfg.inputs.RemediationConfigurationParameterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -282,19 +283,20 @@ import 'remediation_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var this_ = new Rule("this", RuleArgs.builder()
-///             .name("example")
 ///             .source(RuleSourceArgs.builder()
 ///                 .owner("AWS")
 ///                 .sourceIdentifier("S3_BUCKET_VERSIONING_ENABLED")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var thisRemediationConfiguration = new RemediationConfiguration("thisRemediationConfiguration", RemediationConfigurationArgs.builder()
-///             .configRuleName(this_.name())
-///             .resourceType("AWS::S3::Bucket")
-///             .targetType("SSM_DOCUMENT")
-///             .targetId("AWS-EnableS3BucketEncryption")
-///             .targetVersion("1")
+///             .executionControls(RemediationConfigurationExecutionControlsArgs.builder()
+///                 .ssmControls(RemediationConfigurationExecutionControlsSsmControlsArgs.builder()
+///                     .concurrentExecutionRatePercentage(25)
+///                     .errorPercentage(20)
+///                     .build())
+///                 .build())
 ///             .parameters(
 ///                 RemediationConfigurationParameterArgs.builder()
 ///                     .name("AutomationAssumeRole")
@@ -308,15 +310,14 @@ import 'remediation_configuration_state.dart';
 ///                     .name("SSEAlgorithm")
 ///                     .staticValue("AES256")
 ///                     .build())
+///             .configRuleName(this_.name())
+///             .resourceType("AWS::S3::Bucket")
+///             .targetType("SSM_DOCUMENT")
+///             .targetId("AWS-EnableS3BucketEncryption")
+///             .targetVersion("1")
 ///             .automatic(true)
 ///             .maximumAutomaticAttempts(10)
 ///             .retryAttemptSeconds(600)
-///             .executionControls(RemediationConfigurationExecutionControlsArgs.builder()
-///                 .ssmControls(RemediationConfigurationExecutionControlsSsmControlsArgs.builder()
-///                     .concurrentExecutionRatePercentage(25)
-///                     .errorPercentage(20)
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -327,19 +328,18 @@ import 'remediation_configuration_state.dart';
 ///   this:
 ///     type: aws:cfg:Rule
 ///     properties:
-///       name: example
 ///       source:
 ///         owner: AWS
 ///         sourceIdentifier: S3_BUCKET_VERSIONING_ENABLED
+///       name: example
 ///   thisRemediationConfiguration:
 ///     type: aws:cfg:RemediationConfiguration
 ///     name: this
 ///     properties:
-///       configRuleName: ${this.name}
-///       resourceType: AWS::S3::Bucket
-///       targetType: SSM_DOCUMENT
-///       targetId: AWS-EnableS3BucketEncryption
-///       targetVersion: '1'
+///       executionControls:
+///         ssmControls:
+///           concurrentExecutionRatePercentage: 25
+///           errorPercentage: 20
 ///       parameters:
 ///         - name: AutomationAssumeRole
 ///           staticValue: arn:aws:iam::875924563244:role/security_config
@@ -347,13 +347,14 @@ import 'remediation_configuration_state.dart';
 ///           resourceValue: RESOURCE_ID
 ///         - name: SSEAlgorithm
 ///           staticValue: AES256
+///       configRuleName: ${this.name}
+///       resourceType: AWS::S3::Bucket
+///       targetType: SSM_DOCUMENT
+///       targetId: AWS-EnableS3BucketEncryption
+///       targetVersion: '1'
 ///       automatic: true
 ///       maximumAutomaticAttempts: 10
 ///       retryAttemptSeconds: 600
-///       executionControls:
-///         ssmControls:
-///           concurrentExecutionRatePercentage: 25
-///           errorPercentage: 20
 /// ```
 ///
 ///
@@ -388,7 +389,7 @@ class RemediationConfiguration extends pulumi.CustomResource {
   /// Maximum number of failed attempts for auto-remediation. If you do not select a number, the default is 5.
   late final pulumi.Output<int?> maximumAutomaticAttempts;
   /// Can be specified multiple times for each parameter. Each parameter block supports arguments below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<RemediationConfigurationParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Type of resource.
@@ -416,14 +417,14 @@ class RemediationConfiguration extends pulumi.CustomResource {
           'aws:cfg/remediationConfiguration:RemediationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automatic = registerOutput<bool?>('automatic');
     configRuleName = registerOutput<String>('configRuleName');
     executionControls = registerOutput<RemediationConfigurationExecutionControls?>('executionControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationConfigurationExecutionControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumAutomaticAttempts = registerOutput<int?>('maximumAutomaticAttempts');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<RemediationConfigurationParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemediationConfigurationParameter>(guardedValue, (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceType = registerOutput<String?>('resourceType');
     retryAttemptSeconds = registerOutput<int?>('retryAttemptSeconds');
@@ -437,11 +438,12 @@ class RemediationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RemediationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RemediationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -460,7 +462,30 @@ class RemediationConfiguration extends pulumi.CustomResource {
     configRuleName = registerOutput<String>('configRuleName');
     executionControls = registerOutput<RemediationConfigurationExecutionControls?>('executionControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationConfigurationExecutionControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maximumAutomaticAttempts = registerOutput<int?>('maximumAutomaticAttempts');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<RemediationConfigurationParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemediationConfigurationParameter>(guardedValue, (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String?>('resourceType');
+    retryAttemptSeconds = registerOutput<int?>('retryAttemptSeconds');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
+    targetVersion = registerOutput<String?>('targetVersion');
+  }
+
+  /// Creates a typed reference to an existing [RemediationConfiguration] resource.
+  RemediationConfiguration.reference(String urn)
+    : super(
+        'aws:cfg/remediationConfiguration:RemediationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    automatic = registerOutput<bool?>('automatic');
+    configRuleName = registerOutput<String>('configRuleName');
+    executionControls = registerOutput<RemediationConfigurationExecutionControls?>('executionControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationConfigurationExecutionControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maximumAutomaticAttempts = registerOutput<int?>('maximumAutomaticAttempts');
+    parameters = registerOutput<List<RemediationConfigurationParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemediationConfigurationParameter>(guardedValue, (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceType = registerOutput<String?>('resourceType');
     retryAttemptSeconds = registerOutput<int?>('retryAttemptSeconds');

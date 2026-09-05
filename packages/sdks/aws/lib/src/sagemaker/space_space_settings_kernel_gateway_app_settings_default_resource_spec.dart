@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec {
   /// The instance type.
-  final pulumi.Input<String>? instanceType;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
-  final pulumi.Input<String>? lifecycleConfigArn;
-  /// The Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.
-  final pulumi.Input<String>? sagemakerImageArn;
+  final pulumi.Input<String?>? instanceType;
+  /// ARN of the Lifecycle Configuration attached to the Resource.
+  final pulumi.Input<String?>? lifecycleConfigArn;
+  /// ARN of the SageMaker AI image created on the instance.
+  final pulumi.Input<String?>? sagemakerImageArn;
   /// The SageMaker AI Image Version Alias.
-  final pulumi.Input<String>? sagemakerImageVersionAlias;
+  final pulumi.Input<String?>? sagemakerImageVersionAlias;
   /// The ARN of the image version created on the instance.
-  final pulumi.Input<String>? sagemakerImageVersionArn;
+  final pulumi.Input<String?>? sagemakerImageVersionArn;
 
   /// Creates a new [SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec].
   /// [instanceType] The instance type.
-  /// [lifecycleConfigArn] The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
-  /// [sagemakerImageArn] The Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.
+  /// [lifecycleConfigArn] ARN of the Lifecycle Configuration attached to the Resource.
+  /// [sagemakerImageArn] ARN of the SageMaker AI image created on the instance.
   /// [sagemakerImageVersionAlias] The SageMaker AI Image Version Alias.
   /// [sagemakerImageVersionArn] The ARN of the image version created on the instance.
   const SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec({

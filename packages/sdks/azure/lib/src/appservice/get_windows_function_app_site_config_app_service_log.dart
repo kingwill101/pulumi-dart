@@ -25,8 +25,8 @@ class GetWindowsFunctionAppSiteConfigAppServiceLog {
 
   factory GetWindowsFunctionAppSiteConfigAppServiceLog.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppSiteConfigAppServiceLog(
-      diskQuotaMb: pulumi.Input.fromValue(map['diskQuotaMb'] as int),
-      retentionPeriodDays: pulumi.Input.fromValue(map['retentionPeriodDays'] as int),
+      diskQuotaMb: pulumi.Input.fromValue((map['diskQuotaMb'] as num).toInt()),
+      retentionPeriodDays: pulumi.Input.fromValue((map['retentionPeriodDays'] as num).toInt()),
     );
   }
 }

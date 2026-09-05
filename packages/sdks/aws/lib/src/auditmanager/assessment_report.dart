@@ -151,7 +151,7 @@ class AssessmentReport extends pulumi.CustomResource {
           'aws:auditmanager/assessmentReport:AssessmentReport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assessmentId = registerOutput<String>('assessmentId');
     author = registerOutput<String>('author');
@@ -166,11 +166,12 @@ class AssessmentReport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentReportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentReport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,6 +185,23 @@ class AssessmentReport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    author = registerOutput<String>('author');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentReport] resource.
+  AssessmentReport.reference(String urn)
+    : super(
+        'aws:auditmanager/assessmentReport:AssessmentReport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assessmentId = registerOutput<String>('assessmentId');
     author = registerOutput<String>('author');
     description = registerOutput<String?>('description');

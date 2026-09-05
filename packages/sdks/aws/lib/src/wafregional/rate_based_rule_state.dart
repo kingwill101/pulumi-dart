@@ -6,23 +6,23 @@ import 'rate_based_rule_predicate.dart';
 /// Input properties used for looking up and filtering RateBasedRule resources.
 class RateBasedRuleState {
   /// The ARN of the WAF Regional Rate Based Rule.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name or description for the Amazon CloudWatch metric of this rule.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// The name or description of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The objects to include in a rule (documented below).
-  final pulumi.Input<List<RateBasedRulePredicate>>? predicates;
+  final pulumi.Input<List<RateBasedRulePredicate>?>? predicates;
   /// Valid value is IP.
-  final pulumi.Input<String>? rateKey;
+  final pulumi.Input<String?>? rateKey;
   /// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
-  final pulumi.Input<int>? rateLimit;
+  final pulumi.Input<int?>? rateLimit;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RateBasedRuleState].
   /// [arn] The ARN of the WAF Regional Rate Based Rule.
@@ -67,7 +67,7 @@ class RateBasedRuleState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       predicates: (() { final guardedValue = map['predicates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RateBasedRulePredicate>(guardedValue, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       rateKey: (() { final guardedValue = map['rateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

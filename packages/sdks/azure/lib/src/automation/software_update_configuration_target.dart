@@ -6,9 +6,9 @@ import 'software_update_configuration_target_non_azure_query.dart';
 
 class SoftwareUpdateConfigurationTarget {
   /// One or more `azureQuery` blocks as defined above.
-  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>>? azureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>?>? azureQueries;
   /// One or more `nonAzureQuery` blocks as defined above.
-  final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>>? nonAzureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>?>? nonAzureQueries;
 
   /// Creates a new [SoftwareUpdateConfigurationTarget].
   /// [azureQueries] One or more `azureQuery` blocks as defined above.

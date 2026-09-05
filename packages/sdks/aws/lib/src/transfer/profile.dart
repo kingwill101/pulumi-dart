@@ -165,16 +165,16 @@ class Profile extends pulumi.CustomResource {
           'aws:transfer/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     as2Id = registerOutput<String>('as2Id');
-    certificateIds = registerOutput<List<String>?>('certificateIds');
+    certificateIds = registerOutput<List<String>?>('certificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     profileId = registerOutput<String>('profileId');
     profileType = registerOutput<String>('profileType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Profile] resource's state with the given [name] and [id].
@@ -182,11 +182,12 @@ class Profile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Profile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,11 +203,30 @@ class Profile extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     as2Id = registerOutput<String>('as2Id');
-    certificateIds = registerOutput<List<String>?>('certificateIds');
+    certificateIds = registerOutput<List<String>?>('certificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     profileId = registerOutput<String>('profileId');
     profileType = registerOutput<String>('profileType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'aws:transfer/profile:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    as2Id = registerOutput<String>('as2Id');
+    certificateIds = registerOutput<List<String>?>('certificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    profileId = registerOutput<String>('profileId');
+    profileType = registerOutput<String>('profileType');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

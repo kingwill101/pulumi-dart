@@ -5,9 +5,9 @@ import 'firehose_delivery_stream_extended_s3_configuration_processing_configurat
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the data processors as multiple blocks. See `processors` block below for details.
-  final pulumi.Input<List<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>>? processors;
+  final pulumi.Input<List<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.

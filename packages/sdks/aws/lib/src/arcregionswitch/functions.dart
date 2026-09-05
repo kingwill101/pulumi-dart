@@ -124,6 +124,17 @@ Future<GetPlanResult> getPlan(
   return GetPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetPlanResult> getPlanOutput(
+  GetPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:arcregionswitch/getPlan:getPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlanResult.fromMap);
+}
+
 /// Data source for managing Amazon ARC Region Switch Route53 Health Checks.
 ///
 /// ## Example Usage
@@ -242,4 +253,15 @@ Future<GetRoute53HealthChecksResult> getRoute53HealthChecks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoute53HealthChecksResult.fromMap(result);
+}
+
+pulumi.Output<GetRoute53HealthChecksResult> getRoute53HealthChecksOutput(
+  GetRoute53HealthChecksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:arcregionswitch/getRoute53HealthChecks:getRoute53HealthChecks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoute53HealthChecksResult.fromMap);
 }

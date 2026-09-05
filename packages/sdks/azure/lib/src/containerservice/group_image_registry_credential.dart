@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupImageRegistryCredential {
   /// The password with which to connect to the registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The address to use to connect to the registry without protocol ("https"/"http"). For example: "myacr.acr.io". Changing this forces a new resource to be created.
   final pulumi.Input<String> server;
   /// The identity ID for the private registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
   /// The username with which to connect to the registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GroupImageRegistryCredential].
   /// [password] The password with which to connect to the registry. Changing this forces a new resource to be created.

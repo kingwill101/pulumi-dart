@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_siterecovery_protection_container_protection_container_args_doc}
 class ProtectionContainerArgs {
   /// The name of the protection container. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of fabric that should contain this protection container. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryFabricName;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.

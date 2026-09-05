@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'txt_record_args.dart';
+import 'txt_record_record.dart';
 import 'txt_record_state.dart';
 
 /// Enables you to manage DNS TXT Records within Azure DNS.
@@ -296,7 +297,7 @@ class TxtRecord extends pulumi.CustomResource {
   /// The name of the DNS TXT Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A list of values that make up the txt record. Each `record` block supports fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> records;
+  late final pulumi.Output<List<TxtRecordRecord>> records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
@@ -318,13 +319,13 @@ class TxtRecord extends pulumi.CustomResource {
           'azure:dns/txtRecord:TxtRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<TxtRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TxtRecordRecord>(guardedValue, (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }
@@ -334,11 +335,12 @@ class TxtRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TxtRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TxtRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,9 +356,27 @@ class TxtRecord extends pulumi.CustomResource {
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<TxtRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TxtRecordRecord>(guardedValue, (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [TxtRecord] resource.
+  TxtRecord.reference(String urn)
+    : super(
+        'azure:dns/txtRecord:TxtRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<TxtRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TxtRecordRecord>(guardedValue, (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }

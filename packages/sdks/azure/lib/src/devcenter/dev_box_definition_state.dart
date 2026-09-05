@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DevBoxDefinition resources.
 class DevBoxDefinitionState {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? devCenterId;
+  final pulumi.Input<String?>? devCenterId;
   /// Whether the Dev Boxes created with this definition are capable of hibernation. Defaults to `false`.
   ///
   /// &gt; **Note:** Not all images are capable of supporting hibernation, for more information see https://aka.ms/devbox/hibernate.
-  final pulumi.Input<bool>? hibernateSupportEnabled;
+  final pulumi.Input<bool?>? hibernateSupportEnabled;
   /// The ID of the image for the Dev Center Dev Box Definition.
-  final pulumi.Input<String>? imageReferenceId;
+  final pulumi.Input<String?>? imageReferenceId;
   /// The Azure Region where the Dev Center Dev Box Definition should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Dev Center Dev Box Definition. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the SKU for the Dev Center Dev Box Definition.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the Dev Center Dev Box Definition.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DevBoxDefinitionState].
   /// [devCenterId] The ID of the associated Dev Center. Changing this forces a new resource to be created.

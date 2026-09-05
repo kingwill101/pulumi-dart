@@ -1,8 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_args.dart';
 import 'zone_state.dart';
+import 'zone_vpc.dart';
 
-/// Manages a Route53 Hosted Zone. For managing Domain Name System Security Extensions (DNSSEC), see the `aws.route53.KeySigningKey` and `aws.route53.HostedZoneDnsSec` resources.
+/// Manages a Route53 Hosted Zone. For managing DNS Security Extensions (DNSSEC), see the `aws.route53.KeySigningKey` and `aws.route53.HostedZoneDnsSec` resources.
 ///
 /// ## Example Usage
 ///
@@ -335,7 +336,6 @@ import 'zone_state.dart';
 ///     enableDnsSupport: true,
 /// });
 /// const _private = new aws.route53.Zone("private", {
-///     name: "example.com",
 ///     vpcs: [
 ///         {
 ///             vpcId: primary.id,
@@ -344,6 +344,7 @@ import 'zone_state.dart';
 ///             vpcId: secondary.id,
 ///         },
 ///     ],
+///     name: "example.com",
 /// });
 /// ```
 /// ```python
@@ -359,7 +360,6 @@ import 'zone_state.dart';
 ///     enable_dns_hostnames=True,
 ///     enable_dns_support=True)
 /// private = aws.route53.Zone("private",
-///     name="example.com",
 ///     vpcs=[
 ///         {
 ///             "vpc_id": primary.id,
@@ -367,7 +367,8 @@ import 'zone_state.dart';
 ///         {
 ///             "vpc_id": secondary.id,
 ///         },
-///     ])
+///     ],
+///     name="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -393,7 +394,6 @@ import 'zone_state.dart';
 ///
 ///     var @private = new Aws.Route53.Zone("private", new()
 ///     {
-///         Name = "example.com",
 ///         Vpcs = new[]
 ///         {
 ///             new Aws.Route53.Inputs.ZoneVpcArgs
@@ -405,6 +405,7 @@ import 'zone_state.dart';
 ///                 VpcId = secondary.Id,
 ///             },
 ///         },
+///         Name = "example.com",
 ///     });
 ///
 /// });
@@ -437,7 +438,6 @@ import 'zone_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewZone(ctx, "private", &route53.ZoneArgs{
-/// 			Name: pulumi.String("example.com"),
 /// 			Vpcs: route53.ZoneVpcArray{
 /// 				&route53.ZoneVpcArgs{
 /// 					VpcId: primary.ID().ToIDOutput().ToStringOutput(),
@@ -446,6 +446,7 @@ import 'zone_state.dart';
 /// 					VpcId: secondary.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -474,13 +475,13 @@ import 'zone_state.dart';
 ///   enable_dns_support   = true
 /// }
 /// resource "aws_route53_zone" "private" {
-///   name = "example.com"
 ///   vpcs {
 ///     vpc_id = aws_ec2_vpc.primary.id
 ///   }
 ///   vpcs {
 ///     vpc_id = aws_ec2_vpc.secondary.id
 ///   }
+///   name = "example.com"
 /// }
 /// ```
 /// ```java
@@ -520,7 +521,6 @@ import 'zone_state.dart';
 ///             .build());
 ///
 ///         var private_ = new Zone("private", ZoneArgs.builder()
-///             .name("example.com")
 ///             .vpcs(
 ///                 ZoneVpcArgs.builder()
 ///                     .vpcId(primary.id())
@@ -528,6 +528,7 @@ import 'zone_state.dart';
 ///                 ZoneVpcArgs.builder()
 ///                     .vpcId(secondary.id())
 ///                     .build())
+///             .name("example.com")
 ///             .build());
 ///
 ///     }
@@ -550,10 +551,10 @@ import 'zone_state.dart';
 ///   private:
 ///     type: aws:route53:Zone
 ///     properties:
-///       name: example.com
 ///       vpcs:
 ///         - vpcId: ${primary.id}
 ///         - vpcId: ${secondary.id}
+///       name: example.com
 /// ```
 ///
 ///
@@ -576,7 +577,7 @@ import 'zone_state.dart';
 /// $ pulumi import aws:route53/zone:Zone myzone Z1D633PJN98FT9
 /// ```
 class Zone extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Hosted Zone.
+  /// ARN of the Hosted Zone.
   late final pulumi.Output<String> arn;
   /// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
   late final pulumi.Output<String> comment;
@@ -598,7 +599,7 @@ class Zone extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> vpcs;
+  late final pulumi.Output<List<ZoneVpc>?> vpcs;
   /// The Hosted Zone ID. This can be referenced by zone records.
   late final pulumi.Output<String> zoneId;
 
@@ -613,8 +614,8 @@ class Zone extends pulumi.CustomResource {
   }) : super(
           'aws:route53/zone:Zone',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ZoneArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String>('comment');
@@ -622,11 +623,11 @@ class Zone extends pulumi.CustomResource {
     enableAcceleratedRecovery = registerOutput<bool>('enableAcceleratedRecovery');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     primaryNameServer = registerOutput<String>('primaryNameServer');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcs = registerOutput<List<Map<String, dynamic>>?>('vpcs');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcs = registerOutput<List<ZoneVpc>?>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneVpc>(guardedValue, (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -635,11 +636,12 @@ class Zone extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Zone._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -659,11 +661,34 @@ class Zone extends pulumi.CustomResource {
     enableAcceleratedRecovery = registerOutput<bool>('enableAcceleratedRecovery');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     primaryNameServer = registerOutput<String>('primaryNameServer');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcs = registerOutput<List<Map<String, dynamic>>?>('vpcs');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcs = registerOutput<List<ZoneVpc>?>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneVpc>(guardedValue, (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>())); });
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [Zone] resource.
+  Zone.reference(String urn)
+    : super(
+        'aws:route53/zone:Zone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String>('comment');
+    delegationSetId = registerOutput<String?>('delegationSetId');
+    enableAcceleratedRecovery = registerOutput<bool>('enableAcceleratedRecovery');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    primaryNameServer = registerOutput<String>('primaryNameServer');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcs = registerOutput<List<ZoneVpc>?>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneVpc>(guardedValue, (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 }

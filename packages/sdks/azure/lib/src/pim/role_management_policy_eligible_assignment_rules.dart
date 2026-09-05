@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoleManagementPolicyEligibleAssignmentRules {
   /// Must an assignment have an expiry date. `false` allows permanent assignment.
-  final pulumi.Input<bool>? expirationRequired;
+  final pulumi.Input<bool?>? expirationRequired;
   /// The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
   ///
   /// One of `expirationRequired` or `expireAfter` must be provided.
-  final pulumi.Input<String>? expireAfter;
+  final pulumi.Input<String?>? expireAfter;
 
   /// Creates a new [RoleManagementPolicyEligibleAssignmentRules].
   /// [expirationRequired] Must an assignment have an expiry date. `false` allows permanent assignment.

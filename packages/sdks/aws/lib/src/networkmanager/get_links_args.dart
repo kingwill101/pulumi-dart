@@ -10,13 +10,13 @@ class GetLinksArgs {
   /// ID of the Global Network of the links to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// Link provider to retrieve.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// ID of the site of the links to retrieve.
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// Restricts the list to the links with these tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Link type to retrieve.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetLinksArgs].
   /// [globalNetworkId] ID of the Global Network of the links to retrieve.

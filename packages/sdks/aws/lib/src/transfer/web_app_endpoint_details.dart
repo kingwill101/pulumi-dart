@@ -5,7 +5,7 @@ import 'web_app_endpoint_details_vpc.dart';
 
 class WebAppEndpointDetails {
   /// Block defining VPC configuration for hosting the web app endpoint within a VPC. See `vpc` Block below.
-  final pulumi.Input<WebAppEndpointDetailsVpc>? vpc;
+  final pulumi.Input<WebAppEndpointDetailsVpc?>? vpc;
 
   /// Creates a new [WebAppEndpointDetails].
   /// [vpc] Block defining VPC configuration for hosting the web app endpoint within a VPC. See `vpc` Block below.

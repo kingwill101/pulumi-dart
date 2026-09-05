@@ -157,7 +157,7 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
           'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');
@@ -171,11 +171,12 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceServiceAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceServiceAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,6 +190,22 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    grafanaRole = registerOutput<String>('grafanaRole');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceServiceAccount] resource.
+  WorkspaceServiceAccount.reference(String urn)
+    : super(
+        'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

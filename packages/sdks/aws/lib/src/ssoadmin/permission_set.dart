@@ -167,13 +167,13 @@ import 'permission_set_state.dart';
 /// $ pulumi import aws:ssoadmin/permissionSet:PermissionSet example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
 class PermissionSet extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Permission Set.
+  /// ARN of the Permission Set.
   late final pulumi.Output<String> arn;
   /// The date the Permission Set was created in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> createdDate;
   /// The description of the Permission Set.
   late final pulumi.Output<String?> description;
-  /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
+  /// ARN of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
   /// The name of the Permission Set.
   late final pulumi.Output<String> name;
@@ -200,7 +200,7 @@ class PermissionSet extends pulumi.CustomResource {
           'aws:ssoadmin/permissionSet:PermissionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -210,8 +210,8 @@ class PermissionSet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     relayState = registerOutput<String?>('relayState');
     sessionDuration = registerOutput<String?>('sessionDuration');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PermissionSet] resource's state with the given [name] and [id].
@@ -219,11 +219,12 @@ class PermissionSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PermissionSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PermissionSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,7 +246,28 @@ class PermissionSet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     relayState = registerOutput<String?>('relayState');
     sessionDuration = registerOutput<String?>('sessionDuration');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PermissionSet] resource.
+  PermissionSet.reference(String urn)
+    : super(
+        'aws:ssoadmin/permissionSet:PermissionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    instanceArn = registerOutput<String>('instanceArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    relayState = registerOutput<String?>('relayState');
+    sessionDuration = registerOutput<String?>('sessionDuration');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -43,7 +43,7 @@ class CacheBlobTarget extends pulumi.CustomResource {
           'azure:hpc/cacheBlobTarget:CacheBlobTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
@@ -58,11 +58,12 @@ class CacheBlobTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheBlobTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CacheBlobTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -76,6 +77,23 @@ class CacheBlobTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyName = registerOutput<String?>('accessPolicyName');
+    cacheName = registerOutput<String>('cacheName');
+    this.name = registerOutput<String>('name');
+    namespacePath = registerOutput<String>('namespacePath');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageContainerId = registerOutput<String>('storageContainerId');
+  }
+
+  /// Creates a typed reference to an existing [CacheBlobTarget] resource.
+  CacheBlobTarget.reference(String urn)
+    : super(
+        'azure:hpc/cacheBlobTarget:CacheBlobTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');

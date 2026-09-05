@@ -5,15 +5,15 @@ import 'pipe_source_parameters_managed_streaming_kafka_parameters_credentials.da
 
 class PipeSourceParametersManagedStreamingKafkaParameters {
   /// The maximum number of records to include in each batch. Maximum value of 10000.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// The name of the destination queue to consume. Maximum value of 200.
-  final pulumi.Input<String>? consumerGroupId;
+  final pulumi.Input<String?>? consumerGroupId;
   /// The credentials needed to access the resource. Detailed below.
-  final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParametersCredentials>? credentials;
+  final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParametersCredentials?>? credentials;
   /// The maximum length of a time to wait for events. Maximum value of 300.
-  final pulumi.Input<int>? maximumBatchingWindowInSeconds;
+  final pulumi.Input<int?>? maximumBatchingWindowInSeconds;
   /// The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
-  final pulumi.Input<String>? startingPosition;
+  final pulumi.Input<String?>? startingPosition;
   /// The name of the topic that the pipe will read from. Maximum length of 249.
   final pulumi.Input<String> topicName;
 
@@ -46,10 +46,10 @@ class PipeSourceParametersManagedStreamingKafkaParameters {
 
   factory PipeSourceParametersManagedStreamingKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersManagedStreamingKafkaParameters(
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       consumerGroupId: (() { final guardedValue = map['consumerGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       startingPosition: (() { final guardedValue = map['startingPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );

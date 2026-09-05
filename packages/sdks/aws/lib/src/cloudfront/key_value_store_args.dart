@@ -9,13 +9,13 @@ import 'key_value_store_timeouts.dart';
 /// {@macro pulumi_cloudfront_key_value_store_key_value_store_args_doc}
 class KeyValueStoreArgs {
   /// Comment.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<KeyValueStoreTimeouts>? timeouts;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<KeyValueStoreTimeouts?>? timeouts;
 
   /// Creates a new [KeyValueStoreArgs].
   /// [comment] Comment.

@@ -5,7 +5,7 @@ import 'domain_default_user_settings_code_editor_app_settings_app_lifecycle_mana
 
 class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_network_resource_association_args.dart';
+import 'service_network_resource_association_dns_entry.dart';
 import 'service_network_resource_association_state.dart';
 import 'service_network_resource_association_timeouts.dart';
 
@@ -147,7 +148,7 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
   /// ARN of the Service Network Resource Association.
   late final pulumi.Output<String> arn;
   /// DNS entry of the association in the service network.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+  late final pulumi.Output<List<ServiceNetworkResourceAssociationDnsEntry>> dnsEntries;
   /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resourceConfigurationIdentifier` must have a custom domain name or a group domain for private DNS.
   late final pulumi.Output<bool> privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -176,16 +177,16 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceNetworkResourceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');
     resourceConfigurationIdentifier = registerOutput<String>('resourceConfigurationIdentifier');
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkResourceAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -194,11 +195,12 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceNetworkResourceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceNetworkResourceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,13 +215,33 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceNetworkResourceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');
     resourceConfigurationIdentifier = registerOutput<String>('resourceConfigurationIdentifier');
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkResourceAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ServiceNetworkResourceAssociation] resource.
+  ServiceNetworkResourceAssociation.reference(String urn)
+    : super(
+        'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dnsEntries = registerOutput<List<ServiceNetworkResourceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    resourceConfigurationIdentifier = registerOutput<String>('resourceConfigurationIdentifier');
+    serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkResourceAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

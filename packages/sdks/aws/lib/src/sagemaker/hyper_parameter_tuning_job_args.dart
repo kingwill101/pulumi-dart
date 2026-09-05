@@ -13,24 +13,24 @@ import 'hyper_parameter_tuning_job_warm_start_config.dart';
 /// {@macro pulumi_sagemaker_hyper_parameter_tuning_job_hyper_parameter_tuning_job_args_doc}
 class HyperParameterTuningJobArgs {
   /// Autotune settings. See `autotune`.
-  final pulumi.Input<HyperParameterTuningJobAutotune>? autotune;
+  final pulumi.Input<HyperParameterTuningJobAutotune?>? autotune;
   /// Tuning job settings. See `config`.
   final pulumi.Input<HyperParameterTuningJobConfig> config;
   /// Name of the tuning job.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to this resource.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<HyperParameterTuningJobTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<HyperParameterTuningJobTimeouts?>? timeouts;
   /// Single training job definition for tuning. See `trainingJobDefinition`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinition>? trainingJobDefinition;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinition?>? trainingJobDefinition;
   /// Multiple training job definitions for tuning. See `trainingJobDefinition`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinition>>? trainingJobDefinitions;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinition>?>? trainingJobDefinitions;
   /// Warm start settings. See `warmStartConfig`.
-  final pulumi.Input<HyperParameterTuningJobWarmStartConfig>? warmStartConfig;
+  final pulumi.Input<HyperParameterTuningJobWarmStartConfig?>? warmStartConfig;
 
   /// Creates a new [HyperParameterTuningJobArgs].
   /// [autotune] Autotune settings. See `autotune`.

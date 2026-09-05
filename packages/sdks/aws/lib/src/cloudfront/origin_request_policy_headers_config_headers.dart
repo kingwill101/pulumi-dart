@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OriginRequestPolicyHeadersConfigHeaders {
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [OriginRequestPolicyHeadersConfigHeaders].
   /// [items] Optional.

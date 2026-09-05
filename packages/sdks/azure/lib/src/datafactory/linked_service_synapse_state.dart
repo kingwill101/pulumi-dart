@@ -8,23 +8,23 @@ class LinkedServiceSynapseState {
   /// A map of additional properties to associate with the Data Factory Linked Service Synapse.
   ///
   /// The following supported arguments are specific to Data Factory Synapse Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service Synapse.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The connection string in which to authenticate with the Synapse.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Linked Service Synapse.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Synapse.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// A `keyVaultPassword` block as defined below. Use this argument to store Synapse password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
-  final pulumi.Input<LinkedServiceSynapseKeyVaultPassword>? keyVaultPassword;
+  final pulumi.Input<LinkedServiceSynapseKeyVaultPassword?>? keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service Synapse. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service Synapse.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [LinkedServiceSynapseState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service Synapse.

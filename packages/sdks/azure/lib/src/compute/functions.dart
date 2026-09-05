@@ -189,6 +189,17 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
   return GetAvailabilitySetResult.fromMap(result);
 }
 
+pulumi.Output<GetAvailabilitySetResult> getAvailabilitySetOutput(
+  GetAvailabilitySetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getAvailabilitySet:getAvailabilitySet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilitySetResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Bastion Host.
 ///
 /// ## Example Usage
@@ -336,6 +347,17 @@ Future<GetBastionHostResult> getBastionHost(
   return GetBastionHostResult.fromMap(result);
 }
 
+pulumi.Output<GetBastionHostResult> getBastionHostOutput(
+  GetBastionHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getBastionHost:getBastionHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBastionHostResult.fromMap);
+}
+
 /// Gets information about an existing Confidential Ledger.
 ///
 /// ## Example Usage
@@ -481,6 +503,17 @@ Future<GetConfidentialLedgerResult> getConfidentialLedger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfidentialLedgerResult.fromMap(result);
+}
+
+pulumi.Output<GetConfidentialLedgerResult> getConfidentialLedgerOutput(
+  GetConfidentialLedgerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getConfidentialLedger:getConfidentialLedger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfidentialLedgerResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Dedicated Host.
@@ -637,6 +670,17 @@ Future<GetDedicatedHostResult> getDedicatedHost(
   return GetDedicatedHostResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
+  GetDedicatedHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getDedicatedHost:getDedicatedHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHostResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dedicated Host Group.
 ///
 /// ## Example Usage
@@ -782,6 +826,17 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedHostGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedHostGroupResult> getDedicatedHostGroupOutput(
+  GetDedicatedHostGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getDedicatedHostGroup:getDedicatedHostGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHostGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Disk Access.
@@ -931,6 +986,17 @@ Future<GetDiskAccessResult> getDiskAccess(
   return GetDiskAccessResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskAccessResult> getDiskAccessOutput(
+  GetDiskAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getDiskAccess:getDiskAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskAccessResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Disk Encryption Set.
 ///
 /// ## Example Usage
@@ -1076,6 +1142,17 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskEncryptionSetResult.fromMap(result);
+}
+
+pulumi.Output<GetDiskEncryptionSetResult> getDiskEncryptionSetOutput(
+  GetDiskEncryptionSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getDiskEncryptionSet:getDiskEncryptionSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskEncryptionSetResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Image.
@@ -1225,6 +1302,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Use this data source to access information about existing Images within a Resource Group.
 ///
 /// ## Example Usage
@@ -1349,6 +1437,17 @@ Future<GetImagesResult> getImages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImagesResult.fromMap(result);
+}
+
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Managed Disk.
@@ -1498,6 +1597,17 @@ Future<GetManagedDiskResult> getManagedDisk(
   return GetManagedDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedDiskResult> getManagedDiskOutput(
+  GetManagedDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getManagedDisk:getManagedDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDiskResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Managed Disk.
 ///
 /// ## Example Usage
@@ -1638,6 +1748,17 @@ Future<GetManagedDisksResult> getManagedDisks(
   return GetManagedDisksResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedDisksResult> getManagedDisksOutput(
+  GetManagedDisksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getManagedDisks:getManagedDisks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDisksResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Orchestrated Virtual Machine Scale Set.
 ///
 /// ## Example Usage
@@ -1769,7 +1890,7 @@ Future<GetManagedDisksResult> getManagedDisks(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01
+/// * `Microsoft.Compute` - 2025-04-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_orchestrated_virtual_machine_scale_set_get_orchestrated_virtual_machine_scale_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachineScaleSet(
@@ -1783,6 +1904,17 @@ Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachin
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrchestratedVirtualMachineScaleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachineScaleSetOutput(
+  GetOrchestratedVirtualMachineScaleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getOrchestratedVirtualMachineScaleSet:getOrchestratedVirtualMachineScaleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrchestratedVirtualMachineScaleSetResult.fromMap);
 }
 
 /// Use this data source to access information about a Platform Image.
@@ -1946,6 +2078,17 @@ Future<GetPlatformImageResult> getPlatformImage(
   return GetPlatformImageResult.fromMap(result);
 }
 
+pulumi.Output<GetPlatformImageResult> getPlatformImageOutput(
+  GetPlatformImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getPlatformImage:getPlatformImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlatformImageResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Shared Image within a Shared Image Gallery.
 ///
 /// ## Example Usage
@@ -2086,6 +2229,17 @@ Future<GetSharedImageResult> getSharedImage(
   return GetSharedImageResult.fromMap(result);
 }
 
+pulumi.Output<GetSharedImageResult> getSharedImageOutput(
+  GetSharedImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSharedImage:getSharedImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedImageResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Shared Image Gallery.
 ///
 /// ## Example Usage
@@ -2217,6 +2371,17 @@ Future<GetSharedImageGalleryResult> getSharedImageGallery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedImageGalleryResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedImageGalleryResult> getSharedImageGalleryOutput(
+  GetSharedImageGalleryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSharedImageGallery:getSharedImageGallery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedImageGalleryResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Version of a Shared Image within a Shared Image Gallery.
@@ -2366,6 +2531,17 @@ Future<GetSharedImageVersionResult> getSharedImageVersion(
   return GetSharedImageVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetSharedImageVersionResult> getSharedImageVersionOutput(
+  GetSharedImageVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSharedImageVersion:getSharedImageVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedImageVersionResult.fromMap);
+}
+
 /// Use this data source to access information about existing Versions of a Shared Image within a Shared Image Gallery.
 ///
 /// ## Example Usage
@@ -2506,6 +2682,17 @@ Future<GetSharedImageVersionsResult> getSharedImageVersions(
   return GetSharedImageVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetSharedImageVersionsResult> getSharedImageVersionsOutput(
+  GetSharedImageVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSharedImageVersions:getSharedImageVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedImageVersionsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Snapshot.
 ///
 /// ## Example Usage
@@ -2637,6 +2824,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Use this data source to access information about an existing SSH Public Key.
@@ -2786,6 +2984,17 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
   return GetSshPublicKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetSshPublicKeyResult> getSshPublicKeyOutput(
+  GetSshPublicKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getSshPublicKey:getSshPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshPublicKeyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Machine.
 ///
 /// ## Example Usage
@@ -2933,6 +3142,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
   return GetVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getVirtualMachine:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Machine Scale Set.
 ///
 /// ## Example Usage
@@ -3064,7 +3284,7 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01, 2024-03-01, 2023-09-01
+/// * `Microsoft.Compute` - 2025-04-01, 2024-03-01, 2023-09-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_get_virtual_machine_scale_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
@@ -3078,4 +3298,15 @@ Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineScaleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSetOutput(
+  GetVirtualMachineScaleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:compute/getVirtualMachineScaleSet:getVirtualMachineScaleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetResult.fromMap);
 }

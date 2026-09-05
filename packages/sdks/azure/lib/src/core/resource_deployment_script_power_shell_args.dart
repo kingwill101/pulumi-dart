@@ -12,37 +12,37 @@ import 'resource_deployment_script_power_shell_storage_account.dart';
 /// {@macro pulumi_core_resource_deployment_script_power_shell_resource_deployment_script_power_shell_args_doc}
 class ResourceDeploymentScriptPowerShellArgs {
   /// Specifies the cleanup preference when the script execution gets in a terminal state. Possible values are `Always`, `OnExpiration`, `OnSuccess`. Defaults to `Always`. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? cleanupPreference;
+  final pulumi.Input<String?>? cleanupPreference;
   /// Command line arguments to pass to the script. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? commandLine;
+  final pulumi.Input<String?>? commandLine;
   /// A `container` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<ResourceDeploymentScriptPowerShellContainer>? container;
+  final pulumi.Input<ResourceDeploymentScriptPowerShellContainer?>? container;
   /// An `environmentVariable` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<List<ResourceDeploymentScriptPowerShellEnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<ResourceDeploymentScriptPowerShellEnvironmentVariable>?>? environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// An `identity` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<ResourceDeploymentScriptPowerShellIdentity>? identity;
+  final pulumi.Input<ResourceDeploymentScriptPowerShellIdentity?>? identity;
   /// Specifies the Azure Region where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Resource Deployment Script. The name length must be from 1 to 260 characters. The name can only contain alphanumeric, underscore, parentheses, hyphen and period, and it cannot end with a period. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Uri for the script. This is the entry point for the external script. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? primaryScriptUri;
+  final pulumi.Input<String?>? primaryScriptUri;
   /// Specifies the name of the Resource Group where the Resource Deployment Script should exist. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. The time duration should be between `1` hour and `26` hours (inclusive) and should be specified in ISO 8601 format. Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<String> retentionInterval;
   /// Script body. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? scriptContent;
+  final pulumi.Input<String?>? scriptContent;
   /// A `storageAccount` block as defined below. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<ResourceDeploymentScriptPowerShellStorageAccount>? storageAccount;
+  final pulumi.Input<ResourceDeploymentScriptPowerShellStorageAccount?>? storageAccount;
   /// Supporting files for the external script. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<List<String>>? supportingScriptUris;
+  final pulumi.Input<List<String>?>? supportingScriptUris;
   /// A mapping of tags which should be assigned to the Resource Deployment Script.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Maximum allowed script execution time specified in ISO 8601 format. Needs to be greater than 0 and smaller than 1 day. Defaults to `P1D`. Changing this forces a new Resource Deployment Script to be created.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// Specifies the version of the Azure PowerShell that should be used in the format `X.Y` (e.g. `9.7`). A canonical list of versions [is available from the Microsoft Container Registry API](https://mcr.microsoft.com/v2/azure-powershell/tags/list). Changing this forces a new Resource Deployment Script to be created.
   final pulumi.Input<String> version;
 

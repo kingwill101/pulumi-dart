@@ -11,22 +11,22 @@ class EntityRecognizerInputDataConfig {
   /// Specifies location of the document annotation data.
   /// See the `annotations` Configuration Block section below.
   /// One of `annotations` or `entityList` is required.
-  final pulumi.Input<EntityRecognizerInputDataConfigAnnotations>? annotations;
+  final pulumi.Input<EntityRecognizerInputDataConfigAnnotations?>? annotations;
   /// List of training datasets produced by Amazon SageMaker AI Ground Truth.
   /// Used if `dataFormat` is `AUGMENTED_MANIFEST`.
   /// See the `augmentedManifests` Configuration Block section below.
-  final pulumi.Input<List<EntityRecognizerInputDataConfigAugmentedManifest>>? augmentedManifests;
+  final pulumi.Input<List<EntityRecognizerInputDataConfigAugmentedManifest>?>? augmentedManifests;
   /// The format for the training data.
   /// One of `COMPREHEND_CSV` or `AUGMENTED_MANIFEST`.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<String?>? dataFormat;
   /// Specifies a collection of training documents.
   /// Used if `dataFormat` is `COMPREHEND_CSV`.
   /// See the `documents` Configuration Block section below.
-  final pulumi.Input<EntityRecognizerInputDataConfigDocuments>? documents;
+  final pulumi.Input<EntityRecognizerInputDataConfigDocuments?>? documents;
   /// Specifies location of the entity list data.
   /// See the `entityList` Configuration Block section below.
   /// One of `entityList` or `annotations` is required.
-  final pulumi.Input<EntityRecognizerInputDataConfigEntityList>? entityList;
+  final pulumi.Input<EntityRecognizerInputDataConfigEntityList?>? entityList;
   /// Set of entity types to be recognized.
   /// Has a maximum of 25 items.
   /// See the `entityTypes` Configuration Block section below.

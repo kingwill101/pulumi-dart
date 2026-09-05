@@ -9,13 +9,13 @@ import 'get_connect_peer_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_connect_peer_get_connect_peer_args_doc}
 class GetConnectPeerArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetConnectPeerFilter>>? filters;
+  final pulumi.Input<List<GetConnectPeerFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway Connect Peer
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the EC2 Transit Gateway Connect Peer.
-  final pulumi.Input<String>? transitGatewayConnectPeerId;
+  final pulumi.Input<String?>? transitGatewayConnectPeerId;
 
   /// Creates a new [GetConnectPeerArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

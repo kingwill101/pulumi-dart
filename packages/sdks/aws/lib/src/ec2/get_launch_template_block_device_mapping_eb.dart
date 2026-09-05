@@ -53,12 +53,12 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     return GetLaunchTemplateBlockDeviceMappingEb(
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeInitializationRate: pulumi.Input.fromValue(map['volumeInitializationRate'] as int),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
+      volumeInitializationRate: pulumi.Input.fromValue((map['volumeInitializationRate'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

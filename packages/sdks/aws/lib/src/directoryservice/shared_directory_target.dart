@@ -6,7 +6,7 @@ class SharedDirectoryTarget {
   /// Identifier of the directory consumer account.
   final pulumi.Input<String> id;
   /// Type of identifier to be used in the `id` field. Valid value is `ACCOUNT`. Default is `ACCOUNT`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SharedDirectoryTarget].
   /// [id] Identifier of the directory consumer account.

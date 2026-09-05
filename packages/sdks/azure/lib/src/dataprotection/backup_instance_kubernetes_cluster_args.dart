@@ -9,15 +9,15 @@ import 'backup_instance_kubernetes_cluster_backup_datasource_parameters.dart';
 /// {@macro pulumi_dataprotection_backup_instance_kubernetes_cluster_backup_instance_kubernetes_cluster_args_doc}
 class BackupInstanceKubernetesClusterArgs {
   /// A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters;
+  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters?>? backupDatasourceParameters;
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> backupPolicyId;
   /// The ID of the Kubernetes Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> kubernetesClusterId;
   /// The location of the Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   final pulumi.Input<String> snapshotResourceGroupName;
   /// The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.

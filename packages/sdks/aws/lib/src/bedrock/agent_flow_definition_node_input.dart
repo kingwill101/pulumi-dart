@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeInput {
   /// How input data flows between iterations in a DoWhile loop.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// An expression that formats the input for the node. For an explanation of how to create expressions, see [Expressions in Prompt flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-expressions.html).
   final pulumi.Input<String> expression;
   /// A name for the input that you can reference.

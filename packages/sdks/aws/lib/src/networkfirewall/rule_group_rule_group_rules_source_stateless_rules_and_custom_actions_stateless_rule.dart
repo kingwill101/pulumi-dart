@@ -26,7 +26,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule {
 
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       ruleDefinition: pulumi.Input.fromValue(RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())),
     );
   }

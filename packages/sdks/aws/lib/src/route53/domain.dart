@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_admin_contact.dart';
 import 'domain_args.dart';
+import 'domain_billing_contact.dart';
+import 'domain_name_server.dart';
 import 'domain_registrant_contact.dart';
 import 'domain_state.dart';
 import 'domain_tech_contact.dart';
@@ -16,8 +18,6 @@ import 'domain_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.route53domains.Domain("example", {
-///     domainName: "example.com",
-///     autoRenew: false,
 ///     adminContact: {
 ///         addressLine1: "101 Main Street",
 ///         city: "San Francisco",
@@ -60,6 +60,8 @@ import 'domain_timeouts.dart';
 ///         state: "CA",
 ///         zipCode: "94105",
 ///     },
+///     domainName: "example.com",
+///     autoRenew: false,
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -70,8 +72,6 @@ import 'domain_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.route53domains.Domain("example",
-///     domain_name="example.com",
-///     auto_renew=False,
 ///     admin_contact={
 ///         "address_line1": "101 Main Street",
 ///         "city": "San Francisco",
@@ -114,6 +114,8 @@ import 'domain_timeouts.dart';
 ///         "state": "CA",
 ///         "zip_code": "94105",
 ///     },
+///     domain_name="example.com",
+///     auto_renew=False,
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -128,8 +130,6 @@ import 'domain_timeouts.dart';
 /// {
 ///     var example = new Aws.Route53Domains.Domain("example", new()
 ///     {
-///         DomainName = "example.com",
-///         AutoRenew = false,
 ///         AdminContact = new Aws.Route53Domains.Inputs.DomainAdminContactArgs
 ///         {
 ///             AddressLine1 = "101 Main Street",
@@ -175,6 +175,8 @@ import 'domain_timeouts.dart';
 ///             State = "CA",
 ///             ZipCode = "94105",
 ///         },
+///         DomainName = "example.com",
+///         AutoRenew = false,
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -194,8 +196,6 @@ import 'domain_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53domains.NewDomain(ctx, "example", &route53domains.DomainArgs{
-/// 			DomainName: pulumi.String("example.com"),
-/// 			AutoRenew:  pulumi.Bool(false),
 /// 			AdminContact: &route53domains.DomainAdminContactArgs{
 /// 				AddressLine1:     pulumi.String("101 Main Street"),
 /// 				City:             pulumi.String("San Francisco"),
@@ -238,6 +238,8 @@ import 'domain_timeouts.dart';
 /// 				State:            pulumi.String("CA"),
 /// 				ZipCode:          pulumi.String("94105"),
 /// 			},
+/// 			DomainName: pulumi.String("example.com"),
+/// 			AutoRenew:  pulumi.Bool(false),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
 /// 			},
@@ -259,8 +261,6 @@ import 'domain_timeouts.dart';
 /// }
 ///
 /// resource "aws_route53domains_domain" "example" {
-///   domain_name = "example.com"
-///   auto_renew  = false
 ///   admin_contact = {
 ///     address_line1     = "101 Main Street"
 ///     city              = "San Francisco"
@@ -303,6 +303,8 @@ import 'domain_timeouts.dart';
 ///     state             = "CA"
 ///     zip_code          = "94105"
 ///   }
+///   domain_name = "example.com"
+///   auto_renew  = false
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -333,8 +335,6 @@ import 'domain_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .domainName("example.com")
-///             .autoRenew(false)
 ///             .adminContact(DomainAdminContactArgs.builder()
 ///                 .addressLine1("101 Main Street")
 ///                 .city("San Francisco")
@@ -377,6 +377,8 @@ import 'domain_timeouts.dart';
 ///                 .state("CA")
 ///                 .zipCode("94105")
 ///                 .build())
+///             .domainName("example.com")
+///             .autoRenew(false)
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -388,8 +390,6 @@ import 'domain_timeouts.dart';
 ///   example:
 ///     type: aws:route53domains:Domain
 ///     properties:
-///       domainName: example.com
-///       autoRenew: false
 ///       adminContact:
 ///         addressLine1: 101 Main Street
 ///         city: San Francisco
@@ -429,6 +429,8 @@ import 'domain_timeouts.dart';
 ///         phoneNumber: '+1.4155551234'
 ///         state: CA
 ///         zipCode: '94105'
+///       domainName: example.com
+///       autoRenew: false
 ///       tags:
 ///         Environment: test
 /// ```
@@ -453,7 +455,7 @@ class Domain extends pulumi.CustomResource {
   /// Whether the domain registration is set to renew automatically. Default: `true`.
   late final pulumi.Output<bool> autoRenew;
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> billingContacts;
+  late final pulumi.Output<List<DomainBillingContact>> billingContacts;
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
   late final pulumi.Output<bool> billingPrivacy;
   /// The date when the domain was created as found in the response to a WHOIS query.
@@ -467,7 +469,7 @@ class Domain extends pulumi.CustomResource {
   /// The ID of the public Route 53 hosted zone created for the domain. This hosted zone is deleted when the domain is deregistered.
   late final pulumi.Output<String> hostedZoneId;
   /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> nameServers;
+  late final pulumi.Output<List<DomainNameServer>> nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   late final pulumi.Output<DomainRegistrantContact> registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
@@ -508,28 +510,28 @@ class Domain extends pulumi.CustomResource {
           'aws:route53domains/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     abuseContactEmail = registerOutput<String>('abuseContactEmail');
     abuseContactPhone = registerOutput<String>('abuseContactPhone');
     adminContact = registerOutput<DomainAdminContact>('adminContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdminContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminPrivacy = registerOutput<bool>('adminPrivacy');
     autoRenew = registerOutput<bool>('autoRenew');
-    billingContacts = registerOutput<List<Map<String, dynamic>>>('billingContacts');
+    billingContacts = registerOutput<List<DomainBillingContact>>('billingContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainBillingContact>(guardedValue, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>())); });
     billingPrivacy = registerOutput<bool>('billingPrivacy');
     creationDate = registerOutput<String>('creationDate');
     domainName = registerOutput<String>('domainName');
     durationInYears = registerOutput<int>('durationInYears');
     expirationDate = registerOutput<String>('expirationDate');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
+    nameServers = registerOutput<List<DomainNameServer>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>())); });
     registrantContact = registerOutput<DomainRegistrantContact>('registrantContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRegistrantContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     registrantPrivacy = registerOutput<bool>('registrantPrivacy');
     registrarName = registerOutput<String>('registrarName');
     registrarUrl = registerOutput<String>('registrarUrl');
-    statusLists = registerOutput<List<String>>('statusLists');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    statusLists = registerOutput<List<String>>('statusLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     techContact = registerOutput<DomainTechContact>('techContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTechContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     techPrivacy = registerOutput<bool>('techPrivacy');
     timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -543,11 +545,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -566,21 +569,58 @@ class Domain extends pulumi.CustomResource {
     adminContact = registerOutput<DomainAdminContact>('adminContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdminContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminPrivacy = registerOutput<bool>('adminPrivacy');
     autoRenew = registerOutput<bool>('autoRenew');
-    billingContacts = registerOutput<List<Map<String, dynamic>>>('billingContacts');
+    billingContacts = registerOutput<List<DomainBillingContact>>('billingContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainBillingContact>(guardedValue, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>())); });
     billingPrivacy = registerOutput<bool>('billingPrivacy');
     creationDate = registerOutput<String>('creationDate');
     domainName = registerOutput<String>('domainName');
     durationInYears = registerOutput<int>('durationInYears');
     expirationDate = registerOutput<String>('expirationDate');
     hostedZoneId = registerOutput<String>('hostedZoneId');
-    nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
+    nameServers = registerOutput<List<DomainNameServer>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>())); });
     registrantContact = registerOutput<DomainRegistrantContact>('registrantContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRegistrantContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     registrantPrivacy = registerOutput<bool>('registrantPrivacy');
     registrarName = registerOutput<String>('registrarName');
     registrarUrl = registerOutput<String>('registrarUrl');
-    statusLists = registerOutput<List<String>>('statusLists');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    statusLists = registerOutput<List<String>>('statusLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    techContact = registerOutput<DomainTechContact>('techContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTechContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    techPrivacy = registerOutput<bool>('techPrivacy');
+    timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transferLock = registerOutput<bool>('transferLock');
+    updatedDate = registerOutput<String>('updatedDate');
+    whoisServer = registerOutput<String>('whoisServer');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:route53domains/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    abuseContactEmail = registerOutput<String>('abuseContactEmail');
+    abuseContactPhone = registerOutput<String>('abuseContactPhone');
+    adminContact = registerOutput<DomainAdminContact>('adminContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainAdminContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    adminPrivacy = registerOutput<bool>('adminPrivacy');
+    autoRenew = registerOutput<bool>('autoRenew');
+    billingContacts = registerOutput<List<DomainBillingContact>>('billingContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainBillingContact>(guardedValue, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>())); });
+    billingPrivacy = registerOutput<bool>('billingPrivacy');
+    creationDate = registerOutput<String>('creationDate');
+    domainName = registerOutput<String>('domainName');
+    durationInYears = registerOutput<int>('durationInYears');
+    expirationDate = registerOutput<String>('expirationDate');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    nameServers = registerOutput<List<DomainNameServer>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>())); });
+    registrantContact = registerOutput<DomainRegistrantContact>('registrantContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRegistrantContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    registrantPrivacy = registerOutput<bool>('registrantPrivacy');
+    registrarName = registerOutput<String>('registrarName');
+    registrarUrl = registerOutput<String>('registrarUrl');
+    statusLists = registerOutput<List<String>>('statusLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     techContact = registerOutput<DomainTechContact>('techContact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTechContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     techPrivacy = registerOutput<bool>('techPrivacy');
     timeouts = registerOutput<DomainTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

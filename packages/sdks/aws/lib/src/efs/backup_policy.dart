@@ -15,10 +15,10 @@ import 'backup_policy_state.dart';
 ///
 /// const fs = new aws.efs.FileSystem("fs", {creationToken: "my-product"});
 /// const policy = new aws.efs.BackupPolicy("policy", {
-///     fileSystemId: fs.id,
 ///     backupPolicy: {
 ///         status: "ENABLED",
 ///     },
+///     fileSystemId: fs.id,
 /// });
 /// ```
 /// ```python
@@ -27,10 +27,10 @@ import 'backup_policy_state.dart';
 ///
 /// fs = aws.efs.FileSystem("fs", creation_token="my-product")
 /// policy = aws.efs.BackupPolicy("policy",
-///     file_system_id=fs.id,
 ///     backup_policy={
 ///         "status": "ENABLED",
-///     })
+///     },
+///     file_system_id=fs.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,11 +47,11 @@ import 'backup_policy_state.dart';
 ///
 ///     var policy = new Aws.Efs.BackupPolicy("policy", new()
 ///     {
-///         FileSystemId = fs.Id,
 ///         BackupPolicyDetails = new Aws.Efs.Inputs.BackupPolicyBackupPolicyArgs
 ///         {
 ///             Status = "ENABLED",
 ///         },
+///         FileSystemId = fs.Id,
 ///     });
 ///
 /// });
@@ -73,10 +73,10 @@ import 'backup_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewBackupPolicy(ctx, "policy", &efs.BackupPolicyArgs{
-/// 			FileSystemId: fs.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupPolicy: &efs.BackupPolicyBackupPolicyArgs{
 /// 				Status: pulumi.String("ENABLED"),
 /// 			},
+/// 			FileSystemId: fs.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,10 +98,10 @@ import 'backup_policy_state.dart';
 ///   creation_token = "my-product"
 /// }
 /// resource "aws_efs_backuppolicy" "policy" {
-///   file_system_id = aws_efs_filesystem.fs.id
 ///   backup_policy = {
 ///     status = "ENABLED"
 ///   }
+///   file_system_id = aws_efs_filesystem.fs.id
 /// }
 /// ```
 /// ```java
@@ -133,10 +133,10 @@ import 'backup_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new BackupPolicy("policy", BackupPolicyArgs.builder()
-///             .fileSystemId(fs.id())
 ///             .backupPolicy(BackupPolicyBackupPolicyArgs.builder()
 ///                 .status("ENABLED")
 ///                 .build())
+///             .fileSystemId(fs.id())
 ///             .build());
 ///
 ///     }
@@ -151,9 +151,9 @@ import 'backup_policy_state.dart';
 ///   policy:
 ///     type: aws:efs:BackupPolicy
 ///     properties:
-///       fileSystemId: ${fs.id}
 ///       backupPolicy:
 ///         status: ENABLED
+///       fileSystemId: ${fs.id}
 /// ```
 ///
 ///
@@ -184,7 +184,7 @@ class BackupPolicy extends pulumi.CustomResource {
           'aws:efs/backupPolicy:BackupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -196,11 +196,12 @@ class BackupPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +215,20 @@ class BackupPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileSystemId = registerOutput<String>('fileSystemId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BackupPolicy] resource.
+  BackupPolicy.reference(String urn)
+    : super(
+        'aws:efs/backupPolicy:BackupPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fileSystemId = registerOutput<String>('fileSystemId');
     region = registerOutput<String>('region');

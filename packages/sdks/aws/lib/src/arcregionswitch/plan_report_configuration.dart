@@ -5,7 +5,7 @@ import 'plan_report_configuration_report_output.dart';
 
 class PlanReportConfiguration {
   /// Output destination for the report. See `reportOutput` Block for details.
-  final pulumi.Input<List<PlanReportConfigurationReportOutput>>? reportOutputs;
+  final pulumi.Input<List<PlanReportConfigurationReportOutput>?>? reportOutputs;
 
   /// Creates a new [PlanReportConfiguration].
   /// [reportOutputs] Output destination for the report. See `reportOutput` Block for details.

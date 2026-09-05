@@ -13,13 +13,13 @@ class ContactListArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> contactListName;
   /// Description of what the contact list is about.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the contact list. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block(s) with topic for the contact list. Detailed below.
-  final pulumi.Input<List<ContactListTopic>>? topics;
+  final pulumi.Input<List<ContactListTopic>?>? topics;
 
   /// Creates a new [ContactListArgs].
   /// [contactListName] Name of the contact list.

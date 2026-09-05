@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsExclusions {
   /// Indicates whether to exclude volumes that are attached to instances as the boot volume. To exclude boot volumes, specify `true`.
-  final pulumi.Input<bool>? excludeBootVolumes;
+  final pulumi.Input<bool?>? excludeBootVolumes;
   /// Map specifies whether to exclude volumes that have specific tags.
-  final pulumi.Input<Map<String, String>>? excludeTags;
+  final pulumi.Input<Map<String, String>?>? excludeTags;
   /// List specifies the volume types to exclude.
-  final pulumi.Input<List<String>>? excludeVolumeTypes;
+  final pulumi.Input<List<String>?>? excludeVolumeTypes;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsExclusions].
   /// [excludeBootVolumes] Indicates whether to exclude volumes that are attached to instances as the boot volume. To exclude boot volumes, specify `true`.

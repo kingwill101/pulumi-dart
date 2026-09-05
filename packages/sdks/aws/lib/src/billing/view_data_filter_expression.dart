@@ -7,11 +7,11 @@ import 'view_data_filter_expression_time_range.dart';
 
 class ViewDataFilterExpression {
   /// Dimension to use for `expression`. Refer to #dimensions for more details.
-  final pulumi.Input<ViewDataFilterExpressionDimensions>? dimensions;
+  final pulumi.Input<ViewDataFilterExpressionDimensions?>? dimensions;
   /// List of key value map specifying tags associated to the billing view being created.
-  final pulumi.Input<List<ViewDataFilterExpressionTag>>? tags;
+  final pulumi.Input<List<ViewDataFilterExpressionTag>?>? tags;
   /// Time range to use for `expression`. Refer to #time-range for more details.
-  final pulumi.Input<ViewDataFilterExpressionTimeRange>? timeRange;
+  final pulumi.Input<ViewDataFilterExpressionTimeRange?>? timeRange;
 
   /// Creates a new [ViewDataFilterExpression].
   /// [dimensions] Dimension to use for `expression`. Refer to #dimensions for more details.

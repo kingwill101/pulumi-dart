@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cache_args.dart';
 import 'serverless_cache_cache_usage_limits.dart';
+import 'serverless_cache_endpoint.dart';
+import 'serverless_cache_reader_endpoint.dart';
 import 'serverless_cache_state.dart';
 import 'serverless_cache_timeouts.dart';
 
@@ -16,8 +18,6 @@ import 'serverless_cache_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.elasticache.ServerlessCache("example", {
-///     engine: "memcached",
-///     name: "example",
 ///     cacheUsageLimits: {
 ///         dataStorage: {
 ///             maximum: 10,
@@ -27,6 +27,8 @@ import 'serverless_cache_timeouts.dart';
 ///             maximum: 5000,
 ///         }],
 ///     },
+///     engine: "memcached",
+///     name: "example",
 ///     description: "Test Server",
 ///     kmsKeyId: test.arn,
 ///     majorEngineVersion: "1.6",
@@ -39,8 +41,6 @@ import 'serverless_cache_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticache.ServerlessCache("example",
-///     engine="memcached",
-///     name="example",
 ///     cache_usage_limits={
 ///         "data_storage": {
 ///             "maximum": 10,
@@ -50,6 +50,8 @@ import 'serverless_cache_timeouts.dart';
 ///             "maximum": 5000,
 ///         }],
 ///     },
+///     engine="memcached",
+///     name="example",
 ///     description="Test Server",
 ///     kms_key_id=test["arn"],
 ///     major_engine_version="1.6",
@@ -66,8 +68,6 @@ import 'serverless_cache_timeouts.dart';
 /// {
 ///     var example = new Aws.ElastiCache.ServerlessCache("example", new()
 ///     {
-///         Engine = "memcached",
-///         Name = "example",
 ///         CacheUsageLimits = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsArgs
 ///         {
 ///             DataStorage = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs
@@ -83,6 +83,8 @@ import 'serverless_cache_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Engine = "memcached",
+///         Name = "example",
 ///         Description = "Test Server",
 ///         KmsKeyId = test.Arn,
 ///         MajorEngineVersion = "1.6",
@@ -109,8 +111,6 @@ import 'serverless_cache_timeouts.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
-/// Engine: pulumi.String("memcached"),
-/// Name: pulumi.String("example"),
 /// CacheUsageLimits: &elasticache.ServerlessCacheCacheUsageLimitsArgs{
 /// DataStorage: &elasticache.ServerlessCacheCacheUsageLimitsDataStorageArgs{
 /// Maximum: pulumi.Int(10),
@@ -122,6 +122,8 @@ import 'serverless_cache_timeouts.dart';
 /// },
 /// },
 /// },
+/// Engine: pulumi.String("memcached"),
+/// Name: pulumi.String("example"),
 /// Description: pulumi.String("Test Server"),
 /// KmsKeyId: pulumi.Any(test.Arn),
 /// MajorEngineVersion: pulumi.String("1.6"),
@@ -154,8 +156,6 @@ import 'serverless_cache_timeouts.dart';
 /// }
 ///
 /// resource "aws_elasticache_serverlesscache" "example" {
-///   engine = "memcached"
-///   name   = "example"
 ///   cache_usage_limits = {
 ///     data_storage = {
 ///       maximum = 10
@@ -165,6 +165,8 @@ import 'serverless_cache_timeouts.dart';
 ///       "maximum" = 5000
 ///     }]
 ///   }
+///   engine               = "memcached"
+///   name                 = "example"
 ///   description          = "Test Server"
 ///   kms_key_id           = test.arn
 ///   major_engine_version = "1.6"
@@ -197,8 +199,6 @@ import 'serverless_cache_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessCache("example", ServerlessCacheArgs.builder()
-///             .engine("memcached")
-///             .name("example")
 ///             .cacheUsageLimits(ServerlessCacheCacheUsageLimitsArgs.builder()
 ///                 .dataStorage(ServerlessCacheCacheUsageLimitsDataStorageArgs.builder()
 ///                     .maximum(10)
@@ -208,6 +208,8 @@ import 'serverless_cache_timeouts.dart';
 ///                     .maximum(5000)
 ///                     .build())
 ///                 .build())
+///             .engine("memcached")
+///             .name("example")
 ///             .description("Test Server")
 ///             .kmsKeyId(test.arn())
 ///             .majorEngineVersion("1.6")
@@ -228,8 +230,6 @@ import 'serverless_cache_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.elasticache.ServerlessCache("example", {
-///     engine: "redis",
-///     name: "example",
 ///     cacheUsageLimits: {
 ///         dataStorage: {
 ///             maximum: 10,
@@ -239,6 +239,8 @@ import 'serverless_cache_timeouts.dart';
 ///             maximum: 5000,
 ///         }],
 ///     },
+///     engine: "redis",
+///     name: "example",
 ///     dailySnapshotTime: "09:00",
 ///     description: "Test Server",
 ///     kmsKeyId: test.arn,
@@ -253,8 +255,6 @@ import 'serverless_cache_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticache.ServerlessCache("example",
-///     engine="redis",
-///     name="example",
 ///     cache_usage_limits={
 ///         "data_storage": {
 ///             "maximum": 10,
@@ -264,6 +264,8 @@ import 'serverless_cache_timeouts.dart';
 ///             "maximum": 5000,
 ///         }],
 ///     },
+///     engine="redis",
+///     name="example",
 ///     daily_snapshot_time="09:00",
 ///     description="Test Server",
 ///     kms_key_id=test["arn"],
@@ -282,8 +284,6 @@ import 'serverless_cache_timeouts.dart';
 /// {
 ///     var example = new Aws.ElastiCache.ServerlessCache("example", new()
 ///     {
-///         Engine = "redis",
-///         Name = "example",
 ///         CacheUsageLimits = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsArgs
 ///         {
 ///             DataStorage = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs
@@ -299,6 +299,8 @@ import 'serverless_cache_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Engine = "redis",
+///         Name = "example",
 ///         DailySnapshotTime = "09:00",
 ///         Description = "Test Server",
 ///         KmsKeyId = test.Arn,
@@ -327,8 +329,6 @@ import 'serverless_cache_timeouts.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
-/// Engine: pulumi.String("redis"),
-/// Name: pulumi.String("example"),
 /// CacheUsageLimits: &elasticache.ServerlessCacheCacheUsageLimitsArgs{
 /// DataStorage: &elasticache.ServerlessCacheCacheUsageLimitsDataStorageArgs{
 /// Maximum: pulumi.Int(10),
@@ -340,6 +340,8 @@ import 'serverless_cache_timeouts.dart';
 /// },
 /// },
 /// },
+/// Engine: pulumi.String("redis"),
+/// Name: pulumi.String("example"),
 /// DailySnapshotTime: pulumi.String("09:00"),
 /// Description: pulumi.String("Test Server"),
 /// KmsKeyId: pulumi.Any(test.Arn),
@@ -374,8 +376,6 @@ import 'serverless_cache_timeouts.dart';
 /// }
 ///
 /// resource "aws_elasticache_serverlesscache" "example" {
-///   engine = "redis"
-///   name   = "example"
 ///   cache_usage_limits = {
 ///     data_storage = {
 ///       maximum = 10
@@ -385,6 +385,8 @@ import 'serverless_cache_timeouts.dart';
 ///       "maximum" = 5000
 ///     }]
 ///   }
+///   engine                   = "redis"
+///   name                     = "example"
 ///   daily_snapshot_time      = "09:00"
 ///   description              = "Test Server"
 ///   kms_key_id               = test.arn
@@ -419,8 +421,6 @@ import 'serverless_cache_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessCache("example", ServerlessCacheArgs.builder()
-///             .engine("redis")
-///             .name("example")
 ///             .cacheUsageLimits(ServerlessCacheCacheUsageLimitsArgs.builder()
 ///                 .dataStorage(ServerlessCacheCacheUsageLimitsDataStorageArgs.builder()
 ///                     .maximum(10)
@@ -430,6 +430,8 @@ import 'serverless_cache_timeouts.dart';
 ///                     .maximum(5000)
 ///                     .build())
 ///                 .build())
+///             .engine("redis")
+///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
 ///             .kmsKeyId(test.arn())
@@ -452,8 +454,6 @@ import 'serverless_cache_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.elasticache.ServerlessCache("example", {
-///     engine: "valkey",
-///     name: "example",
 ///     cacheUsageLimits: {
 ///         dataStorage: {
 ///             maximum: 10,
@@ -463,6 +463,8 @@ import 'serverless_cache_timeouts.dart';
 ///             maximum: 5000,
 ///         }],
 ///     },
+///     engine: "valkey",
+///     name: "example",
 ///     dailySnapshotTime: "09:00",
 ///     description: "Test Server",
 ///     kmsKeyId: test.arn,
@@ -477,8 +479,6 @@ import 'serverless_cache_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.elasticache.ServerlessCache("example",
-///     engine="valkey",
-///     name="example",
 ///     cache_usage_limits={
 ///         "data_storage": {
 ///             "maximum": 10,
@@ -488,6 +488,8 @@ import 'serverless_cache_timeouts.dart';
 ///             "maximum": 5000,
 ///         }],
 ///     },
+///     engine="valkey",
+///     name="example",
 ///     daily_snapshot_time="09:00",
 ///     description="Test Server",
 ///     kms_key_id=test["arn"],
@@ -506,8 +508,6 @@ import 'serverless_cache_timeouts.dart';
 /// {
 ///     var example = new Aws.ElastiCache.ServerlessCache("example", new()
 ///     {
-///         Engine = "valkey",
-///         Name = "example",
 ///         CacheUsageLimits = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsArgs
 ///         {
 ///             DataStorage = new Aws.ElastiCache.Inputs.ServerlessCacheCacheUsageLimitsDataStorageArgs
@@ -523,6 +523,8 @@ import 'serverless_cache_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Engine = "valkey",
+///         Name = "example",
 ///         DailySnapshotTime = "09:00",
 ///         Description = "Test Server",
 ///         KmsKeyId = test.Arn,
@@ -551,8 +553,6 @@ import 'serverless_cache_timeouts.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := elasticache.NewServerlessCache(ctx, "example", &elasticache.ServerlessCacheArgs{
-/// Engine: pulumi.String("valkey"),
-/// Name: pulumi.String("example"),
 /// CacheUsageLimits: &elasticache.ServerlessCacheCacheUsageLimitsArgs{
 /// DataStorage: &elasticache.ServerlessCacheCacheUsageLimitsDataStorageArgs{
 /// Maximum: pulumi.Int(10),
@@ -564,6 +564,8 @@ import 'serverless_cache_timeouts.dart';
 /// },
 /// },
 /// },
+/// Engine: pulumi.String("valkey"),
+/// Name: pulumi.String("example"),
 /// DailySnapshotTime: pulumi.String("09:00"),
 /// Description: pulumi.String("Test Server"),
 /// KmsKeyId: pulumi.Any(test.Arn),
@@ -598,8 +600,6 @@ import 'serverless_cache_timeouts.dart';
 /// }
 ///
 /// resource "aws_elasticache_serverlesscache" "example" {
-///   engine = "valkey"
-///   name   = "example"
 ///   cache_usage_limits = {
 ///     data_storage = {
 ///       maximum = 10
@@ -609,6 +609,8 @@ import 'serverless_cache_timeouts.dart';
 ///       "maximum" = 5000
 ///     }]
 ///   }
+///   engine                   = "valkey"
+///   name                     = "example"
 ///   daily_snapshot_time      = "09:00"
 ///   description              = "Test Server"
 ///   kms_key_id               = test.arn
@@ -643,8 +645,6 @@ import 'serverless_cache_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessCache("example", ServerlessCacheArgs.builder()
-///             .engine("valkey")
-///             .name("example")
 ///             .cacheUsageLimits(ServerlessCacheCacheUsageLimitsArgs.builder()
 ///                 .dataStorage(ServerlessCacheCacheUsageLimitsDataStorageArgs.builder()
 ///                     .maximum(10)
@@ -654,6 +654,8 @@ import 'serverless_cache_timeouts.dart';
 ///                     .maximum(5000)
 ///                     .build())
 ///                 .build())
+///             .engine("valkey")
+///             .name("example")
 ///             .dailySnapshotTime("09:00")
 ///             .description("Test Server")
 ///             .kmsKeyId(test.arn())
@@ -676,7 +678,7 @@ import 'serverless_cache_timeouts.dart';
 /// $ pulumi import aws:elasticache/serverlessCache:ServerlessCache my_cluster my_cluster
 /// ```
 class ServerlessCache extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the serverless cache.
+  /// ARN of the serverless cache.
   late final pulumi.Output<String> arn;
   /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cacheUsageLimits` Block for details.
   late final pulumi.Output<ServerlessCacheCacheUsageLimits?> cacheUsageLimits;
@@ -687,7 +689,7 @@ class ServerlessCache extends pulumi.CustomResource {
   /// User-provided description for the serverless cache. The default is NULL.
   late final pulumi.Output<String> description;
   /// Represents the information required for client programs to connect to a cache node. See `endpoint` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<ServerlessCacheEndpoint>> endpoints;
   /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` or `valkey`.
   late final pulumi.Output<String> engine;
   /// The name and version number of the engine the serverless cache is compatible with.
@@ -704,7 +706,7 @@ class ServerlessCache extends pulumi.CustomResource {
   /// IP protocol version used by the serverless cache. Valid values are `ipv4`, `ipv6`, or `dualStack`. `ipv6` is only supported with IPv6-only subnets. If not specified, defaults to `ipv4`, unless all provided subnets are IPv6-only, in which case it defaults to `ipv6`.
   late final pulumi.Output<String> networkType;
   /// Represents the information required for client programs to connect to a cache node. See `readerEndpoint` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> readerEndpoints;
+  late final pulumi.Output<List<ServerlessCacheReaderEndpoint>> readerEndpoints;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A list of the one or more VPC security groups to be associated with the serverless cache. The security group will authorize traffic access for the VPC end-point (private-link). If no other information is given this will be the VPC’s Default Security Group that is associated with the cluster VPC end-point.
@@ -736,29 +738,29 @@ class ServerlessCache extends pulumi.CustomResource {
           'aws:elasticache/serverlessCache:ServerlessCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
     description = registerOutput<String>('description');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<ServerlessCacheEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheEndpoint>(guardedValue, (value) => ServerlessCacheEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     engine = registerOutput<String>('engine');
     fullEngineVersion = registerOutput<String>('fullEngineVersion');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
-    readerEndpoints = registerOutput<List<Map<String, dynamic>>>('readerEndpoints');
+    readerEndpoints = registerOutput<List<ServerlessCacheReaderEndpoint>>('readerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheReaderEndpoint>(guardedValue, (value) => ServerlessCacheReaderEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    snapshotArnsToRestores = registerOutput<List<String>?>('snapshotArnsToRestores');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArnsToRestores = registerOutput<List<String>?>('snapshotArnsToRestores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userGroupId = registerOutput<String?>('userGroupId');
   }
@@ -768,11 +770,12 @@ class ServerlessCache extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessCacheState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessCache._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -791,22 +794,56 @@ class ServerlessCache extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
     description = registerOutput<String>('description');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<ServerlessCacheEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheEndpoint>(guardedValue, (value) => ServerlessCacheEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     engine = registerOutput<String>('engine');
     fullEngineVersion = registerOutput<String>('fullEngineVersion');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     majorEngineVersion = registerOutput<String>('majorEngineVersion');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
-    readerEndpoints = registerOutput<List<Map<String, dynamic>>>('readerEndpoints');
+    readerEndpoints = registerOutput<List<ServerlessCacheReaderEndpoint>>('readerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheReaderEndpoint>(guardedValue, (value) => ServerlessCacheReaderEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    snapshotArnsToRestores = registerOutput<List<String>?>('snapshotArnsToRestores');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArnsToRestores = registerOutput<List<String>?>('snapshotArnsToRestores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userGroupId = registerOutput<String?>('userGroupId');
+  }
+
+  /// Creates a typed reference to an existing [ServerlessCache] resource.
+  ServerlessCache.reference(String urn)
+    : super(
+        'aws:elasticache/serverlessCache:ServerlessCache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
+    description = registerOutput<String>('description');
+    endpoints = registerOutput<List<ServerlessCacheEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheEndpoint>(guardedValue, (value) => ServerlessCacheEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    engine = registerOutput<String>('engine');
+    fullEngineVersion = registerOutput<String>('fullEngineVersion');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    majorEngineVersion = registerOutput<String>('majorEngineVersion');
+    this.name = registerOutput<String>('name');
+    networkType = registerOutput<String>('networkType');
+    readerEndpoints = registerOutput<List<ServerlessCacheReaderEndpoint>>('readerEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCacheReaderEndpoint>(guardedValue, (value) => ServerlessCacheReaderEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotArnsToRestores = registerOutput<List<String>?>('snapshotArnsToRestores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
+    status = registerOutput<String>('status');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userGroupId = registerOutput<String?>('userGroupId');
   }

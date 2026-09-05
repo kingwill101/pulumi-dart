@@ -209,7 +209,7 @@ class Organization extends pulumi.CustomResource {
           'cloudflare:index/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     meta = registerOutput<OrganizationMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

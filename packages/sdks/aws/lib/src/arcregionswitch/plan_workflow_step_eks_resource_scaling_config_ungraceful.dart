@@ -20,7 +20,7 @@ class PlanWorkflowStepEksResourceScalingConfigUngraceful {
 
   factory PlanWorkflowStepEksResourceScalingConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfigUngraceful(
-      minimumSuccessPercentage: pulumi.Input.fromValue(map['minimumSuccessPercentage'] as int),
+      minimumSuccessPercentage: pulumi.Input.fromValue((map['minimumSuccessPercentage'] as num).toInt()),
     );
   }
 }

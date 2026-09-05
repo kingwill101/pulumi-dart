@@ -10,29 +10,29 @@ import 'get_managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 /// Result data returned by getManagedDevOpsPool.
 class GetManagedDevOpsPoolResult {
   /// An `azureDevopsOrganization` block as defined below.
-  final List<GetManagedDevOpsPoolAzureDevopsOrganization> azureDevopsOrganizations;
+  final List<GetManagedDevOpsPoolAzureDevopsOrganization>? azureDevopsOrganizations;
   /// The ID of the Dev Center project.
-  final String devCenterProjectId;
+  final String? devCenterProjectId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetManagedDevOpsPoolIdentity> identities;
+  final List<GetManagedDevOpsPoolIdentity>? identities;
   /// The Azure Region where the Managed DevOps Pool exists.
-  final String location;
+  final String? location;
   /// The maximum number of agents that can be created.
-  final int maximumConcurrency;
-  final String name;
-  final String resourceGroupName;
+  final int? maximumConcurrency;
+  final String? name;
+  final String? resourceGroupName;
   /// A `statefulAgent` block as defined below.
-  final List<GetManagedDevOpsPoolStatefulAgent> statefulAgents;
+  final List<GetManagedDevOpsPoolStatefulAgent>? statefulAgents;
   /// A `statelessAgent` block as defined below.
-  final List<GetManagedDevOpsPoolStatelessAgent> statelessAgents;
+  final List<GetManagedDevOpsPoolStatelessAgent>? statelessAgents;
   /// A mapping of tags assigned to the Managed DevOps Pool.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// A `virtualMachineScaleSetFabric` block as defined below.
-  final List<GetManagedDevOpsPoolVirtualMachineScaleSetFabric> virtualMachineScaleSetFabrics;
+  final List<GetManagedDevOpsPoolVirtualMachineScaleSetFabric>? virtualMachineScaleSetFabrics;
   /// The work folder for every agent in the pool.
-  final String workFolder;
+  final String? workFolder;
 
   /// Creates a new [GetManagedDevOpsPoolResult].
   /// [azureDevopsOrganizations] An `azureDevopsOrganization` block as defined below.
@@ -41,62 +41,62 @@ class GetManagedDevOpsPoolResult {
   /// [identities] An `identity` block as defined below.
   /// [location] The Azure Region where the Managed DevOps Pool exists.
   /// [maximumConcurrency] The maximum number of agents that can be created.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [statefulAgents] A `statefulAgent` block as defined below.
   /// [statelessAgents] A `statelessAgent` block as defined below.
   /// [tags] A mapping of tags assigned to the Managed DevOps Pool.
   /// [virtualMachineScaleSetFabrics] A `virtualMachineScaleSetFabric` block as defined below.
   /// [workFolder] The work folder for every agent in the pool.
   const GetManagedDevOpsPoolResult({
-    required this.azureDevopsOrganizations,
-    required this.devCenterProjectId,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.maximumConcurrency,
-    required this.name,
-    required this.resourceGroupName,
-    required this.statefulAgents,
-    required this.statelessAgents,
-    required this.tags,
-    required this.virtualMachineScaleSetFabrics,
-    required this.workFolder,
+    this.azureDevopsOrganizations,
+    this.devCenterProjectId,
+    this.id,
+    this.identities,
+    this.location,
+    this.maximumConcurrency,
+    this.name,
+    this.resourceGroupName,
+    this.statefulAgents,
+    this.statelessAgents,
+    this.tags,
+    this.virtualMachineScaleSetFabrics,
+    this.workFolder,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureDevopsOrganizations': pulumi.Input.encodeList<GetManagedDevOpsPoolAzureDevopsOrganization, Map<String, dynamic>>(azureDevopsOrganizations, (value) => value.toMap()),
-      'devCenterProjectId': devCenterProjectId,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetManagedDevOpsPoolIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'maximumConcurrency': maximumConcurrency,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'statefulAgents': pulumi.Input.encodeList<GetManagedDevOpsPoolStatefulAgent, Map<String, dynamic>>(statefulAgents, (value) => value.toMap()),
-      'statelessAgents': pulumi.Input.encodeList<GetManagedDevOpsPoolStatelessAgent, Map<String, dynamic>>(statelessAgents, (value) => value.toMap()),
-      'tags': tags,
-      'virtualMachineScaleSetFabrics': pulumi.Input.encodeList<GetManagedDevOpsPoolVirtualMachineScaleSetFabric, Map<String, dynamic>>(virtualMachineScaleSetFabrics, (value) => value.toMap()),
-      'workFolder': workFolder,
+      'azureDevopsOrganizations': ?(() { final guardedValue = azureDevopsOrganizations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetManagedDevOpsPoolAzureDevopsOrganization, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'devCenterProjectId': ?devCenterProjectId,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetManagedDevOpsPoolIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'maximumConcurrency': ?maximumConcurrency,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'statefulAgents': ?(() { final guardedValue = statefulAgents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetManagedDevOpsPoolStatefulAgent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'statelessAgents': ?(() { final guardedValue = statelessAgents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetManagedDevOpsPoolStatelessAgent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'virtualMachineScaleSetFabrics': ?(() { final guardedValue = virtualMachineScaleSetFabrics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetManagedDevOpsPoolVirtualMachineScaleSetFabric, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'workFolder': ?workFolder,
     };
   }
 
   factory GetManagedDevOpsPoolResult.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolResult(
-      azureDevopsOrganizations: pulumi.Input.decodeList<GetManagedDevOpsPoolAzureDevopsOrganization>(map['azureDevopsOrganizations']!, (value) => GetManagedDevOpsPoolAzureDevopsOrganization.fromMap((value as Map).cast<String, dynamic>())),
-      devCenterProjectId: map['devCenterProjectId'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetManagedDevOpsPoolIdentity>(map['identities']!, (value) => GetManagedDevOpsPoolIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      maximumConcurrency: map['maximumConcurrency'] as int,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      statefulAgents: pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgent>(map['statefulAgents']!, (value) => GetManagedDevOpsPoolStatefulAgent.fromMap((value as Map).cast<String, dynamic>())),
-      statelessAgents: pulumi.Input.decodeList<GetManagedDevOpsPoolStatelessAgent>(map['statelessAgents']!, (value) => GetManagedDevOpsPoolStatelessAgent.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      virtualMachineScaleSetFabrics: pulumi.Input.decodeList<GetManagedDevOpsPoolVirtualMachineScaleSetFabric>(map['virtualMachineScaleSetFabrics']!, (value) => GetManagedDevOpsPoolVirtualMachineScaleSetFabric.fromMap((value as Map).cast<String, dynamic>())),
-      workFolder: map['workFolder'] as String,
+      azureDevopsOrganizations: (() { final guardedValue = map['azureDevopsOrganizations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolAzureDevopsOrganization>(guardedValue, (value) => GetManagedDevOpsPoolAzureDevopsOrganization.fromMap((value as Map).cast<String, dynamic>())); })(),
+      devCenterProjectId: (() { final guardedValue = map['devCenterProjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolIdentity>(guardedValue, (value) => GetManagedDevOpsPoolIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maximumConcurrency: (() { final guardedValue = map['maximumConcurrency']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statefulAgents: (() { final guardedValue = map['statefulAgents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgent>(guardedValue, (value) => GetManagedDevOpsPoolStatefulAgent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      statelessAgents: (() { final guardedValue = map['statelessAgents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolStatelessAgent>(guardedValue, (value) => GetManagedDevOpsPoolStatelessAgent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      virtualMachineScaleSetFabrics: (() { final guardedValue = map['virtualMachineScaleSetFabrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolVirtualMachineScaleSetFabric>(guardedValue, (value) => GetManagedDevOpsPoolVirtualMachineScaleSetFabric.fromMap((value as Map).cast<String, dynamic>())); })(),
+      workFolder: (() { final guardedValue = map['workFolder']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

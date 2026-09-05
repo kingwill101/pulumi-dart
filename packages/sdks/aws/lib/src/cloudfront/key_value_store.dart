@@ -136,7 +136,7 @@ import 'key_value_store_timeouts.dart';
 /// $ pulumi import aws:cloudfront/keyValueStore:KeyValueStore example example_store
 /// ```
 class KeyValueStore extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
+  /// ARN identifying your CloudFront KeyValueStore.
   late final pulumi.Output<String> arn;
   /// Comment.
   late final pulumi.Output<String?> comment;
@@ -163,15 +163,15 @@ class KeyValueStore extends pulumi.CustomResource {
           'aws:cloudfront/keyValueStore:KeyValueStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -180,11 +180,12 @@ class KeyValueStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyValueStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyValueStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -203,8 +204,27 @@ class KeyValueStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [KeyValueStore] resource.
+  KeyValueStore.reference(String urn)
+    : super(
+        'aws:cloudfront/keyValueStore:KeyValueStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyValueStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

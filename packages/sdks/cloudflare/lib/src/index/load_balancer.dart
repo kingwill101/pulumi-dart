@@ -633,7 +633,7 @@ import 'load_balancer_state.dart';
 /// 							PreferEcs: pulumi.String("always"),
 /// 						},
 /// 						PoolDefaultWeight: 0.2,
-/// 						PoolWeights: map[string]interface{}{
+/// 						PoolWeights: map[string]float64{
 /// 							"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 /// 							"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
 /// 						},
@@ -1192,7 +1192,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'cloudflare:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     countryPools = registerOutput<Map<String, List<String>>>('countryPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });

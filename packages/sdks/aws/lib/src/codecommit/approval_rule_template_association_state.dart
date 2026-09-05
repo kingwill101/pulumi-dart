@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApprovalRuleTemplateAssociation resources.
 class ApprovalRuleTemplateAssociationState {
   /// The name for the approval rule template.
-  final pulumi.Input<String>? approvalRuleTemplateName;
+  final pulumi.Input<String?>? approvalRuleTemplateName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the repository that you want to associate with the template.
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
 
   /// Creates a new [ApprovalRuleTemplateAssociationState].
   /// [approvalRuleTemplateName] The name for the approval rule template.

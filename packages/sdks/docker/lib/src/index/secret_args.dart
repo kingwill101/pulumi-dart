@@ -11,9 +11,9 @@ class SecretArgs {
   /// Base64-url-safe-encoded secret data
   final pulumi.Input<String> data;
   /// User-defined key/value metadata
-  final pulumi.Input<List<SecretLabel>>? labels;
+  final pulumi.Input<List<SecretLabel>?>? labels;
   /// User-defined name of the secret
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SecretArgs].
   /// [data] Base64-url-safe-encoded secret data

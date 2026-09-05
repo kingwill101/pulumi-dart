@@ -7,35 +7,35 @@ class LinkedServiceDataLakeStorageGen2State {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to Data Lake Storage Gen2 Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The service principal id with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `storageAccountKey` and `useManagedIdentity`.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
   /// The service principal key with which to authenticate against the Azure Data Lake Storage Gen2 account.
-  final pulumi.Input<String>? servicePrincipalKey;
+  final pulumi.Input<String?>? servicePrincipalKey;
   /// The Storage Account Key with which to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `servicePrincipalId`, `servicePrincipalKey`, `tenant` and `useManagedIdentity`.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The tenant id or name in which the service principal exists to authenticate against the Azure Data Lake Storage Gen2 account.
   ///
   /// &gt; **Note:** If `servicePrincipalId` is used, `servicePrincipalKey` and `tenant` are also required.
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// The endpoint for the Azure Data Lake Storage Gen2 service.
   ///
   /// &gt; **Note:** Users should specify only one of the following three authentication strategies: storage account key, managed identity, service principal.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// Whether to use the Data Factory's managed identity to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `servicePrincipalId`, `servicePrincipalKey`, `tenant` and `storageAccountKey`.
-  final pulumi.Input<bool>? useManagedIdentity;
+  final pulumi.Input<bool?>? useManagedIdentity;
 
   /// Creates a new [LinkedServiceDataLakeStorageGen2State].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service.

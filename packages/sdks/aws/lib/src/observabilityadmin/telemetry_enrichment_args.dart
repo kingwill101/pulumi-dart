@@ -9,8 +9,8 @@ import 'telemetry_enrichment_timeouts.dart';
 /// {@macro pulumi_observabilityadmin_telemetry_enrichment_telemetry_enrichment_args_doc}
 class TelemetryEnrichmentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<TelemetryEnrichmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<TelemetryEnrichmentTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEnrichmentArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

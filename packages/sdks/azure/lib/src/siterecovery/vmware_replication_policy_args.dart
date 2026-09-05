@@ -10,7 +10,7 @@ class VMWareReplicationPolicyArgs {
   /// Specifies the frequency at which to create application consistent recovery points. Must between `0` to `720`.
   final pulumi.Input<int> applicationConsistentSnapshotFrequencyInMinutes;
   /// The name which should be used for this Classic Replication Policy. Changing this forces a new Replication Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the period up to which the recovery points will be retained. Must between `0` to `21600`.
   final pulumi.Input<int> recoveryPointRetentionInMinutes;
   /// ID of the Recovery Services Vault. Changing this forces a new Replication Policy to be created.
@@ -39,9 +39,9 @@ class VMWareReplicationPolicyArgs {
 
   factory VMWareReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VMWareReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue(map['applicationConsistentSnapshotFrequencyInMinutes'] as int),
+      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue((map['applicationConsistentSnapshotFrequencyInMinutes'] as num).toInt()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInMinutes: pulumi.Input.fromValue(map['recoveryPointRetentionInMinutes'] as int),
+      recoveryPointRetentionInMinutes: pulumi.Input.fromValue((map['recoveryPointRetentionInMinutes'] as num).toInt()),
       recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
     );
   }

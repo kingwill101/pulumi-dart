@@ -14,15 +14,15 @@ import 'identity_policy_state.dart';
 /// const exampleDomainIdentity = new aws.ses.DomainIdentity("example", {domain: "example.com"});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
+///         principals: [{
+///             identifiers: ["*"],
+///             type: "AWS",
+///         }],
 ///         actions: [
 ///             "SES:SendEmail",
 ///             "SES:SendRawEmail",
 ///         ],
 ///         resources: [exampleDomainIdentity.arn],
-///         principals: [{
-///             identifiers: ["*"],
-///             type: "AWS",
-///         }],
 ///     }],
 /// });
 /// const exampleIdentityPolicy = new aws.ses.IdentityPolicy("example", {
@@ -37,15 +37,15 @@ import 'identity_policy_state.dart';
 ///
 /// example_domain_identity = aws.ses.DomainIdentity("example", domain="example.com")
 /// example = aws.iam.get_policy_document_output(statements=[{
+///     "principals": [{
+///         "identifiers": ["*"],
+///         "type": "AWS",
+///     }],
 ///     "actions": [
 ///         "SES:SendEmail",
 ///         "SES:SendRawEmail",
 ///     ],
 ///     "resources": [example_domain_identity.arn],
-///     "principals": [{
-///         "identifiers": ["*"],
-///         "type": "AWS",
-///     }],
 /// }])
 /// example_identity_policy = aws.ses.IdentityPolicy("example",
 ///     identity=example_domain_identity.arn,
@@ -71,15 +71,6 @@ import 'identity_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "SES:SendEmail",
-///                     "SES:SendRawEmail",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     exampleDomainIdentity.Arn,
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -90,6 +81,15 @@ import 'identity_policy_state.dart';
 ///                         },
 ///                         Type = "AWS",
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "SES:SendEmail",
+///                     "SES:SendRawEmail",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     exampleDomainIdentity.Arn,
 ///                 },
 ///             },
 ///         },
@@ -124,13 +124,6 @@ import 'identity_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SES:SendEmail"),
-/// 						pulumi.String("SES:SendRawEmail"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleDomainIdentity.Arn,
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Identifiers: pulumi.StringArray{
@@ -138,6 +131,13 @@ import 'identity_policy_state.dart';
 /// 							},
 /// 							Type: pulumi.String("AWS"),
 /// 						},
+/// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SES:SendEmail"),
+/// 						pulumi.String("SES:SendRawEmail"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleDomainIdentity.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -165,12 +165,12 @@ import 'identity_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions   = ["SES:SendEmail", "SES:SendRawEmail"]
-///     resources = [aws_ses_domainidentity.example.arn]
 ///     principals {
 ///       identifiers = ["*"]
 ///       type        = "AWS"
 ///     }
+///     actions   = ["SES:SendEmail", "SES:SendRawEmail"]
+///     resources = [aws_ses_domainidentity.example.arn]
 ///   }
 /// }
 ///
@@ -216,14 +216,14 @@ import 'identity_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "SES:SendEmail",
-///                     "SES:SendRawEmail")
-///                 .resources(exampleDomainIdentity.arn())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .identifiers("*")
 ///                     .type("AWS")
 ///                     .build())
+///                 .actions(
+///                     "SES:SendEmail",
+///                     "SES:SendRawEmail")
+///                 .resources(exampleDomainIdentity.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -256,15 +256,15 @@ import 'identity_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
+///           - principals:
+///               - identifiers:
+///                   - '*'
+///                 type: AWS
+///             actions:
 ///               - SES:SendEmail
 ///               - SES:SendRawEmail
 ///             resources:
 ///               - ${exampleDomainIdentity.arn}
-///             principals:
-///               - identifiers:
-///                   - '*'
-///                 type: AWS
 /// ```
 ///
 ///
@@ -276,7 +276,7 @@ import 'identity_policy_state.dart';
 /// $ pulumi import aws:ses/identityPolicy:IdentityPolicy example 'example.com|example'
 /// ```
 class IdentityPolicy extends pulumi.CustomResource {
-  /// Name or Amazon Resource Name (ARN) of the SES Identity.
+  /// Name or ARN of the SES Identity.
   late final pulumi.Output<String> identity;
   /// Name of the policy.
   late final pulumi.Output<String> name;
@@ -297,7 +297,7 @@ class IdentityPolicy extends pulumi.CustomResource {
           'aws:ses/identityPolicy:IdentityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');
@@ -310,11 +310,12 @@ class IdentityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -328,6 +329,21 @@ class IdentityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    identity = registerOutput<String>('identity');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [IdentityPolicy] resource.
+  IdentityPolicy.reference(String urn)
+    : super(
+        'aws:ses/identityPolicy:IdentityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');
     policy = registerOutput<String>('policy');

@@ -159,6 +159,17 @@ Future<GetAccessEntryResult> getAccessEntry(
   return GetAccessEntryResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessEntryResult> getAccessEntryOutput(
+  GetAccessEntryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getAccessEntry:getAccessEntry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessEntryResult.fromMap);
+}
+
 /// Data source for managing AWS EKS (Elastic Kubernetes) Access Policies.
 ///
 /// ## Example Usage
@@ -243,6 +254,17 @@ Future<GetAccessPoliciesResult> getAccessPolicies(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPoliciesResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPoliciesResult> getAccessPoliciesOutput(
+  GetAccessPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getAccessPolicies:getAccessPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPoliciesResult.fromMap);
 }
 
 /// Retrieve information about an EKS add-on.
@@ -382,6 +404,17 @@ Future<GetAddonResult> getAddon(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAddonResult.fromMap(result);
+}
+
+pulumi.Output<GetAddonResult> getAddonOutput(
+  GetAddonArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getAddon:getAddon',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddonResult.fromMap);
 }
 
 /// Retrieve information about a specific EKS add-on version compatible with an EKS cluster version.
@@ -622,6 +655,17 @@ Future<GetAddonVersionResult> getAddonVersion(
   return GetAddonVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetAddonVersionResult> getAddonVersionOutput(
+  GetAddonVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getAddonVersion:getAddonVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddonVersionResult.fromMap);
+}
+
 /// Retrieve information about an EKS Cluster.
 ///
 /// ## Example Usage
@@ -765,6 +809,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Get an authentication token to communicate with an EKS cluster.
@@ -918,6 +973,17 @@ Future<GetClusterAuthResult> getClusterAuth(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterAuthResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterAuthResult> getClusterAuthOutput(
+  GetClusterAuthArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getClusterAuth:getClusterAuth',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterAuthResult.fromMap);
 }
 
 /// Data source for managing AWS EKS (Elastic Kubernetes) Cluster Versions.
@@ -1212,6 +1278,17 @@ Future<GetClusterVersionsResult> getClusterVersions(
   return GetClusterVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterVersionsResult> getClusterVersionsOutput(
+  GetClusterVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getClusterVersions:getClusterVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterVersionsResult.fromMap);
+}
+
 /// Retrieve EKS Clusters list
 ///
 /// ## Example Usage
@@ -1291,6 +1368,17 @@ Future<GetClustersResult> getClusters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClustersResult.fromMap(result);
+}
+
+pulumi.Output<GetClustersResult> getClustersOutput(
+  GetClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getClusters:getClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClustersResult.fromMap);
 }
 
 /// Retrieve information about an EKS Node Group.
@@ -1418,6 +1506,17 @@ Future<GetNodeGroupResult> getNodeGroup(
   return GetNodeGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeGroupResult> getNodeGroupOutput(
+  GetNodeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getNodeGroup:getNodeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupResult.fromMap);
+}
+
 /// Retrieve the EKS Node Groups associated with a named EKS cluster. This will allow you to pass a list of Node Group names to other resources.
 ///
 /// ## Example Usage
@@ -1495,4 +1594,15 @@ Future<GetNodeGroupsResult> getNodeGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeGroupsResult> getNodeGroupsOutput(
+  GetNodeGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:eks/getNodeGroups:getNodeGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupsResult.fromMap);
 }

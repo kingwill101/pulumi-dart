@@ -11,7 +11,7 @@ class CloudConnectorRulesRule {
   /// Parameters of Cloud Connector Rule
   final pulumi.Input<CloudConnectorRulesRuleParameters?>? parameters;
   /// Cloud Provider type
-  /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+  /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
   final pulumi.Input<String?>? provider;
 
   /// Creates a new [CloudConnectorRulesRule].

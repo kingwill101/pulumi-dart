@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResourceProviderFeatureRegistration resources.
 class ResourceProviderFeatureRegistrationState {
   /// Specifies the name of the feature to register. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Resource Provider name. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
 
   /// Creates a new [ResourceProviderFeatureRegistrationState].
   /// [name] Specifies the name of the feature to register. Changing this forces a new resource to be created.

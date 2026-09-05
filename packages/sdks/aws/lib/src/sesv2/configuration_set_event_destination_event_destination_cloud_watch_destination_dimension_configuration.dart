@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration {
-  /// The default value of the dimension that is published to Amazon CloudWatch if you don't provide the value of the dimension when you send an email.
+  /// Default value of the dimension that is published to Amazon CloudWatch if you don't provide the value of the dimension when you send an email.
   final pulumi.Input<String> defaultDimensionValue;
-  /// The name of an Amazon CloudWatch dimension associated with an email sending metric.
+  /// Name of an Amazon CloudWatch dimension associated with an email sending metric.
   final pulumi.Input<String> dimensionName;
-  /// The location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch. Valid values: `MESSAGE_TAG`, `EMAIL_HEADER`, `LINK_TAG`.
+  /// Location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch. Valid values: `MESSAGE_TAG`, `EMAIL_HEADER`, `LINK_TAG`.
   final pulumi.Input<String> dimensionValueSource;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration].
-  /// [defaultDimensionValue] The default value of the dimension that is published to Amazon CloudWatch if you don't provide the value of the dimension when you send an email.
-  /// [dimensionName] The name of an Amazon CloudWatch dimension associated with an email sending metric.
-  /// [dimensionValueSource] The location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch. Valid values: `MESSAGE_TAG`, `EMAIL_HEADER`, `LINK_TAG`.
+  /// [defaultDimensionValue] Default value of the dimension that is published to Amazon CloudWatch if you don't provide the value of the dimension when you send an email.
+  /// [dimensionName] Name of an Amazon CloudWatch dimension associated with an email sending metric.
+  /// [dimensionValueSource] Location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch. Valid values: `MESSAGE_TAG`, `EMAIL_HEADER`, `LINK_TAG`.
   const ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration({
     required this.defaultDimensionValue,
     required this.dimensionName,

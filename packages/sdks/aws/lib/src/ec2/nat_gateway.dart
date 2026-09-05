@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_gateway_args.dart';
+import 'nat_gateway_availability_zone_address.dart';
+import 'nat_gateway_regional_nat_gateway_address.dart';
 import 'nat_gateway_state.dart';
 
 /// Provides a resource to create a VPC NAT Gateway.
@@ -719,8 +721,6 @@ import 'nat_gateway_state.dart';
 ///     exampleEip.push(new aws.ec2.Eip(`example-${range}`, {domain: "vpc"}));
 /// }
 /// const exampleNatGateway = new aws.ec2.NatGateway("example", {
-///     vpcId: example.id,
-///     availabilityMode: "regional",
 ///     availabilityZoneAddresses: [
 ///         {
 ///             allocationIds: [exampleEip[0].id],
@@ -734,6 +734,8 @@ import 'nat_gateway_state.dart';
 ///             availabilityZone: available.then(available => available.names?.[1]),
 ///         },
 ///     ],
+///     vpcId: example.id,
+///     availabilityMode: "regional",
 /// });
 /// ```
 /// ```python
@@ -748,8 +750,6 @@ import 'nat_gateway_state.dart';
 /// for example_eip_range in [{"value": i} for i in range(0, 3)]:
 ///     example_eip.append(aws.ec2.Eip(f"example-{example_eip_range['value']}", domain="vpc"))
 /// example_nat_gateway = aws.ec2.NatGateway("example",
-///     vpc_id=example.id,
-///     availability_mode="regional",
 ///     availability_zone_addresses=[
 ///         {
 ///             "allocation_ids": [example_eip[0].id],
@@ -762,7 +762,9 @@ import 'nat_gateway_state.dart';
 ///             ],
 ///             "availability_zone": available.names[1],
 ///         },
-///     ])
+///     ],
+///     vpc_id=example.id,
+///     availability_mode="regional")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -795,8 +797,6 @@ import 'nat_gateway_state.dart';
 ///     }
 ///     var exampleNatGateway = new Aws.Ec2.NatGateway("example", new()
 ///     {
-///         VpcId = example.Id,
-///         AvailabilityMode = "regional",
 ///         AvailabilityZoneAddresses = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.NatGatewayAvailabilityZoneAddressArgs
@@ -817,6 +817,8 @@ import 'nat_gateway_state.dart';
 ///                 AvailabilityZone = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
 ///             },
 ///         },
+///         VpcId = example.Id,
+///         AvailabilityMode = "regional",
 ///     });
 ///
 /// });
@@ -853,7 +855,6 @@ import 'nat_gateway_state.dart';
 /// 		var exampleEip []*ec2.Eip
 /// 		for index := 0; index < 3; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := ec2.NewEip(ctx, fmt.Sprintf("example-%v", key0), &ec2.EipArgs{
 /// 				Domain: pulumi.String("vpc"),
 /// 			})
@@ -863,8 +864,6 @@ import 'nat_gateway_state.dart';
 /// 			exampleEip = append(exampleEip, __res)
 /// 		}
 /// 		_, err = ec2.NewNatGateway(ctx, "example", &ec2.NatGatewayArgs{
-/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
-/// 			AvailabilityMode: pulumi.String("regional"),
 /// 			AvailabilityZoneAddresses: ec2.NatGatewayAvailabilityZoneAddressArray{
 /// 				&ec2.NatGatewayAvailabilityZoneAddressArgs{
 /// 					AllocationIds: pulumi.StringArray{
@@ -880,6 +879,8 @@ import 'nat_gateway_state.dart';
 /// 					AvailabilityZone: pulumi.String(available.Names[1]),
 /// 				},
 /// 			},
+/// 			VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+/// 			AvailabilityMode: pulumi.String("regional"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -911,8 +912,6 @@ import 'nat_gateway_state.dart';
 ///   domain = "vpc"
 /// }
 /// resource "aws_ec2_natgateway" "example" {
-///   vpc_id            = aws_ec2_vpc.example.id
-///   availability_mode = "regional"
 ///   availability_zone_addresses {
 ///     allocation_ids    = [aws_ec2_eip.example[0].id]
 ///     availability_zone = data.aws_getavailabilityzones.available.names[0]
@@ -921,6 +920,8 @@ import 'nat_gateway_state.dart';
 ///     allocation_ids    = [aws_ec2_eip.example[1].id, aws_ec2_eip.example[2].id]
 ///     availability_zone = data.aws_getavailabilityzones.available.names[1]
 ///   }
+///   vpc_id            = aws_ec2_vpc.example.id
+///   availability_mode = "regional"
 /// }
 /// ```
 /// ```java
@@ -973,8 +974,6 @@ import 'nat_gateway_state.dart';
 ///
 /// }
 ///         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()
-///             .vpcId(example.id())
-///             .availabilityMode("regional")
 ///             .availabilityZoneAddresses(
 ///                 NatGatewayAvailabilityZoneAddressArgs.builder()
 ///                     .allocationIds(exampleEip[0].id())
@@ -986,6 +985,8 @@ import 'nat_gateway_state.dart';
 ///                         exampleEip[2].id())
 ///                     .availabilityZone(available.names()[1])
 ///                     .build())
+///             .vpcId(example.id())
+///             .availabilityMode("regional")
 ///             .build());
 ///
 ///     }
@@ -1012,8 +1013,6 @@ import 'nat_gateway_state.dart';
 ///     type: aws:ec2:NatGateway
 ///     name: example
 ///     properties:
-///       vpcId: ${example.id}
-///       availabilityMode: regional
 ///       availabilityZoneAddresses:
 ///         - allocationIds:
 ///             - ${exampleEip[0].id}
@@ -1022,6 +1021,8 @@ import 'nat_gateway_state.dart';
 ///             - ${exampleEip[1].id}
 ///             - ${exampleEip[2].id}
 ///           availabilityZone: ${available.names[1]}
+///       vpcId: ${example.id}
+///       availabilityMode: regional
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -1061,7 +1062,7 @@ class NatGateway extends pulumi.CustomResource {
   /// Specifies whether to create a zonal (single-AZ) or regional (multi-AZ) NAT gateway. Valid values are `zonal` and `regional`. Defaults to `zonal`.
   late final pulumi.Output<String> availabilityMode;
   /// Repeatable configuration block for the Elastic IP addresses (EIPs) and availability zones for the regional NAT gateway. When not specified, the regional NAT gateway will automatically expand to new AZs and associate EIPs upon detection of an elastic network interface (auto mode). When specified, auto-expansion is disabled (manual mode). See `availabilityZoneAddress` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> availabilityZoneAddresses;
+  late final pulumi.Output<List<NatGatewayAvailabilityZoneAddress>?> availabilityZoneAddresses;
   /// Connectivity type for the NAT Gateway. Valid values are `private` and `public`. When `availabilityMode` is set to `regional`, this must be set to `public`. Defaults to `public`.
   late final pulumi.Output<String?> connectivityType;
   /// ID of the network interface.
@@ -1073,7 +1074,7 @@ class NatGateway extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// (regional NAT gateways only) Repeatable blocks for information about the IP addresses and network interface associated with the regional NAT gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>> regionalNatGatewayAddresses;
+  late final pulumi.Output<List<NatGatewayRegionalNatGatewayAddress>> regionalNatGatewayAddresses;
   late final pulumi.Output<String> regionalNatGatewayAutoMode;
   /// (regional NAT gateways only) ID of the automatically created route table.
   late final pulumi.Output<String> routeTableId;
@@ -1104,28 +1105,28 @@ class NatGateway extends pulumi.CustomResource {
           'aws:ec2/natGateway:NatGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocationId = registerOutput<String?>('allocationId');
     associationId = registerOutput<String>('associationId');
     autoProvisionZones = registerOutput<String>('autoProvisionZones');
     autoScalingIps = registerOutput<String>('autoScalingIps');
     availabilityMode = registerOutput<String>('availabilityMode');
-    availabilityZoneAddresses = registerOutput<List<Map<String, dynamic>>?>('availabilityZoneAddresses');
+    availabilityZoneAddresses = registerOutput<List<NatGatewayAvailabilityZoneAddress>?>('availabilityZoneAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(guardedValue, (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>())); });
     connectivityType = registerOutput<String?>('connectivityType');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     privateIp = registerOutput<String>('privateIp');
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
-    regionalNatGatewayAddresses = registerOutput<List<Map<String, dynamic>>>('regionalNatGatewayAddresses');
+    regionalNatGatewayAddresses = registerOutput<List<NatGatewayRegionalNatGatewayAddress>>('regionalNatGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayRegionalNatGatewayAddress>(guardedValue, (value) => NatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>())); });
     regionalNatGatewayAutoMode = registerOutput<String>('regionalNatGatewayAutoMode');
     routeTableId = registerOutput<String>('routeTableId');
-    secondaryAllocationIds = registerOutput<List<String>>('secondaryAllocationIds');
+    secondaryAllocationIds = registerOutput<List<String>>('secondaryAllocationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
-    secondaryPrivateIpAddresses = registerOutput<List<String>>('secondaryPrivateIpAddresses');
+    secondaryPrivateIpAddresses = registerOutput<List<String>>('secondaryPrivateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -1134,11 +1135,12 @@ class NatGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1157,21 +1159,53 @@ class NatGateway extends pulumi.CustomResource {
     autoProvisionZones = registerOutput<String>('autoProvisionZones');
     autoScalingIps = registerOutput<String>('autoScalingIps');
     availabilityMode = registerOutput<String>('availabilityMode');
-    availabilityZoneAddresses = registerOutput<List<Map<String, dynamic>>?>('availabilityZoneAddresses');
+    availabilityZoneAddresses = registerOutput<List<NatGatewayAvailabilityZoneAddress>?>('availabilityZoneAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(guardedValue, (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>())); });
     connectivityType = registerOutput<String?>('connectivityType');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     privateIp = registerOutput<String>('privateIp');
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
-    regionalNatGatewayAddresses = registerOutput<List<Map<String, dynamic>>>('regionalNatGatewayAddresses');
+    regionalNatGatewayAddresses = registerOutput<List<NatGatewayRegionalNatGatewayAddress>>('regionalNatGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayRegionalNatGatewayAddress>(guardedValue, (value) => NatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>())); });
     regionalNatGatewayAutoMode = registerOutput<String>('regionalNatGatewayAutoMode');
     routeTableId = registerOutput<String>('routeTableId');
-    secondaryAllocationIds = registerOutput<List<String>>('secondaryAllocationIds');
+    secondaryAllocationIds = registerOutput<List<String>>('secondaryAllocationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
-    secondaryPrivateIpAddresses = registerOutput<List<String>>('secondaryPrivateIpAddresses');
+    secondaryPrivateIpAddresses = registerOutput<List<String>>('secondaryPrivateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [NatGateway] resource.
+  NatGateway.reference(String urn)
+    : super(
+        'aws:ec2/natGateway:NatGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationId = registerOutput<String?>('allocationId');
+    associationId = registerOutput<String>('associationId');
+    autoProvisionZones = registerOutput<String>('autoProvisionZones');
+    autoScalingIps = registerOutput<String>('autoScalingIps');
+    availabilityMode = registerOutput<String>('availabilityMode');
+    availabilityZoneAddresses = registerOutput<List<NatGatewayAvailabilityZoneAddress>?>('availabilityZoneAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(guardedValue, (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>())); });
+    connectivityType = registerOutput<String?>('connectivityType');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    privateIp = registerOutput<String>('privateIp');
+    publicIp = registerOutput<String>('publicIp');
+    region = registerOutput<String>('region');
+    regionalNatGatewayAddresses = registerOutput<List<NatGatewayRegionalNatGatewayAddress>>('regionalNatGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NatGatewayRegionalNatGatewayAddress>(guardedValue, (value) => NatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>())); });
+    regionalNatGatewayAutoMode = registerOutput<String>('regionalNatGatewayAutoMode');
+    routeTableId = registerOutput<String>('routeTableId');
+    secondaryAllocationIds = registerOutput<List<String>>('secondaryAllocationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    secondaryPrivateIpAddressCount = registerOutput<int>('secondaryPrivateIpAddressCount');
+    secondaryPrivateIpAddresses = registerOutput<List<String>>('secondaryPrivateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

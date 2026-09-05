@@ -190,7 +190,7 @@ import 'ip_set_state.dart';
 class IpSet extends pulumi.CustomResource {
   /// Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses. All addresses must be specified using Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for `/0`.
   late final pulumi.Output<List<String>?> addresses;
-  /// The Amazon Resource Name (ARN) of the IP set.
+  /// ARN of the IP set.
   late final pulumi.Output<String> arn;
   /// A friendly description of the IP set.
   late final pulumi.Output<String?> description;
@@ -222,9 +222,9 @@ class IpSet extends pulumi.CustomResource {
           'aws:wafv2/ipSet:IpSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    addresses = registerOutput<List<String>?>('addresses');
+    addresses = registerOutput<List<String>?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     ipAddressVersion = registerOutput<String>('ipAddressVersion');
@@ -233,8 +233,8 @@ class IpSet extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IpSet] resource's state with the given [name] and [id].
@@ -242,11 +242,12 @@ class IpSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,7 +261,7 @@ class IpSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addresses = registerOutput<List<String>?>('addresses');
+    addresses = registerOutput<List<String>?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     ipAddressVersion = registerOutput<String>('ipAddressVersion');
@@ -269,7 +270,29 @@ class IpSet extends pulumi.CustomResource {
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IpSet] resource.
+  IpSet.reference(String urn)
+    : super(
+        'aws:wafv2/ipSet:IpSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addresses = registerOutput<List<String>?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    ipAddressVersion = registerOutput<String>('ipAddressVersion');
+    lockToken = registerOutput<String>('lockToken');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

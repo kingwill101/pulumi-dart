@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcEndpointAssociationSubnetMapping {
   /// The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// The unique identifier for the subnet.
   final pulumi.Input<String> subnetId;
 

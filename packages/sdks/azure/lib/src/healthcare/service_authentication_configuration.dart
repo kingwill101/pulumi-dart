@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAuthenticationConfiguration {
   /// The intended audience to receive authentication tokens for the service. The default value is https://azurehealthcareapis.com
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running this provider.
   /// Authority must be registered to Azure AD and in the following format: https://{Azure-AD-endpoint}/{tenant-id}.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// (Boolean) Enables the 'SMART on FHIR' option for mobile and web implementations.
-  final pulumi.Input<bool>? smartProxyEnabled;
+  final pulumi.Input<bool?>? smartProxyEnabled;
 
   /// Creates a new [ServiceAuthenticationConfiguration].
   /// [audience] The intended audience to receive authentication tokens for the service. The default value is https://azurehealthcareapis.com

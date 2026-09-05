@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryBucketAccessPointScopeScope {
   /// You can specify a list of API operations as permissions for the access point.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// You can specify a list of prefixes, but the total length of characters of all prefixes must be less than 256 bytes.
-  final pulumi.Input<List<String>>? prefixes;
+  final pulumi.Input<List<String>?>? prefixes;
 
   /// Creates a new [DirectoryBucketAccessPointScopeScope].
   /// [permissions] You can specify a list of API operations as permissions for the access point.

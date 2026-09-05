@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerMutualAuthentication {
   /// Valid values are `off` and `on`.
-  final pulumi.Input<String>? advertiseTrustStoreCaNames;
+  final pulumi.Input<String?>? advertiseTrustStoreCaNames;
   /// Whether client certificate expiry is ignored.
   /// Default is `false`.
-  final pulumi.Input<bool>? ignoreClientCertificateExpiry;
+  final pulumi.Input<bool?>? ignoreClientCertificateExpiry;
   /// Valid values are `off`, `passthrough`, and `verify`.
   final pulumi.Input<String> mode;
   /// ARN of the elbv2 Trust Store.
-  final pulumi.Input<String>? trustStoreArn;
+  final pulumi.Input<String?>? trustStoreArn;
 
   /// Creates a new [ListenerMutualAuthentication].
   /// [advertiseTrustStoreCaNames] Valid values are `off` and `on`.

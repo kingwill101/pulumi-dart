@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation {
   /// S3 bucket for the customer input file.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Name assigned to the file when it was created in S3. You use the object key to retrieve the object.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationS3FileLocation].
   /// [bucket] S3 bucket for the customer input file.

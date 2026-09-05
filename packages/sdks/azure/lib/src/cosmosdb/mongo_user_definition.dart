@@ -201,7 +201,7 @@ import 'mongo_user_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cosmosdb.NewMongoUserDefinition(ctx, "example", &cosmosdb.MongoUserDefinitionArgs{
-/// 			CosmosMongoDatabaseId: exampleMongoDatabase.ID(),
+/// 			CosmosMongoDatabaseId: exampleMongoDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:              pulumi.String("myUserName"),
 /// 			Password:              pulumi.String("myPassword"),
 /// 		})
@@ -407,11 +407,12 @@ class MongoUserDefinition extends pulumi.CustomResource {
           'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    password = registerOutput<String>('password');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
     username = registerOutput<String>('username');
   }
 
@@ -420,11 +421,12 @@ class MongoUserDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MongoUserDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MongoUserDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,8 +441,24 @@ class MongoUserDefinition extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    password = registerOutput<String>('password');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [MongoUserDefinition] resource.
+  MongoUserDefinition.reference(String urn)
+    : super(
+        'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
     username = registerOutput<String>('username');
   }
 }

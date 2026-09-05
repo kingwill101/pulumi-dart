@@ -12,19 +12,19 @@ class StorageLensConfigurationStorageLensConfiguration {
   /// Account-level configurations of the S3 Storage Lens configuration. See `accountLevel` below for more details.
   final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevel> accountLevel;
   /// Amazon Web Services organization for the S3 Storage Lens configuration. See `awsOrg` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAwsOrg>? awsOrg;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAwsOrg?>? awsOrg;
   /// Properties of S3 Storage Lens metrics export including the destination, schema and format. See `dataExport` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExport>? dataExport;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExport?>? dataExport;
   /// Whether the S3 Storage Lens configuration is enabled.
   final pulumi.Input<bool> enabled;
   /// What is excluded in this configuration. Conflicts with `include`. See `exclude` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExclude>? exclude;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExclude?>? exclude;
   /// Configuration for the S3 Storage Lens expanded prefix metrics report. Unlike the default Storage Lens metrics report, the enhanced prefix metrics report includes all S3 Storage Lens storage and activity data related to the full list of prefixes in your Storage Lens configuration. See `expandedPrefixesDataExport` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExport>? expandedPrefixesDataExport;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExport?>? expandedPrefixesDataExport;
   /// What is included in this configuration. Conflicts with `exclude`. See `include` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationInclude>? include;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationInclude?>? include;
   /// Prefix delimiter used for object keys in this S3 Storage Lens configuration.
-  final pulumi.Input<String>? prefixDelimiter;
+  final pulumi.Input<String?>? prefixDelimiter;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfiguration].
   /// [accountLevel] Account-level configurations of the S3 Storage Lens configuration. See `accountLevel` below for more details.

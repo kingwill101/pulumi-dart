@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LogDestinationPolicy resources.
 class LogDestinationPolicyState {
   /// The policy document. This is a JSON formatted string.
-  final pulumi.Input<String>? accessPolicy;
+  final pulumi.Input<String?>? accessPolicy;
   /// A name for the subscription filter
-  final pulumi.Input<String>? destinationName;
+  final pulumi.Input<String?>? destinationName;
   /// Specify true if you are updating an existing destination policy to grant permission to an organization ID instead of granting permission to individual AWS accounts.
-  final pulumi.Input<bool>? forceUpdate;
+  final pulumi.Input<bool?>? forceUpdate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LogDestinationPolicyState].
   /// [accessPolicy] The policy document. This is a JSON formatted string.

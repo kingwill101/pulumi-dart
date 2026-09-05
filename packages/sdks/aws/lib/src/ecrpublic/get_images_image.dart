@@ -56,7 +56,7 @@ class GetImagesImage {
       imageDigest: pulumi.Input.fromValue(map['imageDigest'] as String),
       imageManifestMediaType: pulumi.Input.fromValue(map['imageManifestMediaType'] as String),
       imagePushedAt: pulumi.Input.fromValue(map['imagePushedAt'] as String),
-      imageSizeInBytes: pulumi.Input.fromValue(map['imageSizeInBytes'] as int),
+      imageSizeInBytes: pulumi.Input.fromValue((map['imageSizeInBytes'] as num).toInt()),
       imageTags: pulumi.Input.fromValue((map['imageTags'] as List).cast<String>()),
       registryId: pulumi.Input.fromValue(map['registryId'] as String),
       repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),

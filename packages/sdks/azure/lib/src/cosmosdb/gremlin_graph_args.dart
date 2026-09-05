@@ -16,31 +16,31 @@ class GremlinGraphArgs {
   /// The time to live of Analytical Storage for this Cosmos DB Gremlin Graph. Possible values are between `-1` to `2147483647` not including `0`. If present and the value is set to `-1`, it means never expire.
   ///
   /// &gt; **Note:** Disabling `analyticalStorageTtl` will force a new resource to be created since it can't be disabled once it's enabled.
-  final pulumi.Input<int>? analyticalStorageTtl;
+  final pulumi.Input<int?>? analyticalStorageTtl;
   /// An `autoscaleSettings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply. Requires `partitionKeyPath` to be set.
   ///
   /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
-  final pulumi.Input<GremlinGraphAutoscaleSettings>? autoscaleSettings;
+  final pulumi.Input<GremlinGraphAutoscaleSettings?>? autoscaleSettings;
   /// A `conflictResolutionPolicy` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<GremlinGraphConflictResolutionPolicy>? conflictResolutionPolicy;
+  final pulumi.Input<GremlinGraphConflictResolutionPolicy?>? conflictResolutionPolicy;
   /// The name of the Cosmos DB Graph Database in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// The default time to live (TTL) of the Gremlin graph. If the value is missing or set to "-1", items don’t expire.
-  final pulumi.Input<int>? defaultTtl;
+  final pulumi.Input<int?>? defaultTtl;
   /// The configuration of the indexing policy. One or more `indexPolicy` blocks as defined below.
-  final pulumi.Input<GremlinGraphIndexPolicy>? indexPolicy;
+  final pulumi.Input<GremlinGraphIndexPolicy?>? indexPolicy;
   /// Specifies the name of the Cosmos DB Gremlin Graph. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Define a partition key. Changing this forces a new resource to be created.
   final pulumi.Input<String> partitionKeyPath;
   /// Define a partition key version. Changing this forces a new resource to be created. Possible values are `1`and `2`. This should be set to `2` in order to use large partition keys.
-  final pulumi.Input<int>? partitionKeyVersion;
+  final pulumi.Input<int?>? partitionKeyVersion;
   /// The name of the resource group in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
   /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GremlinGraphUniqueKey>>? uniqueKeys;
+  final pulumi.Input<List<GremlinGraphUniqueKey>?>? uniqueKeys;
 
   /// Creates a new [GremlinGraphArgs].
   /// [accountName] The name of the CosmosDB Account to create the Gremlin Graph within. Changing this forces a new resource to be created.
@@ -93,17 +93,17 @@ class GremlinGraphArgs {
   factory GremlinGraphArgs.fromMap(Map<String, dynamic> map) {
     return GremlinGraphArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GremlinGraphAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conflictResolutionPolicy: (() { final guardedValue = map['conflictResolutionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GremlinGraphConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       indexPolicy: (() { final guardedValue = map['indexPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GremlinGraphIndexPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionKeyPath: pulumi.Input.fromValue(map['partitionKeyPath'] as String),
-      partitionKeyVersion: (() { final guardedValue = map['partitionKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partitionKeyVersion: (() { final guardedValue = map['partitionKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       uniqueKeys: (() { final guardedValue = map['uniqueKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GremlinGraphUniqueKey>(guardedValue, (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

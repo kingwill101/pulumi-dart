@@ -10,17 +10,17 @@ import 'local_user_ssh_authorized_key.dart';
 /// {@macro pulumi_storage_local_user_local_user_args_doc}
 class LocalUserArgs {
   /// The home directory of the Storage Account Local User.
-  final pulumi.Input<String>? homeDirectory;
+  final pulumi.Input<String?>? homeDirectory;
   /// The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `permissionScope` blocks as defined below.
-  final pulumi.Input<List<LocalUserPermissionScope>>? permissionScopes;
+  final pulumi.Input<List<LocalUserPermissionScope>?>? permissionScopes;
   /// One or more `sshAuthorizedKey` blocks as defined below.
-  final pulumi.Input<List<LocalUserSshAuthorizedKey>>? sshAuthorizedKeys;
+  final pulumi.Input<List<LocalUserSshAuthorizedKey>?>? sshAuthorizedKeys;
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? sshKeyEnabled;
+  final pulumi.Input<bool?>? sshKeyEnabled;
   /// Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? sshPasswordEnabled;
+  final pulumi.Input<bool?>? sshPasswordEnabled;
   /// The ID of the Storage Account that this Storage Account Local User resides in. Changing this forces a new Storage Account Local User to be created.
   final pulumi.Input<String> storageAccountId;
 

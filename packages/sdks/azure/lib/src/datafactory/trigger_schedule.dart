@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_schedule_args.dart';
+import 'trigger_schedule_pipeline.dart';
 import 'trigger_schedule_schedule.dart';
 import 'trigger_schedule_state.dart';
 
@@ -120,14 +121,14 @@ import 'trigger_schedule_state.dart';
 /// 		}
 /// 		examplePipeline, err := datafactory.NewPipeline(ctx, "example", &datafactory.PipelineArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewTriggerSchedule(ctx, "example", &datafactory.TriggerScheduleArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			PipelineName:  examplePipeline.Name,
 /// 			Interval:      pulumi.Int(5),
 /// 			Frequency:     pulumi.String("Day"),
@@ -284,7 +285,7 @@ class TriggerSchedule extends pulumi.CustomResource {
   /// The pipeline parameters that the trigger will act upon.
   late final pulumi.Output<Map<String, String>> pipelineParameters;
   /// A `pipeline` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
+  late final pulumi.Output<List<TriggerSchedulePipeline>> pipelines;
   /// A `schedule` block as defined below, which further specifies the recurrence schedule for the trigger. A schedule is capable of limiting or increasing the number of trigger executions specified by the `frequency` and `interval` properties.
   late final pulumi.Output<TriggerScheduleSchedule?> schedule;
   /// The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
@@ -304,10 +305,10 @@ class TriggerSchedule extends pulumi.CustomResource {
           'azure:datafactory/triggerSchedule:TriggerSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activated = registerOutput<bool?>('activated');
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     endTime = registerOutput<String?>('endTime');
@@ -315,8 +316,8 @@ class TriggerSchedule extends pulumi.CustomResource {
     interval = registerOutput<int?>('interval');
     this.name = registerOutput<String>('name');
     pipelineName = registerOutput<String>('pipelineName');
-    pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pipelines = registerOutput<List<TriggerSchedulePipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerSchedulePipeline>(guardedValue, (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>())); });
     schedule = registerOutput<TriggerScheduleSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerScheduleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
     timeZone = registerOutput<String?>('timeZone');
@@ -327,11 +328,12 @@ class TriggerSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,7 +348,7 @@ class TriggerSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activated = registerOutput<bool?>('activated');
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     endTime = registerOutput<String?>('endTime');
@@ -354,8 +356,33 @@ class TriggerSchedule extends pulumi.CustomResource {
     interval = registerOutput<int?>('interval');
     this.name = registerOutput<String>('name');
     pipelineName = registerOutput<String>('pipelineName');
-    pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pipelines = registerOutput<List<TriggerSchedulePipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerSchedulePipeline>(guardedValue, (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>())); });
+    schedule = registerOutput<TriggerScheduleSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerScheduleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String?>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [TriggerSchedule] resource.
+  TriggerSchedule.reference(String urn)
+    : super(
+        'azure:datafactory/triggerSchedule:TriggerSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activated = registerOutput<bool?>('activated');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    endTime = registerOutput<String?>('endTime');
+    frequency = registerOutput<String?>('frequency');
+    interval = registerOutput<int?>('interval');
+    this.name = registerOutput<String>('name');
+    pipelineName = registerOutput<String>('pipelineName');
+    pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pipelines = registerOutput<List<TriggerSchedulePipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerSchedulePipeline>(guardedValue, (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>())); });
     schedule = registerOutput<TriggerScheduleSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerScheduleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
     timeZone = registerOutput<String?>('timeZone');

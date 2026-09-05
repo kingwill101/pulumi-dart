@@ -14,7 +14,7 @@ class TriggerCustomArgs {
   /// Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TriggerCustomArgs].
   /// [body] Specifies the JSON Blob defining the Body of this Custom Trigger.

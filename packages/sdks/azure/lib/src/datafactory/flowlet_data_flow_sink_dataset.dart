@@ -6,7 +6,7 @@ class FlowletDataFlowSinkDataset {
   /// The name for the Data Factory Dataset.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [FlowletDataFlowSinkDataset].
   /// [name] The name for the Data Factory Dataset.

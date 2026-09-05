@@ -8,25 +8,25 @@ import 'smsvoicev2_event_destination_sns_destination.dart';
 /// Input properties used for looking up and filtering Smsvoicev2EventDestination resources.
 class Smsvoicev2EventDestinationState {
   /// Send events to Amazon CloudWatch Logs. Exactly one of `cloudwatchLogsDestination`, `kinesisFirehoseDestination`, or `snsDestination` must be configured. See `cloudwatchLogsDestination` Block for details.
-  final pulumi.Input<Smsvoicev2EventDestinationCloudwatchLogsDestination>? cloudwatchLogsDestination;
+  final pulumi.Input<Smsvoicev2EventDestinationCloudwatchLogsDestination?>? cloudwatchLogsDestination;
   /// ARN of the parent configuration set.
-  final pulumi.Input<String>? configurationSetArn;
+  final pulumi.Input<String?>? configurationSetArn;
   /// Name of the configuration set this event destination belongs to. Changing this forces a new resource.
-  final pulumi.Input<String>? configurationSetName;
+  final pulumi.Input<String?>? configurationSetName;
   /// Whether the event destination is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Name of the event destination. Changing this forces a new resource.
-  final pulumi.Input<String>? eventDestinationName;
+  final pulumi.Input<String?>? eventDestinationName;
   /// Send events to Amazon Data Firehose. Exactly one of `cloudwatchLogsDestination`, `kinesisFirehoseDestination`, or `snsDestination` must be configured. See `kinesisFirehoseDestination` Block for details.
-  final pulumi.Input<Smsvoicev2EventDestinationKinesisFirehoseDestination>? kinesisFirehoseDestination;
+  final pulumi.Input<Smsvoicev2EventDestinationKinesisFirehoseDestination?>? kinesisFirehoseDestination;
   /// Event types for which the destination receives records. See the [AWS API reference](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateEventDestination.html#pinpoint-CreateEventDestination-request-MatchingEventTypes) for valid values.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<String>>? matchingEventTypes;
+  final pulumi.Input<List<String>?>? matchingEventTypes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Send events to Amazon SNS. Exactly one of `cloudwatchLogsDestination`, `kinesisFirehoseDestination`, or `snsDestination` must be configured. See `snsDestination` Block for details.
-  final pulumi.Input<Smsvoicev2EventDestinationSnsDestination>? snsDestination;
+  final pulumi.Input<Smsvoicev2EventDestinationSnsDestination?>? snsDestination;
 
   /// Creates a new [Smsvoicev2EventDestinationState].
   /// [cloudwatchLogsDestination] Send events to Amazon CloudWatch Logs. Exactly one of `cloudwatchLogsDestination`, `kinesisFirehoseDestination`, or `snsDestination` must be configured. See `cloudwatchLogsDestination` Block for details.

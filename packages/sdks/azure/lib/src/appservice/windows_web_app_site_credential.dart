@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppSiteCredential {
   /// The name which should be used for this Windows Web App. Changing this forces a new Windows Web App to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Site Credentials Password used for publishing.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [WindowsWebAppSiteCredential].
   /// [name] The name which should be used for this Windows Web App. Changing this forces a new Windows Web App to be created.

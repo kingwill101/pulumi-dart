@@ -13,9 +13,9 @@ class BucketCorsConfigurationArgs {
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   final pulumi.Input<List<BucketCorsConfigurationCorsRule>> corsRules;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketCorsConfigurationArgs].
   /// [bucket] Name of the bucket.

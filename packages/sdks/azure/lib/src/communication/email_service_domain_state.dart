@@ -6,21 +6,21 @@ import 'email_service_domain_verification_record.dart';
 /// Input properties used for looking up and filtering EmailServiceDomain resources.
 class EmailServiceDomainState {
   /// Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.
-  final pulumi.Input<String>? domainManagement;
+  final pulumi.Input<String?>? domainManagement;
   /// The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
-  final pulumi.Input<String>? emailServiceId;
+  final pulumi.Input<String?>? emailServiceId;
   /// P2 sender domain that is displayed to the email recipients [RFC 5322].
-  final pulumi.Input<String>? fromSenderDomain;
+  final pulumi.Input<String?>? fromSenderDomain;
   /// P1 sender domain that is present on the email envelope [RFC 5321].
-  final pulumi.Input<String>? mailFromSenderDomain;
+  final pulumi.Input<String?>? mailFromSenderDomain;
   /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Email Communication Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
-  final pulumi.Input<bool>? userEngagementTrackingEnabled;
+  final pulumi.Input<bool?>? userEngagementTrackingEnabled;
   /// (Optional) An `verificationRecords` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecord>>? verificationRecords;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecord>?>? verificationRecords;
 
   /// Creates a new [EmailServiceDomainState].
   /// [domainManagement] Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.

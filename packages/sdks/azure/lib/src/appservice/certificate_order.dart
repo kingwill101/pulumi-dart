@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_order_args.dart';
+import 'certificate_order_certificate.dart';
 import 'certificate_order_state.dart';
 
 /// Manages an App Service Certificate Order.
@@ -193,7 +194,7 @@ class CertificateOrder extends pulumi.CustomResource {
   /// true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to `true`.
   late final pulumi.Output<bool?> autoRenew;
   /// State of the Key Vault secret. A `certificates` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificates;
+  late final pulumi.Output<List<CertificateOrderCertificate>> certificates;
   /// Last CSR that was created for this order.
   late final pulumi.Output<String> csr;
   /// The Distinguished Name for the App Service Certificate Order.
@@ -241,11 +242,11 @@ class CertificateOrder extends pulumi.CustomResource {
           'azure:appservice/certificateOrder:CertificateOrder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons');
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoRenew = registerOutput<bool?>('autoRenew');
-    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    certificates = registerOutput<List<CertificateOrderCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateOrderCertificate>(guardedValue, (value) => CertificateOrderCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     csr = registerOutput<String>('csr');
     distinguishedName = registerOutput<String>('distinguishedName');
     domainVerificationToken = registerOutput<String>('domainVerificationToken');
@@ -260,7 +261,7 @@ class CertificateOrder extends pulumi.CustomResource {
     rootThumbprint = registerOutput<String>('rootThumbprint');
     signedCertificateThumbprint = registerOutput<String>('signedCertificateThumbprint');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validityInYears = registerOutput<int?>('validityInYears');
   }
 
@@ -269,11 +270,12 @@ class CertificateOrder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateOrderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateOrder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,9 +289,9 @@ class CertificateOrder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons');
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoRenew = registerOutput<bool?>('autoRenew');
-    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    certificates = registerOutput<List<CertificateOrderCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateOrderCertificate>(guardedValue, (value) => CertificateOrderCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     csr = registerOutput<String>('csr');
     distinguishedName = registerOutput<String>('distinguishedName');
     domainVerificationToken = registerOutput<String>('domainVerificationToken');
@@ -304,7 +306,37 @@ class CertificateOrder extends pulumi.CustomResource {
     rootThumbprint = registerOutput<String>('rootThumbprint');
     signedCertificateThumbprint = registerOutput<String>('signedCertificateThumbprint');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validityInYears = registerOutput<int?>('validityInYears');
+  }
+
+  /// Creates a typed reference to an existing [CertificateOrder] resource.
+  CertificateOrder.reference(String urn)
+    : super(
+        'azure:appservice/certificateOrder:CertificateOrder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoRenew = registerOutput<bool?>('autoRenew');
+    certificates = registerOutput<List<CertificateOrderCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateOrderCertificate>(guardedValue, (value) => CertificateOrderCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    csr = registerOutput<String>('csr');
+    distinguishedName = registerOutput<String>('distinguishedName');
+    domainVerificationToken = registerOutput<String>('domainVerificationToken');
+    expirationTime = registerOutput<String>('expirationTime');
+    intermediateThumbprint = registerOutput<String>('intermediateThumbprint');
+    isPrivateKeyExternal = registerOutput<bool>('isPrivateKeyExternal');
+    keySize = registerOutput<int?>('keySize');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productType = registerOutput<String?>('productType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rootThumbprint = registerOutput<String>('rootThumbprint');
+    signedCertificateThumbprint = registerOutput<String>('signedCertificateThumbprint');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validityInYears = registerOutput<int?>('validityInYears');
   }
 }

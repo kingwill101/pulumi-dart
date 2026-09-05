@@ -5,7 +5,7 @@ import 'virtual_node_spec_listener_timeout_tcp_idle.dart';
 
 class VirtualNodeSpecListenerTimeoutTcp {
   /// Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.
-  final pulumi.Input<VirtualNodeSpecListenerTimeoutTcpIdle>? idle;
+  final pulumi.Input<VirtualNodeSpecListenerTimeoutTcpIdle?>? idle;
 
   /// Creates a new [VirtualNodeSpecListenerTimeoutTcp].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle. See `spec.listener.timeout.tcp.idle` Block for details.

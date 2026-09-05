@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'webhook_args.dart';
+import 'webhook_filter_group.dart';
 import 'webhook_pull_request_build_policy.dart';
 import 'webhook_scope_configuration.dart';
 import 'webhook_state.dart';
@@ -22,8 +23,6 @@ import 'webhook_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.codebuild.Webhook("example", {
-///     projectName: exampleAwsCodebuildProject.name,
-///     buildType: "BUILD",
 ///     filterGroups: [{
 ///         filters: [
 ///             {
@@ -36,6 +35,8 @@ import 'webhook_state.dart';
 ///             },
 ///         ],
 ///     }],
+///     projectName: exampleAwsCodebuildProject.name,
+///     buildType: "BUILD",
 /// });
 /// ```
 /// ```python
@@ -43,8 +44,6 @@ import 'webhook_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.codebuild.Webhook("example",
-///     project_name=example_aws_codebuild_project["name"],
-///     build_type="BUILD",
 ///     filter_groups=[{
 ///         "filters": [
 ///             {
@@ -56,7 +55,9 @@ import 'webhook_state.dart';
 ///                 "pattern": "master",
 ///             },
 ///         ],
-///     }])
+///     }],
+///     project_name=example_aws_codebuild_project["name"],
+///     build_type="BUILD")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -68,8 +69,6 @@ import 'webhook_state.dart';
 /// {
 ///     var example = new Aws.CodeBuild.Webhook("example", new()
 ///     {
-///         ProjectName = exampleAwsCodebuildProject.Name,
-///         BuildType = "BUILD",
 ///         FilterGroups = new[]
 ///         {
 ///             new Aws.CodeBuild.Inputs.WebhookFilterGroupArgs
@@ -89,6 +88,8 @@ import 'webhook_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ProjectName = exampleAwsCodebuildProject.Name,
+///         BuildType = "BUILD",
 ///     });
 ///
 /// });
@@ -104,8 +105,6 @@ import 'webhook_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
-/// 			ProjectName: pulumi.Any(exampleAwsCodebuildProject.Name),
-/// 			BuildType:   pulumi.String("BUILD"),
 /// 			FilterGroups: codebuild.WebhookFilterGroupArray{
 /// 				&codebuild.WebhookFilterGroupArgs{
 /// 					Filters: codebuild.WebhookFilterGroupFilterArray{
@@ -120,6 +119,8 @@ import 'webhook_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ProjectName: pulumi.Any(exampleAwsCodebuildProject.Name),
+/// 			BuildType:   pulumi.String("BUILD"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -138,8 +139,6 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_webhook" "example" {
-///   project_name = exampleAwsCodebuildProject.name
-///   build_type   = "BUILD"
 ///   filter_groups {
 ///     filters {
 ///       type    = "EVENT"
@@ -150,6 +149,8 @@ import 'webhook_state.dart';
 ///       pattern = "master"
 ///     }
 ///   }
+///   project_name = exampleAwsCodebuildProject.name
+///   build_type   = "BUILD"
 /// }
 /// ```
 /// ```java
@@ -176,8 +177,6 @@ import 'webhook_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Webhook("example", WebhookArgs.builder()
-///             .projectName(exampleAwsCodebuildProject.name())
-///             .buildType("BUILD")
 ///             .filterGroups(WebhookFilterGroupArgs.builder()
 ///                 .filters(
 ///                     WebhookFilterGroupFilterArgs.builder()
@@ -189,6 +188,8 @@ import 'webhook_state.dart';
 ///                         .pattern("master")
 ///                         .build())
 ///                 .build())
+///             .projectName(exampleAwsCodebuildProject.name())
+///             .buildType("BUILD")
 ///             .build());
 ///
 ///     }
@@ -199,14 +200,14 @@ import 'webhook_state.dart';
 ///   example:
 ///     type: aws:codebuild:Webhook
 ///     properties:
-///       projectName: ${exampleAwsCodebuildProject.name}
-///       buildType: BUILD
 ///       filterGroups:
 ///         - filters:
 ///             - type: EVENT
 ///               pattern: PUSH
 ///             - type: BASE_REF
 ///               pattern: master
+///       projectName: ${exampleAwsCodebuildProject.name}
+///       buildType: BUILD
 /// ```
 ///
 ///
@@ -224,16 +225,16 @@ import 'webhook_state.dart';
 ///
 /// const example = new aws.codebuild.Webhook("example", {projectName: exampleAwsCodebuildProject.name});
 /// const exampleRepositoryWebhook = new github.RepositoryWebhook("example", {
-///     active: true,
-///     events: ["push"],
-///     name: "example",
-///     repository: exampleGithubRepository.name,
 ///     configuration: [{
 ///         url: example.payloadUrl,
 ///         secret: example.secret,
 ///         contentType: "json",
 ///         insecureSsl: false,
 ///     }],
+///     active: true,
+///     events: ["push"],
+///     name: "example",
+///     repository: exampleGithubRepository.name,
 /// });
 /// ```
 /// ```python
@@ -243,16 +244,16 @@ import 'webhook_state.dart';
 ///
 /// example = aws.codebuild.Webhook("example", project_name=example_aws_codebuild_project["name"])
 /// example_repository_webhook = github.RepositoryWebhook("example",
-///     active=True,
-///     events=["push"],
-///     name="example",
-///     repository=example_github_repository["name"],
 ///     configuration=[{
 ///         "url": example.payload_url,
 ///         "secret": example.secret,
 ///         "contentType": "json",
 ///         "insecureSsl": False,
-///     }])
+///     }],
+///     active=True,
+///     events=["push"],
+///     name="example",
+///     repository=example_github_repository["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -270,13 +271,6 @@ import 'webhook_state.dart';
 ///
 ///     var exampleRepositoryWebhook = new Github.RepositoryWebhook("example", new()
 ///     {
-///         Active = true,
-///         Events = new[]
-///         {
-///             "push",
-///         },
-///         Name = "example",
-///         Repository = exampleGithubRepository.Name,
 ///         Configuration = new[]
 ///         {
 ///
@@ -287,6 +281,13 @@ import 'webhook_state.dart';
 ///                 { "insecureSsl", false },
 ///             },
 ///         },
+///         Active = true,
+///         Events = new[]
+///         {
+///             "push",
+///         },
+///         Name = "example",
+///         Repository = exampleGithubRepository.Name,
 ///     });
 ///
 /// });
@@ -309,12 +310,6 @@ import 'webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = github.NewRepositoryWebhook(ctx, "example", &github.RepositoryWebhookArgs{
-/// 			Active: pulumi.Bool(true),
-/// 			Events: pulumi.StringArray{
-/// 				pulumi.String("push"),
-/// 			},
-/// 			Name:       "example",
-/// 			Repository: pulumi.Any(exampleGithubRepository.Name),
 /// 			Configuration: github.RepositoryWebhookConfigurationArgs{
 /// 				map[string]interface{}{
 /// 					"url":         example.PayloadUrl,
@@ -323,6 +318,12 @@ import 'webhook_state.dart';
 /// 					"insecureSsl": false,
 /// 				},
 /// 			},
+/// 			Active: pulumi.Bool(true),
+/// 			Events: pulumi.StringArray{
+/// 				pulumi.String("push"),
+/// 			},
+/// 			Name:       "example",
+/// 			Repository: pulumi.Any(exampleGithubRepository.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -347,16 +348,16 @@ import 'webhook_state.dart';
 ///   project_name = exampleAwsCodebuildProject.name
 /// }
 /// resource "github_repositorywebhook" "example" {
-///   active     = true
-///   events     = ["push"]
-///   name       = "example"
-///   repository = exampleGithubRepository.name
 ///   configuration = [{
 ///     "url"         = aws_codebuild_webhook.example.payload_url
 ///     "secret"      = aws_codebuild_webhook.example.secret
 ///     "contentType" = "json"
 ///     "insecureSsl" = false
 ///   }]
+///   active     = true
+///   events     = ["push"]
+///   name       = "example"
+///   repository = exampleGithubRepository.name
 /// }
 /// ```
 /// ```java
@@ -387,16 +388,16 @@ import 'webhook_state.dart';
 ///             .build());
 ///
 ///         var exampleRepositoryWebhook = new RepositoryWebhook("exampleRepositoryWebhook", RepositoryWebhookArgs.builder()
-///             .active(true)
-///             .events("push")
-///             .name("example")
-///             .repository(exampleGithubRepository.name())
 ///             .configuration(com.pulumi.github.inputs.RepositoryWebhookConfigurationArgs.builder()
 ///                 .url(example.payloadUrl())
 ///                 .secret(example.secret())
 ///                 .contentType("json")
 ///                 .insecureSsl(false)
 ///                 .build())
+///             .active(true)
+///             .events("push")
+///             .name("example")
+///             .repository(exampleGithubRepository.name())
 ///             .build());
 ///
 ///     }
@@ -412,16 +413,16 @@ import 'webhook_state.dart';
 ///     type: github:RepositoryWebhook
 ///     name: example
 ///     properties:
-///       active: true
-///       events:
-///         - push
-///       name: example
-///       repository: ${exampleGithubRepository.name}
 ///       configuration:
 ///         - url: ${example.payloadUrl}
 ///           secret: ${example.secret}
 ///           contentType: json
 ///           insecureSsl: false
+///       active: true
+///       events:
+///         - push
+///       name: example
+///       repository: ${exampleGithubRepository.name}
 /// ```
 ///
 ///
@@ -436,14 +437,14 @@ import 'webhook_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.codebuild.Webhook("example", {
-///     projectName: exampleAwsCodebuildProject.name,
-///     buildType: "BUILD",
 ///     filterGroups: [{
 ///         filters: [{
 ///             type: "EVENT",
 ///             pattern: "WORKFLOW_JOB_QUEUED",
 ///         }],
 ///     }],
+///     projectName: exampleAwsCodebuildProject.name,
+///     buildType: "BUILD",
 /// });
 /// ```
 /// ```python
@@ -451,14 +452,14 @@ import 'webhook_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.codebuild.Webhook("example",
-///     project_name=example_aws_codebuild_project["name"],
-///     build_type="BUILD",
 ///     filter_groups=[{
 ///         "filters": [{
 ///             "type": "EVENT",
 ///             "pattern": "WORKFLOW_JOB_QUEUED",
 ///         }],
-///     }])
+///     }],
+///     project_name=example_aws_codebuild_project["name"],
+///     build_type="BUILD")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -470,8 +471,6 @@ import 'webhook_state.dart';
 /// {
 ///     var example = new Aws.CodeBuild.Webhook("example", new()
 ///     {
-///         ProjectName = exampleAwsCodebuildProject.Name,
-///         BuildType = "BUILD",
 ///         FilterGroups = new[]
 ///         {
 ///             new Aws.CodeBuild.Inputs.WebhookFilterGroupArgs
@@ -486,6 +485,8 @@ import 'webhook_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ProjectName = exampleAwsCodebuildProject.Name,
+///         BuildType = "BUILD",
 ///     });
 ///
 /// });
@@ -501,8 +502,6 @@ import 'webhook_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
-/// 			ProjectName: pulumi.Any(exampleAwsCodebuildProject.Name),
-/// 			BuildType:   pulumi.String("BUILD"),
 /// 			FilterGroups: codebuild.WebhookFilterGroupArray{
 /// 				&codebuild.WebhookFilterGroupArgs{
 /// 					Filters: codebuild.WebhookFilterGroupFilterArray{
@@ -513,6 +512,8 @@ import 'webhook_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ProjectName: pulumi.Any(exampleAwsCodebuildProject.Name),
+/// 			BuildType:   pulumi.String("BUILD"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -531,14 +532,14 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_webhook" "example" {
-///   project_name = exampleAwsCodebuildProject.name
-///   build_type   = "BUILD"
 ///   filter_groups {
 ///     filters {
 ///       type    = "EVENT"
 ///       pattern = "WORKFLOW_JOB_QUEUED"
 ///     }
 ///   }
+///   project_name = exampleAwsCodebuildProject.name
+///   build_type   = "BUILD"
 /// }
 /// ```
 /// ```java
@@ -565,14 +566,14 @@ import 'webhook_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Webhook("example", WebhookArgs.builder()
-///             .projectName(exampleAwsCodebuildProject.name())
-///             .buildType("BUILD")
 ///             .filterGroups(WebhookFilterGroupArgs.builder()
 ///                 .filters(WebhookFilterGroupFilterArgs.builder()
 ///                     .type("EVENT")
 ///                     .pattern("WORKFLOW_JOB_QUEUED")
 ///                     .build())
 ///                 .build())
+///             .projectName(exampleAwsCodebuildProject.name())
+///             .buildType("BUILD")
 ///             .build());
 ///
 ///     }
@@ -583,12 +584,12 @@ import 'webhook_state.dart';
 ///   example:
 ///     type: aws:codebuild:Webhook
 ///     properties:
-///       projectName: ${exampleAwsCodebuildProject.name}
-///       buildType: BUILD
 ///       filterGroups:
 ///         - filters:
 ///             - type: EVENT
 ///               pattern: WORKFLOW_JOB_QUEUED
+///       projectName: ${exampleAwsCodebuildProject.name}
+///       buildType: BUILD
 /// ```
 ///
 ///
@@ -605,7 +606,7 @@ class Webhook extends pulumi.CustomResource {
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   late final pulumi.Output<String?> buildType;
   /// Information about the webhook's trigger. See filterGroup for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> filterGroups;
+  late final pulumi.Output<List<WebhookFilterGroup>?> filterGroups;
   /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payloadUrl` and `secret` values for the webhook. The `payloadUrl` and `secret` values in the output can be used to manually create a webhook within GitHub.
   late final pulumi.Output<bool?> manualCreation;
   /// The CodeBuild endpoint where webhook events are sent.
@@ -635,18 +636,19 @@ class Webhook extends pulumi.CustomResource {
           'aws:codebuild/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['secret'],
         ) {
     branchFilter = registerOutput<String?>('branchFilter');
     buildType = registerOutput<String?>('buildType');
-    filterGroups = registerOutput<List<Map<String, dynamic>>?>('filterGroups');
+    filterGroups = registerOutput<List<WebhookFilterGroup>?>('filterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilterGroup>(guardedValue, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>())); });
     manualCreation = registerOutput<bool?>('manualCreation');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String>('projectName');
     pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookPullRequestBuildPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     scopeConfiguration = registerOutput<WebhookScopeConfiguration?>('scopeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookScopeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
     url = registerOutput<String>('url');
   }
 
@@ -655,11 +657,12 @@ class Webhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Webhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -675,14 +678,37 @@ class Webhook extends pulumi.CustomResource {
         ) {
     branchFilter = registerOutput<String?>('branchFilter');
     buildType = registerOutput<String?>('buildType');
-    filterGroups = registerOutput<List<Map<String, dynamic>>?>('filterGroups');
+    filterGroups = registerOutput<List<WebhookFilterGroup>?>('filterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilterGroup>(guardedValue, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>())); });
     manualCreation = registerOutput<bool?>('manualCreation');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String>('projectName');
     pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookPullRequestBuildPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     scopeConfiguration = registerOutput<WebhookScopeConfiguration?>('scopeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookScopeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'aws:codebuild/webhook:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret'],
+        isResourceReference: true,
+      ) {
+    branchFilter = registerOutput<String?>('branchFilter');
+    buildType = registerOutput<String?>('buildType');
+    filterGroups = registerOutput<List<WebhookFilterGroup>?>('filterGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilterGroup>(guardedValue, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    manualCreation = registerOutput<bool?>('manualCreation');
+    payloadUrl = registerOutput<String>('payloadUrl');
+    projectName = registerOutput<String>('projectName');
+    pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookPullRequestBuildPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scopeConfiguration = registerOutput<WebhookScopeConfiguration?>('scopeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookScopeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secret = registerOutput<String>('secret', isSecret: true);
     url = registerOutput<String>('url');
   }
 }

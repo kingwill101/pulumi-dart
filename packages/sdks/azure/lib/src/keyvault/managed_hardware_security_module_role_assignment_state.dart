@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedHardwareSecurityModuleRoleAssignment resources.
 class ManagedHardwareSecurityModuleRoleAssignmentState {
   /// The ID of a Managed Hardware Security Module resource. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? managedHsmId;
+  final pulumi.Input<String?>? managedHsmId;
   /// The name in GUID notation which should be used for this Managed Hardware Security Module Role Assignment. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The principal ID to be assigned to this role. It can point to a user, service principal, or security group. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// (Deprecated) The resource id of created assignment resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [ManagedHardwareSecurityModuleRoleAssignmentState].
   /// [managedHsmId] The ID of a Managed Hardware Security Module resource. Changing this forces a new Managed Hardware Security Module to be created.

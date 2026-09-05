@@ -7,19 +7,19 @@ import 'bucket_replication_configuration_rule_destination_replication_time.dart'
 
 class BucketReplicationConfigurationRuleDestination {
   /// Overrides to use for object owners on replication. See `accessControlTranslation` Block below for details. Must be used in conjunction with `accountId` owner override configuration.
-  final pulumi.Input<BucketReplicationConfigurationRuleDestinationAccessControlTranslation>? accessControlTranslation;
+  final pulumi.Input<BucketReplicationConfigurationRuleDestinationAccessControlTranslation?>? accessControlTranslation;
   /// Account ID to use for overriding the object owner on replication. Must be used in conjunction with `accessControlTranslation` override configuration.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// ARN of the S3 bucket where you want Amazon S3 to store replicas of the object identified by the rule.
   final pulumi.Input<String> bucket;
   /// Enables replication metrics (required for S3 RTC). See `metrics` Block below for details.
-  final pulumi.Input<BucketReplicationConfigurationRuleDestinationMetrics>? metrics;
+  final pulumi.Input<BucketReplicationConfigurationRuleDestinationMetrics?>? metrics;
   /// Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with `sseKmsEncryptedObjects` source selection criteria.
-  final pulumi.Input<String>? replicaKmsKeyId;
+  final pulumi.Input<String?>? replicaKmsKeyId;
   /// Enables S3 Replication Time Control (S3 RTC). See `replicationTime` Block below for details.
-  final pulumi.Input<BucketReplicationConfigurationRuleDestinationReplicationTime>? replicationTime;
+  final pulumi.Input<BucketReplicationConfigurationRuleDestinationReplicationTime?>? replicationTime;
   /// [Storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
 
   /// Creates a new [BucketReplicationConfigurationRuleDestination].
   /// [accessControlTranslation] Overrides to use for object owners on replication. See `accessControlTranslation` Block below for details. Must be used in conjunction with `accountId` owner override configuration.

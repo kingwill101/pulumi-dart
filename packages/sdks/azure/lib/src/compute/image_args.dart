@@ -12,29 +12,29 @@ class ImageArgs {
   /// One or more `dataDisk` blocks as defined below.
   ///
   /// &gt; **Note:** `dataDisk` cannot be set together with `sourceVirtualMachineId`.
-  final pulumi.Input<List<ImageDataDisk>>? dataDisks;
+  final pulumi.Input<List<ImageDataDisk>?>? dataDisks;
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? hyperVGeneration;
+  final pulumi.Input<String?>? hyperVGeneration;
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the image. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `osDisk` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `osDisk` cannot be set together with `sourceVirtualMachineId`.
-  final pulumi.Input<ImageOsDisk>? osDisk;
+  final pulumi.Input<ImageOsDisk?>? osDisk;
   /// The name of the resource group in which to create the image. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The Virtual Machine ID from which to create the image.
-  final pulumi.Input<String>? sourceVirtualMachineId;
+  final pulumi.Input<String?>? sourceVirtualMachineId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `zoneResilient` can only be set to `true` if the image is stored in a region that supports availability zones.
   ///
   /// &gt; **Note:** `zoneResilient` cannot be set together with `sourceVirtualMachineId`.
-  final pulumi.Input<bool>? zoneResilient;
+  final pulumi.Input<bool?>? zoneResilient;
 
   /// Creates a new [ImageArgs].
   /// [dataDisks] One or more `dataDisk` blocks as defined below.

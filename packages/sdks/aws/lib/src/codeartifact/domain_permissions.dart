@@ -18,11 +18,11 @@ import 'domain_permissions_state.dart';
 /// });
 /// const test = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "*",
 ///             identifiers: ["*"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["codeartifact:CreateRepository"],
 ///         resources: [exampleDomain.arn],
 ///     }],
@@ -41,11 +41,11 @@ import 'domain_permissions_state.dart';
 ///     domain="example",
 ///     encryption_key=example.arn)
 /// test = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "*",
 ///         "identifiers": ["*"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["codeartifact:CreateRepository"],
 ///     "resources": [example_domain.arn],
 /// }])
@@ -78,7 +78,6 @@ import 'domain_permissions_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -90,6 +89,7 @@ import 'domain_permissions_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "codeartifact:CreateRepository",
@@ -138,7 +138,6 @@ import 'domain_permissions_state.dart';
 /// 		test := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("*"),
@@ -147,6 +146,7 @@ import 'domain_permissions_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("codeartifact:CreateRepository"),
 /// 					},
@@ -178,11 +178,11 @@ import 'domain_permissions_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["codeartifact:CreateRepository"]
 ///     resources = [aws_codeartifact_domain.example.arn]
 ///   }
@@ -240,11 +240,11 @@ import 'domain_permissions_state.dart';
 ///
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("*")
 ///                     .identifiers("*")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("codeartifact:CreateRepository")
 ///                 .resources(exampleDomain.arn())
 ///                 .build())
@@ -282,11 +282,11 @@ import 'domain_permissions_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: '*'
 ///                 identifiers:
 ///                   - '*'
+///             effect: Allow
 ///             actions:
 ///               - codeartifact:CreateRepository
 ///             resources:
@@ -300,7 +300,7 @@ import 'domain_permissions_state.dart';
 ///
 /// #### Required
 ///
-/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeArtifact domain.
+/// - `resourceArn` (String) ARN of the CodeArtifact domain.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Domain Permissions Policies using the CodeArtifact Domain ARN. For example:
@@ -334,7 +334,7 @@ class DomainPermissions extends pulumi.CustomResource {
           'aws:codeartifact/domainPermissions:DomainPermissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');
@@ -349,11 +349,12 @@ class DomainPermissions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainPermissionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainPermissions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,6 +368,23 @@ class DomainPermissions extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domain = registerOutput<String>('domain');
+    domainOwner = registerOutput<String>('domainOwner');
+    policyDocument = registerOutput<String>('policyDocument');
+    policyRevision = registerOutput<String>('policyRevision');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [DomainPermissions] resource.
+  DomainPermissions.reference(String urn)
+    : super(
+        'aws:codeartifact/domainPermissions:DomainPermissions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');
     policyDocument = registerOutput<String>('policyDocument');

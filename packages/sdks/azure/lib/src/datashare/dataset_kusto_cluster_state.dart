@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DatasetKustoCluster resources.
 class DatasetKustoClusterState {
   /// The name of the Data Share Dataset.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource ID of the Kusto Cluster to be shared with the receiver. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
-  final pulumi.Input<String>? kustoClusterId;
+  final pulumi.Input<String?>? kustoClusterId;
   /// The location of the Kusto Cluster.
-  final pulumi.Input<String>? kustoClusterLocation;
+  final pulumi.Input<String?>? kustoClusterLocation;
   /// The name which should be used for this Data Share Kusto Cluster Dataset. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
 
   /// Creates a new [DatasetKustoClusterState].
   /// [displayName] The name of the Data Share Dataset.

@@ -9,9 +9,9 @@ import 'get_infrastructure_configurations_filter.dart';
 /// {@macro pulumi_imagebuilder_get_infrastructure_configurations_get_infrastructure_configurations_args_doc}
 class GetInfrastructureConfigurationsArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetInfrastructureConfigurationsFilter>>? filters;
+  final pulumi.Input<List<GetInfrastructureConfigurationsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInfrastructureConfigurationsArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

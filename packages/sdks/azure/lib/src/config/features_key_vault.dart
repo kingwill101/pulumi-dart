@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesKeyVault {
   /// When enabled soft-deleted `azure.keyvault.KeyVault` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeleteOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeleteOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.Certificate` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeletedCertificatesOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedCertificatesOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.ManagedHardwareSecurityModuleKey` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.ManagedHardwareSecurityModule` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeletedHardwareSecurityModulesOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedHardwareSecurityModulesOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.Key` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeletedKeysOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedKeysOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.Secret` resources will be permanently deleted (e.g purged), when destroyed
-  final pulumi.Input<bool>? purgeSoftDeletedSecretsOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedSecretsOnDestroy;
   /// When enabled soft-deleted `azure.keyvault.Certificate` resources will be restored, instead of creating new ones
-  final pulumi.Input<bool>? recoverSoftDeletedCertificates;
+  final pulumi.Input<bool?>? recoverSoftDeletedCertificates;
   /// When enabled soft-deleted `azure.keyvault.ManagedHardwareSecurityModuleKey` resources will be restored, instead of creating new ones
-  final pulumi.Input<bool>? recoverSoftDeletedHardwareSecurityModuleKeys;
+  final pulumi.Input<bool?>? recoverSoftDeletedHardwareSecurityModuleKeys;
   /// When enabled soft-deleted `azure.keyvault.KeyVault` resources will be restored, instead of creating new ones
-  final pulumi.Input<bool>? recoverSoftDeletedKeyVaults;
+  final pulumi.Input<bool?>? recoverSoftDeletedKeyVaults;
   /// When enabled soft-deleted `azure.keyvault.Key` resources will be restored, instead of creating new ones
-  final pulumi.Input<bool>? recoverSoftDeletedKeys;
+  final pulumi.Input<bool?>? recoverSoftDeletedKeys;
   /// When enabled soft-deleted `azure.keyvault.Secret` resources will be restored, instead of creating new ones
-  final pulumi.Input<bool>? recoverSoftDeletedSecrets;
+  final pulumi.Input<bool?>? recoverSoftDeletedSecrets;
 
   /// Creates a new [FeaturesKeyVault].
   /// [purgeSoftDeleteOnDestroy] When enabled soft-deleted `azure.keyvault.KeyVault` resources will be permanently deleted (e.g purged), when destroyed

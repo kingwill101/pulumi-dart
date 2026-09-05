@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_policy_attachment_policy_attachment_args_doc}
 class PolicyAttachmentArgs {
   /// Group(s) the policy should be applied to.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<dynamic>?>? groups;
   /// Name of the attachment. This cannot be an empty string.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the policy you want to apply. Typically this should be a reference to the ARN of another resource to ensure dependency ordering, such as `aws_iam_policy.example.arn`.
   final pulumi.Input<String> policyArn;
   /// Role(s) the policy should be applied to.
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<dynamic>?>? roles;
   /// User(s) the policy should be applied to.
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<dynamic>?>? users;
 
   /// Creates a new [PolicyAttachmentArgs].
   /// [groups] Group(s) the policy should be applied to.
@@ -44,11 +44,11 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
-      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

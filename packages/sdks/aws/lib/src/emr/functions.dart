@@ -144,6 +144,17 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
   return GetReleaseLabelsResult.fromMap(result);
 }
 
+pulumi.Output<GetReleaseLabelsResult> getReleaseLabelsOutput(
+  GetReleaseLabelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:emr/getReleaseLabels:getReleaseLabels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReleaseLabelsResult.fromMap);
+}
+
 /// Data source for managing AWS EMR Supported Instance Types.
 ///
 /// ## Example Usage
@@ -266,10 +277,10 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 ///     releaseLabel: releaseLabel,
 /// });
 /// const testCluster = new aws.emr.Cluster("test", {
-///     releaseLabel: releaseLabel,
 ///     masterInstanceGroup: {
 ///         instanceType: instanceType,
 ///     },
+///     releaseLabel: releaseLabel,
 /// });
 /// ```
 /// ```python
@@ -280,10 +291,10 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// release_label = "emr-6.15.0"
 /// test = aws.emr.get_supported_instance_types(release_label=release_label)
 /// test_cluster = aws.emr.Cluster("test",
-///     release_label=release_label,
 ///     master_instance_group={
 ///         "instance_type": instance_type,
-///     })
+///     },
+///     release_label=release_label)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -304,11 +315,11 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 ///
 ///     var testCluster = new Aws.Emr.Cluster("test", new()
 ///     {
-///         ReleaseLabel = releaseLabel,
 ///         MasterInstanceGroup = new Aws.Emr.Inputs.ClusterMasterInstanceGroupArgs
 ///         {
 ///             InstanceType = instanceType,
 ///         },
+///         ReleaseLabel = releaseLabel,
 ///     });
 ///
 /// });
@@ -332,10 +343,10 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// 			return err
 /// 		}
 /// 		_, err = emr.NewCluster(ctx, "test", &emr.ClusterArgs{
-/// 			ReleaseLabel: pulumi.String(releaseLabel),
 /// 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
 /// 				InstanceType: pulumi.String(instanceType),
 /// 			},
+/// 			ReleaseLabel: pulumi.String(releaseLabel),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -358,10 +369,10 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 /// }
 ///
 /// resource "aws_emr_cluster" "test" {
-///   release_label = local.releaseLabel
 ///   master_instance_group = {
 ///     instance_type = local.instanceType
 ///   }
+///   release_label = local.releaseLabel
 /// }
 /// locals {
 ///   instanceType = "r7g.large"
@@ -403,10 +414,10 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 ///             .build());
 ///
 ///         var testCluster = new Cluster("testCluster", ClusterArgs.builder()
-///             .releaseLabel(releaseLabel)
 ///             .masterInstanceGroup(ClusterMasterInstanceGroupArgs.builder()
 ///                 .instanceType(instanceType)
 ///                 .build())
+///             .releaseLabel(releaseLabel)
 ///             .build());
 ///
 ///     }
@@ -418,9 +429,9 @@ Future<GetReleaseLabelsResult> getReleaseLabels(
 ///     type: aws:emr:Cluster
 ///     name: test
 ///     properties:
-///       releaseLabel: ${releaseLabel}
 ///       masterInstanceGroup:
 ///         instanceType: ${instanceType}
+///       releaseLabel: ${releaseLabel}
 /// variables:
 ///   instanceType: r7g.large
 ///   releaseLabel: emr-6.15.0
@@ -443,4 +454,15 @@ Future<GetSupportedInstanceTypesResult> getSupportedInstanceTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSupportedInstanceTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetSupportedInstanceTypesResult> getSupportedInstanceTypesOutput(
+  GetSupportedInstanceTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:emr/getSupportedInstanceTypes:getSupportedInstanceTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSupportedInstanceTypesResult.fromMap);
 }

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterStepHadoopJarStep {
   /// List of command line arguments passed to the JAR file's main function when executed.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Path to a JAR file run during the step.
   final pulumi.Input<String> jar;
   /// Name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.
-  final pulumi.Input<String>? mainClass;
+  final pulumi.Input<String?>? mainClass;
   /// Key-Value map of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [ClusterStepHadoopJarStep].
   /// [args] List of command line arguments passed to the JAR file's main function when executed.

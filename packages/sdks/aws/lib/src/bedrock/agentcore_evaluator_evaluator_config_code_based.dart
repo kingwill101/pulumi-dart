@@ -5,7 +5,7 @@ import 'agentcore_evaluator_evaluator_config_code_based_lambda_config.dart';
 
 class AgentcoreEvaluatorEvaluatorConfigCodeBased {
   /// Lambda function configuration. See `lambdaConfig` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig>? lambdaConfig;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig?>? lambdaConfig;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfigCodeBased].
   /// [lambdaConfig] Lambda function configuration. See `lambdaConfig` below.

@@ -19,22 +19,22 @@ import 'data_source_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleTable = new aws.dynamodb.Table("example", {
-///     name: "example",
-///     readCapacity: 1,
-///     writeCapacity: 1,
-///     hashKey: "UserId",
 ///     attributes: [{
 ///         name: "UserId",
 ///         type: "S",
 ///     }],
+///     name: "example",
+///     readCapacity: 1,
+///     writeCapacity: 1,
+///     hashKey: "UserId",
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["appsync.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -59,13 +59,13 @@ import 'data_source_state.dart';
 ///     name: "my_appsync_example",
 /// });
 /// const exampleDataSource = new aws.appsync.DataSource("example", {
+///     dynamodbConfig: {
+///         tableName: exampleTable.name,
+///     },
 ///     apiId: exampleGraphQLApi.id,
 ///     name: "my_appsync_example",
 ///     serviceRoleArn: exampleRole.arn,
 ///     type: "AMAZON_DYNAMODB",
-///     dynamodbConfig: {
-///         tableName: exampleTable.name,
-///     },
 /// });
 /// ```
 /// ```python
@@ -73,20 +73,20 @@ import 'data_source_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_table = aws.dynamodb.Table("example",
-///     name="example",
-///     read_capacity=1,
-///     write_capacity=1,
-///     hash_key="UserId",
 ///     attributes=[{
 ///         "name": "UserId",
 ///         "type": "S",
-///     }])
+///     }],
+///     name="example",
+///     read_capacity=1,
+///     write_capacity=1,
+///     hash_key="UserId")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["appsync.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -105,13 +105,13 @@ import 'data_source_state.dart';
 ///     authentication_type="API_KEY",
 ///     name="my_appsync_example")
 /// example_data_source = aws.appsync.DataSource("example",
+///     dynamodb_config={
+///         "table_name": example_table.name,
+///     },
 ///     api_id=example_graph_ql_api.id,
 ///     name="my_appsync_example",
 ///     service_role_arn=example_role.arn,
-///     type="AMAZON_DYNAMODB",
-///     dynamodb_config={
-///         "table_name": example_table.name,
-///     })
+///     type="AMAZON_DYNAMODB")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -123,10 +123,6 @@ import 'data_source_state.dart';
 /// {
 ///     var exampleTable = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example",
-///         ReadCapacity = 1,
-///         WriteCapacity = 1,
-///         HashKey = "UserId",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -135,6 +131,10 @@ import 'data_source_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         Name = "example",
+///         ReadCapacity = 1,
+///         WriteCapacity = 1,
+///         HashKey = "UserId",
 ///     });
 ///
 ///     var assumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -143,7 +143,6 @@ import 'data_source_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -155,6 +154,7 @@ import 'data_source_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -203,14 +203,14 @@ import 'data_source_state.dart';
 ///
 ///     var exampleDataSource = new Aws.AppSync.DataSource("example", new()
 ///     {
-///         ApiId = exampleGraphQLApi.Id,
-///         Name = "my_appsync_example",
-///         ServiceRoleArn = exampleRole.Arn,
-///         Type = "AMAZON_DYNAMODB",
 ///         DynamodbConfig = new Aws.AppSync.Inputs.DataSourceDynamodbConfigArgs
 ///         {
 ///             TableName = exampleTable.Name,
 ///         },
+///         ApiId = exampleGraphQLApi.Id,
+///         Name = "my_appsync_example",
+///         ServiceRoleArn = exampleRole.Arn,
+///         Type = "AMAZON_DYNAMODB",
 ///     });
 ///
 /// });
@@ -228,16 +228,16 @@ import 'data_source_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleTable, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			ReadCapacity:  pulumi.Int(1),
-/// 			WriteCapacity: pulumi.Int(1),
-/// 			HashKey:       pulumi.String("UserId"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("UserId"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("example"),
+/// 			ReadCapacity:  pulumi.Int(1),
+/// 			WriteCapacity: pulumi.Int(1),
+/// 			HashKey:       pulumi.String("UserId"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -245,7 +245,6 @@ import 'data_source_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -254,6 +253,7 @@ import 'data_source_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -299,13 +299,13 @@ import 'data_source_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewDataSource(ctx, "example", &appsync.DataSourceArgs{
+/// 			DynamodbConfig: &appsync.DataSourceDynamodbConfigArgs{
+/// 				TableName: exampleTable.Name,
+/// 			},
 /// 			ApiId:          exampleGraphQLApi.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("my_appsync_example"),
 /// 			ServiceRoleArn: exampleRole.Arn,
 /// 			Type:           pulumi.String("AMAZON_DYNAMODB"),
-/// 			DynamodbConfig: &appsync.DataSourceDynamodbConfigArgs{
-/// 				TableName: exampleTable.Name,
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -325,11 +325,11 @@ import 'data_source_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appsync.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -342,14 +342,14 @@ import 'data_source_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name           = "example"
-///   read_capacity  = 1
-///   write_capacity = 1
-///   hash_key       = "UserId"
 ///   attributes {
 ///     name = "UserId"
 ///     type = "S"
 ///   }
+///   name           = "example"
+///   read_capacity  = 1
+///   write_capacity = 1
+///   hash_key       = "UserId"
 /// }
 /// resource "aws_iam_role" "example" {
 ///   name               = "example"
@@ -365,13 +365,13 @@ import 'data_source_state.dart';
 ///   name                = "my_appsync_example"
 /// }
 /// resource "aws_appsync_datasource" "example" {
+///   dynamodb_config = {
+///     table_name = aws_dynamodb_table.example.name
+///   }
 ///   api_id           = aws_appsync_graphqlapi.example.id
 ///   name             = "my_appsync_example"
 ///   service_role_arn = aws_iam_role.example.arn
 ///   type             = "AMAZON_DYNAMODB"
-///   dynamodb_config = {
-///     table_name = aws_dynamodb_table.example.name
-///   }
 /// }
 /// ```
 /// ```java
@@ -410,23 +410,23 @@ import 'data_source_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleTable = new Table("exampleTable", TableArgs.builder()
-///             .name("example")
-///             .readCapacity(1)
-///             .writeCapacity(1)
-///             .hashKey("UserId")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("UserId")
 ///                 .type("S")
 ///                 .build())
+///             .name("example")
+///             .readCapacity(1)
+///             .writeCapacity(1)
+///             .hashKey("UserId")
 ///             .build());
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("appsync.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -456,13 +456,13 @@ import 'data_source_state.dart';
 ///             .build());
 ///
 ///         var exampleDataSource = new DataSource("exampleDataSource", DataSourceArgs.builder()
+///             .dynamodbConfig(DataSourceDynamodbConfigArgs.builder()
+///                 .tableName(exampleTable.name())
+///                 .build())
 ///             .apiId(exampleGraphQLApi.id())
 ///             .name("my_appsync_example")
 ///             .serviceRoleArn(exampleRole.arn())
 ///             .type("AMAZON_DYNAMODB")
-///             .dynamodbConfig(DataSourceDynamodbConfigArgs.builder()
-///                 .tableName(exampleTable.name())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -474,13 +474,13 @@ import 'data_source_state.dart';
 ///     type: aws:dynamodb:Table
 ///     name: example
 ///     properties:
+///       attributes:
+///         - name: UserId
+///           type: S
 ///       name: example
 ///       readCapacity: 1
 ///       writeCapacity: 1
 ///       hashKey: UserId
-///       attributes:
-///         - name: UserId
-///           type: S
 ///   exampleRole:
 ///     type: aws:iam:Role
 ///     name: example
@@ -504,23 +504,23 @@ import 'data_source_state.dart';
 ///     type: aws:appsync:DataSource
 ///     name: example
 ///     properties:
+///       dynamodbConfig:
+///         tableName: ${exampleTable.name}
 ///       apiId: ${exampleGraphQLApi.id}
 ///       name: my_appsync_example
 ///       serviceRoleArn: ${exampleRole.arn}
 ///       type: AMAZON_DYNAMODB
-///       dynamodbConfig:
-///         tableName: ${exampleTable.name}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - appsync.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   example:
@@ -585,7 +585,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:appsync/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
@@ -608,11 +608,12 @@ class DataSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -626,6 +627,31 @@ class DataSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>('dynamodbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceDynamodbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>('elasticsearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceElasticsearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>('eventBridgeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceEventBridgeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceHttpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceLambdaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    opensearchserviceConfig = registerOutput<DataSourceOpensearchserviceConfig?>('opensearchserviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceOpensearchserviceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    relationalDatabaseConfig = registerOutput<DataSourceRelationalDatabaseConfig?>('relationalDatabaseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataSourceRelationalDatabaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceRoleArn = registerOutput<String?>('serviceRoleArn');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DataSource] resource.
+  DataSource.reference(String urn)
+    : super(
+        'aws:appsync/dataSource:DataSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

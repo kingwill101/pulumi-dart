@@ -309,7 +309,7 @@ class RegistryPolicy extends pulumi.CustomResource {
           'aws:ecr/registryPolicy:RegistryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -321,11 +321,12 @@ class RegistryPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -339,6 +340,20 @@ class RegistryPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+  }
+
+  /// Creates a typed reference to an existing [RegistryPolicy] resource.
+  RegistryPolicy.reference(String urn)
+    : super(
+        'aws:ecr/registryPolicy:RegistryPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

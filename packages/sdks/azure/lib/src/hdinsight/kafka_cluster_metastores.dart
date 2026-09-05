@@ -7,11 +7,11 @@ import 'kafka_cluster_metastores_oozie.dart';
 
 class KafkaClusterMetastores {
   /// An `ambari` block as defined below.
-  final pulumi.Input<KafkaClusterMetastoresAmbari>? ambari;
+  final pulumi.Input<KafkaClusterMetastoresAmbari?>? ambari;
   /// A `hive` block as defined below.
-  final pulumi.Input<KafkaClusterMetastoresHive>? hive;
+  final pulumi.Input<KafkaClusterMetastoresHive?>? hive;
   /// An `oozie` block as defined below.
-  final pulumi.Input<KafkaClusterMetastoresOozie>? oozie;
+  final pulumi.Input<KafkaClusterMetastoresOozie?>? oozie;
 
   /// Creates a new [KafkaClusterMetastores].
   /// [ambari] An `ambari` block as defined below.

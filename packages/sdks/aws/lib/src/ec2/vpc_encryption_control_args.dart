@@ -12,22 +12,22 @@ class VpcEncryptionControlArgs {
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? egressOnlyInternetGatewayExclusion;
+  final pulumi.Input<String?>? egressOnlyInternetGatewayExclusion;
   /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? elasticFileSystemExclusion;
+  final pulumi.Input<String?>? elasticFileSystemExclusion;
   /// Whether to exclude Internet Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? internetGatewayExclusion;
+  final pulumi.Input<String?>? internetGatewayExclusion;
   /// Whether to exclude Lambda Functions from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? lambdaExclusion;
+  final pulumi.Input<String?>? lambdaExclusion;
   /// Mode to enable for VPC Encryption Control.
   /// Valid values are `monitor` or `enforce`.
   final pulumi.Input<String> mode;
@@ -35,17 +35,17 @@ class VpcEncryptionControlArgs {
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? natGatewayExclusion;
+  final pulumi.Input<String?>? natGatewayExclusion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<VpcEncryptionControlTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<VpcEncryptionControlTimeouts?>? timeouts;
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? virtualPrivateGatewayExclusion;
+  final pulumi.Input<String?>? virtualPrivateGatewayExclusion;
   /// The ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
@@ -54,12 +54,12 @@ class VpcEncryptionControlArgs {
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? vpcLatticeExclusion;
+  final pulumi.Input<String?>? vpcLatticeExclusion;
   /// Whether to exclude peered VPCs from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final pulumi.Input<String>? vpcPeeringExclusion;
+  final pulumi.Input<String?>? vpcPeeringExclusion;
 
   /// Creates a new [VpcEncryptionControlArgs].
   /// [egressOnlyInternetGatewayExclusion] Whether to exclude Egress-Only Internet Gateways from encryption enforcement.

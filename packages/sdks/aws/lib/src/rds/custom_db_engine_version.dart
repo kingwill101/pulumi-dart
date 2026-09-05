@@ -751,7 +751,7 @@ import 'custom_db_engine_version_state.dart';
 /// $ pulumi import aws:rds/customDbEngineVersion:CustomDbEngineVersion example custom-oracle-ee-cdb:19.cdb_cev1
 /// ```
 class CustomDbEngineVersion extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the custom engine version.
+  /// ARN for the custom engine version.
   late final pulumi.Output<String> arn;
   /// The date and time that the CEV was created.
   late final pulumi.Output<String> createTime;
@@ -804,7 +804,7 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
           'aws:rds/customDbEngineVersion:CustomDbEngineVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');
@@ -824,8 +824,8 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sourceImageId = registerOutput<String?>('sourceImageId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CustomDbEngineVersion] resource's state with the given [name] and [id].
@@ -833,11 +833,12 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDbEngineVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDbEngineVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -869,7 +870,38 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sourceImageId = registerOutput<String?>('sourceImageId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomDbEngineVersion] resource.
+  CustomDbEngineVersion.reference(String urn)
+    : super(
+        'aws:rds/customDbEngineVersion:CustomDbEngineVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createTime = registerOutput<String>('createTime');
+    databaseInstallationFilesS3BucketName = registerOutput<String?>('databaseInstallationFilesS3BucketName');
+    databaseInstallationFilesS3Prefix = registerOutput<String?>('databaseInstallationFilesS3Prefix');
+    dbParameterGroupFamily = registerOutput<String>('dbParameterGroupFamily');
+    description = registerOutput<String?>('description');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    filename = registerOutput<String?>('filename');
+    imageId = registerOutput<String>('imageId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    majorEngineVersion = registerOutput<String>('majorEngineVersion');
+    manifest = registerOutput<String?>('manifest');
+    manifestComputed = registerOutput<String>('manifestComputed');
+    manifestHash = registerOutput<String?>('manifestHash');
+    region = registerOutput<String>('region');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

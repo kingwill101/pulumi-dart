@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_s3_bucket_public_access_block_bucket_public_access_block_args_doc}
 class BucketPublicAccessBlockArgs {
   /// Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true`, PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL allows public access, and PUT Object calls fail if the request includes an object ACL.
-  final pulumi.Input<bool>? blockPublicAcls;
+  final pulumi.Input<bool?>? blockPublicAcls;
   /// Whether Amazon S3 should block public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the existing bucket policy. When set to `true`, Amazon S3 rejects calls to PUT Bucket policy if the specified bucket policy allows public access.
-  final pulumi.Input<bool>? blockPublicPolicy;
+  final pulumi.Input<bool?>? blockPublicPolicy;
   /// S3 Bucket to which this Public Access Block configuration should be applied.
   final pulumi.Input<String> bucket;
   /// Whether Amazon S3 should ignore public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true`, Amazon S3 ignores public ACLs on this bucket and any objects that it contains.
-  final pulumi.Input<bool>? ignorePublicAcls;
+  final pulumi.Input<bool?>? ignorePublicAcls;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether Amazon S3 should restrict public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the previously stored bucket policy, except that public and cross-account access within the public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`, only the bucket owner and AWS services can access this bucket if it has a public policy.
-  final pulumi.Input<bool>? restrictPublicBuckets;
+  final pulumi.Input<bool?>? restrictPublicBuckets;
   /// Whether to retain the public access block upon destruction. If set to `true`, the resource is simply removed from state instead. This may be desirable in certain scenarios to prevent the removal of a public access block before deletion of the associated bucket.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
 
   /// Creates a new [BucketPublicAccessBlockArgs].
   /// [blockPublicAcls] Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true`, PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL allows public access, and PUT Object calls fail if the request includes an object ACL.

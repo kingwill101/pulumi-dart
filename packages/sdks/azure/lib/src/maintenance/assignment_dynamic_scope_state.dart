@@ -6,13 +6,13 @@ import 'assignment_dynamic_scope_filter.dart';
 /// Input properties used for looking up and filtering AssignmentDynamicScope resources.
 class AssignmentDynamicScopeState {
   /// A `filter` block as defined below.
-  final pulumi.Input<AssignmentDynamicScopeFilter>? filter;
+  final pulumi.Input<AssignmentDynamicScopeFilter?>? filter;
   /// The ID of the Maintenance Configuration Resource. Changing this forces a new Dynamic Maintenance Assignment to be created.
-  final pulumi.Input<String>? maintenanceConfigurationId;
+  final pulumi.Input<String?>? maintenanceConfigurationId;
   /// The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
   ///
   /// &gt; **Note:** The `name` must be unique per subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AssignmentDynamicScopeState].
   /// [filter] A `filter` block as defined below.

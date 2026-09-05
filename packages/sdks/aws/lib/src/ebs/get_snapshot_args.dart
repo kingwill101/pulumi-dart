@@ -9,19 +9,19 @@ import 'get_snapshot_filter.dart';
 /// {@macro pulumi_ebs_get_snapshot_get_snapshot_args_doc}
 class GetSnapshotArgs {
   /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html).
-  final pulumi.Input<List<GetSnapshotFilter>>? filters;
+  final pulumi.Input<List<GetSnapshotFilter>?>? filters;
   /// If more than one result is returned, use the most recent snapshot.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more AWS accounts IDs that can create volumes from the snapshot.
-  final pulumi.Input<List<String>>? restorableByUserIds;
+  final pulumi.Input<List<String>?>? restorableByUserIds;
   /// Returns information on a specific snapshot_id.
-  final pulumi.Input<List<String>>? snapshotIds;
+  final pulumi.Input<List<String>?>? snapshotIds;
   /// Map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSnapshotArgs].
   /// [filters] One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html).

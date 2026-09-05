@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_args.dart';
+import 'role_inline_policy.dart';
 import 'role_state.dart';
 
 /// Provides an IAM role.
@@ -238,11 +239,11 @@ import 'role_state.dart';
 ///
 /// const instanceAssumeRolePolicy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["ec2.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const instance = new aws.iam.Role("instance", {
@@ -256,11 +257,11 @@ import 'role_state.dart';
 /// import pulumi_aws as aws
 ///
 /// instance_assume_role_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["ec2.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// instance = aws.iam.Role("instance",
 ///     name="instance_role",
@@ -281,10 +282,6 @@ import 'role_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -295,6 +292,10 @@ import 'role_state.dart';
 ///                             "ec2.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -322,9 +323,6 @@ import 'role_state.dart';
 /// 		instanceAssumeRolePolicy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -332,6 +330,9 @@ import 'role_state.dart';
 /// 								"ec2.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -362,11 +363,11 @@ import 'role_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "instanceAssumeRolePolicy" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -403,11 +404,11 @@ import 'role_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var instanceAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("ec2.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -434,12 +435,12 @@ import 'role_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - ec2.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -461,8 +462,6 @@ import 'role_state.dart';
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
-///     name: "yak_role",
-///     assumeRolePolicy: instanceAssumeRolePolicy.json,
 ///     inlinePolicies: [
 ///         {
 ///             name: "my_inline_policy",
@@ -480,6 +479,8 @@ import 'role_state.dart';
 ///             policy: inlinePolicy.then(inlinePolicy => inlinePolicy.json),
 ///         },
 ///     ],
+///     name: "yak_role",
+///     assumeRolePolicy: instanceAssumeRolePolicy.json,
 /// });
 /// ```
 /// ```python
@@ -492,8 +493,6 @@ import 'role_state.dart';
 ///     "resources": ["*"],
 /// }])
 /// example = aws.iam.Role("example",
-///     name="yak_role",
-///     assume_role_policy=instance_assume_role_policy["json"],
 ///     inline_policies=[
 ///         {
 ///             "name": "my_inline_policy",
@@ -510,7 +509,9 @@ import 'role_state.dart';
 ///             "name": "policy-8675309",
 ///             "policy": inline_policy.json,
 ///         },
-///     ])
+///     ],
+///     name="yak_role",
+///     assume_role_policy=instance_assume_role_policy["json"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -541,8 +542,6 @@ import 'role_state.dart';
 ///
 ///     var example = new Aws.Iam.Role("example", new()
 ///     {
-///         Name = "yak_role",
-///         AssumeRolePolicy = instanceAssumeRolePolicy.Json,
 ///         InlinePolicies = new[]
 ///         {
 ///             new Aws.Iam.Inputs.RoleInlinePolicyArgs
@@ -571,6 +570,8 @@ import 'role_state.dart';
 ///                 Policy = inlinePolicy.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///             },
 ///         },
+///         Name = "yak_role",
+///         AssumeRolePolicy = instanceAssumeRolePolicy.Json,
 ///     });
 ///
 /// });
@@ -619,8 +620,6 @@ import 'role_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = iam.NewRole(ctx, "example", &iam.RoleArgs{
-/// 			Name:             pulumi.String("yak_role"),
-/// 			AssumeRolePolicy: pulumi.Any(instanceAssumeRolePolicy.Json),
 /// 			InlinePolicies: iam.RoleInlinePolicyArray{
 /// 				&iam.RoleInlinePolicyArgs{
 /// 					Name:   pulumi.String("my_inline_policy"),
@@ -631,6 +630,8 @@ import 'role_state.dart';
 /// 					Policy: pulumi.String(inlinePolicy.Json),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("yak_role"),
+/// 			AssumeRolePolicy: pulumi.Any(instanceAssumeRolePolicy.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -656,8 +657,6 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   name               = "yak_role"
-///   assume_role_policy = instanceAssumeRolePolicy.json
 ///   inline_policies {
 ///     name = "my_inline_policy"
 ///     policy = jsonencode({
@@ -673,6 +672,8 @@ import 'role_state.dart';
 ///     name   = "policy-8675309"
 ///     policy = data.aws_iam_getpolicydocument.inlinePolicy.json
 ///   }
+///   name               = "yak_role"
+///   assume_role_policy = instanceAssumeRolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -709,8 +710,6 @@ import 'role_state.dart';
 ///             .build());
 ///
 ///         var example = new Role("example", RoleArgs.builder()
-///             .name("yak_role")
-///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
 ///             .inlinePolicies(
 ///                 RoleInlinePolicyArgs.builder()
 ///                     .name("my_inline_policy")
@@ -728,6 +727,8 @@ import 'role_state.dart';
 ///                     .name("policy-8675309")
 ///                     .policy(inlinePolicy.json())
 ///                     .build())
+///             .name("yak_role")
+///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
 ///             .build());
 ///
 ///     }
@@ -738,8 +739,6 @@ import 'role_state.dart';
 ///   example:
 ///     type: aws:iam:Role
 ///     properties:
-///       name: yak_role
-///       assumeRolePolicy: ${instanceAssumeRolePolicy.json}
 ///       inlinePolicies:
 ///         - name: my_inline_policy
 ///           policy:
@@ -752,6 +751,8 @@ import 'role_state.dart';
 ///                   Resource: '*'
 ///         - name: policy-8675309
 ///           policy: ${inlinePolicy.json}
+///       name: yak_role
+///       assumeRolePolicy: ${instanceAssumeRolePolicy.json}
 /// variables:
 ///   inlinePolicy:
 ///     fn::invoke:
@@ -1402,7 +1403,7 @@ import 'role_state.dart';
 /// $ pulumi import aws:iam/role:Role example developer_name
 /// ```
 class Role extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) specifying the role.
+  /// ARN specifying the role.
   late final pulumi.Output<String> arn;
   /// Policy that grants an entity permission to assume the role.
   ///
@@ -1417,7 +1418,7 @@ class Role extends pulumi.CustomResource {
   /// Whether to force detaching any policies the role has before destroying it. Defaults to `false`.
   late final pulumi.Output<bool?> forceDetachPolicies;
   /// Configuration block defining an exclusive set of IAM inline policies associated with the IAM role. See below. If no blocks are configured, Pulumi will not manage any inline policies in this resource. Configuring one empty block (i.e., `inlinePolicy {}`) will cause Pulumi to remove _all_ inline policies added out of band on `apply`.
-  late final pulumi.Output<List<Map<String, dynamic>>> inlinePolicies;
+  late final pulumi.Output<List<RoleInlinePolicy>> inlinePolicies;
   /// Set of exclusive IAM managed policy ARNs to attach to the IAM role. If this attribute is not configured, Pulumi will ignore policy attachments to this resource. When configured, Pulumi will align the role's managed policy attachments with this set by attaching or detaching managed policies. Configuring an empty set (i.e., `managedPolicyArns = []`) will cause Pulumi to remove _all_ managed policy attachments.
   late final pulumi.Output<List<String>> managedPolicyArns;
   /// Maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
@@ -1449,22 +1450,22 @@ class Role extends pulumi.CustomResource {
           'aws:iam/role:Role',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assumeRolePolicy = registerOutput<String>('assumeRolePolicy');
     createDate = registerOutput<String>('createDate');
     description = registerOutput<String?>('description');
     forceDetachPolicies = registerOutput<bool?>('forceDetachPolicies');
-    inlinePolicies = registerOutput<List<Map<String, dynamic>>>('inlinePolicies');
-    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    inlinePolicies = registerOutput<List<RoleInlinePolicy>>('inlinePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleInlinePolicy>(guardedValue, (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maxSessionDuration = registerOutput<int?>('maxSessionDuration');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     path = registerOutput<String?>('path');
     permissionsBoundary = registerOutput<String?>('permissionsBoundary');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueId = registerOutput<String>('uniqueId');
   }
 
@@ -1473,11 +1474,12 @@ class Role extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Role._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1496,15 +1498,41 @@ class Role extends pulumi.CustomResource {
     createDate = registerOutput<String>('createDate');
     description = registerOutput<String?>('description');
     forceDetachPolicies = registerOutput<bool?>('forceDetachPolicies');
-    inlinePolicies = registerOutput<List<Map<String, dynamic>>>('inlinePolicies');
-    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    inlinePolicies = registerOutput<List<RoleInlinePolicy>>('inlinePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleInlinePolicy>(guardedValue, (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maxSessionDuration = registerOutput<int?>('maxSessionDuration');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     path = registerOutput<String?>('path');
     permissionsBoundary = registerOutput<String?>('permissionsBoundary');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueId = registerOutput<String>('uniqueId');
+  }
+
+  /// Creates a typed reference to an existing [Role] resource.
+  Role.reference(String urn)
+    : super(
+        'aws:iam/role:Role',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assumeRolePolicy = registerOutput<String>('assumeRolePolicy');
+    createDate = registerOutput<String>('createDate');
+    description = registerOutput<String?>('description');
+    forceDetachPolicies = registerOutput<bool?>('forceDetachPolicies');
+    inlinePolicies = registerOutput<List<RoleInlinePolicy>>('inlinePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleInlinePolicy>(guardedValue, (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    managedPolicyArns = registerOutput<List<String>>('managedPolicyArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    maxSessionDuration = registerOutput<int?>('maxSessionDuration');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    path = registerOutput<String?>('path');
+    permissionsBoundary = registerOutput<String?>('permissionsBoundary');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueId = registerOutput<String>('uniqueId');
   }
 }

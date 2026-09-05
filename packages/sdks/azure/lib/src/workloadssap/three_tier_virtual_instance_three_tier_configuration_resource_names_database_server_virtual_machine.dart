@@ -5,15 +5,15 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_data
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachine {
   /// One or more `dataDisk` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk>>? dataDisks;
+  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk>?>? dataDisks;
   /// The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? networkInterfaceNames;
+  final pulumi.Input<List<String>?>? networkInterfaceNames;
   /// The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? osDiskName;
+  final pulumi.Input<String?>? osDiskName;
   /// The full name of the Virtual Machine in a single server SAP system. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachine].
   /// [dataDisks] One or more `dataDisk` blocks as defined below. Changing this forces a new resource to be created.

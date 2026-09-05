@@ -8,9 +8,9 @@ class VirtualNodeSpecListenerHealthCheck {
   /// Time period in milliseconds between each health check execution.
   final pulumi.Input<int> intervalMillis;
   /// File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Port used for the port mapping.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final pulumi.Input<String> protocol;
   /// Amount of time to wait when receiving a response from the health check, in milliseconds.
@@ -50,13 +50,13 @@ class VirtualNodeSpecListenerHealthCheck {
 
   factory VirtualNodeSpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerHealthCheck(
-      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
-      intervalMillis: pulumi.Input.fromValue(map['intervalMillis'] as int),
+      healthyThreshold: pulumi.Input.fromValue((map['healthyThreshold'] as num).toInt()),
+      intervalMillis: pulumi.Input.fromValue((map['intervalMillis'] as num).toInt()),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeoutMillis: pulumi.Input.fromValue(map['timeoutMillis'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      timeoutMillis: pulumi.Input.fromValue((map['timeoutMillis'] as num).toInt()),
+      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
     );
   }
 }

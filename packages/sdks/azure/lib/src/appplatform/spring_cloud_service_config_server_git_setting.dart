@@ -7,15 +7,15 @@ import 'spring_cloud_service_config_server_git_setting_ssh_auth.dart';
 
 class SpringCloudServiceConfigServerGitSetting {
   /// A `httpBasicAuth` block as defined below.
-  final pulumi.Input<SpringCloudServiceConfigServerGitSettingHttpBasicAuth>? httpBasicAuth;
+  final pulumi.Input<SpringCloudServiceConfigServerGitSettingHttpBasicAuth?>? httpBasicAuth;
   /// The default label of the Git repository, should be the branch name, tag name, or commit-id of the repository.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// One or more `repository` blocks as defined below.
-  final pulumi.Input<List<SpringCloudServiceConfigServerGitSettingRepository>>? repositories;
+  final pulumi.Input<List<SpringCloudServiceConfigServerGitSettingRepository>?>? repositories;
   /// An array of strings used to search subdirectories of the Git repository.
-  final pulumi.Input<List<String>>? searchPaths;
+  final pulumi.Input<List<String>?>? searchPaths;
   /// A `sshAuth` block as defined below.
-  final pulumi.Input<SpringCloudServiceConfigServerGitSettingSshAuth>? sshAuth;
+  final pulumi.Input<SpringCloudServiceConfigServerGitSettingSshAuth?>? sshAuth;
   /// The URI of the default Git repository used as the Config Server back end, should be started with `http://`, `https://`, `git@`, or `ssh://`.
   final pulumi.Input<String> uri;
 

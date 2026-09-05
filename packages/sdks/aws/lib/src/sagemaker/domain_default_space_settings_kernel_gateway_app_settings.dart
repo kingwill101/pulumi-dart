@@ -6,16 +6,16 @@ import 'domain_default_space_settings_kernel_gateway_app_settings_default_resour
 
 class DomainDefaultSpaceSettingsKernelGatewayAppSettings {
   /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see `customImage` Block below.
-  final pulumi.Input<List<DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec>? defaultResourceSpec;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<List<DomainDefaultSpaceSettingsKernelGatewayAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  final pulumi.Input<DomainDefaultSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [DomainDefaultSpaceSettingsKernelGatewayAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see `customImage` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const DomainDefaultSpaceSettingsKernelGatewayAppSettings({
     this.customImages,
     this.defaultResourceSpec,

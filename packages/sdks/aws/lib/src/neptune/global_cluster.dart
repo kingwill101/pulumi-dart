@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_cluster_args.dart';
+import 'global_cluster_global_cluster_member.dart';
 import 'global_cluster_state.dart';
 
 /// Manages a Neptune Global Cluster. A global cluster consists of one primary region and up to five read-only secondary regions. You issue write operations directly to the primary cluster in the primary region and Amazon Neptune automatically replicates the data to the secondary regions using dedicated infrastructure.
@@ -390,7 +391,9 @@ import 'global_cluster_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.neptune.Cluster("example", {});
+/// const example = new aws.neptune.Cluster("example", {}, {
+///     ignoreChanges: ["globalClusterIdentifier"],
+/// });
 /// const exampleGlobalCluster = new aws.neptune.GlobalCluster("example", {
 ///     globalClusterIdentifier: "example",
 ///     sourceDbClusterIdentifier: example.arn,
@@ -400,7 +403,7 @@ import 'global_cluster_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.neptune.Cluster("example")
+/// example = aws.neptune.Cluster("example", opts = pulumi.ResourceOptions(ignore_changes=["globalClusterIdentifier"]))
 /// example_global_cluster = aws.neptune.GlobalCluster("example",
 ///     global_cluster_identifier="example",
 ///     source_db_cluster_identifier=example.arn)
@@ -413,7 +416,15 @@ import 'global_cluster_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Neptune.Cluster("example");
+///     var example = new Aws.Neptune.Cluster("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "globalClusterIdentifier",
+///         },
+///     });
 ///
 ///     var exampleGlobalCluster = new Aws.Neptune.GlobalCluster("example", new()
 ///     {
@@ -433,7 +444,9 @@ import 'global_cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := neptune.NewCluster(ctx, "example", nil)
+/// 		example, err := neptune.NewCluster(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"globalClusterIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -458,6 +471,9 @@ import 'global_cluster_state.dart';
 /// }
 ///
 /// resource "aws_neptune_cluster" "example" {
+///   lifecycle {
+///     ignore_changes = [globalClusterIdentifier]
+///   }
 /// }
 /// resource "aws_neptune_globalcluster" "example" {
 ///   global_cluster_identifier    = "example"
@@ -471,8 +487,10 @@ import 'global_cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.Cluster;
+/// import com.pulumi.aws.neptune.ClusterArgs;
 /// import com.pulumi.aws.neptune.GlobalCluster;
 /// import com.pulumi.aws.neptune.GlobalClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -486,7 +504,9 @@ import 'global_cluster_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new Cluster("example");
+///         var example = new Cluster("example", ClusterArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("globalClusterIdentifier")
+///             .build());
 ///
 ///         var exampleGlobalCluster = new GlobalCluster("exampleGlobalCluster", GlobalClusterArgs.builder()
 ///             .globalClusterIdentifier("example")
@@ -500,6 +520,9 @@ import 'global_cluster_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:neptune:Cluster
+///     options:
+///       ignoreChanges:
+///         - globalClusterIdentifier
 ///   exampleGlobalCluster:
 ///     type: aws:neptune:GlobalCluster
 ///     name: example
@@ -524,13 +547,15 @@ import 'global_cluster_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.neptune.GlobalCluster("example", {});
+/// const example = new aws.neptune.GlobalCluster("example", {}, {
+///     ignoreChanges: ["sourceDbClusterIdentifier"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.neptune.GlobalCluster("example")
+/// example = aws.neptune.GlobalCluster("example", opts = pulumi.ResourceOptions(ignore_changes=["sourceDbClusterIdentifier"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -540,7 +565,15 @@ import 'global_cluster_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = new Aws.Neptune.GlobalCluster("example");
+///     var example = new Aws.Neptune.GlobalCluster("example", new()
+///     {
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "sourceDbClusterIdentifier",
+///         },
+///     });
 ///
 /// });
 /// ```
@@ -554,7 +587,9 @@ import 'global_cluster_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := neptune.NewGlobalCluster(ctx, "example", nil)
+/// 		_, err := neptune.NewGlobalCluster(ctx, "example", nil, pulumi.IgnoreChanges([]string{
+/// 			"sourceDbClusterIdentifier",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -572,6 +607,9 @@ import 'global_cluster_state.dart';
 /// }
 ///
 /// resource "aws_neptune_globalcluster" "example" {
+///   lifecycle {
+///     ignore_changes = [sourceDbClusterIdentifier]
+///   }
 /// }
 /// ```
 /// ```java
@@ -581,6 +619,8 @@ import 'global_cluster_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.neptune.GlobalCluster;
+/// import com.pulumi.aws.neptune.GlobalClusterArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -594,7 +634,9 @@ import 'global_cluster_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var example = new GlobalCluster("example");
+///         var example = new GlobalCluster("example", GlobalClusterArgs.Empty, CustomResourceOptions.builder()
+///             .ignoreChanges("sourceDbClusterIdentifier")
+///             .build());
 ///
 ///     }
 /// }
@@ -603,6 +645,9 @@ import 'global_cluster_state.dart';
 /// resources:
 ///   example:
 ///     type: aws:neptune:GlobalCluster
+///     options:
+///       ignoreChanges:
+///         - sourceDbClusterIdentifier
 /// ```
 class GlobalCluster extends pulumi.CustomResource {
   /// Global Cluster ARN
@@ -616,7 +661,7 @@ class GlobalCluster extends pulumi.CustomResource {
   /// Global cluster identifier.
   late final pulumi.Output<String> globalClusterIdentifier;
   /// Set of objects containing Global Cluster members.
-  late final pulumi.Output<List<Map<String, dynamic>>> globalClusterMembers;
+  late final pulumi.Output<List<GlobalClusterGlobalClusterMember>> globalClusterMembers;
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
   late final pulumi.Output<String> globalClusterResourceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -639,14 +684,14 @@ class GlobalCluster extends pulumi.CustomResource {
           'aws:neptune/globalCluster:GlobalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
     sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
@@ -659,11 +704,12 @@ class GlobalCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -682,7 +728,29 @@ class GlobalCluster extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     engineVersion = registerOutput<String>('engineVersion');
     globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
-    globalClusterMembers = registerOutput<List<Map<String, dynamic>>>('globalClusterMembers');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
+    globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
+    region = registerOutput<String>('region');
+    sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');
+    status = registerOutput<String>('status');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+  }
+
+  /// Creates a typed reference to an existing [GlobalCluster] resource.
+  GlobalCluster.reference(String urn)
+    : super(
+        'aws:neptune/globalCluster:GlobalCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    globalClusterIdentifier = registerOutput<String>('globalClusterIdentifier');
+    globalClusterMembers = registerOutput<List<GlobalClusterGlobalClusterMember>>('globalClusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(guardedValue, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>())); });
     globalClusterResourceId = registerOutput<String>('globalClusterResourceId');
     region = registerOutput<String>('region');
     sourceDbClusterIdentifier = registerOutput<String>('sourceDbClusterIdentifier');

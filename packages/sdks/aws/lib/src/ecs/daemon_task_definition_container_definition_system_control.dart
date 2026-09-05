@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionSystemControl {
   /// Namespaced kernel parameter to set a value for.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Value for the namespaced kernel parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionSystemControl].
   /// [namespace] Namespaced kernel parameter to set a value for.

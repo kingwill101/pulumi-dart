@@ -190,7 +190,7 @@ class Directory extends pulumi.CustomResource {
           'azure:aadb2c/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     billingType = registerOutput<String>('billingType');
     countryCode = registerOutput<String>('countryCode');
@@ -200,7 +200,7 @@ class Directory extends pulumi.CustomResource {
     effectiveStartDate = registerOutput<String>('effectiveStartDate');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -209,11 +209,12 @@ class Directory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Directory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,7 +236,28 @@ class Directory extends pulumi.CustomResource {
     effectiveStartDate = registerOutput<String>('effectiveStartDate');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [Directory] resource.
+  Directory.reference(String urn)
+    : super(
+        'azure:aadb2c/directory:Directory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    billingType = registerOutput<String>('billingType');
+    countryCode = registerOutput<String>('countryCode');
+    dataResidencyLocation = registerOutput<String>('dataResidencyLocation');
+    displayName = registerOutput<String>('displayName');
+    domainName = registerOutput<String>('domainName');
+    effectiveStartDate = registerOutput<String>('effectiveStartDate');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

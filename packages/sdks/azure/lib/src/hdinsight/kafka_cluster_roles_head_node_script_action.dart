@@ -6,7 +6,7 @@ class KafkaClusterRolesHeadNodeScriptAction {
   /// The name of the script action.
   final pulumi.Input<String> name;
   /// The parameters for the script provided.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// The URI to the script.
   final pulumi.Input<String> uri;
 

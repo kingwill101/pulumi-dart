@@ -12,40 +12,40 @@ import 'channel_vpc.dart';
 /// Input properties used for looking up and filtering Channel resources.
 class ChannelState {
   /// ARN of the Channel.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specification of CDI inputs for this channel. See CDI Input Specification for more details.
-  final pulumi.Input<ChannelCdiInputSpecification>? cdiInputSpecification;
+  final pulumi.Input<ChannelCdiInputSpecification?>? cdiInputSpecification;
   /// Concise argument description.
-  final pulumi.Input<String>? channelClass;
+  final pulumi.Input<String?>? channelClass;
   /// ID of the Channel.
-  final pulumi.Input<String>? channelId;
+  final pulumi.Input<String?>? channelId;
   /// Destinations for channel. See Destinations for more details.
-  final pulumi.Input<List<ChannelDestination>>? destinations;
+  final pulumi.Input<List<ChannelDestination>?>? destinations;
   /// Encoder settings. See Encoder Settings for more details.
-  final pulumi.Input<ChannelEncoderSettings>? encoderSettings;
+  final pulumi.Input<ChannelEncoderSettings?>? encoderSettings;
   /// Input attachments for the channel. See Input Attachments for more details.
-  final pulumi.Input<List<ChannelInputAttachment>>? inputAttachments;
+  final pulumi.Input<List<ChannelInputAttachment>?>? inputAttachments;
   /// Specification of network and file inputs for the channel.
-  final pulumi.Input<ChannelInputSpecification>? inputSpecification;
+  final pulumi.Input<ChannelInputSpecification?>? inputSpecification;
   /// The log level to write to Cloudwatch logs.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Maintenance settings for this channel. See Maintenance for more details.
-  final pulumi.Input<ChannelMaintenance>? maintenance;
+  final pulumi.Input<ChannelMaintenance?>? maintenance;
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Concise argument description.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Whether to start/stop channel. Default: `false`
-  final pulumi.Input<bool>? startChannel;
+  final pulumi.Input<bool?>? startChannel;
   /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Settings for the VPC outputs. See VPC for more details.
-  final pulumi.Input<ChannelVpc>? vpc;
+  final pulumi.Input<ChannelVpc?>? vpc;
 
   /// Creates a new [ChannelState].
   /// [arn] ARN of the Channel.

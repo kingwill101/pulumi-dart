@@ -5,11 +5,11 @@ import 'endpoint_access_vpc_endpoint_network_interface.dart';
 
 class EndpointAccessVpcEndpoint {
   /// The network interfaces of the endpoint.. See `Network Interface` below.
-  final pulumi.Input<List<EndpointAccessVpcEndpointNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<EndpointAccessVpcEndpointNetworkInterface>?>? networkInterfaces;
   /// The DNS address of the VPC endpoint.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// The port that Amazon Redshift Serverless listens on.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [EndpointAccessVpcEndpoint].
   /// [networkInterfaces] The network interfaces of the endpoint.. See `Network Interface` below.

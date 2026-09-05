@@ -9,11 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventBusPolicyArgs {
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
-  final pulumi.Input<String>? eventBusName;
+  final pulumi.Input<String?>? eventBusName;
   /// The text of the policy.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [EventBusPolicyArgs].
   /// [eventBusName] The name of the event bus to set the permissions on.

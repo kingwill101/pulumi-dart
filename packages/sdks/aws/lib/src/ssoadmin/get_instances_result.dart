@@ -3,41 +3,41 @@
 
 /// Result data returned by getInstances.
 class GetInstancesResult {
-  /// Set of Amazon Resource Names (ARNs) of the SSO Instances.
-  final List<String> arns;
+  /// Set of ARNs of the SSO Instances.
+  final List<String>? arns;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Set of identifiers of the identity stores connected to the SSO Instances.
-  final List<String> identityStoreIds;
-  final String region;
+  final List<String>? identityStoreIds;
+  final String? region;
 
   /// Creates a new [GetInstancesResult].
-  /// [arns] Set of Amazon Resource Names (ARNs) of the SSO Instances.
+  /// [arns] Set of ARNs of the SSO Instances.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityStoreIds] Set of identifiers of the identity stores connected to the SSO Instances.
-  /// [region] Required.
+  /// [region] Optional.
   const GetInstancesResult({
-    required this.arns,
-    required this.id,
-    required this.identityStoreIds,
-    required this.region,
+    this.arns,
+    this.id,
+    this.identityStoreIds,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arns': arns,
-      'id': id,
-      'identityStoreIds': identityStoreIds,
-      'region': region,
+      'arns': ?arns,
+      'id': ?id,
+      'identityStoreIds': ?identityStoreIds,
+      'region': ?region,
     };
   }
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      arns: (map['arns'] as List).cast<String>(),
-      id: map['id'] as String,
-      identityStoreIds: (map['identityStoreIds'] as List).cast<String>(),
-      region: map['region'] as String,
+      arns: (() { final guardedValue = map['arns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityStoreIds: (() { final guardedValue = map['identityStoreIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

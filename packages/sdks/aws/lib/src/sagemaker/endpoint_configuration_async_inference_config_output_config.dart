@@ -5,11 +5,11 @@ import 'endpoint_configuration_async_inference_config_output_config_notification
 
 class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   /// KMS key that SageMaker AI uses to encrypt the asynchronous inference output in S3.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Configuration for notifications of inference results for asynchronous inference.
-  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig>? notificationConfig;
+  final pulumi.Input<EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig?>? notificationConfig;
   /// S3 location to upload failure inference responses to.
-  final pulumi.Input<String>? s3FailurePath;
+  final pulumi.Input<String?>? s3FailurePath;
   /// S3 location to upload inference responses to.
   final pulumi.Input<String> s3OutputPath;
 

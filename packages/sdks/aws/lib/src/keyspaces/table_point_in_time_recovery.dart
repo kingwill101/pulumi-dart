@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TablePointInTimeRecovery {
   /// Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [TablePointInTimeRecovery].
   /// [status] Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.

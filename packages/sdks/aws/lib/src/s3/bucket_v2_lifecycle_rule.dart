@@ -8,23 +8,23 @@ import 'bucket_v2_lifecycle_rule_transition.dart';
 
 class BucketV2LifecycleRule {
   /// Number of days after initiating a multipart upload when the multipart upload must be completed.
-  final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
+  final pulumi.Input<int?>? abortIncompleteMultipartUploadDays;
   /// Lifecycle rule status.
   final pulumi.Input<bool> enabled;
   /// Configuration of the object expiration. See `expiration` Block below for details.
-  final pulumi.Input<List<BucketV2LifecycleRuleExpiration>>? expirations;
+  final pulumi.Input<List<BucketV2LifecycleRuleExpiration>?>? expirations;
   /// Unique identifier for the rule. Must be less than or equal to 255 characters in length.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// When noncurrent object versions expire. See `noncurrentVersionExpiration` Block below for details.
-  final pulumi.Input<List<BucketV2LifecycleRuleNoncurrentVersionExpiration>>? noncurrentVersionExpirations;
+  final pulumi.Input<List<BucketV2LifecycleRuleNoncurrentVersionExpiration>?>? noncurrentVersionExpirations;
   /// When noncurrent object versions transition. See `noncurrentVersionTransition` Block below for details.
-  final pulumi.Input<List<BucketV2LifecycleRuleNoncurrentVersionTransition>>? noncurrentVersionTransitions;
+  final pulumi.Input<List<BucketV2LifecycleRuleNoncurrentVersionTransition>?>? noncurrentVersionTransitions;
   /// Object key prefix identifying one or more objects to which the rule applies.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Object tags key and value.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration of the object transition. See `transition` Block below for details.
-  final pulumi.Input<List<BucketV2LifecycleRuleTransition>>? transitions;
+  final pulumi.Input<List<BucketV2LifecycleRuleTransition>?>? transitions;
 
   /// Creates a new [BucketV2LifecycleRule].
   /// [abortIncompleteMultipartUploadDays] Number of days after initiating a multipart upload when the multipart upload must be completed.
@@ -64,7 +64,7 @@ class BucketV2LifecycleRule {
 
   factory BucketV2LifecycleRule.fromMap(Map<String, dynamic> map) {
     return BucketV2LifecycleRule(
-      abortIncompleteMultipartUploadDays: (() { final guardedValue = map['abortIncompleteMultipartUploadDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      abortIncompleteMultipartUploadDays: (() { final guardedValue = map['abortIncompleteMultipartUploadDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       expirations: (() { final guardedValue = map['expirations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2LifecycleRuleExpiration>(guardedValue, (value) => BucketV2LifecycleRuleExpiration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

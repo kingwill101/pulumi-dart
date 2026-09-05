@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flowlet_data_flow_args.dart';
+import 'flowlet_data_flow_sink.dart';
+import 'flowlet_data_flow_source.dart';
 import 'flowlet_data_flow_state.dart';
+import 'flowlet_data_flow_transformation.dart';
 
 /// Manages a Flowlet Data Flow inside an Azure Data Factory.
 ///
@@ -522,7 +525,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		exampleLinkedCustomService, err := datafactory.NewLinkedCustomService(ctx, "example", &datafactory.LinkedCustomServiceArgs{
 /// 			Name:          pulumi.String("linked_service"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AzureBlobStorage"),
 /// 			TypePropertiesJson: exampleAccount.PrimaryConnectionString.ApplyT(func(primaryConnectionString string) (string, error) {
 /// 				return fmt.Sprintf("{\n  \\\"connectionString\\\": \\\"%v\\\"\n}\n", primaryConnectionString), nil
@@ -533,7 +536,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetJson(ctx, "example1", &datafactory.DatasetJsonArgs{
 /// 			Name:              pulumi.String("dataset1"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedCustomService.Name,
 /// 			AzureBlobStorageLocation: &datafactory.DatasetJsonAzureBlobStorageLocationArgs{
 /// 				Container: pulumi.String("container"),
@@ -547,7 +550,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetJson(ctx, "example2", &datafactory.DatasetJsonArgs{
 /// 			Name:              pulumi.String("dataset2"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedCustomService.Name,
 /// 			AzureBlobStorageLocation: &datafactory.DatasetJsonAzureBlobStorageLocationArgs{
 /// 				Container: pulumi.String("container"),
@@ -561,7 +564,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		example1FlowletDataFlow, err := datafactory.NewFlowletDataFlow(ctx, "example1", &datafactory.FlowletDataFlowArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Sources: datafactory.FlowletDataFlowSourceArray{
 /// 				&datafactory.FlowletDataFlowSourceArgs{
 /// 					Name: pulumi.String("source1"),
@@ -596,7 +599,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		example2FlowletDataFlow, err := datafactory.NewFlowletDataFlow(ctx, "example2", &datafactory.FlowletDataFlowArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Sources: datafactory.FlowletDataFlowSourceArray{
 /// 				&datafactory.FlowletDataFlowSourceArgs{
 /// 					Name: pulumi.String("source1"),
@@ -631,7 +634,7 @@ import 'flowlet_data_flow_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewFlowletDataFlow(ctx, "example", &datafactory.FlowletDataFlowArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Sources: datafactory.FlowletDataFlowSourceArray{
 /// 				&datafactory.FlowletDataFlowSourceArgs{
 /// 					Name: pulumi.String("source1"),
@@ -1117,11 +1120,11 @@ class FlowletDataFlow extends pulumi.CustomResource {
   /// The script lines for the Data Factory Flowlet Data Flow.
   late final pulumi.Output<List<String>?> scriptLines;
   /// One or more `sink` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sinks;
+  late final pulumi.Output<List<FlowletDataFlowSink>?> sinks;
   /// One or more `source` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+  late final pulumi.Output<List<FlowletDataFlowSource>?> sources;
   /// One or more `transformation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> transformations_;
+  late final pulumi.Output<List<FlowletDataFlowTransformation>?> transformations_;
 
   /// Creates a new [FlowletDataFlow].
   /// [name] The Pulumi resource name.
@@ -1135,18 +1138,18 @@ class FlowletDataFlow extends pulumi.CustomResource {
           'azure:datafactory/flowletDataFlow:FlowletDataFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     this.name = registerOutput<String>('name');
     script = registerOutput<String?>('script');
-    scriptLines = registerOutput<List<String>?>('scriptLines');
-    sinks = registerOutput<List<Map<String, dynamic>>?>('sinks');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    transformations_ = registerOutput<List<Map<String, dynamic>>?>('transformations');
+    scriptLines = registerOutput<List<String>?>('scriptLines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sinks = registerOutput<List<FlowletDataFlowSink>?>('sinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSink>(guardedValue, (value) => FlowletDataFlowSink.fromMap((value as Map).cast<String, dynamic>())); });
+    sources = registerOutput<List<FlowletDataFlowSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSource>(guardedValue, (value) => FlowletDataFlowSource.fromMap((value as Map).cast<String, dynamic>())); });
+    transformations_ = registerOutput<List<FlowletDataFlowTransformation>?>('transformations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowTransformation>(guardedValue, (value) => FlowletDataFlowTransformation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [FlowletDataFlow] resource's state with the given [name] and [id].
@@ -1154,11 +1157,12 @@ class FlowletDataFlow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlowletDataFlowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlowletDataFlow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1172,15 +1176,36 @@ class FlowletDataFlow extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     this.name = registerOutput<String>('name');
     script = registerOutput<String?>('script');
-    scriptLines = registerOutput<List<String>?>('scriptLines');
-    sinks = registerOutput<List<Map<String, dynamic>>?>('sinks');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    transformations_ = registerOutput<List<Map<String, dynamic>>?>('transformations');
+    scriptLines = registerOutput<List<String>?>('scriptLines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sinks = registerOutput<List<FlowletDataFlowSink>?>('sinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSink>(guardedValue, (value) => FlowletDataFlowSink.fromMap((value as Map).cast<String, dynamic>())); });
+    sources = registerOutput<List<FlowletDataFlowSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSource>(guardedValue, (value) => FlowletDataFlowSource.fromMap((value as Map).cast<String, dynamic>())); });
+    transformations_ = registerOutput<List<FlowletDataFlowTransformation>?>('transformations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowTransformation>(guardedValue, (value) => FlowletDataFlowTransformation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [FlowletDataFlow] resource.
+  FlowletDataFlow.reference(String urn)
+    : super(
+        'azure:datafactory/flowletDataFlow:FlowletDataFlow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    this.name = registerOutput<String>('name');
+    script = registerOutput<String?>('script');
+    scriptLines = registerOutput<List<String>?>('scriptLines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sinks = registerOutput<List<FlowletDataFlowSink>?>('sinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSink>(guardedValue, (value) => FlowletDataFlowSink.fromMap((value as Map).cast<String, dynamic>())); });
+    sources = registerOutput<List<FlowletDataFlowSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowSource>(guardedValue, (value) => FlowletDataFlowSource.fromMap((value as Map).cast<String, dynamic>())); });
+    transformations_ = registerOutput<List<FlowletDataFlowTransformation>?>('transformations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowletDataFlowTransformation>(guardedValue, (value) => FlowletDataFlowTransformation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

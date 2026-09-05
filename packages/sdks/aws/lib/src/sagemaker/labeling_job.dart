@@ -2,9 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'labeling_job_args.dart';
 import 'labeling_job_human_task_config.dart';
 import 'labeling_job_input_config.dart';
+import 'labeling_job_label_counter.dart';
 import 'labeling_job_labeling_job_algorithms_config.dart';
 import 'labeling_job_output_config.dart';
 import 'labeling_job_state.dart';
+import 'labeling_job_stopping_condition.dart';
 
 /// Manage an Amazon SageMaker labeling job.
 ///
@@ -19,23 +21,19 @@ import 'labeling_job_state.dart';
 ///
 /// // https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 /// const test = new aws.sagemaker.LabelingJob("test", {
-///     labelAttributeName: "label1",
-///     labelingJobName: "my-labeling-job",
-///     roleArn: exampleAwsIamRole.arn,
-///     labelCategoryConfigS3Uri: `s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}`,
 ///     humanTaskConfig: {
+///         uiConfig: {
+///             humanTaskUiArn: "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
+///         },
+///         annotationConsolidationConfig: {
+///             annotationConsolidationLambdaArn: "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
+///         },
 ///         numberOfHumanWorkersPerDataObject: 1,
 ///         taskDescription: "Apply the labels provided to specific words or phrases within the larger text block.",
 ///         taskTitle: "Named entity Recognition task",
 ///         taskTimeLimitInSeconds: 28800,
 ///         workteamArn: example.arn,
-///         uiConfig: {
-///             humanTaskUiArn: "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
-///         },
 ///         preHumanTaskLambdaArn: "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition",
-///         annotationConsolidationConfig: {
-///             annotationConsolidationLambdaArn: "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
-///         },
 ///     },
 ///     inputConfig: {
 ///         dataSource: {
@@ -47,6 +45,10 @@ import 'labeling_job_state.dart';
 ///     outputConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/`,
 ///     },
+///     labelAttributeName: "label1",
+///     labelingJobName: "my-labeling-job",
+///     roleArn: exampleAwsIamRole.arn,
+///     labelCategoryConfigS3Uri: `s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}`,
 /// });
 /// ```
 /// ```python
@@ -55,23 +57,19 @@ import 'labeling_job_state.dart';
 ///
 /// # https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 /// test = aws.sagemaker.LabelingJob("test",
-///     label_attribute_name="label1",
-///     labeling_job_name="my-labeling-job",
-///     role_arn=example_aws_iam_role["arn"],
-///     label_category_config_s3_uri=f"s3://{example_aws_s3_bucket['bucket']}/{example_aws_s3_object['key']}",
 ///     human_task_config={
+///         "ui_config": {
+///             "human_task_ui_arn": "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
+///         },
+///         "annotation_consolidation_config": {
+///             "annotation_consolidation_lambda_arn": "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
+///         },
 ///         "number_of_human_workers_per_data_object": 1,
 ///         "task_description": "Apply the labels provided to specific words or phrases within the larger text block.",
 ///         "task_title": "Named entity Recognition task",
 ///         "task_time_limit_in_seconds": 28800,
 ///         "workteam_arn": example["arn"],
-///         "ui_config": {
-///             "human_task_ui_arn": "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
-///         },
 ///         "pre_human_task_lambda_arn": "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition",
-///         "annotation_consolidation_config": {
-///             "annotation_consolidation_lambda_arn": "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
-///         },
 ///     },
 ///     input_config={
 ///         "data_source": {
@@ -82,7 +80,11 @@ import 'labeling_job_state.dart';
 ///     },
 ///     output_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/",
-///     })
+///     },
+///     label_attribute_name="label1",
+///     labeling_job_name="my-labeling-job",
+///     role_arn=example_aws_iam_role["arn"],
+///     label_category_config_s3_uri=f"s3://{example_aws_s3_bucket['bucket']}/{example_aws_s3_object['key']}")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -95,26 +97,22 @@ import 'labeling_job_state.dart';
 ///     // https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 ///     var test = new Aws.Sagemaker.LabelingJob("test", new()
 ///     {
-///         LabelAttributeName = "label1",
-///         LabelingJobName = "my-labeling-job",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         LabelCategoryConfigS3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/{exampleAwsS3Object.Key}",
 ///         HumanTaskConfig = new Aws.Sagemaker.Inputs.LabelingJobHumanTaskConfigArgs
 ///         {
+///             UiConfig = new Aws.Sagemaker.Inputs.LabelingJobHumanTaskConfigUiConfigArgs
+///             {
+///                 HumanTaskUiArn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
+///             },
+///             AnnotationConsolidationConfig = new Aws.Sagemaker.Inputs.LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs
+///             {
+///                 AnnotationConsolidationLambdaArn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
+///             },
 ///             NumberOfHumanWorkersPerDataObject = 1,
 ///             TaskDescription = "Apply the labels provided to specific words or phrases within the larger text block.",
 ///             TaskTitle = "Named entity Recognition task",
 ///             TaskTimeLimitInSeconds = 28800,
 ///             WorkteamArn = example.Arn,
-///             UiConfig = new Aws.Sagemaker.Inputs.LabelingJobHumanTaskConfigUiConfigArgs
-///             {
-///                 HumanTaskUiArn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition",
-///             },
 ///             PreHumanTaskLambdaArn = "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition",
-///             AnnotationConsolidationConfig = new Aws.Sagemaker.Inputs.LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs
-///             {
-///                 AnnotationConsolidationLambdaArn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition",
-///             },
 ///         },
 ///         InputConfig = new Aws.Sagemaker.Inputs.LabelingJobInputConfigArgs
 ///         {
@@ -130,6 +128,10 @@ import 'labeling_job_state.dart';
 ///         {
 ///             S3OutputPath = $"s3://{exampleAwsS3Bucket.Bucket}/",
 ///         },
+///         LabelAttributeName = "label1",
+///         LabelingJobName = "my-labeling-job",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         LabelCategoryConfigS3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/{exampleAwsS3Object.Key}",
 ///     });
 ///
 /// });
@@ -146,23 +148,19 @@ import 'labeling_job_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 /// 		_, err := sagemaker.NewLabelingJob(ctx, "test", &sagemaker.LabelingJobArgs{
-/// 			LabelAttributeName:       pulumi.String("label1"),
-/// 			LabelingJobName:          pulumi.String("my-labeling-job"),
-/// 			RoleArn:                  pulumi.Any(exampleAwsIamRole.Arn),
-/// 			LabelCategoryConfigS3Uri: pulumi.Sprintf("s3://%v/%v", exampleAwsS3Bucket.Bucket, exampleAwsS3Object.Key),
 /// 			HumanTaskConfig: &sagemaker.LabelingJobHumanTaskConfigArgs{
+/// 				UiConfig: &sagemaker.LabelingJobHumanTaskConfigUiConfigArgs{
+/// 					HumanTaskUiArn: pulumi.String("arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"),
+/// 				},
+/// 				AnnotationConsolidationConfig: &sagemaker.LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs{
+/// 					AnnotationConsolidationLambdaArn: pulumi.String("arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"),
+/// 				},
 /// 				NumberOfHumanWorkersPerDataObject: pulumi.Int(1),
 /// 				TaskDescription:                   pulumi.String("Apply the labels provided to specific words or phrases within the larger text block."),
 /// 				TaskTitle:                         pulumi.String("Named entity Recognition task"),
 /// 				TaskTimeLimitInSeconds:            pulumi.Int(28800),
 /// 				WorkteamArn:                       pulumi.Any(example.Arn),
-/// 				UiConfig: &sagemaker.LabelingJobHumanTaskConfigUiConfigArgs{
-/// 					HumanTaskUiArn: pulumi.String("arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"),
-/// 				},
-/// 				PreHumanTaskLambdaArn: pulumi.String("arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"),
-/// 				AnnotationConsolidationConfig: &sagemaker.LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs{
-/// 					AnnotationConsolidationLambdaArn: pulumi.String("arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"),
-/// 				},
+/// 				PreHumanTaskLambdaArn:             pulumi.String("arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"),
 /// 			},
 /// 			InputConfig: &sagemaker.LabelingJobInputConfigArgs{
 /// 				DataSource: &sagemaker.LabelingJobInputConfigDataSourceArgs{
@@ -174,6 +172,10 @@ import 'labeling_job_state.dart';
 /// 			OutputConfig: &sagemaker.LabelingJobOutputConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			LabelAttributeName:       pulumi.String("label1"),
+/// 			LabelingJobName:          pulumi.String("my-labeling-job"),
+/// 			RoleArn:                  pulumi.Any(exampleAwsIamRole.Arn),
+/// 			LabelCategoryConfigS3Uri: pulumi.Sprintf("s3://%v/%v", exampleAwsS3Bucket.Bucket, exampleAwsS3Object.Key),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -193,23 +195,19 @@ import 'labeling_job_state.dart';
 ///
 /// # https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 /// resource "aws_sagemaker_labelingjob" "test" {
-///   label_attribute_name         = "label1"
-///   labeling_job_name            = "my-labeling-job"
-///   role_arn                     = exampleAwsIamRole.arn
-///   label_category_config_s3_uri ="s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}"
 ///   human_task_config = {
+///     ui_config = {
+///       human_task_ui_arn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"
+///     }
+///     annotation_consolidation_config = {
+///       annotation_consolidation_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"
+///     }
 ///     number_of_human_workers_per_data_object = 1
 ///     task_description                        = "Apply the labels provided to specific words or phrases within the larger text block."
 ///     task_title                              = "Named entity Recognition task"
 ///     task_time_limit_in_seconds              = 28800
 ///     workteam_arn                            = example.arn
-///     ui_config = {
-///       human_task_ui_arn = "arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition"
-///     }
-///     pre_human_task_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"
-///     annotation_consolidation_config = {
-///       annotation_consolidation_lambda_arn = "arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition"
-///     }
+///     pre_human_task_lambda_arn               = "arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition"
 ///   }
 ///   input_config = {
 ///     data_source = {
@@ -221,6 +219,10 @@ import 'labeling_job_state.dart';
 ///   output_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
+///   label_attribute_name         = "label1"
+///   labeling_job_name            = "my-labeling-job"
+///   role_arn                     = exampleAwsIamRole.arn
+///   label_category_config_s3_uri ="s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}"
 /// }
 /// ```
 /// ```java
@@ -253,23 +255,19 @@ import 'labeling_job_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api.
 ///         var test = new LabelingJob("test", LabelingJobArgs.builder()
-///             .labelAttributeName("label1")
-///             .labelingJobName("my-labeling-job")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .labelCategoryConfigS3Uri(String.format("s3://%s/%s", exampleAwsS3Bucket.bucket(),exampleAwsS3Object.key()))
 ///             .humanTaskConfig(LabelingJobHumanTaskConfigArgs.builder()
+///                 .uiConfig(LabelingJobHumanTaskConfigUiConfigArgs.builder()
+///                     .humanTaskUiArn("arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition")
+///                     .build())
+///                 .annotationConsolidationConfig(LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs.builder()
+///                     .annotationConsolidationLambdaArn("arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition")
+///                     .build())
 ///                 .numberOfHumanWorkersPerDataObject(1)
 ///                 .taskDescription("Apply the labels provided to specific words or phrases within the larger text block.")
 ///                 .taskTitle("Named entity Recognition task")
 ///                 .taskTimeLimitInSeconds(28800)
 ///                 .workteamArn(example.arn())
-///                 .uiConfig(LabelingJobHumanTaskConfigUiConfigArgs.builder()
-///                     .humanTaskUiArn("arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition")
-///                     .build())
 ///                 .preHumanTaskLambdaArn("arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition")
-///                 .annotationConsolidationConfig(LabelingJobHumanTaskConfigAnnotationConsolidationConfigArgs.builder()
-///                     .annotationConsolidationLambdaArn("arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition")
-///                     .build())
 ///                 .build())
 ///             .inputConfig(LabelingJobInputConfigArgs.builder()
 ///                 .dataSource(LabelingJobInputConfigDataSourceArgs.builder()
@@ -281,6 +279,10 @@ import 'labeling_job_state.dart';
 ///             .outputConfig(LabelingJobOutputConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .labelAttributeName("label1")
+///             .labelingJobName("my-labeling-job")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .labelCategoryConfigS3Uri(String.format("s3://%s/%s", exampleAwsS3Bucket.bucket(),exampleAwsS3Object.key()))
 ///             .build());
 ///
 ///     }
@@ -292,27 +294,27 @@ import 'labeling_job_state.dart';
 ///   test:
 ///     type: aws:sagemaker:LabelingJob
 ///     properties:
-///       labelAttributeName: label1
-///       labelingJobName: my-labeling-job
-///       roleArn: ${exampleAwsIamRole.arn}
-///       labelCategoryConfigS3Uri: s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}
 ///       humanTaskConfig:
+///         uiConfig:
+///           humanTaskUiArn: arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition
+///         annotationConsolidationConfig:
+///           annotationConsolidationLambdaArn: arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition
 ///         numberOfHumanWorkersPerDataObject: 1
 ///         taskDescription: Apply the labels provided to specific words or phrases within the larger text block.
 ///         taskTitle: Named entity Recognition task
 ///         taskTimeLimitInSeconds: 28800
 ///         workteamArn: ${example.arn}
-///         uiConfig:
-///           humanTaskUiArn: arn:aws:sagemaker:us-west-2:394669845002:human-task-ui/NamedEntityRecognition
 ///         preHumanTaskLambdaArn: arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition
-///         annotationConsolidationConfig:
-///           annotationConsolidationLambdaArn: arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition
 ///       inputConfig:
 ///         dataSource:
 ///           snsDataSource:
 ///             snsTopicArn: ${exampleAwsSnsTopic.arn}
 ///       outputConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/
+///       labelAttributeName: label1
+///       labelingJobName: my-labeling-job
+///       roleArn: ${exampleAwsIamRole.arn}
+///       labelCategoryConfigS3Uri: s3://${exampleAwsS3Bucket.bucket}/${exampleAwsS3Object.key}
 /// ```
 ///
 ///
@@ -337,7 +339,7 @@ class LabelingJob extends pulumi.CustomResource {
   /// S3 URI of the file that defines the categories used to label the data objects.
   late final pulumi.Output<String?> labelCategoryConfigS3Uri;
   /// A breakdown of the number of objects labeled.
-  late final pulumi.Output<List<Map<String, dynamic>>> labelCounters;
+  late final pulumi.Output<List<LabelingJobLabelCounter>> labelCounters;
   /// Information required to perform automated data labeling.. Fields are documented below.
   late final pulumi.Output<LabelingJobLabelingJobAlgorithmsConfig?> labelingJobAlgorithmsConfig;
   /// ARN of the labeling job.
@@ -353,7 +355,7 @@ class LabelingJob extends pulumi.CustomResource {
   /// ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
   late final pulumi.Output<String> roleArn;
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> stoppingConditions;
+  late final pulumi.Output<List<LabelingJobStoppingCondition>> stoppingConditions;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -371,7 +373,7 @@ class LabelingJob extends pulumi.CustomResource {
           'aws:sagemaker/labelingJob:LabelingJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     failureReason = registerOutput<String>('failureReason');
     humanTaskConfig = registerOutput<LabelingJobHumanTaskConfig>('humanTaskConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobHumanTaskConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -379,7 +381,7 @@ class LabelingJob extends pulumi.CustomResource {
     jobReferenceCode = registerOutput<String>('jobReferenceCode');
     labelAttributeName = registerOutput<String>('labelAttributeName');
     labelCategoryConfigS3Uri = registerOutput<String?>('labelCategoryConfigS3Uri');
-    labelCounters = registerOutput<List<Map<String, dynamic>>>('labelCounters');
+    labelCounters = registerOutput<List<LabelingJobLabelCounter>>('labelCounters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobLabelCounter>(guardedValue, (value) => LabelingJobLabelCounter.fromMap((value as Map).cast<String, dynamic>())); });
     labelingJobAlgorithmsConfig = registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>('labelingJobAlgorithmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobLabelingJobAlgorithmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labelingJobArn = registerOutput<String>('labelingJobArn');
     labelingJobName = registerOutput<String>('labelingJobName');
@@ -387,9 +389,9 @@ class LabelingJob extends pulumi.CustomResource {
     outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stoppingConditions = registerOutput<List<Map<String, dynamic>>>('stoppingConditions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    stoppingConditions = registerOutput<List<LabelingJobStoppingCondition>>('stoppingConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobStoppingCondition>(guardedValue, (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LabelingJob] resource's state with the given [name] and [id].
@@ -397,11 +399,12 @@ class LabelingJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LabelingJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LabelingJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,7 +424,7 @@ class LabelingJob extends pulumi.CustomResource {
     jobReferenceCode = registerOutput<String>('jobReferenceCode');
     labelAttributeName = registerOutput<String>('labelAttributeName');
     labelCategoryConfigS3Uri = registerOutput<String?>('labelCategoryConfigS3Uri');
-    labelCounters = registerOutput<List<Map<String, dynamic>>>('labelCounters');
+    labelCounters = registerOutput<List<LabelingJobLabelCounter>>('labelCounters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobLabelCounter>(guardedValue, (value) => LabelingJobLabelCounter.fromMap((value as Map).cast<String, dynamic>())); });
     labelingJobAlgorithmsConfig = registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>('labelingJobAlgorithmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobLabelingJobAlgorithmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labelingJobArn = registerOutput<String>('labelingJobArn');
     labelingJobName = registerOutput<String>('labelingJobName');
@@ -429,8 +432,36 @@ class LabelingJob extends pulumi.CustomResource {
     outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stoppingConditions = registerOutput<List<Map<String, dynamic>>>('stoppingConditions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    stoppingConditions = registerOutput<List<LabelingJobStoppingCondition>>('stoppingConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobStoppingCondition>(guardedValue, (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LabelingJob] resource.
+  LabelingJob.reference(String urn)
+    : super(
+        'aws:sagemaker/labelingJob:LabelingJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    failureReason = registerOutput<String>('failureReason');
+    humanTaskConfig = registerOutput<LabelingJobHumanTaskConfig>('humanTaskConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobHumanTaskConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputConfig = registerOutput<LabelingJobInputConfig>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobInputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobReferenceCode = registerOutput<String>('jobReferenceCode');
+    labelAttributeName = registerOutput<String>('labelAttributeName');
+    labelCategoryConfigS3Uri = registerOutput<String?>('labelCategoryConfigS3Uri');
+    labelCounters = registerOutput<List<LabelingJobLabelCounter>>('labelCounters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobLabelCounter>(guardedValue, (value) => LabelingJobLabelCounter.fromMap((value as Map).cast<String, dynamic>())); });
+    labelingJobAlgorithmsConfig = registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>('labelingJobAlgorithmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobLabelingJobAlgorithmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labelingJobArn = registerOutput<String>('labelingJobArn');
+    labelingJobName = registerOutput<String>('labelingJobName');
+    labelingJobStatus = registerOutput<String>('labelingJobStatus');
+    outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelingJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    stoppingConditions = registerOutput<List<LabelingJobStoppingCondition>>('stoppingConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelingJobStoppingCondition>(guardedValue, (value) => LabelingJobStoppingCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

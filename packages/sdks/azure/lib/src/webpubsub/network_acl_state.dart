@@ -7,13 +7,13 @@ import 'network_acl_public_network.dart';
 /// Input properties used for looking up and filtering NetworkAcl resources.
 class NetworkAclState {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// A `privateEndpoint` block as defined below.
-  final pulumi.Input<List<NetworkAclPrivateEndpoint>>? privateEndpoints;
+  final pulumi.Input<List<NetworkAclPrivateEndpoint>?>? privateEndpoints;
   /// A `publicNetwork` block as defined below.
-  final pulumi.Input<NetworkAclPublicNetwork>? publicNetwork;
+  final pulumi.Input<NetworkAclPublicNetwork?>? publicNetwork;
   /// The ID of the Web Pubsub service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webPubsubId;
+  final pulumi.Input<String?>? webPubsubId;
 
   /// Creates a new [NetworkAclState].
   /// [defaultAction] The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.

@@ -5,13 +5,13 @@ import 'express_route_connection_routing_propagated_route_table.dart';
 
 class ExpressRouteConnectionRouting {
   /// The ID of the Virtual Hub Route Table associated with this Express Route Connection.
-  final pulumi.Input<String>? associatedRouteTableId;
+  final pulumi.Input<String?>? associatedRouteTableId;
   /// The ID of the Route Map associated with this Express Route Connection for inbound routes.
-  final pulumi.Input<String>? inboundRouteMapId;
+  final pulumi.Input<String?>? inboundRouteMapId;
   /// The ID of the Route Map associated with this Express Route Connection for outbound routes.
-  final pulumi.Input<String>? outboundRouteMapId;
+  final pulumi.Input<String?>? outboundRouteMapId;
   /// A `propagatedRouteTable` block as defined below.
-  final pulumi.Input<ExpressRouteConnectionRoutingPropagatedRouteTable>? propagatedRouteTable;
+  final pulumi.Input<ExpressRouteConnectionRoutingPropagatedRouteTable?>? propagatedRouteTable;
 
   /// Creates a new [ExpressRouteConnectionRouting].
   /// [associatedRouteTableId] The ID of the Virtual Hub Route Table associated with this Express Route Connection.

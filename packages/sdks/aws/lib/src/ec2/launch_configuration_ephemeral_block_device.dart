@@ -6,9 +6,9 @@ class LaunchConfigurationEphemeralBlockDevice {
   /// The name of the block device to mount on the instance.
   final pulumi.Input<String> deviceName;
   /// Whether the device in the block device mapping of the AMI is suppressed.
-  final pulumi.Input<bool>? noDevice;
+  final pulumi.Input<bool?>? noDevice;
   /// The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames).
-  final pulumi.Input<String>? virtualName;
+  final pulumi.Input<String?>? virtualName;
 
   /// Creates a new [LaunchConfigurationEphemeralBlockDevice].
   /// [deviceName] The name of the block device to mount on the instance.

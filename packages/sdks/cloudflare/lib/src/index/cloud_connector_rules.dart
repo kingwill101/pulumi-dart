@@ -211,7 +211,7 @@ class CloudConnectorRules extends pulumi.CustomResource {
           'cloudflare:index/cloudConnectorRules:CloudConnectorRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     rules = registerOutput<List<CloudConnectorRulesRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');

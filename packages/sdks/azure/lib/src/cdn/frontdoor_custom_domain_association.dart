@@ -74,7 +74,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 ///             "contoso",
 ///             exampleZone.name,
 ///         ],
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     tls: {
 ///         certificateType: "ManagedCertificate",
 ///         minimumTlsVersion: "TLS12",
@@ -158,7 +158,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 ///         input=[
 ///             "contoso",
 ///             example_zone.name,
-///         ]).apply(lambda invoke: invoke.result),
+///         ]).result,
 ///     tls={
 ///         "certificate_type": "ManagedCertificate",
 ///         "minimum_tls_version": "TLS12",
@@ -359,7 +359,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                   pulumi.String("example-origin-group"),
-/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			SessionAffinityEnabled: pulumi.Bool(true),
 /// 			RestoreTrafficTimeToHealedOrNewEndpointInMinutes: pulumi.Int(10),
 /// 			HealthProbe: &cdn.FrontdoorOriginGroupHealthProbeArgs{
@@ -379,7 +379,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 		}
 /// 		exampleFrontdoorOrigin, err := cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(false),
 /// 			HostName:                    pulumi.String("contoso.com"),
@@ -394,32 +394,29 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 		}
 /// 		exampleFrontdoorEndpoint, err := cdn.NewFrontdoorEndpoint(ctx, "example", &cdn.FrontdoorEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleFrontdoorRuleSet, err := cdn.NewFrontdoorRuleSet(ctx, "example", &cdn.FrontdoorRuleSetArgs{
 /// 			Name:                  pulumi.String("ExampleRuleSet"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleFrontdoorCustomDomain, err := cdn.NewFrontdoorCustomDomain(ctx, "example", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("example-customDomain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
-/// 			DnsZoneId:             exampleZone.ID(),
-/// 			HostName: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			HostName: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
 /// 					pulumi.String("contoso"),
 /// 					exampleZone.Name,
 /// 				},
-/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
 /// 				MinimumTlsVersion: pulumi.String("TLS12"),
@@ -430,13 +427,13 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 		}
 /// 		exampleFrontdoorRoute, err := cdn.NewFrontdoorRoute(ctx, "example", &cdn.FrontdoorRouteArgs{
 /// 			Name:                      pulumi.String("example-route"),
-/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID(),
-/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			CdnFrontdoorOriginIds: pulumi.StringArray{
-/// 				exampleFrontdoorOrigin.ID(),
+/// 				exampleFrontdoorOrigin.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			CdnFrontdoorRuleSetIds: pulumi.StringArray{
-/// 				exampleFrontdoorRuleSet.ID(),
+/// 				exampleFrontdoorRuleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Enabled:              pulumi.Bool(true),
 /// 			ForwardingProtocol:   pulumi.String("HttpsOnly"),
@@ -449,7 +446,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 				pulumi.String("Https"),
 /// 			},
 /// 			CdnFrontdoorCustomDomainIds: pulumi.StringArray{
-/// 				exampleFrontdoorCustomDomain.ID(),
+/// 				exampleFrontdoorCustomDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			LinkToDefaultDomain: pulumi.Bool(false),
 /// 		})
@@ -457,9 +454,9 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cdn.NewFrontdoorCustomDomainAssociation(ctx, "example", &cdn.FrontdoorCustomDomainAssociationArgs{
-/// 			CdnFrontdoorCustomDomainId: exampleFrontdoorCustomDomain.ID(),
+/// 			CdnFrontdoorCustomDomainId: exampleFrontdoorCustomDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			CdnFrontdoorRouteIds: pulumi.StringArray{
-/// 				exampleFrontdoorRoute.ID(),
+/// 				exampleFrontdoorRoute.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -821,7 +818,7 @@ import 'frontdoor_custom_domain_association_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2025-04-15
+/// * `Microsoft.Cdn` - 2025-12-01
 ///
 /// ## Import
 ///
@@ -850,10 +847,10 @@ class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
           'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorCustomDomainId = registerOutput<String>('cdnFrontdoorCustomDomainId');
-    cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds');
+    cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [FrontdoorCustomDomainAssociation] resource's state with the given [name] and [id].
@@ -861,11 +858,12 @@ class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorCustomDomainAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorCustomDomainAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -880,6 +878,19 @@ class FrontdoorCustomDomainAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cdnFrontdoorCustomDomainId = registerOutput<String>('cdnFrontdoorCustomDomainId');
-    cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds');
+    cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorCustomDomainAssociation] resource.
+  FrontdoorCustomDomainAssociation.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorCustomDomainAssociation:FrontdoorCustomDomainAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cdnFrontdoorCustomDomainId = registerOutput<String>('cdnFrontdoorCustomDomainId');
+    cdnFrontdoorRouteIds = registerOutput<List<String>>('cdnFrontdoorRouteIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

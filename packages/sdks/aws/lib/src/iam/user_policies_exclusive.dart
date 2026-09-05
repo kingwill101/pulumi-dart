@@ -265,9 +265,9 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userName = registerOutput<String>('userName');
   }
 
@@ -276,11 +276,12 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPoliciesExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPoliciesExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,7 +295,20 @@ class UserPoliciesExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserPoliciesExclusive] resource.
+  UserPoliciesExclusive.reference(String urn)
+    : super(
+        'aws:iam/userPoliciesExclusive:UserPoliciesExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userName = registerOutput<String>('userName');
   }
 }

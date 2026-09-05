@@ -7,7 +7,7 @@ class RuleGroupRuleStatementAsnMatchStatement {
   /// List of Autonomous System Numbers (ASNs).
   final pulumi.Input<List<int>> asnLists;
   /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See Forwarded IP Config below for more details.
-  final pulumi.Input<RuleGroupRuleStatementAsnMatchStatementForwardedIpConfig>? forwardedIpConfig;
+  final pulumi.Input<RuleGroupRuleStatementAsnMatchStatementForwardedIpConfig?>? forwardedIpConfig;
 
   /// Creates a new [RuleGroupRuleStatementAsnMatchStatement].
   /// [asnLists] List of Autonomous System Numbers (ASNs).

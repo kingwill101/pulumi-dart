@@ -8,7 +8,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
   /// Token URL required to fetch access and refresh tokens using the authorization code, and to refresh an expired access token using the refresh token.
   final pulumi.Input<String> tokenUrl;
   /// Map of properties associated with your token URL. Use this parameter to provide any additional details that the connector requires to authenticate your request.
-  final pulumi.Input<Map<String, String>>? tokenUrlCustomProperties;
+  final pulumi.Input<Map<String, String>?>? tokenUrlCustomProperties;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties].
   /// [oauth2GrantType] OAuth 2.0 grant type used by the connector for OAuth 2.0 authentication. One of: `AUTHORIZATION_CODE`, `CLIENT_CREDENTIALS`.

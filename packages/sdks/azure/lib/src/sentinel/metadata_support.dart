@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetadataSupport {
   /// The email address of the support contact.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The link for support help.
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// The name of the support contact.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of support for content item. Possible values are `Microsoft`, `Partner` and `Community`.
   final pulumi.Input<String> tier;
 

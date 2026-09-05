@@ -132,7 +132,7 @@ import 'gateway_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewGateway(ctx, "example", &apimanagement.GatewayArgs{
 /// 			Name:            pulumi.String("example-gateway"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:     pulumi.String("Example API Management gateway"),
 /// 			LocationData: &apimanagement.GatewayLocationDataArgs{
 /// 				Name:     pulumi.String("example name"),
@@ -304,7 +304,7 @@ class Gateway extends pulumi.CustomResource {
           'azure:apimanagement/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
@@ -317,11 +317,12 @@ class Gateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Gateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,6 +336,21 @@ class Gateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    locationData = registerOutput<GatewayLocationData>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLocationData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'azure:apimanagement/gateway:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
     locationData = registerOutput<GatewayLocationData>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayLocationData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

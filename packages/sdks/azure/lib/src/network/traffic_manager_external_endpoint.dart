@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'traffic_manager_external_endpoint_args.dart';
+import 'traffic_manager_external_endpoint_custom_header.dart';
 import 'traffic_manager_external_endpoint_state.dart';
+import 'traffic_manager_external_endpoint_subnet.dart';
 
 /// Manages an External Endpoint within a Traffic Manager Profile.
 ///
@@ -169,7 +171,7 @@ import 'traffic_manager_external_endpoint_state.dart';
 /// 		}
 /// 		_, err = network.NewTrafficManagerExternalEndpoint(ctx, "example", &network.TrafficManagerExternalEndpointArgs{
 /// 			Name:               pulumi.String("example-endpoint"),
-/// 			ProfileId:          exampleTrafficManagerProfile.ID(),
+/// 			ProfileId:          exampleTrafficManagerProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			AlwaysServeEnabled: pulumi.Bool(true),
 /// 			Weight:             pulumi.Int(100),
 /// 			Target:             pulumi.String("www.example.com"),
@@ -340,7 +342,7 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
   late final pulumi.Output<bool?> alwaysServeEnabled;
   /// One or more `customHeader` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
+  late final pulumi.Output<List<TrafficManagerExternalEndpointCustomHeader>?> customHeaders;
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
@@ -354,7 +356,7 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
   /// The ID of the Traffic Manager Profile that this External Endpoint should be created within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileId;
   /// One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<TrafficManagerExternalEndpointSubnet>?> subnets;
   /// The FQDN DNS name of the target.
   late final pulumi.Output<String> target;
   /// Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
@@ -372,17 +374,17 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
           'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
+    customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(guardedValue, (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
-    geoMappings = registerOutput<List<String>?>('geoMappings');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<TrafficManagerExternalEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointSubnet>(guardedValue, (value) => TrafficManagerExternalEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     target = registerOutput<String>('target');
     weight = registerOutput<int?>('weight');
   }
@@ -392,11 +394,12 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficManagerExternalEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficManagerExternalEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,14 +414,36 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
+    customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(guardedValue, (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
     endpointLocation = registerOutput<String>('endpointLocation');
-    geoMappings = registerOutput<List<String>?>('geoMappings');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     profileId = registerOutput<String>('profileId');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<TrafficManagerExternalEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointSubnet>(guardedValue, (value) => TrafficManagerExternalEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
+    target = registerOutput<String>('target');
+    weight = registerOutput<int?>('weight');
+  }
+
+  /// Creates a typed reference to an existing [TrafficManagerExternalEndpoint] resource.
+  TrafficManagerExternalEndpoint.reference(String urn)
+    : super(
+        'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
+    customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(guardedValue, (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    endpointLocation = registerOutput<String>('endpointLocation');
+    geoMappings = registerOutput<List<String>?>('geoMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    profileId = registerOutput<String>('profileId');
+    subnets = registerOutput<List<TrafficManagerExternalEndpointSubnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointSubnet>(guardedValue, (value) => TrafficManagerExternalEndpointSubnet.fromMap((value as Map).cast<String, dynamic>())); });
     target = registerOutput<String>('target');
     weight = registerOutput<int?>('weight');
   }

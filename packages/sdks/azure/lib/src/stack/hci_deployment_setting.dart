@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hci_deployment_setting_args.dart';
+import 'hci_deployment_setting_scale_unit.dart';
 import 'hci_deployment_setting_state.dart';
 
 /// Manages a Stack HCI Deployment Setting.
@@ -19,7 +20,7 @@ class HciDeploymentSetting extends pulumi.CustomResource {
   /// Specifies a list of IDs of Azure ARC machine resource to be part of cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<List<String>> arcResourceIds;
   /// One or more `scaleUnit` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> scaleUnits;
+  late final pulumi.Output<List<HciDeploymentSettingScaleUnit>> scaleUnits;
   /// The ID of the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   late final pulumi.Output<String> stackHciClusterId;
   /// The deployment template version. The format must be a set of numbers separated by dots such as `10.0.0.0`. Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -37,10 +38,10 @@ class HciDeploymentSetting extends pulumi.CustomResource {
           'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    arcResourceIds = registerOutput<List<String>>('arcResourceIds');
-    scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
+    arcResourceIds = registerOutput<List<String>>('arcResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(guardedValue, (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>())); });
     stackHciClusterId = registerOutput<String>('stackHciClusterId');
     version = registerOutput<String>('version');
   }
@@ -50,11 +51,12 @@ class HciDeploymentSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciDeploymentSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciDeploymentSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -68,8 +70,23 @@ class HciDeploymentSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    arcResourceIds = registerOutput<List<String>>('arcResourceIds');
-    scaleUnits = registerOutput<List<Map<String, dynamic>>>('scaleUnits');
+    arcResourceIds = registerOutput<List<String>>('arcResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(guardedValue, (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>())); });
+    stackHciClusterId = registerOutput<String>('stackHciClusterId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [HciDeploymentSetting] resource.
+  HciDeploymentSetting.reference(String urn)
+    : super(
+        'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arcResourceIds = registerOutput<List<String>>('arcResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(guardedValue, (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>())); });
     stackHciClusterId = registerOutput<String>('stackHciClusterId');
     version = registerOutput<String>('version');
   }

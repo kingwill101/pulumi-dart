@@ -7,11 +7,11 @@ import 'media_insights_pipeline_configuration_real_time_alert_configuration_rule
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
   /// Configuration for an issue detection rule.
-  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration>? issueDetectionConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration?>? issueDetectionConfiguration;
   /// Configuration for a keyword match rule.
-  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration>? keywordMatchConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration?>? keywordMatchConfiguration;
   /// Configuration for a sentiment rule.
-  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration>? sentimentConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration?>? sentimentConfiguration;
   /// Rule type.
   final pulumi.Input<String> type;
 

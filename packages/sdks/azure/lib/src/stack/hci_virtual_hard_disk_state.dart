@@ -5,33 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HciVirtualHardDisk resources.
 class HciVirtualHardDiskState {
   /// The block size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<int>? blockSizeInBytes;
+  final pulumi.Input<int?>? blockSizeInBytes;
   /// The ID of the Custom Location where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// The format of the disk file. Possible values are `vhdx` and `vhd`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? diskFileFormat;
+  final pulumi.Input<String?>? diskFileFormat;
   /// The size of the disk in GB. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<int>? diskSizeInGb;
+  final pulumi.Input<int?>? diskSizeInGb;
   /// Whether to enable dynamic sizing for the Azure Stack HCI Virtual Hard Disk. Defaults to `false`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<bool>? dynamicEnabled;
+  final pulumi.Input<bool?>? dynamicEnabled;
   /// The hypervisor generation of the Azure Stack HCI Virtual Hard Disk. Possible values are `V1` and `V2`. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? hypervGeneration;
+  final pulumi.Input<String?>? hypervGeneration;
   /// The Azure Region where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The logical sector size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<int>? logicalSectorInBytes;
+  final pulumi.Input<int?>? logicalSectorInBytes;
   /// The name which should be used for this Azure Stack HCI Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The physical sector size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<int>? physicalSectorInBytes;
+  final pulumi.Input<int?>? physicalSectorInBytes;
   /// The name of the Resource Group where the Azure Stack HCI Virtual Hard Disk should exist. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Azure Stack HCI Storage Path used for this Virtual Hard Disk. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   ///
   /// &gt; **Note:** If `storagePathId` is not specified, the Virtual Hard Disk will be placed in a high availability Storage Path. If you experience a diff you may need to add this to `ignoreChanges`.
-  final pulumi.Input<String>? storagePathId;
+  final pulumi.Input<String?>? storagePathId;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Virtual Hard Disk.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HciVirtualHardDiskState].
   /// [blockSizeInBytes] The block size of the disk in bytes. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
@@ -83,16 +83,16 @@ class HciVirtualHardDiskState {
 
   factory HciVirtualHardDiskState.fromMap(Map<String, dynamic> map) {
     return HciVirtualHardDiskState(
-      blockSizeInBytes: (() { final guardedValue = map['blockSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      blockSizeInBytes: (() { final guardedValue = map['blockSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customLocationId: (() { final guardedValue = map['customLocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskFileFormat: (() { final guardedValue = map['diskFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeInGb: (() { final guardedValue = map['diskSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeInGb: (() { final guardedValue = map['diskSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dynamicEnabled: (() { final guardedValue = map['dynamicEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hypervGeneration: (() { final guardedValue = map['hypervGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      logicalSectorInBytes: (() { final guardedValue = map['logicalSectorInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logicalSectorInBytes: (() { final guardedValue = map['logicalSectorInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      physicalSectorInBytes: (() { final guardedValue = map['physicalSectorInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      physicalSectorInBytes: (() { final guardedValue = map['physicalSectorInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storagePathId: (() { final guardedValue = map['storagePathId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

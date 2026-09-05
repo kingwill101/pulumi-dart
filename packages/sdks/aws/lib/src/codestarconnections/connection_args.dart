@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_codestarconnections_connection_connection_args_doc}
 class ConnectionArgs {
-  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
-  final pulumi.Input<String>? hostArn;
+  /// ARN of the host associated with the connection. Conflicts with `providerType`
+  final pulumi.Input<String?>? hostArn;
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the external provider where your third-party code repository is configured. Valid values are `Bitbucket`, `GitHub`, `GitHubEnterpriseServer`, `GitLab` or `GitLabSelfManaged`. Changing `providerType` will create a new resource. Conflicts with `hostArn`
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of key-value resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectionArgs].
-  /// [hostArn] The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
+  /// [hostArn] ARN of the host associated with the connection. Conflicts with `providerType`
   /// [name] The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   /// [providerType] The name of the external provider where your third-party code repository is configured. Valid values are `Bitbucket`, `GitHub`, `GitHubEnterpriseServer`, `GitLab` or `GitLabSelfManaged`. Changing `providerType` will create a new resource. Conflicts with `hostArn`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

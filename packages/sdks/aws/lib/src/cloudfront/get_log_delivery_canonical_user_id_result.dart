@@ -4,27 +4,27 @@
 /// Result data returned by getLogDeliveryCanonicalUserId.
 class GetLogDeliveryCanonicalUserIdResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? region;
 
   /// Creates a new [GetLogDeliveryCanonicalUserIdResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
   const GetLogDeliveryCanonicalUserIdResult({
-    required this.id,
+    this.id,
     this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'region': ?region,
     };
   }
 
   factory GetLogDeliveryCanonicalUserIdResult.fromMap(Map<String, dynamic> map) {
     return GetLogDeliveryCanonicalUserIdResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

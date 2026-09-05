@@ -6,23 +6,23 @@ import 'account_project_identity.dart';
 /// Input properties used for looking up and filtering AccountProject resources.
 class AccountProjectState {
   /// The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cognitiveAccountId;
+  final pulumi.Input<String?>? cognitiveAccountId;
   /// Whether this project is the default project for the Cognitive Account.
-  final pulumi.Input<bool>? default_;
+  final pulumi.Input<bool?>? default_;
   /// A description of the Cognitive Account Project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Cognitive Account Project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A mapping of endpoint names to endpoint URLs for the project.
-  final pulumi.Input<Map<String, String>>? endpoints;
+  final pulumi.Input<Map<String, String>?>? endpoints;
   /// An `identity` block as defined below.
-  final pulumi.Input<AccountProjectIdentity>? identity;
+  final pulumi.Input<AccountProjectIdentity?>? identity;
   /// The Azure Region where the Cognitive Account Project should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Cognitive Account Project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountProjectState].
   /// [cognitiveAccountId] The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.

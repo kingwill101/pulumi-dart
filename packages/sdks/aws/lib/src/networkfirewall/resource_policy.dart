@@ -465,7 +465,7 @@ class ResourcePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the rule group or firewall policy.
+  /// ARN of the rule group or firewall policy.
   late final pulumi.Output<String> resourceArn;
 
   /// Creates a new [ResourcePolicy].
@@ -480,7 +480,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:networkfirewall/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -492,11 +492,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -510,6 +511,20 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:networkfirewall/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

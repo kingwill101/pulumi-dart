@@ -13,21 +13,21 @@ class ChannelNamespaceArgs {
   /// Event API ID.
   final pulumi.Input<String> apiId;
   /// Event handler functions that run custom business logic to process published events and subscribe requests.
-  final pulumi.Input<String>? codeHandlers;
+  final pulumi.Input<String?>? codeHandlers;
   /// Configuration for the `onPublish` and `onSubscribe` handlers. See `handlerConfigs` below.
-  final pulumi.Input<ChannelNamespaceHandlerConfigs>? handlerConfigs;
+  final pulumi.Input<ChannelNamespaceHandlerConfigs?>? handlerConfigs;
   /// Name of the channel namespace.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Authorization modes to use for publishing messages on the channel namespace. This configuration overrides the default API authorization configuration. See `publishAuthMode` below.
-  final pulumi.Input<List<ChannelNamespacePublishAuthMode>>? publishAuthModes;
+  final pulumi.Input<List<ChannelNamespacePublishAuthMode>?>? publishAuthModes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See `subscribeAuthMode` below.
-  final pulumi.Input<List<ChannelNamespaceSubscribeAuthMode>>? subscribeAuthModes;
+  final pulumi.Input<List<ChannelNamespaceSubscribeAuthMode>?>? subscribeAuthModes;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ChannelNamespaceArgs].
   /// [apiId] Event API ID.

@@ -42,8 +42,8 @@ class SpacecraftLink {
 
   factory SpacecraftLink.fromMap(Map<String, dynamic> map) {
     return SpacecraftLink(
-      bandwidthMhz: pulumi.Input.fromValue(map['bandwidthMhz'] as double),
-      centerFrequencyMhz: pulumi.Input.fromValue(map['centerFrequencyMhz'] as double),
+      bandwidthMhz: pulumi.Input.fromValue((map['bandwidthMhz'] as num).toDouble()),
+      centerFrequencyMhz: pulumi.Input.fromValue((map['centerFrequencyMhz'] as num).toDouble()),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       polarization: pulumi.Input.fromValue(map['polarization'] as String),

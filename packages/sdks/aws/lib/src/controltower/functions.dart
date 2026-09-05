@@ -81,3 +81,14 @@ Future<GetControlsResult> getControls(
   );
   return GetControlsResult.fromMap(result);
 }
+
+pulumi.Output<GetControlsResult> getControlsOutput(
+  GetControlsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:controltower/getControls:getControls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlsResult.fromMap);
+}

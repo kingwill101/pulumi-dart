@@ -5,13 +5,13 @@ import 'certifiate_certificate_policy_x509_certificate_properties_subject_altern
 
 class CertifiateCertificatePolicyX509CertificateProperties {
   /// A list of Extended/Enhanced Key Usages.
-  final pulumi.Input<List<String>>? extendedKeyUsages;
+  final pulumi.Input<List<String>?>? extendedKeyUsages;
   /// A list of uses associated with this Key. Possible values include `cRLSign`, `dataEncipherment`, `decipherOnly`, `digitalSignature`, `encipherOnly`, `keyAgreement`, `keyCertSign`, `keyEncipherment` and `nonRepudiation` and are case-sensitive.
   final pulumi.Input<List<String>> keyUsages;
   /// The Certificate's Subject.
   final pulumi.Input<String> subject;
   /// A `subjectAlternativeNames` block as defined below.
-  final pulumi.Input<CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames>? subjectAlternativeNames;
+  final pulumi.Input<CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames?>? subjectAlternativeNames;
   /// The Certificates Validity Period in Months.
   final pulumi.Input<int> validityInMonths;
 
@@ -45,7 +45,7 @@ class CertifiateCertificatePolicyX509CertificateProperties {
       keyUsages: pulumi.Input.fromValue((map['keyUsages'] as List).cast<String>()),
       subject: pulumi.Input.fromValue(map['subject'] as String),
       subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      validityInMonths: pulumi.Input.fromValue(map['validityInMonths'] as int),
+      validityInMonths: pulumi.Input.fromValue((map['validityInMonths'] as num).toInt()),
     );
   }
 }

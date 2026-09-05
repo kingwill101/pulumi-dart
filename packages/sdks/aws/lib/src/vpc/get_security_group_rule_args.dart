@@ -13,11 +13,11 @@ class GetSecurityGroupRuleArgs {
   /// The arguments of this data source act as filters for querying the available
   /// security group rules. The given filters must match exactly one security group rule
   /// whose data will be exported as attributes.
-  final pulumi.Input<List<GetSecurityGroupRuleFilter>>? filters;
+  final pulumi.Input<List<GetSecurityGroupRuleFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the security group rule to select.
-  final pulumi.Input<String>? securityGroupRuleId;
+  final pulumi.Input<String?>? securityGroupRuleId;
 
   /// Creates a new [GetSecurityGroupRuleArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

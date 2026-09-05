@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_args.dart';
+import 'firewall_availability_zone_mapping.dart';
 import 'firewall_encryption_configuration.dart';
+import 'firewall_firewall_status.dart';
 import 'firewall_state.dart';
+import 'firewall_subnet_mapping.dart';
 
 /// Provides an AWS Network Firewall Firewall Resource
 ///
@@ -13,6 +16,9 @@ import 'firewall_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.Firewall("example", {
+///     subnetMappings: [{
+///         subnetId: exampleAwsSubnet.id,
+///     }],
 ///     name: "example",
 ///     firewallPolicyArn: exampleAwsNetworkfirewallFirewallPolicy.arn,
 ///     vpcId: exampleAwsVpc.id,
@@ -20,12 +26,15 @@ import 'firewall_state.dart';
 ///         "TLS_SNI",
 ///         "HTTP_HOST",
 ///     ],
-///     subnetMappings: [{
-///         subnetId: exampleAwsSubnet.id,
-///     }],
 ///     tags: {
 ///         Tag1: "Value1",
 ///         Tag2: "Value2",
+///     },
+/// }, {
+///     customTimeouts: {
+///         create: "40m",
+///         update: "50m",
+///         "delete": "1h",
 ///     },
 /// });
 /// ```
@@ -34,6 +43,9 @@ import 'firewall_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.Firewall("example",
+///     subnet_mappings=[{
+///         "subnet_id": example_aws_subnet["id"],
+///     }],
 ///     name="example",
 ///     firewall_policy_arn=example_aws_networkfirewall_firewall_policy["arn"],
 ///     vpc_id=example_aws_vpc["id"],
@@ -41,13 +53,11 @@ import 'firewall_state.dart';
 ///         "TLS_SNI",
 ///         "HTTP_HOST",
 ///     ],
-///     subnet_mappings=[{
-///         "subnet_id": example_aws_subnet["id"],
-///     }],
 ///     tags={
 ///         "Tag1": "Value1",
 ///         "Tag2": "Value2",
-///     })
+///     },
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="40m", update="50m", delete="1h")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -59,6 +69,13 @@ import 'firewall_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.Firewall("example", new()
 ///     {
+///         SubnetMappings = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.FirewallSubnetMappingArgs
+///             {
+///                 SubnetId = exampleAwsSubnet.Id,
+///             },
+///         },
 ///         Name = "example",
 ///         FirewallPolicyArn = exampleAwsNetworkfirewallFirewallPolicy.Arn,
 ///         VpcId = exampleAwsVpc.Id,
@@ -66,13 +83,6 @@ import 'firewall_state.dart';
 ///         {
 ///             "TLS_SNI",
 ///             "HTTP_HOST",
-///         },
-///         SubnetMappings = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.FirewallSubnetMappingArgs
-///             {
-///                 SubnetId = exampleAwsSubnet.Id,
-///             },
 ///         },
 ///         Tags =
 ///         {
@@ -94,6 +104,11 @@ import 'firewall_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewFirewall(ctx, "example", &networkfirewall.FirewallArgs{
+/// 			SubnetMappings: networkfirewall.FirewallSubnetMappingArray{
+/// 				&networkfirewall.FirewallSubnetMappingArgs{
+/// 					SubnetId: pulumi.Any(exampleAwsSubnet.Id),
+/// 				},
+/// 			},
 /// 			Name:              pulumi.String("example"),
 /// 			FirewallPolicyArn: pulumi.Any(exampleAwsNetworkfirewallFirewallPolicy.Arn),
 /// 			VpcId:             pulumi.Any(exampleAwsVpc.Id),
@@ -101,16 +116,11 @@ import 'firewall_state.dart';
 /// 				pulumi.String("TLS_SNI"),
 /// 				pulumi.String("HTTP_HOST"),
 /// 			},
-/// 			SubnetMappings: networkfirewall.FirewallSubnetMappingArray{
-/// 				&networkfirewall.FirewallSubnetMappingArgs{
-/// 					SubnetId: pulumi.Any(exampleAwsSubnet.Id),
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Tag1": pulumi.String("Value1"),
 /// 				"Tag2": pulumi.String("Value2"),
 /// 			},
-/// 		})
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "40m", Update: "50m", Delete: "1h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -128,13 +138,18 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewall" "example" {
+///   timeouts {
+///     create = "40m"
+///     update = "50m"
+///     delete = "1h"
+///   }
+///   subnet_mappings {
+///     subnet_id = exampleAwsSubnet.id
+///   }
 ///   name                   = "example"
 ///   firewall_policy_arn    = exampleAwsNetworkfirewallFirewallPolicy.arn
 ///   vpc_id                 = exampleAwsVpc.id
 ///   enabled_analysis_types = ["TLS_SNI", "HTTP_HOST"]
-///   subnet_mappings {
-///     subnet_id = exampleAwsSubnet.id
-///   }
 ///   tags = {
 ///     "Tag1" = "Value1"
 ///     "Tag2" = "Value2"
@@ -150,6 +165,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.aws.networkfirewall.Firewall;
 /// import com.pulumi.aws.networkfirewall.FirewallArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.FirewallSubnetMappingArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -164,20 +181,26 @@ import 'firewall_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Firewall("example", FirewallArgs.builder()
+///             .subnetMappings(FirewallSubnetMappingArgs.builder()
+///                 .subnetId(exampleAwsSubnet.id())
+///                 .build())
 ///             .name("example")
 ///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
 ///             .vpcId(exampleAwsVpc.id())
 ///             .enabledAnalysisTypes(
 ///                 "TLS_SNI",
 ///                 "HTTP_HOST")
-///             .subnetMappings(FirewallSubnetMappingArgs.builder()
-///                 .subnetId(exampleAwsSubnet.id())
-///                 .build())
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Tag1", "Value1"),
 ///                 Map.entry("Tag2", "Value2")
 ///             ))
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("40m"))
+///                     .update(CustomTimeouts.parseTimeoutString("50m"))
+///                     .delete(CustomTimeouts.parseTimeoutString("1h"))
+///                 .build())
+///                 .build());
 ///
 ///     }
 /// }
@@ -187,17 +210,22 @@ import 'firewall_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:Firewall
 ///     properties:
+///       subnetMappings:
+///         - subnetId: ${exampleAwsSubnet.id}
 ///       name: example
 ///       firewallPolicyArn: ${exampleAwsNetworkfirewallFirewallPolicy.arn}
 ///       vpcId: ${exampleAwsVpc.id}
 ///       enabledAnalysisTypes:
 ///         - TLS_SNI
 ///         - HTTP_HOST
-///       subnetMappings:
-///         - subnetId: ${exampleAwsSubnet.id}
 ///       tags:
 ///         Tag1: Value1
 ///         Tag2: Value2
+///     options:
+///       customTimeouts:
+///         create: 40m
+///         update: 50m
+///         delete: 1h
 /// ```
 ///
 ///
@@ -212,9 +240,6 @@ import 'firewall_state.dart';
 ///     state: "available",
 /// });
 /// const exampleFirewall = new aws.networkfirewall.Firewall("example", {
-///     name: "example",
-///     firewallPolicyArn: exampleAwsNetworkfirewallFirewallPolicy.arn,
-///     transitGatewayId: exampleAwsEc2TransitGateway.id,
 ///     availabilityZoneMappings: [
 ///         {
 ///             availabilityZoneId: example.then(example => example.zoneIds?.[0]),
@@ -223,6 +248,9 @@ import 'firewall_state.dart';
 ///             availabilityZoneId: example.then(example => example.zoneIds?.[1]),
 ///         },
 ///     ],
+///     name: "example",
+///     firewallPolicyArn: exampleAwsNetworkfirewallFirewallPolicy.arn,
+///     transitGatewayId: exampleAwsEc2TransitGateway.id,
 /// });
 /// ```
 /// ```python
@@ -231,9 +259,6 @@ import 'firewall_state.dart';
 ///
 /// example = aws.get_availability_zones(state="available")
 /// example_firewall = aws.networkfirewall.Firewall("example",
-///     name="example",
-///     firewall_policy_arn=example_aws_networkfirewall_firewall_policy["arn"],
-///     transit_gateway_id=example_aws_ec2_transit_gateway["id"],
 ///     availability_zone_mappings=[
 ///         {
 ///             "availability_zone_id": example.zone_ids[0],
@@ -241,7 +266,10 @@ import 'firewall_state.dart';
 ///         {
 ///             "availability_zone_id": example.zone_ids[1],
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     firewall_policy_arn=example_aws_networkfirewall_firewall_policy["arn"],
+///     transit_gateway_id=example_aws_ec2_transit_gateway["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -258,9 +286,6 @@ import 'firewall_state.dart';
 ///
 ///     var exampleFirewall = new Aws.NetworkFirewall.Firewall("example", new()
 ///     {
-///         Name = "example",
-///         FirewallPolicyArn = exampleAwsNetworkfirewallFirewallPolicy.Arn,
-///         TransitGatewayId = exampleAwsEc2TransitGateway.Id,
 ///         AvailabilityZoneMappings = new[]
 ///         {
 ///             new Aws.NetworkFirewall.Inputs.FirewallAvailabilityZoneMappingArgs
@@ -272,6 +297,9 @@ import 'firewall_state.dart';
 ///                 AvailabilityZoneId = example.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.ZoneIds[1]),
 ///             },
 ///         },
+///         Name = "example",
+///         FirewallPolicyArn = exampleAwsNetworkfirewallFirewallPolicy.Arn,
+///         TransitGatewayId = exampleAwsEc2TransitGateway.Id,
 ///     });
 ///
 /// });
@@ -294,9 +322,6 @@ import 'firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewFirewall(ctx, "example", &networkfirewall.FirewallArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			FirewallPolicyArn: pulumi.Any(exampleAwsNetworkfirewallFirewallPolicy.Arn),
-/// 			TransitGatewayId:  pulumi.Any(exampleAwsEc2TransitGateway.Id),
 /// 			AvailabilityZoneMappings: networkfirewall.FirewallAvailabilityZoneMappingArray{
 /// 				&networkfirewall.FirewallAvailabilityZoneMappingArgs{
 /// 					AvailabilityZoneId: pulumi.String(example.ZoneIds[0]),
@@ -305,6 +330,9 @@ import 'firewall_state.dart';
 /// 					AvailabilityZoneId: pulumi.String(example.ZoneIds[1]),
 /// 				},
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			FirewallPolicyArn: pulumi.Any(exampleAwsNetworkfirewallFirewallPolicy.Arn),
+/// 			TransitGatewayId:  pulumi.Any(exampleAwsEc2TransitGateway.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -327,15 +355,15 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewall" "example" {
-///   name                = "example"
-///   firewall_policy_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
-///   transit_gateway_id  = exampleAwsEc2TransitGateway.id
 ///   availability_zone_mappings {
 ///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[0]
 ///   }
 ///   availability_zone_mappings {
 ///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[1]
 ///   }
+///   name                = "example"
+///   firewall_policy_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
+///   transit_gateway_id  = exampleAwsEc2TransitGateway.id
 /// }
 /// ```
 /// ```java
@@ -367,9 +395,6 @@ import 'firewall_state.dart';
 ///             .build());
 ///
 ///         var exampleFirewall = new Firewall("exampleFirewall", FirewallArgs.builder()
-///             .name("example")
-///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
 ///             .availabilityZoneMappings(
 ///                 FirewallAvailabilityZoneMappingArgs.builder()
 ///                     .availabilityZoneId(example.zoneIds()[0])
@@ -377,6 +402,9 @@ import 'firewall_state.dart';
 ///                 FirewallAvailabilityZoneMappingArgs.builder()
 ///                     .availabilityZoneId(example.zoneIds()[1])
 ///                     .build())
+///             .name("example")
+///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
 ///             .build());
 ///
 ///     }
@@ -388,12 +416,12 @@ import 'firewall_state.dart';
 ///     type: aws:networkfirewall:Firewall
 ///     name: example
 ///     properties:
-///       name: example
-///       firewallPolicyArn: ${exampleAwsNetworkfirewallFirewallPolicy.arn}
-///       transitGatewayId: ${exampleAwsEc2TransitGateway.id}
 ///       availabilityZoneMappings:
 ///         - availabilityZoneId: ${example.zoneIds[0]}
 ///         - availabilityZoneId: ${example.zoneIds[1]}
+///       name: example
+///       firewallPolicyArn: ${exampleAwsNetworkfirewallFirewallPolicy.arn}
+///       transitGatewayId: ${exampleAwsEc2TransitGateway.id}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -415,12 +443,12 @@ import 'firewall_state.dart';
 /// $ pulumi import aws:networkfirewall/firewall:Firewall example arn:aws:network-firewall:us-west-1:123456789012:firewall/example
 /// ```
 class Firewall extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) that identifies the firewall.
+  /// ARN that identifies the firewall.
   late final pulumi.Output<String> arn;
   /// A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to `true`, you must first disable this protection before adding or removing Availability Zones.
   late final pulumi.Output<bool?> availabilityZoneChangeProtection;
   /// Required when creating a transit gateway-attached firewall. Set of configuration blocks describing the avaiability availability where you want to create firewall endpoints for a transit gateway-attached firewall.
-  late final pulumi.Output<List<Map<String, dynamic>>> availabilityZoneMappings;
+  late final pulumi.Output<List<FirewallAvailabilityZoneMapping>> availabilityZoneMappings;
   /// A flag indicating whether the firewall is protected against deletion. Use this setting to protect against accidentally deleting a firewall that is in use. Defaults to `false`.
   late final pulumi.Output<bool?> deleteProtection;
   /// A friendly description of the firewall.
@@ -429,12 +457,12 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> enabledAnalysisTypes;
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
   late final pulumi.Output<FirewallEncryptionConfiguration?> encryptionConfiguration;
-  /// The Amazon Resource Name (ARN) of the VPC Firewall policy.
+  /// ARN of the VPC Firewall policy.
   late final pulumi.Output<String> firewallPolicyArn;
   /// A flag indicating whether the firewall is protected against a change to the firewall policy association. Use this setting to protect against accidentally modifying the firewall policy for a firewall that is in use. Defaults to `false`.
   late final pulumi.Output<bool?> firewallPolicyChangeProtection;
   /// Nested list of information about the current status of the firewall.
-  late final pulumi.Output<List<Map<String, dynamic>>> firewallStatuses;
+  late final pulumi.Output<List<FirewallFirewallStatus>> firewallStatuses;
   /// A friendly name of the firewall.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -442,7 +470,7 @@ class Firewall extends pulumi.CustomResource {
   /// A flag indicating whether the firewall is protected against changes to the subnet associations. Use this setting to protect against accidentally modifying the subnet associations for a firewall that is in use. Defaults to `false`.
   late final pulumi.Output<bool?> subnetChangeProtection;
   /// Required when creating a VPC attached firewall. Set of configuration blocks describing the public subnets. Each subnet must belong to a different Availability Zone in the VPC. AWS Network Firewall creates a firewall endpoint in each subnet. See Subnet Mapping below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnetMappings;
+  late final pulumi.Output<List<FirewallSubnetMapping>?> subnetMappings;
   /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -468,24 +496,24 @@ class Firewall extends pulumi.CustomResource {
           'aws:networkfirewall/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneChangeProtection = registerOutput<bool?>('availabilityZoneChangeProtection');
-    availabilityZoneMappings = registerOutput<List<Map<String, dynamic>>>('availabilityZoneMappings');
+    availabilityZoneMappings = registerOutput<List<FirewallAvailabilityZoneMapping>>('availabilityZoneMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAvailabilityZoneMapping>(guardedValue, (value) => FirewallAvailabilityZoneMapping.fromMap((value as Map).cast<String, dynamic>())); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     description = registerOutput<String?>('description');
-    enabledAnalysisTypes = registerOutput<List<String>?>('enabledAnalysisTypes');
+    enabledAnalysisTypes = registerOutput<List<String>?>('enabledAnalysisTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryptionConfiguration = registerOutput<FirewallEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
     firewallPolicyChangeProtection = registerOutput<bool?>('firewallPolicyChangeProtection');
-    firewallStatuses = registerOutput<List<Map<String, dynamic>>>('firewallStatuses');
+    firewallStatuses = registerOutput<List<FirewallFirewallStatus>>('firewallStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallFirewallStatus>(guardedValue, (value) => FirewallFirewallStatus.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     subnetChangeProtection = registerOutput<bool?>('subnetChangeProtection');
-    subnetMappings = registerOutput<List<Map<String, dynamic>>?>('subnetMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetMappings = registerOutput<List<FirewallSubnetMapping>?>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallSubnetMapping>(guardedValue, (value) => FirewallSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     transitGatewayOwnerAccountId = registerOutput<String>('transitGatewayOwnerAccountId');
     updateToken = registerOutput<String>('updateToken');
@@ -497,11 +525,12 @@ class Firewall extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Firewall._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -517,20 +546,51 @@ class Firewall extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneChangeProtection = registerOutput<bool?>('availabilityZoneChangeProtection');
-    availabilityZoneMappings = registerOutput<List<Map<String, dynamic>>>('availabilityZoneMappings');
+    availabilityZoneMappings = registerOutput<List<FirewallAvailabilityZoneMapping>>('availabilityZoneMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAvailabilityZoneMapping>(guardedValue, (value) => FirewallAvailabilityZoneMapping.fromMap((value as Map).cast<String, dynamic>())); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     description = registerOutput<String?>('description');
-    enabledAnalysisTypes = registerOutput<List<String>?>('enabledAnalysisTypes');
+    enabledAnalysisTypes = registerOutput<List<String>?>('enabledAnalysisTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryptionConfiguration = registerOutput<FirewallEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
     firewallPolicyChangeProtection = registerOutput<bool?>('firewallPolicyChangeProtection');
-    firewallStatuses = registerOutput<List<Map<String, dynamic>>>('firewallStatuses');
+    firewallStatuses = registerOutput<List<FirewallFirewallStatus>>('firewallStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallFirewallStatus>(guardedValue, (value) => FirewallFirewallStatus.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     subnetChangeProtection = registerOutput<bool?>('subnetChangeProtection');
-    subnetMappings = registerOutput<List<Map<String, dynamic>>?>('subnetMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetMappings = registerOutput<List<FirewallSubnetMapping>?>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallSubnetMapping>(guardedValue, (value) => FirewallSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayId = registerOutput<String?>('transitGatewayId');
+    transitGatewayOwnerAccountId = registerOutput<String>('transitGatewayOwnerAccountId');
+    updateToken = registerOutput<String>('updateToken');
+    vpcId = registerOutput<String?>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [Firewall] resource.
+  Firewall.reference(String urn)
+    : super(
+        'aws:networkfirewall/firewall:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZoneChangeProtection = registerOutput<bool?>('availabilityZoneChangeProtection');
+    availabilityZoneMappings = registerOutput<List<FirewallAvailabilityZoneMapping>>('availabilityZoneMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAvailabilityZoneMapping>(guardedValue, (value) => FirewallAvailabilityZoneMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    description = registerOutput<String?>('description');
+    enabledAnalysisTypes = registerOutput<List<String>?>('enabledAnalysisTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    encryptionConfiguration = registerOutput<FirewallEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
+    firewallPolicyChangeProtection = registerOutput<bool?>('firewallPolicyChangeProtection');
+    firewallStatuses = registerOutput<List<FirewallFirewallStatus>>('firewallStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallFirewallStatus>(guardedValue, (value) => FirewallFirewallStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    subnetChangeProtection = registerOutput<bool?>('subnetChangeProtection');
+    subnetMappings = registerOutput<List<FirewallSubnetMapping>?>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallSubnetMapping>(guardedValue, (value) => FirewallSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     transitGatewayOwnerAccountId = registerOutput<String>('transitGatewayOwnerAccountId');
     updateToken = registerOutput<String>('updateToken');

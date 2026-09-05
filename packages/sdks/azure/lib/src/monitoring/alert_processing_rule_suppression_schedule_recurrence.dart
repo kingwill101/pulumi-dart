@@ -7,11 +7,11 @@ import 'alert_processing_rule_suppression_schedule_recurrence_weekly.dart';
 
 class AlertProcessingRuleSuppressionScheduleRecurrence {
   /// One or more `daily` blocks as defined above.
-  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceDaily>>? dailies;
+  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceDaily>?>? dailies;
   /// One or more `monthly` blocks as defined above.
-  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceMonthly>>? monthlies;
+  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceMonthly>?>? monthlies;
   /// One or more `weekly` blocks as defined below.
-  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceWeekly>>? weeklies;
+  final pulumi.Input<List<AlertProcessingRuleSuppressionScheduleRecurrenceWeekly>?>? weeklies;
 
   /// Creates a new [AlertProcessingRuleSuppressionScheduleRecurrence].
   /// [dailies] One or more `daily` blocks as defined above.

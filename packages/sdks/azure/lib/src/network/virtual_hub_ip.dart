@@ -213,11 +213,11 @@ import 'virtual_hub_ip_state.dart';
 /// 		}
 /// 		_, err = network.NewVirtualHubIp(ctx, "example", &network.VirtualHubIpArgs{
 /// 			Name:                      pulumi.String("example-vhubipconfig"),
-/// 			VirtualHubId:              exampleVirtualHub.ID(),
+/// 			VirtualHubId:              exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateIpAddress:          pulumi.String("10.5.1.18"),
 /// 			PrivateIpAllocationMethod: pulumi.String("Static"),
-/// 			PublicIpAddressId:         examplePublicIp.ID(),
-/// 			SubnetId:                  exampleSubnet.ID(),
+/// 			PublicIpAddressId:         examplePublicIp.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -445,7 +445,7 @@ class VirtualHubIp extends pulumi.CustomResource {
           'azure:network/virtualHubIp:VirtualHubIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String?>('privateIpAddress');
@@ -460,11 +460,12 @@ class VirtualHubIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualHubIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualHubIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -478,6 +479,23 @@ class VirtualHubIp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    privateIpAllocationMethod = registerOutput<String?>('privateIpAllocationMethod');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    subnetId = registerOutput<String>('subnetId');
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualHubIp] resource.
+  VirtualHubIp.reference(String urn)
+    : super(
+        'azure:network/virtualHubIp:VirtualHubIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String?>('privateIpAddress');
     privateIpAllocationMethod = registerOutput<String?>('privateIpAllocationMethod');

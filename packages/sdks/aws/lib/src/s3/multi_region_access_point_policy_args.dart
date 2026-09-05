@@ -9,11 +9,11 @@ import 'multi_region_access_point_policy_details.dart';
 /// {@macro pulumi_s3_control_multi_region_access_point_policy_multi_region_access_point_policy_args_doc}
 class MultiRegionAccessPointPolicyArgs {
   /// AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Configuration block containing details about the policy for the Multi-Region Access Point. See `details` Block below for more details
   final pulumi.Input<MultiRegionAccessPointPolicyDetails> details;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MultiRegionAccessPointPolicyArgs].
   /// [accountId] AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.

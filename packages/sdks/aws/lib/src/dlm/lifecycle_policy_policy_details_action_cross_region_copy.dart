@@ -7,7 +7,7 @@ import 'lifecycle_policy_policy_details_action_cross_region_copy_retain_rule.dar
 class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
   /// The encryption settings for the copied snapshot. See the `encryptionConfiguration` block. Max of 1 per action.
   final pulumi.Input<LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration> encryptionConfiguration;
-  final pulumi.Input<LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule>? retainRule;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule?>? retainRule;
   final pulumi.Input<String> target;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsActionCrossRegionCopy].

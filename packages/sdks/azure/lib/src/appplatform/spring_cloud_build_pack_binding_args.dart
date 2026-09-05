@@ -9,11 +9,11 @@ import 'spring_cloud_build_pack_binding_launch.dart';
 /// {@macro pulumi_appplatform_spring_cloud_build_pack_binding_spring_cloud_build_pack_binding_args_doc}
 class SpringCloudBuildPackBindingArgs {
   /// Specifies the Build Pack Binding Type. Allowed values are `ApacheSkyWalking`, `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
-  final pulumi.Input<String>? bindingType;
+  final pulumi.Input<String?>? bindingType;
   /// A `launch` block as defined below.
-  final pulumi.Input<SpringCloudBuildPackBindingLaunch>? launch;
+  final pulumi.Input<SpringCloudBuildPackBindingLaunch?>? launch;
   /// The name which should be used for this Spring Cloud Build Pack Binding. Changing this forces a new Spring Cloud Build Pack Binding to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Builder. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   final pulumi.Input<String> springCloudBuilderId;
 

@@ -394,10 +394,10 @@ import 'agent_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync agent.
+/// - `arn` (String) ARN of the DataSync agent.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.Agent` using the DataSync Agent Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.Agent` using the DataSync Agent ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/agent:Agent example arn:aws:datasync:us-east-1:123456789012:agent/agent-12345678901234567
@@ -405,7 +405,7 @@ import 'agent_state.dart';
 class Agent extends pulumi.CustomResource {
   /// DataSync Agent activation key during resource creation. Conflicts with `ipAddress`. If an `ipAddress` is provided instead, the provider will retrieve the `activationKey` as part of the resource creation.
   late final pulumi.Output<String> activationKey;
-  /// Amazon Resource Name (ARN) of the DataSync Agent.
+  /// ARN of the DataSync Agent.
   late final pulumi.Output<String> arn;
   /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activationKey`. DataSync Agent must be accessible on port 80 from where the provider is running.
   late final pulumi.Output<String> ipAddress;
@@ -417,13 +417,13 @@ class Agent extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The ARNs of the security groups used to protect your data transfer task subnets.
   late final pulumi.Output<List<String>?> securityGroupArns;
-  /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
+  /// ARNs of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
   late final pulumi.Output<List<String>?> subnetArns;
   /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
+  /// ID of the VPC endpoint that the agent has access to.
   late final pulumi.Output<String?> vpcEndpointId;
 
   /// Creates a new [Agent].
@@ -438,7 +438,7 @@ class Agent extends pulumi.CustomResource {
           'aws:datasync/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activationKey = registerOutput<String>('activationKey');
     arn = registerOutput<String>('arn');
@@ -446,10 +446,10 @@ class Agent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privateLinkEndpoint = registerOutput<String>('privateLinkEndpoint');
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>?>('securityGroupArns');
-    subnetArns = registerOutput<List<String>?>('subnetArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupArns = registerOutput<List<String>?>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetArns = registerOutput<List<String>?>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointId = registerOutput<String?>('vpcEndpointId');
   }
 
@@ -458,11 +458,12 @@ class Agent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Agent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -482,10 +483,32 @@ class Agent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privateLinkEndpoint = registerOutput<String>('privateLinkEndpoint');
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>?>('securityGroupArns');
-    subnetArns = registerOutput<List<String>?>('subnetArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroupArns = registerOutput<List<String>?>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetArns = registerOutput<List<String>?>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcEndpointId = registerOutput<String?>('vpcEndpointId');
+  }
+
+  /// Creates a typed reference to an existing [Agent] resource.
+  Agent.reference(String urn)
+    : super(
+        'aws:datasync/agent:Agent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activationKey = registerOutput<String>('activationKey');
+    arn = registerOutput<String>('arn');
+    ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    privateLinkEndpoint = registerOutput<String>('privateLinkEndpoint');
+    region = registerOutput<String>('region');
+    securityGroupArns = registerOutput<List<String>?>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetArns = registerOutput<List<String>?>('subnetArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointId = registerOutput<String?>('vpcEndpointId');
   }
 }

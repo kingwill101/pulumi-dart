@@ -6,7 +6,7 @@ class DomainMatchingExportingConfigS3Exporting {
   /// The name of the S3 bucket where Identity Resolution Jobs write result files.
   final pulumi.Input<String> s3BucketName;
   /// The S3 key name of the location where Identity Resolution Jobs write result files.
-  final pulumi.Input<String>? s3KeyName;
+  final pulumi.Input<String?>? s3KeyName;
 
   /// Creates a new [DomainMatchingExportingConfigS3Exporting].
   /// [s3BucketName] The name of the S3 bucket where Identity Resolution Jobs write result files.

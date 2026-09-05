@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IamPolicyAssignmentIdentities {
   /// Array of Quicksight group names to assign the policy to.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// Array of Quicksight user names to assign the policy to.
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [IamPolicyAssignmentIdentities].
   /// [groups] Array of Quicksight group names to assign the policy to.

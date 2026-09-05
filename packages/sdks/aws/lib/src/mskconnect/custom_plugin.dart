@@ -21,14 +21,14 @@ import 'custom_plugin_state.dart';
 ///     source: new pulumi.asset.FileAsset("debezium.zip"),
 /// });
 /// const exampleCustomPlugin = new aws.mskconnect.CustomPlugin("example", {
-///     name: "debezium-example",
-///     contentType: "ZIP",
 ///     location: {
 ///         s3: {
 ///             bucketArn: example.arn,
 ///             fileKey: exampleBucketObjectv2.key,
 ///         },
 ///     },
+///     name: "debezium-example",
+///     contentType: "ZIP",
 /// });
 /// ```
 /// ```python
@@ -41,14 +41,14 @@ import 'custom_plugin_state.dart';
 ///     key="debezium.zip",
 ///     source=pulumi.FileAsset("debezium.zip"))
 /// example_custom_plugin = aws.mskconnect.CustomPlugin("example",
-///     name="debezium-example",
-///     content_type="ZIP",
 ///     location={
 ///         "s3": {
 ///             "bucket_arn": example.arn,
 ///             "file_key": example_bucket_objectv2.key,
 ///         },
-///     })
+///     },
+///     name="debezium-example",
+///     content_type="ZIP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -72,8 +72,6 @@ import 'custom_plugin_state.dart';
 ///
 ///     var exampleCustomPlugin = new Aws.MskConnect.CustomPlugin("example", new()
 ///     {
-///         Name = "debezium-example",
-///         ContentType = "ZIP",
 ///         Location = new Aws.MskConnect.Inputs.CustomPluginLocationArgs
 ///         {
 ///             S3 = new Aws.MskConnect.Inputs.CustomPluginLocationS3Args
@@ -82,6 +80,8 @@ import 'custom_plugin_state.dart';
 ///                 FileKey = exampleBucketObjectv2.Key,
 ///             },
 ///         },
+///         Name = "debezium-example",
+///         ContentType = "ZIP",
 ///     });
 ///
 /// });
@@ -112,14 +112,14 @@ import 'custom_plugin_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mskconnect.NewCustomPlugin(ctx, "example", &mskconnect.CustomPluginArgs{
-/// 			Name:        pulumi.String("debezium-example"),
-/// 			ContentType: pulumi.String("ZIP"),
 /// 			Location: &mskconnect.CustomPluginLocationArgs{
 /// 				S3: &mskconnect.CustomPluginLocationS3Args{
 /// 					BucketArn: example.Arn,
 /// 					FileKey:   exampleBucketObjectv2.Key,
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("debezium-example"),
+/// 			ContentType: pulumi.String("ZIP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,14 +146,14 @@ import 'custom_plugin_state.dart';
 ///   source = fileAsset("debezium.zip")
 /// }
 /// resource "aws_mskconnect_customplugin" "example" {
-///   name         = "debezium-example"
-///   content_type = "ZIP"
 ///   location = {
 ///     s3 = {
 ///       bucket_arn = aws_s3_bucket.example.arn
 ///       file_key   = aws_s3_bucketobjectv2.example.key
 ///     }
 ///   }
+///   name         = "debezium-example"
+///   content_type = "ZIP"
 /// }
 /// ```
 /// ```java
@@ -195,14 +195,14 @@ import 'custom_plugin_state.dart';
 ///             .build());
 ///
 ///         var exampleCustomPlugin = new CustomPlugin("exampleCustomPlugin", CustomPluginArgs.builder()
-///             .name("debezium-example")
-///             .contentType("ZIP")
 ///             .location(CustomPluginLocationArgs.builder()
 ///                 .s3(CustomPluginLocationS3Args.builder()
 ///                     .bucketArn(example.arn())
 ///                     .fileKey(exampleBucketObjectv2.key())
 ///                     .build())
 ///                 .build())
+///             .name("debezium-example")
+///             .contentType("ZIP")
 ///             .build());
 ///
 ///     }
@@ -226,12 +226,12 @@ import 'custom_plugin_state.dart';
 ///     type: aws:mskconnect:CustomPlugin
 ///     name: example
 ///     properties:
-///       name: debezium-example
-///       contentType: ZIP
 ///       location:
 ///         s3:
 ///           bucketArn: ${example.arn}
 ///           fileKey: ${exampleBucketObjectv2.key}
+///       name: debezium-example
+///       contentType: ZIP
 /// ```
 ///
 ///
@@ -243,7 +243,7 @@ import 'custom_plugin_state.dart';
 /// $ pulumi import aws:mskconnect/customPlugin:CustomPlugin example 'arn:aws:kafkaconnect:eu-central-1:123456789012:custom-plugin/debezium-example/abcdefgh-1234-5678-9abc-defghijklmno-4'
 /// ```
 class CustomPlugin extends pulumi.CustomResource {
-  /// the Amazon Resource Name (ARN) of the custom plugin.
+  /// the ARN of the custom plugin.
   late final pulumi.Output<String> arn;
   /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
   late final pulumi.Output<String> contentType;
@@ -276,7 +276,7 @@ class CustomPlugin extends pulumi.CustomResource {
           'aws:mskconnect/customPlugin:CustomPlugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contentType = registerOutput<String>('contentType');
@@ -286,8 +286,8 @@ class CustomPlugin extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CustomPlugin] resource's state with the given [name] and [id].
@@ -295,11 +295,12 @@ class CustomPlugin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomPluginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomPlugin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,7 +322,28 @@ class CustomPlugin extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomPlugin] resource.
+  CustomPlugin.reference(String urn)
+    : super(
+        'aws:mskconnect/customPlugin:CustomPlugin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
+    latestRevision = registerOutput<int>('latestRevision');
+    location = registerOutput<CustomPluginLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomPluginLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

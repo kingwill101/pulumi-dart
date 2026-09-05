@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionViewerMtlsConfigTrustStoreConfig {
   /// Whether to advertise the trust store CA names to clients. Defaults to `false`.
-  final pulumi.Input<bool>? advertiseTrustStoreCaNames;
+  final pulumi.Input<bool?>? advertiseTrustStoreCaNames;
   /// Whether to ignore certificate expiry for viewer mTLS. Defaults to `false`.
-  final pulumi.Input<bool>? ignoreCertificateExpiry;
+  final pulumi.Input<bool?>? ignoreCertificateExpiry;
   /// Identifier of the trust store to use for viewer mTLS.
   final pulumi.Input<String> trustStoreId;
 

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_notifications_event_rule_event_rule_args_doc}
 class EventRuleArgs {
   /// JSON string defining the event pattern to match. Maximum length is 4096 characters.
-  final pulumi.Input<String>? eventPattern;
+  final pulumi.Input<String?>? eventPattern;
   /// Type of event to match. Must be between 1 and 128 characters, and match the pattern `([a-zA-Z0-9 \-\(\)])+`.
   final pulumi.Input<String> eventType;
   /// ARN of the notification configuration to associate with this event rule. Must match the pattern `arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}`.

@@ -195,7 +195,7 @@ import 'sql_pool_workload_group_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -204,7 +204,7 @@ import 'sql_pool_workload_group_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -216,7 +216,7 @@ import 'sql_pool_workload_group_state.dart';
 /// 		}
 /// 		exampleSqlPool, err := synapse.NewSqlPool(ctx, "example", &synapse.SqlPoolArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:            pulumi.String("DW100c"),
 /// 			CreateMode:         pulumi.String("Default"),
 /// 		})
@@ -225,7 +225,7 @@ import 'sql_pool_workload_group_state.dart';
 /// 		}
 /// 		_, err = synapse.NewSqlPoolWorkloadGroup(ctx, "example", &synapse.SqlPoolWorkloadGroupArgs{
 /// 			Name:                           pulumi.String("example"),
-/// 			SqlPoolId:                      exampleSqlPool.ID(),
+/// 			SqlPoolId:                      exampleSqlPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Importance:                     pulumi.String("normal"),
 /// 			MaxResourcePercent:             pulumi.Int(100),
 /// 			MinResourcePercent:             pulumi.Int(0),
@@ -472,7 +472,7 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
           'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     importance = registerOutput<String?>('importance');
     maxResourcePercent = registerOutput<int>('maxResourcePercent');
@@ -489,11 +489,12 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlPoolWorkloadGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlPoolWorkloadGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -507,6 +508,25 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    importance = registerOutput<String?>('importance');
+    maxResourcePercent = registerOutput<int>('maxResourcePercent');
+    maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
+    minResourcePercent = registerOutput<int>('minResourcePercent');
+    minResourcePercentPerRequest = registerOutput<double?>('minResourcePercentPerRequest');
+    this.name = registerOutput<String>('name');
+    queryExecutionTimeoutInSeconds = registerOutput<int?>('queryExecutionTimeoutInSeconds');
+    sqlPoolId = registerOutput<String>('sqlPoolId');
+  }
+
+  /// Creates a typed reference to an existing [SqlPoolWorkloadGroup] resource.
+  SqlPoolWorkloadGroup.reference(String urn)
+    : super(
+        'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     importance = registerOutput<String?>('importance');
     maxResourcePercent = registerOutput<int>('maxResourcePercent');
     maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');

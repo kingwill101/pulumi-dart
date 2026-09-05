@@ -9,15 +9,15 @@ import 'access_connector_identity.dart';
 /// {@macro pulumi_databricks_access_connector_access_connector_args_doc}
 class AccessConnectorArgs {
   /// An `identity` block as defined below.
-  final pulumi.Input<AccessConnectorIdentity>? identity;
+  final pulumi.Input<AccessConnectorIdentity?>? identity;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Databricks Access Connector resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group in which the Databricks Access Connector should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccessConnectorArgs].
   /// [identity] An `identity` block as defined below.

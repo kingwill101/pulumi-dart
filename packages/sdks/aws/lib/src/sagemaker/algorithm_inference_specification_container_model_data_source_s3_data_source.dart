@@ -6,13 +6,13 @@ import 'algorithm_inference_specification_container_model_data_source_s3_data_so
 
 class AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSource {
   final pulumi.Input<String> compressionType;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceHubAccessConfig>? hubAccessConfig;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceHubAccessConfig?>? hubAccessConfig;
   /// ETag of the manifest file.
-  final pulumi.Input<String>? manifestEtag;
+  final pulumi.Input<String?>? manifestEtag;
   /// S3 or HTTPS URI of the manifest file.
-  final pulumi.Input<String>? manifestS3Uri;
-  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<String?>? manifestS3Uri;
+  final pulumi.Input<AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   final pulumi.Input<String> s3DataType;
   final pulumi.Input<String> s3Uri;
 

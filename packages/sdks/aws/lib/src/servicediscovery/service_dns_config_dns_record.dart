@@ -25,7 +25,7 @@ class ServiceDnsConfigDnsRecord {
 
   factory ServiceDnsConfigDnsRecord.fromMap(Map<String, dynamic> map) {
     return ServiceDnsConfigDnsRecord(
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

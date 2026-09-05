@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FlexibleServerVirtualEndpoint resources.
 class FlexibleServerVirtualEndpointState {
   /// The name of the Virtual Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   ///
   /// &gt; **Note:** If a fail-over has occurred, you will be unable to update `replicaServerId`. You can remove the resource from state and reimport it back in with `sourceServerId` and `replicaServerId` flipped and then update `replicaServerId`.
-  final pulumi.Input<String>? replicaServerId;
+  final pulumi.Input<String?>? replicaServerId;
   /// The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceServerId;
+  final pulumi.Input<String?>? sourceServerId;
   /// The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FlexibleServerVirtualEndpointState].
   /// [name] The name of the Virtual Endpoint. Changing this forces a new resource to be created.

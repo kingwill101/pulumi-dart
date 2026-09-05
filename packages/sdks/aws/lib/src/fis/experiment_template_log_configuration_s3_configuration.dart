@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateLogConfigurationS3Configuration {
   final pulumi.Input<String> bucketName;
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ExperimentTemplateLogConfigurationS3Configuration].
   /// [bucketName] Required.

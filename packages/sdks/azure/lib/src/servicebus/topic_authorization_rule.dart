@@ -136,14 +136,14 @@ import 'topic_authorization_rule_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:        pulumi.String("tfex_servicebus_topic"),
-/// 			NamespaceId: exampleNamespace.ID(),
+/// 			NamespaceId: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicebus.NewTopicAuthorizationRule(ctx, "example", &servicebus.TopicAuthorizationRuleArgs{
 /// 			Name:    pulumi.String("tfex_servicebus_topic_sasPolicy"),
-/// 			TopicId: exampleTopic.ID(),
+/// 			TopicId: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:  pulumi.Bool(true),
 /// 			Send:    pulumi.Bool(false),
 /// 			Manage:  pulumi.Bool(false),
@@ -332,17 +332,18 @@ class TopicAuthorizationRule extends pulumi.CustomResource {
           'azure:servicebus/topicAuthorizationRule:TopicAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
     topicId = registerOutput<String>('topicId');
   }
@@ -352,11 +353,12 @@ class TopicAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TopicAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -373,12 +375,35 @@ class TopicAuthorizationRule extends pulumi.CustomResource {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+    topicId = registerOutput<String>('topicId');
+  }
+
+  /// Creates a typed reference to an existing [TopicAuthorizationRule] resource.
+  TopicAuthorizationRule.reference(String urn)
+    : super(
+        'azure:servicebus/topicAuthorizationRule:TopicAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
     topicId = registerOutput<String>('topicId');
   }

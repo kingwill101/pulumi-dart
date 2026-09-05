@@ -25,7 +25,7 @@ class RuleGroupRuleStatementRegexMatchStatementTextTransformation {
 
   factory RuleGroupRuleStatementRegexMatchStatementTextTransformation.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexMatchStatementTextTransformation(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

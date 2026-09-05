@@ -163,7 +163,7 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
@@ -175,11 +175,12 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointServiceAllowedPrincipleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpointServiceAllowedPrinciple._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -193,6 +194,20 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    principalArn = registerOutput<String>('principalArn');
+    region = registerOutput<String>('region');
+    vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpointServiceAllowedPrinciple] resource.
+  VpcEndpointServiceAllowedPrinciple.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
     vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');

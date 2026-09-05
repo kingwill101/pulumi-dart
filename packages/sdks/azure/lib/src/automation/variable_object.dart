@@ -119,7 +119,7 @@ import 'variable_object_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"greeting": "Hello, Terraform Basic Test.",
 /// 			"language": "en",
 /// 		})
@@ -283,7 +283,7 @@ class VariableObject extends pulumi.CustomResource {
           'azure:automation/variableObject:VariableObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
@@ -298,11 +298,12 @@ class VariableObject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VariableObjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VariableObject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,6 +317,23 @@ class VariableObject extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    value = registerOutput<String?>('value');
+  }
+
+  /// Creates a typed reference to an existing [VariableObject] resource.
+  VariableObject.reference(String urn)
+    : super(
+        'azure:automation/variableObject:VariableObject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     encrypted = registerOutput<bool?>('encrypted');

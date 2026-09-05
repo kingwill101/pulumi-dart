@@ -11,20 +11,20 @@ import 'subscriber_timeouts.dart';
 /// {@macro pulumi_securitylake_subscriber_subscriber_args_doc}
 class SubscriberArgs {
   /// The Amazon S3 or Lake Formation access type.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   final pulumi.Input<List<SubscriberSource>> sources;
   /// The description for your subscriber account in Security Lake.
-  final pulumi.Input<String>? subscriberDescription;
+  final pulumi.Input<String?>? subscriberDescription;
   /// The AWS identity used to access your data. See `subscriberIdentity` Block below.
   final pulumi.Input<SubscriberSubscriberIdentity> subscriberIdentity;
   /// The name of your Security Lake subscriber account.
-  final pulumi.Input<String>? subscriberName;
+  final pulumi.Input<String?>? subscriberName;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<SubscriberTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<SubscriberTimeouts?>? timeouts;
 
   /// Creates a new [SubscriberArgs].
   /// [accessType] The Amazon S3 or Lake Formation access type.

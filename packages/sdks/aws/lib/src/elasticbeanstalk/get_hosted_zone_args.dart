@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_elasticbeanstalk_get_hosted_zone_get_hosted_zone_args_doc}
 class GetHostedZoneArgs {
   /// Name of the Region whose hosted zone is desired. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetHostedZoneArgs].
   /// [region] Name of the Region whose hosted zone is desired. Defaults to the Region set in the provider configuration.

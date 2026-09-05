@@ -13,11 +13,11 @@ class AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration {
   /// The endpoint URL of the MongoDB Atlas database.
   final pulumi.Input<String> endpoint;
   /// The name of the service that hosts the MongoDB Atlas database.
-  final pulumi.Input<String>? endpointServiceName;
+  final pulumi.Input<String?>? endpointServiceName;
   /// Contains the names of the fields to which to map information about the vector store.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping> fieldMapping;
   /// The name of the vector index.
-  final pulumi.Input<String>? textIndexName;
+  final pulumi.Input<String?>? textIndexName;
   /// The name of the vector index.
   final pulumi.Input<String> vectorIndexName;
 

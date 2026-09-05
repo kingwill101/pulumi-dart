@@ -8,24 +8,24 @@ import 'topic_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_msk_topic_topic_args_doc}
 class TopicArgs {
-  /// Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
+  /// ARN that uniquely identifies MSK Cluster.
   final pulumi.Input<String> clusterArn;
   /// Explicit configured Kafka configuration in JSON format for Topic.
-  final pulumi.Input<String>? configs;
+  final pulumi.Input<String?>? configs;
   /// Name of Topic.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Number of partitions for Topic.
   final pulumi.Input<int> partitionCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Replication factor for Topic.
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> replicationFactor;
-  final pulumi.Input<TopicTimeouts>? timeouts;
+  final pulumi.Input<TopicTimeouts?>? timeouts;
 
   /// Creates a new [TopicArgs].
-  /// [clusterArn] Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
+  /// [clusterArn] ARN that uniquely identifies MSK Cluster.
   /// [configs] Explicit configured Kafka configuration in JSON format for Topic.
   /// [name] Name of Topic.
   /// [partitionCount] Number of partitions for Topic.
@@ -59,9 +59,9 @@ class TopicArgs {
       clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
       configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionCount: pulumi.Input.fromValue(map['partitionCount'] as int),
+      partitionCount: pulumi.Input.fromValue((map['partitionCount'] as num).toInt()),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: pulumi.Input.fromValue(map['replicationFactor'] as int),
+      replicationFactor: pulumi.Input.fromValue((map['replicationFactor'] as num).toInt()),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

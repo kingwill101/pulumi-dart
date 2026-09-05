@@ -140,7 +140,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                  pulumi.String("example-origingroup"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancing:         &cdn.FrontdoorOriginGroupLoadBalancingArgs{},
 /// 		})
 /// 		if err != nil {
@@ -148,7 +148,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(false),
 /// 			HostName:                    pulumi.String("contoso.com"),
@@ -511,7 +511,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                  pulumi.String("example-origin-group"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancing:         &cdn.FrontdoorOriginGroupLoadBalancingArgs{},
 /// 		})
 /// 		if err != nil {
@@ -519,7 +519,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(true),
 /// 			HostName:                    exampleAccount.PrimaryBlobHost,
@@ -530,7 +530,7 @@ import 'frontdoor_origin_state.dart';
 /// 				RequestMessage:      pulumi.String("Request access for Private Link Origin CDN Frontdoor"),
 /// 				TargetType:          pulumi.String("blob"),
 /// 				Location:            exampleAccount.Location,
-/// 				PrivateLinkTargetId: exampleAccount.ID(),
+/// 				PrivateLinkTargetId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1097,7 +1097,7 @@ import 'frontdoor_origin_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              examplePublicIp.Name,
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1112,16 +1112,16 @@ import 'frontdoor_origin_state.dart';
 /// 				pulumi.String(current.SubscriptionId),
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
-/// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
+/// 				exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
 /// 					return frontendIpConfigurations[0].Id, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 			NatIpConfigurations: privatedns.LinkServiceNatIpConfigurationArray{
 /// 				&privatedns.LinkServiceNatIpConfigurationArgs{
 /// 					Name:                    pulumi.String("primary"),
 /// 					PrivateIpAddress:        pulumi.String("10.5.1.17"),
 /// 					PrivateIpAddressVersion: pulumi.String("IPv4"),
-/// 					SubnetId:                exampleSubnet.ID(),
+/// 					SubnetId:                exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Primary:                 pulumi.Bool(true),
 /// 				},
 /// 			},
@@ -1141,7 +1141,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                  pulumi.String("group-example"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancing: &cdn.FrontdoorOriginGroupLoadBalancingArgs{
 /// 				AdditionalLatencyInMilliseconds: pulumi.Int(0),
 /// 				SampleSize:                      pulumi.Int(16),
@@ -1153,7 +1153,7 @@ import 'frontdoor_origin_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("origin-example"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			HostName:                    pulumi.String("example.com"),
 /// 			OriginHostHeader:            pulumi.String("example.com"),
@@ -1163,7 +1163,7 @@ import 'frontdoor_origin_state.dart';
 /// 			PrivateLink: &cdn.FrontdoorOriginPrivateLinkArgs{
 /// 				RequestMessage:      pulumi.String("Request access for Private Link Origin CDN Frontdoor"),
 /// 				Location:            example.Location,
-/// 				PrivateLinkTargetId: exampleLinkService.ID(),
+/// 				PrivateLinkTargetId: exampleLinkService.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1519,7 +1519,7 @@ import 'frontdoor_origin_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 ///
 /// ## Import
 ///
@@ -1570,7 +1570,7 @@ class FrontdoorOrigin extends pulumi.CustomResource {
           'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
     certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');
@@ -1590,11 +1590,12 @@ class FrontdoorOrigin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorOriginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorOrigin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1608,6 +1609,28 @@ class FrontdoorOrigin extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
+    certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
+    this.name = registerOutput<String>('name');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginPrivateLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    weight = registerOutput<int?>('weight');
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorOrigin] resource.
+  FrontdoorOrigin.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
     certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');
     enabled = registerOutput<bool?>('enabled');

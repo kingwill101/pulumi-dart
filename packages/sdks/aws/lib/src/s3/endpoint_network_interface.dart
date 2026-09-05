@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointNetworkInterface {
   /// Identifier of the Elastic Network Interface (ENI).
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
 
   /// Creates a new [EndpointNetworkInterface].
   /// [networkInterfaceId] Identifier of the Elastic Network Interface (ENI).

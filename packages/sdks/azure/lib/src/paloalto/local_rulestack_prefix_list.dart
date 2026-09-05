@@ -103,7 +103,7 @@ import 'local_rulestack_prefix_list_state.dart';
 /// 		}
 /// 		_, err = paloalto.NewLocalRulestackPrefixList(ctx, "example", &paloalto.LocalRulestackPrefixListArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			RulestackId: exampleLocalRulestack.ID(),
+/// 			RulestackId: exampleLocalRulestack.ID().ToIDOutput().ToStringOutput(),
 /// 			PrefixLists: pulumi.StringArray{
 /// 				pulumi.String("10.0.1.0/24"),
 /// 			},
@@ -247,12 +247,12 @@ class LocalRulestackPrefixList extends pulumi.CustomResource {
           'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    prefixLists = registerOutput<List<String>>('prefixLists');
+    prefixLists = registerOutput<List<String>>('prefixLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rulestackId = registerOutput<String>('rulestackId');
   }
 
@@ -261,11 +261,12 @@ class LocalRulestackPrefixList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalRulestackPrefixListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestackPrefixList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +283,23 @@ class LocalRulestackPrefixList extends pulumi.CustomResource {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    prefixLists = registerOutput<List<String>>('prefixLists');
+    prefixLists = registerOutput<List<String>>('prefixLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rulestackId = registerOutput<String>('rulestackId');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestackPrefixList] resource.
+  LocalRulestackPrefixList.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestackPrefixList:LocalRulestackPrefixList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    prefixLists = registerOutput<List<String>>('prefixLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rulestackId = registerOutput<String>('rulestackId');
   }
 }

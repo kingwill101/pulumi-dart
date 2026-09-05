@@ -167,9 +167,9 @@ import 'snapshot_copy_grant_state.dart';
 /// $ pulumi import aws:redshift/snapshotCopyGrant:SnapshotCopyGrant test my-grant
 /// ```
 class SnapshotCopyGrant extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of snapshot copy grant
+  /// ARN of snapshot copy grant
   late final pulumi.Output<String> arn;
-  /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
+  /// Unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the ARN of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
   late final pulumi.Output<String> kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -192,14 +192,14 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
           'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');
     snapshotCopyGrantName = registerOutput<String>('snapshotCopyGrantName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SnapshotCopyGrant] resource's state with the given [name] and [id].
@@ -207,11 +207,12 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotCopyGrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotCopyGrant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,7 +230,24 @@ class SnapshotCopyGrant extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');
     snapshotCopyGrantName = registerOutput<String>('snapshotCopyGrantName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SnapshotCopyGrant] resource.
+  SnapshotCopyGrant.reference(String urn)
+    : super(
+        'aws:redshift/snapshotCopyGrant:SnapshotCopyGrant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    region = registerOutput<String>('region');
+    snapshotCopyGrantName = registerOutput<String>('snapshotCopyGrantName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

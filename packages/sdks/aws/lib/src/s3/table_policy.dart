@@ -114,7 +114,7 @@ class TablePolicy extends pulumi.CustomResource {
           'aws:s3tables/tablePolicy:TablePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
@@ -128,11 +128,12 @@ class TablePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TablePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TablePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -146,6 +147,22 @@ class TablePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    resourcePolicy = registerOutput<String>('resourcePolicy');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
+  }
+
+  /// Creates a typed reference to an existing [TablePolicy] resource.
+  TablePolicy.reference(String urn)
+    : super(
+        'aws:s3tables/tablePolicy:TablePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     region = registerOutput<String>('region');

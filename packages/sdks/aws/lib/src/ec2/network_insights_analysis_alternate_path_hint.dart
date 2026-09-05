@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisAlternatePathHint {
-  /// The Amazon Resource Name (ARN) of the component.
-  final pulumi.Input<String>? componentArn;
+  /// ARN of the component.
+  final pulumi.Input<String?>? componentArn;
   /// The ID of the component.
-  final pulumi.Input<String>? componentId;
+  final pulumi.Input<String?>? componentId;
 
   /// Creates a new [NetworkInsightsAnalysisAlternatePathHint].
-  /// [componentArn] The Amazon Resource Name (ARN) of the component.
+  /// [componentArn] ARN of the component.
   /// [componentId] The ID of the component.
   const NetworkInsightsAnalysisAlternatePathHint({
     this.componentArn,

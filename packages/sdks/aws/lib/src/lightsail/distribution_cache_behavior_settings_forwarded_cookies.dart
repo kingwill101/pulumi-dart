@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionCacheBehaviorSettingsForwardedCookies {
   /// Specific cookies to forward to your distribution's origin.
-  final pulumi.Input<List<String>>? cookiesAllowLists;
+  final pulumi.Input<List<String>?>? cookiesAllowLists;
   /// Which cookies to forward to the distribution's origin for a cache behavior. Valid values: `all`, `none`, `allow-list`.
-  final pulumi.Input<String>? option;
+  final pulumi.Input<String?>? option;
 
   /// Creates a new [DistributionCacheBehaviorSettingsForwardedCookies].
   /// [cookiesAllowLists] Specific cookies to forward to your distribution's origin.

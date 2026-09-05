@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertifiateCertificateAttribute {
   /// The create time of the Key Vault Certificate.
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// whether the Key Vault Certificate is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The expires time of the Key Vault Certificate.
-  final pulumi.Input<String>? expires;
+  final pulumi.Input<String?>? expires;
   /// The not before valid time of the Key Vault Certificate.
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
   /// The deletion recovery level of the Key Vault Certificate.
-  final pulumi.Input<String>? recoveryLevel;
+  final pulumi.Input<String?>? recoveryLevel;
   /// The recent update time of the Key Vault Certificate.
-  final pulumi.Input<String>? updated;
+  final pulumi.Input<String?>? updated;
 
   /// Creates a new [CertifiateCertificateAttribute].
   /// [created] The create time of the Key Vault Certificate.

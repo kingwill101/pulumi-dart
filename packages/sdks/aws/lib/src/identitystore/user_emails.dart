@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserEmails {
   /// When `true`, this is the primary email associated with the user.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The type of email.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The email address. This value must be unique across the identity store.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [UserEmails].
   /// [primary] When `true`, this is the primary email associated with the user.

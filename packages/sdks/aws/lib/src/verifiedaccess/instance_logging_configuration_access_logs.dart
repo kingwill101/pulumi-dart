@@ -7,15 +7,15 @@ import 'instance_logging_configuration_access_logs_s3.dart';
 
 class InstanceLoggingConfigurationAccessLogs {
   /// A block that specifies configures sending Verified Access logs to CloudWatch Logs. Detailed below.
-  final pulumi.Input<InstanceLoggingConfigurationAccessLogsCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<InstanceLoggingConfigurationAccessLogsCloudwatchLogs?>? cloudwatchLogs;
   /// Include trust data sent by trust providers into the logs.
-  final pulumi.Input<bool>? includeTrustContext;
+  final pulumi.Input<bool?>? includeTrustContext;
   /// A block that specifies configures sending Verified Access logs to Kinesis. Detailed below.
-  final pulumi.Input<InstanceLoggingConfigurationAccessLogsKinesisDataFirehose>? kinesisDataFirehose;
+  final pulumi.Input<InstanceLoggingConfigurationAccessLogsKinesisDataFirehose?>? kinesisDataFirehose;
   /// The logging version to use. Refer to [VerifiedAccessLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogOptions.html) for the allowed values.
-  final pulumi.Input<String>? logVersion;
+  final pulumi.Input<String?>? logVersion;
   /// A block that specifies configures sending Verified Access logs to S3. Detailed below.
-  final pulumi.Input<InstanceLoggingConfigurationAccessLogsS3>? s3;
+  final pulumi.Input<InstanceLoggingConfigurationAccessLogsS3?>? s3;
 
   /// Creates a new [InstanceLoggingConfigurationAccessLogs].
   /// [cloudwatchLogs] A block that specifies configures sending Verified Access logs to CloudWatch Logs. Detailed below.

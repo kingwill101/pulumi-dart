@@ -9,23 +9,23 @@ import 'provisioning_template_pre_provisioning_hook.dart';
 /// {@macro pulumi_iot_provisioning_template_provisioning_template_args_doc}
 class ProvisioningTemplateArgs {
   /// The description of the fleet provisioning template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// True to enable the fleet provisioning template, otherwise false.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the fleet provisioning template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a pre-provisioning hook template. Details below.
-  final pulumi.Input<ProvisioningTemplatePreProvisioningHook>? preProvisioningHook;
+  final pulumi.Input<ProvisioningTemplatePreProvisioningHook?>? preProvisioningHook;
   /// The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.
   final pulumi.Input<String> provisioningRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The JSON formatted contents of the fleet provisioning template.
   final pulumi.Input<String> templateBody;
   /// The type you define in a provisioning template.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ProvisioningTemplateArgs].
   /// [description] The description of the fleet provisioning template.

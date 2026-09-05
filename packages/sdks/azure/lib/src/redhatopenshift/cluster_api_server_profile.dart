@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterApiServerProfile {
   /// The IP Address the Ingress Profile is associated with.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The URL the API Server Profile is associated with.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// Cluster API server visibility. Supported values are `Public` and `Private`. Changing this forces a new resource to be created.
   final pulumi.Input<String> visibility;
 

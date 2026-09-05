@@ -159,6 +159,17 @@ Future<GetAccessPointResult> getAccessPoint(
   return GetAccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPointResult> getAccessPointOutput(
+  GetAccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getAccessPoint:getAccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPointResult.fromMap);
+}
+
 /// The S3 account public access block data source returns account-level public access block configuration.
 ///
 /// ## Example Usage
@@ -267,6 +278,17 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
   return GetAccountPublicAccessBlockResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlockOutput(
+  GetAccountPublicAccessBlockArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getAccountPublicAccessBlock:getAccountPublicAccessBlock',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountPublicAccessBlockResult.fromMap);
+}
+
 /// Provides details about a specific S3 bucket.
 ///
 /// This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
@@ -288,13 +310,13 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 ///     name: "test.com.",
 /// });
 /// const example = new aws.route53.Record("example", {
-///     zoneId: testZone.then(testZone => testZone.id),
-///     name: "bucket",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: selected.then(selected => selected.websiteDomain),
 ///         zoneId: selected.then(selected => selected.hostedZoneId),
 ///     }],
+///     zoneId: testZone.then(testZone => testZone.id),
+///     name: "bucket",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -304,13 +326,13 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// selected = aws.s3.get_bucket(bucket="bucket.test.com")
 /// test_zone = aws.route53.get_zone(name="test.com.")
 /// example = aws.route53.Record("example",
-///     zone_id=test_zone.id,
-///     name="bucket",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": selected.website_domain,
 ///         "zone_id": selected.hosted_zone_id,
-///     }])
+///     }],
+///     zone_id=test_zone.id,
+///     name="bucket",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -332,9 +354,6 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 ///
 ///     var example = new Aws.Route53.Record("example", new()
 ///     {
-///         ZoneId = testZone.Apply(getZoneResult => getZoneResult.Id),
-///         Name = "bucket",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -343,6 +362,9 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 ///                 ZoneId = selected.Apply(getBucketResult => getBucketResult.HostedZoneId),
 ///             },
 ///         },
+///         ZoneId = testZone.Apply(getZoneResult => getZoneResult.Id),
+///         Name = "bucket",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -371,15 +393,15 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "example", &route53.RecordArgs{
-/// 			ZoneId: pulumi.String(testZone.Id),
-/// 			Name:   pulumi.String("bucket"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:   pulumi.String(selected.WebsiteDomain),
 /// 					ZoneId: pulumi.String(selected.HostedZoneId),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.String(testZone.Id),
+/// 			Name:   pulumi.String("bucket"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -405,13 +427,13 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 /// }
 ///
 /// resource "aws_route53_record" "example" {
-///   zone_id = data.aws_route53_getzone.testZone.id
-///   name    = "bucket"
-///   type    = "A"
 ///   aliases {
 ///     name    = data.aws_s3_getbucket.selected.website_domain
 ///     zone_id = data.aws_s3_getbucket.selected.hosted_zone_id
 ///   }
+///   zone_id = data.aws_route53_getzone.testZone.id
+///   name    = "bucket"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -449,13 +471,13 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 ///             .build());
 ///
 ///         var example = new Record("example", RecordArgs.builder()
-///             .zoneId(testZone.id())
-///             .name("bucket")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(selected.websiteDomain())
 ///                 .zoneId(selected.hostedZoneId())
 ///                 .build())
+///             .zoneId(testZone.id())
+///             .name("bucket")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -466,12 +488,12 @@ Future<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlock(
 ///   example:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${testZone.id}
-///       name: bucket
-///       type: A
 ///       aliases:
 ///         - name: ${selected.websiteDomain}
 ///           zoneId: ${selected.hostedZoneId}
+///       zoneId: ${testZone.id}
+///       name: bucket
+///       type: A
 /// variables:
 ///   selected:
 ///     fn::invoke:
@@ -656,6 +678,17 @@ Future<GetBucketResult> getBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketResult> getBucketOutput(
+  GetBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucket:getBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketResult.fromMap);
 }
 
 /// Provides details about the notification configuration of an S3 bucket.
@@ -916,7 +949,6 @@ Future<GetBucketResult> getBucket(
 /// 		var s3ObjectCreated []*cloudwatch.EventRule
 /// 		for index := 0; index < tmp0; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := cloudwatch.NewEventRule(ctx, fmt.Sprintf("s3_object_created-%v", key0), &cloudwatch.EventRuleArgs{
 /// 				Name:         pulumi.String("shared-bucket-object-created"),
 /// 				Description:  pulumi.String("S3 object-created events from the shared bucket."),
@@ -1050,27 +1082,27 @@ Future<GetBucketResult> getBucket(
 ///     bucket: exampleAwsS3Bucket.id,
 /// });
 /// const example = new aws.s3.BucketNotification("example", {
-///     lambdaFunctions: .map(entry => ({
-///         id: entry.value.id,
-///         lambdaFunctionArn: entry.value.lambdaFunctionArn,
-///         events: entry.value.events,
-///         filterPrefix: entry.value.filterPrefix,
-///         filterSuffix: entry.value.filterSuffix,
-///     })),
-///     queues: .map(entry2 => ({
-///         id: entry2.value.id,
-///         queueArn: entry2.value.queueArn,
-///         events: entry2.value.events,
-///         filterPrefix: entry2.value.filterPrefix,
-///         filterSuffix: entry2.value.filterSuffix,
-///     })),
-///     topics: .map(entry3 => ({
-///         id: entry3.value.id,
-///         topicArn: entry3.value.topicArn,
-///         events: entry3.value.events,
-///         filterPrefix: entry3.value.filterPrefix,
-///         filterSuffix: entry3.value.filterSuffix,
-///     })),
+///     lambdaFunctions: existing.then(existing => .map(entry => ({
+///         id: entry.id,
+///         lambdaFunctionArn: entry.lambdaFunctionArn,
+///         events: entry.events,
+///         filterPrefix: entry.filterPrefix,
+///         filterSuffix: entry.filterSuffix,
+///     }))),
+///     queues: existing.then(existing => .map(entry2 => ({
+///         id: entry2.id,
+///         queueArn: entry2.queueArn,
+///         events: entry2.events,
+///         filterPrefix: entry2.filterPrefix,
+///         filterSuffix: entry2.filterSuffix,
+///     }))),
+///     topics: existing.then(existing => .map(entry3 => ({
+///         id: entry3.id,
+///         topicArn: entry3.topicArn,
+///         events: entry3.events,
+///         filterPrefix: entry3.filterPrefix,
+///         filterSuffix: entry3.filterSuffix,
+///     }))),
 ///     bucket: exampleAwsS3Bucket.id,
 ///     eventbridge: existing.then(existing => existing.eventbridge),
 /// });
@@ -1081,27 +1113,27 @@ Future<GetBucketResult> getBucket(
 ///
 /// existing = aws.s3.get_bucket_notification(bucket=example_aws_s3_bucket["id"])
 /// example = aws.s3.BucketNotification("example",
-///     lambda_functions=[{"key": k, "value": v} for k, v in sorted(existing.lambda_functions.items())].apply(lambda entries: [aws.s3.BucketNotificationLambdaFunctionArgs(
-///         id=entry["value"].id,
-///         lambda_function_arn=entry["value"].lambda_function_arn,
-///         events=entry["value"].events,
-///         filter_prefix=entry["value"].filter_prefix,
-///         filter_suffix=entry["value"].filter_suffix,
-///     ) for entry in entries]),
-///     queues=[{"key": k, "value": v} for k, v in sorted(existing.queues.items())].apply(lambda entries: [aws.s3.BucketNotificationQueueArgs(
-///         id=entry2["value"].id,
-///         queue_arn=entry2["value"].queue_arn,
-///         events=entry2["value"].events,
-///         filter_prefix=entry2["value"].filter_prefix,
-///         filter_suffix=entry2["value"].filter_suffix,
-///     ) for entry2 in entries]),
-///     topics=[{"key": k, "value": v} for k, v in sorted(existing.topics.items())].apply(lambda entries: [aws.s3.BucketNotificationTopicArgs(
-///         id=entry3["value"].id,
-///         topic_arn=entry3["value"].topic_arn,
-///         events=entry3["value"].events,
-///         filter_prefix=entry3["value"].filter_prefix,
-///         filter_suffix=entry3["value"].filter_suffix,
-///     ) for entry3 in entries]),
+///     lambda_functions=[{
+///         "id": entry.id,
+///         "lambda_function_arn": entry.lambda_function_arn,
+///         "events": entry.events,
+///         "filter_prefix": entry.filter_prefix,
+///         "filter_suffix": entry.filter_suffix,
+///     } for entry in existing.lambda_functions],
+///     queues=[{
+///         "id": entry2.id,
+///         "queue_arn": entry2.queue_arn,
+///         "events": entry2.events,
+///         "filter_prefix": entry2.filter_prefix,
+///         "filter_suffix": entry2.filter_suffix,
+///     } for entry2 in existing.queues],
+///     topics=[{
+///         "id": entry3.id,
+///         "topic_arn": entry3.topic_arn,
+///         "events": entry3.events,
+///         "filter_prefix": entry3.filter_prefix,
+///         "filter_suffix": entry3.filter_suffix,
+///     } for entry3 in existing.topics],
 ///     bucket=example_aws_s3_bucket["id"],
 ///     eventbridge=existing.eventbridge)
 /// ```
@@ -1120,9 +1152,39 @@ Future<GetBucketResult> getBucket(
 ///
 ///     var example = new Aws.S3.BucketNotification("example", new()
 ///     {
-///         LambdaFunctions = ,
-///         Queues = ,
-///         Topics = ,
+///         LambdaFunctions = .Select(entry =>
+///         {
+///             return
+///             {
+///                 { "id", entry.Id },
+///                 { "lambdaFunctionArn", entry.LambdaFunctionArn },
+///                 { "events", entry.Events },
+///                 { "filterPrefix", entry.FilterPrefix },
+///                 { "filterSuffix", entry.FilterSuffix },
+///             };
+///         }).ToList(),
+///         Queues = .Select(entry2 =>
+///         {
+///             return
+///             {
+///                 { "id", entry2.Id },
+///                 { "queueArn", entry2.QueueArn },
+///                 { "events", entry2.Events },
+///                 { "filterPrefix", entry2.FilterPrefix },
+///                 { "filterSuffix", entry2.FilterSuffix },
+///             };
+///         }).ToList(),
+///         Topics = .Select(entry3 =>
+///         {
+///             return
+///             {
+///                 { "id", entry3.Id },
+///                 { "topicArn", entry3.TopicArn },
+///                 { "events", entry3.Events },
+///                 { "filterPrefix", entry3.FilterPrefix },
+///                 { "filterSuffix", entry3.FilterSuffix },
+///             };
+///         }).ToList(),
 ///         Bucket = exampleAwsS3Bucket.Id,
 ///         Eventbridge = existing.Apply(getBucketNotificationResult => getBucketNotificationResult.Eventbridge),
 ///     });
@@ -1144,33 +1206,33 @@ Future<GetBucketResult> getBucket(
 ///
 /// resource "aws_s3_bucketnotification" "example" {
 ///   dynamic "lambda_functions" {
-///     for_each = entries(data.aws_s3_getbucketnotification.existing.lambda_functions)
+///     for_each = data.aws_s3_getbucketnotification.existing.lambda_functions
 ///     content {
-///       id                  = lambda_functions.value.value.id
-///       lambda_function_arn = lambda_functions.value.value.lambdaFunctionArn
-///       events              = lambda_functions.value.value.events
-///       filter_prefix       = lambda_functions.value.value.filterPrefix
-///       filter_suffix       = lambda_functions.value.value.filterSuffix
+///       id                  = lambda_functions.value.id
+///       lambda_function_arn = lambda_functions.value.lambdaFunctionArn
+///       events              = lambda_functions.value.events
+///       filter_prefix       = lambda_functions.value.filterPrefix
+///       filter_suffix       = lambda_functions.value.filterSuffix
 ///     }
 ///   }
 ///   dynamic "queues" {
-///     for_each = entries(data.aws_s3_getbucketnotification.existing.queues)
+///     for_each = data.aws_s3_getbucketnotification.existing.queues
 ///     content {
-///       id            = queues.value.value.id
-///       queue_arn     = queues.value.value.queueArn
-///       events        = queues.value.value.events
-///       filter_prefix = queues.value.value.filterPrefix
-///       filter_suffix = queues.value.value.filterSuffix
+///       id            = queues.value.id
+///       queue_arn     = queues.value.queueArn
+///       events        = queues.value.events
+///       filter_prefix = queues.value.filterPrefix
+///       filter_suffix = queues.value.filterSuffix
 ///     }
 ///   }
 ///   dynamic "topics" {
-///     for_each = entries(data.aws_s3_getbucketnotification.existing.topics)
+///     for_each = data.aws_s3_getbucketnotification.existing.topics
 ///     content {
-///       id            = topics.value.value.id
-///       topic_arn     = topics.value.value.topicArn
-///       events        = topics.value.value.events
-///       filter_prefix = topics.value.value.filterPrefix
-///       filter_suffix = topics.value.value.filterSuffix
+///       id            = topics.value.id
+///       topic_arn     = topics.value.topicArn
+///       events        = topics.value.events
+///       filter_prefix = topics.value.filterPrefix
+///       filter_suffix = topics.value.filterSuffix
 ///     }
 ///   }
 ///   bucket      = exampleAwsS3Bucket.id
@@ -1343,6 +1405,17 @@ Future<GetBucketNotificationResult> getBucketNotification(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketNotificationResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
+  GetBucketNotificationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketNotification:getBucketNotification',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketNotificationResult.fromMap);
 }
 
 /// &gt; **NOTE:** The `aws.s3.BucketObject` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.BucketObjectv2` instead, where new features and fixes will be added.
@@ -1719,6 +1792,17 @@ Future<GetBucketObjectResult> getBucketObject(
   return GetBucketObjectResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketObjectResult> getBucketObjectOutput(
+  GetBucketObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketObject:getBucketObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectResult.fromMap);
+}
+
 /// Provides details about an AWS S3 (Simple Storage) Bucket Object Lock Configuration.
 ///
 /// ## Example Usage
@@ -1839,6 +1923,17 @@ Future<GetBucketObjectLockConfigurationResult> getBucketObjectLockConfiguration(
   return GetBucketObjectLockConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketObjectLockConfigurationResult> getBucketObjectLockConfigurationOutput(
+  GetBucketObjectLockConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketObjectLockConfiguration:getBucketObjectLockConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectLockConfigurationResult.fromMap);
+}
+
 /// &gt; **NOTE:** The `aws.s3.getBucketObjects` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.getObjects` instead, where new features and fixes will be added.
 ///
 /// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
@@ -1857,6 +1952,17 @@ Future<GetBucketObjectsResult> getBucketObjects(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectsResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketObjectsResult> getBucketObjectsOutput(
+  GetBucketObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketObjects:getBucketObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectsResult.fromMap);
 }
 
 /// The bucket policy data source returns IAM policy of an S3 bucket.
@@ -1993,6 +2099,17 @@ Future<GetBucketPolicyResult> getBucketPolicy(
   return GetBucketPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketPolicyResult> getBucketPolicyOutput(
+  GetBucketPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketPolicy:getBucketPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketPolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS S3 (Simple Storage) Bucket Replication Configuration.
 ///
 /// ## Example Usage
@@ -2111,6 +2228,17 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketReplicationConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketReplicationConfigurationResult> getBucketReplicationConfigurationOutput(
+  GetBucketReplicationConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBucketReplicationConfiguration:getBucketReplicationConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketReplicationConfigurationResult.fromMap);
 }
 
 /// Provides details about AWS S3 (Simple Storage) buckets with optional filters.
@@ -2340,6 +2468,17 @@ Future<GetBucketsResult> getBuckets(
   return GetBucketsResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketsResult> getBucketsOutput(
+  GetBucketsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getBuckets:getBuckets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketsResult.fromMap);
+}
+
 /// The Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)
 /// for the effective account in which this provider is working.
 ///
@@ -2462,6 +2601,17 @@ Future<GetCanonicalUserIdResult> getCanonicalUserId(
   return GetCanonicalUserIdResult.fromMap(result);
 }
 
+pulumi.Output<GetCanonicalUserIdResult> getCanonicalUserIdOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getCanonicalUserId:getCanonicalUserId',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetCanonicalUserIdResult.fromMap);
+}
+
 /// Lists Amazon S3 Express directory buckets.
 ///
 /// ## Example Usage
@@ -2568,6 +2718,17 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectoryBucketsResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectoryBucketsResult> getDirectoryBucketsOutput(
+  GetDirectoryBucketsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getDirectoryBuckets:getDirectoryBuckets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectoryBucketsResult.fromMap);
 }
 
 /// Data source for managing an S3 Files Access Point.
@@ -2688,6 +2849,17 @@ Future<GetFilesAccessPointResult> getFilesAccessPoint(
   return GetFilesAccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetFilesAccessPointResult> getFilesAccessPointOutput(
+  GetFilesAccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getFilesAccessPoint:getFilesAccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFilesAccessPointResult.fromMap);
+}
+
 /// Get information on an S3 Files File System.
 ///
 /// ## Example Usage
@@ -2806,6 +2978,17 @@ Future<GetFilesFileSystemResult> getFilesFileSystem(
   return GetFilesFileSystemResult.fromMap(result);
 }
 
+pulumi.Output<GetFilesFileSystemResult> getFilesFileSystemOutput(
+  GetFilesFileSystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getFilesFileSystem:getFilesFileSystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFilesFileSystemResult.fromMap);
+}
+
 /// Provides details about S3 Files File Systems.
 ///
 /// ## Example Usage
@@ -2912,6 +3095,17 @@ Future<GetFilesFileSystemsResult> getFilesFileSystems(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFilesFileSystemsResult.fromMap(result);
+}
+
+pulumi.Output<GetFilesFileSystemsResult> getFilesFileSystemsOutput(
+  GetFilesFileSystemsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getFilesFileSystems:getFilesFileSystems',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFilesFileSystemsResult.fromMap);
 }
 
 /// Provides details about an S3 Files Mount Target.
@@ -3030,6 +3224,17 @@ Future<GetFilesMountTargetResult> getFilesMountTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFilesMountTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
+  GetFilesMountTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getFilesMountTarget:getFilesMountTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFilesMountTargetResult.fromMap);
 }
 
 /// The S3 object data source allows access to the metadata and
@@ -3405,6 +3610,17 @@ Future<GetObjectResult> getObject(
   return GetObjectResult.fromMap(result);
 }
 
+pulumi.Output<GetObjectResult> getObjectOutput(
+  GetObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getObject:getObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectResult.fromMap);
+}
+
 /// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
 ///
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
@@ -3421,6 +3637,17 @@ Future<GetObjectsResult> getObjects(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetObjectsResult.fromMap(result);
+}
+
+pulumi.Output<GetObjectsResult> getObjectsOutput(
+  GetObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3/getObjects:getObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectsResult.fromMap);
 }
 
 /// Provides details about an AWS S3 Control Access Points.
@@ -3636,6 +3863,17 @@ Future<GetAccessPointsResult> getAccessPoints(
   return GetAccessPointsResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
+  GetAccessPointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3control/getAccessPoints:getAccessPoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPointsResult.fromMap);
+}
+
 /// Provides details on a specific S3 Multi-Region Access Point.
 ///
 /// ## Example Usage
@@ -3754,6 +3992,17 @@ Future<GetMultiRegionAccessPointResult> getMultiRegionAccessPoint(
   return GetMultiRegionAccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetMultiRegionAccessPointResult> getMultiRegionAccessPointOutput(
+  GetMultiRegionAccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3control/getMultiRegionAccessPoint:getMultiRegionAccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMultiRegionAccessPointResult.fromMap);
+}
+
 /// Provides details about AWS S3 Control Multi-Region Access Points.
 ///
 /// ## Example Usage
@@ -3862,4 +4111,15 @@ Future<GetMultiRegionAccessPointsResult> getMultiRegionAccessPoints(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMultiRegionAccessPointsResult.fromMap(result);
+}
+
+pulumi.Output<GetMultiRegionAccessPointsResult> getMultiRegionAccessPointsOutput(
+  GetMultiRegionAccessPointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:s3control/getMultiRegionAccessPoints:getMultiRegionAccessPoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMultiRegionAccessPointsResult.fromMap);
 }

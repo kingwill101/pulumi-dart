@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'game_server_group_args.dart';
 import 'game_server_group_auto_scaling_policy.dart';
+import 'game_server_group_instance_definition.dart';
 import 'game_server_group_launch_template.dart';
 import 'game_server_group_state.dart';
 
@@ -14,7 +15,9 @@ import 'game_server_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.gamelift.GameServerGroup("example", {
-///     gameServerGroupName: "example",
+///     launchTemplate: {
+///         id: exampleAwsLaunchTemplate.id,
+///     },
 ///     instanceDefinitions: [
 ///         {
 ///             instanceType: "c5.large",
@@ -23,9 +26,7 @@ import 'game_server_group_state.dart';
 ///             instanceType: "c5a.large",
 ///         },
 ///     ],
-///     launchTemplate: {
-///         id: exampleAwsLaunchTemplate.id,
-///     },
+///     gameServerGroupName: "example",
 ///     maxSize: 1,
 ///     minSize: 1,
 ///     roleArn: exampleAwsIamRole.arn,
@@ -38,7 +39,9 @@ import 'game_server_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.gamelift.GameServerGroup("example",
-///     game_server_group_name="example",
+///     launch_template={
+///         "id": example_aws_launch_template["id"],
+///     },
 ///     instance_definitions=[
 ///         {
 ///             "instance_type": "c5.large",
@@ -47,9 +50,7 @@ import 'game_server_group_state.dart';
 ///             "instance_type": "c5a.large",
 ///         },
 ///     ],
-///     launch_template={
-///         "id": example_aws_launch_template["id"],
-///     },
+///     game_server_group_name="example",
 ///     max_size=1,
 ///     min_size=1,
 ///     role_arn=example_aws_iam_role["arn"],
@@ -65,7 +66,10 @@ import 'game_server_group_state.dart';
 /// {
 ///     var example = new Aws.GameLift.GameServerGroup("example", new()
 ///     {
-///         GameServerGroupName = "example",
+///         LaunchTemplate = new Aws.GameLift.Inputs.GameServerGroupLaunchTemplateArgs
+///         {
+///             Id = exampleAwsLaunchTemplate.Id,
+///         },
 ///         InstanceDefinitions = new[]
 ///         {
 ///             new Aws.GameLift.Inputs.GameServerGroupInstanceDefinitionArgs
@@ -77,10 +81,7 @@ import 'game_server_group_state.dart';
 ///                 InstanceType = "c5a.large",
 ///             },
 ///         },
-///         LaunchTemplate = new Aws.GameLift.Inputs.GameServerGroupLaunchTemplateArgs
-///         {
-///             Id = exampleAwsLaunchTemplate.Id,
-///         },
+///         GameServerGroupName = "example",
 ///         MaxSize = 1,
 ///         MinSize = 1,
 ///         RoleArn = exampleAwsIamRole.Arn,
@@ -105,7 +106,9 @@ import 'game_server_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewGameServerGroup(ctx, "example", &gamelift.GameServerGroupArgs{
-/// 			GameServerGroupName: pulumi.String("example"),
+/// 			LaunchTemplate: &gamelift.GameServerGroupLaunchTemplateArgs{
+/// 				Id: pulumi.Any(exampleAwsLaunchTemplate.Id),
+/// 			},
 /// 			InstanceDefinitions: gamelift.GameServerGroupInstanceDefinitionArray{
 /// 				&gamelift.GameServerGroupInstanceDefinitionArgs{
 /// 					InstanceType: pulumi.String("c5.large"),
@@ -114,12 +117,10 @@ import 'game_server_group_state.dart';
 /// 					InstanceType: pulumi.String("c5a.large"),
 /// 				},
 /// 			},
-/// 			LaunchTemplate: &gamelift.GameServerGroupLaunchTemplateArgs{
-/// 				Id: pulumi.Any(exampleAwsLaunchTemplate.Id),
-/// 			},
-/// 			MaxSize: pulumi.Int(1),
-/// 			MinSize: pulumi.Int(1),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			GameServerGroupName: pulumi.String("example"),
+/// 			MaxSize:             pulumi.Int(1),
+/// 			MinSize:             pulumi.Int(1),
+/// 			RoleArn:             pulumi.Any(exampleAwsIamRole.Arn),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsIamRolePolicyAttachment,
 /// 		}))
@@ -140,20 +141,20 @@ import 'game_server_group_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_gameservergroup" "example" {
-///   depends_on             = [exampleAwsIamRolePolicyAttachment]
-///   game_server_group_name = "example"
+///   depends_on = [exampleAwsIamRolePolicyAttachment]
+///   launch_template = {
+///     id = exampleAwsLaunchTemplate.id
+///   }
 ///   instance_definitions {
 ///     instance_type = "c5.large"
 ///   }
 ///   instance_definitions {
 ///     instance_type = "c5a.large"
 ///   }
-///   launch_template = {
-///     id = exampleAwsLaunchTemplate.id
-///   }
-///   max_size = 1
-///   min_size = 1
-///   role_arn = exampleAwsIamRole.arn
+///   game_server_group_name = "example"
+///   max_size               = 1
+///   min_size               = 1
+///   role_arn               = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -164,8 +165,8 @@ import 'game_server_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.gamelift.GameServerGroup;
 /// import com.pulumi.aws.gamelift.GameServerGroupArgs;
-/// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupLaunchTemplateArgs;
+/// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -181,7 +182,9 @@ import 'game_server_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new GameServerGroup("example", GameServerGroupArgs.builder()
-///             .gameServerGroupName("example")
+///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
+///                 .id(exampleAwsLaunchTemplate.id())
+///                 .build())
 ///             .instanceDefinitions(
 ///                 GameServerGroupInstanceDefinitionArgs.builder()
 ///                     .instanceType("c5.large")
@@ -189,9 +192,7 @@ import 'game_server_group_state.dart';
 ///                 GameServerGroupInstanceDefinitionArgs.builder()
 ///                     .instanceType("c5a.large")
 ///                     .build())
-///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
-///                 .id(exampleAwsLaunchTemplate.id())
-///                 .build())
+///             .gameServerGroupName("example")
 ///             .maxSize(1)
 ///             .minSize(1)
 ///             .roleArn(exampleAwsIamRole.arn())
@@ -207,12 +208,12 @@ import 'game_server_group_state.dart';
 ///   example:
 ///     type: aws:gamelift:GameServerGroup
 ///     properties:
-///       gameServerGroupName: example
+///       launchTemplate:
+///         id: ${exampleAwsLaunchTemplate.id}
 ///       instanceDefinitions:
 ///         - instanceType: c5.large
 ///         - instanceType: c5a.large
-///       launchTemplate:
-///         id: ${exampleAwsLaunchTemplate.id}
+///       gameServerGroupName: example
 ///       maxSize: 1
 ///       minSize: 1
 ///       roleArn: ${exampleAwsIamRole.arn}
@@ -231,14 +232,15 @@ import 'game_server_group_state.dart';
 ///
 /// const example = new aws.gamelift.GameServerGroup("example", {
 ///     autoScalingPolicy: {
-///         estimatedInstanceWarmup: 60,
 ///         targetTrackingConfiguration: {
 ///             targetValue: 75,
 ///         },
+///         estimatedInstanceWarmup: 60,
 ///     },
-///     balancingStrategy: "SPOT_ONLY",
-///     gameServerGroupName: "example",
-///     gameServerProtectionPolicy: "FULL_PROTECTION",
+///     launchTemplate: {
+///         id: exampleAwsLaunchTemplate.id,
+///         version: "1",
+///     },
 ///     instanceDefinitions: [
 ///         {
 ///             instanceType: "c5.large",
@@ -249,10 +251,9 @@ import 'game_server_group_state.dart';
 ///             weightedCapacity: "2",
 ///         },
 ///     ],
-///     launchTemplate: {
-///         id: exampleAwsLaunchTemplate.id,
-///         version: "1",
-///     },
+///     balancingStrategy: "SPOT_ONLY",
+///     gameServerGroupName: "example",
+///     gameServerProtectionPolicy: "FULL_PROTECTION",
 ///     maxSize: 1,
 ///     minSize: 1,
 ///     roleArn: exampleAwsIamRole.arn,
@@ -273,14 +274,15 @@ import 'game_server_group_state.dart';
 ///
 /// example = aws.gamelift.GameServerGroup("example",
 ///     auto_scaling_policy={
-///         "estimated_instance_warmup": 60,
 ///         "target_tracking_configuration": {
 ///             "target_value": float(75),
 ///         },
+///         "estimated_instance_warmup": 60,
 ///     },
-///     balancing_strategy="SPOT_ONLY",
-///     game_server_group_name="example",
-///     game_server_protection_policy="FULL_PROTECTION",
+///     launch_template={
+///         "id": example_aws_launch_template["id"],
+///         "version": "1",
+///     },
 ///     instance_definitions=[
 ///         {
 ///             "instance_type": "c5.large",
@@ -291,10 +293,9 @@ import 'game_server_group_state.dart';
 ///             "weighted_capacity": "2",
 ///         },
 ///     ],
-///     launch_template={
-///         "id": example_aws_launch_template["id"],
-///         "version": "1",
-///     },
+///     balancing_strategy="SPOT_ONLY",
+///     game_server_group_name="example",
+///     game_server_protection_policy="FULL_PROTECTION",
 ///     max_size=1,
 ///     min_size=1,
 ///     role_arn=example_aws_iam_role["arn"],
@@ -319,15 +320,17 @@ import 'game_server_group_state.dart';
 ///     {
 ///         AutoScalingPolicy = new Aws.GameLift.Inputs.GameServerGroupAutoScalingPolicyArgs
 ///         {
-///             EstimatedInstanceWarmup = 60,
 ///             TargetTrackingConfiguration = new Aws.GameLift.Inputs.GameServerGroupAutoScalingPolicyTargetTrackingConfigurationArgs
 ///             {
 ///                 TargetValue = 75,
 ///             },
+///             EstimatedInstanceWarmup = 60,
 ///         },
-///         BalancingStrategy = "SPOT_ONLY",
-///         GameServerGroupName = "example",
-///         GameServerProtectionPolicy = "FULL_PROTECTION",
+///         LaunchTemplate = new Aws.GameLift.Inputs.GameServerGroupLaunchTemplateArgs
+///         {
+///             Id = exampleAwsLaunchTemplate.Id,
+///             Version = "1",
+///         },
 ///         InstanceDefinitions = new[]
 ///         {
 ///             new Aws.GameLift.Inputs.GameServerGroupInstanceDefinitionArgs
@@ -341,11 +344,9 @@ import 'game_server_group_state.dart';
 ///                 WeightedCapacity = "2",
 ///             },
 ///         },
-///         LaunchTemplate = new Aws.GameLift.Inputs.GameServerGroupLaunchTemplateArgs
-///         {
-///             Id = exampleAwsLaunchTemplate.Id,
-///             Version = "1",
-///         },
+///         BalancingStrategy = "SPOT_ONLY",
+///         GameServerGroupName = "example",
+///         GameServerProtectionPolicy = "FULL_PROTECTION",
 ///         MaxSize = 1,
 ///         MinSize = 1,
 ///         RoleArn = exampleAwsIamRole.Arn,
@@ -380,14 +381,15 @@ import 'game_server_group_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewGameServerGroup(ctx, "example", &gamelift.GameServerGroupArgs{
 /// 			AutoScalingPolicy: &gamelift.GameServerGroupAutoScalingPolicyArgs{
-/// 				EstimatedInstanceWarmup: pulumi.Int(60),
 /// 				TargetTrackingConfiguration: &gamelift.GameServerGroupAutoScalingPolicyTargetTrackingConfigurationArgs{
 /// 					TargetValue: pulumi.Float64(75),
 /// 				},
+/// 				EstimatedInstanceWarmup: pulumi.Int(60),
 /// 			},
-/// 			BalancingStrategy:          pulumi.String("SPOT_ONLY"),
-/// 			GameServerGroupName:        pulumi.String("example"),
-/// 			GameServerProtectionPolicy: pulumi.String("FULL_PROTECTION"),
+/// 			LaunchTemplate: &gamelift.GameServerGroupLaunchTemplateArgs{
+/// 				Id:      pulumi.Any(exampleAwsLaunchTemplate.Id),
+/// 				Version: pulumi.String("1"),
+/// 			},
 /// 			InstanceDefinitions: gamelift.GameServerGroupInstanceDefinitionArray{
 /// 				&gamelift.GameServerGroupInstanceDefinitionArgs{
 /// 					InstanceType:     pulumi.String("c5.large"),
@@ -398,13 +400,12 @@ import 'game_server_group_state.dart';
 /// 					WeightedCapacity: pulumi.String("2"),
 /// 				},
 /// 			},
-/// 			LaunchTemplate: &gamelift.GameServerGroupLaunchTemplateArgs{
-/// 				Id:      pulumi.Any(exampleAwsLaunchTemplate.Id),
-/// 				Version: pulumi.String("1"),
-/// 			},
-/// 			MaxSize: pulumi.Int(1),
-/// 			MinSize: pulumi.Int(1),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			BalancingStrategy:          pulumi.String("SPOT_ONLY"),
+/// 			GameServerGroupName:        pulumi.String("example"),
+/// 			GameServerProtectionPolicy: pulumi.String("FULL_PROTECTION"),
+/// 			MaxSize:                    pulumi.Int(1),
+/// 			MinSize:                    pulumi.Int(1),
+/// 			RoleArn:                    pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -434,14 +435,15 @@ import 'game_server_group_state.dart';
 /// resource "aws_gamelift_gameservergroup" "example" {
 ///   depends_on = [exampleAwsIamRolePolicyAttachment]
 ///   auto_scaling_policy = {
-///     estimated_instance_warmup = 60
 ///     target_tracking_configuration = {
 ///       target_value = 75
 ///     }
+///     estimated_instance_warmup = 60
 ///   }
-///   balancing_strategy            = "SPOT_ONLY"
-///   game_server_group_name        = "example"
-///   game_server_protection_policy = "FULL_PROTECTION"
+///   launch_template = {
+///     id      = exampleAwsLaunchTemplate.id
+///     version = "1"
+///   }
 ///   instance_definitions {
 ///     instance_type     = "c5.large"
 ///     weighted_capacity = "1"
@@ -450,13 +452,12 @@ import 'game_server_group_state.dart';
 ///     instance_type     = "c5.2xlarge"
 ///     weighted_capacity = "2"
 ///   }
-///   launch_template = {
-///     id      = exampleAwsLaunchTemplate.id
-///     version = "1"
-///   }
-///   max_size = 1
-///   min_size = 1
-///   role_arn = exampleAwsIamRole.arn
+///   balancing_strategy            = "SPOT_ONLY"
+///   game_server_group_name        = "example"
+///   game_server_protection_policy = "FULL_PROTECTION"
+///   max_size                      = 1
+///   min_size                      = 1
+///   role_arn                      = exampleAwsIamRole.arn
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -473,8 +474,8 @@ import 'game_server_group_state.dart';
 /// import com.pulumi.aws.gamelift.GameServerGroupArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupAutoScalingPolicyArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupAutoScalingPolicyTargetTrackingConfigurationArgs;
-/// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.aws.gamelift.inputs.GameServerGroupLaunchTemplateArgs;
+/// import com.pulumi.aws.gamelift.inputs.GameServerGroupInstanceDefinitionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -491,14 +492,15 @@ import 'game_server_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new GameServerGroup("example", GameServerGroupArgs.builder()
 ///             .autoScalingPolicy(GameServerGroupAutoScalingPolicyArgs.builder()
-///                 .estimatedInstanceWarmup(60)
 ///                 .targetTrackingConfiguration(GameServerGroupAutoScalingPolicyTargetTrackingConfigurationArgs.builder()
 ///                     .targetValue(75.0)
 ///                     .build())
+///                 .estimatedInstanceWarmup(60)
 ///                 .build())
-///             .balancingStrategy("SPOT_ONLY")
-///             .gameServerGroupName("example")
-///             .gameServerProtectionPolicy("FULL_PROTECTION")
+///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
+///                 .id(exampleAwsLaunchTemplate.id())
+///                 .version("1")
+///                 .build())
 ///             .instanceDefinitions(
 ///                 GameServerGroupInstanceDefinitionArgs.builder()
 ///                     .instanceType("c5.large")
@@ -508,10 +510,9 @@ import 'game_server_group_state.dart';
 ///                     .instanceType("c5.2xlarge")
 ///                     .weightedCapacity("2")
 ///                     .build())
-///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
-///                 .id(exampleAwsLaunchTemplate.id())
-///                 .version("1")
-///                 .build())
+///             .balancingStrategy("SPOT_ONLY")
+///             .gameServerGroupName("example")
+///             .gameServerProtectionPolicy("FULL_PROTECTION")
 ///             .maxSize(1)
 ///             .minSize(1)
 ///             .roleArn(exampleAwsIamRole.arn())
@@ -532,20 +533,20 @@ import 'game_server_group_state.dart';
 ///     type: aws:gamelift:GameServerGroup
 ///     properties:
 ///       autoScalingPolicy:
-///         estimatedInstanceWarmup: 60
 ///         targetTrackingConfiguration:
 ///           targetValue: 75
-///       balancingStrategy: SPOT_ONLY
-///       gameServerGroupName: example
-///       gameServerProtectionPolicy: FULL_PROTECTION
+///         estimatedInstanceWarmup: 60
+///       launchTemplate:
+///         id: ${exampleAwsLaunchTemplate.id}
+///         version: '1'
 ///       instanceDefinitions:
 ///         - instanceType: c5.large
 ///           weightedCapacity: '1'
 ///         - instanceType: c5.2xlarge
 ///           weightedCapacity: '2'
-///       launchTemplate:
-///         id: ${exampleAwsLaunchTemplate.id}
-///         version: '1'
+///       balancingStrategy: SPOT_ONLY
+///       gameServerGroupName: example
+///       gameServerProtectionPolicy: FULL_PROTECTION
 ///       maxSize: 1
 ///       minSize: 1
 ///       roleArn: ${exampleAwsIamRole.arn}
@@ -570,7 +571,6 @@ import 'game_server_group_state.dart';
 /// const current = aws.getPartition({});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: [
@@ -578,6 +578,7 @@ import 'game_server_group_state.dart';
 ///                 "gamelift.amazonaws.com",
 ///             ],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -596,7 +597,6 @@ import 'game_server_group_state.dart';
 ///
 /// current = aws.get_partition()
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": [
@@ -604,6 +604,7 @@ import 'game_server_group_state.dart';
 ///             "gamelift.amazonaws.com",
 ///         ],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
@@ -629,7 +630,6 @@ import 'game_server_group_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -642,6 +642,7 @@ import 'game_server_group_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -682,7 +683,6 @@ import 'game_server_group_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -692,6 +692,7 @@ import 'game_server_group_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -732,11 +733,11 @@ import 'game_server_group_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["autoscaling.amazonaws.com", "gamelift.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -784,13 +785,13 @@ import 'game_server_group_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers(
 ///                         "autoscaling.amazonaws.com",
 ///                         "gamelift.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -831,12 +832,12 @@ import 'game_server_group_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - autoscaling.amazonaws.com
 ///                   - gamelift.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -868,7 +869,7 @@ class GameServerGroup extends pulumi.CustomResource {
   /// of a forced game server group deletion.
   /// Valid values: `NO_PROTECTION`, `FULL_PROTECTION`. Defaults to `NO_PROTECTION`.
   late final pulumi.Output<String> gameServerProtectionPolicy;
-  late final pulumi.Output<List<Map<String, dynamic>>> instanceDefinitions;
+  late final pulumi.Output<List<GameServerGroupInstanceDefinition>> instanceDefinitions;
   late final pulumi.Output<GameServerGroupLaunchTemplate> launchTemplate;
   /// The maximum number of instances allowed in the EC2 Auto Scaling group.
   /// During automatic scaling events, GameLift FleetIQ and EC2 do not scale up the group above this maximum.
@@ -899,7 +900,7 @@ class GameServerGroup extends pulumi.CustomResource {
           'aws:gamelift/gameServerGroup:GameServerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
@@ -907,15 +908,15 @@ class GameServerGroup extends pulumi.CustomResource {
     balancingStrategy = registerOutput<String>('balancingStrategy');
     gameServerGroupName = registerOutput<String>('gameServerGroupName');
     gameServerProtectionPolicy = registerOutput<String>('gameServerProtectionPolicy');
-    instanceDefinitions = registerOutput<List<Map<String, dynamic>>>('instanceDefinitions');
+    instanceDefinitions = registerOutput<List<GameServerGroupInstanceDefinition>>('instanceDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(guardedValue, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     launchTemplate = registerOutput<GameServerGroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GameServerGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxSize = registerOutput<int>('maxSize');
     minSize = registerOutput<int>('minSize');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSubnets = registerOutput<List<String>?>('vpcSubnets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSubnets = registerOutput<List<String>?>('vpcSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [GameServerGroup] resource's state with the given [name] and [id].
@@ -923,11 +924,12 @@ class GameServerGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GameServerGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GameServerGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -947,14 +949,40 @@ class GameServerGroup extends pulumi.CustomResource {
     balancingStrategy = registerOutput<String>('balancingStrategy');
     gameServerGroupName = registerOutput<String>('gameServerGroupName');
     gameServerProtectionPolicy = registerOutput<String>('gameServerProtectionPolicy');
-    instanceDefinitions = registerOutput<List<Map<String, dynamic>>>('instanceDefinitions');
+    instanceDefinitions = registerOutput<List<GameServerGroupInstanceDefinition>>('instanceDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(guardedValue, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     launchTemplate = registerOutput<GameServerGroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GameServerGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxSize = registerOutput<int>('maxSize');
     minSize = registerOutput<int>('minSize');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSubnets = registerOutput<List<String>?>('vpcSubnets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSubnets = registerOutput<List<String>?>('vpcSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GameServerGroup] resource.
+  GameServerGroup.reference(String urn)
+    : super(
+        'aws:gamelift/gameServerGroup:GameServerGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
+    autoScalingPolicy = registerOutput<GameServerGroupAutoScalingPolicy?>('autoScalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GameServerGroupAutoScalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    balancingStrategy = registerOutput<String>('balancingStrategy');
+    gameServerGroupName = registerOutput<String>('gameServerGroupName');
+    gameServerProtectionPolicy = registerOutput<String>('gameServerProtectionPolicy');
+    instanceDefinitions = registerOutput<List<GameServerGroupInstanceDefinition>>('instanceDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(guardedValue, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+    launchTemplate = registerOutput<GameServerGroupLaunchTemplate>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GameServerGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxSize = registerOutput<int>('maxSize');
+    minSize = registerOutput<int>('minSize');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSubnets = registerOutput<List<String>?>('vpcSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

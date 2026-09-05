@@ -9,15 +9,15 @@ import 'frontdoor_rule_actions_url_rewrite_action.dart';
 
 class FrontdoorRuleActions {
   /// A `requestHeaderAction` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleActionsRequestHeaderAction>>? requestHeaderActions;
+  final pulumi.Input<List<FrontdoorRuleActionsRequestHeaderAction>?>? requestHeaderActions;
   /// A `responseHeaderAction` block as defined below.
-  final pulumi.Input<List<FrontdoorRuleActionsResponseHeaderAction>>? responseHeaderActions;
+  final pulumi.Input<List<FrontdoorRuleActionsResponseHeaderAction>?>? responseHeaderActions;
   /// A `routeConfigurationOverrideAction` block as defined below.
-  final pulumi.Input<FrontdoorRuleActionsRouteConfigurationOverrideAction>? routeConfigurationOverrideAction;
+  final pulumi.Input<FrontdoorRuleActionsRouteConfigurationOverrideAction?>? routeConfigurationOverrideAction;
   /// A `urlRedirectAction` block as defined below. You may **not** have a `urlRedirectAction` **and** a `urlRewriteAction` defined in the same `actions` block.
-  final pulumi.Input<FrontdoorRuleActionsUrlRedirectAction>? urlRedirectAction;
+  final pulumi.Input<FrontdoorRuleActionsUrlRedirectAction?>? urlRedirectAction;
   /// A `urlRewriteAction` block as defined below. You may **not** have a `urlRewriteAction` **and** a `urlRedirectAction` defined in the same `actions` block.
-  final pulumi.Input<FrontdoorRuleActionsUrlRewriteAction>? urlRewriteAction;
+  final pulumi.Input<FrontdoorRuleActionsUrlRewriteAction?>? urlRewriteAction;
 
   /// Creates a new [FrontdoorRuleActions].
   /// [requestHeaderActions] A `requestHeaderAction` block as defined below.

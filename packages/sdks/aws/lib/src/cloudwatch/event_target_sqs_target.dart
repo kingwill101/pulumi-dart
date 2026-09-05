@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetSqsTarget {
   /// The FIFO message group ID to use as the target.
-  final pulumi.Input<String>? messageGroupId;
+  final pulumi.Input<String?>? messageGroupId;
 
   /// Creates a new [EventTargetSqsTarget].
   /// [messageGroupId] The FIFO message group ID to use as the target.

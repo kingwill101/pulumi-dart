@@ -6,17 +6,17 @@ import 'resource_server_scope.dart';
 /// Input properties used for looking up and filtering ResourceServer resources.
 class ResourceServerState {
   /// An identifier for the resource server.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// A name for the resource server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of all scopes configured for this resource server in the format identifier/scope_name.
-  final pulumi.Input<List<String>>? scopeIdentifiers;
+  final pulumi.Input<List<String>?>? scopeIdentifiers;
   /// A list of Authorization Scope.
-  final pulumi.Input<List<ResourceServerScope>>? scopes;
+  final pulumi.Input<List<ResourceServerScope>?>? scopes;
   /// User pool the client belongs to.
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [ResourceServerState].
   /// [identifier] An identifier for the resource server.

@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultContact {
   final pulumi.Input<String> email;
   /// Specifies the name of the Key Vault. Changing this forces a new resource to be created. The name must be globally unique. If the vault is in a recoverable state then the vault will need to be purged before reusing the name.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [KeyVaultContact].
   /// [email] Required.

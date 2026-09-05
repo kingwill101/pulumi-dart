@@ -7,11 +7,11 @@ import 'connector_log_delivery_worker_log_delivery_s3.dart';
 
 class ConnectorLogDeliveryWorkerLogDelivery {
   /// Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatchLogs` Block for details.
-  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs?>? cloudwatchLogs;
   /// Details about delivering logs to Amazon Kinesis Data Firehose. See `firehose` Block for details.
-  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryFirehose>? firehose;
+  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryFirehose?>? firehose;
   /// Details about delivering logs to Amazon S3. See `s3` Block for deetails.
-  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryS3>? s3;
+  final pulumi.Input<ConnectorLogDeliveryWorkerLogDeliveryS3?>? s3;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDelivery].
   /// [cloudwatchLogs] Details about delivering logs to Amazon CloudWatch Logs. See `cloudwatchLogs` Block for details.

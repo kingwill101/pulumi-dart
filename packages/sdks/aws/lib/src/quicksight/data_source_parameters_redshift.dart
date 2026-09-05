@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersRedshift {
   /// The ID of the cluster to which to connect.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The database to which to connect.
   final pulumi.Input<String> database;
   /// The host to which to connect.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The port to which to connect.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [DataSourceParametersRedshift].
   /// [clusterId] The ID of the cluster to which to connect.
@@ -38,7 +38,7 @@ class DataSourceParametersRedshift {
       clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: pulumi.Input.fromValue(map['database'] as String),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

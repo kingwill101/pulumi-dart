@@ -8,13 +8,13 @@ class GetLogsResult {
   final bool? discardHeaders;
   final bool? follow;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// If true populate computed value `logsListString`
   final bool? logsListStringEnabled;
   /// List of container logs, each element is a line.
-  final List<String> logsListStrings;
+  final List<String>? logsListStrings;
   /// The name of the Docker Container
-  final String name;
+  final String? name;
   final bool? showStderr;
   final bool? showStdout;
   final String? since;
@@ -40,10 +40,10 @@ class GetLogsResult {
     this.details,
     this.discardHeaders,
     this.follow,
-    required this.id,
+    this.id,
     this.logsListStringEnabled,
-    required this.logsListStrings,
-    required this.name,
+    this.logsListStrings,
+    this.name,
     this.showStderr,
     this.showStdout,
     this.since,
@@ -57,10 +57,10 @@ class GetLogsResult {
       'details': ?details,
       'discardHeaders': ?discardHeaders,
       'follow': ?follow,
-      'id': id,
+      'id': ?id,
       'logsListStringEnabled': ?logsListStringEnabled,
-      'logsListStrings': logsListStrings,
-      'name': name,
+      'logsListStrings': ?logsListStrings,
+      'name': ?name,
       'showStderr': ?showStderr,
       'showStdout': ?showStdout,
       'since': ?since,
@@ -75,10 +75,10 @@ class GetLogsResult {
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       discardHeaders: (() { final guardedValue = map['discardHeaders']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       follow: (() { final guardedValue = map['follow']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logsListStringEnabled: (() { final guardedValue = map['logsListStringEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      logsListStrings: (map['logsListStrings'] as List).cast<String>(),
-      name: map['name'] as String,
+      logsListStrings: (() { final guardedValue = map['logsListStrings']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       showStderr: (() { final guardedValue = map['showStderr']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       showStdout: (() { final guardedValue = map['showStdout']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       since: (() { final guardedValue = map['since']; if (guardedValue == null) return null; return guardedValue as String; })(),

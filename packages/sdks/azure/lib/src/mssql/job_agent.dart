@@ -132,7 +132,7 @@ import 'job_agent_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -142,7 +142,7 @@ import 'job_agent_state.dart';
 /// 		_, err = mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -316,14 +316,14 @@ class JobAgent extends pulumi.CustomResource {
           'azure:mssql/jobAgent:JobAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     databaseId = registerOutput<String>('databaseId');
     identity = registerOutput<JobAgentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAgentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [JobAgent] resource's state with the given [name] and [id].
@@ -331,11 +331,12 @@ class JobAgent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobAgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobAgent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,6 +355,23 @@ class JobAgent extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [JobAgent] resource.
+  JobAgent.reference(String urn)
+    : super(
+        'azure:mssql/jobAgent:JobAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    databaseId = registerOutput<String>('databaseId');
+    identity = registerOutput<JobAgentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAgentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

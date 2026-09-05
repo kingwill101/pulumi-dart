@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// Specifies the name of the Batch account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The base64-encoded contents of the certificate.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The generated name of the certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The public key of the certificate.
-  final pulumi.Input<String>? publicData;
+  final pulumi.Input<String?>? publicData;
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? thumbprintAlgorithm;
+  final pulumi.Input<String?>? thumbprintAlgorithm;
 
   /// Creates a new [CertificateState].
   /// [accountName] Specifies the name of the Batch account. Changing this forces a new resource to be created.

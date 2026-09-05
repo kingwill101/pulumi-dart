@@ -42,81 +42,81 @@ import 'automation_rule_criteria_workflow_status.dart';
 
 class AutomationRuleCriteria {
   /// The AWS account ID in which a finding was generated. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaAwsAccountId>>? awsAccountIds;
+  final pulumi.Input<List<AutomationRuleCriteriaAwsAccountId>?>? awsAccountIds;
   /// The name of the AWS account in which a finding was generated. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaAwsAccountName>>? awsAccountNames;
+  final pulumi.Input<List<AutomationRuleCriteriaAwsAccountName>?>? awsAccountNames;
   /// The name of the company for the product that generated the finding. For control-based findings, the company is AWS. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaCompanyName>>? companyNames;
+  final pulumi.Input<List<AutomationRuleCriteriaCompanyName>?>? companyNames;
   /// The unique identifier of a standard in which a control is enabled. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaComplianceAssociatedStandardsId>>? complianceAssociatedStandardsIds;
+  final pulumi.Input<List<AutomationRuleCriteriaComplianceAssociatedStandardsId>?>? complianceAssociatedStandardsIds;
   /// The security control ID for which a finding was generated. Security control IDs are the same across standards. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaComplianceSecurityControlId>>? complianceSecurityControlIds;
+  final pulumi.Input<List<AutomationRuleCriteriaComplianceSecurityControlId>?>? complianceSecurityControlIds;
   /// The result of a security check. This field is only used for findings generated from controls. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaComplianceStatus>>? complianceStatuses;
+  final pulumi.Input<List<AutomationRuleCriteriaComplianceStatus>?>? complianceStatuses;
   /// The likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. `Confidence` is scored on a 0–100 basis using a ratio scale. A value of `0` means 0 percent confidence, and a value of `100` means 100 percent confidence. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaConfidence>>? confidences;
+  final pulumi.Input<List<AutomationRuleCriteriaConfidence>?>? confidences;
   /// A timestamp that indicates when this finding record was created. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaCreatedAt>>? createdAts;
+  final pulumi.Input<List<AutomationRuleCriteriaCreatedAt>?>? createdAts;
   /// The level of importance that is assigned to the resources that are associated with a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaCriticality>>? criticalities;
+  final pulumi.Input<List<AutomationRuleCriteriaCriticality>?>? criticalities;
   /// A finding's description. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaDescription>>? descriptions;
+  final pulumi.Input<List<AutomationRuleCriteriaDescription>?>? descriptions;
   /// A timestamp that indicates when the potential security issue captured by a finding was first observed by the security findings product. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaFirstObservedAt>>? firstObservedAts;
+  final pulumi.Input<List<AutomationRuleCriteriaFirstObservedAt>?>? firstObservedAts;
   /// The identifier for the solution-specific component that generated a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaGeneratorId>>? generatorIds;
+  final pulumi.Input<List<AutomationRuleCriteriaGeneratorId>?>? generatorIds;
   /// The product-specific identifier for a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaId>>? ids;
+  final pulumi.Input<List<AutomationRuleCriteriaId>?>? ids;
   /// A timestamp that indicates when the potential security issue captured by a finding was most recently observed by the security findings product. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaLastObservedAt>>? lastObservedAts;
+  final pulumi.Input<List<AutomationRuleCriteriaLastObservedAt>?>? lastObservedAts;
   /// The text of a user-defined note that's added to a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaNoteText>>? noteTexts;
+  final pulumi.Input<List<AutomationRuleCriteriaNoteText>?>? noteTexts;
   /// The timestamp of when the note was updated. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaNoteUpdatedAt>>? noteUpdatedAts;
+  final pulumi.Input<List<AutomationRuleCriteriaNoteUpdatedAt>?>? noteUpdatedAts;
   /// The principal that created a note. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaNoteUpdatedBy>>? noteUpdatedBies;
-  /// The Amazon Resource Name (ARN) for a third-party product that generated a finding in Security Hub. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaProductArn>>? productArns;
+  final pulumi.Input<List<AutomationRuleCriteriaNoteUpdatedBy>?>? noteUpdatedBies;
+  /// ARN for a third-party product that generated a finding in Security Hub. Documented below.
+  final pulumi.Input<List<AutomationRuleCriteriaProductArn>?>? productArns;
   /// Provides the name of the product that generated the finding. For control-based findings, the product name is Security Hub. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaProductName>>? productNames;
+  final pulumi.Input<List<AutomationRuleCriteriaProductName>?>? productNames;
   /// Provides the current state of a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaRecordState>>? recordStates;
+  final pulumi.Input<List<AutomationRuleCriteriaRecordState>?>? recordStates;
   /// The product-generated identifier for a related finding.  Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaRelatedFindingsId>>? relatedFindingsIds;
+  final pulumi.Input<List<AutomationRuleCriteriaRelatedFindingsId>?>? relatedFindingsIds;
   /// The ARN for the product that generated a related finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaRelatedFindingsProductArn>>? relatedFindingsProductArns;
-  /// The Amazon Resource Name (ARN) of the application that is related to a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceApplicationArn>>? resourceApplicationArns;
+  final pulumi.Input<List<AutomationRuleCriteriaRelatedFindingsProductArn>?>? relatedFindingsProductArns;
+  /// ARN of the application that is related to a finding. Documented below.
+  final pulumi.Input<List<AutomationRuleCriteriaResourceApplicationArn>?>? resourceApplicationArns;
   /// The name of the application that is related to a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceApplicationName>>? resourceApplicationNames;
+  final pulumi.Input<List<AutomationRuleCriteriaResourceApplicationName>?>? resourceApplicationNames;
   /// Custom fields and values about the resource that a finding pertains to. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceDetailsOther>>? resourceDetailsOthers;
-  /// The identifier for the given resource type. For AWS resources that are identified by Amazon Resource Names (ARNs), this is the ARN. For AWS resources that lack ARNs, this is the identifier as defined by the AWS service that created the resource. For non-AWS resources, this is a unique identifier that is associated with the resource. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceId>>? resourceIds;
+  final pulumi.Input<List<AutomationRuleCriteriaResourceDetailsOther>?>? resourceDetailsOthers;
+  /// Identifier for the given resource type. For AWS resources that are identified by ARNs, this is the ARN. For AWS resources that lack ARNs, this is the identifier as defined by the AWS service that created the resource. For non-AWS resources, this is a unique identifier that is associated with the resource. Documented below.
+  final pulumi.Input<List<AutomationRuleCriteriaResourceId>?>? resourceIds;
   /// The partition in which the resource that the finding pertains to is located. A partition is a group of AWS Regions. Each AWS account is scoped to one partition. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourcePartition>>? resourcePartitions;
+  final pulumi.Input<List<AutomationRuleCriteriaResourcePartition>?>? resourcePartitions;
   /// The AWS Region where the resource that a finding pertains to is located. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceRegion>>? resourceRegions;
+  final pulumi.Input<List<AutomationRuleCriteriaResourceRegion>?>? resourceRegions;
   /// A list of AWS tags associated with a resource at the time the finding was processed. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceTag>>? resourceTags;
+  final pulumi.Input<List<AutomationRuleCriteriaResourceTag>?>? resourceTags;
   /// The type of resource that the finding pertains to. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaResourceType>>? resourceTypes;
+  final pulumi.Input<List<AutomationRuleCriteriaResourceType>?>? resourceTypes;
   /// The severity value of the finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaSeverityLabel>>? severityLabels;
+  final pulumi.Input<List<AutomationRuleCriteriaSeverityLabel>?>? severityLabels;
   /// Provides a URL that links to a page about the current finding in the finding product. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaSourceUrl>>? sourceUrls;
+  final pulumi.Input<List<AutomationRuleCriteriaSourceUrl>?>? sourceUrls;
   /// A finding's title. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaTitle>>? titles;
+  final pulumi.Input<List<AutomationRuleCriteriaTitle>?>? titles;
   /// One or more finding types in the format of namespace/category/classifier that classify a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaType>>? types;
+  final pulumi.Input<List<AutomationRuleCriteriaType>?>? types;
   /// A timestamp that indicates when the finding record was most recently updated. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaUpdatedAt>>? updatedAts;
+  final pulumi.Input<List<AutomationRuleCriteriaUpdatedAt>?>? updatedAts;
   /// A list of user-defined name and value string pairs added to a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaUserDefinedField>>? userDefinedFields;
+  final pulumi.Input<List<AutomationRuleCriteriaUserDefinedField>?>? userDefinedFields;
   /// Provides the veracity of a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaVerificationState>>? verificationStates;
+  final pulumi.Input<List<AutomationRuleCriteriaVerificationState>?>? verificationStates;
   /// Provides information about the status of the investigation into a finding. Documented below.
-  final pulumi.Input<List<AutomationRuleCriteriaWorkflowStatus>>? workflowStatuses;
+  final pulumi.Input<List<AutomationRuleCriteriaWorkflowStatus>?>? workflowStatuses;
 
   /// Creates a new [AutomationRuleCriteria].
   /// [awsAccountIds] The AWS account ID in which a finding was generated. Documented below.
@@ -136,15 +136,15 @@ class AutomationRuleCriteria {
   /// [noteTexts] The text of a user-defined note that's added to a finding. Documented below.
   /// [noteUpdatedAts] The timestamp of when the note was updated. Documented below.
   /// [noteUpdatedBies] The principal that created a note. Documented below.
-  /// [productArns] The Amazon Resource Name (ARN) for a third-party product that generated a finding in Security Hub. Documented below.
+  /// [productArns] ARN for a third-party product that generated a finding in Security Hub. Documented below.
   /// [productNames] Provides the name of the product that generated the finding. For control-based findings, the product name is Security Hub. Documented below.
   /// [recordStates] Provides the current state of a finding. Documented below.
   /// [relatedFindingsIds] The product-generated identifier for a related finding.  Documented below.
   /// [relatedFindingsProductArns] The ARN for the product that generated a related finding. Documented below.
-  /// [resourceApplicationArns] The Amazon Resource Name (ARN) of the application that is related to a finding. Documented below.
+  /// [resourceApplicationArns] ARN of the application that is related to a finding. Documented below.
   /// [resourceApplicationNames] The name of the application that is related to a finding. Documented below.
   /// [resourceDetailsOthers] Custom fields and values about the resource that a finding pertains to. Documented below.
-  /// [resourceIds] The identifier for the given resource type. For AWS resources that are identified by Amazon Resource Names (ARNs), this is the ARN. For AWS resources that lack ARNs, this is the identifier as defined by the AWS service that created the resource. For non-AWS resources, this is a unique identifier that is associated with the resource. Documented below.
+  /// [resourceIds] Identifier for the given resource type. For AWS resources that are identified by ARNs, this is the ARN. For AWS resources that lack ARNs, this is the identifier as defined by the AWS service that created the resource. For non-AWS resources, this is a unique identifier that is associated with the resource. Documented below.
   /// [resourcePartitions] The partition in which the resource that the finding pertains to is located. A partition is a group of AWS Regions. Each AWS account is scoped to one partition. Documented below.
   /// [resourceRegions] The AWS Region where the resource that a finding pertains to is located. Documented below.
   /// [resourceTags] A list of AWS tags associated with a resource at the time the finding was processed. Documented below.

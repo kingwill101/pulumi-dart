@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppQuietTime {
   /// Default end time for quiet time in ISO 8601 format. Required if `start` is set.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// Default start time for quiet time in ISO 8601 format. Required if `end` is set.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [AppQuietTime].
   /// [end] Default end time for quiet time in ISO 8601 format. Required if `start` is set.

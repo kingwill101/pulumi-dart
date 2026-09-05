@@ -162,7 +162,7 @@ import 'spring_cloud_build_deployment_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudBuildDeployment(ctx, "example", &appplatform.SpringCloudBuildDeploymentArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 			BuildResultId:    pulumi.String("<default>"),
 /// 			InstanceCount:    pulumi.Int(2),
 /// 			EnvironmentVariables: pulumi.StringMap{
@@ -360,12 +360,12 @@ class SpringCloudBuildDeployment extends pulumi.CustomResource {
           'azure:appplatform/springCloudBuildDeployment:SpringCloudBuildDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     buildResultId = registerOutput<String>('buildResultId');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');
     quota = registerOutput<SpringCloudBuildDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuildDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -377,11 +377,12 @@ class SpringCloudBuildDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudBuildDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudBuildDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,9 +397,28 @@ class SpringCloudBuildDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     buildResultId = registerOutput<String>('buildResultId');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    instanceCount = registerOutput<int?>('instanceCount');
+    this.name = registerOutput<String>('name');
+    quota = registerOutput<SpringCloudBuildDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuildDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudBuildDeployment] resource.
+  SpringCloudBuildDeployment.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudBuildDeployment:SpringCloudBuildDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonJson = registerOutput<String>('addonJson');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    buildResultId = registerOutput<String>('buildResultId');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');
     quota = registerOutput<SpringCloudBuildDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuildDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_connection_args.dart';
+import 'vpn_connection_route.dart';
 import 'vpn_connection_state.dart';
 import 'vpn_connection_tunnel1_log_options.dart';
 import 'vpn_connection_tunnel2_log_options.dart';
+import 'vpn_connection_vgw_telemetry.dart';
 
-/// Manages a Site-to-Site VPN connection. A Site-to-Site VPN connection is an Internet Protocol security (IPsec) VPN connection between a VPC and an on-premises network.
+/// Manages a Site-to-Site VPN connection. A Site-to-Site VPN connection is an IP security (IPsec) VPN connection between a VPC and an on-premises network.
 /// Any new Site-to-Site VPN connection that you create is an [AWS VPN connection](https://docs.aws.amazon.com/vpn/latest/s2svpn/vpn-categories.html).
 ///
 /// &gt; **Note:** The CIDR blocks in the arguments `tunnel1InsideCidr` and `tunnel2InsideCidr` must have a prefix of /30 and be a part of a specific range.
@@ -807,7 +809,7 @@ import 'vpn_connection_tunnel2_log_options.dart';
 /// $ pulumi import aws:ec2/vpnConnection:VpnConnection testvpnconnection vpn-40f41529
 /// ```
 class VpnConnection extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the VPN Connection.
+  /// ARN of the VPN Connection.
   late final pulumi.Output<String> arn;
   /// The ARN of the core network.
   late final pulumi.Output<String> coreNetworkArn;
@@ -836,7 +838,7 @@ class VpnConnection extends pulumi.CustomResource {
   /// The IPv6 CIDR on the AWS side of the VPN connection.
   late final pulumi.Output<String> remoteIpv6NetworkCidr;
   /// The static routes associated with the VPN connection. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<VpnConnectionRoute>> routes;
   /// Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP.
   late final pulumi.Output<bool> staticRoutesOnly;
   /// Tags to apply to the connection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -956,7 +958,7 @@ class VpnConnection extends pulumi.CustomResource {
   /// The type of VPN connection. The only type AWS supports at this time is "ipsec.1".
   late final pulumi.Output<String> type;
   /// Telemetry for the VPN tunnels. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vgwTelemetries;
+  late final pulumi.Output<List<VpnConnectionVgwTelemetry>> vgwTelemetries;
   /// ID of the VPN concentrator to associate with the VPN connection.
   late final pulumi.Output<String?> vpnConcentratorId;
   /// The ID of the Virtual Private Gateway.
@@ -974,12 +976,13 @@ class VpnConnection extends pulumi.CustomResource {
           'aws:ec2/vpnConnection:VpnConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['customerGatewayConfiguration', 'tunnel1PresharedKey', 'tunnel2PresharedKey'],
         ) {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkAttachmentArn = registerOutput<String>('coreNetworkAttachmentArn');
-    customerGatewayConfiguration = registerOutput<String>('customerGatewayConfiguration');
+    customerGatewayConfiguration = registerOutput<String>('customerGatewayConfiguration', isSecret: true);
     customerGatewayId = registerOutput<String>('customerGatewayId');
     enableAcceleration = registerOutput<bool>('enableAcceleration');
     localIpv4NetworkCidr = registerOutput<String>('localIpv4NetworkCidr');
@@ -990,10 +993,10 @@ class VpnConnection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     remoteIpv4NetworkCidr = registerOutput<String>('remoteIpv4NetworkCidr');
     remoteIpv6NetworkCidr = registerOutput<String>('remoteIpv6NetworkCidr');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VpnConnectionRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionRoute>(guardedValue, (value) => VpnConnectionRoute.fromMap((value as Map).cast<String, dynamic>())); });
     staticRoutesOnly = registerOutput<bool>('staticRoutesOnly');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     transportTransitGatewayAttachmentId = registerOutput<String?>('transportTransitGatewayAttachmentId');
@@ -1004,19 +1007,19 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel1DpdTimeoutAction = registerOutput<String?>('tunnel1DpdTimeoutAction');
     tunnel1DpdTimeoutSeconds = registerOutput<int?>('tunnel1DpdTimeoutSeconds');
     tunnel1EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel1EnableTunnelLifecycleControl');
-    tunnel1IkeVersions = registerOutput<List<String>?>('tunnel1IkeVersions');
+    tunnel1IkeVersions = registerOutput<List<String>?>('tunnel1IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1InsideCidr = registerOutput<String>('tunnel1InsideCidr');
     tunnel1InsideIpv6Cidr = registerOutput<String>('tunnel1InsideIpv6Cidr');
     tunnel1LogOptions = registerOutput<VpnConnectionTunnel1LogOptions>('tunnel1LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel1LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers');
-    tunnel1Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms');
-    tunnel1Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms');
+    tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1Phase1LifetimeSeconds = registerOutput<int?>('tunnel1Phase1LifetimeSeconds');
-    tunnel1Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers');
-    tunnel1Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms');
-    tunnel1Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms');
+    tunnel1Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1Phase2LifetimeSeconds = registerOutput<int?>('tunnel1Phase2LifetimeSeconds');
-    tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey');
+    tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey', isSecret: true);
     tunnel1RekeyFuzzPercentage = registerOutput<int?>('tunnel1RekeyFuzzPercentage');
     tunnel1RekeyMarginTimeSeconds = registerOutput<int?>('tunnel1RekeyMarginTimeSeconds');
     tunnel1ReplayWindowSize = registerOutput<int?>('tunnel1ReplayWindowSize');
@@ -1029,19 +1032,19 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel2DpdTimeoutAction = registerOutput<String?>('tunnel2DpdTimeoutAction');
     tunnel2DpdTimeoutSeconds = registerOutput<int?>('tunnel2DpdTimeoutSeconds');
     tunnel2EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel2EnableTunnelLifecycleControl');
-    tunnel2IkeVersions = registerOutput<List<String>?>('tunnel2IkeVersions');
+    tunnel2IkeVersions = registerOutput<List<String>?>('tunnel2IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2InsideCidr = registerOutput<String>('tunnel2InsideCidr');
     tunnel2InsideIpv6Cidr = registerOutput<String>('tunnel2InsideIpv6Cidr');
     tunnel2LogOptions = registerOutput<VpnConnectionTunnel2LogOptions>('tunnel2LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel2LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers');
-    tunnel2Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms');
-    tunnel2Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms');
+    tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2Phase1LifetimeSeconds = registerOutput<int?>('tunnel2Phase1LifetimeSeconds');
-    tunnel2Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers');
-    tunnel2Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms');
-    tunnel2Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms');
+    tunnel2Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2Phase2LifetimeSeconds = registerOutput<int?>('tunnel2Phase2LifetimeSeconds');
-    tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey');
+    tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey', isSecret: true);
     tunnel2RekeyFuzzPercentage = registerOutput<int?>('tunnel2RekeyFuzzPercentage');
     tunnel2RekeyMarginTimeSeconds = registerOutput<int?>('tunnel2RekeyMarginTimeSeconds');
     tunnel2ReplayWindowSize = registerOutput<int?>('tunnel2ReplayWindowSize');
@@ -1050,7 +1053,7 @@ class VpnConnection extends pulumi.CustomResource {
     tunnelBandwidth = registerOutput<String>('tunnelBandwidth');
     tunnelInsideIpVersion = registerOutput<String>('tunnelInsideIpVersion');
     type = registerOutput<String>('type');
-    vgwTelemetries = registerOutput<List<Map<String, dynamic>>>('vgwTelemetries');
+    vgwTelemetries = registerOutput<List<VpnConnectionVgwTelemetry>>('vgwTelemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionVgwTelemetry>(guardedValue, (value) => VpnConnectionVgwTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
     vpnConcentratorId = registerOutput<String?>('vpnConcentratorId');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }
@@ -1060,11 +1063,12 @@ class VpnConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1081,7 +1085,7 @@ class VpnConnection extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkAttachmentArn = registerOutput<String>('coreNetworkAttachmentArn');
-    customerGatewayConfiguration = registerOutput<String>('customerGatewayConfiguration');
+    customerGatewayConfiguration = registerOutput<String>('customerGatewayConfiguration', isSecret: true);
     customerGatewayId = registerOutput<String>('customerGatewayId');
     enableAcceleration = registerOutput<bool>('enableAcceleration');
     localIpv4NetworkCidr = registerOutput<String>('localIpv4NetworkCidr');
@@ -1092,10 +1096,10 @@ class VpnConnection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     remoteIpv4NetworkCidr = registerOutput<String>('remoteIpv4NetworkCidr');
     remoteIpv6NetworkCidr = registerOutput<String>('remoteIpv6NetworkCidr');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VpnConnectionRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionRoute>(guardedValue, (value) => VpnConnectionRoute.fromMap((value as Map).cast<String, dynamic>())); });
     staticRoutesOnly = registerOutput<bool>('staticRoutesOnly');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayId = registerOutput<String?>('transitGatewayId');
     transportTransitGatewayAttachmentId = registerOutput<String?>('transportTransitGatewayAttachmentId');
@@ -1106,19 +1110,19 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel1DpdTimeoutAction = registerOutput<String?>('tunnel1DpdTimeoutAction');
     tunnel1DpdTimeoutSeconds = registerOutput<int?>('tunnel1DpdTimeoutSeconds');
     tunnel1EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel1EnableTunnelLifecycleControl');
-    tunnel1IkeVersions = registerOutput<List<String>?>('tunnel1IkeVersions');
+    tunnel1IkeVersions = registerOutput<List<String>?>('tunnel1IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1InsideCidr = registerOutput<String>('tunnel1InsideCidr');
     tunnel1InsideIpv6Cidr = registerOutput<String>('tunnel1InsideIpv6Cidr');
     tunnel1LogOptions = registerOutput<VpnConnectionTunnel1LogOptions>('tunnel1LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel1LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers');
-    tunnel1Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms');
-    tunnel1Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms');
+    tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1Phase1LifetimeSeconds = registerOutput<int?>('tunnel1Phase1LifetimeSeconds');
-    tunnel1Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers');
-    tunnel1Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms');
-    tunnel1Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms');
+    tunnel1Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel1Phase2LifetimeSeconds = registerOutput<int?>('tunnel1Phase2LifetimeSeconds');
-    tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey');
+    tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey', isSecret: true);
     tunnel1RekeyFuzzPercentage = registerOutput<int?>('tunnel1RekeyFuzzPercentage');
     tunnel1RekeyMarginTimeSeconds = registerOutput<int?>('tunnel1RekeyMarginTimeSeconds');
     tunnel1ReplayWindowSize = registerOutput<int?>('tunnel1ReplayWindowSize');
@@ -1131,19 +1135,19 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel2DpdTimeoutAction = registerOutput<String?>('tunnel2DpdTimeoutAction');
     tunnel2DpdTimeoutSeconds = registerOutput<int?>('tunnel2DpdTimeoutSeconds');
     tunnel2EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel2EnableTunnelLifecycleControl');
-    tunnel2IkeVersions = registerOutput<List<String>?>('tunnel2IkeVersions');
+    tunnel2IkeVersions = registerOutput<List<String>?>('tunnel2IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2InsideCidr = registerOutput<String>('tunnel2InsideCidr');
     tunnel2InsideIpv6Cidr = registerOutput<String>('tunnel2InsideIpv6Cidr');
     tunnel2LogOptions = registerOutput<VpnConnectionTunnel2LogOptions>('tunnel2LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel2LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers');
-    tunnel2Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms');
-    tunnel2Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms');
+    tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2Phase1LifetimeSeconds = registerOutput<int?>('tunnel2Phase1LifetimeSeconds');
-    tunnel2Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers');
-    tunnel2Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms');
-    tunnel2Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms');
+    tunnel2Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tunnel2Phase2LifetimeSeconds = registerOutput<int?>('tunnel2Phase2LifetimeSeconds');
-    tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey');
+    tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey', isSecret: true);
     tunnel2RekeyFuzzPercentage = registerOutput<int?>('tunnel2RekeyFuzzPercentage');
     tunnel2RekeyMarginTimeSeconds = registerOutput<int?>('tunnel2RekeyMarginTimeSeconds');
     tunnel2ReplayWindowSize = registerOutput<int?>('tunnel2ReplayWindowSize');
@@ -1152,7 +1156,96 @@ class VpnConnection extends pulumi.CustomResource {
     tunnelBandwidth = registerOutput<String>('tunnelBandwidth');
     tunnelInsideIpVersion = registerOutput<String>('tunnelInsideIpVersion');
     type = registerOutput<String>('type');
-    vgwTelemetries = registerOutput<List<Map<String, dynamic>>>('vgwTelemetries');
+    vgwTelemetries = registerOutput<List<VpnConnectionVgwTelemetry>>('vgwTelemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionVgwTelemetry>(guardedValue, (value) => VpnConnectionVgwTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
+    vpnConcentratorId = registerOutput<String?>('vpnConcentratorId');
+    vpnGatewayId = registerOutput<String?>('vpnGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [VpnConnection] resource.
+  VpnConnection.reference(String urn)
+    : super(
+        'aws:ec2/vpnConnection:VpnConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customerGatewayConfiguration', 'tunnel1PresharedKey', 'tunnel2PresharedKey'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkAttachmentArn = registerOutput<String>('coreNetworkAttachmentArn');
+    customerGatewayConfiguration = registerOutput<String>('customerGatewayConfiguration', isSecret: true);
+    customerGatewayId = registerOutput<String>('customerGatewayId');
+    enableAcceleration = registerOutput<bool>('enableAcceleration');
+    localIpv4NetworkCidr = registerOutput<String>('localIpv4NetworkCidr');
+    localIpv6NetworkCidr = registerOutput<String>('localIpv6NetworkCidr');
+    outsideIpAddressType = registerOutput<String>('outsideIpAddressType');
+    presharedKeyArn = registerOutput<String>('presharedKeyArn');
+    presharedKeyStorage = registerOutput<String>('presharedKeyStorage');
+    region = registerOutput<String>('region');
+    remoteIpv4NetworkCidr = registerOutput<String>('remoteIpv4NetworkCidr');
+    remoteIpv6NetworkCidr = registerOutput<String>('remoteIpv6NetworkCidr');
+    routes = registerOutput<List<VpnConnectionRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionRoute>(guardedValue, (value) => VpnConnectionRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    staticRoutesOnly = registerOutput<bool>('staticRoutesOnly');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayId = registerOutput<String?>('transitGatewayId');
+    transportTransitGatewayAttachmentId = registerOutput<String?>('transportTransitGatewayAttachmentId');
+    tunnel1Address = registerOutput<String>('tunnel1Address');
+    tunnel1BgpAsn = registerOutput<String>('tunnel1BgpAsn');
+    tunnel1BgpHoldtime = registerOutput<int>('tunnel1BgpHoldtime');
+    tunnel1CgwInsideAddress = registerOutput<String>('tunnel1CgwInsideAddress');
+    tunnel1DpdTimeoutAction = registerOutput<String?>('tunnel1DpdTimeoutAction');
+    tunnel1DpdTimeoutSeconds = registerOutput<int?>('tunnel1DpdTimeoutSeconds');
+    tunnel1EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel1EnableTunnelLifecycleControl');
+    tunnel1IkeVersions = registerOutput<List<String>?>('tunnel1IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1InsideCidr = registerOutput<String>('tunnel1InsideCidr');
+    tunnel1InsideIpv6Cidr = registerOutput<String>('tunnel1InsideIpv6Cidr');
+    tunnel1LogOptions = registerOutput<VpnConnectionTunnel1LogOptions>('tunnel1LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel1LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase1LifetimeSeconds = registerOutput<int?>('tunnel1Phase1LifetimeSeconds');
+    tunnel1Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel1Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel1Phase2LifetimeSeconds = registerOutput<int?>('tunnel1Phase2LifetimeSeconds');
+    tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey', isSecret: true);
+    tunnel1RekeyFuzzPercentage = registerOutput<int?>('tunnel1RekeyFuzzPercentage');
+    tunnel1RekeyMarginTimeSeconds = registerOutput<int?>('tunnel1RekeyMarginTimeSeconds');
+    tunnel1ReplayWindowSize = registerOutput<int?>('tunnel1ReplayWindowSize');
+    tunnel1StartupAction = registerOutput<String?>('tunnel1StartupAction');
+    tunnel1VgwInsideAddress = registerOutput<String>('tunnel1VgwInsideAddress');
+    tunnel2Address = registerOutput<String>('tunnel2Address');
+    tunnel2BgpAsn = registerOutput<String>('tunnel2BgpAsn');
+    tunnel2BgpHoldtime = registerOutput<int>('tunnel2BgpHoldtime');
+    tunnel2CgwInsideAddress = registerOutput<String>('tunnel2CgwInsideAddress');
+    tunnel2DpdTimeoutAction = registerOutput<String?>('tunnel2DpdTimeoutAction');
+    tunnel2DpdTimeoutSeconds = registerOutput<int?>('tunnel2DpdTimeoutSeconds');
+    tunnel2EnableTunnelLifecycleControl = registerOutput<bool?>('tunnel2EnableTunnelLifecycleControl');
+    tunnel2IkeVersions = registerOutput<List<String>?>('tunnel2IkeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2InsideCidr = registerOutput<String>('tunnel2InsideCidr');
+    tunnel2InsideIpv6Cidr = registerOutput<String>('tunnel2InsideIpv6Cidr');
+    tunnel2LogOptions = registerOutput<VpnConnectionTunnel2LogOptions>('tunnel2LogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnConnectionTunnel2LogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase1EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase1IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase1LifetimeSeconds = registerOutput<int?>('tunnel2Phase1LifetimeSeconds');
+    tunnel2Phase2DhGroupNumbers = registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    tunnel2Phase2EncryptionAlgorithms = registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase2IntegrityAlgorithms = registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tunnel2Phase2LifetimeSeconds = registerOutput<int?>('tunnel2Phase2LifetimeSeconds');
+    tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey', isSecret: true);
+    tunnel2RekeyFuzzPercentage = registerOutput<int?>('tunnel2RekeyFuzzPercentage');
+    tunnel2RekeyMarginTimeSeconds = registerOutput<int?>('tunnel2RekeyMarginTimeSeconds');
+    tunnel2ReplayWindowSize = registerOutput<int?>('tunnel2ReplayWindowSize');
+    tunnel2StartupAction = registerOutput<String?>('tunnel2StartupAction');
+    tunnel2VgwInsideAddress = registerOutput<String>('tunnel2VgwInsideAddress');
+    tunnelBandwidth = registerOutput<String>('tunnelBandwidth');
+    tunnelInsideIpVersion = registerOutput<String>('tunnelInsideIpVersion');
+    type = registerOutput<String>('type');
+    vgwTelemetries = registerOutput<List<VpnConnectionVgwTelemetry>>('vgwTelemetries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnConnectionVgwTelemetry>(guardedValue, (value) => VpnConnectionVgwTelemetry.fromMap((value as Map).cast<String, dynamic>())); });
     vpnConcentratorId = registerOutput<String?>('vpnConcentratorId');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }

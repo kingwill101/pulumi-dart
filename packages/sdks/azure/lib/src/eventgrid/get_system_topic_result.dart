@@ -6,78 +6,78 @@ import 'get_system_topic_identity.dart';
 /// Result data returned by getSystemTopic.
 class GetSystemTopicResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below, which contains the Managed Service Identity information for this Event Grid System Topic.
-  final List<GetSystemTopicIdentity> identities;
-  final String location;
-  final String metricArmResourceId;
+  final List<GetSystemTopicIdentity>? identities;
+  final String? location;
+  final String? metricArmResourceId;
   /// The Metric Resource ID of the Event Grid System Topic.
-  final String metricResourceId;
-  final String name;
-  final String resourceGroupName;
-  final String sourceArmResourceId;
+  final String? metricResourceId;
+  final String? name;
+  final String? resourceGroupName;
+  final String? sourceArmResourceId;
   /// The ID of the Event Grid System Topic ARM Source.
-  final String sourceResourceId;
+  final String? sourceResourceId;
   /// A mapping of tags which are assigned to the Event Grid System Topic.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The Topic Type of the Event Grid System Topic.
-  final String topicType;
+  final String? topicType;
 
   /// Creates a new [GetSystemTopicResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below, which contains the Managed Service Identity information for this Event Grid System Topic.
-  /// [location] Required.
-  /// [metricArmResourceId] Required.
+  /// [location] Optional.
+  /// [metricArmResourceId] Optional.
   /// [metricResourceId] The Metric Resource ID of the Event Grid System Topic.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
-  /// [sourceArmResourceId] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
+  /// [sourceArmResourceId] Optional.
   /// [sourceResourceId] The ID of the Event Grid System Topic ARM Source.
   /// [tags] A mapping of tags which are assigned to the Event Grid System Topic.
   /// [topicType] The Topic Type of the Event Grid System Topic.
   const GetSystemTopicResult({
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.metricArmResourceId,
-    required this.metricResourceId,
-    required this.name,
-    required this.resourceGroupName,
-    required this.sourceArmResourceId,
-    required this.sourceResourceId,
-    required this.tags,
-    required this.topicType,
+    this.id,
+    this.identities,
+    this.location,
+    this.metricArmResourceId,
+    this.metricResourceId,
+    this.name,
+    this.resourceGroupName,
+    this.sourceArmResourceId,
+    this.sourceResourceId,
+    this.tags,
+    this.topicType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetSystemTopicIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'metricArmResourceId': metricArmResourceId,
-      'metricResourceId': metricResourceId,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'sourceArmResourceId': sourceArmResourceId,
-      'sourceResourceId': sourceResourceId,
-      'tags': tags,
-      'topicType': topicType,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSystemTopicIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'metricArmResourceId': ?metricArmResourceId,
+      'metricResourceId': ?metricResourceId,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'sourceArmResourceId': ?sourceArmResourceId,
+      'sourceResourceId': ?sourceResourceId,
+      'tags': ?tags,
+      'topicType': ?topicType,
     };
   }
 
   factory GetSystemTopicResult.fromMap(Map<String, dynamic> map) {
     return GetSystemTopicResult(
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetSystemTopicIdentity>(map['identities']!, (value) => GetSystemTopicIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      metricArmResourceId: map['metricArmResourceId'] as String,
-      metricResourceId: map['metricResourceId'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      sourceArmResourceId: map['sourceArmResourceId'] as String,
-      sourceResourceId: map['sourceResourceId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      topicType: map['topicType'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSystemTopicIdentity>(guardedValue, (value) => GetSystemTopicIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metricArmResourceId: (() { final guardedValue = map['metricArmResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metricResourceId: (() { final guardedValue = map['metricResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceArmResourceId: (() { final guardedValue = map['sourceArmResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      topicType: (() { final guardedValue = map['topicType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

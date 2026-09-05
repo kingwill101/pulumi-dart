@@ -6,11 +6,11 @@ class AccountIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Purview Account.
   ///
   /// &gt; **Note:** This is required when `type` is set to `SystemAssigned, UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `SystemAssigned` and `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

@@ -9,19 +9,19 @@ import 'workgroup_configuration.dart';
 /// {@macro pulumi_athena_workgroup_workgroup_args_doc}
 class WorkgroupArgs {
   /// Configuration block with various settings for the workgroup. Documented below.
-  final pulumi.Input<WorkgroupConfiguration>? configuration;
+  final pulumi.Input<WorkgroupConfiguration?>? configuration;
   /// Description of the workgroup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Option to delete the workgroup and its contents even if the workgroup contains any named queries.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Name of the workgroup.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value map of resource tags for the workgroup. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WorkgroupArgs].
   /// [configuration] Configuration block with various settings for the workgroup. Documented below.

@@ -133,7 +133,7 @@ class ContributorInsights extends pulumi.CustomResource {
           'aws:dynamodb/contributorInsights:ContributorInsights',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     indexName = registerOutput<String?>('indexName');
     mode = registerOutput<String>('mode');
@@ -146,11 +146,12 @@ class ContributorInsights extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContributorInsightsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContributorInsights._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -164,6 +165,21 @@ class ContributorInsights extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    indexName = registerOutput<String?>('indexName');
+    mode = registerOutput<String>('mode');
+    region = registerOutput<String>('region');
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [ContributorInsights] resource.
+  ContributorInsights.reference(String urn)
+    : super(
+        'aws:dynamodb/contributorInsights:ContributorInsights',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     indexName = registerOutput<String?>('indexName');
     mode = registerOutput<String>('mode');
     region = registerOutput<String>('region');

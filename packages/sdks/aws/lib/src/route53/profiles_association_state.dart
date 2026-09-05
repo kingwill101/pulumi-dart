@@ -5,25 +5,25 @@ import 'profiles_association_timeouts.dart';
 
 /// Input properties used for looking up and filtering ProfilesAssociation resources.
 class ProfilesAssociationState {
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? ownerId;
   /// ID of the profile associated with the VPC.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource ID of the VPC the profile to be associated with.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Status of the Profile Association.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Status message of the Profile Association.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ProfilesAssociationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ProfilesAssociationTimeouts?>? timeouts;
 
   /// Creates a new [ProfilesAssociationState].
   /// [arn] Optional.

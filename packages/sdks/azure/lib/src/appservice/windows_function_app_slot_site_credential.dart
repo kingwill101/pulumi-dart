@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppSlotSiteCredential {
   /// The Site Credentials Username used for publishing.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Site Credentials Password used for publishing.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [WindowsFunctionAppSlotSiteCredential].
   /// [name] The Site Credentials Username used for publishing.

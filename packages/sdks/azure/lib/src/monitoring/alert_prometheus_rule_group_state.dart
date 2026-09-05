@@ -6,25 +6,25 @@ import 'alert_prometheus_rule_group_rule.dart';
 /// Input properties used for looking up and filtering AlertPrometheusRuleGroup resources.
 class AlertPrometheusRuleGroupState {
   /// Specifies the name of the Managed Kubernetes Cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The description of the Alert Management Prometheus Rule Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the interval in which to run the Alert Management Prometheus Rule Group represented in ISO 8601 duration format. Possible values are between `PT1M` and `PT15M`.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// Specifies the Azure Region where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Alert Management Prometheus Rule Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Is this Alert Management Prometheus Rule Group enabled? Possible values are `true` and `false`.
-  final pulumi.Input<bool>? ruleGroupEnabled;
+  final pulumi.Input<bool?>? ruleGroupEnabled;
   /// One or more `rule` blocks as defined below.
-  final pulumi.Input<List<AlertPrometheusRuleGroupRule>>? rules;
+  final pulumi.Input<List<AlertPrometheusRuleGroupRule>?>? rules;
   /// Specifies the resource ID of the Azure Monitor Workspace.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// A mapping of tags to assign to the Alert Management Prometheus Rule Group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AlertPrometheusRuleGroupState].
   /// [clusterName] Specifies the name of the Managed Kubernetes Cluster.

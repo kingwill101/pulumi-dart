@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_implicit_data_disk_from_source_implicit_data_disk_from_source_args_doc}
 class ImplicitDataDiskFromSourceArgs {
   /// Specifies the caching requirements for this Data Disk. Possible values are `ReadOnly` and `ReadWrite`.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<String?>? caching;
   /// Specifies the Create Option of the Data Disk. The only possible value is `Copy`. Changing this forces a new resource to be created.
   final pulumi.Input<String> createOption;
   /// Specifies the size of the Data Disk in gigabytes.
@@ -24,13 +24,13 @@ class ImplicitDataDiskFromSourceArgs {
   /// The Logical Unit Number of the Data Disk, which needs to be unique within the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<int> lun;
   /// Specifies the name of this Data Disk. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the source resource which this Data Disk was created from. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceResourceId;
   /// The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineId;
   /// Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
-  final pulumi.Input<bool>? writeAcceleratorEnabled;
+  final pulumi.Input<bool?>? writeAcceleratorEnabled;
 
   /// Creates a new [ImplicitDataDiskFromSourceArgs].
   /// [caching] Specifies the caching requirements for this Data Disk. Possible values are `ReadOnly` and `ReadWrite`.
@@ -69,8 +69,8 @@ class ImplicitDataDiskFromSourceArgs {
     return ImplicitDataDiskFromSourceArgs(
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createOption: pulumi.Input.fromValue(map['createOption'] as String),
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      lun: pulumi.Input.fromValue((map['lun'] as num).toInt()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceResourceId: pulumi.Input.fromValue(map['sourceResourceId'] as String),
       virtualMachineId: pulumi.Input.fromValue(map['virtualMachineId'] as String),

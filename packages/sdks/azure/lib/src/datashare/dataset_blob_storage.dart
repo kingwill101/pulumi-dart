@@ -40,7 +40,7 @@ class DatasetBlobStorage extends pulumi.CustomResource {
           'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerName = registerOutput<String>('containerName');
     dataShareId = registerOutput<String>('dataShareId');
@@ -56,11 +56,12 @@ class DatasetBlobStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetBlobStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetBlobStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -74,6 +75,24 @@ class DatasetBlobStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerName = registerOutput<String>('containerName');
+    dataShareId = registerOutput<String>('dataShareId');
+    displayName = registerOutput<String>('displayName');
+    filePath = registerOutput<String?>('filePath');
+    folderPath = registerOutput<String?>('folderPath');
+    this.name = registerOutput<String>('name');
+    storageAccount = registerOutput<DatasetBlobStorageStorageAccount>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetBlobStorageStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetBlobStorage] resource.
+  DatasetBlobStorage.reference(String urn)
+    : super(
+        'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerName = registerOutput<String>('containerName');
     dataShareId = registerOutput<String>('dataShareId');
     displayName = registerOutput<String>('displayName');

@@ -24,7 +24,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughpu
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      volumeThroughput: pulumi.Input.fromValue(map['volumeThroughput'] as int),
+      volumeThroughput: pulumi.Input.fromValue((map['volumeThroughput'] as num).toInt()),
     );
   }
 }

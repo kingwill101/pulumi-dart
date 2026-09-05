@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CoreNetworkEdge {
   /// ASN of a core network edge.
-  final pulumi.Input<int>? asn;
+  final pulumi.Input<int?>? asn;
   /// Region where a core network edge is located.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// Inside IP addresses used for core network edges.
-  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<List<String>?>? insideCidrBlocks;
 
   /// Creates a new [CoreNetworkEdge].
   /// [asn] ASN of a core network edge.
@@ -30,7 +30,7 @@ class CoreNetworkEdge {
 
   factory CoreNetworkEdge.fromMap(Map<String, dynamic> map) {
     return CoreNetworkEdge(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       edgeLocation: (() { final guardedValue = map['edgeLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       insideCidrBlocks: (() { final guardedValue = map['insideCidrBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

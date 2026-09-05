@@ -10,35 +10,35 @@ import 'security_solution_recommendations_enabled.dart';
 /// {@macro pulumi_iot_security_solution_security_solution_args_doc}
 class SecuritySolutionArgs {
   /// A `additionalWorkspace` block as defined below.
-  final pulumi.Input<List<SecuritySolutionAdditionalWorkspace>>? additionalWorkspaces;
+  final pulumi.Input<List<SecuritySolutionAdditionalWorkspace>?>? additionalWorkspaces;
   /// A list of disabled data sources for the Iot Security Solution. Possible value is `TwinData`.
-  final pulumi.Input<List<String>>? disabledDataSources;
+  final pulumi.Input<List<String>?>? disabledDataSources;
   /// Specifies the Display Name for this Iot Security Solution.
   final pulumi.Input<String> displayName;
   /// Is the Iot Security Solution enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A list of data which is to exported to analytic workspace. Valid values include `RawEvents`.
-  final pulumi.Input<List<String>>? eventsToExports;
+  final pulumi.Input<List<String>?>? eventsToExports;
   /// Specifies the IoT Hub resource IDs to which this Iot Security Solution is applied.
   final pulumi.Input<List<String>> iothubIds;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the Log Analytics Workspace ID to which the security data will be sent.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// Should IP addressed be unmasked in the log? Defaults to `false`.
-  final pulumi.Input<bool>? logUnmaskedIpsEnabled;
+  final pulumi.Input<bool?>? logUnmaskedIpsEnabled;
   /// Specifies the name of the Iot Security Solution. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An Azure Resource Graph query used to set the resources monitored.
-  final pulumi.Input<String>? queryForResources;
+  final pulumi.Input<String?>? queryForResources;
   /// A list of subscription Ids on which the user defined resources query should be executed.
-  final pulumi.Input<List<String>>? querySubscriptionIds;
+  final pulumi.Input<List<String>?>? querySubscriptionIds;
   /// A `recommendationsEnabled` block of options to enable or disable as defined below.
-  final pulumi.Input<SecuritySolutionRecommendationsEnabled>? recommendationsEnabled;
+  final pulumi.Input<SecuritySolutionRecommendationsEnabled?>? recommendationsEnabled;
   /// Specifies the name of the resource group in which to create the Iot Security Solution. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SecuritySolutionArgs].
   /// [additionalWorkspaces] A `additionalWorkspace` block as defined below.

@@ -143,13 +143,13 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String> appName;
   /// The type of app. Valid values are `JupyterServer`, `KernelGateway`, `RStudioServerPro`, `RSessionGateway`, `TensorBoard`, `CodeEditor`, `JupyterLab`, `DetailedProfiler`, and `Canvas`.
   late final pulumi.Output<String> appType;
-  /// The Amazon Resource Name (ARN) of the app.
+  /// ARN of the app.
   late final pulumi.Output<String> arn;
   /// The domain ID.
   late final pulumi.Output<String> domainId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.See Resource Spec below.
+  /// Instance type and the ARN of the SageMaker AI image created on the instance. See Resource Spec below.
   late final pulumi.Output<AppResourceSpec> resourceSpec;
   /// The name of the space. At least one of `userProfileName` or `spaceName` required.
   late final pulumi.Output<String?> spaceName;
@@ -172,7 +172,7 @@ class App extends pulumi.CustomResource {
           'aws:sagemaker/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appName = registerOutput<String>('appName');
     appType = registerOutput<String>('appType');
@@ -181,8 +181,8 @@ class App extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceSpec = registerOutput<AppResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spaceName = registerOutput<String?>('spaceName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userProfileName = registerOutput<String?>('userProfileName');
   }
 
@@ -191,11 +191,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,8 +217,29 @@ class App extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceSpec = registerOutput<AppResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spaceName = registerOutput<String?>('spaceName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userProfileName = registerOutput<String?>('userProfileName');
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'aws:sagemaker/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appName = registerOutput<String>('appName');
+    appType = registerOutput<String>('appType');
+    arn = registerOutput<String>('arn');
+    domainId = registerOutput<String>('domainId');
+    region = registerOutput<String>('region');
+    resourceSpec = registerOutput<AppResourceSpec>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spaceName = registerOutput<String?>('spaceName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userProfileName = registerOutput<String?>('userProfileName');
   }
 }

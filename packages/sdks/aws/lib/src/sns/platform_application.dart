@@ -441,7 +441,8 @@ class PlatformApplication extends pulumi.CustomResource {
           'aws:sns/platformApplication:PlatformApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['platformCredential', 'platformPrincipal'],
         ) {
     applePlatformBundleId = registerOutput<String?>('applePlatformBundleId');
     applePlatformTeamId = registerOutput<String?>('applePlatformTeamId');
@@ -453,8 +454,8 @@ class PlatformApplication extends pulumi.CustomResource {
     failureFeedbackRoleArn = registerOutput<String?>('failureFeedbackRoleArn');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String>('platform');
-    platformCredential = registerOutput<String>('platformCredential');
-    platformPrincipal = registerOutput<String?>('platformPrincipal');
+    platformCredential = registerOutput<String>('platformCredential', isSecret: true);
+    platformPrincipal = registerOutput<String?>('platformPrincipal', isSecret: true);
     region = registerOutput<String>('region');
     successFeedbackRoleArn = registerOutput<String?>('successFeedbackRoleArn');
     successFeedbackSampleRate = registerOutput<String?>('successFeedbackSampleRate');
@@ -465,11 +466,12 @@ class PlatformApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlatformApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PlatformApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -493,8 +495,35 @@ class PlatformApplication extends pulumi.CustomResource {
     failureFeedbackRoleArn = registerOutput<String?>('failureFeedbackRoleArn');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String>('platform');
-    platformCredential = registerOutput<String>('platformCredential');
-    platformPrincipal = registerOutput<String?>('platformPrincipal');
+    platformCredential = registerOutput<String>('platformCredential', isSecret: true);
+    platformPrincipal = registerOutput<String?>('platformPrincipal', isSecret: true);
+    region = registerOutput<String>('region');
+    successFeedbackRoleArn = registerOutput<String?>('successFeedbackRoleArn');
+    successFeedbackSampleRate = registerOutput<String?>('successFeedbackSampleRate');
+  }
+
+  /// Creates a typed reference to an existing [PlatformApplication] resource.
+  PlatformApplication.reference(String urn)
+    : super(
+        'aws:sns/platformApplication:PlatformApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['platformCredential', 'platformPrincipal'],
+        isResourceReference: true,
+      ) {
+    applePlatformBundleId = registerOutput<String?>('applePlatformBundleId');
+    applePlatformTeamId = registerOutput<String?>('applePlatformTeamId');
+    arn = registerOutput<String>('arn');
+    eventDeliveryFailureTopicArn = registerOutput<String?>('eventDeliveryFailureTopicArn');
+    eventEndpointCreatedTopicArn = registerOutput<String?>('eventEndpointCreatedTopicArn');
+    eventEndpointDeletedTopicArn = registerOutput<String?>('eventEndpointDeletedTopicArn');
+    eventEndpointUpdatedTopicArn = registerOutput<String?>('eventEndpointUpdatedTopicArn');
+    failureFeedbackRoleArn = registerOutput<String?>('failureFeedbackRoleArn');
+    this.name = registerOutput<String>('name');
+    platform = registerOutput<String>('platform');
+    platformCredential = registerOutput<String>('platformCredential', isSecret: true);
+    platformPrincipal = registerOutput<String?>('platformPrincipal', isSecret: true);
     region = registerOutput<String>('region');
     successFeedbackRoleArn = registerOutput<String?>('successFeedbackRoleArn');
     successFeedbackSampleRate = registerOutput<String?>('successFeedbackSampleRate');

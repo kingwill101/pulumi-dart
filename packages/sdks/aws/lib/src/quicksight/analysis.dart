@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analysis_args.dart';
 import 'analysis_parameters.dart';
+import 'analysis_permission.dart';
 import 'analysis_source_entity.dart';
 import 'analysis_state.dart';
 
@@ -16,17 +17,17 @@ import 'analysis_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.Analysis("example", {
-///     analysisId: "example-id",
-///     name: "example-name",
 ///     sourceEntity: {
 ///         sourceTemplate: {
-///             arn: source.arn,
 ///             dataSetReferences: [{
 ///                 dataSetArn: dataset.arn,
 ///                 dataSetPlaceholder: "1",
 ///             }],
+///             arn: source.arn,
 ///         },
 ///     },
+///     analysisId: "example-id",
+///     name: "example-name",
 /// });
 /// ```
 /// ```python
@@ -34,17 +35,17 @@ import 'analysis_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.Analysis("example",
-///     analysis_id="example-id",
-///     name="example-name",
 ///     source_entity={
 ///         "source_template": {
-///             "arn": source["arn"],
 ///             "data_set_references": [{
 ///                 "data_set_arn": dataset["arn"],
 ///                 "data_set_placeholder": "1",
 ///             }],
+///             "arn": source["arn"],
 ///         },
-///     })
+///     },
+///     analysis_id="example-id",
+///     name="example-name")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,13 +57,10 @@ import 'analysis_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.Analysis("example", new()
 ///     {
-///         AnalysisId = "example-id",
-///         Name = "example-name",
 ///         SourceEntity = new Aws.Quicksight.Inputs.AnalysisSourceEntityArgs
 ///         {
 ///             SourceTemplate = new Aws.Quicksight.Inputs.AnalysisSourceEntitySourceTemplateArgs
 ///             {
-///                 Arn = source.Arn,
 ///                 DataSetReferences = new[]
 ///                 {
 ///                     new Aws.Quicksight.Inputs.AnalysisSourceEntitySourceTemplateDataSetReferenceArgs
@@ -71,8 +69,11 @@ import 'analysis_state.dart';
 ///                         DataSetPlaceholder = "1",
 ///                     },
 ///                 },
+///                 Arn = source.Arn,
 ///             },
 ///         },
+///         AnalysisId = "example-id",
+///         Name = "example-name",
 ///     });
 ///
 /// });
@@ -88,19 +89,19 @@ import 'analysis_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewAnalysis(ctx, "example", &quicksight.AnalysisArgs{
-/// 			AnalysisId: pulumi.String("example-id"),
-/// 			Name:       pulumi.String("example-name"),
 /// 			SourceEntity: &quicksight.AnalysisSourceEntityArgs{
 /// 				SourceTemplate: &quicksight.AnalysisSourceEntitySourceTemplateArgs{
-/// 					Arn: pulumi.Any(source.Arn),
 /// 					DataSetReferences: quicksight.AnalysisSourceEntitySourceTemplateDataSetReferenceArray{
 /// 						&quicksight.AnalysisSourceEntitySourceTemplateDataSetReferenceArgs{
 /// 							DataSetArn:         pulumi.Any(dataset.Arn),
 /// 							DataSetPlaceholder: pulumi.String("1"),
 /// 						},
 /// 					},
+/// 					Arn: pulumi.Any(source.Arn),
 /// 				},
 /// 			},
+/// 			AnalysisId: pulumi.String("example-id"),
+/// 			Name:       pulumi.String("example-name"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -119,17 +120,17 @@ import 'analysis_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_analysis" "example" {
-///   analysis_id = "example-id"
-///   name        = "example-name"
 ///   source_entity = {
 ///     source_template = {
-///       arn = source.arn
 ///       data_set_references = [{
 ///         "dataSetArn"         = dataset.arn
 ///         "dataSetPlaceholder" = "1"
 ///       }]
+///       arn = source.arn
 ///     }
 ///   }
+///   analysis_id = "example-id"
+///   name        = "example-name"
 /// }
 /// ```
 /// ```java
@@ -157,17 +158,17 @@ import 'analysis_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Analysis("example", AnalysisArgs.builder()
-///             .analysisId("example-id")
-///             .name("example-name")
 ///             .sourceEntity(AnalysisSourceEntityArgs.builder()
 ///                 .sourceTemplate(AnalysisSourceEntitySourceTemplateArgs.builder()
-///                     .arn(source.arn())
 ///                     .dataSetReferences(AnalysisSourceEntitySourceTemplateDataSetReferenceArgs.builder()
 ///                         .dataSetArn(dataset.arn())
 ///                         .dataSetPlaceholder("1")
 ///                         .build())
+///                     .arn(source.arn())
 ///                     .build())
 ///                 .build())
+///             .analysisId("example-id")
+///             .name("example-name")
 ///             .build());
 ///
 ///     }
@@ -178,14 +179,14 @@ import 'analysis_state.dart';
 ///   example:
 ///     type: aws:quicksight:Analysis
 ///     properties:
-///       analysisId: example-id
-///       name: example-name
 ///       sourceEntity:
 ///         sourceTemplate:
-///           arn: ${source.arn}
 ///           dataSetReferences:
 ///             - dataSetArn: ${dataset.arn}
 ///               dataSetPlaceholder: '1'
+///           arn: ${source.arn}
+///       analysisId: example-id
+///       name: example-name
 /// ```
 ///
 ///
@@ -197,19 +198,14 @@ import 'analysis_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.Analysis("example", {
-///     analysisId: "example-id",
-///     name: "example-name",
 ///     definition: {
 ///         dataSetIdentifiersDeclarations: [{
 ///             dataSetArn: dataset.arn,
 ///             identifier: "1",
 ///         }],
 ///         sheets: [{
-///             title: "Example",
-///             sheetId: "Example1",
 ///             visuals: [{
 ///                 lineChartVisual: {
-///                     visualId: "LineChart",
 ///                     title: {
 ///                         formatText: {
 ///                             plainText: "Line Chart Example",
@@ -220,30 +216,35 @@ import 'analysis_state.dart';
 ///                             lineChartAggregatedFieldWells: {
 ///                                 categories: [{
 ///                                     categoricalDimensionField: {
-///                                         fieldId: "1",
 ///                                         column: {
 ///                                             dataSetIdentifier: "1",
 ///                                             columnName: "Column1",
 ///                                         },
+///                                         fieldId: "1",
 ///                                     },
 ///                                 }],
 ///                                 values: [{
 ///                                     categoricalMeasureField: {
-///                                         fieldId: "2",
 ///                                         column: {
 ///                                             dataSetIdentifier: "1",
 ///                                             columnName: "Column1",
 ///                                         },
+///                                         fieldId: "2",
 ///                                         aggregationFunction: "COUNT",
 ///                                     },
 ///                                 }],
 ///                             },
 ///                         },
 ///                     },
+///                     visualId: "LineChart",
 ///                 },
 ///             }],
+///             title: "Example",
+///             sheetId: "Example1",
 ///         }],
 ///     },
+///     analysisId: "example-id",
+///     name: "example-name",
 /// });
 /// ```
 /// ```python
@@ -251,19 +252,14 @@ import 'analysis_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.Analysis("example",
-///     analysis_id="example-id",
-///     name="example-name",
 ///     definition={
 ///         "dataSetIdentifiersDeclarations": [{
 ///             "dataSetArn": dataset["arn"],
 ///             "identifier": "1",
 ///         }],
 ///         "sheets": [{
-///             "title": "Example",
-///             "sheetId": "Example1",
 ///             "visuals": [{
 ///                 "lineChartVisual": {
-///                     "visualId": "LineChart",
 ///                     "title": {
 ///                         "formatText": {
 ///                             "plainText": "Line Chart Example",
@@ -274,30 +270,35 @@ import 'analysis_state.dart';
 ///                             "lineChartAggregatedFieldWells": {
 ///                                 "categories": [{
 ///                                     "categoricalDimensionField": {
-///                                         "fieldId": "1",
 ///                                         "column": {
 ///                                             "dataSetIdentifier": "1",
 ///                                             "columnName": "Column1",
 ///                                         },
+///                                         "fieldId": "1",
 ///                                     },
 ///                                 }],
 ///                                 "values": [{
 ///                                     "categoricalMeasureField": {
-///                                         "fieldId": "2",
 ///                                         "column": {
 ///                                             "dataSetIdentifier": "1",
 ///                                             "columnName": "Column1",
 ///                                         },
+///                                         "fieldId": "2",
 ///                                         "aggregationFunction": "COUNT",
 ///                                     },
 ///                                 }],
 ///                             },
 ///                         },
 ///                     },
+///                     "visualId": "LineChart",
 ///                 },
 ///             }],
+///             "title": "Example",
+///             "sheetId": "Example1",
 ///         }],
-///     })
+///     },
+///     analysis_id="example-id",
+///     name="example-name")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -309,8 +310,6 @@ import 'analysis_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.Analysis("example", new()
 ///     {
-///         AnalysisId = "example-id",
-///         Name = "example-name",
 ///         Definition =
 ///         {
 ///             { "dataSetIdentifiersDeclarations", new[]
@@ -325,15 +324,12 @@ import 'analysis_state.dart';
 ///             {
 ///
 ///                 {
-///                     { "title", "Example" },
-///                     { "sheetId", "Example1" },
 ///                     { "visuals", new[]
 ///                     {
 ///
 ///                         {
 ///                             { "lineChartVisual",
 ///                             {
-///                                 { "visualId", "LineChart" },
 ///                                 { "title",
 ///                                 {
 ///                                     { "formatText",
@@ -353,12 +349,12 @@ import 'analysis_state.dart';
 ///                                                 {
 ///                                                     { "categoricalDimensionField",
 ///                                                     {
-///                                                         { "fieldId", "1" },
 ///                                                         { "column",
 ///                                                         {
 ///                                                             { "dataSetIdentifier", "1" },
 ///                                                             { "columnName", "Column1" },
 ///                                                         } },
+///                                                         { "fieldId", "1" },
 ///                                                     } },
 ///                                                 },
 ///                                             } },
@@ -368,12 +364,12 @@ import 'analysis_state.dart';
 ///                                                 {
 ///                                                     { "categoricalMeasureField",
 ///                                                     {
-///                                                         { "fieldId", "2" },
 ///                                                         { "column",
 ///                                                         {
 ///                                                             { "dataSetIdentifier", "1" },
 ///                                                             { "columnName", "Column1" },
 ///                                                         } },
+///                                                         { "fieldId", "2" },
 ///                                                         { "aggregationFunction", "COUNT" },
 ///                                                     } },
 ///                                                 },
@@ -381,12 +377,17 @@ import 'analysis_state.dart';
 ///                                         } },
 ///                                     } },
 ///                                 } },
+///                                 { "visualId", "LineChart" },
 ///                             } },
 ///                         },
 ///                     } },
+///                     { "title", "Example" },
+///                     { "sheetId", "Example1" },
 ///                 },
 ///             } },
 ///         },
+///         AnalysisId = "example-id",
+///         Name = "example-name",
 ///     });
 ///
 /// });
@@ -402,8 +403,6 @@ import 'analysis_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewAnalysis(ctx, "example", &quicksight.AnalysisArgs{
-/// 			AnalysisId: pulumi.String("example-id"),
-/// 			Name:       pulumi.String("example-name"),
 /// 			Definition: map[string][]map[string]interface{}{
 /// 				"dataSetIdentifiersDeclarations": []map[string]interface{}{
 /// 					map[string]interface{}{
@@ -413,12 +412,9 @@ import 'analysis_state.dart';
 /// 				},
 /// 				"sheets": []map[string]interface{}{
 /// 					map[string]interface{}{
-/// 						"title":   "Example",
-/// 						"sheetId": "Example1",
 /// 						"visuals": []map[string]map[string]interface{}{
 /// 							map[string]map[string]interface{}{
 /// 								"lineChartVisual": map[string]interface{}{
-/// 									"visualId": "LineChart",
 /// 									"title": map[string]map[string]string{
 /// 										"formatText": map[string]string{
 /// 											"plainText": "Line Chart Example",
@@ -430,22 +426,22 @@ import 'analysis_state.dart';
 /// 												"categories": []map[string]map[string]interface{}{
 /// 													map[string]map[string]interface{}{
 /// 														"categoricalDimensionField": map[string]interface{}{
-/// 															"fieldId": "1",
 /// 															"column": map[string]string{
 /// 																"dataSetIdentifier": "1",
 /// 																"columnName":        "Column1",
 /// 															},
+/// 															"fieldId": "1",
 /// 														},
 /// 													},
 /// 												},
 /// 												"values": []map[string]map[string]interface{}{
 /// 													map[string]map[string]interface{}{
 /// 														"categoricalMeasureField": map[string]interface{}{
-/// 															"fieldId": "2",
 /// 															"column": map[string]string{
 /// 																"dataSetIdentifier": "1",
 /// 																"columnName":        "Column1",
 /// 															},
+/// 															"fieldId":             "2",
 /// 															"aggregationFunction": "COUNT",
 /// 														},
 /// 													},
@@ -453,12 +449,17 @@ import 'analysis_state.dart';
 /// 											},
 /// 										},
 /// 									},
+/// 									"visualId": "LineChart",
 /// 								},
 /// 							},
 /// 						},
+/// 						"title":   "Example",
+/// 						"sheetId": "Example1",
 /// 					},
 /// 				},
 /// 			},
+/// 			AnalysisId: pulumi.String("example-id"),
+/// 			Name:       pulumi.String("example-name"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -477,19 +478,14 @@ import 'analysis_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_analysis" "example" {
-///   analysis_id = "example-id"
-///   name        = "example-name"
 ///   definition = {
 ///     "dataSetIdentifiersDeclarations" = [{
 ///       "dataSetArn" = dataset.arn
 ///       "identifier" = "1"
 ///     }]
 ///     "sheets" = [{
-///       "title"   = "Example"
-///       "sheetId" = "Example1"
 ///       "visuals" = [{
 ///         "lineChartVisual" = {
-///           "visualId" = "LineChart"
 ///           "title" = {
 ///             "formatText" = {
 ///               "plainText" = "Line Chart Example"
@@ -500,30 +496,35 @@ import 'analysis_state.dart';
 ///               "lineChartAggregatedFieldWells" = {
 ///                 "categories" = [{
 ///                   "categoricalDimensionField" = {
-///                     "fieldId" = "1"
 ///                     "column" = {
 ///                       "dataSetIdentifier" = "1"
 ///                       "columnName"        = "Column1"
 ///                     }
+///                     "fieldId" = "1"
 ///                   }
 ///                 }]
 ///                 "values" = [{
 ///                   "categoricalMeasureField" = {
-///                     "fieldId" = "2"
 ///                     "column" = {
 ///                       "dataSetIdentifier" = "1"
 ///                       "columnName"        = "Column1"
 ///                     }
+///                     "fieldId"             = "2"
 ///                     "aggregationFunction" = "COUNT"
 ///                   }
 ///                 }]
 ///               }
 ///             }
 ///           }
+///           "visualId" = "LineChart"
 ///         }
 ///       }]
+///       "title"   = "Example"
+///       "sheetId" = "Example1"
 ///     }]
 ///   }
+///   analysis_id = "example-id"
+///   name        = "example-name"
 /// }
 /// ```
 /// ```java
@@ -548,39 +549,39 @@ import 'analysis_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Analysis("example", AnalysisArgs.builder()
-///             .analysisId("example-id")
-///             .name("example-name")
 ///             .definition(Map.ofEntries(
 ///                 Map.entry("dataSetIdentifiersDeclarations", Arrays.asList(Map.ofEntries(
 ///                     Map.entry("dataSetArn", dataset.arn()),
 ///                     Map.entry("identifier", "1")
 ///                 ))),
 ///                 Map.entry("sheets", Arrays.asList(Map.ofEntries(
-///                     Map.entry("title", "Example"),
-///                     Map.entry("sheetId", "Example1"),
 ///                     Map.entry("visuals", Arrays.asList(Map.of("lineChartVisual", Map.ofEntries(
-///                         Map.entry("visualId", "LineChart"),
 ///                         Map.entry("title", Map.of("formatText", Map.of("plainText", "Line Chart Example"))),
 ///                         Map.entry("chartConfiguration", Map.of("fieldWells", Map.of("lineChartAggregatedFieldWells", Map.ofEntries(
 ///                             Map.entry("categories", Arrays.asList(Map.of("categoricalDimensionField", Map.ofEntries(
-///                                 Map.entry("fieldId", "1"),
-///                                 Map.entry("column", Map.ofEntries(
-///                                     Map.entry("dataSetIdentifier", "1"),
-///                                     Map.entry("columnName", "Column1")
-///                                 ))
-///                             )))),
-///                             Map.entry("values", Arrays.asList(Map.of("categoricalMeasureField", Map.ofEntries(
-///                                 Map.entry("fieldId", "2"),
 ///                                 Map.entry("column", Map.ofEntries(
 ///                                     Map.entry("dataSetIdentifier", "1"),
 ///                                     Map.entry("columnName", "Column1")
 ///                                 )),
+///                                 Map.entry("fieldId", "1")
+///                             )))),
+///                             Map.entry("values", Arrays.asList(Map.of("categoricalMeasureField", Map.ofEntries(
+///                                 Map.entry("column", Map.ofEntries(
+///                                     Map.entry("dataSetIdentifier", "1"),
+///                                     Map.entry("columnName", "Column1")
+///                                 )),
+///                                 Map.entry("fieldId", "2"),
 ///                                 Map.entry("aggregationFunction", "COUNT")
 ///                             ))))
-///                         ))))
-///                     ))))
+///                         )))),
+///                         Map.entry("visualId", "LineChart")
+///                     )))),
+///                     Map.entry("title", "Example"),
+///                     Map.entry("sheetId", "Example1")
 ///                 )))
 ///             ))
+///             .analysisId("example-id")
+///             .name("example-name")
 ///             .build());
 ///
 ///     }
@@ -591,18 +592,13 @@ import 'analysis_state.dart';
 ///   example:
 ///     type: aws:quicksight:Analysis
 ///     properties:
-///       analysisId: example-id
-///       name: example-name
 ///       definition:
 ///         dataSetIdentifiersDeclarations:
 ///           - dataSetArn: ${dataset.arn}
 ///             identifier: '1'
 ///         sheets:
-///           - title: Example
-///             sheetId: Example1
-///             visuals:
+///           - visuals:
 ///               - lineChartVisual:
-///                   visualId: LineChart
 ///                   title:
 ///                     formatText:
 ///                       plainText: Line Chart Example
@@ -611,17 +607,22 @@ import 'analysis_state.dart';
 ///                       lineChartAggregatedFieldWells:
 ///                         categories:
 ///                           - categoricalDimensionField:
-///                               fieldId: '1'
 ///                               column:
 ///                                 dataSetIdentifier: '1'
 ///                                 columnName: Column1
+///                               fieldId: '1'
 ///                         values:
 ///                           - categoricalMeasureField:
-///                               fieldId: '2'
 ///                               column:
 ///                                 dataSetIdentifier: '1'
 ///                                 columnName: Column1
+///                               fieldId: '2'
 ///                               aggregationFunction: COUNT
+///                   visualId: LineChart
+///             title: Example
+///             sheetId: Example1
+///       analysisId: example-id
+///       name: example-name
 /// ```
 ///
 ///
@@ -651,7 +652,7 @@ class Analysis extends pulumi.CustomResource {
   /// The parameters for the creation of the analysis, which you want to use to override the default settings. An analysis can have any type of parameters, and some parameters might accept multiple values. See parameters.
   late final pulumi.Output<AnalysisParameters> parameters;
   /// A set of resource permissions on the analysis. Maximum of 64 items. See permissions.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<AnalysisPermission>?> permissions;
   /// A value that specifies the number of days that Amazon QuickSight waits before it deletes the analysis. Use `0` to force deletion without recovery. Minimum value of `7`. Maximum value of `30`. Default to `30`.
   late final pulumi.Output<int?> recoveryWindowInDays;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -664,7 +665,7 @@ class Analysis extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
+  /// ARN of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
   late final pulumi.Output<String?> themeArn;
 
   /// Creates a new [Analysis].
@@ -679,7 +680,7 @@ class Analysis extends pulumi.CustomResource {
           'aws:quicksight/analysis:Analysis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     analysisId = registerOutput<String>('analysisId');
     arn = registerOutput<String>('arn');
@@ -689,13 +690,13 @@ class Analysis extends pulumi.CustomResource {
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<AnalysisParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<AnalysisPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalysisPermission>(guardedValue, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>())); });
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
     sourceEntity = registerOutput<AnalysisSourceEntity?>('sourceEntity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisSourceEntity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     themeArn = registerOutput<String?>('themeArn');
   }
 
@@ -704,11 +705,12 @@ class Analysis extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalysisState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Analysis._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -730,13 +732,40 @@ class Analysis extends pulumi.CustomResource {
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<AnalysisParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<AnalysisPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalysisPermission>(guardedValue, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>())); });
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
     sourceEntity = registerOutput<AnalysisSourceEntity?>('sourceEntity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisSourceEntity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    themeArn = registerOutput<String?>('themeArn');
+  }
+
+  /// Creates a typed reference to an existing [Analysis] resource.
+  Analysis.reference(String urn)
+    : super(
+        'aws:quicksight/analysis:Analysis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analysisId = registerOutput<String>('analysisId');
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    createdTime = registerOutput<String>('createdTime');
+    lastPublishedTime = registerOutput<String>('lastPublishedTime');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<AnalysisParameters>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    permissions = registerOutput<List<AnalysisPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalysisPermission>(guardedValue, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
+    region = registerOutput<String>('region');
+    sourceEntity = registerOutput<AnalysisSourceEntity?>('sourceEntity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisSourceEntity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     themeArn = registerOutput<String?>('themeArn');
   }
 }

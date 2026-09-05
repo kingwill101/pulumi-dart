@@ -11,13 +11,13 @@ class CrossAccountAttachmentArgs {
   /// Name of the Cross Account Attachment.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
-  final pulumi.Input<List<String>>? principals;
+  final pulumi.Input<List<String>?>? principals;
   /// List of resources to be associated with the accelerator.
-  final pulumi.Input<List<CrossAccountAttachmentResource>>? resources;
+  final pulumi.Input<List<CrossAccountAttachmentResource>?>? resources;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CrossAccountAttachmentArgs].
   /// [name] Name of the Cross Account Attachment.

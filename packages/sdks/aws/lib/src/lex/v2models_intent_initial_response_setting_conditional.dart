@@ -8,9 +8,9 @@ class V2modelsIntentInitialResponseSettingConditional {
   /// Whether a conditional branch is active. When active is false, the conditions are not evaluated.
   final pulumi.Input<bool> active;
   /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditionalBranch`.
-  final pulumi.Input<List<V2modelsIntentInitialResponseSettingConditionalConditionalBranch>>? conditionalBranches;
+  final pulumi.Input<List<V2modelsIntentInitialResponseSettingConditionalConditionalBranch>?>? conditionalBranches;
   /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `defaultBranch`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranch>? defaultBranch;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranch?>? defaultBranch;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditional].
   /// [active] Whether a conditional branch is active. When active is false, the conditions are not evaluated.

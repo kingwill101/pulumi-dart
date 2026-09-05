@@ -6,13 +6,13 @@ import 'trigger_trigger.dart';
 /// Input properties used for looking up and filtering Trigger resources.
 class TriggerState {
   /// System-generated unique identifier.
-  final pulumi.Input<String>? configurationId;
+  final pulumi.Input<String?>? configurationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name for the repository. This needs to be less than 100 characters.
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// The name of the trigger.
-  final pulumi.Input<List<TriggerTrigger>>? triggers;
+  final pulumi.Input<List<TriggerTrigger>?>? triggers;
 
   /// Creates a new [TriggerState].
   /// [configurationId] System-generated unique identifier.

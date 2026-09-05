@@ -6,19 +6,19 @@ import 'cluster_core_instance_fleet_launch_specifications.dart';
 
 class ClusterCoreInstanceFleet {
   /// ID of the cluster.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Configuration block for instance fleet.
-  final pulumi.Input<List<ClusterCoreInstanceFleetInstanceTypeConfig>>? instanceTypeConfigs;
+  final pulumi.Input<List<ClusterCoreInstanceFleetInstanceTypeConfig>?>? instanceTypeConfigs;
   /// Configuration block for launch specification.
-  final pulumi.Input<ClusterCoreInstanceFleetLaunchSpecifications>? launchSpecifications;
+  final pulumi.Input<ClusterCoreInstanceFleetLaunchSpecifications?>? launchSpecifications;
   /// Friendly name given to the instance fleet.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<int>? provisionedOnDemandCapacity;
-  final pulumi.Input<int>? provisionedSpotCapacity;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<int?>? provisionedOnDemandCapacity;
+  final pulumi.Input<int?>? provisionedSpotCapacity;
   /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
-  final pulumi.Input<int>? targetOnDemandCapacity;
+  final pulumi.Input<int?>? targetOnDemandCapacity;
   /// Target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  final pulumi.Input<int>? targetSpotCapacity;
+  final pulumi.Input<int?>? targetSpotCapacity;
 
   /// Creates a new [ClusterCoreInstanceFleet].
   /// [id] ID of the cluster.
@@ -59,10 +59,10 @@ class ClusterCoreInstanceFleet {
       instanceTypeConfigs: (() { final guardedValue = map['instanceTypeConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfig>(guardedValue, (value) => ClusterCoreInstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       launchSpecifications: (() { final guardedValue = map['launchSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCoreInstanceFleetLaunchSpecifications.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisionedOnDemandCapacity: (() { final guardedValue = map['provisionedOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      provisionedSpotCapacity: (() { final guardedValue = map['provisionedSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetOnDemandCapacity: (() { final guardedValue = map['targetOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetSpotCapacity: (() { final guardedValue = map['targetSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedOnDemandCapacity: (() { final guardedValue = map['provisionedOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedSpotCapacity: (() { final guardedValue = map['provisionedSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetOnDemandCapacity: (() { final guardedValue = map['targetOnDemandCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetSpotCapacity: (() { final guardedValue = map['targetSpotCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

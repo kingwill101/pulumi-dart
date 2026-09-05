@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserExternalId {
   /// The identifier issued to this resource by an external identity provider.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The issuer for an external identifier.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
 
   /// Creates a new [UserExternalId].
   /// [id] The identifier issued to this resource by an external identity provider.

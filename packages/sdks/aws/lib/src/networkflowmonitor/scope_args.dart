@@ -10,14 +10,14 @@ import 'scope_timeouts.dart';
 /// {@macro pulumi_networkflowmonitor_scope_scope_args_doc}
 class ScopeArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<ScopeTarget>> targets;
-  final pulumi.Input<ScopeTimeouts>? timeouts;
+  final pulumi.Input<ScopeTimeouts?>? timeouts;
 
   /// Creates a new [ScopeArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

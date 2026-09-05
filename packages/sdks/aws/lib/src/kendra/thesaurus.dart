@@ -13,13 +13,13 @@ import 'thesaurus_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Thesaurus("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     name: "Example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     sourceS3Path: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: exampleAwsS3Object.key,
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     name: "Example",
+///     roleArn: exampleAwsIamRole.arn,
 ///     tags: {
 ///         Name: "Example Kendra Thesaurus",
 ///     },
@@ -30,13 +30,13 @@ import 'thesaurus_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Thesaurus("example",
-///     index_id=example_aws_kendra_index["id"],
-///     name="Example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     source_s3_path={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": example_aws_s3_object["key"],
 ///     },
+///     index_id=example_aws_kendra_index["id"],
+///     name="Example",
+///     role_arn=example_aws_iam_role["arn"],
 ///     tags={
 ///         "Name": "Example Kendra Thesaurus",
 ///     })
@@ -51,14 +51,14 @@ import 'thesaurus_state.dart';
 /// {
 ///     var example = new Aws.Kendra.Thesaurus("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Name = "Example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         SourceS3Path = new Aws.Kendra.Inputs.ThesaurusSourceS3PathArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = exampleAwsS3Object.Key,
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Name = "Example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Name", "Example Kendra Thesaurus" },
@@ -78,13 +78,13 @@ import 'thesaurus_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewThesaurus(ctx, "example", &kendra.ThesaurusArgs{
-/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Name:    pulumi.String("Example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			SourceS3Path: &kendra.ThesaurusSourceS3PathArgs{
 /// 				Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:    pulumi.Any(exampleAwsS3Object.Key),
 /// 			},
+/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Name:    pulumi.String("Example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Kendra Thesaurus"),
 /// 			},
@@ -106,13 +106,13 @@ import 'thesaurus_state.dart';
 /// }
 ///
 /// resource "aws_kendra_thesaurus" "example" {
-///   index_id = exampleAwsKendraIndex.id
-///   name     = "Example"
-///   role_arn = exampleAwsIamRole.arn
 ///   source_s3_path = {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = exampleAwsS3Object.key
 ///   }
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
 ///   tags = {
 ///     "Name" = "Example Kendra Thesaurus"
 ///   }
@@ -141,13 +141,13 @@ import 'thesaurus_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Thesaurus("example", ThesaurusArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .sourceS3Path(ThesaurusSourceS3PathArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key(exampleAwsS3Object.key())
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .name("Example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .tags(Map.of("Name", "Example Kendra Thesaurus"))
 ///             .build());
 ///
@@ -159,12 +159,12 @@ import 'thesaurus_state.dart';
 ///   example:
 ///     type: aws:kendra:Thesaurus
 ///     properties:
-///       indexId: ${exampleAwsKendraIndex.id}
-///       name: Example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       sourceS3Path:
 ///         bucket: ${exampleAwsS3Bucket.id}
 ///         key: ${exampleAwsS3Object.key}
+///       indexId: ${exampleAwsKendraIndex.id}
+///       name: Example
+///       roleArn: ${exampleAwsIamRole.arn}
 ///       tags:
 ///         Name: Example Kendra Thesaurus
 /// ```
@@ -210,7 +210,7 @@ class Thesaurus extends pulumi.CustomResource {
           'aws:kendra/thesaurus:Thesaurus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -220,8 +220,8 @@ class Thesaurus extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<ThesaurusSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThesaurusSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thesaurusId = registerOutput<String>('thesaurusId');
   }
 
@@ -230,11 +230,12 @@ class Thesaurus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThesaurusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Thesaurus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -256,8 +257,30 @@ class Thesaurus extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<ThesaurusSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThesaurusSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thesaurusId = registerOutput<String>('thesaurusId');
+  }
+
+  /// Creates a typed reference to an existing [Thesaurus] resource.
+  Thesaurus.reference(String urn)
+    : super(
+        'aws:kendra/thesaurus:Thesaurus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    indexId = registerOutput<String>('indexId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    sourceS3Path = registerOutput<ThesaurusSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThesaurusSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thesaurusId = registerOutput<String>('thesaurusId');
   }
 }

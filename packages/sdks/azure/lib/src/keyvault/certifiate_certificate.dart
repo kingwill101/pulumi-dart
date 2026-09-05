@@ -27,7 +27,7 @@ class CertifiateCertificate {
   /// d29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQK
   /// -----END PRIVATE KEY-----
   /// ```
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [CertifiateCertificate].
   /// [contents] The base64-encoded certificate contents.

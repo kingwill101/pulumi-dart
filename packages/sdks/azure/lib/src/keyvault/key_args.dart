@@ -10,33 +10,33 @@ import 'key_rotation_policy.dart';
 /// {@macro pulumi_keyvault_key_key_args_doc}
 class KeyArgs {
   /// Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? curve;
+  final pulumi.Input<String?>? curve;
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
   /// &gt; **Note:** Removing this field from the config forces a new resource to be created.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// A list of JSON web key operations. Possible values include: `decrypt`, `encrypt`, `sign`, `unwrapKey`, `verify` and `wrapKey`. Please note these values are case-sensitive.
   final pulumi.Input<List<String>> keyOpts;
   /// Specifies the Size of the RSA key to create in bytes. For example, 1024 or 2048. *Note*: This field is required if `keyType` is `RSA` or `RSA-HSM`. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? keySize;
+  final pulumi.Input<int?>? keySize;
   /// Specifies the Key Type to use for this Key Vault Key. Possible values are `EC` (Elliptic Curve), `EC-HSM`, `RSA` and `RSA-HSM`. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyType;
   /// The ID of the Key Vault where the Key should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
   /// Specifies the name of the Key Vault Key. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   ///
   /// &gt; **Note:** Once `expirationDate` is set, it's not possible to unset the key even if it is deleted & recreated as underlying Azure API uses the restore of the purged key.
-  final pulumi.Input<String>? notBeforeDate;
+  final pulumi.Input<String?>? notBeforeDate;
   /// A `releasePolicy` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `releasePolicy` is set, the key is automatically set as exportable by the provider as this is an API requirement.
-  final pulumi.Input<KeyReleasePolicy>? releasePolicy;
+  final pulumi.Input<KeyReleasePolicy?>? releasePolicy;
   /// A `rotationPolicy` block as defined below.
-  final pulumi.Input<KeyRotationPolicy>? rotationPolicy;
+  final pulumi.Input<KeyRotationPolicy?>? rotationPolicy;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KeyArgs].
   /// [curve] Specifies the curve to use when creating an `EC` key. Possible values are `P-256`, `P-256K`, `P-384`, and `P-521`. This field will be required in a future release if `keyType` is `EC` or `EC-HSM`. The API will default to `P-256` if nothing is specified. Changing this forces a new resource to be created.
@@ -85,7 +85,7 @@ class KeyArgs {
       curve: (() { final guardedValue = map['curve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyOpts: pulumi.Input.fromValue((map['keyOpts'] as List).cast<String>()),
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

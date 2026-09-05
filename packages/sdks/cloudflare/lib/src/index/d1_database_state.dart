@@ -12,7 +12,7 @@ class D1DatabaseState {
   /// The D1 database's size, in bytes.
   final pulumi.Input<double?>? fileSize;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-  /// Available values: "eu", "fedramp".
+  /// Available values: "eu", "fedramp", "us".
   final pulumi.Input<String?>? jurisdiction;
   /// D1 database name.
   final pulumi.Input<String?>? name;

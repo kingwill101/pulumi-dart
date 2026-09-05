@@ -6,7 +6,7 @@ class GetScriptDagNodeArg {
   /// Name of the argument or property.
   final pulumi.Input<String> name;
   /// Boolean if the value is used as a parameter. Defaults to `false`.
-  final pulumi.Input<bool>? param;
+  final pulumi.Input<bool?>? param;
   /// Value of the argument or property.
   final pulumi.Input<String> value;
 

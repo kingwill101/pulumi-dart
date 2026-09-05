@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_siterecovery_fabric_fabric_args_doc}
 class FabricArgs {
   /// In what region should the fabric be located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.

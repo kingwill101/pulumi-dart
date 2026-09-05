@@ -162,6 +162,8 @@ import 'database_state.dart';
 /// const example = new aws.athena.Database("example", {
 ///     name: "database_name",
 ///     bucket: exampleAwsS3Bucket.id,
+/// }, {
+///     ignoreChanges: ["bucket"],
 /// });
 /// ```
 /// ```python
@@ -170,7 +172,8 @@ import 'database_state.dart';
 ///
 /// example = aws.athena.Database("example",
 ///     name="database_name",
-///     bucket=example_aws_s3_bucket["id"])
+///     bucket=example_aws_s3_bucket["id"],
+///     opts = pulumi.ResourceOptions(ignore_changes=["bucket"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -184,6 +187,12 @@ import 'database_state.dart';
 ///     {
 ///         Name = "database_name",
 ///         Bucket = exampleAwsS3Bucket.Id,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "bucket",
+///         },
 ///     });
 ///
 /// });
@@ -201,7 +210,9 @@ import 'database_state.dart';
 /// 		_, err := athena.NewDatabase(ctx, "example", &athena.DatabaseArgs{
 /// 			Name:   pulumi.String("database_name"),
 /// 			Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"bucket",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -219,6 +230,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_athena_database" "example" {
+///   lifecycle {
+///     ignore_changes = [bucket]
+///   }
 ///   name   = "database_name"
 ///   bucket = exampleAwsS3Bucket.id
 /// }
@@ -231,6 +245,7 @@ import 'database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.athena.Database;
 /// import com.pulumi.aws.athena.DatabaseArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -247,7 +262,9 @@ import 'database_state.dart';
 ///         var example = new Database("example", DatabaseArgs.builder()
 ///             .name("database_name")
 ///             .bucket(exampleAwsS3Bucket.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("bucket")
+///                 .build());
 ///
 ///     }
 /// }
@@ -259,6 +276,9 @@ import 'database_state.dart';
 ///     properties:
 ///       name: database_name
 ///       bucket: ${exampleAwsS3Bucket.id}
+///     options:
+///       ignoreChanges:
+///         - bucket
 /// ```
 class Database extends pulumi.CustomResource {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
@@ -267,7 +287,7 @@ class Database extends pulumi.CustomResource {
   late final pulumi.Output<String?> bucket;
   /// Description of the database.
   late final pulumi.Output<String?> comment;
-  /// Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
+  /// Encryption key block AWS Athena uses to decrypt the data in S3, such as a KMS key. See Encryption Configuration below.
   late final pulumi.Output<DatabaseEncryptionConfiguration?> encryptionConfiguration;
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   late final pulumi.Output<String?> expectedBucketOwner;
@@ -294,7 +314,7 @@ class Database extends pulumi.CustomResource {
           'aws:athena/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aclConfiguration = registerOutput<DatabaseAclConfiguration?>('aclConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAclConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String?>('bucket');
@@ -303,7 +323,7 @@ class Database extends pulumi.CustomResource {
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     workgroup = registerOutput<String?>('workgroup');
   }
@@ -313,11 +333,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,7 +359,28 @@ class Database extends pulumi.CustomResource {
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    workgroup = registerOutput<String?>('workgroup');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'aws:athena/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclConfiguration = registerOutput<DatabaseAclConfiguration?>('aclConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAclConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<String?>('bucket');
+    comment = registerOutput<String?>('comment');
+    encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     workgroup = registerOutput<String?>('workgroup');
   }

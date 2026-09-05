@@ -7,23 +7,23 @@ import 'frontdoor_profile_log_scrubbing_rule.dart';
 /// Input properties used for looking up and filtering FrontdoorProfile resources.
 class FrontdoorProfileState {
   /// An `identity` block as defined below.
-  final pulumi.Input<FrontdoorProfileIdentity>? identity;
+  final pulumi.Input<FrontdoorProfileIdentity?>? identity;
   /// One or more `logScrubbingRule` blocks as defined below.
   ///
   /// &gt; **Note:** When no `logScrubbingRule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `logScrubbingRule` blocks are present, log scrubbing will be `enabled`.
-  final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>>? logScrubbingRules;
+  final pulumi.Input<List<FrontdoorProfileLogScrubbingRule>?>? logScrubbingRules;
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The UUID of this Front Door Profile which will be sent in the HTTP Header as the `X-Azure-FDID` attribute.
-  final pulumi.Input<String>? resourceGuid;
+  final pulumi.Input<String?>? resourceGuid;
   /// Specifies the maximum response timeout in seconds. Possible values are between `16` and `240` seconds (inclusive). Defaults to `120` seconds.
-  final pulumi.Input<int>? responseTimeoutSeconds;
+  final pulumi.Input<int?>? responseTimeoutSeconds;
   /// Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// Specifies a mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorProfileState].
   /// [identity] An `identity` block as defined below.
@@ -65,7 +65,7 @@ class FrontdoorProfileState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      responseTimeoutSeconds: (() { final guardedValue = map['responseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      responseTimeoutSeconds: (() { final guardedValue = map['responseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

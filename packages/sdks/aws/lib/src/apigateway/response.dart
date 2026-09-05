@@ -218,11 +218,11 @@ class Response extends pulumi.CustomResource {
           'aws:apigateway/response:Response',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
-    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     responseType = registerOutput<String>('responseType');
     restApiId = registerOutput<String>('restApiId');
     statusCode = registerOutput<String?>('statusCode');
@@ -233,11 +233,12 @@ class Response extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Response._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,8 +253,25 @@ class Response extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     region = registerOutput<String>('region');
-    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseType = registerOutput<String>('responseType');
+    restApiId = registerOutput<String>('restApiId');
+    statusCode = registerOutput<String?>('statusCode');
+  }
+
+  /// Creates a typed reference to an existing [Response] resource.
+  Response.reference(String urn)
+    : super(
+        'aws:apigateway/response:Response',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     responseType = registerOutput<String>('responseType');
     restApiId = registerOutput<String>('restApiId');
     statusCode = registerOutput<String?>('statusCode');

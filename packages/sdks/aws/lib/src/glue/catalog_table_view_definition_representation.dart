@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableViewDefinitionRepresentation {
   /// Parameter that specifies the engine type of a specific representation. Valid values are `REDSHIFT`, `ATHENA`, and `SPARK`.
-  final pulumi.Input<String>? dialect;
+  final pulumi.Input<String?>? dialect;
   /// Parameter that specifies the version of the engine of a specific representation.
-  final pulumi.Input<String>? dialectVersion;
+  final pulumi.Input<String?>? dialectVersion;
   /// Name of the connection to be used to validate the specific representation of the view.
-  final pulumi.Input<String>? validationConnection;
+  final pulumi.Input<String?>? validationConnection;
   /// String that represents the SQL query that describes the view with expanded resource ARNs.
-  final pulumi.Input<String>? viewExpandedText;
+  final pulumi.Input<String?>? viewExpandedText;
   /// String that represents the original SQL query that describes the view.
-  final pulumi.Input<String>? viewOriginalText;
+  final pulumi.Input<String?>? viewOriginalText;
 
   /// Creates a new [CatalogTableViewDefinitionRepresentation].
   /// [dialect] Parameter that specifies the engine type of a specific representation. Valid values are `REDSHIFT`, `ATHENA`, and `SPARK`.

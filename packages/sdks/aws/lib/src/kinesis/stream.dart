@@ -16,6 +16,9 @@ import 'stream_stream_mode_details.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testStream = new aws.kinesis.Stream("test_stream", {
+///     streamModeDetails: {
+///         streamMode: "PROVISIONED",
+///     },
 ///     name: "kinesis-test",
 ///     shardCount: 1,
 ///     retentionPeriod: 48,
@@ -23,9 +26,6 @@ import 'stream_stream_mode_details.dart';
 ///         "IncomingBytes",
 ///         "OutgoingBytes",
 ///     ],
-///     streamModeDetails: {
-///         streamMode: "PROVISIONED",
-///     },
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -36,6 +36,9 @@ import 'stream_stream_mode_details.dart';
 /// import pulumi_aws as aws
 ///
 /// test_stream = aws.kinesis.Stream("test_stream",
+///     stream_mode_details={
+///         "stream_mode": "PROVISIONED",
+///     },
 ///     name="kinesis-test",
 ///     shard_count=1,
 ///     retention_period=48,
@@ -43,9 +46,6 @@ import 'stream_stream_mode_details.dart';
 ///         "IncomingBytes",
 ///         "OutgoingBytes",
 ///     ],
-///     stream_mode_details={
-///         "stream_mode": "PROVISIONED",
-///     },
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -60,6 +60,10 @@ import 'stream_stream_mode_details.dart';
 /// {
 ///     var testStream = new Aws.Kinesis.Stream("test_stream", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "PROVISIONED",
+///         },
 ///         Name = "kinesis-test",
 ///         ShardCount = 1,
 ///         RetentionPeriod = 48,
@@ -67,10 +71,6 @@ import 'stream_stream_mode_details.dart';
 ///         {
 ///             "IncomingBytes",
 ///             "OutgoingBytes",
-///         },
-///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
-///         {
-///             StreamMode = "PROVISIONED",
 ///         },
 ///         Tags =
 ///         {
@@ -91,15 +91,15 @@ import 'stream_stream_mode_details.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kinesis.NewStream(ctx, "test_stream", &kinesis.StreamArgs{
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("PROVISIONED"),
+/// 			},
 /// 			Name:            pulumi.String("kinesis-test"),
 /// 			ShardCount:      pulumi.Int(1),
 /// 			RetentionPeriod: pulumi.Int(48),
 /// 			ShardLevelMetrics: pulumi.StringArray{
 /// 				pulumi.String("IncomingBytes"),
 /// 				pulumi.String("OutgoingBytes"),
-/// 			},
-/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
-/// 				StreamMode: pulumi.String("PROVISIONED"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
@@ -122,13 +122,13 @@ import 'stream_stream_mode_details.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "test_stream" {
+///   stream_mode_details = {
+///     stream_mode = "PROVISIONED"
+///   }
 ///   name                = "kinesis-test"
 ///   shard_count         = 1
 ///   retention_period    = 48
 ///   shard_level_metrics = ["IncomingBytes", "OutgoingBytes"]
-///   stream_mode_details = {
-///     stream_mode = "PROVISIONED"
-///   }
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -157,15 +157,15 @@ import 'stream_stream_mode_details.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testStream = new Stream("testStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("PROVISIONED")
+///                 .build())
 ///             .name("kinesis-test")
 ///             .shardCount(1)
 ///             .retentionPeriod(48)
 ///             .shardLevelMetrics(
 ///                 "IncomingBytes",
 ///                 "OutgoingBytes")
-///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
-///                 .streamMode("PROVISIONED")
-///                 .build())
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -178,14 +178,14 @@ import 'stream_stream_mode_details.dart';
 ///     type: aws:kinesis:Stream
 ///     name: test_stream
 ///     properties:
+///       streamModeDetails:
+///         streamMode: PROVISIONED
 ///       name: kinesis-test
 ///       shardCount: 1
 ///       retentionPeriod: 48
 ///       shardLevelMetrics:
 ///         - IncomingBytes
 ///         - OutgoingBytes
-///       streamModeDetails:
-///         streamMode: PROVISIONED
 ///       tags:
 ///         Environment: test
 /// ```
@@ -211,7 +211,7 @@ import 'stream_stream_mode_details.dart';
 /// $ pulumi import aws:kinesis/stream:Stream example example-stream
 /// ```
 class Stream extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the stream (same as `id`).
+  /// ARN specifying the stream (same as `id`).
   late final pulumi.Output<String> arn;
   /// The encryption type to use. The only acceptable values are `NONE` or `KMS`. The default value is `NONE`.
   late final pulumi.Output<String?> encryptionType;
@@ -252,7 +252,7 @@ class Stream extends pulumi.CustomResource {
           'aws:kinesis/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     encryptionType = registerOutput<String?>('encryptionType');
@@ -263,10 +263,10 @@ class Stream extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionPeriod = registerOutput<int?>('retentionPeriod');
     shardCount = registerOutput<int?>('shardCount');
-    shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics');
+    shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     streamModeDetails = registerOutput<StreamStreamModeDetails>('streamModeDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamStreamModeDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     warmThroughputMibPs = registerOutput<int?>('warmThroughputMibPs');
   }
 
@@ -275,11 +275,12 @@ class Stream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,10 +303,35 @@ class Stream extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionPeriod = registerOutput<int?>('retentionPeriod');
     shardCount = registerOutput<int?>('shardCount');
-    shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics');
+    shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     streamModeDetails = registerOutput<StreamStreamModeDetails>('streamModeDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamStreamModeDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warmThroughputMibPs = registerOutput<int?>('warmThroughputMibPs');
+  }
+
+  /// Creates a typed reference to an existing [Stream] resource.
+  Stream.reference(String urn)
+    : super(
+        'aws:kinesis/stream:Stream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    encryptionType = registerOutput<String?>('encryptionType');
+    enforceConsumerDeletion = registerOutput<bool?>('enforceConsumerDeletion');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    maxRecordSizeInKib = registerOutput<int>('maxRecordSizeInKib');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    shardCount = registerOutput<int?>('shardCount');
+    shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    streamModeDetails = registerOutput<StreamStreamModeDetails>('streamModeDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamStreamModeDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     warmThroughputMibPs = registerOutput<int?>('warmThroughputMibPs');
   }
 }

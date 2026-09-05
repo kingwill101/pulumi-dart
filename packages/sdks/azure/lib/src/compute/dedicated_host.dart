@@ -111,7 +111,7 @@ import 'dedicated_host_state.dart';
 /// 		_, err = compute.NewDedicatedHost(ctx, "example", &compute.DedicatedHostArgs{
 /// 			Name:                 pulumi.String("example-host"),
 /// 			Location:             example.Location,
-/// 			DedicatedHostGroupId: exampleDedicatedHostGroup.ID(),
+/// 			DedicatedHostGroupId: exampleDedicatedHostGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:              pulumi.String("DSv3-Type3"),
 /// 			PlatformFaultDomain:  pulumi.Int(1),
 /// 		})
@@ -268,7 +268,7 @@ class DedicatedHost extends pulumi.CustomResource {
           'azure:compute/dedicatedHost:DedicatedHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoReplaceOnFailure = registerOutput<bool?>('autoReplaceOnFailure');
     dedicatedHostGroupId = registerOutput<String>('dedicatedHostGroupId');
@@ -277,7 +277,7 @@ class DedicatedHost extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     platformFaultDomain = registerOutput<int>('platformFaultDomain');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DedicatedHost] resource's state with the given [name] and [id].
@@ -285,11 +285,12 @@ class DedicatedHost extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedHostState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedHost._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,25 @@ class DedicatedHost extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     platformFaultDomain = registerOutput<int>('platformFaultDomain');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DedicatedHost] resource.
+  DedicatedHost.reference(String urn)
+    : super(
+        'azure:compute/dedicatedHost:DedicatedHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoReplaceOnFailure = registerOutput<bool?>('autoReplaceOnFailure');
+    dedicatedHostGroupId = registerOutput<String>('dedicatedHostGroupId');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformFaultDomain = registerOutput<int>('platformFaultDomain');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

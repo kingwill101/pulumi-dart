@@ -8,28 +8,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datasync_location_fsx_windows_location_fsx_windows_args_doc}
 class LocationFsxWindowsArgs {
   /// The name of the Windows domain that the FSx for Windows server belongs to.
-  final pulumi.Input<String>? domain;
-  /// The Amazon Resource Name (ARN) for the FSx for Windows file system.
+  final pulumi.Input<String?>? domain;
+  /// ARN for the FSx for Windows file system.
   final pulumi.Input<String> fsxFilesystemArn;
   /// The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
   final pulumi.Input<String> password;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
+  final pulumi.Input<String?>? region;
+  /// ARNs of the security groups that are to use to configure the FSx for Windows file system.
   final pulumi.Input<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
-  final pulumi.Input<String>? subdirectory;
+  final pulumi.Input<String?>? subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The user who has the permissions to access files and folders in the FSx for Windows file system.
   final pulumi.Input<String> user;
 
   /// Creates a new [LocationFsxWindowsArgs].
   /// [domain] The name of the Windows domain that the FSx for Windows server belongs to.
-  /// [fsxFilesystemArn] The Amazon Resource Name (ARN) for the FSx for Windows file system.
+  /// [fsxFilesystemArn] ARN for the FSx for Windows file system.
   /// [password] The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Windows file system.
+  /// [securityGroupArns] ARNs of the security groups that are to use to configure the FSx for Windows file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [user] The user who has the permissions to access files and folders in the FSx for Windows file system.

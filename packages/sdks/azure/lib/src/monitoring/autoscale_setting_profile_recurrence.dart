@@ -10,7 +10,7 @@ class AutoscaleSettingProfileRecurrence {
   /// A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
   final pulumi.Input<int> minutes;
   /// The Time Zone used for the `hours` field. A list of possible values can be found here). Defaults to `UTC`.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
 
   /// Creates a new [AutoscaleSettingProfileRecurrence].
   /// [days] A list of days that this profile takes effect on. Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
@@ -36,8 +36,8 @@ class AutoscaleSettingProfileRecurrence {
   factory AutoscaleSettingProfileRecurrence.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRecurrence(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

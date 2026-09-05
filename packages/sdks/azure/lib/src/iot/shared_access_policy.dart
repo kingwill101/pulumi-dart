@@ -293,18 +293,19 @@ class SharedAccessPolicy extends pulumi.CustomResource {
           'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     deviceConnect = registerOutput<bool?>('deviceConnect');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     registryRead = registerOutput<bool?>('registryRead');
     registryWrite = registerOutput<bool?>('registryWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     serviceConnect = registerOutput<bool?>('serviceConnect');
   }
 
@@ -313,11 +314,12 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,13 +336,36 @@ class SharedAccessPolicy extends pulumi.CustomResource {
     deviceConnect = registerOutput<bool?>('deviceConnect');
     iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     registryRead = registerOutput<bool?>('registryRead');
     registryWrite = registerOutput<bool?>('registryWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    serviceConnect = registerOutput<bool?>('serviceConnect');
+  }
+
+  /// Creates a typed reference to an existing [SharedAccessPolicy] resource.
+  SharedAccessPolicy.reference(String urn)
+    : super(
+        'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    deviceConnect = registerOutput<bool?>('deviceConnect');
+    iothubName = registerOutput<String>('iothubName');
+    this.name = registerOutput<String>('name');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    registryRead = registerOutput<bool?>('registryRead');
+    registryWrite = registerOutput<bool?>('registryWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     serviceConnect = registerOutput<bool?>('serviceConnect');
   }
 }

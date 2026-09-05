@@ -8,26 +8,26 @@ import 'channel_input_attachment_input_settings_video_selector.dart';
 
 class ChannelInputAttachmentInputSettings {
   /// Used to select the audio stream to decode for inputs that have multiple. See Audio Selectors for more details.
-  final pulumi.Input<List<ChannelInputAttachmentInputSettingsAudioSelector>>? audioSelectors;
+  final pulumi.Input<List<ChannelInputAttachmentInputSettingsAudioSelector>?>? audioSelectors;
   /// Used to select the caption input to use for inputs that have multiple available. See Caption Selectors for more details.
-  final pulumi.Input<List<ChannelInputAttachmentInputSettingsCaptionSelector>>? captionSelectors;
+  final pulumi.Input<List<ChannelInputAttachmentInputSettingsCaptionSelector>?>? captionSelectors;
   /// Enable or disable the deblock filter when filtering.
-  final pulumi.Input<String>? deblockFilter;
+  final pulumi.Input<String?>? deblockFilter;
   /// Enable or disable the denoise filter when filtering.
-  final pulumi.Input<String>? denoiseFilter;
+  final pulumi.Input<String?>? denoiseFilter;
   /// Adjusts the magnitude of filtering from 1 (minimal) to 5 (strongest).
-  final pulumi.Input<int>? filterStrength;
+  final pulumi.Input<int?>? filterStrength;
   /// Turns on the filter for the input.
-  final pulumi.Input<String>? inputFilter;
+  final pulumi.Input<String?>? inputFilter;
   /// Input settings. See Network Input Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettings>? networkInputSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettings?>? networkInputSettings;
   /// PID from which to read SCTE-35 messages.
-  final pulumi.Input<int>? scte35Pid;
+  final pulumi.Input<int?>? scte35Pid;
   /// Specifies whether to extract applicable ancillary data from a SMPTE-2038 source in the input.
-  final pulumi.Input<String>? smpte2038DataPreference;
+  final pulumi.Input<String?>? smpte2038DataPreference;
   /// Loop input if it is a file.
-  final pulumi.Input<String>? sourceEndBehavior;
-  final pulumi.Input<ChannelInputAttachmentInputSettingsVideoSelector>? videoSelector;
+  final pulumi.Input<String?>? sourceEndBehavior;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsVideoSelector?>? videoSelector;
 
   /// Creates a new [ChannelInputAttachmentInputSettings].
   /// [audioSelectors] Used to select the audio stream to decode for inputs that have multiple. See Audio Selectors for more details.
@@ -77,10 +77,10 @@ class ChannelInputAttachmentInputSettings {
       captionSelectors: (() { final guardedValue = map['captionSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsCaptionSelector>(guardedValue, (value) => ChannelInputAttachmentInputSettingsCaptionSelector.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deblockFilter: (() { final guardedValue = map['deblockFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       denoiseFilter: (() { final guardedValue = map['denoiseFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      filterStrength: (() { final guardedValue = map['filterStrength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filterStrength: (() { final guardedValue = map['filterStrength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       inputFilter: (() { final guardedValue = map['inputFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkInputSettings: (() { final guardedValue = map['networkInputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scte35Pid: (() { final guardedValue = map['scte35Pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scte35Pid: (() { final guardedValue = map['scte35Pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       smpte2038DataPreference: (() { final guardedValue = map['smpte2038DataPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceEndBehavior: (() { final guardedValue = map['sourceEndBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       videoSelector: (() { final guardedValue = map['videoSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelInputAttachmentInputSettingsVideoSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

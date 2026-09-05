@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesNetapp {
   /// When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
-  final pulumi.Input<bool>? deleteBackupsOnBackupVaultDestroy;
+  final pulumi.Input<bool?>? deleteBackupsOnBackupVaultDestroy;
   /// When enabled, the volume will not be destroyed, safeguarding from severe data loss
-  final pulumi.Input<bool>? preventVolumeDestruction;
+  final pulumi.Input<bool?>? preventVolumeDestruction;
 
   /// Creates a new [ProviderFeaturesNetapp].
   /// [deleteBackupsOnBackupVaultDestroy] When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed

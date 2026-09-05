@@ -10,28 +10,28 @@ import 'get_vpn_server_configuration_radius.dart';
 /// Result data returned by getVpnServerConfiguration.
 class GetVpnServerConfigurationResult {
   /// A `azureActiveDirectoryAuthentication` block as defined below.
-  final List<GetVpnServerConfigurationAzureActiveDirectoryAuthentication> azureActiveDirectoryAuthentications;
+  final List<GetVpnServerConfigurationAzureActiveDirectoryAuthentication>? azureActiveDirectoryAuthentications;
   /// One or more `clientRevokedCertificate` blocks as defined below.
-  final List<GetVpnServerConfigurationClientRevokedCertificate> clientRevokedCertificates;
+  final List<GetVpnServerConfigurationClientRevokedCertificate>? clientRevokedCertificates;
   /// One or more `clientRootCertificate` blocks as defined below.
-  final List<GetVpnServerConfigurationClientRootCertificate> clientRootCertificates;
+  final List<GetVpnServerConfigurationClientRootCertificate>? clientRootCertificates;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The `bgpSettings` block as defined below.
-  final List<GetVpnServerConfigurationIpsecPolicy> ipsecPolicies;
+  final List<GetVpnServerConfigurationIpsecPolicy>? ipsecPolicies;
   /// The Azure Region where the VPN Server Configuration exists.
-  final String location;
+  final String? location;
   /// The name used to uniquely identify this certificate.
-  final String name;
+  final String? name;
   /// A `radius` block as defined below.
-  final List<GetVpnServerConfigurationRadius> radii;
-  final String resourceGroupName;
+  final List<GetVpnServerConfigurationRadius>? radii;
+  final String? resourceGroupName;
   /// A mapping of tags to assign to the VPN Server Configuration.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The list of Authentication Types applicable for the VPN Server Configuration.
-  final List<String> vpnAuthenticationTypes;
+  final List<String>? vpnAuthenticationTypes;
   /// The list of VPN Protocols to use for the VPN Server Configuration.
-  final List<String> vpnProtocols;
+  final List<String>? vpnProtocols;
 
   /// Creates a new [GetVpnServerConfigurationResult].
   /// [azureActiveDirectoryAuthentications] A `azureActiveDirectoryAuthentication` block as defined below.
@@ -42,56 +42,56 @@ class GetVpnServerConfigurationResult {
   /// [location] The Azure Region where the VPN Server Configuration exists.
   /// [name] The name used to uniquely identify this certificate.
   /// [radii] A `radius` block as defined below.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags to assign to the VPN Server Configuration.
   /// [vpnAuthenticationTypes] The list of Authentication Types applicable for the VPN Server Configuration.
   /// [vpnProtocols] The list of VPN Protocols to use for the VPN Server Configuration.
   const GetVpnServerConfigurationResult({
-    required this.azureActiveDirectoryAuthentications,
-    required this.clientRevokedCertificates,
-    required this.clientRootCertificates,
-    required this.id,
-    required this.ipsecPolicies,
-    required this.location,
-    required this.name,
-    required this.radii,
-    required this.resourceGroupName,
-    required this.tags,
-    required this.vpnAuthenticationTypes,
-    required this.vpnProtocols,
+    this.azureActiveDirectoryAuthentications,
+    this.clientRevokedCertificates,
+    this.clientRootCertificates,
+    this.id,
+    this.ipsecPolicies,
+    this.location,
+    this.name,
+    this.radii,
+    this.resourceGroupName,
+    this.tags,
+    this.vpnAuthenticationTypes,
+    this.vpnProtocols,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureActiveDirectoryAuthentications': pulumi.Input.encodeList<GetVpnServerConfigurationAzureActiveDirectoryAuthentication, Map<String, dynamic>>(azureActiveDirectoryAuthentications, (value) => value.toMap()),
-      'clientRevokedCertificates': pulumi.Input.encodeList<GetVpnServerConfigurationClientRevokedCertificate, Map<String, dynamic>>(clientRevokedCertificates, (value) => value.toMap()),
-      'clientRootCertificates': pulumi.Input.encodeList<GetVpnServerConfigurationClientRootCertificate, Map<String, dynamic>>(clientRootCertificates, (value) => value.toMap()),
-      'id': id,
-      'ipsecPolicies': pulumi.Input.encodeList<GetVpnServerConfigurationIpsecPolicy, Map<String, dynamic>>(ipsecPolicies, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'radii': pulumi.Input.encodeList<GetVpnServerConfigurationRadius, Map<String, dynamic>>(radii, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
-      'vpnAuthenticationTypes': vpnAuthenticationTypes,
-      'vpnProtocols': vpnProtocols,
+      'azureActiveDirectoryAuthentications': ?(() { final guardedValue = azureActiveDirectoryAuthentications; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnServerConfigurationAzureActiveDirectoryAuthentication, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clientRevokedCertificates': ?(() { final guardedValue = clientRevokedCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnServerConfigurationClientRevokedCertificate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clientRootCertificates': ?(() { final guardedValue = clientRootCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnServerConfigurationClientRootCertificate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'ipsecPolicies': ?(() { final guardedValue = ipsecPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnServerConfigurationIpsecPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'radii': ?(() { final guardedValue = radii; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpnServerConfigurationRadius, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+      'vpnAuthenticationTypes': ?vpnAuthenticationTypes,
+      'vpnProtocols': ?vpnProtocols,
     };
   }
 
   factory GetVpnServerConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationResult(
-      azureActiveDirectoryAuthentications: pulumi.Input.decodeList<GetVpnServerConfigurationAzureActiveDirectoryAuthentication>(map['azureActiveDirectoryAuthentications']!, (value) => GetVpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      clientRevokedCertificates: pulumi.Input.decodeList<GetVpnServerConfigurationClientRevokedCertificate>(map['clientRevokedCertificates']!, (value) => GetVpnServerConfigurationClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      clientRootCertificates: pulumi.Input.decodeList<GetVpnServerConfigurationClientRootCertificate>(map['clientRootCertificates']!, (value) => GetVpnServerConfigurationClientRootCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      ipsecPolicies: pulumi.Input.decodeList<GetVpnServerConfigurationIpsecPolicy>(map['ipsecPolicies']!, (value) => GetVpnServerConfigurationIpsecPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      radii: pulumi.Input.decodeList<GetVpnServerConfigurationRadius>(map['radii']!, (value) => GetVpnServerConfigurationRadius.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpnAuthenticationTypes: (map['vpnAuthenticationTypes'] as List).cast<String>(),
-      vpnProtocols: (map['vpnProtocols'] as List).cast<String>(),
+      azureActiveDirectoryAuthentications: (() { final guardedValue = map['azureActiveDirectoryAuthentications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnServerConfigurationAzureActiveDirectoryAuthentication>(guardedValue, (value) => GetVpnServerConfigurationAzureActiveDirectoryAuthentication.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clientRevokedCertificates: (() { final guardedValue = map['clientRevokedCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnServerConfigurationClientRevokedCertificate>(guardedValue, (value) => GetVpnServerConfigurationClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clientRootCertificates: (() { final guardedValue = map['clientRootCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnServerConfigurationClientRootCertificate>(guardedValue, (value) => GetVpnServerConfigurationClientRootCertificate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipsecPolicies: (() { final guardedValue = map['ipsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnServerConfigurationIpsecPolicy>(guardedValue, (value) => GetVpnServerConfigurationIpsecPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      radii: (() { final guardedValue = map['radii']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpnServerConfigurationRadius>(guardedValue, (value) => GetVpnServerConfigurationRadius.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vpnAuthenticationTypes: (() { final guardedValue = map['vpnAuthenticationTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      vpnProtocols: (() { final guardedValue = map['vpnProtocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
-  /// The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
+  /// Predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
   final pulumi.Input<String> predefinedMetricType;
-  /// The target value for the scaling policy.
+  /// Target value for the scaling policy.
   final pulumi.Input<double> targetValue;
 
   /// Creates a new [CapacityProviderCapacityProviderScalingConfigScalingPolicy].
-  /// [predefinedMetricType] The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
-  /// [targetValue] The target value for the scaling policy.
+  /// [predefinedMetricType] Predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
+  /// [targetValue] Target value for the scaling policy.
   const CapacityProviderCapacityProviderScalingConfigScalingPolicy({
     required this.predefinedMetricType,
     required this.targetValue,
@@ -26,7 +26,7 @@ class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   factory CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfigScalingPolicy(
       predefinedMetricType: pulumi.Input.fromValue(map['predefinedMetricType'] as String),
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

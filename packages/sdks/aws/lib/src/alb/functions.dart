@@ -217,6 +217,17 @@ Future<GetListenerResult> getListener(
   return GetListenerResult.fromMap(result);
 }
 
+pulumi.Output<GetListenerResult> getListenerOutput(
+  GetListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:alb/getListener:getListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListenerResult.fromMap);
+}
+
 /// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer.
@@ -390,6 +401,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:alb/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
+}
+
 /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer Target Group.
@@ -561,4 +583,15 @@ Future<GetTargetGroupResult> getTargetGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetGroupResult> getTargetGroupOutput(
+  GetTargetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:alb/getTargetGroup:getTargetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetGroupResult.fromMap);
 }

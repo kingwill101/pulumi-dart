@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateSourceEntitySourceTemplate {
-  /// The Amazon Resource Name (ARN) of the resource.
+  /// ARN of the resource.
   final pulumi.Input<String> arn;
 
   /// Creates a new [TemplateSourceEntitySourceTemplate].
-  /// [arn] The Amazon Resource Name (ARN) of the resource.
+  /// [arn] ARN of the resource.
   const TemplateSourceEntitySourceTemplate({
     required this.arn,
   });

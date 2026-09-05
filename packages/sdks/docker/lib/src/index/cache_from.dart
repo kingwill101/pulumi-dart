@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains a list of images to reference when building using a cache
 class CacheFrom {
   /// Specifies cached images
-  final pulumi.Input<List<String>>? images;
+  final pulumi.Input<List<String>?>? images;
 
   /// Creates a new [CacheFrom].
   /// [images] Specifies cached images

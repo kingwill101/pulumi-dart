@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_domain_settings_rstudio_server_pro_domain_settings_default_resource_spec.dart';
 
 class DomainDomainSettingsRStudioServerProDomainSettings {
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
-  final pulumi.Input<DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec>? defaultResourceSpec;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
+  final pulumi.Input<DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec?>? defaultResourceSpec;
   /// The ARN of the execution role for the RStudioServerPro Domain-level app.
   final pulumi.Input<String> domainExecutionRoleArn;
   /// A URL pointing to an RStudio Connect server.
-  final pulumi.Input<String>? rStudioConnectUrl;
+  final pulumi.Input<String?>? rStudioConnectUrl;
   /// A URL pointing to an RStudio Package Manager server.
-  final pulumi.Input<String>? rStudioPackageManagerUrl;
+  final pulumi.Input<String?>? rStudioPackageManagerUrl;
 
   /// Creates a new [DomainDomainSettingsRStudioServerProDomainSettings].
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
   /// [domainExecutionRoleArn] The ARN of the execution role for the RStudioServerPro Domain-level app.
   /// [rStudioConnectUrl] A URL pointing to an RStudio Connect server.
   /// [rStudioPackageManagerUrl] A URL pointing to an RStudio Package Manager server.

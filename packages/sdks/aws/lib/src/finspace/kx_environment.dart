@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kx_environment_args.dart';
+import 'kx_environment_custom_dns_configuration.dart';
 import 'kx_environment_state.dart';
 import 'kx_environment_transit_gateway_configuration.dart';
 
@@ -168,9 +169,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// });
 /// const exampleTransitGateway = new aws.ec2transitgateway.TransitGateway("example", {description: "example"});
 /// const exampleEnv = new aws.finspace.KxEnvironment("example_env", {
-///     name: "my-tf-kx-environment",
-///     description: "Environment description",
-///     kmsKeyId: example.arn,
 ///     transitGatewayConfiguration: {
 ///         transitGatewayId: exampleTransitGateway.id,
 ///         routableCidrSpace: "100.64.0.0/26",
@@ -179,6 +177,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///         customDnsServerName: "example.finspace.amazonaws.com",
 ///         customDnsServerIp: "10.0.0.76",
 ///     }],
+///     name: "my-tf-kx-environment",
+///     description: "Environment description",
+///     kmsKeyId: example.arn,
 /// });
 /// ```
 /// ```python
@@ -190,9 +191,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     deletion_window_in_days=7)
 /// example_transit_gateway = aws.ec2transitgateway.TransitGateway("example", description="example")
 /// example_env = aws.finspace.KxEnvironment("example_env",
-///     name="my-tf-kx-environment",
-///     description="Environment description",
-///     kms_key_id=example.arn,
 ///     transit_gateway_configuration={
 ///         "transit_gateway_id": example_transit_gateway.id,
 ///         "routable_cidr_space": "100.64.0.0/26",
@@ -200,7 +198,10 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     custom_dns_configurations=[{
 ///         "custom_dns_server_name": "example.finspace.amazonaws.com",
 ///         "custom_dns_server_ip": "10.0.0.76",
-///     }])
+///     }],
+///     name="my-tf-kx-environment",
+///     description="Environment description",
+///     kms_key_id=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -223,9 +224,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///
 ///     var exampleEnv = new Aws.FinSpace.KxEnvironment("example_env", new()
 ///     {
-///         Name = "my-tf-kx-environment",
-///         Description = "Environment description",
-///         KmsKeyId = example.Arn,
 ///         TransitGatewayConfiguration = new Aws.FinSpace.Inputs.KxEnvironmentTransitGatewayConfigurationArgs
 ///         {
 ///             TransitGatewayId = exampleTransitGateway.Id,
@@ -239,6 +237,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                 CustomDnsServerIp = "10.0.0.76",
 ///             },
 ///         },
+///         Name = "my-tf-kx-environment",
+///         Description = "Environment description",
+///         KmsKeyId = example.Arn,
 ///     });
 ///
 /// });
@@ -269,9 +270,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = finspace.NewKxEnvironment(ctx, "example_env", &finspace.KxEnvironmentArgs{
-/// 			Name:        pulumi.String("my-tf-kx-environment"),
-/// 			Description: pulumi.String("Environment description"),
-/// 			KmsKeyId:    example.Arn,
 /// 			TransitGatewayConfiguration: &finspace.KxEnvironmentTransitGatewayConfigurationArgs{
 /// 				TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
 /// 				RoutableCidrSpace: pulumi.String("100.64.0.0/26"),
@@ -282,6 +280,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 					CustomDnsServerIp:   pulumi.String("10.0.0.76"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("my-tf-kx-environment"),
+/// 			Description: pulumi.String("Environment description"),
+/// 			KmsKeyId:    example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -307,9 +308,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///   description = "example"
 /// }
 /// resource "aws_finspace_kxenvironment" "example_env" {
-///   name        = "my-tf-kx-environment"
-///   description = "Environment description"
-///   kms_key_id  = aws_kms_key.example.arn
 ///   transit_gateway_configuration = {
 ///     transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
 ///     routable_cidr_space = "100.64.0.0/26"
@@ -318,6 +316,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     custom_dns_server_name = "example.finspace.amazonaws.com"
 ///     custom_dns_server_ip   = "10.0.0.76"
 ///   }
+///   name        = "my-tf-kx-environment"
+///   description = "Environment description"
+///   kms_key_id  = aws_kms_key.example.arn
 /// }
 /// ```
 /// ```java
@@ -357,9 +358,6 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///             .build());
 ///
 ///         var exampleEnv = new KxEnvironment("exampleEnv", KxEnvironmentArgs.builder()
-///             .name("my-tf-kx-environment")
-///             .description("Environment description")
-///             .kmsKeyId(example.arn())
 ///             .transitGatewayConfiguration(KxEnvironmentTransitGatewayConfigurationArgs.builder()
 ///                 .transitGatewayId(exampleTransitGateway.id())
 ///                 .routableCidrSpace("100.64.0.0/26")
@@ -368,6 +366,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                 .customDnsServerName("example.finspace.amazonaws.com")
 ///                 .customDnsServerIp("10.0.0.76")
 ///                 .build())
+///             .name("my-tf-kx-environment")
+///             .description("Environment description")
+///             .kmsKeyId(example.arn())
 ///             .build());
 ///
 ///     }
@@ -389,15 +390,15 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     type: aws:finspace:KxEnvironment
 ///     name: example_env
 ///     properties:
-///       name: my-tf-kx-environment
-///       description: Environment description
-///       kmsKeyId: ${example.arn}
 ///       transitGatewayConfiguration:
 ///         transitGatewayId: ${exampleTransitGateway.id}
 ///         routableCidrSpace: 100.64.0.0/26
 ///       customDnsConfigurations:
 ///         - customDnsServerName: example.finspace.amazonaws.com
 ///           customDnsServerIp: 10.0.0.76
+///       name: my-tf-kx-environment
+///       description: Environment description
+///       kmsKeyId: ${example.arn}
 /// ```
 ///
 ///
@@ -414,17 +415,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// });
 /// const exampleTransitGateway = new aws.ec2transitgateway.TransitGateway("example", {description: "example"});
 /// const exampleEnv = new aws.finspace.KxEnvironment("example_env", {
-///     name: "my-tf-kx-environment",
-///     description: "Environment description",
-///     kmsKeyId: example.arn,
 ///     transitGatewayConfiguration: {
-///         transitGatewayId: exampleTransitGateway.id,
-///         routableCidrSpace: "100.64.0.0/26",
 ///         attachmentNetworkAclConfigurations: [{
-///             ruleNumber: 1,
-///             protocol: "6",
-///             ruleAction: "allow",
-///             cidrBlock: "0.0.0.0/0",
 ///             portRange: {
 ///                 from: 53,
 ///                 to: 53,
@@ -433,12 +425,21 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                 type: -1,
 ///                 code: -1,
 ///             },
+///             ruleNumber: 1,
+///             protocol: "6",
+///             ruleAction: "allow",
+///             cidrBlock: "0.0.0.0/0",
 ///         }],
+///         transitGatewayId: exampleTransitGateway.id,
+///         routableCidrSpace: "100.64.0.0/26",
 ///     },
 ///     customDnsConfigurations: [{
 ///         customDnsServerName: "example.finspace.amazonaws.com",
 ///         customDnsServerIp: "10.0.0.76",
 ///     }],
+///     name: "my-tf-kx-environment",
+///     description: "Environment description",
+///     kmsKeyId: example.arn,
 /// });
 /// ```
 /// ```python
@@ -450,17 +451,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     deletion_window_in_days=7)
 /// example_transit_gateway = aws.ec2transitgateway.TransitGateway("example", description="example")
 /// example_env = aws.finspace.KxEnvironment("example_env",
-///     name="my-tf-kx-environment",
-///     description="Environment description",
-///     kms_key_id=example.arn,
 ///     transit_gateway_configuration={
-///         "transit_gateway_id": example_transit_gateway.id,
-///         "routable_cidr_space": "100.64.0.0/26",
 ///         "attachment_network_acl_configurations": [{
-///             "rule_number": 1,
-///             "protocol": "6",
-///             "rule_action": "allow",
-///             "cidr_block": "0.0.0.0/0",
 ///             "port_range": {
 ///                 "from_": 53,
 ///                 "to": 53,
@@ -469,12 +461,21 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                 "type": -1,
 ///                 "code": -1,
 ///             },
+///             "rule_number": 1,
+///             "protocol": "6",
+///             "rule_action": "allow",
+///             "cidr_block": "0.0.0.0/0",
 ///         }],
+///         "transit_gateway_id": example_transit_gateway.id,
+///         "routable_cidr_space": "100.64.0.0/26",
 ///     },
 ///     custom_dns_configurations=[{
 ///         "custom_dns_server_name": "example.finspace.amazonaws.com",
 ///         "custom_dns_server_ip": "10.0.0.76",
-///     }])
+///     }],
+///     name="my-tf-kx-environment",
+///     description="Environment description",
+///     kms_key_id=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -497,21 +498,12 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///
 ///     var exampleEnv = new Aws.FinSpace.KxEnvironment("example_env", new()
 ///     {
-///         Name = "my-tf-kx-environment",
-///         Description = "Environment description",
-///         KmsKeyId = example.Arn,
 ///         TransitGatewayConfiguration = new Aws.FinSpace.Inputs.KxEnvironmentTransitGatewayConfigurationArgs
 ///         {
-///             TransitGatewayId = exampleTransitGateway.Id,
-///             RoutableCidrSpace = "100.64.0.0/26",
 ///             AttachmentNetworkAclConfigurations = new[]
 ///             {
 ///                 new Aws.FinSpace.Inputs.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArgs
 ///                 {
-///                     RuleNumber = 1,
-///                     Protocol = "6",
-///                     RuleAction = "allow",
-///                     CidrBlock = "0.0.0.0/0",
 ///                     PortRange = new Aws.FinSpace.Inputs.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRangeArgs
 ///                     {
 ///                         From = 53,
@@ -522,8 +514,14 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                         Type = -1,
 ///                         Code = -1,
 ///                     },
+///                     RuleNumber = 1,
+///                     Protocol = "6",
+///                     RuleAction = "allow",
+///                     CidrBlock = "0.0.0.0/0",
 ///                 },
 ///             },
+///             TransitGatewayId = exampleTransitGateway.Id,
+///             RoutableCidrSpace = "100.64.0.0/26",
 ///         },
 ///         CustomDnsConfigurations = new[]
 ///         {
@@ -533,6 +531,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                 CustomDnsServerIp = "10.0.0.76",
 ///             },
 ///         },
+///         Name = "my-tf-kx-environment",
+///         Description = "Environment description",
+///         KmsKeyId = example.Arn,
 ///     });
 ///
 /// });
@@ -563,18 +564,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = finspace.NewKxEnvironment(ctx, "example_env", &finspace.KxEnvironmentArgs{
-/// 			Name:        pulumi.String("my-tf-kx-environment"),
-/// 			Description: pulumi.String("Environment description"),
-/// 			KmsKeyId:    example.Arn,
 /// 			TransitGatewayConfiguration: &finspace.KxEnvironmentTransitGatewayConfigurationArgs{
-/// 				TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
-/// 				RoutableCidrSpace: pulumi.String("100.64.0.0/26"),
 /// 				AttachmentNetworkAclConfigurations: finspace.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArray{
 /// 					&finspace.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArgs{
-/// 						RuleNumber: pulumi.Int(1),
-/// 						Protocol:   pulumi.String("6"),
-/// 						RuleAction: pulumi.String("allow"),
-/// 						CidrBlock:  pulumi.String("0.0.0.0/0"),
 /// 						PortRange: &finspace.KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRangeArgs{
 /// 							From: pulumi.Int(53),
 /// 							To:   pulumi.Int(53),
@@ -583,8 +575,14 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 							Type: pulumi.Int(-1),
 /// 							Code: pulumi.Int(-1),
 /// 						},
+/// 						RuleNumber: pulumi.Int(1),
+/// 						Protocol:   pulumi.String("6"),
+/// 						RuleAction: pulumi.String("allow"),
+/// 						CidrBlock:  pulumi.String("0.0.0.0/0"),
 /// 					},
 /// 				},
+/// 				TransitGatewayId:  exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 				RoutableCidrSpace: pulumi.String("100.64.0.0/26"),
 /// 			},
 /// 			CustomDnsConfigurations: finspace.KxEnvironmentCustomDnsConfigurationArray{
 /// 				&finspace.KxEnvironmentCustomDnsConfigurationArgs{
@@ -592,6 +590,9 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// 					CustomDnsServerIp:   pulumi.String("10.0.0.76"),
 /// 				},
 /// 			},
+/// 			Name:        pulumi.String("my-tf-kx-environment"),
+/// 			Description: pulumi.String("Environment description"),
+/// 			KmsKeyId:    example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -617,17 +618,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///   description = "example"
 /// }
 /// resource "aws_finspace_kxenvironment" "example_env" {
-///   name        = "my-tf-kx-environment"
-///   description = "Environment description"
-///   kms_key_id  = aws_kms_key.example.arn
 ///   transit_gateway_configuration = {
-///     transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
-///     routable_cidr_space = "100.64.0.0/26"
 ///     attachment_network_acl_configurations = [{
-///       "ruleNumber" = 1
-///       "protocol"   = "6"
-///       "ruleAction" = "allow"
-///       "cidrBlock"  = "0.0.0.0/0"
 ///       "portRange" = {
 ///         "from" = 53
 ///         "to"   = 53
@@ -636,12 +628,21 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///         "type" = -1
 ///         "code" = -1
 ///       }
+///       "ruleNumber" = 1
+///       "protocol"   = "6"
+///       "ruleAction" = "allow"
+///       "cidrBlock"  = "0.0.0.0/0"
 ///     }]
+///     transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
+///     routable_cidr_space = "100.64.0.0/26"
 ///   }
 ///   custom_dns_configurations {
 ///     custom_dns_server_name = "example.finspace.amazonaws.com"
 ///     custom_dns_server_ip   = "10.0.0.76"
 ///   }
+///   name        = "my-tf-kx-environment"
+///   description = "Environment description"
+///   kms_key_id  = aws_kms_key.example.arn
 /// }
 /// ```
 /// ```java
@@ -684,17 +685,8 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///             .build());
 ///
 ///         var exampleEnv = new KxEnvironment("exampleEnv", KxEnvironmentArgs.builder()
-///             .name("my-tf-kx-environment")
-///             .description("Environment description")
-///             .kmsKeyId(example.arn())
 ///             .transitGatewayConfiguration(KxEnvironmentTransitGatewayConfigurationArgs.builder()
-///                 .transitGatewayId(exampleTransitGateway.id())
-///                 .routableCidrSpace("100.64.0.0/26")
 ///                 .attachmentNetworkAclConfigurations(KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationArgs.builder()
-///                     .ruleNumber(1)
-///                     .protocol("6")
-///                     .ruleAction("allow")
-///                     .cidrBlock("0.0.0.0/0")
 ///                     .portRange(KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRangeArgs.builder()
 ///                         .from(53)
 ///                         .to(53)
@@ -703,12 +695,21 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///                         .type(-1)
 ///                         .code(-1)
 ///                         .build())
+///                     .ruleNumber(1)
+///                     .protocol("6")
+///                     .ruleAction("allow")
+///                     .cidrBlock("0.0.0.0/0")
 ///                     .build())
+///                 .transitGatewayId(exampleTransitGateway.id())
+///                 .routableCidrSpace("100.64.0.0/26")
 ///                 .build())
 ///             .customDnsConfigurations(KxEnvironmentCustomDnsConfigurationArgs.builder()
 ///                 .customDnsServerName("example.finspace.amazonaws.com")
 ///                 .customDnsServerIp("10.0.0.76")
 ///                 .build())
+///             .name("my-tf-kx-environment")
+///             .description("Environment description")
+///             .kmsKeyId(example.arn())
 ///             .build());
 ///
 ///     }
@@ -730,26 +731,26 @@ import 'kx_environment_transit_gateway_configuration.dart';
 ///     type: aws:finspace:KxEnvironment
 ///     name: example_env
 ///     properties:
-///       name: my-tf-kx-environment
-///       description: Environment description
-///       kmsKeyId: ${example.arn}
 ///       transitGatewayConfiguration:
-///         transitGatewayId: ${exampleTransitGateway.id}
-///         routableCidrSpace: 100.64.0.0/26
 ///         attachmentNetworkAclConfigurations:
-///           - ruleNumber: 1
-///             protocol: '6'
-///             ruleAction: allow
-///             cidrBlock: 0.0.0.0/0
-///             portRange:
+///           - portRange:
 ///               from: 53
 ///               to: 53
 ///             icmpTypeCode:
 ///               type: -1
 ///               code: -1
+///             ruleNumber: 1
+///             protocol: '6'
+///             ruleAction: allow
+///             cidrBlock: 0.0.0.0/0
+///         transitGatewayId: ${exampleTransitGateway.id}
+///         routableCidrSpace: 100.64.0.0/26
 ///       customDnsConfigurations:
 ///         - customDnsServerName: example.finspace.amazonaws.com
 ///           customDnsServerIp: 10.0.0.76
+///       name: my-tf-kx-environment
+///       description: Environment description
+///       kmsKeyId: ${example.arn}
 /// ```
 ///
 ///
@@ -761,14 +762,14 @@ import 'kx_environment_transit_gateway_configuration.dart';
 /// $ pulumi import aws:finspace/kxEnvironment:KxEnvironment example n3ceo7wqxoxcti5tujqwzs
 /// ```
 class KxEnvironment extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX environment.
+  /// ARN identifier of the KX environment.
   late final pulumi.Output<String> arn;
   /// AWS Availability Zone IDs that this environment is available in. Important when selecting VPC subnets to use in cluster creation.
   late final pulumi.Output<List<String>> availabilityZones;
   /// Timestamp at which the environment is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> createdTimestamp;
   /// List of DNS server name and server IP. This is used to set up Route-53 outbound resolvers. Defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customDnsConfigurations;
+  late final pulumi.Output<List<KxEnvironmentCustomDnsConfiguration>?> customDnsConfigurations;
   /// Description for the KX environment.
   late final pulumi.Output<String?> description;
   /// Unique identifier for the AWS environment infrastructure account.
@@ -804,12 +805,12 @@ class KxEnvironment extends pulumi.CustomResource {
           'aws:finspace/kxEnvironment:KxEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>('customDnsConfigurations');
+    customDnsConfigurations = registerOutput<List<KxEnvironmentCustomDnsConfiguration>?>('customDnsConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(guardedValue, (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     infrastructureAccountId = registerOutput<String>('infrastructureAccountId');
     kmsKeyId = registerOutput<String>('kmsKeyId');
@@ -817,8 +818,8 @@ class KxEnvironment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayConfiguration = registerOutput<KxEnvironmentTransitGatewayConfiguration?>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxEnvironmentTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -827,11 +828,12 @@ class KxEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -846,9 +848,9 @@ class KxEnvironment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    customDnsConfigurations = registerOutput<List<Map<String, dynamic>>?>('customDnsConfigurations');
+    customDnsConfigurations = registerOutput<List<KxEnvironmentCustomDnsConfiguration>?>('customDnsConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(guardedValue, (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     infrastructureAccountId = registerOutput<String>('infrastructureAccountId');
     kmsKeyId = registerOutput<String>('kmsKeyId');
@@ -856,8 +858,33 @@ class KxEnvironment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayConfiguration = registerOutput<KxEnvironmentTransitGatewayConfiguration?>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxEnvironmentTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [KxEnvironment] resource.
+  KxEnvironment.reference(String urn)
+    : super(
+        'aws:finspace/kxEnvironment:KxEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    customDnsConfigurations = registerOutput<List<KxEnvironmentCustomDnsConfiguration>?>('customDnsConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(guardedValue, (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    infrastructureAccountId = registerOutput<String>('infrastructureAccountId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayConfiguration = registerOutput<KxEnvironmentTransitGatewayConfiguration?>('transitGatewayConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxEnvironmentTransitGatewayConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

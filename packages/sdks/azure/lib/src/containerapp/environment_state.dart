@@ -7,59 +7,59 @@ import 'environment_workload_profile.dart';
 /// Input properties used for looking up and filtering Environment resources.
 class EnvironmentState {
   /// The ID of the Custom Domain Verification for this Container App Environment.
-  final pulumi.Input<String>? customDomainVerificationId;
+  final pulumi.Input<String?>? customDomainVerificationId;
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? daprApplicationInsightsConnectionString;
+  final pulumi.Input<String?>? daprApplicationInsightsConnectionString;
   /// The default, publicly resolvable, name of this Container App Environment.
-  final pulumi.Input<String>? defaultDomain;
+  final pulumi.Input<String?>? defaultDomain;
   /// The network addressing in which the Container Apps in this Container App Environment will reside in CIDR notation.
-  final pulumi.Input<String>? dockerBridgeCidr;
+  final pulumi.Input<String?>? dockerBridgeCidr;
   /// An `identity` block as defined below.
-  final pulumi.Input<EnvironmentIdentity>? identity;
+  final pulumi.Input<EnvironmentIdentity?>? identity;
   /// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only valid if a `workloadProfile` is specified. If `infrastructureSubnetId` is specified, this resource group will be created in the same subscription as `infrastructureSubnetId`.
-  final pulumi.Input<String>? infrastructureResourceGroupName;
+  final pulumi.Input<String?>? infrastructureResourceGroupName;
   /// The existing Subnet to use for the Container Apps Control Plane. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The minimum required subnet size is /23 for Consumption only environment type and /27 for Workload profiles environment type.
-  final pulumi.Input<String>? infrastructureSubnetId;
+  final pulumi.Input<String?>? infrastructureSubnetId;
   /// Should the Container Environment operate in Internal Load Balancing Mode? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** can only be set to `true` if `infrastructureSubnetId` is specified.
-  final pulumi.Input<bool>? internalLoadBalancerEnabled;
+  final pulumi.Input<bool?>? internalLoadBalancerEnabled;
   /// Specifies the supported Azure location where the Container App Environment is to exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID for the Log Analytics Workspace to link this Container Apps Managed Environment to.
   ///
   /// &gt; **Note:** required if `logsDestination` is set to `log-analytics`. Cannot be set if `logsDestination` is set to `azure-monitor`.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// Where the application logs will be saved for this Container Apps Managed Environment. Possible values include `log-analytics` and `azure-monitor`. Omitting this value will result in logs being streamed only.
-  final pulumi.Input<String>? logsDestination;
+  final pulumi.Input<String?>? logsDestination;
   /// Should mutual transport layer security (mTLS) be enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** This feature is in public preview. Enabling mTLS for your applications may increase response latency and reduce maximum throughput in high-load scenarios.
-  final pulumi.Input<bool>? mutualTlsEnabled;
+  final pulumi.Input<bool?>? mutualTlsEnabled;
   /// The name of the Container Apps Managed Environment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The IP range, in CIDR notation, that is reserved for environment infrastructure IP addresses.
-  final pulumi.Input<String>? platformReservedCidr;
+  final pulumi.Input<String?>? platformReservedCidr;
   /// The IP address from the IP range defined by `platformReservedCidr` that is reserved for the internal DNS server.
-  final pulumi.Input<String>? platformReservedDnsIpAddress;
+  final pulumi.Input<String?>? platformReservedDnsIpAddress;
   /// The public network access setting for the Container App Environment. Possible values are `Enabled` and `Disabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Static IP address of the Environment.
-  final pulumi.Input<String>? staticIpAddress;
+  final pulumi.Input<String?>? staticIpAddress;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// One or more `workloadProfile` blocks as defined below.
-  final pulumi.Input<List<EnvironmentWorkloadProfile>>? workloadProfiles;
+  final pulumi.Input<List<EnvironmentWorkloadProfile>?>? workloadProfiles;
   /// Should the Container App Environment be created with Zone Redundancy enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** can only be set to `true` if `infrastructureSubnetId` is specified.
-  final pulumi.Input<bool>? zoneRedundancyEnabled;
+  final pulumi.Input<bool?>? zoneRedundancyEnabled;
 
   /// Creates a new [EnvironmentState].
   /// [customDomainVerificationId] The ID of the Custom Domain Verification for this Container App Environment.

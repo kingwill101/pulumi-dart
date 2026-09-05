@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentWorkloadProfile {
   /// The maximum number of instances of workload profile that can be deployed in the Container App Environment.
-  final pulumi.Input<int>? maximumCount;
+  final pulumi.Input<int?>? maximumCount;
   /// The minimum number of instances of workload profile that can be deployed in the Container App Environment.
-  final pulumi.Input<int>? minimumCount;
+  final pulumi.Input<int?>? minimumCount;
   /// The name of the workload profile.
   final pulumi.Input<String> name;
   /// Workload profile type for the workloads to run on. Possible values include `Consumption`, `Consumption-GPU-NC24-A100`, `Consumption-GPU-NC8as-T4`, `D4`, `D8`, `D16`, `D32`, `E4`, `E8`, `E16`, `E32`, `NC24-A100`, `NC48-A100` and `NC96-A100`.
@@ -39,8 +39,8 @@ class EnvironmentWorkloadProfile {
 
   factory EnvironmentWorkloadProfile.fromMap(Map<String, dynamic> map) {
     return EnvironmentWorkloadProfile(
-      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       workloadProfileType: pulumi.Input.fromValue(map['workloadProfileType'] as String),
     );

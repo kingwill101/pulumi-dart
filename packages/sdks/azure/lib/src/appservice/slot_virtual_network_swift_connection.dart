@@ -267,7 +267,7 @@ import 'slot_virtual_network_swift_connection_state.dart';
 /// 			Name:              pulumi.String("example-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -277,15 +277,15 @@ import 'slot_virtual_network_swift_connection_state.dart';
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewSlotVirtualNetworkSwiftConnection(ctx, "example", &appservice.SlotVirtualNetworkSwiftConnectionArgs{
 /// 			SlotName:     example_staging.Name,
-/// 			AppServiceId: exampleAppService.ID(),
-/// 			SubnetId:     exampleSubnet.ID(),
+/// 			AppServiceId: exampleAppService.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -551,7 +551,7 @@ class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
           'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceId = registerOutput<String>('appServiceId');
     slotName = registerOutput<String>('slotName');
@@ -563,11 +563,12 @@ class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SlotVirtualNetworkSwiftConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SlotVirtualNetworkSwiftConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -581,6 +582,20 @@ class SlotVirtualNetworkSwiftConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceId = registerOutput<String>('appServiceId');
+    slotName = registerOutput<String>('slotName');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [SlotVirtualNetworkSwiftConnection] resource.
+  SlotVirtualNetworkSwiftConnection.reference(String urn)
+    : super(
+        'azure:appservice/slotVirtualNetworkSwiftConnection:SlotVirtualNetworkSwiftConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceId = registerOutput<String>('appServiceId');
     slotName = registerOutput<String>('slotName');
     subnetId = registerOutput<String>('subnetId');

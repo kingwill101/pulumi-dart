@@ -5,15 +5,15 @@ import 'route_spec_http_route_match_header_match_range.dart';
 
 class RouteSpecHttpRouteMatchHeaderMatch {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Header value sent by the client must begin with the specified characters.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Object that specifies the range of numbers that the header value sent by the client must be included in. See `spec.http_route.match.header.match.range` Block for details.
-  final pulumi.Input<RouteSpecHttpRouteMatchHeaderMatchRange>? range;
+  final pulumi.Input<RouteSpecHttpRouteMatchHeaderMatchRange?>? range;
   /// Regex used to match the path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// Header value sent by the client must end with the specified characters.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [RouteSpecHttpRouteMatchHeaderMatch].
   /// [exact] Exact query parameter to match on.

@@ -282,7 +282,7 @@ import 'scheduled_query_rules_log_state.dart';
 /// 			Name:              pulumi.String("example-metricalert"),
 /// 			ResourceGroupName: example.Name,
 /// 			Scopes: pulumi.StringArray{
-/// 				exampleAnalyticsWorkspace.ID(),
+/// 				exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Description: pulumi.String("Action will be triggered when Average_% Idle Time metric is less than 10."),
 /// 			Frequency:   pulumi.String("PT1M"),
@@ -298,7 +298,7 @@ import 'scheduled_query_rules_log_state.dart';
 /// 			},
 /// 			Actions: monitoring.MetricAlertActionArray{
 /// 				&monitoring.MetricAlertActionArgs{
-/// 					ActionGroupId: exampleActionGroup.ID(),
+/// 					ActionGroupId: exampleActionGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -322,7 +322,7 @@ import 'scheduled_query_rules_log_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			DataSourceId: exampleAnalyticsWorkspace.ID(),
+/// 			DataSourceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:  pulumi.String("Scheduled query rule LogToMetric example"),
 /// 			Enabled:      pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
@@ -619,9 +619,9 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesLogCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -629,7 +629,7 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ScheduledQueryRulesLog] resource's state with the given [name] and [id].
@@ -637,11 +637,12 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledQueryRulesLogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledQueryRulesLog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -655,7 +656,7 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesLogCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -663,6 +664,26 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ScheduledQueryRulesLog] resource.
+  ScheduledQueryRulesLog.reference(String urn)
+    : super(
+        'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesLogCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

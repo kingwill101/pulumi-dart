@@ -417,18 +417,18 @@ import 'contact_state.dart';
 /// 					Polarization: pulumi.String("RHCP"),
 /// 				},
 /// 			},
-/// 			NetworkConfigurationSubnetId: exampleSubnet.ID(),
+/// 			NetworkConfigurationSubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = orbital.NewContact(ctx, "example", &orbital.ContactArgs{
 /// 			Name:                 pulumi.String("example-contact"),
-/// 			SpacecraftId:         exampleSpacecraft.ID(),
+/// 			SpacecraftId:         exampleSpacecraft.ID().ToIDOutput().ToStringOutput(),
 /// 			ReservationStartTime: pulumi.String("2020-07-16T20:35:00.00Z"),
 /// 			ReservationEndTime:   pulumi.String("2020-07-16T20:55:00.00Z"),
 /// 			GroundStationName:    pulumi.String("WESTUS2_0"),
-/// 			ContactProfileId:     exampleContactProfile.ID(),
+/// 			ContactProfileId:     exampleContactProfile.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -773,7 +773,7 @@ class Contact extends pulumi.CustomResource {
           'azure:orbital/contact:Contact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     contactProfileId = registerOutput<String>('contactProfileId');
     groundStationName = registerOutput<String>('groundStationName');
@@ -788,11 +788,12 @@ class Contact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Contact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -806,6 +807,23 @@ class Contact extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    contactProfileId = registerOutput<String>('contactProfileId');
+    groundStationName = registerOutput<String>('groundStationName');
+    this.name = registerOutput<String>('name');
+    reservationEndTime = registerOutput<String>('reservationEndTime');
+    reservationStartTime = registerOutput<String>('reservationStartTime');
+    spacecraftId = registerOutput<String>('spacecraftId');
+  }
+
+  /// Creates a typed reference to an existing [Contact] resource.
+  Contact.reference(String urn)
+    : super(
+        'azure:orbital/contact:Contact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     contactProfileId = registerOutput<String>('contactProfileId');
     groundStationName = registerOutput<String>('groundStationName');
     this.name = registerOutput<String>('name');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_negotiation_policy_args.dart';
+import 'ssl_negotiation_policy_attribute.dart';
 import 'ssl_negotiation_policy_state.dart';
 
 /// Provides a load balancer SSL negotiation policy, which allows an ELB to control the ciphers and protocols that are supported during SSL negotiations between a client and a load balancer.
@@ -12,8 +13,6 @@ import 'ssl_negotiation_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const lb = new aws.elb.LoadBalancer("lb", {
-///     name: "test-lb",
-///     availabilityZones: ["us-east-1a"],
 ///     listeners: [{
 ///         instancePort: 8000,
 ///         instanceProtocol: "https",
@@ -21,11 +20,10 @@ import 'ssl_negotiation_policy_state.dart';
 ///         lbProtocol: "https",
 ///         sslCertificateId: "arn:aws:iam::123456789012:server-certificate/certName",
 ///     }],
+///     name: "test-lb",
+///     availabilityZones: ["us-east-1a"],
 /// });
 /// const foo = new aws.elb.SslNegotiationPolicy("foo", {
-///     name: "foo-policy",
-///     loadBalancer: lb.id,
-///     lbPort: 443,
 ///     attributes: [
 ///         {
 ///             name: "Protocol-TLSv1",
@@ -56,6 +54,9 @@ import 'ssl_negotiation_policy_state.dart';
 ///             value: "false",
 ///         },
 ///     ],
+///     name: "foo-policy",
+///     loadBalancer: lb.id,
+///     lbPort: 443,
 /// });
 /// ```
 /// ```python
@@ -63,19 +64,16 @@ import 'ssl_negotiation_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// lb = aws.elb.LoadBalancer("lb",
-///     name="test-lb",
-///     availability_zones=["us-east-1a"],
 ///     listeners=[{
 ///         "instance_port": 8000,
 ///         "instance_protocol": "https",
 ///         "lb_port": 443,
 ///         "lb_protocol": "https",
 ///         "ssl_certificate_id": "arn:aws:iam::123456789012:server-certificate/certName",
-///     }])
+///     }],
+///     name="test-lb",
+///     availability_zones=["us-east-1a"])
 /// foo = aws.elb.SslNegotiationPolicy("foo",
-///     name="foo-policy",
-///     load_balancer=lb.id,
-///     lb_port=443,
 ///     attributes=[
 ///         {
 ///             "name": "Protocol-TLSv1",
@@ -105,7 +103,10 @@ import 'ssl_negotiation_policy_state.dart';
 ///             "name": "EDH-RSA-DES-CBC3-SHA",
 ///             "value": "false",
 ///         },
-///     ])
+///     ],
+///     name="foo-policy",
+///     load_balancer=lb.id,
+///     lb_port=443)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -117,11 +118,6 @@ import 'ssl_negotiation_policy_state.dart';
 /// {
 ///     var lb = new Aws.Elb.LoadBalancer("lb", new()
 ///     {
-///         Name = "test-lb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-east-1a",
-///         },
 ///         Listeners = new[]
 ///         {
 ///             new Aws.Elb.Inputs.LoadBalancerListenerArgs
@@ -133,13 +129,15 @@ import 'ssl_negotiation_policy_state.dart';
 ///                 SslCertificateId = "arn:aws:iam::123456789012:server-certificate/certName",
 ///             },
 ///         },
+///         Name = "test-lb",
+///         AvailabilityZones = new[]
+///         {
+///             "us-east-1a",
+///         },
 ///     });
 ///
 ///     var foo = new Aws.Elb.SslNegotiationPolicy("foo", new()
 ///     {
-///         Name = "foo-policy",
-///         LoadBalancer = lb.Id,
-///         LbPort = 443,
 ///         Attributes = new[]
 ///         {
 ///             new Aws.Elb.Inputs.SslNegotiationPolicyAttributeArgs
@@ -178,6 +176,9 @@ import 'ssl_negotiation_policy_state.dart';
 ///                 Value = "false",
 ///             },
 ///         },
+///         Name = "foo-policy",
+///         LoadBalancer = lb.Id,
+///         LbPort = 443,
 ///     });
 ///
 /// });
@@ -193,10 +194,6 @@ import 'ssl_negotiation_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		lb, err := elb.NewLoadBalancer(ctx, "lb", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("test-lb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-east-1a"),
-/// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
 /// 					InstancePort:     pulumi.Int(8000),
@@ -206,14 +203,15 @@ import 'ssl_negotiation_policy_state.dart';
 /// 					SslCertificateId: pulumi.String("arn:aws:iam::123456789012:server-certificate/certName"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("test-lb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-east-1a"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = elb.NewSslNegotiationPolicy(ctx, "foo", &elb.SslNegotiationPolicyArgs{
-/// 			Name:         pulumi.String("foo-policy"),
-/// 			LoadBalancer: lb.ID().ToIDOutput().ToStringOutput(),
-/// 			LbPort:       pulumi.Int(443),
 /// 			Attributes: elb.SslNegotiationPolicyAttributeArray{
 /// 				&elb.SslNegotiationPolicyAttributeArgs{
 /// 					Name:  pulumi.String("Protocol-TLSv1"),
@@ -244,6 +242,9 @@ import 'ssl_negotiation_policy_state.dart';
 /// 					Value: pulumi.String("false"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("foo-policy"),
+/// 			LoadBalancer: lb.ID().ToIDOutput().ToStringOutput(),
+/// 			LbPort:       pulumi.Int(443),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -262,8 +263,6 @@ import 'ssl_negotiation_policy_state.dart';
 /// }
 ///
 /// resource "aws_elb_loadbalancer" "lb" {
-///   name               = "test-lb"
-///   availability_zones = ["us-east-1a"]
 ///   listeners {
 ///     instance_port      = 8000
 ///     instance_protocol  = "https"
@@ -271,11 +270,10 @@ import 'ssl_negotiation_policy_state.dart';
 ///     lb_protocol        = "https"
 ///     ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
 ///   }
+///   name               = "test-lb"
+///   availability_zones = ["us-east-1a"]
 /// }
 /// resource "aws_elb_sslnegotiationpolicy" "foo" {
-///   name          = "foo-policy"
-///   load_balancer = aws_elb_loadbalancer.lb.id
-///   lb_port       = 443
 ///   attributes {
 ///     name  = "Protocol-TLSv1"
 ///     value = "false"
@@ -304,6 +302,9 @@ import 'ssl_negotiation_policy_state.dart';
 ///     name  = "EDH-RSA-DES-CBC3-SHA"
 ///     value = "false"
 ///   }
+///   name          = "foo-policy"
+///   load_balancer = aws_elb_loadbalancer.lb.id
+///   lb_port       = 443
 /// }
 /// ```
 /// ```java
@@ -332,8 +333,6 @@ import 'ssl_negotiation_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var lb = new LoadBalancer("lb", LoadBalancerArgs.builder()
-///             .name("test-lb")
-///             .availabilityZones("us-east-1a")
 ///             .listeners(LoadBalancerListenerArgs.builder()
 ///                 .instancePort(8000)
 ///                 .instanceProtocol("https")
@@ -341,12 +340,11 @@ import 'ssl_negotiation_policy_state.dart';
 ///                 .lbProtocol("https")
 ///                 .sslCertificateId("arn:aws:iam::123456789012:server-certificate/certName")
 ///                 .build())
+///             .name("test-lb")
+///             .availabilityZones("us-east-1a")
 ///             .build());
 ///
 ///         var foo = new SslNegotiationPolicy("foo", SslNegotiationPolicyArgs.builder()
-///             .name("foo-policy")
-///             .loadBalancer(lb.id())
-///             .lbPort(443)
 ///             .attributes(
 ///                 SslNegotiationPolicyAttributeArgs.builder()
 ///                     .name("Protocol-TLSv1")
@@ -376,6 +374,9 @@ import 'ssl_negotiation_policy_state.dart';
 ///                     .name("EDH-RSA-DES-CBC3-SHA")
 ///                     .value("false")
 ///                     .build())
+///             .name("foo-policy")
+///             .loadBalancer(lb.id())
+///             .lbPort(443)
 ///             .build());
 ///
 ///     }
@@ -386,21 +387,18 @@ import 'ssl_negotiation_policy_state.dart';
 ///   lb:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: test-lb
-///       availabilityZones:
-///         - us-east-1a
 ///       listeners:
 ///         - instancePort: 8000
 ///           instanceProtocol: https
 ///           lbPort: 443
 ///           lbProtocol: https
 ///           sslCertificateId: arn:aws:iam::123456789012:server-certificate/certName
+///       name: test-lb
+///       availabilityZones:
+///         - us-east-1a
 ///   foo:
 ///     type: aws:elb:SslNegotiationPolicy
 ///     properties:
-///       name: foo-policy
-///       loadBalancer: ${lb.id}
-///       lbPort: 443
 ///       attributes:
 ///         - name: Protocol-TLSv1
 ///           value: 'false'
@@ -416,10 +414,13 @@ import 'ssl_negotiation_policy_state.dart';
 ///           value: 'true'
 ///         - name: EDH-RSA-DES-CBC3-SHA
 ///           value: 'false'
+///       name: foo-policy
+///       loadBalancer: ${lb.id}
+///       lbPort: 443
 /// ```
 class SslNegotiationPolicy extends pulumi.CustomResource {
   /// An SSL Negotiation policy attribute. Each has two properties:
-  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+  late final pulumi.Output<List<SslNegotiationPolicyAttribute>?> attributes;
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
@@ -450,14 +451,14 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
           'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     lbPort = registerOutput<int>('lbPort');
     loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SslNegotiationPolicy] resource's state with the given [name] and [id].
@@ -465,11 +466,12 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SslNegotiationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SslNegotiationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -483,11 +485,28 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     lbPort = registerOutput<int>('lbPort');
     loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SslNegotiationPolicy] resource.
+  SslNegotiationPolicy.reference(String urn)
+    : super(
+        'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

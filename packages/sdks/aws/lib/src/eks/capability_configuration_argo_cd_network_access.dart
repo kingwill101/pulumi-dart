@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityConfigurationArgoCdNetworkAccess {
   /// VPC Endpoint IDs.
-  final pulumi.Input<List<String>>? vpceIds;
+  final pulumi.Input<List<String>?>? vpceIds;
 
   /// Creates a new [CapabilityConfigurationArgoCdNetworkAccess].
   /// [vpceIds] VPC Endpoint IDs.

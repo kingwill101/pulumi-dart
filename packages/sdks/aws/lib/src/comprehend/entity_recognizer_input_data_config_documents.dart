@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityRecognizerInputDataConfigDocuments {
   /// Specifies how the input files should be processed.
   /// One of `ONE_DOC_PER_LINE` or `ONE_DOC_PER_FILE`.
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Location of training documents.
   final pulumi.Input<String> s3Uri;
-  final pulumi.Input<String>? testS3Uri;
+  final pulumi.Input<String?>? testS3Uri;
 
   /// Creates a new [EntityRecognizerInputDataConfigDocuments].
   /// [inputFormat] Specifies how the input files should be processed.

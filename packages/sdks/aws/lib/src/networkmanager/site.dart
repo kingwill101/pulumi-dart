@@ -156,14 +156,14 @@ class Site extends pulumi.CustomResource {
           'aws:networkmanager/site:Site',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     location = registerOutput<SiteLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Site] resource's state with the given [name] and [id].
@@ -171,11 +171,12 @@ class Site extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Site._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -193,7 +194,24 @@ class Site extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     location = registerOutput<SiteLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Site] resource.
+  Site.reference(String urn)
+    : super(
+        'aws:networkmanager/site:Site',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    location = registerOutput<SiteLocation?>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -5,41 +5,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MountTarget resources.
 class MountTargetState {
   /// The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// The name of the Availability Zone (AZ) that the mount target resides in.
-  final pulumi.Input<String>? availabilityZoneName;
+  final pulumi.Input<String?>? availabilityZoneName;
   /// The DNS name for the EFS file system.
-  final pulumi.Input<String>? dnsName;
-  /// Amazon Resource Name of the file system.
-  final pulumi.Input<String>? fileSystemArn;
+  final pulumi.Input<String?>? dnsName;
+  /// ARN of the file system.
+  final pulumi.Input<String?>? fileSystemArn;
   /// The ID of the file system for which the mount target is intended.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// The address (within the address range of the specified subnet) at
   /// which the file system may be mounted via the mount target.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// IPv6 address to use. Valid only when `ipAddressType` is set to `IPV6_ONLY` or `DUAL_STACK`.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
-  final pulumi.Input<String>? mountTargetDnsName;
+  final pulumi.Input<String?>? mountTargetDnsName;
   /// The ID of the network interface that Amazon EFS created when it created the mount target.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// AWS account ID that owns the resource.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of up to 5 VPC security group IDs (that must
   /// be for the same VPC as subnet specified) in effect for the mount target.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The ID of the subnet to add the mount target in.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [MountTargetState].
   /// [availabilityZoneId] The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
   /// [availabilityZoneName] The name of the Availability Zone (AZ) that the mount target resides in.
   /// [dnsName] The DNS name for the EFS file system.
-  /// [fileSystemArn] Amazon Resource Name of the file system.
+  /// [fileSystemArn] ARN of the file system.
   /// [fileSystemId] The ID of the file system for which the mount target is intended.
   /// [ipAddress] The address (within the address range of the specified subnet) at
   /// [ipAddressType] IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.

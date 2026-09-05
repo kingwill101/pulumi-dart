@@ -10,9 +10,9 @@ class WorkspaceGithubRepo {
   /// Specifies the GitHub Enterprise host name. For example: &lt;https://github.mydomain.com&gt;.
   ///
   /// &gt; **Note:** You must log in to the Synapse UI to complete the authentication to the GitHub repository.
-  final pulumi.Input<String>? gitUrl;
+  final pulumi.Input<String?>? gitUrl;
   /// The last commit ID.
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// Specifies the name of the git repository.
   final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.

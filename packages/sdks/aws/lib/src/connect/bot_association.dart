@@ -18,11 +18,11 @@ import 'bot_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.BotAssociation("example", {
-///     instanceId: exampleAwsConnectInstance.id,
 ///     lexBot: {
 ///         lexRegion: "us-west-2",
 ///         name: "Test",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
 /// });
 /// ```
 /// ```python
@@ -30,11 +30,11 @@ import 'bot_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.BotAssociation("example",
-///     instance_id=example_aws_connect_instance["id"],
 ///     lex_bot={
 ///         "lex_region": "us-west-2",
 ///         "name": "Test",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,12 +46,12 @@ import 'bot_association_state.dart';
 /// {
 ///     var example = new Aws.Connect.BotAssociation("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
 ///         LexBot = new Aws.Connect.Inputs.BotAssociationLexBotArgs
 ///         {
 ///             LexRegion = "us-west-2",
 ///             Name = "Test",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
 ///     });
 ///
 /// });
@@ -67,11 +67,11 @@ import 'bot_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewBotAssociation(ctx, "example", &connect.BotAssociationArgs{
-/// 			InstanceId: pulumi.Any(exampleAwsConnectInstance.Id),
 /// 			LexBot: &connect.BotAssociationLexBotArgs{
 /// 				LexRegion: pulumi.String("us-west-2"),
 /// 				Name:      pulumi.String("Test"),
 /// 			},
+/// 			InstanceId: pulumi.Any(exampleAwsConnectInstance.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,11 +90,11 @@ import 'bot_association_state.dart';
 /// }
 ///
 /// resource "aws_connect_botassociation" "example" {
-///   instance_id = exampleAwsConnectInstance.id
 ///   lex_bot = {
 ///     lex_region = "us-west-2"
 ///     name       = "Test"
 ///   }
+///   instance_id = exampleAwsConnectInstance.id
 /// }
 /// ```
 /// ```java
@@ -120,11 +120,11 @@ import 'bot_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BotAssociation("example", BotAssociationArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
 ///             .lexBot(BotAssociationLexBotArgs.builder()
 ///                 .lexRegion("us-west-2")
 ///                 .name("Test")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
 ///             .build());
 ///
 ///     }
@@ -135,10 +135,10 @@ import 'bot_association_state.dart';
 ///   example:
 ///     type: aws:connect:BotAssociation
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
 ///       lexBot:
 ///         lexRegion: us-west-2
 ///         name: Test
+///       instanceId: ${exampleAwsConnectInstance.id}
 /// ```
 ///
 ///
@@ -151,11 +151,11 @@ import 'bot_association_state.dart';
 ///
 /// const current = aws.getRegion({});
 /// const example = new aws.lex.Intent("example", {
-///     createVersion: true,
-///     name: "connect_lex_intent",
 ///     fulfillmentActivity: {
 ///         type: "ReturnIntent",
 ///     },
+///     createVersion: true,
+///     name: "connect_lex_intent",
 ///     sampleUtterances: ["I would like to pick up flowers."],
 /// });
 /// const exampleBot = new aws.lex.Bot("example", {
@@ -166,11 +166,11 @@ import 'bot_association_state.dart';
 ///         }],
 ///     },
 ///     clarificationPrompt: {
-///         maxAttempts: 2,
 ///         messages: [{
 ///             content: "I didn't understand you, what would you like to do?",
 ///             contentType: "PlainText",
 ///         }],
+///         maxAttempts: 2,
 ///     },
 ///     intents: [{
 ///         intentName: example.name,
@@ -181,11 +181,11 @@ import 'bot_association_state.dart';
 ///     processBehavior: "BUILD",
 /// });
 /// const exampleBotAssociation = new aws.connect.BotAssociation("example", {
-///     instanceId: exampleAwsConnectInstance.id,
 ///     lexBot: {
 ///         lexRegion: current.then(current => current.region),
 ///         name: exampleBot.name,
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
 /// });
 /// ```
 /// ```python
@@ -194,11 +194,11 @@ import 'bot_association_state.dart';
 ///
 /// current = aws.get_region()
 /// example = aws.lex.Intent("example",
-///     create_version=True,
-///     name="connect_lex_intent",
 ///     fulfillment_activity={
 ///         "type": "ReturnIntent",
 ///     },
+///     create_version=True,
+///     name="connect_lex_intent",
 ///     sample_utterances=["I would like to pick up flowers."])
 /// example_bot = aws.lex.Bot("example",
 ///     abort_statement={
@@ -208,11 +208,11 @@ import 'bot_association_state.dart';
 ///         }],
 ///     },
 ///     clarification_prompt={
-///         "max_attempts": 2,
 ///         "messages": [{
 ///             "content": "I didn't understand you, what would you like to do?",
 ///             "content_type": "PlainText",
 ///         }],
+///         "max_attempts": 2,
 ///     },
 ///     intents=[{
 ///         "intent_name": example.name,
@@ -222,11 +222,11 @@ import 'bot_association_state.dart';
 ///     name="connect_lex_bot",
 ///     process_behavior="BUILD")
 /// example_bot_association = aws.connect.BotAssociation("example",
-///     instance_id=example_aws_connect_instance["id"],
 ///     lex_bot={
 ///         "lex_region": current.region,
 ///         "name": example_bot.name,
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -240,12 +240,12 @@ import 'bot_association_state.dart';
 ///
 ///     var example = new Aws.Lex.Intent("example", new()
 ///     {
-///         CreateVersion = true,
-///         Name = "connect_lex_intent",
 ///         FulfillmentActivity = new Aws.Lex.Inputs.IntentFulfillmentActivityArgs
 ///         {
 ///             Type = "ReturnIntent",
 ///         },
+///         CreateVersion = true,
+///         Name = "connect_lex_intent",
 ///         SampleUtterances = new[]
 ///         {
 ///             "I would like to pick up flowers.",
@@ -267,7 +267,6 @@ import 'bot_association_state.dart';
 ///         },
 ///         ClarificationPrompt = new Aws.Lex.Inputs.BotClarificationPromptArgs
 ///         {
-///             MaxAttempts = 2,
 ///             Messages = new[]
 ///             {
 ///                 new Aws.Lex.Inputs.BotClarificationPromptMessageArgs
@@ -276,6 +275,7 @@ import 'bot_association_state.dart';
 ///                     ContentType = "PlainText",
 ///                 },
 ///             },
+///             MaxAttempts = 2,
 ///         },
 ///         Intents = new[]
 ///         {
@@ -292,12 +292,12 @@ import 'bot_association_state.dart';
 ///
 ///     var exampleBotAssociation = new Aws.Connect.BotAssociation("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
 ///         LexBot = new Aws.Connect.Inputs.BotAssociationLexBotArgs
 ///         {
 ///             LexRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///             Name = exampleBot.Name,
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
 ///     });
 ///
 /// });
@@ -319,11 +319,11 @@ import 'bot_association_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := lex.NewIntent(ctx, "example", &lex.IntentArgs{
-/// 			CreateVersion: pulumi.Bool(true),
-/// 			Name:          pulumi.String("connect_lex_intent"),
 /// 			FulfillmentActivity: &lex.IntentFulfillmentActivityArgs{
 /// 				Type: pulumi.String("ReturnIntent"),
 /// 			},
+/// 			CreateVersion: pulumi.Bool(true),
+/// 			Name:          pulumi.String("connect_lex_intent"),
 /// 			SampleUtterances: pulumi.StringArray{
 /// 				pulumi.String("I would like to pick up flowers."),
 /// 			},
@@ -341,13 +341,13 @@ import 'bot_association_state.dart';
 /// 				},
 /// 			},
 /// 			ClarificationPrompt: &lex.BotClarificationPromptArgs{
-/// 				MaxAttempts: pulumi.Int(2),
 /// 				Messages: lex.BotClarificationPromptMessageArray{
 /// 					&lex.BotClarificationPromptMessageArgs{
 /// 						Content:     pulumi.String("I didn't understand you, what would you like to do?"),
 /// 						ContentType: pulumi.String("PlainText"),
 /// 					},
 /// 				},
+/// 				MaxAttempts: pulumi.Int(2),
 /// 			},
 /// 			Intents: lex.BotIntentArray{
 /// 				&lex.BotIntentArgs{
@@ -363,11 +363,11 @@ import 'bot_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = connect.NewBotAssociation(ctx, "example", &connect.BotAssociationArgs{
-/// 			InstanceId: pulumi.Any(exampleAwsConnectInstance.Id),
 /// 			LexBot: &connect.BotAssociationLexBotArgs{
 /// 				LexRegion: pulumi.String(current.Region),
 /// 				Name:      exampleBot.Name,
 /// 			},
+/// 			InstanceId: pulumi.Any(exampleAwsConnectInstance.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -389,11 +389,11 @@ import 'bot_association_state.dart';
 /// }
 ///
 /// resource "aws_lex_intent" "example" {
-///   create_version = true
-///   name           = "connect_lex_intent"
 ///   fulfillment_activity = {
 ///     type = "ReturnIntent"
 ///   }
+///   create_version    = true
+///   name              = "connect_lex_intent"
 ///   sample_utterances = ["I would like to pick up flowers."]
 /// }
 /// resource "aws_lex_bot" "example" {
@@ -404,11 +404,11 @@ import 'bot_association_state.dart';
 ///     }]
 ///   }
 ///   clarification_prompt = {
-///     max_attempts = 2
 ///     messages = [{
 ///       "content"     = "I didn't understand you, what would you like to do?"
 ///       "contentType" = "PlainText"
 ///     }]
+///     max_attempts = 2
 ///   }
 ///   intents {
 ///     intent_name    = aws_lex_intent.example.name
@@ -419,11 +419,11 @@ import 'bot_association_state.dart';
 ///   process_behavior = "BUILD"
 /// }
 /// resource "aws_connect_botassociation" "example" {
-///   instance_id = exampleAwsConnectInstance.id
 ///   lex_bot = {
 ///     lex_region = data.aws_getregion.current.region
 ///     name       = aws_lex_bot.example.name
 ///   }
+///   instance_id = exampleAwsConnectInstance.id
 /// }
 /// ```
 /// ```java
@@ -464,11 +464,11 @@ import 'bot_association_state.dart';
 ///             .build());
 ///
 ///         var example = new Intent("example", IntentArgs.builder()
-///             .createVersion(true)
-///             .name("connect_lex_intent")
 ///             .fulfillmentActivity(IntentFulfillmentActivityArgs.builder()
 ///                 .type("ReturnIntent")
 ///                 .build())
+///             .createVersion(true)
+///             .name("connect_lex_intent")
 ///             .sampleUtterances("I would like to pick up flowers.")
 ///             .build());
 ///
@@ -480,11 +480,11 @@ import 'bot_association_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .clarificationPrompt(BotClarificationPromptArgs.builder()
-///                 .maxAttempts(2)
 ///                 .messages(BotClarificationPromptMessageArgs.builder()
 ///                     .content("I didn't understand you, what would you like to do?")
 ///                     .contentType("PlainText")
 ///                     .build())
+///                 .maxAttempts(2)
 ///                 .build())
 ///             .intents(BotIntentArgs.builder()
 ///                 .intentName(example.name())
@@ -496,11 +496,11 @@ import 'bot_association_state.dart';
 ///             .build());
 ///
 ///         var exampleBotAssociation = new BotAssociation("exampleBotAssociation", BotAssociationArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
 ///             .lexBot(BotAssociationLexBotArgs.builder()
 ///                 .lexRegion(current.region())
 ///                 .name(exampleBot.name())
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
 ///             .build());
 ///
 ///     }
@@ -511,10 +511,10 @@ import 'bot_association_state.dart';
 ///   example:
 ///     type: aws:lex:Intent
 ///     properties:
-///       createVersion: true
-///       name: connect_lex_intent
 ///       fulfillmentActivity:
 ///         type: ReturnIntent
+///       createVersion: true
+///       name: connect_lex_intent
 ///       sampleUtterances:
 ///         - I would like to pick up flowers.
 ///   exampleBot:
@@ -526,10 +526,10 @@ import 'bot_association_state.dart';
 ///           - content: Sorry, I am not able to assist at this time.
 ///             contentType: PlainText
 ///       clarificationPrompt:
-///         maxAttempts: 2
 ///         messages:
 ///           - content: I didn't understand you, what would you like to do?
 ///             contentType: PlainText
+///         maxAttempts: 2
 ///       intents:
 ///         - intentName: ${example.name}
 ///           intentVersion: '1'
@@ -540,10 +540,10 @@ import 'bot_association_state.dart';
 ///     type: aws:connect:BotAssociation
 ///     name: example
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
 ///       lexBot:
 ///         lexRegion: ${current.region}
 ///         name: ${exampleBot.name}
+///       instanceId: ${exampleAwsConnectInstance.id}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -579,7 +579,7 @@ class BotAssociation extends pulumi.CustomResource {
           'aws:connect/botAssociation:BotAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceId = registerOutput<String>('instanceId');
     lexBot = registerOutput<BotAssociationLexBot>('lexBot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAssociationLexBot.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -591,11 +591,12 @@ class BotAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BotAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BotAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,6 +610,20 @@ class BotAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    instanceId = registerOutput<String>('instanceId');
+    lexBot = registerOutput<BotAssociationLexBot>('lexBot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAssociationLexBot.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BotAssociation] resource.
+  BotAssociation.reference(String urn)
+    : super(
+        'aws:connect/botAssociation:BotAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceId = registerOutput<String>('instanceId');
     lexBot = registerOutput<BotAssociationLexBot>('lexBot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAssociationLexBot.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

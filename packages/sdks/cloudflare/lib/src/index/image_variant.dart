@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_variant_args.dart';
 import 'image_variant_options.dart';
 import 'image_variant_state.dart';
-import 'image_variant_variant.dart';
 
 /// Accepted Permissions
 ///
@@ -184,7 +183,6 @@ class ImageVariant extends pulumi.CustomResource {
   late final pulumi.Output<bool> neverRequireSignedUrls;
   /// Allows you to define image resizing sizes for different use cases.
   late final pulumi.Output<ImageVariantOptions> options;
-  late final pulumi.Output<ImageVariantVariant> variant;
 
   /// Creates a new [ImageVariant].
   /// [name] The Pulumi resource name.
@@ -198,13 +196,12 @@ class ImageVariant extends pulumi.CustomResource {
           'cloudflare:index/imageVariant:ImageVariant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     imageVariantId = registerOutput<String>('imageVariantId');
     neverRequireSignedUrls = registerOutput<bool>('neverRequireSignedUrls');
     this.options = registerOutput<ImageVariantOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    variant = registerOutput<ImageVariantVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [ImageVariant] resource's state with the given [name] and [id].
@@ -235,7 +232,6 @@ class ImageVariant extends pulumi.CustomResource {
     imageVariantId = registerOutput<String>('imageVariantId');
     neverRequireSignedUrls = registerOutput<bool>('neverRequireSignedUrls');
     this.options = registerOutput<ImageVariantOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    variant = registerOutput<ImageVariantVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [ImageVariant] resource.
@@ -251,6 +247,5 @@ class ImageVariant extends pulumi.CustomResource {
     imageVariantId = registerOutput<String>('imageVariantId');
     neverRequireSignedUrls = registerOutput<bool>('neverRequireSignedUrls');
     this.options = registerOutput<ImageVariantOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    variant = registerOutput<ImageVariantVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVariantVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -584,7 +584,7 @@ class NamespaceRegistration extends pulumi.CustomResource {
           'aws:redshift/namespaceRegistration:NamespaceRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     consumerIdentifier = registerOutput<String>('consumerIdentifier');
     namespaceType = registerOutput<String>('namespaceType');
@@ -599,11 +599,12 @@ class NamespaceRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -617,6 +618,23 @@ class NamespaceRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    consumerIdentifier = registerOutput<String>('consumerIdentifier');
+    namespaceType = registerOutput<String>('namespaceType');
+    provisionedClusterIdentifier = registerOutput<String?>('provisionedClusterIdentifier');
+    region = registerOutput<String>('region');
+    serverlessNamespaceIdentifier = registerOutput<String?>('serverlessNamespaceIdentifier');
+    serverlessWorkgroupIdentifier = registerOutput<String?>('serverlessWorkgroupIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceRegistration] resource.
+  NamespaceRegistration.reference(String urn)
+    : super(
+        'aws:redshift/namespaceRegistration:NamespaceRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     consumerIdentifier = registerOutput<String>('consumerIdentifier');
     namespaceType = registerOutput<String>('namespaceType');
     provisionedClusterIdentifier = registerOutput<String?>('provisionedClusterIdentifier');

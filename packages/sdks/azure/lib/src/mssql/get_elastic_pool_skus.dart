@@ -35,7 +35,7 @@ class GetElasticPoolSkus {
 
   factory GetElasticPoolSkus.fromMap(Map<String, dynamic> map) {
     return GetElasticPoolSkus(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       family: pulumi.Input.fromValue(map['family'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),

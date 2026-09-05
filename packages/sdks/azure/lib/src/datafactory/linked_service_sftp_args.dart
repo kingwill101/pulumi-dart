@@ -13,49 +13,49 @@ class LinkedServiceSftpArgs {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to SFTP Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The type of authentication used to connect to the SFTP server. Valid options are `MultiFactor`, `Basic` and `SshPublicKey`.
   final pulumi.Input<String> authenticationType;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The SFTP server hostname.
   final pulumi.Input<String> host;
   /// The host key fingerprint of the SFTP server.
-  final pulumi.Input<String>? hostKeyFingerprint;
+  final pulumi.Input<String?>? hostKeyFingerprint;
   /// The name of the integration runtime to associate with the Data Factory Linked Service.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// A `keyVaultPassword` block as defined below.
   ///
   /// &gt; **Note:** Either `password` or `keyVaultPassword` is required when `authenticationType` is set to `Basic`.
-  final pulumi.Input<List<LinkedServiceSftpKeyVaultPassword>>? keyVaultPasswords;
+  final pulumi.Input<List<LinkedServiceSftpKeyVaultPassword>?>? keyVaultPasswords;
   /// A `keyVaultPrivateKeyContentBase64` block as defined below.
-  final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyContentBase64>? keyVaultPrivateKeyContentBase64;
+  final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>? keyVaultPrivateKeyContentBase64;
   /// A `keyVaultPrivateKeyPassphrase` block as defined below.
   ///
   /// &gt; **Note:** One of `privateKeyContentBase64` or `privateKeyPath` (or their Key Vault equivalent) is required when `authenticationType` is set to `SshPublicKey`.
-  final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyPassphrase>? keyVaultPrivateKeyPassphrase;
+  final pulumi.Input<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>? keyVaultPrivateKeyPassphrase;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Password to log on to the SFTP Server for Basic Authentication.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The TCP port number that the SFTP server uses to listen for client connection. Default value is 22.
   final pulumi.Input<int> port;
   /// The Base64 encoded private key content in OpenSSH format used to log on to the SFTP server.
-  final pulumi.Input<String>? privateKeyContentBase64;
+  final pulumi.Input<String?>? privateKeyContentBase64;
   /// The passphrase for the private key if the key is encrypted.
-  final pulumi.Input<String>? privateKeyPassphrase;
+  final pulumi.Input<String?>? privateKeyPassphrase;
   /// The absolute path to the private key file that the self-hosted integration runtime can access.
   ///
   /// &gt; **Note:** `privateKeyPath` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integrationRuntimeName`.
-  final pulumi.Input<String>? privateKeyPath;
+  final pulumi.Input<String?>? privateKeyPath;
   /// Whether to validate host key fingerprint while connecting. If set to `false`, `hostKeyFingerprint` must also be set.
-  final pulumi.Input<bool>? skipHostKeyValidation;
+  final pulumi.Input<bool?>? skipHostKeyValidation;
   /// The username used to log on to the SFTP server.
   final pulumi.Input<String> username;
 
@@ -144,7 +144,7 @@ class LinkedServiceSftpArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       privateKeyContentBase64: (() { final guardedValue = map['privateKeyContentBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKeyPassphrase: (() { final guardedValue = map['privateKeyPassphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateKeyPath: (() { final guardedValue = map['privateKeyPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

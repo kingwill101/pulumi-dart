@@ -5,9 +5,9 @@ import 'table_magnetic_store_write_properties_magnetic_store_rejected_data_locat
 
 class TableMagneticStoreWriteProperties {
   /// A flag to enable magnetic store writes.
-  final pulumi.Input<bool>? enableMagneticStoreWrites;
+  final pulumi.Input<bool?>? enableMagneticStoreWrites;
   /// The location to write error reports for records rejected asynchronously during magnetic store writes. See Magnetic Store Rejected Data Location below for more details.
-  final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation>? magneticStoreRejectedDataLocation;
+  final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation?>? magneticStoreRejectedDataLocation;
 
   /// Creates a new [TableMagneticStoreWriteProperties].
   /// [enableMagneticStoreWrites] A flag to enable magnetic store writes.

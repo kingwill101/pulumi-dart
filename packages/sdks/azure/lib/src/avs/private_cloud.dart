@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_cloud_args.dart';
+import 'private_cloud_circuit.dart';
 import 'private_cloud_management_cluster.dart';
 import 'private_cloud_state.dart';
 
@@ -235,7 +236,7 @@ import 'private_cloud_state.dart';
 /// ```
 class PrivateCloud extends pulumi.CustomResource {
   /// A `circuit` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> circuits;
+  late final pulumi.Output<List<PrivateCloudCircuit>> circuits;
   /// The endpoint for the VMware HCX Cloud Manager.
   late final pulumi.Output<String> hcxCloudManagerEndpoint;
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
@@ -287,9 +288,10 @@ class PrivateCloud extends pulumi.CustomResource {
           'azure:avs/privateCloud:PrivateCloud',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['nsxtPassword', 'vcenterPassword'],
         ) {
-    circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
+    circuits = registerOutput<List<PrivateCloudCircuit>>('circuits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudCircuit>(guardedValue, (value) => PrivateCloudCircuit.fromMap((value as Map).cast<String, dynamic>())); });
     hcxCloudManagerEndpoint = registerOutput<String>('hcxCloudManagerEndpoint');
     internetConnectionEnabled = registerOutput<bool?>('internetConnectionEnabled');
     location = registerOutput<String>('location');
@@ -299,13 +301,13 @@ class PrivateCloud extends pulumi.CustomResource {
     networkSubnetCidr = registerOutput<String>('networkSubnetCidr');
     nsxtCertificateThumbprint = registerOutput<String>('nsxtCertificateThumbprint');
     nsxtManagerEndpoint = registerOutput<String>('nsxtManagerEndpoint');
-    nsxtPassword = registerOutput<String?>('nsxtPassword');
+    nsxtPassword = registerOutput<String?>('nsxtPassword', isSecret: true);
     provisioningSubnetCidr = registerOutput<String>('provisioningSubnetCidr');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vcenterCertificateThumbprint = registerOutput<String>('vcenterCertificateThumbprint');
-    vcenterPassword = registerOutput<String?>('vcenterPassword');
+    vcenterPassword = registerOutput<String?>('vcenterPassword', isSecret: true);
     vcsaEndpoint = registerOutput<String>('vcsaEndpoint');
     vmotionSubnetCidr = registerOutput<String>('vmotionSubnetCidr');
   }
@@ -315,11 +317,12 @@ class PrivateCloud extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateCloudState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateCloud._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +336,7 @@ class PrivateCloud extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
+    circuits = registerOutput<List<PrivateCloudCircuit>>('circuits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudCircuit>(guardedValue, (value) => PrivateCloudCircuit.fromMap((value as Map).cast<String, dynamic>())); });
     hcxCloudManagerEndpoint = registerOutput<String>('hcxCloudManagerEndpoint');
     internetConnectionEnabled = registerOutput<bool?>('internetConnectionEnabled');
     location = registerOutput<String>('location');
@@ -343,13 +346,44 @@ class PrivateCloud extends pulumi.CustomResource {
     networkSubnetCidr = registerOutput<String>('networkSubnetCidr');
     nsxtCertificateThumbprint = registerOutput<String>('nsxtCertificateThumbprint');
     nsxtManagerEndpoint = registerOutput<String>('nsxtManagerEndpoint');
-    nsxtPassword = registerOutput<String?>('nsxtPassword');
+    nsxtPassword = registerOutput<String?>('nsxtPassword', isSecret: true);
     provisioningSubnetCidr = registerOutput<String>('provisioningSubnetCidr');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vcenterCertificateThumbprint = registerOutput<String>('vcenterCertificateThumbprint');
-    vcenterPassword = registerOutput<String?>('vcenterPassword');
+    vcenterPassword = registerOutput<String?>('vcenterPassword', isSecret: true);
+    vcsaEndpoint = registerOutput<String>('vcsaEndpoint');
+    vmotionSubnetCidr = registerOutput<String>('vmotionSubnetCidr');
+  }
+
+  /// Creates a typed reference to an existing [PrivateCloud] resource.
+  PrivateCloud.reference(String urn)
+    : super(
+        'azure:avs/privateCloud:PrivateCloud',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['nsxtPassword', 'vcenterPassword'],
+        isResourceReference: true,
+      ) {
+    circuits = registerOutput<List<PrivateCloudCircuit>>('circuits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateCloudCircuit>(guardedValue, (value) => PrivateCloudCircuit.fromMap((value as Map).cast<String, dynamic>())); });
+    hcxCloudManagerEndpoint = registerOutput<String>('hcxCloudManagerEndpoint');
+    internetConnectionEnabled = registerOutput<bool?>('internetConnectionEnabled');
+    location = registerOutput<String>('location');
+    managementCluster = registerOutput<PrivateCloudManagementCluster>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateCloudManagementCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managementSubnetCidr = registerOutput<String>('managementSubnetCidr');
+    this.name = registerOutput<String>('name');
+    networkSubnetCidr = registerOutput<String>('networkSubnetCidr');
+    nsxtCertificateThumbprint = registerOutput<String>('nsxtCertificateThumbprint');
+    nsxtManagerEndpoint = registerOutput<String>('nsxtManagerEndpoint');
+    nsxtPassword = registerOutput<String?>('nsxtPassword', isSecret: true);
+    provisioningSubnetCidr = registerOutput<String>('provisioningSubnetCidr');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vcenterCertificateThumbprint = registerOutput<String>('vcenterCertificateThumbprint');
+    vcenterPassword = registerOutput<String?>('vcenterPassword', isSecret: true);
     vcsaEndpoint = registerOutput<String>('vcsaEndpoint');
     vmotionSubnetCidr = registerOutput<String>('vmotionSubnetCidr');
   }

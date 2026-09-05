@@ -5,13 +5,13 @@ import 'service_quota_usage_metric_metric_dimension.dart';
 
 class ServiceQuotaUsageMetric {
   /// The metric dimensions.
-  final pulumi.Input<List<ServiceQuotaUsageMetricMetricDimension>>? metricDimensions;
+  final pulumi.Input<List<ServiceQuotaUsageMetricMetricDimension>?>? metricDimensions;
   /// The name of the metric.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// The namespace of the metric.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// The metric statistic that AWS recommend you use when determining quota usage.
-  final pulumi.Input<String>? metricStatisticRecommendation;
+  final pulumi.Input<String?>? metricStatisticRecommendation;
 
   /// Creates a new [ServiceQuotaUsageMetric].
   /// [metricDimensions] The metric dimensions.

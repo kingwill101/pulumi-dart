@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ChannelAssociation resources.
 class ChannelAssociationState {
   /// ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the notification configuration to associate the channel with.
-  final pulumi.Input<String>? notificationConfigurationArn;
+  final pulumi.Input<String?>? notificationConfigurationArn;
 
   /// Creates a new [ChannelAssociationState].
   /// [arn] ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.

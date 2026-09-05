@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering QueryDefinition resources.
 class QueryDefinitionState {
   /// The query definition ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specific log groups to use with the query.
-  final pulumi.Input<List<String>>? logGroupNames;
+  final pulumi.Input<List<String>?>? logGroupNames;
   /// The name of the query.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The query definition ID.
-  final pulumi.Input<String>? queryDefinitionId;
+  final pulumi.Input<String?>? queryDefinitionId;
   /// The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
-  final pulumi.Input<String>? queryString;
+  final pulumi.Input<String?>? queryString;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [QueryDefinitionState].
   /// [arn] The query definition ARN.

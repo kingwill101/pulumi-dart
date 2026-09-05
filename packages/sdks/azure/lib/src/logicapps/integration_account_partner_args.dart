@@ -13,9 +13,9 @@ class IntegrationAccountPartnerArgs {
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Partner to be created.
   final pulumi.Input<String> integrationAccountName;
   /// A JSON mapping of any Metadata for this Logic App Integration Account Partner.
-  final pulumi.Input<String>? metadata;
+  final pulumi.Input<String?>? metadata;
   /// The name which should be used for this Logic App Integration Account Partner. Changing this forces a new Logic App Integration Account Partner to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Logic App Integration Account Partner should exist. Changing this forces a new Logic App Integration Account Partner to be created.
   final pulumi.Input<String> resourceGroupName;
 

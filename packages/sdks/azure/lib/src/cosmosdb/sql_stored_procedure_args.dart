@@ -16,7 +16,7 @@ class SqlStoredProcedureArgs {
   /// The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

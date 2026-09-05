@@ -166,12 +166,12 @@ class LfTag extends pulumi.CustomResource {
           'aws:lakeformation/lfTag:LfTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [LfTag] resource's state with the given [name] and [id].
@@ -179,11 +179,12 @@ class LfTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LfTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LfTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,21 @@ class LfTag extends pulumi.CustomResource {
     catalogId = registerOutput<String>('catalogId');
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LfTag] resource.
+  LfTag.reference(String urn)
+    : super(
+        'aws:lakeformation/lfTag:LfTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

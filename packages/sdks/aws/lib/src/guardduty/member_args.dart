@@ -12,15 +12,15 @@ class MemberArgs {
   /// The detector ID of the GuardDuty account where you want to create member accounts.
   final pulumi.Input<String> detectorId;
   /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
-  final pulumi.Input<bool>? disableEmailNotification;
+  final pulumi.Input<bool?>? disableEmailNotification;
   /// Email address for member account.
   final pulumi.Input<String> email;
   /// Message for invitation.
-  final pulumi.Input<String>? invitationMessage;
+  final pulumi.Input<String?>? invitationMessage;
   /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationshipStatus` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
-  final pulumi.Input<bool>? invite;
+  final pulumi.Input<bool?>? invite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [MemberArgs].
   /// [accountId] AWS account ID for member account.

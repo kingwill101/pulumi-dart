@@ -6,23 +6,23 @@ import 'scheduled_action_target_action.dart';
 /// Input properties used for looking up and filtering ScheduledAction resources.
 class ScheduledActionState {
   /// The description of the scheduled action.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to enable the scheduled action. Default is `true` .
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// The end time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The IAM role to assume to run the scheduled action.
-  final pulumi.Input<String>? iamRole;
+  final pulumi.Input<String?>? iamRole;
   /// The scheduled action name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The schedule of action. The schedule is defined format of "at expression" or "cron expression", for example `at(2016-03-04T17:27:00)` or `cron(0 10 ? * MON *)`. See [Scheduled Action](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledAction.html) for more information.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// The start time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Target action. Documented below.
-  final pulumi.Input<ScheduledActionTargetAction>? targetAction;
+  final pulumi.Input<ScheduledActionTargetAction?>? targetAction;
 
   /// Creates a new [ScheduledActionState].
   /// [description] The description of the scheduled action.

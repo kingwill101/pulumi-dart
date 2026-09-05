@@ -44,9 +44,6 @@ import 'connector_profile_state.dart';
 ///     clusterType: "single-node",
 /// });
 /// const exampleConnectorProfile = new aws.appflow.ConnectorProfile("example", {
-///     name: "example_profile",
-///     connectorType: "Redshift",
-///     connectionMode: "Public",
 ///     connectorProfileConfig: {
 ///         connectorProfileCredentials: {
 ///             redshift: {
@@ -62,6 +59,9 @@ import 'connector_profile_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example_profile",
+///     connectorType: "Redshift",
+///     connectionMode: "Public",
 /// });
 /// ```
 /// ```python
@@ -93,9 +93,6 @@ import 'connector_profile_state.dart';
 ///     node_type="dc1.large",
 ///     cluster_type="single-node")
 /// example_connector_profile = aws.appflow.ConnectorProfile("example",
-///     name="example_profile",
-///     connector_type="Redshift",
-///     connection_mode="Public",
 ///     connector_profile_config={
 ///         "connector_profile_credentials": {
 ///             "redshift": {
@@ -114,7 +111,10 @@ import 'connector_profile_state.dart';
 ///                 "role_arn": example_role.arn,
 ///             },
 ///         },
-///     })
+///     },
+///     name="example_profile",
+///     connector_type="Redshift",
+///     connection_mode="Public")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -173,9 +173,6 @@ import 'connector_profile_state.dart';
 ///
 ///     var exampleConnectorProfile = new Aws.AppFlow.ConnectorProfile("example", new()
 ///     {
-///         Name = "example_profile",
-///         ConnectorType = "Redshift",
-///         ConnectionMode = "Public",
 ///         ConnectorProfileConfig = new Aws.AppFlow.Inputs.ConnectorProfileConnectorProfileConfigArgs
 ///         {
 ///             ConnectorProfileCredentials = new Aws.AppFlow.Inputs.ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsArgs
@@ -201,6 +198,9 @@ import 'connector_profile_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example_profile",
+///         ConnectorType = "Redshift",
+///         ConnectionMode = "Public",
 ///     });
 ///
 /// });
@@ -272,9 +272,6 @@ import 'connector_profile_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appflow.NewConnectorProfile(ctx, "example", &appflow.ConnectorProfileArgs{
-/// 			Name:           pulumi.String("example_profile"),
-/// 			ConnectorType:  pulumi.String("Redshift"),
-/// 			ConnectionMode: pulumi.String("Public"),
 /// 			ConnectorProfileConfig: &appflow.ConnectorProfileConnectorProfileConfigArgs{
 /// 				ConnectorProfileCredentials: &appflow.ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsArgs{
 /// 					Redshift: &appflow.ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshiftArgs{
@@ -294,6 +291,9 @@ import 'connector_profile_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example_profile"),
+/// 			ConnectorType:  pulumi.String("Redshift"),
+/// 			ConnectionMode: pulumi.String("Public"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -342,9 +342,6 @@ import 'connector_profile_state.dart';
 ///   cluster_type       = "single-node"
 /// }
 /// resource "aws_appflow_connectorprofile" "example" {
-///   name            = "example_profile"
-///   connector_type  = "Redshift"
-///   connection_mode = "Public"
 ///   connector_profile_config = {
 ///     connector_profile_credentials = {
 ///       redshift = {
@@ -360,6 +357,9 @@ import 'connector_profile_state.dart';
 ///       }
 ///     }
 ///   }
+///   name            = "example_profile"
+///   connector_type  = "Redshift"
+///   connection_mode = "Public"
 /// }
 /// ```
 /// ```java
@@ -432,9 +432,6 @@ import 'connector_profile_state.dart';
 ///             .build());
 ///
 ///         var exampleConnectorProfile = new ConnectorProfile("exampleConnectorProfile", ConnectorProfileArgs.builder()
-///             .name("example_profile")
-///             .connectorType("Redshift")
-///             .connectionMode("Public")
 ///             .connectorProfileConfig(ConnectorProfileConnectorProfileConfigArgs.builder()
 ///                 .connectorProfileCredentials(ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsArgs.builder()
 ///                     .redshift(ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshiftArgs.builder()
@@ -454,6 +451,9 @@ import 'connector_profile_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example_profile")
+///             .connectorType("Redshift")
+///             .connectionMode("Public")
 ///             .build());
 ///
 ///     }
@@ -496,9 +496,6 @@ import 'connector_profile_state.dart';
 ///     type: aws:appflow:ConnectorProfile
 ///     name: example
 ///     properties:
-///       name: example_profile
-///       connectorType: Redshift
-///       connectionMode: Public
 ///       connectorProfileConfig:
 ///         connectorProfileCredentials:
 ///           redshift:
@@ -509,6 +506,9 @@ import 'connector_profile_state.dart';
 ///             bucketName: ${exampleBucket.name}
 ///             databaseUrl: jdbc:redshift://${exampleCluster.endpoint}/${exampleCluster.databaseName}
 ///             roleArn: ${exampleRole.arn}
+///       name: example_profile
+///       connectorType: Redshift
+///       connectionMode: Public
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -550,7 +550,7 @@ class ConnectorProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> connectorType;
   /// ARN of the connector profile credentials.
   late final pulumi.Output<String> credentialsArn;
-  /// ARN of the Key Management Service (KMS) key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key.
+  /// ARN of the KMS key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key.
   late final pulumi.Output<String> kmsArn;
   /// Name of the connector profile. The name is unique for each `ConnectorProfile` in your AWS account.
   late final pulumi.Output<String> name;
@@ -569,7 +569,7 @@ class ConnectorProfile extends pulumi.CustomResource {
           'aws:appflow/connectorProfile:ConnectorProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionMode = registerOutput<String>('connectionMode');
@@ -587,11 +587,12 @@ class ConnectorProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectorProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -605,6 +606,26 @@ class ConnectorProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    connectionMode = registerOutput<String>('connectionMode');
+    connectorLabel = registerOutput<String?>('connectorLabel');
+    connectorProfileConfig = registerOutput<ConnectorProfileConnectorProfileConfig>('connectorProfileConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorProfileConnectorProfileConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorType = registerOutput<String>('connectorType');
+    credentialsArn = registerOutput<String>('credentialsArn');
+    kmsArn = registerOutput<String>('kmsArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ConnectorProfile] resource.
+  ConnectorProfile.reference(String urn)
+    : super(
+        'aws:appflow/connectorProfile:ConnectorProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     connectionMode = registerOutput<String>('connectionMode');
     connectorLabel = registerOutput<String?>('connectorLabel');

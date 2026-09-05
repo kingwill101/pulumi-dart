@@ -3,76 +3,76 @@
 
 /// Result data returned by getV2System.
 class GetV2SystemResult {
-  final String arn;
+  final String? arn;
   /// Description of the system.
-  final String description;
+  final String? description;
   /// KMS key ARN.
-  final String kmsKeyId;
+  final String? kmsKeyId;
   /// Name of the system.
-  final String name;
+  final String? name;
   /// AWS Organizations identifier for the system.
-  final String organizationId;
+  final String? organizationId;
   /// Organizational unit (OU) identifier for the system.
-  final String ouId;
-  final String region;
+  final String? ouId;
+  final String? region;
   /// Whether cross-account sharing is enabled.
-  final bool sharingEnabled;
+  final bool? sharingEnabled;
   /// System ID for cross-account use without exposing account structure.
-  final String systemId;
+  final String? systemId;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetV2SystemResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [description] Description of the system.
   /// [kmsKeyId] KMS key ARN.
   /// [name] Name of the system.
   /// [organizationId] AWS Organizations identifier for the system.
   /// [ouId] Organizational unit (OU) identifier for the system.
-  /// [region] Required.
+  /// [region] Optional.
   /// [sharingEnabled] Whether cross-account sharing is enabled.
   /// [systemId] System ID for cross-account use without exposing account structure.
   /// [tags] Map of tags assigned to the resource.
   const GetV2SystemResult({
-    required this.arn,
-    required this.description,
-    required this.kmsKeyId,
-    required this.name,
-    required this.organizationId,
-    required this.ouId,
-    required this.region,
-    required this.sharingEnabled,
-    required this.systemId,
-    required this.tags,
+    this.arn,
+    this.description,
+    this.kmsKeyId,
+    this.name,
+    this.organizationId,
+    this.ouId,
+    this.region,
+    this.sharingEnabled,
+    this.systemId,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'kmsKeyId': kmsKeyId,
-      'name': name,
-      'organizationId': organizationId,
-      'ouId': ouId,
-      'region': region,
-      'sharingEnabled': sharingEnabled,
-      'systemId': systemId,
-      'tags': tags,
+      'arn': ?arn,
+      'description': ?description,
+      'kmsKeyId': ?kmsKeyId,
+      'name': ?name,
+      'organizationId': ?organizationId,
+      'ouId': ?ouId,
+      'region': ?region,
+      'sharingEnabled': ?sharingEnabled,
+      'systemId': ?systemId,
+      'tags': ?tags,
     };
   }
 
   factory GetV2SystemResult.fromMap(Map<String, dynamic> map) {
     return GetV2SystemResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      kmsKeyId: map['kmsKeyId'] as String,
-      name: map['name'] as String,
-      organizationId: map['organizationId'] as String,
-      ouId: map['ouId'] as String,
-      region: map['region'] as String,
-      sharingEnabled: map['sharingEnabled'] as bool,
-      systemId: map['systemId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      organizationId: (() { final guardedValue = map['organizationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ouId: (() { final guardedValue = map['ouId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sharingEnabled: (() { final guardedValue = map['sharingEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

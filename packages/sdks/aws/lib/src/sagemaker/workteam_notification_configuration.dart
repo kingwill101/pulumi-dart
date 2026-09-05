@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkteamNotificationConfiguration {
   /// The ARN for the SNS topic to which notifications should be published.
-  final pulumi.Input<String>? notificationTopicArn;
+  final pulumi.Input<String?>? notificationTopicArn;
 
   /// Creates a new [WorkteamNotificationConfiguration].
   /// [notificationTopicArn] The ARN for the SNS topic to which notifications should be published.

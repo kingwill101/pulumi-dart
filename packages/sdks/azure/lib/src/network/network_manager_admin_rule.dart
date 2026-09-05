@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_manager_admin_rule_args.dart';
+import 'network_manager_admin_rule_destination.dart';
+import 'network_manager_admin_rule_source.dart';
 import 'network_manager_admin_rule_state.dart';
 
 /// Manages a Network Manager Admin Rule.
@@ -272,23 +274,23 @@ import 'network_manager_admin_rule_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-network-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
 /// 			Name:             pulumi.String("example-admin-conf"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerAdminRuleCollection, err := network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
 /// 			Name:                         pulumi.String("example-admin-rule-collection"),
-/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkGroupIds: pulumi.StringArray{
-/// 				exampleNetworkManagerNetworkGroup.ID(),
+/// 				exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -296,7 +298,7 @@ import 'network_manager_admin_rule_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerAdminRule(ctx, "example", &network.NetworkManagerAdminRuleArgs{
 /// 			Name:                  pulumi.String("example-admin-rule"),
-/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID(),
+/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID().ToIDOutput().ToStringOutput(),
 /// 			Action:                pulumi.String("Deny"),
 /// 			Direction:             pulumi.String("Outbound"),
 /// 			Priority:              pulumi.Int(1),
@@ -596,7 +598,7 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
   /// A list of string specifies the destination port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
   late final pulumi.Output<List<String>?> destinationPortRanges;
   /// One or more `destination` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
+  late final pulumi.Output<List<NetworkManagerAdminRuleDestination>?> destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound. Possible values are `Inbound` and `Outbound`.
   late final pulumi.Output<String> direction;
   /// Specifies the name which should be used for this Network Manager Admin Rule. Changing this forces a new Network Manager Admin Rule to be created.
@@ -608,7 +610,7 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
   /// A list of string specifies the source port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
   late final pulumi.Output<List<String>?> sourcePortRanges;
   /// One or more `source` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+  late final pulumi.Output<List<NetworkManagerAdminRuleSource>?> sources;
 
   /// Creates a new [NetworkManagerAdminRule].
   /// [name] The Pulumi resource name.
@@ -622,19 +624,19 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
           'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     adminRuleCollectionId = registerOutput<String>('adminRuleCollectionId');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
-    destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<NetworkManagerAdminRuleDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(guardedValue, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>())); });
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String>('protocol');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<NetworkManagerAdminRuleSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(guardedValue, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [NetworkManagerAdminRule] resource's state with the given [name] and [id].
@@ -642,11 +644,12 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerAdminRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerAdminRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -663,13 +666,35 @@ class NetworkManagerAdminRule extends pulumi.CustomResource {
     action = registerOutput<String>('action');
     adminRuleCollectionId = registerOutput<String>('adminRuleCollectionId');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
-    destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<NetworkManagerAdminRuleDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(guardedValue, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>())); });
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String>('protocol');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<NetworkManagerAdminRuleSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(guardedValue, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerAdminRule] resource.
+  NetworkManagerAdminRule.reference(String urn)
+    : super(
+        'azure:network/networkManagerAdminRule:NetworkManagerAdminRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    adminRuleCollectionId = registerOutput<String>('adminRuleCollectionId');
+    description = registerOutput<String?>('description');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<NetworkManagerAdminRuleDestination>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(guardedValue, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>())); });
+    direction = registerOutput<String>('direction');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String>('protocol');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<NetworkManagerAdminRuleSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(guardedValue, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

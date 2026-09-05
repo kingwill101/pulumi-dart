@@ -176,7 +176,7 @@ import 'tracker_association_state.dart';
 /// $ pulumi import aws:location/trackerAssociation:TrackerAssociation example "tracker_name|consumer_arn"
 /// ```
 class TrackerAssociation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.
+  /// ARN for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.
   late final pulumi.Output<String> consumerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -195,7 +195,7 @@ class TrackerAssociation extends pulumi.CustomResource {
           'aws:location/trackerAssociation:TrackerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     consumerArn = registerOutput<String>('consumerArn');
     region = registerOutput<String>('region');
@@ -207,11 +207,12 @@ class TrackerAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrackerAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrackerAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,20 @@ class TrackerAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    consumerArn = registerOutput<String>('consumerArn');
+    region = registerOutput<String>('region');
+    trackerName = registerOutput<String>('trackerName');
+  }
+
+  /// Creates a typed reference to an existing [TrackerAssociation] resource.
+  TrackerAssociation.reference(String urn)
+    : super(
+        'aws:location/trackerAssociation:TrackerAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     consumerArn = registerOutput<String>('consumerArn');
     region = registerOutput<String>('region');
     trackerName = registerOutput<String>('trackerName');

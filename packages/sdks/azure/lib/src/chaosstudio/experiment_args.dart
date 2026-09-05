@@ -11,11 +11,11 @@ import 'experiment_step.dart';
 /// {@macro pulumi_chaosstudio_experiment_experiment_args_doc}
 class ExperimentArgs {
   /// A `identity` block as defined below.
-  final pulumi.Input<ExperimentIdentity>? identity;
+  final pulumi.Input<ExperimentIdentity?>? identity;
   /// The Azure Region where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Chaos Studio Experiment. Changing this forces a new Chaos Studio Experiment to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   final pulumi.Input<String> resourceGroupName;
   /// One or more `selectors` blocks as defined below.

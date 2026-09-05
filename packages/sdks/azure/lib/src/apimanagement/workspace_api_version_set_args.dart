@@ -10,15 +10,15 @@ class WorkspaceApiVersionSetArgs {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementWorkspaceId;
   /// Specifies the description of the API Management Workspace API Version Set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the display name of the API Management Workspace API Version Set.
   final pulumi.Input<String> displayName;
   /// Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the header to read from inbound requests to determine the API version.
-  final pulumi.Input<String>? versionHeaderName;
+  final pulumi.Input<String?>? versionHeaderName;
   /// Specifies the name of the query string parameter to read from inbound requests to determine the API version.
-  final pulumi.Input<String>? versionQueryName;
+  final pulumi.Input<String?>? versionQueryName;
   /// Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   final pulumi.Input<String> versioningScheme;
 

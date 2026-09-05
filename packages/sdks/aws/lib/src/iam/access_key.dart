@@ -485,15 +485,16 @@ class AccessKey extends pulumi.CustomResource {
           'aws:iam/accessKey:AccessKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['secret', 'sesSmtpPasswordV4'],
         ) {
     createDate = registerOutput<String>('createDate');
     encryptedSecret = registerOutput<String>('encryptedSecret');
     encryptedSesSmtpPasswordV4 = registerOutput<String>('encryptedSesSmtpPasswordV4');
     keyFingerprint = registerOutput<String>('keyFingerprint');
     pgpKey = registerOutput<String?>('pgpKey');
-    secret = registerOutput<String>('secret');
-    sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4');
+    secret = registerOutput<String>('secret', isSecret: true);
+    sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4', isSecret: true);
     status = registerOutput<String?>('status');
     user = registerOutput<String>('user');
   }
@@ -503,11 +504,12 @@ class AccessKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -526,8 +528,29 @@ class AccessKey extends pulumi.CustomResource {
     encryptedSesSmtpPasswordV4 = registerOutput<String>('encryptedSesSmtpPasswordV4');
     keyFingerprint = registerOutput<String>('keyFingerprint');
     pgpKey = registerOutput<String?>('pgpKey');
-    secret = registerOutput<String>('secret');
-    sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4');
+    secret = registerOutput<String>('secret', isSecret: true);
+    sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4', isSecret: true);
+    status = registerOutput<String?>('status');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [AccessKey] resource.
+  AccessKey.reference(String urn)
+    : super(
+        'aws:iam/accessKey:AccessKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret', 'sesSmtpPasswordV4'],
+        isResourceReference: true,
+      ) {
+    createDate = registerOutput<String>('createDate');
+    encryptedSecret = registerOutput<String>('encryptedSecret');
+    encryptedSesSmtpPasswordV4 = registerOutput<String>('encryptedSesSmtpPasswordV4');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String?>('pgpKey');
+    secret = registerOutput<String>('secret', isSecret: true);
+    sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4', isSecret: true);
     status = registerOutput<String?>('status');
     user = registerOutput<String>('user');
   }

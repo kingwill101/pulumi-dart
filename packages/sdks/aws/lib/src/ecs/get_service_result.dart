@@ -16,76 +16,76 @@ import 'get_service_task_set.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   /// ARN of the task set
-  final String arn;
+  final String? arn;
   /// Whether Availability Zone rebalancing is enabled
-  final String availabilityZoneRebalancing;
+  final String? availabilityZoneRebalancing;
   /// Capacity provider strategy for the service. See `capacityProviderStrategy` Block for details.
-  final List<GetServiceCapacityProviderStrategy> capacityProviderStrategies;
-  final String clusterArn;
+  final List<GetServiceCapacityProviderStrategy>? capacityProviderStrategies;
+  final String? clusterArn;
   /// Time when task set was created (RFC3339 format)
-  final String createdAt;
+  final String? createdAt;
   /// Principal that created the service
-  final String createdBy;
+  final String? createdBy;
   /// Deployment configuration for the service. See `deploymentConfiguration` Block for details.
-  final List<GetServiceDeploymentConfiguration> deploymentConfigurations;
+  final List<GetServiceDeploymentConfiguration>? deploymentConfigurations;
   /// Deployment controller configuration. See `deploymentController` Block for details.
-  final List<GetServiceDeploymentController> deploymentControllers;
+  final List<GetServiceDeploymentController>? deploymentControllers;
   /// Current deployments for the service. See `deployments` Block for details.
-  final List<GetServiceDeployment> deployments;
+  final List<GetServiceDeployment>? deployments;
   /// Desired number of tasks
-  final int desiredCount;
+  final int? desiredCount;
   /// Whether ECS managed tags are enabled
-  final bool enableEcsManagedTags;
+  final bool? enableEcsManagedTags;
   /// Whether execute command functionality is enabled
-  final bool enableExecuteCommand;
+  final bool? enableExecuteCommand;
   /// Recent service events. See `events` Block for details.
-  final List<GetServiceEvent> events;
+  final List<GetServiceEvent>? events;
   /// Grace period for health checks
-  final int healthCheckGracePeriodSeconds;
+  final int? healthCheckGracePeriodSeconds;
   /// ARN of the IAM role associated with the service
-  final String iamRole;
+  final String? iamRole;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Launch type for the ECS Service
-  final String launchType;
+  final String? launchType;
   /// Load balancers for the ECS Service. See `loadBalancer` Block for details.
-  final List<GetServiceLoadBalancer> loadBalancers;
+  final List<GetServiceLoadBalancer>? loadBalancers;
   /// Network configuration for the service. See `networkConfiguration` Block for details.
-  final List<GetServiceNetworkConfiguration> networkConfigurations;
+  final List<GetServiceNetworkConfiguration>? networkConfigurations;
   /// Placement strategy for tasks. See `orderedPlacementStrategy` Block for details.
-  final List<GetServiceOrderedPlacementStrategy> orderedPlacementStrategies;
+  final List<GetServiceOrderedPlacementStrategy>? orderedPlacementStrategies;
   /// Number of pending tasks
-  final int pendingCount;
+  final int? pendingCount;
   /// Placement constraints for tasks. See `placementConstraints` Block for details.
-  final List<GetServicePlacementConstraint> placementConstraints;
+  final List<GetServicePlacementConstraint>? placementConstraints;
   /// Platform family for Fargate tasks
-  final String platformFamily;
+  final String? platformFamily;
   /// Platform version for Fargate tasks
-  final String platformVersion;
+  final String? platformVersion;
   /// Whether tags are propagated from task definition or service
-  final String propagateTags;
-  final String region;
+  final String? propagateTags;
+  final String? region;
   /// Number of running tasks
-  final int runningCount;
+  final int? runningCount;
   /// Scheduling strategy for the ECS Service
-  final String schedulingStrategy;
-  final String serviceName;
+  final String? schedulingStrategy;
+  final String? serviceName;
   /// Service discovery registries. See `serviceRegistries` Block for details.
-  final List<GetServiceServiceRegistry> serviceRegistries;
+  final List<GetServiceServiceRegistry>? serviceRegistries;
   /// Task set status
-  final String status;
+  final String? status;
   /// Resource tags.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Task definition ARN
-  final String taskDefinition;
+  final String? taskDefinition;
   /// Task sets for the service. See `taskSets` Block for details.
-  final List<GetServiceTaskSet> taskSets;
+  final List<GetServiceTaskSet>? taskSets;
 
   /// Creates a new [GetServiceResult].
   /// [arn] ARN of the task set
   /// [availabilityZoneRebalancing] Whether Availability Zone rebalancing is enabled
   /// [capacityProviderStrategies] Capacity provider strategy for the service. See `capacityProviderStrategy` Block for details.
-  /// [clusterArn] Required.
+  /// [clusterArn] Optional.
   /// [createdAt] Time when task set was created (RFC3339 format)
   /// [createdBy] Principal that created the service
   /// [deploymentConfigurations] Deployment configuration for the service. See `deploymentConfiguration` Block for details.
@@ -107,127 +107,127 @@ class GetServiceResult {
   /// [platformFamily] Platform family for Fargate tasks
   /// [platformVersion] Platform version for Fargate tasks
   /// [propagateTags] Whether tags are propagated from task definition or service
-  /// [region] Required.
+  /// [region] Optional.
   /// [runningCount] Number of running tasks
   /// [schedulingStrategy] Scheduling strategy for the ECS Service
-  /// [serviceName] Required.
+  /// [serviceName] Optional.
   /// [serviceRegistries] Service discovery registries. See `serviceRegistries` Block for details.
   /// [status] Task set status
   /// [tags] Resource tags.
   /// [taskDefinition] Task definition ARN
   /// [taskSets] Task sets for the service. See `taskSets` Block for details.
   const GetServiceResult({
-    required this.arn,
-    required this.availabilityZoneRebalancing,
-    required this.capacityProviderStrategies,
-    required this.clusterArn,
-    required this.createdAt,
-    required this.createdBy,
-    required this.deploymentConfigurations,
-    required this.deploymentControllers,
-    required this.deployments,
-    required this.desiredCount,
-    required this.enableEcsManagedTags,
-    required this.enableExecuteCommand,
-    required this.events,
-    required this.healthCheckGracePeriodSeconds,
-    required this.iamRole,
-    required this.id,
-    required this.launchType,
-    required this.loadBalancers,
-    required this.networkConfigurations,
-    required this.orderedPlacementStrategies,
-    required this.pendingCount,
-    required this.placementConstraints,
-    required this.platformFamily,
-    required this.platformVersion,
-    required this.propagateTags,
-    required this.region,
-    required this.runningCount,
-    required this.schedulingStrategy,
-    required this.serviceName,
-    required this.serviceRegistries,
-    required this.status,
-    required this.tags,
-    required this.taskDefinition,
-    required this.taskSets,
+    this.arn,
+    this.availabilityZoneRebalancing,
+    this.capacityProviderStrategies,
+    this.clusterArn,
+    this.createdAt,
+    this.createdBy,
+    this.deploymentConfigurations,
+    this.deploymentControllers,
+    this.deployments,
+    this.desiredCount,
+    this.enableEcsManagedTags,
+    this.enableExecuteCommand,
+    this.events,
+    this.healthCheckGracePeriodSeconds,
+    this.iamRole,
+    this.id,
+    this.launchType,
+    this.loadBalancers,
+    this.networkConfigurations,
+    this.orderedPlacementStrategies,
+    this.pendingCount,
+    this.placementConstraints,
+    this.platformFamily,
+    this.platformVersion,
+    this.propagateTags,
+    this.region,
+    this.runningCount,
+    this.schedulingStrategy,
+    this.serviceName,
+    this.serviceRegistries,
+    this.status,
+    this.tags,
+    this.taskDefinition,
+    this.taskSets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'availabilityZoneRebalancing': availabilityZoneRebalancing,
-      'capacityProviderStrategies': pulumi.Input.encodeList<GetServiceCapacityProviderStrategy, Map<String, dynamic>>(capacityProviderStrategies, (value) => value.toMap()),
-      'clusterArn': clusterArn,
-      'createdAt': createdAt,
-      'createdBy': createdBy,
-      'deploymentConfigurations': pulumi.Input.encodeList<GetServiceDeploymentConfiguration, Map<String, dynamic>>(deploymentConfigurations, (value) => value.toMap()),
-      'deploymentControllers': pulumi.Input.encodeList<GetServiceDeploymentController, Map<String, dynamic>>(deploymentControllers, (value) => value.toMap()),
-      'deployments': pulumi.Input.encodeList<GetServiceDeployment, Map<String, dynamic>>(deployments, (value) => value.toMap()),
-      'desiredCount': desiredCount,
-      'enableEcsManagedTags': enableEcsManagedTags,
-      'enableExecuteCommand': enableExecuteCommand,
-      'events': pulumi.Input.encodeList<GetServiceEvent, Map<String, dynamic>>(events, (value) => value.toMap()),
-      'healthCheckGracePeriodSeconds': healthCheckGracePeriodSeconds,
-      'iamRole': iamRole,
-      'id': id,
-      'launchType': launchType,
-      'loadBalancers': pulumi.Input.encodeList<GetServiceLoadBalancer, Map<String, dynamic>>(loadBalancers, (value) => value.toMap()),
-      'networkConfigurations': pulumi.Input.encodeList<GetServiceNetworkConfiguration, Map<String, dynamic>>(networkConfigurations, (value) => value.toMap()),
-      'orderedPlacementStrategies': pulumi.Input.encodeList<GetServiceOrderedPlacementStrategy, Map<String, dynamic>>(orderedPlacementStrategies, (value) => value.toMap()),
-      'pendingCount': pendingCount,
-      'placementConstraints': pulumi.Input.encodeList<GetServicePlacementConstraint, Map<String, dynamic>>(placementConstraints, (value) => value.toMap()),
-      'platformFamily': platformFamily,
-      'platformVersion': platformVersion,
-      'propagateTags': propagateTags,
-      'region': region,
-      'runningCount': runningCount,
-      'schedulingStrategy': schedulingStrategy,
-      'serviceName': serviceName,
-      'serviceRegistries': pulumi.Input.encodeList<GetServiceServiceRegistry, Map<String, dynamic>>(serviceRegistries, (value) => value.toMap()),
-      'status': status,
-      'tags': tags,
-      'taskDefinition': taskDefinition,
-      'taskSets': pulumi.Input.encodeList<GetServiceTaskSet, Map<String, dynamic>>(taskSets, (value) => value.toMap()),
+      'arn': ?arn,
+      'availabilityZoneRebalancing': ?availabilityZoneRebalancing,
+      'capacityProviderStrategies': ?(() { final guardedValue = capacityProviderStrategies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceCapacityProviderStrategy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clusterArn': ?clusterArn,
+      'createdAt': ?createdAt,
+      'createdBy': ?createdBy,
+      'deploymentConfigurations': ?(() { final guardedValue = deploymentConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceDeploymentConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deploymentControllers': ?(() { final guardedValue = deploymentControllers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceDeploymentController, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deployments': ?(() { final guardedValue = deployments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceDeployment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'desiredCount': ?desiredCount,
+      'enableEcsManagedTags': ?enableEcsManagedTags,
+      'enableExecuteCommand': ?enableExecuteCommand,
+      'events': ?(() { final guardedValue = events; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceEvent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'healthCheckGracePeriodSeconds': ?healthCheckGracePeriodSeconds,
+      'iamRole': ?iamRole,
+      'id': ?id,
+      'launchType': ?launchType,
+      'loadBalancers': ?(() { final guardedValue = loadBalancers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceLoadBalancer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'networkConfigurations': ?(() { final guardedValue = networkConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceNetworkConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'orderedPlacementStrategies': ?(() { final guardedValue = orderedPlacementStrategies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceOrderedPlacementStrategy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pendingCount': ?pendingCount,
+      'placementConstraints': ?(() { final guardedValue = placementConstraints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServicePlacementConstraint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'platformFamily': ?platformFamily,
+      'platformVersion': ?platformVersion,
+      'propagateTags': ?propagateTags,
+      'region': ?region,
+      'runningCount': ?runningCount,
+      'schedulingStrategy': ?schedulingStrategy,
+      'serviceName': ?serviceName,
+      'serviceRegistries': ?(() { final guardedValue = serviceRegistries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceServiceRegistry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'status': ?status,
+      'tags': ?tags,
+      'taskDefinition': ?taskDefinition,
+      'taskSets': ?(() { final guardedValue = taskSets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceTaskSet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      arn: map['arn'] as String,
-      availabilityZoneRebalancing: map['availabilityZoneRebalancing'] as String,
-      capacityProviderStrategies: pulumi.Input.decodeList<GetServiceCapacityProviderStrategy>(map['capacityProviderStrategies']!, (value) => GetServiceCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      clusterArn: map['clusterArn'] as String,
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      deploymentConfigurations: pulumi.Input.decodeList<GetServiceDeploymentConfiguration>(map['deploymentConfigurations']!, (value) => GetServiceDeploymentConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      deploymentControllers: pulumi.Input.decodeList<GetServiceDeploymentController>(map['deploymentControllers']!, (value) => GetServiceDeploymentController.fromMap((value as Map).cast<String, dynamic>())),
-      deployments: pulumi.Input.decodeList<GetServiceDeployment>(map['deployments']!, (value) => GetServiceDeployment.fromMap((value as Map).cast<String, dynamic>())),
-      desiredCount: map['desiredCount'] as int,
-      enableEcsManagedTags: map['enableEcsManagedTags'] as bool,
-      enableExecuteCommand: map['enableExecuteCommand'] as bool,
-      events: pulumi.Input.decodeList<GetServiceEvent>(map['events']!, (value) => GetServiceEvent.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckGracePeriodSeconds: map['healthCheckGracePeriodSeconds'] as int,
-      iamRole: map['iamRole'] as String,
-      id: map['id'] as String,
-      launchType: map['launchType'] as String,
-      loadBalancers: pulumi.Input.decodeList<GetServiceLoadBalancer>(map['loadBalancers']!, (value) => GetServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())),
-      networkConfigurations: pulumi.Input.decodeList<GetServiceNetworkConfiguration>(map['networkConfigurations']!, (value) => GetServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      orderedPlacementStrategies: pulumi.Input.decodeList<GetServiceOrderedPlacementStrategy>(map['orderedPlacementStrategies']!, (value) => GetServiceOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      pendingCount: map['pendingCount'] as int,
-      placementConstraints: pulumi.Input.decodeList<GetServicePlacementConstraint>(map['placementConstraints']!, (value) => GetServicePlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      platformFamily: map['platformFamily'] as String,
-      platformVersion: map['platformVersion'] as String,
-      propagateTags: map['propagateTags'] as String,
-      region: map['region'] as String,
-      runningCount: map['runningCount'] as int,
-      schedulingStrategy: map['schedulingStrategy'] as String,
-      serviceName: map['serviceName'] as String,
-      serviceRegistries: pulumi.Input.decodeList<GetServiceServiceRegistry>(map['serviceRegistries']!, (value) => GetServiceServiceRegistry.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      taskDefinition: map['taskDefinition'] as String,
-      taskSets: pulumi.Input.decodeList<GetServiceTaskSet>(map['taskSets']!, (value) => GetServiceTaskSet.fromMap((value as Map).cast<String, dynamic>())),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZoneRebalancing: (() { final guardedValue = map['availabilityZoneRebalancing']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      capacityProviderStrategies: (() { final guardedValue = map['capacityProviderStrategies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceCapacityProviderStrategy>(guardedValue, (value) => GetServiceCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clusterArn: (() { final guardedValue = map['clusterArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentConfigurations: (() { final guardedValue = map['deploymentConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceDeploymentConfiguration>(guardedValue, (value) => GetServiceDeploymentConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deploymentControllers: (() { final guardedValue = map['deploymentControllers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceDeploymentController>(guardedValue, (value) => GetServiceDeploymentController.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deployments: (() { final guardedValue = map['deployments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceDeployment>(guardedValue, (value) => GetServiceDeployment.fromMap((value as Map).cast<String, dynamic>())); })(),
+      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      enableEcsManagedTags: (() { final guardedValue = map['enableEcsManagedTags']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableExecuteCommand: (() { final guardedValue = map['enableExecuteCommand']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceEvent>(guardedValue, (value) => GetServiceEvent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      healthCheckGracePeriodSeconds: (() { final guardedValue = map['healthCheckGracePeriodSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      iamRole: (() { final guardedValue = map['iamRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      launchType: (() { final guardedValue = map['launchType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancers: (() { final guardedValue = map['loadBalancers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceLoadBalancer>(guardedValue, (value) => GetServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); })(),
+      networkConfigurations: (() { final guardedValue = map['networkConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceNetworkConfiguration>(guardedValue, (value) => GetServiceNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      orderedPlacementStrategies: (() { final guardedValue = map['orderedPlacementStrategies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceOrderedPlacementStrategy>(guardedValue, (value) => GetServiceOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pendingCount: (() { final guardedValue = map['pendingCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      placementConstraints: (() { final guardedValue = map['placementConstraints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServicePlacementConstraint>(guardedValue, (value) => GetServicePlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      platformFamily: (() { final guardedValue = map['platformFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      propagateTags: (() { final guardedValue = map['propagateTags']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      runningCount: (() { final guardedValue = map['runningCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      schedulingStrategy: (() { final guardedValue = map['schedulingStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceRegistries: (() { final guardedValue = map['serviceRegistries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceServiceRegistry>(guardedValue, (value) => GetServiceServiceRegistry.fromMap((value as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      taskDefinition: (() { final guardedValue = map['taskDefinition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      taskSets: (() { final guardedValue = map['taskSets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceTaskSet>(guardedValue, (value) => GetServiceTaskSet.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

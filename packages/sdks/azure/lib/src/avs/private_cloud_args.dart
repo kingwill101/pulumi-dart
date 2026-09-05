@@ -10,26 +10,26 @@ import 'private_cloud_management_cluster.dart';
 class PrivateCloudArgs {
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
   /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
-  final pulumi.Input<bool>? internetConnectionEnabled;
+  final pulumi.Input<bool?>? internetConnectionEnabled;
   /// The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `managementCluster` block as defined below.
   /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
   final pulumi.Input<PrivateCloudManagementCluster> managementCluster;
   /// The name which should be used for this Azure VMware Solution Private Cloud. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The subnet which should be unique across virtual network in your subscription as well as on-premise. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   final pulumi.Input<String> networkSubnetCidr;
   /// The password of the VMware NSX Manager cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? nsxtPassword;
+  final pulumi.Input<String?>? nsxtPassword;
   /// The name of the Resource Group where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The Name of the SKU used for this Azure VMware Solution Private Cloud. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av36pt`, `av48`, `av48t`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   final pulumi.Input<String> skuName;
   /// A mapping of tags which should be assigned to the Azure VMware Solution Private Cloud.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? vcenterPassword;
+  final pulumi.Input<String?>? vcenterPassword;
 
   /// Creates a new [PrivateCloudArgs].
   /// [internetConnectionEnabled] Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.

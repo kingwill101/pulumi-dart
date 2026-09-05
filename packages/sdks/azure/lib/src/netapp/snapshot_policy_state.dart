@@ -9,25 +9,25 @@ import 'snapshot_policy_weekly_schedule.dart';
 /// Input properties used for looking up and filtering SnapshotPolicy resources.
 class SnapshotPolicyState {
   /// The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Sets a daily snapshot schedule. A `dailySchedule` block as defined below.
-  final pulumi.Input<SnapshotPolicyDailySchedule>? dailySchedule;
+  final pulumi.Input<SnapshotPolicyDailySchedule?>? dailySchedule;
   /// Defines that the NetApp Snapshot Policy is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Sets an hourly snapshot schedule. A `hourlySchedule` block as defined below.
-  final pulumi.Input<SnapshotPolicyHourlySchedule>? hourlySchedule;
+  final pulumi.Input<SnapshotPolicyHourlySchedule?>? hourlySchedule;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Sets a monthly snapshot schedule. A `monthlySchedule` block as defined below.
-  final pulumi.Input<SnapshotPolicyMonthlySchedule>? monthlySchedule;
+  final pulumi.Input<SnapshotPolicyMonthlySchedule?>? monthlySchedule;
   /// The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group where the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Sets a weekly snapshot schedule. A `weeklySchedule` block as defined below.
-  final pulumi.Input<SnapshotPolicyWeeklySchedule>? weeklySchedule;
+  final pulumi.Input<SnapshotPolicyWeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [SnapshotPolicyState].
   /// [accountName] The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.

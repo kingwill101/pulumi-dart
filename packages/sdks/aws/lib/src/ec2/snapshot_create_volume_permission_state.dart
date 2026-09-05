@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SnapshotCreateVolumePermission resources.
 class SnapshotCreateVolumePermissionState {
   /// An AWS Account ID to add create volume permissions. The AWS Account cannot be the snapshot's owner
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A snapshot ID
-  final pulumi.Input<String>? snapshotId;
+  final pulumi.Input<String?>? snapshotId;
 
   /// Creates a new [SnapshotCreateVolumePermissionState].
   /// [accountId] An AWS Account ID to add create volume permissions. The AWS Account cannot be the snapshot's owner

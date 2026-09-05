@@ -8,26 +8,26 @@ import 'web_app_web_app_unit.dart';
 /// Input properties used for looking up and filtering WebApp resources.
 class WebAppState {
   /// URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `accessEndpoint` must not be provided.
-  final pulumi.Input<String>? accessEndpoint;
+  final pulumi.Input<String?>? accessEndpoint;
   /// ARN of the Web App.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint. See `endpointDetails` Block below.
-  final pulumi.Input<WebAppEndpointDetails>? endpointDetails;
+  final pulumi.Input<WebAppEndpointDetails?>? endpointDetails;
   /// Block for details of the identity provider to use with the web app. See `identityProviderDetails` Block below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<WebAppIdentityProviderDetails>? identityProviderDetails;
+  final pulumi.Input<WebAppIdentityProviderDetails?>? identityProviderDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value pairs that can be used to group and search for web apps.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
-  final pulumi.Input<String>? webAppEndpointPolicy;
+  final pulumi.Input<String?>? webAppEndpointPolicy;
   /// ID of the Web App resource.
-  final pulumi.Input<String>? webAppId;
+  final pulumi.Input<String?>? webAppId;
   /// Block for number of concurrent connections or the user sessions on the web app. See `webAppUnits` Block below.
-  final pulumi.Input<List<WebAppWebAppUnit>>? webAppUnits;
+  final pulumi.Input<List<WebAppWebAppUnit>?>? webAppUnits;
 
   /// Creates a new [WebAppState].
   /// [accessEndpoint] URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `accessEndpoint` must not be provided.

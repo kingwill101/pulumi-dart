@@ -10,11 +10,11 @@ class GetRepositoryArgs {
   /// Name of the ECR Repository.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Registry ID where the repository was created.
-  final pulumi.Input<String>? registryId;
+  final pulumi.Input<String?>? registryId;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetRepositoryArgs].
   /// [name] Name of the ECR Repository.

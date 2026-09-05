@@ -7,7 +7,7 @@ class LogTransformerTransformerConfigRenameKeyEntry {
   final pulumi.Input<String> key;
   /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
-  final pulumi.Input<bool>? overwriteIfExists;
+  final pulumi.Input<bool?>? overwriteIfExists;
   final pulumi.Input<String> renameTo;
 
   /// Creates a new [LogTransformerTransformerConfigRenameKeyEntry].

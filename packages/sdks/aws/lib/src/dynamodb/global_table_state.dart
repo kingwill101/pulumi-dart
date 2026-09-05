@@ -6,13 +6,13 @@ import 'global_table_replica.dart';
 /// Input properties used for looking up and filtering GlobalTable resources.
 class GlobalTableState {
   /// The ARN of the DynamoDB Global Table
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  final pulumi.Input<List<GlobalTableReplica>>? replicas;
+  final pulumi.Input<List<GlobalTableReplica>?>? replicas;
 
   /// Creates a new [GlobalTableState].
   /// [arn] The ARN of the DynamoDB Global Table

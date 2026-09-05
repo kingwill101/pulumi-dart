@@ -5,29 +5,29 @@ import 'distribution_configuration_distribution.dart';
 
 /// Input properties used for looking up and filtering DistributionConfiguration resources.
 class DistributionConfigurationState {
-  /// (Required) Amazon Resource Name (ARN) of the distribution configuration.
-  final pulumi.Input<String>? arn;
+  /// (Required) ARN of the distribution configuration.
+  final pulumi.Input<String?>? arn;
   /// Date the distribution configuration was created.
-  final pulumi.Input<String>? dateCreated;
+  final pulumi.Input<String?>? dateCreated;
   /// Date the distribution configuration was updated.
-  final pulumi.Input<String>? dateUpdated;
+  final pulumi.Input<String?>? dateUpdated;
   /// Description of the distribution configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more configuration blocks with distribution settings. Detailed below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<DistributionConfigurationDistribution>>? distributions;
+  final pulumi.Input<List<DistributionConfigurationDistribution>?>? distributions;
   /// Name of the distribution configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the distribution configuration. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DistributionConfigurationState].
-  /// [arn] (Required) Amazon Resource Name (ARN) of the distribution configuration.
+  /// [arn] (Required) ARN of the distribution configuration.
   /// [dateCreated] Date the distribution configuration was created.
   /// [dateUpdated] Date the distribution configuration was updated.
   /// [description] Description of the distribution configuration.

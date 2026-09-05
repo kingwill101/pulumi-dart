@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppSlotSiteConfigCors {
   /// Specifies a list of origins that should be allowed to make cross-origin calls.
-  final pulumi.Input<List<String>>? allowedOrigins;
+  final pulumi.Input<List<String>?>? allowedOrigins;
   /// Whether CORS requests with credentials are allowed. Defaults to `false`
-  final pulumi.Input<bool>? supportCredentials;
+  final pulumi.Input<bool?>? supportCredentials;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.

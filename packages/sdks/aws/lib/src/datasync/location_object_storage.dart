@@ -135,10 +135,10 @@ import 'location_object_storage_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync object storage location.
+/// - `arn` (String) ARN of the DataSync object storage location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.LocationObjectStorage` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationObjectStorage` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationObjectStorage:LocationObjectStorage example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -148,7 +148,7 @@ class LocationObjectStorage extends pulumi.CustomResource {
   late final pulumi.Output<String?> accessKey;
   /// A list of DataSync Agent ARNs with which this location will be associated. For agentless cross-cloud transfers, this parameter does not need to be specified.
   late final pulumi.Output<List<String>?> agentArns;
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The bucket on the self-managed object storage server that is used to read data from.
   late final pulumi.Output<String> bucketName;
@@ -185,21 +185,22 @@ class LocationObjectStorage extends pulumi.CustomResource {
           'aws:datasync/locationObjectStorage:LocationObjectStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['secretKey'],
         ) {
     accessKey = registerOutput<String?>('accessKey');
-    agentArns = registerOutput<List<String>?>('agentArns');
+    agentArns = registerOutput<List<String>?>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     bucketName = registerOutput<String>('bucketName');
     region = registerOutput<String>('region');
-    secretKey = registerOutput<String?>('secretKey');
+    secretKey = registerOutput<String?>('secretKey', isSecret: true);
     serverCertificate = registerOutput<String?>('serverCertificate');
     serverHostname = registerOutput<String>('serverHostname');
     serverPort = registerOutput<int?>('serverPort');
     serverProtocol = registerOutput<String?>('serverProtocol');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -208,11 +209,12 @@ class LocationObjectStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationObjectStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationObjectStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,18 +229,44 @@ class LocationObjectStorage extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessKey = registerOutput<String?>('accessKey');
-    agentArns = registerOutput<List<String>?>('agentArns');
+    agentArns = registerOutput<List<String>?>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     bucketName = registerOutput<String>('bucketName');
     region = registerOutput<String>('region');
-    secretKey = registerOutput<String?>('secretKey');
+    secretKey = registerOutput<String?>('secretKey', isSecret: true);
     serverCertificate = registerOutput<String?>('serverCertificate');
     serverHostname = registerOutput<String>('serverHostname');
     serverPort = registerOutput<int?>('serverPort');
     serverProtocol = registerOutput<String?>('serverProtocol');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [LocationObjectStorage] resource.
+  LocationObjectStorage.reference(String urn)
+    : super(
+        'aws:datasync/locationObjectStorage:LocationObjectStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretKey'],
+        isResourceReference: true,
+      ) {
+    accessKey = registerOutput<String?>('accessKey');
+    agentArns = registerOutput<List<String>?>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    bucketName = registerOutput<String>('bucketName');
+    region = registerOutput<String>('region');
+    secretKey = registerOutput<String?>('secretKey', isSecret: true);
+    serverCertificate = registerOutput<String?>('serverCertificate');
+    serverHostname = registerOutput<String>('serverHostname');
+    serverPort = registerOutput<int?>('serverPort');
+    serverProtocol = registerOutput<String?>('serverProtocol');
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

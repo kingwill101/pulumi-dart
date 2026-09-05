@@ -5,7 +5,7 @@ import 'connector_egress_config_vpc_lattice.dart';
 
 class ConnectorEgressConfig {
   /// VPC Lattice configuration for routing connector traffic through customer VPCs. See `vpcLattice` Block below.
-  final pulumi.Input<ConnectorEgressConfigVpcLattice>? vpcLattice;
+  final pulumi.Input<ConnectorEgressConfigVpcLattice?>? vpcLattice;
 
   /// Creates a new [ConnectorEgressConfig].
   /// [vpcLattice] VPC Lattice configuration for routing connector traffic through customer VPCs. See `vpcLattice` Block below.

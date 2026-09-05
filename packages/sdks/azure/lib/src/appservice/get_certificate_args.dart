@@ -11,7 +11,7 @@ class GetCertificateArgs {
   final pulumi.Input<String> name;
   /// The name of the resource group in which to create the certificate.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetCertificateArgs].
   /// [name] Specifies the name of the certificate.

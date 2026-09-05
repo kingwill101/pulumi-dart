@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SecurityTokenServicePreferences resources.
 class SecurityTokenServicePreferencesState {
   /// The version of the STS global endpoint token. Valid values: `v1Token`, `v2Token`.
-  final pulumi.Input<String>? globalEndpointTokenVersion;
+  final pulumi.Input<String?>? globalEndpointTokenVersion;
 
   /// Creates a new [SecurityTokenServicePreferencesState].
   /// [globalEndpointTokenVersion] The version of the STS global endpoint token. Valid values: `v1Token`, `v2Token`.

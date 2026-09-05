@@ -5,8 +5,8 @@ import 'agent_prompt_variant_template_configuration_text_cache_point.dart';
 import 'agent_prompt_variant_template_configuration_text_input_variable.dart';
 
 class AgentPromptVariantTemplateConfigurationText {
-  final pulumi.Input<AgentPromptVariantTemplateConfigurationTextCachePoint>? cachePoint;
-  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationTextInputVariable>>? inputVariables;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationTextCachePoint?>? cachePoint;
+  final pulumi.Input<List<AgentPromptVariantTemplateConfigurationTextInputVariable>?>? inputVariables;
   final pulumi.Input<String> text;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationText].

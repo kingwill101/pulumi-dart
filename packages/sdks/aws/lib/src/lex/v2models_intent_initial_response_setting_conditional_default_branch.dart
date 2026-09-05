@@ -6,9 +6,9 @@ import 'v2models_intent_initial_response_setting_conditional_default_branch_resp
 
 class V2modelsIntentInitialResponseSettingConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

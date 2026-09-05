@@ -5,11 +5,11 @@ import 'v2models_slot_value_elicitation_setting_wait_and_continue_specification_
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   /// Configuration blocks for responses that Amazon Lex can send to the user.
   /// Amazon Lex chooses the actual response to send at runtime.
   /// See `messageGroup`.
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup>>? messageGroups;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup>?>? messageGroups;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.

@@ -9,19 +9,19 @@ import 'cluster_parameter_group_parameter.dart';
 /// {@macro pulumi_rds_cluster_parameter_group_cluster_parameter_group_args_doc}
 class ClusterParameterGroupArgs {
   /// The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The family of the DB cluster parameter group.
   final pulumi.Input<String> family;
   /// The name of the DB parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
-  final pulumi.Input<List<ClusterParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ClusterParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterParameterGroupArgs].
   /// [description] The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
@@ -31,15 +31,15 @@ class ClusterParameterGroupArgs {
   /// [parameters] A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  const ClusterParameterGroupArgs({
-    this.description,
+  ClusterParameterGroupArgs({
+    pulumi.Input<String?>? description,
     required this.family,
     this.name,
     this.namePrefix,
     this.parameters,
     this.region,
     this.tags,
-  });
+  }) : description = description ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

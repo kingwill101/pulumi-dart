@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkfirewall_get_resource_policy_get_resource_policy_args_doc}
 class GetResourcePolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) that identifies the resource policy.
+  final pulumi.Input<String?>? region;
+  /// ARN that identifies the resource policy.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [GetResourcePolicyArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The Amazon Resource Name (ARN) that identifies the resource policy.
+  /// [resourceArn] ARN that identifies the resource policy.
   const GetResourcePolicyArgs({
     this.region,
     required this.resourceArn,

@@ -302,7 +302,8 @@ class User extends pulumi.CustomResource {
           'azure:apimanagement/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     confirmation = registerOutput<String?>('confirmation');
@@ -310,7 +311,7 @@ class User extends pulumi.CustomResource {
     firstName = registerOutput<String>('firstName');
     lastName = registerOutput<String>('lastName');
     note = registerOutput<String?>('note');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     state = registerOutput<String>('state');
     userId = registerOutput<String>('userId');
@@ -321,11 +322,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,9 +347,31 @@ class User extends pulumi.CustomResource {
     firstName = registerOutput<String>('firstName');
     lastName = registerOutput<String>('lastName');
     note = registerOutput<String?>('note');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     this.state = registerOutput<String>('state');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'azure:apimanagement/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    confirmation = registerOutput<String?>('confirmation');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String>('firstName');
+    lastName = registerOutput<String>('lastName');
+    note = registerOutput<String?>('note');
+    password = registerOutput<String?>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    state = registerOutput<String>('state');
     userId = registerOutput<String>('userId');
   }
 }

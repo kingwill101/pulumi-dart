@@ -14,9 +14,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///
 /// const current = aws.getCallerIdentity({});
 /// const example = new aws.s3control.StorageLensConfiguration("example", {
-///     configId: "example-1",
 ///     storageLensConfiguration: {
-///         enabled: true,
 ///         accountLevel: {
 ///             activityMetrics: {
 ///                 enabled: true,
@@ -32,13 +30,13 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                 enabled: true,
 ///             },
 ///             s3BucketDestination: {
+///                 encryption: {
+///                     sseS3s: [{}],
+///                 },
 ///                 accountId: current.then(current => current.accountId),
 ///                 arn: target.arn,
 ///                 format: "CSV",
 ///                 outputSchemaVersion: "V_1",
-///                 encryption: {
-///                     sseS3s: [{}],
-///                 },
 ///             },
 ///         },
 ///         exclude: {
@@ -48,7 +46,9 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///             ],
 ///             regions: ["us-east-2"],
 ///         },
+///         enabled: true,
 ///     },
+///     configId: "example-1",
 /// });
 /// ```
 /// ```python
@@ -57,9 +57,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example = aws.s3control.StorageLensConfiguration("example",
-///     config_id="example-1",
 ///     storage_lens_configuration={
-///         "enabled": True,
 ///         "account_level": {
 ///             "activity_metrics": {
 ///                 "enabled": True,
@@ -75,13 +73,13 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                 "enabled": True,
 ///             },
 ///             "s3_bucket_destination": {
+///                 "encryption": {
+///                     "sse_s3s": [{}],
+///                 },
 ///                 "account_id": current.account_id,
 ///                 "arn": target["arn"],
 ///                 "format": "CSV",
 ///                 "output_schema_version": "V_1",
-///                 "encryption": {
-///                     "sse_s3s": [{}],
-///                 },
 ///             },
 ///         },
 ///         "exclude": {
@@ -91,7 +89,9 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///             ],
 ///             "regions": ["us-east-2"],
 ///         },
-///     })
+///         "enabled": True,
+///     },
+///     config_id="example-1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -105,10 +105,8 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///
 ///     var example = new Aws.S3Control.StorageLensConfiguration("example", new()
 ///     {
-///         ConfigId = "example-1",
 ///         StorageLensConfigurationDetail = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationArgs
 ///         {
-///             Enabled = true,
 ///             AccountLevel = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationAccountLevelArgs
 ///             {
 ///                 ActivityMetrics = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetricsArgs
@@ -131,10 +129,6 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                 },
 ///                 S3BucketDestination = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationArgs
 ///                 {
-///                     AccountId = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
-///                     Arn = target.Arn,
-///                     Format = "CSV",
-///                     OutputSchemaVersion = "V_1",
 ///                     Encryption = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionArgs
 ///                     {
 ///                         SseS3s = new[]
@@ -142,6 +136,10 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                             null,
 ///                         },
 ///                     },
+///                     AccountId = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///                     Arn = target.Arn,
+///                     Format = "CSV",
+///                     OutputSchemaVersion = "V_1",
 ///                 },
 ///             },
 ///             Exclude = new Aws.S3Control.Inputs.StorageLensConfigurationStorageLensConfigurationExcludeArgs
@@ -156,7 +154,9 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                     "us-east-2",
 ///                 },
 ///             },
+///             Enabled = true,
 ///         },
+///         ConfigId = "example-1",
 ///     });
 ///
 /// });
@@ -177,9 +177,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3control.NewStorageLensConfiguration(ctx, "example", &s3control.StorageLensConfigurationArgs{
-/// 			ConfigId: pulumi.String("example-1"),
 /// 			StorageLensConfiguration: &s3control.StorageLensConfigurationStorageLensConfigurationArgs{
-/// 				Enabled: pulumi.Bool(true),
 /// 				AccountLevel: &s3control.StorageLensConfigurationStorageLensConfigurationAccountLevelArgs{
 /// 					ActivityMetrics: &s3control.StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetricsArgs{
 /// 						Enabled: pulumi.Bool(true),
@@ -195,15 +193,15 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// 						Enabled: pulumi.Bool(true),
 /// 					},
 /// 					S3BucketDestination: &s3control.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationArgs{
-/// 						AccountId:           pulumi.String(current.AccountId),
-/// 						Arn:                 pulumi.Any(target.Arn),
-/// 						Format:              pulumi.String("CSV"),
-/// 						OutputSchemaVersion: pulumi.String("V_1"),
 /// 						Encryption: &s3control.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionArgs{
 /// 							SseS3s: s3control.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseS3Array{
 /// 								&s3control.StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseS3Args{},
 /// 							},
 /// 						},
+/// 						AccountId:           pulumi.String(current.AccountId),
+/// 						Arn:                 pulumi.Any(target.Arn),
+/// 						Format:              pulumi.String("CSV"),
+/// 						OutputSchemaVersion: pulumi.String("V_1"),
 /// 					},
 /// 				},
 /// 				Exclude: &s3control.StorageLensConfigurationStorageLensConfigurationExcludeArgs{
@@ -215,7 +213,9 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// 						pulumi.String("us-east-2"),
 /// 					},
 /// 				},
+/// 				Enabled: pulumi.Bool(true),
 /// 			},
+/// 			ConfigId: pulumi.String("example-1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -237,9 +237,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 /// }
 ///
 /// resource "aws_s3control_storagelensconfiguration" "example" {
-///   config_id = "example-1"
 ///   storage_lens_configuration = {
-///     enabled = true
 ///     account_level = {
 ///       activity_metrics = {
 ///         enabled = true
@@ -255,20 +253,22 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///         enabled = true
 ///       }
 ///       s3_bucket_destination = {
+///         encryption = {
+///           sse_s3s = [{}]
+///         }
 ///         account_id            = data.aws_getcalleridentity.current.account_id
 ///         arn                   = target.arn
 ///         format                = "CSV"
 ///         output_schema_version = "V_1"
-///         encryption = {
-///           sse_s3s = [{}]
-///         }
 ///       }
 ///     }
 ///     exclude = {
 ///       buckets = [b1.arn, b2.arn]
 ///       regions = ["us-east-2"]
 ///     }
+///     enabled = true
 ///   }
+///   config_id = "example-1"
 /// }
 /// ```
 /// ```java
@@ -309,9 +309,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///             .build());
 ///
 ///         var example = new StorageLensConfiguration("example", StorageLensConfigurationArgs.builder()
-///             .configId("example-1")
 ///             .storageLensConfiguration(StorageLensConfigurationStorageLensConfigurationArgs.builder()
-///                 .enabled(true)
 ///                 .accountLevel(StorageLensConfigurationStorageLensConfigurationAccountLevelArgs.builder()
 ///                     .activityMetrics(StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetricsArgs.builder()
 ///                         .enabled(true)
@@ -327,14 +325,14 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                         .enabled(true)
 ///                         .build())
 ///                     .s3BucketDestination(StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationArgs.builder()
-///                         .accountId(current.accountId())
-///                         .arn(target.arn())
-///                         .format("CSV")
-///                         .outputSchemaVersion("V_1")
 ///                         .encryption(StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionArgs.builder()
 ///                             .sseS3s(StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseS3Args.builder()
 ///                                 .build())
 ///                             .build())
+///                         .accountId(current.accountId())
+///                         .arn(target.arn())
+///                         .format("CSV")
+///                         .outputSchemaVersion("V_1")
 ///                         .build())
 ///                     .build())
 ///                 .exclude(StorageLensConfigurationStorageLensConfigurationExcludeArgs.builder()
@@ -343,7 +341,9 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///                         b2.arn())
 ///                     .regions("us-east-2")
 ///                     .build())
+///                 .enabled(true)
 ///                 .build())
+///             .configId("example-1")
 ///             .build());
 ///
 ///     }
@@ -354,9 +354,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///   example:
 ///     type: aws:s3control:StorageLensConfiguration
 ///     properties:
-///       configId: example-1
 ///       storageLensConfiguration:
-///         enabled: true
 ///         accountLevel:
 ///           activityMetrics:
 ///             enabled: true
@@ -367,19 +365,21 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 ///           cloudWatchMetrics:
 ///             enabled: true
 ///           s3BucketDestination:
+///             encryption:
+///               sseS3s:
+///                 - {}
 ///             accountId: ${current.accountId}
 ///             arn: ${target.arn}
 ///             format: CSV
 ///             outputSchemaVersion: V_1
-///             encryption:
-///               sseS3s:
-///                 - {}
 ///         exclude:
 ///           buckets:
 ///             - ${b1.arn}
 ///             - ${b2.arn}
 ///           regions:
 ///             - us-east-2
+///         enabled: true
+///       configId: example-1
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -398,7 +398,7 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 class StorageLensConfiguration extends pulumi.CustomResource {
   /// AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
-  /// Amazon Resource Name (ARN) of the S3 Storage Lens configuration.
+  /// ARN of the S3 Storage Lens configuration.
   late final pulumi.Output<String> arn;
   /// ID of the S3 Storage Lens configuration.
   late final pulumi.Output<String> configId;
@@ -423,15 +423,15 @@ class StorageLensConfiguration extends pulumi.CustomResource {
           'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     configId = registerOutput<String>('configId');
     region = registerOutput<String>('region');
     storageLensConfiguration = registerOutput<StorageLensConfigurationStorageLensConfiguration>('storageLensConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageLensConfigurationStorageLensConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [StorageLensConfiguration] resource's state with the given [name] and [id].
@@ -439,11 +439,12 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageLensConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageLensConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -462,7 +463,25 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     configId = registerOutput<String>('configId');
     region = registerOutput<String>('region');
     storageLensConfiguration = registerOutput<StorageLensConfigurationStorageLensConfiguration>('storageLensConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageLensConfigurationStorageLensConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StorageLensConfiguration] resource.
+  StorageLensConfiguration.reference(String urn)
+    : super(
+        'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    region = registerOutput<String>('region');
+    storageLensConfiguration = registerOutput<StorageLensConfigurationStorageLensConfiguration>('storageLensConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageLensConfigurationStorageLensConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

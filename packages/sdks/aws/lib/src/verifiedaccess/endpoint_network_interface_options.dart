@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_network_interface_options_port_range.dart';
 
 class EndpointNetworkInterfaceOptions {
-  final pulumi.Input<String>? networkInterfaceId;
-  final pulumi.Input<int>? port;
-  final pulumi.Input<List<EndpointNetworkInterfaceOptionsPortRange>>? portRanges;
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? networkInterfaceId;
+  final pulumi.Input<int?>? port;
+  final pulumi.Input<List<EndpointNetworkInterfaceOptionsPortRange>?>? portRanges;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [EndpointNetworkInterfaceOptions].
   /// [networkInterfaceId] Optional.
@@ -33,7 +33,7 @@ class EndpointNetworkInterfaceOptions {
   factory EndpointNetworkInterfaceOptions.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterfaceOptions(
       networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       portRanges: (() { final guardedValue = map['portRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(guardedValue, (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

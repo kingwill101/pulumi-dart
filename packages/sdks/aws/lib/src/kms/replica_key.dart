@@ -341,11 +341,11 @@ import 'replica_key_state.dart';
 /// $ pulumi import aws:kms/replicaKey:ReplicaKey example 1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
 class ReplicaKey extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the replica key. The key ARNs of related multi-Region keys differ only in the Region value.
+  /// ARN of the replica key. The key ARNs of related multi-Region keys differ only in the Region value.
   late final pulumi.Output<String> arn;
   /// A flag to indicate whether to bypass the key policy lockout safety check.
   /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
-  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
+  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS KMS Developer Guide_.
   /// The default value is `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
   /// The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key.
@@ -386,7 +386,7 @@ class ReplicaKey extends pulumi.CustomResource {
           'aws:kms/replicaKey:ReplicaKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
@@ -400,8 +400,8 @@ class ReplicaKey extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     primaryKeyArn = registerOutput<String>('primaryKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ReplicaKey] resource's state with the given [name] and [id].
@@ -409,11 +409,12 @@ class ReplicaKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicaKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicaKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,7 +440,32 @@ class ReplicaKey extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     primaryKeyArn = registerOutput<String>('primaryKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReplicaKey] resource.
+  ReplicaKey.reference(String urn)
+    : super(
+        'aws:kms/replicaKey:ReplicaKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    keyId = registerOutput<String>('keyId');
+    keyRotationEnabled = registerOutput<bool>('keyRotationEnabled');
+    keySpec = registerOutput<String>('keySpec');
+    keyUsage = registerOutput<String>('keyUsage');
+    policy = registerOutput<String>('policy');
+    primaryKeyArn = registerOutput<String>('primaryKeyArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

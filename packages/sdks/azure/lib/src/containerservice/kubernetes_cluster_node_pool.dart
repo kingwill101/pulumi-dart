@@ -166,7 +166,7 @@ import 'kubernetes_cluster_node_pool_windows_profile.dart';
 /// 		}
 /// 		_, err = containerservice.NewKubernetesClusterNodePool(ctx, "example", &containerservice.KubernetesClusterNodePoolArgs{
 /// 			Name:                pulumi.String("internal"),
-/// 			KubernetesClusterId: exampleKubernetesCluster.ID(),
+/// 			KubernetesClusterId: exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			VmSize:              pulumi.String("Standard_DS2_v2"),
 /// 			NodeCount:           pulumi.Int(1),
 /// 			Tags: pulumi.StringMap{
@@ -451,7 +451,7 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
           'azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoScalingEnabled = registerOutput<bool?>('autoScalingEnabled');
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
@@ -472,11 +472,11 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     nodeImageVersion = registerOutput<String>('nodeImageVersion');
-    nodeLabels = registerOutput<Map<String, String>>('nodeLabels');
+    nodeLabels = registerOutput<Map<String, String>>('nodeLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     nodeNetworkProfile = registerOutput<KubernetesClusterNodePoolNodeNetworkProfile?>('nodeNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolNodeNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     nodePublicIpPrefixId = registerOutput<String?>('nodePublicIpPrefixId');
-    nodeTaints = registerOutput<List<String>?>('nodeTaints');
+    nodeTaints = registerOutput<List<String>?>('nodeTaints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     orchestratorVersion = registerOutput<String>('orchestratorVersion');
     osDiskSizeGb = registerOutput<int>('osDiskSizeGb');
     osDiskType = registerOutput<String?>('osDiskType');
@@ -488,7 +488,7 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     scaleDownMode = registerOutput<String?>('scaleDownMode');
     snapshotId = registerOutput<String?>('snapshotId');
     spotMaxPrice = registerOutput<double?>('spotMaxPrice');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryNameForRotation = registerOutput<String?>('temporaryNameForRotation');
     ultraSsdEnabled = registerOutput<bool?>('ultraSsdEnabled');
     upgradeSettings = registerOutput<KubernetesClusterNodePoolUpgradeSettings?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -496,7 +496,7 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     vnetSubnetId = registerOutput<String?>('vnetSubnetId');
     windowsProfile = registerOutput<KubernetesClusterNodePoolWindowsProfile?>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadRuntime = registerOutput<String?>('workloadRuntime');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [KubernetesClusterNodePool] resource's state with the given [name] and [id].
@@ -504,11 +504,12 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KubernetesClusterNodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KubernetesClusterNodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -541,11 +542,11 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     nodeImageVersion = registerOutput<String>('nodeImageVersion');
-    nodeLabels = registerOutput<Map<String, String>>('nodeLabels');
+    nodeLabels = registerOutput<Map<String, String>>('nodeLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     nodeNetworkProfile = registerOutput<KubernetesClusterNodePoolNodeNetworkProfile?>('nodeNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolNodeNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     nodePublicIpPrefixId = registerOutput<String?>('nodePublicIpPrefixId');
-    nodeTaints = registerOutput<List<String>?>('nodeTaints');
+    nodeTaints = registerOutput<List<String>?>('nodeTaints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     orchestratorVersion = registerOutput<String>('orchestratorVersion');
     osDiskSizeGb = registerOutput<int>('osDiskSizeGb');
     osDiskType = registerOutput<String?>('osDiskType');
@@ -557,7 +558,7 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     scaleDownMode = registerOutput<String?>('scaleDownMode');
     snapshotId = registerOutput<String?>('snapshotId');
     spotMaxPrice = registerOutput<double?>('spotMaxPrice');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     temporaryNameForRotation = registerOutput<String?>('temporaryNameForRotation');
     ultraSsdEnabled = registerOutput<bool?>('ultraSsdEnabled');
     upgradeSettings = registerOutput<KubernetesClusterNodePoolUpgradeSettings?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -565,6 +566,61 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     vnetSubnetId = registerOutput<String?>('vnetSubnetId');
     windowsProfile = registerOutput<KubernetesClusterNodePoolWindowsProfile?>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadRuntime = registerOutput<String?>('workloadRuntime');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KubernetesClusterNodePool] resource.
+  KubernetesClusterNodePool.reference(String urn)
+    : super(
+        'azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoScalingEnabled = registerOutput<bool?>('autoScalingEnabled');
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    gpuDriver = registerOutput<String?>('gpuDriver');
+    gpuInstance = registerOutput<String?>('gpuInstance');
+    hostEncryptionEnabled = registerOutput<bool?>('hostEncryptionEnabled');
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    kubeletConfig = registerOutput<KubernetesClusterNodePoolKubeletConfig?>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubeletDiskType = registerOutput<String>('kubeletDiskType');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    linuxOsConfig = registerOutput<KubernetesClusterNodePoolLinuxOsConfig?>('linuxOsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolLinuxOsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxCount = registerOutput<int?>('maxCount');
+    maxPods = registerOutput<int>('maxPods');
+    minCount = registerOutput<int?>('minCount');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodeImageVersion = registerOutput<String>('nodeImageVersion');
+    nodeLabels = registerOutput<Map<String, String>>('nodeLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    nodeNetworkProfile = registerOutput<KubernetesClusterNodePoolNodeNetworkProfile?>('nodeNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolNodeNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
+    nodePublicIpPrefixId = registerOutput<String?>('nodePublicIpPrefixId');
+    nodeTaints = registerOutput<List<String>?>('nodeTaints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    orchestratorVersion = registerOutput<String>('orchestratorVersion');
+    osDiskSizeGb = registerOutput<int>('osDiskSizeGb');
+    osDiskType = registerOutput<String?>('osDiskType');
+    osSku = registerOutput<String>('osSku');
+    osType = registerOutput<String?>('osType');
+    podSubnetId = registerOutput<String?>('podSubnetId');
+    priority = registerOutput<String?>('priority');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    scaleDownMode = registerOutput<String?>('scaleDownMode');
+    snapshotId = registerOutput<String?>('snapshotId');
+    spotMaxPrice = registerOutput<double?>('spotMaxPrice');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    temporaryNameForRotation = registerOutput<String?>('temporaryNameForRotation');
+    ultraSsdEnabled = registerOutput<bool?>('ultraSsdEnabled');
+    upgradeSettings = registerOutput<KubernetesClusterNodePoolUpgradeSettings?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmSize = registerOutput<String>('vmSize');
+    vnetSubnetId = registerOutput<String?>('vnetSubnetId');
+    windowsProfile = registerOutput<KubernetesClusterNodePoolWindowsProfile?>('windowsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterNodePoolWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadRuntime = registerOutput<String?>('workloadRuntime');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

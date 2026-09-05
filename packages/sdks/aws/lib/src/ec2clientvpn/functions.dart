@@ -257,3 +257,14 @@ Future<GetEndpointResult> getEndpoint(
   );
   return GetEndpointResult.fromMap(result);
 }
+
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ec2clientvpn/getEndpoint:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}

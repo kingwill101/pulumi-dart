@@ -15,51 +15,51 @@ import 'event_subscription_webhook_endpoint.dart';
 /// Input properties used for looking up and filtering EventSubscription resources.
 class EventSubscriptionState {
   /// A `advancedFilter` block as defined below.
-  final pulumi.Input<EventSubscriptionAdvancedFilter>? advancedFilter;
+  final pulumi.Input<EventSubscriptionAdvancedFilter?>? advancedFilter;
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
-  final pulumi.Input<bool>? advancedFilteringOnArraysEnabled;
+  final pulumi.Input<bool?>? advancedFilteringOnArraysEnabled;
   /// An `azureFunctionEndpoint` block as defined below.
-  final pulumi.Input<EventSubscriptionAzureFunctionEndpoint>? azureFunctionEndpoint;
+  final pulumi.Input<EventSubscriptionAzureFunctionEndpoint?>? azureFunctionEndpoint;
   /// A `deadLetterIdentity` block as defined below.
   ///
   /// &gt; **Note:** `storageBlobDeadLetterDestination` must be specified when a `deadLetterIdentity` is specified
-  final pulumi.Input<EventSubscriptionDeadLetterIdentity>? deadLetterIdentity;
+  final pulumi.Input<EventSubscriptionDeadLetterIdentity?>? deadLetterIdentity;
   /// A `deliveryIdentity` block as defined below.
-  final pulumi.Input<EventSubscriptionDeliveryIdentity>? deliveryIdentity;
+  final pulumi.Input<EventSubscriptionDeliveryIdentity?>? deliveryIdentity;
   /// One or more `deliveryProperty` blocks as defined below.
-  final pulumi.Input<List<EventSubscriptionDeliveryProperty>>? deliveryProperties;
+  final pulumi.Input<List<EventSubscriptionDeliveryProperty>?>? deliveryProperties;
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventDeliverySchema;
+  final pulumi.Input<String?>? eventDeliverySchema;
   /// Specifies the id where the Event Hub is located.
-  final pulumi.Input<String>? eventhubEndpointId;
+  final pulumi.Input<String?>? eventhubEndpointId;
   /// Specifies the expiration time of the event subscription (Datetime Format `RFC 3339`).
-  final pulumi.Input<String>? expirationTimeUtc;
+  final pulumi.Input<String?>? expirationTimeUtc;
   /// Specifies the id where the Hybrid Connection is located.
-  final pulumi.Input<String>? hybridConnectionEndpointId;
+  final pulumi.Input<String?>? hybridConnectionEndpointId;
   /// A list of applicable event types that need to be part of the event subscription.
-  final pulumi.Input<List<String>>? includedEventTypes;
+  final pulumi.Input<List<String>?>? includedEventTypes;
   /// A list of labels to assign to the event subscription.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// Specifies the name of the EventGrid Event Subscription resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `retryPolicy` block as defined below.
-  final pulumi.Input<EventSubscriptionRetryPolicy>? retryPolicy;
+  final pulumi.Input<EventSubscriptionRetryPolicy?>? retryPolicy;
   /// Specifies the scope at which the EventGrid Event Subscription should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Specifies the id where the Service Bus Queue is located.
-  final pulumi.Input<String>? serviceBusQueueEndpointId;
+  final pulumi.Input<String?>? serviceBusQueueEndpointId;
   /// Specifies the id where the Service Bus Topic is located.
-  final pulumi.Input<String>? serviceBusTopicEndpointId;
+  final pulumi.Input<String?>? serviceBusTopicEndpointId;
   /// A `storageBlobDeadLetterDestination` block as defined below.
-  final pulumi.Input<EventSubscriptionStorageBlobDeadLetterDestination>? storageBlobDeadLetterDestination;
+  final pulumi.Input<EventSubscriptionStorageBlobDeadLetterDestination?>? storageBlobDeadLetterDestination;
   /// A `storageQueueEndpoint` block as defined below.
-  final pulumi.Input<EventSubscriptionStorageQueueEndpoint>? storageQueueEndpoint;
+  final pulumi.Input<EventSubscriptionStorageQueueEndpoint?>? storageQueueEndpoint;
   /// A `subjectFilter` block as defined below.
-  final pulumi.Input<EventSubscriptionSubjectFilter>? subjectFilter;
+  final pulumi.Input<EventSubscriptionSubjectFilter?>? subjectFilter;
   /// A `webhookEndpoint` block as defined below.
   ///
   /// &gt; **Note:** One of `eventhubEndpointId`, `hybridConnectionEndpointId`, `serviceBusQueueEndpointId`, `serviceBusTopicEndpointId`, `storageQueueEndpoint`, `webhookEndpoint` or `azureFunctionEndpoint` must be specified.
-  final pulumi.Input<EventSubscriptionWebhookEndpoint>? webhookEndpoint;
+  final pulumi.Input<EventSubscriptionWebhookEndpoint?>? webhookEndpoint;
 
   /// Creates a new [EventSubscriptionState].
   /// [advancedFilter] A `advancedFilter` block as defined below.

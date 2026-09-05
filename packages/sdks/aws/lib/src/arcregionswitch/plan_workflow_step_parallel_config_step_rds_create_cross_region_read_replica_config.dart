@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig {
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// Map of source DB instance identifiers to target DB instance ARNs.
   final pulumi.Input<Map<String, String>> dbInstanceArnMap;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig].
   /// [crossAccountRole] ARN of the cross-account role to assume.
@@ -38,7 +38,7 @@ class PlanWorkflowStepParallelConfigStepRdsCreateCrossRegionReadReplicaConfig {
       crossAccountRole: (() { final guardedValue = map['crossAccountRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbInstanceArnMap: pulumi.Input.fromValue((map['dbInstanceArnMap'] as Map).cast<String, String>()),
       externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

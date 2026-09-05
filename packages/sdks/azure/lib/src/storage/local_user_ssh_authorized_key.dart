@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocalUserSshAuthorizedKey {
   /// The description of this SSH authorized key.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The public key value of this SSH authorized key.
   final pulumi.Input<String> key;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate {
   /// ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate].
   /// [resourceArn] ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.

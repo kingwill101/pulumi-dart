@@ -186,7 +186,7 @@ class GetAppServiceSiteConfig {
       localMysqlEnabled: pulumi.Input.fromValue(map['localMysqlEnabled'] as bool),
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
       minTlsVersion: pulumi.Input.fromValue(map['minTlsVersion'] as String),
-      numberOfWorkers: pulumi.Input.fromValue(map['numberOfWorkers'] as int),
+      numberOfWorkers: pulumi.Input.fromValue((map['numberOfWorkers'] as num).toInt()),
       phpVersion: pulumi.Input.fromValue(map['phpVersion'] as String),
       pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),

@@ -11,7 +11,7 @@ class ObjectReplicationArgs {
   /// The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
   final pulumi.Input<String> destinationStorageAccountId;
   /// Whether metrics are enabled for this object replication. Defaults to `false`.
-  final pulumi.Input<bool>? metricsEnabled;
+  final pulumi.Input<bool?>? metricsEnabled;
   /// One or more `rules` blocks as defined below.
   final pulumi.Input<List<ObjectReplicationRule>> rules;
   /// The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.

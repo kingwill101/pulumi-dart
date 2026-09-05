@@ -159,7 +159,7 @@ import 'ingestion_state.dart';
 class Ingestion extends pulumi.CustomResource {
   /// Name of the application. Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app).
   late final pulumi.Output<String> app;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
   /// ARN of the Ingestion.
   late final pulumi.Output<String> arn;
@@ -186,15 +186,15 @@ class Ingestion extends pulumi.CustomResource {
           'aws:appfabric/ingestion:Ingestion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     appBundleArn = registerOutput<String>('appBundleArn');
     arn = registerOutput<String>('arn');
     ingestionType = registerOutput<String>('ingestionType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -203,11 +203,12 @@ class Ingestion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IngestionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Ingestion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,8 +227,27 @@ class Ingestion extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     ingestionType = registerOutput<String>('ingestionType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [Ingestion] resource.
+  Ingestion.reference(String urn)
+    : super(
+        'aws:appfabric/ingestion:Ingestion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    appBundleArn = registerOutput<String>('appBundleArn');
+    arn = registerOutput<String>('arn');
+    ingestionType = registerOutput<String>('ingestionType');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

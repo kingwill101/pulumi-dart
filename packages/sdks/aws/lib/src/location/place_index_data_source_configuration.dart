@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlaceIndexDataSourceConfiguration {
   /// How the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
-  final pulumi.Input<String>? intendedUse;
+  final pulumi.Input<String?>? intendedUse;
 
   /// Creates a new [PlaceIndexDataSourceConfiguration].
   /// [intendedUse] How the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.

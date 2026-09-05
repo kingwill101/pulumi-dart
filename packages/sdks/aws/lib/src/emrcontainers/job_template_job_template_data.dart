@@ -6,13 +6,13 @@ import 'job_template_job_template_data_job_driver.dart';
 
 class JobTemplateJobTemplateData {
   /// The configuration settings that are used to override defaults configuration.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverrides>? configurationOverrides;
+  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverrides?>? configurationOverrides;
   /// The execution role ARN of the job run.
   final pulumi.Input<String> executionRoleArn;
   /// Specify the driver that the job runs on. Exactly one of the two available job drivers is required, either sparkSqlJobDriver or sparkSubmitJobDriver.
   final pulumi.Input<JobTemplateJobTemplateDataJobDriver> jobDriver;
   /// The tags assigned to jobs started using the job template.
-  final pulumi.Input<Map<String, String>>? jobTags;
+  final pulumi.Input<Map<String, String>?>? jobTags;
   /// The release version of Amazon EMR.
   final pulumi.Input<String> releaseLabel;
 

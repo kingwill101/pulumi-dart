@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_snowflake_args.dart';
+import 'dataset_snowflake_schema_column.dart';
 import 'dataset_snowflake_state.dart';
 
 /// Manages a Snowflake Dataset inside an Azure Data Factory.
@@ -122,7 +123,7 @@ import 'dataset_snowflake_state.dart';
 /// 		}
 /// 		exampleLinkedServiceSnowflake, err := datafactory.NewLinkedServiceSnowflake(ctx, "example", &datafactory.LinkedServiceSnowflakeArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("jdbc:snowflake://account.region.snowflakecomputing.com/?user=user&db=db&warehouse=wh"),
 /// 		})
 /// 		if err != nil {
@@ -130,7 +131,7 @@ import 'dataset_snowflake_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetSnowflake(ctx, "example", &datafactory.DatasetSnowflakeArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceSnowflake.Name,
 /// 			SchemaName:        pulumi.String("foo_schema"),
 /// 			TableName:         pulumi.String("foo_table"),
@@ -286,7 +287,7 @@ class DatasetSnowflake extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset Snowflake.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetSnowflakeSchemaColumn>?> schemaColumns;
   /// The schema name of the Data Factory Dataset Snowflake.
   late final pulumi.Output<String?> schemaName;
   /// The table name of the Data Factory Dataset Snowflake.
@@ -304,17 +305,17 @@ class DatasetSnowflake extends pulumi.CustomResource {
           'azure:datafactory/datasetSnowflake:DatasetSnowflake',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSnowflakeSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(guardedValue, (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     schemaName = registerOutput<String?>('schemaName');
     tableName = registerOutput<String?>('tableName');
   }
@@ -324,11 +325,12 @@ class DatasetSnowflake extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetSnowflakeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetSnowflake._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -342,15 +344,37 @@ class DatasetSnowflake extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSnowflakeSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(guardedValue, (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+    schemaName = registerOutput<String?>('schemaName');
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [DatasetSnowflake] resource.
+  DatasetSnowflake.reference(String urn)
+    : super(
+        'azure:datafactory/datasetSnowflake:DatasetSnowflake',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSnowflakeSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(guardedValue, (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     schemaName = registerOutput<String?>('schemaName');
     tableName = registerOutput<String?>('tableName');
   }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VirtualMachineManagerVirtualMachineInstanceGuestAgent resources.
 class VirtualMachineManagerVirtualMachineInstanceGuestAgentState {
   /// The password that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The provisioning action that is used to define the different types of operations for the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Possible values are `install`, `repair` and `uninstall`. Defaults to `install`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? provisioningAction;
+  final pulumi.Input<String?>? provisioningAction;
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance Guest Agent is stored. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scopedResourceId;
+  final pulumi.Input<String?>? scopedResourceId;
   /// The username that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceGuestAgentState].
   /// [password] The password that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.

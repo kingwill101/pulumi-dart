@@ -11,57 +11,57 @@ import 'open_zfs_file_system_root_volume_configuration.dart';
 /// {@macro pulumi_fsx_open_zfs_file_system_open_zfs_file_system_args_doc}
 class OpenZfsFileSystemArgs {
   /// Number of days to retain automatic backups. Setting this to 0 disables automatic backups. You can retain automatic backups for a maximum of 90 days.
-  final pulumi.Input<int>? automaticBackupRetentionDays;
+  final pulumi.Input<int?>? automaticBackupRetentionDays;
   /// ID of the source backup to create the filesystem from.
-  final pulumi.Input<String>? backupId;
+  final pulumi.Input<String?>? backupId;
   /// Whether tags for the file system should be copied to backups. Default value is false.
-  final pulumi.Input<bool>? copyTagsToBackups;
+  final pulumi.Input<bool?>? copyTagsToBackups;
   /// Whether tags for the file system should be copied to snapshots. Default value is false.
-  final pulumi.Input<bool>? copyTagsToVolumes;
+  final pulumi.Input<bool?>? copyTagsToVolumes;
   /// Recurring daily time, in the format HH:MM. HH is the zero-padded hour of the day (0-23), and MM is the zero-padded minute of the hour. For example, 05:00 specifies 5 AM daily. Requires `automaticBackupRetentionDays` to be set.
-  final pulumi.Input<String>? dailyAutomaticBackupStartTime;
+  final pulumi.Input<String?>? dailyAutomaticBackupStartTime;
   /// List of delete options, which at present supports only one value that specifies whether to delete all child volumes and snapshots when the file system is deleted. Valid values: `DELETE_CHILD_VOLUMES_AND_SNAPSHOTS`.
-  final pulumi.Input<List<String>>? deleteOptions;
+  final pulumi.Input<List<String>?>? deleteOptions;
   /// Filesystem deployment type. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_CreateFileSystemOpenZFSConfiguration.html#FSx-Type-CreateFileSystemOpenZFSConfiguration-DeploymentType) for a list of valid values.
   final pulumi.Input<String> deploymentType;
   /// SSD IOPS configuration for the Amazon FSx for OpenZFS file system. See `diskIopsConfiguration` Block for details.
-  final pulumi.Input<OpenZfsFileSystemDiskIopsConfiguration>? diskIopsConfiguration;
+  final pulumi.Input<OpenZfsFileSystemDiskIopsConfiguration?>? diskIopsConfiguration;
   /// (Multi-AZ only) Specifies the IP address range in which the endpoints to access your file system will be created.
-  final pulumi.Input<String>? endpointIpAddressRange;
+  final pulumi.Input<String?>? endpointIpAddressRange;
   /// Map of tags to apply to the file system's final backup.
-  final pulumi.Input<Map<String, String>>? finalBackupTags;
+  final pulumi.Input<Map<String, String>?>? finalBackupTags;
   /// ARN for the KMS Key to encrypt the file system at rest, Defaults to an AWS managed KMS Key.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Network type. Valid values are `IPV4` and `DUAL`. Default value is `IPV4`.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// (Multi-AZ only) Required when `deploymentType` is set to `MULTI_AZ_1`. This specifies the subnet in which you want the preferred file server to be located.
-  final pulumi.Input<String>? preferredSubnetId;
+  final pulumi.Input<String?>? preferredSubnetId;
   /// Configuration block for optional provisioned SSD read cache on file systems that use the Intelligent-Tiering storage class. Required when `storageType` is set to `INTELLIGENT_TIERING`. See `readCacheConfiguration` Block for details.
-  final pulumi.Input<OpenZfsFileSystemReadCacheConfiguration>? readCacheConfiguration;
+  final pulumi.Input<OpenZfsFileSystemReadCacheConfiguration?>? readCacheConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for the root volume of the file system. All other volumes are children or the root volume. See `rootVolumeConfiguration` Block for details.
-  final pulumi.Input<OpenZfsFileSystemRootVolumeConfiguration>? rootVolumeConfiguration;
-  /// (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all virtual private cloud (VPC) route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
-  final pulumi.Input<List<String>>? routeTableIds;
+  final pulumi.Input<OpenZfsFileSystemRootVolumeConfiguration?>? rootVolumeConfiguration;
+  /// (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all VPC route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
+  final pulumi.Input<List<String>?>? routeTableIds;
   /// List of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
-  final pulumi.Input<bool>? skipFinalBackup;
+  final pulumi.Input<bool?>? skipFinalBackup;
   /// Storage capacity (GiB) of the file system. Valid values between `64` and `524288`. Required when `storageType` is set to `SSD`. Must not be set when `storageType` is set to `INTELLIGENT_TIERING`.
-  final pulumi.Input<int>? storageCapacity;
+  final pulumi.Input<int?>? storageCapacity;
   /// Filesystem storage type. Valid values are `SSD` and `INTELLIGENT_TIERING`. `INTELLIGENT_TIERING` requires `deploymentType` to be `MULTI_AZ_1`.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// List of IDs for the subnets that the file system will be accessible from.
   final pulumi.Input<List<String>> subnetIds;
   /// Map of tags to assign to the file system. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Throughput (MB/s) of the file system. Valid values depend on `deploymentType`. Must be one of `64`, `128`, `256`, `512`, `1024`, `2048`, `3072`, `4096` for `SINGLE_AZ_1`. Must be one of `160`, `320`, `640`, `1280`, `2560`, `3840`, `5120`, `7680`, `10240` for `SINGLE_AZ_2`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> throughputCapacity;
   /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  final pulumi.Input<String>? weeklyMaintenanceStartTime;
+  final pulumi.Input<String?>? weeklyMaintenanceStartTime;
 
   /// Creates a new [OpenZfsFileSystemArgs].
   /// [automaticBackupRetentionDays] Number of days to retain automatic backups. Setting this to 0 disables automatic backups. You can retain automatic backups for a maximum of 90 days.
@@ -80,7 +80,7 @@ class OpenZfsFileSystemArgs {
   /// [readCacheConfiguration] Configuration block for optional provisioned SSD read cache on file systems that use the Intelligent-Tiering storage class. Required when `storageType` is set to `INTELLIGENT_TIERING`. See `readCacheConfiguration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootVolumeConfiguration] Configuration for the root volume of the file system. All other volumes are children or the root volume. See `rootVolumeConfiguration` Block for details.
-  /// [routeTableIds] (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all virtual private cloud (VPC) route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
+  /// [routeTableIds] (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all VPC route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
   /// [securityGroupIds] List of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
   /// [skipFinalBackup] When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   /// [storageCapacity] Storage capacity (GiB) of the file system. Valid values between `64` and `524288`. Required when `storageType` is set to `SSD`. Must not be set when `storageType` is set to `INTELLIGENT_TIERING`.
@@ -149,7 +149,7 @@ class OpenZfsFileSystemArgs {
 
   factory OpenZfsFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemArgs(
-      automaticBackupRetentionDays: (() { final guardedValue = map['automaticBackupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      automaticBackupRetentionDays: (() { final guardedValue = map['automaticBackupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       backupId: (() { final guardedValue = map['backupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       copyTagsToBackups: (() { final guardedValue = map['copyTagsToBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       copyTagsToVolumes: (() { final guardedValue = map['copyTagsToVolumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -168,11 +168,11 @@ class OpenZfsFileSystemArgs {
       routeTableIds: (() { final guardedValue = map['routeTableIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       skipFinalBackup: (() { final guardedValue = map['skipFinalBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      storageCapacity: (() { final guardedValue = map['storageCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageCapacity: (() { final guardedValue = map['storageCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      throughputCapacity: pulumi.Input.fromValue(map['throughputCapacity'] as int),
+      throughputCapacity: pulumi.Input.fromValue((map['throughputCapacity'] as num).toInt()),
       weeklyMaintenanceStartTime: (() { final guardedValue = map['weeklyMaintenanceStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

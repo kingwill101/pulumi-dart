@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionWriteToS3 {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// ARN of the IAM role used to write to S3.
   final pulumi.Input<String> roleArn;
   /// Name of the S3 bucket.
   final pulumi.Input<String> s3Bucket;
   /// S3 object key prefix.
-  final pulumi.Input<String>? s3Prefix;
+  final pulumi.Input<String?>? s3Prefix;
   /// KMS key identifier used to encrypt the email.
-  final pulumi.Input<String>? s3SseKmsKeyId;
+  final pulumi.Input<String?>? s3SseKmsKeyId;
 
   /// Creates a new [RuleSetRuleActionWriteToS3].
   /// [actionFailurePolicy] Policy applied when the action fails.

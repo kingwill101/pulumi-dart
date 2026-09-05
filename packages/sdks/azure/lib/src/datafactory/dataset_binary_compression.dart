@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetBinaryCompression {
   /// The level of compression. Possible values are `Fastest` and `Optimal`.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// The type of compression used during transport. Possible values are `BZip2`, `Deflate`, `GZip`, `Tar`, `TarGZip` and `ZipDeflate`.
   final pulumi.Input<String> type;
 

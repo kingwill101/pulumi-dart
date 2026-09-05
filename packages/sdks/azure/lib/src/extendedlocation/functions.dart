@@ -148,3 +148,14 @@ Future<GetCustomLocationResult> getCustomLocation(
   );
   return GetCustomLocationResult.fromMap(result);
 }
+
+pulumi.Output<GetCustomLocationResult> getCustomLocationOutput(
+  GetCustomLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:extendedlocation/getCustomLocation:getCustomLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomLocationResult.fromMap);
+}

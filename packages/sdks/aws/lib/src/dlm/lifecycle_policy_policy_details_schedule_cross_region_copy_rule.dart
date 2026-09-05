@@ -5,14 +5,14 @@ import 'lifecycle_policy_policy_details_schedule_cross_region_copy_rule_deprecat
 import 'lifecycle_policy_policy_details_schedule_cross_region_copy_rule_retain_rule.dart';
 
 class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
-  final pulumi.Input<String>? cmkArn;
-  final pulumi.Input<bool>? copyTags;
-  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule>? deprecateRule;
+  final pulumi.Input<String?>? cmkArn;
+  final pulumi.Input<bool?>? copyTags;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule?>? deprecateRule;
   final pulumi.Input<bool> encrypted;
-  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule>? retainRule;
-  final pulumi.Input<String>? target;
-  /// Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the Amazon Resource Name (ARN) of the target Outpost for the snapshot copies.
-  final pulumi.Input<String>? targetRegion;
+  final pulumi.Input<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule?>? retainRule;
+  final pulumi.Input<String?>? target;
+  /// Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the ARN of the target Outpost for the snapshot copies.
+  final pulumi.Input<String?>? targetRegion;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule].
   /// [cmkArn] Optional.
@@ -21,7 +21,7 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
   /// [encrypted] Required.
   /// [retainRule] Optional.
   /// [target] Optional.
-  /// [targetRegion] Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the Amazon Resource Name (ARN) of the target Outpost for the snapshot copies.
+  /// [targetRegion] Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the ARN of the target Outpost for the snapshot copies.
   const LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule({
     this.cmkArn,
     this.copyTags,

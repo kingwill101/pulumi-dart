@@ -179,7 +179,7 @@ import 'file_system_state.dart';
 /// 			ResourceGroupName:   example.Name,
 /// 			Location:            example.Location,
 /// 			SkuName:             pulumi.String("AMLFS-Durable-Premium-250"),
-/// 			SubnetId:            exampleSubnet.ID(),
+/// 			SubnetId:            exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageCapacityInTb: pulumi.Int(8),
 /// 			Zones: pulumi.StringArray{
 /// 				pulumi.String("2"),
@@ -400,7 +400,7 @@ class FileSystem extends pulumi.CustomResource {
           'azure:managedlustre/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemHsmSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -414,8 +414,8 @@ class FileSystem extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [FileSystem] resource's state with the given [name] and [id].
@@ -423,11 +423,12 @@ class FileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -453,7 +454,32 @@ class FileSystem extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FileSystem] resource.
+  FileSystem.reference(String urn)
+    : super(
+        'azure:managedlustre/fileSystem:FileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemHsmSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FileSystemIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mgsAddress = registerOutput<String>('mgsAddress');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemRootSquash.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skuName = registerOutput<String>('skuName');
+    storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

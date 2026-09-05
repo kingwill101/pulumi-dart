@@ -12,9 +12,9 @@ class ScalingPlanArgs {
   /// CloudFormation stack or set of tags. You can create one scaling plan per application source.
   final pulumi.Input<ScalingPlanApplicationSource> applicationSource;
   /// Name of the scaling plan. Names cannot contain vertical bars, colons, or forward slashes.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
   final pulumi.Input<List<ScalingPlanScalingInstruction>> scalingInstructions;
 

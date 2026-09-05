@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerMountBindOptions {
   /// A propagation mode with the value.
-  final pulumi.Input<String>? propagation;
+  final pulumi.Input<String?>? propagation;
 
   /// Creates a new [ContainerMountBindOptions].
   /// [propagation] A propagation mode with the value.

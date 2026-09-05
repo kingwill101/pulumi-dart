@@ -6,7 +6,7 @@ class KeyReleasePolicy {
   /// Whether this policy is immutable. Defaults to `false`.
   ///
   /// &gt; **Note:** When `immutable` is set to `true`, changing either `immutable` or `json` will force a new resource to be created.
-  final pulumi.Input<bool>? immutable;
+  final pulumi.Input<bool?>? immutable;
   /// The policy contents in JSON format.
   final pulumi.Input<String> json;
 

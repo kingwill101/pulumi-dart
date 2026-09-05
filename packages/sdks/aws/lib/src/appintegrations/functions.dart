@@ -119,3 +119,14 @@ Future<GetEventIntegrationResult> getEventIntegration(
   );
   return GetEventIntegrationResult.fromMap(result);
 }
+
+pulumi.Output<GetEventIntegrationResult> getEventIntegrationOutput(
+  GetEventIntegrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appintegrations/getEventIntegration:getEventIntegration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventIntegrationResult.fromMap);
+}

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hub_args.dart';
+import 'hub_event_handler.dart';
+import 'hub_event_listener.dart';
 import 'hub_state.dart';
 
 /// Manages the hub settings for a Web Pubsub.
@@ -293,7 +295,7 @@ import 'hub_state.dart';
 /// 		}
 /// 		_, err = webpubsub.NewHub(ctx, "example", &webpubsub.HubArgs{
 /// 			Name:        pulumi.String("tfex_wpsh"),
-/// 			WebPubsubId: exampleService.ID(),
+/// 			WebPubsubId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			EventHandlers: webpubsub.HubEventHandlerArray{
 /// 				&webpubsub.HubEventHandlerArgs{
 /// 					UrlTemplate:      pulumi.String("https://test.com/api/{hub}/{event}"),
@@ -310,7 +312,7 @@ import 'hub_state.dart';
 /// 						pulumi.String("connected"),
 /// 					},
 /// 					Auth: &webpubsub.HubEventHandlerAuthArgs{
-/// 						ManagedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 						ManagedIdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -608,11 +610,11 @@ class Hub extends pulumi.CustomResource {
   /// An `eventHandler` block as defined below.
   ///
   /// &gt; **Note:** User can change the order of `eventHandler` to change the priority accordingly.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eventHandlers;
+  late final pulumi.Output<List<HubEventHandler>?> eventHandlers;
   /// An `eventListener` block as defined below.
   ///
   /// &gt; **Note:** The managed identity of Web PubSub service must be enabled and the identity must have the "Azure Event Hubs Data sender" role to access the Event Hub.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eventListeners;
+  late final pulumi.Output<List<HubEventListener>?> eventListeners;
   /// The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
@@ -630,11 +632,11 @@ class Hub extends pulumi.CustomResource {
           'azure:webpubsub/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
-    eventListeners = registerOutput<List<Map<String, dynamic>>?>('eventListeners');
+    eventHandlers = registerOutput<List<HubEventHandler>?>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventHandler>(guardedValue, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    eventListeners = registerOutput<List<HubEventListener>?>('eventListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventListener>(guardedValue, (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     webPubsubId = registerOutput<String>('webPubsubId');
   }
@@ -644,11 +646,12 @@ class Hub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -663,8 +666,24 @@ class Hub extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
-    eventHandlers = registerOutput<List<Map<String, dynamic>>?>('eventHandlers');
-    eventListeners = registerOutput<List<Map<String, dynamic>>?>('eventListeners');
+    eventHandlers = registerOutput<List<HubEventHandler>?>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventHandler>(guardedValue, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    eventListeners = registerOutput<List<HubEventListener>?>('eventListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventListener>(guardedValue, (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    webPubsubId = registerOutput<String>('webPubsubId');
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'azure:webpubsub/hub:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
+    eventHandlers = registerOutput<List<HubEventHandler>?>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventHandler>(guardedValue, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    eventListeners = registerOutput<List<HubEventListener>?>('eventListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventListener>(guardedValue, (value) => HubEventListener.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     webPubsubId = registerOutput<String>('webPubsubId');
   }

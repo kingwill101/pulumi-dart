@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreatIntelligenceIndicatorParsedPatternPatternTypeValue {
   /// The value of the parsed pattern type.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// The type of the value of the parsed pattern type value.
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
 
   /// Creates a new [ThreatIntelligenceIndicatorParsedPatternPatternTypeValue].
   /// [value] The value of the parsed pattern type.

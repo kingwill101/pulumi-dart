@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppImageConfigKernelGatewayImageConfigKernelSpec {
   /// The display name of the kernel.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the kernel.
   final pulumi.Input<String> name;
 

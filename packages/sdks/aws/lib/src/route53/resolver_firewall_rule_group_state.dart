@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ResolverFirewallRuleGroup resources.
 class ResolverFirewallRuleGroupState {
-  /// The ARN (Amazon Resource Name) of the rule group.
-  final pulumi.Input<String>? arn;
+  /// ARN of the rule group.
+  final pulumi.Input<String?>? arn;
   /// A name that lets you identify the rule group, to manage and use it.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The AWS account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the rule group is shared with other AWS accounts, or was shared with the current account by another AWS account. Sharing is configured through AWS Resource Access Manager (AWS RAM). Valid values: `NOT_SHARED`, `SHARED_BY_ME`, `SHARED_WITH_ME`
-  final pulumi.Input<String>? shareStatus;
+  final pulumi.Input<String?>? shareStatus;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ResolverFirewallRuleGroupState].
-  /// [arn] The ARN (Amazon Resource Name) of the rule group.
+  /// [arn] ARN of the rule group.
   /// [name] A name that lets you identify the rule group, to manage and use it.
   /// [ownerId] The AWS account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

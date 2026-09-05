@@ -9,9 +9,9 @@ import 'route_map_rule.dart';
 /// {@macro pulumi_network_route_map_route_map_args_doc}
 class RouteMapArgs {
   /// The name which should be used for this Route Map. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `rule` block as defined below.
-  final pulumi.Input<List<RouteMapRule>>? rules;
+  final pulumi.Input<List<RouteMapRule>?>? rules;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualHubId;
 

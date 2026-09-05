@@ -31,7 +31,7 @@ class VirtualNetworkGatewayVpnClientConfigurationRadiusServer {
   factory VirtualNetworkGatewayVpnClientConfigurationRadiusServer.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayVpnClientConfigurationRadiusServer(
       address: pulumi.Input.fromValue(map['address'] as String),
-      score: pulumi.Input.fromValue(map['score'] as int),
+      score: pulumi.Input.fromValue((map['score'] as num).toInt()),
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );
   }

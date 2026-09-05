@@ -9,15 +9,15 @@ import 'alias_routing_strategy.dart';
 /// {@macro pulumi_gamelift_alias_alias_args_doc}
 class AliasArgs {
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the alias.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the fleet and/or routing type to use for the alias.
   final pulumi.Input<AliasRoutingStrategy> routingStrategy;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AliasArgs].
   /// [description] Description of the alias.

@@ -156,7 +156,7 @@ class FolderMembership extends pulumi.CustomResource {
           'aws:quicksight/folderMembership:FolderMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     folderId = registerOutput<String>('folderId');
@@ -170,11 +170,12 @@ class FolderMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -188,6 +189,22 @@ class FolderMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    folderId = registerOutput<String>('folderId');
+    memberId = registerOutput<String>('memberId');
+    memberType = registerOutput<String>('memberType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FolderMembership] resource.
+  FolderMembership.reference(String urn)
+    : super(
+        'aws:quicksight/folderMembership:FolderMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     folderId = registerOutput<String>('folderId');
     memberId = registerOutput<String>('memberId');
